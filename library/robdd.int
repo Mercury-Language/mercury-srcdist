@@ -1,0 +1,97 @@
+:- module robdd.
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module sparse_bitset.
+:- import_module term.
+:- type robdd == robdd.robdd(term.generic).
+:- type entailment_result(T)
+	--->	all_vars 
+	;	some_vars((robdd.vars) :: T).
+:- type equiv_vars(T)
+	--->	equiv_vars((robdd.leader_map) :: robdd.leader_map(T)).
+:- type equivalent_result(T) == robdd.entailment_result(robdd.equiv_vars(T)).
+:- type imp_map(T) == map.map(term.var(T), robdd.vars(T)).
+:- type imp_vars(T)
+	--->	imp_vars((robdd.imps) :: robdd.imp_map(T), (robdd.rev_imps) :: robdd.imp_map(T), (robdd.dis_imps) :: robdd.imp_map(T), (robdd.rev_dis_imps) :: robdd.imp_map(T)).
+:- type leader_map(T) == map.map(term.var(T), term.var(T)).
+:- type literal(T)
+	--->	pos(term.var(T))
+	;	neg(term.var(T)).
+:- type robdd(T).
+:- type vars(T) == sparse_bitset.sparse_bitset(term.var(T)).
+:- type vars_entailed_result(T) == robdd.entailment_result(robdd.vars(T)).
+:- type write_var(T) == pred(term.var(T), io.io, io.io).
+:- inst (write_var) == (pred((builtin.in), (builtin.di), (builtin.uo)) is det).
+:- func *(robdd.robdd(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func +(robdd.robdd(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func =:=(robdd.robdd(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func =<(robdd.robdd(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func =\=(robdd.robdd(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func add_equivalences(robdd.equiv_vars(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func add_implications(robdd.imp_vars(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func at_most_one_of(robdd.vars(T)) = robdd.robdd(T).
+:- pred clear_caches(io.io, io.io).
+:- mode clear_caches((builtin.di), (builtin.uo)) is det.
+:- impure pred clear_caches is det.
+:- func conj_not_vars(robdd.vars(T)) = robdd.robdd(T).
+:- func conj_vars(robdd.vars(T)) = robdd.robdd(T).
+:- pred definite_vars(robdd.robdd(T), robdd.vars_entailed_result(T), robdd.vars_entailed_result(T)).
+:- mode definite_vars((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func disj_vars(robdd.vars(T)) = robdd.robdd(T).
+:- func dnf(robdd.robdd(T)) = list.list(list.list(robdd.literal(T))).
+:- func empty_vars_set = robdd.vars(T).
+:- pred entails(robdd.robdd(T), robdd.robdd(T)).
+:- mode entails((builtin.in), (builtin.in)) is semidet.
+:- func eq_vars(term.var(T), term.var(T)) = robdd.robdd(T).
+:- func equivalent_vars(robdd.robdd(T)) = robdd.equivalent_result(T).
+:- func extract_implications(robdd.robdd(T)) = robdd.imp_vars(T).
+:- func imp_vars(term.var(T), term.var(T)) = robdd.robdd(T).
+:- pred is_terminal(robdd.robdd(T)).
+:- mode is_terminal((builtin.in)) is semidet.
+:- func ite(robdd.robdd(T), robdd.robdd(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func ite_var(term.var(T), robdd.robdd(T), robdd.robdd(T)) = robdd.robdd(T).
+:- pred labelling(robdd.vars(T), robdd.robdd(T), robdd.vars(T), robdd.vars(T)).
+:- mode labelling((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is nondet.
+:- func make_equiv(robdd.equiv_vars(T)) = robdd.robdd(T).
+:- pred minimal_model(robdd.vars(T), robdd.robdd(T), robdd.vars(T), robdd.vars(T)).
+:- mode minimal_model((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is nondet.
+:- func neq_vars(term.var(T), term.var(T)) = robdd.robdd(T).
+:- func not_var(term.var(T)) = robdd.robdd(T).
+:- func one = robdd.robdd(T).
+:- pred print_robdd(robdd.robdd(T), io.io, io.io).
+:- mode print_robdd((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func remove_implications(robdd.imp_vars(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func rename_vars(((func term.var(T)) = term.var(T)), robdd.robdd(T)) = robdd.robdd(T).
+:- func restrict(term.var(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func restrict_filter((pred term.var(T)), robdd.robdd(T)) = robdd.robdd(T).
+:- mode restrict_filter((pred((builtin.in)) is semidet), (builtin.in)) = (builtin.out) is det.
+:- func restrict_filter((pred term.var(T)), (pred term.var(T)), robdd.robdd(T)) = robdd.robdd(T).
+:- mode restrict_filter((pred((builtin.in)) is semidet), (pred((builtin.in)) is semidet), (builtin.in)) = (builtin.out) is det.
+:- func restrict_threshold(term.var(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func restrict_true_false_vars(robdd.vars(T), robdd.vars(T), robdd.robdd(T)) = robdd.robdd(T).
+:- pred robdd_to_dot(robdd.robdd(T), robdd.write_var(T), string, io.io, io.io).
+:- mode robdd_to_dot((builtin.in), builtin.in((robdd.write_var)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred robdd_to_dot(robdd.robdd(T), robdd.write_var(T), io.io, io.io).
+:- mode robdd_to_dot((builtin.in), builtin.in((robdd.write_var)), (builtin.di), (builtin.uo)) is det.
+:- pred size(robdd.robdd(T), int, int).
+:- mode size((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred size(robdd.robdd(T), int, int, list.list(term.var(T))).
+:- mode size((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- func squeeze_equiv(robdd.equiv_vars(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func var(term.var(T)) = robdd.robdd(T).
+:- pred var_entailed(robdd.robdd(T), term.var(T)).
+:- mode var_entailed((builtin.in), (builtin.in)) is semidet.
+:- pred var_is_constrained(robdd.robdd(T), term.var(T)).
+:- mode var_is_constrained((builtin.in), (builtin.in)) is semidet.
+:- func var_restrict_false(term.var(T), robdd.robdd(T)) = robdd.robdd(T).
+:- func var_restrict_true(term.var(T), robdd.robdd(T)) = robdd.robdd(T).
+:- pred vars_are_constrained(robdd.robdd(T), robdd.vars(T)).
+:- mode vars_are_constrained((builtin.in), (builtin.in)) is semidet.
+:- func vars_disentailed(robdd.robdd(T)) = robdd.vars_entailed_result(T).
+:- func vars_entailed(robdd.robdd(T)) = robdd.vars_entailed_result(T).
+:- func zero = robdd.robdd(T).
+:- func ~(robdd.robdd(T)) = robdd.robdd(T).
+:- implementation.
+:- typeclass intersectable(T).

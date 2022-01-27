@@ -1,0 +1,599 @@
+/*
+** Automatically generated from `error_util.m'
+** by the Mercury compiler,
+** version rotd-2014-12-12
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.error_util. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__error_util
+#define MR_HEADER_GUARD_parse_tree__error_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__ERROR_UTIL_DECL_GUARD
+#define PARSE_TREE__ERROR_UTIL_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+#line 43 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_actual_severity_0;
+
+#line 46 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_line_0;
+
+#line 49 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_0;
+
+#line 52 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_msg_component_0;
+
+#line 55 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_phase_0;
+
+#line 58 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_severity_0;
+
+#line 61 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0;
+
+#line 64 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_accumulator_0;
+
+#line 67 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_component_0;
+
+#line 70 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_format_components_0;
+
+#line 73 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_maybe_first_in_msg_0;
+
+#line 76 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_maybe_lower_next_initial_0;
+
+#line 79 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_maybe_printed_something_0;
+
+#line 82 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_maybe_treat_as_first_0;
+
+#line 85 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_mode_report_control_0;
+
+#line 88 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_paragraph_0;
+
+#line 91 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_plain_or_prefix_0;
+
+#line 94 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__error_util__parse_tree__error_util__type_ctor_info_word_0;
+
+#line 97 "parse_tree.error_util.mih.tmp"
+extern const MR_TypeClassDeclStruct parse_tree__error_util__parse_tree__error_util__type_class_decl_print_anything_1;
+
+#line 103 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Compare____mode_report_control_0_0(
+#line 103 "error_util.m"
+  MR_Word * parse_tree__error_util__param_1,
+#line 103 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 103 "error_util.m"
+  MR_Word parse_tree__error_util__param_3);
+
+#line 103 "error_util.m"
+MR_bool MR_CALL 
+parse_tree__error_util____Unify____mode_report_control_0_0(
+#line 103 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 103 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 147 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Compare____maybe_treat_as_first_0_0(
+#line 147 "error_util.m"
+  MR_Word * parse_tree__error_util__param_1,
+#line 147 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 147 "error_util.m"
+  MR_Word parse_tree__error_util__param_3);
+
+#line 147 "error_util.m"
+MR_bool MR_CALL 
+parse_tree__error_util____Unify____maybe_treat_as_first_0_0(
+#line 147 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 147 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 349 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Compare____format_components_0_0(
+#line 349 "error_util.m"
+  MR_Word * parse_tree__error_util__param_1,
+#line 349 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 349 "error_util.m"
+  MR_Word parse_tree__error_util__param_3);
+
+#line 349 "error_util.m"
+MR_bool MR_CALL 
+parse_tree__error_util____Unify____format_components_0_0(
+#line 349 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 349 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 275 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Compare____format_component_0_0(
+#line 275 "error_util.m"
+  MR_Word * parse_tree__error_util__param_1,
+#line 275 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 275 "error_util.m"
+  MR_Word parse_tree__error_util__param_3);
+
+#line 275 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Index____format_component_0_0(
+#line 275 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 275 "error_util.m"
+  MR_Integer * parse_tree__error_util__param_2);
+
+#line 275 "error_util.m"
+MR_bool MR_CALL 
+parse_tree__error_util____Unify____format_component_0_0(
+#line 275 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 275 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 641 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Compare____error_spec_accumulator_0_0(
+#line 641 "error_util.m"
+  MR_Word * parse_tree__error_util__param_1,
+#line 641 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 641 "error_util.m"
+  MR_Word parse_tree__error_util__param_3);
+
+#line 641 "error_util.m"
+MR_bool MR_CALL 
+parse_tree__error_util____Unify____error_spec_accumulator_0_0(
+#line 641 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 641 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 66 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Compare____error_spec_0_0(
+#line 66 "error_util.m"
+  MR_Word * parse_tree__error_util__param_1,
+#line 66 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 66 "error_util.m"
+  MR_Word parse_tree__error_util__param_3);
+
+#line 66 "error_util.m"
+MR_bool MR_CALL 
+parse_tree__error_util____Unify____error_spec_0_0(
+#line 66 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 66 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 73 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Compare____error_severity_0_0(
+#line 73 "error_util.m"
+  MR_Word * parse_tree__error_util__param_1,
+#line 73 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 73 "error_util.m"
+  MR_Word parse_tree__error_util__param_3);
+
+#line 73 "error_util.m"
+MR_bool MR_CALL 
+parse_tree__error_util____Unify____error_severity_0_0(
+#line 73 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 73 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 107 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Compare____error_phase_0_0(
+#line 107 "error_util.m"
+  MR_Word * parse_tree__error_util__param_1,
+#line 107 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 107 "error_util.m"
+  MR_Word parse_tree__error_util__param_3);
+
+#line 107 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Index____error_phase_0_0(
+#line 107 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 107 "error_util.m"
+  MR_Integer * parse_tree__error_util__param_2);
+
+#line 107 "error_util.m"
+MR_bool MR_CALL 
+parse_tree__error_util____Unify____error_phase_0_0(
+#line 107 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 107 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 163 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Compare____error_msg_component_0_0(
+#line 163 "error_util.m"
+  MR_Word * parse_tree__error_util__param_1,
+#line 163 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 163 "error_util.m"
+  MR_Word parse_tree__error_util__param_3);
+
+#line 163 "error_util.m"
+MR_bool MR_CALL 
+parse_tree__error_util____Unify____error_msg_component_0_0(
+#line 163 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 163 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 151 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Compare____error_msg_0_0(
+#line 151 "error_util.m"
+  MR_Word * parse_tree__error_util__param_1,
+#line 151 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 151 "error_util.m"
+  MR_Word parse_tree__error_util__param_3);
+
+#line 151 "error_util.m"
+MR_bool MR_CALL 
+parse_tree__error_util____Unify____error_msg_0_0(
+#line 151 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 151 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 98 "error_util.m"
+void MR_CALL 
+parse_tree__error_util____Compare____actual_severity_0_0(
+#line 98 "error_util.m"
+  MR_Word * parse_tree__error_util__param_1,
+#line 98 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 98 "error_util.m"
+  MR_Word parse_tree__error_util__param_3);
+
+#line 98 "error_util.m"
+MR_bool MR_CALL 
+parse_tree__error_util____Unify____actual_severity_0_0(
+#line 98 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 98 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 461 "error_util.m"
+void MR_CALL 
+parse_tree__error_util__unable_to_open_file_4_p_0(
+#line 461 "error_util.m"
+  MR_String parse_tree__error_util__param_1,
+#line 461 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 453 "error_util.m"
+void MR_CALL 
+parse_tree__error_util__report_warning_6_p_0(
+#line 453 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 453 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 453 "error_util.m"
+  MR_Integer parse_tree__error_util__param_3,
+#line 453 "error_util.m"
+  MR_Word parse_tree__error_util__param_4);
+
+#line 448 "error_util.m"
+MR_String MR_CALL 
+parse_tree__error_util__capitalize_1_f_0(
+#line 448 "error_util.m"
+  MR_String parse_tree__error_util__param_1);
+
+#line 443 "error_util.m"
+MR_String MR_CALL 
+parse_tree__error_util__add_quotes_1_f_0(
+#line 443 "error_util.m"
+  MR_String parse_tree__error_util__param_1);
+
+#line 439 "error_util.m"
+MR_String MR_CALL 
+parse_tree__error_util__pred_or_func_to_string_1_f_0(
+#line 439 "error_util.m"
+  MR_Word parse_tree__error_util__param_1);
+
+#line 437 "error_util.m"
+MR_String MR_CALL 
+parse_tree__error_util__describe_sym_name_and_arity_1_f_0(
+#line 437 "error_util.m"
+  MR_Word parse_tree__error_util__param_1);
+
+#line 435 "error_util.m"
+MR_String MR_CALL 
+parse_tree__error_util__describe_sym_name_1_f_0(
+#line 435 "error_util.m"
+  MR_Word parse_tree__error_util__param_1);
+
+#line 431 "error_util.m"
+MR_String MR_CALL 
+parse_tree__error_util__error_pieces_to_string_1_f_0(
+#line 431 "error_util.m"
+  MR_Word parse_tree__error_util__param_1);
+
+#line 427 "error_util.m"
+void MR_CALL 
+parse_tree__error_util__write_error_pieces_maybe_with_context_6_p_0(
+#line 427 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 427 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 427 "error_util.m"
+  MR_Integer parse_tree__error_util__param_3,
+#line 427 "error_util.m"
+  MR_Word parse_tree__error_util__param_4);
+
+#line 424 "error_util.m"
+void MR_CALL 
+parse_tree__error_util__write_error_pieces_6_p_0(
+#line 424 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 424 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 424 "error_util.m"
+  MR_Integer parse_tree__error_util__param_3,
+#line 424 "error_util.m"
+  MR_Word parse_tree__error_util__param_4);
+
+#line 416 "error_util.m"
+void MR_CALL 
+parse_tree__error_util__write_error_plain_with_progname_4_p_0(
+#line 416 "error_util.m"
+  MR_String parse_tree__error_util__param_1,
+#line 416 "error_util.m"
+  MR_String parse_tree__error_util__param_2);
+
+#line 408 "error_util.m"
+void MR_CALL 
+parse_tree__error_util__write_error_pieces_plain_4_p_0(
+#line 408 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 408 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 398 "error_util.m"
+MR_String MR_CALL 
+parse_tree__error_util__is_or_are_1_f_0(
+#line 398 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 398 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 393 "error_util.m"
+MR_Box MR_CALL 
+parse_tree__error_util__choose_number_3_f_0(
+#line 393 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 393 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 393 "error_util.m"
+  MR_Word parse_tree__error_util__param_3,
+#line 393 "error_util.m"
+  MR_Box parse_tree__error_util__param_4,
+#line 393 "error_util.m"
+  MR_Box parse_tree__error_util__param_5);
+
+#line 385 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__component_list_to_line_pieces_2_f_0(
+#line 385 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 385 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 374 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__component_list_to_pieces_1_f_0(
+#line 374 "error_util.m"
+  MR_Word parse_tree__error_util__param_1);
+
+#line 368 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__component_lists_to_pieces_1_f_0(
+#line 368 "error_util.m"
+  MR_Word parse_tree__error_util__param_1);
+
+#line 362 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__list_to_quoted_pieces_1_f_0(
+#line 362 "error_util.m"
+  MR_Word parse_tree__error_util__param_1);
+
+#line 358 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__list_to_pieces_1_f_0(
+#line 358 "error_util.m"
+  MR_Word parse_tree__error_util__param_1);
+
+#line 353 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__string_to_words_piece_1_f_0(
+#line 353 "error_util.m"
+  MR_String parse_tree__error_util__param_1);
+
+#line 270 "error_util.m"
+void MR_CALL 
+parse_tree__error_util__write_error_specs_8_p_0(
+#line 270 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 270 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 270 "error_util.m"
+  MR_Integer parse_tree__error_util__param_3,
+#line 270 "error_util.m"
+  MR_Integer * parse_tree__error_util__param_4,
+#line 270 "error_util.m"
+  MR_Integer parse_tree__error_util__param_5,
+#line 270 "error_util.m"
+  MR_Integer * parse_tree__error_util__param_6);
+
+#line 268 "error_util.m"
+void MR_CALL 
+parse_tree__error_util__write_error_spec_8_p_0(
+#line 268 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 268 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 268 "error_util.m"
+  MR_Integer parse_tree__error_util__param_3,
+#line 268 "error_util.m"
+  MR_Integer * parse_tree__error_util__param_4,
+#line 268 "error_util.m"
+  MR_Integer parse_tree__error_util__param_5,
+#line 268 "error_util.m"
+  MR_Integer * parse_tree__error_util__param_6);
+
+#line 245 "error_util.m"
+void MR_CALL 
+parse_tree__error_util__maybe_write_out_errors_no_module_6_p_0(
+#line 245 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 245 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 245 "error_util.m"
+  MR_Word parse_tree__error_util__param_3,
+#line 245 "error_util.m"
+  MR_Word * parse_tree__error_util__param_4);
+
+#line 240 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__error_spec_accumulator_to_list_1_f_0(
+#line 240 "error_util.m"
+  MR_Word parse_tree__error_util__param_1);
+
+#line 237 "error_util.m"
+void MR_CALL 
+parse_tree__error_util__accumulate_error_specs_for_proc_3_p_0(
+#line 237 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 237 "error_util.m"
+  MR_Word parse_tree__error_util__param_2,
+#line 237 "error_util.m"
+  MR_Word * parse_tree__error_util__param_3);
+
+#line 235 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__init_error_spec_accumulator_0_f_0(void);
+
+#line 224 "error_util.m"
+void MR_CALL 
+parse_tree__error_util__sort_error_msgs_2_p_0(
+#line 224 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 224 "error_util.m"
+  MR_Word * parse_tree__error_util__param_2);
+
+#line 220 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__contains_errors_and_or_warnings_2_f_0(
+#line 220 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 220 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 215 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__contains_errors_2_f_0(
+#line 215 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 215 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 209 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__worst_severity_in_specs_2_f_0(
+#line 209 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 209 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 203 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__actual_error_severity_2_f_0(
+#line 203 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 203 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 197 "error_util.m"
+MR_Word MR_CALL 
+parse_tree__error_util__worst_severity_2_f_0(
+#line 197 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 197 "error_util.m"
+  MR_Word parse_tree__error_util__param_2);
+
+#line 190 "error_util.m"
+void MR_CALL 
+parse_tree__error_util__print_anything_3_p_0(
+#line 190 "error_util.m"
+  MR_Word parse_tree__error_util__param_1,
+#line 190 "error_util.m"
+  MR_Box parse_tree__error_util__param_2);
+
+void mercury__parse_tree__error_util__init(void);
+void mercury__parse_tree__error_util__init_type_tables(void);
+void mercury__parse_tree__error_util__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.error_util */
+
+/* :- end_interface parse_tree.error_util. */

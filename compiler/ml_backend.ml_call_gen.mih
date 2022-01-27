@@ -1,0 +1,166 @@
+/*
+** Automatically generated from `ml_call_gen.m'
+** by the Mercury compiler,
+** version rotd-2014-12-12
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.ml_call_gen. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_call_gen
+#define MR_HEADER_GUARD_ml_backend__ml_call_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_CALL_GEN_DECL_GUARD
+#define ML_BACKEND__ML_CALL_GEN_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+#line 83 "ml_call_gen.m"
+void MR_CALL 
+ml_backend__ml_call_gen__ml_gen_cont_params_4_p_0(
+#line 83 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_1,
+#line 83 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_2,
+#line 83 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_3,
+#line 83 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_4);
+
+#line 73 "ml_call_gen.m"
+void MR_CALL 
+ml_backend__ml_call_gen__ml_gen_proc_addr_rval_5_p_0(
+#line 73 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_1,
+#line 73 "ml_call_gen.m"
+  MR_Integer ml_backend__ml_call_gen__param_2,
+#line 73 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_3,
+#line 73 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_4,
+#line 73 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_5);
+
+#line 67 "ml_call_gen.m"
+void MR_CALL 
+ml_backend__ml_call_gen__ml_gen_cast_6_p_0(
+#line 67 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_1,
+#line 67 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_2,
+#line 67 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_3,
+#line 67 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_4,
+#line 67 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_5,
+#line 67 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_6);
+
+#line 59 "ml_call_gen.m"
+void MR_CALL 
+ml_backend__ml_call_gen__ml_gen_builtin_9_p_0(
+#line 59 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_1,
+#line 59 "ml_call_gen.m"
+  MR_Integer ml_backend__ml_call_gen__param_2,
+#line 59 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_3,
+#line 59 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_4,
+#line 59 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_5,
+#line 59 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_6,
+#line 59 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_7,
+#line 59 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_8,
+#line 59 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_9);
+
+#line 52 "ml_call_gen.m"
+void MR_CALL 
+ml_backend__ml_call_gen__ml_gen_call_12_p_0(
+#line 52 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_1,
+#line 52 "ml_call_gen.m"
+  MR_Integer ml_backend__ml_call_gen__param_2,
+#line 52 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_3,
+#line 52 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_4,
+#line 52 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_5,
+#line 52 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_6,
+#line 52 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_7,
+#line 52 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_8,
+#line 52 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_9,
+#line 52 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_10,
+#line 52 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_11,
+#line 52 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_12);
+
+#line 35 "ml_call_gen.m"
+void MR_CALL 
+ml_backend__ml_call_gen__ml_gen_generic_call_9_p_0(
+#line 35 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_1,
+#line 35 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_2,
+#line 35 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_3,
+#line 35 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_4,
+#line 35 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_5,
+#line 35 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_6,
+#line 35 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_7,
+#line 35 "ml_call_gen.m"
+  MR_Word ml_backend__ml_call_gen__param_8,
+#line 35 "ml_call_gen.m"
+  MR_Word * ml_backend__ml_call_gen__param_9);
+
+void mercury__ml_backend__ml_call_gen__init(void);
+void mercury__ml_backend__ml_call_gen__init_type_tables(void);
+void mercury__ml_backend__ml_call_gen__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.ml_call_gen */
+
+/* :- end_interface ml_backend.ml_call_gen. */

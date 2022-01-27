@@ -1,0 +1,47 @@
+:- module (transform_hlds.lambda).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type lambda_info.
+:- type reg_wrapper_proc
+	--->	reg_wrapper_proc(parse_tree.set_of_var.set_of_progvar)
+	;	not_reg_wrapper_proc .
+:- pred expand_lambda(parse_tree.prog_data.purity, parse_tree.prog_data.ho_groundness, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.lambda_eval_method, transform_hlds.lambda.reg_wrapper_proc, list.list(parse_tree.prog_data.prog_var), list.list(parse_tree.prog_data.mer_mode), parse_tree.prog_data.determinism, list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.hlds_goal, hlds.hlds_goal.unification, hlds.hlds_goal.unify_rhs, hlds.hlds_goal.unification, transform_hlds.lambda.lambda_info, transform_hlds.lambda.lambda_info).
+:- mode expand_lambda((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred expand_lambdas_in_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode expand_lambdas_in_module((builtin.in), (builtin.out)) is det.
+:- pred expand_lambdas_in_pred(hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode expand_lambdas_in_pred((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred init_lambda_info(parse_tree.prog_data.prog_varset, parse_tree.prog_data.vartypes, parse_tree.prog_data.tvarset, parse_tree.prog_data.inst_varset, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_pred.has_parallel_conj, hlds.hlds_pred.pred_info, hlds.hlds_module.module_info, transform_hlds.lambda.lambda_info).
+:- mode init_lambda_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lambda_info_get_inst_varset(transform_hlds.lambda.lambda_info, parse_tree.prog_data.inst_varset).
+:- mode lambda_info_get_inst_varset((builtin.in), (builtin.out)) is det.
+:- pred lambda_info_get_module_info(transform_hlds.lambda.lambda_info, hlds.hlds_module.module_info).
+:- mode lambda_info_get_module_info((builtin.in), (builtin.out)) is det.
+:- pred lambda_info_get_pred_info(transform_hlds.lambda.lambda_info, hlds.hlds_pred.pred_info).
+:- mode lambda_info_get_pred_info((builtin.in), (builtin.out)) is det.
+:- pred lambda_info_get_recompute_nonlocals(transform_hlds.lambda.lambda_info, bool.bool).
+:- mode lambda_info_get_recompute_nonlocals((builtin.in), (builtin.out)) is det.
+:- pred lambda_info_get_rtti_varmaps(transform_hlds.lambda.lambda_info, hlds.hlds_rtti.rtti_varmaps).
+:- mode lambda_info_get_rtti_varmaps((builtin.in), (builtin.out)) is det.
+:- pred lambda_info_get_tvarset(transform_hlds.lambda.lambda_info, parse_tree.prog_data.tvarset).
+:- mode lambda_info_get_tvarset((builtin.in), (builtin.out)) is det.
+:- pred lambda_info_get_varset(transform_hlds.lambda.lambda_info, parse_tree.prog_data.prog_varset).
+:- mode lambda_info_get_varset((builtin.in), (builtin.out)) is det.
+:- pred lambda_info_get_vartypes(transform_hlds.lambda.lambda_info, parse_tree.prog_data.vartypes).
+:- mode lambda_info_get_vartypes((builtin.in), (builtin.out)) is det.
+:- pred lambda_info_set_module_info(hlds.hlds_module.module_info, transform_hlds.lambda.lambda_info, transform_hlds.lambda.lambda_info).
+:- mode lambda_info_set_module_info((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lambda_info_set_recompute_nonlocals(bool.bool, transform_hlds.lambda.lambda_info, transform_hlds.lambda.lambda_info).
+:- mode lambda_info_set_recompute_nonlocals((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lambda_info_set_varset(parse_tree.prog_data.prog_varset, transform_hlds.lambda.lambda_info, transform_hlds.lambda.lambda_info).
+:- mode lambda_info_set_varset((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lambda_info_set_vartypes(parse_tree.prog_data.vartypes, transform_hlds.lambda.lambda_info, transform_hlds.lambda.lambda_info).
+:- mode lambda_info_set_vartypes((builtin.in), (builtin.in), (builtin.out)) is det.

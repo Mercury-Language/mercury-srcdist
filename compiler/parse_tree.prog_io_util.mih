@@ -1,0 +1,794 @@
+/*
+** Automatically generated from `prog_io_util.m'
+** by the Mercury compiler,
+** version rotd-2014-12-12
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.prog_io_util. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_io_util
+#define MR_HEADER_GUARD_parse_tree__prog_io_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_IO_UTIL_DECL_GUARD
+#define PARSE_TREE__PROG_IO_UTIL_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+#line 43 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_allow_constrained_inst_var_0;
+
+#line 46 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_decl_attribute_0;
+
+#line 49 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_decl_attrs_0;
+
+#line 52 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_maybe1_1;
+
+#line 55 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_maybe2_2;
+
+#line 58 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_maybe3_3;
+
+#line 61 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_maybe4_4;
+
+#line 64 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_maybe_functor_1;
+
+#line 67 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_maybe_functor_0;
+
+#line 70 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_maybe_pred_or_func_1;
+
+#line 73 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_ordinary_state_dot_colon_var_1;
+
+#line 76 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_ordinary_state_var_1;
+
+#line 79 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_parser_1;
+
+#line 82 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_quantifier_type_0;
+
+#line 85 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_var2pvar_0;
+
+#line 88 "parse_tree.prog_io_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io_util__parse_tree__prog_io_util__type_ctor_info_var2tvar_0;
+
+#line 72 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____var2tvar_0_0(
+#line 72 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_1,
+#line 72 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 72 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3);
+
+#line 72 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____var2tvar_0_0(
+#line 72 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 72 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2);
+
+#line 74 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____var2pvar_0_0(
+#line 74 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_1,
+#line 74 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 74 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3);
+
+#line 74 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____var2pvar_0_0(
+#line 74 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 74 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2);
+
+#line 193 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____quantifier_type_0_0(
+#line 193 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_1,
+#line 193 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 193 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3);
+
+#line 193 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____quantifier_type_0_0(
+#line 193 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 193 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2);
+
+#line 76 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____parser_1_0(
+#line 76 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 76 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_2,
+#line 76 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 76 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4);
+
+#line 76 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____parser_1_0(
+#line 76 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 76 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 76 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3);
+
+#line 70 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____maybe_pred_or_func_1_0(
+#line 70 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 70 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_2,
+#line 70 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 70 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4);
+
+#line 70 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____maybe_pred_or_func_1_0(
+#line 70 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 70 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 70 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3);
+
+#line 67 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____maybe_functor_1_0(
+#line 67 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 67 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_2,
+#line 67 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 67 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4);
+
+#line 67 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____maybe_functor_1_0(
+#line 67 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 67 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 67 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3);
+
+#line 66 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____maybe_functor_0_0(
+#line 66 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_1,
+#line 66 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 66 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3);
+
+#line 66 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____maybe_functor_0_0(
+#line 66 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 66 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2);
+
+#line 57 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____maybe4_4_0(
+#line 57 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 57 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 57 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 57 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4,
+#line 57 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_5,
+#line 57 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_6,
+#line 57 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_7);
+
+#line 57 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____maybe4_4_0(
+#line 57 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 57 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 57 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 57 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4,
+#line 57 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_5,
+#line 57 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_6);
+
+#line 53 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____maybe3_3_0(
+#line 53 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 53 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 53 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 53 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_4,
+#line 53 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_5,
+#line 53 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_6);
+
+#line 53 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____maybe3_3_0(
+#line 53 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 53 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 53 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 53 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4,
+#line 53 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_5);
+
+#line 49 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____maybe2_2_0(
+#line 49 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 49 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 49 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3,
+#line 49 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4,
+#line 49 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_5);
+
+#line 49 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____maybe2_2_0(
+#line 49 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 49 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 49 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 49 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4);
+
+#line 45 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____maybe1_1_0(
+#line 45 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 45 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_2,
+#line 45 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 45 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4);
+
+#line 45 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____maybe1_1_0(
+#line 45 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 45 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 45 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3);
+
+#line 201 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____decl_attrs_0_0(
+#line 201 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_1,
+#line 201 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 201 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3);
+
+#line 201 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____decl_attrs_0_0(
+#line 201 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 201 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2);
+
+#line 186 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____decl_attribute_0_0(
+#line 186 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_1,
+#line 186 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 186 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3);
+
+#line 186 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____decl_attribute_0_0(
+#line 186 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 186 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2);
+
+#line 138 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util____Compare____allow_constrained_inst_var_0_0(
+#line 138 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_1,
+#line 138 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 138 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3);
+
+#line 138 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util____Unify____allow_constrained_inst_var_0_0(
+#line 138 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 138 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2);
+
+#line 229 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__parse_condition_suffix_3_p_0(
+#line 229 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 229 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_2,
+#line 229 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3);
+
+#line 209 "prog_io_util.m"
+MR_String MR_CALL 
+parse_tree__prog_io_util__attribute_description_1_f_0(
+#line 209 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1);
+
+#line 206 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__check_no_attributes_3_p_0(
+#line 206 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 206 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 206 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 206 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_4);
+
+#line 203 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__parse_decl_attribute_4_p_0(
+#line 203 "prog_io_util.m"
+  MR_String parse_tree__prog_io_util__param_1,
+#line 203 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 203 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3,
+#line 203 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_4);
+
+#line 182 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__list_term_to_term_list_2_p_0(
+#line 182 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 182 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_2);
+
+#line 179 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__map_parser_3_p_0(
+#line 179 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 179 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 179 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 179 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_4);
+
+#line 177 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__parse_list_3_p_0(
+#line 177 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 177 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 177 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 177 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_4);
+
+#line 172 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__sum_to_list_2_p_0(
+#line 172 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 172 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 172 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3);
+
+#line 167 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__list_to_conjunction_4_p_0(
+#line 167 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 167 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 167 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 167 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4,
+#line 167 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_5);
+
+#line 162 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__conjunction_to_list_2_p_0(
+#line 162 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 162 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 162 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3);
+
+#line 158 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__disjunction_to_list_2_p_0(
+#line 158 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 158 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 158 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3);
+
+#line 154 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__standard_det_2_p_0(
+#line 154 "prog_io_util.m"
+  MR_String parse_tree__prog_io_util__param_1,
+#line 154 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_2);
+
+#line 151 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__convert_inst_3_p_0(
+#line 151 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 151 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 151 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3);
+
+#line 148 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__convert_inst_list_3_p_0(
+#line 148 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 148 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 148 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3);
+
+#line 145 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__convert_mode_3_p_0(
+#line 145 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 145 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 145 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3);
+
+#line 142 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__convert_mode_list_3_p_0(
+#line 142 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 142 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 142 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3);
+
+#line 136 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__parse_purity_annotation_3_p_0(
+#line 136 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 136 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 136 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3,
+#line 136 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_4);
+
+#line 134 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__unparse_type_2_p_0(
+#line 134 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 134 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_2);
+
+#line 131 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__parse_types_4_p_0(
+#line 131 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 131 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 131 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 131 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_4);
+
+#line 129 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__maybe_parse_types_2_p_0(
+#line 129 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 129 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_2);
+
+#line 126 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__parse_type_4_p_0(
+#line 126 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 126 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 126 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 126 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_4);
+
+#line 124 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__maybe_parse_type_2_p_0(
+#line 124 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 124 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_2);
+
+#line 120 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__parse_pred_or_func_and_args_general_5_p_0(
+#line 120 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 120 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 120 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 120 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4,
+#line 120 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_5,
+#line 120 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_6);
+
+#line 117 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__parse_pred_or_func_and_args_4_p_0(
+#line 117 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 117 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 117 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3,
+#line 117 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_4,
+#line 117 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_5);
+
+#line 114 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__parse_pred_or_func_name_and_arity_4_p_0(
+#line 114 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 114 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 114 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3,
+#line 114 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_4,
+#line 114 "prog_io_util.m"
+  MR_Integer * parse_tree__prog_io_util__param_5);
+
+#line 111 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__parse_name_and_arity_unqualified_3_p_0(
+#line 111 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 111 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 111 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3,
+#line 111 "prog_io_util.m"
+  MR_Integer * parse_tree__prog_io_util__param_4);
+
+#line 108 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__parse_name_and_arity_4_p_0(
+#line 108 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 108 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 108 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 108 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_4,
+#line 108 "prog_io_util.m"
+  MR_Integer * parse_tree__prog_io_util__param_5);
+
+#line 103 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__parse_vars_and_state_vars_4_p_0(
+#line 103 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 103 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 103 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 103 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4,
+#line 103 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_5);
+
+#line 94 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__parse_quantifier_vars_4_p_0(
+#line 94 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 94 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 94 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 94 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4,
+#line 94 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_5);
+
+#line 87 "prog_io_util.m"
+void MR_CALL 
+parse_tree__prog_io_util__parse_vars_4_p_0(
+#line 87 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 87 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 87 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 87 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4,
+#line 87 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_5);
+
+#line 82 "prog_io_util.m"
+MR_bool MR_CALL 
+parse_tree__prog_io_util__parse_list_of_vars_2_p_0(
+#line 82 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 82 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 82 "prog_io_util.m"
+  MR_Word * parse_tree__prog_io_util__param_3);
+
+#line 64 "prog_io_util.m"
+MR_Word MR_CALL 
+parse_tree__prog_io_util__get_any_errors4_1_f_0(
+#line 64 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 64 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 64 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 64 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4,
+#line 64 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_5);
+
+#line 63 "prog_io_util.m"
+MR_Word MR_CALL 
+parse_tree__prog_io_util__get_any_errors3_1_f_0(
+#line 63 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 63 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 63 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3,
+#line 63 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_4);
+
+#line 62 "prog_io_util.m"
+MR_Word MR_CALL 
+parse_tree__prog_io_util__get_any_errors2_1_f_0(
+#line 62 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 62 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2,
+#line 62 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_3);
+
+#line 61 "prog_io_util.m"
+MR_Word MR_CALL 
+parse_tree__prog_io_util__get_any_errors1_1_f_0(
+#line 61 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_1,
+#line 61 "prog_io_util.m"
+  MR_Word parse_tree__prog_io_util__param_2);
+
+void mercury__parse_tree__prog_io_util__init(void);
+void mercury__parse_tree__prog_io_util__init_type_tables(void);
+void mercury__parse_tree__prog_io_util__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.prog_io_util */
+
+/* :- end_interface parse_tree.prog_io_util. */

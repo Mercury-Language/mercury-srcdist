@@ -1,0 +1,67 @@
+:- module (hlds.hlds_module).
+:- interface.
+:- import_module analysis.
+:- import_module bool.
+:- import_module digraph.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module multi_map.
+:- import_module pair.
+:- import_module recompilation.
+:- import_module set.
+:- import_module (check_hlds.unify_proc).
+:- import_module (hlds.const_struct).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.pred_table).
+:- import_module (hlds.special_pred).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.module_qual).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_foreign).
+:- import_module (parse_tree.prog_item).
+:- type complexity_arg_info
+	--->	complexity_arg_info(((hlds.hlds_module).complexity_arg_name) :: maybe.maybe(string), ((hlds.hlds_module).complexity_arg_kind) :: hlds.hlds_module.complexity_arg_kind).
+:- type complexity_arg_kind
+	--->	complexity_input_variable_size 
+	;	complexity_input_fixed_size 
+	;	complexity_output .
+:- type complexity_proc_info
+	--->	complexity_proc_info(((hlds.hlds_module).complexity_proc_num) :: int, ((hlds.hlds_module).complexity_proc_name) :: string, ((hlds.hlds_module).complexity_proc_args) :: list.list(hlds.hlds_module.complexity_arg_info)).
+:- type complexity_proc_map == map.map(string, int).
+:- type dependency_graph == hlds.hlds_module.dependency_graph(hlds.hlds_pred.pred_proc_id).
+:- type dependency_graph_key == digraph.digraph_key(hlds.hlds_pred.pred_proc_id).
+:- type dependency_info == hlds.hlds_module.dependency_info(hlds.hlds_pred.pred_proc_id).
+:- type dependency_ordering == hlds.hlds_module.dependency_ordering(hlds.hlds_pred.pred_proc_id).
+:- type exception_info == map.map(hlds.hlds_pred.pred_proc_id, hlds.hlds_module.proc_exception_info).
+:- type exported_enum_info
+	--->	exported_enum_info(libs.globals.foreign_language, parse_tree.prog_data.prog_context, parse_tree.prog_data.type_ctor, map.map(mdbcomp.sym_name.sym_name, string)).
+:- type foreign_code_info
+	--->	foreign_code_info(parse_tree.prog_foreign.foreign_decl_info, parse_tree.prog_foreign.foreign_body_info).
+:- type mm_tabling_info == map.map(hlds.hlds_pred.pred_proc_id, hlds.hlds_module.proc_mm_tabling_info).
+:- type module_info.
+:- type oisu_map == map.map(parse_tree.prog_data.type_ctor, hlds.hlds_module.oisu_preds).
+:- type oisu_preds
+	--->	oisu_preds(((hlds.hlds_module).op_creators) :: list.list(hlds.hlds_pred.pred_id), ((hlds.hlds_module).op_mutators) :: list.list(hlds.hlds_pred.pred_id), ((hlds.hlds_module).op_destructors) :: list.list(hlds.hlds_pred.pred_id)).
+:- type pragma_exported_proc
+	--->	pragma_exported_proc(libs.globals.foreign_language, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, string, parse_tree.prog_data.prog_context).
+:- type proc_exception_info
+	--->	proc_exception_info(((hlds.hlds_module).proc_exception_status) :: parse_tree.prog_data.exception_status, ((hlds.hlds_module).proc_maybe_excep_analysis_status) :: maybe.maybe(analysis.analysis_status)).
+:- type proc_mm_tabling_info
+	--->	proc_mm_tabling_info(((hlds.hlds_module).proc_mm_status) :: parse_tree.prog_data.mm_tabling_status, ((hlds.hlds_module).proc_mm_analysis_status) :: maybe.maybe(analysis.analysis_status)).
+:- type proc_trailing_info
+	--->	proc_trailing_info(((hlds.hlds_module).proc_trailing_status) :: parse_tree.prog_data.trailing_status, ((hlds.hlds_module).proc_maybe_trail_analysis_status) :: maybe.maybe(analysis.analysis_status)).
+:- type table_struct_info
+	--->	table_struct_info(((hlds.hlds_module).table_struct_proc) :: hlds.hlds_pred.proc_table_struct_info, ((hlds.hlds_module).table_struct_attrs) :: parse_tree.prog_data.table_attributes).
+:- type table_struct_map == map.map(hlds.hlds_pred.pred_proc_id, hlds.hlds_module.table_struct_info).
+:- type trailing_info == map.map(hlds.hlds_pred.pred_proc_id, hlds.hlds_module.proc_trailing_info).
+:- type type_ctor_gen_info
+	--->	type_ctor_gen_info(parse_tree.prog_data.type_ctor, mdbcomp.sym_name.module_name, string, int, hlds.hlds_pred.import_status, hlds.hlds_data.hlds_type_defn, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id).
+:- type type_spec_info
+	--->	type_spec_info(((hlds.hlds_module).user_req_procs) :: set.set(hlds.hlds_pred.pred_proc_id), ((hlds.hlds_module).must_process_preds) :: set.set(hlds.hlds_pred.pred_id), ((hlds.hlds_module).user_to_process_map) :: multi_map.multi_map(hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_id), ((hlds.hlds_module).pragma_map) :: multi_map.multi_map(hlds.hlds_pred.pred_id, parse_tree.prog_item.pragma_info_type_spec)).
+:- type unused_arg_info == map.map(hlds.hlds_pred.pred_proc_id, list.list(int)).
+:- type dependency_graph(T) == digraph.digraph(T).
+:- type dependency_info(T).
+:- type dependency_ordering(T) == list.list(list.list(T)).

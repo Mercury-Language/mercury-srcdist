@@ -1,0 +1,12 @@
+:- module (libs.timestamp).
+:- interface.
+:- import_module time.
+:- type maybe_return_timestamp
+	--->	do_return_timestamp 
+	;	do_not_return_timestamp .
+:- type timestamp.
+:- func newest_timestamp = libs.timestamp.timestamp.
+:- func oldest_timestamp = libs.timestamp.timestamp.
+:- func string_to_timestamp(string) = libs.timestamp.timestamp is semidet.
+:- func time_t_to_timestamp(time.time_t) = libs.timestamp.timestamp.
+:- func timestamp_to_string(libs.timestamp.timestamp) = string.

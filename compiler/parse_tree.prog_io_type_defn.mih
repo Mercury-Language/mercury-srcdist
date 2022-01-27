@@ -1,0 +1,98 @@
+/*
+** Automatically generated from `prog_io_type_defn.m'
+** by the Mercury compiler,
+** version rotd-2014-12-12
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.prog_io_type_defn. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_io_type_defn
+#define MR_HEADER_GUARD_parse_tree__prog_io_type_defn
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_IO_TYPE_DEFN_DECL_GUARD
+#define PARSE_TREE__PROG_IO_TYPE_DEFN_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+#line 48 "prog_io_type_defn.m"
+void MR_CALL 
+parse_tree__prog_io_type_defn__parse_type_decl_where_part_if_present_6_p_0(
+#line 48 "prog_io_type_defn.m"
+  MR_Word parse_tree__prog_io_type_defn__param_1,
+#line 48 "prog_io_type_defn.m"
+  MR_Word parse_tree__prog_io_type_defn__param_2,
+#line 48 "prog_io_type_defn.m"
+  MR_Word parse_tree__prog_io_type_defn__param_3,
+#line 48 "prog_io_type_defn.m"
+  MR_Word parse_tree__prog_io_type_defn__param_4,
+#line 48 "prog_io_type_defn.m"
+  MR_Word * parse_tree__prog_io_type_defn__param_5,
+#line 48 "prog_io_type_defn.m"
+  MR_Word * parse_tree__prog_io_type_defn__param_6);
+
+#line 38 "prog_io_type_defn.m"
+void MR_CALL 
+parse_tree__prog_io_type_defn__parse_type_defn_head_4_p_0(
+#line 38 "prog_io_type_defn.m"
+  MR_Word parse_tree__prog_io_type_defn__param_1,
+#line 38 "prog_io_type_defn.m"
+  MR_Word parse_tree__prog_io_type_defn__param_2,
+#line 38 "prog_io_type_defn.m"
+  MR_Word parse_tree__prog_io_type_defn__param_3,
+#line 38 "prog_io_type_defn.m"
+  MR_Word * parse_tree__prog_io_type_defn__param_4);
+
+#line 31 "prog_io_type_defn.m"
+void MR_CALL 
+parse_tree__prog_io_type_defn__parse_type_defn_7_p_0(
+#line 31 "prog_io_type_defn.m"
+  MR_Word parse_tree__prog_io_type_defn__param_1,
+#line 31 "prog_io_type_defn.m"
+  MR_Word parse_tree__prog_io_type_defn__param_2,
+#line 31 "prog_io_type_defn.m"
+  MR_Word parse_tree__prog_io_type_defn__param_3,
+#line 31 "prog_io_type_defn.m"
+  MR_Word parse_tree__prog_io_type_defn__param_4,
+#line 31 "prog_io_type_defn.m"
+  MR_Word parse_tree__prog_io_type_defn__param_5,
+#line 31 "prog_io_type_defn.m"
+  MR_Integer parse_tree__prog_io_type_defn__param_6,
+#line 31 "prog_io_type_defn.m"
+  MR_Word * parse_tree__prog_io_type_defn__param_7);
+
+void mercury__parse_tree__prog_io_type_defn__init(void);
+void mercury__parse_tree__prog_io_type_defn__init_type_tables(void);
+void mercury__parse_tree__prog_io_type_defn__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.prog_io_type_defn */
+
+/* :- end_interface parse_tree.prog_io_type_defn. */

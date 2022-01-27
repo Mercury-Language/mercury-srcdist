@@ -1,0 +1,3332 @@
+/*
+** Automatically generated from `set.m'
+** by the Mercury compiler,
+** version rotd-2014-12-12
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module set. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_set
+#define MR_HEADER_GUARD_set
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef SET_DECL_GUARD
+#define SET_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "set.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__set__set__type_ctor_info_set_1;
+
+#line 38 "set.m"
+void MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_105_115_116_95_116_111_95_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_p_0(
+#line 38 "set.m"
+  MR_Word mercury__set__param_1,
+#line 38 "set.m"
+  MR_Word mercury__set__param_2,
+#line 38 "set.m"
+  MR_Word mercury__set__param_3,
+#line 38 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 39 "set.m"
+MR_Word MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_105_115_116_95_116_111_95_115_101_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_1_f_0(
+#line 39 "set.m"
+  MR_Word mercury__set__param_1,
+#line 39 "set.m"
+  MR_Word mercury__set__param_2,
+#line 39 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 104 "set.m"
+MR_bool MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_109_101_109_98_101_114_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_p_0(
+#line 104 "set.m"
+  MR_Word mercury__set__param_1,
+#line 104 "set.m"
+  MR_Word mercury__set__param_2,
+#line 104 "set.m"
+  MR_Word mercury__set__param_3,
+#line 104 "set.m"
+  MR_Word mercury__set__param_4);
+
+#line 114 "set.m"
+MR_bool MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_99_111_110_116_97_105_110_115_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_p_0(
+#line 114 "set.m"
+  MR_Word mercury__set__param_1,
+#line 114 "set.m"
+  MR_Word mercury__set__param_2,
+#line 114 "set.m"
+  MR_Word mercury__set__param_3,
+#line 114 "set.m"
+  MR_Word mercury__set__param_4);
+
+#line 120 "set.m"
+void MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 120 "set.m"
+  MR_Word mercury__set__param_1,
+#line 120 "set.m"
+  MR_Word mercury__set__param_2,
+#line 120 "set.m"
+  MR_Word mercury__set__param_3,
+#line 120 "set.m"
+  MR_Word mercury__set__param_4,
+#line 120 "set.m"
+  MR_Word * mercury__set__param_5);
+
+#line 119 "set.m"
+MR_Word MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 119 "set.m"
+  MR_Word mercury__set__param_1,
+#line 119 "set.m"
+  MR_Word mercury__set__param_2,
+#line 119 "set.m"
+  MR_Word mercury__set__param_3,
+#line 119 "set.m"
+  MR_Word mercury__set__param_4);
+
+#line 131 "set.m"
+void MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 131 "set.m"
+  MR_Word mercury__set__param_1,
+#line 131 "set.m"
+  MR_Word mercury__set__param_2,
+#line 131 "set.m"
+  MR_Word mercury__set__param_3,
+#line 131 "set.m"
+  MR_Word mercury__set__param_4,
+#line 131 "set.m"
+  MR_Word * mercury__set__param_5);
+
+#line 130 "set.m"
+MR_Word MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_115_101_114_116_95_108_105_115_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 130 "set.m"
+  MR_Word mercury__set__param_1,
+#line 130 "set.m"
+  MR_Word mercury__set__param_2,
+#line 130 "set.m"
+  MR_Word mercury__set__param_3,
+#line 130 "set.m"
+  MR_Word mercury__set__param_4);
+
+#line 180 "set.m"
+void MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 180 "set.m"
+  MR_Word mercury__set__param_1,
+#line 180 "set.m"
+  MR_Word mercury__set__param_2,
+#line 180 "set.m"
+  MR_Word mercury__set__param_3,
+#line 180 "set.m"
+  MR_Word mercury__set__param_4,
+#line 180 "set.m"
+  MR_Word * mercury__set__param_5);
+
+#line 179 "set.m"
+MR_Word MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_117_110_105_111_110_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 179 "set.m"
+  MR_Word mercury__set__param_1,
+#line 179 "set.m"
+  MR_Word mercury__set__param_2,
+#line 179 "set.m"
+  MR_Word mercury__set__param_3,
+#line 179 "set.m"
+  MR_Word mercury__set__param_4);
+
+#line 204 "set.m"
+void MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_116_101_114_115_101_99_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 204 "set.m"
+  MR_Word mercury__set__param_1,
+#line 204 "set.m"
+  MR_Word mercury__set__param_2,
+#line 204 "set.m"
+  MR_Word mercury__set__param_3,
+#line 204 "set.m"
+  MR_Word mercury__set__param_4,
+#line 204 "set.m"
+  MR_Word * mercury__set__param_5);
+
+#line 203 "set.m"
+MR_Word MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_105_110_116_101_114_115_101_99_116_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 203 "set.m"
+  MR_Word mercury__set__param_1,
+#line 203 "set.m"
+  MR_Word mercury__set__param_2,
+#line 203 "set.m"
+  MR_Word mercury__set__param_3,
+#line 203 "set.m"
+  MR_Word mercury__set__param_4);
+
+#line 222 "set.m"
+void MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_105_102_102_101_114_101_110_99_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_3_p_0(
+#line 222 "set.m"
+  MR_Word mercury__set__param_1,
+#line 222 "set.m"
+  MR_Word mercury__set__param_2,
+#line 222 "set.m"
+  MR_Word mercury__set__param_3,
+#line 222 "set.m"
+  MR_Word mercury__set__param_4,
+#line 222 "set.m"
+  MR_Word * mercury__set__param_5);
+
+#line 221 "set.m"
+MR_Word MR_CALL 
+mercury__set__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_105_102_102_101_114_101_110_99_101_95_95_91_84_32_61_32_118_97_114_40_86_95_50_41_93_95_48_95_49_2_f_0(
+#line 221 "set.m"
+  MR_Word mercury__set__param_1,
+#line 221 "set.m"
+  MR_Word mercury__set__param_2,
+#line 221 "set.m"
+  MR_Word mercury__set__param_3,
+#line 221 "set.m"
+  MR_Word mercury__set__param_4);
+
+#line 506 "set.m"
+void MR_CALL 
+mercury__set____Compare____set_1_0(
+#line 506 "set.m"
+  MR_Word mercury__set__param_1,
+#line 506 "set.m"
+  MR_Word * mercury__set__param_2,
+#line 506 "set.m"
+  MR_Word mercury__set__param_3,
+#line 506 "set.m"
+  MR_Word mercury__set__param_4);
+
+#line 506 "set.m"
+MR_bool MR_CALL 
+mercury__set____Unify____set_1_0(
+#line 506 "set.m"
+  MR_Word mercury__set__param_1,
+#line 506 "set.m"
+  MR_Word mercury__set__param_2,
+#line 506 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 490 "set.m"
+void MR_CALL 
+mercury__set__divide_by_set_4_p_0(
+#line 490 "set.m"
+  MR_Word mercury__set__param_1,
+#line 490 "set.m"
+  MR_Word mercury__set__param_2,
+#line 490 "set.m"
+  MR_Word mercury__set__param_3,
+#line 490 "set.m"
+  MR_Word * mercury__set__param_4,
+#line 490 "set.m"
+  MR_Word * mercury__set__param_5);
+
+#line 483 "set.m"
+void MR_CALL 
+mercury__set__divide_4_p_0(
+#line 483 "set.m"
+  MR_Word mercury__set__param_1,
+#line 483 "set.m"
+  MR_Word mercury__set__param_2,
+#line 483 "set.m"
+  MR_Word mercury__set__param_3,
+#line 483 "set.m"
+  MR_Word * mercury__set__param_4,
+#line 483 "set.m"
+  MR_Word * mercury__set__param_5);
+
+#line 477 "set.m"
+MR_bool MR_CALL 
+mercury__set__all_true_2_p_0(
+#line 477 "set.m"
+  MR_Word mercury__set__param_1,
+#line 477 "set.m"
+  MR_Word mercury__set__param_2,
+#line 477 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 470 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl6_14_p_5(
+#line 470 "set.m"
+  MR_Word mercury__set__param_1,
+#line 470 "set.m"
+  MR_Word mercury__set__param_2,
+#line 470 "set.m"
+  MR_Word mercury__set__param_3,
+#line 470 "set.m"
+  MR_Word mercury__set__param_4,
+#line 470 "set.m"
+  MR_Word mercury__set__param_5,
+#line 470 "set.m"
+  MR_Word mercury__set__param_6,
+#line 470 "set.m"
+  MR_Word mercury__set__param_7,
+#line 470 "set.m"
+  MR_Word mercury__set__param_8,
+#line 470 "set.m"
+  MR_Word mercury__set__param_9,
+#line 470 "set.m"
+  MR_Box mercury__set__param_10,
+#line 470 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 470 "set.m"
+  MR_Box mercury__set__param_12,
+#line 470 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 470 "set.m"
+  MR_Box mercury__set__param_14,
+#line 470 "set.m"
+  MR_Box * mercury__set__param_15,
+#line 470 "set.m"
+  MR_Box mercury__set__param_16,
+#line 470 "set.m"
+  MR_Box * mercury__set__param_17,
+#line 470 "set.m"
+  MR_Box mercury__set__param_18,
+#line 470 "set.m"
+  MR_Box * mercury__set__param_19,
+#line 470 "set.m"
+  MR_Box mercury__set__param_20,
+#line 470 "set.m"
+  MR_Box * mercury__set__param_21);
+
+#line 467 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl6_14_p_4(
+#line 467 "set.m"
+  MR_Word mercury__set__param_1,
+#line 467 "set.m"
+  MR_Word mercury__set__param_2,
+#line 467 "set.m"
+  MR_Word mercury__set__param_3,
+#line 467 "set.m"
+  MR_Word mercury__set__param_4,
+#line 467 "set.m"
+  MR_Word mercury__set__param_5,
+#line 467 "set.m"
+  MR_Word mercury__set__param_6,
+#line 467 "set.m"
+  MR_Word mercury__set__param_7,
+#line 467 "set.m"
+  MR_Word mercury__set__param_8,
+#line 467 "set.m"
+  MR_Word mercury__set__param_9,
+#line 467 "set.m"
+  MR_Box mercury__set__param_10,
+#line 467 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 467 "set.m"
+  MR_Box mercury__set__param_12,
+#line 467 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 467 "set.m"
+  MR_Box mercury__set__param_14,
+#line 467 "set.m"
+  MR_Box * mercury__set__param_15,
+#line 467 "set.m"
+  MR_Box mercury__set__param_16,
+#line 467 "set.m"
+  MR_Box * mercury__set__param_17,
+#line 467 "set.m"
+  MR_Box mercury__set__param_18,
+#line 467 "set.m"
+  MR_Box * mercury__set__param_19,
+#line 467 "set.m"
+  MR_Box mercury__set__param_20,
+#line 467 "set.m"
+  MR_Box * mercury__set__param_21);
+
+#line 464 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl6_14_p_3(
+#line 464 "set.m"
+  MR_Word mercury__set__param_1,
+#line 464 "set.m"
+  MR_Word mercury__set__param_2,
+#line 464 "set.m"
+  MR_Word mercury__set__param_3,
+#line 464 "set.m"
+  MR_Word mercury__set__param_4,
+#line 464 "set.m"
+  MR_Word mercury__set__param_5,
+#line 464 "set.m"
+  MR_Word mercury__set__param_6,
+#line 464 "set.m"
+  MR_Word mercury__set__param_7,
+#line 464 "set.m"
+  MR_Word mercury__set__param_8,
+#line 464 "set.m"
+  MR_Word mercury__set__param_9,
+#line 464 "set.m"
+  MR_Box mercury__set__param_10,
+#line 464 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 464 "set.m"
+  MR_Box mercury__set__param_12,
+#line 464 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 464 "set.m"
+  MR_Box mercury__set__param_14,
+#line 464 "set.m"
+  MR_Box * mercury__set__param_15,
+#line 464 "set.m"
+  MR_Box mercury__set__param_16,
+#line 464 "set.m"
+  MR_Box * mercury__set__param_17,
+#line 464 "set.m"
+  MR_Box mercury__set__param_18,
+#line 464 "set.m"
+  MR_Box * mercury__set__param_19,
+#line 464 "set.m"
+  MR_Box mercury__set__param_20,
+#line 464 "set.m"
+  MR_Box * mercury__set__param_21);
+
+#line 461 "set.m"
+void MR_CALL 
+mercury__set__foldl6_14_p_2(
+#line 461 "set.m"
+  MR_Word mercury__set__param_1,
+#line 461 "set.m"
+  MR_Word mercury__set__param_2,
+#line 461 "set.m"
+  MR_Word mercury__set__param_3,
+#line 461 "set.m"
+  MR_Word mercury__set__param_4,
+#line 461 "set.m"
+  MR_Word mercury__set__param_5,
+#line 461 "set.m"
+  MR_Word mercury__set__param_6,
+#line 461 "set.m"
+  MR_Word mercury__set__param_7,
+#line 461 "set.m"
+  MR_Word mercury__set__param_8,
+#line 461 "set.m"
+  MR_Word mercury__set__param_9,
+#line 461 "set.m"
+  MR_Box mercury__set__param_10,
+#line 461 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 461 "set.m"
+  MR_Box mercury__set__param_12,
+#line 461 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 461 "set.m"
+  MR_Box mercury__set__param_14,
+#line 461 "set.m"
+  MR_Box * mercury__set__param_15,
+#line 461 "set.m"
+  MR_Box mercury__set__param_16,
+#line 461 "set.m"
+  MR_Box * mercury__set__param_17,
+#line 461 "set.m"
+  MR_Box mercury__set__param_18,
+#line 461 "set.m"
+  MR_Box * mercury__set__param_19,
+#line 461 "set.m"
+  MR_Box mercury__set__param_20,
+#line 461 "set.m"
+  MR_Box * mercury__set__param_21);
+
+#line 458 "set.m"
+void MR_CALL 
+mercury__set__foldl6_14_p_1(
+#line 458 "set.m"
+  MR_Word mercury__set__param_1,
+#line 458 "set.m"
+  MR_Word mercury__set__param_2,
+#line 458 "set.m"
+  MR_Word mercury__set__param_3,
+#line 458 "set.m"
+  MR_Word mercury__set__param_4,
+#line 458 "set.m"
+  MR_Word mercury__set__param_5,
+#line 458 "set.m"
+  MR_Word mercury__set__param_6,
+#line 458 "set.m"
+  MR_Word mercury__set__param_7,
+#line 458 "set.m"
+  MR_Word mercury__set__param_8,
+#line 458 "set.m"
+  MR_Word mercury__set__param_9,
+#line 458 "set.m"
+  MR_Box mercury__set__param_10,
+#line 458 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 458 "set.m"
+  MR_Box mercury__set__param_12,
+#line 458 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 458 "set.m"
+  MR_Box mercury__set__param_14,
+#line 458 "set.m"
+  MR_Box * mercury__set__param_15,
+#line 458 "set.m"
+  MR_Box mercury__set__param_16,
+#line 458 "set.m"
+  MR_Box * mercury__set__param_17,
+#line 458 "set.m"
+  MR_Box mercury__set__param_18,
+#line 458 "set.m"
+  MR_Box * mercury__set__param_19,
+#line 458 "set.m"
+  MR_Box mercury__set__param_20,
+#line 458 "set.m"
+  MR_Box * mercury__set__param_21);
+
+#line 455 "set.m"
+void MR_CALL 
+mercury__set__foldl6_14_p_0(
+#line 455 "set.m"
+  MR_Word mercury__set__param_1,
+#line 455 "set.m"
+  MR_Word mercury__set__param_2,
+#line 455 "set.m"
+  MR_Word mercury__set__param_3,
+#line 455 "set.m"
+  MR_Word mercury__set__param_4,
+#line 455 "set.m"
+  MR_Word mercury__set__param_5,
+#line 455 "set.m"
+  MR_Word mercury__set__param_6,
+#line 455 "set.m"
+  MR_Word mercury__set__param_7,
+#line 455 "set.m"
+  MR_Word mercury__set__param_8,
+#line 455 "set.m"
+  MR_Word mercury__set__param_9,
+#line 455 "set.m"
+  MR_Box mercury__set__param_10,
+#line 455 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 455 "set.m"
+  MR_Box mercury__set__param_12,
+#line 455 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 455 "set.m"
+  MR_Box mercury__set__param_14,
+#line 455 "set.m"
+  MR_Box * mercury__set__param_15,
+#line 455 "set.m"
+  MR_Box mercury__set__param_16,
+#line 455 "set.m"
+  MR_Box * mercury__set__param_17,
+#line 455 "set.m"
+  MR_Box mercury__set__param_18,
+#line 455 "set.m"
+  MR_Box * mercury__set__param_19,
+#line 455 "set.m"
+  MR_Box mercury__set__param_20,
+#line 455 "set.m"
+  MR_Box * mercury__set__param_21);
+
+#line 449 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold6_14_p_5(
+#line 449 "set.m"
+  MR_Word mercury__set__param_1,
+#line 449 "set.m"
+  MR_Word mercury__set__param_2,
+#line 449 "set.m"
+  MR_Word mercury__set__param_3,
+#line 449 "set.m"
+  MR_Word mercury__set__param_4,
+#line 449 "set.m"
+  MR_Word mercury__set__param_5,
+#line 449 "set.m"
+  MR_Word mercury__set__param_6,
+#line 449 "set.m"
+  MR_Word mercury__set__param_7,
+#line 449 "set.m"
+  MR_Word mercury__set__param_8,
+#line 449 "set.m"
+  MR_Word mercury__set__param_9,
+#line 449 "set.m"
+  MR_Box mercury__set__param_10,
+#line 449 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 449 "set.m"
+  MR_Box mercury__set__param_12,
+#line 449 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 449 "set.m"
+  MR_Box mercury__set__param_14,
+#line 449 "set.m"
+  MR_Box * mercury__set__param_15,
+#line 449 "set.m"
+  MR_Box mercury__set__param_16,
+#line 449 "set.m"
+  MR_Box * mercury__set__param_17,
+#line 449 "set.m"
+  MR_Box mercury__set__param_18,
+#line 449 "set.m"
+  MR_Box * mercury__set__param_19,
+#line 449 "set.m"
+  MR_Box mercury__set__param_20,
+#line 449 "set.m"
+  MR_Box * mercury__set__param_21);
+
+#line 446 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold6_14_p_4(
+#line 446 "set.m"
+  MR_Word mercury__set__param_1,
+#line 446 "set.m"
+  MR_Word mercury__set__param_2,
+#line 446 "set.m"
+  MR_Word mercury__set__param_3,
+#line 446 "set.m"
+  MR_Word mercury__set__param_4,
+#line 446 "set.m"
+  MR_Word mercury__set__param_5,
+#line 446 "set.m"
+  MR_Word mercury__set__param_6,
+#line 446 "set.m"
+  MR_Word mercury__set__param_7,
+#line 446 "set.m"
+  MR_Word mercury__set__param_8,
+#line 446 "set.m"
+  MR_Word mercury__set__param_9,
+#line 446 "set.m"
+  MR_Box mercury__set__param_10,
+#line 446 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 446 "set.m"
+  MR_Box mercury__set__param_12,
+#line 446 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 446 "set.m"
+  MR_Box mercury__set__param_14,
+#line 446 "set.m"
+  MR_Box * mercury__set__param_15,
+#line 446 "set.m"
+  MR_Box mercury__set__param_16,
+#line 446 "set.m"
+  MR_Box * mercury__set__param_17,
+#line 446 "set.m"
+  MR_Box mercury__set__param_18,
+#line 446 "set.m"
+  MR_Box * mercury__set__param_19,
+#line 446 "set.m"
+  MR_Box mercury__set__param_20,
+#line 446 "set.m"
+  MR_Box * mercury__set__param_21);
+
+#line 443 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold6_14_p_3(
+#line 443 "set.m"
+  MR_Word mercury__set__param_1,
+#line 443 "set.m"
+  MR_Word mercury__set__param_2,
+#line 443 "set.m"
+  MR_Word mercury__set__param_3,
+#line 443 "set.m"
+  MR_Word mercury__set__param_4,
+#line 443 "set.m"
+  MR_Word mercury__set__param_5,
+#line 443 "set.m"
+  MR_Word mercury__set__param_6,
+#line 443 "set.m"
+  MR_Word mercury__set__param_7,
+#line 443 "set.m"
+  MR_Word mercury__set__param_8,
+#line 443 "set.m"
+  MR_Word mercury__set__param_9,
+#line 443 "set.m"
+  MR_Box mercury__set__param_10,
+#line 443 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 443 "set.m"
+  MR_Box mercury__set__param_12,
+#line 443 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 443 "set.m"
+  MR_Box mercury__set__param_14,
+#line 443 "set.m"
+  MR_Box * mercury__set__param_15,
+#line 443 "set.m"
+  MR_Box mercury__set__param_16,
+#line 443 "set.m"
+  MR_Box * mercury__set__param_17,
+#line 443 "set.m"
+  MR_Box mercury__set__param_18,
+#line 443 "set.m"
+  MR_Box * mercury__set__param_19,
+#line 443 "set.m"
+  MR_Box mercury__set__param_20,
+#line 443 "set.m"
+  MR_Box * mercury__set__param_21);
+
+#line 440 "set.m"
+void MR_CALL 
+mercury__set__fold6_14_p_2(
+#line 440 "set.m"
+  MR_Word mercury__set__param_1,
+#line 440 "set.m"
+  MR_Word mercury__set__param_2,
+#line 440 "set.m"
+  MR_Word mercury__set__param_3,
+#line 440 "set.m"
+  MR_Word mercury__set__param_4,
+#line 440 "set.m"
+  MR_Word mercury__set__param_5,
+#line 440 "set.m"
+  MR_Word mercury__set__param_6,
+#line 440 "set.m"
+  MR_Word mercury__set__param_7,
+#line 440 "set.m"
+  MR_Word mercury__set__param_8,
+#line 440 "set.m"
+  MR_Word mercury__set__param_9,
+#line 440 "set.m"
+  MR_Box mercury__set__param_10,
+#line 440 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 440 "set.m"
+  MR_Box mercury__set__param_12,
+#line 440 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 440 "set.m"
+  MR_Box mercury__set__param_14,
+#line 440 "set.m"
+  MR_Box * mercury__set__param_15,
+#line 440 "set.m"
+  MR_Box mercury__set__param_16,
+#line 440 "set.m"
+  MR_Box * mercury__set__param_17,
+#line 440 "set.m"
+  MR_Box mercury__set__param_18,
+#line 440 "set.m"
+  MR_Box * mercury__set__param_19,
+#line 440 "set.m"
+  MR_Box mercury__set__param_20,
+#line 440 "set.m"
+  MR_Box * mercury__set__param_21);
+
+#line 437 "set.m"
+void MR_CALL 
+mercury__set__fold6_14_p_1(
+#line 437 "set.m"
+  MR_Word mercury__set__param_1,
+#line 437 "set.m"
+  MR_Word mercury__set__param_2,
+#line 437 "set.m"
+  MR_Word mercury__set__param_3,
+#line 437 "set.m"
+  MR_Word mercury__set__param_4,
+#line 437 "set.m"
+  MR_Word mercury__set__param_5,
+#line 437 "set.m"
+  MR_Word mercury__set__param_6,
+#line 437 "set.m"
+  MR_Word mercury__set__param_7,
+#line 437 "set.m"
+  MR_Word mercury__set__param_8,
+#line 437 "set.m"
+  MR_Word mercury__set__param_9,
+#line 437 "set.m"
+  MR_Box mercury__set__param_10,
+#line 437 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 437 "set.m"
+  MR_Box mercury__set__param_12,
+#line 437 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 437 "set.m"
+  MR_Box mercury__set__param_14,
+#line 437 "set.m"
+  MR_Box * mercury__set__param_15,
+#line 437 "set.m"
+  MR_Box mercury__set__param_16,
+#line 437 "set.m"
+  MR_Box * mercury__set__param_17,
+#line 437 "set.m"
+  MR_Box mercury__set__param_18,
+#line 437 "set.m"
+  MR_Box * mercury__set__param_19,
+#line 437 "set.m"
+  MR_Box mercury__set__param_20,
+#line 437 "set.m"
+  MR_Box * mercury__set__param_21);
+
+#line 434 "set.m"
+void MR_CALL 
+mercury__set__fold6_14_p_0(
+#line 434 "set.m"
+  MR_Word mercury__set__param_1,
+#line 434 "set.m"
+  MR_Word mercury__set__param_2,
+#line 434 "set.m"
+  MR_Word mercury__set__param_3,
+#line 434 "set.m"
+  MR_Word mercury__set__param_4,
+#line 434 "set.m"
+  MR_Word mercury__set__param_5,
+#line 434 "set.m"
+  MR_Word mercury__set__param_6,
+#line 434 "set.m"
+  MR_Word mercury__set__param_7,
+#line 434 "set.m"
+  MR_Word mercury__set__param_8,
+#line 434 "set.m"
+  MR_Word mercury__set__param_9,
+#line 434 "set.m"
+  MR_Box mercury__set__param_10,
+#line 434 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 434 "set.m"
+  MR_Box mercury__set__param_12,
+#line 434 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 434 "set.m"
+  MR_Box mercury__set__param_14,
+#line 434 "set.m"
+  MR_Box * mercury__set__param_15,
+#line 434 "set.m"
+  MR_Box mercury__set__param_16,
+#line 434 "set.m"
+  MR_Box * mercury__set__param_17,
+#line 434 "set.m"
+  MR_Box mercury__set__param_18,
+#line 434 "set.m"
+  MR_Box * mercury__set__param_19,
+#line 434 "set.m"
+  MR_Box mercury__set__param_20,
+#line 434 "set.m"
+  MR_Box * mercury__set__param_21);
+
+#line 428 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl5_12_p_5(
+#line 428 "set.m"
+  MR_Word mercury__set__param_1,
+#line 428 "set.m"
+  MR_Word mercury__set__param_2,
+#line 428 "set.m"
+  MR_Word mercury__set__param_3,
+#line 428 "set.m"
+  MR_Word mercury__set__param_4,
+#line 428 "set.m"
+  MR_Word mercury__set__param_5,
+#line 428 "set.m"
+  MR_Word mercury__set__param_6,
+#line 428 "set.m"
+  MR_Word mercury__set__param_7,
+#line 428 "set.m"
+  MR_Word mercury__set__param_8,
+#line 428 "set.m"
+  MR_Box mercury__set__param_9,
+#line 428 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 428 "set.m"
+  MR_Box mercury__set__param_11,
+#line 428 "set.m"
+  MR_Box * mercury__set__param_12,
+#line 428 "set.m"
+  MR_Box mercury__set__param_13,
+#line 428 "set.m"
+  MR_Box * mercury__set__param_14,
+#line 428 "set.m"
+  MR_Box mercury__set__param_15,
+#line 428 "set.m"
+  MR_Box * mercury__set__param_16,
+#line 428 "set.m"
+  MR_Box mercury__set__param_17,
+#line 428 "set.m"
+  MR_Box * mercury__set__param_18);
+
+#line 425 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl5_12_p_4(
+#line 425 "set.m"
+  MR_Word mercury__set__param_1,
+#line 425 "set.m"
+  MR_Word mercury__set__param_2,
+#line 425 "set.m"
+  MR_Word mercury__set__param_3,
+#line 425 "set.m"
+  MR_Word mercury__set__param_4,
+#line 425 "set.m"
+  MR_Word mercury__set__param_5,
+#line 425 "set.m"
+  MR_Word mercury__set__param_6,
+#line 425 "set.m"
+  MR_Word mercury__set__param_7,
+#line 425 "set.m"
+  MR_Word mercury__set__param_8,
+#line 425 "set.m"
+  MR_Box mercury__set__param_9,
+#line 425 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 425 "set.m"
+  MR_Box mercury__set__param_11,
+#line 425 "set.m"
+  MR_Box * mercury__set__param_12,
+#line 425 "set.m"
+  MR_Box mercury__set__param_13,
+#line 425 "set.m"
+  MR_Box * mercury__set__param_14,
+#line 425 "set.m"
+  MR_Box mercury__set__param_15,
+#line 425 "set.m"
+  MR_Box * mercury__set__param_16,
+#line 425 "set.m"
+  MR_Box mercury__set__param_17,
+#line 425 "set.m"
+  MR_Box * mercury__set__param_18);
+
+#line 422 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl5_12_p_3(
+#line 422 "set.m"
+  MR_Word mercury__set__param_1,
+#line 422 "set.m"
+  MR_Word mercury__set__param_2,
+#line 422 "set.m"
+  MR_Word mercury__set__param_3,
+#line 422 "set.m"
+  MR_Word mercury__set__param_4,
+#line 422 "set.m"
+  MR_Word mercury__set__param_5,
+#line 422 "set.m"
+  MR_Word mercury__set__param_6,
+#line 422 "set.m"
+  MR_Word mercury__set__param_7,
+#line 422 "set.m"
+  MR_Word mercury__set__param_8,
+#line 422 "set.m"
+  MR_Box mercury__set__param_9,
+#line 422 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 422 "set.m"
+  MR_Box mercury__set__param_11,
+#line 422 "set.m"
+  MR_Box * mercury__set__param_12,
+#line 422 "set.m"
+  MR_Box mercury__set__param_13,
+#line 422 "set.m"
+  MR_Box * mercury__set__param_14,
+#line 422 "set.m"
+  MR_Box mercury__set__param_15,
+#line 422 "set.m"
+  MR_Box * mercury__set__param_16,
+#line 422 "set.m"
+  MR_Box mercury__set__param_17,
+#line 422 "set.m"
+  MR_Box * mercury__set__param_18);
+
+#line 419 "set.m"
+void MR_CALL 
+mercury__set__foldl5_12_p_2(
+#line 419 "set.m"
+  MR_Word mercury__set__param_1,
+#line 419 "set.m"
+  MR_Word mercury__set__param_2,
+#line 419 "set.m"
+  MR_Word mercury__set__param_3,
+#line 419 "set.m"
+  MR_Word mercury__set__param_4,
+#line 419 "set.m"
+  MR_Word mercury__set__param_5,
+#line 419 "set.m"
+  MR_Word mercury__set__param_6,
+#line 419 "set.m"
+  MR_Word mercury__set__param_7,
+#line 419 "set.m"
+  MR_Word mercury__set__param_8,
+#line 419 "set.m"
+  MR_Box mercury__set__param_9,
+#line 419 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 419 "set.m"
+  MR_Box mercury__set__param_11,
+#line 419 "set.m"
+  MR_Box * mercury__set__param_12,
+#line 419 "set.m"
+  MR_Box mercury__set__param_13,
+#line 419 "set.m"
+  MR_Box * mercury__set__param_14,
+#line 419 "set.m"
+  MR_Box mercury__set__param_15,
+#line 419 "set.m"
+  MR_Box * mercury__set__param_16,
+#line 419 "set.m"
+  MR_Box mercury__set__param_17,
+#line 419 "set.m"
+  MR_Box * mercury__set__param_18);
+
+#line 416 "set.m"
+void MR_CALL 
+mercury__set__foldl5_12_p_1(
+#line 416 "set.m"
+  MR_Word mercury__set__param_1,
+#line 416 "set.m"
+  MR_Word mercury__set__param_2,
+#line 416 "set.m"
+  MR_Word mercury__set__param_3,
+#line 416 "set.m"
+  MR_Word mercury__set__param_4,
+#line 416 "set.m"
+  MR_Word mercury__set__param_5,
+#line 416 "set.m"
+  MR_Word mercury__set__param_6,
+#line 416 "set.m"
+  MR_Word mercury__set__param_7,
+#line 416 "set.m"
+  MR_Word mercury__set__param_8,
+#line 416 "set.m"
+  MR_Box mercury__set__param_9,
+#line 416 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 416 "set.m"
+  MR_Box mercury__set__param_11,
+#line 416 "set.m"
+  MR_Box * mercury__set__param_12,
+#line 416 "set.m"
+  MR_Box mercury__set__param_13,
+#line 416 "set.m"
+  MR_Box * mercury__set__param_14,
+#line 416 "set.m"
+  MR_Box mercury__set__param_15,
+#line 416 "set.m"
+  MR_Box * mercury__set__param_16,
+#line 416 "set.m"
+  MR_Box mercury__set__param_17,
+#line 416 "set.m"
+  MR_Box * mercury__set__param_18);
+
+#line 413 "set.m"
+void MR_CALL 
+mercury__set__foldl5_12_p_0(
+#line 413 "set.m"
+  MR_Word mercury__set__param_1,
+#line 413 "set.m"
+  MR_Word mercury__set__param_2,
+#line 413 "set.m"
+  MR_Word mercury__set__param_3,
+#line 413 "set.m"
+  MR_Word mercury__set__param_4,
+#line 413 "set.m"
+  MR_Word mercury__set__param_5,
+#line 413 "set.m"
+  MR_Word mercury__set__param_6,
+#line 413 "set.m"
+  MR_Word mercury__set__param_7,
+#line 413 "set.m"
+  MR_Word mercury__set__param_8,
+#line 413 "set.m"
+  MR_Box mercury__set__param_9,
+#line 413 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 413 "set.m"
+  MR_Box mercury__set__param_11,
+#line 413 "set.m"
+  MR_Box * mercury__set__param_12,
+#line 413 "set.m"
+  MR_Box mercury__set__param_13,
+#line 413 "set.m"
+  MR_Box * mercury__set__param_14,
+#line 413 "set.m"
+  MR_Box mercury__set__param_15,
+#line 413 "set.m"
+  MR_Box * mercury__set__param_16,
+#line 413 "set.m"
+  MR_Box mercury__set__param_17,
+#line 413 "set.m"
+  MR_Box * mercury__set__param_18);
+
+#line 407 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold5_12_p_5(
+#line 407 "set.m"
+  MR_Word mercury__set__param_1,
+#line 407 "set.m"
+  MR_Word mercury__set__param_2,
+#line 407 "set.m"
+  MR_Word mercury__set__param_3,
+#line 407 "set.m"
+  MR_Word mercury__set__param_4,
+#line 407 "set.m"
+  MR_Word mercury__set__param_5,
+#line 407 "set.m"
+  MR_Word mercury__set__param_6,
+#line 407 "set.m"
+  MR_Word mercury__set__param_7,
+#line 407 "set.m"
+  MR_Word mercury__set__param_8,
+#line 407 "set.m"
+  MR_Box mercury__set__param_9,
+#line 407 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 407 "set.m"
+  MR_Box mercury__set__param_11,
+#line 407 "set.m"
+  MR_Box * mercury__set__param_12,
+#line 407 "set.m"
+  MR_Box mercury__set__param_13,
+#line 407 "set.m"
+  MR_Box * mercury__set__param_14,
+#line 407 "set.m"
+  MR_Box mercury__set__param_15,
+#line 407 "set.m"
+  MR_Box * mercury__set__param_16,
+#line 407 "set.m"
+  MR_Box mercury__set__param_17,
+#line 407 "set.m"
+  MR_Box * mercury__set__param_18);
+
+#line 404 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold5_12_p_4(
+#line 404 "set.m"
+  MR_Word mercury__set__param_1,
+#line 404 "set.m"
+  MR_Word mercury__set__param_2,
+#line 404 "set.m"
+  MR_Word mercury__set__param_3,
+#line 404 "set.m"
+  MR_Word mercury__set__param_4,
+#line 404 "set.m"
+  MR_Word mercury__set__param_5,
+#line 404 "set.m"
+  MR_Word mercury__set__param_6,
+#line 404 "set.m"
+  MR_Word mercury__set__param_7,
+#line 404 "set.m"
+  MR_Word mercury__set__param_8,
+#line 404 "set.m"
+  MR_Box mercury__set__param_9,
+#line 404 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 404 "set.m"
+  MR_Box mercury__set__param_11,
+#line 404 "set.m"
+  MR_Box * mercury__set__param_12,
+#line 404 "set.m"
+  MR_Box mercury__set__param_13,
+#line 404 "set.m"
+  MR_Box * mercury__set__param_14,
+#line 404 "set.m"
+  MR_Box mercury__set__param_15,
+#line 404 "set.m"
+  MR_Box * mercury__set__param_16,
+#line 404 "set.m"
+  MR_Box mercury__set__param_17,
+#line 404 "set.m"
+  MR_Box * mercury__set__param_18);
+
+#line 401 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold5_12_p_3(
+#line 401 "set.m"
+  MR_Word mercury__set__param_1,
+#line 401 "set.m"
+  MR_Word mercury__set__param_2,
+#line 401 "set.m"
+  MR_Word mercury__set__param_3,
+#line 401 "set.m"
+  MR_Word mercury__set__param_4,
+#line 401 "set.m"
+  MR_Word mercury__set__param_5,
+#line 401 "set.m"
+  MR_Word mercury__set__param_6,
+#line 401 "set.m"
+  MR_Word mercury__set__param_7,
+#line 401 "set.m"
+  MR_Word mercury__set__param_8,
+#line 401 "set.m"
+  MR_Box mercury__set__param_9,
+#line 401 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 401 "set.m"
+  MR_Box mercury__set__param_11,
+#line 401 "set.m"
+  MR_Box * mercury__set__param_12,
+#line 401 "set.m"
+  MR_Box mercury__set__param_13,
+#line 401 "set.m"
+  MR_Box * mercury__set__param_14,
+#line 401 "set.m"
+  MR_Box mercury__set__param_15,
+#line 401 "set.m"
+  MR_Box * mercury__set__param_16,
+#line 401 "set.m"
+  MR_Box mercury__set__param_17,
+#line 401 "set.m"
+  MR_Box * mercury__set__param_18);
+
+#line 398 "set.m"
+void MR_CALL 
+mercury__set__fold5_12_p_2(
+#line 398 "set.m"
+  MR_Word mercury__set__param_1,
+#line 398 "set.m"
+  MR_Word mercury__set__param_2,
+#line 398 "set.m"
+  MR_Word mercury__set__param_3,
+#line 398 "set.m"
+  MR_Word mercury__set__param_4,
+#line 398 "set.m"
+  MR_Word mercury__set__param_5,
+#line 398 "set.m"
+  MR_Word mercury__set__param_6,
+#line 398 "set.m"
+  MR_Word mercury__set__param_7,
+#line 398 "set.m"
+  MR_Word mercury__set__param_8,
+#line 398 "set.m"
+  MR_Box mercury__set__param_9,
+#line 398 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 398 "set.m"
+  MR_Box mercury__set__param_11,
+#line 398 "set.m"
+  MR_Box * mercury__set__param_12,
+#line 398 "set.m"
+  MR_Box mercury__set__param_13,
+#line 398 "set.m"
+  MR_Box * mercury__set__param_14,
+#line 398 "set.m"
+  MR_Box mercury__set__param_15,
+#line 398 "set.m"
+  MR_Box * mercury__set__param_16,
+#line 398 "set.m"
+  MR_Box mercury__set__param_17,
+#line 398 "set.m"
+  MR_Box * mercury__set__param_18);
+
+#line 395 "set.m"
+void MR_CALL 
+mercury__set__fold5_12_p_1(
+#line 395 "set.m"
+  MR_Word mercury__set__param_1,
+#line 395 "set.m"
+  MR_Word mercury__set__param_2,
+#line 395 "set.m"
+  MR_Word mercury__set__param_3,
+#line 395 "set.m"
+  MR_Word mercury__set__param_4,
+#line 395 "set.m"
+  MR_Word mercury__set__param_5,
+#line 395 "set.m"
+  MR_Word mercury__set__param_6,
+#line 395 "set.m"
+  MR_Word mercury__set__param_7,
+#line 395 "set.m"
+  MR_Word mercury__set__param_8,
+#line 395 "set.m"
+  MR_Box mercury__set__param_9,
+#line 395 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 395 "set.m"
+  MR_Box mercury__set__param_11,
+#line 395 "set.m"
+  MR_Box * mercury__set__param_12,
+#line 395 "set.m"
+  MR_Box mercury__set__param_13,
+#line 395 "set.m"
+  MR_Box * mercury__set__param_14,
+#line 395 "set.m"
+  MR_Box mercury__set__param_15,
+#line 395 "set.m"
+  MR_Box * mercury__set__param_16,
+#line 395 "set.m"
+  MR_Box mercury__set__param_17,
+#line 395 "set.m"
+  MR_Box * mercury__set__param_18);
+
+#line 392 "set.m"
+void MR_CALL 
+mercury__set__fold5_12_p_0(
+#line 392 "set.m"
+  MR_Word mercury__set__param_1,
+#line 392 "set.m"
+  MR_Word mercury__set__param_2,
+#line 392 "set.m"
+  MR_Word mercury__set__param_3,
+#line 392 "set.m"
+  MR_Word mercury__set__param_4,
+#line 392 "set.m"
+  MR_Word mercury__set__param_5,
+#line 392 "set.m"
+  MR_Word mercury__set__param_6,
+#line 392 "set.m"
+  MR_Word mercury__set__param_7,
+#line 392 "set.m"
+  MR_Word mercury__set__param_8,
+#line 392 "set.m"
+  MR_Box mercury__set__param_9,
+#line 392 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 392 "set.m"
+  MR_Box mercury__set__param_11,
+#line 392 "set.m"
+  MR_Box * mercury__set__param_12,
+#line 392 "set.m"
+  MR_Box mercury__set__param_13,
+#line 392 "set.m"
+  MR_Box * mercury__set__param_14,
+#line 392 "set.m"
+  MR_Box mercury__set__param_15,
+#line 392 "set.m"
+  MR_Box * mercury__set__param_16,
+#line 392 "set.m"
+  MR_Box mercury__set__param_17,
+#line 392 "set.m"
+  MR_Box * mercury__set__param_18);
+
+#line 387 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl4_10_p_5(
+#line 387 "set.m"
+  MR_Word mercury__set__param_1,
+#line 387 "set.m"
+  MR_Word mercury__set__param_2,
+#line 387 "set.m"
+  MR_Word mercury__set__param_3,
+#line 387 "set.m"
+  MR_Word mercury__set__param_4,
+#line 387 "set.m"
+  MR_Word mercury__set__param_5,
+#line 387 "set.m"
+  MR_Word mercury__set__param_6,
+#line 387 "set.m"
+  MR_Word mercury__set__param_7,
+#line 387 "set.m"
+  MR_Box mercury__set__param_8,
+#line 387 "set.m"
+  MR_Box * mercury__set__param_9,
+#line 387 "set.m"
+  MR_Box mercury__set__param_10,
+#line 387 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 387 "set.m"
+  MR_Box mercury__set__param_12,
+#line 387 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 387 "set.m"
+  MR_Box mercury__set__param_14,
+#line 387 "set.m"
+  MR_Box * mercury__set__param_15);
+
+#line 385 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl4_10_p_4(
+#line 385 "set.m"
+  MR_Word mercury__set__param_1,
+#line 385 "set.m"
+  MR_Word mercury__set__param_2,
+#line 385 "set.m"
+  MR_Word mercury__set__param_3,
+#line 385 "set.m"
+  MR_Word mercury__set__param_4,
+#line 385 "set.m"
+  MR_Word mercury__set__param_5,
+#line 385 "set.m"
+  MR_Word mercury__set__param_6,
+#line 385 "set.m"
+  MR_Word mercury__set__param_7,
+#line 385 "set.m"
+  MR_Box mercury__set__param_8,
+#line 385 "set.m"
+  MR_Box * mercury__set__param_9,
+#line 385 "set.m"
+  MR_Box mercury__set__param_10,
+#line 385 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 385 "set.m"
+  MR_Box mercury__set__param_12,
+#line 385 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 385 "set.m"
+  MR_Box mercury__set__param_14,
+#line 385 "set.m"
+  MR_Box * mercury__set__param_15);
+
+#line 383 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl4_10_p_3(
+#line 383 "set.m"
+  MR_Word mercury__set__param_1,
+#line 383 "set.m"
+  MR_Word mercury__set__param_2,
+#line 383 "set.m"
+  MR_Word mercury__set__param_3,
+#line 383 "set.m"
+  MR_Word mercury__set__param_4,
+#line 383 "set.m"
+  MR_Word mercury__set__param_5,
+#line 383 "set.m"
+  MR_Word mercury__set__param_6,
+#line 383 "set.m"
+  MR_Word mercury__set__param_7,
+#line 383 "set.m"
+  MR_Box mercury__set__param_8,
+#line 383 "set.m"
+  MR_Box * mercury__set__param_9,
+#line 383 "set.m"
+  MR_Box mercury__set__param_10,
+#line 383 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 383 "set.m"
+  MR_Box mercury__set__param_12,
+#line 383 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 383 "set.m"
+  MR_Box mercury__set__param_14,
+#line 383 "set.m"
+  MR_Box * mercury__set__param_15);
+
+#line 381 "set.m"
+void MR_CALL 
+mercury__set__foldl4_10_p_2(
+#line 381 "set.m"
+  MR_Word mercury__set__param_1,
+#line 381 "set.m"
+  MR_Word mercury__set__param_2,
+#line 381 "set.m"
+  MR_Word mercury__set__param_3,
+#line 381 "set.m"
+  MR_Word mercury__set__param_4,
+#line 381 "set.m"
+  MR_Word mercury__set__param_5,
+#line 381 "set.m"
+  MR_Word mercury__set__param_6,
+#line 381 "set.m"
+  MR_Word mercury__set__param_7,
+#line 381 "set.m"
+  MR_Box mercury__set__param_8,
+#line 381 "set.m"
+  MR_Box * mercury__set__param_9,
+#line 381 "set.m"
+  MR_Box mercury__set__param_10,
+#line 381 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 381 "set.m"
+  MR_Box mercury__set__param_12,
+#line 381 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 381 "set.m"
+  MR_Box mercury__set__param_14,
+#line 381 "set.m"
+  MR_Box * mercury__set__param_15);
+
+#line 379 "set.m"
+void MR_CALL 
+mercury__set__foldl4_10_p_1(
+#line 379 "set.m"
+  MR_Word mercury__set__param_1,
+#line 379 "set.m"
+  MR_Word mercury__set__param_2,
+#line 379 "set.m"
+  MR_Word mercury__set__param_3,
+#line 379 "set.m"
+  MR_Word mercury__set__param_4,
+#line 379 "set.m"
+  MR_Word mercury__set__param_5,
+#line 379 "set.m"
+  MR_Word mercury__set__param_6,
+#line 379 "set.m"
+  MR_Word mercury__set__param_7,
+#line 379 "set.m"
+  MR_Box mercury__set__param_8,
+#line 379 "set.m"
+  MR_Box * mercury__set__param_9,
+#line 379 "set.m"
+  MR_Box mercury__set__param_10,
+#line 379 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 379 "set.m"
+  MR_Box mercury__set__param_12,
+#line 379 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 379 "set.m"
+  MR_Box mercury__set__param_14,
+#line 379 "set.m"
+  MR_Box * mercury__set__param_15);
+
+#line 377 "set.m"
+void MR_CALL 
+mercury__set__foldl4_10_p_0(
+#line 377 "set.m"
+  MR_Word mercury__set__param_1,
+#line 377 "set.m"
+  MR_Word mercury__set__param_2,
+#line 377 "set.m"
+  MR_Word mercury__set__param_3,
+#line 377 "set.m"
+  MR_Word mercury__set__param_4,
+#line 377 "set.m"
+  MR_Word mercury__set__param_5,
+#line 377 "set.m"
+  MR_Word mercury__set__param_6,
+#line 377 "set.m"
+  MR_Word mercury__set__param_7,
+#line 377 "set.m"
+  MR_Box mercury__set__param_8,
+#line 377 "set.m"
+  MR_Box * mercury__set__param_9,
+#line 377 "set.m"
+  MR_Box mercury__set__param_10,
+#line 377 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 377 "set.m"
+  MR_Box mercury__set__param_12,
+#line 377 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 377 "set.m"
+  MR_Box mercury__set__param_14,
+#line 377 "set.m"
+  MR_Box * mercury__set__param_15);
+
+#line 372 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold4_10_p_5(
+#line 372 "set.m"
+  MR_Word mercury__set__param_1,
+#line 372 "set.m"
+  MR_Word mercury__set__param_2,
+#line 372 "set.m"
+  MR_Word mercury__set__param_3,
+#line 372 "set.m"
+  MR_Word mercury__set__param_4,
+#line 372 "set.m"
+  MR_Word mercury__set__param_5,
+#line 372 "set.m"
+  MR_Word mercury__set__param_6,
+#line 372 "set.m"
+  MR_Word mercury__set__param_7,
+#line 372 "set.m"
+  MR_Box mercury__set__param_8,
+#line 372 "set.m"
+  MR_Box * mercury__set__param_9,
+#line 372 "set.m"
+  MR_Box mercury__set__param_10,
+#line 372 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 372 "set.m"
+  MR_Box mercury__set__param_12,
+#line 372 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 372 "set.m"
+  MR_Box mercury__set__param_14,
+#line 372 "set.m"
+  MR_Box * mercury__set__param_15);
+
+#line 370 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold4_10_p_4(
+#line 370 "set.m"
+  MR_Word mercury__set__param_1,
+#line 370 "set.m"
+  MR_Word mercury__set__param_2,
+#line 370 "set.m"
+  MR_Word mercury__set__param_3,
+#line 370 "set.m"
+  MR_Word mercury__set__param_4,
+#line 370 "set.m"
+  MR_Word mercury__set__param_5,
+#line 370 "set.m"
+  MR_Word mercury__set__param_6,
+#line 370 "set.m"
+  MR_Word mercury__set__param_7,
+#line 370 "set.m"
+  MR_Box mercury__set__param_8,
+#line 370 "set.m"
+  MR_Box * mercury__set__param_9,
+#line 370 "set.m"
+  MR_Box mercury__set__param_10,
+#line 370 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 370 "set.m"
+  MR_Box mercury__set__param_12,
+#line 370 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 370 "set.m"
+  MR_Box mercury__set__param_14,
+#line 370 "set.m"
+  MR_Box * mercury__set__param_15);
+
+#line 368 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold4_10_p_3(
+#line 368 "set.m"
+  MR_Word mercury__set__param_1,
+#line 368 "set.m"
+  MR_Word mercury__set__param_2,
+#line 368 "set.m"
+  MR_Word mercury__set__param_3,
+#line 368 "set.m"
+  MR_Word mercury__set__param_4,
+#line 368 "set.m"
+  MR_Word mercury__set__param_5,
+#line 368 "set.m"
+  MR_Word mercury__set__param_6,
+#line 368 "set.m"
+  MR_Word mercury__set__param_7,
+#line 368 "set.m"
+  MR_Box mercury__set__param_8,
+#line 368 "set.m"
+  MR_Box * mercury__set__param_9,
+#line 368 "set.m"
+  MR_Box mercury__set__param_10,
+#line 368 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 368 "set.m"
+  MR_Box mercury__set__param_12,
+#line 368 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 368 "set.m"
+  MR_Box mercury__set__param_14,
+#line 368 "set.m"
+  MR_Box * mercury__set__param_15);
+
+#line 366 "set.m"
+void MR_CALL 
+mercury__set__fold4_10_p_2(
+#line 366 "set.m"
+  MR_Word mercury__set__param_1,
+#line 366 "set.m"
+  MR_Word mercury__set__param_2,
+#line 366 "set.m"
+  MR_Word mercury__set__param_3,
+#line 366 "set.m"
+  MR_Word mercury__set__param_4,
+#line 366 "set.m"
+  MR_Word mercury__set__param_5,
+#line 366 "set.m"
+  MR_Word mercury__set__param_6,
+#line 366 "set.m"
+  MR_Word mercury__set__param_7,
+#line 366 "set.m"
+  MR_Box mercury__set__param_8,
+#line 366 "set.m"
+  MR_Box * mercury__set__param_9,
+#line 366 "set.m"
+  MR_Box mercury__set__param_10,
+#line 366 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 366 "set.m"
+  MR_Box mercury__set__param_12,
+#line 366 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 366 "set.m"
+  MR_Box mercury__set__param_14,
+#line 366 "set.m"
+  MR_Box * mercury__set__param_15);
+
+#line 364 "set.m"
+void MR_CALL 
+mercury__set__fold4_10_p_1(
+#line 364 "set.m"
+  MR_Word mercury__set__param_1,
+#line 364 "set.m"
+  MR_Word mercury__set__param_2,
+#line 364 "set.m"
+  MR_Word mercury__set__param_3,
+#line 364 "set.m"
+  MR_Word mercury__set__param_4,
+#line 364 "set.m"
+  MR_Word mercury__set__param_5,
+#line 364 "set.m"
+  MR_Word mercury__set__param_6,
+#line 364 "set.m"
+  MR_Word mercury__set__param_7,
+#line 364 "set.m"
+  MR_Box mercury__set__param_8,
+#line 364 "set.m"
+  MR_Box * mercury__set__param_9,
+#line 364 "set.m"
+  MR_Box mercury__set__param_10,
+#line 364 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 364 "set.m"
+  MR_Box mercury__set__param_12,
+#line 364 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 364 "set.m"
+  MR_Box mercury__set__param_14,
+#line 364 "set.m"
+  MR_Box * mercury__set__param_15);
+
+#line 362 "set.m"
+void MR_CALL 
+mercury__set__fold4_10_p_0(
+#line 362 "set.m"
+  MR_Word mercury__set__param_1,
+#line 362 "set.m"
+  MR_Word mercury__set__param_2,
+#line 362 "set.m"
+  MR_Word mercury__set__param_3,
+#line 362 "set.m"
+  MR_Word mercury__set__param_4,
+#line 362 "set.m"
+  MR_Word mercury__set__param_5,
+#line 362 "set.m"
+  MR_Word mercury__set__param_6,
+#line 362 "set.m"
+  MR_Word mercury__set__param_7,
+#line 362 "set.m"
+  MR_Box mercury__set__param_8,
+#line 362 "set.m"
+  MR_Box * mercury__set__param_9,
+#line 362 "set.m"
+  MR_Box mercury__set__param_10,
+#line 362 "set.m"
+  MR_Box * mercury__set__param_11,
+#line 362 "set.m"
+  MR_Box mercury__set__param_12,
+#line 362 "set.m"
+  MR_Box * mercury__set__param_13,
+#line 362 "set.m"
+  MR_Box mercury__set__param_14,
+#line 362 "set.m"
+  MR_Box * mercury__set__param_15);
+
+#line 357 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl3_8_p_5(
+#line 357 "set.m"
+  MR_Word mercury__set__param_1,
+#line 357 "set.m"
+  MR_Word mercury__set__param_2,
+#line 357 "set.m"
+  MR_Word mercury__set__param_3,
+#line 357 "set.m"
+  MR_Word mercury__set__param_4,
+#line 357 "set.m"
+  MR_Word mercury__set__param_5,
+#line 357 "set.m"
+  MR_Word mercury__set__param_6,
+#line 357 "set.m"
+  MR_Box mercury__set__param_7,
+#line 357 "set.m"
+  MR_Box * mercury__set__param_8,
+#line 357 "set.m"
+  MR_Box mercury__set__param_9,
+#line 357 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 357 "set.m"
+  MR_Box mercury__set__param_11,
+#line 357 "set.m"
+  MR_Box * mercury__set__param_12);
+
+#line 355 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl3_8_p_4(
+#line 355 "set.m"
+  MR_Word mercury__set__param_1,
+#line 355 "set.m"
+  MR_Word mercury__set__param_2,
+#line 355 "set.m"
+  MR_Word mercury__set__param_3,
+#line 355 "set.m"
+  MR_Word mercury__set__param_4,
+#line 355 "set.m"
+  MR_Word mercury__set__param_5,
+#line 355 "set.m"
+  MR_Word mercury__set__param_6,
+#line 355 "set.m"
+  MR_Box mercury__set__param_7,
+#line 355 "set.m"
+  MR_Box * mercury__set__param_8,
+#line 355 "set.m"
+  MR_Box mercury__set__param_9,
+#line 355 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 355 "set.m"
+  MR_Box mercury__set__param_11,
+#line 355 "set.m"
+  MR_Box * mercury__set__param_12);
+
+#line 353 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl3_8_p_3(
+#line 353 "set.m"
+  MR_Word mercury__set__param_1,
+#line 353 "set.m"
+  MR_Word mercury__set__param_2,
+#line 353 "set.m"
+  MR_Word mercury__set__param_3,
+#line 353 "set.m"
+  MR_Word mercury__set__param_4,
+#line 353 "set.m"
+  MR_Word mercury__set__param_5,
+#line 353 "set.m"
+  MR_Word mercury__set__param_6,
+#line 353 "set.m"
+  MR_Box mercury__set__param_7,
+#line 353 "set.m"
+  MR_Box * mercury__set__param_8,
+#line 353 "set.m"
+  MR_Box mercury__set__param_9,
+#line 353 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 353 "set.m"
+  MR_Box mercury__set__param_11,
+#line 353 "set.m"
+  MR_Box * mercury__set__param_12);
+
+#line 351 "set.m"
+void MR_CALL 
+mercury__set__foldl3_8_p_2(
+#line 351 "set.m"
+  MR_Word mercury__set__param_1,
+#line 351 "set.m"
+  MR_Word mercury__set__param_2,
+#line 351 "set.m"
+  MR_Word mercury__set__param_3,
+#line 351 "set.m"
+  MR_Word mercury__set__param_4,
+#line 351 "set.m"
+  MR_Word mercury__set__param_5,
+#line 351 "set.m"
+  MR_Word mercury__set__param_6,
+#line 351 "set.m"
+  MR_Box mercury__set__param_7,
+#line 351 "set.m"
+  MR_Box * mercury__set__param_8,
+#line 351 "set.m"
+  MR_Box mercury__set__param_9,
+#line 351 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 351 "set.m"
+  MR_Box mercury__set__param_11,
+#line 351 "set.m"
+  MR_Box * mercury__set__param_12);
+
+#line 349 "set.m"
+void MR_CALL 
+mercury__set__foldl3_8_p_1(
+#line 349 "set.m"
+  MR_Word mercury__set__param_1,
+#line 349 "set.m"
+  MR_Word mercury__set__param_2,
+#line 349 "set.m"
+  MR_Word mercury__set__param_3,
+#line 349 "set.m"
+  MR_Word mercury__set__param_4,
+#line 349 "set.m"
+  MR_Word mercury__set__param_5,
+#line 349 "set.m"
+  MR_Word mercury__set__param_6,
+#line 349 "set.m"
+  MR_Box mercury__set__param_7,
+#line 349 "set.m"
+  MR_Box * mercury__set__param_8,
+#line 349 "set.m"
+  MR_Box mercury__set__param_9,
+#line 349 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 349 "set.m"
+  MR_Box mercury__set__param_11,
+#line 349 "set.m"
+  MR_Box * mercury__set__param_12);
+
+#line 347 "set.m"
+void MR_CALL 
+mercury__set__foldl3_8_p_0(
+#line 347 "set.m"
+  MR_Word mercury__set__param_1,
+#line 347 "set.m"
+  MR_Word mercury__set__param_2,
+#line 347 "set.m"
+  MR_Word mercury__set__param_3,
+#line 347 "set.m"
+  MR_Word mercury__set__param_4,
+#line 347 "set.m"
+  MR_Word mercury__set__param_5,
+#line 347 "set.m"
+  MR_Word mercury__set__param_6,
+#line 347 "set.m"
+  MR_Box mercury__set__param_7,
+#line 347 "set.m"
+  MR_Box * mercury__set__param_8,
+#line 347 "set.m"
+  MR_Box mercury__set__param_9,
+#line 347 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 347 "set.m"
+  MR_Box mercury__set__param_11,
+#line 347 "set.m"
+  MR_Box * mercury__set__param_12);
+
+#line 343 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold3_8_p_5(
+#line 343 "set.m"
+  MR_Word mercury__set__param_1,
+#line 343 "set.m"
+  MR_Word mercury__set__param_2,
+#line 343 "set.m"
+  MR_Word mercury__set__param_3,
+#line 343 "set.m"
+  MR_Word mercury__set__param_4,
+#line 343 "set.m"
+  MR_Word mercury__set__param_5,
+#line 343 "set.m"
+  MR_Word mercury__set__param_6,
+#line 343 "set.m"
+  MR_Box mercury__set__param_7,
+#line 343 "set.m"
+  MR_Box * mercury__set__param_8,
+#line 343 "set.m"
+  MR_Box mercury__set__param_9,
+#line 343 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 343 "set.m"
+  MR_Box mercury__set__param_11,
+#line 343 "set.m"
+  MR_Box * mercury__set__param_12);
+
+#line 341 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold3_8_p_4(
+#line 341 "set.m"
+  MR_Word mercury__set__param_1,
+#line 341 "set.m"
+  MR_Word mercury__set__param_2,
+#line 341 "set.m"
+  MR_Word mercury__set__param_3,
+#line 341 "set.m"
+  MR_Word mercury__set__param_4,
+#line 341 "set.m"
+  MR_Word mercury__set__param_5,
+#line 341 "set.m"
+  MR_Word mercury__set__param_6,
+#line 341 "set.m"
+  MR_Box mercury__set__param_7,
+#line 341 "set.m"
+  MR_Box * mercury__set__param_8,
+#line 341 "set.m"
+  MR_Box mercury__set__param_9,
+#line 341 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 341 "set.m"
+  MR_Box mercury__set__param_11,
+#line 341 "set.m"
+  MR_Box * mercury__set__param_12);
+
+#line 339 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold3_8_p_3(
+#line 339 "set.m"
+  MR_Word mercury__set__param_1,
+#line 339 "set.m"
+  MR_Word mercury__set__param_2,
+#line 339 "set.m"
+  MR_Word mercury__set__param_3,
+#line 339 "set.m"
+  MR_Word mercury__set__param_4,
+#line 339 "set.m"
+  MR_Word mercury__set__param_5,
+#line 339 "set.m"
+  MR_Word mercury__set__param_6,
+#line 339 "set.m"
+  MR_Box mercury__set__param_7,
+#line 339 "set.m"
+  MR_Box * mercury__set__param_8,
+#line 339 "set.m"
+  MR_Box mercury__set__param_9,
+#line 339 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 339 "set.m"
+  MR_Box mercury__set__param_11,
+#line 339 "set.m"
+  MR_Box * mercury__set__param_12);
+
+#line 337 "set.m"
+void MR_CALL 
+mercury__set__fold3_8_p_2(
+#line 337 "set.m"
+  MR_Word mercury__set__param_1,
+#line 337 "set.m"
+  MR_Word mercury__set__param_2,
+#line 337 "set.m"
+  MR_Word mercury__set__param_3,
+#line 337 "set.m"
+  MR_Word mercury__set__param_4,
+#line 337 "set.m"
+  MR_Word mercury__set__param_5,
+#line 337 "set.m"
+  MR_Word mercury__set__param_6,
+#line 337 "set.m"
+  MR_Box mercury__set__param_7,
+#line 337 "set.m"
+  MR_Box * mercury__set__param_8,
+#line 337 "set.m"
+  MR_Box mercury__set__param_9,
+#line 337 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 337 "set.m"
+  MR_Box mercury__set__param_11,
+#line 337 "set.m"
+  MR_Box * mercury__set__param_12);
+
+#line 335 "set.m"
+void MR_CALL 
+mercury__set__fold3_8_p_1(
+#line 335 "set.m"
+  MR_Word mercury__set__param_1,
+#line 335 "set.m"
+  MR_Word mercury__set__param_2,
+#line 335 "set.m"
+  MR_Word mercury__set__param_3,
+#line 335 "set.m"
+  MR_Word mercury__set__param_4,
+#line 335 "set.m"
+  MR_Word mercury__set__param_5,
+#line 335 "set.m"
+  MR_Word mercury__set__param_6,
+#line 335 "set.m"
+  MR_Box mercury__set__param_7,
+#line 335 "set.m"
+  MR_Box * mercury__set__param_8,
+#line 335 "set.m"
+  MR_Box mercury__set__param_9,
+#line 335 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 335 "set.m"
+  MR_Box mercury__set__param_11,
+#line 335 "set.m"
+  MR_Box * mercury__set__param_12);
+
+#line 333 "set.m"
+void MR_CALL 
+mercury__set__fold3_8_p_0(
+#line 333 "set.m"
+  MR_Word mercury__set__param_1,
+#line 333 "set.m"
+  MR_Word mercury__set__param_2,
+#line 333 "set.m"
+  MR_Word mercury__set__param_3,
+#line 333 "set.m"
+  MR_Word mercury__set__param_4,
+#line 333 "set.m"
+  MR_Word mercury__set__param_5,
+#line 333 "set.m"
+  MR_Word mercury__set__param_6,
+#line 333 "set.m"
+  MR_Box mercury__set__param_7,
+#line 333 "set.m"
+  MR_Box * mercury__set__param_8,
+#line 333 "set.m"
+  MR_Box mercury__set__param_9,
+#line 333 "set.m"
+  MR_Box * mercury__set__param_10,
+#line 333 "set.m"
+  MR_Box mercury__set__param_11,
+#line 333 "set.m"
+  MR_Box * mercury__set__param_12);
+
+#line 329 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl2_6_p_5(
+#line 329 "set.m"
+  MR_Word mercury__set__param_1,
+#line 329 "set.m"
+  MR_Word mercury__set__param_2,
+#line 329 "set.m"
+  MR_Word mercury__set__param_3,
+#line 329 "set.m"
+  MR_Word mercury__set__param_4,
+#line 329 "set.m"
+  MR_Word mercury__set__param_5,
+#line 329 "set.m"
+  MR_Box mercury__set__param_6,
+#line 329 "set.m"
+  MR_Box * mercury__set__param_7,
+#line 329 "set.m"
+  MR_Box mercury__set__param_8,
+#line 329 "set.m"
+  MR_Box * mercury__set__param_9);
+
+#line 327 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl2_6_p_4(
+#line 327 "set.m"
+  MR_Word mercury__set__param_1,
+#line 327 "set.m"
+  MR_Word mercury__set__param_2,
+#line 327 "set.m"
+  MR_Word mercury__set__param_3,
+#line 327 "set.m"
+  MR_Word mercury__set__param_4,
+#line 327 "set.m"
+  MR_Word mercury__set__param_5,
+#line 327 "set.m"
+  MR_Box mercury__set__param_6,
+#line 327 "set.m"
+  MR_Box * mercury__set__param_7,
+#line 327 "set.m"
+  MR_Box mercury__set__param_8,
+#line 327 "set.m"
+  MR_Box * mercury__set__param_9);
+
+#line 325 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl2_6_p_3(
+#line 325 "set.m"
+  MR_Word mercury__set__param_1,
+#line 325 "set.m"
+  MR_Word mercury__set__param_2,
+#line 325 "set.m"
+  MR_Word mercury__set__param_3,
+#line 325 "set.m"
+  MR_Word mercury__set__param_4,
+#line 325 "set.m"
+  MR_Word mercury__set__param_5,
+#line 325 "set.m"
+  MR_Box mercury__set__param_6,
+#line 325 "set.m"
+  MR_Box * mercury__set__param_7,
+#line 325 "set.m"
+  MR_Box mercury__set__param_8,
+#line 325 "set.m"
+  MR_Box * mercury__set__param_9);
+
+#line 323 "set.m"
+void MR_CALL 
+mercury__set__foldl2_6_p_2(
+#line 323 "set.m"
+  MR_Word mercury__set__param_1,
+#line 323 "set.m"
+  MR_Word mercury__set__param_2,
+#line 323 "set.m"
+  MR_Word mercury__set__param_3,
+#line 323 "set.m"
+  MR_Word mercury__set__param_4,
+#line 323 "set.m"
+  MR_Word mercury__set__param_5,
+#line 323 "set.m"
+  MR_Box mercury__set__param_6,
+#line 323 "set.m"
+  MR_Box * mercury__set__param_7,
+#line 323 "set.m"
+  MR_Box mercury__set__param_8,
+#line 323 "set.m"
+  MR_Box * mercury__set__param_9);
+
+#line 321 "set.m"
+void MR_CALL 
+mercury__set__foldl2_6_p_1(
+#line 321 "set.m"
+  MR_Word mercury__set__param_1,
+#line 321 "set.m"
+  MR_Word mercury__set__param_2,
+#line 321 "set.m"
+  MR_Word mercury__set__param_3,
+#line 321 "set.m"
+  MR_Word mercury__set__param_4,
+#line 321 "set.m"
+  MR_Word mercury__set__param_5,
+#line 321 "set.m"
+  MR_Box mercury__set__param_6,
+#line 321 "set.m"
+  MR_Box * mercury__set__param_7,
+#line 321 "set.m"
+  MR_Box mercury__set__param_8,
+#line 321 "set.m"
+  MR_Box * mercury__set__param_9);
+
+#line 319 "set.m"
+void MR_CALL 
+mercury__set__foldl2_6_p_0(
+#line 319 "set.m"
+  MR_Word mercury__set__param_1,
+#line 319 "set.m"
+  MR_Word mercury__set__param_2,
+#line 319 "set.m"
+  MR_Word mercury__set__param_3,
+#line 319 "set.m"
+  MR_Word mercury__set__param_4,
+#line 319 "set.m"
+  MR_Word mercury__set__param_5,
+#line 319 "set.m"
+  MR_Box mercury__set__param_6,
+#line 319 "set.m"
+  MR_Box * mercury__set__param_7,
+#line 319 "set.m"
+  MR_Box mercury__set__param_8,
+#line 319 "set.m"
+  MR_Box * mercury__set__param_9);
+
+#line 315 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold2_6_p_5(
+#line 315 "set.m"
+  MR_Word mercury__set__param_1,
+#line 315 "set.m"
+  MR_Word mercury__set__param_2,
+#line 315 "set.m"
+  MR_Word mercury__set__param_3,
+#line 315 "set.m"
+  MR_Word mercury__set__param_4,
+#line 315 "set.m"
+  MR_Word mercury__set__param_5,
+#line 315 "set.m"
+  MR_Box mercury__set__param_6,
+#line 315 "set.m"
+  MR_Box * mercury__set__param_7,
+#line 315 "set.m"
+  MR_Box mercury__set__param_8,
+#line 315 "set.m"
+  MR_Box * mercury__set__param_9);
+
+#line 313 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold2_6_p_4(
+#line 313 "set.m"
+  MR_Word mercury__set__param_1,
+#line 313 "set.m"
+  MR_Word mercury__set__param_2,
+#line 313 "set.m"
+  MR_Word mercury__set__param_3,
+#line 313 "set.m"
+  MR_Word mercury__set__param_4,
+#line 313 "set.m"
+  MR_Word mercury__set__param_5,
+#line 313 "set.m"
+  MR_Box mercury__set__param_6,
+#line 313 "set.m"
+  MR_Box * mercury__set__param_7,
+#line 313 "set.m"
+  MR_Box mercury__set__param_8,
+#line 313 "set.m"
+  MR_Box * mercury__set__param_9);
+
+#line 311 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold2_6_p_3(
+#line 311 "set.m"
+  MR_Word mercury__set__param_1,
+#line 311 "set.m"
+  MR_Word mercury__set__param_2,
+#line 311 "set.m"
+  MR_Word mercury__set__param_3,
+#line 311 "set.m"
+  MR_Word mercury__set__param_4,
+#line 311 "set.m"
+  MR_Word mercury__set__param_5,
+#line 311 "set.m"
+  MR_Box mercury__set__param_6,
+#line 311 "set.m"
+  MR_Box * mercury__set__param_7,
+#line 311 "set.m"
+  MR_Box mercury__set__param_8,
+#line 311 "set.m"
+  MR_Box * mercury__set__param_9);
+
+#line 309 "set.m"
+void MR_CALL 
+mercury__set__fold2_6_p_2(
+#line 309 "set.m"
+  MR_Word mercury__set__param_1,
+#line 309 "set.m"
+  MR_Word mercury__set__param_2,
+#line 309 "set.m"
+  MR_Word mercury__set__param_3,
+#line 309 "set.m"
+  MR_Word mercury__set__param_4,
+#line 309 "set.m"
+  MR_Word mercury__set__param_5,
+#line 309 "set.m"
+  MR_Box mercury__set__param_6,
+#line 309 "set.m"
+  MR_Box * mercury__set__param_7,
+#line 309 "set.m"
+  MR_Box mercury__set__param_8,
+#line 309 "set.m"
+  MR_Box * mercury__set__param_9);
+
+#line 307 "set.m"
+void MR_CALL 
+mercury__set__fold2_6_p_1(
+#line 307 "set.m"
+  MR_Word mercury__set__param_1,
+#line 307 "set.m"
+  MR_Word mercury__set__param_2,
+#line 307 "set.m"
+  MR_Word mercury__set__param_3,
+#line 307 "set.m"
+  MR_Word mercury__set__param_4,
+#line 307 "set.m"
+  MR_Word mercury__set__param_5,
+#line 307 "set.m"
+  MR_Box mercury__set__param_6,
+#line 307 "set.m"
+  MR_Box * mercury__set__param_7,
+#line 307 "set.m"
+  MR_Box mercury__set__param_8,
+#line 307 "set.m"
+  MR_Box * mercury__set__param_9);
+
+#line 305 "set.m"
+void MR_CALL 
+mercury__set__fold2_6_p_0(
+#line 305 "set.m"
+  MR_Word mercury__set__param_1,
+#line 305 "set.m"
+  MR_Word mercury__set__param_2,
+#line 305 "set.m"
+  MR_Word mercury__set__param_3,
+#line 305 "set.m"
+  MR_Word mercury__set__param_4,
+#line 305 "set.m"
+  MR_Word mercury__set__param_5,
+#line 305 "set.m"
+  MR_Box mercury__set__param_6,
+#line 305 "set.m"
+  MR_Box * mercury__set__param_7,
+#line 305 "set.m"
+  MR_Box mercury__set__param_8,
+#line 305 "set.m"
+  MR_Box * mercury__set__param_9);
+
+#line 302 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl_4_p_5(
+#line 302 "set.m"
+  MR_Word mercury__set__param_1,
+#line 302 "set.m"
+  MR_Word mercury__set__param_2,
+#line 302 "set.m"
+  MR_Word mercury__set__param_3,
+#line 302 "set.m"
+  MR_Word mercury__set__param_4,
+#line 302 "set.m"
+  MR_Box mercury__set__param_5,
+#line 302 "set.m"
+  MR_Box * mercury__set__param_6);
+
+#line 301 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl_4_p_4(
+#line 301 "set.m"
+  MR_Word mercury__set__param_1,
+#line 301 "set.m"
+  MR_Word mercury__set__param_2,
+#line 301 "set.m"
+  MR_Word mercury__set__param_3,
+#line 301 "set.m"
+  MR_Word mercury__set__param_4,
+#line 301 "set.m"
+  MR_Box mercury__set__param_5,
+#line 301 "set.m"
+  MR_Box * mercury__set__param_6);
+
+#line 300 "set.m"
+MR_bool MR_CALL 
+mercury__set__foldl_4_p_3(
+#line 300 "set.m"
+  MR_Word mercury__set__param_1,
+#line 300 "set.m"
+  MR_Word mercury__set__param_2,
+#line 300 "set.m"
+  MR_Word mercury__set__param_3,
+#line 300 "set.m"
+  MR_Word mercury__set__param_4,
+#line 300 "set.m"
+  MR_Box mercury__set__param_5,
+#line 300 "set.m"
+  MR_Box * mercury__set__param_6);
+
+#line 299 "set.m"
+void MR_CALL 
+mercury__set__foldl_4_p_2(
+#line 299 "set.m"
+  MR_Word mercury__set__param_1,
+#line 299 "set.m"
+  MR_Word mercury__set__param_2,
+#line 299 "set.m"
+  MR_Word mercury__set__param_3,
+#line 299 "set.m"
+  MR_Word mercury__set__param_4,
+#line 299 "set.m"
+  MR_Box mercury__set__param_5,
+#line 299 "set.m"
+  MR_Box * mercury__set__param_6);
+
+#line 298 "set.m"
+void MR_CALL 
+mercury__set__foldl_4_p_1(
+#line 298 "set.m"
+  MR_Word mercury__set__param_1,
+#line 298 "set.m"
+  MR_Word mercury__set__param_2,
+#line 298 "set.m"
+  MR_Word mercury__set__param_3,
+#line 298 "set.m"
+  MR_Word mercury__set__param_4,
+#line 298 "set.m"
+  MR_Box mercury__set__param_5,
+#line 298 "set.m"
+  MR_Box * mercury__set__param_6);
+
+#line 297 "set.m"
+void MR_CALL 
+mercury__set__foldl_4_p_0(
+#line 297 "set.m"
+  MR_Word mercury__set__param_1,
+#line 297 "set.m"
+  MR_Word mercury__set__param_2,
+#line 297 "set.m"
+  MR_Word mercury__set__param_3,
+#line 297 "set.m"
+  MR_Word mercury__set__param_4,
+#line 297 "set.m"
+  MR_Box mercury__set__param_5,
+#line 297 "set.m"
+  MR_Box * mercury__set__param_6);
+
+#line 294 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold_4_p_5(
+#line 294 "set.m"
+  MR_Word mercury__set__param_1,
+#line 294 "set.m"
+  MR_Word mercury__set__param_2,
+#line 294 "set.m"
+  MR_Word mercury__set__param_3,
+#line 294 "set.m"
+  MR_Word mercury__set__param_4,
+#line 294 "set.m"
+  MR_Box mercury__set__param_5,
+#line 294 "set.m"
+  MR_Box * mercury__set__param_6);
+
+#line 293 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold_4_p_4(
+#line 293 "set.m"
+  MR_Word mercury__set__param_1,
+#line 293 "set.m"
+  MR_Word mercury__set__param_2,
+#line 293 "set.m"
+  MR_Word mercury__set__param_3,
+#line 293 "set.m"
+  MR_Word mercury__set__param_4,
+#line 293 "set.m"
+  MR_Box mercury__set__param_5,
+#line 293 "set.m"
+  MR_Box * mercury__set__param_6);
+
+#line 292 "set.m"
+MR_bool MR_CALL 
+mercury__set__fold_4_p_3(
+#line 292 "set.m"
+  MR_Word mercury__set__param_1,
+#line 292 "set.m"
+  MR_Word mercury__set__param_2,
+#line 292 "set.m"
+  MR_Word mercury__set__param_3,
+#line 292 "set.m"
+  MR_Word mercury__set__param_4,
+#line 292 "set.m"
+  MR_Box mercury__set__param_5,
+#line 292 "set.m"
+  MR_Box * mercury__set__param_6);
+
+#line 291 "set.m"
+void MR_CALL 
+mercury__set__fold_4_p_2(
+#line 291 "set.m"
+  MR_Word mercury__set__param_1,
+#line 291 "set.m"
+  MR_Word mercury__set__param_2,
+#line 291 "set.m"
+  MR_Word mercury__set__param_3,
+#line 291 "set.m"
+  MR_Word mercury__set__param_4,
+#line 291 "set.m"
+  MR_Box mercury__set__param_5,
+#line 291 "set.m"
+  MR_Box * mercury__set__param_6);
+
+#line 290 "set.m"
+void MR_CALL 
+mercury__set__fold_4_p_1(
+#line 290 "set.m"
+  MR_Word mercury__set__param_1,
+#line 290 "set.m"
+  MR_Word mercury__set__param_2,
+#line 290 "set.m"
+  MR_Word mercury__set__param_3,
+#line 290 "set.m"
+  MR_Word mercury__set__param_4,
+#line 290 "set.m"
+  MR_Box mercury__set__param_5,
+#line 290 "set.m"
+  MR_Box * mercury__set__param_6);
+
+#line 289 "set.m"
+void MR_CALL 
+mercury__set__fold_4_p_0(
+#line 289 "set.m"
+  MR_Word mercury__set__param_1,
+#line 289 "set.m"
+  MR_Word mercury__set__param_2,
+#line 289 "set.m"
+  MR_Word mercury__set__param_3,
+#line 289 "set.m"
+  MR_Word mercury__set__param_4,
+#line 289 "set.m"
+  MR_Box mercury__set__param_5,
+#line 289 "set.m"
+  MR_Box * mercury__set__param_6);
+
+#line 286 "set.m"
+MR_Box MR_CALL 
+mercury__set__foldl_3_f_0(
+#line 286 "set.m"
+  MR_Word mercury__set__param_1,
+#line 286 "set.m"
+  MR_Word mercury__set__param_2,
+#line 286 "set.m"
+  MR_Word mercury__set__param_3,
+#line 286 "set.m"
+  MR_Word mercury__set__param_4,
+#line 286 "set.m"
+  MR_Box mercury__set__param_5);
+
+#line 285 "set.m"
+MR_Box MR_CALL 
+mercury__set__fold_3_f_0(
+#line 285 "set.m"
+  MR_Word mercury__set__param_1,
+#line 285 "set.m"
+  MR_Word mercury__set__param_2,
+#line 285 "set.m"
+  MR_Word mercury__set__param_3,
+#line 285 "set.m"
+  MR_Word mercury__set__param_4,
+#line 285 "set.m"
+  MR_Box mercury__set__param_5);
+
+#line 280 "set.m"
+MR_Word MR_CALL 
+mercury__set__filter_map_2_f_0(
+#line 280 "set.m"
+  MR_Word mercury__set__param_1,
+#line 280 "set.m"
+  MR_Word mercury__set__param_2,
+#line 280 "set.m"
+  MR_Word mercury__set__param_3,
+#line 280 "set.m"
+  MR_Word mercury__set__param_4);
+
+#line 278 "set.m"
+void MR_CALL 
+mercury__set__filter_map_3_p_0(
+#line 278 "set.m"
+  MR_Word mercury__set__param_1,
+#line 278 "set.m"
+  MR_Word mercury__set__param_2,
+#line 278 "set.m"
+  MR_Word mercury__set__param_3,
+#line 278 "set.m"
+  MR_Word mercury__set__param_4,
+#line 278 "set.m"
+  MR_Word * mercury__set__param_5);
+
+#line 272 "set.m"
+void MR_CALL 
+mercury__set__filter_4_p_0(
+#line 272 "set.m"
+  MR_Word mercury__set__param_1,
+#line 272 "set.m"
+  MR_Word mercury__set__param_2,
+#line 272 "set.m"
+  MR_Word mercury__set__param_3,
+#line 272 "set.m"
+  MR_Word * mercury__set__param_4,
+#line 272 "set.m"
+  MR_Word * mercury__set__param_5);
+
+#line 266 "set.m"
+void MR_CALL 
+mercury__set__filter_3_p_0(
+#line 266 "set.m"
+  MR_Word mercury__set__param_1,
+#line 266 "set.m"
+  MR_Word mercury__set__param_2,
+#line 266 "set.m"
+  MR_Word mercury__set__param_3,
+#line 266 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 264 "set.m"
+MR_Word MR_CALL 
+mercury__set__filter_2_f_0(
+#line 264 "set.m"
+  MR_Word mercury__set__param_1,
+#line 264 "set.m"
+  MR_Word mercury__set__param_2,
+#line 264 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 256 "set.m"
+MR_bool MR_CALL 
+mercury__set__map_fold_5_p_5(
+#line 256 "set.m"
+  MR_Word mercury__set__param_1,
+#line 256 "set.m"
+  MR_Word mercury__set__param_2,
+#line 256 "set.m"
+  MR_Word mercury__set__param_3,
+#line 256 "set.m"
+  MR_Word mercury__set__param_4,
+#line 256 "set.m"
+  MR_Word mercury__set__param_5,
+#line 256 "set.m"
+  MR_Word * mercury__set__param_6,
+#line 256 "set.m"
+  MR_Box mercury__set__param_7,
+#line 256 "set.m"
+  MR_Box * mercury__set__param_8);
+
+#line 254 "set.m"
+MR_bool MR_CALL 
+mercury__set__map_fold_5_p_4(
+#line 254 "set.m"
+  MR_Word mercury__set__param_1,
+#line 254 "set.m"
+  MR_Word mercury__set__param_2,
+#line 254 "set.m"
+  MR_Word mercury__set__param_3,
+#line 254 "set.m"
+  MR_Word mercury__set__param_4,
+#line 254 "set.m"
+  MR_Word mercury__set__param_5,
+#line 254 "set.m"
+  MR_Word * mercury__set__param_6,
+#line 254 "set.m"
+  MR_Box mercury__set__param_7,
+#line 254 "set.m"
+  MR_Box * mercury__set__param_8);
+
+#line 252 "set.m"
+MR_bool MR_CALL 
+mercury__set__map_fold_5_p_3(
+#line 252 "set.m"
+  MR_Word mercury__set__param_1,
+#line 252 "set.m"
+  MR_Word mercury__set__param_2,
+#line 252 "set.m"
+  MR_Word mercury__set__param_3,
+#line 252 "set.m"
+  MR_Word mercury__set__param_4,
+#line 252 "set.m"
+  MR_Word mercury__set__param_5,
+#line 252 "set.m"
+  MR_Word * mercury__set__param_6,
+#line 252 "set.m"
+  MR_Box mercury__set__param_7,
+#line 252 "set.m"
+  MR_Box * mercury__set__param_8);
+
+#line 251 "set.m"
+void MR_CALL 
+mercury__set__map_fold_5_p_2(
+#line 251 "set.m"
+  MR_Word mercury__set__param_1,
+#line 251 "set.m"
+  MR_Word mercury__set__param_2,
+#line 251 "set.m"
+  MR_Word mercury__set__param_3,
+#line 251 "set.m"
+  MR_Word mercury__set__param_4,
+#line 251 "set.m"
+  MR_Word mercury__set__param_5,
+#line 251 "set.m"
+  MR_Word * mercury__set__param_6,
+#line 251 "set.m"
+  MR_Box mercury__set__param_7,
+#line 251 "set.m"
+  MR_Box * mercury__set__param_8);
+
+#line 250 "set.m"
+void MR_CALL 
+mercury__set__map_fold_5_p_1(
+#line 250 "set.m"
+  MR_Word mercury__set__param_1,
+#line 250 "set.m"
+  MR_Word mercury__set__param_2,
+#line 250 "set.m"
+  MR_Word mercury__set__param_3,
+#line 250 "set.m"
+  MR_Word mercury__set__param_4,
+#line 250 "set.m"
+  MR_Word mercury__set__param_5,
+#line 250 "set.m"
+  MR_Word * mercury__set__param_6,
+#line 250 "set.m"
+  MR_Box mercury__set__param_7,
+#line 250 "set.m"
+  MR_Box * mercury__set__param_8);
+
+#line 249 "set.m"
+void MR_CALL 
+mercury__set__map_fold_5_p_0(
+#line 249 "set.m"
+  MR_Word mercury__set__param_1,
+#line 249 "set.m"
+  MR_Word mercury__set__param_2,
+#line 249 "set.m"
+  MR_Word mercury__set__param_3,
+#line 249 "set.m"
+  MR_Word mercury__set__param_4,
+#line 249 "set.m"
+  MR_Word mercury__set__param_5,
+#line 249 "set.m"
+  MR_Word * mercury__set__param_6,
+#line 249 "set.m"
+  MR_Box mercury__set__param_7,
+#line 249 "set.m"
+  MR_Box * mercury__set__param_8);
+
+#line 241 "set.m"
+void MR_CALL 
+mercury__set__map_3_p_4(
+#line 241 "set.m"
+  MR_Word mercury__set__param_1,
+#line 241 "set.m"
+  MR_Word mercury__set__param_2,
+#line 241 "set.m"
+  MR_Word mercury__set__param_3,
+#line 241 "set.m"
+  MR_Word mercury__set__param_4,
+#line 241 "set.m"
+  MR_Word * mercury__set__param_5,
+#line 241 "set.m"
+  MR_Cont mercury__set__param_6,
+#line 241 "set.m"
+  void * mercury__set__param_7);
+
+#line 240 "set.m"
+void MR_CALL 
+mercury__set__map_3_p_3(
+#line 240 "set.m"
+  MR_Word mercury__set__param_1,
+#line 240 "set.m"
+  MR_Word mercury__set__param_2,
+#line 240 "set.m"
+  MR_Word mercury__set__param_3,
+#line 240 "set.m"
+  MR_Word mercury__set__param_4,
+#line 240 "set.m"
+  MR_Word * mercury__set__param_5,
+#line 240 "set.m"
+  MR_Cont mercury__set__param_6,
+#line 240 "set.m"
+  void * mercury__set__param_7);
+
+#line 239 "set.m"
+MR_bool MR_CALL 
+mercury__set__map_3_p_2(
+#line 239 "set.m"
+  MR_Word mercury__set__param_1,
+#line 239 "set.m"
+  MR_Word mercury__set__param_2,
+#line 239 "set.m"
+  MR_Word mercury__set__param_3,
+#line 239 "set.m"
+  MR_Word mercury__set__param_4,
+#line 239 "set.m"
+  MR_Word * mercury__set__param_5);
+
+#line 238 "set.m"
+void MR_CALL 
+mercury__set__map_3_p_1(
+#line 238 "set.m"
+  MR_Word mercury__set__param_1,
+#line 238 "set.m"
+  MR_Word mercury__set__param_2,
+#line 238 "set.m"
+  MR_Word mercury__set__param_3,
+#line 238 "set.m"
+  MR_Word mercury__set__param_4,
+#line 238 "set.m"
+  MR_Word * mercury__set__param_5);
+
+#line 237 "set.m"
+void MR_CALL 
+mercury__set__map_3_p_0(
+#line 237 "set.m"
+  MR_Word mercury__set__param_1,
+#line 237 "set.m"
+  MR_Word mercury__set__param_2,
+#line 237 "set.m"
+  MR_Word mercury__set__param_3,
+#line 237 "set.m"
+  MR_Word mercury__set__param_4,
+#line 237 "set.m"
+  MR_Word * mercury__set__param_5);
+
+#line 235 "set.m"
+MR_Word MR_CALL 
+mercury__set__map_2_f_0(
+#line 235 "set.m"
+  MR_Word mercury__set__param_1,
+#line 235 "set.m"
+  MR_Word mercury__set__param_2,
+#line 235 "set.m"
+  MR_Word mercury__set__param_3,
+#line 235 "set.m"
+  MR_Word mercury__set__param_4);
+
+#line 228 "set.m"
+void MR_CALL 
+mercury__set__count_2_p_0(
+#line 228 "set.m"
+  MR_Word mercury__set__param_1,
+#line 228 "set.m"
+  MR_Word mercury__set__param_2,
+#line 228 "set.m"
+  MR_Integer * mercury__set__param_3);
+
+#line 227 "set.m"
+MR_Integer MR_CALL 
+mercury__set__count_1_f_0(
+#line 227 "set.m"
+  MR_Word mercury__set__param_1,
+#line 227 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 222 "set.m"
+void MR_CALL 
+mercury__set__difference_3_p_0(
+#line 222 "set.m"
+  MR_Word mercury__set__param_1,
+#line 222 "set.m"
+  MR_Word mercury__set__param_2,
+#line 222 "set.m"
+  MR_Word mercury__set__param_3,
+#line 222 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 221 "set.m"
+MR_Word MR_CALL 
+mercury__set__difference_2_f_0(
+#line 221 "set.m"
+  MR_Word mercury__set__param_1,
+#line 221 "set.m"
+  MR_Word mercury__set__param_2,
+#line 221 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 215 "set.m"
+MR_Word MR_CALL 
+mercury__set__intersect_list_1_f_0(
+#line 215 "set.m"
+  MR_Word mercury__set__param_1,
+#line 215 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 210 "set.m"
+void MR_CALL 
+mercury__set__power_intersect_2_p_0(
+#line 210 "set.m"
+  MR_Word mercury__set__param_1,
+#line 210 "set.m"
+  MR_Word mercury__set__param_2,
+#line 210 "set.m"
+  MR_Word * mercury__set__param_3);
+
+#line 209 "set.m"
+MR_Word MR_CALL 
+mercury__set__power_intersect_1_f_0(
+#line 209 "set.m"
+  MR_Word mercury__set__param_1,
+#line 209 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 204 "set.m"
+void MR_CALL 
+mercury__set__intersect_3_p_0(
+#line 204 "set.m"
+  MR_Word mercury__set__param_1,
+#line 204 "set.m"
+  MR_Word mercury__set__param_2,
+#line 204 "set.m"
+  MR_Word mercury__set__param_3,
+#line 204 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 203 "set.m"
+MR_Word MR_CALL 
+mercury__set__intersect_2_f_0(
+#line 203 "set.m"
+  MR_Word mercury__set__param_1,
+#line 203 "set.m"
+  MR_Word mercury__set__param_2,
+#line 203 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 191 "set.m"
+void MR_CALL 
+mercury__set__power_union_2_p_0(
+#line 191 "set.m"
+  MR_Word mercury__set__param_1,
+#line 191 "set.m"
+  MR_Word mercury__set__param_2,
+#line 191 "set.m"
+  MR_Word * mercury__set__param_3);
+
+#line 190 "set.m"
+MR_Word MR_CALL 
+mercury__set__power_union_1_f_0(
+#line 190 "set.m"
+  MR_Word mercury__set__param_1,
+#line 190 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 185 "set.m"
+MR_Word MR_CALL 
+mercury__set__union_list_1_f_0(
+#line 185 "set.m"
+  MR_Word mercury__set__param_1,
+#line 185 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 180 "set.m"
+void MR_CALL 
+mercury__set__union_3_p_0(
+#line 180 "set.m"
+  MR_Word mercury__set__param_1,
+#line 180 "set.m"
+  MR_Word mercury__set__param_2,
+#line 180 "set.m"
+  MR_Word mercury__set__param_3,
+#line 180 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 179 "set.m"
+MR_Word MR_CALL 
+mercury__set__union_2_f_0(
+#line 179 "set.m"
+  MR_Word mercury__set__param_1,
+#line 179 "set.m"
+  MR_Word mercury__set__param_2,
+#line 179 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 168 "set.m"
+MR_bool MR_CALL 
+mercury__set__remove_least_3_p_0(
+#line 168 "set.m"
+  MR_Word mercury__set__param_1,
+#line 168 "set.m"
+  MR_Box * mercury__set__param_2,
+#line 168 "set.m"
+  MR_Word mercury__set__param_3,
+#line 168 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 160 "set.m"
+MR_bool MR_CALL 
+mercury__set__remove_list_3_p_0(
+#line 160 "set.m"
+  MR_Word mercury__set__param_1,
+#line 160 "set.m"
+  MR_Word mercury__set__param_2,
+#line 160 "set.m"
+  MR_Word mercury__set__param_3,
+#line 160 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 153 "set.m"
+MR_bool MR_CALL 
+mercury__set__remove_3_p_0(
+#line 153 "set.m"
+  MR_Word mercury__set__param_1,
+#line 153 "set.m"
+  MR_Box mercury__set__param_2,
+#line 153 "set.m"
+  MR_Word mercury__set__param_3,
+#line 153 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 146 "set.m"
+void MR_CALL 
+mercury__set__delete_list_3_p_0(
+#line 146 "set.m"
+  MR_Word mercury__set__param_1,
+#line 146 "set.m"
+  MR_Word mercury__set__param_2,
+#line 146 "set.m"
+  MR_Word mercury__set__param_3,
+#line 146 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 145 "set.m"
+MR_Word MR_CALL 
+mercury__set__delete_list_2_f_0(
+#line 145 "set.m"
+  MR_Word mercury__set__param_1,
+#line 145 "set.m"
+  MR_Word mercury__set__param_2,
+#line 145 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 139 "set.m"
+void MR_CALL 
+mercury__set__delete_3_p_0(
+#line 139 "set.m"
+  MR_Word mercury__set__param_1,
+#line 139 "set.m"
+  MR_Box mercury__set__param_2,
+#line 139 "set.m"
+  MR_Word mercury__set__param_3,
+#line 139 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 138 "set.m"
+MR_Word MR_CALL 
+mercury__set__delete_2_f_0(
+#line 138 "set.m"
+  MR_Word mercury__set__param_1,
+#line 138 "set.m"
+  MR_Word mercury__set__param_2,
+#line 138 "set.m"
+  MR_Box mercury__set__param_3);
+
+#line 131 "set.m"
+void MR_CALL 
+mercury__set__insert_list_3_p_0(
+#line 131 "set.m"
+  MR_Word mercury__set__param_1,
+#line 131 "set.m"
+  MR_Word mercury__set__param_2,
+#line 131 "set.m"
+  MR_Word mercury__set__param_3,
+#line 131 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 130 "set.m"
+MR_Word MR_CALL 
+mercury__set__insert_list_2_f_0(
+#line 130 "set.m"
+  MR_Word mercury__set__param_1,
+#line 130 "set.m"
+  MR_Word mercury__set__param_2,
+#line 130 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 125 "set.m"
+MR_bool MR_CALL 
+mercury__set__insert_new_3_p_0(
+#line 125 "set.m"
+  MR_Word mercury__set__param_1,
+#line 125 "set.m"
+  MR_Box mercury__set__param_2,
+#line 125 "set.m"
+  MR_Word mercury__set__param_3,
+#line 125 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 120 "set.m"
+void MR_CALL 
+mercury__set__insert_3_p_0(
+#line 120 "set.m"
+  MR_Word mercury__set__param_1,
+#line 120 "set.m"
+  MR_Box mercury__set__param_2,
+#line 120 "set.m"
+  MR_Word mercury__set__param_3,
+#line 120 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 119 "set.m"
+MR_Word MR_CALL 
+mercury__set__insert_2_f_0(
+#line 119 "set.m"
+  MR_Word mercury__set__param_1,
+#line 119 "set.m"
+  MR_Word mercury__set__param_2,
+#line 119 "set.m"
+  MR_Box mercury__set__param_3);
+
+#line 114 "set.m"
+MR_bool MR_CALL 
+mercury__set__contains_2_p_0(
+#line 114 "set.m"
+  MR_Word mercury__set__param_1,
+#line 114 "set.m"
+  MR_Word mercury__set__param_2,
+#line 114 "set.m"
+  MR_Box mercury__set__param_3);
+
+#line 110 "set.m"
+void MR_CALL 
+mercury__set__is_member_3_p_0(
+#line 110 "set.m"
+  MR_Word mercury__set__param_1,
+#line 110 "set.m"
+  MR_Box mercury__set__param_2,
+#line 110 "set.m"
+  MR_Word mercury__set__param_3,
+#line 110 "set.m"
+  MR_Word * mercury__set__param_4);
+
+#line 105 "set.m"
+void MR_CALL 
+mercury__set__member_2_p_1(
+#line 105 "set.m"
+  MR_Word mercury__set__param_1,
+#line 105 "set.m"
+  MR_Box * mercury__set__param_2,
+#line 105 "set.m"
+  MR_Word mercury__set__param_3,
+#line 105 "set.m"
+  MR_Cont mercury__set__param_4,
+#line 105 "set.m"
+  void * mercury__set__param_5);
+
+#line 104 "set.m"
+MR_bool MR_CALL 
+mercury__set__member_2_p_0(
+#line 104 "set.m"
+  MR_Word mercury__set__param_1,
+#line 104 "set.m"
+  MR_Box mercury__set__param_2,
+#line 104 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 99 "set.m"
+MR_bool MR_CALL 
+mercury__set__superset_2_p_0(
+#line 99 "set.m"
+  MR_Word mercury__set__param_1,
+#line 99 "set.m"
+  MR_Word mercury__set__param_2,
+#line 99 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 94 "set.m"
+MR_bool MR_CALL 
+mercury__set__subset_2_p_0(
+#line 94 "set.m"
+  MR_Word mercury__set__param_1,
+#line 94 "set.m"
+  MR_Word mercury__set__param_2,
+#line 94 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 90 "set.m"
+MR_bool MR_CALL 
+mercury__set__is_non_empty_1_p_0(
+#line 90 "set.m"
+  MR_Word mercury__set__param_1,
+#line 90 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 89 "set.m"
+MR_bool MR_CALL 
+mercury__set__non_empty_1_p_0(
+#line 89 "set.m"
+  MR_Word mercury__set__param_1,
+#line 89 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 84 "set.m"
+MR_bool MR_CALL 
+mercury__set__is_empty_1_p_0(
+#line 84 "set.m"
+  MR_Word mercury__set__param_1,
+#line 84 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 83 "set.m"
+MR_bool MR_CALL 
+mercury__set__empty_1_p_0(
+#line 83 "set.m"
+  MR_Word mercury__set__param_1,
+#line 83 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 78 "set.m"
+MR_bool MR_CALL 
+mercury__set__equal_2_p_0(
+#line 78 "set.m"
+  MR_Word mercury__set__param_1,
+#line 78 "set.m"
+  MR_Word mercury__set__param_2,
+#line 78 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 73 "set.m"
+MR_bool MR_CALL 
+mercury__set__is_singleton_2_p_0(
+#line 73 "set.m"
+  MR_Word mercury__set__param_1,
+#line 73 "set.m"
+  MR_Word mercury__set__param_2,
+#line 73 "set.m"
+  MR_Box * mercury__set__param_3);
+
+#line 71 "set.m"
+MR_Word MR_CALL 
+mercury__set__make_singleton_set_1_f_0(
+#line 71 "set.m"
+  MR_Word mercury__set__param_1,
+#line 71 "set.m"
+  MR_Box mercury__set__param_2);
+
+#line 69 "set.m"
+MR_bool MR_CALL 
+mercury__set__singleton_set_2_p_1(
+#line 69 "set.m"
+  MR_Word mercury__set__param_1,
+#line 69 "set.m"
+  MR_Box * mercury__set__param_2,
+#line 69 "set.m"
+  MR_Word mercury__set__param_3);
+
+#line 68 "set.m"
+void MR_CALL 
+mercury__set__singleton_set_2_p_0(
+#line 68 "set.m"
+  MR_Word mercury__set__param_1,
+#line 68 "set.m"
+  MR_Box mercury__set__param_2,
+#line 68 "set.m"
+  MR_Word * mercury__set__param_3);
+
+#line 62 "set.m"
+MR_Word MR_CALL 
+mercury__set__to_sorted_list_1_f_0(
+#line 62 "set.m"
+  MR_Word mercury__set__param_1,
+#line 62 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 61 "set.m"
+void MR_CALL 
+mercury__set__to_sorted_list_2_p_0(
+#line 61 "set.m"
+  MR_Word mercury__set__param_1,
+#line 61 "set.m"
+  MR_Word mercury__set__param_2,
+#line 61 "set.m"
+  MR_Word * mercury__set__param_3);
+
+#line 55 "set.m"
+MR_Word MR_CALL 
+mercury__set__from_sorted_list_1_f_0(
+#line 55 "set.m"
+  MR_Word mercury__set__param_1,
+#line 55 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 51 "set.m"
+MR_Word MR_CALL 
+mercury__set__sorted_list_to_set_1_f_0(
+#line 51 "set.m"
+  MR_Word mercury__set__param_1,
+#line 51 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 50 "set.m"
+void MR_CALL 
+mercury__set__sorted_list_to_set_2_p_0(
+#line 50 "set.m"
+  MR_Word mercury__set__param_1,
+#line 50 "set.m"
+  MR_Word mercury__set__param_2,
+#line 50 "set.m"
+  MR_Word * mercury__set__param_3);
+
+#line 44 "set.m"
+MR_Word MR_CALL 
+mercury__set__set_1_f_0(
+#line 44 "set.m"
+  MR_Word mercury__set__param_1,
+#line 44 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 43 "set.m"
+MR_Word MR_CALL 
+mercury__set__from_list_1_f_0(
+#line 43 "set.m"
+  MR_Word mercury__set__param_1,
+#line 43 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 39 "set.m"
+MR_Word MR_CALL 
+mercury__set__list_to_set_1_f_0(
+#line 39 "set.m"
+  MR_Word mercury__set__param_1,
+#line 39 "set.m"
+  MR_Word mercury__set__param_2);
+
+#line 38 "set.m"
+void MR_CALL 
+mercury__set__list_to_set_2_p_0(
+#line 38 "set.m"
+  MR_Word mercury__set__param_1,
+#line 38 "set.m"
+  MR_Word mercury__set__param_2,
+#line 38 "set.m"
+  MR_Word * mercury__set__param_3);
+
+#line 33 "set.m"
+void MR_CALL 
+mercury__set__init_1_p_0(
+#line 33 "set.m"
+  MR_Word mercury__set__param_1,
+#line 33 "set.m"
+  MR_Word * mercury__set__param_2);
+
+#line 32 "set.m"
+MR_Word MR_CALL 
+mercury__set__init_0_f_0(
+#line 32 "set.m"
+  MR_Word mercury__set__param_1);
+
+void mercury__set__init(void);
+void mercury__set__init_type_tables(void);
+void mercury__set__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_set */
+
+/* :- end_interface set. */

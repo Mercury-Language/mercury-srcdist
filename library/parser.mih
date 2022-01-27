@@ -1,0 +1,350 @@
+/*
+** Automatically generated from `parser.m'
+** by the Mercury compiler,
+** version rotd-2014-12-12
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parser. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parser
+#define MR_HEADER_GUARD_parser
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSER_DECL_GUARD
+#define PARSER_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "parser.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__parser__parser__type_ctor_info_parse_1;
+
+#line 45 "parser.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__parser__parser__type_ctor_info_state_2;
+
+#line 48 "parser.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__parser__parser__type_ctor_info_term_kind_0;
+
+#line 147 "parser.m"
+void MR_CALL 
+mercury__parser____Compare____term_kind_0_0(
+#line 147 "parser.m"
+  MR_Word * mercury__parser__param_1,
+#line 147 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 147 "parser.m"
+  MR_Word mercury__parser__param_3);
+
+#line 147 "parser.m"
+MR_bool MR_CALL 
+mercury__parser____Unify____term_kind_0_0(
+#line 147 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 147 "parser.m"
+  MR_Word mercury__parser__param_2);
+
+#line 888 "parser.m"
+void MR_CALL 
+mercury__parser____Compare____state_2_0(
+#line 888 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 888 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 888 "parser.m"
+  MR_Word * mercury__parser__param_3,
+#line 888 "parser.m"
+  MR_Word mercury__parser__param_4,
+#line 888 "parser.m"
+  MR_Word mercury__parser__param_5);
+
+#line 888 "parser.m"
+MR_bool MR_CALL 
+mercury__parser____Unify____state_2_0(
+#line 888 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 888 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 888 "parser.m"
+  MR_Word mercury__parser__param_3,
+#line 888 "parser.m"
+  MR_Word mercury__parser__param_4);
+
+#line 142 "parser.m"
+void MR_CALL 
+mercury__parser____Compare____parse_1_0(
+#line 142 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 142 "parser.m"
+  MR_Word * mercury__parser__param_2,
+#line 142 "parser.m"
+  MR_Word mercury__parser__param_3,
+#line 142 "parser.m"
+  MR_Word mercury__parser__param_4);
+
+#line 142 "parser.m"
+MR_bool MR_CALL 
+mercury__parser____Unify____parse_1_0(
+#line 142 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 142 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 142 "parser.m"
+  MR_Word mercury__parser__param_3);
+
+#line 1033 "parser.m"
+void MR_CALL 
+mercury__parser__final_parser_state_3_p_0(
+#line 1033 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 1033 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 1033 "parser.m"
+  MR_Word mercury__parser__param_3,
+#line 1033 "parser.m"
+  MR_Word * mercury__parser__param_4,
+#line 1033 "parser.m"
+  MR_Word * mercury__parser__param_5);
+
+#line 1025 "parser.m"
+void MR_CALL 
+mercury__parser__init_parser_state_4_p_0(
+#line 1025 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 1025 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 1025 "parser.m"
+  MR_Box mercury__parser__param_3,
+#line 1025 "parser.m"
+  MR_String mercury__parser__param_4,
+#line 1025 "parser.m"
+  MR_Word mercury__parser__param_5,
+#line 1025 "parser.m"
+  MR_Word * mercury__parser__param_6);
+
+#line 907 "parser.m"
+MR_Word MR_CALL 
+mercury__parser__parser_state_get_tokens_left_1_f_0(
+#line 907 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 907 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 907 "parser.m"
+  MR_Word mercury__parser__param_3);
+
+#line 906 "parser.m"
+MR_Word MR_CALL 
+mercury__parser__parser_state_get_varset_1_f_0(
+#line 906 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 906 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 906 "parser.m"
+  MR_Word mercury__parser__param_3);
+
+#line 299 "parser.m"
+void MR_CALL 
+mercury__parser__parse_whole_term_3_p_0(
+#line 299 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 299 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 299 "parser.m"
+  MR_Word * mercury__parser__param_3,
+#line 299 "parser.m"
+  MR_Word mercury__parser__param_4,
+#line 299 "parser.m"
+  MR_Word * mercury__parser__param_5);
+
+#line 208 "parser.m"
+void MR_CALL 
+mercury__parser__check_for_errors_5_p_0(
+#line 208 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 208 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 208 "parser.m"
+  MR_Word mercury__parser__param_3,
+#line 208 "parser.m"
+  MR_Word mercury__parser__param_4,
+#line 208 "parser.m"
+  MR_Word mercury__parser__param_5,
+#line 208 "parser.m"
+  MR_Word * mercury__parser__param_6);
+
+#line 120 "parser.m"
+void MR_CALL 
+mercury__parser__parse_tokens_with_op_table_4_p_0(
+#line 120 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 120 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 120 "parser.m"
+  MR_Box mercury__parser__param_3,
+#line 120 "parser.m"
+  MR_String mercury__parser__param_4,
+#line 120 "parser.m"
+  MR_Word mercury__parser__param_5,
+#line 120 "parser.m"
+  MR_Word * mercury__parser__param_6);
+
+#line 116 "parser.m"
+void MR_CALL 
+mercury__parser__parse_tokens_3_p_0(
+#line 116 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 116 "parser.m"
+  MR_String mercury__parser__param_2,
+#line 116 "parser.m"
+  MR_Word mercury__parser__param_3,
+#line 116 "parser.m"
+  MR_Word * mercury__parser__param_4);
+
+#line 108 "parser.m"
+void MR_CALL 
+mercury__parser__read_term_from_substring_with_op_table_7_p_0(
+#line 108 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 108 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 108 "parser.m"
+  MR_Box mercury__parser__param_3,
+#line 108 "parser.m"
+  MR_String mercury__parser__param_4,
+#line 108 "parser.m"
+  MR_String mercury__parser__param_5,
+#line 108 "parser.m"
+  MR_Integer mercury__parser__param_6,
+#line 108 "parser.m"
+  MR_Word mercury__parser__param_7,
+#line 108 "parser.m"
+  MR_Word * mercury__parser__param_8,
+#line 108 "parser.m"
+  MR_Word * mercury__parser__param_9);
+
+#line 102 "parser.m"
+void MR_CALL 
+mercury__parser__read_term_from_substring_6_p_0(
+#line 102 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 102 "parser.m"
+  MR_String mercury__parser__param_2,
+#line 102 "parser.m"
+  MR_String mercury__parser__param_3,
+#line 102 "parser.m"
+  MR_Integer mercury__parser__param_4,
+#line 102 "parser.m"
+  MR_Word mercury__parser__param_5,
+#line 102 "parser.m"
+  MR_Word * mercury__parser__param_6,
+#line 102 "parser.m"
+  MR_Word * mercury__parser__param_7);
+
+#line 96 "parser.m"
+void MR_CALL 
+mercury__parser__read_term_from_string_with_op_table_5_p_0(
+#line 96 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 96 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 96 "parser.m"
+  MR_Box mercury__parser__param_3,
+#line 96 "parser.m"
+  MR_String mercury__parser__param_4,
+#line 96 "parser.m"
+  MR_String mercury__parser__param_5,
+#line 96 "parser.m"
+  MR_Word * mercury__parser__param_6,
+#line 96 "parser.m"
+  MR_Word * mercury__parser__param_7);
+
+#line 90 "parser.m"
+void MR_CALL 
+mercury__parser__read_term_from_string_4_p_0(
+#line 90 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 90 "parser.m"
+  MR_String mercury__parser__param_2,
+#line 90 "parser.m"
+  MR_String mercury__parser__param_3,
+#line 90 "parser.m"
+  MR_Word * mercury__parser__param_4,
+#line 90 "parser.m"
+  MR_Word * mercury__parser__param_5);
+
+#line 76 "parser.m"
+void MR_CALL 
+mercury__parser__read_term_filename_with_op_table_5_p_0(
+#line 76 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 76 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 76 "parser.m"
+  MR_Box mercury__parser__param_3,
+#line 76 "parser.m"
+  MR_String mercury__parser__param_4,
+#line 76 "parser.m"
+  MR_Word * mercury__parser__param_5);
+
+#line 69 "parser.m"
+void MR_CALL 
+mercury__parser__read_term_filename_4_p_0(
+#line 69 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 69 "parser.m"
+  MR_String mercury__parser__param_2,
+#line 69 "parser.m"
+  MR_Word * mercury__parser__param_3);
+
+#line 59 "parser.m"
+void MR_CALL 
+mercury__parser__read_term_with_op_table_4_p_0(
+#line 59 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 59 "parser.m"
+  MR_Word mercury__parser__param_2,
+#line 59 "parser.m"
+  MR_Box mercury__parser__param_3,
+#line 59 "parser.m"
+  MR_Word * mercury__parser__param_4);
+
+#line 52 "parser.m"
+void MR_CALL 
+mercury__parser__read_term_3_p_0(
+#line 52 "parser.m"
+  MR_Word mercury__parser__param_1,
+#line 52 "parser.m"
+  MR_Word * mercury__parser__param_2);
+
+void mercury__parser__init(void);
+void mercury__parser__init_type_tables(void);
+void mercury__parser__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parser */
+
+/* :- end_interface parser. */

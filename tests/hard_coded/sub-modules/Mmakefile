@@ -1,0 +1,57 @@
+#-----------------------------------------------------------------------------#
+#
+# This directory contains test cases for sub-modules,
+# including both nested modules and separate sub-modules.
+#
+#-----------------------------------------------------------------------------#
+
+THIS_DIR = hard_coded/sub-modules
+
+#-----------------------------------------------------------------------------#
+
+#
+# Note: currently these test cases do not reliabily pass
+# if you use parallel make.
+#
+
+SUB_MODULE_PROGS= \
+	accessibility \
+	accessibility2 \
+	class \
+	deeply_nested \
+	finalise_parent \
+	g12_fe_bug \
+	initialise_parent \
+	mutable_parent \
+	nested \
+	nested2 \
+	nested3 \
+	nested_intermod_main \
+	non_word_mutable \
+	parent \
+	parent2 \
+	sm_exp_bug \
+	use_submodule
+
+# Solver types only work in C grades
+ifeq "$(filter il% csharp% java% erlang%,$(GRADE))" ""
+	SOLVER_PROGS = \
+		ts
+else
+	SOLVER_PROGS =
+endif
+
+PROGS=$(SUB_MODULE_PROGS) $(SOLVER_PROGS)
+
+TESTS = $(PROGS)
+TESTS_DIR=../..
+SUBDIRS=
+include $(TESTS_DIR)/Mmake.common
+
+# Module-specific options should go in Mercury.options so they
+# can be found by `mmc --make'.
+include Mercury.options
+
+%.runtest: %.res ;
+
+#-----------------------------------------------------------------------------#

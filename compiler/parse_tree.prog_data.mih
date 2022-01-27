@@ -1,0 +1,5195 @@
+/*
+** Automatically generated from `prog_data.m'
+** by the Mercury compiler,
+** version rotd-2014-12-12
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.prog_data. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_data
+#define MR_HEADER_GUARD_parse_tree__prog_data
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_DATA_DECL_GUARD
+#define PARSE_TREE__PROG_DATA_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+#line 43 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_abstract_type_details_0;
+
+#line 46 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_arg_reg_type_info_0;
+
+#line 49 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_arg_size_constr_0;
+
+#line 52 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_arg_size_term_0;
+
+#line 55 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_arg_tabling_method_0;
+
+#line 58 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_arg_width_0;
+
+#line 61 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_arity_0;
+
+#line 64 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_atomic_component_state_0;
+
+#line 67 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_backend_0;
+
+#line 70 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_bound_inst_0;
+
+#line 73 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_box_policy_0;
+
+#line 76 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_builtin_type_0;
+
+#line 79 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_c_foreign_type_0;
+
+#line 82 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_call_table_strictness_0;
+
+#line 85 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_can_fail_0;
+
+#line 88 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_class_id_0;
+
+#line 91 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_class_interface_0;
+
+#line 94 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_class_name_0;
+
+#line 97 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_comparison_pred_0;
+
+#line 100 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_condition_0;
+
+#line 103 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+
+#line 106 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_constructor_0;
+
+#line 109 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_constructor_arg_0;
+
+#line 112 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_csharp_foreign_type_0;
+
+#line 115 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ctor_field_name_0;
+
+#line 118 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_datastruct_0;
+
+#line 121 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_dead_datastruct_0;
+
+#line 124 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_dead_datastructs_0;
+
+#line 127 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_dead_var_0;
+
+#line 130 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_dead_vars_0;
+
+#line 133 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_det_comparison_0;
+
+#line 136 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_det_component_comparison_0;
+
+#line 139 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_determinism_0;
+
+#line 142 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_equality_pred_0;
+
+#line 145 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_erlang_foreign_type_0;
+
+#line 148 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_eval_method_0;
+
+#line 151 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_eval_minimal_method_0;
+
+#line 154 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_event_attr_synth_call_0;
+
+#line 157 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_event_attribute_0;
+
+#line 160 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_event_set_0;
+
+#line 163 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_event_set_data_0;
+
+#line 166 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_event_spec_0;
+
+#line 169 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_event_spec_map_0;
+
+#line 172 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_exception_status_0;
+
+#line 175 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_exception_type_0;
+
+#line 178 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_existq_tvars_0;
+
+#line 181 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_export_enum_attributes_0;
+
+#line 184 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_decl_is_local_0;
+
+#line 187 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_import_module_info_0;
+
+#line 190 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_import_module_info_list_0;
+
+#line 193 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_include_file_info_0;
+
+#line 196 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_include_file_info_list_0;
+
+#line 199 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_language_type_0;
+
+#line 202 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_literal_or_include_0;
+
+#line 205 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_proc_shared_code_treatment_0;
+
+#line 208 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_foreign_type_assertion_0;
+
+#line 211 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_generic_arg_size_info_1;
+
+#line 214 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_generic_termination_info_2;
+
+#line 217 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_has_main_0;
+
+#line 220 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_head_inst_vars_0;
+
+#line 223 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_hidden_arg_tabling_method_0;
+
+#line 226 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ho_arg_reg_0;
+
+#line 229 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ho_groundness_0;
+
+#line 232 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ho_inst_info_0;
+
+#line 235 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_il_foreign_type_0;
+
+#line 238 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_import_locn_0;
+
+#line 241 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_init_pred_0;
+
+#line 244 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_defn_0;
+
+#line 247 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_id_0;
+
+#line 250 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_name_0;
+
+#line 253 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_result_contains_any_0;
+
+#line 256 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_result_contains_instnames_0;
+
+#line 259 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_result_contains_types_0;
+
+#line 262 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_result_groundness_0;
+
+#line 265 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_term_0;
+
+#line 268 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_test_results_0;
+
+#line 271 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_0;
+
+#line 274 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_sub_0;
+
+#line 277 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_var_type_0;
+
+#line 280 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_inst_varset_0;
+
+#line 283 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_instance_body_0;
+
+#line 286 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_instance_method_0;
+
+#line 289 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_instance_methods_0;
+
+#line 292 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_instance_proc_def_0;
+
+#line 295 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_is_live_0;
+
+#line 298 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_is_solver_type_0;
+
+#line 301 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_item_visibility_0;
+
+#line 304 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_java_foreign_type_0;
+
+#line 307 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_kind_0;
+
+#line 310 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_kvar_0;
+
+#line 313 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_kvar_type_0;
+
+#line 316 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_lambda_eval_method_0;
+
+#line 319 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_live_datastruct_0;
+
+#line 322 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_live_datastructs_0;
+
+#line 325 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_live_var_0;
+
+#line 328 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_live_vars_0;
+
+#line 331 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_may_call_mm_tabled_0;
+
+#line 334 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_maybe_vartypes_0;
+
+#line 337 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_inst_0;
+
+#line 340 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_mode_0;
+
+#line 343 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+#line 346 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0;
+
+#line 349 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mode_defn_0;
+
+#line 352 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mode_id_0;
+
+#line 355 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mode_num_0;
+
+#line 358 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_module_specifier_0;
+
+#line 361 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_must_rename_0;
+
+#line 364 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_need_qualifier_0;
+
+#line 367 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_pragma_arg_size_info_0;
+
+#line 370 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_pragma_constr_arg_size_info_0;
+
+#line 373 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_pragma_foreign_proc_attributes_0;
+
+#line 376 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_pragma_foreign_proc_extra_attribute_0;
+
+#line 379 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_pragma_foreign_proc_extra_attributes_0;
+
+#line 382 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_pragma_foreign_proc_impl_0;
+
+#line 385 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_pragma_termination_info_0;
+
+#line 388 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_pragma_var_0;
+
+#line 391 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_pred_inst_info_0;
+
+#line 394 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_proc_affects_liveness_0;
+
+#line 397 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_proc_allocates_memory_0;
+
+#line 400 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_proc_may_call_mercury_0;
+
+#line 403 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_proc_may_duplicate_0;
+
+#line 406 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_proc_may_modify_trail_0;
+
+#line 409 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_proc_may_throw_exception_0;
+
+#line 412 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_proc_registers_roots_0;
+
+#line 415 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_proc_tabled_for_io_0;
+
+#line 418 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_proc_terminates_0;
+
+#line 421 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_proc_thread_safe_0;
+
+#line 424 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraint_0;
+
+#line 427 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_constraints_0;
+
+#line 430 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_context_0;
+
+#line 433 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_fundep_0;
+
+#line 436 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_substitution_0;
+
+#line 439 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_term_0;
+
+#line 442 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_0;
+
+#line 445 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_renaming_0;
+
+#line 448 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_set_types_0;
+
+#line 451 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+#line 454 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_vars_0;
+
+#line 457 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_varset_0;
+
+#line 460 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_promise_type_0;
+
+#line 463 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_purity_0;
+
+#line 466 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_ref_or_val_0;
+
+#line 469 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_required_feature_0;
+
+#line 472 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_section_0;
+
+#line 475 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_selector_0;
+
+#line 478 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_set_of_live_var_0;
+
+#line 481 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_shrouded_pred_id_0;
+
+#line 484 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_shrouded_pred_proc_id_0;
+
+#line 487 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_shrouded_proc_id_0;
+
+#line 490 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_simple_call_id_0;
+
+#line 493 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_soln_count_0;
+
+#line 496 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_solver_type_details_0;
+
+#line 499 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_solver_type_init_0;
+
+#line 502 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_structure_reuse_condition_0;
+
+#line 505 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_structure_reuse_conditions_0;
+
+#line 508 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_structure_reuse_domain_0;
+
+#line 511 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_structure_sharing_0;
+
+#line 514 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_structure_sharing_domain_0;
+
+#line 517 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_structure_sharing_pair_0;
+
+#line 520 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_sym_name_and_arity_0;
+
+#line 523 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_sym_name_specifier_0;
+
+#line 526 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_table_attr_allow_reset_0;
+
+#line 529 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_table_attr_statistics_0;
+
+#line 532 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_table_attributes_0;
+
+#line 535 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_table_io_entry_kind_0;
+
+#line 538 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_table_io_is_unitize_0;
+
+#line 541 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_top_feedback_0;
+
+#line 544 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trace_compiletime_0;
+
+#line 547 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trace_expr_1;
+
+#line 550 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trace_grade_0;
+
+#line 553 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trace_mutable_var_0;
+
+#line 556 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trace_op_0;
+
+#line 559 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trace_runtime_0;
+
+#line 562 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trace_trace_level_0;
+
+#line 565 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_trailing_status_0;
+
+#line 568 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tsubst_0;
+
+#line 571 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_0;
+
+#line 574 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_kind_map_0;
+
+#line 577 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_name_map_0;
+
+#line 580 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_renaming_0;
+
+#line 583 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+#line 586 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvarset_0;
+
+#line 589 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_and_mode_0;
+
+#line 592 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0;
+
+#line 595 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_defn_0;
+
+#line 598 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_param_0;
+
+#line 601 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_subst_0;
+
+#line 604 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_term_0;
+
+#line 607 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_unify_compare_0;
+
+#line 610 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_unify_is_real_0;
+
+#line 613 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_uniqueness_0;
+
+#line 616 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_unit_selector_0;
+
+#line 619 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_uppercase_export_enum_0;
+
+#line 622 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_used_modules_0;
+
+#line 625 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_user_annotated_sharing_0;
+
+#line 628 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_user_sharing_type_information_0;
+
+#line 631 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_uses_reserved_address_0;
+
+#line 634 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_uses_reserved_tag_0;
+
+#line 637 "parse_tree.prog_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_vartypes_0;
+
+#line 2154 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_112_114_111_103_95_100_97_116_97_95_95_116_118_97_114_95_116_121_112_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 2154 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 2154 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_112_114_111_103_95_100_97_116_97_95_95_116_118_97_114_95_116_121_112_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 1511 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_112_114_111_103_95_100_97_116_97_95_95_112_114_111_103_95_118_97_114_95_116_121_112_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 1511 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 1511 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_112_114_111_103_95_100_97_116_97_95_95_112_114_111_103_95_118_97_114_95_116_121_112_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 1780 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_112_114_111_103_95_100_97_116_97_95_95_108_97_109_98_100_97_95_101_118_97_108_95_109_101_116_104_111_100_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 1780 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 1780 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_112_114_111_103_95_100_97_116_97_95_95_108_97_109_98_100_97_95_101_118_97_108_95_109_101_116_104_111_100_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 2318 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_112_114_111_103_95_100_97_116_97_95_95_107_118_97_114_95_116_121_112_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 2318 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 2318 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_112_114_111_103_95_100_97_116_97_95_95_107_118_97_114_95_116_121_112_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 2544 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_112_114_111_103_95_100_97_116_97_95_95_105_110_115_116_95_118_97_114_95_116_121_112_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 2544 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 2544 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_112_114_111_103_95_100_97_116_97_95_95_105_110_115_116_95_118_97_114_95_116_121_112_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 528 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_112_114_111_103_95_100_97_116_97_95_95_101_114_108_97_110_103_95_102_111_114_101_105_103_110_95_116_121_112_101_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 528 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 528 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_112_97_114_115_101_95_116_114_101_101_95_95_112_114_111_103_95_100_97_116_97_95_95_101_114_108_97_110_103_95_102_111_114_101_105_103_110_95_116_121_112_101_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 2205 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____vartypes_0_0(
+#line 2205 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2205 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2205 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2205 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____vartypes_0_0(
+#line 2205 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2205 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2174 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____uses_reserved_tag_0_0(
+#line 2174 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2174 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2174 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2174 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____uses_reserved_tag_0_0(
+#line 2174 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2174 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2178 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____uses_reserved_address_0_0(
+#line 2178 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2178 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2178 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2178 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____uses_reserved_address_0_0(
+#line 2178 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2178 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 819 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____user_sharing_type_information_0_0(
+#line 819 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 819 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 819 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 819 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____user_sharing_type_information_0_0(
+#line 819 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 819 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 809 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____user_annotated_sharing_0_0(
+#line 809 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 809 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 809 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 809 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____user_annotated_sharing_0_0(
+#line 809 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 809 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2690 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____used_modules_0_0(
+#line 2690 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2690 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2690 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2690 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____used_modules_0_0(
+#line 2690 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2690 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1029 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____uppercase_export_enum_0_0(
+#line 1029 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1029 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1029 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1029 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____uppercase_export_enum_0_0(
+#line 1029 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1029 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 802 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____unit_selector_0_0(
+#line 802 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 802 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 802 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 802 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____unit_selector_0_0(
+#line 802 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 802 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2470 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____uniqueness_0_0(
+#line 2470 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2470 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2470 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2470 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____uniqueness_0_0(
+#line 2470 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2470 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2615 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____unify_is_real_0_0(
+#line 2615 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2615 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2615 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2615 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____unify_is_real_0_0(
+#line 2615 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2615 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1983 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____unify_compare_0_0(
+#line 1983 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1983 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1983 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1983 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____unify_compare_0_0(
+#line 1983 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1983 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2152 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____type_term_0_0(
+#line 2152 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2152 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2152 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2152 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____type_term_0_0(
+#line 2152 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2152 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 952 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____type_subst_0_0(
+#line 952 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 952 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 952 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 952 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____type_subst_0_0(
+#line 952 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 952 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2037 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____type_param_0_0(
+#line 2037 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2037 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2037 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2037 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____type_param_0_0(
+#line 2037 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2037 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1872 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____type_defn_0_0(
+#line 1872 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1872 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1872 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1872 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____type_defn_0_0(
+#line 1872 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1872 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2164 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____type_ctor_0_0(
+#line 2164 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2164 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2164 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2164 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____type_ctor_0_0(
+#line 2164 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2164 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 75 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____type_and_mode_0_0(
+#line 75 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 75 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 75 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 75 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____type_and_mode_0_0(
+#line 75 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 75 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2159 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____tvarset_0_0(
+#line 2159 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2159 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2159 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2159 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____tvarset_0_0(
+#line 2159 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2159 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2154 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____tvar_type_0_0(
+#line 2154 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 2154 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____tvar_type_0_0(void);
+
+#line 2162 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____tvar_renaming_0_0(
+#line 2162 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2162 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2162 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2162 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____tvar_renaming_0_0(
+#line 2162 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2162 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2167 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____tvar_name_map_0_0(
+#line 2167 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2167 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2167 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2167 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____tvar_name_map_0_0(
+#line 2167 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2167 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2327 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____tvar_kind_map_0_0(
+#line 2327 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2327 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2327 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2327 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____tvar_kind_map_0_0(
+#line 2327 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2327 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2157 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____tvar_0_0(
+#line 2157 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2157 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2157 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2157 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____tvar_0_0(
+#line 2157 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2157 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2161 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____tsubst_0_0(
+#line 2161 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2161 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2161 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2161 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____tsubst_0_0(
+#line 2161 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2161 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 924 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____trailing_status_0_0(
+#line 924 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 924 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 924 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 924 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____trailing_status_0_0(
+#line 924 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 924 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1491 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____trace_trace_level_0_0(
+#line 1491 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1491 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1491 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1491 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____trace_trace_level_0_0(
+#line 1491 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1491 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1495 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____trace_runtime_0_0(
+#line 1495 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1495 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1495 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1495 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____trace_runtime_0_0(
+#line 1495 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1495 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1466 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____trace_op_0_0(
+#line 1466 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1466 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1466 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1466 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____trace_op_0_0(
+#line 1466 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1466 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1498 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____trace_mutable_var_0_0(
+#line 1498 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1498 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1498 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1498 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____trace_mutable_var_0_0(
+#line 1498 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1498 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1475 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____trace_grade_0_0(
+#line 1475 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1475 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1475 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1475 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____trace_grade_0_0(
+#line 1475 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1475 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1461 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____trace_expr_1_0(
+#line 1461 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1461 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_2,
+#line 1461 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 1461 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_4);
+
+#line 1461 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____trace_expr_1_0(
+#line 1461 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1461 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1461 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1470 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____trace_compiletime_0_0(
+#line 1470 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1470 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1470 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1470 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____trace_compiletime_0_0(
+#line 1470 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1470 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 757 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____top_feedback_0_0(
+#line 757 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 757 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 757 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 757 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____top_feedback_0_0(
+#line 757 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 757 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 639 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____table_io_is_unitize_0_0(
+#line 639 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 639 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 639 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 639 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____table_io_is_unitize_0_0(
+#line 639 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 639 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 608 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____table_io_entry_kind_0_0(
+#line 608 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 608 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 608 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 608 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____table_io_entry_kind_0_0(
+#line 608 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 608 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 565 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____table_attributes_0_0(
+#line 565 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 565 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 565 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 565 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____table_attributes_0_0(
+#line 565 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 565 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 575 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____table_attr_statistics_0_0(
+#line 575 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 575 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 575 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 575 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____table_attr_statistics_0_0(
+#line 575 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 575 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 579 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____table_attr_allow_reset_0_0(
+#line 579 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 579 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 579 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 579 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____table_attr_allow_reset_0_0(
+#line 579 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 579 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2660 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____sym_name_specifier_0_0(
+#line 2660 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2660 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2660 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2660 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____sym_name_specifier_0_0(
+#line 2660 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2660 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2664 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____sym_name_and_arity_0_0(
+#line 2664 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2664 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2664 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2664 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____sym_name_and_arity_0_0(
+#line 2664 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2664 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 781 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____structure_sharing_pair_0_0(
+#line 781 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 781 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 781 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 781 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____structure_sharing_pair_0_0(
+#line 781 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 781 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 768 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____structure_sharing_domain_0_0(
+#line 768 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 768 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 768 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 768 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____structure_sharing_domain_0_0(
+#line 768 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 768 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 775 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____structure_sharing_0_0(
+#line 775 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 775 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 775 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 775 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____structure_sharing_0_0(
+#line 775 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 775 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 844 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____structure_reuse_domain_0_0(
+#line 844 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 844 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 844 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 844 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____structure_reuse_domain_0_0(
+#line 844 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 844 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 849 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____structure_reuse_conditions_0_0(
+#line 849 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 849 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 849 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 849 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____structure_reuse_conditions_0_0(
+#line 849 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 849 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 863 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____structure_reuse_condition_0_0(
+#line 863 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 863 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 863 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 863 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____structure_reuse_condition_0_0(
+#line 863 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 863 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2016 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____solver_type_init_0_0(
+#line 2016 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2016 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2016 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2016 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____solver_type_init_0_0(
+#line 2016 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2016 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1998 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____solver_type_details_0_0(
+#line 1998 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1998 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1998 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1998 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____solver_type_details_0_0(
+#line 1998 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1998 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 163 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____soln_count_0_0(
+#line 163 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 163 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 163 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 163 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____soln_count_0_0(
+#line 163 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 163 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2667 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____simple_call_id_0_0(
+#line 2667 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2667 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2667 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2667 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____simple_call_id_0_0(
+#line 2667 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2667 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1711 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____shrouded_proc_id_0_0(
+#line 1711 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1711 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1711 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1711 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____shrouded_proc_id_0_0(
+#line 1711 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1711 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1712 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____shrouded_pred_proc_id_0_0(
+#line 1712 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1712 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1712 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1712 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____shrouded_pred_proc_id_0_0(
+#line 1712 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1712 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1710 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____shrouded_pred_id_0_0(
+#line 1710 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1710 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1710 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1710 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____shrouded_pred_id_0_0(
+#line 1710 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1710 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 838 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____set_of_live_var_0_0(
+#line 838 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 838 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 838 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 838 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____set_of_live_var_0_0(
+#line 838 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 838 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 795 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____selector_0_0(
+#line 795 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 795 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 795 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 795 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____selector_0_0(
+#line 795 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 795 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2640 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____section_0_0(
+#line 2640 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2640 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2640 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2640 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____section_0_0(
+#line 2640 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2640 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1053 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____required_feature_0_0(
+#line 1053 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1053 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1053 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1053 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____required_feature_0_0(
+#line 1053 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1053 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 531 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____ref_or_val_0_0(
+#line 531 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 531 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 531 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 531 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____ref_or_val_0_0(
+#line 531 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 531 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 89 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____purity_0_0(
+#line 89 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 89 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 89 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 89 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____purity_0_0(
+#line 89 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 89 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 61 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____promise_type_0_0(
+#line 61 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 61 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 61 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 61 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____promise_type_0_0(
+#line 61 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 61 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1514 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____prog_varset_0_0(
+#line 1514 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1514 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1514 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1514 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____prog_varset_0_0(
+#line 1514 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1514 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1518 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____prog_vars_0_0(
+#line 1518 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1518 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1518 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1518 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____prog_vars_0_0(
+#line 1518 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1518 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1511 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____prog_var_type_0_0(
+#line 1511 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 1511 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____prog_var_type_0_0(void);
+
+#line 2139 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____prog_var_set_types_0_0(
+#line 2139 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2139 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2139 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2139 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____prog_var_set_types_0_0(
+#line 2139 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2139 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1516 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____prog_var_renaming_0_0(
+#line 1516 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1516 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1516 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1516 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____prog_var_renaming_0_0(
+#line 1516 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1516 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1513 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____prog_var_0_0(
+#line 1513 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1513 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1513 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1513 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____prog_var_0_0(
+#line 1513 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1513 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1517 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____prog_term_0_0(
+#line 1517 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1517 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1517 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1517 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____prog_term_0_0(
+#line 1517 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1517 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1515 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____prog_substitution_0_0(
+#line 1515 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1515 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1515 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1515 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____prog_substitution_0_0(
+#line 1515 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1515 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1097 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____prog_fundep_0_0(
+#line 1097 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1097 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1097 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1097 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____prog_fundep_0_0(
+#line 1097 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1097 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1522 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____prog_context_0_0(
+#line 1522 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1522 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1522 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1522 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____prog_context_0_0(
+#line 1522 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1522 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1084 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____prog_constraints_0_0(
+#line 1084 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1084 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1084 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1084 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____prog_constraints_0_0(
+#line 1084 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1084 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1078 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____prog_constraint_0_0(
+#line 1078 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1078 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1078 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1078 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____prog_constraint_0_0(
+#line 1078 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1078 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1255 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____proc_thread_safe_0_0(
+#line 1255 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1255 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1255 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1255 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____proc_thread_safe_0_0(
+#line 1255 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1255 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1320 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____proc_terminates_0_0(
+#line 1320 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1320 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1320 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1320 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____proc_terminates_0_0(
+#line 1320 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1320 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1260 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____proc_tabled_for_io_0_0(
+#line 1260 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1260 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1260 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1260 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____proc_tabled_for_io_0_0(
+#line 1260 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1260 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1307 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____proc_registers_roots_0_0(
+#line 1307 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1307 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1307 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1307 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____proc_registers_roots_0_0(
+#line 1307 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1307 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1333 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____proc_may_throw_exception_0_0(
+#line 1333 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1333 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1333 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1333 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____proc_may_throw_exception_0_0(
+#line 1333 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1333 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1266 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____proc_may_modify_trail_0_0(
+#line 1266 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1266 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1266 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1266 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____proc_may_modify_trail_0_0(
+#line 1266 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1266 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1313 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____proc_may_duplicate_0_0(
+#line 1313 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1313 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1313 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1313 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____proc_may_duplicate_0_0(
+#line 1313 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1313 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1245 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____proc_may_call_mercury_0_0(
+#line 1245 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1245 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1245 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1245 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____proc_may_call_mercury_0_0(
+#line 1245 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1245 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1301 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____proc_allocates_memory_0_0(
+#line 1301 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1301 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1301 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1301 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____proc_allocates_memory_0_0(
+#line 1301 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1301 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1296 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____proc_affects_liveness_0_0(
+#line 1296 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1296 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1296 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1296 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____proc_affects_liveness_0_0(
+#line 1296 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1296 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2511 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____pred_inst_info_0_0(
+#line 2511 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2511 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2511 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2511 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____pred_inst_info_0_0(
+#line 2511 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2511 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1284 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____pragma_var_0_0(
+#line 1284 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1284 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1284 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1284 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____pragma_var_0_0(
+#line 1284 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1284 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 703 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____pragma_termination_info_0_0(
+#line 703 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 703 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 703 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 703 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____pragma_termination_info_0_0(
+#line 703 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 703 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 971 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____pragma_foreign_proc_impl_0_0(
+#line 971 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 971 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 971 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 971 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____pragma_foreign_proc_impl_0_0(
+#line 971 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 971 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1357 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____pragma_foreign_proc_extra_attributes_0_0(
+#line 1357 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1357 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1357 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1357 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____pragma_foreign_proc_extra_attributes_0_0(
+#line 1357 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1357 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1343 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____pragma_foreign_proc_extra_attribute_0_0(
+#line 1343 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1343 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1343 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1343 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____pragma_foreign_proc_extra_attribute_0_0(
+#line 1343 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1343 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1365 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____pragma_foreign_proc_attributes_0_0(
+#line 1365 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1365 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1365 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1365 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____pragma_foreign_proc_attributes_0_0(
+#line 1365 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1365 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 731 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____pragma_constr_arg_size_info_0_0(
+#line 731 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 731 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 731 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 731 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____pragma_constr_arg_size_info_0_0(
+#line 731 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 731 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 702 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____pragma_arg_size_info_0_0(
+#line 702 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 702 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 702 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 702 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____pragma_arg_size_info_0_0(
+#line 702 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 702 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2676 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____need_qualifier_0_0(
+#line 2676 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2676 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2676 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2676 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____need_qualifier_0_0(
+#line 2676 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2676 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1564 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____must_rename_0_0(
+#line 1564 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1564 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1564 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1564 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____must_rename_0_0(
+#line 1564 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1564 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2670 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____module_specifier_0_0(
+#line 2670 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2670 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2670 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2670 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____module_specifier_0_0(
+#line 2670 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2670 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 883 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____mode_num_0_0(
+#line 883 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 883 "prog_data.m"
+  MR_Integer parse_tree__prog_data__param_2,
+#line 883 "prog_data.m"
+  MR_Integer parse_tree__prog_data__param_3);
+
+#line 883 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____mode_num_0_0(
+#line 883 "prog_data.m"
+  MR_Integer parse_tree__prog_data__param_1,
+#line 883 "prog_data.m"
+  MR_Integer parse_tree__prog_data__param_2);
+
+#line 2619 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____mode_id_0_0(
+#line 2619 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2619 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2619 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2619 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____mode_id_0_0(
+#line 2619 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2619 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2622 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____mode_defn_0_0(
+#line 2622 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2622 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2622 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2622 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____mode_defn_0_0(
+#line 2622 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2622 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 936 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____mm_tabling_status_0_0(
+#line 936 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 936 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 936 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 936 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____mm_tabling_status_0_0(
+#line 936 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 936 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2043 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____mer_type_0_0(
+#line 2043 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2043 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2043 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2043 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____mer_type_0_0(
+#line 2043 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2043 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2625 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____mer_mode_0_0(
+#line 2625 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2625 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2625 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2625 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____mer_mode_0_0(
+#line 2625 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2625 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2361 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____mer_inst_0_0(
+#line 2361 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2361 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2361 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2361 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____mer_inst_0_0(
+#line 2361 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2361 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2142 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____maybe_vartypes_0_0(
+#line 2142 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2142 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2142 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2142 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____maybe_vartypes_0_0(
+#line 2142 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2142 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1270 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____may_call_mm_tabled_0_0(
+#line 1270 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1270 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1270 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1270 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____may_call_mm_tabled_0_0(
+#line 1270 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1270 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 837 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____live_vars_0_0(
+#line 837 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 837 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 837 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 837 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____live_vars_0_0(
+#line 837 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 837 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 836 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____live_var_0_0(
+#line 836 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 836 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 836 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 836 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____live_var_0_0(
+#line 836 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 836 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 840 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____live_datastructs_0_0(
+#line 840 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 840 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 840 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 840 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____live_datastructs_0_0(
+#line 840 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 840 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 839 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____live_datastruct_0_0(
+#line 839 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 839 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 839 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 839 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____live_datastruct_0_0(
+#line 839 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 839 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1780 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____lambda_eval_method_0_0(
+#line 1780 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 1780 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____lambda_eval_method_0_0(void);
+
+#line 2318 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____kvar_type_0_0(
+#line 2318 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 2318 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____kvar_type_0_0(void);
+
+#line 2320 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____kvar_0_0(
+#line 2320 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2320 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2320 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2320 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____kvar_0_0(
+#line 2320 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2320 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2305 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____kind_0_0(
+#line 2305 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2305 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2305 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2305 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____kind_0_0(
+#line 2305 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2305 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 518 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____java_foreign_type_0_0(
+#line 518 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 518 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 518 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 518 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____java_foreign_type_0_0(
+#line 518 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 518 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2686 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____item_visibility_0_0(
+#line 2686 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2686 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2686 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2686 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____item_visibility_0_0(
+#line 2686 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2686 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1906 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____is_solver_type_0_0(
+#line 1906 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1906 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1906 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1906 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____is_solver_type_0_0(
+#line 1906 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1906 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2594 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____is_live_0_0(
+#line 2594 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2594 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2594 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2594 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____is_live_0_0(
+#line 2594 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2594 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1122 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____instance_proc_def_0_0(
+#line 1122 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1122 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1122 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1122 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____instance_proc_def_0_0(
+#line 1122 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1122 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1136 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____instance_methods_0_0(
+#line 1136 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1136 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1136 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1136 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____instance_methods_0_0(
+#line 1136 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1136 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1111 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____instance_method_0_0(
+#line 1111 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1111 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1111 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1111 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____instance_method_0_0(
+#line 1111 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1111 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1132 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____instance_body_0_0(
+#line 1132 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1132 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1132 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1132 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____instance_body_0_0(
+#line 1132 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1132 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2549 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_varset_0_0(
+#line 2549 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2549 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2549 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2549 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_varset_0_0(
+#line 2549 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2549 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2544 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_var_type_0_0(
+#line 2544 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 2544 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_var_type_0_0(void);
+
+#line 2552 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_var_sub_0_0(
+#line 2552 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2552 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2552 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2552 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_var_sub_0_0(
+#line 2552 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2552 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2547 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_var_0_0(
+#line 2547 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2547 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2547 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2547 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_var_0_0(
+#line 2547 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2547 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2420 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_test_results_0_0(
+#line 2420 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2420 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2420 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2420 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_test_results_0_0(
+#line 2420 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2420 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2548 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_term_0_0(
+#line 2548 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2548 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2548 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2548 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_term_0_0(
+#line 2548 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2548 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2444 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_result_groundness_0_0(
+#line 2444 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2444 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2444 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2444 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_result_groundness_0_0(
+#line 2444 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2444 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2463 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_result_contains_types_0_0(
+#line 2463 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2463 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2463 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2463 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_result_contains_types_0_0(
+#line 2463 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2463 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2455 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_result_contains_instnames_0_0(
+#line 2455 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2455 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2455 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2455 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_result_contains_instnames_0_0(
+#line 2455 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2455 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2450 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_result_contains_any_0_0(
+#line 2450 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2450 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2450 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2450 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_result_contains_any_0_0(
+#line 2450 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2450 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2579 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_name_0_0(
+#line 2579 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2579 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2579 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2579 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_name_0_0(
+#line 2579 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2579 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2538 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_id_0_0(
+#line 2538 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2538 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2538 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2538 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_id_0_0(
+#line 2538 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2538 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2556 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____inst_defn_0_0(
+#line 2556 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2556 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2556 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2556 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____inst_defn_0_0(
+#line 2556 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2556 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2012 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____init_pred_0_0(
+#line 2012 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2012 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2012 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2012 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____init_pred_0_0(
+#line 2012 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2012 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2646 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____import_locn_0_0(
+#line 2646 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2646 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2646 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2646 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____import_locn_0_0(
+#line 2646 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2646 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 505 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____il_foreign_type_0_0(
+#line 505 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 505 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 505 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 505 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____il_foreign_type_0_0(
+#line 505 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 505 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2492 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____ho_inst_info_0_0(
+#line 2492 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2492 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2492 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2492 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____ho_inst_info_0_0(
+#line 2492 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2492 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2485 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____ho_groundness_0_0(
+#line 2485 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2485 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2485 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2485 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____ho_groundness_0_0(
+#line 2485 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2485 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2534 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____ho_arg_reg_0_0(
+#line 2534 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2534 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2534 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2534 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____ho_arg_reg_0_0(
+#line 2534 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2534 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 604 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____hidden_arg_tabling_method_0_0(
+#line 604 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 604 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 604 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 604 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____hidden_arg_tabling_method_0_0(
+#line 604 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 604 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2551 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____head_inst_vars_0_0(
+#line 2551 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2551 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2551 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2551 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____head_inst_vars_0_0(
+#line 2551 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2551 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2682 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____has_main_0_0(
+#line 2682 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2682 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2682 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2682 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____has_main_0_0(
+#line 2682 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2682 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 696 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____generic_termination_info_2_0(
+#line 696 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 696 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 696 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3,
+#line 696 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_4,
+#line 696 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_5);
+
+#line 696 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____generic_termination_info_2_0(
+#line 696 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 696 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 696 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 696 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_4);
+
+#line 686 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____generic_arg_size_info_1_0(
+#line 686 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 686 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_2,
+#line 686 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 686 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_4);
+
+#line 686 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____generic_arg_size_info_1_0(
+#line 686 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 686 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 686 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1915 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____foreign_type_assertion_0_0(
+#line 1915 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1915 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1915 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1915 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____foreign_type_assertion_0_0(
+#line 1915 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1915 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 984 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____foreign_proc_shared_code_treatment_0_0(
+#line 984 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 984 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 984 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 984 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____foreign_proc_shared_code_treatment_0_0(
+#line 984 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 984 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 483 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____foreign_literal_or_include_0_0(
+#line 483 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 483 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 483 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 483 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____foreign_literal_or_include_0_0(
+#line 483 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 483 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 498 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____foreign_language_type_0_0(
+#line 498 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 498 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 498 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 498 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____foreign_language_type_0_0(
+#line 498 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 498 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1014 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____foreign_include_file_info_list_0_0(
+#line 1014 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1014 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1014 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1014 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____foreign_include_file_info_list_0_0(
+#line 1014 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1014 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1016 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____foreign_include_file_info_0_0(
+#line 1016 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1016 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1016 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1016 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____foreign_include_file_info_0_0(
+#line 1016 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1016 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 997 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____foreign_import_module_info_list_0_0(
+#line 997 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 997 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 997 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 997 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____foreign_import_module_info_list_0_0(
+#line 997 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 997 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 999 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____foreign_import_module_info_0_0(
+#line 999 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 999 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 999 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 999 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____foreign_import_module_info_0_0(
+#line 999 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 999 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 479 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____foreign_decl_is_local_0_0(
+#line 479 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 479 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 479 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 479 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____foreign_decl_is_local_0_0(
+#line 479 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 479 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1033 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____export_enum_attributes_0_0(
+#line 1033 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1033 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1033 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1033 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____export_enum_attributes_0_0(
+#line 1033 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1033 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2172 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____existq_tvars_0_0(
+#line 2172 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2172 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2172 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2172 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____existq_tvars_0_0(
+#line 2172 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2172 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 906 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____exception_type_0_0(
+#line 906 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 906 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 906 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 906 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____exception_type_0_0(
+#line 906 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 906 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 892 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____exception_status_0_0(
+#line 892 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 892 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 892 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 892 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____exception_status_0_0(
+#line 892 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 892 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2783 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____event_spec_map_0_0(
+#line 2783 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2783 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2783 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2783 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____event_spec_map_0_0(
+#line 2783 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2783 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2773 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____event_spec_0_0(
+#line 2773 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2773 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2773 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2773 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____event_spec_0_0(
+#line 2773 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2773 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2791 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____event_set_data_0_0(
+#line 2791 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2791 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2791 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2791 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____event_set_data_0_0(
+#line 2791 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2791 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2785 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____event_set_0_0(
+#line 2785 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2785 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2785 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2785 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____event_set_0_0(
+#line 2785 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2785 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2757 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____event_attribute_0_0(
+#line 2757 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2757 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2757 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2757 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____event_attribute_0_0(
+#line 2757 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2757 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2766 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____event_attr_synth_call_0_0(
+#line 2766 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2766 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2766 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2766 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____event_attr_synth_call_0_0(
+#line 2766 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2766 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 540 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____eval_minimal_method_0_0(
+#line 540 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 540 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 540 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 540 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____eval_minimal_method_0_0(
+#line 540 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 540 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 554 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____eval_method_0_0(
+#line 554 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 554 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 554 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 554 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____eval_method_0_0(
+#line 554 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 554 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 528 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____erlang_foreign_type_0_0(
+#line 528 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 528 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____erlang_foreign_type_0_0(void);
+
+#line 2029 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____equality_pred_0_0(
+#line 2029 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2029 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2029 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2029 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____equality_pred_0_0(
+#line 2029 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2029 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 149 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____determinism_0_0(
+#line 149 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 149 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 149 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 149 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____determinism_0_0(
+#line 149 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 149 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 238 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____det_component_comparison_0_0(
+#line 238 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 238 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 238 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 238 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____det_component_comparison_0_0(
+#line 238 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 238 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 221 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____det_comparison_0_0(
+#line 221 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 221 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 221 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 221 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____det_comparison_0_0(
+#line 221 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 221 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 833 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____dead_vars_0_0(
+#line 833 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 833 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 833 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 833 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____dead_vars_0_0(
+#line 833 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 833 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 832 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____dead_var_0_0(
+#line 832 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 832 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 832 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 832 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____dead_var_0_0(
+#line 832 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 832 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 835 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____dead_datastructs_0_0(
+#line 835 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 835 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 835 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 835 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____dead_datastructs_0_0(
+#line 835 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 835 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 834 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____dead_datastruct_0_0(
+#line 834 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 834 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 834 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 834 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____dead_datastruct_0_0(
+#line 834 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 834 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 787 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____datastruct_0_0(
+#line 787 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 787 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 787 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 787 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____datastruct_0_0(
+#line 787 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 787 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1942 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____ctor_field_name_0_0(
+#line 1942 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1942 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1942 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1942 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____ctor_field_name_0_0(
+#line 1942 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1942 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 523 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____csharp_foreign_type_0_0(
+#line 523 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 523 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 523 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 523 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____csharp_foreign_type_0_0(
+#line 523 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 523 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1934 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____constructor_arg_0_0(
+#line 1934 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1934 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1934 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1934 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____constructor_arg_0_0(
+#line 1934 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1934 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1919 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____constructor_0_0(
+#line 1919 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1919 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1919 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1919 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____constructor_0_0(
+#line 1919 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1919 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1714 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____cons_id_0_0(
+#line 1714 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1714 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1714 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1714 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Index____cons_id_0_0(
+#line 1714 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1714 "prog_data.m"
+  MR_Integer * parse_tree__prog_data__param_2);
+
+#line 1714 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____cons_id_0_0(
+#line 1714 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1714 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2188 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____condition_0_0(
+#line 2188 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2188 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2188 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2188 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____condition_0_0(
+#line 2188 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2188 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2033 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____comparison_pred_0_0(
+#line 2033 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2033 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2033 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2033 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____comparison_pred_0_0(
+#line 2033 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2033 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1103 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____class_name_0_0(
+#line 1103 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1103 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1103 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1103 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____class_name_0_0(
+#line 1103 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1103 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1107 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____class_interface_0_0(
+#line 1107 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1107 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1107 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1107 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____class_interface_0_0(
+#line 1107 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1107 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1104 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____class_id_0_0(
+#line 1104 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1104 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1104 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1104 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____class_id_0_0(
+#line 1104 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1104 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 159 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____can_fail_0_0(
+#line 159 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 159 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 159 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 159 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____can_fail_0_0(
+#line 159 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 159 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 583 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____call_table_strictness_0_0(
+#line 583 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 583 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 583 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 583 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____call_table_strictness_0_0(
+#line 583 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 583 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 513 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____c_foreign_type_0_0(
+#line 513 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 513 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 513 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 513 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____c_foreign_type_0_0(
+#line 513 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 513 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2146 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____builtin_type_0_0(
+#line 2146 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2146 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2146 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2146 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____builtin_type_0_0(
+#line 2146 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2146 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1292 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____box_policy_0_0(
+#line 1292 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1292 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1292 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1292 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____box_policy_0_0(
+#line 1292 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1292 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2541 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____bound_inst_0_0(
+#line 2541 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2541 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2541 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2541 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____bound_inst_0_0(
+#line 2541 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2541 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2636 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____backend_0_0(
+#line 2636 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2636 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2636 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2636 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____backend_0_0(
+#line 2636 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2636 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1504 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____atomic_component_state_0_0(
+#line 1504 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1504 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1504 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1504 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____atomic_component_state_0_0(
+#line 1504 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1504 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2671 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____arity_0_0(
+#line 2671 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2671 "prog_data.m"
+  MR_Integer parse_tree__prog_data__param_2,
+#line 2671 "prog_data.m"
+  MR_Integer parse_tree__prog_data__param_3);
+
+#line 2671 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____arity_0_0(
+#line 2671 "prog_data.m"
+  MR_Integer parse_tree__prog_data__param_1,
+#line 2671 "prog_data.m"
+  MR_Integer parse_tree__prog_data__param_2);
+
+#line 1969 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____arg_width_0_0(
+#line 1969 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1969 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1969 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1969 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____arg_width_0_0(
+#line 1969 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1969 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 599 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____arg_tabling_method_0_0(
+#line 599 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 599 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 599 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 599 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____arg_tabling_method_0_0(
+#line 599 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 599 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 725 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____arg_size_term_0_0(
+#line 725 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 725 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 725 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 725 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____arg_size_term_0_0(
+#line 725 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 725 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 721 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____arg_size_constr_0_0(
+#line 721 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 721 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 721 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 721 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____arg_size_constr_0_0(
+#line 721 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 721 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2530 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____arg_reg_type_info_0_0(
+#line 2530 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 2530 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2530 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 2530 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____arg_reg_type_info_0_0(
+#line 2530 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2530 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1894 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data____Compare____abstract_type_details_0_0(
+#line 1894 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 1894 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1894 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 1894 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data____Unify____abstract_type_details_0_0(
+#line 1894 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1894 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2712 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__lookup_current_backend_1_f_0(
+#line 2712 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 2709 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__add_all_modules_4_p_0(
+#line 2709 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2709 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2709 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 2709 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_4);
+
+#line 2703 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__add_sym_name_module_4_p_0(
+#line 2703 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2703 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2703 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 2703 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_4);
+
+#line 2699 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__used_modules_init_0_f_0(void);
+
+#line 2333 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_type_kind_1_f_0(
+#line 2333 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 2329 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__get_tvar_kind_3_p_0(
+#line 2329 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2329 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2329 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 2200 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__tvarset_merge_renaming_without_names_4_p_0(
+#line 2200 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2200 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2200 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3,
+#line 2200 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_4);
+
+#line 2195 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__tvarset_merge_renaming_4_p_0(
+#line 2195 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2195 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2195 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3,
+#line 2195 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_4);
+
+#line 2135 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__transform_foldl_var_types_5_p_0(
+#line 2135 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2135 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2135 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 2135 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_4,
+#line 2135 "prog_data.m"
+  MR_Box parse_tree__prog_data__param_5,
+#line 2135 "prog_data.m"
+  MR_Box * parse_tree__prog_data__param_6);
+
+#line 2132 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__transform_var_types_3_p_0(
+#line 2132 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2132 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2132 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 2129 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__delete_sorted_var_types_3_p_0(
+#line 2129 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2129 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2129 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 2127 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__delete_var_types_3_p_0(
+#line 2127 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2127 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2127 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 2125 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__delete_var_type_3_p_0(
+#line 2125 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2125 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2125 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 2122 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__vartypes_overlay_corresponding_lists_4_p_0(
+#line 2122 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2122 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2122 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 2122 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_4);
+
+#line 2120 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__vartypes_add_corresponding_lists_4_p_0(
+#line 2120 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2120 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2120 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 2120 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_4);
+
+#line 2117 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__vartypes_from_sorted_assoc_list_2_p_0(
+#line 2117 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2117 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_2);
+
+#line 2114 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__vartypes_from_corresponding_lists_3_p_0(
+#line 2114 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2114 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2114 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 2111 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__vartypes_to_assoc_list_2_p_0(
+#line 2111 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2111 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_2);
+
+#line 2109 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__vartypes_types_2_p_0(
+#line 2109 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2109 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_2);
+
+#line 2108 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__vartypes_vars_2_p_0(
+#line 2108 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2108 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_2);
+
+#line 2105 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__lookup_var_types_3_p_0(
+#line 2105 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2105 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2105 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 2104 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__lookup_var_type_3_p_0(
+#line 2104 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2104 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2104 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 2102 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__search_var_type_3_p_0(
+#line 2102 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2102 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2102 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 2100 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__is_in_vartypes_2_p_0(
+#line 2100 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2100 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 2097 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__search_insert_var_type_5_p_0(
+#line 2097 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2097 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2097 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3,
+#line 2097 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_4,
+#line 2097 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_5);
+
+#line 2094 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__update_var_type_4_p_0(
+#line 2094 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2094 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2094 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 2094 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_4);
+
+#line 2092 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__add_var_type_4_p_0(
+#line 2092 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2092 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2092 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 2092 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_4);
+
+#line 2090 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__vartypes_optimize_2_p_0(
+#line 2090 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2090 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_2);
+
+#line 2088 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__vartypes_select_3_p_0(
+#line 2088 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2088 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 2088 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 2086 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__vartypes_count_2_p_0(
+#line 2086 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 2086 "prog_data.m"
+  MR_Integer * parse_tree__prog_data__param_2);
+
+#line 2084 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__vartypes_is_empty_1_p_0(
+#line 2084 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 2082 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__init_vartypes_1_p_0(
+#line 2082 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1);
+
+#line 1789 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__cons_id_is_const_struct_2_p_0(
+#line 1789 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1789 "prog_data.m"
+  MR_Integer * parse_tree__prog_data__param_2);
+
+#line 1787 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__equivalent_cons_ids_2_p_0(
+#line 1787 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1787 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1783 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__cons_id_dummy_type_ctor_0_f_0(void);
+
+#line 1583 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__rename_var_4_p_0(
+#line 1583 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1583 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1583 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 1583 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_4,
+#line 1583 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_5);
+
+#line 1580 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__rename_var_list_4_p_0(
+#line 1580 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1580 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1580 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 1580 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_4,
+#line 1580 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_5);
+
+#line 1577 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__rename_vars_in_set_of_var_4_p_0(
+#line 1577 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1577 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1577 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 1577 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_4,
+#line 1577 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_5);
+
+#line 1574 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__rename_vars_in_var_set_4_p_0(
+#line 1574 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1574 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1574 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 1574 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_4,
+#line 1574 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_5);
+
+#line 1571 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__rename_vars_in_term_list_4_p_0(
+#line 1571 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1571 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1571 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 1571 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_4,
+#line 1571 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_5);
+
+#line 1568 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__rename_vars_in_term_4_p_0(
+#line 1568 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1568 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1568 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3,
+#line 1568 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_4,
+#line 1568 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_5);
+
+#line 1529 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__valid_trace_grade_name_1_p_0(
+#line 1529 "prog_data.m"
+  MR_String * parse_tree__prog_data__param_1,
+#line 1529 "prog_data.m"
+  MR_Cont parse_tree__prog_data__param_2,
+#line 1529 "prog_data.m"
+  void * parse_tree__prog_data__param_3);
+
+#line 1527 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__parse_trace_grade_name_2_p_2(
+#line 1527 "prog_data.m"
+  MR_String * parse_tree__prog_data__param_1,
+#line 1527 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_2,
+#line 1527 "prog_data.m"
+  MR_Cont parse_tree__prog_data__param_3,
+#line 1527 "prog_data.m"
+  void * parse_tree__prog_data__param_4);
+
+#line 1526 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__parse_trace_grade_name_2_p_1(
+#line 1526 "prog_data.m"
+  MR_String * parse_tree__prog_data__param_1,
+#line 1526 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 1525 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__parse_trace_grade_name_2_p_0(
+#line 1525 "prog_data.m"
+  MR_String parse_tree__prog_data__param_1,
+#line 1525 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_2);
+
+#line 1237 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__add_extra_attribute_3_p_0(
+#line 1237 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1237 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1237 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1234 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_may_duplicate_3_p_0(
+#line 1234 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1234 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1234 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1231 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_registers_roots_3_p_0(
+#line 1231 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1231 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1231 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1228 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_allocates_memory_3_p_0(
+#line 1228 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1228 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1228 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1225 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_affects_liveness_3_p_0(
+#line 1225 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1225 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1225 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1222 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_box_policy_3_p_0(
+#line 1222 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1222 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1222 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1219 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_may_call_mm_tabled_3_p_0(
+#line 1219 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1219 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1219 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1216 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_may_modify_trail_3_p_0(
+#line 1216 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1216 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1216 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1213 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_ordinary_despite_detism_3_p_0(
+#line 1213 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1213 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1213 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1210 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_may_throw_exception_3_p_0(
+#line 1210 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1210 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1210 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1207 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_user_annotated_sharing_3_p_0(
+#line 1207 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1207 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1207 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1204 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_terminates_3_p_0(
+#line 1204 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1204 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1204 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1201 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_purity_3_p_0(
+#line 1201 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1201 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1201 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1198 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_tabled_for_io_3_p_0(
+#line 1198 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1198 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1198 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1195 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_foreign_language_3_p_0(
+#line 1195 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1195 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1195 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1192 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_thread_safe_3_p_0(
+#line 1192 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1192 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1192 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1189 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__set_may_call_mercury_3_p_0(
+#line 1189 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 1189 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 1189 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 1186 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_extra_attributes_1_f_0(
+#line 1186 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1184 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_may_duplicate_1_f_0(
+#line 1184 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1182 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_registers_roots_1_f_0(
+#line 1182 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1180 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_allocates_memory_1_f_0(
+#line 1180 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1178 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_affects_liveness_1_f_0(
+#line 1178 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1177 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_box_policy_1_f_0(
+#line 1177 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1175 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_may_call_mm_tabled_1_f_0(
+#line 1175 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1173 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_may_modify_trail_1_f_0(
+#line 1173 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1172 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_ordinary_despite_detism_1_f_0(
+#line 1172 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1170 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_may_throw_exception_1_f_0(
+#line 1170 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1168 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_tabled_for_io_1_f_0(
+#line 1168 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1166 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_foreign_language_1_f_0(
+#line 1166 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1164 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_user_annotated_sharing_1_f_0(
+#line 1164 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1163 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_terminates_1_f_0(
+#line 1163 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1162 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_purity_1_f_0(
+#line 1162 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1161 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_thread_safe_1_f_0(
+#line 1161 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1159 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__get_may_call_mercury_1_f_0(
+#line 1159 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1158 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__default_attributes_1_f_0(
+#line 1158 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1139 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__prog_constraint_get_arg_types_1_f_0(
+#line 1139 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1138 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__prog_constraint_get_class_1_f_0(
+#line 1138 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 1039 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__default_export_enum_attributes_0_f_0(void);
+
+#line 646 "prog_data.m"
+MR_String MR_CALL 
+parse_tree__prog_data__eval_method_to_table_type_1_f_0(
+#line 646 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1);
+
+#line 573 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__default_memo_table_attributes_0_f_0(void);
+
+#line 246 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__compare_solncounts_3_p_0(
+#line 246 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 246 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 246 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 243 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__compare_canfails_3_p_0(
+#line 243 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 243 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 243 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 235 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__compare_determinisms_3_p_0(
+#line 235 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 235 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 235 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 217 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__det_switch_canfail_3_p_0(
+#line 217 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 217 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 217 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 214 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__det_switch_maxsoln_3_p_0(
+#line 214 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 214 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 214 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 211 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__det_disjunction_canfail_3_p_0(
+#line 211 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 211 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 211 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 208 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__det_disjunction_maxsoln_3_p_0(
+#line 208 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 208 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 208 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 205 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__det_conjunction_canfail_3_p_0(
+#line 205 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 205 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 205 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 202 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__det_conjunction_maxsoln_3_p_0(
+#line 202 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 202 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 202 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 188 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__det_negation_det_2_p_0(
+#line 188 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 188 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_2);
+
+#line 185 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__det_switch_detism_3_p_0(
+#line 185 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 185 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 185 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 182 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__det_par_conjunction_detism_3_p_0(
+#line 182 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 182 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 182 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 179 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__det_conjunction_detism_3_p_0(
+#line 179 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 179 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 179 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 174 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__determinism_components_3_p_1(
+#line 174 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_1,
+#line 174 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2,
+#line 174 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_3);
+
+#line 173 "prog_data.m"
+void MR_CALL 
+parse_tree__prog_data__determinism_components_3_p_0(
+#line 173 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 173 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_2,
+#line 173 "prog_data.m"
+  MR_Word * parse_tree__prog_data__param_3);
+
+#line 104 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__best_purity_2_f_0(
+#line 104 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 104 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 100 "prog_data.m"
+MR_Word MR_CALL 
+parse_tree__prog_data__worst_purity_2_f_0(
+#line 100 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 100 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+#line 96 "prog_data.m"
+MR_bool MR_CALL 
+parse_tree__prog_data__less_pure_2_p_0(
+#line 96 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_1,
+#line 96 "prog_data.m"
+  MR_Word parse_tree__prog_data__param_2);
+
+void mercury__parse_tree__prog_data__init(void);
+void mercury__parse_tree__prog_data__init_type_tables(void);
+void mercury__parse_tree__prog_data__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.prog_data */
+
+/* :- end_interface parse_tree.prog_data. */

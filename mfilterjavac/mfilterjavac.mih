@@ -1,0 +1,79 @@
+/*
+** Automatically generated from `mfilterjavac.m'
+** by the Mercury compiler,
+** version rotd-2014-12-12
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mfilterjavac. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_mfilterjavac
+#define MR_HEADER_GUARD_mfilterjavac
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MFILTERJAVAC_DECL_GUARD
+#define MFILTERJAVAC_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "mfilterjavac.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_begin_or_end_block_0;
+
+#line 45 "mfilterjavac.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_filter_result_0;
+
+#line 48 "mfilterjavac.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_line_info_0;
+
+#line 51 "mfilterjavac.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_line_info_cache_0;
+
+#line 54 "mfilterjavac.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_line_info_end_0;
+
+#line 57 "mfilterjavac.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_line_info_error_0;
+
+#line 60 "mfilterjavac.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_line_info_error_type_0;
+
+#line 63 "mfilterjavac.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mfilterjavac__mfilterjavac__type_ctor_info_line_mark_0;
+
+#line 28 "mfilterjavac.m"
+void MR_CALL 
+main_2_p_0(void);
+
+void mercury__mfilterjavac__init(void);
+void mercury__mfilterjavac__init_type_tables(void);
+void mercury__mfilterjavac__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_mfilterjavac */
+
+/* :- end_interface mfilterjavac. */
