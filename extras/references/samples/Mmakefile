@@ -1,0 +1,58 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1997-1999, 2011 The University of Melbourne.
+# Copyright (C) 2015, 2018 The Mercury team.
+# This file is distributed under the terms specified in COPYING.LIB.
+#-----------------------------------------------------------------------------#
+
+MAIN_TARGET = all
+
+# We need to use a grade with trailing.
+# The following causes the compiler to attempt to use the default grade
+# with trail segments enabled.  It won't work unless the trseg variant
+# of the default grade is also installed.
+#
+GRADEFLAGS += --use-trail --trail-segments
+
+EXTRA_LIB_DIRS = $(INSTALL_PREFIX)/extras/lib/mercury
+
+EXTRA_LIBRARIES = global
+
+#-----------------------------------------------------------------------------#
+
+PROGS	=	max_test
+
+DEPENDS =	$(PROGS:%=%.depend)
+CS	=	$(PROGS:%=%.c)
+RESS	=	$(PROGS:%=%.res)
+
+#-----------------------------------------------------------------------------#
+
+$(PROGS):
+
+%.out: %
+	./$< > $@ 2>&1;
+
+%.res: %.exp %.out
+	diff -c $*.exp $*.out > $@
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: depend
+depend: $(DEPENDS)
+
+.PHONY: all
+all: $(PROGS)
+
+.PHONY: check
+check: $(RESS)
+
+.PHONY: cs
+cs: $(CS)
+
+.PHONY: clean_local
+clean_local:
+	rm -f *.out *.res
+
+#-----------------------------------------------------------------------------#

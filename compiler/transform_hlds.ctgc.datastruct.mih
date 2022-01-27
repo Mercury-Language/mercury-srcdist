@@ -1,0 +1,157 @@
+/*
+** Automatically generated from `ctgc.datastruct.m'
+** by the Mercury compiler,
+** version rotd-2021-11-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.ctgc.datastruct.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__ctgc__datastruct
+#define MR_HEADER_GUARD_transform_hlds__ctgc__datastruct
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__CTGC__DATASTRUCT_DECL_GUARD
+#define TRANSFORM_HLDS__CTGC__DATASTRUCT_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.ctgc.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_apply_widening_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_equal_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_refers_to_topcell_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_same_vars_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_subsumed_by_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_subsumed_by_list_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_subsumed_by_return_selector_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_bool MR_CALL 
+transform_hlds__ctgc__datastruct__datastructs_subsumed_by_list_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+transform_hlds__ctgc__datastruct__datastructs_that_are_subsumed_by_list_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_init_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_init_with_pos_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_init_with_selector_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_lists_least_upper_bound_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastruct_termshift_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastructs_project_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__datastructs_vars_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+transform_hlds__ctgc__datastruct__normalize_datastruct_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void mercury__transform_hlds__ctgc__datastruct__init(void);
+void mercury__transform_hlds__ctgc__datastruct__init_type_tables(void);
+void mercury__transform_hlds__ctgc__datastruct__init_debugger(void);
+const char *mercury__transform_hlds__ctgc__datastruct__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.ctgc.datastruct
+
+// :- end_interface transform_hlds.ctgc.datastruct.

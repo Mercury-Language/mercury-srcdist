@@ -1,0 +1,74 @@
+/*
+** Automatically generated from `rtti_to_mlds.m'
+** by the Mercury compiler,
+** version rotd-2021-11-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module ml_backend.rtti_to_mlds.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_ml_backend__rtti_to_mlds
+#define MR_HEADER_GUARD_ml_backend__rtti_to_mlds
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__RTTI_TO_MLDS_DECL_GUARD
+#define ML_BACKEND__RTTI_TO_MLDS_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+ml_backend__rtti_to_mlds__add_rtti_data_to_mlds_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+ml_backend__rtti_to_mlds__add_rtti_datas_to_mlds_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+MR_Word MR_CALL 
+ml_backend__rtti_to_mlds__order_mlds_rtti_defns_1_f_0(
+  MR_Word param_1);
+
+void mercury__ml_backend__rtti_to_mlds__init(void);
+void mercury__ml_backend__rtti_to_mlds__init_type_tables(void);
+void mercury__ml_backend__rtti_to_mlds__init_debugger(void);
+const char *mercury__ml_backend__rtti_to_mlds__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_ml_backend.rtti_to_mlds
+
+// :- end_interface ml_backend.rtti_to_mlds.
