@@ -1,0 +1,2 @@
+:- module (backend_libs.name_mangle).
+:- interface.

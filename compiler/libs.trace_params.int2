@@ -1,0 +1,15 @@
+:- module (libs.trace_params).
+:- interface.
+:- type maybe_exec_trace_enabled
+    --->    exec_trace_is_not_enabled 
+    ;       exec_trace_is_enabled .
+:- type trace_level.
+:- type trace_suppress_items.
+:- type_representation(maybe_exec_trace_enabled, du_repn(enum("exec_trace_is_not_enabled", "exec_trace_is_enabled", [],  no_c_j_cs_e))).
+:- type_representation(trace_level, du_repn(enum("none", "basic", ["basic_user", "shallow", "deep", "decl_rep"],  no_c_j_cs_e))).
+:- type_representation(trace_suppress_items, is_eqv_to(set.set(libs.trace_params.trace_suppress_item))).
+:- implementation.
+:- type trace_level
+	where	type_is_abstract_enum(3).
+:- type trace_suppress_item.
+:- type trace_suppress_items == set.set(libs.trace_params.trace_suppress_item).
