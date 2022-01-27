@@ -1,0 +1,135 @@
+/*
+** Automatically generated from `interactive_query.m'
+** by the Mercury compiler,
+** version rotd-2022-01-05
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module mdb.interactive_query.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_mdb__interactive_query
+#define MR_HEADER_GUARD_mdb__interactive_query
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__INTERACTIVE_QUERY_DECL_GUARD
+#define MDB__INTERACTIVE_QUERY_DECL_GUARD
+#include "mdb.mih"
+
+    #include "mercury_grade.h"
+    #include "mercury_string.h"
+
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct mdb__interactive_query__mdb__interactive_query__type_ctor_info_bindings_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__interactive_query__mdb__interactive_query__type_ctor_info_imports_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__interactive_query__mdb__interactive_query__type_ctor_info_interactive_query_response_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__interactive_query__mdb__interactive_query__type_ctor_info_options_string_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__interactive_query__mdb__interactive_query__type_ctor_info_prog_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__interactive_query__mdb__interactive_query__type_ctor_info_query_command_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__interactive_query__mdb__interactive_query__type_ctor_info_query_env_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__interactive_query__mdb__interactive_query__type_ctor_info_query_type_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__interactive_query__mdb__interactive_query__type_ctor_info_run_cc_pred_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__interactive_query__mdb__interactive_query__type_ctor_info_run_io_pred_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__interactive_query__mdb__interactive_query__type_ctor_info_run_normal_pred_0;
+
+extern const MR_TypeCtorInfo_Struct mdb__interactive_query__mdb__interactive_query__type_ctor_info_solution_0;
+
+void MR_CALL 
+mdb__interactive_query__query_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7);
+
+void MR_CALL 
+mdb__interactive_query__query_external_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word param_7);
+
+void MR_CALL 
+mdb__interactive_query____Compare____imports_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+mdb__interactive_query____Compare____options_string_0_0(
+  MR_Word * param_1,
+  MR_String param_2,
+  MR_String param_3);
+
+void MR_CALL 
+mdb__interactive_query____Compare____query_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+mdb__interactive_query____Unify____imports_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+mdb__interactive_query____Unify____options_string_0_0(
+  MR_String param_1,
+  MR_String param_2);
+
+MR_bool MR_CALL 
+mdb__interactive_query____Unify____query_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__mdb__interactive_query__init(void);
+void mercury__mdb__interactive_query__init_type_tables(void);
+void mercury__mdb__interactive_query__init_debugger(void);
+const char *mercury__mdb__interactive_query__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_mdb.interactive_query
+
+// :- end_interface mdb.interactive_query.
