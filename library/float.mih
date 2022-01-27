@@ -1,0 +1,325 @@
+/*
+** Automatically generated from `float.m'
+** by the Mercury compiler,
+** version rotd-2014-12-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module float. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_float
+#define MR_HEADER_GUARD_float
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef FLOAT_DECL_GUARD
+#define FLOAT_DECL_GUARD
+#line 298 "float.m"
+
+    #include <float.h>
+    #include <math.h>
+
+#ifdef MR_HAVE_IEEEFP_H
+    #include <ieeefp.h>
+#endif
+
+#line 779 "float.m"
+
+    #define ML_FLOAT_RADIX  FLT_RADIX   /* There is no DBL_RADIX. */
+
+    #if defined MR_USE_SINGLE_PREC_FLOAT
+        #define ML_FLOAT_MAX        FLT_MAX
+        #define ML_FLOAT_MIN        FLT_MIN
+        #define ML_FLOAT_EPSILON    FLT_EPSILON
+        #define ML_FLOAT_MANT_DIG   FLT_MANT_DIG
+        #define ML_FLOAT_MIN_EXP    FLT_MIN_EXP
+        #define ML_FLOAT_MAX_EXP    FLT_MAX_EXP
+    #else
+        #define ML_FLOAT_MAX        DBL_MAX
+        #define ML_FLOAT_MIN        DBL_MIN
+        #define ML_FLOAT_EPSILON    DBL_EPSILON
+        #define ML_FLOAT_MANT_DIG   DBL_MANT_DIG
+        #define ML_FLOAT_MIN_EXP    DBL_MIN_EXP
+        #define ML_FLOAT_MAX_EXP    DBL_MAX_EXP
+    #endif
+
+#endif
+
+
+
+
+#line 325 "float.m"
+MR_bool MR_CALL 
+mercury__float__float_domain_checks_0_p_0(void);
+
+#line 285 "float.m"
+MR_String MR_CALL 
+mercury__float__float64_bits_string_1_f_0(
+#line 285 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 279 "float.m"
+MR_String MR_CALL 
+mercury__float__float32_bits_string_1_f_0(
+#line 279 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 262 "float.m"
+MR_Word MR_CALL 
+mercury__float__float_to_doc_1_f_0(
+#line 262 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 256 "float.m"
+MR_Integer MR_CALL 
+mercury__float__max_exponent_0_f_0(void);
+
+#line 249 "float.m"
+MR_Integer MR_CALL 
+mercury__float__min_exponent_0_f_0(void);
+
+#line 242 "float.m"
+MR_Integer MR_CALL 
+mercury__float__mantissa_digits_0_f_0(void);
+
+#line 237 "float.m"
+MR_Integer MR_CALL 
+mercury__float__radix_0_f_0(void);
+
+#line 232 "float.m"
+MR_Float MR_CALL 
+mercury__float__epsilon_0_f_0(void);
+
+#line 224 "float.m"
+MR_Float MR_CALL 
+mercury__float__infinity_0_f_0(void);
+
+#line 220 "float.m"
+MR_Float MR_CALL 
+mercury__float__min_0_f_0(void);
+
+#line 214 "float.m"
+MR_Float MR_CALL 
+mercury__float__max_0_f_0(void);
+
+#line 203 "float.m"
+MR_bool MR_CALL 
+mercury__float__is_zero_1_p_0(
+#line 203 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 199 "float.m"
+MR_bool MR_CALL 
+mercury__float__is_finite_1_p_0(
+#line 199 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 194 "float.m"
+MR_bool MR_CALL 
+mercury__float__is_nan_or_inf_1_p_0(
+#line 194 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 190 "float.m"
+MR_bool MR_CALL 
+mercury__float__is_nan_or_infinite_1_p_0(
+#line 190 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 186 "float.m"
+MR_bool MR_CALL 
+mercury__float__is_nan_1_p_0(
+#line 186 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 182 "float.m"
+MR_bool MR_CALL 
+mercury__float__is_inf_1_p_0(
+#line 182 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 178 "float.m"
+MR_bool MR_CALL 
+mercury__float__is_infinite_1_p_0(
+#line 178 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 169 "float.m"
+MR_Integer MR_CALL 
+mercury__float__hash_1_f_0(
+#line 169 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 165 "float.m"
+MR_Float MR_CALL 
+mercury__float__pow_2_f_0(
+#line 165 "float.m"
+  MR_Float mercury__float__param_1,
+#line 165 "float.m"
+  MR_Integer mercury__float__param_2);
+
+#line 158 "float.m"
+MR_Float MR_CALL 
+mercury__float__min_2_f_0(
+#line 158 "float.m"
+  MR_Float mercury__float__param_1,
+#line 158 "float.m"
+  MR_Float mercury__float__param_2);
+
+#line 154 "float.m"
+MR_Float MR_CALL 
+mercury__float__max_2_f_0(
+#line 154 "float.m"
+  MR_Float mercury__float__param_1,
+#line 154 "float.m"
+  MR_Float mercury__float__param_2);
+
+#line 150 "float.m"
+MR_Float MR_CALL 
+mercury__float__abs_1_f_0(
+#line 150 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 141 "float.m"
+MR_Integer MR_CALL 
+mercury__float__truncate_to_int_1_f_0(
+#line 141 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 136 "float.m"
+MR_Integer MR_CALL 
+mercury__float__round_to_int_1_f_0(
+#line 136 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 131 "float.m"
+MR_Integer MR_CALL 
+mercury__float__floor_to_int_1_f_0(
+#line 131 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 127 "float.m"
+MR_Integer MR_CALL 
+mercury__float__ceiling_to_int_1_f_0(
+#line 127 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 123 "float.m"
+MR_Float MR_CALL 
+mercury__float__float_1_f_0(
+#line 123 "float.m"
+  MR_Integer mercury__float__param_1);
+
+#line 114 "float.m"
+MR_bool MR_CALL 
+mercury__float__f_greater_than_2_p_0(
+#line 114 "float.m"
+  MR_Float mercury__float__param_1,
+#line 114 "float.m"
+  MR_Float mercury__float__param_2);
+
+#line 110 "float.m"
+MR_bool MR_CALL 
+mercury__float__f_greater_or_equal_2_p_0(
+#line 110 "float.m"
+  MR_Float mercury__float__param_1,
+#line 110 "float.m"
+  MR_Float mercury__float__param_2);
+
+#line 106 "float.m"
+MR_bool MR_CALL 
+mercury__float__f_less_or_equal_2_p_0(
+#line 106 "float.m"
+  MR_Float mercury__float__param_1,
+#line 106 "float.m"
+  MR_Float mercury__float__param_2);
+
+#line 102 "float.m"
+MR_bool MR_CALL 
+mercury__float__f_less_than_2_p_0(
+#line 102 "float.m"
+  MR_Float mercury__float__param_1,
+#line 102 "float.m"
+  MR_Float mercury__float__param_2);
+
+#line 94 "float.m"
+MR_Float MR_CALL 
+mercury__float__f_minus_1_f_0(
+#line 94 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 90 "float.m"
+MR_Float MR_CALL 
+mercury__float__f_plus_1_f_0(
+#line 90 "float.m"
+  MR_Float mercury__float__param_1);
+
+#line 86 "float.m"
+MR_Float MR_CALL 
+mercury__float__unchecked_quotient_2_f_0(
+#line 86 "float.m"
+  MR_Float mercury__float__param_1,
+#line 86 "float.m"
+  MR_Float mercury__float__param_2);
+
+#line 81 "float.m"
+MR_Float MR_CALL 
+mercury__float__f_slash_2_f_0(
+#line 81 "float.m"
+  MR_Float mercury__float__param_1,
+#line 81 "float.m"
+  MR_Float mercury__float__param_2);
+
+#line 74 "float.m"
+MR_Float MR_CALL 
+mercury__float__f_times_2_f_0(
+#line 74 "float.m"
+  MR_Float mercury__float__param_1,
+#line 74 "float.m"
+  MR_Float mercury__float__param_2);
+
+#line 70 "float.m"
+MR_Float MR_CALL 
+mercury__float__f_minus_2_f_0(
+#line 70 "float.m"
+  MR_Float mercury__float__param_1,
+#line 70 "float.m"
+  MR_Float mercury__float__param_2);
+
+#line 66 "float.m"
+MR_Float MR_CALL 
+mercury__float__f_plus_2_f_0(
+#line 66 "float.m"
+  MR_Float mercury__float__param_1,
+#line 66 "float.m"
+  MR_Float mercury__float__param_2);
+
+void mercury__float__init(void);
+void mercury__float__init_type_tables(void);
+void mercury__float__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_float */
+
+/* :- end_interface float. */

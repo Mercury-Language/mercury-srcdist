@@ -1,0 +1,70 @@
+/*
+** Automatically generated from `propagate.m'
+** by the Mercury compiler,
+** version rotd-2014-12-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module propagate. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_propagate
+#define MR_HEADER_GUARD_propagate
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PROPAGATE_DECL_GUARD
+#define PROPAGATE_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "propagate.mih.tmp"
+extern const MR_TypeCtorInfo_Struct propagate__propagate__type_ctor_info_cycle_info_0;
+
+#line 45 "propagate.mih.tmp"
+extern const MR_TypeCtorInfo_Struct propagate__propagate__type_ctor_info_cycle_to_preds_map_0;
+
+#line 48 "propagate.mih.tmp"
+extern const MR_TypeCtorInfo_Struct propagate__propagate__type_ctor_info_pred_to_cycle_map_0;
+
+#line 33 "propagate.m"
+void MR_CALL 
+propagate__propagate_counts_5_p_0(
+#line 33 "propagate.m"
+  MR_Word propagate__param_1,
+#line 33 "propagate.m"
+  MR_Word propagate__param_2,
+#line 33 "propagate.m"
+  MR_Word * propagate__param_3);
+
+void mercury__propagate__init(void);
+void mercury__propagate__init_type_tables(void);
+void mercury__propagate__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_propagate */
+
+/* :- end_interface propagate. */

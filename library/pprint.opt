@@ -1,0 +1,272 @@
+:- module pprint.
+:- use_module array, builtin, char, deconstruct, enum, int, io, list, map, ops, pair, private_builtin, robdd, sparse_bitset, stream, string, term, type_desc, univ, version_array, (string.format), (string.parse_util).
+:- type pprint.map_pair(K, V)
+	--->	map_pair(K, V).
+:- type pprint.doc
+	--->	'NIL' 
+	;	'SEQ'(pprint.doc, pprint.doc)
+	;	'NEST'(int, pprint.doc)
+	;	'LABEL'(string, pprint.doc)
+	;	'TEXT'(string)
+	;	'LINE' 
+	;	'GROUP'(pprint.doc)
+	;	'DOC'(int, univ.univ).
+:- type pprint.depth == int.
+:- instance (pprint.doc(pprint.doc)).
+:- instance (pprint.doc(string)).
+:- instance (pprint.doc(int)).
+:- instance (pprint.doc(float)).
+:- instance (pprint.doc(character)).
+:- pred pprint.layout_best(pred(string, T_1, T_1), int, pprint.doc, T_1, T_1).
+:- mode pprint.layout_best((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode pprint.layout_best((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pprint.lb(pred(string, T_1, T_1), int, int, int, string, pprint.doc, T_1, T_1).
+:- mode pprint.lb((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode pprint.lb((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func pprint.to_doc(int, int, T_1) = pprint.doc.
+:- mode pprint.to_doc((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+pprint.doc(X_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = pprint.doc(V_4, X_3),
+    V_4 = int.max_int.
+pprint.(Doc1_4 ++ Doc2_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = pprint.'<>'(V_6, V_7),
+    V_6 = pprint.doc(Doc1_4),
+    V_7 = pprint.doc(Doc2_5).
+pprint.nil = pprint.'NIL'.
+pprint.text(S_3) = pprint.'TEXT'(S_3).
+pprint.'<>'(X_4, Y_5) = pprint.'SEQ'(X_4, Y_5).
+pprint.line = pprint.'LINE'.
+pprint.nest(I_4, X_5) = pprint.'NEST'(I_4, V_6) :-
+    V_6 = pprint.doc(X_5).
+pprint.label(L_4, X_5) = pprint.'LABEL'(L_4, V_6) :-
+    V_6 = pprint.doc(X_5).
+pprint.group(X_3) = pprint.'GROUP'(V_4) :-
+    V_4 = pprint.doc(X_3).
+pprint.'</>'(X_4, Y_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = pprint.(X_4 ++ V_6),
+    V_6 = pprint.(V_7 ++ Y_5),
+    V_7 = pprint.line.
+pprint.bracketed(L_5, R_6, D_7) = HeadVar__4_4 :-
+    HeadVar__4_4 = pprint.(L_5 ++ V_8),
+    V_8 = pprint.(D_7 ++ R_6).
+pprint.parentheses(D_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = pprint.bracketed(V_4, V_5, D_3),
+    V_4 = "(" : string,
+    V_5 = ")" : string.
+pprint.brackets(D_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = pprint.bracketed(V_4, V_5, D_3),
+    V_4 = "[" : string,
+    V_5 = "]" : string.
+pprint.braces(D_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = pprint.bracketed(V_4, V_5, D_3),
+    V_4 = "{" : string,
+    V_5 = "}" : string.
+pprint.packed(Sep_4, Xs_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = pprint.packed(V_6, Sep_4, Xs_5),
+    V_6 = int.max_int.
+pprint.packed_cs(Xs_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = pprint.packed(V_4, Xs_3),
+    V_4 = ", " : string.
+pprint.packed_cs(N_4, Xs_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = pprint.packed(N_4, V_6, Xs_5),
+    V_6 = ", " : string.
+pprint.packed_cs_to_depth(Depth_4, Xs_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = pprint.packed_cs(Depth_4, V_6),
+    V_6 = list.map(V_7, Xs_5),
+    V_7 = pprint.to_doc(Depth_4) : ((func T_1) = pprint.doc).
+pprint.packed_cs_univ_args(Depth_4, UnivArgs_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = pprint.packed_cs(Depth_4, V_7),
+    V_7 = list.map(V_8, UnivArgs_5),
+    V_8 = (func(V_9::(builtin.in)) = (V_10::(builtin.out)) is det :-
+      some [] (
+        V_9 = UA_11,
+        V_10 = pprint.'DOC'(Depth_4, UA_11) : pprint.doc
+      )
+    )
+ : ((func univ.univ) = pprint.doc).
+pprint.separated(V_5, V_6, list.[]) = HeadVar__4_4 :-
+    HeadVar__4_4 = pprint.nil.
+pprint.separated(PP_7, Sep_8, list.[X_9 | Xs_10]) = HeadVar__4_4 :-
+    (if
+      Xs_10 = list.[] : list.list(T1_1)
+    then
+      HeadVar__4_4 = apply(PP_7, X_9)
+    else
+      HeadVar__4_4 = pprint.(V_11 ++ V_12),
+      V_11 = apply(PP_7, X_9),
+      V_12 = pprint.(Sep_8 ++ V_13),
+      V_13 = pprint.separated(PP_7, Sep_8, Xs_10)
+    ).
+pprint.comma = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.text(V_2),
+    V_2 = "," : string.
+pprint.semic = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.text(V_2),
+    V_2 = ";" : string.
+pprint.colon = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.text(V_2),
+    V_2 = ":" : string.
+pprint.space = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.text(V_2),
+    V_2 = " " : string.
+pprint.comma_space = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.text(V_2),
+    V_2 = ", " : string.
+pprint.semic_space = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.text(V_2),
+    V_2 = "; " : string.
+pprint.colon_space = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.text(V_2),
+    V_2 = ": " : string.
+pprint.comma_line = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.(V_2 ++ V_3),
+    V_2 = "," : string,
+    V_3 = pprint.line.
+pprint.semic_line = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.(V_2 ++ V_3),
+    V_2 = ";" : string,
+    V_3 = pprint.line.
+pprint.colon_line = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.(V_2 ++ V_3),
+    V_2 = ":" : string,
+    V_3 = pprint.line.
+pprint.space_line = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.(V_2 ++ V_3),
+    V_2 = " " : string,
+    V_3 = pprint.line.
+pprint.comma_space_line = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.(V_2 ++ V_3),
+    V_2 = ", " : string,
+    V_3 = pprint.line.
+pprint.semic_space_line = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.(V_2 ++ V_3),
+    V_2 = "; " : string,
+    V_3 = pprint.line.
+pprint.colon_space_line = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.(V_2 ++ V_3),
+    V_2 = ": " : string,
+    V_3 = pprint.line.
+pprint.ellipsis = HeadVar__1_1 :-
+    HeadVar__1_1 = pprint.text(V_2),
+    V_2 = "..." : string.
+pprint.to_doc(X_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = pprint.to_doc(V_4, X_3),
+    V_4 = int.max_int.
+pprint.to_doc(Depth_4, X_5) = HeadVar__3_3 :-
+    HeadVar__3_3 = pprint.to_doc(Depth_4, V_6, X_5),
+    V_6 = 1000 : int.
+pprint.write(W_5, X_6, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_9) :-
+    V_10 = io.write_string : pred(string, io.state, io.state),
+    V_11 = pprint.doc(X_6),
+    pprint.layout_best(V_10, W_5, V_11, STATE_VARIABLE_IO_0_8, STATE_VARIABLE_IO_9).
+pprint.write(Stream_6, W_7, X_8, STATE_VARIABLE_State_0_10, STATE_VARIABLE_State_11) :-
+    V_12 = stream.put(Stream_6) : pred(string, State_3, State_3),
+    V_13 = pprint.doc(X_8),
+    pprint.layout_best(V_12, W_7, V_13, STATE_VARIABLE_State_0_10, STATE_VARIABLE_State_11).
+pprint.layout_best(P_6, W_7, X_8, S0_9, S_10) :-
+    V_12 = 0 : int,
+    V_13 = "" : string,
+    pprint.lb(P_6, W_7, V_12, V_11, V_13, X_8, S0_9, S_10).
+:- pragma exceptions(function, (pprint.doc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.doc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.(++)), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.nil), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.text), 2, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.'<>'), 3, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.line), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.nest), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.label), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.group), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.poly), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.'</>'), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.bracketed), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.parentheses), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.brackets), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.braces), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.packed), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.packed), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.packed_cs), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.packed_cs), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.packed_cs_to_depth), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.packed_cs_univ_args), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.separated), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.comma), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.semic), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.colon), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.space), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.comma_space), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.semic_space), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.colon_space), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.comma_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.semic_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.colon_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.space_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.comma_space_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.semic_space_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.colon_space_line), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.ellipsis), 1, 0, will_not_throw).
+:- pragma exceptions(function, (pprint.word_wrapped), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.to_doc), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.to_doc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.to_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pprint.write), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pprint.write), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pprint.layout_best), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pprint.layout_best), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pprint.lb), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (pprint.lb), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (pprint.to_doc), 4, 0, may_throw(user_exception)).
+:- pragma termination_info(pprint.doc((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.doc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.'++'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.nil) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(pprint.text((builtin.in)) = (builtin.out), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(pprint.'<>'((builtin.in), (builtin.in)) = (builtin.out), finite(2, [yes, yes, no]), cannot_loop).
+:- pragma termination_info((pprint.line) = (builtin.out), finite(0, [no]), cannot_loop).
+:- pragma termination_info(pprint.nest((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.label((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.group((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.poly((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.'</>'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.bracketed((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.parentheses((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.brackets((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.braces((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.packed((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.packed((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.packed_cs((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.packed_cs((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.packed_cs_to_depth((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.packed_cs_univ_args((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.separated((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.comma) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.semic) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.colon) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.space) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.comma_space) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.semic_space) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.colon_space) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info((pprint.comma_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.semic_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.colon_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.space_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.comma_space_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.semic_space_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.colon_space_line) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((pprint.ellipsis) = (builtin.out), finite(1, [no]), cannot_loop).
+:- pragma termination_info(pprint.word_wrapped((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.to_doc((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.to_doc((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.to_string((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.write((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pprint.write((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pprint.layout_best((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pprint.layout_best((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(pprint.lb((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(pprint.lb((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(pprint.to_doc((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____character__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____float__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____int__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____string__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(pprint.'ClassMethod_for_pprint__doc____pprint__doc__arity0______pprint__doc_2'((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).

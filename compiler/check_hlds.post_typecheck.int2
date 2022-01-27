@@ -1,0 +1,16 @@
+:- module (check_hlds.post_typecheck).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type is_plain_unify
+	--->	is_not_plain_unify 
+	;	is_plain_unify 
+	;	is_unknown_ref(parse_tree.error_util.error_spec).

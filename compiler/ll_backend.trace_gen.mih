@@ -1,0 +1,336 @@
+/*
+** Automatically generated from `trace_gen.m'
+** by the Mercury compiler,
+** version rotd-2014-12-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.trace_gen. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__trace_gen
+#define MR_HEADER_GUARD_ll_backend__trace_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__TRACE_GEN_DECL_GUARD
+#define LL_BACKEND__TRACE_GEN_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 43 "ll_backend.trace_gen.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__trace_gen__ll_backend__trace_gen__type_ctor_info_external_event_info_0;
+
+#line 46 "ll_backend.trace_gen.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__trace_gen__ll_backend__trace_gen__type_ctor_info_external_trace_port_0;
+
+#line 49 "ll_backend.trace_gen.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__trace_gen__ll_backend__trace_gen__type_ctor_info_negation_end_port_0;
+
+#line 52 "ll_backend.trace_gen.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__trace_gen__ll_backend__trace_gen__type_ctor_info_trace_info_0;
+
+#line 55 "ll_backend.trace_gen.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__trace_gen__ll_backend__trace_gen__type_ctor_info_trace_port_info_0;
+
+#line 58 "ll_backend.trace_gen.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__trace_gen__ll_backend__trace_gen__type_ctor_info_trace_slot_info_0;
+
+#line 95 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen____Compare____trace_slot_info_0_0(
+#line 95 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_1,
+#line 95 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 95 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_3);
+
+#line 95 "trace_gen.m"
+MR_bool MR_CALL 
+ll_backend__trace_gen____Unify____trace_slot_info_0_0(
+#line 95 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 95 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2);
+
+#line 1351 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen____Compare____trace_info_0_0(
+#line 1351 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_1,
+#line 1351 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 1351 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_3);
+
+#line 1351 "trace_gen.m"
+MR_bool MR_CALL 
+ll_backend__trace_gen____Unify____trace_info_0_0(
+#line 1351 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 1351 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2);
+
+#line 86 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen____Compare____negation_end_port_0_0(
+#line 86 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_1,
+#line 86 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 86 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_3);
+
+#line 86 "trace_gen.m"
+MR_bool MR_CALL 
+ll_backend__trace_gen____Unify____negation_end_port_0_0(
+#line 86 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 86 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2);
+
+#line 76 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen____Compare____external_trace_port_0_0(
+#line 76 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_1,
+#line 76 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 76 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_3);
+
+#line 76 "trace_gen.m"
+MR_bool MR_CALL 
+ll_backend__trace_gen____Unify____external_trace_port_0_0(
+#line 76 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 76 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2);
+
+#line 199 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen____Compare____external_event_info_0_0(
+#line 199 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_1,
+#line 199 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 199 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_3);
+
+#line 199 "trace_gen.m"
+MR_bool MR_CALL 
+ll_backend__trace_gen____Unify____external_event_info_0_0(
+#line 199 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 199 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2);
+
+#line 228 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__maybe_setup_redo_event_2_p_0(
+#line 228 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 228 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_2);
+
+#line 219 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__generate_external_event_code_6_p_0(
+#line 219 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 219 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 219 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_3,
+#line 219 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_4,
+#line 219 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_5,
+#line 219 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_6);
+
+#line 195 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__generate_tailrec_event_code_8_p_0(
+#line 195 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 195 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 195 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_3,
+#line 195 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_4,
+#line 195 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_5,
+#line 195 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_6,
+#line 195 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_7,
+#line 195 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_8);
+
+#line 192 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__generate_user_event_code_5_p_0(
+#line 192 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 192 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 192 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_3,
+#line 192 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_4,
+#line 192 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_5);
+
+#line 186 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__maybe_generate_negated_event_code_6_p_0(
+#line 186 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 186 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 186 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_3,
+#line 186 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_4,
+#line 186 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_5,
+#line 186 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_6);
+
+#line 180 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__maybe_generate_internal_event_code_5_p_0(
+#line 180 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 180 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 180 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_3,
+#line 180 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_4,
+#line 180 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_5);
+
+#line 174 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__trace_prepare_for_call_2_p_0(
+#line 174 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 174 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_2);
+
+#line 169 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__generate_slot_fill_code_3_p_0(
+#line 169 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 169 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 169 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_3);
+
+#line 163 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__trace_setup_9_p_0(
+#line 163 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 163 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 163 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_3,
+#line 163 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_4,
+#line 163 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_5,
+#line 163 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_6,
+#line 163 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_7,
+#line 163 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_8,
+#line 163 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_9);
+
+#line 155 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__trace_reserved_slots_6_p_0(
+#line 155 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 155 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 155 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_3,
+#line 155 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_4,
+#line 155 "trace_gen.m"
+  MR_Integer * ll_backend__trace_gen__param_5,
+#line 155 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_6);
+
+#line 145 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__do_we_need_maxfr_slot_5_p_0(
+#line 145 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 145 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 145 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_3,
+#line 145 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_4,
+#line 145 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_5);
+
+#line 139 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__trace_fail_vars_3_p_0(
+#line 139 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 139 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_2,
+#line 139 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_3);
+
+#line 92 "trace_gen.m"
+void MR_CALL 
+ll_backend__trace_gen__get_trace_maybe_tail_rec_info_2_p_0(
+#line 92 "trace_gen.m"
+  MR_Word ll_backend__trace_gen__param_1,
+#line 92 "trace_gen.m"
+  MR_Word * ll_backend__trace_gen__param_2);
+
+void mercury__ll_backend__trace_gen__init(void);
+void mercury__ll_backend__trace_gen__init_type_tables(void);
+void mercury__ll_backend__trace_gen__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.trace_gen */
+
+/* :- end_interface ll_backend.trace_gen. */

@@ -1,0 +1,5 @@
+:- module ((check_hlds.simplify).simplify_info).
+:- interface.
+:- type innermost_proc.
+:- type simplify_info.
+:- type simplify_nested_context.

@@ -1,0 +1,13 @@
+module(1, "type_desc.m",
+	type_desc,
+	{},
+	{builtin, list, private_builtin, rtti_implementation},
+	{builtin, list, bool, require, string, private_builtin, rtti_implementation, erlang_rtti_implementation},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - type_desc, "C#" - type_desc, "Java" - type_desc, "IL" - type_desc, "Erlang" - type_desc, "C" - type_desc},
+	contains_foreign_export,
+	no_main
+).

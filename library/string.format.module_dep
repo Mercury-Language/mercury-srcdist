@@ -1,0 +1,13 @@
+module(1, "string.format.m",
+	(string.format),
+	{string},
+	{builtin, list, (string.parse_util), private_builtin},
+	{builtin, list, (string.parse_util), bool, float, int, integer, maybe, require, (string.parse_runtime), private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (string.format), "C#" - (string.format), "Java" - (string.format), "Erlang" - (string.format), "C" - (string.format)},
+	no_foreign_export,
+	no_main
+).

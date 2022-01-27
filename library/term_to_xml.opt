@@ -1,0 +1,229 @@
+:- module term_to_xml.
+:- use_module bool, builtin, char, construct, deconstruct, exception, int, list, map, maybe, private_builtin, stream, string, type_desc, unit, univ, (string.format), (string.parse_util).
+:- type term_to_xml.maybe_format
+	--->	format 
+	;	no_format .
+:- pred term_to_xml.get_element_pred(term_to_xml.element_mapping, pred(type_desc.type_desc, term_to_xml.maybe_functor_info, string, list.list(term_to_xml.attr_from_source))).
+:- mode term_to_xml.get_element_pred(builtin.in((term_to_xml.element_mapping)), builtin.out((term_to_xml.element_pred))) is det.
+:- pred term_to_xml.primitive_value(univ.univ, string).
+:- mode term_to_xml.primitive_value((builtin.in), (builtin.out)) is semidet.
+:- pred term_to_xml.write_xml_element_univ(Stream_1, deconstruct.noncanon_handling, pred(type_desc.type_desc, term_to_xml.maybe_functor_info, string, list.list(term_to_xml.attr_from_source)), int, univ.univ, list.list(maybe.maybe(string)), list.list(maybe.maybe(string)), State_2, State_2) <= (stream.writer(Stream_1, string, State_2)).
+:- mode term_to_xml.write_xml_element_univ((builtin.in), builtin.in((deconstruct.do_not_allow)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode term_to_xml.write_xml_element_univ((builtin.in), builtin.in((deconstruct.canonicalize)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode term_to_xml.write_xml_element_univ((builtin.in), builtin.in((deconstruct.include_details_cc)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode term_to_xml.write_xml_element_univ((builtin.in), (builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred term_to_xml.is_discriminated_union(type_desc.type_desc, int).
+:- mode term_to_xml.is_discriminated_union((builtin.in), (builtin.out)) is semidet.
+:- func term_to_xml.get_field_names(type_desc.type_desc, string, int) = list.list(maybe.maybe(string)).
+:- mode term_to_xml.get_field_names((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred term_to_xml.write_child_xml_elements(Stream_1, deconstruct.noncanon_handling, pred(type_desc.type_desc, term_to_xml.maybe_functor_info, string, list.list(term_to_xml.attr_from_source)), int, list.list(univ.univ), list.list(maybe.maybe(string)), State_2, State_2) <= (stream.writer(Stream_1, string, State_2)).
+:- mode term_to_xml.write_child_xml_elements((builtin.in), builtin.in((deconstruct.do_not_allow)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode term_to_xml.write_child_xml_elements((builtin.in), builtin.in((deconstruct.canonicalize)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode term_to_xml.write_child_xml_elements((builtin.in), builtin.in((deconstruct.include_details_cc)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode term_to_xml.write_child_xml_elements((builtin.in), (builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred term_to_xml.write_xml_element_univ_do_not_allow(Stream_1, pred(type_desc.type_desc, term_to_xml.maybe_functor_info, string, list.list(term_to_xml.attr_from_source)), int, univ.univ, list.list(maybe.maybe(string)), list.list(maybe.maybe(string)), State_2, State_2) <= (stream.writer(Stream_1, string, State_2)).
+:- mode term_to_xml.write_xml_element_univ_do_not_allow((builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred term_to_xml.write_xml_element_univ_canonicalize(Stream_1, pred(type_desc.type_desc, term_to_xml.maybe_functor_info, string, list.list(term_to_xml.attr_from_source)), int, univ.univ, list.list(maybe.maybe(string)), list.list(maybe.maybe(string)), State_2, State_2) <= (stream.writer(Stream_1, string, State_2)).
+:- mode term_to_xml.write_xml_element_univ_canonicalize((builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred term_to_xml.write_xml_element_univ_include_details_cc(Stream_1, pred(type_desc.type_desc, term_to_xml.maybe_functor_info, string, list.list(term_to_xml.attr_from_source)), int, univ.univ, list.list(maybe.maybe(string)), list.list(maybe.maybe(string)), State_2, State_2) <= (stream.writer(Stream_1, string, State_2)).
+:- mode term_to_xml.write_xml_element_univ_include_details_cc((builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred term_to_xml.indent(Stream_1, int, State_2, State_2) <= (stream.writer(Stream_1, string, State_2)).
+:- mode term_to_xml.indent((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred term_to_xml.write_primitive_element_with_attr_from_source(Stream_1, string, list.list(term_to_xml.attr_from_source), string, maybe.maybe(string), type_desc.type_desc, State_2, State_2) <= (stream.writer(Stream_1, string, State_2)).
+:- mode term_to_xml.write_primitive_element_with_attr_from_source((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred term_to_xml.write_element_start_with_attr_from_source(Stream_1, string, list.list(term_to_xml.attr_from_source), maybe.maybe(string), maybe.maybe(int), maybe.maybe(string), type_desc.type_desc, State_2, State_2) <= (stream.writer(Stream_1, string, State_2)).
+:- mode term_to_xml.write_element_start_with_attr_from_source((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred term_to_xml.write_element_start(Stream_1, string, list.list(term_to_xml.attr), State_2, State_2) <= (stream.writer(Stream_1, string, State_2)).
+:- mode term_to_xml.write_element_start((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred term_to_xml.write_empty_element_with_attr_from_source(Stream_1, string, list.list(term_to_xml.attr_from_source), maybe.maybe(string), maybe.maybe(int), maybe.maybe(string), type_desc.type_desc, State_2, State_2) <= (stream.writer(Stream_1, string, State_2)).
+:- mode term_to_xml.write_empty_element_with_attr_from_source((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred term_to_xml.write_empty_element(Stream_1, string, list.list(term_to_xml.attr), State_2, State_2) <= (stream.writer(Stream_1, string, State_2)).
+:- mode term_to_xml.write_empty_element((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred term_to_xml.write_element_end(Stream_1, string, State_2, State_2) <= (stream.writer(Stream_1, string, State_2)).
+:- mode term_to_xml.write_element_end((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func term_to_xml.attr_from_source_to_maybe_attr(maybe.maybe(string), maybe.maybe(int), type_desc.type_desc, maybe.maybe(string), term_to_xml.attr_from_source) = maybe.maybe(term_to_xml.attr).
+:- mode term_to_xml.attr_from_source_to_maybe_attr((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func term_to_xml.make_attrs_from_sources(maybe.maybe(string), maybe.maybe(int), type_desc.type_desc, maybe.maybe(string), list.list(term_to_xml.attr_from_source)) = list.list(term_to_xml.attr).
+:- mode term_to_xml.make_attrs_from_sources((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred term_to_xml.is_maybe_yes(maybe.maybe(T_1), T_1).
+:- mode term_to_xml.is_maybe_yes((builtin.in), (builtin.out)) is semidet.
+term_to_xml.write_xml_doc(Stream_5, Term_6, STATE_VARIABLE_State_0_8, STATE_VARIABLE_State_9) :-
+    V_10 = term_to_xml.no_stylesheet : term_to_xml.maybe_stylesheet,
+    V_11 = term_to_xml.no_dtd : term_to_xml.maybe_dtd,
+    term_to_xml.write_xml_doc_style_dtd(Stream_5, Term_6, V_10, V_11, STATE_VARIABLE_State_0_8, STATE_VARIABLE_State_9).
+term_to_xml.write_dtd(Stream_7, Term_8, ElementMapping_9, DTDResult_10, STATE_VARIABLE_State_0_13, STATE_VARIABLE_State_14) :-
+    TypeDesc_12 = type_desc.type_of(Term_8),
+    term_to_xml.write_dtd_from_type(Stream_7, TypeDesc_12, ElementMapping_9, DTDResult_10, STATE_VARIABLE_State_0_13, STATE_VARIABLE_State_14).
+term_to_xml.write_xml_element_general(Stream_8, NonCanon_9, ElementMapping_10, IndentLevel_11, Term_12, STATE_VARIABLE_State_0_17, STATE_VARIABLE_State_18) :-
+    univ.type_to_univ(Term_12, Univ_14),
+    term_to_xml.get_element_pred(ElementMapping_10, MakeElement_15),
+    V_19 = list.[] : list.list(maybe.maybe(string)),
+    term_to_xml.write_xml_element_univ(Stream_8, NonCanon_9, MakeElement_15, IndentLevel_11, Univ_14, V_19, V_16, STATE_VARIABLE_State_0_17, STATE_VARIABLE_State_18).
+term_to_xml.write_xml_element_univ(Stream_10, NonCanon_11, MakeElement_12, IndentLevel_13, Univ_14, MaybeFieldNames_15, RemainingMaybeFieldNames_16, STATE_VARIABLE_State_0_32, STATE_VARIABLE_State_33) :-
+    ( % disjunction
+      MaybeFieldNames_15 = list.[MaybeFieldName_18 | RemainingMaybeFieldNames_16] : list.list(maybe.maybe(string))
+    ;
+      MaybeFieldNames_15 = list.[] : list.list(maybe.maybe(string)),
+      RemainingMaybeFieldNames_16 = list.[] : list.list(maybe.maybe(string)),
+      MaybeFieldName_18 = maybe.no : maybe.maybe(string)
+    ),
+    deconstruct.deconstruct(Term_19, NonCanon_11, Functor_20, Arity_21, Args_22),
+    Term_19 = univ.univ_value(Univ_14),
+    TypeDesc_23 = type_desc.type_of(Term_19),
+    (if
+      term_to_xml.is_discriminated_union(TypeDesc_23, V_24)
+    then
+      Request_25 = term_to_xml.du_functor(Functor_20, Arity_21) : term_to_xml.maybe_functor_info
+    else
+      Request_25 = term_to_xml.non_du : term_to_xml.maybe_functor_info
+    ),
+    call(MakeElement_12, TypeDesc_23, Request_25, Element_26, AttrFromSources_27),
+    (if
+      term_to_xml.primitive_value(Univ_14, PrimValue_28)
+    then
+      term_to_xml.indent(Stream_10, IndentLevel_13, STATE_VARIABLE_State_0_32, STATE_VARIABLE_State_34_34),
+      term_to_xml.write_primitive_element_with_attr_from_source(Stream_10, Element_26, AttrFromSources_27, PrimValue_28, MaybeFieldName_18, TypeDesc_23, STATE_VARIABLE_State_34_34, STATE_VARIABLE_State_33)
+    else
+      ( % disjunction
+        Args_22 = list.[] : list.list(univ.univ),
+        term_to_xml.indent(Stream_10, IndentLevel_13, STATE_VARIABLE_State_0_32, STATE_VARIABLE_State_47_47),
+        V_48 = maybe.yes(Functor_20) : maybe.maybe(string),
+        V_49 = maybe.yes(Arity_21) : maybe.maybe(int),
+        term_to_xml.write_empty_element_with_attr_from_source(Stream_10, Element_26, AttrFromSources_27, V_48, V_49, MaybeFieldName_18, TypeDesc_23, STATE_VARIABLE_State_47_47, STATE_VARIABLE_State_33)
+      ;
+        Args_22 = list.[V_29 | V_30] : list.list(univ.univ),
+        ChildMaybeFieldNames_31 = term_to_xml.get_field_names(TypeDesc_23, Functor_20, Arity_21),
+        term_to_xml.indent(Stream_10, IndentLevel_13, STATE_VARIABLE_State_0_32, STATE_VARIABLE_State_36_36),
+        V_37 = maybe.yes(Functor_20) : maybe.maybe(string),
+        V_38 = maybe.yes(Arity_21) : maybe.maybe(int),
+        term_to_xml.write_element_start_with_attr_from_source(Stream_10, Element_26, AttrFromSources_27, V_37, V_38, MaybeFieldName_18, TypeDesc_23, STATE_VARIABLE_State_36_36, STATE_VARIABLE_State_39_39),
+        V_40 = int.(IndentLevel_13 + V_42),
+        V_42 = 1 : int,
+        term_to_xml.write_child_xml_elements(Stream_10, NonCanon_11, MakeElement_12, V_40, Args_22, ChildMaybeFieldNames_31, STATE_VARIABLE_State_39_39, STATE_VARIABLE_State_41_41),
+        term_to_xml.indent(Stream_10, IndentLevel_13, STATE_VARIABLE_State_41_41, STATE_VARIABLE_State_43_43),
+        term_to_xml.write_element_end(Stream_10, Element_26, STATE_VARIABLE_State_43_43, STATE_VARIABLE_State_44_44),
+        V_45 = "\n" : string,
+        stream.put(Stream_10, V_45, STATE_VARIABLE_State_44_44, STATE_VARIABLE_State_33)
+      )
+    ).
+term_to_xml.is_discriminated_union(TypeDesc_3, NumFunctors_4) :-
+    NumFunctors_4 = construct.num_functors(TypeDesc_3),
+    V_5 = -1 : int,
+    int.(NumFunctors_4 > V_5).
+term_to_xml.write_child_xml_elements(Stream_9, NonCanon_10, MakeElement_11, IndentLevel_12, Args_13, MaybeFieldNames_14, STATE_VARIABLE_State_0_19, STATE_VARIABLE_State_20) :-
+    ( % disjunction
+      NonCanon_10 = deconstruct.do_not_allow : deconstruct.noncanon_handling,
+      V_25 = term_to_xml.write_xml_element_univ_do_not_allow(Stream_9, MakeElement_11, IndentLevel_12) : pred(univ.univ, list.list(maybe.maybe(string)), list.list(maybe.maybe(string)), State_2, State_2),
+      list.foldl2(V_25, Args_13, MaybeFieldNames_14, V_16, STATE_VARIABLE_State_0_19, STATE_VARIABLE_State_20)
+    ;
+      NonCanon_10 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+      V_23 = term_to_xml.write_xml_element_univ_canonicalize(Stream_9, MakeElement_11, IndentLevel_12) : pred(univ.univ, list.list(maybe.maybe(string)), list.list(maybe.maybe(string)), State_2, State_2),
+      list.foldl2(V_23, Args_13, MaybeFieldNames_14, V_17, STATE_VARIABLE_State_0_19, STATE_VARIABLE_State_20)
+    ;
+      NonCanon_10 = deconstruct.include_details_cc : deconstruct.noncanon_handling,
+      V_21 = term_to_xml.write_xml_element_univ_include_details_cc(Stream_9, MakeElement_11, IndentLevel_12) : pred(univ.univ, list.list(maybe.maybe(string)), list.list(maybe.maybe(string)), State_2, State_2),
+      list.foldl2(V_21, Args_13, MaybeFieldNames_14, V_18, STATE_VARIABLE_State_0_19, STATE_VARIABLE_State_20)
+    ).
+term_to_xml.write_xml_element_univ_do_not_allow(Stream_9, MakeElement_10, IndentLevel_11, Univ_12, MaybeFieldNames0_13, MaybeFieldNames_14, STATE_VARIABLE_State_0_16, STATE_VARIABLE_State_17) :-
+    V_18 = deconstruct.do_not_allow : deconstruct.noncanon_handling,
+    term_to_xml.write_xml_element_univ(Stream_9, V_18, MakeElement_10, IndentLevel_11, Univ_12, MaybeFieldNames0_13, MaybeFieldNames_14, STATE_VARIABLE_State_0_16, STATE_VARIABLE_State_17).
+term_to_xml.write_xml_element_univ_canonicalize(Stream_9, MakeElement_10, IndentLevel_11, Univ_12, MaybeFieldNames0_13, MaybeFieldNames_14, STATE_VARIABLE_State_0_16, STATE_VARIABLE_State_17) :-
+    V_18 = deconstruct.canonicalize : deconstruct.noncanon_handling,
+    term_to_xml.write_xml_element_univ(Stream_9, V_18, MakeElement_10, IndentLevel_11, Univ_12, MaybeFieldNames0_13, MaybeFieldNames_14, STATE_VARIABLE_State_0_16, STATE_VARIABLE_State_17).
+term_to_xml.write_xml_element_univ_include_details_cc(Stream_9, MakeElement_10, IndentLevel_11, Univ_12, MaybeFieldNames0_13, MaybeFieldNames_14, STATE_VARIABLE_State_0_16, STATE_VARIABLE_State_17) :-
+    V_18 = deconstruct.include_details_cc : deconstruct.noncanon_handling,
+    term_to_xml.write_xml_element_univ(Stream_9, V_18, MakeElement_10, IndentLevel_11, Univ_12, MaybeFieldNames0_13, MaybeFieldNames_14, STATE_VARIABLE_State_0_16, STATE_VARIABLE_State_17).
+term_to_xml.write_element_start_with_attr_from_source(Stream_10, Element_11, AttrFromSources_12, MaybeFunctor_13, MaybeArity_14, MaybeField_15, TypeDesc_16, STATE_VARIABLE_State_0_19, STATE_VARIABLE_State_20) :-
+    Attrs_18 = term_to_xml.make_attrs_from_sources(MaybeFunctor_13, MaybeArity_14, TypeDesc_16, MaybeField_15, AttrFromSources_12),
+    term_to_xml.write_element_start(Stream_10, Element_11, Attrs_18, STATE_VARIABLE_State_0_19, STATE_VARIABLE_State_21_21),
+    V_22 = "\n" : string,
+    stream.put(Stream_10, V_22, STATE_VARIABLE_State_21_21, STATE_VARIABLE_State_20).
+term_to_xml.write_empty_element_with_attr_from_source(Stream_10, Element_11, AttrFromSources_12, MaybeFunctor_13, MaybeArity_14, MaybeField_15, TypeDesc_16, STATE_VARIABLE_State_0_19, STATE_VARIABLE_State_20) :-
+    Attrs_18 = term_to_xml.make_attrs_from_sources(MaybeFunctor_13, MaybeArity_14, TypeDesc_16, MaybeField_15, AttrFromSources_12),
+    term_to_xml.write_empty_element(Stream_10, Element_11, Attrs_18, STATE_VARIABLE_State_0_19, STATE_VARIABLE_State_21_21),
+    V_22 = "\n" : string,
+    stream.put(Stream_10, V_22, STATE_VARIABLE_State_21_21, STATE_VARIABLE_State_20).
+term_to_xml.make_attrs_from_sources(MaybeFunctor_7, MaybeArity_8, TypeDesc_9, MaybeField_10, AttrFromSources_11) = Attrs_12 :-
+    MaybeAttrs_13 = list.map(V_14, AttrFromSources_11),
+    V_14 = term_to_xml.attr_from_source_to_maybe_attr(MaybeFunctor_7, MaybeArity_8, TypeDesc_9, MaybeField_10) : ((func term_to_xml.attr_from_source) = maybe.maybe(term_to_xml.attr)),
+    V_15 = term_to_xml.is_maybe_yes : pred(maybe.maybe(term_to_xml.attr), term_to_xml.attr),
+    list.filter_map(V_15, MaybeAttrs_13, Attrs_12).
+term_to_xml.is_maybe_yes(maybe.yes(X_3), X_3).
+:- pragma exceptions(function, (term_to_xml.to_xml), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_style_dtd), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_header), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_general), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_doc_general_cc), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_to_xml.can_generate_dtd), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_dtd), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_dtd_from_type), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_general), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.get_element_pred), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term_to_xml.primitive_value), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.is_discriminated_union), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_to_xml.get_field_names), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_child_xml_elements), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_child_xml_elements), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_child_xml_elements), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_child_xml_elements), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ_do_not_allow), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ_canonicalize), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_xml_element_univ_include_details_cc), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.indent), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_primitive_element_with_attr_from_source), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_element_start_with_attr_from_source), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_element_start), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_empty_element_with_attr_from_source), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_empty_element), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.write_element_end), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_to_xml.attr_from_source_to_maybe_attr), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term_to_xml.make_attrs_from_sources), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term_to_xml.is_maybe_yes), 2, 0, will_not_throw).
+:- pragma termination_info(term_to_xml.to_xml((builtin.in)) = builtin.out((term_to_xml.xml_doc)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_style_dtd((builtin.in), (builtin.in), (builtin.in), builtin.in((term_to_xml.non_embedded_dtd)), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_header((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_general((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_doc_general_cc((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.can_generate_dtd(builtin.in((term_to_xml.element_mapping)), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_dtd((builtin.in), (builtin.unused), builtin.in((term_to_xml.element_mapping)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_dtd_from_type((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), builtin.in((deconstruct.do_not_allow)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), builtin.in((deconstruct.canonicalize)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), builtin.in((deconstruct.include_details_cc)), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_general((builtin.in), (builtin.in), builtin.in((term_to_xml.element_mapping)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.get_element_pred(builtin.in((term_to_xml.element_mapping)), builtin.out((term_to_xml.element_pred))), infinite, cannot_loop).
+:- pragma termination_info(term_to_xml.primitive_value((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ((builtin.in), builtin.in((deconstruct.do_not_allow)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ((builtin.in), builtin.in((deconstruct.canonicalize)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ((builtin.in), builtin.in((deconstruct.include_details_cc)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ((builtin.in), (builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.is_discriminated_union((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.get_field_names((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_child_xml_elements((builtin.in), builtin.in((deconstruct.do_not_allow)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_child_xml_elements((builtin.in), builtin.in((deconstruct.canonicalize)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_child_xml_elements((builtin.in), builtin.in((deconstruct.include_details_cc)), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_child_xml_elements((builtin.in), (builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ_do_not_allow((builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ_canonicalize((builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_xml_element_univ_include_details_cc((builtin.in), builtin.in((term_to_xml.element_pred)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.indent((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_primitive_element_with_attr_from_source((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_element_start_with_attr_from_source((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_element_start((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_empty_element_with_attr_from_source((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_empty_element((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.write_element_end((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(term_to_xml.attr_from_source_to_maybe_attr((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_to_xml.make_attrs_from_sources((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term_to_xml.is_maybe_yes((builtin.in), (builtin.out)), finite(-1, [no, yes, no]), cannot_loop).

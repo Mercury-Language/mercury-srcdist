@@ -1,0 +1,89 @@
+:- module (backend_libs.builtin_ops).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module mdbcomp.
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.sym_name).
+:- type array_elem_type
+	--->	array_elem_scalar(backend_libs.builtin_ops.scalar_array_elem_type)
+	;	array_elem_struct(list.list(backend_libs.builtin_ops.scalar_array_elem_type)).
+:- type binary_op
+	--->	int_add 
+	;	int_sub 
+	;	int_mul 
+	;	int_div 
+	;	int_mod 
+	;	unchecked_left_shift 
+	;	unchecked_right_shift 
+	;	bitwise_and 
+	;	bitwise_or 
+	;	bitwise_xor 
+	;	logical_and 
+	;	logical_or 
+	;	eq 
+	;	ne 
+	;	body 
+	;	array_index(backend_libs.builtin_ops.array_elem_type)
+	;	str_eq 
+	;	str_ne 
+	;	str_lt 
+	;	str_gt 
+	;	str_le 
+	;	str_ge 
+	;	str_cmp 
+	;	int_lt 
+	;	int_gt 
+	;	int_le 
+	;	int_ge 
+	;	unsigned_le 
+	;	float_plus 
+	;	float_minus 
+	;	float_times 
+	;	float_divide 
+	;	float_eq 
+	;	float_ne 
+	;	float_lt 
+	;	float_gt 
+	;	float_le 
+	;	float_ge 
+	;	float_word_bits 
+	;	float_from_dword 
+	;	pointer_equal_conservative 
+	;	compound_eq 
+	;	compound_lt .
+:- type scalar_array_elem_type
+	--->	scalar_elem_string 
+	;	scalar_elem_int 
+	;	scalar_elem_generic .
+:- type unary_op
+	--->	mktag 
+	;	tag 
+	;	unmktag 
+	;	strip_tag 
+	;	mkbody 
+	;	unmkbody 
+	;	bitwise_complement 
+	;	logical_not 
+	;	hash_string 
+	;	hash_string2 
+	;	hash_string3 .
+:- type simple_code(T)
+	--->	assign(T, backend_libs.builtin_ops.simple_expr(T))
+	;	ref_assign(T, T)
+	;	test(backend_libs.builtin_ops.simple_expr(T))
+	;	noop(list.list(T)).
+:- type simple_expr(T)
+	--->	leaf(T)
+	;	int_const(int)
+	;	float_const(float)
+	;	unary(backend_libs.builtin_ops.unary_op, backend_libs.builtin_ops.simple_expr(T))
+	;	binary(backend_libs.builtin_ops.binary_op, backend_libs.builtin_ops.simple_expr(T), backend_libs.builtin_ops.simple_expr(T)).
+:- inst (simple_arg_expr) == bound(float_const(ground) ; int_const(ground) ; leaf(ground)).
+:- inst (simple_assign_expr) == bound(binary(ground, ((backend_libs.builtin_ops).simple_arg_expr), ((backend_libs.builtin_ops).simple_arg_expr)) ; leaf(ground) ; unary(ground, ((backend_libs.builtin_ops).simple_arg_expr))).
+:- inst (simple_code) == bound(assign(ground, ((backend_libs.builtin_ops).simple_assign_expr)) ; noop(ground) ; ref_assign(ground, ground) ; test(((backend_libs.builtin_ops).simple_test_expr))).
+:- inst (simple_test_expr) == bound(binary(ground, ((backend_libs.builtin_ops).simple_arg_expr), ((backend_libs.builtin_ops).simple_arg_expr)) ; unary(ground, ((backend_libs.builtin_ops).simple_arg_expr))).
+:- pred test_if_builtin(mdbcomp.sym_name.module_name, string, hlds.hlds_pred.proc_id, list.list(T)).
+:- mode test_if_builtin((builtin.in), (builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred translate_builtin(mdbcomp.sym_name.module_name, string, hlds.hlds_pred.proc_id, list.list(T), backend_libs.builtin_ops.simple_code(T)).
+:- mode translate_builtin((builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.out(((backend_libs.builtin_ops).simple_code))) is det.

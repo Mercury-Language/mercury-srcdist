@@ -1,0 +1,1225 @@
+/*
+** Automatically generated from `solutions.m'
+** by the Mercury compiler,
+** version rotd-2014-12-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module solutions. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_solutions
+#define MR_HEADER_GUARD_solutions
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef SOLUTIONS_DECL_GUARD
+#define SOLUTIONS_DECL_GUARD
+#line 807 "solutions.m"
+
+
+#include "mercury_deep_copy.h"
+
+#ifndef MR_RECLAIM_HP_ON_FAILURE
+  /* for conservative GC, shallow copies suffice */
+  #define MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr,                        \
+        OldVar, NewVal, TypeInfo_for_T)                                 \
+    do {                                                                \
+        NewVal = OldVal;                                                \
+    } while (0)
+#else
+  /*
+  ** Note that we need to save/restore the MR_hp register, if it
+  ** is transient, before/after calling MR_deep_copy().
+  */
+  #define MR_PARTIAL_DEEP_COPY(SolutionsHeapPtr,                        \
+        OldVar, NewVal, TypeInfo_for_T)                                 \
+    do {                                                                \
+        MR_save_transient_hp();                                         \
+        NewVal = MR_deep_copy(OldVal, (MR_TypeInfo) TypeInfo_for_T,     \
+            (const MR_Word *) SolutionsHeapPtr,                         \
+            MR_ENGINE(MR_eng_solutions_heap_zone)->MR_zone_top);        \
+        MR_restore_transient_hp();                                      \
+    } while (0)
+#endif
+
+
+#endif
+
+
+
+
+#line 70 "solutions.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__solutions__solutions__type_ctor_info_heap_ptr_0;
+
+#line 73 "solutions.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__solutions__solutions__type_ctor_info_trail_ptr_0;
+
+#line 268 "solutions.m"
+void MR_CALL 
+mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_115_115_101_114_116_95_110_117_109_95_115_111_108_117_116_105_111_110_115_95_95_91_50_93_95_49_3_p_1(
+#line 268 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 268 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 268 "solutions.m"
+  MR_Word * mercury__solutions__param_3);
+
+#line 266 "solutions.m"
+void MR_CALL 
+mercury__solutions__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_115_115_101_114_116_95_110_117_109_95_115_111_108_117_116_105_111_110_115_95_95_91_50_93_95_48_3_p_0(
+#line 266 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 266 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 266 "solutions.m"
+  MR_Word * mercury__solutions__param_3);
+
+#line 599 "solutions.m"
+void MR_CALL 
+mercury__solutions____Compare____trail_ptr_0_0(
+#line 599 "solutions.m"
+  MR_Word * mercury__solutions__param_1,
+#line 599 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 599 "solutions.m"
+  MR_Word mercury__solutions__param_3);
+
+#line 599 "solutions.m"
+MR_bool MR_CALL 
+mercury__solutions____Unify____trail_ptr_0_0(
+#line 599 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 599 "solutions.m"
+  MR_Word mercury__solutions__param_2);
+
+#line 598 "solutions.m"
+void MR_CALL 
+mercury__solutions____Compare____heap_ptr_0_0(
+#line 598 "solutions.m"
+  MR_Word * mercury__solutions__param_1,
+#line 598 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 598 "solutions.m"
+  MR_Word mercury__solutions__param_3);
+
+#line 598 "solutions.m"
+MR_bool MR_CALL 
+mercury__solutions____Unify____heap_ptr_0_0(
+#line 598 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 598 "solutions.m"
+  MR_Word mercury__solutions__param_2);
+
+#line 434 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_7(
+#line 434 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 434 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 434 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 434 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 434 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 434 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 434 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 434 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 434 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 431 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_6(
+#line 431 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 431 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 431 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 431 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 431 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 431 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 431 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 431 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 431 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 428 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_5(
+#line 428 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 428 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 428 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 428 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 428 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 428 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 428 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 428 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 428 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 425 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_4(
+#line 425 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 425 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 425 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 425 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 425 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 425 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 425 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 425 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 425 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 422 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_3(
+#line 422 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 422 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 422 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 422 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 422 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 422 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 422 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 422 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 422 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 419 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_2(
+#line 419 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 419 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 419 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 419 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 419 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 419 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 419 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 419 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 419 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 416 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_1(
+#line 416 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 416 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 416 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 416 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 416 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 416 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 416 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 416 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 416 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 413 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate2_6_p_0(
+#line 413 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 413 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 413 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 413 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 413 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 413 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 413 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 413 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 413 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 310 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_9(
+#line 310 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 310 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 310 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 310 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 310 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 310 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 308 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_8(
+#line 308 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 308 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 308 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 308 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 308 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 308 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 306 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_7(
+#line 306 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 306 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 306 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 306 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 306 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 306 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 304 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_6(
+#line 304 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 304 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 304 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 304 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 304 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 304 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 302 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_5(
+#line 302 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 302 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 302 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 302 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 302 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 302 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 300 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_4(
+#line 300 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 300 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 300 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 300 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 300 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 300 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 298 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_3(
+#line 298 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 298 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 298 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 298 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 298 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 298 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 296 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_2(
+#line 296 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 296 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 296 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 296 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 296 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 296 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 294 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_1(
+#line 294 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 294 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 294 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 294 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 294 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 294 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 292 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_aggregate_4_p_0(
+#line 292 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 292 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 292 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 292 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 292 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 292 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 268 "solutions.m"
+void MR_CALL 
+mercury__solutions__assert_num_solutions_3_p_1(
+#line 268 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 268 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 268 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 268 "solutions.m"
+  MR_Word * mercury__solutions__param_4);
+
+#line 266 "solutions.m"
+void MR_CALL 
+mercury__solutions__assert_num_solutions_3_p_0(
+#line 266 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 266 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 266 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 266 "solutions.m"
+  MR_Word * mercury__solutions__param_4);
+
+#line 258 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_1(
+#line 258 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 258 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 258 "solutions.m"
+  MR_Word * mercury__solutions__param_3);
+
+#line 256 "solutions.m"
+void MR_CALL 
+mercury__solutions__builtin_solutions_2_p_0(
+#line 256 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 256 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 256 "solutions.m"
+  MR_Word * mercury__solutions__param_3);
+
+#line 192 "solutions.m"
+void MR_CALL 
+mercury__solutions__do_while_4_p_5(
+#line 192 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 192 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 192 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 192 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 192 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 192 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 190 "solutions.m"
+void MR_CALL 
+mercury__solutions__do_while_4_p_4(
+#line 190 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 190 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 190 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 190 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 190 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 190 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 188 "solutions.m"
+void MR_CALL 
+mercury__solutions__do_while_4_p_3(
+#line 188 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 188 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 188 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 188 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 188 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 188 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 186 "solutions.m"
+void MR_CALL 
+mercury__solutions__do_while_4_p_2(
+#line 186 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 186 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 186 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 186 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 186 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 186 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 184 "solutions.m"
+void MR_CALL 
+mercury__solutions__do_while_4_p_1(
+#line 184 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 184 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 184 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 184 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 184 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 184 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 182 "solutions.m"
+void MR_CALL 
+mercury__solutions__do_while_4_p_0(
+#line 182 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 182 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 182 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 182 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 182 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 182 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 157 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_7(
+#line 157 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 157 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 157 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 157 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 157 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 157 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 157 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 157 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 157 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 155 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_6(
+#line 155 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 155 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 155 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 155 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 155 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 155 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 155 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 155 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 155 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 153 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_5(
+#line 153 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 153 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 153 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 153 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 153 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 153 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 153 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 153 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 153 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 151 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_4(
+#line 151 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 151 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 151 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 151 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 151 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 151 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 151 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 151 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 151 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 149 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_3(
+#line 149 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 149 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 149 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 149 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 149 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 149 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 149 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 149 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 149 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 147 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_2(
+#line 147 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 147 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 147 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 147 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 147 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 147 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 147 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 147 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 147 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 145 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_1(
+#line 145 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 145 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 145 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 145 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 145 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 145 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 145 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 145 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 145 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 143 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate2_6_p_0(
+#line 143 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 143 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 143 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 143 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 143 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 143 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 143 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 143 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 143 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 127 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_9(
+#line 127 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 127 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 127 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 127 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 127 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 127 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 125 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_8(
+#line 125 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 125 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 125 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 125 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 125 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 125 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 123 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_7(
+#line 123 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 123 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 123 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 123 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 123 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 123 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 121 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_6(
+#line 121 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 121 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 121 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 121 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 121 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 121 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 119 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_5(
+#line 119 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 119 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 119 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 119 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 119 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 119 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 117 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_4(
+#line 117 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 117 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 117 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 117 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 117 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 117 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 115 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_3(
+#line 115 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 115 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 115 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 115 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 115 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 115 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 113 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_2(
+#line 113 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 113 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 113 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 113 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 113 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 113 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 111 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_1(
+#line 111 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 111 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 111 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 111 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 111 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 111 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 109 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_aggregate_4_p_0(
+#line 109 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 109 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 109 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 109 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 109 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 109 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 93 "solutions.m"
+void MR_CALL 
+mercury__solutions__aggregate2_6_p_3(
+#line 93 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 93 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 93 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 93 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 93 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 93 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 93 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 93 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 93 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 91 "solutions.m"
+void MR_CALL 
+mercury__solutions__aggregate2_6_p_2(
+#line 91 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 91 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 91 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 91 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 91 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 91 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 91 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 91 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 91 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 89 "solutions.m"
+void MR_CALL 
+mercury__solutions__aggregate2_6_p_1(
+#line 89 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 89 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 89 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 89 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 89 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 89 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 89 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 89 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 89 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 87 "solutions.m"
+void MR_CALL 
+mercury__solutions__aggregate2_6_p_0(
+#line 87 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 87 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 87 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 87 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 87 "solutions.m"
+  MR_Word mercury__solutions__param_5,
+#line 87 "solutions.m"
+  MR_Box mercury__solutions__param_6,
+#line 87 "solutions.m"
+  MR_Box * mercury__solutions__param_7,
+#line 87 "solutions.m"
+  MR_Box mercury__solutions__param_8,
+#line 87 "solutions.m"
+  MR_Box * mercury__solutions__param_9);
+
+#line 75 "solutions.m"
+void MR_CALL 
+mercury__solutions__aggregate_4_p_3(
+#line 75 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 75 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 75 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 75 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 75 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 75 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 73 "solutions.m"
+void MR_CALL 
+mercury__solutions__aggregate_4_p_2(
+#line 73 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 73 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 73 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 73 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 73 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 73 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 71 "solutions.m"
+void MR_CALL 
+mercury__solutions__aggregate_4_p_1(
+#line 71 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 71 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 71 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 71 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 71 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 71 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 69 "solutions.m"
+void MR_CALL 
+mercury__solutions__aggregate_4_p_0(
+#line 69 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 69 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 69 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 69 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 69 "solutions.m"
+  MR_Box mercury__solutions__param_5,
+#line 69 "solutions.m"
+  MR_Box * mercury__solutions__param_6);
+
+#line 57 "solutions.m"
+MR_Box MR_CALL 
+mercury__solutions__aggregate_3_f_1(
+#line 57 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 57 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 57 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 57 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 57 "solutions.m"
+  MR_Box mercury__solutions__param_5);
+
+#line 55 "solutions.m"
+MR_Box MR_CALL 
+mercury__solutions__aggregate_3_f_0(
+#line 55 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 55 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 55 "solutions.m"
+  MR_Word mercury__solutions__param_3,
+#line 55 "solutions.m"
+  MR_Word mercury__solutions__param_4,
+#line 55 "solutions.m"
+  MR_Box mercury__solutions__param_5);
+
+#line 51 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_solutions_2_p_1(
+#line 51 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 51 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 51 "solutions.m"
+  MR_Word * mercury__solutions__param_3);
+
+#line 49 "solutions.m"
+void MR_CALL 
+mercury__solutions__unsorted_solutions_2_p_0(
+#line 49 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 49 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 49 "solutions.m"
+  MR_Word * mercury__solutions__param_3);
+
+#line 46 "solutions.m"
+void MR_CALL 
+mercury__solutions__solutions_set_2_p_1(
+#line 46 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 46 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 46 "solutions.m"
+  MR_Word * mercury__solutions__param_3);
+
+#line 45 "solutions.m"
+void MR_CALL 
+mercury__solutions__solutions_set_2_p_0(
+#line 45 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 45 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 45 "solutions.m"
+  MR_Word * mercury__solutions__param_3);
+
+#line 42 "solutions.m"
+MR_Word MR_CALL 
+mercury__solutions__solutions_set_1_f_1(
+#line 42 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 42 "solutions.m"
+  MR_Word mercury__solutions__param_2);
+
+#line 41 "solutions.m"
+MR_Word MR_CALL 
+mercury__solutions__solutions_set_1_f_0(
+#line 41 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 41 "solutions.m"
+  MR_Word mercury__solutions__param_2);
+
+#line 38 "solutions.m"
+MR_Word MR_CALL 
+mercury__solutions__solutions_1_f_1(
+#line 38 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 38 "solutions.m"
+  MR_Word mercury__solutions__param_2);
+
+#line 37 "solutions.m"
+MR_Word MR_CALL 
+mercury__solutions__solutions_1_f_0(
+#line 37 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 37 "solutions.m"
+  MR_Word mercury__solutions__param_2);
+
+#line 34 "solutions.m"
+void MR_CALL 
+mercury__solutions__solutions_2_p_1(
+#line 34 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 34 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 34 "solutions.m"
+  MR_Word * mercury__solutions__param_3);
+
+#line 33 "solutions.m"
+void MR_CALL 
+mercury__solutions__solutions_2_p_0(
+#line 33 "solutions.m"
+  MR_Word mercury__solutions__param_1,
+#line 33 "solutions.m"
+  MR_Word mercury__solutions__param_2,
+#line 33 "solutions.m"
+  MR_Word * mercury__solutions__param_3);
+
+void mercury__solutions__init(void);
+void mercury__solutions__init_type_tables(void);
+void mercury__solutions__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_solutions */
+
+/* :- end_interface solutions. */

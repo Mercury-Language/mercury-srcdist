@@ -1,0 +1,44 @@
+:- module (parse_tree.prog_io_util).
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module term.
+:- import_module varset.
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type allow_constrained_inst_var
+	--->	allow_constrained_inst_var 
+	;	no_allow_constrained_inst_var .
+:- type decl_attribute
+	--->	decl_attr_purity(parse_tree.prog_data.purity)
+	;	decl_attr_quantifier(parse_tree.prog_io_util.quantifier_type, list.list(term.var))
+	;	decl_attr_constraints(parse_tree.prog_io_util.quantifier_type, term.term)
+	;	decl_attr_solver_type .
+:- type decl_attrs == assoc_list.assoc_list(parse_tree.prog_io_util.decl_attribute, term.context).
+:- type maybe_functor == parse_tree.prog_io_util.maybe_functor(term.generic).
+:- type quantifier_type
+	--->	quant_type_exist 
+	;	quant_type_univ .
+:- type var2pvar == map.map(term.var, parse_tree.prog_data.prog_var).
+:- type var2tvar == map.map(term.var, parse_tree.prog_data.tvar).
+:- type maybe_functor(T) == parse_tree.prog_io_util.maybe2(mdbcomp.sym_name.sym_name, list.list(term.term(T))).
+:- type maybe_pred_or_func(T) == parse_tree.prog_io_util.maybe2(mdbcomp.sym_name.sym_name, pair.pair(list.list(T), maybe.maybe(T))).
+:- type parser(T) == pred(term.term, parse_tree.prog_io_util.maybe1(T)).
+:- type maybe1(T1)
+	--->	error1(list.list(parse_tree.error_util.error_spec))
+	;	ok1(T1).
+:- type maybe2(T1, T2)
+	--->	error2(list.list(parse_tree.error_util.error_spec))
+	;	ok2(T1, T2).
+:- type maybe3(T1, T2, T3)
+	--->	error3(list.list(parse_tree.error_util.error_spec))
+	;	ok3(T1, T2, T3).
+:- type maybe4(T1, T2, T3, T4)
+	--->	error4(list.list(parse_tree.error_util.error_spec))
+	;	ok4(T1, T2, T3, T4).
+:- mode (parser) == (pred((builtin.in), (builtin.out)) is det).

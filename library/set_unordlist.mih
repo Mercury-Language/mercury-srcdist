@@ -1,0 +1,1872 @@
+/*
+** Automatically generated from `set_unordlist.m'
+** by the Mercury compiler,
+** version rotd-2014-12-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module set_unordlist. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_set_unordlist
+#define MR_HEADER_GUARD_set_unordlist
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef SET_UNORDLIST_DECL_GUARD
+#define SET_UNORDLIST_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "set_unordlist.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__set_unordlist__set_unordlist__type_ctor_info_set_unordlist_1;
+
+#line 370 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist____Compare____set_unordlist_1_0(
+#line 370 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 370 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_2,
+#line 370 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 370 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4);
+
+#line 370 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist____Unify____set_unordlist_1_0(
+#line 370 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 370 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 370 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 631 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__divide_2_6_p_0(
+#line 631 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 631 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 631 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 631 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 631 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_5,
+#line 631 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 631 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_7);
+
+#line 519 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__difference_2_3_p_0(
+#line 519 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 519 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 519 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 519 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 488 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__intersect_2_4_p_0(
+#line 488 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 488 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 488 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 488 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 488 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_5);
+
+#line 477 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__power_union_2_3_p_0(
+#line 477 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 477 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 477 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 477 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 360 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__divide_4_p_0(
+#line 360 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 360 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 360 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 360 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4,
+#line 360 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_5);
+
+#line 352 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__filter_4_p_0(
+#line 352 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 352 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 352 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 352 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4,
+#line 352 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_5);
+
+#line 346 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__filter_3_p_0(
+#line 346 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 346 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 346 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 346 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 341 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__all_true_2_p_0(
+#line 341 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 341 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 341 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 334 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold6_14_p_5(
+#line 334 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 334 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 334 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 334 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 334 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 334 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 334 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 334 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_8,
+#line 334 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_9,
+#line 334 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_10,
+#line 334 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_11,
+#line 334 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_12,
+#line 334 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_13,
+#line 334 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_14,
+#line 334 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_15,
+#line 334 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_16,
+#line 334 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_17,
+#line 334 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_18,
+#line 334 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_19,
+#line 334 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_20,
+#line 334 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_21);
+
+#line 331 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold6_14_p_4(
+#line 331 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 331 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 331 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 331 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 331 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 331 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 331 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 331 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_8,
+#line 331 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_9,
+#line 331 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_10,
+#line 331 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_11,
+#line 331 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_12,
+#line 331 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_13,
+#line 331 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_14,
+#line 331 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_15,
+#line 331 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_16,
+#line 331 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_17,
+#line 331 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_18,
+#line 331 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_19,
+#line 331 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_20,
+#line 331 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_21);
+
+#line 328 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold6_14_p_3(
+#line 328 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 328 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 328 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 328 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 328 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 328 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 328 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 328 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_8,
+#line 328 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_9,
+#line 328 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_10,
+#line 328 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_11,
+#line 328 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_12,
+#line 328 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_13,
+#line 328 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_14,
+#line 328 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_15,
+#line 328 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_16,
+#line 328 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_17,
+#line 328 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_18,
+#line 328 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_19,
+#line 328 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_20,
+#line 328 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_21);
+
+#line 325 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold6_14_p_2(
+#line 325 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 325 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 325 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 325 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 325 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 325 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 325 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 325 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_8,
+#line 325 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_9,
+#line 325 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_10,
+#line 325 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_11,
+#line 325 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_12,
+#line 325 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_13,
+#line 325 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_14,
+#line 325 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_15,
+#line 325 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_16,
+#line 325 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_17,
+#line 325 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_18,
+#line 325 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_19,
+#line 325 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_20,
+#line 325 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_21);
+
+#line 322 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold6_14_p_1(
+#line 322 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 322 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 322 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 322 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 322 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 322 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 322 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 322 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_8,
+#line 322 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_9,
+#line 322 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_10,
+#line 322 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_11,
+#line 322 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_12,
+#line 322 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_13,
+#line 322 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_14,
+#line 322 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_15,
+#line 322 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_16,
+#line 322 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_17,
+#line 322 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_18,
+#line 322 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_19,
+#line 322 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_20,
+#line 322 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_21);
+
+#line 319 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold6_14_p_0(
+#line 319 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 319 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 319 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 319 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 319 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 319 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 319 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 319 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_8,
+#line 319 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_9,
+#line 319 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_10,
+#line 319 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_11,
+#line 319 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_12,
+#line 319 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_13,
+#line 319 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_14,
+#line 319 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_15,
+#line 319 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_16,
+#line 319 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_17,
+#line 319 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_18,
+#line 319 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_19,
+#line 319 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_20,
+#line 319 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_21);
+
+#line 312 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold5_12_p_5(
+#line 312 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 312 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 312 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 312 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 312 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 312 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 312 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 312 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_8,
+#line 312 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_9,
+#line 312 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_10,
+#line 312 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_11,
+#line 312 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_12,
+#line 312 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_13,
+#line 312 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_14,
+#line 312 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_15,
+#line 312 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_16,
+#line 312 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_17,
+#line 312 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_18);
+
+#line 309 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold5_12_p_4(
+#line 309 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 309 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 309 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 309 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 309 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 309 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 309 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 309 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_8,
+#line 309 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_9,
+#line 309 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_10,
+#line 309 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_11,
+#line 309 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_12,
+#line 309 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_13,
+#line 309 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_14,
+#line 309 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_15,
+#line 309 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_16,
+#line 309 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_17,
+#line 309 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_18);
+
+#line 306 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold5_12_p_3(
+#line 306 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 306 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 306 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 306 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 306 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 306 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 306 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 306 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_8,
+#line 306 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_9,
+#line 306 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_10,
+#line 306 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_11,
+#line 306 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_12,
+#line 306 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_13,
+#line 306 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_14,
+#line 306 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_15,
+#line 306 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_16,
+#line 306 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_17,
+#line 306 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_18);
+
+#line 303 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold5_12_p_2(
+#line 303 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 303 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 303 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 303 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 303 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 303 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 303 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 303 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_8,
+#line 303 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_9,
+#line 303 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_10,
+#line 303 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_11,
+#line 303 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_12,
+#line 303 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_13,
+#line 303 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_14,
+#line 303 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_15,
+#line 303 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_16,
+#line 303 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_17,
+#line 303 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_18);
+
+#line 300 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold5_12_p_1(
+#line 300 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 300 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 300 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 300 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 300 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 300 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 300 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 300 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_8,
+#line 300 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_9,
+#line 300 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_10,
+#line 300 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_11,
+#line 300 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_12,
+#line 300 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_13,
+#line 300 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_14,
+#line 300 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_15,
+#line 300 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_16,
+#line 300 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_17,
+#line 300 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_18);
+
+#line 297 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold5_12_p_0(
+#line 297 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 297 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 297 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 297 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 297 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 297 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 297 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 297 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_8,
+#line 297 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_9,
+#line 297 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_10,
+#line 297 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_11,
+#line 297 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_12,
+#line 297 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_13,
+#line 297 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_14,
+#line 297 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_15,
+#line 297 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_16,
+#line 297 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_17,
+#line 297 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_18);
+
+#line 290 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold4_10_p_5(
+#line 290 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 290 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 290 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 290 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 290 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 290 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 290 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 290 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_8,
+#line 290 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_9,
+#line 290 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_10,
+#line 290 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_11,
+#line 290 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_12,
+#line 290 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_13,
+#line 290 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_14,
+#line 290 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_15);
+
+#line 287 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold4_10_p_4(
+#line 287 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 287 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 287 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 287 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 287 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 287 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 287 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 287 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_8,
+#line 287 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_9,
+#line 287 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_10,
+#line 287 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_11,
+#line 287 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_12,
+#line 287 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_13,
+#line 287 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_14,
+#line 287 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_15);
+
+#line 284 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold4_10_p_3(
+#line 284 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 284 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 284 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 284 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 284 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 284 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 284 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 284 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_8,
+#line 284 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_9,
+#line 284 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_10,
+#line 284 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_11,
+#line 284 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_12,
+#line 284 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_13,
+#line 284 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_14,
+#line 284 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_15);
+
+#line 281 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold4_10_p_2(
+#line 281 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 281 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 281 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 281 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 281 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 281 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 281 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 281 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_8,
+#line 281 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_9,
+#line 281 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_10,
+#line 281 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_11,
+#line 281 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_12,
+#line 281 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_13,
+#line 281 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_14,
+#line 281 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_15);
+
+#line 278 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold4_10_p_1(
+#line 278 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 278 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 278 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 278 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 278 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 278 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 278 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 278 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_8,
+#line 278 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_9,
+#line 278 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_10,
+#line 278 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_11,
+#line 278 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_12,
+#line 278 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_13,
+#line 278 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_14,
+#line 278 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_15);
+
+#line 275 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold4_10_p_0(
+#line 275 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 275 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 275 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 275 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 275 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 275 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 275 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_7,
+#line 275 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_8,
+#line 275 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_9,
+#line 275 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_10,
+#line 275 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_11,
+#line 275 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_12,
+#line 275 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_13,
+#line 275 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_14,
+#line 275 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_15);
+
+#line 270 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold3_8_p_5(
+#line 270 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 270 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 270 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 270 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 270 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 270 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 270 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_7,
+#line 270 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_8,
+#line 270 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_9,
+#line 270 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_10,
+#line 270 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_11,
+#line 270 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_12);
+
+#line 268 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold3_8_p_4(
+#line 268 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 268 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 268 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 268 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 268 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 268 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 268 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_7,
+#line 268 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_8,
+#line 268 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_9,
+#line 268 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_10,
+#line 268 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_11,
+#line 268 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_12);
+
+#line 266 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold3_8_p_3(
+#line 266 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 266 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 266 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 266 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 266 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 266 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 266 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_7,
+#line 266 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_8,
+#line 266 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_9,
+#line 266 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_10,
+#line 266 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_11,
+#line 266 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_12);
+
+#line 264 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold3_8_p_2(
+#line 264 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 264 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 264 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 264 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 264 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 264 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 264 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_7,
+#line 264 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_8,
+#line 264 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_9,
+#line 264 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_10,
+#line 264 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_11,
+#line 264 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_12);
+
+#line 262 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold3_8_p_1(
+#line 262 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 262 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 262 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 262 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 262 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 262 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 262 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_7,
+#line 262 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_8,
+#line 262 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_9,
+#line 262 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_10,
+#line 262 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_11,
+#line 262 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_12);
+
+#line 260 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold3_8_p_0(
+#line 260 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 260 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 260 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 260 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 260 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 260 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_6,
+#line 260 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_7,
+#line 260 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_8,
+#line 260 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_9,
+#line 260 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_10,
+#line 260 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_11,
+#line 260 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_12);
+
+#line 255 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold2_6_p_5(
+#line 255 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 255 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 255 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 255 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 255 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 255 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_6,
+#line 255 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_7,
+#line 255 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_8,
+#line 255 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_9);
+
+#line 253 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold2_6_p_4(
+#line 253 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 253 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 253 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 253 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 253 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 253 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_6,
+#line 253 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_7,
+#line 253 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_8,
+#line 253 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_9);
+
+#line 251 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold2_6_p_3(
+#line 251 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 251 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 251 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 251 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 251 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 251 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_6,
+#line 251 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_7,
+#line 251 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_8,
+#line 251 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_9);
+
+#line 249 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold2_6_p_2(
+#line 249 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 249 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 249 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 249 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 249 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 249 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_6,
+#line 249 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_7,
+#line 249 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_8,
+#line 249 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_9);
+
+#line 247 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold2_6_p_1(
+#line 247 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 247 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 247 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 247 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 247 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 247 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_6,
+#line 247 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_7,
+#line 247 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_8,
+#line 247 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_9);
+
+#line 245 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold2_6_p_0(
+#line 245 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 245 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 245 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 245 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 245 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_5,
+#line 245 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_6,
+#line 245 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_7,
+#line 245 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_8,
+#line 245 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_9);
+
+#line 241 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold_4_p_5(
+#line 241 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 241 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 241 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 241 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 241 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_5,
+#line 241 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_6);
+
+#line 240 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold_4_p_4(
+#line 240 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 240 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 240 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 240 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 240 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_5,
+#line 240 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_6);
+
+#line 239 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__fold_4_p_3(
+#line 239 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 239 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 239 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 239 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 239 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_5,
+#line 239 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_6);
+
+#line 238 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold_4_p_2(
+#line 238 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 238 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 238 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 238 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 238 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_5,
+#line 238 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_6);
+
+#line 237 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold_4_p_1(
+#line 237 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 237 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 237 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 237 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 237 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_5,
+#line 237 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_6);
+
+#line 236 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__fold_4_p_0(
+#line 236 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 236 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 236 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 236 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 236 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_5,
+#line 236 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_6);
+
+#line 234 "set_unordlist.m"
+MR_Box MR_CALL 
+mercury__set_unordlist__fold_3_f_0(
+#line 234 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 234 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 234 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 234 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4,
+#line 234 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_5);
+
+#line 232 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__filter_map_2_f_0(
+#line 232 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 232 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 232 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 232 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4);
+
+#line 229 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__map_2_f_0(
+#line 229 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 229 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 229 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 229 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_4);
+
+#line 227 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__count_2_p_0(
+#line 227 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 227 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 227 "set_unordlist.m"
+  MR_Integer * mercury__set_unordlist__param_3);
+
+#line 226 "set_unordlist.m"
+MR_Integer MR_CALL 
+mercury__set_unordlist__count_1_f_0(
+#line 226 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 226 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 224 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__difference_2_f_0(
+#line 224 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 224 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 224 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 221 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__difference_3_p_0(
+#line 221 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 221 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 221 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 221 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 216 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__intersect_list_1_f_0(
+#line 216 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 216 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 211 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__power_intersect_1_f_0(
+#line 211 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 211 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 208 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__power_intersect_2_p_0(
+#line 208 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 208 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 208 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_3);
+
+#line 203 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__intersect_2_f_0(
+#line 203 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 203 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 203 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 200 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__intersect_3_p_0(
+#line 200 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 200 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 200 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 200 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 195 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__power_union_1_f_0(
+#line 195 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 195 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 192 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__power_union_2_p_0(
+#line 192 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 192 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 192 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_3);
+
+#line 188 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__union_list_1_f_0(
+#line 188 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 188 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 184 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__union_2_f_0(
+#line 184 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 184 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 184 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 181 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__union_3_p_0(
+#line 181 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 181 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 181 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 181 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 174 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__remove_least_3_p_0(
+#line 174 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 174 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_2,
+#line 174 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 174 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 167 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__remove_list_3_p_0(
+#line 167 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 167 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 167 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 167 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 159 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__remove_3_p_0(
+#line 159 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 159 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_2,
+#line 159 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 159 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 152 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__delete_list_2_f_0(
+#line 152 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 152 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 152 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 149 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__delete_list_3_p_0(
+#line 149 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 149 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 149 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 149 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 144 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__delete_2_f_0(
+#line 144 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 144 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 144 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_3);
+
+#line 142 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__delete_3_p_1(
+#line 142 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 142 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_2,
+#line 142 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 142 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 141 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__delete_3_p_0(
+#line 141 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 141 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_2,
+#line 141 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 141 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 133 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__insert_list_2_f_0(
+#line 133 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 133 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 133 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 130 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__insert_list_3_p_0(
+#line 130 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 130 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 130 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 130 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 124 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__insert_new_3_p_0(
+#line 124 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 124 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_2,
+#line 124 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 124 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 119 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__insert_2_f_0(
+#line 119 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 119 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 119 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_3);
+
+#line 117 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__insert_3_p_1(
+#line 117 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 117 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_2,
+#line 117 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 117 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 116 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__insert_3_p_0(
+#line 116 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 116 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_2,
+#line 116 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 116 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 110 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__contains_2_p_0(
+#line 110 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 110 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 110 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_3);
+
+#line 106 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__is_member_3_p_0(
+#line 106 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 106 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_2,
+#line 106 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 106 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_4);
+
+#line 101 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__member_2_p_1(
+#line 101 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 101 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_2,
+#line 101 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3,
+#line 101 "set_unordlist.m"
+  MR_Cont mercury__set_unordlist__param_4,
+#line 101 "set_unordlist.m"
+  void * mercury__set_unordlist__param_5);
+
+#line 100 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__member_2_p_0(
+#line 100 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 100 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_2,
+#line 100 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 95 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__superset_2_p_0(
+#line 95 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 95 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 95 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 91 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__subset_2_p_0(
+#line 91 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 91 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 91 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 87 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__is_non_empty_1_p_0(
+#line 87 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 87 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 86 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__non_empty_1_p_0(
+#line 86 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 86 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 81 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__is_empty_1_p_0(
+#line 81 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 81 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 80 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__empty_1_p_0(
+#line 80 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 80 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 75 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__equal_2_p_0(
+#line 75 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 75 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 75 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 70 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__is_singleton_2_p_0(
+#line 70 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 70 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 70 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_3);
+
+#line 68 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__make_singleton_set_1_f_0(
+#line 68 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 68 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_2);
+
+#line 66 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__singleton_set_2_p_2(
+#line 66 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 66 "set_unordlist.m"
+  MR_Box * mercury__set_unordlist__param_2,
+#line 66 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 65 "set_unordlist.m"
+MR_bool MR_CALL 
+mercury__set_unordlist__singleton_set_2_p_1(
+#line 65 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 65 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_2,
+#line 65 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_3);
+
+#line 64 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__singleton_set_2_p_0(
+#line 64 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 64 "set_unordlist.m"
+  MR_Box mercury__set_unordlist__param_2,
+#line 64 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_3);
+
+#line 58 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__to_sorted_list_1_f_0(
+#line 58 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 58 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 57 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__to_sorted_list_2_p_0(
+#line 57 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 57 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 57 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_3);
+
+#line 52 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__from_sorted_list_1_f_0(
+#line 52 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 52 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 48 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__sorted_list_to_set_1_f_0(
+#line 48 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 48 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 47 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__sorted_list_to_set_2_p_0(
+#line 47 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 47 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 47 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_3);
+
+#line 42 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__from_list_1_f_0(
+#line 42 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 42 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 38 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__list_to_set_2_p_0(
+#line 38 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 38 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2,
+#line 38 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_3);
+
+#line 37 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__list_to_set_1_f_0(
+#line 37 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 37 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_2);
+
+#line 32 "set_unordlist.m"
+void MR_CALL 
+mercury__set_unordlist__init_1_p_0(
+#line 32 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1,
+#line 32 "set_unordlist.m"
+  MR_Word * mercury__set_unordlist__param_2);
+
+#line 31 "set_unordlist.m"
+MR_Word MR_CALL 
+mercury__set_unordlist__init_0_f_0(
+#line 31 "set_unordlist.m"
+  MR_Word mercury__set_unordlist__param_1);
+
+void mercury__set_unordlist__init(void);
+void mercury__set_unordlist__init_type_tables(void);
+void mercury__set_unordlist__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_set_unordlist */
+
+/* :- end_interface set_unordlist. */

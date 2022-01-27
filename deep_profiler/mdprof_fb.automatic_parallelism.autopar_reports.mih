@@ -1,0 +1,72 @@
+/*
+** Automatically generated from `autopar_reports.m'
+** by the Mercury compiler,
+** version rotd-2014-12-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdprof_fb.automatic_parallelism.autopar_reports. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_mdprof_fb__automatic_parallelism__autopar_reports
+#define MR_HEADER_GUARD_mdprof_fb__automatic_parallelism__autopar_reports
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDPROF_FB__AUTOMATIC_PARALLELISM__AUTOPAR_REPORTS_DECL_GUARD
+#define MDPROF_FB__AUTOMATIC_PARALLELISM__AUTOPAR_REPORTS_DECL_GUARD
+#include "mdprof_fb.mih"
+#include "mdprof_fb.automatic_parallelism.mih"
+
+#endif
+
+
+
+
+#line 44 "mdprof_fb.automatic_parallelism.autopar_reports.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_program_representation_utils__goal_annotation__arity1__mdbcomp__feedback__automatic_parallelism__pard_goal_annotation__arity0__[6];
+
+#line 29 "autopar_reports.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_reports__create_candidate_parallel_conj_report_3_p_0(
+#line 29 "autopar_reports.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_reports__param_1,
+#line 29 "autopar_reports.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_reports__param_2,
+#line 29 "autopar_reports.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_reports__param_3);
+
+#line 27 "autopar_reports.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_reports__print_feedback_report_3_p_0(
+#line 27 "autopar_reports.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_reports__param_1);
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_reports__init(void);
+void mercury__mdprof_fb__automatic_parallelism__autopar_reports__init_type_tables(void);
+void mercury__mdprof_fb__automatic_parallelism__autopar_reports__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_mdprof_fb.automatic_parallelism.autopar_reports */
+
+/* :- end_interface mdprof_fb.automatic_parallelism.autopar_reports. */

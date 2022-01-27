@@ -1,0 +1,1514 @@
+/*
+** Automatically generated from `prog_item.m'
+** by the Mercury compiler,
+** version rotd-2014-12-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.prog_item. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_item
+#define MR_HEADER_GUARD_parse_tree__prog_item
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_ITEM_DECL_GUARD
+#define PARSE_TREE__PROG_ITEM_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+#line 43 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_catch_any_expr_0;
+
+#line 46 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_catch_expr_0;
+
+#line 49 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_class_method_0;
+
+#line 52 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_class_methods_0;
+
+#line 55 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_compilation_unit_0;
+
+#line 58 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_contains_foreign_code_0;
+
+#line 61 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_contains_foreign_export_0;
+
+#line 64 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_foreign_name_0;
+
+#line 67 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_goal_0;
+
+#line 70 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_goal_expr_0;
+
+#line 73 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_goals_0;
+
+#line 76 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_0;
+
+#line 79 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_clause_info_0;
+
+#line 82 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_compiler_origin_0;
+
+#line 85 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_finalise_info_0;
+
+#line 88 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_initialise_info_0;
+
+#line 91 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0;
+
+#line 94 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0;
+
+#line 97 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0;
+
+#line 100 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0;
+
+#line 103 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_module_defn_info_0;
+
+#line 106 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_module_end_info_0;
+
+#line 109 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_module_start_info_0;
+
+#line 112 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mutable_info_0;
+
+#line 115 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_nothing_info_0;
+
+#line 118 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_origin_0;
+
+#line 121 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_0;
+
+#line 124 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0;
+
+#line 127 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_promise_info_0;
+
+#line 130 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_0;
+
+#line 133 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0;
+
+#line 136 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_warning_0;
+
+#line 139 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_module_defn_0;
+
+#line 142 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_module_foreign_info_0;
+
+#line 145 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_mutable_thread_local_0;
+
+#line 148 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_mutable_trailed_0;
+
+#line 151 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_mutable_var_attributes_0;
+
+#line 154 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_exceptions_0;
+
+#line 157 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_fact_table_0;
+
+#line 160 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_code_0;
+
+#line 163 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_decl_0;
+
+#line 166 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_enum_0;
+
+#line 169 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_export_enum_0;
+
+#line 172 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_import_module_0;
+
+#line 175 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_proc_0;
+
+#line 178 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_proc_export_0;
+
+#line 181 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_mm_tabling_info_0;
+
+#line 184 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_oisu_0;
+
+#line 187 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_require_feature_set_0;
+
+#line 190 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_source_file_0;
+
+#line 193 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_structure_reuse_0;
+
+#line 196 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_structure_sharing_0;
+
+#line 199 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_tabled_0;
+
+#line 202 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_termination2_info_0;
+
+#line 205 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_termination_info_0;
+
+#line 208 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_trailing_info_0;
+
+#line 211 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_type_spec_0;
+
+#line 214 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_unused_args_0;
+
+#line 217 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_type_0;
+
+#line 220 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pred_name_arity_0;
+
+#line 223 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pred_name_arity_mpf_0;
+
+#line 226 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pred_name_arity_pf_0;
+
+#line 229 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pred_name_arity_pf_mn_0;
+
+#line 232 "parse_tree.prog_item.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pred_name_modes_pf_0;
+
+#line 729 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pred_name_modes_pf_0_0(
+#line 729 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 729 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 729 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 729 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pred_name_modes_pf_0_0(
+#line 729 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 729 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 721 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pred_name_arity_pf_mn_0_0(
+#line 721 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 721 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 721 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 721 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pred_name_arity_pf_mn_0_0(
+#line 721 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 721 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 714 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pred_name_arity_pf_0_0(
+#line 714 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 714 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 714 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 714 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pred_name_arity_pf_0_0(
+#line 714 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 714 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 736 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pred_name_arity_mpf_0_0(
+#line 736 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 736 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 736 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 736 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pred_name_arity_mpf_0_0(
+#line 736 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 736 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 708 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pred_name_arity_0_0(
+#line 708 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 708 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 708 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 708 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pred_name_arity_0_0(
+#line 708 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 708 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 453 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_type_0_0(
+#line 453 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 453 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 453 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 453 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Index____pragma_type_0_0(
+#line 453 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 453 "prog_item.m"
+  MR_Integer * parse_tree__prog_item__param_2);
+
+#line 453 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_type_0_0(
+#line 453 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 453 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 576 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_unused_args_0_0(
+#line 576 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 576 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 576 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 576 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_unused_args_0_0(
+#line 576 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 576 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 560 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_type_spec_0_0(
+#line 560 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 560 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 560 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 560 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_type_spec_0_0(
+#line 560 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 560 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 593 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_trailing_info_0_0(
+#line 593 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 593 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 593 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 593 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_trailing_info_0_0(
+#line 593 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 593 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 645 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_termination_info_0_0(
+#line 645 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 645 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 645 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 645 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_termination_info_0_0(
+#line 645 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 645 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 661 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_termination2_info_0_0(
+#line 661 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 661 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 661 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 661 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_termination2_info_0_0(
+#line 661 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 661 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 619 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_tabled_0_0(
+#line 619 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 619 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 619 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 619 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_tabled_0_0(
+#line 619 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 619 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 671 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_structure_sharing_0_0(
+#line 671 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 671 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 671 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 671 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_structure_sharing_0_0(
+#line 671 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 671 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 685 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_structure_reuse_0_0(
+#line 685 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 685 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 685 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 685 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_structure_reuse_0_0(
+#line 685 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 685 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 611 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_source_file_0_0(
+#line 611 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 611 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 611 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 611 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_source_file_0_0(
+#line 611 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 611 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 703 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_require_feature_set_0_0(
+#line 703 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 703 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 703 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 703 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_require_feature_set_0_0(
+#line 703 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 703 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 635 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_oisu_0_0(
+#line 635 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 635 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 635 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 635 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_oisu_0_0(
+#line 635 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 635 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 601 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_mm_tabling_info_0_0(
+#line 601 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 601 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 601 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 601 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_mm_tabling_info_0_0(
+#line 601 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 601 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 535 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_proc_export_0_0(
+#line 535 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 535 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 535 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 535 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_proc_export_0_0(
+#line 535 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 535 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 508 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_proc_0_0(
+#line 508 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 508 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 508 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 508 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_proc_0_0(
+#line 508 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 508 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 525 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_import_module_0_0(
+#line 525 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 525 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 525 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 525 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_import_module_0_0(
+#line 525 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 525 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 543 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_export_enum_0_0(
+#line 543 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 543 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 543 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 543 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_export_enum_0_0(
+#line 543 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 543 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 551 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_enum_0_0(
+#line 551 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 551 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 551 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 551 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_enum_0_0(
+#line 551 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 551 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 494 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_decl_0_0(
+#line 494 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 494 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 494 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 494 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_decl_0_0(
+#line 494 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 494 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 502 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_code_0_0(
+#line 502 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 502 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 502 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 502 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_code_0_0(
+#line 502 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 502 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 628 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_fact_table_0_0(
+#line 628 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 628 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 628 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 628 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_fact_table_0_0(
+#line 628 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 628 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 585 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_exceptions_0_0(
+#line 585 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 585 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 585 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 585 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_exceptions_0_0(
+#line 585 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 585 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 1028 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____mutable_var_attributes_0_0(
+#line 1028 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 1028 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 1028 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 1028 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____mutable_var_attributes_0_0(
+#line 1028 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 1028 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 395 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____mutable_trailed_0_0(
+#line 395 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 395 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 395 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 395 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____mutable_trailed_0_0(
+#line 395 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 395 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 401 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____mutable_thread_local_0_0(
+#line 401 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 401 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 401 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 401 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____mutable_thread_local_0_0(
+#line 401 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 401 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 885 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____module_defn_0_0(
+#line 885 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 885 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 885 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 885 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____module_defn_0_0(
+#line 885 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 885 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 324 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_warning_0_0(
+#line 324 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 324 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 324 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 324 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_warning_0_0(
+#line 324 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 324 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 250 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_typeclass_info_0_0(
+#line 250 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 250 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 250 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 250 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_typeclass_info_0_0(
+#line 250 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 250 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 148 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_type_defn_info_0_0(
+#line 148 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 148 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 148 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 148 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_type_defn_info_0_0(
+#line 148 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 148 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 240 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_promise_info_0_0(
+#line 240 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 240 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 240 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 240 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_promise_info_0_0(
+#line 240 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 240 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 188 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_pred_decl_info_0_0(
+#line 188 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 188 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 188 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 188 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_pred_decl_info_0_0(
+#line 188 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 188 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 232 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_pragma_info_0_0(
+#line 232 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 232 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 232 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 232 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_pragma_info_0_0(
+#line 232 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 232 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 65 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_origin_0_0(
+#line 65 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 65 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 65 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 65 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_origin_0_0(
+#line 65 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 65 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 311 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_nothing_info_0_0(
+#line 311 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 311 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 311 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 311 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_nothing_info_0_0(
+#line 311 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 311 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 298 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_mutable_info_0_0(
+#line 298 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 298 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 298 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 298 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_mutable_info_0_0(
+#line 298 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 298 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 115 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_module_start_info_0_0(
+#line 115 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 115 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 115 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 115 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_module_start_info_0_0(
+#line 115 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 115 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 122 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_module_end_info_0_0(
+#line 122 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 122 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 122 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 122 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_module_end_info_0_0(
+#line 122 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 122 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 129 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_module_defn_info_0_0(
+#line 129 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 129 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 129 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 129 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_module_defn_info_0_0(
+#line 129 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 129 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 175 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_mode_defn_info_0_0(
+#line 175 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 175 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 175 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 175 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_mode_defn_info_0_0(
+#line 175 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 175 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 214 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_mode_decl_info_0_0(
+#line 214 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 214 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 214 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 214 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_mode_decl_info_0_0(
+#line 214 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 214 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 262 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_instance_info_0_0(
+#line 262 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 262 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 262 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 262 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_instance_info_0_0(
+#line 262 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 262 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 162 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_inst_defn_info_0_0(
+#line 162 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 162 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 162 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 162 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_inst_defn_info_0_0(
+#line 162 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 162 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 278 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_initialise_info_0_0(
+#line 278 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 278 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 278 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 278 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_initialise_info_0_0(
+#line 278 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 278 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 288 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_finalise_info_0_0(
+#line 288 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 288 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 288 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 288 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_finalise_info_0_0(
+#line 288 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 288 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 71 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_compiler_origin_0_0(
+#line 71 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 71 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 71 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 71 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_compiler_origin_0_0(
+#line 71 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 71 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 136 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_clause_info_0_0(
+#line 136 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 136 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 136 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 136 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_clause_info_0_0(
+#line 136 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 136 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 96 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____item_0_0(
+#line 96 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 96 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 96 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 96 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Index____item_0_0(
+#line 96 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 96 "prog_item.m"
+  MR_Integer * parse_tree__prog_item__param_2);
+
+#line 96 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_0_0(
+#line 96 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 96 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 755 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____goals_0_0(
+#line 755 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 755 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 755 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 755 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____goals_0_0(
+#line 755 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 755 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 757 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____goal_expr_0_0(
+#line 757 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 757 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 757 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 757 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Index____goal_expr_0_0(
+#line 757 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 757 "prog_item.m"
+  MR_Integer * parse_tree__prog_item__param_2);
+
+#line 757 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____goal_expr_0_0(
+#line 757 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 757 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 753 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____goal_0_0(
+#line 753 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 753 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 753 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 753 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____goal_0_0(
+#line 753 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 753 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 408 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____foreign_name_0_0(
+#line 408 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 408 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 408 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 408 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____foreign_name_0_0(
+#line 408 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 408 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 948 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____contains_foreign_export_0_0(
+#line 948 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 948 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 948 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 948 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____contains_foreign_export_0_0(
+#line 948 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 948 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 943 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____contains_foreign_code_0_0(
+#line 943 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 943 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 943 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 943 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____contains_foreign_code_0_0(
+#line 943 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 943 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 55 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____compilation_unit_0_0(
+#line 55 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 55 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 55 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 55 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____compilation_unit_0_0(
+#line 55 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 55 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 386 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____class_methods_0_0(
+#line 386 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 386 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 386 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 386 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____class_methods_0_0(
+#line 386 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 386 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 342 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____class_method_0_0(
+#line 342 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 342 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 342 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 342 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____class_method_0_0(
+#line 342 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 342 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 865 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____catch_expr_0_0(
+#line 865 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 865 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 865 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 865 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____catch_expr_0_0(
+#line 865 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 865 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 871 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item____Compare____catch_any_expr_0_0(
+#line 871 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_1,
+#line 871 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 871 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_3);
+
+#line 871 "prog_item.m"
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____catch_any_expr_0_0(
+#line 871 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 871 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2);
+
+#line 952 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item__get_item_list_foreign_code_6_p_0(
+#line 952 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 952 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 952 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_3,
+#line 952 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_4,
+#line 952 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_5,
+#line 952 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_6);
+
+#line 492 "prog_item.m"
+MR_Word MR_CALL 
+parse_tree__prog_item__pragma_allowed_in_interface_1_f_0(
+#line 492 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1);
+
+#line 445 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item__set_mutable_var_thread_local_3_p_0(
+#line 445 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 445 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 445 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_3);
+
+#line 442 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item__set_mutable_var_constant_3_p_0(
+#line 442 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 442 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 442 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_3);
+
+#line 439 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item__set_mutable_var_attach_to_io_state_3_p_0(
+#line 439 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 439 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 439 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_3);
+
+#line 436 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item__set_mutable_add_foreign_name_3_p_0(
+#line 436 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 436 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 436 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_3);
+
+#line 433 "prog_item.m"
+void MR_CALL 
+parse_tree__prog_item__set_mutable_var_trailed_3_p_0(
+#line 433 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1,
+#line 433 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_2,
+#line 433 "prog_item.m"
+  MR_Word * parse_tree__prog_item__param_3);
+
+#line 430 "prog_item.m"
+MR_Word MR_CALL 
+parse_tree__prog_item__mutable_var_thread_local_1_f_0(
+#line 430 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1);
+
+#line 429 "prog_item.m"
+MR_Word MR_CALL 
+parse_tree__prog_item__mutable_var_attach_to_io_state_1_f_0(
+#line 429 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1);
+
+#line 428 "prog_item.m"
+MR_Word MR_CALL 
+parse_tree__prog_item__mutable_var_constant_1_f_0(
+#line 428 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1);
+
+#line 426 "prog_item.m"
+MR_Word MR_CALL 
+parse_tree__prog_item__mutable_var_maybe_foreign_names_1_f_0(
+#line 426 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1);
+
+#line 425 "prog_item.m"
+MR_Word MR_CALL 
+parse_tree__prog_item__mutable_var_trailed_1_f_0(
+#line 425 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1);
+
+#line 421 "prog_item.m"
+MR_Word MR_CALL 
+parse_tree__prog_item__default_mutable_attributes_0_f_0(void);
+
+#line 322 "prog_item.m"
+MR_Word MR_CALL 
+parse_tree__prog_item__get_item_context_1_f_0(
+#line 322 "prog_item.m"
+  MR_Word parse_tree__prog_item__param_1);
+
+void mercury__parse_tree__prog_item__init(void);
+void mercury__parse_tree__prog_item__init_type_tables(void);
+void mercury__parse_tree__prog_item__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.prog_item */
+
+/* :- end_interface parse_tree.prog_item. */

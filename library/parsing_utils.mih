@@ -1,0 +1,965 @@
+/*
+** Automatically generated from `parsing_utils.m'
+** by the Mercury compiler,
+** version rotd-2014-12-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parsing_utils. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parsing_utils
+#define MR_HEADER_GUARD_parsing_utils
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSING_UTILS_DECL_GUARD
+#define PARSING_UTILS_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "parsing_utils.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_fail_message_info_0;
+
+#line 45 "parsing_utils.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_line_numbers_0;
+
+#line 48 "parsing_utils.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_parse_result_1;
+
+#line 51 "parsing_utils.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_parser_1;
+
+#line 54 "parsing_utils.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_parser_with_state_2;
+
+#line 57 "parsing_utils.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_ps_0;
+
+#line 60 "parsing_utils.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_skip_whitespace_pred_0;
+
+#line 63 "parsing_utils.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__parsing_utils__parsing_utils__type_ctor_info_src_0;
+
+#line 286 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_97_105_108_95_119_105_116_104_95_109_101_115_115_97_103_101_95_95_91_54_93_95_48_6_p_0(
+#line 286 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 286 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_2,
+#line 286 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 286 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 286 "parsing_utils.m"
+  MR_Box * mercury__parsing_utils__param_5,
+#line 286 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_6);
+
+#line 125 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_117_114_114_101_110_116_95_111_102_102_115_101_116_95_95_91_49_93_95_48_4_p_0(
+#line 125 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_1,
+#line 125 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_2,
+#line 125 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_3);
+
+#line 349 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils____Compare____src_0_0(
+#line 349 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_1,
+#line 349 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 349 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3);
+
+#line 349 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____src_0_0(
+#line 349 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 349 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2);
+
+#line 72 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils____Compare____skip_whitespace_pred_0_0(
+#line 72 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_1,
+#line 72 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 72 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3);
+
+#line 72 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____skip_whitespace_pred_0_0(
+#line 72 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 72 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2);
+
+#line 347 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils____Compare____ps_0_0(
+#line 347 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_1,
+#line 347 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_2,
+#line 347 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3);
+
+#line 347 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____ps_0_0(
+#line 347 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_1,
+#line 347 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_2);
+
+#line 66 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils____Compare____parser_with_state_2_0(
+#line 66 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 66 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 66 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_3,
+#line 66 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 66 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_5);
+
+#line 66 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____parser_with_state_2_0(
+#line 66 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 66 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 66 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 66 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4);
+
+#line 61 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils____Compare____parser_1_0(
+#line 61 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 61 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_2,
+#line 61 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 61 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4);
+
+#line 61 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____parser_1_0(
+#line 61 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 61 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 61 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3);
+
+#line 74 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils____Compare____parse_result_1_0(
+#line 74 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 74 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_2,
+#line 74 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 74 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4);
+
+#line 74 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____parse_result_1_0(
+#line 74 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 74 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 74 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3);
+
+#line 477 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils____Compare____line_numbers_0_0(
+#line 477 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_1,
+#line 477 "parsing_utils.m"
+  MR_ArrayPtr mercury__parsing_utils__param_2,
+#line 477 "parsing_utils.m"
+  MR_ArrayPtr mercury__parsing_utils__param_3);
+
+#line 477 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____line_numbers_0_0(
+#line 477 "parsing_utils.m"
+  MR_ArrayPtr mercury__parsing_utils__param_1,
+#line 477 "parsing_utils.m"
+  MR_ArrayPtr mercury__parsing_utils__param_2);
+
+#line 364 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils____Compare____fail_message_info_0_0(
+#line 364 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_1,
+#line 364 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 364 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3);
+
+#line 364 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils____Unify____fail_message_info_0_0(
+#line 364 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 364 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2);
+
+#line 940 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__identifier_2_5_p_0(
+#line 940 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_1,
+#line 940 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 940 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 940 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 914 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__string_literal_2_5_p_0(
+#line 914 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 914 "parsing_utils.m"
+  MR_Char mercury__parsing_utils__param_2,
+#line 914 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 914 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 685 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__zero_or_more_2_8_p_0(
+#line 685 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 685 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 685 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 685 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 685 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_5,
+#line 685 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_6,
+#line 685 "parsing_utils.m"
+  MR_Box mercury__parsing_utils__param_7,
+#line 685 "parsing_utils.m"
+  MR_Box * mercury__parsing_utils__param_8,
+#line 685 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_9,
+#line 685 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_10);
+
+#line 668 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__zero_or_more_2_6_p_0(
+#line 668 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 668 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 668 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 668 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 668 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_5,
+#line 668 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_6,
+#line 668 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_7);
+
+#line 607 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__imatch_string_4_p_0(
+#line 607 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_1,
+#line 607 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 607 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 607 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 585 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__match_string_4_p_0(
+#line 585 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_1,
+#line 585 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 585 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 585 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 510 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils__offset_to_line_number_and_position_2_6_p_0(
+#line 510 "parsing_utils.m"
+  MR_ArrayPtr mercury__parsing_utils__param_1,
+#line 510 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_2,
+#line 510 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 510 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_4,
+#line 510 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_5,
+#line 510 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_6);
+
+#line 486 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils__src_to_line_numbers_2_4_p_0(
+#line 486 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_1,
+#line 486 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_2,
+#line 486 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 486 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_4);
+
+#line 437 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils__unsafe_skip_ws_pred_cast_2_p_0(
+#line 437 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 437 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_2);
+
+#line 431 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__skip_whitespace_3_p_0(
+#line 431 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 431 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_2,
+#line 431 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_3);
+
+#line 332 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__comma_separated_list_7_p_0(
+#line 332 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 332 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 332 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 332 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 332 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_5,
+#line 332 "parsing_utils.m"
+  MR_Box mercury__parsing_utils__param_6,
+#line 332 "parsing_utils.m"
+  MR_Box * mercury__parsing_utils__param_7,
+#line 332 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_8,
+#line 332 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_9);
+
+#line 325 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__separated_list_8_p_0(
+#line 325 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 325 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 325 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_3,
+#line 325 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 325 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_5,
+#line 325 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_6,
+#line 325 "parsing_utils.m"
+  MR_Box mercury__parsing_utils__param_7,
+#line 325 "parsing_utils.m"
+  MR_Box * mercury__parsing_utils__param_8,
+#line 325 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_9,
+#line 325 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_10);
+
+#line 317 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__brackets_9_p_0(
+#line 317 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 317 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 317 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_3,
+#line 317 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_4,
+#line 317 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_5,
+#line 317 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_6,
+#line 317 "parsing_utils.m"
+  MR_Box * mercury__parsing_utils__param_7,
+#line 317 "parsing_utils.m"
+  MR_Box mercury__parsing_utils__param_8,
+#line 317 "parsing_utils.m"
+  MR_Box * mercury__parsing_utils__param_9,
+#line 317 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_10,
+#line 317 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_11);
+
+#line 311 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__one_or_more_7_p_0(
+#line 311 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 311 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 311 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 311 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 311 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_5,
+#line 311 "parsing_utils.m"
+  MR_Box mercury__parsing_utils__param_6,
+#line 311 "parsing_utils.m"
+  MR_Box * mercury__parsing_utils__param_7,
+#line 311 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_8,
+#line 311 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_9);
+
+#line 303 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__zero_or_more_7_p_0(
+#line 303 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 303 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 303 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 303 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 303 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_5,
+#line 303 "parsing_utils.m"
+  MR_Box mercury__parsing_utils__param_6,
+#line 303 "parsing_utils.m"
+  MR_Box * mercury__parsing_utils__param_7,
+#line 303 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_8,
+#line 303 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_9);
+
+#line 296 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__optional_7_p_0(
+#line 296 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 296 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 296 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 296 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 296 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_5,
+#line 296 "parsing_utils.m"
+  MR_Box mercury__parsing_utils__param_6,
+#line 296 "parsing_utils.m"
+  MR_Box * mercury__parsing_utils__param_7,
+#line 296 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_8,
+#line 296 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_9);
+
+#line 286 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__fail_with_message_6_p_0(
+#line 286 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 286 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_2,
+#line 286 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 286 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 286 "parsing_utils.m"
+  MR_Box * mercury__parsing_utils__param_5,
+#line 286 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_6,
+#line 286 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_7);
+
+#line 281 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__fail_with_message_5_p_0(
+#line 281 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 281 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_2,
+#line 281 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 281 "parsing_utils.m"
+  MR_Box * mercury__parsing_utils__param_4,
+#line 281 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_5,
+#line 281 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_6);
+
+#line 274 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__comma_separated_list_5_p_0(
+#line 274 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 274 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 274 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 274 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_4,
+#line 274 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_5,
+#line 274 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_6);
+
+#line 268 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__separated_list_6_p_0(
+#line 268 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 268 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_2,
+#line 268 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 268 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 268 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_5,
+#line 268 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_6,
+#line 268 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_7);
+
+#line 261 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__brackets_7_p_0(
+#line 261 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 261 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_2,
+#line 261 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_3,
+#line 261 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 261 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_5,
+#line 261 "parsing_utils.m"
+  MR_Box * mercury__parsing_utils__param_6,
+#line 261 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_7,
+#line 261 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_8);
+
+#line 255 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__one_or_more_5_p_0(
+#line 255 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 255 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 255 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 255 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_4,
+#line 255 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_5,
+#line 255 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_6);
+
+#line 247 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__zero_or_more_5_p_0(
+#line 247 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 247 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 247 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 247 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_4,
+#line 247 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_5,
+#line 247 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_6);
+
+#line 240 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__optional_5_p_0(
+#line 240 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 240 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 240 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 240 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_4,
+#line 240 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_5,
+#line 240 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_6);
+
+#line 234 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__string_literal_5_p_0(
+#line 234 "parsing_utils.m"
+  MR_Char mercury__parsing_utils__param_1,
+#line 234 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 234 "parsing_utils.m"
+  MR_String * mercury__parsing_utils__param_3,
+#line 234 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_4,
+#line 234 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_5);
+
+#line 225 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__int_literal_4_p_0(
+#line 225 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 225 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_2,
+#line 225 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 225 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 223 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__int_literal_as_string_4_p_0(
+#line 223 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 223 "parsing_utils.m"
+  MR_String * mercury__parsing_utils__param_2,
+#line 223 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 223 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 214 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__float_literal_4_p_0(
+#line 214 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 214 "parsing_utils.m"
+  MR_Float * mercury__parsing_utils__param_2,
+#line 214 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 214 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 212 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__float_literal_as_string_4_p_0(
+#line 212 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 212 "parsing_utils.m"
+  MR_String * mercury__parsing_utils__param_2,
+#line 212 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 212 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 203 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__eof_4_p_0(
+#line 203 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 203 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_2,
+#line 203 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_3);
+
+#line 198 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__skip_to_eol_4_p_0(
+#line 198 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 198 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_2,
+#line 198 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_3);
+
+#line 192 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__whitespace_4_p_0(
+#line 192 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 192 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_2,
+#line 192 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_3);
+
+#line 186 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__identifier_6_p_0(
+#line 186 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_1,
+#line 186 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_2,
+#line 186 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 186 "parsing_utils.m"
+  MR_String * mercury__parsing_utils__param_4,
+#line 186 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_5,
+#line 186 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_6);
+
+#line 178 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__ikeyword_6_p_0(
+#line 178 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_1,
+#line 178 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_2,
+#line 178 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 178 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_4,
+#line 178 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_5);
+
+#line 171 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__keyword_6_p_0(
+#line 171 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_1,
+#line 171 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_2,
+#line 171 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 171 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_4,
+#line 171 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_5);
+
+#line 165 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__punct_5_p_0(
+#line 165 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_1,
+#line 165 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 165 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 165 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 160 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__char_in_class_5_p_0(
+#line 160 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_1,
+#line 160 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 160 "parsing_utils.m"
+  MR_Char * mercury__parsing_utils__param_3,
+#line 160 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_4,
+#line 160 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_5);
+
+#line 156 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__next_char_no_progress_4_p_0(
+#line 156 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 156 "parsing_utils.m"
+  MR_Char * mercury__parsing_utils__param_2,
+#line 156 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 156 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 150 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__next_char_4_p_0(
+#line 150 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 150 "parsing_utils.m"
+  MR_Char * mercury__parsing_utils__param_2,
+#line 150 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 150 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 146 "parsing_utils.m"
+MR_bool MR_CALL 
+mercury__parsing_utils__input_substring_4_p_0(
+#line 146 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 146 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_2,
+#line 146 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 146 "parsing_utils.m"
+  MR_String * mercury__parsing_utils__param_4);
+
+#line 139 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils__offset_to_line_number_and_position_4_p_0(
+#line 139 "parsing_utils.m"
+  MR_ArrayPtr mercury__parsing_utils__param_1,
+#line 139 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_2,
+#line 139 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_3,
+#line 139 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 133 "parsing_utils.m"
+MR_ArrayPtr MR_CALL 
+mercury__parsing_utils__src_to_line_numbers_1_f_0(
+#line 133 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1);
+
+#line 125 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils__current_offset_4_p_0(
+#line 125 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 125 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_2,
+#line 125 "parsing_utils.m"
+  MR_Integer mercury__parsing_utils__param_3,
+#line 125 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 119 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils__get_skip_whitespace_pred_2_p_0(
+#line 119 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 119 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_2);
+
+#line 115 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils__input_string_3_p_0(
+#line 115 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 115 "parsing_utils.m"
+  MR_String * mercury__parsing_utils__param_2,
+#line 115 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_3);
+
+#line 111 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils__new_src_and_ps_3_p_0(
+#line 111 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_1,
+#line 111 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_2,
+#line 111 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_3);
+
+#line 105 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils__new_src_and_ps_4_p_0(
+#line 105 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_1,
+#line 105 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_2,
+#line 105 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_3,
+#line 105 "parsing_utils.m"
+  MR_Integer * mercury__parsing_utils__param_4);
+
+#line 96 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils__parse_3_p_0(
+#line 96 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 96 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_2,
+#line 96 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 96 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_4);
+
+#line 91 "parsing_utils.m"
+void MR_CALL 
+mercury__parsing_utils__parse_4_p_0(
+#line 91 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_1,
+#line 91 "parsing_utils.m"
+  MR_String mercury__parsing_utils__param_2,
+#line 91 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_3,
+#line 91 "parsing_utils.m"
+  MR_Word mercury__parsing_utils__param_4,
+#line 91 "parsing_utils.m"
+  MR_Word * mercury__parsing_utils__param_5);
+
+void mercury__parsing_utils__init(void);
+void mercury__parsing_utils__init_type_tables(void);
+void mercury__parsing_utils__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parsing_utils */
+
+/* :- end_interface parsing_utils. */

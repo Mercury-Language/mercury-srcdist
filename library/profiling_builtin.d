@@ -1,0 +1,177 @@
+profiling_builtin.trans_opt_date : \
+	builtin.trans_opt \
+	private_builtin.trans_opt
+
+profiling_builtin.optdate profiling_builtin.trans_opt_date profiling_builtin.err profiling_builtin.c_date profiling_builtin.s_date profiling_builtin.pic_s_date profiling_builtin.il_date profiling_builtin.java_date : profiling_builtin.m \
+	builtin.int \
+	private_builtin.int
+
+profiling_builtin.$O :  \
+	array.mh \
+	assoc_list.mh \
+	benchmarking.mh \
+	bitmap.mh \
+	bool.mh \
+	builtin.mh \
+	char.mh \
+	construct.mh \
+	deconstruct.mh \
+	dir.mh \
+	enum.mh \
+	erlang_rtti_implementation.mh \
+	exception.mh \
+	float.mh \
+	int.mh \
+	integer.mh \
+	io.mh \
+	lexer.mh \
+	list.mh \
+	map.mh \
+	math.mh \
+	maybe.mh \
+	mutvar.mh \
+	ops.mh \
+	pair.mh \
+	parser.mh \
+	pretty_printer.mh \
+	private_builtin.mh \
+	random.mh \
+	require.mh \
+	rtti_implementation.mh \
+	set.mh \
+	set_ordlist.mh \
+	set_tree234.mh \
+	solutions.mh \
+	std_util.mh \
+	stm_builtin.mh \
+	store.mh \
+	stream.mh \
+	string.mh \
+	table_builtin.mh \
+	term.mh \
+	term_io.mh \
+	time.mh \
+	tree234.mh \
+	type_desc.mh \
+	unit.mh \
+	univ.mh \
+	varset.mh \
+	version_array.mh \
+	stream.string_writer.mh \
+	string.format.mh \
+	string.parse_runtime.mh \
+	string.parse_util.mh \
+	string.to_string.mh
+
+profiling_builtin.trans_opt_date profiling_builtin.err profiling_builtin.c_date profiling_builtin.s_date profiling_builtin.pic_s_date profiling_builtin.il_date profiling_builtin.java_date :  \
+	profiling_builtin.opt \
+	builtin.opt \
+	private_builtin.opt
+
+profiling_builtin.err profiling_builtin.c_date profiling_builtin.s_date profiling_builtin.pic_s_date profiling_builtin.il_date profiling_builtin.java_date :  \
+	profiling_builtin.trans_opt \
+	builtin.trans_opt \
+	private_builtin.trans_opt
+
+profiling_builtin.pic_o profiling_builtin.$O : \
+	array.mih \
+	assoc_list.mih \
+	benchmarking.mih \
+	bitmap.mih \
+	bool.mih \
+	builtin.mih \
+	char.mih \
+	construct.mih \
+	deconstruct.mih \
+	dir.mih \
+	enum.mih \
+	erlang_rtti_implementation.mih \
+	exception.mih \
+	float.mih \
+	int.mih \
+	integer.mih \
+	io.mih \
+	lexer.mih \
+	list.mih \
+	map.mih \
+	math.mih \
+	maybe.mih \
+	mutvar.mih \
+	ops.mih \
+	pair.mih \
+	parser.mih \
+	pretty_printer.mih \
+	private_builtin.mih \
+	random.mih \
+	require.mih \
+	rtti_implementation.mih \
+	set.mih \
+	set_ordlist.mih \
+	set_tree234.mih \
+	solutions.mih \
+	std_util.mih \
+	stm_builtin.mih \
+	store.mih \
+	stream.mih \
+	string.mih \
+	table_builtin.mih \
+	term.mih \
+	term_io.mih \
+	time.mih \
+	tree234.mih \
+	type_desc.mih \
+	unit.mih \
+	univ.mih \
+	varset.mih \
+	version_array.mih \
+	stream.string_writer.mih \
+	string.format.mih \
+	string.parse_runtime.mih \
+	string.parse_util.mih \
+	string.to_string.mih
+
+profiling_builtin.mh profiling_builtin.mih : profiling_builtin.c
+
+
+ifeq ($(findstring il,$(GRADE)),il)
+profiling_builtin.module_dep : profiling_builtin.il
+else
+ ifeq ($(findstring java,$(GRADE)),java)
+profiling_builtin.module_dep : jmercury/profiling_builtin.java
+ else
+profiling_builtin.module_dep : profiling_builtin.c
+ endif
+endif
+
+
+profiling_builtin.date profiling_builtin.date0 : profiling_builtin.m \
+	builtin.int3 \
+	private_builtin.int3
+
+profiling_builtin.date0 : profiling_builtin.m \
+	builtin.int3 \
+	private_builtin.int3
+
+
+
+profiling_builtin.$O :  \
+	profiling_builtin.mh
+
+
+
+profiling_builtin.pic_o :  \
+	profiling_builtin.mh
+
+
+profiling_builtin.int0 : profiling_builtin.date0
+	@:
+profiling_builtin.int : profiling_builtin.date
+	@:
+profiling_builtin.int2 : profiling_builtin.date
+	@:
+profiling_builtin.int3 : profiling_builtin.date3
+	@:
+profiling_builtin.opt : profiling_builtin.optdate
+	@:
+profiling_builtin.trans_opt : profiling_builtin.trans_opt_date
+	@:

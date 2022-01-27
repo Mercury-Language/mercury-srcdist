@@ -1,0 +1,3 @@
+:- module (parse_tree.prog_io_typeclass).
+:- interface.
+:- type maybe_class_and_inst_constraints.

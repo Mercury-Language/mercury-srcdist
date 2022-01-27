@@ -1,0 +1,509 @@
+/*
+** Automatically generated from `eqvclass.m'
+** by the Mercury compiler,
+** version rotd-2014-12-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module eqvclass. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_eqvclass
+#define MR_HEADER_GUARD_eqvclass
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef EQVCLASS_DECL_GUARD
+#define EQVCLASS_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "eqvclass.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__eqvclass__eqvclass__type_ctor_info_eqvclass_1;
+
+#line 45 "eqvclass.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__eqvclass__eqvclass__type_ctor_info_partition_id_0;
+
+#line 171 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass____Compare____partition_id_0_0(
+#line 171 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_1,
+#line 171 "eqvclass.m"
+  MR_Integer mercury__eqvclass__param_2,
+#line 171 "eqvclass.m"
+  MR_Integer mercury__eqvclass__param_3);
+
+#line 171 "eqvclass.m"
+MR_bool MR_CALL 
+mercury__eqvclass____Unify____partition_id_0_0(
+#line 171 "eqvclass.m"
+  MR_Integer mercury__eqvclass__param_1,
+#line 171 "eqvclass.m"
+  MR_Integer mercury__eqvclass__param_2);
+
+#line 164 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass____Compare____eqvclass_1_0(
+#line 164 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 164 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_2,
+#line 164 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_3,
+#line 164 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_4);
+
+#line 164 "eqvclass.m"
+MR_bool MR_CALL 
+mercury__eqvclass____Unify____eqvclass_1_0(
+#line 164 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 164 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 164 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_3);
+
+#line 525 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__divide_equivalence_classes_3_11_p_0(
+#line 525 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 525 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 525 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_3,
+#line 525 "eqvclass.m"
+  MR_Integer mercury__eqvclass__param_4,
+#line 525 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_5,
+#line 525 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_6,
+#line 525 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_7,
+#line 525 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_8,
+#line 525 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_9,
+#line 525 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_10,
+#line 525 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_11,
+#line 525 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_12,
+#line 525 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_13);
+
+#line 505 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__divide_equivalence_classes_2_9_p_0(
+#line 505 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 505 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 505 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_3,
+#line 505 "eqvclass.m"
+  MR_Integer mercury__eqvclass__param_4,
+#line 505 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_5,
+#line 505 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_6,
+#line 505 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_7,
+#line 505 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_8,
+#line 505 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_9,
+#line 505 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_10,
+#line 505 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_11);
+
+#line 418 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__partition_ids_2_p_0(
+#line 418 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 418 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 418 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_3);
+
+#line 408 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__partitions_3_p_0(
+#line 408 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 408 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 408 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_3,
+#line 408 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_4);
+
+#line 214 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__add_element_4_p_0(
+#line 214 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 214 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_2,
+#line 214 "eqvclass.m"
+  MR_Integer * mercury__eqvclass__param_3,
+#line 214 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_4,
+#line 214 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_5);
+
+#line 150 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__divide_equivalence_classes_2_f_0(
+#line 150 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 150 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 150 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_3,
+#line 150 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_4);
+
+#line 142 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__remove_equivalent_elements_3_p_0(
+#line 142 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 142 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_2,
+#line 142 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_3,
+#line 142 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_4);
+
+#line 141 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__remove_equivalent_elements_2_f_0(
+#line 141 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 141 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 141 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_3);
+
+#line 136 "eqvclass.m"
+MR_Box MR_CALL 
+mercury__eqvclass__get_minimum_element_2_f_0(
+#line 136 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 136 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 136 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_3);
+
+#line 131 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__get_equivalent_elements_2_f_0(
+#line 131 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 131 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 131 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_3);
+
+#line 125 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__partition_list_to_eqvclass_2_p_0(
+#line 125 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 125 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 125 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_3);
+
+#line 124 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__partition_list_to_eqvclass_1_f_0(
+#line 124 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 124 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2);
+
+#line 119 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__partition_set_to_eqvclass_2_p_0(
+#line 119 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 119 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 119 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_3);
+
+#line 118 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__partition_set_to_eqvclass_1_f_0(
+#line 118 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 118 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2);
+
+#line 113 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__partition_list_2_p_0(
+#line 113 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 113 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 113 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_3);
+
+#line 112 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__partition_list_1_f_0(
+#line 112 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 112 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2);
+
+#line 108 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__partition_set_2_p_0(
+#line 108 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 108 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 108 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_3);
+
+#line 107 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__partition_set_1_f_0(
+#line 107 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 107 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2);
+
+#line 103 "eqvclass.m"
+MR_bool MR_CALL 
+mercury__eqvclass__same_eqvclass_list_2_p_0(
+#line 103 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 103 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 103 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_3);
+
+#line 99 "eqvclass.m"
+MR_bool MR_CALL 
+mercury__eqvclass__same_eqvclass_3_p_0(
+#line 99 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 99 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 99 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_3,
+#line 99 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_4);
+
+#line 94 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__new_equivalence_4_p_0(
+#line 94 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 94 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_2,
+#line 94 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_3,
+#line 94 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_4,
+#line 94 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_5);
+
+#line 93 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__new_equivalence_3_f_0(
+#line 93 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 93 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 93 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_3,
+#line 93 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_4);
+
+#line 87 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__ensure_corresponding_equivalences_4_p_0(
+#line 87 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 87 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 87 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_3,
+#line 87 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_4,
+#line 87 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_5);
+
+#line 85 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__ensure_corresponding_equivalences_3_f_0(
+#line 85 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 85 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 85 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_3,
+#line 85 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_4);
+
+#line 82 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__ensure_equivalence_4_p_0(
+#line 82 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 82 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_2,
+#line 82 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_3,
+#line 82 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_4,
+#line 82 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_5);
+
+#line 81 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__ensure_equivalence_3_f_0(
+#line 81 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 81 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 81 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_3,
+#line 81 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_4);
+
+#line 76 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__new_element_3_p_0(
+#line 76 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 76 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_2,
+#line 76 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_3,
+#line 76 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_4);
+
+#line 75 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__new_element_2_f_0(
+#line 75 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 75 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 75 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_3);
+
+#line 68 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__ensure_element_3_p_0(
+#line 68 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 68 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_2,
+#line 68 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_3,
+#line 68 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_4);
+
+#line 67 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__ensure_element_2_f_0(
+#line 67 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 67 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 67 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_3);
+
+#line 60 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__ensure_element_partition_id_4_p_0(
+#line 60 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 60 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_2,
+#line 60 "eqvclass.m"
+  MR_Integer * mercury__eqvclass__param_3,
+#line 60 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_4,
+#line 60 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_5);
+
+#line 53 "eqvclass.m"
+MR_bool MR_CALL 
+mercury__eqvclass__partition_id_3_p_0(
+#line 53 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 53 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 53 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_3,
+#line 53 "eqvclass.m"
+  MR_Integer * mercury__eqvclass__param_4);
+
+#line 36 "eqvclass.m"
+MR_bool MR_CALL 
+mercury__eqvclass__is_member_2_p_0(
+#line 36 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 36 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_2,
+#line 36 "eqvclass.m"
+  MR_Box mercury__eqvclass__param_3);
+
+#line 32 "eqvclass.m"
+void MR_CALL 
+mercury__eqvclass__init_1_p_0(
+#line 32 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1,
+#line 32 "eqvclass.m"
+  MR_Word * mercury__eqvclass__param_2);
+
+#line 31 "eqvclass.m"
+MR_Word MR_CALL 
+mercury__eqvclass__init_0_f_0(
+#line 31 "eqvclass.m"
+  MR_Word mercury__eqvclass__param_1);
+
+void mercury__eqvclass__init(void);
+void mercury__eqvclass__init_type_tables(void);
+void mercury__eqvclass__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_eqvclass */
+
+/* :- end_interface eqvclass. */

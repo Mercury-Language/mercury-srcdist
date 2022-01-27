@@ -1,0 +1,13 @@
+:- module (backend_libs.proc_label).
+:- interface.
+:- import_module hlds.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- func make_proc_label(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id) = mdbcomp.prim_data.proc_label.
+:- func make_proc_label_from_rtti(hlds.hlds_rtti.rtti_proc_label) = mdbcomp.prim_data.proc_label.
+:- func make_uni_label(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor, hlds.hlds_pred.proc_id) = mdbcomp.prim_data.proc_label.
