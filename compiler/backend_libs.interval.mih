@@ -1,0 +1,321 @@
+/*
+** Automatically generated from `interval.m'
+** by the Mercury compiler,
+** version rotd-2022-01-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module backend_libs.interval.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_backend_libs__interval
+#define MR_HEADER_GUARD_backend_libs__interval
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BACKEND_LIBS__INTERVAL_DECL_GUARD
+#define BACKEND_LIBS__INTERVAL_DECL_GUARD
+#include "backend_libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_anchor_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_anchor_follow_info_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_branch_construct_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_branch_end_info_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_insert_map_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_insert_spec_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_interval_id_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_interval_info_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_interval_params_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_interval_var_info_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_maybe_needs_flush_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_rename_map_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_resume_save_status_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_save_point_0;
+
+extern const MR_TypeCtorInfo_Struct backend_libs__interval__backend_libs__interval__type_ctor_info_save_point_type_0;
+
+extern const MR_TypeClassDeclStruct backend_libs__interval__backend_libs__interval__type_class_decl_build_interval_info_acc_1;
+
+void MR_CALL 
+backend_libs__interval__apply_headvar_correction_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+backend_libs__interval__build_interval_info_in_goal_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Box param_5,
+  MR_Box * param_6);
+
+void MR_CALL 
+backend_libs__interval__delete_interval_vars_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+backend_libs__interval__dump_interval_info_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+backend_libs__interval__make_inserted_goal_9_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+backend_libs__interval__record_decisions_in_goal_10_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8,
+  MR_Word param_9,
+  MR_Word param_10);
+
+void MR_CALL 
+backend_libs__interval__record_interval_vars_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+backend_libs__interval__use_cell_8_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Box param_8,
+  MR_Box * param_9);
+
+MR_String MR_CALL 
+backend_libs__interval__int_list_to_string_1_f_0(
+  MR_Word param_1);
+
+MR_Integer MR_CALL 
+backend_libs__interval__interval_id_to_int_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+backend_libs__interval____Compare____anchor_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____anchor_follow_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____branch_construct_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____branch_end_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____insert_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____insert_spec_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____interval_id_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____interval_info_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____interval_params_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____maybe_needs_flush_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____rename_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____resume_save_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____save_point_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+backend_libs__interval____Compare____save_point_type_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____anchor_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____anchor_follow_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____branch_construct_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____branch_end_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____insert_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____insert_spec_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____interval_id_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____interval_info_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____interval_params_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____maybe_needs_flush_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____rename_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____resume_save_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____save_point_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+backend_libs__interval____Unify____save_point_type_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__backend_libs__interval__init(void);
+void mercury__backend_libs__interval__init_type_tables(void);
+void mercury__backend_libs__interval__init_debugger(void);
+const char *mercury__backend_libs__interval__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_backend_libs.interval
+
+// :- end_interface backend_libs.interval.

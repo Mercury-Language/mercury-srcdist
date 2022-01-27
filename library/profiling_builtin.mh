@@ -1,0 +1,51 @@
+// Automatically generated from `profiling_builtin.m'
+// by the Mercury compiler,
+// version rotd-2022-01-27
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef PROFILING_BUILTIN_MH
+#define PROFILING_BUILTIN_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PROFILING_BUILTIN_DECL_GUARD
+#define PROFILING_BUILTIN_DECL_GUARD
+
+#ifndef MR_DEEP_PROFILING_GUARD
+#define MR_DEEP_PROFILING_GUARD
+
+  #ifdef    MR_DEEP_PROFILING
+
+  #include "mercury_deep_profiling.h"
+  #include "mercury_deep_rec_depth_actions.h"
+  #include "mercury_ho_call.h"
+  #include <stdio.h>
+
+  MR_declare_entry(mercury__profiling_builtin__prepare_for_normal_call_1_0);
+  MR_declare_entry(mercury__profiling_builtin__prepare_for_ho_call_2_0);
+
+  #endif    // MR_DEEP_PROFILING
+
+#endif  // MR_DEEP_PROFILING_GUARD
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PROFILING_BUILTIN_MH */

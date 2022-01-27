@@ -1,0 +1,112 @@
+/*
+** Automatically generated from `add_foreign_enum.m'
+** by the Mercury compiler,
+** version rotd-2022-01-27
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.add_foreign_enum.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__add_foreign_enum
+#define MR_HEADER_GUARD_hlds__add_foreign_enum
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__ADD_FOREIGN_ENUM_DECL_GUARD
+#define HLDS__ADD_FOREIGN_ENUM_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__add_foreign_enum__hlds__add_foreign_enum__type_ctor_info_cons_id_to_tag_map_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__add_foreign_enum__hlds__add_foreign_enum__type_ctor_info_not_enum_info_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__add_foreign_enum__hlds__add_foreign_enum__type_ctor_info_type_ctor_foreign_enums_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__add_foreign_enum__hlds__add_foreign_enum__type_ctor_info_type_ctor_to_foreign_enums_map_0;
+
+void MR_CALL 
+hlds__add_foreign_enum__add_pragma_foreign_enum_6_p_0(
+  MR_Word param_1,
+  MR_Tuple param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__add_foreign_enum__add_pragma_foreign_export_enum_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__add_foreign_enum____Compare____cons_id_to_tag_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__add_foreign_enum____Compare____type_ctor_foreign_enums_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__add_foreign_enum____Compare____type_ctor_to_foreign_enums_map_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__add_foreign_enum____Unify____cons_id_to_tag_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__add_foreign_enum____Unify____type_ctor_foreign_enums_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__add_foreign_enum____Unify____type_ctor_to_foreign_enums_map_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__add_foreign_enum__init(void);
+void mercury__hlds__add_foreign_enum__init_type_tables(void);
+void mercury__hlds__add_foreign_enum__init_debugger(void);
+const char *mercury__hlds__add_foreign_enum__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.add_foreign_enum
+
+// :- end_interface hlds.add_foreign_enum.
