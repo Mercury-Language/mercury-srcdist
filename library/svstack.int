@@ -1,0 +1,16 @@
+:- module svstack.
+:- interface.
+:- import_module list.
+:- import_module stack.
+:- pragma obsolete((svstack.det_pop)/3).
+:- pragma obsolete((svstack.pop)/3).
+:- pragma obsolete((svstack.push)/3).
+:- pragma obsolete((svstack.push_list)/3).
+:- pred det_pop(T, stack.stack(T), stack.stack(T)).
+:- mode det_pop((builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred pop(T, stack.stack(T), stack.stack(T)).
+:- mode pop((builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred push(T, stack.stack(T), stack.stack(T)).
+:- mode push((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred push_list(list.list(T), stack.stack(T), stack.stack(T)).
+:- mode push_list((builtin.in), (builtin.in), (builtin.out)) is det.

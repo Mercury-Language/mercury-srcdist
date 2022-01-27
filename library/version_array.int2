@@ -1,0 +1,22 @@
+:- module version_array.
+:- interface.
+:- import_module list.
+:- import_module pretty_printer.
+:- type index_out_of_bounds
+	--->	index_out_of_bounds(string).
+:- type version_array(T).
+:- implementation.
+:- type version_array(T)
+	--->	version_array(T).
+:- pragma foreign_type(c, version_array(T), "struct ML_va *")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(java, version_array(T), "jmercury.version_array.ML_va")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(csharp, version_array(T), "version_array.ML_va")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_import_module("C", version_array).
+:- pragma foreign_import_module("C#", version_array).
+:- pragma foreign_import_module("Java", version_array).
+:- pragma foreign_import_module("C", version_array).
+:- pragma foreign_import_module("C#", version_array).
+:- pragma foreign_import_module("Java", version_array).

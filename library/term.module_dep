@@ -1,0 +1,13 @@
+module(1, "term.m",
+	term,
+	{},
+	{builtin, enum, list, map, type_desc, univ, private_builtin},
+	{builtin, enum, list, map, type_desc, univ, array, bitmap, construct, deconstruct, int, require, string, version_array, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

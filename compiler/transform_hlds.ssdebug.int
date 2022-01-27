@@ -1,0 +1,6 @@
+:- module (transform_hlds.ssdebug).
+:- interface.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- pred ssdebug_transform_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode ssdebug_transform_module((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

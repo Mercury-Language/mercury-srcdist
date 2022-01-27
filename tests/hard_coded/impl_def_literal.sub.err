@@ -1,0 +1,8 @@
+impl_def_literal.m:096: In clause for `fun_with_lines(di, uo)':
+impl_def_literal.m:096:   warning: unification of `X' and `Y' cannot succeed
+impl_def_literal.m:096:   `X' has instantiatedness `unique(94)',
+impl_def_literal.m:096:   `Y' has instantiatedness `unique(95)'.
+impl_def_literal.m:098: Warning: the condition of this if-then-else cannot
+impl_def_literal.m:098:   succeed.
+impl_def_literal.m:112: Warning: the condition of this if-then-else cannot
+impl_def_literal.m:112:   fail.

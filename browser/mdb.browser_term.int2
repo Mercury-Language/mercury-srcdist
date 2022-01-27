@@ -1,0 +1,9 @@
+:- module (mdb.browser_term).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module maybe.
+:- import_module univ.
+:- type browser_term
+	--->	plain_term(univ.univ)
+	;	synthetic_term(string, list.list(univ.univ), maybe.maybe(univ.univ)).

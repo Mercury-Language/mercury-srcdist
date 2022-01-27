@@ -1,0 +1,10 @@
+prefix=/Users/jfischer/Mercury-Workspaces/mercury.local-3/boehm_gc/libatomic_ops-install
+exec_prefix=${prefix}
+top_builddir=/Users/jfischer/Mercury-Workspaces/mercury.local-3/boehm_gc/libatomic_ops
+top_srcdir=/Users/jfischer/Mercury-Workspaces/mercury.local-3/boehm_gc/libatomic_ops
+
+Name: The atomic_ops library (uninstalled)
+Description: Atomic memory update operations
+Version: 7.2
+Libs: ${top_builddir}/src/libatomic_ops.la
+Cflags: -I${top_builddir}/src -I${top_srcdir}/src

@@ -1,0 +1,41 @@
+:- module (check_hlds.typecheck_info).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.pred_table).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type args_type_assign
+	--->	args_type_assign(((check_hlds.typecheck_info).ata_caller_arg_assign) :: check_hlds.typecheck_info.type_assign, ((check_hlds.typecheck_info).ata_callee_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((check_hlds.typecheck_info).ata_callee_constraints) :: hlds.hlds_data.hlds_constraints).
+:- type args_type_assign_set == list.list(check_hlds.typecheck_info.args_type_assign).
+:- type cons_type_info
+	--->	cons_type_info(((check_hlds.typecheck_info).cti_varset) :: parse_tree.prog_data.tvarset, ((check_hlds.typecheck_info).cti_exit_tvars) :: parse_tree.prog_data.existq_tvars, ((check_hlds.typecheck_info).cti_result_type) :: parse_tree.prog_data.mer_type, ((check_hlds.typecheck_info).cti_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((check_hlds.typecheck_info).cti_constraints) :: hlds.hlds_data.hlds_constraints, ((check_hlds.typecheck_info).cti_source) :: check_hlds.typecheck_info.cons_type_info_source).
+:- type cons_type_info_source
+	--->	source_type(parse_tree.prog_data.type_ctor)
+	;	source_builtin_type(string)
+	;	source_get_field_access(parse_tree.prog_data.type_ctor)
+	;	source_set_field_access(parse_tree.prog_data.type_ctor)
+	;	source_apply(string)
+	;	source_pred(hlds.hlds_pred.pred_id).
+:- type overloaded_symbol
+	--->	overloaded_pred(parse_tree.prog_data.simple_call_id, list.list(hlds.hlds_pred.pred_id))
+	;	overloaded_func(parse_tree.prog_data.cons_id, list.list(check_hlds.typecheck_info.cons_type_info_source)).
+:- type overloaded_symbol_map == map.map(check_hlds.typecheck_info.overloaded_symbol, list.list(parse_tree.prog_data.prog_context)).
+:- type type_assign
+	--->	type_assign(((check_hlds.typecheck_info).ta_var_types) :: parse_tree.prog_data.vartypes, ((check_hlds.typecheck_info).ta_type_varset) :: parse_tree.prog_data.tvarset, ((check_hlds.typecheck_info).ta_head_type_params) :: hlds.hlds_pred.head_type_params, ((check_hlds.typecheck_info).ta_type_bindings) :: parse_tree.prog_data.tsubst, ((check_hlds.typecheck_info).ta_class_constraints) :: hlds.hlds_data.hlds_constraints, ((check_hlds.typecheck_info).ta_constraint_proofs) :: hlds.hlds_data.constraint_proof_map, ((check_hlds.typecheck_info).ta_constraint_map) :: hlds.hlds_data.constraint_map).
+:- type type_assign_set == list.list(check_hlds.typecheck_info.type_assign).
+:- type typecheck_info
+	--->	typecheck_info(((check_hlds.typecheck_info).tc_info_sub_info) :: check_hlds.typecheck_info.typecheck_sub_info, ((check_hlds.typecheck_info).tc_info_module_info) :: hlds.hlds_module.module_info, ((check_hlds.typecheck_info).tc_info_call_id) :: hlds.hlds_pred.call_id, ((check_hlds.typecheck_info).tc_info_arg_num) :: int, ((check_hlds.typecheck_info).tc_info_context) :: parse_tree.prog_data.prog_context, ((check_hlds.typecheck_info).tc_info_unify_context) :: hlds.hlds_goal.unify_context, ((check_hlds.typecheck_info).tc_info_type_assign_set) :: check_hlds.typecheck_info.type_assign_set, ((check_hlds.typecheck_info).tc_info_ambiguity_warn_limit) :: int).
+:- type typecheck_sub_info
+	--->	typecheck_sub_info(((check_hlds.typecheck_info).tc_sub_info_pred_id) :: hlds.hlds_pred.pred_id, ((check_hlds.typecheck_info).tc_sub_info_pred_import_status) :: hlds.hlds_pred.import_status, ((check_hlds.typecheck_info).tc_sub_info_pred_markers) :: hlds.hlds_pred.pred_markers, ((check_hlds.typecheck_info).tc_sub_info_is_field_access_function) :: bool.bool, ((check_hlds.typecheck_info).tc_sub_info_varset) :: parse_tree.prog_data.prog_varset, ((check_hlds.typecheck_info).tc_sub_info_non_overload_errors) :: list.list(parse_tree.error_util.error_spec), ((check_hlds.typecheck_info).tc_sub_info_overload_error) :: maybe.maybe(parse_tree.error_util.error_spec), ((check_hlds.typecheck_info).tc_sub_info_overloaded_symbols) :: check_hlds.typecheck_info.overloaded_symbol_map, ((check_hlds.typecheck_info).tc_sub_info_ambiguity_error_limit) :: int).
