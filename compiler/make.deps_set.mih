@@ -1,0 +1,145 @@
+/*
+** Automatically generated from `make.deps_set.m'
+** by the Mercury compiler,
+** version rotd-2021-12-17
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module make.deps_set.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_make__deps_set
+#define MR_HEADER_GUARD_make__deps_set
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MAKE__DEPS_SET_DECL_GUARD
+#define MAKE__DEPS_SET_DECL_GUARD
+#include "make.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct make__deps_set__make__deps_set__type_ctor_info_dependency_file_index_0;
+
+extern const MR_TypeCtorInfo_Struct make__deps_set__make__deps_set__type_ctor_info_deps_set_1;
+
+extern const MR_TypeCtorInfo_Struct make__deps_set__make__deps_set__type_ctor_info_module_index_0;
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_enum__enum__arity1__make__deps_set__dependency_file_index__arity0__[7];
+
+extern const MR_BaseTypeclassInfo base_typeclass_info_enum__enum__arity1__make__deps_set__module_index__arity0__[7];
+
+void MR_CALL 
+make__deps_set__dependency_file_index_set_to_plain_set_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+make__deps_set__dependency_file_to_index_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__deps_set__dependency_files_to_index_set_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__deps_set__module_index_set_to_plain_set_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+make__deps_set__module_index_to_name_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+make__deps_set__module_name_to_index_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__deps_set__module_names_to_index_set_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+make__deps_set____Compare____dependency_file_index_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+make__deps_set____Compare____deps_set_1_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+void MR_CALL 
+make__deps_set____Compare____module_index_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+make__deps_set____Unify____dependency_file_index_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+make__deps_set____Unify____deps_set_1_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+make__deps_set____Unify____module_index_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__make__deps_set__init(void);
+void mercury__make__deps_set__init_type_tables(void);
+void mercury__make__deps_set__init_debugger(void);
+const char *mercury__make__deps_set__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_make.deps_set
+
+// :- end_interface make.deps_set.
