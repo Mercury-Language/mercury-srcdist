@@ -1,0 +1,13 @@
+module(1, "ranges.m",
+	ranges,
+	{},
+	{builtin, list, private_builtin, set},
+	{builtin, int, list, private_builtin, require, set},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - ranges, "Java" - ranges},
+	contains_foreign_export,
+	no_main
+).

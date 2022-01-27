@@ -1,0 +1,19 @@
+:- module (parse_tree.parse_util).
+:- interface.
+:- use_module list.
+:- use_module maybe.
+:- use_module pair.
+:- use_module term.
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.prog_data).
+:- type conflict(T)
+    --->    conflict(T, T, string).
+:- type maybe_pred_or_func(T) == parse_tree.maybe_error.maybe2(mdbcomp.sym_name.sym_name, pair.pair(list.list(T), maybe.maybe(T))).
+:- type maybe_pred_or_func_modes == parse_tree.maybe_error.maybe3(mdbcomp.sym_name.sym_name, mdbcomp.prim_data.pred_or_func, list.list(parse_tree.prog_data.mer_mode)).
+:- type parser(T) == pred(term.term, parse_tree.maybe_error.maybe1(T)).
+:- mode (parser) == ((pred((builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.out)) is det)).
+:- type_representation(maybe_pred_or_func(V_1), is_eqv_to(parse_tree.maybe_error.maybe2(mdbcomp.sym_name.sym_name, pair.pair(list.list(V_1), maybe.maybe(V_1))))).
+:- type_representation(maybe_pred_or_func_modes, is_eqv_to(parse_tree.maybe_error.maybe3(mdbcomp.sym_name.sym_name, mdbcomp.prim_data.pred_or_func, list.list(parse_tree.prog_data.mer_mode)))).
+:- type_representation(parser(V_1), is_eqv_to(pred(term.term, parse_tree.maybe_error.maybe1(V_1)))).

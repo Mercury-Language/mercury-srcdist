@@ -1,0 +1,3 @@
+:- module enum.
+:- interface.
+:- typeclass enum(T).

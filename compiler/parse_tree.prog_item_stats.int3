@@ -1,0 +1,3 @@
+:- module (parse_tree.prog_item_stats).
+:- interface.
+:- type_representation(comp_unit_stats, is_eqv_to(map(string, section_stats))).

@@ -1,0 +1,52 @@
+:- module (mdb.browser_info).
+:- interface.
+:- import_module bool.
+:- import_module getopt.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module stream.
+:- import_module univ.
+:- import_module (mdb.browser_term).
+:- import_module (mdb.parse).
+:- import_module (mdb.term_rep).
+:- import_module (mdbcomp.program_representation).
+:- type browse_caller_type
+	where	type_is_abstract_enum(2).
+:- type browser_db.
+:- type browser_info.
+:- type browser_mode_func.
+:- type browser_persistent_state.
+:- type browser_term_mode
+	where	type_is_abstract_enum(2).
+:- type debugger
+	where	type_is_abstract_enum(1).
+:- type down_dir.
+:- type format_params.
+:- type how_track_subterm
+	where	type_is_abstract_enum(1).
+:- type maybe_track_subterm(P).
+:- type param_cmd.
+:- type portray_format
+	where	type_is_abstract_enum(2).
+:- type setting.
+:- type should_assert_invalid
+	where	type_is_abstract_enum(1).
+:- type term_browser_response.
+:- type up_down_dir.
+:- instance (stream.output(mdb.browser_info.debugger, io)).
+:- instance (stream.stream(mdb.browser_info.debugger, io)).
+:- instance (stream.writer(mdb.browser_info.debugger, int, io)).
+:- instance (stream.writer(mdb.browser_info.debugger, string, io)).
+:- type_representation(browse_caller_type, du_repn(enum("print", "browse", ["print_all"],  no_c_j_cs))).
+:- type_representation(browser_db, du_repn(notag("browser_db", io.stream_db,  no_c_j_cs))).
+:- type_representation(browser_info, is_word_aligned_ptr).
+:- type_representation(browser_mode_func, is_eqv_to(((func list(mdb.browser_info.down_dir)) = mdb.browser_info.browser_term_mode))).
+:- type_representation(browser_persistent_state, is_word_aligned_ptr).
+:- type_representation(browser_term_mode, du_repn(enum("btm_input", "btm_output", ["btm_unbound", "btm_not_applicable"],  no_c_j_cs))).
+:- type_representation(debugger, du_repn(enum("debugger_internal", "debugger_external", [],  no_c_j_cs))).
+:- type_representation(format_params, is_word_aligned_ptr).
+:- type_representation(how_track_subterm, du_repn(enum("track_accurate", "track_fast", [],  no_c_j_cs))).
+:- type_representation(portray_format, du_repn(enum("flat", "raw_pretty", ["verbose", "pretty"],  no_c_j_cs))).
+:- type_representation(should_assert_invalid, du_repn(enum("assert_invalid", "no_assert_invalid", [],  no_c_j_cs))).
