@@ -1,0 +1,13 @@
+:- module (string.builder).
+:- interface.
+:- use_module char.
+:- use_module stream.
+:- type handle
+    --->    handle .
+:- type state.
+:- instance (stream.output(string.builder.handle, string.builder.state)).
+:- instance (stream.stream(string.builder.handle, string.builder.state)).
+:- instance (stream.writer(string.builder.handle, char.char, string.builder.state)).
+:- instance (stream.writer(string.builder.handle, string, string.builder.state)).
+:- type_representation(handle, du_repn(direct_dummy("handle",  no_c_j_cs))).
+:- type_representation(state, du_repn(notag("state", list.list(string),  no_c_j_cs))).

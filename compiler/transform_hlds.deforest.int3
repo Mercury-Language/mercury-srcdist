@@ -1,0 +1,4 @@
+:- module (transform_hlds.deforest).
+:- interface.
+:- type_representation(annotated_conj, is_eqv_to(assoc_list(hlds_goal, maybe(pd_branch_info(prog_var))))).
+:- type_representation(can_move, is_eqv_to(pred(module_info, bool, hlds_goal, hlds_goals))).

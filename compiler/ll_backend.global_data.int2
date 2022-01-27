@@ -1,0 +1,21 @@
+:- module (ll_backend.global_data).
+:- interface.
+:- type global_data.
+:- type global_data_remapping.
+:- type num_words
+    --->    one_word 
+    ;       two_words .
+:- type static_cell_info.
+:- type static_cell_remap_info.
+:- type_representation(cell_type_bimap, is_eqv_to(bimap.bimap(ll_backend.llds.common_cell_type, ll_backend.llds.type_num))).
+:- type_representation(cell_type_num_remap, is_eqv_to(map.map(ll_backend.llds.type_num, ll_backend.llds.type_num))).
+:- type_representation(global_data, is_word_aligned_ptr).
+:- type_representation(global_data_remapping, is_word_aligned_ptr).
+:- type_representation(num_words, du_repn(enum("one_word", "two_words", [],  no_c_j_cs))).
+:- type_representation(proc_layout_map, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, ll_backend.continuation_info.proc_layout_info))).
+:- type_representation(proc_var_map, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, ll_backend.llds.tabling_info_struct))).
+:- type_representation(scalar_cell_group_remap, is_eqv_to(map.map(ll_backend.llds.data_id, ll_backend.llds.data_id))).
+:- type_representation(scalar_type_cell_map, is_eqv_to(map.map(ll_backend.llds.type_num, ll_backend.global_data.scalar_cell_group))).
+:- type_representation(static_cell_info, is_word_aligned_ptr).
+:- type_representation(static_cell_remap_info, is_word_aligned_ptr).
+:- type_representation(vector_type_cell_map, is_eqv_to(map.map(ll_backend.llds.type_num, ll_backend.global_data.vector_cell_group))).
