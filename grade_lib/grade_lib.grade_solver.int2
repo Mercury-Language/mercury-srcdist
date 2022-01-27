@@ -1,0 +1,31 @@
+:- module (grade_lib.grade_solver).
+:- interface.
+:- use_module map.
+:- use_module (grade_lib.grade_spec).
+:- type failure_info.
+:- type failure_tree
+    --->    failure_tree(grade_lib.grade_spec.solver_var_id, list.list(grade_lib.grade_solver.why_var_is_not_value)).
+:- type installed_grade
+    --->    installed_grade(string, grade_lib.grade_solver.success_soln_map).
+:- type installed_grade_solution
+    --->    installed_grade_spec_is_inconsistent(grade_lib.grade_solver.failure_info)
+    ;       installed_grade_success(grade_lib.grade_solver.installed_grade)
+    ;       no_such_installed_grade .
+:- type should_commit
+    --->    should_commit 
+    ;       should_not_commit .
+:- type solution
+    --->    soln_failure(grade_lib.grade_solver.failure_info)
+    ;       soln_success(grade_lib.grade_solver.success_soln_map).
+:- type solve_counts
+    --->    solve_counts(((grade_lib.grade_solver).sc_num_label_steps) :: int, ((grade_lib.grade_solver).sc_num_passes) :: int, ((grade_lib.grade_solver).sc_num_req_tests) :: int).
+:- type success_soln_map == map.map(grade_lib.grade_spec.solver_var_id, grade_lib.grade_spec.solver_var_value_id).
+:- type why_var_is_not_value
+    --->    why_var_is_not_value(grade_lib.grade_spec.solver_var_value_id, grade_lib.grade_state.requirement_id, string, list.list(grade_lib.grade_solver.failure_tree)).
+:- type_representation(failure_info, is_word_aligned_ptr).
+:- type_representation(failure_tree, is_word_aligned_ptr).
+:- type_representation(installed_grade, is_word_aligned_ptr).
+:- type_representation(should_commit, du_repn(enum("should_commit", "should_not_commit", [],  no_c_j_cs))).
+:- type_representation(solve_counts, is_word_aligned_ptr).
+:- type_representation(success_soln_map, is_eqv_to(map.map(grade_lib.grade_spec.solver_var_id, grade_lib.grade_spec.solver_var_value_id))).
+:- type_representation(why_var_is_not_value, is_word_aligned_ptr).

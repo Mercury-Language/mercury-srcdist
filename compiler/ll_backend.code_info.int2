@@ -1,0 +1,8 @@
+:- module (ll_backend.code_info).
+:- interface.
+:- type code_info.
+:- type for_call_or_closure
+    --->    for_immediate_call 
+    ;       for_closure .
+:- type_representation(code_info, is_word_aligned_ptr).
+:- type_representation(for_call_or_closure, du_repn(enum("for_immediate_call", "for_closure", [],  no_c_j_cs))).

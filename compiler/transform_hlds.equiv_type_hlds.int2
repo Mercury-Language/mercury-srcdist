@@ -1,0 +1,3 @@
+:- module (transform_hlds.equiv_type_hlds).
+:- interface.
+:- type_representation(inst_cache, is_eqv_to(map.map(parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst))).

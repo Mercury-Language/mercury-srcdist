@@ -1,0 +1,38 @@
+:- module par_builtin.
+:- interface.
+:- use_module io.
+:- pragma foreign_import_module("C", par_builtin).
+:- pragma foreign_import_module("C#", par_builtin).
+:- pragma foreign_import_module("Java", par_builtin).
+:- type future(T).
+:- type loop_control.
+:- impure pred evaluate_parallelism_condition is semidet.
+:- pred get_future(par_builtin.future(T), T).
+:- mode get_future((builtin.in), (builtin.out)) is det.
+:- pred lc_create(int, par_builtin.loop_control).
+:- mode lc_create((builtin.in), (builtin.out)) is det.
+:- impure pred lc_default_num_contexts(int).
+:- mode lc_default_num_contexts((builtin.out)) is det.
+:- impure pred lc_finish(par_builtin.loop_control).
+:- mode lc_finish((builtin.in)) is det.
+:- impure pred lc_free_slot(par_builtin.loop_control, int).
+:- mode lc_free_slot((builtin.in), (builtin.out)) is semidet.
+:- impure pred lc_join_and_terminate(par_builtin.loop_control, int).
+:- mode lc_join_and_terminate((builtin.in), (builtin.in)) is det.
+:- impure pred lc_wait_free_slot(par_builtin.loop_control, int).
+:- mode lc_wait_free_slot((builtin.in), (builtin.out)) is det.
+:- pred new_future(int, par_builtin.future(T)).
+:- mode new_future((builtin.in), (builtin.uo)) is det.
+:- pred par_cond_close_stats_file(io.io, io.io).
+:- mode par_cond_close_stats_file((builtin.di), (builtin.uo)) is det.
+:- impure pred signal_future(par_builtin.future(T), T).
+:- mode signal_future((builtin.in), (builtin.in)) is det.
+:- impure pred wait_future(par_builtin.future(T), T).
+:- mode wait_future((builtin.in), (builtin.out)) is det.
+:- implementation.
+:- pragma foreign_type(c, future(T), "MR_Future *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, future(T), "java.lang.Object").
+:- pragma foreign_type(csharp, future(T), "object").
+:- pragma foreign_type(c, loop_control, "MR_LoopControl *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, loop_control, "java.lang.Object").
+:- pragma foreign_type(csharp, loop_control, "object").

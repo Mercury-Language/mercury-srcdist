@@ -1,0 +1,13 @@
+:- module (mdb.help).
+:- interface.
+:- use_module list.
+:- type help_res
+    --->    help_ok 
+    ;       help_error(string).
+:- type help_system.
+:- type path == list.list(string).
+:- type_representation(help_system, is_eqv_to(list.list(mdb.help.help_node))).
+:- type_representation(path, is_eqv_to(list.list(string))).
+:- implementation.
+:- type help_node.
+:- type help_system == list.list(mdb.help.help_node).
