@@ -1,0 +1,77 @@
+:- module version_array.
+:- interface.
+:- use_module list.
+:- use_module pretty_printer.
+:- pragma foreign_import_module("C", version_array).
+:- pragma foreign_import_module("C#", version_array).
+:- pragma foreign_import_module("Java", version_array).
+:- type index_out_of_bounds
+    --->    index_out_of_bounds(string).
+:- type version_array(T).
+:- pred all_false((pred T), version_array.version_array(T)).
+:- mode all_false(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) is semidet.
+:- pred all_true((pred T), version_array.version_array(T)).
+:- mode all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) is semidet.
+:- func copy(version_array.version_array(T)) = version_array.version_array(T).
+:- func elem(int, version_array.version_array(T)) = T.
+:- func 'elem :='(int, version_array.version_array(T), T) = version_array.version_array(T).
+:- func empty = version_array.version_array(T).
+:- pred foldl(pred(T1, T2, T2), version_array.version_array(T1), T2, T2).
+:- mode foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldl(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- func foldl((func(T1, T2) = T2), version_array.version_array(T1), T2) = T2.
+:- pred foldl2(pred(T1, T2, T2, T3, T3), version_array.version_array(T1), T2, T2, T3, T3).
+:- mode foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred foldr(pred(T1, T2, T2), version_array.version_array(T1), T2, T2).
+:- mode foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldr(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldr(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldr(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- func foldr((func(T1, T2) = T2), version_array.version_array(T1), T2) = T2.
+:- pred foldr2(pred(T1, T2, T2, T3, T3), version_array.version_array(T1), T2, T2, T3, T3).
+:- mode foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldr2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- func from_list(list.list(T)) = version_array.version_array(T).
+:- func from_reverse_list(list.list(T)) = version_array.version_array(T).
+:- func init(int, T) = version_array.version_array(T).
+:- pred is_empty(version_array.version_array(T)).
+:- mode is_empty((builtin.in)) is semidet.
+:- func list(version_array.version_array(T)) = list.list(T).
+:- func lookup(version_array.version_array(T), int) = T.
+:- func max(version_array.version_array(T)) = int.
+:- pred resize(int, T, version_array.version_array(T), version_array.version_array(T)).
+:- mode resize((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func resize(version_array.version_array(T), int, T) = version_array.version_array(T).
+:- pred set(int, T, version_array.version_array(T), version_array.version_array(T)).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func size(version_array.version_array(T)) = int.
+:- func to_list(version_array.version_array(T)) = list.list(T).
+:- func unsafe_empty = version_array.version_array(T).
+:- func unsafe_init(int, T) = version_array.version_array(T).
+:- pred unsafe_rewind(version_array.version_array(T), version_array.version_array(T)).
+:- mode unsafe_rewind((builtin.in), (builtin.out)) is det.
+:- func unsafe_rewind(version_array.version_array(T)) = version_array.version_array(T).
+:- func version_array(list.list(T)) = version_array.version_array(T).
+:- func version_array_to_doc(version_array.version_array(T)) = pretty_printer.doc.
+:- implementation.
+:- pragma foreign_type(c, version_array(T), "struct ML_va *")
+    where   type_is_abstract_noncanonical.
+:- pragma foreign_type(java, version_array(T), "jmercury.version_array.ML_va")
+    where   type_is_abstract_noncanonical.
+:- pragma foreign_type(csharp, version_array(T), "version_array.ML_va")
+    where   type_is_abstract_noncanonical.

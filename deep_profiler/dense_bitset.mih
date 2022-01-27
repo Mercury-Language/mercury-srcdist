@@ -1,0 +1,113 @@
+/*
+** Automatically generated from `dense_bitset.m'
+** by the Mercury compiler,
+** version rotd-2021-04-15
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module dense_bitset.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_dense_bitset
+#define MR_HEADER_GUARD_dense_bitset
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef DENSE_BITSET_DECL_GUARD
+#define DENSE_BITSET_DECL_GUARD
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct dense_bitset__dense_bitset__type_ctor_info_dense_bitset_0;
+
+void MR_CALL 
+dense_bitset__foldl_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+dense_bitset__foldl_4_p_1(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+void MR_CALL 
+dense_bitset__foldl_4_p_2(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_ArrayPtr param_3,
+  MR_Box param_4,
+  MR_Box * param_5);
+
+MR_bool MR_CALL 
+dense_bitset__member_2_p_0(
+  MR_Integer param_1,
+  MR_ArrayPtr param_2);
+
+MR_ArrayPtr MR_CALL 
+dense_bitset__delete_2_f_0(
+  MR_ArrayPtr param_1,
+  MR_Integer param_2);
+
+MR_ArrayPtr MR_CALL 
+dense_bitset__init_0_f_0(void);
+
+MR_ArrayPtr MR_CALL 
+dense_bitset__insert_2_f_0(
+  MR_ArrayPtr param_1,
+  MR_Integer param_2);
+
+MR_ArrayPtr MR_CALL 
+dense_bitset__union_2_f_0(
+  MR_ArrayPtr param_1,
+  MR_ArrayPtr param_2);
+
+void MR_CALL 
+dense_bitset____Compare____dense_bitset_0_0(
+  MR_Word * param_1,
+  MR_ArrayPtr param_2,
+  MR_ArrayPtr param_3);
+
+MR_bool MR_CALL 
+dense_bitset____Unify____dense_bitset_0_0(
+  MR_ArrayPtr param_1,
+  MR_ArrayPtr param_2);
+
+void mercury__dense_bitset__init(void);
+void mercury__dense_bitset__init_type_tables(void);
+void mercury__dense_bitset__init_debugger(void);
+const char *mercury__dense_bitset__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_dense_bitset
+
+// :- end_interface dense_bitset.

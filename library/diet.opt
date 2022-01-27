@@ -1,0 +1,771 @@
+:- module diet.
+:- use_module bool.
+:- use_module builtin.
+:- use_module enum.
+:- use_module int.
+:- use_module list.
+:- use_module maybe.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+
+:- type diet(T)
+    --->    empty 
+    ;       node((diet.interval) :: {T, T}, (diet.node_height) :: int, (diet.left) :: diet.diet(T), (diet.right) :: diet.diet(T)).
+:- type interval(T) == {T, T}.
+
+:- inst (node) for diet.diet/1 == bound(node(ground, ground, ground, ground)).
+
+:- instance (diet.diet_element(int)).
+
+:- pred diet.'=<'(T_1, T_1) <= (diet.diet_element(T_1)).
+:- mode diet.'=<'((builtin.in), (builtin.in)) is semidet.
+:- func diet.add(T_1, diet.diet(T_1)) = diet.diet(T_1) <= (diet.diet_element(T_1)).
+:- mode diet.add((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred diet.all_true_interval((pred T_1), T_1, T_1) <= (diet.diet_element(T_1)).
+:- mode diet.all_true_interval(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in)) is semidet.
+:- pred diet.cons_interval(T_1, T_1, list.list({T_1, T_1}), list.list({T_1, T_1})).
+:- mode diet.cons_interval((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred diet.count(diet.diet(T_1), int, int) <= (enum.enum(T_1)).
+:- mode diet.count((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred diet.divide_2((pred T_1), T_1, diet.diet(T_1), diet.diet(T_1), diet.diet(T_1), diet.diet(T_1)) <= (diet.diet_element(T_1)).
+:- mode diet.divide_2(((pred((builtin.in)) is semidet) >> (pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred diet.fold_down(pred(T_1, A_2, A_2), T_1, T_1, A_2, A_2) <= (diet.diet_element(T_1)).
+:- mode diet.fold_down(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode diet.fold_down(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode diet.fold_down(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode diet.fold_down(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode diet.fold_down(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode diet.fold_down(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- pred diet.fold_up2(pred(T_1, Acc1_2, Acc1_2, Acc2_3, Acc2_3), T_1, T_1, Acc1_2, Acc1_2, Acc2_3, Acc2_3) <= (diet.diet_element(T_1)).
+:- mode diet.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode diet.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode diet.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode diet.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode diet.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode diet.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred diet.fold_up3(pred(T_1, Acc1_2, Acc1_2, Acc2_3, Acc2_3, Acc3_4, Acc3_4), T_1, T_1, Acc1_2, Acc1_2, Acc2_3, Acc2_3, Acc3_4, Acc3_4) <= (diet.diet_element(T_1)).
+:- mode diet.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode diet.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode diet.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode diet.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode diet.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode diet.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred diet.fold_up4(pred(T_1, A_2, A_2, B_3, B_3, C_4, C_4, D_5, D_5), T_1, T_1, A_2, A_2, B_3, B_3, C_4, C_4, D_5, D_5) <= (diet.diet_element(T_1)).
+:- mode diet.fold_up4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode diet.fold_up4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode diet.fold_up4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode diet.fold_up4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode diet.fold_up4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode diet.fold_up4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred diet.fold_up5(pred(T_1, A_2, A_2, B_3, B_3, C_4, C_4, D_5, D_5, E_6, E_6), T_1, T_1, A_2, A_2, B_3, B_3, C_4, C_4, D_5, D_5, E_6, E_6) <= (diet.diet_element(T_1)).
+:- mode diet.fold_up5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode diet.fold_up5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode diet.fold_up5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode diet.fold_up5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode diet.fold_up5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode diet.fold_up5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred diet.foldl_2(pred(T_1, Acc_2, Acc_2), T_1, T_1, Acc_2, Acc_2) <= (diet.diet_element(T_1)).
+:- mode diet.foldl_2(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode diet.foldl_2(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode diet.foldl_2(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode diet.foldl_2(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode diet.foldl_2(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode diet.foldl_2(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- pred diet.insert_interval({T_1, T_1}, diet.diet(T_1), diet.diet(T_1)) <= (diet.diet_element(T_1)).
+:- mode diet.insert_interval((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func diet.inter(diet.diet(T_1), diet.diet(T_1)) = diet.diet(T_1) <= (diet.diet_element(T_1)).
+:- mode diet.inter((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func diet.singleton({T_1, T_1}) = diet.diet(T_1).
+:- mode diet.singleton((builtin.in)) = (builtin.out) is det.
+
+diet.(V_3 =< V_4) :-
+    not (
+      diet.less_than(V_4, V_3)
+    ).
+
+diet.all_true(V_3, V_4) :-
+    ( % disjunction
+      V_4 = diet.empty : diet.diet(T_1)
+    ;
+      V_4 = diet.node(V_10, V_7, V_8, V_9) : diet.diet(T_1),
+      V_10 = {V_5, V_6} : {T_1, T_1},
+      diet.all_true(V_3, V_8),
+      diet.all_true_interval(V_3, V_5, V_6),
+      diet.all_true(V_3, V_9)
+    ).
+
+diet.all_true_interval(V_4, V_5, V_6) :-
+    ( if
+      diet.(V_5 =< V_6)
+    then
+      call(V_4, V_5),
+      V_7 = diet.successor(V_5),
+      diet.all_true_interval(V_4, V_7, V_6)
+    else
+      true
+    ).
+
+diet.cons_interval(V_5, V_6, V_7, list.[V_8 | V_7]) :-
+    V_8 = {V_5, V_6} : {T_1, T_1}.
+
+diet.count(V_3) = V_4 :-
+    V_5 = 0 : int,
+    diet.count(V_3, V_5, V_4).
+
+diet.delete(V_4, V_5, V_6) :-
+    ( if
+      diet.remove(V_4, V_5, V_7)
+    then
+      V_6 = V_7
+    else
+      V_6 = V_5
+    ).
+
+diet.delete(V_4, V_5) = V_6 :-
+    diet.delete(V_5, V_4, V_6).
+
+diet.delete_list(V_4, V_5, V_6) :-
+    V_7 = diet.list_to_set(V_4),
+    diet.difference(V_5, V_7, V_6).
+
+diet.delete_list(V_4, V_5) = V_6 :-
+    diet.delete_list(V_5, V_4, V_6).
+
+diet.difference(V_4, V_5) = V_6 :-
+    diet.difference(V_4, V_5, V_6).
+
+diet.divide(V_5, V_6, V_7, V_8) :-
+    V_9 = diet.divide_2(V_5) : pred(T_1, diet.diet(T_1), diet.diet(T_1), diet.diet(T_1), diet.diet(T_1)),
+    V_10 = diet.init,
+    V_11 = diet.init,
+    diet.foldl2(V_9, V_6, V_10, V_7, V_11, V_8).
+
+diet.divide_2(V_7, V_8, V_11, V_12, V_13, V_14) :-
+    ( if
+      call(V_7, V_8)
+    then
+      diet.insert(V_8, V_11, V_12),
+      V_14 = V_13
+    else
+      diet.insert(V_8, V_13, V_14),
+      V_12 = V_11
+    ).
+
+diet.divide_by_set(V_5, V_6, V_7, V_8) :-
+    diet.intersect(V_6, V_5, V_7),
+    diet.difference(V_6, V_5, V_8).
+
+diet.empty(diet.empty).
+
+diet.filter(V_4, V_5) = V_6 :-
+    diet.divide(V_4, V_5, V_6, V_7).
+
+diet.filter(V_5, V_6, V_7, V_8) :-
+    diet.divide(V_5, V_6, V_7, V_8).
+
+diet.fold_down(V_6, V_7, V_8, V_10, V_11) :-
+    ( if
+      diet.(V_7 =< V_8)
+    then
+      call(V_6, V_8, V_10, V_12),
+      V_13 = diet.predecessor(V_8),
+      diet.fold_down(V_6, V_7, V_13, V_12, V_11)
+    else
+      V_11 = V_10
+    ).
+
+diet.fold_up2(V_8, V_9, V_10, V_13, V_14, V_15, V_16) :-
+    ( if
+      diet.(V_9 =< V_10)
+    then
+      call(V_8, V_9, V_13, V_17, V_15, V_18),
+      V_19 = diet.successor(V_9),
+      diet.fold_up2(V_8, V_19, V_10, V_17, V_14, V_18, V_16)
+    else
+      V_16 = V_15,
+      V_14 = V_13
+    ).
+
+diet.fold_up3(V_10, V_11, V_12, V_16, V_17, V_18, V_19, V_20, V_21) :-
+    ( if
+      diet.(V_11 =< V_12)
+    then
+      call(V_10, V_11, V_16, V_22, V_18, V_23, V_20, V_24),
+      V_25 = diet.successor(V_11),
+      diet.fold_up3(V_10, V_25, V_12, V_22, V_17, V_23, V_19, V_24, V_21)
+    else
+      V_21 = V_20,
+      V_19 = V_18,
+      V_17 = V_16
+    ).
+
+diet.fold_up4(V_12, V_13, V_14, V_19, V_20, V_21, V_22, V_23, V_24, V_25, V_26) :-
+    ( if
+      diet.(V_13 =< V_14)
+    then
+      call(V_12, V_13, V_19, V_27, V_21, V_28, V_23, V_29, V_25, V_30),
+      V_31 = diet.successor(V_13),
+      diet.fold_up4(V_12, V_31, V_14, V_27, V_20, V_28, V_22, V_29, V_24, V_30, V_26)
+    else
+      V_26 = V_25,
+      V_24 = V_23,
+      V_22 = V_21,
+      V_20 = V_19
+    ).
+
+diet.fold_up5(V_14, V_15, V_16, V_22, V_23, V_24, V_25, V_26, V_27, V_28, V_29, V_30, V_31) :-
+    ( if
+      diet.(V_15 =< V_16)
+    then
+      call(V_14, V_15, V_22, V_32, V_24, V_33, V_26, V_34, V_28, V_35, V_30, V_36),
+      V_37 = diet.successor(V_15),
+      diet.fold_up5(V_14, V_37, V_16, V_32, V_23, V_33, V_25, V_34, V_27, V_35, V_29, V_36, V_31)
+    else
+      V_31 = V_30,
+      V_29 = V_28,
+      V_27 = V_26,
+      V_25 = V_24,
+      V_23 = V_22
+    ).
+
+diet.foldl(V_5, V_6, V_13, V_14) :-
+    ( % disjunction
+      V_6 = diet.empty : diet.diet(T_1),
+      V_14 = V_13
+    ;
+      V_6 = diet.node(V_15, V_10, V_11, V_12) : diet.diet(T_1),
+      V_15 = {V_8, V_9} : {T_1, T_1},
+      diet.foldl(V_5, V_11, V_13, V_16),
+      diet.foldl_2(V_5, V_8, V_9, V_16, V_17),
+      diet.foldl(V_5, V_12, V_17, V_14)
+    ).
+
+diet.foldl(V_5, V_6, V_7) = V_8 :-
+    V_9 = (pred(V_13::(builtin.in), V_14::(builtin.in), V_15::(builtin.out)) is det :-
+      some [] (
+        V_13 = V_16,
+        V_14 = V_17,
+        V_18 = apply(V_5, V_16, V_17),
+        V_15 = V_18
+      )
+    ) : pred(T_1, A_2, A_2),
+    diet.foldl(V_9, V_6, V_7, V_8).
+
+diet.foldl2(V_7, V_8, V_16, V_17, V_18, V_19) :-
+    ( % disjunction
+      V_8 = diet.empty : diet.diet(T_1),
+      V_17 = V_16,
+      V_19 = V_18
+    ;
+      V_8 = diet.node(V_20, V_13, V_14, V_15) : diet.diet(T_1),
+      V_20 = {V_11, V_12} : {T_1, T_1},
+      diet.foldl2(V_7, V_14, V_16, V_21, V_18, V_22),
+      diet.fold_up2(V_7, V_11, V_12, V_21, V_23, V_22, V_24),
+      diet.foldl2(V_7, V_15, V_23, V_17, V_24, V_19)
+    ).
+
+diet.foldl3(V_9, V_10, V_19, V_20, V_21, V_22, V_23, V_24) :-
+    ( % disjunction
+      V_10 = diet.empty : diet.diet(T_1),
+      V_20 = V_19,
+      V_22 = V_21,
+      V_24 = V_23
+    ;
+      V_10 = diet.node(V_25, V_16, V_17, V_18) : diet.diet(T_1),
+      V_25 = {V_14, V_15} : {T_1, T_1},
+      diet.foldl3(V_9, V_17, V_19, V_26, V_21, V_27, V_23, V_28),
+      diet.fold_up3(V_9, V_14, V_15, V_26, V_29, V_27, V_30, V_28, V_31),
+      diet.foldl3(V_9, V_18, V_29, V_20, V_30, V_22, V_31, V_24)
+    ).
+
+diet.foldl4(V_11, V_12, V_22, V_23, V_24, V_25, V_26, V_27, V_28, V_29) :-
+    ( % disjunction
+      V_12 = diet.empty : diet.diet(T_1),
+      V_23 = V_22,
+      V_25 = V_24,
+      V_27 = V_26,
+      V_29 = V_28
+    ;
+      V_12 = diet.node(V_30, V_19, V_20, V_21) : diet.diet(T_1),
+      V_30 = {V_17, V_18} : {T_1, T_1},
+      diet.foldl4(V_11, V_20, V_22, V_31, V_24, V_32, V_26, V_33, V_28, V_34),
+      diet.fold_up4(V_11, V_17, V_18, V_31, V_35, V_32, V_36, V_33, V_37, V_34, V_38),
+      diet.foldl4(V_11, V_21, V_35, V_23, V_36, V_25, V_37, V_27, V_38, V_29)
+    ).
+
+diet.foldl5(V_13, V_14, V_25, V_26, V_27, V_28, V_29, V_30, V_31, V_32, V_33, V_34) :-
+    ( % disjunction
+      V_14 = diet.empty : diet.diet(T_1),
+      V_26 = V_25,
+      V_28 = V_27,
+      V_30 = V_29,
+      V_32 = V_31,
+      V_34 = V_33
+    ;
+      V_14 = diet.node(V_35, V_22, V_23, V_24) : diet.diet(T_1),
+      V_35 = {V_20, V_21} : {T_1, T_1},
+      diet.foldl5(V_13, V_23, V_25, V_36, V_27, V_37, V_29, V_38, V_31, V_39, V_33, V_40),
+      diet.fold_up5(V_13, V_20, V_21, V_36, V_41, V_37, V_42, V_38, V_43, V_39, V_44, V_40, V_45),
+      diet.foldl5(V_13, V_24, V_41, V_26, V_42, V_28, V_43, V_30, V_44, V_32, V_45, V_34)
+    ).
+
+diet.foldl_2(V_6, V_7, V_8, V_10, V_11) :-
+    ( if
+      diet.(V_7 =< V_8)
+    then
+      call(V_6, V_7, V_10, V_12),
+      V_13 = diet.successor(V_7),
+      diet.foldl_2(V_6, V_13, V_8, V_12, V_11)
+    else
+      V_11 = V_10
+    ).
+
+diet.foldl_intervals(V_5, V_6, V_13, V_14) :-
+    ( % disjunction
+      V_6 = diet.empty : diet.diet(T_1),
+      V_14 = V_13
+    ;
+      V_6 = diet.node(V_15, V_10, V_11, V_12) : diet.diet(T_1),
+      V_15 = {V_8, V_9} : {T_1, T_1},
+      diet.foldl_intervals(V_5, V_11, V_13, V_16),
+      call(V_5, V_8, V_9, V_16, V_17),
+      diet.foldl_intervals(V_5, V_12, V_17, V_14)
+    ).
+
+diet.foldr(V_5, V_6, V_13, V_14) :-
+    ( % disjunction
+      V_6 = diet.empty : diet.diet(T_1),
+      V_14 = V_13
+    ;
+      V_6 = diet.node(V_15, V_10, V_11, V_12) : diet.diet(T_1),
+      V_15 = {V_8, V_9} : {T_1, T_1},
+      diet.foldr(V_5, V_12, V_13, V_16),
+      diet.fold_down(V_5, V_8, V_9, V_16, V_17),
+      diet.foldr(V_5, V_11, V_17, V_14)
+    ).
+
+diet.foldr(V_5, V_6, V_7) = V_8 :-
+    V_9 = (pred(V_13::(builtin.in), V_14::(builtin.in), V_15::(builtin.out)) is det :-
+      some [] (
+        V_13 = V_16,
+        V_14 = V_17,
+        V_18 = apply(V_5, V_16, V_17),
+        V_15 = V_18
+      )
+    ) : pred(T_1, A_2, A_2),
+    diet.foldr(V_9, V_6, V_7, V_8).
+
+diet.foldr_intervals(V_5, V_6, V_13, V_14) :-
+    ( % disjunction
+      V_6 = diet.empty : diet.diet(T_1),
+      V_14 = V_13
+    ;
+      V_6 = diet.node(V_15, V_10, V_11, V_12) : diet.diet(T_1),
+      V_15 = {V_8, V_9} : {T_1, T_1},
+      diet.foldr_intervals(V_5, V_12, V_13, V_16),
+      call(V_5, V_8, V_9, V_16, V_17),
+      diet.foldr_intervals(V_5, V_11, V_17, V_14)
+    ).
+
+diet.from_interval_list(V_3, V_4) :-
+    V_5 = diet.insert_interval : pred({T_1, T_1}, diet.diet(T_1), diet.diet(T_1)),
+    V_6 = diet.init,
+    list.foldl(V_5, V_3, V_6, V_4).
+
+diet.from_list(V_3, V_4) :-
+    diet.list_to_set(V_3, V_4).
+
+diet.from_list(V_3) = V_4 :-
+    diet.list_to_set(V_3, V_4).
+
+diet.init(diet.empty).
+
+diet.init = diet.empty.
+
+diet.insert(V_4, V_5, V_6) :-
+    V_6 = diet.add(V_4, V_5).
+
+diet.insert(V_4, V_5) = V_6 :-
+    diet.insert(V_5, V_4, V_6).
+
+diet.insert_interval(V_1, V_6, V_7) :-
+    V_1 = {V_4, V_5} : {T_1, T_1},
+    diet.insert_interval(V_4, V_5, V_6, V_7).
+
+diet.insert_list(V_4, V_5, V_6) :-
+    V_7 = diet.insert : pred(T_1, diet.diet(T_1), diet.diet(T_1)),
+    list.foldl(V_7, V_4, V_5, V_6).
+
+diet.insert_list(V_4, V_5) = V_6 :-
+    diet.insert_list(V_5, V_4, V_6).
+
+diet.intersect(V_4, V_5, V_3) :-
+    V_3 = diet.inter(V_4, V_5).
+
+diet.intersect(V_4, V_5) = V_3 :-
+    V_3 = diet.inter(V_4, V_5).
+
+diet.intersect_list(V_3) = V_4 :-
+    diet.intersect_list(V_3, V_4).
+
+diet.is_empty(diet.empty).
+
+diet.is_non_empty(diet.node(V_2, V_3, V_4, V_5)).
+
+diet.is_singleton(V_3, V_4) :-
+    V_3 = diet.node(V_6, V_5, V_8, V_9) : diet.diet(T_1),
+    V_6 = {V_4, V_7} : {T_1, T_1},
+    V_7 = V_4,
+    V_8 = diet.empty : diet.diet(T_1),
+    V_9 = diet.empty : diet.diet(T_1).
+
+diet.list_to_set(V_3, V_4) :-
+    V_5 = diet.insert : pred(T_1, diet.diet(T_1), diet.diet(T_1)),
+    V_6 = diet.init,
+    list.foldl(V_5, V_3, V_6, V_4).
+
+diet.list_to_set(V_3) = V_4 :-
+    diet.list_to_set(V_3, V_4).
+
+diet.make_singleton_set(V_3) = V_2 :-
+    V_2 = diet.singleton(V_4),
+    V_4 = {V_3, V_5} : {T_1, T_1},
+    V_5 = V_3.
+
+diet.remove_list(V_4, V_5, V_6) :-
+    diet.list_to_set(V_4, V_7),
+    diet.subset(V_7, V_5),
+    diet.difference(V_5, V_7, V_6).
+
+diet.singleton(V_3) = diet.node(V_3, V_4, V_5, V_6) :-
+    V_4 = 1 : int,
+    V_5 = diet.empty : diet.diet(T_1),
+    V_6 = diet.empty : diet.diet(T_1).
+
+diet.sorted_list_to_set(V_3, V_4) :-
+    diet.list_to_set(V_3, V_4).
+
+diet.sorted_list_to_set(V_3) = V_4 :-
+    diet.sorted_list_to_set(V_3, V_4).
+
+diet.superset(V_3, V_4) :-
+    diet.subset(V_4, V_3).
+
+diet.to_sorted_interval_list(V_3, V_4) :-
+    V_5 = diet.cons_interval : pred(T_1, T_1, list.list({T_1, T_1}), list.list({T_1, T_1})),
+    V_6 = list.[] : list.list({T_1, T_1}),
+    diet.foldr_intervals(V_5, V_3, V_6, V_4).
+
+diet.to_sorted_list(V_3, V_4) :-
+    V_5 = list.cons : pred(T_1, list.list(T_1), list.list(T_1)),
+    V_6 = list.[] : list.list(T_1),
+    diet.foldr(V_5, V_3, V_6, V_4).
+
+diet.to_sorted_list(V_3) = V_4 :-
+    diet.to_sorted_list(V_3, V_4).
+
+diet.union(V_4, V_5) = V_6 :-
+    diet.union(V_4, V_5, V_6).
+
+diet.union_list(V_3) = V_4 :-
+    diet.union_list(V_3, V_4).
+
+:- pragma termination_info(diet.'=<'((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.'ClassMethod_for_diet__diet_element____int__arity0______diet__less_than_2'((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.'ClassMethod_for_diet__diet_element____int__arity0______diet__predecessor_1'((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.'ClassMethod_for_diet__diet_element____int__arity0______diet__successor_1'((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.add((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(diet.all_true_interval(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(diet.cons_interval((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(2, [no, yes, yes, yes, no]), cannot_loop).
+:- pragma termination_info(diet.contains((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.count((builtin.in)) = (builtin.out), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.count((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, yes, no]), can_loop).
+:- pragma termination_info(diet.delete((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.delete((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.delete_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.delete_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.difference((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.difference((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.divide(builtin.in((pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.divide_2(((pred((builtin.in)) is semidet) >> (pred((builtin.in)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.divide_by_set((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.empty((builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.filter(((pred((builtin.in)) is semidet) >> (pred((builtin.in)) is semidet)), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.filter(((pred((builtin.in)) is semidet) >> (pred((builtin.in)) is semidet)), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.fold_down(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.fold_down(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_down(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_down(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.fold_down(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_down(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.fold_up5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl2(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl3(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl4(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl5(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl_2(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl_2(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl_2(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl_2(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl_2(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl_2(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl_intervals(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldl_intervals(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldl_intervals(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldr(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldr(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldr(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldr(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(diet.foldr(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldr((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.foldr_intervals(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.foldr_intervals(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(diet.foldr_intervals(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.from_interval_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.from_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.from_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.init((builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info((diet.init) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.insert((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.insert((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.insert_interval((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.insert_interval((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.insert_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.insert_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.insert_new((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.inter((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.intersect((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.intersect((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.intersect_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.intersect_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.is_non_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(diet.is_singleton((builtin.in), (builtin.out)), finite(-4, [no, yes, no]), can_loop).
+:- pragma termination_info(diet.less_than((builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(diet.list_to_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.list_to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.make_interval_set((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.make_singleton_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.member((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.member((builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(diet.predecessor((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.remove((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.remove_least((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.remove_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.singleton((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(diet.sorted_list_to_set((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.sorted_list_to_set((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.split((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.subset((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.successor((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.superset((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(diet.to_sorted_interval_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.to_sorted_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.to_sorted_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.union((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.union((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(diet.union_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(diet.union_list((builtin.in)) = (builtin.out), infinite, can_loop).
+
+:- pragma exceptions(predicate, (diet.(=<)), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.add), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.all_true), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.all_true_interval), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.cons_interval), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (diet.contains), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.count), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.count), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.delete_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.difference), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.difference), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.divide), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.divide_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.divide_by_set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (diet.empty), 1, 1, will_not_throw).
+:- pragma exceptions(predicate, (diet.equal), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.filter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.filter), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_down), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_down), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_down), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_down), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_down), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_down), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up2), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up2), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up2), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up2), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up2), 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up2), 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up3), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up3), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up3), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up3), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up3), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up3), 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up4), 11, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up4), 11, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up4), 11, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up4), 11, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up4), 11, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up4), 11, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up5), 13, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up5), 13, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up5), 13, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up5), 13, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up5), 13, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.fold_up5), 13, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl3), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl4), 10, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl4), 10, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl4), 10, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl4), 10, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl4), 10, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl4), 10, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl5), 12, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl5), 12, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl5), 12, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl5), 12, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl5), 12, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl5), 12, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl_2), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl_2), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl_2), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl_2), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl_2), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl_2), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl_intervals), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl_intervals), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldl_intervals), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldr), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldr), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldr), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldr), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldr), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.foldr), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldr_intervals), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldr_intervals), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.foldr_intervals), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.from_interval_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.from_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.from_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.init), 1, 0, will_not_throw).
+:- pragma exceptions(function, (diet.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (diet.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.insert_interval), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.insert_interval), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.insert_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.insert_new), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.inter), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.intersect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.intersect), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.intersect_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.intersect_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (diet.is_non_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (diet.is_singleton), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.less_than), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.make_interval_set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.make_singleton_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.member), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.member), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.predecessor), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.remove), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.remove_least), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.remove_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.singleton), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (diet.sorted_list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.sorted_list_to_set), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.split), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.subset), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.successor), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.superset), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.to_sorted_interval_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.to_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.to_sorted_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.union), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.union), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (diet.union_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (diet.union_list), 2, 0, may_throw(user_exception)).

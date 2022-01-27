@@ -1,0 +1,17 @@
+:- module region_builtin.
+:- interface.
+:- use_module io.
+:- pragma foreign_import_module("C", region_builtin).
+:- pragma foreign_import_module("C#", region_builtin).
+:- pragma foreign_import_module("Java", region_builtin).
+:- type region.
+:- impure pred create_region(region_builtin.region).
+:- mode create_region((builtin.out)) is det.
+:- pred print_rbmm_profiling_info(io.io, io.io).
+:- mode print_rbmm_profiling_info((builtin.di), (builtin.uo)) is det.
+:- impure pred remove_region(region_builtin.region).
+:- mode remove_region((builtin.in)) is det.
+:- implementation.
+:- pragma foreign_type(c, region, "MR_RegionHeader *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, region, "java.lang.Object").
+:- pragma foreign_type(csharp, region, "object").
