@@ -1,0 +1,109 @@
+// Automatically generated from `random.system_rng.m'
+// by the Mercury compiler,
+// version rotd-2021-12-06
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef RANDOM__SYSTEM_RNG_MH
+#define RANDOM__SYSTEM_RNG_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef RANDOM__SYSTEM_RNG_DECL_GUARD
+#define RANDOM__SYSTEM_RNG_DECL_GUARD
+
+
+#include "mercury_conf_param.h"
+
+#if defined(MR_HAVE_SYS_PARAM_H)
+    #include <sys/param.h>
+#endif
+
+#if defined(MR_MAC_OSX)
+    #include <AvailabilityMacros.h>
+#endif
+
+// The following macros define if the system random number exists on this
+// system and, if so, how it is accessed.
+//
+// Only one of the following must be defined.
+//
+// ML_SYSRAND_IMPL_ARC4RANDOM
+//    the system RNG is implemented by calling the arc4random() family of
+//    functions. Note: this for when arc4random() is provided by libc (as on
+//    macOS and the BSDs), not for when it is provided as a separate library
+//    (e.g. libbsd on Linux).
+//
+//    This should only be enabled on systems where arc4random() uses a secure
+//    PRNG, such as ChaCha20; it should _not_ be enabled on systems where
+//    arc4random() still uses RC4.
+//
+// ML_SYSRAND_IMPL_RAND_S
+//    the system RNG is implemented by calling the rand_s() function
+//    (Windows only).
+//
+// ML_SYSRAND_IMPL_GETRANDOM (NYI)
+//    the system RNG is implemented by calling getrandom() (sufficiently
+//    recent Linux kernels only).
+//
+// ML_SYSRAND_IMPL_URANDOM
+//     the system RNG is implemented by reading from /dev/urandom.
+//
+// ML_SYSRAND_IMPL_NONE
+//     there is no system RNG available on this platform.
+
+#if defined(__linux__) || defined(MR_SOLARIS) || defined(_AIX)
+    #define ML_SYSRAND_IMPL_URANDOM
+#elif defined(__OpenBSD__) || defined(__NetBSD__) || defined(MR_CYGWIN)
+    #define ML_SYSRAND_IMPL_ARC4RANDOM
+#elif __FreeBSD__ >= 12
+    // arc4random() on FreeBSD used RC4 until version 12.
+    #define ML_SYSRAND_IMPL_ARC4RANDOM
+#elif defined(__FreeBSD__)
+    #define ML_SYSRAND_IMPL_URANDOM
+#elif defined(MR_MAC_OSX)
+   // arc4random() on macOS used RC4 until version 10.12.
+   // XXX this will be unnecessary when we stop supporting versions
+   // of macOS before 10.12.
+   #if defined(MAC_OS_X_VERSION_10_12) && \
+        MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_12
+      #define ML_SYSRAND_IMPL_ARC4RANDOM
+   #else
+      #define ML_SYSRAND_IMPL_URANDOM
+   #endif
+#elif defined(MR_WIN32)
+    #define ML_SYSRAND_IMPL_RAND_S
+#else
+    #define ML_SYSRAND_IMPL_NONE
+#endif
+
+struct ML_SystemRandomHandle_Struct {
+    #if defined(ML_SYSRAND_IMPL_URANDOM)
+        int ML_srh_fd;
+    #else
+        MR_Bool ML_srh_is_open;
+    #endif
+};
+typedef struct ML_SystemRandomHandle_Struct *ML_SystemRandomHandle;
+
+
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* RANDOM__SYSTEM_RNG_MH */
