@@ -1,0 +1,15 @@
+:- module (hlds.quantification).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.hlds_rtti).
+:- import_module (hlds.vartypes).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type nonlocals_to_recompute
+    --->    ordinary_nonlocals_maybe_lambda 
+    ;       ordinary_nonlocals_no_lambda 
+    ;       code_gen_nonlocals_no_lambda .
+:- type quant_warning
+    --->    warn_overlap(list.list(parse_tree.prog_data.prog_var), parse_tree.prog_data.prog_context).

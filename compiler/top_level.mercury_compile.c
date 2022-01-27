@@ -1,0 +1,13745 @@
+/*
+** Automatically generated from `mercury_compile.m'
+** by the Mercury compiler,
+** version DEV
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module top_level.mercury_compile. */
+/* :- implementation. */
+
+/*
+INIT mercury__top_level__mercury_compile__init
+ENDINIT
+*/
+
+#include "top_level.mercury_compile.mih"
+
+
+#include "analysis.mih"
+#include "backend_libs.mih"
+#include "bytecode_backend.mih"
+#include "check_hlds.mih"
+#include "erl_backend.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "ll_backend.mih"
+#include "make.mih"
+#include "mdbcomp.mih"
+#include "ml_backend.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "top_level.mih"
+#include "transform_hlds.mih"
+#include "backend_libs.builtin_ops.mih"
+#include "backend_libs.compile_target_code.mih"
+#include "backend_libs.export.mih"
+#include "backend_libs.foreign.mih"
+#include "backend_libs.rtti.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.type_util.mih"
+#include "check_hlds.unify_proc.mih"
+#include "check_hlds.xml_documentation.mih"
+#include "erl_backend.elds.mih"
+#include "hlds.code_model.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_defns.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.make_hlds.mih"
+#include "hlds.passes_aux.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.compiler_util.mih"
+#include "libs.compute_grade.mih"
+#include "libs.file_util.mih"
+#include "libs.globals.mih"
+#include "libs.handle_options.mih"
+#include "libs.lp_rational.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "ll_backend.global_data.mih"
+#include "ll_backend.layout.mih"
+#include "ll_backend.llds.mih"
+#include "make.options_file.mih"
+#include "make.util.mih"
+#include "mdbcomp.builtin_modules.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.shared_utilities.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "counter.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "dir.mih"
+#include "enum.mih"
+#include "gc.mih"
+#include "getopt_io.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "ml_backend.ml_global_data.mih"
+#include "ml_backend.mlds.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.check_raw_comp_unit.mih"
+#include "parse_tree.deps_map.mih"
+#include "parse_tree.equiv_type.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.file_names.mih"
+#include "parse_tree.generate_dep_d_files.mih"
+#include "parse_tree.module_cmds.mih"
+#include "parse_tree.module_deps_graph.mih"
+#include "parse_tree.module_imports.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.modules.mih"
+#include "parse_tree.parse_tree_out.mih"
+#include "parse_tree.parse_tree_out_info.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_event.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_io_error.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.read_modules.mih"
+#include "parse_tree.set_of_var.mih"
+#include "parse_tree.source_file_map.mih"
+#include "parse_tree.split_parse_tree_src.mih"
+#include "parse_tree.write_deps_file.mih"
+#include "parse_tree.write_module_interface_files.mih"
+#include "recompilation.check.mih"
+#include "recompilation.usage.mih"
+#include "top_level.mercury_compile_erl_back_end.mih"
+#include "top_level.mercury_compile_front_end.mih"
+#include "top_level.mercury_compile_llds_back_end.mih"
+#include "top_level.mercury_compile_middle_passes.mih"
+#include "top_level.mercury_compile_mlds_back_end.mih"
+#include "transform_hlds.dependency_graph.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "hlds.make_hlds.qual_info.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+#include "string.format.mih"
+#include "string.parse_util.mih"
+
+
+
+
+#line 204 "top_level.mercury_compile.c"
+static const MR_FA_PseudoTypeInfo_Struct1 top_level__mercury_compile__list__pti_list_1__plain_builtin__type_ctor_info_string_0;
+
+#line 207 "top_level.mercury_compile.c"
+static const MR_FA_TypeInfo_Struct1 top_level__mercury_compile__list__ti_list_1builtin__type_ctor_info_string_0;
+
+#line 210 "top_level.mercury_compile.c"
+static const MR_VA_PseudoTypeInfo_Struct2 top_level__mercury_compile____vpti_tuple_2__plain_list__ti_list_1builtin__type_ctor_info_string_0__plain_list__ti_list_1builtin__type_ctor_info_string_0;
+
+#line 213 "top_level.mercury_compile.c"
+static const MR_FA_PseudoTypeInfo_Struct1 top_level__mercury_compile__maybe__pti_maybe_1__plain_libs__timestamp__type_ctor_info_timestamp_0;
+
+#line 216 "top_level.mercury_compile.c"
+static const MR_FA_TypeInfo_Struct1 top_level__mercury_compile__maybe__ti_maybe_1libs__timestamp__type_ctor_info_timestamp_0;
+
+#line 219 "top_level.mercury_compile.c"
+static const MR_VA_PseudoTypeInfo_Struct6 top_level__mercury_compile____vpti_pred_6__plain_builtin__type_ctor_info_string_0__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_maybe__ti_maybe_1libs__timestamp__type_ctor_info_timestamp_0__plain_parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0;
+
+#line 222 "top_level.mercury_compile.c"
+static const MR_FA_PseudoTypeInfo_Struct1 top_level__mercury_compile__list__pti_list_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0;
+
+#line 225 "top_level.mercury_compile.c"
+static const MR_FA_PseudoTypeInfo_Struct1 top_level__mercury_compile__set_ordlist__pti_set_ordlist_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0;
+
+#line 228 "top_level.mercury_compile.c"
+static const MR_VA_PseudoTypeInfo_Struct4 top_level__mercury_compile____vpti_pred_4__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_list__ti_list_1builtin__type_ctor_info_string_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0;
+
+#line 231 "top_level.mercury_compile.c"
+static const MR_FA_PseudoTypeInfo_Struct1 top_level__mercury_compile__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0;
+
+#line 234 "top_level.mercury_compile.c"
+static const MR_VA_PseudoTypeInfo_Struct4 top_level__mercury_compile____vpti_pred_4__plain_libs__globals__type_ctor_info_globals_0__plain_bool__type_ctor_info_bool_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0;
+
+#line 237 "top_level.mercury_compile.c"
+static const MR_VA_TypeInfo_Struct4 top_level__mercury_compile____vti_pred_4libs__globals__type_ctor_info_globals_0bool__type_ctor_info_bool_0io__type_ctor_info_state_0io__type_ctor_info_state_0;
+
+#line 240 "top_level.mercury_compile.c"
+static const MR_PseudoTypeInfo top_level__mercury_compile__top_level__mercury_compile__field_types_file_or_module_0_0[1];
+
+#line 243 "top_level.mercury_compile.c"
+static const MR_DuFunctorDesc top_level__mercury_compile__top_level__mercury_compile__du_functor_desc_file_or_module_0_0;
+
+#line 246 "top_level.mercury_compile.c"
+static const MR_PseudoTypeInfo top_level__mercury_compile__top_level__mercury_compile__field_types_file_or_module_0_1[1];
+
+#line 249 "top_level.mercury_compile.c"
+static const MR_DuFunctorDesc top_level__mercury_compile__top_level__mercury_compile__du_functor_desc_file_or_module_0_1;
+
+#line 252 "top_level.mercury_compile.c"
+static const MR_DuFunctorDescPtr top_level__mercury_compile__top_level__mercury_compile__du_stag_ordered_file_or_module_0_0[1];
+
+#line 255 "top_level.mercury_compile.c"
+static const MR_DuFunctorDescPtr top_level__mercury_compile__top_level__mercury_compile__du_stag_ordered_file_or_module_0_1[1];
+
+#line 258 "top_level.mercury_compile.c"
+static const MR_DuPtagLayout top_level__mercury_compile__top_level__mercury_compile__du_ptag_ordered_file_or_module_0[2];
+
+#line 261 "top_level.mercury_compile.c"
+static const MR_DuFunctorDescPtr top_level__mercury_compile__top_level__mercury_compile__du_name_ordered_file_or_module_0[2];
+
+#line 264 "top_level.mercury_compile.c"
+static const MR_Integer top_level__mercury_compile__top_level__mercury_compile__functor_number_map_file_or_module_0[2];
+
+#line 267 "top_level.mercury_compile.c"
+static const MR_EnumFunctorDesc top_level__mercury_compile__top_level__mercury_compile__enum_functor_desc_maybe_write_d_file_0_0;
+
+#line 270 "top_level.mercury_compile.c"
+static const MR_EnumFunctorDesc top_level__mercury_compile__top_level__mercury_compile__enum_functor_desc_maybe_write_d_file_0_1;
+
+#line 273 "top_level.mercury_compile.c"
+static const MR_EnumFunctorDescPtr top_level__mercury_compile__top_level__mercury_compile__enum_value_ordered_maybe_write_d_file_0[2];
+
+#line 276 "top_level.mercury_compile.c"
+static const MR_EnumFunctorDescPtr top_level__mercury_compile__top_level__mercury_compile__enum_name_ordered_maybe_write_d_file_0[2];
+
+#line 279 "top_level.mercury_compile.c"
+static const MR_Integer top_level__mercury_compile__top_level__mercury_compile__functor_number_map_maybe_write_d_file_0[2];
+
+#line 282 "top_level.mercury_compile.c"
+static MR_bool MR_CALL 
+top_level__mercury_compile____Unify____compile_0_0_10001(
+#line 285 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 287 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_2);
+
+#line 290 "top_level.mercury_compile.c"
+static void MR_CALL 
+top_level__mercury_compile____Compare____compile_0_0_10001(
+#line 293 "top_level.mercury_compile.c"
+  MR_Box * top_level__mercury_compile__wrapper_arg_1,
+#line 295 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 297 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_3);
+
+#line 300 "top_level.mercury_compile.c"
+static MR_bool MR_CALL 
+top_level__mercury_compile____Unify____file_or_module_0_0_10001(
+#line 303 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 305 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_2);
+
+#line 308 "top_level.mercury_compile.c"
+static void MR_CALL 
+top_level__mercury_compile____Compare____file_or_module_0_0_10001(
+#line 311 "top_level.mercury_compile.c"
+  MR_Box * top_level__mercury_compile__wrapper_arg_1,
+#line 313 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 315 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_3);
+
+#line 318 "top_level.mercury_compile.c"
+static MR_bool MR_CALL 
+top_level__mercury_compile____Unify____maybe_write_d_file_0_0_10001(
+#line 321 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 323 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_2);
+
+#line 326 "top_level.mercury_compile.c"
+static void MR_CALL 
+top_level__mercury_compile____Compare____maybe_write_d_file_0_0_10001(
+#line 329 "top_level.mercury_compile.c"
+  MR_Box * top_level__mercury_compile__wrapper_arg_1,
+#line 331 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 333 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_3);
+
+#line 772 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_99_111_109_112_105_108_101_95_119_105_116_104_95_109_111_100_117_108_101_95_111_112_116_105_111_110_115_95_95_55_55_50_95_95_49_95_95_91_51_93_95_48_8_p_0(
+#line 772 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Compile_15,
+#line 772 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__LambdaHeadVar__1_29,
+#line 772 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__LambdaHeadVar__3_31);
+
+#line 1101 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_109_97_107_101_95_115_104_111_114_116_95_105_110_116_101_114_102_97_99_101_95_95_91_51_44_32_52_93_95_48_7_p_0(
+#line 1101 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 1101 "mercury_compile.m"
+  MR_String top_level__mercury_compile__SourceFileName_9,
+#line 1101 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnit_12);
+
+#line 874 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_99_101_115_115_95_97_114_103_95_98_117_105_108_100_95_95_91_53_44_32_55_93_95_48_10_p_0(
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeArgs_11,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileOrModule_12,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_13,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_14,
+#line 874 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HeadVar__6_6,
+#line 874 "mercury_compile.m"
+  MR_Tuple * top_level__mercury_compile__HeadVar__8_8);
+
+#line 403 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_100_101_116_101_99_116_95_108_105_98_103_114_97_100_101_95_95_91_49_93_95_48_9_p_0(
+#line 403 "mercury_compile.m"
+  MR_String top_level__mercury_compile__DirName_11,
+#line 403 "mercury_compile.m"
+  MR_String top_level__mercury_compile__FileName_12,
+#line 403 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileType_13,
+#line 403 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Continue_14,
+#line 403 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_GradeOpts_0_20,
+#line 403 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_GradeOpts_21);
+
+#line 772 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__compile_with_module_options__ho1_9_p_0_1(
+#line 772 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 772 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 772 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 772 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3,
+#line 772 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_4,
+#line 772 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_5,
+#line 772 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_6,
+#line 772 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_7);
+
+#line 759 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__compile_with_module_options__ho1_9_p_0(
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__V_48_48,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__V_49_49,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_10,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleName_11,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__DetectedGradeFlags_12,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionVariables_13,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_14,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Compile_15,
+#line 759 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Succeeded_16);
+
+#line 1844 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile__IntroducedFrom__pred__read_dependency_file_get_modules__1844__1_1_p_0(
+#line 1844 "mercury_compile.m"
+  MR_Char top_level__mercury_compile__LambdaHeadVar__1_24);
+
+#line 1170 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile__IntroducedFrom__pred__read_augment_and_process_module__1170__1_2_p_0(
+#line 1170 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModulesToRecompile_38,
+#line 1170 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__LambdaHeadVar__1_71);
+
+#line 772 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__IntroducedFrom__pred__compile_with_module_options__772__1_8_p_0(
+#line 772 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Compile_15,
+#line 772 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__LambdaHeadVar__1_29,
+#line 772 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__LambdaHeadVar__2_30,
+#line 772 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__LambdaHeadVar__3_31);
+
+#line 1591 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile____Compare____maybe_write_d_file_0_0(
+#line 1591 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HeadVar__1_1,
+#line 1591 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_2,
+#line 1591 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__3_3);
+
+#line 1591 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile____Unify____maybe_write_d_file_0_0(
+#line 1591 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_1,
+#line 1591 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_2);
+
+#line 1230 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile____Compare____file_or_module_0_0(
+#line 1230 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HeadVar__1_1,
+#line 1230 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_2,
+#line 1230 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__3_3);
+
+#line 1230 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile____Unify____file_or_module_0_0(
+#line 1230 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__1_1,
+#line 1230 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_2);
+
+#line 756 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile____Compare____compile_0_0(
+#line 756 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HeadVar__1_1,
+#line 756 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_2,
+#line 756 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__3_3);
+
+#line 756 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile____Unify____compile_0_0(
+#line 756 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__1_1,
+#line 756 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_2);
+
+#line 2289 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__gc_init_2_p_0(void);
+
+#line 2275 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile__halt_at_module_error_2_p_0(
+#line 2275 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_3,
+#line 2275 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Errors_4);
+
+#line 2236 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_output_prof_call_graph_6_p_0(
+#line 2236 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_7,
+#line 2236 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Stats_8,
+#line 2236 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_0_22,
+#line 2236 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_HLDS_23);
+
+#line 2214 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__after_front_end_passes_12_p_0_1(
+#line 2214 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 2214 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 2214 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 2214 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3);
+
+#line 2091 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__after_front_end_passes_12_p_0(
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_13,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeCodeGen_14,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__NestedSubModules_15,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FindTimestampFiles_16,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTimestampMap_17,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_0_51,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Specs_19,
+#line 2091 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_20,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_DumpInfo_0_52,
+#line 2091 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_DumpInfo_53);
+
+#line 2078 "mercury_compile.m"
+static MR_Box MR_CALL 
+top_level__mercury_compile__prepare_for_intermodule_analysis_7_p_0_1(
+#line 2078 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 2078 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1);
+
+#line 2067 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__prepare_for_intermodule_analysis_7_p_0(
+#line 2067 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 2067 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_9,
+#line 2067 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Stats_10,
+#line 2067 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_0_19,
+#line 2067 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_HLDS_20);
+
+#line 2078 "mercury_compile.m"
+static MR_Box MR_CALL 
+top_level__mercury_compile__maybe_prepare_for_intermodule_analysis_7_p_0_1(
+#line 2078 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 2078 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1);
+
+#line 2054 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_prepare_for_intermodule_analysis_7_p_0(
+#line 2054 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 2054 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_9,
+#line 2054 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Stats_10,
+#line 2054 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_0_14,
+#line 2054 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_HLDS_15);
+
+#line 2021 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_write_dependency_graph_6_p_0(
+#line 2021 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_7,
+#line 2021 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Stats_8,
+#line 2021 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_0_21,
+#line 2021 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_HLDS_22);
+
+#line 1990 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_write_definitions_5_p_0(
+#line 1990 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_6,
+#line 1990 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Stats_7,
+#line 1990 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HLDS_8);
+
+#line 1952 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__make_hlds_17_p_0(
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_18,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__AugCompUnit_19,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__EventSet_20,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MQInfo_21,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__TypeEqvMap_22,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__UsedModules_23,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_24,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Stats_25,
+#line 1952 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_HLDS_38,
+#line 1952 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__QualInfo_27,
+#line 1952 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__FoundInvalidType_28,
+#line 1952 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__FoundInvalidInstOrMode_29,
+#line 1952 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__FoundSemanticError_30,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_0_39,
+#line 1952 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_Specs_40);
+
+#line 1864 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_grab_optfiles_8_p_0(
+#line 1864 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_9,
+#line 1864 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Imports0_10,
+#line 1864 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_11,
+#line 1864 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTransOptDeps_12,
+#line 1864 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Imports_13,
+#line 1864 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Error_14);
+
+#line 1843 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile__read_dependency_file_get_modules_3_p_0_2(
+#line 1843 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1843 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1);
+
+#line 1842 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile__read_dependency_file_get_modules_3_p_0_1(
+#line 1842 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1842 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1);
+
+#line 1833 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__read_dependency_file_get_modules_3_p_0(
+#line 1833 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__TransOptDeps_4);
+
+#line 1808 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__read_dependency_file_find_start_4_p_0(
+#line 1808 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__SearchPattern_5,
+#line 1808 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Success_6);
+
+#line 1755 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_read_dependency_file_5_p_0(
+#line 1755 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_6,
+#line 1755 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleName_7,
+#line 1755 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__MaybeTransOptDeps_8);
+
+#line 1595 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__pre_hlds_pass_16_p_0(
+#line 1595 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_17,
+#line 1595 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeAugment_18,
+#line 1595 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__WriteDFile0_19,
+#line 1595 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleAndImports0_20,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HLDS1_21,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__QualInfo_22,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__MaybeTimestampMap_23,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__UndefTypes_24,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__UndefModes_25,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__FoundSemanticError_26,
+#line 1595 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_DumpInfo_0_70,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_DumpInfo_71,
+#line 1595 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_0_72,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_Specs_73);
+
+#line 1485 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_augmented_module_12_p_0(
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_13,
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeAugment_14,
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleAndImports_15,
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__NestedSubModules_16,
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FindTimestampFiles_17,
+#line 1485 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_18,
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_DumpInfo_0_43,
+#line 1485 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_DumpInfo_44,
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_0_45,
+#line 1485 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_Specs_46);
+
+#line 1451 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__augment_and_process_module_14_p_0(
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_15,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeAugment_16,
+#line 1451 "mercury_compile.m"
+  MR_String top_level__mercury_compile__SourceFileName_17,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__SourceFileModuleName_18,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTimestamp_19,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__NestedSubModules0_20,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HaveReadModuleMaps_21,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FindTimestampFiles_22,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnit_23,
+#line 1451 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_24,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_0_37,
+#line 1451 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_Specs_38);
+
+#line 1430 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__module_to_link_2_p_0(
+#line 1430 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__1_1,
+#line 1430 "mercury_compile.m"
+  MR_String * top_level__mercury_compile__ModuleToLink_6);
+
+#line 1427 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__augment_and_process_all_submodules_14_p_0_2(
+#line 1427 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1427 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 1427 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_2);
+
+#line 1421 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__augment_and_process_all_submodules_14_p_0_1(
+#line 1421 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1421 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 1421 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_2,
+#line 1421 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 1421 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_4,
+#line 1421 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_5,
+#line 1421 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_6);
+
+#line 1409 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__augment_and_process_all_submodules_14_p_0(
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_15,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeAugment_16,
+#line 1409 "mercury_compile.m"
+  MR_String top_level__mercury_compile__FileName_17,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__SourceFileModuleName_18,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTimestamp_19,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__NestedSubModules_20,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HaveReadModuleMaps_21,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FindTimestampFiles_22,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnits_23,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_0_31,
+#line 1409 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ModulesToLink_25,
+#line 1409 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_26);
+
+#line 1255 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__read_module_or_file_14_p_0(
+#line 1255 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals0_15,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Globals_16,
+#line 1255 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileOrModuleName_17,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ModuleName_18,
+#line 1255 "mercury_compile.m"
+  MR_String * top_level__mercury_compile__SourceFileName_19,
+#line 1255 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ReturnTimestamp_20,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__MaybeTimestamp_21,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ParseTreeSrc_22,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Specs_23,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Errors_24,
+#line 1255 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_47);
+
+#line 1214 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_report_cmd_line_5_p_0(
+#line 1214 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Report_6,
+#line 1214 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_7,
+#line 1214 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Args_8);
+
+#line 1181 "mercury_compile.m"
+static MR_Box MR_CALL 
+top_level__mercury_compile__read_augment_and_process_module_10_p_0_2(
+#line 1181 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1181 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1);
+
+#line 1170 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile__read_augment_and_process_module_10_p_0_1(
+#line 1170 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1170 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1);
+
+#line 1128 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__read_augment_and_process_module_10_p_0(
+#line 1128 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals0_11,
+#line 1128 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeAugment_12,
+#line 1128 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_13,
+#line 1128 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileOrModule_14,
+#line 1128 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeModulesToRecompile_15,
+#line 1128 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HaveReadModuleMap0_16,
+#line 1128 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ModulesToLink_17,
+#line 1128 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_18);
+
+#line 1116 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__apply_process_module_7_p_0(
+#line 1116 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ProcessModule_8,
+#line 1116 "mercury_compile.m"
+  MR_String top_level__mercury_compile__FileName_9,
+#line 1116 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleName_10,
+#line 1116 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTimestamp_11,
+#line 1116 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnit_12);
+
+#line 1107 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__call_make_private_interface_7_p_0(
+#line 1107 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 1107 "mercury_compile.m"
+  MR_String top_level__mercury_compile__SourceFileName_9,
+#line 1107 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__SourceFileModuleName_10,
+#line 1107 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTimestamp_11,
+#line 1107 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnit_12);
+
+#line 1101 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__call_make_short_interface_7_p_0(
+#line 1101 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 1101 "mercury_compile.m"
+  MR_String top_level__mercury_compile__SourceFileName_9,
+#line 1101 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__3_10,
+#line 1101 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__4_11,
+#line 1101 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnit_12);
+
+#line 1093 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__call_make_interface_7_p_0(
+#line 1093 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 1093 "mercury_compile.m"
+  MR_String top_level__mercury_compile__SourceFileName_9,
+#line 1093 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__SourceFileModuleName_10,
+#line 1093 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTimestamp_11,
+#line 1093 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnit_12);
+
+#line 1082 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__find_timestamp_files_2_6_p_0(
+#line 1082 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_7,
+#line 1082 "mercury_compile.m"
+  MR_String top_level__mercury_compile__TimestampSuffix_8,
+#line 1082 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleName_9,
+#line 1082 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__TimestampFiles_10);
+
+#line 1080 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__find_timestamp_files_2_p_0_1(
+#line 1080 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1080 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 1080 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_2,
+#line 1080 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 1080 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_4);
+
+#line 1062 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__find_timestamp_files_2_p_0(
+#line 1062 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_3,
+#line 1062 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__FindTimestampFiles_4);
+
+#line 1051 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__usual_find_target_files_6_p_0(
+#line 1051 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_7,
+#line 1051 "mercury_compile.m"
+  MR_String top_level__mercury_compile__TargetSuffix_8,
+#line 1051 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleName_9,
+#line 1051 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__TargetFiles_10);
+
+#line 1049 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__find_smart_recompilation_target_files_2_p_0_1(
+#line 1049 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1049 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 1049 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_2,
+#line 1049 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 1049 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_4);
+
+#line 1039 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__find_smart_recompilation_target_files_2_p_0(
+#line 1039 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_3,
+#line 1039 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__FindTargetFiles_4);
+
+#line 970 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0_6(
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 970 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3);
+
+#line 945 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0_5(
+#line 945 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 945 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 945 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 945 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 945 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_4,
+#line 945 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_5,
+#line 945 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_6);
+
+#line 970 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0_4(
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 970 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3);
+
+#line 938 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0_3(
+#line 938 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 938 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 938 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 938 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 938 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_4,
+#line 938 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_5,
+#line 938 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_6);
+
+#line 970 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0_2(
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 970 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3);
+
+#line 949 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0_1(
+#line 949 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 949 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 949 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 949 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 949 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_4,
+#line 949 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_5,
+#line 949 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_6);
+
+#line 889 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0(
+#line 889 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals0_9,
+#line 889 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeArgs_10,
+#line 889 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_11,
+#line 889 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileOrModule_12,
+#line 889 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ModulesToLink_13,
+#line 889 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_14);
+
+#line 884 "mercury_compile.m"
+static MR_Word MR_CALL 
+top_level__mercury_compile__version_numbers_return_timestamp_1_f_0(
+#line 884 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__1_1);
+
+#line 874 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_build_10_p_0(
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeArgs_11,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileOrModule_12,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_13,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_14,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__5_15,
+#line 874 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HeadVar__6_6,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__7_16,
+#line 874 "mercury_compile.m"
+  MR_Tuple * top_level__mercury_compile__HeadVar__8_8);
+
+#line 857 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_10_p_0_1(
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 857 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_4,
+#line 857 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_5,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_6,
+#line 857 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_7);
+
+#line 843 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_10_p_0(
+#line 843 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_11,
+#line 843 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeArgs_12,
+#line 843 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__DetectedGradeFlags_13,
+#line 843 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionVariables_14,
+#line 843 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_15,
+#line 843 "mercury_compile.m"
+  MR_String top_level__mercury_compile__Arg_16,
+#line 843 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ModulesToLink_17,
+#line 843 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_18);
+
+#line 815 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_cmd_line_args_12_p_0(
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_1,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeArgs_2,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__DetectedGradeFlags_3,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionVariables_4,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_5,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__6_6,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Modules_0_7,
+#line 815 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_Modules_8,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0_9,
+#line 815 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_10);
+
+#line 857 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_stdin_args_11_p_0_1(
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 857 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_4,
+#line 857 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_5,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_6,
+#line 857 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_7);
+
+#line 783 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_stdin_args_11_p_0(
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_12,
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeArgs_13,
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__DetectedGradeFlags_14,
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionVariables_15,
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_16,
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Modules_0_27,
+#line 783 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_Modules_28,
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0_29,
+#line 783 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_30);
+
+#line 637 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__do_op_mode_query_4_p_0_1(
+#line 637 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 637 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 637 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 637 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3);
+
+#line 561 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__do_op_mode_query_4_p_0(
+#line 561 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_5,
+#line 561 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeQuery_6);
+
+#line 530 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__do_op_mode_standalone_interface_4_p_0(
+#line 530 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_5,
+#line 530 "mercury_compile.m"
+  MR_String top_level__mercury_compile__StandaloneIntBasename_6);
+
+#line 705 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__do_op_mode_8_p_0_1(
+#line 705 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 705 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 705 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_2,
+#line 705 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 705 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_4);
+
+#line 504 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__do_op_mode_8_p_0(
+#line 504 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_9,
+#line 504 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpMode_10,
+#line 504 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__DetectedGradeFlags_11,
+#line 504 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionVariables_12,
+#line 504 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_13,
+#line 504 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Args_14);
+
+#line 472 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__main_after_setup_7_p_0(
+#line 472 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 472 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__DetectedGradeFlags_9,
+#line 472 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionVariables_10,
+#line 472 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_11,
+#line 472 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Args_12);
+
+#line 403 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__do_detect_libgrade_9_p_0(
+#line 403 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__VeryVerbose_10,
+#line 403 "mercury_compile.m"
+  MR_String top_level__mercury_compile__DirName_11,
+#line 403 "mercury_compile.m"
+  MR_String top_level__mercury_compile__FileName_12,
+#line 403 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileType_13,
+#line 403 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Continue_14,
+#line 403 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_GradeOpts_0_20,
+#line 403 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_GradeOpts_21);
+
+#line 394 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__detect_libgrades_5_p_0_2(
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 394 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_4,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_5,
+#line 394 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_6,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_7,
+#line 394 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_8);
+
+#line 394 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__detect_libgrades_5_p_0_1(
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 394 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_4,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_5,
+#line 394 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_6,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_7,
+#line 394 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_8);
+
+#line 350 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__detect_libgrades_5_p_0(
+#line 350 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_6,
+#line 350 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeConfigMerStdLibDir_7,
+#line 350 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__GradeOpts_8);
+
+#line 208 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__real_main_after_expansion_3_p_0(
+#line 208 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__CmdLineArgs_4);
+
+#line 178 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__expand_file_into_arg_list_4_p_0(
+#line 178 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__S_5,
+#line 178 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Res_6);
+
+#line 136 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__expand_at_file_arguments_4_p_0(
+#line 136 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__1_1,
+#line 136 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HeadVar__2_2);
+
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_1[38][2];
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_2[2][4];
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_3[2][6];
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_4[3][1];
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_5[1][12];
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_6[2][9];
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_7[7][3];
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_8[1][13];
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_9[2][10];
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_11[4][5];
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_12[1][17];
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_13[1][7];
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_14[1][11];
+
+
+#line 1045 "mercury_compile.m"
+/* sealed */ struct top_level__mercury_compile__vector_common_type_10_0_s {
+#line 1045 "mercury_compile.m"
+  const MR_String top_level__mercury_compile__vector_common_type_10_0__vct_10_f_0;
+#line 1045 "mercury_compile.m"
+};
+
+static /* final */ const struct top_level__mercury_compile__vector_common_type_10_0_s top_level__mercury_compile_vector_common_10[8];
+
+
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_1[38][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&parse_tree__read_modules__parse_tree__read_modules__type_ctor_info_have_read_module_key_1)),
+    ((MR_Box) (&parse_tree__file_kind__parse_tree__file_kind__type_ctor_info_src_file_kind_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&parse_tree__read_modules__parse_tree__read_modules__type_ctor_info_have_read_module_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_parse_tree_src_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&parse_tree__read_modules__parse_tree__read_modules__type_ctor_info_have_read_module_key_1)),
+    ((MR_Box) (&parse_tree__file_kind__parse_tree__file_kind__type_ctor_info_int_file_kind_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&parse_tree__read_modules__parse_tree__read_modules__type_ctor_info_have_read_module_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_parse_tree_int_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&parse_tree__read_modules__parse_tree__read_modules__type_ctor_info_have_read_module_key_1)),
+    ((MR_Box) (&parse_tree__file_kind__parse_tree__file_kind__type_ctor_info_opt_file_kind_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&parse_tree__read_modules__parse_tree__read_modules__type_ctor_info_have_read_module_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_parse_tree_opt_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) ((MR_String) "."))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[9]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[8])))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "mmc -f *.m"))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[11]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[10])))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "using"))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[13]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[12])))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "a module name to file name mapping is created"))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[15]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[14])))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Smart recompilation will not work unless"))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[17]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[16])))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[18])))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[9]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[19])))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Char) 58)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Char) 32)),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[21])))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "You need to remake the dependencies."))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[23]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[8])))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[24])))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[9]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[25])))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Error:"))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_String) "--generate-standalone-interface"))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is not required for target language"))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Sorry,"))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "is not yet supported with target language"))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Warning:"))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "module name does not match file name: "))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "contains module"))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "Warning: cannot read trans-opt dependencies"))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) ((MR_String) "for module"))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_2[2][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&top_level__mercury_compile_scalar_common_1[0])),
+    ((MR_Box) (&top_level__mercury_compile_scalar_common_1[0]))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_character_0))
+  },
+};
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_3[2][6] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_pred_0)),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_4[3][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (((MR_Integer) 0 | (((((MR_Integer) 0 << (MR_Integer) 1)) | (((((MR_Integer) 0 << (MR_Integer) 2)) | (((((MR_Integer) 0 << (MR_Integer) 3)) | (((MR_Integer) 0 << (MR_Integer) 4)))))))))))
+  },
+};
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_5[1][12] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 9)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_file_type_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_6[2][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_7[7][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&top_level__mercury_compile_scalar_common_3[1])),
+    ((MR_Box) (top_level__mercury_compile__do_op_mode_query_4_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&top_level__mercury_compile_scalar_common_11[1])),
+    ((MR_Box) (top_level__mercury_compile__read_augment_and_process_module_10_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&top_level__mercury_compile_scalar_common_11[2])),
+    ((MR_Box) (top_level__mercury_compile__augment_and_process_all_submodules_14_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&top_level__mercury_compile_scalar_common_2[1])),
+    ((MR_Box) (top_level__mercury_compile__read_dependency_file_get_modules_3_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&top_level__mercury_compile_scalar_common_2[1])),
+    ((MR_Box) (top_level__mercury_compile__read_dependency_file_get_modules_3_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&top_level__mercury_compile_scalar_common_11[3])),
+    ((MR_Box) (top_level__mercury_compile__maybe_prepare_for_intermodule_analysis_7_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&top_level__mercury_compile_scalar_common_11[3])),
+    ((MR_Box) (top_level__mercury_compile__prepare_for_intermodule_analysis_7_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_8[1][13] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 10)),
+    ((MR_Box) (&libs__op_mode__libs__op_mode__type_ctor_info_op_mode_args_0)),
+    ((MR_Box) (&top_level__mercury_compile__top_level__mercury_compile__type_ctor_info_file_or_module_0)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&top_level__mercury_compile____vpti_tuple_2__plain_list__ti_list_1builtin__type_ctor_info_string_0__plain_list__ti_list_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_9[2][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&top_level__mercury_compile__maybe__pti_maybe_1__plain_libs__timestamp__type_ctor_info_timestamp_0)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&top_level__mercury_compile____vpti_pred_6__plain_builtin__type_ctor_info_string_0__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_maybe__ti_maybe_1libs__timestamp__type_ctor_info_timestamp_0__plain_parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&top_level__mercury_compile__maybe__pti_maybe_1__plain_libs__timestamp__type_ctor_info_timestamp_0)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_11[4][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0))
+  },
+};
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_12[1][17] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 14)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&libs__op_mode__libs__op_mode__type_ctor_info_op_mode_augment_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&top_level__mercury_compile__maybe__pti_maybe_1__plain_libs__timestamp__type_ctor_info_timestamp_0)),
+    ((MR_Box) (&top_level__mercury_compile__set_ordlist__pti_set_ordlist_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&parse_tree__read_modules__parse_tree__read_modules__type_ctor_info_have_read_module_maps_0)),
+    ((MR_Box) (&top_level__mercury_compile____vpti_pred_4__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_list__ti_list_1builtin__type_ctor_info_string_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_13[1][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box top_level__mercury_compile_scalar_common_14[1][11] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&top_level__mercury_compile____vpti_pred_4__plain_libs__globals__type_ctor_info_globals_0__plain_bool__type_ctor_info_bool_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&top_level__mercury_compile__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&mercury__unit__unit__type_ctor_info_unit_0)),
+    ((MR_Box) (&mercury__unit__unit__type_ctor_info_unit_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+
+static /* final */ const struct top_level__mercury_compile__vector_common_type_10_0_s top_level__mercury_compile_vector_common_10[8] = {
+  /* row 0 */   {     (MR_String) ".c" },
+  /* row 1 */   {     (MR_String) ".cs" },
+  /* row 2 */   {     (MR_String) ".java" },
+  /* row 3 */   {     (MR_String) ".erl" },
+  /* row 4 */   {     (MR_String) ".c_date" },
+  /* row 5 */   {     (MR_String) ".cs_date" },
+  /* row 6 */   {     (MR_String) ".java_date" },
+  /* row 7 */   {     (MR_String) ".erl_date" },
+};
+
+
+#include "dir.mh"
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "make.util.mh"
+#include "mdbcomp.rtti_access.mh"
+#include "top_level.mercury_compile.mh"
+
+
+
+#line 2010 "top_level.mercury_compile.c"
+static const MR_FA_PseudoTypeInfo_Struct1 top_level__mercury_compile__list__pti_list_1__plain_builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+#line 2018 "top_level.mercury_compile.c"
+static const MR_FA_TypeInfo_Struct1 top_level__mercury_compile__list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+#line 2026 "top_level.mercury_compile.c"
+static const MR_VA_PseudoTypeInfo_Struct2 top_level__mercury_compile____vpti_tuple_2__plain_list__ti_list_1builtin__type_ctor_info_string_0__plain_list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__builtin__builtin__type_ctor_info_tuple_0,
+  (MR_Integer) 2,
+  {
+    (MR_PseudoTypeInfo) &top_level__mercury_compile__list__ti_list_1builtin__type_ctor_info_string_0,
+    (MR_PseudoTypeInfo) &top_level__mercury_compile__list__ti_list_1builtin__type_ctor_info_string_0
+  }
+};
+
+#line 2036 "top_level.mercury_compile.c"
+static const MR_FA_PseudoTypeInfo_Struct1 top_level__mercury_compile__maybe__pti_maybe_1__plain_libs__timestamp__type_ctor_info_timestamp_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_PseudoTypeInfo) &libs__timestamp__libs__timestamp__type_ctor_info_timestamp_0
+  }
+};
+
+#line 2044 "top_level.mercury_compile.c"
+static const MR_FA_TypeInfo_Struct1 top_level__mercury_compile__maybe__ti_maybe_1libs__timestamp__type_ctor_info_timestamp_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &libs__timestamp__libs__timestamp__type_ctor_info_timestamp_0
+  }
+};
+
+#line 2052 "top_level.mercury_compile.c"
+static const MR_VA_PseudoTypeInfo_Struct6 top_level__mercury_compile____vpti_pred_6__plain_builtin__type_ctor_info_string_0__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_maybe__ti_maybe_1libs__timestamp__type_ctor_info_timestamp_0__plain_parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 6,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+    (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+    (MR_PseudoTypeInfo) &top_level__mercury_compile__maybe__ti_maybe_1libs__timestamp__type_ctor_info_timestamp_0,
+    (MR_PseudoTypeInfo) &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0
+  }
+};
+
+#line 2066 "top_level.mercury_compile.c"
+static const MR_FA_PseudoTypeInfo_Struct1 top_level__mercury_compile__list__pti_list_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0
+  }
+};
+
+#line 2074 "top_level.mercury_compile.c"
+static const MR_FA_PseudoTypeInfo_Struct1 top_level__mercury_compile__set_ordlist__pti_set_ordlist_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0
+  }
+};
+
+#line 2082 "top_level.mercury_compile.c"
+static const MR_VA_PseudoTypeInfo_Struct4 top_level__mercury_compile____vpti_pred_4__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_list__ti_list_1builtin__type_ctor_info_string_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 4,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0,
+    (MR_PseudoTypeInfo) &top_level__mercury_compile__list__ti_list_1builtin__type_ctor_info_string_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0
+  }
+};
+
+#line 2094 "top_level.mercury_compile.c"
+static const MR_FA_PseudoTypeInfo_Struct1 top_level__mercury_compile__list__pti_list_1__plain_parse_tree__error_util__type_ctor_info_error_spec_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0
+  }
+};
+
+#line 2102 "top_level.mercury_compile.c"
+static const MR_VA_PseudoTypeInfo_Struct4 top_level__mercury_compile____vpti_pred_4__plain_libs__globals__type_ctor_info_globals_0__plain_bool__type_ctor_info_bool_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 4,
+  {
+    (MR_PseudoTypeInfo) &libs__globals__libs__globals__type_ctor_info_globals_0,
+    (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0
+  }
+};
+
+#line 2114 "top_level.mercury_compile.c"
+static const MR_VA_TypeInfo_Struct4 top_level__mercury_compile____vti_pred_4libs__globals__type_ctor_info_globals_0bool__type_ctor_info_bool_0io__type_ctor_info_state_0io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 4,
+  {
+    (MR_TypeInfo) &libs__globals__libs__globals__type_ctor_info_globals_0,
+    (MR_TypeInfo) &mercury__bool__bool__type_ctor_info_bool_0,
+    (MR_TypeInfo) &mercury__io__io__type_ctor_info_state_0,
+    (MR_TypeInfo) &mercury__io__io__type_ctor_info_state_0
+  }
+};
+
+#line 2126 "top_level.mercury_compile.c"
+const MR_TypeCtorInfo_Struct top_level__mercury_compile__top_level__mercury_compile__type_ctor_info_compile_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (top_level__mercury_compile____Unify____compile_0_0_10001)),
+  ((MR_Box) (top_level__mercury_compile____Compare____compile_0_0_10001)),
+  (MR_String) "top_level.mercury_compile",
+  (MR_String) "compile",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &top_level__mercury_compile____vti_pred_4libs__globals__type_ctor_info_globals_0bool__type_ctor_info_bool_0io__type_ctor_info_state_0io__type_ctor_info_state_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2143 "top_level.mercury_compile.c"
+static const MR_PseudoTypeInfo top_level__mercury_compile__top_level__mercury_compile__field_types_file_or_module_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+};
+
+#line 2148 "top_level.mercury_compile.c"
+static const MR_DuFunctorDesc top_level__mercury_compile__top_level__mercury_compile__du_functor_desc_file_or_module_0_0 = {
+  (MR_String) "fm_file",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  top_level__mercury_compile__top_level__mercury_compile__field_types_file_or_module_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2163 "top_level.mercury_compile.c"
+static const MR_PseudoTypeInfo top_level__mercury_compile__top_level__mercury_compile__field_types_file_or_module_0_1[1] = {
+  (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0
+};
+
+#line 2168 "top_level.mercury_compile.c"
+static const MR_DuFunctorDesc top_level__mercury_compile__top_level__mercury_compile__du_functor_desc_file_or_module_0_1 = {
+  (MR_String) "fm_module",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  top_level__mercury_compile__top_level__mercury_compile__field_types_file_or_module_0_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2183 "top_level.mercury_compile.c"
+static const MR_DuFunctorDescPtr top_level__mercury_compile__top_level__mercury_compile__du_stag_ordered_file_or_module_0_0[1] = {
+  &top_level__mercury_compile__top_level__mercury_compile__du_functor_desc_file_or_module_0_0
+};
+
+#line 2188 "top_level.mercury_compile.c"
+static const MR_DuFunctorDescPtr top_level__mercury_compile__top_level__mercury_compile__du_stag_ordered_file_or_module_0_1[1] = {
+  &top_level__mercury_compile__top_level__mercury_compile__du_functor_desc_file_or_module_0_1
+};
+
+#line 2193 "top_level.mercury_compile.c"
+static const MR_DuPtagLayout top_level__mercury_compile__top_level__mercury_compile__du_ptag_ordered_file_or_module_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    top_level__mercury_compile__top_level__mercury_compile__du_stag_ordered_file_or_module_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    top_level__mercury_compile__top_level__mercury_compile__du_stag_ordered_file_or_module_0_1
+  }
+};
+
+#line 2207 "top_level.mercury_compile.c"
+static const MR_DuFunctorDescPtr top_level__mercury_compile__top_level__mercury_compile__du_name_ordered_file_or_module_0[2] = {
+  &top_level__mercury_compile__top_level__mercury_compile__du_functor_desc_file_or_module_0_0,
+  &top_level__mercury_compile__top_level__mercury_compile__du_functor_desc_file_or_module_0_1
+};
+
+#line 2213 "top_level.mercury_compile.c"
+static const MR_Integer top_level__mercury_compile__top_level__mercury_compile__functor_number_map_file_or_module_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2219 "top_level.mercury_compile.c"
+const MR_TypeCtorInfo_Struct top_level__mercury_compile__top_level__mercury_compile__type_ctor_info_file_or_module_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (top_level__mercury_compile____Unify____file_or_module_0_0_10001)),
+  ((MR_Box) (top_level__mercury_compile____Compare____file_or_module_0_0_10001)),
+  (MR_String) "top_level.mercury_compile",
+  (MR_String) "file_or_module",
+  {     top_level__mercury_compile__top_level__mercury_compile__du_name_ordered_file_or_module_0 },
+  {     top_level__mercury_compile__top_level__mercury_compile__du_ptag_ordered_file_or_module_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  top_level__mercury_compile__top_level__mercury_compile__functor_number_map_file_or_module_0
+};
+
+#line 2236 "top_level.mercury_compile.c"
+static const MR_EnumFunctorDesc top_level__mercury_compile__top_level__mercury_compile__enum_functor_desc_maybe_write_d_file_0_0 = {
+  (MR_String) "do_not_write_d_file",
+  (MR_Integer) 0
+};
+
+#line 2242 "top_level.mercury_compile.c"
+static const MR_EnumFunctorDesc top_level__mercury_compile__top_level__mercury_compile__enum_functor_desc_maybe_write_d_file_0_1 = {
+  (MR_String) "write_d_file",
+  (MR_Integer) 1
+};
+
+#line 2248 "top_level.mercury_compile.c"
+static const MR_EnumFunctorDescPtr top_level__mercury_compile__top_level__mercury_compile__enum_value_ordered_maybe_write_d_file_0[2] = {
+  &top_level__mercury_compile__top_level__mercury_compile__enum_functor_desc_maybe_write_d_file_0_0,
+  &top_level__mercury_compile__top_level__mercury_compile__enum_functor_desc_maybe_write_d_file_0_1
+};
+
+#line 2254 "top_level.mercury_compile.c"
+static const MR_EnumFunctorDescPtr top_level__mercury_compile__top_level__mercury_compile__enum_name_ordered_maybe_write_d_file_0[2] = {
+  &top_level__mercury_compile__top_level__mercury_compile__enum_functor_desc_maybe_write_d_file_0_0,
+  &top_level__mercury_compile__top_level__mercury_compile__enum_functor_desc_maybe_write_d_file_0_1
+};
+
+#line 2260 "top_level.mercury_compile.c"
+static const MR_Integer top_level__mercury_compile__top_level__mercury_compile__functor_number_map_maybe_write_d_file_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2266 "top_level.mercury_compile.c"
+const MR_TypeCtorInfo_Struct top_level__mercury_compile__top_level__mercury_compile__type_ctor_info_maybe_write_d_file_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (top_level__mercury_compile____Unify____maybe_write_d_file_0_0_10001)),
+  ((MR_Box) (top_level__mercury_compile____Compare____maybe_write_d_file_0_0_10001)),
+  (MR_String) "top_level.mercury_compile",
+  (MR_String) "maybe_write_d_file",
+  {     top_level__mercury_compile__top_level__mercury_compile__enum_name_ordered_maybe_write_d_file_0 },
+  {     top_level__mercury_compile__top_level__mercury_compile__enum_value_ordered_maybe_write_d_file_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  top_level__mercury_compile__top_level__mercury_compile__functor_number_map_maybe_write_d_file_0
+};
+
+#line 2283 "top_level.mercury_compile.c"
+static MR_bool MR_CALL 
+top_level__mercury_compile____Unify____compile_0_0_10001(
+#line 2286 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 2288 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_2)
+#line 2290 "top_level.mercury_compile.c"
+{
+#line 2292 "top_level.mercury_compile.c"
+  {
+#line 2294 "top_level.mercury_compile.c"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 2297 "top_level.mercury_compile.c"
+    {
+#line 2299 "top_level.mercury_compile.c"
+      top_level__mercury_compile__succeeded = top_level__mercury_compile____Unify____compile_0_0(((MR_Word) top_level__mercury_compile__wrapper_arg_1), ((MR_Word) top_level__mercury_compile__wrapper_arg_2));
+    }
+#line 2302 "top_level.mercury_compile.c"
+    return top_level__mercury_compile__succeeded;
+#line 2304 "top_level.mercury_compile.c"
+  }
+#line 2306 "top_level.mercury_compile.c"
+}
+
+#line 2309 "top_level.mercury_compile.c"
+static void MR_CALL 
+top_level__mercury_compile____Compare____compile_0_0_10001(
+#line 2312 "top_level.mercury_compile.c"
+  MR_Box * top_level__mercury_compile__wrapper_arg_1,
+#line 2314 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 2316 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_3)
+#line 2318 "top_level.mercury_compile.c"
+{
+#line 2320 "top_level.mercury_compile.c"
+  {
+#line 2322 "top_level.mercury_compile.c"
+    MR_Word top_level__mercury_compile__conv0_HeadVar__1_1;
+
+#line 2325 "top_level.mercury_compile.c"
+    {
+#line 2327 "top_level.mercury_compile.c"
+      top_level__mercury_compile____Compare____compile_0_0(&top_level__mercury_compile__conv0_HeadVar__1_1, ((MR_Word) top_level__mercury_compile__wrapper_arg_2), ((MR_Word) top_level__mercury_compile__wrapper_arg_3));
+    }
+#line 2330 "top_level.mercury_compile.c"
+    *top_level__mercury_compile__wrapper_arg_1 = ((MR_Box) (top_level__mercury_compile__conv0_HeadVar__1_1));
+#line 2332 "top_level.mercury_compile.c"
+  }
+#line 2334 "top_level.mercury_compile.c"
+}
+
+#line 2337 "top_level.mercury_compile.c"
+static MR_bool MR_CALL 
+top_level__mercury_compile____Unify____file_or_module_0_0_10001(
+#line 2340 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 2342 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_2)
+#line 2344 "top_level.mercury_compile.c"
+{
+#line 2346 "top_level.mercury_compile.c"
+  {
+#line 2348 "top_level.mercury_compile.c"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 2351 "top_level.mercury_compile.c"
+    {
+#line 2353 "top_level.mercury_compile.c"
+      top_level__mercury_compile__succeeded = top_level__mercury_compile____Unify____file_or_module_0_0(((MR_Word) top_level__mercury_compile__wrapper_arg_1), ((MR_Word) top_level__mercury_compile__wrapper_arg_2));
+    }
+#line 2356 "top_level.mercury_compile.c"
+    return top_level__mercury_compile__succeeded;
+#line 2358 "top_level.mercury_compile.c"
+  }
+#line 2360 "top_level.mercury_compile.c"
+}
+
+#line 2363 "top_level.mercury_compile.c"
+static void MR_CALL 
+top_level__mercury_compile____Compare____file_or_module_0_0_10001(
+#line 2366 "top_level.mercury_compile.c"
+  MR_Box * top_level__mercury_compile__wrapper_arg_1,
+#line 2368 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 2370 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_3)
+#line 2372 "top_level.mercury_compile.c"
+{
+#line 2374 "top_level.mercury_compile.c"
+  {
+#line 2376 "top_level.mercury_compile.c"
+    MR_Word top_level__mercury_compile__conv0_HeadVar__1_1;
+
+#line 2379 "top_level.mercury_compile.c"
+    {
+#line 2381 "top_level.mercury_compile.c"
+      top_level__mercury_compile____Compare____file_or_module_0_0(&top_level__mercury_compile__conv0_HeadVar__1_1, ((MR_Word) top_level__mercury_compile__wrapper_arg_2), ((MR_Word) top_level__mercury_compile__wrapper_arg_3));
+    }
+#line 2384 "top_level.mercury_compile.c"
+    *top_level__mercury_compile__wrapper_arg_1 = ((MR_Box) (top_level__mercury_compile__conv0_HeadVar__1_1));
+#line 2386 "top_level.mercury_compile.c"
+  }
+#line 2388 "top_level.mercury_compile.c"
+}
+
+#line 2391 "top_level.mercury_compile.c"
+static MR_bool MR_CALL 
+top_level__mercury_compile____Unify____maybe_write_d_file_0_0_10001(
+#line 2394 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 2396 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_2)
+#line 2398 "top_level.mercury_compile.c"
+{
+#line 2400 "top_level.mercury_compile.c"
+  {
+#line 2402 "top_level.mercury_compile.c"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 2405 "top_level.mercury_compile.c"
+    {
+#line 2407 "top_level.mercury_compile.c"
+      top_level__mercury_compile__succeeded = top_level__mercury_compile____Unify____maybe_write_d_file_0_0(((MR_Word) top_level__mercury_compile__wrapper_arg_1), ((MR_Word) top_level__mercury_compile__wrapper_arg_2));
+    }
+#line 2410 "top_level.mercury_compile.c"
+    return top_level__mercury_compile__succeeded;
+#line 2412 "top_level.mercury_compile.c"
+  }
+#line 2414 "top_level.mercury_compile.c"
+}
+
+#line 2417 "top_level.mercury_compile.c"
+static void MR_CALL 
+top_level__mercury_compile____Compare____maybe_write_d_file_0_0_10001(
+#line 2420 "top_level.mercury_compile.c"
+  MR_Box * top_level__mercury_compile__wrapper_arg_1,
+#line 2422 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 2424 "top_level.mercury_compile.c"
+  MR_Box top_level__mercury_compile__wrapper_arg_3)
+#line 2426 "top_level.mercury_compile.c"
+{
+#line 2428 "top_level.mercury_compile.c"
+  {
+#line 2430 "top_level.mercury_compile.c"
+    MR_Word top_level__mercury_compile__conv0_HeadVar__1_1;
+
+#line 2433 "top_level.mercury_compile.c"
+    {
+#line 2435 "top_level.mercury_compile.c"
+      top_level__mercury_compile____Compare____maybe_write_d_file_0_0(&top_level__mercury_compile__conv0_HeadVar__1_1, ((MR_Word) top_level__mercury_compile__wrapper_arg_2), ((MR_Word) top_level__mercury_compile__wrapper_arg_3));
+    }
+#line 2438 "top_level.mercury_compile.c"
+    *top_level__mercury_compile__wrapper_arg_1 = ((MR_Box) (top_level__mercury_compile__conv0_HeadVar__1_1));
+#line 2440 "top_level.mercury_compile.c"
+  }
+#line 2442 "top_level.mercury_compile.c"
+}
+
+#line 772 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_99_111_109_112_105_108_101_95_119_105_116_104_95_109_111_100_117_108_101_95_111_112_116_105_111_110_115_95_95_55_55_50_95_95_49_95_95_91_51_93_95_48_8_p_0(
+#line 772 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Compile_15,
+#line 772 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__LambdaHeadVar__1_29,
+#line 772 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__LambdaHeadVar__3_31)
+#line 772 "mercury_compile.m"
+{
+#line 772 "mercury_compile.m"
+  {
+#line 772 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 775 "mercury_compile.m"
+    void MR_CALL (* top_level__mercury_compile__func_0)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Compile_15, (MR_Integer) 1)));
+#line 775 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__conv2_LambdaHeadVar__3_31;
+#line 775 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__conv1_LambdaHeadVar__7_35;
+
+#line 775 "mercury_compile.m"
+    {
+#line 775 "mercury_compile.m"
+      top_level__mercury_compile__func_0(((MR_Box) top_level__mercury_compile__Compile_15), ((MR_Box) (top_level__mercury_compile__LambdaHeadVar__1_29)), &top_level__mercury_compile__conv2_LambdaHeadVar__3_31, ((MR_Box) ((MR_Integer) 0)), &top_level__mercury_compile__conv1_LambdaHeadVar__7_35);
+    }
+#line 775 "mercury_compile.m"
+    *top_level__mercury_compile__LambdaHeadVar__3_31 = ((MR_Word) top_level__mercury_compile__conv2_LambdaHeadVar__3_31);
+#line 772 "mercury_compile.m"
+  }
+#line 772 "mercury_compile.m"
+}
+
+#line 1101 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_109_97_107_101_95_115_104_111_114_116_95_105_110_116_101_114_102_97_99_101_95_95_91_51_44_32_52_93_95_48_7_p_0(
+#line 1101 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 1101 "mercury_compile.m"
+  MR_String top_level__mercury_compile__SourceFileName_9,
+#line 1101 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnit_12)
+#line 1101 "mercury_compile.m"
+{
+#line 1105 "mercury_compile.m"
+  {
+#line 1105 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 1105 "mercury_compile.m"
+    {
+#line 1105 "mercury_compile.m"
+      parse_tree__write_module_interface_files__write_short_interface_file_5_p_0(top_level__mercury_compile__Globals_8, top_level__mercury_compile__SourceFileName_9, top_level__mercury_compile__RawCompUnit_12);
+    }
+#line 1105 "mercury_compile.m"
+  }
+#line 1101 "mercury_compile.m"
+}
+
+#line 874 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_99_101_115_115_95_97_114_103_95_98_117_105_108_100_95_95_91_53_44_32_55_93_95_48_10_p_0(
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeArgs_11,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileOrModule_12,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_13,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_14,
+#line 874 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HeadVar__6_6,
+#line 874 "mercury_compile.m"
+  MR_Tuple * top_level__mercury_compile__HeadVar__8_8)
+#line 874 "mercury_compile.m"
+{
+#line 880 "mercury_compile.m"
+  {
+#line 880 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 880 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Modules_17;
+#line 880 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ExtraObjFiles_18;
+
+#line 879 "mercury_compile.m"
+    *top_level__mercury_compile__HeadVar__6_6 = (MR_Integer) 1;
+#line 881 "mercury_compile.m"
+    {
+#line 881 "mercury_compile.m"
+      top_level__mercury_compile__process_arg_2_8_p_0(top_level__mercury_compile__Globals_14, top_level__mercury_compile__OpModeArgs_11, top_level__mercury_compile__OptionArgs_13, top_level__mercury_compile__FileOrModule_12, &top_level__mercury_compile__Modules_17, &top_level__mercury_compile__ExtraObjFiles_18);
+    }
+#line 880 "mercury_compile.m"
+    {
+#line 880 "mercury_compile.m"
+      MR_Tuple base;
+#line 880 "mercury_compile.m"
+      base = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 880 "mercury_compile.m"
+      *top_level__mercury_compile__HeadVar__8_8 = base;
+#line 880 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (top_level__mercury_compile__Modules_17));
+#line 880 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (top_level__mercury_compile__ExtraObjFiles_18));
+#line 880 "mercury_compile.m"
+    }
+#line 880 "mercury_compile.m"
+  }
+#line 874 "mercury_compile.m"
+}
+
+#line 403 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_100_101_116_101_99_116_95_108_105_98_103_114_97_100_101_95_95_91_49_93_95_48_9_p_0(
+#line 403 "mercury_compile.m"
+  MR_String top_level__mercury_compile__DirName_11,
+#line 403 "mercury_compile.m"
+  MR_String top_level__mercury_compile__FileName_12,
+#line 403 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileType_13,
+#line 403 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Continue_14,
+#line 403 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_GradeOpts_0_20,
+#line 403 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_GradeOpts_21)
+#line 403 "mercury_compile.m"
+{
+#line 409 "mercury_compile.m"
+  {
+#line 409 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 409 "mercury_compile.m"
+#line 409 "mercury_compile.m"
+    switch (top_level__mercury_compile__FileType_13) {
+#line 409 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 409 "mercury_compile.m"
+      case (MR_Integer) 6:
+#line 409 "mercury_compile.m"
+      case (MR_Integer) 5:
+#line 409 "mercury_compile.m"
+      case (MR_Integer) 7:
+#line 409 "mercury_compile.m"
+      case (MR_Integer) 3:
+#line 409 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 409 "mercury_compile.m"
+      case (MR_Integer) 8:
+#line 409 "mercury_compile.m"
+      case (MR_Integer) 9:
+#line 409 "mercury_compile.m"
+      case (MR_Integer) 4:
+#line 409 "mercury_compile.m"
+      case (MR_Integer) 2:
+#line 409 "mercury_compile.m"
+      case (MR_Integer) 10:
+#line 448 "mercury_compile.m"
+        {
+#line 449 "mercury_compile.m"
+          *top_level__mercury_compile__Continue_14 = (MR_Integer) 1;
+#line 448 "mercury_compile.m"
+          *top_level__mercury_compile__STATE_VARIABLE_GradeOpts_21 = top_level__mercury_compile__STATE_VARIABLE_GradeOpts_0_20;
+#line 448 "mercury_compile.m"
+        }
+#line 409 "mercury_compile.m"
+        break;
+#line 409 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 409 "mercury_compile.m"
+        {
+#line 415 "mercury_compile.m"
+          {
+#line 415 "mercury_compile.m"
+            top_level__mercury_compile__succeeded = mercury__string__prefix_2_p_0(top_level__mercury_compile__FileName_12, (MR_String) "csharp");
+          }
+#line 416 "mercury_compile.m"
+          if (!(top_level__mercury_compile__succeeded))
+#line 416 "mercury_compile.m"
+            {
+#line 416 "mercury_compile.m"
+              {
+#line 416 "mercury_compile.m"
+                top_level__mercury_compile__succeeded = mercury__string__prefix_2_p_0(top_level__mercury_compile__FileName_12, (MR_String) "erlang");
+              }
+#line 416 "mercury_compile.m"
+              if (!(top_level__mercury_compile__succeeded))
+#line 417 "mercury_compile.m"
+                {
+#line 417 "mercury_compile.m"
+                  {
+#line 417 "mercury_compile.m"
+                    top_level__mercury_compile__succeeded = mercury__string__prefix_2_p_0(top_level__mercury_compile__FileName_12, (MR_String) "java");
+                  }
+#line 417 "mercury_compile.m"
+                }
+#line 416 "mercury_compile.m"
+            }
+#line 422 "mercury_compile.m"
+          if (top_level__mercury_compile__succeeded)
+#line 420 "mercury_compile.m"
+            {
+#line 420 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_30_30;
+
+#line 421 "mercury_compile.m"
+              {
+#line 421 "mercury_compile.m"
+                top_level__mercury_compile__V_30_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 421 "mercury_compile.m"
+                MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_30_30, 0) = ((MR_Box) (top_level__mercury_compile__FileName_12));
+#line 421 "mercury_compile.m"
+                MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_30_30, 1) = ((MR_Box) (top_level__mercury_compile__STATE_VARIABLE_GradeOpts_0_20));
+#line 421 "mercury_compile.m"
+              }
+#line 421 "mercury_compile.m"
+              {
+#line 421 "mercury_compile.m"
+                MR_Word base;
+#line 421 "mercury_compile.m"
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 421 "mercury_compile.m"
+                *top_level__mercury_compile__STATE_VARIABLE_GradeOpts_21 = base;
+#line 421 "mercury_compile.m"
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) ((MR_String) "--libgrade"));
+#line 421 "mercury_compile.m"
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (top_level__mercury_compile__V_30_30));
+#line 421 "mercury_compile.m"
+              }
+#line 420 "mercury_compile.m"
+            }
+#line 422 "mercury_compile.m"
+          else
+#line 426 "mercury_compile.m"
+            {
+#line 426 "mercury_compile.m"
+              MR_String top_level__mercury_compile__InitFile_17;
+#line 426 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Result_18;
+#line 426 "mercury_compile.m"
+              MR_String top_level__mercury_compile__V_31_31;
+
+#line 426 "mercury_compile.m"
+              {
+#line 426 "mercury_compile.m"
+                top_level__mercury_compile__V_31_31 = mercury__dir__f_slash_2_f_0(top_level__mercury_compile__DirName_11, top_level__mercury_compile__FileName_12);
+              }
+#line 426 "mercury_compile.m"
+              {
+#line 426 "mercury_compile.m"
+                top_level__mercury_compile__InitFile_17 = mercury__dir__f_slash_2_f_0(top_level__mercury_compile__V_31_31, (MR_String) "mer_std.init");
+              }
+#line 427 "mercury_compile.m"
+              {
+#line 427 "mercury_compile.m"
+                mercury__io__check_file_accessibility_5_p_0(top_level__mercury_compile__InitFile_17, (MR_Word) MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[37]), &top_level__mercury_compile__Result_18);
+              }
+#line 432 "mercury_compile.m"
+              if ((top_level__mercury_compile__Result_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 429 "mercury_compile.m"
+                {
+#line 429 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__V_40_40;
+
+#line 431 "mercury_compile.m"
+                  {
+#line 431 "mercury_compile.m"
+                    top_level__mercury_compile__V_40_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 431 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_40_40, 0) = ((MR_Box) (top_level__mercury_compile__FileName_12));
+#line 431 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_40_40, 1) = ((MR_Box) (top_level__mercury_compile__STATE_VARIABLE_GradeOpts_0_20));
+#line 431 "mercury_compile.m"
+                  }
+#line 431 "mercury_compile.m"
+                  {
+#line 431 "mercury_compile.m"
+                    MR_Word base;
+#line 431 "mercury_compile.m"
+                    base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 431 "mercury_compile.m"
+                    *top_level__mercury_compile__STATE_VARIABLE_GradeOpts_21 = base;
+#line 431 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) ((MR_String) "--libgrade"));
+#line 431 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (top_level__mercury_compile__V_40_40));
+#line 431 "mercury_compile.m"
+                  }
+#line 429 "mercury_compile.m"
+                }
+#line 432 "mercury_compile.m"
+              else
+#line 433 "mercury_compile.m"
+                *top_level__mercury_compile__STATE_VARIABLE_GradeOpts_21 = top_level__mercury_compile__STATE_VARIABLE_GradeOpts_0_20;
+#line 426 "mercury_compile.m"
+            }
+#line 436 "mercury_compile.m"
+          *top_level__mercury_compile__Continue_14 = (MR_Integer) 1;
+#line 409 "mercury_compile.m"
+        }
+#line 409 "mercury_compile.m"
+        break;
+#line 409 "mercury_compile.m"
+    }
+#line 409 "mercury_compile.m"
+  }
+#line 403 "mercury_compile.m"
+}
+
+#line 772 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__compile_with_module_options__ho1_9_p_0_1(
+#line 772 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 772 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 772 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 772 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3,
+#line 772 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_4,
+#line 772 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_5,
+#line 772 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_6,
+#line 772 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_7)
+#line 772 "mercury_compile.m"
+{
+#line 772 "mercury_compile.m"
+  {
+#line 772 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 772 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv0_LambdaHeadVar__3_31;
+
+#line 772 "mercury_compile.m"
+    {
+#line 772 "mercury_compile.m"
+      top_level__mercury_compile__IntroducedFrom__pred__compile_with_module_options__772__1_8_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_Word) top_level__mercury_compile__wrapper_arg_1), ((MR_Word) top_level__mercury_compile__wrapper_arg_2), &top_level__mercury_compile__conv0_LambdaHeadVar__3_31);
+    }
+#line 772 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_3 = ((MR_Box) (top_level__mercury_compile__conv0_LambdaHeadVar__3_31));
+#line 772 "mercury_compile.m"
+  }
+#line 772 "mercury_compile.m"
+}
+
+#line 759 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__compile_with_module_options__ho1_9_p_0(
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__V_48_48,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__V_49_49,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_10,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleName_11,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__DetectedGradeFlags_12,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionVariables_13,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_14,
+#line 759 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Compile_15,
+#line 759 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Succeeded_16)
+#line 759 "mercury_compile.m"
+{
+#line 764 "mercury_compile.m"
+  {
+#line 764 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 764 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__InvokedByMake_18;
+
+#line 765 "mercury_compile.m"
+    {
+#line 765 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_10, (MR_Integer) 614, &top_level__mercury_compile__InvokedByMake_18);
+    }
+#line 770 "mercury_compile.m"
+#line 770 "mercury_compile.m"
+    switch (top_level__mercury_compile__InvokedByMake_18) {
+#line 770 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 770 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 771 "mercury_compile.m"
+        {
+#line 771 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__TypeCtorInfo_47_47;
+#line 771 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__Builder_19;
+#line 777 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_25_25;
+
+#line 772 "mercury_compile.m"
+          {
+#line 772 "mercury_compile.m"
+            top_level__mercury_compile__Builder_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 772 "mercury_compile.m"
+            MR_hl_field(MR_mktag(0), top_level__mercury_compile__Builder_19, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_14[0]));
+#line 772 "mercury_compile.m"
+            MR_hl_field(MR_mktag(0), top_level__mercury_compile__Builder_19, 1) = ((MR_Box) (top_level__mercury_compile__compile_with_module_options__ho1_9_p_0_1));
+#line 772 "mercury_compile.m"
+            MR_hl_field(MR_mktag(0), top_level__mercury_compile__Builder_19, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 772 "mercury_compile.m"
+            MR_hl_field(MR_mktag(0), top_level__mercury_compile__Builder_19, 3) = ((MR_Box) (top_level__mercury_compile__Compile_15));
+#line 772 "mercury_compile.m"
+          }
+#line 778 "mercury_compile.m"
+          mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 2863 "top_level.mercury_compile.c"
+          top_level__mercury_compile__TypeCtorInfo_47_47 = (MR_Word) &mercury__unit__unit__type_ctor_info_unit_0;
+#line 777 "mercury_compile.m"
+          {
+#line 777 "mercury_compile.m"
+            make__util__build_with_module_options_args_12_p_0(top_level__mercury_compile__TypeCtorInfo_47_47, top_level__mercury_compile__TypeCtorInfo_47_47, top_level__mercury_compile__Globals_10, top_level__mercury_compile__ModuleName_11, top_level__mercury_compile__DetectedGradeFlags_12, top_level__mercury_compile__OptionVariables_13, top_level__mercury_compile__OptionArgs_14, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), top_level__mercury_compile__Builder_19, top_level__mercury_compile__Succeeded_16, ((MR_Box) ((MR_Integer) 0)), &top_level__mercury_compile__V_25_25);
+          }
+#line 771 "mercury_compile.m"
+        }
+#line 770 "mercury_compile.m"
+        break;
+#line 770 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 769 "mercury_compile.m"
+        {
+#line 769 "mercury_compile.m"
+          backend_libs__compile_target_code__link_module_list_6_p_0(top_level__mercury_compile__V_48_48, top_level__mercury_compile__V_49_49, top_level__mercury_compile__Globals_10, top_level__mercury_compile__Succeeded_16);
+        }
+#line 770 "mercury_compile.m"
+        break;
+#line 770 "mercury_compile.m"
+    }
+#line 764 "mercury_compile.m"
+  }
+#line 759 "mercury_compile.m"
+}
+
+#line 1844 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile__IntroducedFrom__pred__read_dependency_file_get_modules__1844__1_1_p_0(
+#line 1844 "mercury_compile.m"
+  MR_Char top_level__mercury_compile__LambdaHeadVar__1_24)
+#line 1844 "mercury_compile.m"
+{
+#line 1844 "mercury_compile.m"
+  {
+#line 1844 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 1844 "mercury_compile.m"
+    {
+#line 1844 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = mercury__char__is_whitespace_1_p_0(top_level__mercury_compile__LambdaHeadVar__1_24);
+    }
+#line 1844 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = !(top_level__mercury_compile__succeeded);
+#line 1844 "mercury_compile.m"
+    return top_level__mercury_compile__succeeded;
+#line 1844 "mercury_compile.m"
+  }
+#line 1844 "mercury_compile.m"
+}
+
+#line 1170 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile__IntroducedFrom__pred__read_augment_and_process_module__1170__1_2_p_0(
+#line 1170 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModulesToRecompile_38,
+#line 1170 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__LambdaHeadVar__1_71)
+#line 1170 "mercury_compile.m"
+{
+#line 1170 "mercury_compile.m"
+  {
+#line 1170 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1170 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__RawCompUnitModuleName_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__LambdaHeadVar__1_71, (MR_Integer) 0)));
+#line 1171 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__LambdaHeadVar__1_71, (MR_Integer) 1)));
+#line 1171 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__LambdaHeadVar__1_71, (MR_Integer) 2)));
+
+#line 1173 "mercury_compile.m"
+    {
+#line 1173 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = mercury__list__member_2_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, ((MR_Box) (top_level__mercury_compile__RawCompUnitModuleName_41)), top_level__mercury_compile__ModulesToRecompile_38);
+    }
+#line 1170 "mercury_compile.m"
+    return top_level__mercury_compile__succeeded;
+#line 1170 "mercury_compile.m"
+  }
+#line 1170 "mercury_compile.m"
+}
+
+#line 772 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__IntroducedFrom__pred__compile_with_module_options__772__1_8_p_0(
+#line 772 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Compile_15,
+#line 772 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__LambdaHeadVar__1_29,
+#line 772 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__LambdaHeadVar__2_30,
+#line 772 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__LambdaHeadVar__3_31)
+#line 772 "mercury_compile.m"
+{
+#line 772 "mercury_compile.m"
+  {
+#line 772 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 772 "mercury_compile.m"
+    {
+#line 772 "mercury_compile.m"
+      top_level__mercury_compile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_99_111_109_112_105_108_101_95_119_105_116_104_95_109_111_100_117_108_101_95_111_112_116_105_111_110_115_95_95_55_55_50_95_95_49_95_95_91_51_93_95_48_8_p_0(top_level__mercury_compile__Compile_15, top_level__mercury_compile__LambdaHeadVar__1_29, top_level__mercury_compile__LambdaHeadVar__3_31);
+    }
+#line 772 "mercury_compile.m"
+  }
+#line 772 "mercury_compile.m"
+}
+
+#line 1591 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile____Compare____maybe_write_d_file_0_0(
+#line 1591 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HeadVar__1_1,
+#line 1591 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_2,
+#line 1591 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__3_3)
+#line 1591 "mercury_compile.m"
+{
+#line 1591 "mercury_compile.m"
+  {
+#line 1591 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1591 "mercury_compile.m"
+    MR_Integer top_level__mercury_compile__Cast_HeadVar1_4 = (MR_Integer) top_level__mercury_compile__HeadVar__2_2;
+#line 1591 "mercury_compile.m"
+    MR_Integer top_level__mercury_compile__Cast_HeadVar2_5 = (MR_Integer) top_level__mercury_compile__HeadVar__3_3;
+
+#line 1591 "mercury_compile.m"
+    {
+#line 1591 "mercury_compile.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(top_level__mercury_compile__HeadVar__1_1, top_level__mercury_compile__Cast_HeadVar1_4, top_level__mercury_compile__Cast_HeadVar2_5);
+    }
+#line 1591 "mercury_compile.m"
+  }
+#line 1591 "mercury_compile.m"
+}
+
+#line 1591 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile____Unify____maybe_write_d_file_0_0(
+#line 1591 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_1,
+#line 1591 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_2)
+#line 1591 "mercury_compile.m"
+{
+#line 3015 "top_level.mercury_compile.c"
+  {
+#line 3017 "top_level.mercury_compile.c"
+    MR_bool top_level__mercury_compile__succeeded = (top_level__mercury_compile__HeadVar__2_1 == top_level__mercury_compile__HeadVar__2_2);
+
+#line 3020 "top_level.mercury_compile.c"
+    return top_level__mercury_compile__succeeded;
+#line 3022 "top_level.mercury_compile.c"
+  }
+#line 1591 "mercury_compile.m"
+}
+
+#line 1230 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile____Compare____file_or_module_0_0(
+#line 1230 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HeadVar__1_1,
+#line 1230 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_2,
+#line 1230 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__3_3)
+#line 1230 "mercury_compile.m"
+{
+#line 1230 "mercury_compile.m"
+  {
+#line 1230 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1230 "mercury_compile.m"
+    MR_Integer top_level__mercury_compile__CastX_12 = (MR_Integer) top_level__mercury_compile__HeadVar__2_2;
+#line 1230 "mercury_compile.m"
+    MR_Integer top_level__mercury_compile__CastY_13 = (MR_Integer) top_level__mercury_compile__HeadVar__3_3;
+
+#line 1230 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (top_level__mercury_compile__CastX_12 == top_level__mercury_compile__CastY_13);
+#line 1230 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 3051 "top_level.mercury_compile.c"
+      *top_level__mercury_compile__HeadVar__1_1 = (MR_Integer) 0;
+#line 1230 "mercury_compile.m"
+    else
+#line 1230 "mercury_compile.m"
+    if (((MR_tag((MR_Word) top_level__mercury_compile__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0))))
+#line 1230 "mercury_compile.m"
+      {
+#line 1230 "mercury_compile.m"
+        MR_String top_level__mercury_compile__V_16_16 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 1230 "mercury_compile.m"
+        if (((MR_tag((MR_Word) top_level__mercury_compile__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+#line 1230 "mercury_compile.m"
+          {
+#line 1230 "mercury_compile.m"
+            MR_String top_level__mercury_compile__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 1230 "mercury_compile.m"
+            {
+#line 1230 "mercury_compile.m"
+              mercury__private_builtin__builtin_compare_string_3_p_0(top_level__mercury_compile__HeadVar__1_1, top_level__mercury_compile__V_16_16, top_level__mercury_compile__V_5_5);
+            }
+#line 1230 "mercury_compile.m"
+          }
+#line 1230 "mercury_compile.m"
+        else
+#line 3078 "top_level.mercury_compile.c"
+          *top_level__mercury_compile__HeadVar__1_1 = (MR_Integer) 1;
+#line 1230 "mercury_compile.m"
+      }
+#line 1230 "mercury_compile.m"
+    else
+#line 1230 "mercury_compile.m"
+      {
+#line 1230 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 1230 "mercury_compile.m"
+        if (((MR_tag((MR_Word) top_level__mercury_compile__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+#line 3091 "top_level.mercury_compile.c"
+          *top_level__mercury_compile__HeadVar__1_1 = (MR_Integer) 2;
+#line 1230 "mercury_compile.m"
+        else
+#line 1230 "mercury_compile.m"
+          {
+#line 1230 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 1230 "mercury_compile.m"
+            {
+#line 1230 "mercury_compile.m"
+              mdbcomp__sym_name____Compare____sym_name_0_0(top_level__mercury_compile__HeadVar__1_1, top_level__mercury_compile__V_17_17, top_level__mercury_compile__V_11_11);
+            }
+#line 1230 "mercury_compile.m"
+          }
+#line 1230 "mercury_compile.m"
+      }
+#line 1230 "mercury_compile.m"
+  }
+#line 1230 "mercury_compile.m"
+}
+
+#line 1230 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile____Unify____file_or_module_0_0(
+#line 1230 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__1_1,
+#line 1230 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_2)
+#line 1230 "mercury_compile.m"
+{
+#line 1230 "mercury_compile.m"
+  {
+#line 1230 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1230 "mercury_compile.m"
+    MR_Integer top_level__mercury_compile__CastX_7 = (MR_Integer) top_level__mercury_compile__HeadVar__1_1;
+#line 1230 "mercury_compile.m"
+    MR_Integer top_level__mercury_compile__CastY_8 = (MR_Integer) top_level__mercury_compile__HeadVar__2_2;
+
+#line 1230 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (top_level__mercury_compile__CastX_7 == top_level__mercury_compile__CastY_8);
+#line 1230 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1230 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = MR_TRUE;
+#line 1230 "mercury_compile.m"
+    else
+#line 1230 "mercury_compile.m"
+    if (((MR_tag((MR_Word) top_level__mercury_compile__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+#line 1230 "mercury_compile.m"
+      {
+#line 1230 "mercury_compile.m"
+        MR_String top_level__mercury_compile__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__HeadVar__1_1, (MR_Integer) 0)));
+#line 1230 "mercury_compile.m"
+        MR_String top_level__mercury_compile__V_4_4;
+
+#line 1230 "mercury_compile.m"
+        top_level__mercury_compile__succeeded = ((MR_tag((MR_Word) top_level__mercury_compile__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+#line 1230 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 1230 "mercury_compile.m"
+          {
+#line 1230 "mercury_compile.m"
+            top_level__mercury_compile__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__HeadVar__2_2, (MR_Integer) 0)));
+#line 3157 "top_level.mercury_compile.c"
+            top_level__mercury_compile__succeeded = (strcmp(top_level__mercury_compile__V_3_3, top_level__mercury_compile__V_4_4) == 0);
+#line 1230 "mercury_compile.m"
+          }
+#line 1230 "mercury_compile.m"
+      }
+#line 1230 "mercury_compile.m"
+    else
+#line 1230 "mercury_compile.m"
+      {
+#line 1230 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__HeadVar__1_1, (MR_Integer) 0)));
+#line 1230 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_6_6;
+
+#line 1230 "mercury_compile.m"
+        top_level__mercury_compile__succeeded = ((MR_tag((MR_Word) top_level__mercury_compile__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 1230 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 1230 "mercury_compile.m"
+          {
+#line 1230 "mercury_compile.m"
+            top_level__mercury_compile__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__HeadVar__2_2, (MR_Integer) 0)));
+#line 3180 "top_level.mercury_compile.c"
+            {
+#line 3182 "top_level.mercury_compile.c"
+              top_level__mercury_compile__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(top_level__mercury_compile__V_5_5, top_level__mercury_compile__V_6_6);
+            }
+#line 1230 "mercury_compile.m"
+          }
+#line 1230 "mercury_compile.m"
+      }
+#line 1230 "mercury_compile.m"
+    return top_level__mercury_compile__succeeded;
+#line 1230 "mercury_compile.m"
+  }
+#line 1230 "mercury_compile.m"
+}
+
+#line 756 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile____Compare____compile_0_0(
+#line 756 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HeadVar__1_1,
+#line 756 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_2,
+#line 756 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__3_3)
+#line 756 "mercury_compile.m"
+{
+#line 756 "mercury_compile.m"
+  {
+#line 756 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 756 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Cast_HeadVar1_4 = top_level__mercury_compile__HeadVar__2_2;
+#line 756 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Cast_HeadVar2_5 = top_level__mercury_compile__HeadVar__3_3;
+
+#line 756 "mercury_compile.m"
+    {
+#line 756 "mercury_compile.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &top_level__mercury_compile_scalar_common_3[0], top_level__mercury_compile__HeadVar__1_1, ((MR_Box) (top_level__mercury_compile__Cast_HeadVar1_4)), ((MR_Box) (top_level__mercury_compile__Cast_HeadVar2_5)));
+    }
+#line 756 "mercury_compile.m"
+  }
+#line 756 "mercury_compile.m"
+}
+
+#line 756 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile____Unify____compile_0_0(
+#line 756 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__1_1,
+#line 756 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__2_2)
+#line 756 "mercury_compile.m"
+{
+#line 756 "mercury_compile.m"
+  {
+#line 756 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 756 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Cast_HeadVar1_3 = top_level__mercury_compile__HeadVar__1_1;
+#line 756 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Cast_HeadVar2_4 = top_level__mercury_compile__HeadVar__2_2;
+
+#line 756 "mercury_compile.m"
+    {
+#line 756 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = mercury__private_builtin__builtin_unify_pred_2_p_0((MR_Word) top_level__mercury_compile__Cast_HeadVar1_3, (MR_Word) top_level__mercury_compile__Cast_HeadVar2_4);
+    }
+#line 756 "mercury_compile.m"
+    return top_level__mercury_compile__succeeded;
+#line 756 "mercury_compile.m"
+  }
+#line 756 "mercury_compile.m"
+}
+
+#line 2289 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__gc_init_2_p_0(void)
+#line 2289 "mercury_compile.m"
+{
+#line 2294 "mercury_compile.m"
+  {
+#line 2294 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 2297 "mercury_compile.m"
+{
+#define MR_PROC_LABEL top_level__mercury_compile__gc_init_2_p_0
+
+
+		{
+#line 2297 "mercury_compile.m"
+
+#ifdef MR_BOEHM_GC
+    /*
+    ** Explicitly force the initial heap size to be at least 4 Mb.
+    **
+    ** This works around a bug in the Boehm collector (for versions up
+    ** to at least 6.2) where the collector would sometimes abort with
+    ** the message `unexpected mark stack overflow' (e.g. in grade hlc.gc
+    ** on dec-alpha-osf3.2).
+    **
+    ** Doing this should also improve performance slightly by avoiding
+    ** frequent garbage collection during start-up.
+    */
+    GC_expand_hp(4 * 1024 * 1024);
+#endif
+
+#line 3289 "top_level.mercury_compile.c"
+
+		;}
+#undef MR_PROC_LABEL
+#line 2297 "mercury_compile.m"
+}
+#line 2294 "mercury_compile.m"
+  }
+#line 2289 "mercury_compile.m"
+}
+
+#line 2275 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile__halt_at_module_error_2_p_0(
+#line 2275 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_3,
+#line 2275 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Errors_4)
+#line 2275 "mercury_compile.m"
+{
+#line 2277 "mercury_compile.m"
+  {
+#line 2277 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 2277 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__TypeCtorInfo_9_9 = (MR_Word) &parse_tree__prog_io_error__parse_tree__prog_io_error__type_ctor_info_read_module_error_0;
+
+#line 2278 "mercury_compile.m"
+    {
+#line 2278 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = mercury__set__is_non_empty_1_p_0(top_level__mercury_compile__TypeCtorInfo_9_9, top_level__mercury_compile__Errors_4);
+    }
+#line 2277 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 2277 "mercury_compile.m"
+      {
+#line 2280 "mercury_compile.m"
+        {
+#line 2280 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__HaltSyntax_5;
+
+#line 2280 "mercury_compile.m"
+          {
+#line 2280 "mercury_compile.m"
+            libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_3, (MR_Integer) 3, &top_level__mercury_compile__HaltSyntax_5);
+          }
+#line 2281 "mercury_compile.m"
+          top_level__mercury_compile__succeeded = (top_level__mercury_compile__HaltSyntax_5 == (MR_Integer) 1);
+#line 2280 "mercury_compile.m"
+        }
+#line 2282 "mercury_compile.m"
+        if (!(top_level__mercury_compile__succeeded))
+#line 2283 "mercury_compile.m"
+          {
+#line 2283 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__FatalErrors_6;
+#line 2283 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_7_7;
+
+#line 2283 "mercury_compile.m"
+            {
+#line 2283 "mercury_compile.m"
+              top_level__mercury_compile__V_7_7 = parse_tree__prog_io_error__fatal_read_module_errors_0_f_0();
+            }
+#line 2283 "mercury_compile.m"
+            {
+#line 2283 "mercury_compile.m"
+              mercury__set__intersect_3_p_0(top_level__mercury_compile__TypeCtorInfo_9_9, top_level__mercury_compile__Errors_4, top_level__mercury_compile__V_7_7, &top_level__mercury_compile__FatalErrors_6);
+            }
+#line 2284 "mercury_compile.m"
+            {
+#line 2284 "mercury_compile.m"
+              top_level__mercury_compile__succeeded = mercury__set__is_non_empty_1_p_0(top_level__mercury_compile__TypeCtorInfo_9_9, top_level__mercury_compile__FatalErrors_6);
+            }
+#line 2283 "mercury_compile.m"
+          }
+#line 2277 "mercury_compile.m"
+      }
+#line 2277 "mercury_compile.m"
+    return top_level__mercury_compile__succeeded;
+#line 2277 "mercury_compile.m"
+  }
+#line 2275 "mercury_compile.m"
+}
+
+#line 2236 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_output_prof_call_graph_6_p_0(
+#line 2236 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_7,
+#line 2236 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Stats_8,
+#line 2236 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_0_22,
+#line 2236 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_HLDS_23)
+#line 2236 "mercury_compile.m"
+{
+#line 2239 "mercury_compile.m"
+  {
+#line 2239 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 2239 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Globals_11;
+#line 2239 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ProfileCalls_12;
+#line 2239 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ProfileTime_13;
+
+#line 2240 "mercury_compile.m"
+    {
+#line 2240 "mercury_compile.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_0_22, &top_level__mercury_compile__Globals_11);
+    }
+#line 2241 "mercury_compile.m"
+    {
+#line 2241 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_11, (MR_Integer) 189, &top_level__mercury_compile__ProfileCalls_12);
+    }
+#line 2242 "mercury_compile.m"
+    {
+#line 2242 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_11, (MR_Integer) 190, &top_level__mercury_compile__ProfileTime_13);
+    }
+#line 2244 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (top_level__mercury_compile__ProfileCalls_12 == (MR_Integer) 1);
+#line 2245 "mercury_compile.m"
+    if (!(top_level__mercury_compile__succeeded))
+#line 2245 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = (top_level__mercury_compile__ProfileTime_13 == (MR_Integer) 1);
+#line 2269 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 2249 "mercury_compile.m"
+      {
+#line 2249 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__ModuleName_14;
+#line 2249 "mercury_compile.m"
+        MR_String top_level__mercury_compile__ProfFileName_15;
+#line 2249 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Res_16;
+
+#line 2248 "mercury_compile.m"
+        {
+#line 2248 "mercury_compile.m"
+          libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_7, (MR_String) "% Outputting profiling call graph...");
+        }
+#line 2250 "mercury_compile.m"
+        {
+#line 2250 "mercury_compile.m"
+          libs__file_util__maybe_flush_output_3_p_0(top_level__mercury_compile__Verbose_7);
+        }
+#line 2251 "mercury_compile.m"
+        {
+#line 2251 "mercury_compile.m"
+          hlds__hlds_module__module_info_get_name_2_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_0_22, &top_level__mercury_compile__ModuleName_14);
+        }
+#line 2252 "mercury_compile.m"
+        {
+#line 2252 "mercury_compile.m"
+          parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_11, top_level__mercury_compile__ModuleName_14, (MR_String) ".prof", (MR_Integer) 0, &top_level__mercury_compile__ProfFileName_15);
+        }
+#line 2254 "mercury_compile.m"
+        {
+#line 2254 "mercury_compile.m"
+          mercury__io__open_output_4_p_0(top_level__mercury_compile__ProfFileName_15, &top_level__mercury_compile__Res_16);
+        }
+#line 2261 "mercury_compile.m"
+        if (((MR_tag((MR_Word) top_level__mercury_compile__Res_16)) == (MR_mktag((MR_Integer) 1))))
+#line 2262 "mercury_compile.m"
+          {
+#line 2262 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__IOError_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__Res_16, (MR_Integer) 0)));
+#line 2262 "mercury_compile.m"
+            MR_String top_level__mercury_compile__ErrorMsg_21;
+#line 2262 "mercury_compile.m"
+            MR_String top_level__mercury_compile__V_36_36;
+
+#line 2264 "mercury_compile.m"
+            {
+#line 2264 "mercury_compile.m"
+              top_level__mercury_compile__V_36_36 = mercury__io__error_message_1_f_0(top_level__mercury_compile__IOError_20);
+            }
+#line 2263 "mercury_compile.m"
+            {
+#line 2263 "mercury_compile.m"
+              top_level__mercury_compile__ErrorMsg_21 = mercury__string__f_43_43_2_f_0((MR_String) "unable to write profiling static call graph: ", top_level__mercury_compile__V_36_36);
+            }
+#line 2265 "mercury_compile.m"
+            {
+#line 2265 "mercury_compile.m"
+              libs__file_util__report_error_3_p_0(top_level__mercury_compile__ErrorMsg_21);
+            }
+#line 2262 "mercury_compile.m"
+            *top_level__mercury_compile__STATE_VARIABLE_HLDS_23 = top_level__mercury_compile__STATE_VARIABLE_HLDS_0_22;
+#line 2262 "mercury_compile.m"
+          }
+#line 2261 "mercury_compile.m"
+        else
+#line 2256 "mercury_compile.m"
+          {
+#line 2256 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__FileStream_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Res_16, (MR_Integer) 0)));
+#line 2256 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__OutputStream_18;
+#line 2259 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_19_19;
+
+#line 2257 "mercury_compile.m"
+            {
+#line 2257 "mercury_compile.m"
+              mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__FileStream_17, &top_level__mercury_compile__OutputStream_18);
+            }
+#line 2258 "mercury_compile.m"
+            {
+#line 2258 "mercury_compile.m"
+              transform_hlds__dependency_graph__write_prof_dependency_graph_4_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_0_22, top_level__mercury_compile__STATE_VARIABLE_HLDS_23);
+            }
+#line 2259 "mercury_compile.m"
+            {
+#line 2259 "mercury_compile.m"
+              mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__OutputStream_18, &top_level__mercury_compile__V_19_19);
+            }
+#line 2260 "mercury_compile.m"
+            {
+#line 2260 "mercury_compile.m"
+              mercury__io__close_output_3_p_0(top_level__mercury_compile__FileStream_17);
+            }
+#line 2256 "mercury_compile.m"
+          }
+#line 2267 "mercury_compile.m"
+        {
+#line 2267 "mercury_compile.m"
+          libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_7, (MR_String) " done.\n");
+        }
+#line 2268 "mercury_compile.m"
+        {
+#line 2268 "mercury_compile.m"
+          libs__file_util__maybe_report_stats_3_p_0(top_level__mercury_compile__Stats_8);
+        }
+#line 2249 "mercury_compile.m"
+      }
+#line 2269 "mercury_compile.m"
+    else
+#line 2270 "mercury_compile.m"
+      *top_level__mercury_compile__STATE_VARIABLE_HLDS_23 = top_level__mercury_compile__STATE_VARIABLE_HLDS_0_22;
+#line 2239 "mercury_compile.m"
+  }
+#line 2236 "mercury_compile.m"
+}
+
+#line 2214 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__after_front_end_passes_12_p_0_1(
+#line 2214 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 2214 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 2214 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 2214 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3)
+#line 2214 "mercury_compile.m"
+{
+#line 2214 "mercury_compile.m"
+  {
+#line 2214 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+
+#line 2214 "mercury_compile.m"
+    {
+#line 2214 "mercury_compile.m"
+      parse_tree__module_cmds__touch_datestamp_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_String) top_level__mercury_compile__wrapper_arg_1));
+    }
+#line 2214 "mercury_compile.m"
+  }
+#line 2214 "mercury_compile.m"
+}
+
+#line 2091 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__after_front_end_passes_12_p_0(
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_13,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeCodeGen_14,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__NestedSubModules_15,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FindTimestampFiles_16,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTimestampMap_17,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_0_51,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Specs_19,
+#line 2091 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_20,
+#line 2091 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_DumpInfo_0_52,
+#line 2091 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_DumpInfo_53)
+#line 2091 "mercury_compile.m"
+{
+#line 2100 "mercury_compile.m"
+  {
+#line 2100 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 2100 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Verbose_23;
+#line 2100 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Stats_24;
+#line 2100 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__HighLevelCode_25;
+#line 2100 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Target_26;
+#line 2100 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ModuleName_27;
+#line 2100 "mercury_compile.m"
+    MR_String top_level__mercury_compile__UsageFileName_28;
+#line 2100 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__FrontEndErrors_30;
+#line 2100 "mercury_compile.m"
+    MR_Integer top_level__mercury_compile__NumErrors_31;
+#line 2100 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_58_58;
+#line 2100 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60;
+#line 2100 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_DumpInfo_61_61;
+#line 2116 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_29_29;
+
+#line 2101 "mercury_compile.m"
+    {
+#line 2101 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_13, (MR_Integer) 45, &top_level__mercury_compile__Verbose_23);
+    }
+#line 2102 "mercury_compile.m"
+    {
+#line 2102 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_13, (MR_Integer) 55, &top_level__mercury_compile__Stats_24);
+    }
+#line 2103 "mercury_compile.m"
+    {
+#line 2103 "mercury_compile.m"
+      top_level__mercury_compile__maybe_output_prof_call_graph_6_p_0(top_level__mercury_compile__Verbose_23, top_level__mercury_compile__Stats_24, top_level__mercury_compile__STATE_VARIABLE_HLDS_0_51, &top_level__mercury_compile__STATE_VARIABLE_HLDS_58_58);
+    }
+#line 2104 "mercury_compile.m"
+    {
+#line 2104 "mercury_compile.m"
+      top_level__mercury_compile_middle_passes__middle_pass_6_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_58_58, &top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_0_52, &top_level__mercury_compile__STATE_VARIABLE_DumpInfo_61_61);
+    }
+#line 2105 "mercury_compile.m"
+    {
+#line 2105 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_13, (MR_Integer) 251, &top_level__mercury_compile__HighLevelCode_25);
+    }
+#line 2106 "mercury_compile.m"
+    {
+#line 2106 "mercury_compile.m"
+      libs__globals__get_target_2_p_0(top_level__mercury_compile__Globals_13, &top_level__mercury_compile__Target_26);
+    }
+#line 2113 "mercury_compile.m"
+    {
+#line 2113 "mercury_compile.m"
+      hlds__hlds_module__module_info_get_name_2_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, &top_level__mercury_compile__ModuleName_27);
+    }
+#line 2114 "mercury_compile.m"
+    {
+#line 2114 "mercury_compile.m"
+      parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__ModuleName_27, (MR_String) ".used", (MR_Integer) 1, &top_level__mercury_compile__UsageFileName_28);
+    }
+#line 2116 "mercury_compile.m"
+    {
+#line 2116 "mercury_compile.m"
+      mercury__io__remove_file_4_p_0(top_level__mercury_compile__UsageFileName_28, &top_level__mercury_compile__V_29_29);
+    }
+#line 2118 "mercury_compile.m"
+    {
+#line 2118 "mercury_compile.m"
+      top_level__mercury_compile__FrontEndErrors_30 = parse_tree__error_util__contains_errors_2_f_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__Specs_19);
+    }
+#line 2119 "mercury_compile.m"
+    {
+#line 2119 "mercury_compile.m"
+      hlds__hlds_module__module_info_get_num_errors_2_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, &top_level__mercury_compile__NumErrors_31);
+    }
+#line 2121 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (top_level__mercury_compile__FrontEndErrors_30 == (MR_Integer) 0);
+#line 2121 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 2122 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = (top_level__mercury_compile__NumErrors_31 == (MR_Integer) 0);
+#line 2219 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 2208 "mercury_compile.m"
+      {
+#line 2208 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Succeeded_34;
+#line 2208 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_72_72;
+
+#line 2130 "mercury_compile.m"
+#line 2130 "mercury_compile.m"
+        switch (top_level__mercury_compile__Target_26) {
+#line 2130 "mercury_compile.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 2130 "mercury_compile.m"
+          case (MR_Integer) 0:
+#line 2156 "mercury_compile.m"
+            {
+#line 2156 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ExportDecls_39;
+
+#line 2160 "mercury_compile.m"
+              {
+#line 2160 "mercury_compile.m"
+                backend_libs__export__get_foreign_export_decls_2_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, &top_level__mercury_compile__ExportDecls_39);
+              }
+#line 2161 "mercury_compile.m"
+              {
+#line 2161 "mercury_compile.m"
+                backend_libs__export__produce_header_file_5_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, top_level__mercury_compile__ExportDecls_39, top_level__mercury_compile__ModuleName_27);
+              }
+#line 2192 "mercury_compile.m"
+#line 2192 "mercury_compile.m"
+              switch (top_level__mercury_compile__HighLevelCode_25) {
+#line 2192 "mercury_compile.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 2192 "mercury_compile.m"
+                case (MR_Integer) 0:
+#line 2193 "mercury_compile.m"
+                  {
+#line 2193 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__GlobalData_46;
+#line 2193 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__LLDS_47;
+
+#line 2194 "mercury_compile.m"
+                    {
+#line 2194 "mercury_compile.m"
+                      top_level__mercury_compile_llds_back_end__llds_backend_pass_8_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, &top_level__mercury_compile__STATE_VARIABLE_HLDS_72_72, &top_level__mercury_compile__GlobalData_46, &top_level__mercury_compile__LLDS_47, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_61_61, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_53);
+                    }
+#line 2199 "mercury_compile.m"
+                    {
+#line 2199 "mercury_compile.m"
+                      top_level__mercury_compile_llds_back_end__llds_output_pass_8_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_72_72, top_level__mercury_compile__GlobalData_46, top_level__mercury_compile__LLDS_47, top_level__mercury_compile__ModuleName_27, &top_level__mercury_compile__Succeeded_34, top_level__mercury_compile__ExtraObjFiles_20);
+                    }
+#line 2193 "mercury_compile.m"
+                  }
+#line 2192 "mercury_compile.m"
+                  break;
+#line 2192 "mercury_compile.m"
+                case (MR_Integer) 1:
+#line 2163 "mercury_compile.m"
+                  {
+#line 2163 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__MLDS_113;
+#line 2163 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__TargetCodeSucceeded_114;
+#line 2164 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_40_40;
+
+#line 2164 "mercury_compile.m"
+                    {
+#line 2164 "mercury_compile.m"
+                      top_level__mercury_compile_mlds_back_end__mlds_backend_7_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, &top_level__mercury_compile__V_40_40, &top_level__mercury_compile__MLDS_113, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_61_61, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_53);
+                    }
+#line 2165 "mercury_compile.m"
+                    {
+#line 2165 "mercury_compile.m"
+                      top_level__mercury_compile_mlds_back_end__mlds_to_high_level_c_5_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__MLDS_113, &top_level__mercury_compile__TargetCodeSucceeded_114);
+                    }
+#line 2169 "mercury_compile.m"
+#line 2169 "mercury_compile.m"
+                    switch (top_level__mercury_compile__OpModeCodeGen_14) {
+#line 2169 "mercury_compile.m"
+                      default: /*NOTREACHED*/ MR_assert(0);
+#line 2169 "mercury_compile.m"
+                      case (MR_Integer) 1:
+#line 2169 "mercury_compile.m"
+                      case (MR_Integer) 2:
+#line 2176 "mercury_compile.m"
+#line 2176 "mercury_compile.m"
+                        switch (top_level__mercury_compile__TargetCodeSucceeded_114) {
+#line 2176 "mercury_compile.m"
+                          default: /*NOTREACHED*/ MR_assert(0);
+#line 2176 "mercury_compile.m"
+                          case (MR_Integer) 0:
+#line 2175 "mercury_compile.m"
+                            top_level__mercury_compile__Succeeded_34 = (MR_Integer) 0;
+#line 2176 "mercury_compile.m"
+                            break;
+#line 2176 "mercury_compile.m"
+                          case (MR_Integer) 1:
+#line 2177 "mercury_compile.m"
+                            {
+#line 2177 "mercury_compile.m"
+                              MR_String top_level__mercury_compile__C_File_41;
+#line 2177 "mercury_compile.m"
+                              MR_Word top_level__mercury_compile__TargetType_42;
+#line 2177 "mercury_compile.m"
+                              MR_Word top_level__mercury_compile__PIC_43;
+#line 2177 "mercury_compile.m"
+                              MR_String top_level__mercury_compile__Obj_44;
+#line 2177 "mercury_compile.m"
+                              MR_String top_level__mercury_compile__O_File_45;
+#line 2177 "mercury_compile.m"
+                              MR_Word top_level__mercury_compile__OutputStream_109;
+
+#line 2178 "mercury_compile.m"
+                              {
+#line 2178 "mercury_compile.m"
+                                parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__ModuleName_27, (MR_String) ".c", (MR_Integer) 1, &top_level__mercury_compile__C_File_41);
+                              }
+#line 2180 "mercury_compile.m"
+                              {
+#line 2180 "mercury_compile.m"
+                                backend_libs__compile_target_code__get_linked_target_type_2_p_0(top_level__mercury_compile__Globals_13, &top_level__mercury_compile__TargetType_42);
+                              }
+#line 2181 "mercury_compile.m"
+                              {
+#line 2181 "mercury_compile.m"
+                                backend_libs__compile_target_code__get_object_code_type_3_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__TargetType_42, &top_level__mercury_compile__PIC_43);
+                              }
+#line 2182 "mercury_compile.m"
+                              {
+#line 2182 "mercury_compile.m"
+                                backend_libs__compile_target_code__maybe_pic_object_file_extension_3_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__PIC_43, &top_level__mercury_compile__Obj_44);
+                              }
+#line 2183 "mercury_compile.m"
+                              {
+#line 2183 "mercury_compile.m"
+                                parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__ModuleName_27, top_level__mercury_compile__Obj_44, (MR_Integer) 0, &top_level__mercury_compile__O_File_45);
+                              }
+#line 2185 "mercury_compile.m"
+                              {
+#line 2185 "mercury_compile.m"
+                                mercury__io__output_stream_3_p_0(&top_level__mercury_compile__OutputStream_109);
+                              }
+#line 2186 "mercury_compile.m"
+                              {
+#line 2186 "mercury_compile.m"
+                                backend_libs__compile_target_code__do_compile_c_file_8_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__OutputStream_109, top_level__mercury_compile__PIC_43, top_level__mercury_compile__C_File_41, top_level__mercury_compile__O_File_45, &top_level__mercury_compile__Succeeded_34);
+                              }
+#line 2188 "mercury_compile.m"
+                              {
+#line 2188 "mercury_compile.m"
+                                parse_tree__module_cmds__maybe_set_exit_status_3_p_0(top_level__mercury_compile__Succeeded_34);
+                              }
+#line 2177 "mercury_compile.m"
+                            }
+#line 2176 "mercury_compile.m"
+                            break;
+#line 2176 "mercury_compile.m"
+                        }
+#line 2169 "mercury_compile.m"
+                        break;
+#line 2169 "mercury_compile.m"
+                      case (MR_Integer) 0:
+#line 2168 "mercury_compile.m"
+                        top_level__mercury_compile__Succeeded_34 = top_level__mercury_compile__TargetCodeSucceeded_114;
+#line 2169 "mercury_compile.m"
+                        break;
+#line 2169 "mercury_compile.m"
+                    }
+#line 2191 "mercury_compile.m"
+                    *top_level__mercury_compile__ExtraObjFiles_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 2163 "mercury_compile.m"
+                    top_level__mercury_compile__STATE_VARIABLE_HLDS_72_72 = top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60;
+#line 2163 "mercury_compile.m"
+                  }
+#line 2192 "mercury_compile.m"
+                  break;
+#line 2192 "mercury_compile.m"
+              }
+#line 2156 "mercury_compile.m"
+            }
+#line 2130 "mercury_compile.m"
+            break;
+#line 2130 "mercury_compile.m"
+          case (MR_Integer) 1:
+#line 2125 "mercury_compile.m"
+            {
+#line 2125 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__MLDS_33;
+#line 2126 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_32_32;
+
+#line 2126 "mercury_compile.m"
+              {
+#line 2126 "mercury_compile.m"
+                top_level__mercury_compile_mlds_back_end__mlds_backend_7_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, &top_level__mercury_compile__V_32_32, &top_level__mercury_compile__MLDS_33, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_61_61, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_53);
+              }
+#line 2128 "mercury_compile.m"
+              {
+#line 2128 "mercury_compile.m"
+                top_level__mercury_compile_mlds_back_end__mlds_to_csharp_5_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, top_level__mercury_compile__MLDS_33, &top_level__mercury_compile__Succeeded_34);
+              }
+#line 2129 "mercury_compile.m"
+              *top_level__mercury_compile__ExtraObjFiles_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 2125 "mercury_compile.m"
+              top_level__mercury_compile__STATE_VARIABLE_HLDS_72_72 = top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60;
+#line 2125 "mercury_compile.m"
+            }
+#line 2130 "mercury_compile.m"
+            break;
+#line 2130 "mercury_compile.m"
+          case (MR_Integer) 3:
+#line 2203 "mercury_compile.m"
+            {
+#line 2203 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ELDS_48;
+
+#line 2204 "mercury_compile.m"
+              {
+#line 2204 "mercury_compile.m"
+                top_level__mercury_compile_erl_back_end__erlang_backend_6_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, &top_level__mercury_compile__ELDS_48, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_61_61, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_53);
+              }
+#line 2206 "mercury_compile.m"
+              {
+#line 2206 "mercury_compile.m"
+                top_level__mercury_compile_erl_back_end__elds_to_erlang_5_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, top_level__mercury_compile__ELDS_48, &top_level__mercury_compile__Succeeded_34);
+              }
+#line 2207 "mercury_compile.m"
+              *top_level__mercury_compile__ExtraObjFiles_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 2203 "mercury_compile.m"
+              top_level__mercury_compile__STATE_VARIABLE_HLDS_72_72 = top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60;
+#line 2203 "mercury_compile.m"
+            }
+#line 2130 "mercury_compile.m"
+            break;
+#line 2130 "mercury_compile.m"
+          case (MR_Integer) 2:
+#line 2131 "mercury_compile.m"
+            {
+#line 2131 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__TargetCodeSucceeded_36;
+#line 2131 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__MLDS_108;
+#line 2132 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_35_35;
+
+#line 2132 "mercury_compile.m"
+              {
+#line 2132 "mercury_compile.m"
+                top_level__mercury_compile_mlds_back_end__mlds_backend_7_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, &top_level__mercury_compile__V_35_35, &top_level__mercury_compile__MLDS_108, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_61_61, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_53);
+              }
+#line 2133 "mercury_compile.m"
+              {
+#line 2133 "mercury_compile.m"
+                top_level__mercury_compile_mlds_back_end__mlds_to_java_5_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60, top_level__mercury_compile__MLDS_108, &top_level__mercury_compile__TargetCodeSucceeded_36);
+              }
+#line 2137 "mercury_compile.m"
+#line 2137 "mercury_compile.m"
+              switch (top_level__mercury_compile__OpModeCodeGen_14) {
+#line 2137 "mercury_compile.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 2137 "mercury_compile.m"
+                case (MR_Integer) 1:
+#line 2137 "mercury_compile.m"
+                case (MR_Integer) 2:
+#line 2144 "mercury_compile.m"
+#line 2144 "mercury_compile.m"
+                  switch (top_level__mercury_compile__TargetCodeSucceeded_36) {
+#line 2144 "mercury_compile.m"
+                    default: /*NOTREACHED*/ MR_assert(0);
+#line 2144 "mercury_compile.m"
+                    case (MR_Integer) 0:
+#line 2143 "mercury_compile.m"
+                      top_level__mercury_compile__Succeeded_34 = (MR_Integer) 0;
+#line 2144 "mercury_compile.m"
+                      break;
+#line 2144 "mercury_compile.m"
+                    case (MR_Integer) 1:
+#line 2145 "mercury_compile.m"
+                      {
+#line 2145 "mercury_compile.m"
+                        MR_Word top_level__mercury_compile__OutputStream_37;
+#line 2145 "mercury_compile.m"
+                        MR_String top_level__mercury_compile__JavaFile_38;
+#line 2145 "mercury_compile.m"
+                        MR_Word top_level__mercury_compile__V_94_94;
+
+#line 2146 "mercury_compile.m"
+                        {
+#line 2146 "mercury_compile.m"
+                          mercury__io__output_stream_3_p_0(&top_level__mercury_compile__OutputStream_37);
+                        }
+#line 2147 "mercury_compile.m"
+                        {
+#line 2147 "mercury_compile.m"
+                          parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__ModuleName_27, (MR_String) ".java", (MR_Integer) 1, &top_level__mercury_compile__JavaFile_38);
+                        }
+#line 2149 "mercury_compile.m"
+                        {
+#line 2149 "mercury_compile.m"
+                          top_level__mercury_compile__V_94_94 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 2149 "mercury_compile.m"
+                          MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_94_94, 0) = ((MR_Box) (top_level__mercury_compile__JavaFile_38));
+#line 2149 "mercury_compile.m"
+                          MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_94_94, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 2149 "mercury_compile.m"
+                        }
+#line 2149 "mercury_compile.m"
+                        {
+#line 2149 "mercury_compile.m"
+                          backend_libs__compile_target_code__compile_java_files_6_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__OutputStream_37, top_level__mercury_compile__V_94_94, &top_level__mercury_compile__Succeeded_34);
+                        }
+#line 2151 "mercury_compile.m"
+                        {
+#line 2151 "mercury_compile.m"
+                          parse_tree__module_cmds__maybe_set_exit_status_3_p_0(top_level__mercury_compile__Succeeded_34);
+                        }
+#line 2145 "mercury_compile.m"
+                      }
+#line 2144 "mercury_compile.m"
+                      break;
+#line 2144 "mercury_compile.m"
+                  }
+#line 2137 "mercury_compile.m"
+                  break;
+#line 2137 "mercury_compile.m"
+                case (MR_Integer) 0:
+#line 2136 "mercury_compile.m"
+                  top_level__mercury_compile__Succeeded_34 = top_level__mercury_compile__TargetCodeSucceeded_36;
+#line 2137 "mercury_compile.m"
+                  break;
+#line 2137 "mercury_compile.m"
+              }
+#line 2154 "mercury_compile.m"
+              *top_level__mercury_compile__ExtraObjFiles_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 2131 "mercury_compile.m"
+              top_level__mercury_compile__STATE_VARIABLE_HLDS_72_72 = top_level__mercury_compile__STATE_VARIABLE_HLDS_60_60;
+#line 2131 "mercury_compile.m"
+            }
+#line 2130 "mercury_compile.m"
+            break;
+#line 2130 "mercury_compile.m"
+        }
+#line 2215 "mercury_compile.m"
+#line 2215 "mercury_compile.m"
+        switch (top_level__mercury_compile__Succeeded_34) {
+#line 2215 "mercury_compile.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 2215 "mercury_compile.m"
+          case (MR_Integer) 0:
+#line 2216 "mercury_compile.m"
+            {
+#line 2216 "mercury_compile.m"
+            }
+#line 2215 "mercury_compile.m"
+            break;
+#line 2215 "mercury_compile.m"
+          case (MR_Integer) 1:
+#line 2210 "mercury_compile.m"
+            {
+#line 2210 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__TimestampFiles_49;
+#line 2210 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_103_103;
+#line 2213 "mercury_compile.m"
+              void MR_CALL (* top_level__mercury_compile__func_0)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *);
+#line 2213 "mercury_compile.m"
+              MR_Box top_level__mercury_compile__conv2_TimestampFiles_49;
+#line 2213 "mercury_compile.m"
+              MR_Box top_level__mercury_compile__conv1_STATE_VARIABLE_IO_102_102;
+#line 2214 "mercury_compile.m"
+              MR_Box top_level__mercury_compile__conv3_STATE_VARIABLE_IO_55;
+
+#line 2211 "mercury_compile.m"
+              {
+#line 2211 "mercury_compile.m"
+                recompilation__usage__write_usage_file_5_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_72_72, top_level__mercury_compile__NestedSubModules_15, top_level__mercury_compile__MaybeTimestampMap_17);
+              }
+#line 2213 "mercury_compile.m"
+              top_level__mercury_compile__func_0 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__FindTimestampFiles_16, (MR_Integer) 1)));
+#line 2213 "mercury_compile.m"
+              {
+#line 2213 "mercury_compile.m"
+                top_level__mercury_compile__func_0(((MR_Box) top_level__mercury_compile__FindTimestampFiles_16), ((MR_Box) (top_level__mercury_compile__ModuleName_27)), &top_level__mercury_compile__conv2_TimestampFiles_49, ((MR_Box) ((MR_Integer) 0)), &top_level__mercury_compile__conv1_STATE_VARIABLE_IO_102_102);
+              }
+#line 2213 "mercury_compile.m"
+              top_level__mercury_compile__TimestampFiles_49 = ((MR_Word) top_level__mercury_compile__conv2_TimestampFiles_49);
+#line 2214 "mercury_compile.m"
+              {
+#line 2214 "mercury_compile.m"
+                top_level__mercury_compile__V_103_103 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 2214 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_103_103, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_13[0]));
+#line 2214 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_103_103, 1) = ((MR_Box) (top_level__mercury_compile__after_front_end_passes_12_p_0_1));
+#line 2214 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_103_103, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 2214 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_103_103, 3) = ((MR_Box) (top_level__mercury_compile__Globals_13));
+#line 2214 "mercury_compile.m"
+              }
+#line 2214 "mercury_compile.m"
+              {
+#line 2214 "mercury_compile.m"
+                mercury__list__foldl_4_p_2((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, top_level__mercury_compile__V_103_103, top_level__mercury_compile__TimestampFiles_49, ((MR_Box) ((MR_Integer) 0)), &top_level__mercury_compile__conv3_STATE_VARIABLE_IO_55);
+              }
+#line 2210 "mercury_compile.m"
+            }
+#line 2215 "mercury_compile.m"
+            break;
+#line 2215 "mercury_compile.m"
+        }
+#line 2208 "mercury_compile.m"
+      }
+#line 2219 "mercury_compile.m"
+    else
+#line 2222 "mercury_compile.m"
+      {
+#line 2222 "mercury_compile.m"
+        MR_Integer top_level__mercury_compile__ExitStatus_50;
+
+#line 2222 "mercury_compile.m"
+        {
+#line 2222 "mercury_compile.m"
+          mercury__io__get_exit_status_3_p_0(&top_level__mercury_compile__ExitStatus_50);
+        }
+#line 2223 "mercury_compile.m"
+        top_level__mercury_compile__succeeded = (top_level__mercury_compile__ExitStatus_50 == (MR_Integer) 0);
+#line 2225 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 2224 "mercury_compile.m"
+          {
+#line 2224 "mercury_compile.m"
+            {
+#line 2224 "mercury_compile.m"
+              mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+            }
+#line 2224 "mercury_compile.m"
+          }
+#line 2225 "mercury_compile.m"
+        else
+#line 2225 "mercury_compile.m"
+          {
+#line 2225 "mercury_compile.m"
+          }
+#line 2228 "mercury_compile.m"
+        *top_level__mercury_compile__ExtraObjFiles_20 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 2222 "mercury_compile.m"
+        *top_level__mercury_compile__STATE_VARIABLE_DumpInfo_53 = top_level__mercury_compile__STATE_VARIABLE_DumpInfo_61_61;
+#line 2222 "mercury_compile.m"
+      }
+#line 2100 "mercury_compile.m"
+  }
+#line 2091 "mercury_compile.m"
+}
+
+#line 2078 "mercury_compile.m"
+static MR_Box MR_CALL 
+top_level__mercury_compile__prepare_for_intermodule_analysis_7_p_0_1(
+#line 2078 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 2078 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1)
+#line 2078 "mercury_compile.m"
+{
+#line 2078 "mercury_compile.m"
+  {
+#line 2078 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__wrapper_arg_2;
+#line 2078 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 2078 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv0_HeadVar__2_2;
+
+#line 2078 "mercury_compile.m"
+    {
+#line 2078 "mercury_compile.m"
+      top_level__mercury_compile__conv0_HeadVar__2_2 = mdbcomp__sym_name__string_to_sym_name_1_f_0(((MR_String) top_level__mercury_compile__wrapper_arg_1));
+    }
+#line 2078 "mercury_compile.m"
+    top_level__mercury_compile__wrapper_arg_2 = ((MR_Box) (top_level__mercury_compile__conv0_HeadVar__2_2));
+#line 2078 "mercury_compile.m"
+    return top_level__mercury_compile__wrapper_arg_2;
+#line 2078 "mercury_compile.m"
+  }
+#line 2078 "mercury_compile.m"
+}
+
+#line 2067 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__prepare_for_intermodule_analysis_7_p_0(
+#line 2067 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 2067 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_9,
+#line 2067 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Stats_10,
+#line 2067 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_0_19,
+#line 2067 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_HLDS_20)
+#line 2067 "mercury_compile.m"
+{
+#line 2070 "mercury_compile.m"
+  {
+#line 2070 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 2070 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__TypeCtorInfo_33_33;
+#line 2070 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ModuleNames_13;
+#line 2070 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__LocalModulesList_14;
+#line 2070 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__SymNames_15;
+#line 2070 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__LocalModuleNames_16;
+#line 2070 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__AnalysisInfo0_17;
+#line 2070 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__AnalysisInfo_18;
+
+#line 2071 "mercury_compile.m"
+    {
+#line 2071 "mercury_compile.m"
+      libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_9, (MR_String) "% Preparing for intermodule analysis...\n");
+    }
+#line 2074 "mercury_compile.m"
+    {
+#line 2074 "mercury_compile.m"
+      hlds__hlds_module__module_info_get_all_deps_2_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_0_19, &top_level__mercury_compile__ModuleNames_13);
+    }
+#line 2076 "mercury_compile.m"
+    {
+#line 2076 "mercury_compile.m"
+      libs__globals__lookup_accumulating_option_3_p_0(top_level__mercury_compile__Globals_8, (MR_Integer) 653, &top_level__mercury_compile__LocalModulesList_14);
+    }
+#line 4223 "top_level.mercury_compile.c"
+    top_level__mercury_compile__TypeCtorInfo_33_33 = (MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0;
+#line 2078 "mercury_compile.m"
+    {
+#line 2078 "mercury_compile.m"
+      top_level__mercury_compile__SymNames_15 = mercury__list__map_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, top_level__mercury_compile__TypeCtorInfo_33_33, (MR_Word) &top_level__mercury_compile_scalar_common_7[6], top_level__mercury_compile__LocalModulesList_14);
+    }
+#line 2079 "mercury_compile.m"
+    {
+#line 2079 "mercury_compile.m"
+      top_level__mercury_compile__LocalModuleNames_16 = mercury__set__from_list_1_f_0(top_level__mercury_compile__TypeCtorInfo_33_33, top_level__mercury_compile__SymNames_15);
+    }
+#line 2081 "mercury_compile.m"
+    {
+#line 2081 "mercury_compile.m"
+      hlds__hlds_module__module_info_get_analysis_info_2_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_0_19, &top_level__mercury_compile__AnalysisInfo0_17);
+    }
+#line 2082 "mercury_compile.m"
+    {
+#line 2082 "mercury_compile.m"
+      analysis__prepare_intermodule_analysis_7_p_0(top_level__mercury_compile__Globals_8, top_level__mercury_compile__ModuleNames_13, top_level__mercury_compile__LocalModuleNames_16, top_level__mercury_compile__AnalysisInfo0_17, &top_level__mercury_compile__AnalysisInfo_18);
+    }
+#line 2084 "mercury_compile.m"
+    {
+#line 2084 "mercury_compile.m"
+      hlds__hlds_module__module_info_set_analysis_info_3_p_0(top_level__mercury_compile__AnalysisInfo_18, top_level__mercury_compile__STATE_VARIABLE_HLDS_0_19, top_level__mercury_compile__STATE_VARIABLE_HLDS_20);
+    }
+#line 2086 "mercury_compile.m"
+    {
+#line 2086 "mercury_compile.m"
+      libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_9, (MR_String) "% done.\n");
+    }
+#line 2087 "mercury_compile.m"
+    {
+#line 2087 "mercury_compile.m"
+      libs__file_util__maybe_report_stats_3_p_0(top_level__mercury_compile__Stats_10);
+    }
+#line 2070 "mercury_compile.m"
+  }
+#line 2067 "mercury_compile.m"
+}
+
+#line 2078 "mercury_compile.m"
+static MR_Box MR_CALL 
+top_level__mercury_compile__maybe_prepare_for_intermodule_analysis_7_p_0_1(
+#line 2078 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 2078 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1)
+#line 2078 "mercury_compile.m"
+{
+#line 2078 "mercury_compile.m"
+  {
+#line 2078 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__wrapper_arg_2;
+#line 2078 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 2078 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv0_HeadVar__2_2;
+
+#line 2078 "mercury_compile.m"
+    {
+#line 2078 "mercury_compile.m"
+      top_level__mercury_compile__conv0_HeadVar__2_2 = mdbcomp__sym_name__string_to_sym_name_1_f_0(((MR_String) top_level__mercury_compile__wrapper_arg_1));
+    }
+#line 2078 "mercury_compile.m"
+    top_level__mercury_compile__wrapper_arg_2 = ((MR_Box) (top_level__mercury_compile__conv0_HeadVar__2_2));
+#line 2078 "mercury_compile.m"
+    return top_level__mercury_compile__wrapper_arg_2;
+#line 2078 "mercury_compile.m"
+  }
+#line 2078 "mercury_compile.m"
+}
+
+#line 2054 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_prepare_for_intermodule_analysis_7_p_0(
+#line 2054 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 2054 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_9,
+#line 2054 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Stats_10,
+#line 2054 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_0_14,
+#line 2054 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_HLDS_15)
+#line 2054 "mercury_compile.m"
+{
+#line 2057 "mercury_compile.m"
+  {
+#line 2057 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 2057 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__IntermodAnalysis_13;
+
+#line 2058 "mercury_compile.m"
+    {
+#line 2058 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_8, (MR_Integer) 325, &top_level__mercury_compile__IntermodAnalysis_13);
+    }
+#line 2063 "mercury_compile.m"
+#line 2063 "mercury_compile.m"
+    switch (top_level__mercury_compile__IntermodAnalysis_13) {
+#line 2063 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 2063 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 2064 "mercury_compile.m"
+        *top_level__mercury_compile__STATE_VARIABLE_HLDS_15 = top_level__mercury_compile__STATE_VARIABLE_HLDS_0_14;
+#line 2063 "mercury_compile.m"
+        break;
+#line 2063 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 2070 "mercury_compile.m"
+        {
+#line 2070 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__TypeCtorInfo_33_46;
+#line 2070 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__ModuleNames_30;
+#line 2070 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__LocalModulesList_31;
+#line 2070 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__SymNames_32;
+#line 2070 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__LocalModuleNames_33;
+#line 2070 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__AnalysisInfo0_34;
+#line 2070 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__AnalysisInfo_35;
+
+#line 2071 "mercury_compile.m"
+          {
+#line 2071 "mercury_compile.m"
+            libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_9, (MR_String) "% Preparing for intermodule analysis...\n");
+          }
+#line 2074 "mercury_compile.m"
+          {
+#line 2074 "mercury_compile.m"
+            hlds__hlds_module__module_info_get_all_deps_2_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_0_14, &top_level__mercury_compile__ModuleNames_30);
+          }
+#line 2076 "mercury_compile.m"
+          {
+#line 2076 "mercury_compile.m"
+            libs__globals__lookup_accumulating_option_3_p_0(top_level__mercury_compile__Globals_8, (MR_Integer) 653, &top_level__mercury_compile__LocalModulesList_31);
+          }
+#line 4369 "top_level.mercury_compile.c"
+          top_level__mercury_compile__TypeCtorInfo_33_46 = (MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0;
+#line 2078 "mercury_compile.m"
+          {
+#line 2078 "mercury_compile.m"
+            top_level__mercury_compile__SymNames_32 = mercury__list__map_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, top_level__mercury_compile__TypeCtorInfo_33_46, (MR_Word) &top_level__mercury_compile_scalar_common_7[5], top_level__mercury_compile__LocalModulesList_31);
+          }
+#line 2079 "mercury_compile.m"
+          {
+#line 2079 "mercury_compile.m"
+            top_level__mercury_compile__LocalModuleNames_33 = mercury__set__from_list_1_f_0(top_level__mercury_compile__TypeCtorInfo_33_46, top_level__mercury_compile__SymNames_32);
+          }
+#line 2081 "mercury_compile.m"
+          {
+#line 2081 "mercury_compile.m"
+            hlds__hlds_module__module_info_get_analysis_info_2_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_0_14, &top_level__mercury_compile__AnalysisInfo0_34);
+          }
+#line 2082 "mercury_compile.m"
+          {
+#line 2082 "mercury_compile.m"
+            analysis__prepare_intermodule_analysis_7_p_0(top_level__mercury_compile__Globals_8, top_level__mercury_compile__ModuleNames_30, top_level__mercury_compile__LocalModuleNames_33, top_level__mercury_compile__AnalysisInfo0_34, &top_level__mercury_compile__AnalysisInfo_35);
+          }
+#line 2084 "mercury_compile.m"
+          {
+#line 2084 "mercury_compile.m"
+            hlds__hlds_module__module_info_set_analysis_info_3_p_0(top_level__mercury_compile__AnalysisInfo_35, top_level__mercury_compile__STATE_VARIABLE_HLDS_0_14, top_level__mercury_compile__STATE_VARIABLE_HLDS_15);
+          }
+#line 2086 "mercury_compile.m"
+          {
+#line 2086 "mercury_compile.m"
+            libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_9, (MR_String) "% done.\n");
+          }
+#line 2087 "mercury_compile.m"
+          {
+#line 2087 "mercury_compile.m"
+            libs__file_util__maybe_report_stats_3_p_0(top_level__mercury_compile__Stats_10);
+          }
+#line 2070 "mercury_compile.m"
+        }
+#line 2063 "mercury_compile.m"
+        break;
+#line 2063 "mercury_compile.m"
+    }
+#line 2057 "mercury_compile.m"
+  }
+#line 2054 "mercury_compile.m"
+}
+
+#line 2021 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_write_dependency_graph_6_p_0(
+#line 2021 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_7,
+#line 2021 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Stats_8,
+#line 2021 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_0_21,
+#line 2021 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_HLDS_22)
+#line 2021 "mercury_compile.m"
+{
+#line 2024 "mercury_compile.m"
+  {
+#line 2024 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 2024 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Globals_11;
+#line 2024 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ShowDepGraph_12;
+
+#line 2025 "mercury_compile.m"
+    {
+#line 2025 "mercury_compile.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_0_21, &top_level__mercury_compile__Globals_11);
+    }
+#line 2026 "mercury_compile.m"
+    {
+#line 2026 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_11, (MR_Integer) 143, &top_level__mercury_compile__ShowDepGraph_12);
+    }
+#line 2048 "mercury_compile.m"
+#line 2048 "mercury_compile.m"
+    switch (top_level__mercury_compile__ShowDepGraph_12) {
+#line 2048 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 2048 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 2049 "mercury_compile.m"
+        *top_level__mercury_compile__STATE_VARIABLE_HLDS_22 = top_level__mercury_compile__STATE_VARIABLE_HLDS_0_21;
+#line 2048 "mercury_compile.m"
+        break;
+#line 2048 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 2028 "mercury_compile.m"
+        {
+#line 2028 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__ModuleName_13;
+#line 2028 "mercury_compile.m"
+          MR_String top_level__mercury_compile__FileName_14;
+#line 2028 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__Res_15;
+
+#line 2029 "mercury_compile.m"
+          {
+#line 2029 "mercury_compile.m"
+            libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_7, (MR_String) "% Writing dependency graph...");
+          }
+#line 2030 "mercury_compile.m"
+          {
+#line 2030 "mercury_compile.m"
+            hlds__hlds_module__module_info_get_name_2_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_0_21, &top_level__mercury_compile__ModuleName_13);
+          }
+#line 2031 "mercury_compile.m"
+          {
+#line 2031 "mercury_compile.m"
+            parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_11, top_level__mercury_compile__ModuleName_13, (MR_String) ".dependency_graph", (MR_Integer) 0, &top_level__mercury_compile__FileName_14);
+          }
+#line 2033 "mercury_compile.m"
+          {
+#line 2033 "mercury_compile.m"
+            mercury__io__open_output_4_p_0(top_level__mercury_compile__FileName_14, &top_level__mercury_compile__Res_15);
+          }
+#line 2041 "mercury_compile.m"
+          if (((MR_tag((MR_Word) top_level__mercury_compile__Res_15)) == (MR_mktag((MR_Integer) 1))))
+#line 2042 "mercury_compile.m"
+            {
+#line 2042 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__IOError_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__Res_15, (MR_Integer) 0)));
+#line 2042 "mercury_compile.m"
+              MR_String top_level__mercury_compile__ErrorMsg_20;
+#line 2042 "mercury_compile.m"
+              MR_String top_level__mercury_compile__V_33_33;
+
+#line 2044 "mercury_compile.m"
+              {
+#line 2044 "mercury_compile.m"
+                top_level__mercury_compile__V_33_33 = mercury__io__error_message_1_f_0(top_level__mercury_compile__IOError_19);
+              }
+#line 2043 "mercury_compile.m"
+              {
+#line 2043 "mercury_compile.m"
+                top_level__mercury_compile__ErrorMsg_20 = mercury__string__f_43_43_2_f_0((MR_String) "unable to write dependency graph: ", top_level__mercury_compile__V_33_33);
+              }
+#line 2045 "mercury_compile.m"
+              {
+#line 2045 "mercury_compile.m"
+                libs__file_util__report_error_3_p_0(top_level__mercury_compile__ErrorMsg_20);
+              }
+#line 2042 "mercury_compile.m"
+              *top_level__mercury_compile__STATE_VARIABLE_HLDS_22 = top_level__mercury_compile__STATE_VARIABLE_HLDS_0_21;
+#line 2042 "mercury_compile.m"
+            }
+#line 2041 "mercury_compile.m"
+          else
+#line 2035 "mercury_compile.m"
+            {
+#line 2035 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__FileStream_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Res_15, (MR_Integer) 0)));
+#line 2035 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__OutputStream_17;
+#line 2038 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_18_18;
+
+#line 2036 "mercury_compile.m"
+              {
+#line 2036 "mercury_compile.m"
+                mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__FileStream_16, &top_level__mercury_compile__OutputStream_17);
+              }
+#line 2037 "mercury_compile.m"
+              {
+#line 2037 "mercury_compile.m"
+                transform_hlds__dependency_graph__write_dependency_graph_4_p_0(top_level__mercury_compile__STATE_VARIABLE_HLDS_0_21, top_level__mercury_compile__STATE_VARIABLE_HLDS_22);
+              }
+#line 2038 "mercury_compile.m"
+              {
+#line 2038 "mercury_compile.m"
+                mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__OutputStream_17, &top_level__mercury_compile__V_18_18);
+              }
+#line 2039 "mercury_compile.m"
+              {
+#line 2039 "mercury_compile.m"
+                mercury__io__close_output_3_p_0(top_level__mercury_compile__FileStream_16);
+              }
+#line 2040 "mercury_compile.m"
+              {
+#line 2040 "mercury_compile.m"
+                libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_7, (MR_String) " done.\n");
+              }
+#line 2035 "mercury_compile.m"
+            }
+#line 2047 "mercury_compile.m"
+          {
+#line 2047 "mercury_compile.m"
+            libs__file_util__maybe_report_stats_3_p_0(top_level__mercury_compile__Stats_8);
+          }
+#line 2028 "mercury_compile.m"
+        }
+#line 2048 "mercury_compile.m"
+        break;
+#line 2048 "mercury_compile.m"
+    }
+#line 2024 "mercury_compile.m"
+  }
+#line 2021 "mercury_compile.m"
+}
+
+#line 1990 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_write_definitions_5_p_0(
+#line 1990 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_6,
+#line 1990 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Stats_7,
+#line 1990 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HLDS_8)
+#line 1990 "mercury_compile.m"
+{
+#line 1993 "mercury_compile.m"
+  {
+#line 1993 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1993 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Globals_10;
+#line 1993 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ShowDefns_11;
+
+#line 1994 "mercury_compile.m"
+    {
+#line 1994 "mercury_compile.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(top_level__mercury_compile__HLDS_8, &top_level__mercury_compile__Globals_10);
+    }
+#line 1995 "mercury_compile.m"
+    {
+#line 1995 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_10, (MR_Integer) 142, &top_level__mercury_compile__ShowDefns_11);
+    }
+#line 2015 "mercury_compile.m"
+#line 2015 "mercury_compile.m"
+    switch (top_level__mercury_compile__ShowDefns_11) {
+#line 2015 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 2015 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 2016 "mercury_compile.m"
+        {
+#line 2016 "mercury_compile.m"
+        }
+#line 2015 "mercury_compile.m"
+        break;
+#line 2015 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 1997 "mercury_compile.m"
+        {
+#line 1997 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__ModuleName_12;
+#line 1997 "mercury_compile.m"
+          MR_String top_level__mercury_compile__FileName_13;
+#line 1997 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__Res_14;
+
+#line 1998 "mercury_compile.m"
+          {
+#line 1998 "mercury_compile.m"
+            libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_6, (MR_String) "% Writing definitions...");
+          }
+#line 1999 "mercury_compile.m"
+          {
+#line 1999 "mercury_compile.m"
+            hlds__hlds_module__module_info_get_name_2_p_0(top_level__mercury_compile__HLDS_8, &top_level__mercury_compile__ModuleName_12);
+          }
+#line 2000 "mercury_compile.m"
+          {
+#line 2000 "mercury_compile.m"
+            parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_10, top_level__mercury_compile__ModuleName_12, (MR_String) ".defns", (MR_Integer) 0, &top_level__mercury_compile__FileName_13);
+          }
+#line 2002 "mercury_compile.m"
+          {
+#line 2002 "mercury_compile.m"
+            mercury__io__open_output_4_p_0(top_level__mercury_compile__FileName_13, &top_level__mercury_compile__Res_14);
+          }
+#line 2008 "mercury_compile.m"
+          if (((MR_tag((MR_Word) top_level__mercury_compile__Res_14)) == (MR_mktag((MR_Integer) 1))))
+#line 2009 "mercury_compile.m"
+            {
+#line 2009 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__IOError_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__Res_14, (MR_Integer) 0)));
+#line 2009 "mercury_compile.m"
+              MR_String top_level__mercury_compile__ErrorMsg_17;
+#line 2009 "mercury_compile.m"
+              MR_String top_level__mercury_compile__V_28_28;
+
+#line 2011 "mercury_compile.m"
+              {
+#line 2011 "mercury_compile.m"
+                top_level__mercury_compile__V_28_28 = mercury__io__error_message_1_f_0(top_level__mercury_compile__IOError_16);
+              }
+#line 2010 "mercury_compile.m"
+              {
+#line 2010 "mercury_compile.m"
+                top_level__mercury_compile__ErrorMsg_17 = mercury__string__f_43_43_2_f_0((MR_String) "unable to write definitions: ", top_level__mercury_compile__V_28_28);
+              }
+#line 2012 "mercury_compile.m"
+              {
+#line 2012 "mercury_compile.m"
+                libs__file_util__report_error_3_p_0(top_level__mercury_compile__ErrorMsg_17);
+              }
+#line 2009 "mercury_compile.m"
+            }
+#line 2008 "mercury_compile.m"
+          else
+#line 2004 "mercury_compile.m"
+            {
+#line 2004 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__FileStream_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Res_14, (MR_Integer) 0)));
+
+#line 2005 "mercury_compile.m"
+              {
+#line 2005 "mercury_compile.m"
+                hlds__hlds_defns__write_hlds_defns_4_p_0(top_level__mercury_compile__FileStream_15, top_level__mercury_compile__HLDS_8);
+              }
+#line 2006 "mercury_compile.m"
+              {
+#line 2006 "mercury_compile.m"
+                mercury__io__close_output_3_p_0(top_level__mercury_compile__FileStream_15);
+              }
+#line 2007 "mercury_compile.m"
+              {
+#line 2007 "mercury_compile.m"
+                libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_6, (MR_String) " done.\n");
+              }
+#line 2004 "mercury_compile.m"
+            }
+#line 2014 "mercury_compile.m"
+          {
+#line 2014 "mercury_compile.m"
+            libs__file_util__maybe_report_stats_3_p_0(top_level__mercury_compile__Stats_7);
+          }
+#line 1997 "mercury_compile.m"
+        }
+#line 2015 "mercury_compile.m"
+        break;
+#line 2015 "mercury_compile.m"
+    }
+#line 1993 "mercury_compile.m"
+  }
+#line 1990 "mercury_compile.m"
+}
+
+#line 1952 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__make_hlds_17_p_0(
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_18,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__AugCompUnit_19,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__EventSet_20,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MQInfo_21,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__TypeEqvMap_22,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__UsedModules_23,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_24,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Stats_25,
+#line 1952 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_HLDS_38,
+#line 1952 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__QualInfo_27,
+#line 1952 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__FoundInvalidType_28,
+#line 1952 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__FoundInvalidInstOrMode_29,
+#line 1952 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__FoundSemanticError_30,
+#line 1952 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_0_39,
+#line 1952 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_Specs_40)
+#line 1952 "mercury_compile.m"
+{
+#line 1961 "mercury_compile.m"
+  {
+#line 1961 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1961 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ModuleName_33;
+#line 1961 "mercury_compile.m"
+    MR_String top_level__mercury_compile__DumpBaseFileName_34;
+#line 1961 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MakeSpecs_35;
+#line 1961 "mercury_compile.m"
+    MR_Integer top_level__mercury_compile__Status_36;
+#line 1961 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__SpecsErrors_37;
+#line 1961 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_43_43;
+#line 1961 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_HLDS_50_50;
+#line 1961 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_51_51;
+
+#line 1962 "mercury_compile.m"
+    {
+#line 1962 "mercury_compile.m"
+      parse_tree__error_util__maybe_write_out_errors_no_module_6_p_0(top_level__mercury_compile__Verbose_24, top_level__mercury_compile__Globals_18, top_level__mercury_compile__STATE_VARIABLE_Specs_0_39, &top_level__mercury_compile__STATE_VARIABLE_Specs_43_43);
+    }
+#line 1963 "mercury_compile.m"
+    {
+#line 1963 "mercury_compile.m"
+      libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_24, (MR_String) "% Converting parse tree to hlds...\n");
+    }
+#line 1964 "mercury_compile.m"
+    {
+#line 1964 "mercury_compile.m"
+      top_level__mercury_compile__ModuleName_33 = parse_tree__prog_item__aug_compilation_unit_project_name_1_f_0(top_level__mercury_compile__AugCompUnit_19);
+    }
+#line 1965 "mercury_compile.m"
+    {
+#line 1965 "mercury_compile.m"
+      parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_18, top_level__mercury_compile__ModuleName_33, (MR_String) ".hlds_dump", (MR_Integer) 0, &top_level__mercury_compile__DumpBaseFileName_34);
+    }
+#line 1967 "mercury_compile.m"
+    {
+#line 1967 "mercury_compile.m"
+      hlds__make_hlds__parse_tree_to_hlds_11_p_0(top_level__mercury_compile__AugCompUnit_19, top_level__mercury_compile__Globals_18, top_level__mercury_compile__DumpBaseFileName_34, top_level__mercury_compile__MQInfo_21, top_level__mercury_compile__TypeEqvMap_22, top_level__mercury_compile__UsedModules_23, top_level__mercury_compile__QualInfo_27, top_level__mercury_compile__FoundInvalidType_28, top_level__mercury_compile__FoundInvalidInstOrMode_29, &top_level__mercury_compile__STATE_VARIABLE_HLDS_50_50, &top_level__mercury_compile__MakeSpecs_35);
+    }
+#line 1970 "mercury_compile.m"
+    {
+#line 1970 "mercury_compile.m"
+      top_level__mercury_compile__STATE_VARIABLE_Specs_51_51 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, top_level__mercury_compile__MakeSpecs_35, top_level__mercury_compile__STATE_VARIABLE_Specs_43_43);
+    }
+#line 1971 "mercury_compile.m"
+    {
+#line 1971 "mercury_compile.m"
+      hlds__hlds_module__module_info_set_event_set_3_p_0(top_level__mercury_compile__EventSet_20, top_level__mercury_compile__STATE_VARIABLE_HLDS_50_50, top_level__mercury_compile__STATE_VARIABLE_HLDS_38);
+    }
+#line 1972 "mercury_compile.m"
+    {
+#line 1972 "mercury_compile.m"
+      mercury__io__get_exit_status_3_p_0(&top_level__mercury_compile__Status_36);
+    }
+#line 1973 "mercury_compile.m"
+    {
+#line 1973 "mercury_compile.m"
+      top_level__mercury_compile__SpecsErrors_37 = parse_tree__error_util__contains_errors_2_f_0(top_level__mercury_compile__Globals_18, top_level__mercury_compile__STATE_VARIABLE_Specs_51_51);
+    }
+#line 1975 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (top_level__mercury_compile__Status_36 == (MR_Integer) 0);
+#line 1975 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = !(top_level__mercury_compile__succeeded);
+#line 1976 "mercury_compile.m"
+    if (!(top_level__mercury_compile__succeeded))
+#line 1976 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = (top_level__mercury_compile__SpecsErrors_37 == (MR_Integer) 1);
+#line 1981 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1979 "mercury_compile.m"
+      {
+#line 1979 "mercury_compile.m"
+        *top_level__mercury_compile__FoundSemanticError_30 = (MR_Integer) 1;
+#line 1980 "mercury_compile.m"
+        {
+#line 1980 "mercury_compile.m"
+          mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+        }
+#line 1979 "mercury_compile.m"
+      }
+#line 1981 "mercury_compile.m"
+    else
+#line 1982 "mercury_compile.m"
+      *top_level__mercury_compile__FoundSemanticError_30 = (MR_Integer) 0;
+#line 1984 "mercury_compile.m"
+    {
+#line 1984 "mercury_compile.m"
+      parse_tree__error_util__maybe_write_out_errors_no_module_6_p_0(top_level__mercury_compile__Verbose_24, top_level__mercury_compile__Globals_18, top_level__mercury_compile__STATE_VARIABLE_Specs_51_51, top_level__mercury_compile__STATE_VARIABLE_Specs_40);
+    }
+#line 1985 "mercury_compile.m"
+    {
+#line 1985 "mercury_compile.m"
+      libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_24, (MR_String) "% done.\n");
+    }
+#line 1986 "mercury_compile.m"
+    {
+#line 1986 "mercury_compile.m"
+      libs__file_util__maybe_report_stats_3_p_0(top_level__mercury_compile__Stats_25);
+    }
+#line 1961 "mercury_compile.m"
+  }
+#line 1952 "mercury_compile.m"
+}
+
+#line 1864 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_grab_optfiles_8_p_0(
+#line 1864 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_9,
+#line 1864 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Imports0_10,
+#line 1864 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Verbose_11,
+#line 1864 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTransOptDeps_12,
+#line 1864 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Imports_13,
+#line 1864 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Error_14)
+#line 1864 "mercury_compile.m"
+{
+#line 1869 "mercury_compile.m"
+  {
+#line 1869 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1869 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__IntermodOpt_16;
+#line 1869 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__UseOptInt_17;
+#line 1869 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MakeOptInt_18;
+#line 1869 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__TransOpt_19;
+#line 1869 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MakeTransOptInt_20;
+#line 1869 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__IntermodAnalysis_21;
+#line 1869 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Imports1_22;
+#line 1869 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Error1_23;
+#line 1869 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Error2_25;
+
+#line 1870 "mercury_compile.m"
+    {
+#line 1870 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_9, (MR_Integer) 320, &top_level__mercury_compile__IntermodOpt_16);
+    }
+#line 1872 "mercury_compile.m"
+    {
+#line 1872 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_9, (MR_Integer) 322, &top_level__mercury_compile__UseOptInt_17);
+    }
+#line 1873 "mercury_compile.m"
+    {
+#line 1873 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_9, (MR_Integer) 86, &top_level__mercury_compile__MakeOptInt_18);
+    }
+#line 1875 "mercury_compile.m"
+    {
+#line 1875 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_9, (MR_Integer) 324, &top_level__mercury_compile__TransOpt_19);
+    }
+#line 1876 "mercury_compile.m"
+    {
+#line 1876 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_9, (MR_Integer) 87, &top_level__mercury_compile__MakeTransOptInt_20);
+    }
+#line 1878 "mercury_compile.m"
+    {
+#line 1878 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_9, (MR_Integer) 325, &top_level__mercury_compile__IntermodAnalysis_21);
+    }
+#line 1881 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (top_level__mercury_compile__UseOptInt_17 == (MR_Integer) 1);
+#line 1882 "mercury_compile.m"
+    if (!(top_level__mercury_compile__succeeded))
+#line 1882 "mercury_compile.m"
+      {
+#line 1882 "mercury_compile.m"
+        top_level__mercury_compile__succeeded = (top_level__mercury_compile__IntermodOpt_16 == (MR_Integer) 1);
+#line 1882 "mercury_compile.m"
+        if (!(top_level__mercury_compile__succeeded))
+#line 1883 "mercury_compile.m"
+          top_level__mercury_compile__succeeded = (top_level__mercury_compile__IntermodAnalysis_21 == (MR_Integer) 1);
+#line 1882 "mercury_compile.m"
+      }
+#line 1884 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1885 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = (top_level__mercury_compile__MakeOptInt_18 == (MR_Integer) 0);
+#line 1891 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1887 "mercury_compile.m"
+      {
+#line 1887 "mercury_compile.m"
+        {
+#line 1887 "mercury_compile.m"
+          libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_11, (MR_String) "% Reading .opt files...\n");
+        }
+#line 1888 "mercury_compile.m"
+        {
+#line 1888 "mercury_compile.m"
+          libs__file_util__maybe_flush_output_3_p_0(top_level__mercury_compile__Verbose_11);
+        }
+#line 1889 "mercury_compile.m"
+        {
+#line 1889 "mercury_compile.m"
+          parse_tree__modules__grab_opt_files_6_p_0(top_level__mercury_compile__Globals_9, top_level__mercury_compile__Imports0_10, &top_level__mercury_compile__Imports1_22, &top_level__mercury_compile__Error1_23);
+        }
+#line 1890 "mercury_compile.m"
+        {
+#line 1890 "mercury_compile.m"
+          libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_11, (MR_String) "% Done.\n");
+        }
+#line 1887 "mercury_compile.m"
+      }
+#line 1891 "mercury_compile.m"
+    else
+#line 1892 "mercury_compile.m"
+      {
+#line 1892 "mercury_compile.m"
+        top_level__mercury_compile__Imports1_22 = top_level__mercury_compile__Imports0_10;
+#line 1893 "mercury_compile.m"
+        top_level__mercury_compile__Error1_23 = (MR_Integer) 0;
+#line 1892 "mercury_compile.m"
+      }
+#line 1895 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (top_level__mercury_compile__MakeTransOptInt_20 == (MR_Integer) 1);
+#line 1924 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1902 "mercury_compile.m"
+      if ((top_level__mercury_compile__MaybeTransOptDeps_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1903 "mercury_compile.m"
+        {
+#line 1903 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__ModuleName_26;
+#line 1903 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__WarnNoTransOptDeps_27;
+
+#line 1904 "mercury_compile.m"
+          *top_level__mercury_compile__Imports_13 = top_level__mercury_compile__Imports1_22;
+#line 1905 "mercury_compile.m"
+          top_level__mercury_compile__Error2_25 = (MR_Integer) 0;
+#line 1906 "mercury_compile.m"
+          {
+#line 1906 "mercury_compile.m"
+            parse_tree__module_imports__module_and_imports_get_module_name_2_p_0(*top_level__mercury_compile__Imports_13, &top_level__mercury_compile__ModuleName_26);
+          }
+#line 1907 "mercury_compile.m"
+          {
+#line 1907 "mercury_compile.m"
+            libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_9, (MR_Integer) 14, &top_level__mercury_compile__WarnNoTransOptDeps_27);
+          }
+#line 1920 "mercury_compile.m"
+#line 1920 "mercury_compile.m"
+          switch (top_level__mercury_compile__WarnNoTransOptDeps_27) {
+#line 1920 "mercury_compile.m"
+            default: /*NOTREACHED*/ MR_assert(0);
+#line 1920 "mercury_compile.m"
+            case (MR_Integer) 0:
+#line 1921 "mercury_compile.m"
+              {
+#line 1921 "mercury_compile.m"
+              }
+#line 1920 "mercury_compile.m"
+              break;
+#line 1920 "mercury_compile.m"
+            case (MR_Integer) 1:
+#line 1910 "mercury_compile.m"
+              {
+#line 1910 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__Pieces_28;
+#line 1910 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__Msg_29;
+#line 1910 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__Spec_30;
+#line 1910 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_52_52;
+#line 1910 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_55_55;
+#line 1910 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_56_56;
+#line 1910 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_71_71;
+#line 1910 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_72_72;
+#line 1910 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_76_76;
+#line 1918 "mercury_compile.m"
+                MR_Integer top_level__mercury_compile___NumWarnings_31;
+#line 1918 "mercury_compile.m"
+                MR_Integer top_level__mercury_compile___NumErrors_32;
+
+#line 1912 "mercury_compile.m"
+                {
+#line 1912 "mercury_compile.m"
+                  top_level__mercury_compile__V_56_56 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1912 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(3), top_level__mercury_compile__V_56_56, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+#line 1912 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(3), top_level__mercury_compile__V_56_56, 1) = ((MR_Box) (top_level__mercury_compile__ModuleName_26));
+#line 1912 "mercury_compile.m"
+                }
+#line 1912 "mercury_compile.m"
+                {
+#line 1912 "mercury_compile.m"
+                  top_level__mercury_compile__V_55_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1912 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_55_55, 0) = ((MR_Box) (top_level__mercury_compile__V_56_56));
+#line 1912 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_55_55, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[26])));
+#line 1912 "mercury_compile.m"
+                }
+#line 1912 "mercury_compile.m"
+                {
+#line 1912 "mercury_compile.m"
+                  top_level__mercury_compile__V_52_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1912 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_52_52, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[36])));
+#line 1912 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_52_52, 1) = ((MR_Box) (top_level__mercury_compile__V_55_55));
+#line 1912 "mercury_compile.m"
+                }
+#line 1911 "mercury_compile.m"
+                {
+#line 1911 "mercury_compile.m"
+                  top_level__mercury_compile__Pieces_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1911 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__Pieces_28, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[35])));
+#line 1911 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__Pieces_28, 1) = ((MR_Box) (top_level__mercury_compile__V_52_52));
+#line 1911 "mercury_compile.m"
+                }
+#line 1915 "mercury_compile.m"
+                {
+#line 1915 "mercury_compile.m"
+                  top_level__mercury_compile__V_72_72 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1915 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_72_72, 0) = ((MR_Box) (top_level__mercury_compile__Pieces_28));
+#line 1915 "mercury_compile.m"
+                }
+#line 1915 "mercury_compile.m"
+                {
+#line 1915 "mercury_compile.m"
+                  top_level__mercury_compile__V_71_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1915 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_71_71, 0) = ((MR_Box) (top_level__mercury_compile__V_72_72));
+#line 1915 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_71_71, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1915 "mercury_compile.m"
+                }
+#line 1914 "mercury_compile.m"
+                {
+#line 1914 "mercury_compile.m"
+                  top_level__mercury_compile__Msg_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+#line 1914 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__Msg_29, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1914 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__Msg_29, 1) = ((MR_Box) ((MR_Integer) 1));
+#line 1914 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__Msg_29, 2) = ((MR_Box) ((MR_Integer) 0));
+#line 1914 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__Msg_29, 3) = ((MR_Box) (top_level__mercury_compile__V_71_71));
+#line 1914 "mercury_compile.m"
+                }
+#line 1916 "mercury_compile.m"
+                {
+#line 1916 "mercury_compile.m"
+                  top_level__mercury_compile__V_76_76 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1916 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_76_76, 0) = ((MR_Box) (top_level__mercury_compile__Msg_29));
+#line 1916 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_76_76, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1916 "mercury_compile.m"
+                }
+#line 1916 "mercury_compile.m"
+                {
+#line 1916 "mercury_compile.m"
+                  top_level__mercury_compile__Spec_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1916 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(0), top_level__mercury_compile__Spec_30, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+#line 1916 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(0), top_level__mercury_compile__Spec_30, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+#line 1916 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(0), top_level__mercury_compile__Spec_30, 2) = ((MR_Box) (top_level__mercury_compile__V_76_76));
+#line 1916 "mercury_compile.m"
+                }
+#line 1918 "mercury_compile.m"
+                {
+#line 1918 "mercury_compile.m"
+                  parse_tree__error_util__write_error_spec_8_p_0(top_level__mercury_compile__Spec_30, top_level__mercury_compile__Globals_9, (MR_Integer) 0, &top_level__mercury_compile___NumWarnings_31, (MR_Integer) 0, &top_level__mercury_compile___NumErrors_32);
+                }
+#line 1910 "mercury_compile.m"
+              }
+#line 1920 "mercury_compile.m"
+              break;
+#line 1920 "mercury_compile.m"
+          }
+#line 1903 "mercury_compile.m"
+        }
+#line 1902 "mercury_compile.m"
+      else
+#line 1897 "mercury_compile.m"
+        {
+#line 1897 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__TransOptDeps_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__MaybeTransOptDeps_12, (MR_Integer) 0)));
+
+#line 1900 "mercury_compile.m"
+          {
+#line 1900 "mercury_compile.m"
+            parse_tree__modules__grab_trans_opt_files_7_p_0(top_level__mercury_compile__Globals_9, top_level__mercury_compile__TransOptDeps_24, top_level__mercury_compile__Imports1_22, top_level__mercury_compile__Imports_13, &top_level__mercury_compile__Error2_25);
+          }
+#line 1897 "mercury_compile.m"
+        }
+#line 1924 "mercury_compile.m"
+    else
+#line 1930 "mercury_compile.m"
+      {
+#line 1924 "mercury_compile.m"
+        top_level__mercury_compile__succeeded = (top_level__mercury_compile__MakeOptInt_18 == (MR_Integer) 1);
+#line 1930 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 1928 "mercury_compile.m"
+          {
+#line 1928 "mercury_compile.m"
+            *top_level__mercury_compile__Imports_13 = top_level__mercury_compile__Imports1_22;
+#line 1929 "mercury_compile.m"
+            top_level__mercury_compile__Error2_25 = (MR_Integer) 0;
+#line 1928 "mercury_compile.m"
+          }
+#line 1930 "mercury_compile.m"
+        else
+#line 1942 "mercury_compile.m"
+#line 1942 "mercury_compile.m"
+          switch (top_level__mercury_compile__TransOpt_19) {
+#line 1942 "mercury_compile.m"
+            default: /*NOTREACHED*/ MR_assert(0);
+#line 1942 "mercury_compile.m"
+            case (MR_Integer) 0:
+#line 1943 "mercury_compile.m"
+              {
+#line 1944 "mercury_compile.m"
+                *top_level__mercury_compile__Imports_13 = top_level__mercury_compile__Imports1_22;
+#line 1945 "mercury_compile.m"
+                top_level__mercury_compile__Error2_25 = (MR_Integer) 0;
+#line 1943 "mercury_compile.m"
+              }
+#line 1942 "mercury_compile.m"
+              break;
+#line 1942 "mercury_compile.m"
+            case (MR_Integer) 1:
+#line 1932 "mercury_compile.m"
+              {
+#line 1932 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__TypeCtorInfo_168_168 = (MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0;
+#line 1932 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__TransOptFiles_33;
+#line 1932 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__TransOptFilesList_34;
+#line 1932 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_82_82;
+#line 1932 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 4)));
+#line 1932 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_84_84;
+#line 1932 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_86_86;
+#line 1932 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_94_94 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 5)));
+#line 1932 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_95_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 6)));
+#line 1937 "mercury_compile.m"
+                MR_String top_level__mercury_compile__V_90_90 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 0)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_91_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 1)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_92_92 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 2)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_93_93 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 3)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_96_96 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 7)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_97_97 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 8)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_98_98 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 9)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_99_99 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 10)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_100_100 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 11)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_101_101 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 12)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_102_102 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 13)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_103_103 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 14)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_104_104 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 15)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_105_105 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 16)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_106_106 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 17)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_107_107 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 18)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_108_108 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 19)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_109_109 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 20)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_110_110 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 21)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_111_111 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 22)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_112_112 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 23)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_113_113 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 24)));
+#line 1937 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_114_114 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 25)));
+#line 1937 "mercury_compile.m"
+                MR_String top_level__mercury_compile__V_115_115 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Imports0_10, (MR_Integer) 26)));
+
+#line 1938 "mercury_compile.m"
+                {
+#line 1938 "mercury_compile.m"
+                  top_level__mercury_compile__V_86_86 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1938 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_86_86, 0) = ((MR_Box) (top_level__mercury_compile__V_95_95));
+#line 1938 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_86_86, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1938 "mercury_compile.m"
+                }
+#line 1938 "mercury_compile.m"
+                {
+#line 1938 "mercury_compile.m"
+                  top_level__mercury_compile__V_84_84 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1938 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_84_84, 0) = ((MR_Box) (top_level__mercury_compile__V_94_94));
+#line 1938 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_84_84, 1) = ((MR_Box) (top_level__mercury_compile__V_86_86));
+#line 1938 "mercury_compile.m"
+                }
+#line 1937 "mercury_compile.m"
+                {
+#line 1937 "mercury_compile.m"
+                  top_level__mercury_compile__V_82_82 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1937 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_82_82, 0) = ((MR_Box) (top_level__mercury_compile__V_83_83));
+#line 1937 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_82_82, 1) = ((MR_Box) (top_level__mercury_compile__V_84_84));
+#line 1937 "mercury_compile.m"
+                }
+#line 1937 "mercury_compile.m"
+                {
+#line 1937 "mercury_compile.m"
+                  top_level__mercury_compile__TransOptFiles_33 = mercury__set__union_list_1_f_0(top_level__mercury_compile__TypeCtorInfo_168_168, top_level__mercury_compile__V_82_82);
+                }
+#line 1939 "mercury_compile.m"
+                {
+#line 1939 "mercury_compile.m"
+                  mercury__set__to_sorted_list_2_p_0(top_level__mercury_compile__TypeCtorInfo_168_168, top_level__mercury_compile__TransOptFiles_33, &top_level__mercury_compile__TransOptFilesList_34);
+                }
+#line 1940 "mercury_compile.m"
+                {
+#line 1940 "mercury_compile.m"
+                  parse_tree__modules__grab_trans_opt_files_7_p_0(top_level__mercury_compile__Globals_9, top_level__mercury_compile__TransOptFilesList_34, top_level__mercury_compile__Imports1_22, top_level__mercury_compile__Imports_13, &top_level__mercury_compile__Error2_25);
+                }
+#line 1932 "mercury_compile.m"
+              }
+#line 1942 "mercury_compile.m"
+              break;
+#line 1942 "mercury_compile.m"
+          }
+#line 1930 "mercury_compile.m"
+      }
+#line 1948 "mercury_compile.m"
+    {
+#line 1948 "mercury_compile.m"
+      mercury__bool__or_3_p_0(top_level__mercury_compile__Error1_23, top_level__mercury_compile__Error2_25, top_level__mercury_compile__Error_14);
+    }
+#line 1869 "mercury_compile.m"
+  }
+#line 1864 "mercury_compile.m"
+}
+
+#line 1843 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile__read_dependency_file_get_modules_3_p_0_2(
+#line 1843 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1843 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1)
+#line 1843 "mercury_compile.m"
+{
+#line 1843 "mercury_compile.m"
+  {
+#line 1843 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1843 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+
+#line 1843 "mercury_compile.m"
+    {
+#line 1843 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = top_level__mercury_compile__IntroducedFrom__pred__read_dependency_file_get_modules__1844__1_1_p_0(((MR_Char) (MR_Word) top_level__mercury_compile__wrapper_arg_1));
+    }
+#line 1843 "mercury_compile.m"
+    return top_level__mercury_compile__succeeded;
+#line 1843 "mercury_compile.m"
+  }
+#line 1843 "mercury_compile.m"
+}
+
+#line 1842 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile__read_dependency_file_get_modules_3_p_0_1(
+#line 1842 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1842 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1)
+#line 1842 "mercury_compile.m"
+{
+#line 1842 "mercury_compile.m"
+  {
+#line 1842 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1842 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+
+#line 1842 "mercury_compile.m"
+    {
+#line 1842 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = mercury__char__is_whitespace_1_p_0(((MR_Char) (MR_Word) top_level__mercury_compile__wrapper_arg_1));
+    }
+#line 1842 "mercury_compile.m"
+    return top_level__mercury_compile__succeeded;
+#line 1842 "mercury_compile.m"
+  }
+#line 1842 "mercury_compile.m"
+}
+
+#line 1833 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__read_dependency_file_get_modules_3_p_0(
+#line 1833 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__TransOptDeps_4)
+#line 1833 "mercury_compile.m"
+{
+#line 1836 "mercury_compile.m"
+  {
+#line 1836 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1836 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Result_6;
+#line 1858 "mercury_compile.m"
+    MR_String top_level__mercury_compile__FileName_15;
+#line 1839 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__TypeCtorInfo_30_30;
+#line 1839 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__CharList0_7;
+#line 1839 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__CharList1_9;
+#line 1839 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__NotIsWhitespace_10;
+#line 1839 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__CharList_12;
+#line 1839 "mercury_compile.m"
+    MR_String top_level__mercury_compile__FileName0_14;
+#line 1839 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_23_23;
+#line 1839 "mercury_compile.m"
+    MR_String top_level__mercury_compile__V_25_25;
+#line 1842 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_8_8;
+#line 1846 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_13_13;
+
+#line 1837 "mercury_compile.m"
+    {
+#line 1837 "mercury_compile.m"
+      mercury__io__read_line_3_p_0(&top_level__mercury_compile__Result_6);
+    }
+#line 1839 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = ((MR_tag((MR_Word) top_level__mercury_compile__Result_6)) == (MR_mktag((MR_Integer) 1)));
+#line 1839 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1839 "mercury_compile.m"
+      {
+#line 1839 "mercury_compile.m"
+        top_level__mercury_compile__CharList0_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__Result_6, (MR_Integer) 0)));
+#line 1842 "mercury_compile.m"
+        top_level__mercury_compile__V_23_23 = (MR_Word) &top_level__mercury_compile_scalar_common_7[3];
+#line 5451 "top_level.mercury_compile.c"
+        top_level__mercury_compile__TypeCtorInfo_30_30 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_character_0;
+#line 1842 "mercury_compile.m"
+        {
+#line 1842 "mercury_compile.m"
+          mercury__list__takewhile_4_p_0(top_level__mercury_compile__TypeCtorInfo_30_30, top_level__mercury_compile__V_23_23, top_level__mercury_compile__CharList0_7, &top_level__mercury_compile__V_8_8, &top_level__mercury_compile__CharList1_9);
+        }
+#line 1843 "mercury_compile.m"
+        top_level__mercury_compile__NotIsWhitespace_10 = (MR_Word) &top_level__mercury_compile_scalar_common_7[4];
+#line 1846 "mercury_compile.m"
+        {
+#line 1846 "mercury_compile.m"
+          mercury__list__takewhile_4_p_0(top_level__mercury_compile__TypeCtorInfo_30_30, top_level__mercury_compile__NotIsWhitespace_10, top_level__mercury_compile__CharList1_9, &top_level__mercury_compile__CharList_12, &top_level__mercury_compile__V_13_13);
+        }
+#line 1847 "mercury_compile.m"
+        {
+#line 1847 "mercury_compile.m"
+          mercury__string__from_char_list_2_p_0(top_level__mercury_compile__CharList_12, &top_level__mercury_compile__FileName0_14);
+        }
+#line 1848 "mercury_compile.m"
+        top_level__mercury_compile__V_25_25 = (MR_String) ".trans_opt";
+#line 1848 "mercury_compile.m"
+        {
+#line 1848 "mercury_compile.m"
+          top_level__mercury_compile__succeeded = mercury__string__remove_suffix_3_p_0(top_level__mercury_compile__FileName0_14, top_level__mercury_compile__V_25_25, &top_level__mercury_compile__FileName_15);
+        }
+#line 1839 "mercury_compile.m"
+      }
+#line 1858 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1854 "mercury_compile.m"
+      {
+#line 1854 "mercury_compile.m"
+        MR_String top_level__mercury_compile__ModuleFileName_17;
+#line 1854 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Module_18;
+#line 1854 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__TransOptDeps0_19;
+#line 1852 "mercury_compile.m"
+        MR_String top_level__mercury_compile__BaseFileName_16;
+
+#line 1850 "mercury_compile.m"
+        {
+#line 1850 "mercury_compile.m"
+          top_level__mercury_compile__succeeded = mercury__string__append_3_p_1((MR_String) "Mercury/trans_opts/", &top_level__mercury_compile__BaseFileName_16, top_level__mercury_compile__FileName_15);
+        }
+#line 1852 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 1851 "mercury_compile.m"
+          top_level__mercury_compile__ModuleFileName_17 = top_level__mercury_compile__BaseFileName_16;
+#line 1852 "mercury_compile.m"
+        else
+#line 1853 "mercury_compile.m"
+          top_level__mercury_compile__ModuleFileName_17 = top_level__mercury_compile__FileName_15;
+#line 1855 "mercury_compile.m"
+        {
+#line 1855 "mercury_compile.m"
+          parse_tree__file_names__file_name_to_module_name_2_p_0(top_level__mercury_compile__ModuleFileName_17, &top_level__mercury_compile__Module_18);
+        }
+#line 1856 "mercury_compile.m"
+        {
+#line 1856 "mercury_compile.m"
+          top_level__mercury_compile__read_dependency_file_get_modules_3_p_0(&top_level__mercury_compile__TransOptDeps0_19);
+        }
+#line 1857 "mercury_compile.m"
+        {
+#line 1857 "mercury_compile.m"
+          MR_Word base;
+#line 1857 "mercury_compile.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1857 "mercury_compile.m"
+          *top_level__mercury_compile__TransOptDeps_4 = base;
+#line 1857 "mercury_compile.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (top_level__mercury_compile__Module_18));
+#line 1857 "mercury_compile.m"
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (top_level__mercury_compile__TransOptDeps0_19));
+#line 1857 "mercury_compile.m"
+        }
+#line 1854 "mercury_compile.m"
+      }
+#line 1858 "mercury_compile.m"
+    else
+#line 1859 "mercury_compile.m"
+      *top_level__mercury_compile__TransOptDeps_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1836 "mercury_compile.m"
+  }
+#line 1833 "mercury_compile.m"
+}
+
+#line 1808 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__read_dependency_file_find_start_4_p_0(
+#line 1808 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__SearchPattern_5,
+#line 1808 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Success_6)
+#line 1808 "mercury_compile.m"
+{
+#line 1811 "mercury_compile.m"
+  while (MR_TRUE)
+#line 1811 "mercury_compile.m"
+    {
+#line 1811 "mercury_compile.m"
+      /* tailcall optimized into a loop */
+#line 1811 "mercury_compile.m"
+      {
+#line 1811 "mercury_compile.m"
+        MR_bool top_level__mercury_compile__succeeded;
+#line 1811 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Result_8;
+
+#line 1812 "mercury_compile.m"
+        {
+#line 1812 "mercury_compile.m"
+          mercury__io__read_line_3_p_0(&top_level__mercury_compile__Result_8);
+        }
+#line 1821 "mercury_compile.m"
+#line 1821 "mercury_compile.m"
+        switch (MR_tag((MR_Word) top_level__mercury_compile__Result_8)) {
+#line 1821 "mercury_compile.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 1821 "mercury_compile.m"
+          case (MR_Integer) 0:
+#line 1825 "mercury_compile.m"
+            *top_level__mercury_compile__Success_6 = (MR_Integer) 0;
+#line 1821 "mercury_compile.m"
+            break;
+#line 1821 "mercury_compile.m"
+          case (MR_Integer) 1:
+#line 1814 "mercury_compile.m"
+            {
+#line 1814 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__CharList_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__Result_8, (MR_Integer) 0)));
+#line 1815 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_10_10;
+
+#line 1815 "mercury_compile.m"
+              {
+#line 1815 "mercury_compile.m"
+                top_level__mercury_compile__succeeded = mercury__list__append_3_p_3((MR_Word) &mercury__builtin__builtin__type_ctor_info_character_0, top_level__mercury_compile__SearchPattern_5, &top_level__mercury_compile__V_10_10, top_level__mercury_compile__CharList_9);
+              }
+#line 1818 "mercury_compile.m"
+              if (top_level__mercury_compile__succeeded)
+#line 1817 "mercury_compile.m"
+                *top_level__mercury_compile__Success_6 = (MR_Integer) 1;
+#line 1818 "mercury_compile.m"
+              else
+#line 1819 "mercury_compile.m"
+                {
+#line 1819 "mercury_compile.m"
+                  /* direct tailcall eliminated */
+#line 1819 "mercury_compile.m"
+                  continue;
+#line 1819 "mercury_compile.m"
+                }
+#line 1814 "mercury_compile.m"
+            }
+#line 1821 "mercury_compile.m"
+            break;
+#line 1821 "mercury_compile.m"
+          case (MR_Integer) 2:
+#line 1825 "mercury_compile.m"
+            *top_level__mercury_compile__Success_6 = (MR_Integer) 0;
+#line 1821 "mercury_compile.m"
+            break;
+#line 1821 "mercury_compile.m"
+        }
+#line 1811 "mercury_compile.m"
+      }
+#line 1811 "mercury_compile.m"
+      break;
+#line 1811 "mercury_compile.m"
+    }
+#line 1808 "mercury_compile.m"
+}
+
+#line 1755 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_read_dependency_file_5_p_0(
+#line 1755 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_6,
+#line 1755 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleName_7,
+#line 1755 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__MaybeTransOptDeps_8)
+#line 1755 "mercury_compile.m"
+{
+#line 1758 "mercury_compile.m"
+  {
+#line 1758 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1758 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__TransOpt_10;
+
+#line 1759 "mercury_compile.m"
+    {
+#line 1759 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_6, (MR_Integer) 324, &top_level__mercury_compile__TransOpt_10);
+    }
+#line 1800 "mercury_compile.m"
+#line 1800 "mercury_compile.m"
+    switch (top_level__mercury_compile__TransOpt_10) {
+#line 1800 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1800 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 1802 "mercury_compile.m"
+        *top_level__mercury_compile__MaybeTransOptDeps_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1800 "mercury_compile.m"
+        break;
+#line 1800 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 1761 "mercury_compile.m"
+        {
+#line 1761 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__Verbose_11;
+#line 1761 "mercury_compile.m"
+          MR_String top_level__mercury_compile__DependencyFileName_12;
+#line 1761 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__OpenResult_13;
+
+#line 1762 "mercury_compile.m"
+          {
+#line 1762 "mercury_compile.m"
+            libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_6, (MR_Integer) 45, &top_level__mercury_compile__Verbose_11);
+          }
+#line 1763 "mercury_compile.m"
+          {
+#line 1763 "mercury_compile.m"
+            parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_6, top_level__mercury_compile__ModuleName_7, (MR_String) ".d", (MR_Integer) 1, &top_level__mercury_compile__DependencyFileName_12);
+          }
+#line 1765 "mercury_compile.m"
+          {
+#line 1765 "mercury_compile.m"
+            libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_11, (MR_String) "% Reading auto-dependency file \140");
+          }
+#line 1766 "mercury_compile.m"
+          {
+#line 1766 "mercury_compile.m"
+            libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_11, top_level__mercury_compile__DependencyFileName_12);
+          }
+#line 1767 "mercury_compile.m"
+          {
+#line 1767 "mercury_compile.m"
+            libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_11, (MR_String) "\'...");
+          }
+#line 1768 "mercury_compile.m"
+          {
+#line 1768 "mercury_compile.m"
+            libs__file_util__maybe_flush_output_3_p_0(top_level__mercury_compile__Verbose_11);
+          }
+#line 1769 "mercury_compile.m"
+          {
+#line 1769 "mercury_compile.m"
+            mercury__io__open_input_4_p_0(top_level__mercury_compile__DependencyFileName_12, &top_level__mercury_compile__OpenResult_13);
+          }
+#line 1790 "mercury_compile.m"
+          if (((MR_tag((MR_Word) top_level__mercury_compile__OpenResult_13)) == (MR_mktag((MR_Integer) 1))))
+#line 1791 "mercury_compile.m"
+            {
+#line 1791 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__IOError_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__OpenResult_13, (MR_Integer) 0)));
+#line 1791 "mercury_compile.m"
+              MR_String top_level__mercury_compile__IOErrorMessage_23;
+#line 1791 "mercury_compile.m"
+              MR_String top_level__mercury_compile__Message_24;
+#line 1791 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_42_42;
+#line 1791 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_44_44;
+#line 1791 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_45_45;
+#line 1791 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_47_47;
+
+#line 1792 "mercury_compile.m"
+              {
+#line 1792 "mercury_compile.m"
+                libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_11, (MR_String) " failed.\n");
+              }
+#line 1793 "mercury_compile.m"
+              {
+#line 1793 "mercury_compile.m"
+                libs__file_util__maybe_flush_output_3_p_0(top_level__mercury_compile__Verbose_11);
+              }
+#line 1794 "mercury_compile.m"
+              {
+#line 1794 "mercury_compile.m"
+                mercury__io__error_message_2_p_0(top_level__mercury_compile__IOError_22, &top_level__mercury_compile__IOErrorMessage_23);
+              }
+#line 1796 "mercury_compile.m"
+              {
+#line 1796 "mercury_compile.m"
+                top_level__mercury_compile__V_47_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1796 "mercury_compile.m"
+                MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_47_47, 0) = ((MR_Box) (top_level__mercury_compile__IOErrorMessage_23));
+#line 1796 "mercury_compile.m"
+                MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_47_47, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1796 "mercury_compile.m"
+              }
+#line 1796 "mercury_compile.m"
+              {
+#line 1796 "mercury_compile.m"
+                top_level__mercury_compile__V_45_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1796 "mercury_compile.m"
+                MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_45_45, 0) = ((MR_Box) ((MR_String) "\' for input: "));
+#line 1796 "mercury_compile.m"
+                MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_45_45, 1) = ((MR_Box) (top_level__mercury_compile__V_47_47));
+#line 1796 "mercury_compile.m"
+              }
+#line 1795 "mercury_compile.m"
+              {
+#line 1795 "mercury_compile.m"
+                top_level__mercury_compile__V_44_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1795 "mercury_compile.m"
+                MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_44_44, 0) = ((MR_Box) (top_level__mercury_compile__DependencyFileName_12));
+#line 1795 "mercury_compile.m"
+                MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_44_44, 1) = ((MR_Box) (top_level__mercury_compile__V_45_45));
+#line 1795 "mercury_compile.m"
+              }
+#line 1795 "mercury_compile.m"
+              {
+#line 1795 "mercury_compile.m"
+                top_level__mercury_compile__V_42_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1795 "mercury_compile.m"
+                MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_42_42, 0) = ((MR_Box) ((MR_String) "error opening file \140"));
+#line 1795 "mercury_compile.m"
+                MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_42_42, 1) = ((MR_Box) (top_level__mercury_compile__V_44_44));
+#line 1795 "mercury_compile.m"
+              }
+#line 1795 "mercury_compile.m"
+              {
+#line 1795 "mercury_compile.m"
+                mercury__string__append_list_2_p_0(top_level__mercury_compile__V_42_42, &top_level__mercury_compile__Message_24);
+              }
+#line 1797 "mercury_compile.m"
+              {
+#line 1797 "mercury_compile.m"
+                libs__file_util__report_error_3_p_0(top_level__mercury_compile__Message_24);
+              }
+#line 1798 "mercury_compile.m"
+              *top_level__mercury_compile__MaybeTransOptDeps_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1791 "mercury_compile.m"
+            }
+#line 1790 "mercury_compile.m"
+          else
+#line 1771 "mercury_compile.m"
+            {
+#line 1771 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Stream_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__OpenResult_13, (MR_Integer) 0)));
+#line 1771 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__OldStream_15;
+#line 1771 "mercury_compile.m"
+              MR_String top_level__mercury_compile__TransOptDateFileName0_16;
+#line 1771 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__TransOptDateFileName_17;
+#line 1771 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__SearchPattern_18;
+#line 1771 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__FindResult_19;
+#line 1787 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_21_21;
+
+#line 1772 "mercury_compile.m"
+              {
+#line 1772 "mercury_compile.m"
+                mercury__io__set_input_stream_4_p_0(top_level__mercury_compile__Stream_14, &top_level__mercury_compile__OldStream_15);
+              }
+#line 1773 "mercury_compile.m"
+              {
+#line 1773 "mercury_compile.m"
+                parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_6, top_level__mercury_compile__ModuleName_7, (MR_String) ".trans_opt_date", (MR_Integer) 1, &top_level__mercury_compile__TransOptDateFileName0_16);
+              }
+#line 1775 "mercury_compile.m"
+              {
+#line 1775 "mercury_compile.m"
+                mercury__string__to_char_list_2_p_0(top_level__mercury_compile__TransOptDateFileName0_16, &top_level__mercury_compile__TransOptDateFileName_17);
+              }
+#line 1776 "mercury_compile.m"
+              {
+#line 1776 "mercury_compile.m"
+                top_level__mercury_compile__SearchPattern_18 = mercury__list__f_43_43_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_character_0, top_level__mercury_compile__TransOptDateFileName_17, (MR_Word) MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[22]));
+              }
+#line 1777 "mercury_compile.m"
+              {
+#line 1777 "mercury_compile.m"
+                top_level__mercury_compile__read_dependency_file_find_start_4_p_0(top_level__mercury_compile__SearchPattern_18, &top_level__mercury_compile__FindResult_19);
+              }
+#line 1782 "mercury_compile.m"
+#line 1782 "mercury_compile.m"
+              switch (top_level__mercury_compile__FindResult_19) {
+#line 1782 "mercury_compile.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 1782 "mercury_compile.m"
+                case (MR_Integer) 0:
+#line 1785 "mercury_compile.m"
+                  *top_level__mercury_compile__MaybeTransOptDeps_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1782 "mercury_compile.m"
+                  break;
+#line 1782 "mercury_compile.m"
+                case (MR_Integer) 1:
+#line 1779 "mercury_compile.m"
+                  {
+#line 1779 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__TransOptDeps_20;
+
+#line 1780 "mercury_compile.m"
+                    {
+#line 1780 "mercury_compile.m"
+                      top_level__mercury_compile__read_dependency_file_get_modules_3_p_0(&top_level__mercury_compile__TransOptDeps_20);
+                    }
+#line 1781 "mercury_compile.m"
+                    {
+#line 1781 "mercury_compile.m"
+                      MR_Word base;
+#line 1781 "mercury_compile.m"
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1781 "mercury_compile.m"
+                      *top_level__mercury_compile__MaybeTransOptDeps_8 = base;
+#line 1781 "mercury_compile.m"
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (top_level__mercury_compile__TransOptDeps_20));
+#line 1781 "mercury_compile.m"
+                    }
+#line 1779 "mercury_compile.m"
+                  }
+#line 1782 "mercury_compile.m"
+                  break;
+#line 1782 "mercury_compile.m"
+              }
+#line 1787 "mercury_compile.m"
+              {
+#line 1787 "mercury_compile.m"
+                mercury__io__set_input_stream_4_p_0(top_level__mercury_compile__OldStream_15, &top_level__mercury_compile__V_21_21);
+              }
+#line 1788 "mercury_compile.m"
+              {
+#line 1788 "mercury_compile.m"
+                mercury__io__close_input_3_p_0(top_level__mercury_compile__Stream_14);
+              }
+#line 1789 "mercury_compile.m"
+              {
+#line 1789 "mercury_compile.m"
+                libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_11, (MR_String) " done.\n");
+              }
+#line 1771 "mercury_compile.m"
+            }
+#line 1761 "mercury_compile.m"
+        }
+#line 1800 "mercury_compile.m"
+        break;
+#line 1800 "mercury_compile.m"
+    }
+#line 1758 "mercury_compile.m"
+  }
+#line 1755 "mercury_compile.m"
+}
+
+#line 1595 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__pre_hlds_pass_16_p_0(
+#line 1595 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_17,
+#line 1595 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeAugment_18,
+#line 1595 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__WriteDFile0_19,
+#line 1595 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleAndImports0_20,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HLDS1_21,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__QualInfo_22,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__MaybeTimestampMap_23,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__UndefTypes_24,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__UndefModes_25,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__FoundSemanticError_26,
+#line 1595 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_DumpInfo_0_70,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_DumpInfo_71,
+#line 1595 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_0_72,
+#line 1595 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_Specs_73)
+#line 1595 "mercury_compile.m"
+{
+#line 1603 "mercury_compile.m"
+  {
+#line 1603 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__TypeCtorInfo_144_144;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Stats_30;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Verbose_31;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MMCMake_32;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ModuleName_34;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MaybeTransOptDeps_36;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ModuleAndImports1_37;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__IntermodError_38;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__AugCompUnit1_39;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ItemSpecs_40;
+#line 1603 "mercury_compile.m"
+    MR_String top_level__mercury_compile__EventSetFileName_42;
+#line 1603 "mercury_compile.m"
+    MR_String top_level__mercury_compile__EventSetName_43;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__EventSpecMap1_44;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__EventSetErrors_45;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__AugCompUnit2_49;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__EventSpecMap2_50;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MQInfo0_51;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MQUndefTypes_52;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MQUndefModes_53;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__QualifySpecs_54;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__RecompInfo0_55;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__AugCompUnit_56;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__EventSpecMap_57;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__TypeEqvMap_58;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__UsedModules_59;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__RecompInfo_60;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ExpandSpecs_61;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ExpandErrors_62;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MQInfo_63;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__EventSet_64;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__HLDS0_65;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MakeHLDSFoundInvalidType_66;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MakeHLDSFoundInvalidInstOrMode_67;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_81_81;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_84_84;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_85_85;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_91_91;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_92_92;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_97_97;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_102_102;
+#line 1603 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_103_103;
+#line 1638 "mercury_compile.m"
+    MR_Word top_level__mercury_compile___Error_41;
+#line 1641 "mercury_compile.m"
+    MR_String top_level__mercury_compile__V_118_118;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_119_119;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_120_120;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_121_121;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_122_122;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_123_123;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_124_124;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_125_125;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_126_126;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_127_127;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_128_128;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_129_129;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_130_130;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_131_131;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_132_132;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_133_133;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_134_134;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_135_135;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_136_136;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_137_137;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_138_138;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_139_139;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_140_140;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_141_141;
+#line 1641 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_142_142;
+#line 1641 "mercury_compile.m"
+    MR_String top_level__mercury_compile__V_143_143;
+
+#line 1604 "mercury_compile.m"
+    {
+#line 1604 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_17, (MR_Integer) 55, &top_level__mercury_compile__Stats_30);
+    }
+#line 1605 "mercury_compile.m"
+    {
+#line 1605 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_17, (MR_Integer) 45, &top_level__mercury_compile__Verbose_31);
+    }
+#line 1607 "mercury_compile.m"
+    {
+#line 1607 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_17, (MR_Integer) 614, &top_level__mercury_compile__MMCMake_32);
+    }
+#line 1616 "mercury_compile.m"
+    {
+#line 1616 "mercury_compile.m"
+      parse_tree__module_imports__module_and_imports_get_module_name_2_p_0(top_level__mercury_compile__ModuleAndImports0_20, &top_level__mercury_compile__ModuleName_34);
+    }
+#line 1626 "mercury_compile.m"
+#line 1626 "mercury_compile.m"
+    switch (MR_tag((MR_Word) top_level__mercury_compile__OpModeAugment_18)) {
+#line 1626 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1626 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 1626 "mercury_compile.m"
+#line 1626 "mercury_compile.m"
+        switch (MR_unmkbody(top_level__mercury_compile__OpModeAugment_18)) {
+#line 1626 "mercury_compile.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 1626 "mercury_compile.m"
+          case (MR_Integer) 0:
+#line 1626 "mercury_compile.m"
+          case (MR_Integer) 2:
+#line 1626 "mercury_compile.m"
+          case (MR_Integer) 3:
+#line 1626 "mercury_compile.m"
+          case (MR_Integer) 4:
+#line 1626 "mercury_compile.m"
+          case (MR_Integer) 5:
+#line 1625 "mercury_compile.m"
+            top_level__mercury_compile__MaybeTransOptDeps_36 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1626 "mercury_compile.m"
+            break;
+#line 1626 "mercury_compile.m"
+          case (MR_Integer) 1:
+#line 1630 "mercury_compile.m"
+            {
+#line 1630 "mercury_compile.m"
+              top_level__mercury_compile__maybe_read_dependency_file_5_p_0(top_level__mercury_compile__Globals_17, top_level__mercury_compile__ModuleName_34, &top_level__mercury_compile__MaybeTransOptDeps_36);
+            }
+#line 1626 "mercury_compile.m"
+            break;
+#line 1626 "mercury_compile.m"
+        }
+#line 1626 "mercury_compile.m"
+        break;
+#line 1626 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 1625 "mercury_compile.m"
+        top_level__mercury_compile__MaybeTransOptDeps_36 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1626 "mercury_compile.m"
+        break;
+#line 1626 "mercury_compile.m"
+    }
+#line 1634 "mercury_compile.m"
+    {
+#line 1634 "mercury_compile.m"
+      top_level__mercury_compile__maybe_grab_optfiles_8_p_0(top_level__mercury_compile__Globals_17, top_level__mercury_compile__ModuleAndImports0_20, top_level__mercury_compile__Verbose_31, top_level__mercury_compile__MaybeTransOptDeps_36, &top_level__mercury_compile__ModuleAndImports1_37, &top_level__mercury_compile__IntermodError_38);
+    }
+#line 1638 "mercury_compile.m"
+    {
+#line 1638 "mercury_compile.m"
+      parse_tree__module_imports__module_and_imports_get_aug_comp_unit_4_p_0(top_level__mercury_compile__ModuleAndImports1_37, &top_level__mercury_compile__AugCompUnit1_39, &top_level__mercury_compile__ItemSpecs_40, &top_level__mercury_compile___Error_41);
+    }
+#line 6159 "top_level.mercury_compile.c"
+    top_level__mercury_compile__TypeCtorInfo_144_144 = (MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0;
+#line 1640 "mercury_compile.m"
+    {
+#line 1640 "mercury_compile.m"
+      top_level__mercury_compile__STATE_VARIABLE_Specs_81_81 = mercury__list__f_43_43_2_f_0(top_level__mercury_compile__TypeCtorInfo_144_144, top_level__mercury_compile__ItemSpecs_40, top_level__mercury_compile__STATE_VARIABLE_Specs_0_72);
+    }
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_118_118 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 0)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_119_119 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 1)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_120_120 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 2)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_121_121 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 3)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_122_122 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 4)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_123_123 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 5)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_124_124 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 6)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_125_125 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 7)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_126_126 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 8)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_127_127 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 9)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_128_128 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 10)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_129_129 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 11)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_130_130 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 12)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_131_131 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 13)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_132_132 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 14)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_133_133 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 15)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_134_134 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 16)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_135_135 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 17)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_136_136 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 18)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_137_137 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 19)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_138_138 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 20)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_139_139 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 21)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_140_140 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 22)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_141_141 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 23)));
+#line 1641 "mercury_compile.m"
+    *top_level__mercury_compile__MaybeTimestampMap_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 24)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_142_142 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 25)));
+#line 1641 "mercury_compile.m"
+    top_level__mercury_compile__V_143_143 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ModuleAndImports1_37, (MR_Integer) 26)));
+#line 1643 "mercury_compile.m"
+    {
+#line 1643 "mercury_compile.m"
+      libs__globals__lookup_string_option_3_p_0(top_level__mercury_compile__Globals_17, (MR_Integer) 173, &top_level__mercury_compile__EventSetFileName_42);
+    }
+#line 1645 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (strcmp(top_level__mercury_compile__EventSetFileName_42, (MR_String) "") == 0);
+#line 1649 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1646 "mercury_compile.m"
+      {
+#line 1646 "mercury_compile.m"
+        top_level__mercury_compile__EventSetName_43 = (MR_String) "";
+#line 1647 "mercury_compile.m"
+        {
+#line 1647 "mercury_compile.m"
+          top_level__mercury_compile__EventSpecMap1_44 = mercury__map__init_0_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_event_spec_0);
+        }
+#line 1648 "mercury_compile.m"
+        top_level__mercury_compile__EventSetErrors_45 = (MR_Integer) 0;
+#line 1646 "mercury_compile.m"
+        top_level__mercury_compile__STATE_VARIABLE_Specs_84_84 = top_level__mercury_compile__STATE_VARIABLE_Specs_81_81;
+#line 1646 "mercury_compile.m"
+      }
+#line 1649 "mercury_compile.m"
+    else
+#line 1651 "mercury_compile.m"
+      {
+#line 1651 "mercury_compile.m"
+        MR_String top_level__mercury_compile__EventSetName0_46;
+#line 1651 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__EventSpecMap0_47;
+#line 1651 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__EventSetSpecs_48;
+
+#line 1650 "mercury_compile.m"
+        {
+#line 1650 "mercury_compile.m"
+          parse_tree__prog_event__read_event_set_6_p_0(top_level__mercury_compile__EventSetFileName_42, &top_level__mercury_compile__EventSetName0_46, &top_level__mercury_compile__EventSpecMap0_47, &top_level__mercury_compile__EventSetSpecs_48);
+        }
+#line 1652 "mercury_compile.m"
+        {
+#line 1652 "mercury_compile.m"
+          top_level__mercury_compile__STATE_VARIABLE_Specs_84_84 = mercury__list__f_43_43_2_f_0(top_level__mercury_compile__TypeCtorInfo_144_144, top_level__mercury_compile__EventSetSpecs_48, top_level__mercury_compile__STATE_VARIABLE_Specs_81_81);
+        }
+#line 1653 "mercury_compile.m"
+        {
+#line 1653 "mercury_compile.m"
+          top_level__mercury_compile__EventSetErrors_45 = parse_tree__error_util__contains_errors_2_f_0(top_level__mercury_compile__Globals_17, top_level__mercury_compile__EventSetSpecs_48);
+        }
+#line 1658 "mercury_compile.m"
+#line 1658 "mercury_compile.m"
+        switch (top_level__mercury_compile__EventSetErrors_45) {
+#line 1658 "mercury_compile.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 1658 "mercury_compile.m"
+          case (MR_Integer) 0:
+#line 1655 "mercury_compile.m"
+            {
+#line 1656 "mercury_compile.m"
+              top_level__mercury_compile__EventSetName_43 = top_level__mercury_compile__EventSetName0_46;
+#line 1657 "mercury_compile.m"
+              top_level__mercury_compile__EventSpecMap1_44 = top_level__mercury_compile__EventSpecMap0_47;
+#line 1655 "mercury_compile.m"
+            }
+#line 1658 "mercury_compile.m"
+            break;
+#line 1658 "mercury_compile.m"
+          case (MR_Integer) 1:
+#line 1659 "mercury_compile.m"
+            {
+#line 1660 "mercury_compile.m"
+              top_level__mercury_compile__EventSetName_43 = (MR_String) "";
+#line 1661 "mercury_compile.m"
+              {
+#line 1661 "mercury_compile.m"
+                top_level__mercury_compile__EventSpecMap1_44 = mercury__map__init_0_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_event_spec_0);
+              }
+#line 1659 "mercury_compile.m"
+            }
+#line 1658 "mercury_compile.m"
+            break;
+#line 1658 "mercury_compile.m"
+        }
+#line 1651 "mercury_compile.m"
+      }
+#line 1665 "mercury_compile.m"
+    {
+#line 1665 "mercury_compile.m"
+      parse_tree__error_util__maybe_write_out_errors_no_module_6_p_0(top_level__mercury_compile__Verbose_31, top_level__mercury_compile__Globals_17, top_level__mercury_compile__STATE_VARIABLE_Specs_84_84, &top_level__mercury_compile__STATE_VARIABLE_Specs_85_85);
+    }
+#line 1666 "mercury_compile.m"
+    {
+#line 1666 "mercury_compile.m"
+      libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_31, (MR_String) "% Module qualifying items...\n");
+    }
+#line 1667 "mercury_compile.m"
+    {
+#line 1667 "mercury_compile.m"
+      libs__file_util__maybe_flush_output_3_p_0(top_level__mercury_compile__Verbose_31);
+    }
+#line 1668 "mercury_compile.m"
+    {
+#line 1668 "mercury_compile.m"
+      parse_tree__module_qual__module_qualify_aug_comp_unit_11_p_0(top_level__mercury_compile__Globals_17, top_level__mercury_compile__AugCompUnit1_39, &top_level__mercury_compile__AugCompUnit2_49, top_level__mercury_compile__EventSpecMap1_44, &top_level__mercury_compile__EventSpecMap2_50, top_level__mercury_compile__EventSetFileName_42, &top_level__mercury_compile__MQInfo0_51, &top_level__mercury_compile__MQUndefTypes_52, &top_level__mercury_compile__MQUndefModes_53, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &top_level__mercury_compile__QualifySpecs_54);
+    }
+#line 1671 "mercury_compile.m"
+    {
+#line 1671 "mercury_compile.m"
+      top_level__mercury_compile__STATE_VARIABLE_Specs_91_91 = mercury__list__f_43_43_2_f_0(top_level__mercury_compile__TypeCtorInfo_144_144, top_level__mercury_compile__QualifySpecs_54, top_level__mercury_compile__STATE_VARIABLE_Specs_85_85);
+    }
+#line 1672 "mercury_compile.m"
+    {
+#line 1672 "mercury_compile.m"
+      parse_tree__error_util__maybe_write_out_errors_no_module_6_p_0(top_level__mercury_compile__Verbose_31, top_level__mercury_compile__Globals_17, top_level__mercury_compile__STATE_VARIABLE_Specs_91_91, &top_level__mercury_compile__STATE_VARIABLE_Specs_92_92);
+    }
+#line 1673 "mercury_compile.m"
+    {
+#line 1673 "mercury_compile.m"
+      libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_31, (MR_String) "% done.\n");
+    }
+#line 1674 "mercury_compile.m"
+    {
+#line 1674 "mercury_compile.m"
+      libs__file_util__maybe_report_stats_3_p_0(top_level__mercury_compile__Stats_30);
+    }
+#line 1676 "mercury_compile.m"
+    {
+#line 1676 "mercury_compile.m"
+      parse_tree__module_qual__mq_info_get_recompilation_info_2_p_0(top_level__mercury_compile__MQInfo0_51, &top_level__mercury_compile__RecompInfo0_55);
+    }
+#line 1677 "mercury_compile.m"
+    {
+#line 1677 "mercury_compile.m"
+      parse_tree__error_util__maybe_write_out_errors_no_module_6_p_0(top_level__mercury_compile__Verbose_31, top_level__mercury_compile__Globals_17, top_level__mercury_compile__STATE_VARIABLE_Specs_92_92, &top_level__mercury_compile__STATE_VARIABLE_Specs_97_97);
+    }
+#line 1678 "mercury_compile.m"
+    {
+#line 1678 "mercury_compile.m"
+      libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_31, (MR_String) "% Expanding equivalence types and insts...\n");
+    }
+#line 1680 "mercury_compile.m"
+    {
+#line 1680 "mercury_compile.m"
+      libs__file_util__maybe_flush_output_3_p_0(top_level__mercury_compile__Verbose_31);
+    }
+#line 1681 "mercury_compile.m"
+    {
+#line 1681 "mercury_compile.m"
+      parse_tree__equiv_type__expand_eqv_types_insts_9_p_0(top_level__mercury_compile__AugCompUnit2_49, &top_level__mercury_compile__AugCompUnit_56, top_level__mercury_compile__EventSpecMap2_50, &top_level__mercury_compile__EventSpecMap_57, &top_level__mercury_compile__TypeEqvMap_58, &top_level__mercury_compile__UsedModules_59, top_level__mercury_compile__RecompInfo0_55, &top_level__mercury_compile__RecompInfo_60, &top_level__mercury_compile__ExpandSpecs_61);
+    }
+#line 1684 "mercury_compile.m"
+    {
+#line 1684 "mercury_compile.m"
+      top_level__mercury_compile__ExpandErrors_62 = parse_tree__error_util__contains_errors_2_f_0(top_level__mercury_compile__Globals_17, top_level__mercury_compile__ExpandSpecs_61);
+    }
+#line 1685 "mercury_compile.m"
+    {
+#line 1685 "mercury_compile.m"
+      top_level__mercury_compile__STATE_VARIABLE_Specs_102_102 = mercury__list__f_43_43_2_f_0(top_level__mercury_compile__TypeCtorInfo_144_144, top_level__mercury_compile__ExpandSpecs_61, top_level__mercury_compile__STATE_VARIABLE_Specs_97_97);
+    }
+#line 1686 "mercury_compile.m"
+    {
+#line 1686 "mercury_compile.m"
+      parse_tree__error_util__maybe_write_out_errors_no_module_6_p_0(top_level__mercury_compile__Verbose_31, top_level__mercury_compile__Globals_17, top_level__mercury_compile__STATE_VARIABLE_Specs_102_102, &top_level__mercury_compile__STATE_VARIABLE_Specs_103_103);
+    }
+#line 1687 "mercury_compile.m"
+    {
+#line 1687 "mercury_compile.m"
+      libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_31, (MR_String) "% done.\n");
+    }
+#line 1688 "mercury_compile.m"
+    {
+#line 1688 "mercury_compile.m"
+      libs__file_util__maybe_report_stats_3_p_0(top_level__mercury_compile__Stats_30);
+    }
+#line 1689 "mercury_compile.m"
+    {
+#line 1689 "mercury_compile.m"
+      parse_tree__module_qual__mq_info_set_recompilation_info_3_p_0(top_level__mercury_compile__RecompInfo_60, top_level__mercury_compile__MQInfo0_51, &top_level__mercury_compile__MQInfo_63);
+    }
+#line 1691 "mercury_compile.m"
+    {
+#line 1691 "mercury_compile.m"
+      top_level__mercury_compile__EventSet_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1691 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__EventSet_64, 0) = ((MR_Box) (top_level__mercury_compile__EventSetName_43));
+#line 1691 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__EventSet_64, 1) = ((MR_Box) (top_level__mercury_compile__EventSpecMap_57));
+#line 1691 "mercury_compile.m"
+    }
+#line 1692 "mercury_compile.m"
+    {
+#line 1692 "mercury_compile.m"
+      top_level__mercury_compile__make_hlds_17_p_0(top_level__mercury_compile__Globals_17, top_level__mercury_compile__AugCompUnit_56, top_level__mercury_compile__EventSet_64, top_level__mercury_compile__MQInfo_63, top_level__mercury_compile__TypeEqvMap_58, top_level__mercury_compile__UsedModules_59, top_level__mercury_compile__Verbose_31, top_level__mercury_compile__Stats_30, &top_level__mercury_compile__HLDS0_65, top_level__mercury_compile__QualInfo_22, &top_level__mercury_compile__MakeHLDSFoundInvalidType_66, &top_level__mercury_compile__MakeHLDSFoundInvalidInstOrMode_67, top_level__mercury_compile__FoundSemanticError_26, top_level__mercury_compile__STATE_VARIABLE_Specs_103_103, top_level__mercury_compile__STATE_VARIABLE_Specs_73);
+    }
+#line 1696 "mercury_compile.m"
+    {
+#line 1696 "mercury_compile.m"
+      top_level__mercury_compile__maybe_write_definitions_5_p_0(top_level__mercury_compile__Verbose_31, top_level__mercury_compile__Stats_30, top_level__mercury_compile__HLDS0_65);
+    }
+#line 1699 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (top_level__mercury_compile__MQUndefTypes_52 == (MR_Integer) 0);
+#line 1699 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1699 "mercury_compile.m"
+      {
+#line 1700 "mercury_compile.m"
+        top_level__mercury_compile__succeeded = (top_level__mercury_compile__EventSetErrors_45 == (MR_Integer) 0);
+#line 1699 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 1699 "mercury_compile.m"
+          {
+#line 1701 "mercury_compile.m"
+            top_level__mercury_compile__succeeded = (top_level__mercury_compile__ExpandErrors_62 == (MR_Integer) 0);
+#line 1699 "mercury_compile.m"
+            if (top_level__mercury_compile__succeeded)
+#line 1702 "mercury_compile.m"
+              top_level__mercury_compile__succeeded = (top_level__mercury_compile__MakeHLDSFoundInvalidType_66 == (MR_Integer) 0);
+#line 1699 "mercury_compile.m"
+          }
+#line 1699 "mercury_compile.m"
+      }
+#line 1705 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1704 "mercury_compile.m"
+      *top_level__mercury_compile__UndefTypes_24 = (MR_Integer) 0;
+#line 1705 "mercury_compile.m"
+    else
+#line 1706 "mercury_compile.m"
+      *top_level__mercury_compile__UndefTypes_24 = (MR_Integer) 1;
+#line 1709 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (top_level__mercury_compile__MQUndefModes_53 == (MR_Integer) 0);
+#line 1709 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1710 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = (top_level__mercury_compile__MakeHLDSFoundInvalidInstOrMode_67 == (MR_Integer) 0);
+#line 1713 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1712 "mercury_compile.m"
+      *top_level__mercury_compile__UndefModes_25 = (MR_Integer) 0;
+#line 1713 "mercury_compile.m"
+    else
+#line 1714 "mercury_compile.m"
+      *top_level__mercury_compile__UndefModes_25 = (MR_Integer) 1;
+#line 1717 "mercury_compile.m"
+    {
+#line 1717 "mercury_compile.m"
+      hlds__passes_aux__maybe_dump_hlds_7_p_0(top_level__mercury_compile__HLDS0_65, (MR_Integer) 1, (MR_String) "initial", top_level__mercury_compile__STATE_VARIABLE_DumpInfo_0_70, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_71);
+    }
+#line 6470 "top_level.mercury_compile.c"
+#line 6471 "top_level.mercury_compile.c"
+    switch (top_level__mercury_compile__MMCMake_32) {
+#line 6473 "top_level.mercury_compile.c"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 6475 "top_level.mercury_compile.c"
+      case (MR_Integer) 0:
+#line 1721 "mercury_compile.m"
+#line 1721 "mercury_compile.m"
+        switch (top_level__mercury_compile__WriteDFile0_19) {
+#line 1721 "mercury_compile.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 1721 "mercury_compile.m"
+          case (MR_Integer) 0:
+#line 1720 "mercury_compile.m"
+            {
+#line 1720 "mercury_compile.m"
+            }
+#line 1721 "mercury_compile.m"
+            break;
+#line 1721 "mercury_compile.m"
+          case (MR_Integer) 1:
+#line 1722 "mercury_compile.m"
+            {
+#line 1722 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__AllDeps_68;
+#line 1722 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__OutputMMCMakeDeps_69;
+
+#line 1723 "mercury_compile.m"
+              {
+#line 1723 "mercury_compile.m"
+                hlds__hlds_module__module_info_get_all_deps_2_p_0(top_level__mercury_compile__HLDS0_65, &top_level__mercury_compile__AllDeps_68);
+              }
+#line 1724 "mercury_compile.m"
+              {
+#line 1724 "mercury_compile.m"
+                parse_tree__write_deps_file__write_dependency_file_6_p_0(top_level__mercury_compile__Globals_17, top_level__mercury_compile__ModuleAndImports0_20, top_level__mercury_compile__AllDeps_68, top_level__mercury_compile__MaybeTransOptDeps_36);
+              }
+#line 1726 "mercury_compile.m"
+              {
+#line 1726 "mercury_compile.m"
+                libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_17, (MR_Integer) 117, &top_level__mercury_compile__OutputMMCMakeDeps_69);
+              }
+#line 1731 "mercury_compile.m"
+#line 1731 "mercury_compile.m"
+              switch (top_level__mercury_compile__OutputMMCMakeDeps_69) {
+#line 1731 "mercury_compile.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 1731 "mercury_compile.m"
+                case (MR_Integer) 0:
+#line 1732 "mercury_compile.m"
+                  {
+#line 1732 "mercury_compile.m"
+                  }
+#line 1731 "mercury_compile.m"
+                  break;
+#line 1731 "mercury_compile.m"
+                case (MR_Integer) 1:
+#line 1730 "mercury_compile.m"
+                  {
+#line 1730 "mercury_compile.m"
+                    make__make_write_module_dep_file_4_p_0(top_level__mercury_compile__Globals_17, top_level__mercury_compile__ModuleAndImports0_20);
+                  }
+#line 1731 "mercury_compile.m"
+                  break;
+#line 1731 "mercury_compile.m"
+              }
+#line 1722 "mercury_compile.m"
+            }
+#line 1721 "mercury_compile.m"
+            break;
+#line 1721 "mercury_compile.m"
+        }
+#line 6544 "top_level.mercury_compile.c"
+        break;
+#line 6546 "top_level.mercury_compile.c"
+      case (MR_Integer) 1:
+#line 1720 "mercury_compile.m"
+        {
+#line 1720 "mercury_compile.m"
+        }
+#line 6552 "top_level.mercury_compile.c"
+        break;
+#line 6554 "top_level.mercury_compile.c"
+    }
+#line 1738 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (*top_level__mercury_compile__FoundSemanticError_26 == (MR_Integer) 1);
+#line 1739 "mercury_compile.m"
+    if (!(top_level__mercury_compile__succeeded))
+#line 1739 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = (top_level__mercury_compile__IntermodError_38 == (MR_Integer) 1);
+#line 1743 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1742 "mercury_compile.m"
+      {
+#line 1742 "mercury_compile.m"
+        hlds__hlds_module__module_info_incr_errors_2_p_0(top_level__mercury_compile__HLDS0_65, top_level__mercury_compile__HLDS1_21);
+      }
+#line 1743 "mercury_compile.m"
+    else
+#line 1744 "mercury_compile.m"
+      *top_level__mercury_compile__HLDS1_21 = top_level__mercury_compile__HLDS0_65;
+#line 1603 "mercury_compile.m"
+  }
+#line 1595 "mercury_compile.m"
+}
+
+#line 1485 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_augmented_module_12_p_0(
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_13,
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeAugment_14,
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleAndImports_15,
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__NestedSubModules_16,
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FindTimestampFiles_17,
+#line 1485 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_18,
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_DumpInfo_0_43,
+#line 1485 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_DumpInfo_44,
+#line 1485 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_0_45,
+#line 1485 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_Specs_46)
+#line 1485 "mercury_compile.m"
+{
+#line 1493 "mercury_compile.m"
+  {
+#line 1493 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1493 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__WriteDFile_22;
+#line 1493 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__HLDS1_24;
+#line 1493 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__QualInfo_25;
+#line 1493 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MaybeTimestampMap_26;
+#line 1493 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__UndefTypes_27;
+#line 1493 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__UndefModes_28;
+#line 1493 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Errors1_29;
+#line 1493 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Errors2_30;
+#line 1493 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__HLDS20_31;
+#line 1493 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_DumpInfo_49_49;
+#line 1493 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_50_50;
+#line 1493 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_DumpInfo_52_52;
+#line 1524 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_55_55;
+
+#line 1501 "mercury_compile.m"
+#line 1501 "mercury_compile.m"
+    switch (MR_tag((MR_Word) top_level__mercury_compile__OpModeAugment_14)) {
+#line 1501 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1501 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 1501 "mercury_compile.m"
+#line 1501 "mercury_compile.m"
+        switch (MR_unmkbody(top_level__mercury_compile__OpModeAugment_14)) {
+#line 1501 "mercury_compile.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 1501 "mercury_compile.m"
+          case (MR_Integer) 0:
+#line 1510 "mercury_compile.m"
+            top_level__mercury_compile__WriteDFile_22 = (MR_Integer) 0;
+#line 1501 "mercury_compile.m"
+            break;
+#line 1501 "mercury_compile.m"
+          case (MR_Integer) 1:
+#line 1505 "mercury_compile.m"
+            top_level__mercury_compile__WriteDFile_22 = (MR_Integer) 1;
+#line 1501 "mercury_compile.m"
+            break;
+#line 1501 "mercury_compile.m"
+          case (MR_Integer) 2:
+#line 1501 "mercury_compile.m"
+          case (MR_Integer) 3:
+#line 1516 "mercury_compile.m"
+            top_level__mercury_compile__WriteDFile_22 = (MR_Integer) 1;
+#line 1501 "mercury_compile.m"
+            break;
+#line 1501 "mercury_compile.m"
+          case (MR_Integer) 4:
+#line 1501 "mercury_compile.m"
+          case (MR_Integer) 5:
+#line 1500 "mercury_compile.m"
+            top_level__mercury_compile__WriteDFile_22 = (MR_Integer) 0;
+#line 1501 "mercury_compile.m"
+            break;
+#line 1501 "mercury_compile.m"
+        }
+#line 1501 "mercury_compile.m"
+        break;
+#line 1501 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 1505 "mercury_compile.m"
+        top_level__mercury_compile__WriteDFile_22 = (MR_Integer) 1;
+#line 1501 "mercury_compile.m"
+        break;
+#line 1501 "mercury_compile.m"
+    }
+#line 1518 "mercury_compile.m"
+    {
+#line 1518 "mercury_compile.m"
+      top_level__mercury_compile__pre_hlds_pass_16_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__OpModeAugment_14, top_level__mercury_compile__WriteDFile_22, top_level__mercury_compile__ModuleAndImports_15, &top_level__mercury_compile__HLDS1_24, &top_level__mercury_compile__QualInfo_25, &top_level__mercury_compile__MaybeTimestampMap_26, &top_level__mercury_compile__UndefTypes_27, &top_level__mercury_compile__UndefModes_28, &top_level__mercury_compile__Errors1_29, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_0_43, &top_level__mercury_compile__STATE_VARIABLE_DumpInfo_49_49, top_level__mercury_compile__STATE_VARIABLE_Specs_0_45, &top_level__mercury_compile__STATE_VARIABLE_Specs_50_50);
+    }
+#line 1521 "mercury_compile.m"
+    {
+#line 1521 "mercury_compile.m"
+      top_level__mercury_compile_front_end__frontend_pass_13_p_0(top_level__mercury_compile__QualInfo_25, top_level__mercury_compile__UndefTypes_27, top_level__mercury_compile__UndefModes_28, top_level__mercury_compile__Errors1_29, &top_level__mercury_compile__Errors2_30, top_level__mercury_compile__HLDS1_24, &top_level__mercury_compile__HLDS20_31, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_49_49, &top_level__mercury_compile__STATE_VARIABLE_DumpInfo_52_52, top_level__mercury_compile__STATE_VARIABLE_Specs_50_50, top_level__mercury_compile__STATE_VARIABLE_Specs_46);
+    }
+#line 1524 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (top_level__mercury_compile__Errors1_29 == (MR_Integer) 0);
+#line 1524 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1524 "mercury_compile.m"
+      {
+#line 1525 "mercury_compile.m"
+        top_level__mercury_compile__succeeded = (top_level__mercury_compile__Errors2_30 == (MR_Integer) 0);
+#line 1524 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 1524 "mercury_compile.m"
+          {
+#line 1526 "mercury_compile.m"
+            {
+#line 1526 "mercury_compile.m"
+              top_level__mercury_compile__V_55_55 = parse_tree__error_util__contains_errors_2_f_0(top_level__mercury_compile__Globals_13, *top_level__mercury_compile__STATE_VARIABLE_Specs_46);
+            }
+#line 1526 "mercury_compile.m"
+            top_level__mercury_compile__succeeded = (top_level__mercury_compile__V_55_55 == (MR_Integer) 0);
+#line 1524 "mercury_compile.m"
+          }
+#line 1524 "mercury_compile.m"
+      }
+#line 1577 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1528 "mercury_compile.m"
+      {
+#line 1528 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Verbose_32;
+#line 1528 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Stats_33;
+#line 1528 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__HLDS21_34;
+
+#line 1528 "mercury_compile.m"
+        {
+#line 1528 "mercury_compile.m"
+          libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_13, (MR_Integer) 45, &top_level__mercury_compile__Verbose_32);
+        }
+#line 1529 "mercury_compile.m"
+        {
+#line 1529 "mercury_compile.m"
+          libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_13, (MR_Integer) 55, &top_level__mercury_compile__Stats_33);
+        }
+#line 1530 "mercury_compile.m"
+        {
+#line 1530 "mercury_compile.m"
+          top_level__mercury_compile__maybe_write_dependency_graph_6_p_0(top_level__mercury_compile__Verbose_32, top_level__mercury_compile__Stats_33, top_level__mercury_compile__HLDS20_31, &top_level__mercury_compile__HLDS21_34);
+        }
+#line 1534 "mercury_compile.m"
+#line 1534 "mercury_compile.m"
+        switch (MR_tag((MR_Word) top_level__mercury_compile__OpModeAugment_14)) {
+#line 1534 "mercury_compile.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 1534 "mercury_compile.m"
+          case (MR_Integer) 0:
+#line 1534 "mercury_compile.m"
+#line 1534 "mercury_compile.m"
+            switch (MR_unmkbody(top_level__mercury_compile__OpModeAugment_14)) {
+#line 1534 "mercury_compile.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 1534 "mercury_compile.m"
+              case (MR_Integer) 0:
+#line 1552 "mercury_compile.m"
+                {
+#line 1554 "mercury_compile.m"
+                  *top_level__mercury_compile__ExtraObjFiles_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1552 "mercury_compile.m"
+                  *top_level__mercury_compile__STATE_VARIABLE_DumpInfo_44 = top_level__mercury_compile__STATE_VARIABLE_DumpInfo_52_52;
+#line 1552 "mercury_compile.m"
+                }
+#line 1534 "mercury_compile.m"
+                break;
+#line 1534 "mercury_compile.m"
+              case (MR_Integer) 1:
+#line 1556 "mercury_compile.m"
+                {
+#line 1557 "mercury_compile.m"
+                  {
+#line 1557 "mercury_compile.m"
+                    top_level__mercury_compile_middle_passes__output_trans_opt_file_5_p_0(top_level__mercury_compile__HLDS21_34, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_52_52, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_44);
+                  }
+#line 1558 "mercury_compile.m"
+                  *top_level__mercury_compile__ExtraObjFiles_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1556 "mercury_compile.m"
+                }
+#line 1534 "mercury_compile.m"
+                break;
+#line 1534 "mercury_compile.m"
+              case (MR_Integer) 2:
+#line 1560 "mercury_compile.m"
+                {
+#line 1560 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__HLDS22_40;
+
+#line 1561 "mercury_compile.m"
+                  {
+#line 1561 "mercury_compile.m"
+                    top_level__mercury_compile__prepare_for_intermodule_analysis_7_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__Verbose_32, top_level__mercury_compile__Stats_33, top_level__mercury_compile__HLDS21_34, &top_level__mercury_compile__HLDS22_40);
+                  }
+#line 1563 "mercury_compile.m"
+                  {
+#line 1563 "mercury_compile.m"
+                    top_level__mercury_compile_middle_passes__output_analysis_file_5_p_0(top_level__mercury_compile__HLDS22_40, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_52_52, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_44);
+                  }
+#line 1564 "mercury_compile.m"
+                  *top_level__mercury_compile__ExtraObjFiles_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1560 "mercury_compile.m"
+                }
+#line 1534 "mercury_compile.m"
+                break;
+#line 1534 "mercury_compile.m"
+              case (MR_Integer) 3:
+#line 1566 "mercury_compile.m"
+                {
+#line 1567 "mercury_compile.m"
+                  {
+#line 1567 "mercury_compile.m"
+                    check_hlds__xml_documentation__xml_documentation_3_p_0(top_level__mercury_compile__HLDS21_34);
+                  }
+#line 1568 "mercury_compile.m"
+                  *top_level__mercury_compile__ExtraObjFiles_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1566 "mercury_compile.m"
+                  *top_level__mercury_compile__STATE_VARIABLE_DumpInfo_44 = top_level__mercury_compile__STATE_VARIABLE_DumpInfo_52_52;
+#line 1566 "mercury_compile.m"
+                }
+#line 1534 "mercury_compile.m"
+                break;
+#line 1534 "mercury_compile.m"
+              case (MR_Integer) 4:
+#line 1532 "mercury_compile.m"
+                {
+#line 1533 "mercury_compile.m"
+                  *top_level__mercury_compile__ExtraObjFiles_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1532 "mercury_compile.m"
+                  *top_level__mercury_compile__STATE_VARIABLE_DumpInfo_44 = top_level__mercury_compile__STATE_VARIABLE_DumpInfo_52_52;
+#line 1532 "mercury_compile.m"
+                }
+#line 1534 "mercury_compile.m"
+                break;
+#line 1534 "mercury_compile.m"
+              case (MR_Integer) 5:
+#line 1535 "mercury_compile.m"
+                {
+#line 1535 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__UnusedArgs_35;
+
+#line 1538 "mercury_compile.m"
+                  {
+#line 1538 "mercury_compile.m"
+                    libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_13, (MR_Integer) 10, &top_level__mercury_compile__UnusedArgs_35);
+                  }
+#line 1547 "mercury_compile.m"
+#line 1547 "mercury_compile.m"
+                  switch (top_level__mercury_compile__UnusedArgs_35) {
+#line 1547 "mercury_compile.m"
+                    default: /*NOTREACHED*/ MR_assert(0);
+#line 1547 "mercury_compile.m"
+                    case (MR_Integer) 0:
+#line 1548 "mercury_compile.m"
+                      {
+#line 1548 "mercury_compile.m"
+                      }
+#line 1547 "mercury_compile.m"
+                      break;
+#line 1547 "mercury_compile.m"
+                    case (MR_Integer) 1:
+#line 1540 "mercury_compile.m"
+                      {
+#line 1540 "mercury_compile.m"
+                        MR_Word top_level__mercury_compile__NoOptUnusedArgsGlobals_36;
+#line 1540 "mercury_compile.m"
+                        MR_Word top_level__mercury_compile__HLDS21a_37;
+#line 1545 "mercury_compile.m"
+                        MR_Word top_level__mercury_compile___UnusedArgsInfos_38;
+#line 1545 "mercury_compile.m"
+                        MR_Word top_level__mercury_compile___HLDS22_39;
+
+#line 1541 "mercury_compile.m"
+                        {
+#line 1541 "mercury_compile.m"
+                          libs__globals__set_option_4_p_0((MR_Integer) 344, (MR_Word) MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_4[1]), top_level__mercury_compile__Globals_13, &top_level__mercury_compile__NoOptUnusedArgsGlobals_36);
+                        }
+#line 1543 "mercury_compile.m"
+                        {
+#line 1543 "mercury_compile.m"
+                          hlds__hlds_module__module_info_set_globals_3_p_0(top_level__mercury_compile__NoOptUnusedArgsGlobals_36, top_level__mercury_compile__HLDS21_34, &top_level__mercury_compile__HLDS21a_37);
+                        }
+#line 1545 "mercury_compile.m"
+                        {
+#line 1545 "mercury_compile.m"
+                          top_level__mercury_compile_middle_passes__maybe_unused_args_7_p_0(top_level__mercury_compile__Verbose_32, top_level__mercury_compile__Stats_33, &top_level__mercury_compile___UnusedArgsInfos_38, top_level__mercury_compile__HLDS21a_37, &top_level__mercury_compile___HLDS22_39);
+                        }
+#line 1540 "mercury_compile.m"
+                      }
+#line 1547 "mercury_compile.m"
+                      break;
+#line 1547 "mercury_compile.m"
+                  }
+#line 1550 "mercury_compile.m"
+                  *top_level__mercury_compile__ExtraObjFiles_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1535 "mercury_compile.m"
+                  *top_level__mercury_compile__STATE_VARIABLE_DumpInfo_44 = top_level__mercury_compile__STATE_VARIABLE_DumpInfo_52_52;
+#line 1535 "mercury_compile.m"
+                }
+#line 1534 "mercury_compile.m"
+                break;
+#line 1534 "mercury_compile.m"
+            }
+#line 1534 "mercury_compile.m"
+            break;
+#line 1534 "mercury_compile.m"
+          case (MR_Integer) 1:
+#line 1570 "mercury_compile.m"
+            {
+#line 1570 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__OpModeCodeGen_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__OpModeAugment_14, (MR_Integer) 0)));
+#line 1570 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__HLDS22_76;
+
+#line 1571 "mercury_compile.m"
+              {
+#line 1571 "mercury_compile.m"
+                top_level__mercury_compile__maybe_prepare_for_intermodule_analysis_7_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__Verbose_32, top_level__mercury_compile__Stats_33, top_level__mercury_compile__HLDS21_34, &top_level__mercury_compile__HLDS22_76);
+              }
+#line 1573 "mercury_compile.m"
+              {
+#line 1573 "mercury_compile.m"
+                top_level__mercury_compile__after_front_end_passes_12_p_0(top_level__mercury_compile__Globals_13, top_level__mercury_compile__OpModeCodeGen_41, top_level__mercury_compile__NestedSubModules_16, top_level__mercury_compile__FindTimestampFiles_17, top_level__mercury_compile__MaybeTimestampMap_26, top_level__mercury_compile__HLDS22_76, *top_level__mercury_compile__STATE_VARIABLE_Specs_46, top_level__mercury_compile__ExtraObjFiles_18, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_52_52, top_level__mercury_compile__STATE_VARIABLE_DumpInfo_44);
+              }
+#line 1570 "mercury_compile.m"
+            }
+#line 1534 "mercury_compile.m"
+            break;
+#line 1534 "mercury_compile.m"
+        }
+#line 1528 "mercury_compile.m"
+      }
+#line 1577 "mercury_compile.m"
+    else
+#line 1580 "mercury_compile.m"
+      {
+#line 1580 "mercury_compile.m"
+        MR_Integer top_level__mercury_compile__ExitStatus_42;
+
+#line 1580 "mercury_compile.m"
+        {
+#line 1580 "mercury_compile.m"
+          mercury__io__get_exit_status_3_p_0(&top_level__mercury_compile__ExitStatus_42);
+        }
+#line 1581 "mercury_compile.m"
+        top_level__mercury_compile__succeeded = (top_level__mercury_compile__ExitStatus_42 == (MR_Integer) 0);
+#line 1583 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 1582 "mercury_compile.m"
+          {
+#line 1582 "mercury_compile.m"
+            {
+#line 1582 "mercury_compile.m"
+              mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+            }
+#line 1582 "mercury_compile.m"
+          }
+#line 1583 "mercury_compile.m"
+        else
+#line 1583 "mercury_compile.m"
+          {
+#line 1583 "mercury_compile.m"
+          }
+#line 1586 "mercury_compile.m"
+        *top_level__mercury_compile__ExtraObjFiles_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1580 "mercury_compile.m"
+        *top_level__mercury_compile__STATE_VARIABLE_DumpInfo_44 = top_level__mercury_compile__STATE_VARIABLE_DumpInfo_52_52;
+#line 1580 "mercury_compile.m"
+      }
+#line 1493 "mercury_compile.m"
+  }
+#line 1485 "mercury_compile.m"
+}
+
+#line 1451 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__augment_and_process_module_14_p_0(
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_15,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeAugment_16,
+#line 1451 "mercury_compile.m"
+  MR_String top_level__mercury_compile__SourceFileName_17,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__SourceFileModuleName_18,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTimestamp_19,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__NestedSubModules0_20,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HaveReadModuleMaps_21,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FindTimestampFiles_22,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnit_23,
+#line 1451 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_24,
+#line 1451 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_0_37,
+#line 1451 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_Specs_38)
+#line 1451 "mercury_compile.m"
+{
+#line 1462 "mercury_compile.m"
+  {
+#line 1462 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1462 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__TypeCtorInfo_51_51;
+#line 1462 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ModuleName_27;
+#line 1462 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__NestedSubModules_30;
+#line 1462 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ModuleAndImports_31;
+#line 1462 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ImportedSpecs_33;
+#line 1462 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Errors_34;
+#line 1462 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__FatalErrors_35;
+#line 1462 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_41_41;
+#line 1462 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_44_44;
+#line 1462 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_45_45;
+#line 1464 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_28_28;
+#line 1464 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_29_29;
+#line 1473 "mercury_compile.m"
+    MR_Word top_level__mercury_compile___AugCompUnit_32;
+
+#line 1463 "mercury_compile.m"
+    {
+#line 1463 "mercury_compile.m"
+      parse_tree__check_raw_comp_unit__check_for_no_exports_6_p_0(top_level__mercury_compile__Globals_15, top_level__mercury_compile__RawCompUnit_23, top_level__mercury_compile__STATE_VARIABLE_Specs_0_37, &top_level__mercury_compile__STATE_VARIABLE_Specs_41_41);
+    }
+#line 1464 "mercury_compile.m"
+    top_level__mercury_compile__ModuleName_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__RawCompUnit_23, (MR_Integer) 0)));
+#line 1464 "mercury_compile.m"
+    top_level__mercury_compile__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__RawCompUnit_23, (MR_Integer) 1)));
+#line 1464 "mercury_compile.m"
+    top_level__mercury_compile__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__RawCompUnit_23, (MR_Integer) 2)));
+#line 1465 "mercury_compile.m"
+    {
+#line 1465 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(top_level__mercury_compile__ModuleName_27, top_level__mercury_compile__SourceFileModuleName_18);
+    }
+#line 1467 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1466 "mercury_compile.m"
+      top_level__mercury_compile__NestedSubModules_30 = top_level__mercury_compile__NestedSubModules0_20;
+#line 1467 "mercury_compile.m"
+    else
+#line 1468 "mercury_compile.m"
+      {
+#line 1468 "mercury_compile.m"
+        {
+#line 1468 "mercury_compile.m"
+          mercury__set__init_1_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, &top_level__mercury_compile__NestedSubModules_30);
+        }
+#line 1468 "mercury_compile.m"
+      }
+#line 1470 "mercury_compile.m"
+    {
+#line 1470 "mercury_compile.m"
+      parse_tree__modules__grab_imported_modules_10_p_0(top_level__mercury_compile__Globals_15, top_level__mercury_compile__SourceFileName_17, top_level__mercury_compile__SourceFileModuleName_18, top_level__mercury_compile__MaybeTimestamp_19, top_level__mercury_compile__NestedSubModules_30, top_level__mercury_compile__RawCompUnit_23, top_level__mercury_compile__HaveReadModuleMaps_21, &top_level__mercury_compile__ModuleAndImports_31);
+    }
+#line 1473 "mercury_compile.m"
+    {
+#line 1473 "mercury_compile.m"
+      parse_tree__module_imports__module_and_imports_get_aug_comp_unit_4_p_0(top_level__mercury_compile__ModuleAndImports_31, &top_level__mercury_compile___AugCompUnit_32, &top_level__mercury_compile__ImportedSpecs_33, &top_level__mercury_compile__Errors_34);
+    }
+#line 1475 "mercury_compile.m"
+    {
+#line 1475 "mercury_compile.m"
+      top_level__mercury_compile__STATE_VARIABLE_Specs_44_44 = mercury__list__f_43_43_2_f_0((MR_Word) &parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0, top_level__mercury_compile__ImportedSpecs_33, top_level__mercury_compile__STATE_VARIABLE_Specs_41_41);
+    }
+#line 1476 "mercury_compile.m"
+    {
+#line 1476 "mercury_compile.m"
+      top_level__mercury_compile__V_45_45 = parse_tree__prog_io_error__fatal_read_module_errors_0_f_0();
+    }
+#line 7087 "top_level.mercury_compile.c"
+    top_level__mercury_compile__TypeCtorInfo_51_51 = (MR_Word) &parse_tree__prog_io_error__parse_tree__prog_io_error__type_ctor_info_read_module_error_0;
+#line 1476 "mercury_compile.m"
+    {
+#line 1476 "mercury_compile.m"
+      mercury__set__intersect_3_p_0(top_level__mercury_compile__TypeCtorInfo_51_51, top_level__mercury_compile__Errors_34, top_level__mercury_compile__V_45_45, &top_level__mercury_compile__FatalErrors_35);
+    }
+#line 1477 "mercury_compile.m"
+    {
+#line 1477 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = mercury__set__is_empty_1_p_0(top_level__mercury_compile__TypeCtorInfo_51_51, top_level__mercury_compile__FatalErrors_35);
+    }
+#line 1481 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1478 "mercury_compile.m"
+      {
+#line 1478 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_36_36;
+
+#line 1478 "mercury_compile.m"
+        {
+#line 1478 "mercury_compile.m"
+          top_level__mercury_compile__process_augmented_module_12_p_0(top_level__mercury_compile__Globals_15, top_level__mercury_compile__OpModeAugment_16, top_level__mercury_compile__ModuleAndImports_31, top_level__mercury_compile__NestedSubModules_30, top_level__mercury_compile__FindTimestampFiles_22, top_level__mercury_compile__ExtraObjFiles_24, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &top_level__mercury_compile__V_36_36, top_level__mercury_compile__STATE_VARIABLE_Specs_44_44, top_level__mercury_compile__STATE_VARIABLE_Specs_38);
+        }
+#line 1478 "mercury_compile.m"
+      }
+#line 1481 "mercury_compile.m"
+    else
+#line 1482 "mercury_compile.m"
+      {
+#line 1482 "mercury_compile.m"
+        *top_level__mercury_compile__ExtraObjFiles_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1482 "mercury_compile.m"
+        *top_level__mercury_compile__STATE_VARIABLE_Specs_38 = top_level__mercury_compile__STATE_VARIABLE_Specs_44_44;
+#line 1482 "mercury_compile.m"
+      }
+#line 1462 "mercury_compile.m"
+  }
+#line 1451 "mercury_compile.m"
+}
+
+#line 1430 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__module_to_link_2_p_0(
+#line 1430 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__1_1,
+#line 1430 "mercury_compile.m"
+  MR_String * top_level__mercury_compile__ModuleToLink_6)
+#line 1430 "mercury_compile.m"
+{
+#line 1432 "mercury_compile.m"
+  {
+#line 1432 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1432 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ModuleName_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__HeadVar__1_1, (MR_Integer) 0)));
+#line 1432 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__HeadVar__1_1, (MR_Integer) 1)));
+#line 1432 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__HeadVar__1_1, (MR_Integer) 2)));
+
+#line 1433 "mercury_compile.m"
+    {
+#line 1433 "mercury_compile.m"
+      parse_tree__file_names__module_name_to_file_name_stem_2_p_0(top_level__mercury_compile__ModuleName_3, top_level__mercury_compile__ModuleToLink_6);
+    }
+#line 1432 "mercury_compile.m"
+  }
+#line 1430 "mercury_compile.m"
+}
+
+#line 1427 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__augment_and_process_all_submodules_14_p_0_2(
+#line 1427 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1427 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 1427 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_2)
+#line 1427 "mercury_compile.m"
+{
+#line 1427 "mercury_compile.m"
+  {
+#line 1427 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 1427 "mercury_compile.m"
+    MR_String top_level__mercury_compile__conv4_ModuleToLink_6;
+
+#line 1427 "mercury_compile.m"
+    {
+#line 1427 "mercury_compile.m"
+      top_level__mercury_compile__module_to_link_2_p_0(((MR_Word) top_level__mercury_compile__wrapper_arg_1), &top_level__mercury_compile__conv4_ModuleToLink_6);
+    }
+#line 1427 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_2 = ((MR_Box) (top_level__mercury_compile__conv4_ModuleToLink_6));
+#line 1427 "mercury_compile.m"
+  }
+#line 1427 "mercury_compile.m"
+}
+
+#line 1421 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__augment_and_process_all_submodules_14_p_0_1(
+#line 1421 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1421 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 1421 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_2,
+#line 1421 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 1421 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_4,
+#line 1421 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_5,
+#line 1421 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_6)
+#line 1421 "mercury_compile.m"
+{
+#line 1421 "mercury_compile.m"
+  {
+#line 1421 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 1421 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv1_ExtraObjFiles_24;
+#line 1421 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv0_STATE_VARIABLE_Specs_38;
+
+#line 1421 "mercury_compile.m"
+    {
+#line 1421 "mercury_compile.m"
+      top_level__mercury_compile__augment_and_process_module_14_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 4))), ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 7))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 8))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 9))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 10))), ((MR_Word) top_level__mercury_compile__wrapper_arg_1), &top_level__mercury_compile__conv1_ExtraObjFiles_24, ((MR_Word) top_level__mercury_compile__wrapper_arg_3), &top_level__mercury_compile__conv0_STATE_VARIABLE_Specs_38);
+    }
+#line 1421 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_2 = ((MR_Box) (top_level__mercury_compile__conv1_ExtraObjFiles_24));
+#line 1421 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_4 = ((MR_Box) (top_level__mercury_compile__conv0_STATE_VARIABLE_Specs_38));
+#line 1421 "mercury_compile.m"
+  }
+#line 1421 "mercury_compile.m"
+}
+
+#line 1409 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__augment_and_process_all_submodules_14_p_0(
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_15,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeAugment_16,
+#line 1409 "mercury_compile.m"
+  MR_String top_level__mercury_compile__FileName_17,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__SourceFileModuleName_18,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTimestamp_19,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__NestedSubModules_20,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HaveReadModuleMaps_21,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FindTimestampFiles_22,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnits_23,
+#line 1409 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_0_31,
+#line 1409 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ModulesToLink_25,
+#line 1409 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_26)
+#line 1409 "mercury_compile.m"
+{
+#line 1419 "mercury_compile.m"
+  {
+#line 1419 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1419 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__TypeCtorInfo_47_47;
+#line 1419 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__TypeCtorInfo_53_53;
+#line 1419 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ExtraObjFileLists_28;
+#line 1419 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_34_34;
+#line 1419 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__STATE_VARIABLE_Specs_35_35;
+#line 1420 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__conv3_STATE_VARIABLE_Specs_35_35;
+#line 1420 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__conv2_STATE_VARIABLE_IO_36_36;
+#line 1426 "mercury_compile.m"
+    MR_Integer top_level__mercury_compile___NumWarnings_29;
+#line 1426 "mercury_compile.m"
+    MR_Integer top_level__mercury_compile___NumErrors_30;
+
+#line 1421 "mercury_compile.m"
+    {
+#line 1421 "mercury_compile.m"
+      top_level__mercury_compile__V_34_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 11 * sizeof(MR_Word)), NULL, NULL);
+#line 1421 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_34_34, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_12[0]));
+#line 1421 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_34_34, 1) = ((MR_Box) (top_level__mercury_compile__augment_and_process_all_submodules_14_p_0_1));
+#line 1421 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_34_34, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+#line 1421 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_34_34, 3) = ((MR_Box) (top_level__mercury_compile__Globals_15));
+#line 1421 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_34_34, 4) = ((MR_Box) (top_level__mercury_compile__OpModeAugment_16));
+#line 1421 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_34_34, 5) = ((MR_Box) (top_level__mercury_compile__FileName_17));
+#line 1421 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_34_34, 6) = ((MR_Box) (top_level__mercury_compile__SourceFileModuleName_18));
+#line 1421 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_34_34, 7) = ((MR_Box) (top_level__mercury_compile__MaybeTimestamp_19));
+#line 1421 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_34_34, 8) = ((MR_Box) (top_level__mercury_compile__NestedSubModules_20));
+#line 1421 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_34_34, 9) = ((MR_Box) (top_level__mercury_compile__HaveReadModuleMaps_21));
+#line 1421 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_34_34, 10) = ((MR_Box) (top_level__mercury_compile__FindTimestampFiles_22));
+#line 1421 "mercury_compile.m"
+    }
+#line 7310 "top_level.mercury_compile.c"
+    top_level__mercury_compile__TypeCtorInfo_47_47 = (MR_Word) &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0;
+#line 1420 "mercury_compile.m"
+    {
+#line 1420 "mercury_compile.m"
+      mercury__list__map_foldl2_7_p_2(top_level__mercury_compile__TypeCtorInfo_47_47, (MR_Word) &top_level__mercury_compile_scalar_common_1[0], (MR_Word) &top_level__mercury_compile_scalar_common_1[7], (MR_Word) &mercury__io__io__type_ctor_info_state_0, top_level__mercury_compile__V_34_34, top_level__mercury_compile__RawCompUnits_23, &top_level__mercury_compile__ExtraObjFileLists_28, ((MR_Box) (top_level__mercury_compile__STATE_VARIABLE_Specs_0_31)), &top_level__mercury_compile__conv3_STATE_VARIABLE_Specs_35_35, ((MR_Box) ((MR_Integer) 0)), &top_level__mercury_compile__conv2_STATE_VARIABLE_IO_36_36);
+    }
+#line 1420 "mercury_compile.m"
+    top_level__mercury_compile__STATE_VARIABLE_Specs_35_35 = ((MR_Word) top_level__mercury_compile__conv3_STATE_VARIABLE_Specs_35_35);
+#line 1426 "mercury_compile.m"
+    {
+#line 1426 "mercury_compile.m"
+      parse_tree__error_util__write_error_specs_8_p_0(top_level__mercury_compile__STATE_VARIABLE_Specs_35_35, top_level__mercury_compile__Globals_15, (MR_Integer) 0, &top_level__mercury_compile___NumWarnings_29, (MR_Integer) 0, &top_level__mercury_compile___NumErrors_30);
+    }
+#line 7324 "top_level.mercury_compile.c"
+    top_level__mercury_compile__TypeCtorInfo_53_53 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 1427 "mercury_compile.m"
+    {
+#line 1427 "mercury_compile.m"
+      mercury__list__map_3_p_0(top_level__mercury_compile__TypeCtorInfo_47_47, top_level__mercury_compile__TypeCtorInfo_53_53, (MR_Word) &top_level__mercury_compile_scalar_common_7[2], top_level__mercury_compile__RawCompUnits_23, top_level__mercury_compile__ModulesToLink_25);
+    }
+#line 1428 "mercury_compile.m"
+    {
+#line 1428 "mercury_compile.m"
+      mercury__list__condense_2_p_0(top_level__mercury_compile__TypeCtorInfo_53_53, top_level__mercury_compile__ExtraObjFileLists_28, top_level__mercury_compile__ExtraObjFiles_26);
+    }
+#line 1419 "mercury_compile.m"
+  }
+#line 1409 "mercury_compile.m"
+}
+
+#line 1255 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__read_module_or_file_14_p_0(
+#line 1255 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals0_15,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Globals_16,
+#line 1255 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileOrModuleName_17,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ModuleName_18,
+#line 1255 "mercury_compile.m"
+  MR_String * top_level__mercury_compile__SourceFileName_19,
+#line 1255 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ReturnTimestamp_20,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__MaybeTimestamp_21,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ParseTreeSrc_22,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Specs_23,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Errors_24,
+#line 1255 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46,
+#line 1255 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_47)
+#line 1255 "mercury_compile.m"
+{
+#line 1266 "mercury_compile.m"
+  {
+#line 1266 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 1266 "mercury_compile.m"
+    if (((MR_tag((MR_Word) top_level__mercury_compile__FileOrModuleName_17)) == (MR_mktag((MR_Integer) 0))))
+#line 1313 "mercury_compile.m"
+      {
+#line 1313 "mercury_compile.m"
+        MR_String top_level__mercury_compile__FileName_38 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__FileOrModuleName_17, (MR_Integer) 0)));
+#line 1313 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__DefaultModuleName_39;
+#line 1313 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Verbose_145;
+#line 1313 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Stats_153;
+#line 1339 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__MaybeTimestampPrime_138;
+#line 1339 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__ParseTreeSrcPrime_139;
+#line 1339 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__SpecsPrime_140;
+#line 1339 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__ErrorsPrime_141;
+#line 1323 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_56_56;
+#line 1323 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_161_161;
+#line 1323 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_162_162;
+#line 1323 "mercury_compile.m"
+        MR_String top_level__mercury_compile__V_40_40;
+
+#line 1314 "mercury_compile.m"
+        {
+#line 1314 "mercury_compile.m"
+          libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals0_15, (MR_Integer) 45, &top_level__mercury_compile__Verbose_145);
+        }
+#line 1315 "mercury_compile.m"
+        {
+#line 1315 "mercury_compile.m"
+          libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_145, (MR_String) "% Parsing file \140");
+        }
+#line 1316 "mercury_compile.m"
+        {
+#line 1316 "mercury_compile.m"
+          libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_145, top_level__mercury_compile__FileName_38);
+        }
+#line 1317 "mercury_compile.m"
+        {
+#line 1317 "mercury_compile.m"
+          libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_145, (MR_String) "\' and imported interfaces...\n");
+        }
+#line 1319 "mercury_compile.m"
+        {
+#line 1319 "mercury_compile.m"
+          parse_tree__file_names__file_name_to_module_name_2_p_0(top_level__mercury_compile__FileName_38, &top_level__mercury_compile__DefaultModuleName_39);
+        }
+#line 1323 "mercury_compile.m"
+        top_level__mercury_compile__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 0)));
+#line 1323 "mercury_compile.m"
+        top_level__mercury_compile__V_161_161 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 1)));
+#line 1323 "mercury_compile.m"
+        top_level__mercury_compile__V_162_162 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 2)));
+#line 1323 "mercury_compile.m"
+        {
+#line 1323 "mercury_compile.m"
+          top_level__mercury_compile__succeeded = parse_tree__read_modules__find_read_module_src_8_p_0(top_level__mercury_compile__V_56_56, top_level__mercury_compile__DefaultModuleName_39, top_level__mercury_compile__ReturnTimestamp_20, &top_level__mercury_compile__V_40_40, &top_level__mercury_compile__MaybeTimestampPrime_138, &top_level__mercury_compile__ParseTreeSrcPrime_139, &top_level__mercury_compile__SpecsPrime_140, &top_level__mercury_compile__ErrorsPrime_141);
+        }
+#line 1339 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 1327 "mercury_compile.m"
+          {
+#line 1327 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_57_57;
+#line 1327 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__HaveReadModuleMapSrc0_135;
+#line 1327 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__HaveReadModuleMapSrc_136;
+#line 1330 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_163_163;
+#line 1330 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_164_164;
+#line 1333 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_166_166;
+#line 1333 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_167_167;
+#line 1333 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_165_165;
+
+#line 1327 "mercury_compile.m"
+            *top_level__mercury_compile__Globals_16 = top_level__mercury_compile__Globals0_15;
+#line 1330 "mercury_compile.m"
+            top_level__mercury_compile__HaveReadModuleMapSrc0_135 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 0)));
+#line 1330 "mercury_compile.m"
+            top_level__mercury_compile__V_163_163 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 1)));
+#line 1330 "mercury_compile.m"
+            top_level__mercury_compile__V_164_164 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 2)));
+#line 1331 "mercury_compile.m"
+            mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1334 "mercury_compile.m"
+            *top_level__mercury_compile__ModuleName_18 = top_level__mercury_compile__DefaultModuleName_39;
+#line 1331 "mercury_compile.m"
+            {
+#line 1331 "mercury_compile.m"
+              top_level__mercury_compile__V_57_57 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1331 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_57_57, 0) = ((MR_Box) (*top_level__mercury_compile__ModuleName_18));
+#line 1331 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_57_57, 1) = NULL;
+#line 1331 "mercury_compile.m"
+            }
+#line 1331 "mercury_compile.m"
+            {
+#line 1331 "mercury_compile.m"
+              mercury__map__delete_3_p_0((MR_Word) &top_level__mercury_compile_scalar_common_1[1], (MR_Word) &top_level__mercury_compile_scalar_common_1[2], ((MR_Box) (top_level__mercury_compile__V_57_57)), top_level__mercury_compile__HaveReadModuleMapSrc0_135, &top_level__mercury_compile__HaveReadModuleMapSrc_136);
+            }
+#line 1333 "mercury_compile.m"
+            top_level__mercury_compile__V_165_165 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 0)));
+#line 1333 "mercury_compile.m"
+            top_level__mercury_compile__V_166_166 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 1)));
+#line 1333 "mercury_compile.m"
+            top_level__mercury_compile__V_167_167 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 2)));
+#line 1333 "mercury_compile.m"
+            {
+#line 1333 "mercury_compile.m"
+              MR_Word base;
+#line 1333 "mercury_compile.m"
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1333 "mercury_compile.m"
+              *top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_47 = base;
+#line 1333 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (top_level__mercury_compile__HaveReadModuleMapSrc_136));
+#line 1333 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (top_level__mercury_compile__V_166_166));
+#line 1333 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (top_level__mercury_compile__V_167_167));
+#line 1333 "mercury_compile.m"
+            }
+#line 1335 "mercury_compile.m"
+            *top_level__mercury_compile__MaybeTimestamp_21 = top_level__mercury_compile__MaybeTimestampPrime_138;
+#line 1336 "mercury_compile.m"
+            *top_level__mercury_compile__ParseTreeSrc_22 = top_level__mercury_compile__ParseTreeSrcPrime_139;
+#line 1337 "mercury_compile.m"
+            *top_level__mercury_compile__Specs_23 = top_level__mercury_compile__SpecsPrime_140;
+#line 1338 "mercury_compile.m"
+            *top_level__mercury_compile__Errors_24 = top_level__mercury_compile__ErrorsPrime_141;
+#line 1327 "mercury_compile.m"
+          }
+#line 1339 "mercury_compile.m"
+        else
+#line 1346 "mercury_compile.m"
+          {
+#line 1346 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__Smart_41;
+#line 1346 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_62_62;
+#line 1346 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__DisableSmart_137;
+#line 1364 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_42_42;
+#line 1364 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_43_43;
+
+#line 1345 "mercury_compile.m"
+            {
+#line 1345 "mercury_compile.m"
+              top_level__mercury_compile__V_62_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1345 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_62_62, 0) = ((MR_Box) (top_level__mercury_compile__ReturnTimestamp_20));
+#line 1345 "mercury_compile.m"
+            }
+#line 1343 "mercury_compile.m"
+            {
+#line 1343 "mercury_compile.m"
+              parse_tree__read_modules__read_module_src_from_file_11_p_0(top_level__mercury_compile__Globals0_15, top_level__mercury_compile__FileName_38, (MR_String) "Reading file", (MR_Integer) 1, top_level__mercury_compile__V_62_62, top_level__mercury_compile__MaybeTimestamp_21, top_level__mercury_compile__ParseTreeSrc_22, top_level__mercury_compile__Specs_23, top_level__mercury_compile__Errors_24);
+            }
+#line 1347 "mercury_compile.m"
+            {
+#line 1347 "mercury_compile.m"
+              libs__globals__io_get_disable_smart_recompilation_3_p_0(&top_level__mercury_compile__DisableSmart_137);
+            }
+#line 1352 "mercury_compile.m"
+#line 1352 "mercury_compile.m"
+            switch (top_level__mercury_compile__DisableSmart_137) {
+#line 1352 "mercury_compile.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 1352 "mercury_compile.m"
+              case (MR_Integer) 0:
+#line 1354 "mercury_compile.m"
+                *top_level__mercury_compile__Globals_16 = top_level__mercury_compile__Globals0_15;
+#line 1352 "mercury_compile.m"
+                break;
+#line 1352 "mercury_compile.m"
+              case (MR_Integer) 1:
+#line 1349 "mercury_compile.m"
+                {
+#line 1350 "mercury_compile.m"
+                  {
+#line 1350 "mercury_compile.m"
+                    libs__globals__set_option_4_p_0((MR_Integer) 115, (MR_Word) MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_4[1]), top_level__mercury_compile__Globals0_15, top_level__mercury_compile__Globals_16);
+                  }
+#line 1349 "mercury_compile.m"
+                }
+#line 1352 "mercury_compile.m"
+                break;
+#line 1352 "mercury_compile.m"
+            }
+#line 1363 "mercury_compile.m"
+            {
+#line 1363 "mercury_compile.m"
+              libs__globals__lookup_bool_option_3_p_0(*top_level__mercury_compile__Globals_16, (MR_Integer) 115, &top_level__mercury_compile__Smart_41);
+            }
+#line 1364 "mercury_compile.m"
+            *top_level__mercury_compile__ModuleName_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), *top_level__mercury_compile__ParseTreeSrc_22, (MR_Integer) 0)));
+#line 1364 "mercury_compile.m"
+            top_level__mercury_compile__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), *top_level__mercury_compile__ParseTreeSrc_22, (MR_Integer) 1)));
+#line 1364 "mercury_compile.m"
+            top_level__mercury_compile__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), *top_level__mercury_compile__ParseTreeSrc_22, (MR_Integer) 2)));
+#line 1366 "mercury_compile.m"
+            top_level__mercury_compile__succeeded = (top_level__mercury_compile__Smart_41 == (MR_Integer) 1);
+#line 1366 "mercury_compile.m"
+            if (top_level__mercury_compile__succeeded)
+#line 1366 "mercury_compile.m"
+              {
+#line 1367 "mercury_compile.m"
+                {
+#line 1367 "mercury_compile.m"
+                  top_level__mercury_compile__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(*top_level__mercury_compile__ModuleName_18, top_level__mercury_compile__DefaultModuleName_39);
+                }
+#line 1367 "mercury_compile.m"
+                top_level__mercury_compile__succeeded = !(top_level__mercury_compile__succeeded);
+#line 1366 "mercury_compile.m"
+              }
+#line 1388 "mercury_compile.m"
+            if (top_level__mercury_compile__succeeded)
+#line 1372 "mercury_compile.m"
+              {
+#line 1372 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__Warn_44;
+
+#line 1371 "mercury_compile.m"
+                {
+#line 1371 "mercury_compile.m"
+                  libs__globals__lookup_bool_option_3_p_0(*top_level__mercury_compile__Globals_16, (MR_Integer) 23, &top_level__mercury_compile__Warn_44);
+                }
+#line 1384 "mercury_compile.m"
+#line 1384 "mercury_compile.m"
+                switch (top_level__mercury_compile__Warn_44) {
+#line 1384 "mercury_compile.m"
+                  default: /*NOTREACHED*/ MR_assert(0);
+#line 1384 "mercury_compile.m"
+                  case (MR_Integer) 0:
+#line 1385 "mercury_compile.m"
+                    {
+#line 1385 "mercury_compile.m"
+                    }
+#line 1384 "mercury_compile.m"
+                    break;
+#line 1384 "mercury_compile.m"
+                  case (MR_Integer) 1:
+#line 1374 "mercury_compile.m"
+                    {
+#line 1374 "mercury_compile.m"
+                      MR_Word top_level__mercury_compile__Pieces_45;
+#line 1374 "mercury_compile.m"
+                      MR_Word top_level__mercury_compile__V_72_72;
+#line 1374 "mercury_compile.m"
+                      MR_Word top_level__mercury_compile__V_75_75;
+#line 1374 "mercury_compile.m"
+                      MR_Word top_level__mercury_compile__V_77_77;
+#line 1374 "mercury_compile.m"
+                      MR_Word top_level__mercury_compile__V_78_78;
+#line 1374 "mercury_compile.m"
+                      MR_Word top_level__mercury_compile__V_79_79;
+#line 1374 "mercury_compile.m"
+                      MR_Word top_level__mercury_compile__V_82_82;
+#line 1374 "mercury_compile.m"
+                      MR_Word top_level__mercury_compile__V_83_83;
+
+#line 1377 "mercury_compile.m"
+                      {
+#line 1377 "mercury_compile.m"
+                        top_level__mercury_compile__V_78_78 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1377 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(2), top_level__mercury_compile__V_78_78, 0) = ((MR_Box) (top_level__mercury_compile__FileName_38));
+#line 1377 "mercury_compile.m"
+                      }
+#line 1378 "mercury_compile.m"
+                      {
+#line 1378 "mercury_compile.m"
+                        top_level__mercury_compile__V_83_83 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1378 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(3), top_level__mercury_compile__V_83_83, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+#line 1378 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(3), top_level__mercury_compile__V_83_83, 1) = ((MR_Box) (*top_level__mercury_compile__ModuleName_18));
+#line 1378 "mercury_compile.m"
+                      }
+#line 1378 "mercury_compile.m"
+                      {
+#line 1378 "mercury_compile.m"
+                        top_level__mercury_compile__V_82_82 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1378 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_82_82, 0) = ((MR_Box) (top_level__mercury_compile__V_83_83));
+#line 1378 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_82_82, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[20])));
+#line 1378 "mercury_compile.m"
+                      }
+#line 1377 "mercury_compile.m"
+                      {
+#line 1377 "mercury_compile.m"
+                        top_level__mercury_compile__V_79_79 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1377 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_79_79, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[34])));
+#line 1377 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_79_79, 1) = ((MR_Box) (top_level__mercury_compile__V_82_82));
+#line 1377 "mercury_compile.m"
+                      }
+#line 1377 "mercury_compile.m"
+                      {
+#line 1377 "mercury_compile.m"
+                        top_level__mercury_compile__V_77_77 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1377 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_77_77, 0) = ((MR_Box) (top_level__mercury_compile__V_78_78));
+#line 1377 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_77_77, 1) = ((MR_Box) (top_level__mercury_compile__V_79_79));
+#line 1377 "mercury_compile.m"
+                      }
+#line 1376 "mercury_compile.m"
+                      {
+#line 1376 "mercury_compile.m"
+                        top_level__mercury_compile__V_75_75 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1376 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_75_75, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+#line 1376 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_75_75, 1) = ((MR_Box) (top_level__mercury_compile__V_77_77));
+#line 1376 "mercury_compile.m"
+                      }
+#line 1376 "mercury_compile.m"
+                      {
+#line 1376 "mercury_compile.m"
+                        top_level__mercury_compile__V_72_72 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1376 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_72_72, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[33])));
+#line 1376 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_72_72, 1) = ((MR_Box) (top_level__mercury_compile__V_75_75));
+#line 1376 "mercury_compile.m"
+                      }
+#line 1375 "mercury_compile.m"
+                      {
+#line 1375 "mercury_compile.m"
+                        top_level__mercury_compile__Pieces_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1375 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(1), top_level__mercury_compile__Pieces_45, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[32])));
+#line 1375 "mercury_compile.m"
+                        MR_hl_field(MR_mktag(1), top_level__mercury_compile__Pieces_45, 1) = ((MR_Box) (top_level__mercury_compile__V_72_72));
+#line 1375 "mercury_compile.m"
+                      }
+#line 1382 "mercury_compile.m"
+                      {
+#line 1382 "mercury_compile.m"
+                        parse_tree__error_util__write_error_pieces_plain_4_p_0(*top_level__mercury_compile__Globals_16, top_level__mercury_compile__Pieces_45);
+                      }
+#line 1383 "mercury_compile.m"
+                      {
+#line 1383 "mercury_compile.m"
+                        libs__compiler_util__record_warning_3_p_0(*top_level__mercury_compile__Globals_16);
+                      }
+#line 1374 "mercury_compile.m"
+                    }
+#line 1384 "mercury_compile.m"
+                    break;
+#line 1384 "mercury_compile.m"
+                }
+#line 1387 "mercury_compile.m"
+                {
+#line 1387 "mercury_compile.m"
+                  libs__globals__io_set_disable_smart_recompilation_3_p_0((MR_Integer) 1);
+                }
+#line 1372 "mercury_compile.m"
+              }
+#line 1388 "mercury_compile.m"
+            else
+#line 1388 "mercury_compile.m"
+              {
+#line 1388 "mercury_compile.m"
+              }
+#line 1346 "mercury_compile.m"
+            *top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_47 = top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46;
+#line 1346 "mercury_compile.m"
+          }
+#line 1392 "mercury_compile.m"
+        {
+#line 1392 "mercury_compile.m"
+          libs__globals__lookup_bool_option_3_p_0(*top_level__mercury_compile__Globals_16, (MR_Integer) 56, &top_level__mercury_compile__Stats_153);
+        }
+#line 1393 "mercury_compile.m"
+        {
+#line 1393 "mercury_compile.m"
+          libs__file_util__maybe_report_stats_3_p_0(top_level__mercury_compile__Stats_153);
+        }
+#line 1394 "mercury_compile.m"
+        {
+#line 1394 "mercury_compile.m"
+          *top_level__mercury_compile__SourceFileName_19 = mercury__string__f_43_43_2_f_0(top_level__mercury_compile__FileName_38, (MR_String) ".m");
+        }
+#line 1313 "mercury_compile.m"
+      }
+#line 1266 "mercury_compile.m"
+    else
+#line 1266 "mercury_compile.m"
+      {
+#line 1266 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Verbose_27;
+#line 1266 "mercury_compile.m"
+        MR_String top_level__mercury_compile__ModuleNameString_28;
+#line 1266 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Stats_37;
+#line 1291 "mercury_compile.m"
+        MR_String top_level__mercury_compile__SourceFileNamePrime_29;
+#line 1291 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__MaybeTimestampPrime_30;
+#line 1291 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__ParseTreeSrcPrime_31;
+#line 1291 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__SpecsPrime_32;
+#line 1291 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__ErrorsPrime_33;
+#line 1275 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_120_120;
+#line 1275 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_154_154;
+#line 1275 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_155_155;
+
+#line 1266 "mercury_compile.m"
+        *top_level__mercury_compile__ModuleName_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__FileOrModuleName_17, (MR_Integer) 0)));
+#line 1267 "mercury_compile.m"
+        {
+#line 1267 "mercury_compile.m"
+          libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals0_15, (MR_Integer) 45, &top_level__mercury_compile__Verbose_27);
+        }
+#line 1268 "mercury_compile.m"
+        {
+#line 1268 "mercury_compile.m"
+          libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_27, (MR_String) "% Parsing module \140");
+        }
+#line 1269 "mercury_compile.m"
+        {
+#line 1269 "mercury_compile.m"
+          top_level__mercury_compile__ModuleNameString_28 = mdbcomp__sym_name__sym_name_to_string_1_f_0(*top_level__mercury_compile__ModuleName_18);
+        }
+#line 1270 "mercury_compile.m"
+        {
+#line 1270 "mercury_compile.m"
+          libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_27, top_level__mercury_compile__ModuleNameString_28);
+        }
+#line 1271 "mercury_compile.m"
+        {
+#line 1271 "mercury_compile.m"
+          libs__file_util__maybe_write_string_4_p_0(top_level__mercury_compile__Verbose_27, (MR_String) "\' and imported interfaces...\n");
+        }
+#line 1275 "mercury_compile.m"
+        top_level__mercury_compile__V_120_120 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 0)));
+#line 1275 "mercury_compile.m"
+        top_level__mercury_compile__V_154_154 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 1)));
+#line 1275 "mercury_compile.m"
+        top_level__mercury_compile__V_155_155 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 2)));
+#line 1275 "mercury_compile.m"
+        {
+#line 1275 "mercury_compile.m"
+          top_level__mercury_compile__succeeded = parse_tree__read_modules__find_read_module_src_8_p_0(top_level__mercury_compile__V_120_120, *top_level__mercury_compile__ModuleName_18, top_level__mercury_compile__ReturnTimestamp_20, &top_level__mercury_compile__SourceFileNamePrime_29, &top_level__mercury_compile__MaybeTimestampPrime_30, &top_level__mercury_compile__ParseTreeSrcPrime_31, &top_level__mercury_compile__SpecsPrime_32, &top_level__mercury_compile__ErrorsPrime_33);
+        }
+#line 1291 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 1279 "mercury_compile.m"
+          {
+#line 1279 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__HaveReadModuleMapSrc0_34;
+#line 1279 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__HaveReadModuleMapSrc_35;
+#line 1279 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_121_121;
+#line 1282 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_156_156;
+#line 1282 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_157_157;
+#line 1285 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_159_159;
+#line 1285 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_160_160;
+#line 1285 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_158_158;
+
+#line 1279 "mercury_compile.m"
+            *top_level__mercury_compile__Globals_16 = top_level__mercury_compile__Globals0_15;
+#line 1282 "mercury_compile.m"
+            top_level__mercury_compile__HaveReadModuleMapSrc0_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 0)));
+#line 1282 "mercury_compile.m"
+            top_level__mercury_compile__V_156_156 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 1)));
+#line 1282 "mercury_compile.m"
+            top_level__mercury_compile__V_157_157 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 2)));
+#line 1283 "mercury_compile.m"
+            mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1283 "mercury_compile.m"
+            {
+#line 1283 "mercury_compile.m"
+              top_level__mercury_compile__V_121_121 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1283 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_121_121, 0) = ((MR_Box) (*top_level__mercury_compile__ModuleName_18));
+#line 1283 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_121_121, 1) = NULL;
+#line 1283 "mercury_compile.m"
+            }
+#line 1283 "mercury_compile.m"
+            {
+#line 1283 "mercury_compile.m"
+              mercury__map__delete_3_p_0((MR_Word) &top_level__mercury_compile_scalar_common_1[1], (MR_Word) &top_level__mercury_compile_scalar_common_1[2], ((MR_Box) (top_level__mercury_compile__V_121_121)), top_level__mercury_compile__HaveReadModuleMapSrc0_34, &top_level__mercury_compile__HaveReadModuleMapSrc_35);
+            }
+#line 1285 "mercury_compile.m"
+            top_level__mercury_compile__V_158_158 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 0)));
+#line 1285 "mercury_compile.m"
+            top_level__mercury_compile__V_159_159 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 1)));
+#line 1285 "mercury_compile.m"
+            top_level__mercury_compile__V_160_160 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46, (MR_Integer) 2)));
+#line 1285 "mercury_compile.m"
+            {
+#line 1285 "mercury_compile.m"
+              MR_Word base;
+#line 1285 "mercury_compile.m"
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1285 "mercury_compile.m"
+              *top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_47 = base;
+#line 1285 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (top_level__mercury_compile__HaveReadModuleMapSrc_35));
+#line 1285 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (top_level__mercury_compile__V_159_159));
+#line 1285 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (top_level__mercury_compile__V_160_160));
+#line 1285 "mercury_compile.m"
+            }
+#line 1286 "mercury_compile.m"
+            *top_level__mercury_compile__SourceFileName_19 = top_level__mercury_compile__SourceFileNamePrime_29;
+#line 1287 "mercury_compile.m"
+            *top_level__mercury_compile__MaybeTimestamp_21 = top_level__mercury_compile__MaybeTimestampPrime_30;
+#line 1288 "mercury_compile.m"
+            *top_level__mercury_compile__ParseTreeSrc_22 = top_level__mercury_compile__ParseTreeSrcPrime_31;
+#line 1289 "mercury_compile.m"
+            *top_level__mercury_compile__Specs_23 = top_level__mercury_compile__SpecsPrime_32;
+#line 1290 "mercury_compile.m"
+            *top_level__mercury_compile__Errors_24 = top_level__mercury_compile__ErrorsPrime_33;
+#line 1279 "mercury_compile.m"
+          }
+#line 1291 "mercury_compile.m"
+        else
+#line 1299 "mercury_compile.m"
+          {
+#line 1299 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__DisableSmart_36;
+#line 1299 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_127_127;
+
+#line 1298 "mercury_compile.m"
+            {
+#line 1298 "mercury_compile.m"
+              top_level__mercury_compile__V_127_127 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1298 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_127_127, 0) = ((MR_Box) (top_level__mercury_compile__ReturnTimestamp_20));
+#line 1298 "mercury_compile.m"
+            }
+#line 1295 "mercury_compile.m"
+            {
+#line 1295 "mercury_compile.m"
+              parse_tree__read_modules__read_module_src_13_p_0(top_level__mercury_compile__Globals0_15, (MR_String) "Reading module", (MR_Integer) 1, (MR_Integer) 1, *top_level__mercury_compile__ModuleName_18, top_level__mercury_compile__SourceFileName_19, top_level__mercury_compile__V_127_127, top_level__mercury_compile__MaybeTimestamp_21, top_level__mercury_compile__ParseTreeSrc_22, top_level__mercury_compile__Specs_23, top_level__mercury_compile__Errors_24);
+            }
+#line 1300 "mercury_compile.m"
+            {
+#line 1300 "mercury_compile.m"
+              libs__globals__io_get_disable_smart_recompilation_3_p_0(&top_level__mercury_compile__DisableSmart_36);
+            }
+#line 1305 "mercury_compile.m"
+#line 1305 "mercury_compile.m"
+            switch (top_level__mercury_compile__DisableSmart_36) {
+#line 1305 "mercury_compile.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 1305 "mercury_compile.m"
+              case (MR_Integer) 0:
+#line 1307 "mercury_compile.m"
+                *top_level__mercury_compile__Globals_16 = top_level__mercury_compile__Globals0_15;
+#line 1305 "mercury_compile.m"
+                break;
+#line 1305 "mercury_compile.m"
+              case (MR_Integer) 1:
+#line 1302 "mercury_compile.m"
+                {
+#line 1303 "mercury_compile.m"
+                  {
+#line 1303 "mercury_compile.m"
+                    libs__globals__set_option_4_p_0((MR_Integer) 115, (MR_Word) MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_4[1]), top_level__mercury_compile__Globals0_15, top_level__mercury_compile__Globals_16);
+                  }
+#line 1302 "mercury_compile.m"
+                }
+#line 1305 "mercury_compile.m"
+                break;
+#line 1305 "mercury_compile.m"
+            }
+#line 1299 "mercury_compile.m"
+            *top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_47 = top_level__mercury_compile__STATE_VARIABLE_HaveReadModuleMaps_0_46;
+#line 1299 "mercury_compile.m"
+          }
+#line 1310 "mercury_compile.m"
+        {
+#line 1310 "mercury_compile.m"
+          libs__globals__lookup_bool_option_3_p_0(*top_level__mercury_compile__Globals_16, (MR_Integer) 55, &top_level__mercury_compile__Stats_37);
+        }
+#line 1311 "mercury_compile.m"
+        {
+#line 1311 "mercury_compile.m"
+          libs__file_util__maybe_report_stats_3_p_0(top_level__mercury_compile__Stats_37);
+        }
+#line 1266 "mercury_compile.m"
+      }
+#line 1266 "mercury_compile.m"
+  }
+#line 1255 "mercury_compile.m"
+}
+
+#line 1214 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__maybe_report_cmd_line_5_p_0(
+#line 1214 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Report_6,
+#line 1214 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_7,
+#line 1214 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Args_8)
+#line 1214 "mercury_compile.m"
+{
+#line 1219 "mercury_compile.m"
+  {
+#line 1219 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 1219 "mercury_compile.m"
+#line 1219 "mercury_compile.m"
+    switch (top_level__mercury_compile__Report_6) {
+#line 1219 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1219 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 1219 "mercury_compile.m"
+        {
+#line 1219 "mercury_compile.m"
+        }
+#line 1219 "mercury_compile.m"
+        break;
+#line 1219 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 1221 "mercury_compile.m"
+        {
+#line 1221 "mercury_compile.m"
+          MR_String top_level__mercury_compile__V_19_19;
+#line 1221 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_21_21;
+#line 1221 "mercury_compile.m"
+          MR_String top_level__mercury_compile__V_31_31;
+
+#line 1222 "mercury_compile.m"
+          {
+#line 1222 "mercury_compile.m"
+            mercury__io__write_string_3_p_0((MR_String) "% Command line options start\n");
+          }
+#line 1223 "mercury_compile.m"
+          {
+#line 1223 "mercury_compile.m"
+            top_level__mercury_compile__V_21_21 = mercury__list__f_43_43_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, top_level__mercury_compile__OptionArgs_7, top_level__mercury_compile__Args_8);
+          }
+#line 1223 "mercury_compile.m"
+          {
+#line 1223 "mercury_compile.m"
+            top_level__mercury_compile__V_19_19 = mercury__string__join_list_2_f_0((MR_String) "\n% ", top_level__mercury_compile__V_21_21);
+          }
+#line 1223 "mercury_compile.m"
+          {
+#line 1223 "mercury_compile.m"
+            mercury__io__write_string_3_p_0((MR_String) "% ");
+          }
+#line 1223 "mercury_compile.m"
+          {
+#line 1223 "mercury_compile.m"
+            mercury__string__format__format_string_component_nowidth_noprec_3_p_0((MR_Word) &top_level__mercury_compile_scalar_common_4[2], top_level__mercury_compile__V_19_19, &top_level__mercury_compile__V_31_31);
+          }
+#line 1223 "mercury_compile.m"
+          {
+#line 1223 "mercury_compile.m"
+            mercury__io__write_string_3_p_0(top_level__mercury_compile__V_31_31);
+          }
+#line 1223 "mercury_compile.m"
+          {
+#line 1223 "mercury_compile.m"
+            mercury__io__write_string_3_p_0((MR_String) "\n");
+          }
+#line 1225 "mercury_compile.m"
+          {
+#line 1225 "mercury_compile.m"
+            mercury__io__write_string_3_p_0((MR_String) "% Command line options end\n");
+          }
+#line 1221 "mercury_compile.m"
+        }
+#line 1219 "mercury_compile.m"
+        break;
+#line 1219 "mercury_compile.m"
+    }
+#line 1219 "mercury_compile.m"
+  }
+#line 1214 "mercury_compile.m"
+}
+
+#line 1181 "mercury_compile.m"
+static MR_Box MR_CALL 
+top_level__mercury_compile__read_augment_and_process_module_10_p_0_2(
+#line 1181 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1181 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1)
+#line 1181 "mercury_compile.m"
+{
+#line 1181 "mercury_compile.m"
+  {
+#line 1181 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__wrapper_arg_2;
+#line 1181 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 1181 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv0_HeadVar__2_2;
+
+#line 1181 "mercury_compile.m"
+    {
+#line 1181 "mercury_compile.m"
+      top_level__mercury_compile__conv0_HeadVar__2_2 = parse_tree__prog_item__raw_compilation_unit_project_name_1_f_0(((MR_Word) top_level__mercury_compile__wrapper_arg_1));
+    }
+#line 1181 "mercury_compile.m"
+    top_level__mercury_compile__wrapper_arg_2 = ((MR_Box) (top_level__mercury_compile__conv0_HeadVar__2_2));
+#line 1181 "mercury_compile.m"
+    return top_level__mercury_compile__wrapper_arg_2;
+#line 1181 "mercury_compile.m"
+  }
+#line 1181 "mercury_compile.m"
+}
+
+#line 1170 "mercury_compile.m"
+static MR_bool MR_CALL 
+top_level__mercury_compile__read_augment_and_process_module_10_p_0_1(
+#line 1170 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1170 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1)
+#line 1170 "mercury_compile.m"
+{
+#line 1170 "mercury_compile.m"
+  {
+#line 1170 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1170 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+
+#line 1170 "mercury_compile.m"
+    {
+#line 1170 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = top_level__mercury_compile__IntroducedFrom__pred__read_augment_and_process_module__1170__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_Word) top_level__mercury_compile__wrapper_arg_1));
+    }
+#line 1170 "mercury_compile.m"
+    return top_level__mercury_compile__succeeded;
+#line 1170 "mercury_compile.m"
+  }
+#line 1170 "mercury_compile.m"
+}
+
+#line 1128 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__read_augment_and_process_module_10_p_0(
+#line 1128 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals0_11,
+#line 1128 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeAugment_12,
+#line 1128 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_13,
+#line 1128 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileOrModule_14,
+#line 1128 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeModulesToRecompile_15,
+#line 1128 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HaveReadModuleMap0_16,
+#line 1128 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ModulesToLink_17,
+#line 1128 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_18)
+#line 1128 "mercury_compile.m"
+{
+#line 1135 "mercury_compile.m"
+  {
+#line 1135 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MakeOptInt_20;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MakeTransOptInt_21;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MakeAnalysisRegistry_22;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MakeXmlDocumentation_23;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__DirectReport_24;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Globals_26;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ModuleName_27;
+#line 1135 "mercury_compile.m"
+    MR_String top_level__mercury_compile__FileName_28;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__MaybeTimestamp_29;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__ParseTreeSrc_30;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Specs0_31;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Errors_32;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__HaveReadModuleMaps_33;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_58_58;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_59_59;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_60_60;
+#line 1135 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_61_61;
+#line 2277 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__TypeCtorInfo_9_94;
+
+#line 1136 "mercury_compile.m"
+    {
+#line 1136 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals0_11, (MR_Integer) 86, &top_level__mercury_compile__MakeOptInt_20);
+    }
+#line 1138 "mercury_compile.m"
+    {
+#line 1138 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals0_11, (MR_Integer) 87, &top_level__mercury_compile__MakeTransOptInt_21);
+    }
+#line 1140 "mercury_compile.m"
+    {
+#line 1140 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals0_11, (MR_Integer) 88, &top_level__mercury_compile__MakeAnalysisRegistry_22);
+    }
+#line 1142 "mercury_compile.m"
+    {
+#line 1142 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals0_11, (MR_Integer) 89, &top_level__mercury_compile__MakeXmlDocumentation_23);
+    }
+#line 1145 "mercury_compile.m"
+    {
+#line 1145 "mercury_compile.m"
+      top_level__mercury_compile__V_61_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1145 "mercury_compile.m"
+      MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_61_61, 0) = ((MR_Box) (top_level__mercury_compile__MakeXmlDocumentation_23));
+#line 1145 "mercury_compile.m"
+      MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_61_61, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1145 "mercury_compile.m"
+    }
+#line 1145 "mercury_compile.m"
+    {
+#line 1145 "mercury_compile.m"
+      top_level__mercury_compile__V_60_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1145 "mercury_compile.m"
+      MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_60_60, 0) = ((MR_Box) (top_level__mercury_compile__MakeAnalysisRegistry_22));
+#line 1145 "mercury_compile.m"
+      MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_60_60, 1) = ((MR_Box) (top_level__mercury_compile__V_61_61));
+#line 1145 "mercury_compile.m"
+    }
+#line 1144 "mercury_compile.m"
+    {
+#line 1144 "mercury_compile.m"
+      top_level__mercury_compile__V_59_59 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1144 "mercury_compile.m"
+      MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_59_59, 0) = ((MR_Box) (top_level__mercury_compile__MakeTransOptInt_21));
+#line 1144 "mercury_compile.m"
+      MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_59_59, 1) = ((MR_Box) (top_level__mercury_compile__V_60_60));
+#line 1144 "mercury_compile.m"
+    }
+#line 1144 "mercury_compile.m"
+    {
+#line 1144 "mercury_compile.m"
+      top_level__mercury_compile__V_58_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1144 "mercury_compile.m"
+      MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_58_58, 0) = ((MR_Box) (top_level__mercury_compile__MakeOptInt_20));
+#line 1144 "mercury_compile.m"
+      MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_58_58, 1) = ((MR_Box) (top_level__mercury_compile__V_59_59));
+#line 1144 "mercury_compile.m"
+    }
+#line 1144 "mercury_compile.m"
+    {
+#line 1144 "mercury_compile.m"
+      mercury__bool__or_list_2_p_0(top_level__mercury_compile__V_58_58, &top_level__mercury_compile__DirectReport_24);
+    }
+#line 1148 "mercury_compile.m"
+#line 1148 "mercury_compile.m"
+    switch (top_level__mercury_compile__DirectReport_24) {
+#line 1148 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1148 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 1149 "mercury_compile.m"
+        {
+#line 1149 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__ReportCmdLineArgsDotErr_25;
+
+#line 1150 "mercury_compile.m"
+          {
+#line 1150 "mercury_compile.m"
+            libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals0_11, (MR_Integer) 54, &top_level__mercury_compile__ReportCmdLineArgsDotErr_25);
+          }
+#line 1152 "mercury_compile.m"
+          {
+#line 1152 "mercury_compile.m"
+            top_level__mercury_compile__maybe_report_cmd_line_5_p_0(top_level__mercury_compile__ReportCmdLineArgsDotErr_25, top_level__mercury_compile__OptionArgs_13, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)));
+          }
+#line 1149 "mercury_compile.m"
+        }
+#line 1148 "mercury_compile.m"
+        break;
+#line 1148 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 1147 "mercury_compile.m"
+        {
+#line 1147 "mercury_compile.m"
+        }
+#line 1148 "mercury_compile.m"
+        break;
+#line 1148 "mercury_compile.m"
+    }
+#line 1155 "mercury_compile.m"
+    {
+#line 1155 "mercury_compile.m"
+      top_level__mercury_compile__read_module_or_file_14_p_0(top_level__mercury_compile__Globals0_11, &top_level__mercury_compile__Globals_26, top_level__mercury_compile__FileOrModule_14, &top_level__mercury_compile__ModuleName_27, &top_level__mercury_compile__FileName_28, (MR_Integer) 0, &top_level__mercury_compile__MaybeTimestamp_29, &top_level__mercury_compile__ParseTreeSrc_30, &top_level__mercury_compile__Specs0_31, &top_level__mercury_compile__Errors_32, top_level__mercury_compile__HaveReadModuleMap0_16, &top_level__mercury_compile__HaveReadModuleMaps_33);
+    }
+#line 8317 "top_level.mercury_compile.c"
+    top_level__mercury_compile__TypeCtorInfo_9_94 = (MR_Word) &parse_tree__prog_io_error__parse_tree__prog_io_error__type_ctor_info_read_module_error_0;
+#line 2278 "mercury_compile.m"
+    {
+#line 2278 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = mercury__set__is_non_empty_1_p_0(top_level__mercury_compile__TypeCtorInfo_9_94, top_level__mercury_compile__Errors_32);
+    }
+#line 2277 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 2277 "mercury_compile.m"
+      {
+#line 2280 "mercury_compile.m"
+        {
+#line 2280 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__HaltSyntax_90;
+
+#line 2280 "mercury_compile.m"
+          {
+#line 2280 "mercury_compile.m"
+            libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_26, (MR_Integer) 3, &top_level__mercury_compile__HaltSyntax_90);
+          }
+#line 2281 "mercury_compile.m"
+          top_level__mercury_compile__succeeded = (top_level__mercury_compile__HaltSyntax_90 == (MR_Integer) 1);
+#line 2280 "mercury_compile.m"
+        }
+#line 2282 "mercury_compile.m"
+        if (!(top_level__mercury_compile__succeeded))
+#line 2283 "mercury_compile.m"
+          {
+#line 2283 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__FatalErrors_91;
+#line 2283 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_92_92;
+
+#line 2283 "mercury_compile.m"
+            {
+#line 2283 "mercury_compile.m"
+              top_level__mercury_compile__V_92_92 = parse_tree__prog_io_error__fatal_read_module_errors_0_f_0();
+            }
+#line 2283 "mercury_compile.m"
+            {
+#line 2283 "mercury_compile.m"
+              mercury__set__intersect_3_p_0(top_level__mercury_compile__TypeCtorInfo_9_94, top_level__mercury_compile__Errors_32, top_level__mercury_compile__V_92_92, &top_level__mercury_compile__FatalErrors_91);
+            }
+#line 2284 "mercury_compile.m"
+            {
+#line 2284 "mercury_compile.m"
+              top_level__mercury_compile__succeeded = mercury__set__is_non_empty_1_p_0(top_level__mercury_compile__TypeCtorInfo_9_94, top_level__mercury_compile__FatalErrors_91);
+            }
+#line 2283 "mercury_compile.m"
+          }
+#line 2277 "mercury_compile.m"
+      }
+#line 1165 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1162 "mercury_compile.m"
+      {
+#line 1161 "mercury_compile.m"
+        MR_Integer top_level__mercury_compile___NumWarnings_34;
+#line 1161 "mercury_compile.m"
+        MR_Integer top_level__mercury_compile___NumErrors_35;
+
+#line 1161 "mercury_compile.m"
+        {
+#line 1161 "mercury_compile.m"
+          parse_tree__error_util__write_error_specs_8_p_0(top_level__mercury_compile__Specs0_31, top_level__mercury_compile__Globals_26, (MR_Integer) 0, &top_level__mercury_compile___NumWarnings_34, (MR_Integer) 0, &top_level__mercury_compile___NumErrors_35);
+        }
+#line 1163 "mercury_compile.m"
+        *top_level__mercury_compile__ModulesToLink_17 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1164 "mercury_compile.m"
+        *top_level__mercury_compile__ExtraObjFiles_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1162 "mercury_compile.m"
+      }
+#line 1165 "mercury_compile.m"
+    else
+#line 1167 "mercury_compile.m"
+      {
+#line 1167 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__TypeCtorInfo_82_82;
+#line 1167 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__RawCompUnits0_36;
+#line 1167 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Specs1_37;
+#line 1167 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__RawCompUnitsToCompile_44;
+#line 1167 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__RawCompUnitNames_45;
+#line 1167 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__NestedCompUnitNames_46;
+#line 1167 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__FindTimestampFiles_47;
+#line 1167 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__TraceProf_48;
+#line 1167 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__GlobalsToUse_51;
+#line 1167 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_72_72;
+#line 1191 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_86_86;
+
+#line 1166 "mercury_compile.m"
+        {
+#line 1166 "mercury_compile.m"
+          parse_tree__split_parse_tree_src__split_into_compilation_units_perform_checks_4_p_0(top_level__mercury_compile__ParseTreeSrc_30, &top_level__mercury_compile__RawCompUnits0_36, top_level__mercury_compile__Specs0_31, &top_level__mercury_compile__Specs1_37);
+        }
+#line 1176 "mercury_compile.m"
+        if ((top_level__mercury_compile__MaybeModulesToRecompile_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1178 "mercury_compile.m"
+          top_level__mercury_compile__RawCompUnitsToCompile_44 = top_level__mercury_compile__RawCompUnits0_36;
+#line 1176 "mercury_compile.m"
+        else
+#line 1169 "mercury_compile.m"
+          {
+#line 1169 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__ModulesToRecompile_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__MaybeModulesToRecompile_15, (MR_Integer) 0)));
+#line 1169 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__ToRecompile_39;
+
+#line 1170 "mercury_compile.m"
+            {
+#line 1170 "mercury_compile.m"
+              top_level__mercury_compile__ToRecompile_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1170 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), top_level__mercury_compile__ToRecompile_39, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_11[0]));
+#line 1170 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), top_level__mercury_compile__ToRecompile_39, 1) = ((MR_Box) (top_level__mercury_compile__read_augment_and_process_module_10_p_0_1));
+#line 1170 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), top_level__mercury_compile__ToRecompile_39, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 1170 "mercury_compile.m"
+              MR_hl_field(MR_mktag(0), top_level__mercury_compile__ToRecompile_39, 3) = ((MR_Box) (top_level__mercury_compile__ModulesToRecompile_38));
+#line 1170 "mercury_compile.m"
+            }
+#line 1175 "mercury_compile.m"
+            {
+#line 1175 "mercury_compile.m"
+              mercury__list__filter_3_p_0((MR_Word) &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0, top_level__mercury_compile__ToRecompile_39, top_level__mercury_compile__RawCompUnits0_36, &top_level__mercury_compile__RawCompUnitsToCompile_44);
+            }
+#line 1169 "mercury_compile.m"
+          }
+#line 8456 "top_level.mercury_compile.c"
+        top_level__mercury_compile__TypeCtorInfo_82_82 = (MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0;
+#line 1181 "mercury_compile.m"
+        {
+#line 1181 "mercury_compile.m"
+          top_level__mercury_compile__V_72_72 = mercury__list__map_2_f_0((MR_Word) &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0, top_level__mercury_compile__TypeCtorInfo_82_82, (MR_Word) &top_level__mercury_compile_scalar_common_7[1], top_level__mercury_compile__RawCompUnits0_36);
+        }
+#line 1180 "mercury_compile.m"
+        {
+#line 1180 "mercury_compile.m"
+          top_level__mercury_compile__RawCompUnitNames_45 = mercury__set__list_to_set_1_f_0(top_level__mercury_compile__TypeCtorInfo_82_82, top_level__mercury_compile__V_72_72);
+        }
+#line 1182 "mercury_compile.m"
+        {
+#line 1182 "mercury_compile.m"
+          mercury__set__delete_3_p_0(top_level__mercury_compile__TypeCtorInfo_82_82, ((MR_Box) (top_level__mercury_compile__ModuleName_27)), top_level__mercury_compile__RawCompUnitNames_45, &top_level__mercury_compile__NestedCompUnitNames_46);
+        }
+#line 1184 "mercury_compile.m"
+        {
+#line 1184 "mercury_compile.m"
+          top_level__mercury_compile__find_timestamp_files_2_p_0(top_level__mercury_compile__Globals_26, &top_level__mercury_compile__FindTimestampFiles_47);
+        }
+#line 1186 "mercury_compile.m"
+        {
+#line 1186 "mercury_compile.m"
+          libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_26, (MR_Integer) 121, &top_level__mercury_compile__TraceProf_48);
+        }
+#line 1189 "mercury_compile.m"
+        {
+#line 1189 "mercury_compile.m"
+          top_level__mercury_compile__succeeded = mdbcomp__builtin_modules__non_traced_mercury_builtin_module_1_p_0(top_level__mercury_compile__ModuleName_27);
+        }
+#line 1189 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 1189 "mercury_compile.m"
+          {
+#line 1191 "mercury_compile.m"
+            {
+#line 1191 "mercury_compile.m"
+              top_level__mercury_compile__V_86_86 = mdbcomp__builtin_modules__mercury_profiling_builtin_module_0_f_0();
+            }
+#line 1191 "mercury_compile.m"
+            {
+#line 1191 "mercury_compile.m"
+              top_level__mercury_compile__succeeded = mdbcomp__sym_name____Unify____sym_name_0_0(top_level__mercury_compile__ModuleName_27, top_level__mercury_compile__V_86_86);
+            }
+#line 1191 "mercury_compile.m"
+            if (top_level__mercury_compile__succeeded)
+#line 1192 "mercury_compile.m"
+              top_level__mercury_compile__succeeded = (top_level__mercury_compile__TraceProf_48 == (MR_Integer) 1);
+#line 1190 "mercury_compile.m"
+            top_level__mercury_compile__succeeded = !(top_level__mercury_compile__succeeded);
+#line 1189 "mercury_compile.m"
+          }
+#line 1205 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 1201 "mercury_compile.m"
+          {
+#line 1201 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__GlobalsNoTrace0_49;
+
+#line 1200 "mercury_compile.m"
+            {
+#line 1200 "mercury_compile.m"
+              libs__globals__set_option_4_p_0((MR_Integer) 263, (MR_Word) MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_4[1]), top_level__mercury_compile__Globals_26, &top_level__mercury_compile__GlobalsNoTrace0_49);
+            }
+#line 1202 "mercury_compile.m"
+            {
+#line 1202 "mercury_compile.m"
+              libs__globals__set_trace_level_none_2_p_0(top_level__mercury_compile__GlobalsNoTrace0_49, &top_level__mercury_compile__GlobalsToUse_51);
+            }
+#line 1201 "mercury_compile.m"
+          }
+#line 1205 "mercury_compile.m"
+        else
+#line 1206 "mercury_compile.m"
+          top_level__mercury_compile__GlobalsToUse_51 = top_level__mercury_compile__Globals_26;
+#line 1208 "mercury_compile.m"
+        {
+#line 1208 "mercury_compile.m"
+          top_level__mercury_compile__augment_and_process_all_submodules_14_p_0(top_level__mercury_compile__GlobalsToUse_51, top_level__mercury_compile__OpModeAugment_12, top_level__mercury_compile__FileName_28, top_level__mercury_compile__ModuleName_27, top_level__mercury_compile__MaybeTimestamp_29, top_level__mercury_compile__NestedCompUnitNames_46, top_level__mercury_compile__HaveReadModuleMaps_33, top_level__mercury_compile__FindTimestampFiles_47, top_level__mercury_compile__RawCompUnitsToCompile_44, top_level__mercury_compile__Specs1_37, top_level__mercury_compile__ModulesToLink_17, top_level__mercury_compile__ExtraObjFiles_18);
+        }
+#line 1167 "mercury_compile.m"
+      }
+#line 1135 "mercury_compile.m"
+  }
+#line 1128 "mercury_compile.m"
+}
+
+#line 1116 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__apply_process_module_7_p_0(
+#line 1116 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ProcessModule_8,
+#line 1116 "mercury_compile.m"
+  MR_String top_level__mercury_compile__FileName_9,
+#line 1116 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleName_10,
+#line 1116 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTimestamp_11,
+#line 1116 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnit_12)
+#line 1116 "mercury_compile.m"
+{
+#line 1124 "mercury_compile.m"
+  {
+#line 1124 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1124 "mercury_compile.m"
+    void MR_CALL (* top_level__mercury_compile__func_0)(MR_Box, MR_Box, MR_Box, MR_Box, MR_Box, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_8, (MR_Integer) 1)));
+#line 1124 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__conv1_STATE_VARIABLE_IO_15;
+
+#line 1124 "mercury_compile.m"
+    {
+#line 1124 "mercury_compile.m"
+      top_level__mercury_compile__func_0(((MR_Box) top_level__mercury_compile__ProcessModule_8), ((MR_Box) (top_level__mercury_compile__FileName_9)), ((MR_Box) (top_level__mercury_compile__ModuleName_10)), ((MR_Box) (top_level__mercury_compile__MaybeTimestamp_11)), ((MR_Box) (top_level__mercury_compile__RawCompUnit_12)), ((MR_Box) ((MR_Integer) 0)), &top_level__mercury_compile__conv1_STATE_VARIABLE_IO_15);
+    }
+#line 1124 "mercury_compile.m"
+  }
+#line 1116 "mercury_compile.m"
+}
+
+#line 1107 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__call_make_private_interface_7_p_0(
+#line 1107 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 1107 "mercury_compile.m"
+  MR_String top_level__mercury_compile__SourceFileName_9,
+#line 1107 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__SourceFileModuleName_10,
+#line 1107 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTimestamp_11,
+#line 1107 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnit_12)
+#line 1107 "mercury_compile.m"
+{
+#line 1113 "mercury_compile.m"
+  {
+#line 1113 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 1113 "mercury_compile.m"
+    {
+#line 1113 "mercury_compile.m"
+      parse_tree__write_module_interface_files__write_private_interface_file_7_p_0(top_level__mercury_compile__Globals_8, top_level__mercury_compile__SourceFileName_9, top_level__mercury_compile__SourceFileModuleName_10, top_level__mercury_compile__RawCompUnit_12, top_level__mercury_compile__MaybeTimestamp_11);
+    }
+#line 1113 "mercury_compile.m"
+  }
+#line 1107 "mercury_compile.m"
+}
+
+#line 1101 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__call_make_short_interface_7_p_0(
+#line 1101 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 1101 "mercury_compile.m"
+  MR_String top_level__mercury_compile__SourceFileName_9,
+#line 1101 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__3_10,
+#line 1101 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__4_11,
+#line 1101 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnit_12)
+#line 1101 "mercury_compile.m"
+{
+#line 1105 "mercury_compile.m"
+  {
+#line 1105 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 1105 "mercury_compile.m"
+    {
+#line 1105 "mercury_compile.m"
+      top_level__mercury_compile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_97_108_108_95_109_97_107_101_95_115_104_111_114_116_95_105_110_116_101_114_102_97_99_101_95_95_91_51_44_32_52_93_95_48_7_p_0(top_level__mercury_compile__Globals_8, top_level__mercury_compile__SourceFileName_9, top_level__mercury_compile__RawCompUnit_12);
+    }
+#line 1105 "mercury_compile.m"
+  }
+#line 1101 "mercury_compile.m"
+}
+
+#line 1093 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__call_make_interface_7_p_0(
+#line 1093 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 1093 "mercury_compile.m"
+  MR_String top_level__mercury_compile__SourceFileName_9,
+#line 1093 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__SourceFileModuleName_10,
+#line 1093 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeTimestamp_11,
+#line 1093 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__RawCompUnit_12)
+#line 1093 "mercury_compile.m"
+{
+#line 1098 "mercury_compile.m"
+  {
+#line 1098 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 1098 "mercury_compile.m"
+    {
+#line 1098 "mercury_compile.m"
+      parse_tree__write_module_interface_files__write_interface_file_7_p_0(top_level__mercury_compile__Globals_8, top_level__mercury_compile__SourceFileName_9, top_level__mercury_compile__SourceFileModuleName_10, top_level__mercury_compile__RawCompUnit_12, top_level__mercury_compile__MaybeTimestamp_11);
+    }
+#line 1098 "mercury_compile.m"
+  }
+#line 1093 "mercury_compile.m"
+}
+
+#line 1082 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__find_timestamp_files_2_6_p_0(
+#line 1082 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_7,
+#line 1082 "mercury_compile.m"
+  MR_String top_level__mercury_compile__TimestampSuffix_8,
+#line 1082 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleName_9,
+#line 1082 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__TimestampFiles_10)
+#line 1082 "mercury_compile.m"
+{
+#line 1086 "mercury_compile.m"
+  {
+#line 1086 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1086 "mercury_compile.m"
+    MR_String top_level__mercury_compile__FileName_12;
+
+#line 1087 "mercury_compile.m"
+    {
+#line 1087 "mercury_compile.m"
+      parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_7, top_level__mercury_compile__ModuleName_9, top_level__mercury_compile__TimestampSuffix_8, (MR_Integer) 0, &top_level__mercury_compile__FileName_12);
+    }
+#line 1089 "mercury_compile.m"
+    {
+#line 1089 "mercury_compile.m"
+      MR_Word base;
+#line 1089 "mercury_compile.m"
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1089 "mercury_compile.m"
+      *top_level__mercury_compile__TimestampFiles_10 = base;
+#line 1089 "mercury_compile.m"
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (top_level__mercury_compile__FileName_12));
+#line 1089 "mercury_compile.m"
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1089 "mercury_compile.m"
+    }
+#line 1086 "mercury_compile.m"
+  }
+#line 1082 "mercury_compile.m"
+}
+
+#line 1080 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__find_timestamp_files_2_p_0_1(
+#line 1080 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1080 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 1080 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_2,
+#line 1080 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 1080 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_4)
+#line 1080 "mercury_compile.m"
+{
+#line 1080 "mercury_compile.m"
+  {
+#line 1080 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 1080 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv0_TimestampFiles_10;
+
+#line 1080 "mercury_compile.m"
+    {
+#line 1080 "mercury_compile.m"
+      top_level__mercury_compile__find_timestamp_files_2_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 4))), ((MR_Word) top_level__mercury_compile__wrapper_arg_1), &top_level__mercury_compile__conv0_TimestampFiles_10);
+    }
+#line 1080 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_2 = ((MR_Box) (top_level__mercury_compile__conv0_TimestampFiles_10));
+#line 1080 "mercury_compile.m"
+  }
+#line 1080 "mercury_compile.m"
+}
+
+#line 1062 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__find_timestamp_files_2_p_0(
+#line 1062 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_3,
+#line 1062 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__FindTimestampFiles_4)
+#line 1062 "mercury_compile.m"
+{
+#line 1065 "mercury_compile.m"
+  {
+#line 1065 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1065 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__CompilationTarget_5;
+#line 1065 "mercury_compile.m"
+    MR_String top_level__mercury_compile__TimestampSuffix_6;
+
+#line 1066 "mercury_compile.m"
+    {
+#line 1066 "mercury_compile.m"
+      libs__globals__get_target_2_p_0(top_level__mercury_compile__Globals_3, &top_level__mercury_compile__CompilationTarget_5);
+    }
+#line 1070 "mercury_compile.m"
+    top_level__mercury_compile__TimestampSuffix_6 = ((&top_level__mercury_compile_vector_common_10[4 + top_level__mercury_compile__CompilationTarget_5]))->top_level__mercury_compile__vector_common_type_10_0__vct_10_f_0;
+#line 1080 "mercury_compile.m"
+    {
+#line 1080 "mercury_compile.m"
+      MR_Word base;
+#line 1080 "mercury_compile.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 1080 "mercury_compile.m"
+      *top_level__mercury_compile__FindTimestampFiles_4 = base;
+#line 1080 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_6[1]));
+#line 1080 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (top_level__mercury_compile__find_timestamp_files_2_p_0_1));
+#line 1080 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 1080 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (top_level__mercury_compile__Globals_3));
+#line 1080 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (top_level__mercury_compile__TimestampSuffix_6));
+#line 1080 "mercury_compile.m"
+    }
+#line 1065 "mercury_compile.m"
+  }
+#line 1062 "mercury_compile.m"
+}
+
+#line 1051 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__usual_find_target_files_6_p_0(
+#line 1051 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_7,
+#line 1051 "mercury_compile.m"
+  MR_String top_level__mercury_compile__TargetSuffix_8,
+#line 1051 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__ModuleName_9,
+#line 1051 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__TargetFiles_10)
+#line 1051 "mercury_compile.m"
+{
+#line 1056 "mercury_compile.m"
+  {
+#line 1056 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1056 "mercury_compile.m"
+    MR_String top_level__mercury_compile__FileName_12;
+
+#line 1058 "mercury_compile.m"
+    {
+#line 1058 "mercury_compile.m"
+      parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_7, top_level__mercury_compile__ModuleName_9, top_level__mercury_compile__TargetSuffix_8, (MR_Integer) 0, &top_level__mercury_compile__FileName_12);
+    }
+#line 1060 "mercury_compile.m"
+    {
+#line 1060 "mercury_compile.m"
+      MR_Word base;
+#line 1060 "mercury_compile.m"
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1060 "mercury_compile.m"
+      *top_level__mercury_compile__TargetFiles_10 = base;
+#line 1060 "mercury_compile.m"
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (top_level__mercury_compile__FileName_12));
+#line 1060 "mercury_compile.m"
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1060 "mercury_compile.m"
+    }
+#line 1056 "mercury_compile.m"
+  }
+#line 1051 "mercury_compile.m"
+}
+
+#line 1049 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__find_smart_recompilation_target_files_2_p_0_1(
+#line 1049 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 1049 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 1049 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_2,
+#line 1049 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 1049 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_4)
+#line 1049 "mercury_compile.m"
+{
+#line 1049 "mercury_compile.m"
+  {
+#line 1049 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 1049 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv0_TargetFiles_10;
+
+#line 1049 "mercury_compile.m"
+    {
+#line 1049 "mercury_compile.m"
+      top_level__mercury_compile__usual_find_target_files_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 4))), ((MR_Word) top_level__mercury_compile__wrapper_arg_1), &top_level__mercury_compile__conv0_TargetFiles_10);
+    }
+#line 1049 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_2 = ((MR_Box) (top_level__mercury_compile__conv0_TargetFiles_10));
+#line 1049 "mercury_compile.m"
+  }
+#line 1049 "mercury_compile.m"
+}
+
+#line 1039 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__find_smart_recompilation_target_files_2_p_0(
+#line 1039 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_3,
+#line 1039 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__FindTargetFiles_4)
+#line 1039 "mercury_compile.m"
+{
+#line 1042 "mercury_compile.m"
+  {
+#line 1042 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 1042 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__CompilationTarget_5;
+#line 1042 "mercury_compile.m"
+    MR_String top_level__mercury_compile__TargetSuffix_6;
+
+#line 1043 "mercury_compile.m"
+    {
+#line 1043 "mercury_compile.m"
+      libs__globals__get_target_2_p_0(top_level__mercury_compile__Globals_3, &top_level__mercury_compile__CompilationTarget_5);
+    }
+#line 1045 "mercury_compile.m"
+    top_level__mercury_compile__TargetSuffix_6 = ((&top_level__mercury_compile_vector_common_10[0 + top_level__mercury_compile__CompilationTarget_5]))->top_level__mercury_compile__vector_common_type_10_0__vct_10_f_0;
+#line 1049 "mercury_compile.m"
+    {
+#line 1049 "mercury_compile.m"
+      MR_Word base;
+#line 1049 "mercury_compile.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 1049 "mercury_compile.m"
+      *top_level__mercury_compile__FindTargetFiles_4 = base;
+#line 1049 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_6[1]));
+#line 1049 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (top_level__mercury_compile__find_smart_recompilation_target_files_2_p_0_1));
+#line 1049 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 1049 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (top_level__mercury_compile__Globals_3));
+#line 1049 "mercury_compile.m"
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (top_level__mercury_compile__TargetSuffix_6));
+#line 1049 "mercury_compile.m"
+    }
+#line 1042 "mercury_compile.m"
+  }
+#line 1039 "mercury_compile.m"
+}
+
+#line 970 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0_6(
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 970 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3)
+#line 970 "mercury_compile.m"
+{
+#line 970 "mercury_compile.m"
+  {
+#line 970 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+
+#line 970 "mercury_compile.m"
+    {
+#line 970 "mercury_compile.m"
+      top_level__mercury_compile__apply_process_module_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 6))), ((MR_Word) top_level__mercury_compile__wrapper_arg_1));
+    }
+#line 970 "mercury_compile.m"
+  }
+#line 970 "mercury_compile.m"
+}
+
+#line 945 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0_5(
+#line 945 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 945 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 945 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 945 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 945 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_4,
+#line 945 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_5,
+#line 945 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_6)
+#line 945 "mercury_compile.m"
+{
+#line 945 "mercury_compile.m"
+  {
+#line 945 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+
+#line 945 "mercury_compile.m"
+    {
+#line 945 "mercury_compile.m"
+      top_level__mercury_compile__call_make_short_interface_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_String) top_level__mercury_compile__wrapper_arg_1), ((MR_Word) top_level__mercury_compile__wrapper_arg_2), ((MR_Word) top_level__mercury_compile__wrapper_arg_3), ((MR_Word) top_level__mercury_compile__wrapper_arg_4));
+    }
+#line 945 "mercury_compile.m"
+  }
+#line 945 "mercury_compile.m"
+}
+
+#line 970 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0_4(
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 970 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3)
+#line 970 "mercury_compile.m"
+{
+#line 970 "mercury_compile.m"
+  {
+#line 970 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+
+#line 970 "mercury_compile.m"
+    {
+#line 970 "mercury_compile.m"
+      top_level__mercury_compile__apply_process_module_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 6))), ((MR_Word) top_level__mercury_compile__wrapper_arg_1));
+    }
+#line 970 "mercury_compile.m"
+  }
+#line 970 "mercury_compile.m"
+}
+
+#line 938 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0_3(
+#line 938 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 938 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 938 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 938 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 938 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_4,
+#line 938 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_5,
+#line 938 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_6)
+#line 938 "mercury_compile.m"
+{
+#line 938 "mercury_compile.m"
+  {
+#line 938 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+
+#line 938 "mercury_compile.m"
+    {
+#line 938 "mercury_compile.m"
+      top_level__mercury_compile__call_make_private_interface_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_String) top_level__mercury_compile__wrapper_arg_1), ((MR_Word) top_level__mercury_compile__wrapper_arg_2), ((MR_Word) top_level__mercury_compile__wrapper_arg_3), ((MR_Word) top_level__mercury_compile__wrapper_arg_4));
+    }
+#line 938 "mercury_compile.m"
+  }
+#line 938 "mercury_compile.m"
+}
+
+#line 970 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0_2(
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 970 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 970 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3)
+#line 970 "mercury_compile.m"
+{
+#line 970 "mercury_compile.m"
+  {
+#line 970 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+
+#line 970 "mercury_compile.m"
+    {
+#line 970 "mercury_compile.m"
+      top_level__mercury_compile__apply_process_module_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 6))), ((MR_Word) top_level__mercury_compile__wrapper_arg_1));
+    }
+#line 970 "mercury_compile.m"
+  }
+#line 970 "mercury_compile.m"
+}
+
+#line 949 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0_1(
+#line 949 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 949 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 949 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 949 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 949 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_4,
+#line 949 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_5,
+#line 949 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_6)
+#line 949 "mercury_compile.m"
+{
+#line 949 "mercury_compile.m"
+  {
+#line 949 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+
+#line 949 "mercury_compile.m"
+    {
+#line 949 "mercury_compile.m"
+      top_level__mercury_compile__call_make_interface_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_String) top_level__mercury_compile__wrapper_arg_1), ((MR_Word) top_level__mercury_compile__wrapper_arg_2), ((MR_Word) top_level__mercury_compile__wrapper_arg_3), ((MR_Word) top_level__mercury_compile__wrapper_arg_4));
+    }
+#line 949 "mercury_compile.m"
+  }
+#line 949 "mercury_compile.m"
+}
+
+#line 889 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_2_8_p_0(
+#line 889 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals0_9,
+#line 889 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeArgs_10,
+#line 889 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_11,
+#line 889 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileOrModule_12,
+#line 889 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ModulesToLink_13,
+#line 889 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_14)
+#line 889 "mercury_compile.m"
+{
+#line 896 "mercury_compile.m"
+  {
+#line 896 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 896 "mercury_compile.m"
+#line 896 "mercury_compile.m"
+    switch (MR_tag((MR_Word) top_level__mercury_compile__OpModeArgs_10)) {
+#line 896 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 896 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 896 "mercury_compile.m"
+#line 896 "mercury_compile.m"
+        switch (MR_unmkbody(top_level__mercury_compile__OpModeArgs_10)) {
+#line 896 "mercury_compile.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 896 "mercury_compile.m"
+          case (MR_Integer) 0:
+#line 896 "mercury_compile.m"
+            {
+#line 900 "mercury_compile.m"
+              if (((MR_tag((MR_Word) top_level__mercury_compile__FileOrModule_12)) == (MR_mktag((MR_Integer) 0))))
+#line 898 "mercury_compile.m"
+                {
+#line 898 "mercury_compile.m"
+                  MR_String top_level__mercury_compile__FileName_16 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__FileOrModule_12, (MR_Integer) 0)));
+
+#line 899 "mercury_compile.m"
+                  {
+#line 899 "mercury_compile.m"
+                    parse_tree__generate_dep_d_files__generate_dep_file_for_file_4_p_0(top_level__mercury_compile__Globals0_9, top_level__mercury_compile__FileName_16);
+                  }
+#line 898 "mercury_compile.m"
+                }
+#line 900 "mercury_compile.m"
+              else
+#line 901 "mercury_compile.m"
+                {
+#line 901 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__ModuleName_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__FileOrModule_12, (MR_Integer) 0)));
+
+#line 902 "mercury_compile.m"
+                  {
+#line 902 "mercury_compile.m"
+                    parse_tree__generate_dep_d_files__generate_dep_file_for_module_4_p_0(top_level__mercury_compile__Globals0_9, top_level__mercury_compile__ModuleName_17);
+                  }
+#line 901 "mercury_compile.m"
+                }
+#line 904 "mercury_compile.m"
+              *top_level__mercury_compile__ModulesToLink_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 905 "mercury_compile.m"
+              *top_level__mercury_compile__ExtraObjFiles_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 896 "mercury_compile.m"
+            }
+#line 896 "mercury_compile.m"
+            break;
+#line 896 "mercury_compile.m"
+          case (MR_Integer) 1:
+#line 907 "mercury_compile.m"
+            {
+#line 911 "mercury_compile.m"
+              if (((MR_tag((MR_Word) top_level__mercury_compile__FileOrModule_12)) == (MR_mktag((MR_Integer) 0))))
+#line 909 "mercury_compile.m"
+                {
+#line 909 "mercury_compile.m"
+                  MR_String top_level__mercury_compile__FileName_83 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__FileOrModule_12, (MR_Integer) 0)));
+
+#line 910 "mercury_compile.m"
+                  {
+#line 910 "mercury_compile.m"
+                    parse_tree__generate_dep_d_files__generate_d_file_for_file_4_p_0(top_level__mercury_compile__Globals0_9, top_level__mercury_compile__FileName_83);
+                  }
+#line 909 "mercury_compile.m"
+                }
+#line 911 "mercury_compile.m"
+              else
+#line 912 "mercury_compile.m"
+                {
+#line 912 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__ModuleName_84 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__FileOrModule_12, (MR_Integer) 0)));
+
+#line 913 "mercury_compile.m"
+                  {
+#line 913 "mercury_compile.m"
+                    parse_tree__generate_dep_d_files__generate_d_file_for_module_4_p_0(top_level__mercury_compile__Globals0_9, top_level__mercury_compile__ModuleName_84);
+                  }
+#line 912 "mercury_compile.m"
+                }
+#line 915 "mercury_compile.m"
+              *top_level__mercury_compile__ModulesToLink_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 916 "mercury_compile.m"
+              *top_level__mercury_compile__ExtraObjFiles_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 907 "mercury_compile.m"
+            }
+#line 896 "mercury_compile.m"
+            break;
+#line 896 "mercury_compile.m"
+          case (MR_Integer) 2:
+#line 954 "mercury_compile.m"
+            {
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__GenerateVersionNumbers_30;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ProcessModule_186;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ReturnTimestamp_187;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__MaybeTimestamp_188;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Specs0_189;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_191_191;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_192_192;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_193_193;
+#line 954 "mercury_compile.m"
+              MR_String top_level__mercury_compile__FileName_203;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ModuleName_204;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__HaveReadModuleMaps0_205;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Globals_206;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ParseTreeSrc_207;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Errors_208;
+#line 957 "mercury_compile.m"
+              MR_Word top_level__mercury_compile___HaveReadModuleMaps_160;
+
+#line 938 "mercury_compile.m"
+              {
+#line 938 "mercury_compile.m"
+                top_level__mercury_compile__ProcessModule_186 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 938 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_186, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_9[0]));
+#line 938 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_186, 1) = ((MR_Box) (top_level__mercury_compile__process_arg_2_8_p_0_3));
+#line 938 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_186, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 938 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_186, 3) = ((MR_Box) (top_level__mercury_compile__Globals0_9));
+#line 938 "mercury_compile.m"
+              }
+#line 939 "mercury_compile.m"
+              {
+#line 939 "mercury_compile.m"
+                libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals0_9, (MR_Integer) 116, &top_level__mercury_compile__GenerateVersionNumbers_30);
+              }
+#line 941 "mercury_compile.m"
+              {
+#line 941 "mercury_compile.m"
+                top_level__mercury_compile__ReturnTimestamp_187 = top_level__mercury_compile__version_numbers_return_timestamp_1_f_0(top_level__mercury_compile__GenerateVersionNumbers_30);
+              }
+#line 956 "mercury_compile.m"
+              {
+#line 956 "mercury_compile.m"
+                top_level__mercury_compile__V_191_191 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[1], (MR_Word) &top_level__mercury_compile_scalar_common_1[2]);
+              }
+#line 956 "mercury_compile.m"
+              {
+#line 956 "mercury_compile.m"
+                top_level__mercury_compile__V_192_192 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[3], (MR_Word) &top_level__mercury_compile_scalar_common_1[4]);
+              }
+#line 956 "mercury_compile.m"
+              {
+#line 956 "mercury_compile.m"
+                top_level__mercury_compile__V_193_193 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[5], (MR_Word) &top_level__mercury_compile_scalar_common_1[6]);
+              }
+#line 956 "mercury_compile.m"
+              {
+#line 956 "mercury_compile.m"
+                top_level__mercury_compile__HaveReadModuleMaps0_205 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 956 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps0_205, 0) = ((MR_Box) (top_level__mercury_compile__V_191_191));
+#line 956 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps0_205, 1) = ((MR_Box) (top_level__mercury_compile__V_192_192));
+#line 956 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps0_205, 2) = ((MR_Box) (top_level__mercury_compile__V_193_193));
+#line 956 "mercury_compile.m"
+              }
+#line 957 "mercury_compile.m"
+              {
+#line 957 "mercury_compile.m"
+                top_level__mercury_compile__read_module_or_file_14_p_0(top_level__mercury_compile__Globals0_9, &top_level__mercury_compile__Globals_206, top_level__mercury_compile__FileOrModule_12, &top_level__mercury_compile__ModuleName_204, &top_level__mercury_compile__FileName_203, top_level__mercury_compile__ReturnTimestamp_187, &top_level__mercury_compile__MaybeTimestamp_188, &top_level__mercury_compile__ParseTreeSrc_207, &top_level__mercury_compile__Specs0_189, &top_level__mercury_compile__Errors_208, top_level__mercury_compile__HaveReadModuleMaps0_205, &top_level__mercury_compile___HaveReadModuleMaps_160);
+              }
+#line 961 "mercury_compile.m"
+              {
+#line 961 "mercury_compile.m"
+                top_level__mercury_compile__succeeded = top_level__mercury_compile__halt_at_module_error_2_p_0(top_level__mercury_compile__Globals_206, top_level__mercury_compile__Errors_208);
+              }
+#line 963 "mercury_compile.m"
+              if (top_level__mercury_compile__succeeded)
+#line 963 "mercury_compile.m"
+                {
+#line 963 "mercury_compile.m"
+                }
+#line 963 "mercury_compile.m"
+              else
+#line 965 "mercury_compile.m"
+                {
+#line 965 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__RawCompUnits_166;
+#line 965 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__V_170_170;
+#line 965 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__Specs_173;
+#line 967 "mercury_compile.m"
+                  MR_Integer top_level__mercury_compile___NumWarnings_161;
+#line 967 "mercury_compile.m"
+                  MR_Integer top_level__mercury_compile___NumErrors_162;
+#line 969 "mercury_compile.m"
+                  MR_Box top_level__mercury_compile__conv1_STATE_VARIABLE_IO_44;
+
+#line 964 "mercury_compile.m"
+                  {
+#line 964 "mercury_compile.m"
+                    parse_tree__split_parse_tree_src__split_into_compilation_units_perform_checks_4_p_0(top_level__mercury_compile__ParseTreeSrc_207, &top_level__mercury_compile__RawCompUnits_166, top_level__mercury_compile__Specs0_189, &top_level__mercury_compile__Specs_173);
+                  }
+#line 967 "mercury_compile.m"
+                  {
+#line 967 "mercury_compile.m"
+                    parse_tree__error_util__write_error_specs_8_p_0(top_level__mercury_compile__Specs_173, top_level__mercury_compile__Globals_206, (MR_Integer) 0, &top_level__mercury_compile___NumWarnings_161, (MR_Integer) 0, &top_level__mercury_compile___NumErrors_162);
+                  }
+#line 970 "mercury_compile.m"
+                  {
+#line 970 "mercury_compile.m"
+                    top_level__mercury_compile__V_170_170 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_170_170, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_9[1]));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_170_170, 1) = ((MR_Box) (top_level__mercury_compile__process_arg_2_8_p_0_4));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_170_170, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_170_170, 3) = ((MR_Box) (top_level__mercury_compile__ProcessModule_186));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_170_170, 4) = ((MR_Box) (top_level__mercury_compile__FileName_203));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_170_170, 5) = ((MR_Box) (top_level__mercury_compile__ModuleName_204));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_170_170, 6) = ((MR_Box) (top_level__mercury_compile__MaybeTimestamp_188));
+#line 970 "mercury_compile.m"
+                  }
+#line 969 "mercury_compile.m"
+                  {
+#line 969 "mercury_compile.m"
+                    mercury__list__foldl_4_p_2((MR_Word) &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, top_level__mercury_compile__V_170_170, top_level__mercury_compile__RawCompUnits_166, ((MR_Box) ((MR_Integer) 0)), &top_level__mercury_compile__conv1_STATE_VARIABLE_IO_44);
+                  }
+#line 965 "mercury_compile.m"
+                }
+#line 974 "mercury_compile.m"
+              *top_level__mercury_compile__ModulesToLink_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 975 "mercury_compile.m"
+              *top_level__mercury_compile__ExtraObjFiles_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 954 "mercury_compile.m"
+            }
+#line 896 "mercury_compile.m"
+            break;
+#line 896 "mercury_compile.m"
+          case (MR_Integer) 3:
+#line 954 "mercury_compile.m"
+            {
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ProcessModule_243;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__MaybeTimestamp_245;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Specs0_246;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_248_248;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_249_249;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_250_250;
+#line 954 "mercury_compile.m"
+              MR_String top_level__mercury_compile__FileName_260;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ModuleName_261;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__HaveReadModuleMaps0_262;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Globals_263;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ParseTreeSrc_264;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Errors_265;
+#line 957 "mercury_compile.m"
+              MR_Word top_level__mercury_compile___HaveReadModuleMaps_217;
+
+#line 945 "mercury_compile.m"
+              {
+#line 945 "mercury_compile.m"
+                top_level__mercury_compile__ProcessModule_243 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 945 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_243, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_9[0]));
+#line 945 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_243, 1) = ((MR_Box) (top_level__mercury_compile__process_arg_2_8_p_0_5));
+#line 945 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_243, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 945 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_243, 3) = ((MR_Box) (top_level__mercury_compile__Globals0_9));
+#line 945 "mercury_compile.m"
+              }
+#line 956 "mercury_compile.m"
+              {
+#line 956 "mercury_compile.m"
+                top_level__mercury_compile__V_248_248 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[1], (MR_Word) &top_level__mercury_compile_scalar_common_1[2]);
+              }
+#line 956 "mercury_compile.m"
+              {
+#line 956 "mercury_compile.m"
+                top_level__mercury_compile__V_249_249 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[3], (MR_Word) &top_level__mercury_compile_scalar_common_1[4]);
+              }
+#line 956 "mercury_compile.m"
+              {
+#line 956 "mercury_compile.m"
+                top_level__mercury_compile__V_250_250 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[5], (MR_Word) &top_level__mercury_compile_scalar_common_1[6]);
+              }
+#line 956 "mercury_compile.m"
+              {
+#line 956 "mercury_compile.m"
+                top_level__mercury_compile__HaveReadModuleMaps0_262 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 956 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps0_262, 0) = ((MR_Box) (top_level__mercury_compile__V_248_248));
+#line 956 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps0_262, 1) = ((MR_Box) (top_level__mercury_compile__V_249_249));
+#line 956 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps0_262, 2) = ((MR_Box) (top_level__mercury_compile__V_250_250));
+#line 956 "mercury_compile.m"
+              }
+#line 957 "mercury_compile.m"
+              {
+#line 957 "mercury_compile.m"
+                top_level__mercury_compile__read_module_or_file_14_p_0(top_level__mercury_compile__Globals0_9, &top_level__mercury_compile__Globals_263, top_level__mercury_compile__FileOrModule_12, &top_level__mercury_compile__ModuleName_261, &top_level__mercury_compile__FileName_260, (MR_Integer) 1, &top_level__mercury_compile__MaybeTimestamp_245, &top_level__mercury_compile__ParseTreeSrc_264, &top_level__mercury_compile__Specs0_246, &top_level__mercury_compile__Errors_265, top_level__mercury_compile__HaveReadModuleMaps0_262, &top_level__mercury_compile___HaveReadModuleMaps_217);
+              }
+#line 961 "mercury_compile.m"
+              {
+#line 961 "mercury_compile.m"
+                top_level__mercury_compile__succeeded = top_level__mercury_compile__halt_at_module_error_2_p_0(top_level__mercury_compile__Globals_263, top_level__mercury_compile__Errors_265);
+              }
+#line 963 "mercury_compile.m"
+              if (top_level__mercury_compile__succeeded)
+#line 963 "mercury_compile.m"
+                {
+#line 963 "mercury_compile.m"
+                }
+#line 963 "mercury_compile.m"
+              else
+#line 965 "mercury_compile.m"
+                {
+#line 965 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__RawCompUnits_223;
+#line 965 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__V_227_227;
+#line 965 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__Specs_230;
+#line 967 "mercury_compile.m"
+                  MR_Integer top_level__mercury_compile___NumWarnings_218;
+#line 967 "mercury_compile.m"
+                  MR_Integer top_level__mercury_compile___NumErrors_219;
+#line 969 "mercury_compile.m"
+                  MR_Box top_level__mercury_compile__conv2_STATE_VARIABLE_IO_44;
+
+#line 964 "mercury_compile.m"
+                  {
+#line 964 "mercury_compile.m"
+                    parse_tree__split_parse_tree_src__split_into_compilation_units_perform_checks_4_p_0(top_level__mercury_compile__ParseTreeSrc_264, &top_level__mercury_compile__RawCompUnits_223, top_level__mercury_compile__Specs0_246, &top_level__mercury_compile__Specs_230);
+                  }
+#line 967 "mercury_compile.m"
+                  {
+#line 967 "mercury_compile.m"
+                    parse_tree__error_util__write_error_specs_8_p_0(top_level__mercury_compile__Specs_230, top_level__mercury_compile__Globals_263, (MR_Integer) 0, &top_level__mercury_compile___NumWarnings_218, (MR_Integer) 0, &top_level__mercury_compile___NumErrors_219);
+                  }
+#line 970 "mercury_compile.m"
+                  {
+#line 970 "mercury_compile.m"
+                    top_level__mercury_compile__V_227_227 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_227_227, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_9[1]));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_227_227, 1) = ((MR_Box) (top_level__mercury_compile__process_arg_2_8_p_0_6));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_227_227, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_227_227, 3) = ((MR_Box) (top_level__mercury_compile__ProcessModule_243));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_227_227, 4) = ((MR_Box) (top_level__mercury_compile__FileName_260));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_227_227, 5) = ((MR_Box) (top_level__mercury_compile__ModuleName_261));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_227_227, 6) = ((MR_Box) (top_level__mercury_compile__MaybeTimestamp_245));
+#line 970 "mercury_compile.m"
+                  }
+#line 969 "mercury_compile.m"
+                  {
+#line 969 "mercury_compile.m"
+                    mercury__list__foldl_4_p_2((MR_Word) &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, top_level__mercury_compile__V_227_227, top_level__mercury_compile__RawCompUnits_223, ((MR_Box) ((MR_Integer) 0)), &top_level__mercury_compile__conv2_STATE_VARIABLE_IO_44);
+                  }
+#line 965 "mercury_compile.m"
+                }
+#line 974 "mercury_compile.m"
+              *top_level__mercury_compile__ModulesToLink_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 975 "mercury_compile.m"
+              *top_level__mercury_compile__ExtraObjFiles_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 954 "mercury_compile.m"
+            }
+#line 896 "mercury_compile.m"
+            break;
+#line 896 "mercury_compile.m"
+          case (MR_Integer) 4:
+#line 954 "mercury_compile.m"
+            {
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ProcessModule_29;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ReturnTimestamp_31;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__MaybeTimestamp_32;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Specs0_33;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_58_58;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_59_59;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_60_60;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__GenerateVersionNumbers_90;
+#line 954 "mercury_compile.m"
+              MR_String top_level__mercury_compile__FileName_100;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ModuleName_101;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__HaveReadModuleMaps0_102;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Globals_103;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ParseTreeSrc_104;
+#line 954 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Errors_106;
+#line 957 "mercury_compile.m"
+              MR_Word top_level__mercury_compile___HaveReadModuleMaps_91;
+
+#line 949 "mercury_compile.m"
+              {
+#line 949 "mercury_compile.m"
+                top_level__mercury_compile__ProcessModule_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 949 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_29, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_9[0]));
+#line 949 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_29, 1) = ((MR_Box) (top_level__mercury_compile__process_arg_2_8_p_0_1));
+#line 949 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_29, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 949 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__ProcessModule_29, 3) = ((MR_Box) (top_level__mercury_compile__Globals0_9));
+#line 949 "mercury_compile.m"
+              }
+#line 950 "mercury_compile.m"
+              {
+#line 950 "mercury_compile.m"
+                libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals0_9, (MR_Integer) 116, &top_level__mercury_compile__GenerateVersionNumbers_90);
+              }
+#line 952 "mercury_compile.m"
+              {
+#line 952 "mercury_compile.m"
+                top_level__mercury_compile__ReturnTimestamp_31 = top_level__mercury_compile__version_numbers_return_timestamp_1_f_0(top_level__mercury_compile__GenerateVersionNumbers_90);
+              }
+#line 956 "mercury_compile.m"
+              {
+#line 956 "mercury_compile.m"
+                top_level__mercury_compile__V_58_58 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[1], (MR_Word) &top_level__mercury_compile_scalar_common_1[2]);
+              }
+#line 956 "mercury_compile.m"
+              {
+#line 956 "mercury_compile.m"
+                top_level__mercury_compile__V_59_59 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[3], (MR_Word) &top_level__mercury_compile_scalar_common_1[4]);
+              }
+#line 956 "mercury_compile.m"
+              {
+#line 956 "mercury_compile.m"
+                top_level__mercury_compile__V_60_60 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[5], (MR_Word) &top_level__mercury_compile_scalar_common_1[6]);
+              }
+#line 956 "mercury_compile.m"
+              {
+#line 956 "mercury_compile.m"
+                top_level__mercury_compile__HaveReadModuleMaps0_102 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 956 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps0_102, 0) = ((MR_Box) (top_level__mercury_compile__V_58_58));
+#line 956 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps0_102, 1) = ((MR_Box) (top_level__mercury_compile__V_59_59));
+#line 956 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps0_102, 2) = ((MR_Box) (top_level__mercury_compile__V_60_60));
+#line 956 "mercury_compile.m"
+              }
+#line 957 "mercury_compile.m"
+              {
+#line 957 "mercury_compile.m"
+                top_level__mercury_compile__read_module_or_file_14_p_0(top_level__mercury_compile__Globals0_9, &top_level__mercury_compile__Globals_103, top_level__mercury_compile__FileOrModule_12, &top_level__mercury_compile__ModuleName_101, &top_level__mercury_compile__FileName_100, top_level__mercury_compile__ReturnTimestamp_31, &top_level__mercury_compile__MaybeTimestamp_32, &top_level__mercury_compile__ParseTreeSrc_104, &top_level__mercury_compile__Specs0_33, &top_level__mercury_compile__Errors_106, top_level__mercury_compile__HaveReadModuleMaps0_102, &top_level__mercury_compile___HaveReadModuleMaps_91);
+              }
+#line 961 "mercury_compile.m"
+              {
+#line 961 "mercury_compile.m"
+                top_level__mercury_compile__succeeded = top_level__mercury_compile__halt_at_module_error_2_p_0(top_level__mercury_compile__Globals_103, top_level__mercury_compile__Errors_106);
+              }
+#line 963 "mercury_compile.m"
+              if (top_level__mercury_compile__succeeded)
+#line 963 "mercury_compile.m"
+                {
+#line 963 "mercury_compile.m"
+                }
+#line 963 "mercury_compile.m"
+              else
+#line 965 "mercury_compile.m"
+                {
+#line 965 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__RawCompUnits_34;
+#line 965 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__V_65_65;
+#line 965 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__Specs_94;
+#line 967 "mercury_compile.m"
+                  MR_Integer top_level__mercury_compile___NumWarnings_92;
+#line 967 "mercury_compile.m"
+                  MR_Integer top_level__mercury_compile___NumErrors_93;
+#line 969 "mercury_compile.m"
+                  MR_Box top_level__mercury_compile__conv0_STATE_VARIABLE_IO_44;
+
+#line 964 "mercury_compile.m"
+                  {
+#line 964 "mercury_compile.m"
+                    parse_tree__split_parse_tree_src__split_into_compilation_units_perform_checks_4_p_0(top_level__mercury_compile__ParseTreeSrc_104, &top_level__mercury_compile__RawCompUnits_34, top_level__mercury_compile__Specs0_33, &top_level__mercury_compile__Specs_94);
+                  }
+#line 967 "mercury_compile.m"
+                  {
+#line 967 "mercury_compile.m"
+                    parse_tree__error_util__write_error_specs_8_p_0(top_level__mercury_compile__Specs_94, top_level__mercury_compile__Globals_103, (MR_Integer) 0, &top_level__mercury_compile___NumWarnings_92, (MR_Integer) 0, &top_level__mercury_compile___NumErrors_93);
+                  }
+#line 970 "mercury_compile.m"
+                  {
+#line 970 "mercury_compile.m"
+                    top_level__mercury_compile__V_65_65 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_65_65, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_9[1]));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_65_65, 1) = ((MR_Box) (top_level__mercury_compile__process_arg_2_8_p_0_2));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_65_65, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_65_65, 3) = ((MR_Box) (top_level__mercury_compile__ProcessModule_29));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_65_65, 4) = ((MR_Box) (top_level__mercury_compile__FileName_100));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_65_65, 5) = ((MR_Box) (top_level__mercury_compile__ModuleName_101));
+#line 970 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_65_65, 6) = ((MR_Box) (top_level__mercury_compile__MaybeTimestamp_32));
+#line 970 "mercury_compile.m"
+                  }
+#line 969 "mercury_compile.m"
+                  {
+#line 969 "mercury_compile.m"
+                    mercury__list__foldl_4_p_2((MR_Word) &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_raw_compilation_unit_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, top_level__mercury_compile__V_65_65, top_level__mercury_compile__RawCompUnits_34, ((MR_Box) ((MR_Integer) 0)), &top_level__mercury_compile__conv0_STATE_VARIABLE_IO_44);
+                  }
+#line 965 "mercury_compile.m"
+                }
+#line 974 "mercury_compile.m"
+              *top_level__mercury_compile__ModulesToLink_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 975 "mercury_compile.m"
+              *top_level__mercury_compile__ExtraObjFiles_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 954 "mercury_compile.m"
+            }
+#line 896 "mercury_compile.m"
+            break;
+#line 896 "mercury_compile.m"
+          case (MR_Integer) 5:
+#line 918 "mercury_compile.m"
+            {
+#line 918 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__HaveReadModuleMaps0_18;
+#line 918 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Globals_19;
+#line 918 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ParseTreeSrc_22;
+#line 918 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Specs_23;
+#line 918 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Errors_24;
+#line 918 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_67_67;
+#line 918 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_68_68;
+#line 918 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_69_69;
+#line 918 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ModuleName_89;
+#line 921 "mercury_compile.m"
+              MR_String top_level__mercury_compile__V_20_20;
+#line 921 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_21_21;
+#line 921 "mercury_compile.m"
+              MR_Word top_level__mercury_compile___HaveReadModuleMaps_25;
+#line 925 "mercury_compile.m"
+              MR_Integer top_level__mercury_compile___NumWarnings_26;
+#line 925 "mercury_compile.m"
+              MR_Integer top_level__mercury_compile___NumErrors_27;
+
+#line 920 "mercury_compile.m"
+              {
+#line 920 "mercury_compile.m"
+                top_level__mercury_compile__V_67_67 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[1], (MR_Word) &top_level__mercury_compile_scalar_common_1[2]);
+              }
+#line 920 "mercury_compile.m"
+              {
+#line 920 "mercury_compile.m"
+                top_level__mercury_compile__V_68_68 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[3], (MR_Word) &top_level__mercury_compile_scalar_common_1[4]);
+              }
+#line 920 "mercury_compile.m"
+              {
+#line 920 "mercury_compile.m"
+                top_level__mercury_compile__V_69_69 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[5], (MR_Word) &top_level__mercury_compile_scalar_common_1[6]);
+              }
+#line 920 "mercury_compile.m"
+              {
+#line 920 "mercury_compile.m"
+                top_level__mercury_compile__HaveReadModuleMaps0_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 920 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps0_18, 0) = ((MR_Box) (top_level__mercury_compile__V_67_67));
+#line 920 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps0_18, 1) = ((MR_Box) (top_level__mercury_compile__V_68_68));
+#line 920 "mercury_compile.m"
+                MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps0_18, 2) = ((MR_Box) (top_level__mercury_compile__V_69_69));
+#line 920 "mercury_compile.m"
+              }
+#line 921 "mercury_compile.m"
+              {
+#line 921 "mercury_compile.m"
+                top_level__mercury_compile__read_module_or_file_14_p_0(top_level__mercury_compile__Globals0_9, &top_level__mercury_compile__Globals_19, top_level__mercury_compile__FileOrModule_12, &top_level__mercury_compile__ModuleName_89, &top_level__mercury_compile__V_20_20, (MR_Integer) 1, &top_level__mercury_compile__V_21_21, &top_level__mercury_compile__ParseTreeSrc_22, &top_level__mercury_compile__Specs_23, &top_level__mercury_compile__Errors_24, top_level__mercury_compile__HaveReadModuleMaps0_18, &top_level__mercury_compile___HaveReadModuleMaps_25);
+              }
+#line 925 "mercury_compile.m"
+              {
+#line 925 "mercury_compile.m"
+                parse_tree__error_util__write_error_specs_8_p_0(top_level__mercury_compile__Specs_23, top_level__mercury_compile__Globals_19, (MR_Integer) 0, &top_level__mercury_compile___NumWarnings_26, (MR_Integer) 0, &top_level__mercury_compile___NumErrors_27);
+              }
+#line 926 "mercury_compile.m"
+              {
+#line 926 "mercury_compile.m"
+                top_level__mercury_compile__succeeded = top_level__mercury_compile__halt_at_module_error_2_p_0(top_level__mercury_compile__Globals_19, top_level__mercury_compile__Errors_24);
+              }
+#line 928 "mercury_compile.m"
+              if (top_level__mercury_compile__succeeded)
+#line 928 "mercury_compile.m"
+                {
+#line 928 "mercury_compile.m"
+                }
+#line 928 "mercury_compile.m"
+              else
+#line 930 "mercury_compile.m"
+                {
+#line 930 "mercury_compile.m"
+                  MR_String top_level__mercury_compile__OutputFileName_28;
+
+#line 929 "mercury_compile.m"
+                  {
+#line 929 "mercury_compile.m"
+                    parse_tree__file_names__module_name_to_file_name_7_p_0(top_level__mercury_compile__Globals_19, top_level__mercury_compile__ModuleName_89, (MR_String) ".ugly", (MR_Integer) 0, &top_level__mercury_compile__OutputFileName_28);
+                  }
+#line 931 "mercury_compile.m"
+                  {
+#line 931 "mercury_compile.m"
+                    parse_tree__parse_tree_out__convert_to_mercury_src_5_p_0(top_level__mercury_compile__Globals_19, top_level__mercury_compile__OutputFileName_28, top_level__mercury_compile__ParseTreeSrc_22);
+                  }
+#line 930 "mercury_compile.m"
+                }
+#line 933 "mercury_compile.m"
+              *top_level__mercury_compile__ModulesToLink_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 934 "mercury_compile.m"
+              *top_level__mercury_compile__ExtraObjFiles_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 918 "mercury_compile.m"
+            }
+#line 896 "mercury_compile.m"
+            break;
+#line 896 "mercury_compile.m"
+        }
+#line 896 "mercury_compile.m"
+        break;
+#line 896 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 977 "mercury_compile.m"
+        {
+#line 977 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__OpModeAugment_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__OpModeArgs_10, (MR_Integer) 0)));
+#line 977 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__Smart0_36;
+#line 977 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__DisableSmart_37;
+#line 977 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__Smart_38;
+#line 977 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__ModulesToRecompile_41;
+#line 977 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__HaveReadModuleMaps_42;
+#line 977 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__Globals_118;
+#line 1015 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_54_54;
+
+#line 978 "mercury_compile.m"
+          {
+#line 978 "mercury_compile.m"
+            libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals0_9, (MR_Integer) 115, &top_level__mercury_compile__Smart0_36);
+          }
+#line 979 "mercury_compile.m"
+          {
+#line 979 "mercury_compile.m"
+            libs__globals__io_get_disable_smart_recompilation_3_p_0(&top_level__mercury_compile__DisableSmart_37);
+          }
+#line 985 "mercury_compile.m"
+#line 985 "mercury_compile.m"
+          switch (top_level__mercury_compile__DisableSmart_37) {
+#line 985 "mercury_compile.m"
+            default: /*NOTREACHED*/ MR_assert(0);
+#line 985 "mercury_compile.m"
+            case (MR_Integer) 0:
+#line 986 "mercury_compile.m"
+              {
+#line 987 "mercury_compile.m"
+                top_level__mercury_compile__Globals_118 = top_level__mercury_compile__Globals0_9;
+#line 988 "mercury_compile.m"
+                top_level__mercury_compile__Smart_38 = top_level__mercury_compile__Smart0_36;
+#line 986 "mercury_compile.m"
+              }
+#line 985 "mercury_compile.m"
+              break;
+#line 985 "mercury_compile.m"
+            case (MR_Integer) 1:
+#line 981 "mercury_compile.m"
+              {
+#line 982 "mercury_compile.m"
+                {
+#line 982 "mercury_compile.m"
+                  libs__globals__set_option_4_p_0((MR_Integer) 115, (MR_Word) MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_4[1]), top_level__mercury_compile__Globals0_9, &top_level__mercury_compile__Globals_118);
+                }
+#line 984 "mercury_compile.m"
+                top_level__mercury_compile__Smart_38 = (MR_Integer) 0;
+#line 981 "mercury_compile.m"
+              }
+#line 985 "mercury_compile.m"
+              break;
+#line 985 "mercury_compile.m"
+          }
+#line 1009 "mercury_compile.m"
+#line 1009 "mercury_compile.m"
+          switch (top_level__mercury_compile__Smart_38) {
+#line 1009 "mercury_compile.m"
+            default: /*NOTREACHED*/ MR_assert(0);
+#line 1009 "mercury_compile.m"
+            case (MR_Integer) 0:
+#line 1010 "mercury_compile.m"
+              {
+#line 1010 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_50_50;
+#line 1010 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_51_51;
+#line 1010 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_52_52;
+
+#line 1012 "mercury_compile.m"
+                {
+#line 1012 "mercury_compile.m"
+                  top_level__mercury_compile__V_50_50 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[1], (MR_Word) &top_level__mercury_compile_scalar_common_1[2]);
+                }
+#line 1012 "mercury_compile.m"
+                {
+#line 1012 "mercury_compile.m"
+                  top_level__mercury_compile__V_51_51 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[3], (MR_Word) &top_level__mercury_compile_scalar_common_1[4]);
+                }
+#line 1012 "mercury_compile.m"
+                {
+#line 1012 "mercury_compile.m"
+                  top_level__mercury_compile__V_52_52 = mercury__map__init_0_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[5], (MR_Word) &top_level__mercury_compile_scalar_common_1[6]);
+                }
+#line 1012 "mercury_compile.m"
+                {
+#line 1012 "mercury_compile.m"
+                  top_level__mercury_compile__HaveReadModuleMaps_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1012 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps_42, 0) = ((MR_Box) (top_level__mercury_compile__V_50_50));
+#line 1012 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps_42, 1) = ((MR_Box) (top_level__mercury_compile__V_51_51));
+#line 1012 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(0), top_level__mercury_compile__HaveReadModuleMaps_42, 2) = ((MR_Box) (top_level__mercury_compile__V_52_52));
+#line 1012 "mercury_compile.m"
+                }
+#line 1013 "mercury_compile.m"
+                top_level__mercury_compile__ModulesToRecompile_41 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1010 "mercury_compile.m"
+              }
+#line 1009 "mercury_compile.m"
+              break;
+#line 1009 "mercury_compile.m"
+            case (MR_Integer) 1:
+#line 991 "mercury_compile.m"
+              {
+#line 991 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__FindTargetFiles_39;
+#line 991 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__FindTimestampFiles_40;
+#line 991 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__ModuleName_113;
+
+#line 994 "mercury_compile.m"
+                if (((MR_tag((MR_Word) top_level__mercury_compile__FileOrModule_12)) == (MR_mktag((MR_Integer) 0))))
+#line 995 "mercury_compile.m"
+                  {
+#line 995 "mercury_compile.m"
+                    MR_String top_level__mercury_compile__FileName_110 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__FileOrModule_12, (MR_Integer) 0)));
+
+#line 1002 "mercury_compile.m"
+                    {
+#line 1002 "mercury_compile.m"
+                      parse_tree__file_names__file_name_to_module_name_2_p_0(top_level__mercury_compile__FileName_110, &top_level__mercury_compile__ModuleName_113);
+                    }
+#line 995 "mercury_compile.m"
+                  }
+#line 994 "mercury_compile.m"
+                else
+#line 993 "mercury_compile.m"
+                  top_level__mercury_compile__ModuleName_113 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__FileOrModule_12, (MR_Integer) 0)));
+#line 1004 "mercury_compile.m"
+                {
+#line 1004 "mercury_compile.m"
+                  top_level__mercury_compile__find_smart_recompilation_target_files_2_p_0(top_level__mercury_compile__Globals_118, &top_level__mercury_compile__FindTargetFiles_39);
+                }
+#line 1005 "mercury_compile.m"
+                {
+#line 1005 "mercury_compile.m"
+                  top_level__mercury_compile__find_timestamp_files_2_p_0(top_level__mercury_compile__Globals_118, &top_level__mercury_compile__FindTimestampFiles_40);
+                }
+#line 1006 "mercury_compile.m"
+                {
+#line 1006 "mercury_compile.m"
+                  recompilation__check__should_recompile_8_p_0(top_level__mercury_compile__Globals_118, top_level__mercury_compile__ModuleName_113, top_level__mercury_compile__FindTargetFiles_39, top_level__mercury_compile__FindTimestampFiles_40, &top_level__mercury_compile__ModulesToRecompile_41, &top_level__mercury_compile__HaveReadModuleMaps_42);
+                }
+#line 991 "mercury_compile.m"
+              }
+#line 1009 "mercury_compile.m"
+              break;
+#line 1009 "mercury_compile.m"
+          }
+#line 1015 "mercury_compile.m"
+          top_level__mercury_compile__succeeded = ((MR_tag((MR_Word) top_level__mercury_compile__ModulesToRecompile_41)) == (MR_mktag((MR_Integer) 1)));
+#line 1015 "mercury_compile.m"
+          if (top_level__mercury_compile__succeeded)
+#line 1015 "mercury_compile.m"
+            {
+#line 1015 "mercury_compile.m"
+              top_level__mercury_compile__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__ModulesToRecompile_41, (MR_Integer) 0)));
+#line 1015 "mercury_compile.m"
+              top_level__mercury_compile__succeeded = (top_level__mercury_compile__V_54_54 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1015 "mercury_compile.m"
+            }
+#line 1021 "mercury_compile.m"
+          if (top_level__mercury_compile__succeeded)
+#line 1019 "mercury_compile.m"
+            {
+#line 1019 "mercury_compile.m"
+              *top_level__mercury_compile__ModulesToLink_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1020 "mercury_compile.m"
+              *top_level__mercury_compile__ExtraObjFiles_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1019 "mercury_compile.m"
+            }
+#line 1021 "mercury_compile.m"
+          else
+#line 1022 "mercury_compile.m"
+            {
+#line 1022 "mercury_compile.m"
+              top_level__mercury_compile__read_augment_and_process_module_10_p_0(top_level__mercury_compile__Globals_118, top_level__mercury_compile__OpModeAugment_35, top_level__mercury_compile__OptionArgs_11, top_level__mercury_compile__FileOrModule_12, top_level__mercury_compile__ModulesToRecompile_41, top_level__mercury_compile__HaveReadModuleMaps_42, top_level__mercury_compile__ModulesToLink_13, top_level__mercury_compile__ExtraObjFiles_14);
+            }
+#line 977 "mercury_compile.m"
+        }
+#line 896 "mercury_compile.m"
+        break;
+#line 896 "mercury_compile.m"
+    }
+#line 896 "mercury_compile.m"
+  }
+#line 889 "mercury_compile.m"
+}
+
+#line 884 "mercury_compile.m"
+static MR_Word MR_CALL 
+top_level__mercury_compile__version_numbers_return_timestamp_1_f_0(
+#line 884 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__1_1)
+#line 884 "mercury_compile.m"
+{
+#line 886 "mercury_compile.m"
+  {
+#line 886 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 886 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__HeadVar__2_2;
+
+#line 886 "mercury_compile.m"
+#line 886 "mercury_compile.m"
+    switch (top_level__mercury_compile__HeadVar__1_1) {
+#line 886 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 886 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 886 "mercury_compile.m"
+        top_level__mercury_compile__HeadVar__2_2 = (MR_Integer) 1;
+#line 886 "mercury_compile.m"
+        break;
+#line 886 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 887 "mercury_compile.m"
+        top_level__mercury_compile__HeadVar__2_2 = (MR_Integer) 0;
+#line 886 "mercury_compile.m"
+        break;
+#line 886 "mercury_compile.m"
+    }
+#line 886 "mercury_compile.m"
+    return top_level__mercury_compile__HeadVar__2_2;
+#line 886 "mercury_compile.m"
+  }
+#line 884 "mercury_compile.m"
+}
+
+#line 874 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_build_10_p_0(
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeArgs_11,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileOrModule_12,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_13,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_14,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__5_15,
+#line 874 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HeadVar__6_6,
+#line 874 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__7_16,
+#line 874 "mercury_compile.m"
+  MR_Tuple * top_level__mercury_compile__HeadVar__8_8)
+#line 874 "mercury_compile.m"
+{
+#line 880 "mercury_compile.m"
+  {
+#line 880 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 880 "mercury_compile.m"
+    {
+#line 880 "mercury_compile.m"
+      top_level__mercury_compile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_99_101_115_115_95_97_114_103_95_98_117_105_108_100_95_95_91_53_44_32_55_93_95_48_10_p_0(top_level__mercury_compile__OpModeArgs_11, top_level__mercury_compile__FileOrModule_12, top_level__mercury_compile__OptionArgs_13, top_level__mercury_compile__Globals_14, top_level__mercury_compile__HeadVar__6_6, top_level__mercury_compile__HeadVar__8_8);
+    }
+#line 880 "mercury_compile.m"
+  }
+#line 874 "mercury_compile.m"
+}
+
+#line 857 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_10_p_0_1(
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 857 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_4,
+#line 857 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_5,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_6,
+#line 857 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_7)
+#line 857 "mercury_compile.m"
+{
+#line 857 "mercury_compile.m"
+  {
+#line 857 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 857 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv1_HeadVar__6_6;
+#line 857 "mercury_compile.m"
+    MR_Tuple top_level__mercury_compile__conv0_HeadVar__8_8;
+
+#line 857 "mercury_compile.m"
+    {
+#line 857 "mercury_compile.m"
+      top_level__mercury_compile__process_arg_build_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 5))), ((MR_Word) top_level__mercury_compile__wrapper_arg_1), ((MR_Word) top_level__mercury_compile__wrapper_arg_2), &top_level__mercury_compile__conv1_HeadVar__6_6, ((MR_Word) top_level__mercury_compile__wrapper_arg_4), &top_level__mercury_compile__conv0_HeadVar__8_8);
+    }
+#line 857 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_3 = ((MR_Box) (top_level__mercury_compile__conv1_HeadVar__6_6));
+#line 857 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_5 = ((MR_Box) (top_level__mercury_compile__conv0_HeadVar__8_8));
+#line 857 "mercury_compile.m"
+  }
+#line 857 "mercury_compile.m"
+}
+
+#line 843 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_arg_10_p_0(
+#line 843 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_11,
+#line 843 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeArgs_12,
+#line 843 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__DetectedGradeFlags_13,
+#line 843 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionVariables_14,
+#line 843 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_15,
+#line 843 "mercury_compile.m"
+  MR_String top_level__mercury_compile__Arg_16,
+#line 843 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ModulesToLink_17,
+#line 843 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__ExtraObjFiles_18)
+#line 843 "mercury_compile.m"
+{
+#line 849 "mercury_compile.m"
+  {
+#line 849 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 849 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__FileOrModule_20;
+#line 849 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__InvokedByMake_21;
+#line 1240 "mercury_compile.m"
+    MR_String top_level__mercury_compile__FileName_45;
+
+#line 1237 "mercury_compile.m"
+    {
+#line 1237 "mercury_compile.m"
+      top_level__mercury_compile__succeeded = mercury__string__remove_suffix_3_p_0(top_level__mercury_compile__Arg_16, (MR_String) ".m", &top_level__mercury_compile__FileName_45);
+    }
+#line 1240 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 1239 "mercury_compile.m"
+      {
+#line 1239 "mercury_compile.m"
+        top_level__mercury_compile__FileOrModule_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1239 "mercury_compile.m"
+        MR_hl_field(MR_mktag(0), top_level__mercury_compile__FileOrModule_20, 0) = ((MR_Box) (top_level__mercury_compile__FileName_45));
+#line 1239 "mercury_compile.m"
+      }
+#line 1240 "mercury_compile.m"
+    else
+#line 1244 "mercury_compile.m"
+      {
+#line 1244 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__ModuleName_46;
+
+#line 1244 "mercury_compile.m"
+        {
+#line 1244 "mercury_compile.m"
+          parse_tree__file_names__file_name_to_module_name_2_p_0(top_level__mercury_compile__Arg_16, &top_level__mercury_compile__ModuleName_46);
+        }
+#line 1245 "mercury_compile.m"
+        {
+#line 1245 "mercury_compile.m"
+          top_level__mercury_compile__FileOrModule_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1245 "mercury_compile.m"
+          MR_hl_field(MR_mktag(1), top_level__mercury_compile__FileOrModule_20, 0) = ((MR_Box) (top_level__mercury_compile__ModuleName_46));
+#line 1245 "mercury_compile.m"
+        }
+#line 1244 "mercury_compile.m"
+      }
+#line 851 "mercury_compile.m"
+    {
+#line 851 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_11, (MR_Integer) 614, &top_level__mercury_compile__InvokedByMake_21);
+    }
+#line 867 "mercury_compile.m"
+#line 867 "mercury_compile.m"
+    switch (top_level__mercury_compile__InvokedByMake_21) {
+#line 867 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 867 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 853 "mercury_compile.m"
+        {
+#line 853 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__MaybeTuple_23;
+#line 853 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_29_29;
+#line 853 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_31_31;
+#line 854 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_22_22;
+
+#line 1250 "mercury_compile.m"
+          if (((MR_tag((MR_Word) top_level__mercury_compile__FileOrModule_20)) == (MR_mktag((MR_Integer) 0))))
+#line 1250 "mercury_compile.m"
+            {
+#line 1250 "mercury_compile.m"
+              MR_String top_level__mercury_compile__FileName_48 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__FileOrModule_20, (MR_Integer) 0)));
+
+#line 1252 "mercury_compile.m"
+              {
+#line 1252 "mercury_compile.m"
+                parse_tree__file_names__file_name_to_module_name_2_p_0(top_level__mercury_compile__FileName_48, &top_level__mercury_compile__V_29_29);
+              }
+#line 1250 "mercury_compile.m"
+            }
+#line 1250 "mercury_compile.m"
+          else
+#line 1253 "mercury_compile.m"
+            top_level__mercury_compile__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__FileOrModule_20, (MR_Integer) 0)));
+#line 857 "mercury_compile.m"
+          {
+#line 857 "mercury_compile.m"
+            top_level__mercury_compile__V_31_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 857 "mercury_compile.m"
+            MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_31_31, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_8[0]));
+#line 857 "mercury_compile.m"
+            MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_31_31, 1) = ((MR_Box) (top_level__mercury_compile__process_arg_10_p_0_1));
+#line 857 "mercury_compile.m"
+            MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_31_31, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 857 "mercury_compile.m"
+            MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_31_31, 3) = ((MR_Box) (top_level__mercury_compile__OpModeArgs_12));
+#line 857 "mercury_compile.m"
+            MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_31_31, 4) = ((MR_Box) (top_level__mercury_compile__FileOrModule_20));
+#line 857 "mercury_compile.m"
+            MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_31_31, 5) = ((MR_Box) (top_level__mercury_compile__OptionArgs_15));
+#line 857 "mercury_compile.m"
+          }
+#line 854 "mercury_compile.m"
+          {
+#line 854 "mercury_compile.m"
+            make__util__build_with_module_options_args_12_p_0((MR_Word) &top_level__mercury_compile_scalar_common_1[0], (MR_Word) &top_level__mercury_compile_scalar_common_2[0], top_level__mercury_compile__Globals_11, top_level__mercury_compile__V_29_29, top_level__mercury_compile__DetectedGradeFlags_13, top_level__mercury_compile__OptionVariables_14, top_level__mercury_compile__OptionArgs_15, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), top_level__mercury_compile__V_31_31, &top_level__mercury_compile__V_22_22, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &top_level__mercury_compile__MaybeTuple_23);
+          }
+#line 862 "mercury_compile.m"
+          if ((top_level__mercury_compile__MaybeTuple_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 863 "mercury_compile.m"
+            {
+#line 864 "mercury_compile.m"
+              *top_level__mercury_compile__ModulesToLink_17 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 865 "mercury_compile.m"
+              *top_level__mercury_compile__ExtraObjFiles_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 863 "mercury_compile.m"
+            }
+#line 862 "mercury_compile.m"
+          else
+#line 860 "mercury_compile.m"
+            {
+#line 860 "mercury_compile.m"
+              MR_Tuple top_level__mercury_compile__Tuple_24 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__MaybeTuple_23, (MR_Integer) 0)));
+
+#line 861 "mercury_compile.m"
+              *top_level__mercury_compile__ModulesToLink_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Tuple_24, (MR_Integer) 0)));
+#line 861 "mercury_compile.m"
+              *top_level__mercury_compile__ExtraObjFiles_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Tuple_24, (MR_Integer) 1)));
+#line 860 "mercury_compile.m"
+            }
+#line 853 "mercury_compile.m"
+        }
+#line 867 "mercury_compile.m"
+        break;
+#line 867 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 870 "mercury_compile.m"
+        {
+#line 870 "mercury_compile.m"
+          top_level__mercury_compile__process_arg_2_8_p_0(top_level__mercury_compile__Globals_11, top_level__mercury_compile__OpModeArgs_12, top_level__mercury_compile__OptionArgs_15, top_level__mercury_compile__FileOrModule_20, top_level__mercury_compile__ModulesToLink_17, top_level__mercury_compile__ExtraObjFiles_18);
+        }
+#line 867 "mercury_compile.m"
+        break;
+#line 867 "mercury_compile.m"
+    }
+#line 849 "mercury_compile.m"
+  }
+#line 843 "mercury_compile.m"
+}
+
+#line 815 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_cmd_line_args_12_p_0(
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_1,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeArgs_2,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__DetectedGradeFlags_3,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionVariables_4,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_5,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__6_6,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Modules_0_7,
+#line 815 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_Modules_8,
+#line 815 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0_9,
+#line 815 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_10)
+#line 815 "mercury_compile.m"
+{
+#line 821 "mercury_compile.m"
+  while (MR_TRUE)
+#line 821 "mercury_compile.m"
+    {
+#line 821 "mercury_compile.m"
+      /* tailcall optimized into a loop */
+#line 821 "mercury_compile.m"
+      {
+#line 821 "mercury_compile.m"
+        MR_bool top_level__mercury_compile__succeeded;
+
+#line 821 "mercury_compile.m"
+        if ((top_level__mercury_compile__HeadVar__6_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 821 "mercury_compile.m"
+          {
+#line 821 "mercury_compile.m"
+            *top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_10 = top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0_9;
+#line 821 "mercury_compile.m"
+            *top_level__mercury_compile__STATE_VARIABLE_Modules_8 = top_level__mercury_compile__STATE_VARIABLE_Modules_0_7;
+#line 821 "mercury_compile.m"
+          }
+#line 821 "mercury_compile.m"
+        else
+#line 823 "mercury_compile.m"
+          {
+#line 823 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__TypeCtorInfo_56_56;
+#line 823 "mercury_compile.m"
+            MR_String top_level__mercury_compile__Arg_32 = ((MR_String) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__HeadVar__6_6, (MR_Integer) 0)));
+#line 823 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__Args_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__HeadVar__6_6, (MR_Integer) 1)));
+#line 823 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__ArgModules_37;
+#line 823 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__ArgExtraObjFiles_38;
+#line 823 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__STATE_VARIABLE_Modules_49_49;
+#line 823 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_50_50;
+#line 823 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_51_51;
+#line 823 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_52_52;
+
+#line 824 "mercury_compile.m"
+            {
+#line 824 "mercury_compile.m"
+              top_level__mercury_compile__process_arg_10_p_0(top_level__mercury_compile__Globals_1, top_level__mercury_compile__OpModeArgs_2, top_level__mercury_compile__DetectedGradeFlags_3, top_level__mercury_compile__OptionVariables_4, top_level__mercury_compile__OptionArgs_5, top_level__mercury_compile__Arg_32, &top_level__mercury_compile__ArgModules_37, &top_level__mercury_compile__ArgExtraObjFiles_38);
+            }
+#line 829 "mercury_compile.m"
+            if ((top_level__mercury_compile__Args_33 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 830 "mercury_compile.m"
+              {
+#line 830 "mercury_compile.m"
+              }
+#line 829 "mercury_compile.m"
+            else
+#line 828 "mercury_compile.m"
+              {
+#line 828 "mercury_compile.m"
+                mercury__gc__garbage_collect_2_p_0();
+              }
+#line 10402 "top_level.mercury_compile.c"
+            top_level__mercury_compile__TypeCtorInfo_56_56 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 832 "mercury_compile.m"
+            {
+#line 832 "mercury_compile.m"
+              top_level__mercury_compile__V_50_50 = mercury__cord__from_list_1_f_0(top_level__mercury_compile__TypeCtorInfo_56_56, top_level__mercury_compile__ArgModules_37);
+            }
+#line 832 "mercury_compile.m"
+            {
+#line 832 "mercury_compile.m"
+              top_level__mercury_compile__STATE_VARIABLE_Modules_49_49 = mercury__cord__f_43_43_2_f_0(top_level__mercury_compile__TypeCtorInfo_56_56, top_level__mercury_compile__STATE_VARIABLE_Modules_0_7, top_level__mercury_compile__V_50_50);
+            }
+#line 833 "mercury_compile.m"
+            {
+#line 833 "mercury_compile.m"
+              top_level__mercury_compile__V_52_52 = mercury__cord__from_list_1_f_0(top_level__mercury_compile__TypeCtorInfo_56_56, top_level__mercury_compile__ArgExtraObjFiles_38);
+            }
+#line 833 "mercury_compile.m"
+            {
+#line 833 "mercury_compile.m"
+              top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_51_51 = mercury__cord__f_43_43_2_f_0(top_level__mercury_compile__TypeCtorInfo_56_56, top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0_9, top_level__mercury_compile__V_52_52);
+            }
+#line 834 "mercury_compile.m"
+            /* direct tailcall eliminated */
+#line 834 "mercury_compile.m"
+            {
+#line 834 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__HeadVar__6__tmp_copy_6 = top_level__mercury_compile__Args_33;
+#line 834 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__STATE_VARIABLE_Modules_0__tmp_copy_7 = top_level__mercury_compile__STATE_VARIABLE_Modules_49_49;
+#line 834 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0__tmp_copy_9 = top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_51_51;
+
+#line 834 "mercury_compile.m"
+              top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0_9 = top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0__tmp_copy_9;
+#line 834 "mercury_compile.m"
+              top_level__mercury_compile__STATE_VARIABLE_Modules_0_7 = top_level__mercury_compile__STATE_VARIABLE_Modules_0__tmp_copy_7;
+#line 834 "mercury_compile.m"
+              top_level__mercury_compile__HeadVar__6_6 = top_level__mercury_compile__HeadVar__6__tmp_copy_6;
+#line 834 "mercury_compile.m"
+            }
+#line 834 "mercury_compile.m"
+            continue;
+#line 823 "mercury_compile.m"
+          }
+#line 821 "mercury_compile.m"
+      }
+#line 821 "mercury_compile.m"
+      break;
+#line 821 "mercury_compile.m"
+    }
+#line 815 "mercury_compile.m"
+}
+
+#line 857 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_stdin_args_11_p_0_1(
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 857 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_4,
+#line 857 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_5,
+#line 857 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_6,
+#line 857 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_7)
+#line 857 "mercury_compile.m"
+{
+#line 857 "mercury_compile.m"
+  {
+#line 857 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 857 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv1_HeadVar__6_6;
+#line 857 "mercury_compile.m"
+    MR_Tuple top_level__mercury_compile__conv0_HeadVar__8_8;
+
+#line 857 "mercury_compile.m"
+    {
+#line 857 "mercury_compile.m"
+      top_level__mercury_compile__process_arg_build_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 5))), ((MR_Word) top_level__mercury_compile__wrapper_arg_1), ((MR_Word) top_level__mercury_compile__wrapper_arg_2), &top_level__mercury_compile__conv1_HeadVar__6_6, ((MR_Word) top_level__mercury_compile__wrapper_arg_4), &top_level__mercury_compile__conv0_HeadVar__8_8);
+    }
+#line 857 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_3 = ((MR_Box) (top_level__mercury_compile__conv1_HeadVar__6_6));
+#line 857 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_5 = ((MR_Box) (top_level__mercury_compile__conv0_HeadVar__8_8));
+#line 857 "mercury_compile.m"
+  }
+#line 857 "mercury_compile.m"
+}
+
+#line 783 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__process_stdin_args_11_p_0(
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_12,
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeArgs_13,
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__DetectedGradeFlags_14,
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionVariables_15,
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_16,
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_Modules_0_27,
+#line 783 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_Modules_28,
+#line 783 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0_29,
+#line 783 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_30)
+#line 783 "mercury_compile.m"
+{
+#line 789 "mercury_compile.m"
+  while (MR_TRUE)
+#line 789 "mercury_compile.m"
+    {
+#line 789 "mercury_compile.m"
+      /* tailcall optimized into a loop */
+#line 789 "mercury_compile.m"
+      {
+#line 789 "mercury_compile.m"
+        MR_bool top_level__mercury_compile__succeeded;
+#line 789 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__FileResult_20;
+
+#line 790 "mercury_compile.m"
+        {
+#line 790 "mercury_compile.m"
+          top_level__mercury_compile__succeeded = mercury__cord__is_empty_1_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, top_level__mercury_compile__STATE_VARIABLE_Modules_0_27);
+        }
+#line 792 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 792 "mercury_compile.m"
+          {
+#line 792 "mercury_compile.m"
+          }
+#line 792 "mercury_compile.m"
+        else
+#line 793 "mercury_compile.m"
+          {
+#line 793 "mercury_compile.m"
+            mercury__gc__garbage_collect_2_p_0();
+          }
+#line 795 "mercury_compile.m"
+        {
+#line 795 "mercury_compile.m"
+          mercury__io__read_line_as_string_3_p_0(&top_level__mercury_compile__FileResult_20);
+        }
+#line 805 "mercury_compile.m"
+#line 805 "mercury_compile.m"
+        switch (MR_tag((MR_Word) top_level__mercury_compile__FileResult_20)) {
+#line 805 "mercury_compile.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 805 "mercury_compile.m"
+          case (MR_Integer) 0:
+#line 806 "mercury_compile.m"
+            {
+#line 806 "mercury_compile.m"
+              *top_level__mercury_compile__STATE_VARIABLE_Modules_28 = top_level__mercury_compile__STATE_VARIABLE_Modules_0_27;
+#line 806 "mercury_compile.m"
+              *top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_30 = top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0_29;
+#line 806 "mercury_compile.m"
+            }
+#line 805 "mercury_compile.m"
+            break;
+#line 805 "mercury_compile.m"
+          case (MR_Integer) 1:
+#line 797 "mercury_compile.m"
+            {
+#line 797 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__TypeCtorInfo_49_49;
+#line 797 "mercury_compile.m"
+              MR_String top_level__mercury_compile__Line_21 = ((MR_String) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__FileResult_20, (MR_Integer) 0)));
+#line 797 "mercury_compile.m"
+              MR_String top_level__mercury_compile__Arg_22;
+#line 797 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ArgModules_23;
+#line 797 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ArgExtraObjFiles_24;
+#line 797 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__STATE_VARIABLE_Modules_41_41;
+#line 797 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_42_42;
+#line 797 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_43_43;
+#line 797 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_44_44;
+#line 797 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__FileOrModule_61;
+#line 797 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__InvokedByMake_62;
+#line 1240 "mercury_compile.m"
+              MR_String top_level__mercury_compile__FileName_84;
+
+#line 798 "mercury_compile.m"
+              {
+#line 798 "mercury_compile.m"
+                top_level__mercury_compile__Arg_22 = mercury__string__rstrip_1_f_0(top_level__mercury_compile__Line_21);
+              }
+#line 1237 "mercury_compile.m"
+              {
+#line 1237 "mercury_compile.m"
+                top_level__mercury_compile__succeeded = mercury__string__remove_suffix_3_p_0(top_level__mercury_compile__Arg_22, (MR_String) ".m", &top_level__mercury_compile__FileName_84);
+              }
+#line 1240 "mercury_compile.m"
+              if (top_level__mercury_compile__succeeded)
+#line 1239 "mercury_compile.m"
+                {
+#line 1239 "mercury_compile.m"
+                  top_level__mercury_compile__FileOrModule_61 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1239 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(0), top_level__mercury_compile__FileOrModule_61, 0) = ((MR_Box) (top_level__mercury_compile__FileName_84));
+#line 1239 "mercury_compile.m"
+                }
+#line 1240 "mercury_compile.m"
+              else
+#line 1244 "mercury_compile.m"
+                {
+#line 1244 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__ModuleName_85;
+
+#line 1244 "mercury_compile.m"
+                  {
+#line 1244 "mercury_compile.m"
+                    parse_tree__file_names__file_name_to_module_name_2_p_0(top_level__mercury_compile__Arg_22, &top_level__mercury_compile__ModuleName_85);
+                  }
+#line 1245 "mercury_compile.m"
+                  {
+#line 1245 "mercury_compile.m"
+                    top_level__mercury_compile__FileOrModule_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1245 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(1), top_level__mercury_compile__FileOrModule_61, 0) = ((MR_Box) (top_level__mercury_compile__ModuleName_85));
+#line 1245 "mercury_compile.m"
+                  }
+#line 1244 "mercury_compile.m"
+                }
+#line 851 "mercury_compile.m"
+              {
+#line 851 "mercury_compile.m"
+                libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_12, (MR_Integer) 614, &top_level__mercury_compile__InvokedByMake_62);
+              }
+#line 867 "mercury_compile.m"
+#line 867 "mercury_compile.m"
+              switch (top_level__mercury_compile__InvokedByMake_62) {
+#line 867 "mercury_compile.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 867 "mercury_compile.m"
+                case (MR_Integer) 0:
+#line 853 "mercury_compile.m"
+                  {
+#line 853 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__MaybeTuple_64;
+#line 853 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_68_68;
+#line 853 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_70_70;
+#line 854 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_63_63;
+
+#line 1250 "mercury_compile.m"
+                    if (((MR_tag((MR_Word) top_level__mercury_compile__FileOrModule_61)) == (MR_mktag((MR_Integer) 0))))
+#line 1250 "mercury_compile.m"
+                      {
+#line 1250 "mercury_compile.m"
+                        MR_String top_level__mercury_compile__FileName_87 = ((MR_String) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__FileOrModule_61, (MR_Integer) 0)));
+
+#line 1252 "mercury_compile.m"
+                        {
+#line 1252 "mercury_compile.m"
+                          parse_tree__file_names__file_name_to_module_name_2_p_0(top_level__mercury_compile__FileName_87, &top_level__mercury_compile__V_68_68);
+                        }
+#line 1250 "mercury_compile.m"
+                      }
+#line 1250 "mercury_compile.m"
+                    else
+#line 1253 "mercury_compile.m"
+                      top_level__mercury_compile__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__FileOrModule_61, (MR_Integer) 0)));
+#line 857 "mercury_compile.m"
+                    {
+#line 857 "mercury_compile.m"
+                      top_level__mercury_compile__V_70_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 857 "mercury_compile.m"
+                      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_70_70, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_8[0]));
+#line 857 "mercury_compile.m"
+                      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_70_70, 1) = ((MR_Box) (top_level__mercury_compile__process_stdin_args_11_p_0_1));
+#line 857 "mercury_compile.m"
+                      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_70_70, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 857 "mercury_compile.m"
+                      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_70_70, 3) = ((MR_Box) (top_level__mercury_compile__OpModeArgs_13));
+#line 857 "mercury_compile.m"
+                      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_70_70, 4) = ((MR_Box) (top_level__mercury_compile__FileOrModule_61));
+#line 857 "mercury_compile.m"
+                      MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_70_70, 5) = ((MR_Box) (top_level__mercury_compile__OptionArgs_16));
+#line 857 "mercury_compile.m"
+                    }
+#line 854 "mercury_compile.m"
+                    {
+#line 854 "mercury_compile.m"
+                      make__util__build_with_module_options_args_12_p_0((MR_Word) &top_level__mercury_compile_scalar_common_1[0], (MR_Word) &top_level__mercury_compile_scalar_common_2[0], top_level__mercury_compile__Globals_12, top_level__mercury_compile__V_68_68, top_level__mercury_compile__DetectedGradeFlags_14, top_level__mercury_compile__OptionVariables_15, top_level__mercury_compile__OptionArgs_16, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), top_level__mercury_compile__V_70_70, &top_level__mercury_compile__V_63_63, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &top_level__mercury_compile__MaybeTuple_64);
+                    }
+#line 862 "mercury_compile.m"
+                    if ((top_level__mercury_compile__MaybeTuple_64 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 863 "mercury_compile.m"
+                      {
+#line 864 "mercury_compile.m"
+                        top_level__mercury_compile__ArgModules_23 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 865 "mercury_compile.m"
+                        top_level__mercury_compile__ArgExtraObjFiles_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 863 "mercury_compile.m"
+                      }
+#line 862 "mercury_compile.m"
+                    else
+#line 860 "mercury_compile.m"
+                      {
+#line 860 "mercury_compile.m"
+                        MR_Tuple top_level__mercury_compile__Tuple_65 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__MaybeTuple_64, (MR_Integer) 0)));
+
+#line 861 "mercury_compile.m"
+                        top_level__mercury_compile__ArgModules_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Tuple_65, (MR_Integer) 0)));
+#line 861 "mercury_compile.m"
+                        top_level__mercury_compile__ArgExtraObjFiles_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Tuple_65, (MR_Integer) 1)));
+#line 860 "mercury_compile.m"
+                      }
+#line 853 "mercury_compile.m"
+                  }
+#line 867 "mercury_compile.m"
+                  break;
+#line 867 "mercury_compile.m"
+                case (MR_Integer) 1:
+#line 870 "mercury_compile.m"
+                  {
+#line 870 "mercury_compile.m"
+                    top_level__mercury_compile__process_arg_2_8_p_0(top_level__mercury_compile__Globals_12, top_level__mercury_compile__OpModeArgs_13, top_level__mercury_compile__OptionArgs_16, top_level__mercury_compile__FileOrModule_61, &top_level__mercury_compile__ArgModules_23, &top_level__mercury_compile__ArgExtraObjFiles_24);
+                  }
+#line 867 "mercury_compile.m"
+                  break;
+#line 867 "mercury_compile.m"
+              }
+#line 10749 "top_level.mercury_compile.c"
+              top_level__mercury_compile__TypeCtorInfo_49_49 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 801 "mercury_compile.m"
+              {
+#line 801 "mercury_compile.m"
+                top_level__mercury_compile__V_42_42 = mercury__cord__from_list_1_f_0(top_level__mercury_compile__TypeCtorInfo_49_49, top_level__mercury_compile__ArgModules_23);
+              }
+#line 801 "mercury_compile.m"
+              {
+#line 801 "mercury_compile.m"
+                top_level__mercury_compile__STATE_VARIABLE_Modules_41_41 = mercury__cord__f_43_43_2_f_0(top_level__mercury_compile__TypeCtorInfo_49_49, top_level__mercury_compile__STATE_VARIABLE_Modules_0_27, top_level__mercury_compile__V_42_42);
+              }
+#line 802 "mercury_compile.m"
+              {
+#line 802 "mercury_compile.m"
+                top_level__mercury_compile__V_44_44 = mercury__cord__from_list_1_f_0(top_level__mercury_compile__TypeCtorInfo_49_49, top_level__mercury_compile__ArgExtraObjFiles_24);
+              }
+#line 802 "mercury_compile.m"
+              {
+#line 802 "mercury_compile.m"
+                top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_43_43 = mercury__cord__f_43_43_2_f_0(top_level__mercury_compile__TypeCtorInfo_49_49, top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0_29, top_level__mercury_compile__V_44_44);
+              }
+#line 803 "mercury_compile.m"
+              /* direct tailcall eliminated */
+#line 803 "mercury_compile.m"
+              {
+#line 803 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__STATE_VARIABLE_Modules_0__tmp_copy_27 = top_level__mercury_compile__STATE_VARIABLE_Modules_41_41;
+#line 803 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0__tmp_copy_29 = top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_43_43;
+
+#line 803 "mercury_compile.m"
+                top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0_29 = top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0__tmp_copy_29;
+#line 803 "mercury_compile.m"
+                top_level__mercury_compile__STATE_VARIABLE_Modules_0_27 = top_level__mercury_compile__STATE_VARIABLE_Modules_0__tmp_copy_27;
+#line 803 "mercury_compile.m"
+              }
+#line 803 "mercury_compile.m"
+              continue;
+#line 797 "mercury_compile.m"
+            }
+#line 805 "mercury_compile.m"
+            break;
+#line 805 "mercury_compile.m"
+          case (MR_Integer) 2:
+#line 808 "mercury_compile.m"
+            {
+#line 808 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Error_25 = ((MR_Word) (MR_hl_field(MR_mktag(2), top_level__mercury_compile__FileResult_20, (MR_Integer) 0)));
+#line 808 "mercury_compile.m"
+              MR_String top_level__mercury_compile__Msg_26;
+
+#line 809 "mercury_compile.m"
+              {
+#line 809 "mercury_compile.m"
+                mercury__io__error_message_2_p_0(top_level__mercury_compile__Error_25, &top_level__mercury_compile__Msg_26);
+              }
+#line 810 "mercury_compile.m"
+              {
+#line 810 "mercury_compile.m"
+                mercury__io__write_string_3_p_0((MR_String) "Error reading module name: ");
+              }
+#line 811 "mercury_compile.m"
+              {
+#line 811 "mercury_compile.m"
+                mercury__io__write_string_3_p_0(top_level__mercury_compile__Msg_26);
+              }
+#line 812 "mercury_compile.m"
+              {
+#line 812 "mercury_compile.m"
+                mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+              }
+#line 808 "mercury_compile.m"
+              *top_level__mercury_compile__STATE_VARIABLE_Modules_28 = top_level__mercury_compile__STATE_VARIABLE_Modules_0_27;
+#line 808 "mercury_compile.m"
+              *top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_30 = top_level__mercury_compile__STATE_VARIABLE_ExtraObjFiles_0_29;
+#line 808 "mercury_compile.m"
+            }
+#line 805 "mercury_compile.m"
+            break;
+#line 805 "mercury_compile.m"
+        }
+#line 789 "mercury_compile.m"
+      }
+#line 789 "mercury_compile.m"
+      break;
+#line 789 "mercury_compile.m"
+    }
+#line 783 "mercury_compile.m"
+}
+
+#line 637 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__do_op_mode_query_4_p_0_1(
+#line 637 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 637 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 637 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 637 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_3)
+#line 637 "mercury_compile.m"
+{
+#line 637 "mercury_compile.m"
+  {
+#line 637 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+
+#line 637 "mercury_compile.m"
+    {
+#line 637 "mercury_compile.m"
+      mercury__io__write_string_3_p_0(((MR_String) top_level__mercury_compile__wrapper_arg_1));
+    }
+#line 637 "mercury_compile.m"
+  }
+#line 637 "mercury_compile.m"
+}
+
+#line 561 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__do_op_mode_query_4_p_0(
+#line 561 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_5,
+#line 561 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpModeQuery_6)
+#line 561 "mercury_compile.m"
+{
+#line 566 "mercury_compile.m"
+  {
+#line 566 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 566 "mercury_compile.m"
+#line 566 "mercury_compile.m"
+    switch (top_level__mercury_compile__OpModeQuery_6) {
+#line 566 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 571 "mercury_compile.m"
+        {
+#line 571 "mercury_compile.m"
+          MR_String top_level__mercury_compile__CC_Type_10;
+#line 571 "mercury_compile.m"
+          MR_String top_level__mercury_compile__V_70_70;
+#line 571 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__StdOut_78;
+
+#line 572 "mercury_compile.m"
+          {
+#line 572 "mercury_compile.m"
+            libs__globals__lookup_string_option_3_p_0(top_level__mercury_compile__Globals_5, (MR_Integer) 505, &top_level__mercury_compile__CC_Type_10);
+          }
+#line 573 "mercury_compile.m"
+          {
+#line 573 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__StdOut_78);
+          }
+#line 574 "mercury_compile.m"
+          {
+#line 574 "mercury_compile.m"
+            top_level__mercury_compile__V_70_70 = mercury__string__f_43_43_2_f_0(top_level__mercury_compile__CC_Type_10, (MR_String) "\n");
+          }
+#line 574 "mercury_compile.m"
+          {
+#line 574 "mercury_compile.m"
+            mercury__io__write_string_4_p_0(top_level__mercury_compile__StdOut_78, top_level__mercury_compile__V_70_70);
+          }
+#line 571 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 3:
+#line 581 "mercury_compile.m"
+        {
+#line 581 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__StdOut_80;
+
+#line 582 "mercury_compile.m"
+          {
+#line 582 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__StdOut_80);
+          }
+#line 583 "mercury_compile.m"
+          {
+#line 583 "mercury_compile.m"
+            backend_libs__compile_target_code__output_c_include_directory_flags_4_p_0(top_level__mercury_compile__Globals_5, top_level__mercury_compile__StdOut_80);
+          }
+#line 581 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 566 "mercury_compile.m"
+        {
+#line 566 "mercury_compile.m"
+          MR_String top_level__mercury_compile__CC_8;
+#line 566 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__StdOut_9;
+#line 566 "mercury_compile.m"
+          MR_String top_level__mercury_compile__V_75_75;
+
+#line 567 "mercury_compile.m"
+          {
+#line 567 "mercury_compile.m"
+            libs__globals__lookup_string_option_3_p_0(top_level__mercury_compile__Globals_5, (MR_Integer) 480, &top_level__mercury_compile__CC_8);
+          }
+#line 568 "mercury_compile.m"
+          {
+#line 568 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__StdOut_9);
+          }
+#line 569 "mercury_compile.m"
+          {
+#line 569 "mercury_compile.m"
+            top_level__mercury_compile__V_75_75 = mercury__string__f_43_43_2_f_0(top_level__mercury_compile__CC_8, (MR_String) "\n");
+          }
+#line 569 "mercury_compile.m"
+          {
+#line 569 "mercury_compile.m"
+            mercury__io__write_string_4_p_0(top_level__mercury_compile__StdOut_9, top_level__mercury_compile__V_75_75);
+          }
+#line 566 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 2:
+#line 576 "mercury_compile.m"
+        {
+#line 576 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__StdOut_79;
+
+#line 577 "mercury_compile.m"
+          {
+#line 577 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__StdOut_79);
+          }
+#line 578 "mercury_compile.m"
+          {
+#line 578 "mercury_compile.m"
+            backend_libs__compile_target_code__output_c_compiler_flags_4_p_0(top_level__mercury_compile__Globals_5, top_level__mercury_compile__StdOut_79);
+          }
+#line 579 "mercury_compile.m"
+          {
+#line 579 "mercury_compile.m"
+            mercury__io__nl_3_p_0(top_level__mercury_compile__StdOut_79);
+          }
+#line 576 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 10:
+#line 617 "mercury_compile.m"
+        {
+#line 617 "mercury_compile.m"
+          MR_String top_level__mercury_compile__ClassName_15;
+#line 617 "mercury_compile.m"
+          MR_String top_level__mercury_compile__V_38_38;
+#line 617 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__StdOut_87;
+
+#line 618 "mercury_compile.m"
+          {
+#line 618 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__StdOut_87);
+          }
+#line 619 "mercury_compile.m"
+          {
+#line 619 "mercury_compile.m"
+            parse_tree__file_names__get_class_dir_name_2_p_0(top_level__mercury_compile__Globals_5, &top_level__mercury_compile__ClassName_15);
+          }
+#line 620 "mercury_compile.m"
+          {
+#line 620 "mercury_compile.m"
+            top_level__mercury_compile__V_38_38 = mercury__string__f_43_43_2_f_0(top_level__mercury_compile__ClassName_15, (MR_String) "\n");
+          }
+#line 620 "mercury_compile.m"
+          {
+#line 620 "mercury_compile.m"
+            mercury__io__write_string_4_p_0(top_level__mercury_compile__StdOut_87, top_level__mercury_compile__V_38_38);
+          }
+#line 617 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 5:
+#line 585 "mercury_compile.m"
+        {
+#line 585 "mercury_compile.m"
+          MR_String top_level__mercury_compile__CSC_11;
+#line 585 "mercury_compile.m"
+          MR_String top_level__mercury_compile__V_60_60;
+#line 585 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__StdOut_81;
+
+#line 586 "mercury_compile.m"
+          {
+#line 586 "mercury_compile.m"
+            libs__globals__lookup_string_option_3_p_0(top_level__mercury_compile__Globals_5, (MR_Integer) 513, &top_level__mercury_compile__CSC_11);
+          }
+#line 587 "mercury_compile.m"
+          {
+#line 587 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__StdOut_81);
+          }
+#line 588 "mercury_compile.m"
+          {
+#line 588 "mercury_compile.m"
+            top_level__mercury_compile__V_60_60 = mercury__string__f_43_43_2_f_0(top_level__mercury_compile__CSC_11, (MR_String) "\n");
+          }
+#line 588 "mercury_compile.m"
+          {
+#line 588 "mercury_compile.m"
+            mercury__io__write_string_4_p_0(top_level__mercury_compile__StdOut_81, top_level__mercury_compile__V_60_60);
+          }
+#line 585 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 6:
+#line 590 "mercury_compile.m"
+        {
+#line 590 "mercury_compile.m"
+          MR_String top_level__mercury_compile__CSC_Type_12;
+#line 590 "mercury_compile.m"
+          MR_String top_level__mercury_compile__V_55_55;
+#line 590 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__StdOut_82;
+
+#line 591 "mercury_compile.m"
+          {
+#line 591 "mercury_compile.m"
+            libs__globals__lookup_string_option_3_p_0(top_level__mercury_compile__Globals_5, (MR_Integer) 506, &top_level__mercury_compile__CSC_Type_12);
+          }
+#line 592 "mercury_compile.m"
+          {
+#line 592 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__StdOut_82);
+          }
+#line 593 "mercury_compile.m"
+          {
+#line 593 "mercury_compile.m"
+            top_level__mercury_compile__V_55_55 = mercury__string__f_43_43_2_f_0(top_level__mercury_compile__CSC_Type_12, (MR_String) "\n");
+          }
+#line 593 "mercury_compile.m"
+          {
+#line 593 "mercury_compile.m"
+            mercury__io__write_string_4_p_0(top_level__mercury_compile__StdOut_82, top_level__mercury_compile__V_55_55);
+          }
+#line 590 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 4:
+#line 595 "mercury_compile.m"
+        {
+#line 595 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__StdOut_83;
+
+#line 596 "mercury_compile.m"
+          {
+#line 596 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__StdOut_83);
+          }
+#line 597 "mercury_compile.m"
+          {
+#line 597 "mercury_compile.m"
+            backend_libs__compile_target_code__output_grade_defines_4_p_0(top_level__mercury_compile__Globals_5, top_level__mercury_compile__StdOut_83);
+          }
+#line 595 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 11:
+#line 622 "mercury_compile.m"
+        {
+#line 622 "mercury_compile.m"
+          MR_String top_level__mercury_compile__Grade_16;
+#line 622 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__Stdout_88;
+
+#line 625 "mercury_compile.m"
+          {
+#line 625 "mercury_compile.m"
+            libs__compute_grade__grade_directory_component_2_p_0(top_level__mercury_compile__Globals_5, &top_level__mercury_compile__Grade_16);
+          }
+#line 626 "mercury_compile.m"
+          {
+#line 626 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__Stdout_88);
+          }
+#line 627 "mercury_compile.m"
+          {
+#line 627 "mercury_compile.m"
+            mercury__io__write_string_4_p_0(top_level__mercury_compile__Stdout_88, top_level__mercury_compile__Grade_16);
+          }
+#line 628 "mercury_compile.m"
+          {
+#line 628 "mercury_compile.m"
+            mercury__io__nl_3_p_0(top_level__mercury_compile__Stdout_88);
+          }
+#line 622 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 12:
+#line 630 "mercury_compile.m"
+        {
+#line 630 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__LibGrades_17;
+
+#line 631 "mercury_compile.m"
+          {
+#line 631 "mercury_compile.m"
+            libs__globals__lookup_accumulating_option_3_p_0(top_level__mercury_compile__Globals_5, (MR_Integer) 624, &top_level__mercury_compile__LibGrades_17);
+          }
+#line 634 "mercury_compile.m"
+          if ((top_level__mercury_compile__LibGrades_17 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 633 "mercury_compile.m"
+            {
+#line 633 "mercury_compile.m"
+            }
+#line 634 "mercury_compile.m"
+          else
+#line 635 "mercury_compile.m"
+            {
+#line 635 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Stdout_89;
+
+#line 636 "mercury_compile.m"
+              {
+#line 636 "mercury_compile.m"
+                mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__Stdout_89);
+              }
+#line 637 "mercury_compile.m"
+              {
+#line 637 "mercury_compile.m"
+                mercury__io__write_list_6_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, top_level__mercury_compile__Stdout_89, top_level__mercury_compile__LibGrades_17, (MR_String) "\n", (MR_Word) &top_level__mercury_compile_scalar_common_7[0]);
+              }
+#line 638 "mercury_compile.m"
+              {
+#line 638 "mercury_compile.m"
+                mercury__io__nl_3_p_0(top_level__mercury_compile__Stdout_89);
+              }
+#line 635 "mercury_compile.m"
+            }
+#line 630 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 9:
+#line 613 "mercury_compile.m"
+        {
+#line 613 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__StdOut_86;
+
+#line 614 "mercury_compile.m"
+          {
+#line 614 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__StdOut_86);
+          }
+#line 615 "mercury_compile.m"
+          {
+#line 615 "mercury_compile.m"
+            backend_libs__compile_target_code__output_library_link_flags_4_p_0(top_level__mercury_compile__Globals_5, top_level__mercury_compile__StdOut_86);
+          }
+#line 613 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 7:
+#line 599 "mercury_compile.m"
+        {
+#line 599 "mercury_compile.m"
+          MR_String top_level__mercury_compile__LinkCommand_13;
+#line 599 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__Stdout_14;
+
+#line 600 "mercury_compile.m"
+          {
+#line 600 "mercury_compile.m"
+            libs__globals__lookup_string_option_3_p_0(top_level__mercury_compile__Globals_5, (MR_Integer) 563, &top_level__mercury_compile__LinkCommand_13);
+          }
+#line 602 "mercury_compile.m"
+          {
+#line 602 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__Stdout_14);
+          }
+#line 603 "mercury_compile.m"
+          {
+#line 603 "mercury_compile.m"
+            mercury__io__write_string_4_p_0(top_level__mercury_compile__Stdout_14, top_level__mercury_compile__LinkCommand_13);
+          }
+#line 604 "mercury_compile.m"
+          {
+#line 604 "mercury_compile.m"
+            mercury__io__nl_3_p_0(top_level__mercury_compile__Stdout_14);
+          }
+#line 599 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 8:
+#line 606 "mercury_compile.m"
+        {
+#line 606 "mercury_compile.m"
+          MR_String top_level__mercury_compile__LinkCommand_84;
+#line 606 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__Stdout_85;
+
+#line 607 "mercury_compile.m"
+          {
+#line 607 "mercury_compile.m"
+            libs__globals__lookup_string_option_3_p_0(top_level__mercury_compile__Globals_5, (MR_Integer) 564, &top_level__mercury_compile__LinkCommand_84);
+          }
+#line 609 "mercury_compile.m"
+          {
+#line 609 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__Stdout_85);
+          }
+#line 610 "mercury_compile.m"
+          {
+#line 610 "mercury_compile.m"
+            mercury__io__write_string_4_p_0(top_level__mercury_compile__Stdout_85, top_level__mercury_compile__LinkCommand_84);
+          }
+#line 611 "mercury_compile.m"
+          {
+#line 611 "mercury_compile.m"
+            mercury__io__nl_3_p_0(top_level__mercury_compile__Stdout_85);
+          }
+#line 606 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+      case (MR_Integer) 13:
+#line 641 "mercury_compile.m"
+        {
+#line 641 "mercury_compile.m"
+          MR_String top_level__mercury_compile__TargetArch_20;
+#line 641 "mercury_compile.m"
+          MR_String top_level__mercury_compile__V_25_25;
+#line 641 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__StdOut_92;
+
+#line 642 "mercury_compile.m"
+          {
+#line 642 "mercury_compile.m"
+            mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__StdOut_92);
+          }
+#line 643 "mercury_compile.m"
+          {
+#line 643 "mercury_compile.m"
+            libs__globals__lookup_string_option_3_p_0(top_level__mercury_compile__Globals_5, (MR_Integer) 651, &top_level__mercury_compile__TargetArch_20);
+          }
+#line 644 "mercury_compile.m"
+          {
+#line 644 "mercury_compile.m"
+            top_level__mercury_compile__V_25_25 = mercury__string__f_43_43_2_f_0(top_level__mercury_compile__TargetArch_20, (MR_String) "\n");
+          }
+#line 644 "mercury_compile.m"
+          {
+#line 644 "mercury_compile.m"
+            mercury__io__write_string_4_p_0(top_level__mercury_compile__StdOut_92, top_level__mercury_compile__V_25_25);
+          }
+#line 641 "mercury_compile.m"
+        }
+#line 566 "mercury_compile.m"
+        break;
+#line 566 "mercury_compile.m"
+    }
+#line 566 "mercury_compile.m"
+  }
+#line 561 "mercury_compile.m"
+}
+
+#line 530 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__do_op_mode_standalone_interface_4_p_0(
+#line 530 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_5,
+#line 530 "mercury_compile.m"
+  MR_String top_level__mercury_compile__StandaloneIntBasename_6)
+#line 530 "mercury_compile.m"
+{
+#line 534 "mercury_compile.m"
+  {
+#line 534 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 534 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Target_8;
+
+#line 535 "mercury_compile.m"
+    {
+#line 535 "mercury_compile.m"
+      libs__globals__get_target_2_p_0(top_level__mercury_compile__Globals_5, &top_level__mercury_compile__Target_8);
+    }
+#line 546 "mercury_compile.m"
+#line 546 "mercury_compile.m"
+    switch (top_level__mercury_compile__Target_8) {
+#line 546 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 546 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 556 "mercury_compile.m"
+        {
+#line 556 "mercury_compile.m"
+          backend_libs__compile_target_code__make_standalone_interface_4_p_0(top_level__mercury_compile__Globals_5, top_level__mercury_compile__StandaloneIntBasename_6);
+        }
+#line 546 "mercury_compile.m"
+        break;
+#line 546 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 546 "mercury_compile.m"
+      case (MR_Integer) 2:
+#line 539 "mercury_compile.m"
+        {
+#line 539 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__NotRequiredMsg_9;
+#line 539 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_36_36;
+#line 539 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_39_39;
+#line 539 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_42_42;
+#line 539 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_43_43;
+#line 539 "mercury_compile.m"
+          MR_String top_level__mercury_compile__V_44_44;
+
+#line 543 "mercury_compile.m"
+          {
+#line 543 "mercury_compile.m"
+            top_level__mercury_compile__V_44_44 = libs__globals__compilation_target_string_1_f_0(top_level__mercury_compile__Target_8);
+          }
+#line 543 "mercury_compile.m"
+          {
+#line 543 "mercury_compile.m"
+            top_level__mercury_compile__V_43_43 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 543 "mercury_compile.m"
+            MR_hl_field(MR_mktag(3), top_level__mercury_compile__V_43_43, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+#line 543 "mercury_compile.m"
+            MR_hl_field(MR_mktag(3), top_level__mercury_compile__V_43_43, 1) = ((MR_Box) (top_level__mercury_compile__V_44_44));
+#line 543 "mercury_compile.m"
+          }
+#line 543 "mercury_compile.m"
+          {
+#line 543 "mercury_compile.m"
+            top_level__mercury_compile__V_42_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 543 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_42_42, 0) = ((MR_Box) (top_level__mercury_compile__V_43_43));
+#line 543 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_42_42, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[10])));
+#line 543 "mercury_compile.m"
+          }
+#line 542 "mercury_compile.m"
+          {
+#line 542 "mercury_compile.m"
+            top_level__mercury_compile__V_39_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 542 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_39_39, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[29])));
+#line 542 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_39_39, 1) = ((MR_Box) (top_level__mercury_compile__V_42_42));
+#line 542 "mercury_compile.m"
+          }
+#line 541 "mercury_compile.m"
+          {
+#line 541 "mercury_compile.m"
+            top_level__mercury_compile__V_36_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 541 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_36_36, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[28])));
+#line 541 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_36_36, 1) = ((MR_Box) (top_level__mercury_compile__V_39_39));
+#line 541 "mercury_compile.m"
+          }
+#line 540 "mercury_compile.m"
+          {
+#line 540 "mercury_compile.m"
+            top_level__mercury_compile__NotRequiredMsg_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 540 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__NotRequiredMsg_9, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[27])));
+#line 540 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__NotRequiredMsg_9, 1) = ((MR_Box) (top_level__mercury_compile__V_36_36));
+#line 540 "mercury_compile.m"
+          }
+#line 544 "mercury_compile.m"
+          {
+#line 544 "mercury_compile.m"
+            parse_tree__error_util__write_error_pieces_plain_4_p_0(top_level__mercury_compile__Globals_5, top_level__mercury_compile__NotRequiredMsg_9);
+          }
+#line 545 "mercury_compile.m"
+          {
+#line 545 "mercury_compile.m"
+            mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+          }
+#line 539 "mercury_compile.m"
+        }
+#line 546 "mercury_compile.m"
+        break;
+#line 546 "mercury_compile.m"
+      case (MR_Integer) 3:
+#line 547 "mercury_compile.m"
+        {
+#line 547 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__NYIMsg_10;
+#line 547 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_16_16;
+#line 547 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_19_19;
+#line 547 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_22_22;
+#line 547 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__V_23_23;
+#line 547 "mercury_compile.m"
+          MR_String top_level__mercury_compile__V_24_24;
+
+#line 551 "mercury_compile.m"
+          {
+#line 551 "mercury_compile.m"
+            top_level__mercury_compile__V_24_24 = libs__globals__compilation_target_string_1_f_0(top_level__mercury_compile__Target_8);
+          }
+#line 551 "mercury_compile.m"
+          {
+#line 551 "mercury_compile.m"
+            top_level__mercury_compile__V_23_23 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 551 "mercury_compile.m"
+            MR_hl_field(MR_mktag(3), top_level__mercury_compile__V_23_23, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+#line 551 "mercury_compile.m"
+            MR_hl_field(MR_mktag(3), top_level__mercury_compile__V_23_23, 1) = ((MR_Box) (top_level__mercury_compile__V_24_24));
+#line 551 "mercury_compile.m"
+          }
+#line 551 "mercury_compile.m"
+          {
+#line 551 "mercury_compile.m"
+            top_level__mercury_compile__V_22_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 551 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_22_22, 0) = ((MR_Box) (top_level__mercury_compile__V_23_23));
+#line 551 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_22_22, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &top_level__mercury_compile_scalar_common_1[10])));
+#line 551 "mercury_compile.m"
+          }
+#line 550 "mercury_compile.m"
+          {
+#line 550 "mercury_compile.m"
+            top_level__mercury_compile__V_19_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 550 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_19_19, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[31])));
+#line 550 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_19_19, 1) = ((MR_Box) (top_level__mercury_compile__V_22_22));
+#line 550 "mercury_compile.m"
+          }
+#line 549 "mercury_compile.m"
+          {
+#line 549 "mercury_compile.m"
+            top_level__mercury_compile__V_16_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 549 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_16_16, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[28])));
+#line 549 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_16_16, 1) = ((MR_Box) (top_level__mercury_compile__V_19_19));
+#line 549 "mercury_compile.m"
+          }
+#line 548 "mercury_compile.m"
+          {
+#line 548 "mercury_compile.m"
+            top_level__mercury_compile__NYIMsg_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 548 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__NYIMsg_10, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &top_level__mercury_compile_scalar_common_1[30])));
+#line 548 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), top_level__mercury_compile__NYIMsg_10, 1) = ((MR_Box) (top_level__mercury_compile__V_16_16));
+#line 548 "mercury_compile.m"
+          }
+#line 552 "mercury_compile.m"
+          {
+#line 552 "mercury_compile.m"
+            parse_tree__error_util__write_error_pieces_plain_4_p_0(top_level__mercury_compile__Globals_5, top_level__mercury_compile__NYIMsg_10);
+          }
+#line 553 "mercury_compile.m"
+          {
+#line 553 "mercury_compile.m"
+            mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+          }
+#line 547 "mercury_compile.m"
+        }
+#line 546 "mercury_compile.m"
+        break;
+#line 546 "mercury_compile.m"
+    }
+#line 534 "mercury_compile.m"
+  }
+#line 530 "mercury_compile.m"
+}
+
+#line 705 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__do_op_mode_8_p_0_1(
+#line 705 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 705 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 705 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_2,
+#line 705 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 705 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_4)
+#line 705 "mercury_compile.m"
+{
+#line 705 "mercury_compile.m"
+  {
+#line 705 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 705 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv0_HeadVar__4_4;
+
+#line 705 "mercury_compile.m"
+    {
+#line 705 "mercury_compile.m"
+      backend_libs__compile_target_code__link_module_list_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 4))), ((MR_Word) top_level__mercury_compile__wrapper_arg_1), &top_level__mercury_compile__conv0_HeadVar__4_4);
+    }
+#line 705 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_2 = ((MR_Box) (top_level__mercury_compile__conv0_HeadVar__4_4));
+#line 705 "mercury_compile.m"
+  }
+#line 705 "mercury_compile.m"
+}
+
+#line 504 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__do_op_mode_8_p_0(
+#line 504 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_9,
+#line 504 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OpMode_10,
+#line 504 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__DetectedGradeFlags_11,
+#line 504 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionVariables_12,
+#line 504 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_13,
+#line 504 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Args_14)
+#line 504 "mercury_compile.m"
+{
+#line 511 "mercury_compile.m"
+  {
+#line 511 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 511 "mercury_compile.m"
+#line 511 "mercury_compile.m"
+    switch (MR_tag((MR_Word) top_level__mercury_compile__OpMode_10)) {
+#line 511 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 511 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 511 "mercury_compile.m"
+#line 511 "mercury_compile.m"
+        switch (MR_unmkbody(top_level__mercury_compile__OpMode_10)) {
+#line 511 "mercury_compile.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 511 "mercury_compile.m"
+          case (MR_Integer) 0:
+#line 512 "mercury_compile.m"
+            {
+#line 512 "mercury_compile.m"
+              make__make_process_args_7_p_0(top_level__mercury_compile__Globals_9, top_level__mercury_compile__DetectedGradeFlags_11, top_level__mercury_compile__OptionVariables_12, top_level__mercury_compile__OptionArgs_13, top_level__mercury_compile__Args_14);
+            }
+#line 511 "mercury_compile.m"
+            break;
+#line 511 "mercury_compile.m"
+          case (MR_Integer) 1:
+#line 516 "mercury_compile.m"
+            {
+#line 516 "mercury_compile.m"
+              parse_tree__source_file_map__write_source_file_map_4_p_0(top_level__mercury_compile__Globals_9, top_level__mercury_compile__Args_14);
+            }
+#line 511 "mercury_compile.m"
+            break;
+#line 511 "mercury_compile.m"
+        }
+#line 511 "mercury_compile.m"
+        break;
+#line 511 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 518 "mercury_compile.m"
+        {
+#line 518 "mercury_compile.m"
+          MR_String top_level__mercury_compile__StandaloneIntBasename_16 = ((MR_String) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__OpMode_10, (MR_Integer) 0)));
+
+#line 519 "mercury_compile.m"
+          {
+#line 519 "mercury_compile.m"
+            top_level__mercury_compile__do_op_mode_standalone_interface_4_p_0(top_level__mercury_compile__Globals_9, top_level__mercury_compile__StandaloneIntBasename_16);
+          }
+#line 518 "mercury_compile.m"
+        }
+#line 511 "mercury_compile.m"
+        break;
+#line 511 "mercury_compile.m"
+      case (MR_Integer) 2:
+#line 522 "mercury_compile.m"
+        {
+#line 522 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__OpModeQuery_17 = ((MR_Word) (MR_hl_field(MR_mktag(2), top_level__mercury_compile__OpMode_10, (MR_Integer) 0)));
+
+#line 523 "mercury_compile.m"
+          {
+#line 523 "mercury_compile.m"
+            top_level__mercury_compile__do_op_mode_query_4_p_0(top_level__mercury_compile__Globals_9, top_level__mercury_compile__OpModeQuery_17);
+          }
+#line 522 "mercury_compile.m"
+        }
+#line 511 "mercury_compile.m"
+        break;
+#line 511 "mercury_compile.m"
+      case (MR_Integer) 3:
+#line 525 "mercury_compile.m"
+        {
+#line 525 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__OpModeArgs_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), top_level__mercury_compile__OpMode_10, (MR_Integer) 0)));
+#line 525 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__FileNamesFromStdin_35;
+
+#line 658 "mercury_compile.m"
+          {
+#line 658 "mercury_compile.m"
+            libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_9, (MR_Integer) 646, &top_level__mercury_compile__FileNamesFromStdin_35);
+          }
+#line 661 "mercury_compile.m"
+          top_level__mercury_compile__succeeded = (top_level__mercury_compile__Args_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 661 "mercury_compile.m"
+          if (top_level__mercury_compile__succeeded)
+#line 662 "mercury_compile.m"
+            top_level__mercury_compile__succeeded = (top_level__mercury_compile__FileNamesFromStdin_35 == (MR_Integer) 0);
+#line 665 "mercury_compile.m"
+          if (top_level__mercury_compile__succeeded)
+#line 664 "mercury_compile.m"
+            {
+#line 664 "mercury_compile.m"
+              libs__handle_options__usage_2_p_0();
+            }
+#line 665 "mercury_compile.m"
+          else
+#line 678 "mercury_compile.m"
+            {
+#line 678 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__TypeCtorInfo_68_85;
+#line 678 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ModulesToLinkCord_36;
+#line 678 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ExtraObjFilesCord_37;
+#line 678 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ModulesToLink_38;
+#line 678 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__ExtraObjFiles_39;
+#line 678 "mercury_compile.m"
+              MR_Integer top_level__mercury_compile__ExitStatus_40;
+#line 678 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Statistics_49;
+
+#line 672 "mercury_compile.m"
+#line 672 "mercury_compile.m"
+              switch (top_level__mercury_compile__FileNamesFromStdin_35) {
+#line 672 "mercury_compile.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 672 "mercury_compile.m"
+                case (MR_Integer) 0:
+#line 673 "mercury_compile.m"
+                  {
+#line 673 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__TypeCtorInfo_67_84 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 673 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_52_52;
+#line 673 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_53_53;
+
+#line 676 "mercury_compile.m"
+                    {
+#line 676 "mercury_compile.m"
+                      top_level__mercury_compile__V_52_52 = mercury__cord__empty_0_f_0(top_level__mercury_compile__TypeCtorInfo_67_84);
+                    }
+#line 677 "mercury_compile.m"
+                    {
+#line 677 "mercury_compile.m"
+                      top_level__mercury_compile__V_53_53 = mercury__cord__empty_0_f_0(top_level__mercury_compile__TypeCtorInfo_67_84);
+                    }
+#line 674 "mercury_compile.m"
+                    {
+#line 674 "mercury_compile.m"
+                      top_level__mercury_compile__process_cmd_line_args_12_p_0(top_level__mercury_compile__Globals_9, top_level__mercury_compile__OpModeArgs_18, top_level__mercury_compile__DetectedGradeFlags_11, top_level__mercury_compile__OptionVariables_12, top_level__mercury_compile__OptionArgs_13, top_level__mercury_compile__Args_14, top_level__mercury_compile__V_52_52, &top_level__mercury_compile__ModulesToLinkCord_36, top_level__mercury_compile__V_53_53, &top_level__mercury_compile__ExtraObjFilesCord_37);
+                    }
+#line 673 "mercury_compile.m"
+                  }
+#line 672 "mercury_compile.m"
+                  break;
+#line 672 "mercury_compile.m"
+                case (MR_Integer) 1:
+#line 667 "mercury_compile.m"
+                  {
+#line 667 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__TypeCtorInfo_66_83 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 667 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_55_55;
+#line 667 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_56_56;
+
+#line 670 "mercury_compile.m"
+                    {
+#line 670 "mercury_compile.m"
+                      top_level__mercury_compile__V_55_55 = mercury__cord__empty_0_f_0(top_level__mercury_compile__TypeCtorInfo_66_83);
+                    }
+#line 671 "mercury_compile.m"
+                    {
+#line 671 "mercury_compile.m"
+                      top_level__mercury_compile__V_56_56 = mercury__cord__empty_0_f_0(top_level__mercury_compile__TypeCtorInfo_66_83);
+                    }
+#line 668 "mercury_compile.m"
+                    {
+#line 668 "mercury_compile.m"
+                      top_level__mercury_compile__process_stdin_args_11_p_0(top_level__mercury_compile__Globals_9, top_level__mercury_compile__OpModeArgs_18, top_level__mercury_compile__DetectedGradeFlags_11, top_level__mercury_compile__OptionVariables_12, top_level__mercury_compile__OptionArgs_13, top_level__mercury_compile__V_55_55, &top_level__mercury_compile__ModulesToLinkCord_36, top_level__mercury_compile__V_56_56, &top_level__mercury_compile__ExtraObjFilesCord_37);
+                    }
+#line 667 "mercury_compile.m"
+                  }
+#line 672 "mercury_compile.m"
+                  break;
+#line 672 "mercury_compile.m"
+              }
+#line 11789 "top_level.mercury_compile.c"
+              top_level__mercury_compile__TypeCtorInfo_68_85 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 679 "mercury_compile.m"
+              {
+#line 679 "mercury_compile.m"
+                top_level__mercury_compile__ModulesToLink_38 = mercury__cord__list_1_f_0(top_level__mercury_compile__TypeCtorInfo_68_85, top_level__mercury_compile__ModulesToLinkCord_36);
+              }
+#line 680 "mercury_compile.m"
+              {
+#line 680 "mercury_compile.m"
+                top_level__mercury_compile__ExtraObjFiles_39 = mercury__cord__list_1_f_0(top_level__mercury_compile__TypeCtorInfo_68_85, top_level__mercury_compile__ExtraObjFilesCord_37);
+              }
+#line 682 "mercury_compile.m"
+              {
+#line 682 "mercury_compile.m"
+                mercury__io__get_exit_status_3_p_0(&top_level__mercury_compile__ExitStatus_40);
+              }
+#line 683 "mercury_compile.m"
+              top_level__mercury_compile__succeeded = (top_level__mercury_compile__ExitStatus_40 == (MR_Integer) 0);
+#line 712 "mercury_compile.m"
+              if (top_level__mercury_compile__succeeded)
+#line 709 "mercury_compile.m"
+                {
+#line 709 "mercury_compile.m"
+                  MR_String top_level__mercury_compile__FirstModule_41;
+#line 686 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__V_59_59;
+#line 686 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__V_60_60;
+#line 687 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__V_42_42;
+
+#line 685 "mercury_compile.m"
+                  top_level__mercury_compile__succeeded = ((MR_tag((MR_Word) top_level__mercury_compile__OpModeArgs_18)) == (MR_mktag((MR_Integer) 1)));
+#line 685 "mercury_compile.m"
+                  if (top_level__mercury_compile__succeeded)
+#line 685 "mercury_compile.m"
+                    {
+#line 685 "mercury_compile.m"
+                      top_level__mercury_compile__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__OpModeArgs_18, (MR_Integer) 0)));
+#line 685 "mercury_compile.m"
+                      top_level__mercury_compile__succeeded = ((MR_tag((MR_Word) top_level__mercury_compile__V_59_59)) == (MR_mktag((MR_Integer) 1)));
+#line 685 "mercury_compile.m"
+                      if (top_level__mercury_compile__succeeded)
+#line 685 "mercury_compile.m"
+                        {
+#line 685 "mercury_compile.m"
+                          top_level__mercury_compile__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_59_59, (MR_Integer) 0)));
+#line 686 "mercury_compile.m"
+                          top_level__mercury_compile__succeeded = (top_level__mercury_compile__V_60_60 == (MR_Integer) 2);
+#line 686 "mercury_compile.m"
+                          if (top_level__mercury_compile__succeeded)
+#line 686 "mercury_compile.m"
+                            {
+#line 687 "mercury_compile.m"
+                              top_level__mercury_compile__succeeded = ((MR_tag((MR_Word) top_level__mercury_compile__ModulesToLink_38)) == (MR_mktag((MR_Integer) 1)));
+#line 687 "mercury_compile.m"
+                              if (top_level__mercury_compile__succeeded)
+#line 687 "mercury_compile.m"
+                                {
+#line 687 "mercury_compile.m"
+                                  top_level__mercury_compile__FirstModule_41 = ((MR_String) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__ModulesToLink_38, (MR_Integer) 0)));
+#line 687 "mercury_compile.m"
+                                  top_level__mercury_compile__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__ModulesToLink_38, (MR_Integer) 1)));
+#line 687 "mercury_compile.m"
+                                }
+#line 686 "mercury_compile.m"
+                            }
+#line 685 "mercury_compile.m"
+                        }
+#line 685 "mercury_compile.m"
+                    }
+#line 709 "mercury_compile.m"
+                  if (top_level__mercury_compile__succeeded)
+#line 689 "mercury_compile.m"
+                    {
+#line 689 "mercury_compile.m"
+                      MR_Word top_level__mercury_compile__MainModuleName_43;
+#line 689 "mercury_compile.m"
+                      MR_Word top_level__mercury_compile__Target_44;
+#line 689 "mercury_compile.m"
+                      MR_Word top_level__mercury_compile__Succeeded_45;
+
+#line 689 "mercury_compile.m"
+                      {
+#line 689 "mercury_compile.m"
+                        parse_tree__file_names__file_name_to_module_name_2_p_0(top_level__mercury_compile__FirstModule_41, &top_level__mercury_compile__MainModuleName_43);
+                      }
+#line 690 "mercury_compile.m"
+                      {
+#line 690 "mercury_compile.m"
+                        libs__globals__get_target_2_p_0(top_level__mercury_compile__Globals_9, &top_level__mercury_compile__Target_44);
+                      }
+#line 698 "mercury_compile.m"
+#line 698 "mercury_compile.m"
+                      switch (top_level__mercury_compile__Target_44) {
+#line 698 "mercury_compile.m"
+                        default: /*NOTREACHED*/ MR_assert(0);
+#line 698 "mercury_compile.m"
+                        case (MR_Integer) 0:
+#line 698 "mercury_compile.m"
+                        case (MR_Integer) 1:
+#line 698 "mercury_compile.m"
+                        case (MR_Integer) 3:
+#line 702 "mercury_compile.m"
+                          {
+#line 702 "mercury_compile.m"
+                            MR_Word top_level__mercury_compile__V_61_61;
+
+#line 705 "mercury_compile.m"
+                            {
+#line 705 "mercury_compile.m"
+                              top_level__mercury_compile__V_61_61 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 705 "mercury_compile.m"
+                              MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_61_61, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_6[0]));
+#line 705 "mercury_compile.m"
+                              MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_61_61, 1) = ((MR_Box) (top_level__mercury_compile__do_op_mode_8_p_0_1));
+#line 705 "mercury_compile.m"
+                              MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_61_61, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 705 "mercury_compile.m"
+                              MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_61_61, 3) = ((MR_Box) (top_level__mercury_compile__ModulesToLink_38));
+#line 705 "mercury_compile.m"
+                              MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_61_61, 4) = ((MR_Box) (top_level__mercury_compile__ExtraObjFiles_39));
+#line 705 "mercury_compile.m"
+                            }
+#line 703 "mercury_compile.m"
+                            {
+#line 703 "mercury_compile.m"
+                              top_level__mercury_compile__compile_with_module_options__ho1_9_p_0(top_level__mercury_compile__ModulesToLink_38, top_level__mercury_compile__ExtraObjFiles_39, top_level__mercury_compile__Globals_9, top_level__mercury_compile__MainModuleName_43, top_level__mercury_compile__DetectedGradeFlags_11, top_level__mercury_compile__OptionVariables_12, top_level__mercury_compile__OptionArgs_13, top_level__mercury_compile__V_61_61, &top_level__mercury_compile__Succeeded_45);
+                            }
+#line 702 "mercury_compile.m"
+                          }
+#line 698 "mercury_compile.m"
+                          break;
+#line 698 "mercury_compile.m"
+                        case (MR_Integer) 2:
+#line 696 "mercury_compile.m"
+                          {
+#line 696 "mercury_compile.m"
+                            parse_tree__module_cmds__create_java_shell_script_5_p_0(top_level__mercury_compile__Globals_9, top_level__mercury_compile__MainModuleName_43, &top_level__mercury_compile__Succeeded_45);
+                          }
+#line 698 "mercury_compile.m"
+                          break;
+#line 698 "mercury_compile.m"
+                      }
+#line 708 "mercury_compile.m"
+                      {
+#line 708 "mercury_compile.m"
+                        parse_tree__module_cmds__maybe_set_exit_status_3_p_0(top_level__mercury_compile__Succeeded_45);
+                      }
+#line 689 "mercury_compile.m"
+                    }
+#line 709 "mercury_compile.m"
+                  else
+#line 709 "mercury_compile.m"
+                    {
+#line 709 "mercury_compile.m"
+                    }
+#line 709 "mercury_compile.m"
+                }
+#line 712 "mercury_compile.m"
+              else
+#line 717 "mercury_compile.m"
+                {
+#line 717 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__Limited_46;
+#line 717 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__VerboseErrors_47;
+#line 717 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__ExtraErrorInfo_48;
+
+#line 717 "mercury_compile.m"
+                  {
+#line 717 "mercury_compile.m"
+                    libs__globals__io_get_some_errors_were_context_limited_3_p_0(&top_level__mercury_compile__Limited_46);
+                  }
+#line 720 "mercury_compile.m"
+#line 720 "mercury_compile.m"
+                  switch (top_level__mercury_compile__Limited_46) {
+#line 720 "mercury_compile.m"
+                    default: /*NOTREACHED*/ MR_assert(0);
+#line 720 "mercury_compile.m"
+                    case (MR_Integer) 0:
+#line 719 "mercury_compile.m"
+                      {
+#line 719 "mercury_compile.m"
+                      }
+#line 720 "mercury_compile.m"
+                      break;
+#line 720 "mercury_compile.m"
+                    case (MR_Integer) 1:
+#line 721 "mercury_compile.m"
+                      {
+#line 722 "mercury_compile.m"
+                        {
+#line 722 "mercury_compile.m"
+                          mercury__io__write_string_3_p_0((MR_String) "Some error messages were suppressed by \140--limit-error-contexts\' options.\n");
+                        }
+#line 724 "mercury_compile.m"
+                        {
+#line 724 "mercury_compile.m"
+                          mercury__io__write_string_3_p_0((MR_String) "You can see the suppressed messages if you recompile without these options.\n");
+                        }
+#line 721 "mercury_compile.m"
+                      }
+#line 720 "mercury_compile.m"
+                      break;
+#line 720 "mercury_compile.m"
+                  }
+#line 732 "mercury_compile.m"
+                  {
+#line 732 "mercury_compile.m"
+                    libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_9, (MR_Integer) 47, &top_level__mercury_compile__VerboseErrors_47);
+                  }
+#line 733 "mercury_compile.m"
+                  {
+#line 733 "mercury_compile.m"
+                    libs__globals__io_get_extra_error_info_3_p_0(&top_level__mercury_compile__ExtraErrorInfo_48);
+                  }
+#line 743 "mercury_compile.m"
+#line 743 "mercury_compile.m"
+                  switch (top_level__mercury_compile__VerboseErrors_47) {
+#line 743 "mercury_compile.m"
+                    default: /*NOTREACHED*/ MR_assert(0);
+#line 743 "mercury_compile.m"
+                    case (MR_Integer) 0:
+#line 740 "mercury_compile.m"
+#line 740 "mercury_compile.m"
+                      switch (top_level__mercury_compile__ExtraErrorInfo_48) {
+#line 740 "mercury_compile.m"
+                        default: /*NOTREACHED*/ MR_assert(0);
+#line 740 "mercury_compile.m"
+                        case (MR_Integer) 0:
+#line 741 "mercury_compile.m"
+                          {
+#line 741 "mercury_compile.m"
+                          }
+#line 740 "mercury_compile.m"
+                          break;
+#line 740 "mercury_compile.m"
+                        case (MR_Integer) 1:
+#line 737 "mercury_compile.m"
+                          {
+#line 738 "mercury_compile.m"
+                            {
+#line 738 "mercury_compile.m"
+                              mercury__io__write_string_3_p_0((MR_String) "For more information, recompile with \140-E\'.\n");
+                            }
+#line 737 "mercury_compile.m"
+                          }
+#line 740 "mercury_compile.m"
+                          break;
+#line 740 "mercury_compile.m"
+                      }
+#line 743 "mercury_compile.m"
+                      break;
+#line 743 "mercury_compile.m"
+                    case (MR_Integer) 1:
+#line 744 "mercury_compile.m"
+                      {
+#line 744 "mercury_compile.m"
+                      }
+#line 743 "mercury_compile.m"
+                      break;
+#line 743 "mercury_compile.m"
+                  }
+#line 717 "mercury_compile.m"
+                }
+#line 747 "mercury_compile.m"
+              {
+#line 747 "mercury_compile.m"
+                libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_9, (MR_Integer) 55, &top_level__mercury_compile__Statistics_49);
+              }
+#line 751 "mercury_compile.m"
+#line 751 "mercury_compile.m"
+              switch (top_level__mercury_compile__Statistics_49) {
+#line 751 "mercury_compile.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 751 "mercury_compile.m"
+                case (MR_Integer) 0:
+#line 752 "mercury_compile.m"
+                  {
+#line 752 "mercury_compile.m"
+                  }
+#line 751 "mercury_compile.m"
+                  break;
+#line 751 "mercury_compile.m"
+                case (MR_Integer) 1:
+#line 749 "mercury_compile.m"
+                  {
+#line 750 "mercury_compile.m"
+                    {
+#line 750 "mercury_compile.m"
+                      mercury__io__report_stats_3_p_0((MR_String) "full_memory_stats");
+                    }
+#line 749 "mercury_compile.m"
+                  }
+#line 751 "mercury_compile.m"
+                  break;
+#line 751 "mercury_compile.m"
+              }
+#line 678 "mercury_compile.m"
+            }
+#line 525 "mercury_compile.m"
+        }
+#line 511 "mercury_compile.m"
+        break;
+#line 511 "mercury_compile.m"
+    }
+#line 511 "mercury_compile.m"
+  }
+#line 504 "mercury_compile.m"
+}
+
+#line 472 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__main_after_setup_7_p_0(
+#line 472 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_8,
+#line 472 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__DetectedGradeFlags_9,
+#line 472 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionVariables_10,
+#line 472 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__OptionArgs_11,
+#line 472 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Args_12)
+#line 472 "mercury_compile.m"
+{
+#line 476 "mercury_compile.m"
+  {
+#line 476 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 476 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Version_14;
+#line 476 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Help_15;
+
+#line 477 "mercury_compile.m"
+    {
+#line 477 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_8, (MR_Integer) 650, &top_level__mercury_compile__Version_14);
+    }
+#line 478 "mercury_compile.m"
+    {
+#line 478 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_8, (MR_Integer) 649, &top_level__mercury_compile__Help_15);
+    }
+#line 486 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (top_level__mercury_compile__Help_15 == (MR_Integer) 1);
+#line 491 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 487 "mercury_compile.m"
+      {
+#line 487 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Stdout_16;
+#line 487 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__OldOutputStream_17;
+#line 490 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_18_18;
+
+#line 487 "mercury_compile.m"
+        {
+#line 487 "mercury_compile.m"
+          mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__Stdout_16);
+        }
+#line 488 "mercury_compile.m"
+        {
+#line 488 "mercury_compile.m"
+          mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__Stdout_16, &top_level__mercury_compile__OldOutputStream_17);
+        }
+#line 489 "mercury_compile.m"
+        {
+#line 489 "mercury_compile.m"
+          libs__handle_options__long_usage_2_p_0();
+        }
+#line 490 "mercury_compile.m"
+        {
+#line 490 "mercury_compile.m"
+          mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__OldOutputStream_17, &top_level__mercury_compile__V_18_18);
+        }
+#line 487 "mercury_compile.m"
+      }
+#line 491 "mercury_compile.m"
+    else
+#line 496 "mercury_compile.m"
+      {
+#line 491 "mercury_compile.m"
+        top_level__mercury_compile__succeeded = (top_level__mercury_compile__Version_14 == (MR_Integer) 1);
+#line 496 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 492 "mercury_compile.m"
+          {
+#line 492 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__Stdout_34;
+#line 492 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__OldOutputStream_35;
+#line 495 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_19_19;
+
+#line 492 "mercury_compile.m"
+            {
+#line 492 "mercury_compile.m"
+              mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__Stdout_34);
+            }
+#line 493 "mercury_compile.m"
+            {
+#line 493 "mercury_compile.m"
+              mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__Stdout_34, &top_level__mercury_compile__OldOutputStream_35);
+            }
+#line 494 "mercury_compile.m"
+            {
+#line 494 "mercury_compile.m"
+              libs__handle_options__display_compiler_version_2_p_0();
+            }
+#line 495 "mercury_compile.m"
+            {
+#line 495 "mercury_compile.m"
+              mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__OldOutputStream_35, &top_level__mercury_compile__V_19_19);
+            }
+#line 492 "mercury_compile.m"
+          }
+#line 496 "mercury_compile.m"
+        else
+#line 497 "mercury_compile.m"
+          {
+#line 497 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__OpMode_20;
+
+#line 497 "mercury_compile.m"
+            {
+#line 497 "mercury_compile.m"
+              libs__globals__get_op_mode_2_p_0(top_level__mercury_compile__Globals_8, &top_level__mercury_compile__OpMode_20);
+            }
+#line 498 "mercury_compile.m"
+            {
+#line 498 "mercury_compile.m"
+              top_level__mercury_compile__do_op_mode_8_p_0(top_level__mercury_compile__Globals_8, top_level__mercury_compile__OpMode_20, top_level__mercury_compile__DetectedGradeFlags_9, top_level__mercury_compile__OptionVariables_10, top_level__mercury_compile__OptionArgs_11, top_level__mercury_compile__Args_12);
+            }
+#line 497 "mercury_compile.m"
+          }
+#line 496 "mercury_compile.m"
+      }
+#line 476 "mercury_compile.m"
+  }
+#line 472 "mercury_compile.m"
+}
+
+#line 403 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__do_detect_libgrade_9_p_0(
+#line 403 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__VeryVerbose_10,
+#line 403 "mercury_compile.m"
+  MR_String top_level__mercury_compile__DirName_11,
+#line 403 "mercury_compile.m"
+  MR_String top_level__mercury_compile__FileName_12,
+#line 403 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__FileType_13,
+#line 403 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Continue_14,
+#line 403 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__STATE_VARIABLE_GradeOpts_0_20,
+#line 403 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__STATE_VARIABLE_GradeOpts_21)
+#line 403 "mercury_compile.m"
+{
+#line 409 "mercury_compile.m"
+  {
+#line 409 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+
+#line 409 "mercury_compile.m"
+    {
+#line 409 "mercury_compile.m"
+      top_level__mercury_compile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_111_95_100_101_116_101_99_116_95_108_105_98_103_114_97_100_101_95_95_91_49_93_95_48_9_p_0(top_level__mercury_compile__DirName_11, top_level__mercury_compile__FileName_12, top_level__mercury_compile__FileType_13, top_level__mercury_compile__Continue_14, top_level__mercury_compile__STATE_VARIABLE_GradeOpts_0_20, top_level__mercury_compile__STATE_VARIABLE_GradeOpts_21);
+    }
+#line 409 "mercury_compile.m"
+  }
+#line 403 "mercury_compile.m"
+}
+
+#line 394 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__detect_libgrades_5_p_0_2(
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 394 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_4,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_5,
+#line 394 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_6,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_7,
+#line 394 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_8)
+#line 394 "mercury_compile.m"
+{
+#line 394 "mercury_compile.m"
+  {
+#line 394 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 394 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv3_Continue_14;
+#line 394 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv2_STATE_VARIABLE_GradeOpts_21;
+
+#line 394 "mercury_compile.m"
+    {
+#line 394 "mercury_compile.m"
+      top_level__mercury_compile__do_detect_libgrade_9_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_String) top_level__mercury_compile__wrapper_arg_1), ((MR_String) top_level__mercury_compile__wrapper_arg_2), ((MR_Word) top_level__mercury_compile__wrapper_arg_3), &top_level__mercury_compile__conv3_Continue_14, ((MR_Word) top_level__mercury_compile__wrapper_arg_5), &top_level__mercury_compile__conv2_STATE_VARIABLE_GradeOpts_21);
+    }
+#line 394 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_4 = ((MR_Box) (top_level__mercury_compile__conv3_Continue_14));
+#line 394 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_6 = ((MR_Box) (top_level__mercury_compile__conv2_STATE_VARIABLE_GradeOpts_21));
+#line 394 "mercury_compile.m"
+  }
+#line 394 "mercury_compile.m"
+}
+
+#line 394 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__detect_libgrades_5_p_0_1(
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__closure_arg,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_1,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_2,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_3,
+#line 394 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_4,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_5,
+#line 394 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_6,
+#line 394 "mercury_compile.m"
+  MR_Box top_level__mercury_compile__wrapper_arg_7,
+#line 394 "mercury_compile.m"
+  MR_Box * top_level__mercury_compile__wrapper_arg_8)
+#line 394 "mercury_compile.m"
+{
+#line 394 "mercury_compile.m"
+  {
+#line 394 "mercury_compile.m"
+    MR_Box top_level__mercury_compile__closure = top_level__mercury_compile__closure_arg;
+#line 394 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv1_Continue_14;
+#line 394 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__conv0_STATE_VARIABLE_GradeOpts_21;
+
+#line 394 "mercury_compile.m"
+    {
+#line 394 "mercury_compile.m"
+      top_level__mercury_compile__do_detect_libgrade_9_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__closure, (MR_Integer) 3))), ((MR_String) top_level__mercury_compile__wrapper_arg_1), ((MR_String) top_level__mercury_compile__wrapper_arg_2), ((MR_Word) top_level__mercury_compile__wrapper_arg_3), &top_level__mercury_compile__conv1_Continue_14, ((MR_Word) top_level__mercury_compile__wrapper_arg_5), &top_level__mercury_compile__conv0_STATE_VARIABLE_GradeOpts_21);
+    }
+#line 394 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_4 = ((MR_Box) (top_level__mercury_compile__conv1_Continue_14));
+#line 394 "mercury_compile.m"
+    *top_level__mercury_compile__wrapper_arg_6 = ((MR_Box) (top_level__mercury_compile__conv0_STATE_VARIABLE_GradeOpts_21));
+#line 394 "mercury_compile.m"
+  }
+#line 394 "mercury_compile.m"
+}
+
+#line 350 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__detect_libgrades_5_p_0(
+#line 350 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_6,
+#line 350 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__MaybeConfigMerStdLibDir_7,
+#line 350 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__GradeOpts_8)
+#line 350 "mercury_compile.m"
+{
+#line 353 "mercury_compile.m"
+  {
+#line 353 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 353 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Detect_10;
+
+#line 354 "mercury_compile.m"
+    {
+#line 354 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_6, (MR_Integer) 623, &top_level__mercury_compile__Detect_10);
+    }
+#line 384 "mercury_compile.m"
+#line 384 "mercury_compile.m"
+    switch (top_level__mercury_compile__Detect_10) {
+#line 384 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 384 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 386 "mercury_compile.m"
+        *top_level__mercury_compile__GradeOpts_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 384 "mercury_compile.m"
+        break;
+#line 384 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 356 "mercury_compile.m"
+        {
+#line 356 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__VeryVerbose_13;
+#line 357 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__Verbose_11;
+#line 372 "mercury_compile.m"
+          MR_String top_level__mercury_compile__MerStdLibDir_15;
+#line 368 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__MaybeStdLibDir_14;
+
+#line 357 "mercury_compile.m"
+          {
+#line 357 "mercury_compile.m"
+            libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_6, (MR_Integer) 45, &top_level__mercury_compile__Verbose_11);
+          }
+#line 362 "mercury_compile.m"
+          {
+#line 362 "mercury_compile.m"
+            libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_6, (MR_Integer) 46, &top_level__mercury_compile__VeryVerbose_13);
+          }
+#line 367 "mercury_compile.m"
+          {
+#line 367 "mercury_compile.m"
+            libs__globals__lookup_maybe_string_option_3_p_0(top_level__mercury_compile__Globals_6, (MR_Integer) 540, &top_level__mercury_compile__MaybeStdLibDir_14);
+          }
+#line 369 "mercury_compile.m"
+          top_level__mercury_compile__succeeded = ((MR_tag((MR_Word) top_level__mercury_compile__MaybeStdLibDir_14)) == (MR_mktag((MR_Integer) 1)));
+#line 369 "mercury_compile.m"
+          if (top_level__mercury_compile__succeeded)
+#line 369 "mercury_compile.m"
+            {
+#line 369 "mercury_compile.m"
+              top_level__mercury_compile__MerStdLibDir_15 = ((MR_String) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__MaybeStdLibDir_14, (MR_Integer) 0)));
+#line 392 "mercury_compile.m"
+              {
+#line 392 "mercury_compile.m"
+                MR_String top_level__mercury_compile__ModulesDir_39;
+#line 392 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__MaybeGradeOpts_40;
+#line 392 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_44_44;
+
+#line 393 "mercury_compile.m"
+                {
+#line 393 "mercury_compile.m"
+                  top_level__mercury_compile__ModulesDir_39 = mercury__dir__f_slash_2_f_0(top_level__mercury_compile__MerStdLibDir_15, (MR_String) "modules");
+                }
+#line 394 "mercury_compile.m"
+                {
+#line 394 "mercury_compile.m"
+                  top_level__mercury_compile__V_44_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 394 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_44_44, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_5[0]));
+#line 394 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_44_44, 1) = ((MR_Box) (top_level__mercury_compile__detect_libgrades_5_p_0_1));
+#line 394 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_44_44, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 394 "mercury_compile.m"
+                  MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_44_44, 3) = ((MR_Box) (top_level__mercury_compile__VeryVerbose_13));
+#line 394 "mercury_compile.m"
+                }
+#line 394 "mercury_compile.m"
+                {
+#line 394 "mercury_compile.m"
+                  mercury__dir__foldl2_6_p_0((MR_Word) &top_level__mercury_compile_scalar_common_1[0], top_level__mercury_compile__V_44_44, top_level__mercury_compile__ModulesDir_39, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &top_level__mercury_compile__MaybeGradeOpts_40);
+                }
+#line 398 "mercury_compile.m"
+                if (((MR_tag((MR_Word) top_level__mercury_compile__MaybeGradeOpts_40)) == (MR_mktag((MR_Integer) 1))))
+#line 400 "mercury_compile.m"
+                  *top_level__mercury_compile__GradeOpts_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 398 "mercury_compile.m"
+                else
+#line 397 "mercury_compile.m"
+                  *top_level__mercury_compile__GradeOpts_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__MaybeGradeOpts_40, (MR_Integer) 0)));
+#line 392 "mercury_compile.m"
+              }
+#line 369 "mercury_compile.m"
+            }
+#line 369 "mercury_compile.m"
+          else
+#line 378 "mercury_compile.m"
+            {
+#line 378 "mercury_compile.m"
+              MR_String top_level__mercury_compile__MerStdLibDir_32;
+#line 375 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_26_26;
+#line 375 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__V_27_27;
+
+#line 375 "mercury_compile.m"
+              top_level__mercury_compile__succeeded = ((MR_tag((MR_Word) top_level__mercury_compile__MaybeConfigMerStdLibDir_7)) == (MR_mktag((MR_Integer) 1)));
+#line 375 "mercury_compile.m"
+              if (top_level__mercury_compile__succeeded)
+#line 375 "mercury_compile.m"
+                {
+#line 375 "mercury_compile.m"
+                  top_level__mercury_compile__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__MaybeConfigMerStdLibDir_7, (MR_Integer) 0)));
+#line 375 "mercury_compile.m"
+                  top_level__mercury_compile__succeeded = ((MR_tag((MR_Word) top_level__mercury_compile__V_26_26)) == (MR_mktag((MR_Integer) 1)));
+#line 375 "mercury_compile.m"
+                  if (top_level__mercury_compile__succeeded)
+#line 375 "mercury_compile.m"
+                    {
+#line 375 "mercury_compile.m"
+                      top_level__mercury_compile__MerStdLibDir_32 = ((MR_String) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_26_26, (MR_Integer) 0)));
+#line 375 "mercury_compile.m"
+                      top_level__mercury_compile__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_26_26, (MR_Integer) 1)));
+#line 375 "mercury_compile.m"
+                      top_level__mercury_compile__succeeded = (top_level__mercury_compile__V_27_27 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 375 "mercury_compile.m"
+                    }
+#line 375 "mercury_compile.m"
+                }
+#line 378 "mercury_compile.m"
+              if (top_level__mercury_compile__succeeded)
+#line 392 "mercury_compile.m"
+                {
+#line 392 "mercury_compile.m"
+                  MR_String top_level__mercury_compile__ModulesDir_62;
+#line 392 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__MaybeGradeOpts_63;
+#line 392 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__V_67_67;
+
+#line 393 "mercury_compile.m"
+                  {
+#line 393 "mercury_compile.m"
+                    top_level__mercury_compile__ModulesDir_62 = mercury__dir__f_slash_2_f_0(top_level__mercury_compile__MerStdLibDir_32, (MR_String) "modules");
+                  }
+#line 394 "mercury_compile.m"
+                  {
+#line 394 "mercury_compile.m"
+                    top_level__mercury_compile__V_67_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 394 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_67_67, 0) = ((MR_Box) (&top_level__mercury_compile_scalar_common_5[0]));
+#line 394 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_67_67, 1) = ((MR_Box) (top_level__mercury_compile__detect_libgrades_5_p_0_2));
+#line 394 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_67_67, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 394 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), top_level__mercury_compile__V_67_67, 3) = ((MR_Box) (top_level__mercury_compile__VeryVerbose_13));
+#line 394 "mercury_compile.m"
+                  }
+#line 394 "mercury_compile.m"
+                  {
+#line 394 "mercury_compile.m"
+                    mercury__dir__foldl2_6_p_0((MR_Word) &top_level__mercury_compile_scalar_common_1[0], top_level__mercury_compile__V_67_67, top_level__mercury_compile__ModulesDir_62, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &top_level__mercury_compile__MaybeGradeOpts_63);
+                  }
+#line 398 "mercury_compile.m"
+                  if (((MR_tag((MR_Word) top_level__mercury_compile__MaybeGradeOpts_63)) == (MR_mktag((MR_Integer) 1))))
+#line 400 "mercury_compile.m"
+                    *top_level__mercury_compile__GradeOpts_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 398 "mercury_compile.m"
+                  else
+#line 397 "mercury_compile.m"
+                    *top_level__mercury_compile__GradeOpts_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__MaybeGradeOpts_63, (MR_Integer) 0)));
+#line 392 "mercury_compile.m"
+                }
+#line 378 "mercury_compile.m"
+              else
+#line 379 "mercury_compile.m"
+                *top_level__mercury_compile__GradeOpts_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 378 "mercury_compile.m"
+            }
+#line 356 "mercury_compile.m"
+        }
+#line 384 "mercury_compile.m"
+        break;
+#line 384 "mercury_compile.m"
+    }
+#line 353 "mercury_compile.m"
+  }
+#line 350 "mercury_compile.m"
+}
+
+#line 208 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__real_main_after_expansion_3_p_0(
+#line 208 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__CmdLineArgs_4)
+#line 208 "mercury_compile.m"
+{
+#line 12582 "top_level.mercury_compile.c"
+  {
+#line 12584 "top_level.mercury_compile.c"
+    MR_bool top_level__mercury_compile__succeeded = ((MR_tag((MR_Word) top_level__mercury_compile__CmdLineArgs_4)) == (MR_mktag((MR_Integer) 1)));
+#line 12586 "top_level.mercury_compile.c"
+    MR_String top_level__mercury_compile__ArgFile_6;
+#line 12588 "top_level.mercury_compile.c"
+    MR_Word top_level__mercury_compile__ExtraArgs_7;
+#line 213 "mercury_compile.m"
+    MR_String top_level__mercury_compile__V_44_44;
+#line 213 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_45_45;
+
+#line 213 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 213 "mercury_compile.m"
+      {
+#line 213 "mercury_compile.m"
+        top_level__mercury_compile__V_44_44 = ((MR_String) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__CmdLineArgs_4, (MR_Integer) 0)));
+#line 213 "mercury_compile.m"
+        top_level__mercury_compile__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__CmdLineArgs_4, (MR_Integer) 1)));
+#line 213 "mercury_compile.m"
+        top_level__mercury_compile__succeeded = (strcmp(top_level__mercury_compile__V_44_44, (MR_String) "--arg-file") == 0);
+#line 213 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 213 "mercury_compile.m"
+          {
+#line 213 "mercury_compile.m"
+            top_level__mercury_compile__succeeded = ((MR_tag((MR_Word) top_level__mercury_compile__V_45_45)) == (MR_mktag((MR_Integer) 1)));
+#line 213 "mercury_compile.m"
+            if (top_level__mercury_compile__succeeded)
+#line 213 "mercury_compile.m"
+              {
+#line 213 "mercury_compile.m"
+                top_level__mercury_compile__ArgFile_6 = ((MR_String) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_45_45, (MR_Integer) 0)));
+#line 213 "mercury_compile.m"
+                top_level__mercury_compile__ExtraArgs_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_45_45, (MR_Integer) 1)));
+#line 213 "mercury_compile.m"
+              }
+#line 213 "mercury_compile.m"
+          }
+#line 213 "mercury_compile.m"
+      }
+#line 12625 "top_level.mercury_compile.c"
+    if (top_level__mercury_compile__succeeded)
+#line 12627 "top_level.mercury_compile.c"
+      {
+#line 12629 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__TypeCtorInfo_76_76;
+#line 12631 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__DummyGlobals_10;
+#line 12633 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__MaybeArgs1_11;
+#line 12635 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__OptionArgs_13;
+#line 12637 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__NonOptionArgs_14;
+#line 12639 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__DetectedGradeFlags_15;
+#line 12641 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__Variables_16;
+#line 12643 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__AllFlags_35;
+#line 12645 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__Specs_38;
+#line 12647 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__ActualGlobals_39;
+#line 12649 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__V_70_70;
+#line 328 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_36_36;
+#line 328 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_37_37;
+
+#line 224 "mercury_compile.m"
+        if ((top_level__mercury_compile__ExtraArgs_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 223 "mercury_compile.m"
+          {
+#line 223 "mercury_compile.m"
+          }
+#line 224 "mercury_compile.m"
+        else
+#line 225 "mercury_compile.m"
+          {
+#line 225 "mercury_compile.m"
+            MR_String top_level__mercury_compile__V_48_48;
+#line 225 "mercury_compile.m"
+            MR_String top_level__mercury_compile__V_50_50;
+
+#line 227 "mercury_compile.m"
+            {
+#line 227 "mercury_compile.m"
+              top_level__mercury_compile__V_50_50 = mercury__string__string_1_f_0((MR_Word) &top_level__mercury_compile_scalar_common_1[0], ((MR_Box) (top_level__mercury_compile__ExtraArgs_7)));
+            }
+#line 227 "mercury_compile.m"
+            {
+#line 227 "mercury_compile.m"
+              top_level__mercury_compile__V_48_48 = mercury__string__f_43_43_2_f_0((MR_String) "extra arguments with --arg-file: ", top_level__mercury_compile__V_50_50);
+            }
+#line 226 "mercury_compile.m"
+            {
+#line 226 "mercury_compile.m"
+              mercury__require__unexpected_3_p_0((MR_String) "top_level.mercury_compile", (MR_String) "predicate \140top_level.mercury_compile.real_main_after_expansion\'/3", top_level__mercury_compile__V_48_48);
+#line 226 "mercury_compile.m"
+              return;
+            }
+#line 225 "mercury_compile.m"
+          }
+#line 232 "mercury_compile.m"
+        {
+#line 232 "mercury_compile.m"
+          libs__handle_options__generate_default_globals_3_p_0(&top_level__mercury_compile__DummyGlobals_10);
+        }
+#line 233 "mercury_compile.m"
+        {
+#line 233 "mercury_compile.m"
+          make__options_file__read_args_file_5_p_0(top_level__mercury_compile__DummyGlobals_10, top_level__mercury_compile__ArgFile_6, &top_level__mercury_compile__MaybeArgs1_11);
+        }
+#line 237 "mercury_compile.m"
+        if ((top_level__mercury_compile__MaybeArgs1_11 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 238 "mercury_compile.m"
+          {
+#line 239 "mercury_compile.m"
+            top_level__mercury_compile__OptionArgs_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 240 "mercury_compile.m"
+            top_level__mercury_compile__NonOptionArgs_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 238 "mercury_compile.m"
+          }
+#line 237 "mercury_compile.m"
+        else
+#line 235 "mercury_compile.m"
+          {
+#line 235 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__Args1_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__MaybeArgs1_11, (MR_Integer) 0)));
+
+#line 236 "mercury_compile.m"
+            {
+#line 236 "mercury_compile.m"
+              libs__handle_options__separate_option_args_5_p_0(top_level__mercury_compile__Args1_12, &top_level__mercury_compile__OptionArgs_13, &top_level__mercury_compile__NonOptionArgs_14);
+            }
+#line 235 "mercury_compile.m"
+          }
+#line 242 "mercury_compile.m"
+        top_level__mercury_compile__DetectedGradeFlags_15 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 243 "mercury_compile.m"
+        {
+#line 243 "mercury_compile.m"
+          top_level__mercury_compile__Variables_16 = make__options_file__options_variables_init_0_f_0();
+        }
+#line 12731 "top_level.mercury_compile.c"
+        top_level__mercury_compile__TypeCtorInfo_76_76 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 327 "mercury_compile.m"
+        {
+#line 327 "mercury_compile.m"
+          top_level__mercury_compile__V_70_70 = mercury__list__f_43_43_2_f_0(top_level__mercury_compile__TypeCtorInfo_76_76, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), top_level__mercury_compile__OptionArgs_13);
+        }
+#line 327 "mercury_compile.m"
+        {
+#line 327 "mercury_compile.m"
+          top_level__mercury_compile__AllFlags_35 = mercury__list__f_43_43_2_f_0(top_level__mercury_compile__TypeCtorInfo_76_76, top_level__mercury_compile__DetectedGradeFlags_15, top_level__mercury_compile__V_70_70);
+        }
+#line 328 "mercury_compile.m"
+        {
+#line 328 "mercury_compile.m"
+          libs__handle_options__handle_given_options_7_p_0(top_level__mercury_compile__AllFlags_35, &top_level__mercury_compile__V_36_36, &top_level__mercury_compile__V_37_37, &top_level__mercury_compile__Specs_38, &top_level__mercury_compile__ActualGlobals_39);
+        }
+#line 335 "mercury_compile.m"
+        if ((top_level__mercury_compile__Specs_38 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 337 "mercury_compile.m"
+          {
+#line 337 "mercury_compile.m"
+            top_level__mercury_compile__main_after_setup_7_p_0(top_level__mercury_compile__ActualGlobals_39, top_level__mercury_compile__DetectedGradeFlags_15, top_level__mercury_compile__Variables_16, top_level__mercury_compile__OptionArgs_13, top_level__mercury_compile__NonOptionArgs_14);
+          }
+#line 335 "mercury_compile.m"
+        else
+#line 334 "mercury_compile.m"
+          {
+#line 334 "mercury_compile.m"
+            libs__handle_options__usage_errors_4_p_0(top_level__mercury_compile__ActualGlobals_39, top_level__mercury_compile__Specs_38);
+          }
+#line 12762 "top_level.mercury_compile.c"
+      }
+#line 12764 "top_level.mercury_compile.c"
+    else
+#line 12766 "top_level.mercury_compile.c"
+      {
+#line 12768 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__ArgsGlobals_19;
+#line 12770 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__MaybeVariables0_20;
+#line 12772 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__V_56_56;
+#line 12774 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__OptionArgs_97;
+#line 12776 "top_level.mercury_compile.c"
+        MR_Word top_level__mercury_compile__NonOptionArgs_98;
+#line 249 "mercury_compile.m"
+        MR_Word top_level__mercury_compile___Errors0_18;
+
+#line 249 "mercury_compile.m"
+        {
+#line 249 "mercury_compile.m"
+          libs__handle_options__handle_given_options_7_p_0(top_level__mercury_compile__CmdLineArgs_4, &top_level__mercury_compile__OptionArgs_97, &top_level__mercury_compile__NonOptionArgs_98, &top_level__mercury_compile___Errors0_18, &top_level__mercury_compile__ArgsGlobals_19);
+        }
+#line 251 "mercury_compile.m"
+        {
+#line 251 "mercury_compile.m"
+          top_level__mercury_compile__V_56_56 = make__options_file__options_variables_init_0_f_0();
+        }
+#line 251 "mercury_compile.m"
+        {
+#line 251 "mercury_compile.m"
+          make__options_file__read_options_files_5_p_0(top_level__mercury_compile__ArgsGlobals_19, top_level__mercury_compile__V_56_56, &top_level__mercury_compile__MaybeVariables0_20);
+        }
+#line 12796 "top_level.mercury_compile.c"
+        if ((top_level__mercury_compile__MaybeVariables0_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 12798 "top_level.mercury_compile.c"
+          {
+#line 307 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__Variables_100;
+
+#line 307 "mercury_compile.m"
+            {
+#line 307 "mercury_compile.m"
+              top_level__mercury_compile__Variables_100 = make__options_file__options_variables_init_0_f_0();
+            }
+#line 342 "mercury_compile.m"
+            {
+#line 342 "mercury_compile.m"
+              mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+            }
+#line 12813 "top_level.mercury_compile.c"
+          }
+#line 12815 "top_level.mercury_compile.c"
+        else
+#line 12817 "top_level.mercury_compile.c"
+          {
+#line 12819 "top_level.mercury_compile.c"
+            MR_Word top_level__mercury_compile__Variables0_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__MaybeVariables0_20, (MR_Integer) 0)));
+#line 12821 "top_level.mercury_compile.c"
+            MR_Word top_level__mercury_compile__MaybeMCFlags0_22;
+
+#line 255 "mercury_compile.m"
+            {
+#line 255 "mercury_compile.m"
+              make__options_file__lookup_mmc_options_5_p_0(top_level__mercury_compile__ArgsGlobals_19, top_level__mercury_compile__Variables0_21, &top_level__mercury_compile__MaybeMCFlags0_22);
+            }
+#line 12829 "top_level.mercury_compile.c"
+            if ((top_level__mercury_compile__MaybeMCFlags0_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 12831 "top_level.mercury_compile.c"
+              {
+#line 301 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__Variables_116;
+
+#line 301 "mercury_compile.m"
+                {
+#line 301 "mercury_compile.m"
+                  top_level__mercury_compile__Variables_116 = make__options_file__options_variables_init_0_f_0();
+                }
+#line 342 "mercury_compile.m"
+                {
+#line 342 "mercury_compile.m"
+                  mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+                }
+#line 12846 "top_level.mercury_compile.c"
+              }
+#line 12848 "top_level.mercury_compile.c"
+            else
+#line 12850 "top_level.mercury_compile.c"
+              {
+#line 12852 "top_level.mercury_compile.c"
+                MR_Word top_level__mercury_compile__MCFlags0_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__MaybeMCFlags0_22, (MR_Integer) 0)));
+#line 12854 "top_level.mercury_compile.c"
+                MR_Word top_level__mercury_compile__FlagsSpecs_26;
+#line 12856 "top_level.mercury_compile.c"
+                MR_Word top_level__mercury_compile__FlagsArgsGlobals_27;
+#line 12858 "top_level.mercury_compile.c"
+                MR_Word top_level__mercury_compile__V_59_59;
+#line 12860 "top_level.mercury_compile.c"
+                MR_Word top_level__mercury_compile__DetectedGradeFlags_122;
+#line 12862 "top_level.mercury_compile.c"
+                MR_Word top_level__mercury_compile__Variables_123;
+#line 12864 "top_level.mercury_compile.c"
+                MR_Word top_level__mercury_compile__MaybeMCFlags_124;
+#line 261 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_24_24;
+#line 261 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__V_25_25;
+
+#line 261 "mercury_compile.m"
+                {
+#line 261 "mercury_compile.m"
+                  top_level__mercury_compile__V_59_59 = mercury__list__f_43_43_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, top_level__mercury_compile__MCFlags0_23, top_level__mercury_compile__CmdLineArgs_4);
+                }
+#line 261 "mercury_compile.m"
+                {
+#line 261 "mercury_compile.m"
+                  libs__handle_options__handle_given_options_7_p_0(top_level__mercury_compile__V_59_59, &top_level__mercury_compile__V_24_24, &top_level__mercury_compile__V_25_25, &top_level__mercury_compile__FlagsSpecs_26, &top_level__mercury_compile__FlagsArgsGlobals_27);
+                }
+#line 269 "mercury_compile.m"
+                if ((top_level__mercury_compile__FlagsSpecs_26 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 270 "mercury_compile.m"
+                  {
+#line 270 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__MaybeConfigFile_30;
+
+#line 271 "mercury_compile.m"
+                    {
+#line 271 "mercury_compile.m"
+                      libs__globals__lookup_maybe_string_option_3_p_0(top_level__mercury_compile__FlagsArgsGlobals_27, (MR_Integer) 630, &top_level__mercury_compile__MaybeConfigFile_30);
+                    }
+#line 291 "mercury_compile.m"
+                    if ((top_level__mercury_compile__MaybeConfigFile_30 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 292 "mercury_compile.m"
+                      {
+#line 293 "mercury_compile.m"
+                        top_level__mercury_compile__DetectedGradeFlags_122 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 294 "mercury_compile.m"
+                        {
+#line 294 "mercury_compile.m"
+                          top_level__mercury_compile__Variables_123 = make__options_file__options_variables_init_0_f_0();
+                        }
+#line 295 "mercury_compile.m"
+                        {
+#line 295 "mercury_compile.m"
+                          make__options_file__lookup_mmc_options_5_p_0(top_level__mercury_compile__FlagsArgsGlobals_27, top_level__mercury_compile__Variables_123, &top_level__mercury_compile__MaybeMCFlags_124);
+                        }
+#line 292 "mercury_compile.m"
+                      }
+#line 291 "mercury_compile.m"
+                    else
+#line 274 "mercury_compile.m"
+                      {
+#line 274 "mercury_compile.m"
+                        MR_String top_level__mercury_compile__ConfigFile_31 = ((MR_String) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__MaybeConfigFile_30, (MR_Integer) 0)));
+#line 274 "mercury_compile.m"
+                        MR_Word top_level__mercury_compile__MaybeVariables_32;
+
+#line 275 "mercury_compile.m"
+                        {
+#line 275 "mercury_compile.m"
+                          make__options_file__read_options_file_6_p_0(top_level__mercury_compile__FlagsArgsGlobals_27, top_level__mercury_compile__ConfigFile_31, top_level__mercury_compile__Variables0_21, &top_level__mercury_compile__MaybeVariables_32);
+                        }
+#line 285 "mercury_compile.m"
+                        if ((top_level__mercury_compile__MaybeVariables_32 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 286 "mercury_compile.m"
+                          {
+#line 287 "mercury_compile.m"
+                            top_level__mercury_compile__MaybeMCFlags_124 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 288 "mercury_compile.m"
+                            top_level__mercury_compile__DetectedGradeFlags_122 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 289 "mercury_compile.m"
+                            {
+#line 289 "mercury_compile.m"
+                              top_level__mercury_compile__Variables_123 = make__options_file__options_variables_init_0_f_0();
+                            }
+#line 286 "mercury_compile.m"
+                          }
+#line 285 "mercury_compile.m"
+                        else
+#line 278 "mercury_compile.m"
+                          {
+#line 278 "mercury_compile.m"
+                            MR_Word top_level__mercury_compile__MaybeMerStdLibDir_33;
+
+#line 278 "mercury_compile.m"
+                            top_level__mercury_compile__Variables_123 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__MaybeVariables_32, (MR_Integer) 0)));
+#line 279 "mercury_compile.m"
+                            {
+#line 279 "mercury_compile.m"
+                              make__options_file__lookup_mmc_options_5_p_0(top_level__mercury_compile__FlagsArgsGlobals_27, top_level__mercury_compile__Variables_123, &top_level__mercury_compile__MaybeMCFlags_124);
+                            }
+#line 281 "mercury_compile.m"
+                            {
+#line 281 "mercury_compile.m"
+                              make__options_file__lookup_mercury_stdlib_dir_5_p_0(top_level__mercury_compile__FlagsArgsGlobals_27, top_level__mercury_compile__Variables_123, &top_level__mercury_compile__MaybeMerStdLibDir_33);
+                            }
+#line 283 "mercury_compile.m"
+                            {
+#line 283 "mercury_compile.m"
+                              top_level__mercury_compile__detect_libgrades_5_p_0(top_level__mercury_compile__FlagsArgsGlobals_27, top_level__mercury_compile__MaybeMerStdLibDir_33, &top_level__mercury_compile__DetectedGradeFlags_122);
+                            }
+#line 278 "mercury_compile.m"
+                          }
+#line 274 "mercury_compile.m"
+                      }
+#line 270 "mercury_compile.m"
+                  }
+#line 269 "mercury_compile.m"
+                else
+#line 264 "mercury_compile.m"
+                  {
+#line 265 "mercury_compile.m"
+                    {
+#line 265 "mercury_compile.m"
+                      libs__handle_options__usage_errors_4_p_0(top_level__mercury_compile__FlagsArgsGlobals_27, top_level__mercury_compile__FlagsSpecs_26);
+                    }
+#line 266 "mercury_compile.m"
+                    top_level__mercury_compile__DetectedGradeFlags_122 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 267 "mercury_compile.m"
+                    {
+#line 267 "mercury_compile.m"
+                      top_level__mercury_compile__Variables_123 = make__options_file__options_variables_init_0_f_0();
+                    }
+#line 268 "mercury_compile.m"
+                    top_level__mercury_compile__MaybeMCFlags_124 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 264 "mercury_compile.m"
+                  }
+#line 340 "mercury_compile.m"
+                if ((top_level__mercury_compile__MaybeMCFlags_124 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 341 "mercury_compile.m"
+                  {
+#line 342 "mercury_compile.m"
+                    {
+#line 342 "mercury_compile.m"
+                      mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+                    }
+#line 341 "mercury_compile.m"
+                  }
+#line 340 "mercury_compile.m"
+                else
+#line 313 "mercury_compile.m"
+                  {
+#line 313 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__TypeCtorInfo_76_87 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 313 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__MCFlags_79 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__MaybeMCFlags_124, (MR_Integer) 0)));
+#line 313 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__AllFlags_80;
+#line 313 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__Specs_83;
+#line 313 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__ActualGlobals_84;
+#line 313 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_85_85;
+#line 328 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_77_77;
+#line 328 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_78_78;
+
+#line 327 "mercury_compile.m"
+                    {
+#line 327 "mercury_compile.m"
+                      top_level__mercury_compile__V_85_85 = mercury__list__f_43_43_2_f_0(top_level__mercury_compile__TypeCtorInfo_76_87, top_level__mercury_compile__MCFlags_79, top_level__mercury_compile__OptionArgs_97);
+                    }
+#line 327 "mercury_compile.m"
+                    {
+#line 327 "mercury_compile.m"
+                      top_level__mercury_compile__AllFlags_80 = mercury__list__f_43_43_2_f_0(top_level__mercury_compile__TypeCtorInfo_76_87, top_level__mercury_compile__DetectedGradeFlags_122, top_level__mercury_compile__V_85_85);
+                    }
+#line 328 "mercury_compile.m"
+                    {
+#line 328 "mercury_compile.m"
+                      libs__handle_options__handle_given_options_7_p_0(top_level__mercury_compile__AllFlags_80, &top_level__mercury_compile__V_77_77, &top_level__mercury_compile__V_78_78, &top_level__mercury_compile__Specs_83, &top_level__mercury_compile__ActualGlobals_84);
+                    }
+#line 335 "mercury_compile.m"
+                    if ((top_level__mercury_compile__Specs_83 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 337 "mercury_compile.m"
+                      {
+#line 337 "mercury_compile.m"
+                        top_level__mercury_compile__main_after_setup_7_p_0(top_level__mercury_compile__ActualGlobals_84, top_level__mercury_compile__DetectedGradeFlags_122, top_level__mercury_compile__Variables_123, top_level__mercury_compile__OptionArgs_97, top_level__mercury_compile__NonOptionArgs_98);
+                      }
+#line 335 "mercury_compile.m"
+                    else
+#line 334 "mercury_compile.m"
+                      {
+#line 334 "mercury_compile.m"
+                        libs__handle_options__usage_errors_4_p_0(top_level__mercury_compile__ActualGlobals_84, top_level__mercury_compile__Specs_83);
+                      }
+#line 313 "mercury_compile.m"
+                  }
+#line 13053 "top_level.mercury_compile.c"
+              }
+#line 13055 "top_level.mercury_compile.c"
+          }
+#line 13057 "top_level.mercury_compile.c"
+      }
+#line 13059 "top_level.mercury_compile.c"
+  }
+#line 208 "mercury_compile.m"
+}
+
+#line 178 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__expand_file_into_arg_list_4_p_0(
+#line 178 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__S_5,
+#line 178 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__Res_6)
+#line 178 "mercury_compile.m"
+{
+#line 181 "mercury_compile.m"
+  {
+#line 181 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 181 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__LineRes_8;
+
+#line 182 "mercury_compile.m"
+    {
+#line 182 "mercury_compile.m"
+      mercury__io__read_line_as_string_4_p_0(top_level__mercury_compile__S_5, &top_level__mercury_compile__LineRes_8);
+    }
+#line 198 "mercury_compile.m"
+#line 198 "mercury_compile.m"
+    switch (MR_tag((MR_Word) top_level__mercury_compile__LineRes_8)) {
+#line 198 "mercury_compile.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 198 "mercury_compile.m"
+      case (MR_Integer) 0:
+#line 199 "mercury_compile.m"
+        {
+#line 200 "mercury_compile.m"
+          *top_level__mercury_compile__Res_6 = (MR_Word) &top_level__mercury_compile_scalar_common_4[0];
+#line 199 "mercury_compile.m"
+        }
+#line 198 "mercury_compile.m"
+        break;
+#line 198 "mercury_compile.m"
+      case (MR_Integer) 1:
+#line 184 "mercury_compile.m"
+        {
+#line 184 "mercury_compile.m"
+          MR_String top_level__mercury_compile__Line_9 = ((MR_String) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__LineRes_8, (MR_Integer) 0)));
+#line 184 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__Res0_10;
+
+#line 185 "mercury_compile.m"
+          {
+#line 185 "mercury_compile.m"
+            top_level__mercury_compile__expand_file_into_arg_list_4_p_0(top_level__mercury_compile__S_5, &top_level__mercury_compile__Res0_10);
+          }
+#line 194 "mercury_compile.m"
+          if (((MR_tag((MR_Word) top_level__mercury_compile__Res0_10)) == (MR_mktag((MR_Integer) 1))))
+#line 196 "mercury_compile.m"
+            *top_level__mercury_compile__Res_6 = top_level__mercury_compile__Res0_10;
+#line 194 "mercury_compile.m"
+          else
+#line 187 "mercury_compile.m"
+            {
+#line 187 "mercury_compile.m"
+              MR_Word top_level__mercury_compile__Lines_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Res0_10, (MR_Integer) 0)));
+#line 187 "mercury_compile.m"
+              MR_String top_level__mercury_compile__StrippedLine_12;
+
+#line 188 "mercury_compile.m"
+              {
+#line 188 "mercury_compile.m"
+                top_level__mercury_compile__StrippedLine_12 = mercury__string__strip_1_f_0(top_level__mercury_compile__Line_9);
+              }
+#line 189 "mercury_compile.m"
+              top_level__mercury_compile__succeeded = (strcmp(top_level__mercury_compile__StrippedLine_12, (MR_String) "") == 0);
+#line 191 "mercury_compile.m"
+              if (top_level__mercury_compile__succeeded)
+#line 190 "mercury_compile.m"
+                *top_level__mercury_compile__Res_6 = top_level__mercury_compile__Res0_10;
+#line 191 "mercury_compile.m"
+              else
+#line 192 "mercury_compile.m"
+                {
+#line 192 "mercury_compile.m"
+                  MR_Word top_level__mercury_compile__V_20_20;
+
+#line 192 "mercury_compile.m"
+                  {
+#line 192 "mercury_compile.m"
+                    top_level__mercury_compile__V_20_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 192 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_20_20, 0) = ((MR_Box) (top_level__mercury_compile__StrippedLine_12));
+#line 192 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_20_20, 1) = ((MR_Box) (top_level__mercury_compile__Lines_11));
+#line 192 "mercury_compile.m"
+                  }
+#line 192 "mercury_compile.m"
+                  {
+#line 192 "mercury_compile.m"
+                    MR_Word base;
+#line 192 "mercury_compile.m"
+                    base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 192 "mercury_compile.m"
+                    *top_level__mercury_compile__Res_6 = base;
+#line 192 "mercury_compile.m"
+                    MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (top_level__mercury_compile__V_20_20));
+#line 192 "mercury_compile.m"
+                  }
+#line 192 "mercury_compile.m"
+                }
+#line 187 "mercury_compile.m"
+            }
+#line 184 "mercury_compile.m"
+        }
+#line 198 "mercury_compile.m"
+        break;
+#line 198 "mercury_compile.m"
+      case (MR_Integer) 2:
+#line 202 "mercury_compile.m"
+        {
+#line 202 "mercury_compile.m"
+          MR_Word top_level__mercury_compile__E_14 = ((MR_Word) (MR_hl_field(MR_mktag(2), top_level__mercury_compile__LineRes_8, (MR_Integer) 0)));
+
+#line 203 "mercury_compile.m"
+          {
+#line 203 "mercury_compile.m"
+            MR_Word base;
+#line 203 "mercury_compile.m"
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 203 "mercury_compile.m"
+            *top_level__mercury_compile__Res_6 = base;
+#line 203 "mercury_compile.m"
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (top_level__mercury_compile__E_14));
+#line 203 "mercury_compile.m"
+          }
+#line 202 "mercury_compile.m"
+        }
+#line 198 "mercury_compile.m"
+        break;
+#line 198 "mercury_compile.m"
+    }
+#line 181 "mercury_compile.m"
+  }
+#line 178 "mercury_compile.m"
+}
+
+#line 136 "mercury_compile.m"
+static void MR_CALL 
+top_level__mercury_compile__expand_at_file_arguments_4_p_0(
+#line 136 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__HeadVar__1_1,
+#line 136 "mercury_compile.m"
+  MR_Word * top_level__mercury_compile__HeadVar__2_2)
+#line 136 "mercury_compile.m"
+{
+#line 139 "mercury_compile.m"
+  while (MR_TRUE)
+#line 139 "mercury_compile.m"
+    {
+#line 139 "mercury_compile.m"
+      /* tailcall optimized into a loop */
+#line 139 "mercury_compile.m"
+      {
+#line 139 "mercury_compile.m"
+        MR_bool top_level__mercury_compile__succeeded;
+
+#line 139 "mercury_compile.m"
+        if ((top_level__mercury_compile__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 139 "mercury_compile.m"
+          {
+#line 139 "mercury_compile.m"
+            *top_level__mercury_compile__HeadVar__2_2 = (MR_Word) &top_level__mercury_compile_scalar_common_4[0];
+#line 139 "mercury_compile.m"
+          }
+#line 139 "mercury_compile.m"
+        else
+#line 140 "mercury_compile.m"
+          {
+#line 140 "mercury_compile.m"
+            MR_String top_level__mercury_compile__Arg_9 = ((MR_String) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__HeadVar__1_1, (MR_Integer) 0)));
+#line 140 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__Args_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__HeadVar__1_1, (MR_Integer) 1)));
+#line 158 "mercury_compile.m"
+            MR_String top_level__mercury_compile__File_13;
+
+#line 141 "mercury_compile.m"
+            {
+#line 141 "mercury_compile.m"
+              top_level__mercury_compile__succeeded = mercury__string__remove_prefix_3_p_0((MR_String) "\100", top_level__mercury_compile__Arg_9, &top_level__mercury_compile__File_13);
+            }
+#line 158 "mercury_compile.m"
+            if (top_level__mercury_compile__succeeded)
+#line 142 "mercury_compile.m"
+              {
+#line 142 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__OpenRes_14;
+
+#line 142 "mercury_compile.m"
+                {
+#line 142 "mercury_compile.m"
+                  mercury__io__open_input_4_p_0(top_level__mercury_compile__File_13, &top_level__mercury_compile__OpenRes_14);
+                }
+#line 153 "mercury_compile.m"
+                if (((MR_tag((MR_Word) top_level__mercury_compile__OpenRes_14)) == (MR_mktag((MR_Integer) 1))))
+#line 154 "mercury_compile.m"
+                  {
+#line 154 "mercury_compile.m"
+                    MR_String top_level__mercury_compile__Msg_20;
+#line 154 "mercury_compile.m"
+                    MR_String top_level__mercury_compile__V_28_28;
+#line 154 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_30_30;
+
+#line 155 "mercury_compile.m"
+                    {
+#line 155 "mercury_compile.m"
+                      top_level__mercury_compile__V_28_28 = mercury__string__f_43_43_2_f_0(top_level__mercury_compile__File_13, (MR_String) "\'");
+                    }
+#line 155 "mercury_compile.m"
+                    {
+#line 155 "mercury_compile.m"
+                      top_level__mercury_compile__Msg_20 = mercury__string__f_43_43_2_f_0((MR_String) "mercury_compile: cannot open \'", top_level__mercury_compile__V_28_28);
+                    }
+#line 156 "mercury_compile.m"
+                    {
+#line 156 "mercury_compile.m"
+                      top_level__mercury_compile__V_30_30 = mercury__io__make_io_error_1_f_0(top_level__mercury_compile__Msg_20);
+                    }
+#line 156 "mercury_compile.m"
+                    {
+#line 156 "mercury_compile.m"
+                      MR_Word base;
+#line 156 "mercury_compile.m"
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 156 "mercury_compile.m"
+                      *top_level__mercury_compile__HeadVar__2_2 = base;
+#line 156 "mercury_compile.m"
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (top_level__mercury_compile__V_30_30));
+#line 156 "mercury_compile.m"
+                    }
+#line 154 "mercury_compile.m"
+                  }
+#line 153 "mercury_compile.m"
+                else
+#line 144 "mercury_compile.m"
+                  {
+#line 144 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__S_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__OpenRes_14, (MR_Integer) 0)));
+#line 144 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__ReadRes_16;
+
+#line 145 "mercury_compile.m"
+                    {
+#line 145 "mercury_compile.m"
+                      top_level__mercury_compile__expand_file_into_arg_list_4_p_0(top_level__mercury_compile__S_15, &top_level__mercury_compile__ReadRes_16);
+                    }
+#line 149 "mercury_compile.m"
+                    if (((MR_tag((MR_Word) top_level__mercury_compile__ReadRes_16)) == (MR_mktag((MR_Integer) 1))))
+#line 150 "mercury_compile.m"
+                      {
+#line 150 "mercury_compile.m"
+                        MR_Word top_level__mercury_compile__E_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__ReadRes_16, (MR_Integer) 0)));
+#line 150 "mercury_compile.m"
+                        MR_Word top_level__mercury_compile__V_32_32;
+#line 150 "mercury_compile.m"
+                        MR_String top_level__mercury_compile__V_43_43;
+#line 150 "mercury_compile.m"
+                        MR_String top_level__mercury_compile__V_45_45;
+#line 150 "mercury_compile.m"
+                        MR_String top_level__mercury_compile__V_46_46;
+#line 150 "mercury_compile.m"
+                        MR_String top_level__mercury_compile__V_48_48;
+
+#line 173 "mercury_compile.m"
+                        {
+#line 173 "mercury_compile.m"
+                          top_level__mercury_compile__V_48_48 = mercury__io__error_message_1_f_0(top_level__mercury_compile__E_18);
+                        }
+#line 173 "mercury_compile.m"
+                        {
+#line 173 "mercury_compile.m"
+                          top_level__mercury_compile__V_46_46 = mercury__string__f_43_43_2_f_0((MR_String) "\' the following error occurred: ", top_level__mercury_compile__V_48_48);
+                        }
+#line 172 "mercury_compile.m"
+                        {
+#line 172 "mercury_compile.m"
+                          top_level__mercury_compile__V_45_45 = mercury__string__f_43_43_2_f_0(top_level__mercury_compile__File_13, top_level__mercury_compile__V_46_46);
+                        }
+#line 172 "mercury_compile.m"
+                        {
+#line 172 "mercury_compile.m"
+                          top_level__mercury_compile__V_43_43 = mercury__string__f_43_43_2_f_0((MR_String) "While attempting to process \'", top_level__mercury_compile__V_45_45);
+                        }
+#line 172 "mercury_compile.m"
+                        {
+#line 172 "mercury_compile.m"
+                          top_level__mercury_compile__V_32_32 = mercury__io__make_io_error_1_f_0(top_level__mercury_compile__V_43_43);
+                        }
+#line 151 "mercury_compile.m"
+                        {
+#line 151 "mercury_compile.m"
+                          MR_Word base;
+#line 151 "mercury_compile.m"
+                          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 151 "mercury_compile.m"
+                          *top_level__mercury_compile__HeadVar__2_2 = base;
+#line 151 "mercury_compile.m"
+                          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (top_level__mercury_compile__V_32_32));
+#line 151 "mercury_compile.m"
+                        }
+#line 150 "mercury_compile.m"
+                      }
+#line 149 "mercury_compile.m"
+                    else
+#line 147 "mercury_compile.m"
+                      {
+#line 147 "mercury_compile.m"
+                        MR_Word top_level__mercury_compile__FileArgs_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__ReadRes_16, (MR_Integer) 0)));
+#line 147 "mercury_compile.m"
+                        MR_Word top_level__mercury_compile__V_33_33;
+
+#line 148 "mercury_compile.m"
+                        {
+#line 148 "mercury_compile.m"
+                          top_level__mercury_compile__V_33_33 = mercury__list__f_43_43_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, top_level__mercury_compile__FileArgs_17, top_level__mercury_compile__Args_10);
+                        }
+#line 148 "mercury_compile.m"
+                        /* direct tailcall eliminated */
+#line 148 "mercury_compile.m"
+                        {
+#line 148 "mercury_compile.m"
+                          MR_Word top_level__mercury_compile__HeadVar__1__tmp_copy_1 = top_level__mercury_compile__V_33_33;
+
+#line 148 "mercury_compile.m"
+                          top_level__mercury_compile__HeadVar__1_1 = top_level__mercury_compile__HeadVar__1__tmp_copy_1;
+#line 148 "mercury_compile.m"
+                        }
+#line 148 "mercury_compile.m"
+                        continue;
+#line 147 "mercury_compile.m"
+                      }
+#line 144 "mercury_compile.m"
+                  }
+#line 142 "mercury_compile.m"
+              }
+#line 158 "mercury_compile.m"
+            else
+#line 159 "mercury_compile.m"
+              {
+#line 159 "mercury_compile.m"
+                MR_Word top_level__mercury_compile__Result0_21;
+
+#line 159 "mercury_compile.m"
+                {
+#line 159 "mercury_compile.m"
+                  top_level__mercury_compile__expand_at_file_arguments_4_p_0(top_level__mercury_compile__Args_10, &top_level__mercury_compile__Result0_21);
+                }
+#line 163 "mercury_compile.m"
+                if (((MR_tag((MR_Word) top_level__mercury_compile__Result0_21)) == (MR_mktag((MR_Integer) 1))))
+#line 165 "mercury_compile.m"
+                  *top_level__mercury_compile__HeadVar__2_2 = top_level__mercury_compile__Result0_21;
+#line 163 "mercury_compile.m"
+                else
+#line 161 "mercury_compile.m"
+                  {
+#line 161 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__ExpandedArgs_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Result0_21, (MR_Integer) 0)));
+#line 161 "mercury_compile.m"
+                    MR_Word top_level__mercury_compile__V_36_36;
+
+#line 162 "mercury_compile.m"
+                    {
+#line 162 "mercury_compile.m"
+                      top_level__mercury_compile__V_36_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 162 "mercury_compile.m"
+                      MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_36_36, 0) = ((MR_Box) (top_level__mercury_compile__Arg_9));
+#line 162 "mercury_compile.m"
+                      MR_hl_field(MR_mktag(1), top_level__mercury_compile__V_36_36, 1) = ((MR_Box) (top_level__mercury_compile__ExpandedArgs_22));
+#line 162 "mercury_compile.m"
+                    }
+#line 162 "mercury_compile.m"
+                    {
+#line 162 "mercury_compile.m"
+                      MR_Word base;
+#line 162 "mercury_compile.m"
+                      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 162 "mercury_compile.m"
+                      *top_level__mercury_compile__HeadVar__2_2 = base;
+#line 162 "mercury_compile.m"
+                      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (top_level__mercury_compile__V_36_36));
+#line 162 "mercury_compile.m"
+                    }
+#line 161 "mercury_compile.m"
+                  }
+#line 159 "mercury_compile.m"
+              }
+#line 140 "mercury_compile.m"
+          }
+#line 139 "mercury_compile.m"
+      }
+#line 139 "mercury_compile.m"
+      break;
+#line 139 "mercury_compile.m"
+    }
+#line 136 "mercury_compile.m"
+}
+
+#line 36 "mercury_compile.m"
+void MR_CALL 
+top_level__mercury_compile__main_for_make_4_p_0(
+#line 36 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Globals_5,
+#line 36 "mercury_compile.m"
+  MR_Word top_level__mercury_compile__Args_6)
+#line 36 "mercury_compile.m"
+{
+#line 467 "mercury_compile.m"
+  {
+#line 467 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 467 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_11_11;
+#line 467 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Version_22;
+#line 467 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Help_23;
+
+#line 468 "mercury_compile.m"
+    {
+#line 468 "mercury_compile.m"
+      top_level__mercury_compile__V_11_11 = make__options_file__options_variables_init_0_f_0();
+    }
+#line 477 "mercury_compile.m"
+    {
+#line 477 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_5, (MR_Integer) 650, &top_level__mercury_compile__Version_22);
+    }
+#line 478 "mercury_compile.m"
+    {
+#line 478 "mercury_compile.m"
+      libs__globals__lookup_bool_option_3_p_0(top_level__mercury_compile__Globals_5, (MR_Integer) 649, &top_level__mercury_compile__Help_23);
+    }
+#line 486 "mercury_compile.m"
+    top_level__mercury_compile__succeeded = (top_level__mercury_compile__Help_23 == (MR_Integer) 1);
+#line 491 "mercury_compile.m"
+    if (top_level__mercury_compile__succeeded)
+#line 487 "mercury_compile.m"
+      {
+#line 487 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__Stdout_24;
+#line 487 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__OldOutputStream_25;
+#line 490 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__V_26_26;
+
+#line 487 "mercury_compile.m"
+        {
+#line 487 "mercury_compile.m"
+          mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__Stdout_24);
+        }
+#line 488 "mercury_compile.m"
+        {
+#line 488 "mercury_compile.m"
+          mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__Stdout_24, &top_level__mercury_compile__OldOutputStream_25);
+        }
+#line 489 "mercury_compile.m"
+        {
+#line 489 "mercury_compile.m"
+          libs__handle_options__long_usage_2_p_0();
+        }
+#line 490 "mercury_compile.m"
+        {
+#line 490 "mercury_compile.m"
+          mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__OldOutputStream_25, &top_level__mercury_compile__V_26_26);
+        }
+#line 487 "mercury_compile.m"
+      }
+#line 491 "mercury_compile.m"
+    else
+#line 496 "mercury_compile.m"
+      {
+#line 491 "mercury_compile.m"
+        top_level__mercury_compile__succeeded = (top_level__mercury_compile__Version_22 == (MR_Integer) 1);
+#line 496 "mercury_compile.m"
+        if (top_level__mercury_compile__succeeded)
+#line 492 "mercury_compile.m"
+          {
+#line 492 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__Stdout_40;
+#line 492 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__OldOutputStream_41;
+#line 495 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__V_27_27;
+
+#line 492 "mercury_compile.m"
+            {
+#line 492 "mercury_compile.m"
+              mercury__io__stdout_stream_3_p_0(&top_level__mercury_compile__Stdout_40);
+            }
+#line 493 "mercury_compile.m"
+            {
+#line 493 "mercury_compile.m"
+              mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__Stdout_40, &top_level__mercury_compile__OldOutputStream_41);
+            }
+#line 494 "mercury_compile.m"
+            {
+#line 494 "mercury_compile.m"
+              libs__handle_options__display_compiler_version_2_p_0();
+            }
+#line 495 "mercury_compile.m"
+            {
+#line 495 "mercury_compile.m"
+              mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__OldOutputStream_41, &top_level__mercury_compile__V_27_27);
+            }
+#line 492 "mercury_compile.m"
+          }
+#line 496 "mercury_compile.m"
+        else
+#line 497 "mercury_compile.m"
+          {
+#line 497 "mercury_compile.m"
+            MR_Word top_level__mercury_compile__OpMode_28;
+
+#line 497 "mercury_compile.m"
+            {
+#line 497 "mercury_compile.m"
+              libs__globals__get_op_mode_2_p_0(top_level__mercury_compile__Globals_5, &top_level__mercury_compile__OpMode_28);
+            }
+#line 498 "mercury_compile.m"
+            {
+#line 498 "mercury_compile.m"
+              top_level__mercury_compile__do_op_mode_8_p_0(top_level__mercury_compile__Globals_5, top_level__mercury_compile__OpMode_28, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), top_level__mercury_compile__V_11_11, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), top_level__mercury_compile__Args_6);
+            }
+#line 497 "mercury_compile.m"
+          }
+#line 496 "mercury_compile.m"
+      }
+#line 467 "mercury_compile.m"
+  }
+#line 36 "mercury_compile.m"
+}
+
+#line 31 "mercury_compile.m"
+void MR_CALL 
+top_level__mercury_compile__real_main_2_p_0(void)
+#line 31 "mercury_compile.m"
+{
+#line 108 "mercury_compile.m"
+  {
+#line 108 "mercury_compile.m"
+    MR_bool top_level__mercury_compile__succeeded;
+#line 108 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__StdErr_4;
+#line 108 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__CmdLineArgs_6;
+#line 108 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__Res_7;
+#line 113 "mercury_compile.m"
+    MR_Word top_level__mercury_compile__V_5_5;
+
+#line 2297 "mercury_compile.m"
+{
+#define MR_PROC_LABEL top_level__mercury_compile__real_main_2_p_0
+
+
+		{
+#line 2297 "mercury_compile.m"
+
+#ifdef MR_BOEHM_GC
+    /*
+    ** Explicitly force the initial heap size to be at least 4 Mb.
+    **
+    ** This works around a bug in the Boehm collector (for versions up
+    ** to at least 6.2) where the collector would sometimes abort with
+    ** the message `unexpected mark stack overflow' (e.g. in grade hlc.gc
+    ** on dec-alpha-osf3.2).
+    **
+    ** Doing this should also improve performance slightly by avoiding
+    ** frequent garbage collection during start-up.
+    */
+    GC_expand_hp(4 * 1024 * 1024);
+#endif
+
+#line 13642 "top_level.mercury_compile.c"
+
+		;}
+#undef MR_PROC_LABEL
+#line 2297 "mercury_compile.m"
+}
+#line 112 "mercury_compile.m"
+    {
+#line 112 "mercury_compile.m"
+      mercury__io__stderr_stream_3_p_0(&top_level__mercury_compile__StdErr_4);
+    }
+#line 113 "mercury_compile.m"
+    {
+#line 113 "mercury_compile.m"
+      mercury__io__set_output_stream_4_p_0(top_level__mercury_compile__StdErr_4, &top_level__mercury_compile__V_5_5);
+    }
+#line 114 "mercury_compile.m"
+    {
+#line 114 "mercury_compile.m"
+      mercury__io__command_line_arguments_3_p_0(&top_level__mercury_compile__CmdLineArgs_6);
+    }
+#line 116 "mercury_compile.m"
+    {
+#line 116 "mercury_compile.m"
+      mdbcomp__shared_utilities__unlimit_stack_2_p_0();
+    }
+#line 119 "mercury_compile.m"
+    {
+#line 119 "mercury_compile.m"
+      top_level__mercury_compile__expand_at_file_arguments_4_p_0(top_level__mercury_compile__CmdLineArgs_6, &top_level__mercury_compile__Res_7);
+    }
+#line 123 "mercury_compile.m"
+    if (((MR_tag((MR_Word) top_level__mercury_compile__Res_7)) == (MR_mktag((MR_Integer) 1))))
+#line 124 "mercury_compile.m"
+      {
+#line 124 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__E_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), top_level__mercury_compile__Res_7, (MR_Integer) 0)));
+#line 124 "mercury_compile.m"
+        MR_String top_level__mercury_compile__V_20_20;
+
+#line 125 "mercury_compile.m"
+        {
+#line 125 "mercury_compile.m"
+          mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+        }
+#line 127 "mercury_compile.m"
+        {
+#line 127 "mercury_compile.m"
+          top_level__mercury_compile__V_20_20 = mercury__io__error_message_1_f_0(top_level__mercury_compile__E_9);
+        }
+#line 127 "mercury_compile.m"
+        {
+#line 127 "mercury_compile.m"
+          mercury__io__write_string_3_p_0(top_level__mercury_compile__V_20_20);
+        }
+#line 128 "mercury_compile.m"
+        {
+#line 128 "mercury_compile.m"
+          mercury__io__nl_2_p_0();
+        }
+#line 124 "mercury_compile.m"
+      }
+#line 123 "mercury_compile.m"
+    else
+#line 121 "mercury_compile.m"
+      {
+#line 121 "mercury_compile.m"
+        MR_Word top_level__mercury_compile__ExpandedCmdLineArgs_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), top_level__mercury_compile__Res_7, (MR_Integer) 0)));
+
+#line 122 "mercury_compile.m"
+        {
+#line 122 "mercury_compile.m"
+          top_level__mercury_compile__real_main_after_expansion_3_p_0(top_level__mercury_compile__ExpandedCmdLineArgs_8);
+        }
+#line 121 "mercury_compile.m"
+      }
+#line 108 "mercury_compile.m"
+  }
+#line 31 "mercury_compile.m"
+}
+
+void mercury__top_level__mercury_compile__init(void)
+{
+}
+
+void mercury__top_level__mercury_compile__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&top_level__mercury_compile__top_level__mercury_compile__type_ctor_info_compile_0);
+	MR_register_type_ctor_info(&top_level__mercury_compile__top_level__mercury_compile__type_ctor_info_file_or_module_0);
+	MR_register_type_ctor_info(&top_level__mercury_compile__top_level__mercury_compile__type_ctor_info_maybe_write_d_file_0);
+}
+
+void mercury__top_level__mercury_compile__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module top_level.mercury_compile. */

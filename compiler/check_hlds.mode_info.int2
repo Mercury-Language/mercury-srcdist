@@ -1,0 +1,73 @@
+:- module (check_hlds.mode_info).
+:- interface.
+:- import_module assoc_list.
+:- import_module bag.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (check_hlds.delay_info).
+:- import_module (check_hlds.mode_errors).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.instmap).
+:- import_module (hlds.pred_table).
+:- import_module (hlds.vartypes).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type call_context
+    --->    call_context_unify(hlds.hlds_goal.unify_context)
+    ;       call_context_call(hlds.hlds_pred.call_id).
+:- type debug_flags
+    --->    debug_flags(((check_hlds.mode_info).verbose) :: bool.bool, ((check_hlds.mode_info).minimal) :: bool.bool, ((check_hlds.mode_info).statistics) :: bool.bool).
+:- type had_from_ground_term_scope
+    --->    had_from_ground_term_scope 
+    ;       did_not_have_from_ground_term_scope .
+:- type how_to_check_goal
+    --->    check_modes 
+    ;       check_unique_modes .
+:- type in_dupl_for_switch
+    --->    in_dupl_for_switch 
+    ;       not_in_dupl_for_switch .
+:- type in_from_ground_term_scope
+    --->    in_from_ground_term_scope 
+    ;       not_in_from_ground_term_scope .
+:- type in_promise_purity_scope
+    --->    in_promise_purity_scope 
+    ;       not_in_promise_purity_scope .
+:- type locked_vars == assoc_list.assoc_list(check_hlds.mode_info.var_lock_reason, parse_tree.set_of_var.set_of_progvar).
+:- type make_ground_terms_unique
+    --->    make_ground_terms_unique 
+    ;       do_not_make_ground_terms_unique .
+:- type may_change_called_proc
+    --->    may_change_called_proc 
+    ;       may_not_change_called_proc .
+:- type may_init_solver_vars
+    --->    may_init_solver_vars 
+    ;       may_not_init_solver_vars .
+:- type maybe_have_auto_init_var
+    --->    have_no_auto_init_var 
+    ;       have_auto_init_var .
+:- type mode_context
+    --->    mode_context_call(hlds.hlds_pred.call_id, int)
+    ;       mode_context_unify(hlds.hlds_goal.unify_context, check_hlds.mode_info.side)
+    ;       mode_context_uninitialized .
+:- type mode_info.
+:- type par_conj_mode_check
+    --->    par_conj_mode_check(((check_hlds.mode_info).par_conj_nonlocals) :: parse_tree.set_of_var.set_of_progvar, ((check_hlds.mode_info).par_conj_bound) :: parse_tree.set_of_var.set_of_progvar).
+:- type par_conj_mode_check_stack == list.list(check_hlds.mode_info.par_conj_mode_check).
+:- type side
+    --->    left 
+    ;       right .
+:- type var_lock_reason
+    --->    var_lock_negation 
+    ;       var_lock_if_then_else 
+    ;       var_lock_lambda(mdbcomp.prim_data.pred_or_func)
+    ;       var_lock_trace_goal 
+    ;       var_lock_atomic_goal 
+    ;       var_lock_par_conj .

@@ -1,0 +1,7 @@
+:- module (ml_backend.ml_tailcall).
+:- interface.
+:- import_module io.
+:- import_module (libs.globals).
+:- import_module (ml_backend.mlds).
+:- pred ml_mark_tailcalls(libs.globals.globals, ml_backend.mlds.mlds, ml_backend.mlds.mlds, io.io, io.io).
+:- mode ml_mark_tailcalls((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

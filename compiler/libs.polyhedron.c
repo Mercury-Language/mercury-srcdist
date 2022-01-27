@@ -1,0 +1,5745 @@
+/*
+** Automatically generated from `polyhedron.m'
+** by the Mercury compiler,
+** version DEV
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module libs.polyhedron. */
+/* :- implementation. */
+
+/*
+INIT mercury__libs__polyhedron__init
+ENDINIT
+*/
+
+#include "libs.polyhedron.mih"
+
+
+#include "libs.mih"
+#include "libs.lp_rational.mih"
+#include "libs.rat.mih"
+#include "assoc_list.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "deconstruct.mih"
+#include "enum.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "univ.mih"
+#include "varset.mih"
+
+
+
+
+#line 68 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__varset__pti_varset_1__plain_term__type_ctor_info_generic_0;
+
+#line 71 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__list__pti_list_1__plain_libs__lp_rational__type_ctor_info_constraint_0;
+
+#line 74 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct1 libs__polyhedron__term__ti_var_1term__type_ctor_info_generic_0;
+
+#line 77 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__list__pti_list_1__plain_term__ti_var_1term__type_ctor_info_generic_0;
+
+#line 80 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__term__pti_var_1__plain_term__type_ctor_info_generic_0;
+
+#line 83 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct2 libs__polyhedron__pair__pti_pair_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_libs__rat__type_ctor_info_rat_0;
+
+#line 86 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct2 libs__polyhedron__tree234__pti_tree234_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_term__ti_var_1term__type_ctor_info_generic_0;
+
+#line 89 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__set_ordlist__pti_set_ordlist_1__plain_term__ti_var_1term__type_ctor_info_generic_0;
+
+#line 92 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct2 libs__polyhedron__tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0;
+
+#line 95 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__list__pti_list_1__plain_tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0;
+
+#line 98 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct2 libs__polyhedron__pair__ti_pair_2term__ti_var_1term__type_ctor_info_generic_0libs__rat__type_ctor_info_rat_0;
+
+#line 101 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__list__pti_list_1__plain_pair__ti_pair_2term__ti_var_1term__type_ctor_info_generic_0libs__rat__type_ctor_info_rat_0;
+
+#line 104 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct1 libs__polyhedron__varset__ti_varset_1term__type_ctor_info_generic_0;
+
+#line 107 "libs.polyhedron.c"
+static const MR_PseudoTypeInfo libs__polyhedron__libs__polyhedron__field_types_constr_info_0_0[2];
+
+#line 110 "libs.polyhedron.c"
+static const MR_ConstString libs__polyhedron__libs__polyhedron__field_names_constr_info_0_0[2];
+
+#line 113 "libs.polyhedron.c"
+static const MR_DuFunctorDesc libs__polyhedron__libs__polyhedron__du_functor_desc_constr_info_0_0;
+
+#line 116 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_stag_ordered_constr_info_0_0[1];
+
+#line 119 "libs.polyhedron.c"
+static const MR_DuPtagLayout libs__polyhedron__libs__polyhedron__du_ptag_ordered_constr_info_0[1];
+
+#line 122 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_name_ordered_constr_info_0[1];
+
+#line 125 "libs.polyhedron.c"
+static const MR_Integer libs__polyhedron__libs__polyhedron__functor_number_map_constr_info_0[1];
+
+#line 128 "libs.polyhedron.c"
+static const MR_PseudoTypeInfo libs__polyhedron__libs__polyhedron__field_types_convex_hull_result_0_0[1];
+
+#line 131 "libs.polyhedron.c"
+static const MR_DuFunctorDesc libs__polyhedron__libs__polyhedron__du_functor_desc_convex_hull_result_0_0;
+
+#line 134 "libs.polyhedron.c"
+static const MR_DuFunctorDesc libs__polyhedron__libs__polyhedron__du_functor_desc_convex_hull_result_0_1;
+
+#line 137 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_stag_ordered_convex_hull_result_0_0[1];
+
+#line 140 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_stag_ordered_convex_hull_result_0_1[1];
+
+#line 143 "libs.polyhedron.c"
+static const MR_DuPtagLayout libs__polyhedron__libs__polyhedron__du_ptag_ordered_convex_hull_result_0[2];
+
+#line 146 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_name_ordered_convex_hull_result_0[2];
+
+#line 149 "libs.polyhedron.c"
+static const MR_Integer libs__polyhedron__libs__polyhedron__functor_number_map_convex_hull_result_0[2];
+
+#line 152 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct1 libs__polyhedron__list__ti_list_1libs__polyhedron__type_ctor_info_polyhedron_0;
+
+#line 155 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct1 libs__polyhedron__list__ti_list_1tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0;
+
+#line 158 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct1 libs__polyhedron__list__ti_list_1term__ti_var_1term__type_ctor_info_generic_0;
+
+#line 161 "libs.polyhedron.c"
+static const MR_PseudoTypeInfo libs__polyhedron__libs__polyhedron__field_types_polyhedra_info_0_0[3];
+
+#line 164 "libs.polyhedron.c"
+static const MR_ConstString libs__polyhedron__libs__polyhedron__field_names_polyhedra_info_0_0[3];
+
+#line 167 "libs.polyhedron.c"
+static const MR_DuFunctorDesc libs__polyhedron__libs__polyhedron__du_functor_desc_polyhedra_info_0_0;
+
+#line 170 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_stag_ordered_polyhedra_info_0_0[1];
+
+#line 173 "libs.polyhedron.c"
+static const MR_DuPtagLayout libs__polyhedron__libs__polyhedron__du_ptag_ordered_polyhedra_info_0[1];
+
+#line 176 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_name_ordered_polyhedra_info_0[1];
+
+#line 179 "libs.polyhedron.c"
+static const MR_Integer libs__polyhedron__libs__polyhedron__functor_number_map_polyhedra_info_0[1];
+
+#line 182 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct1 libs__polyhedron__list__ti_list_1libs__lp_rational__type_ctor_info_constraint_0;
+
+#line 185 "libs.polyhedron.c"
+static const MR_PseudoTypeInfo libs__polyhedron__libs__polyhedron__field_types_polyhedron_0_0[1];
+
+#line 188 "libs.polyhedron.c"
+static const MR_DuFunctorDesc libs__polyhedron__libs__polyhedron__du_functor_desc_polyhedron_0_0;
+
+#line 191 "libs.polyhedron.c"
+static const MR_DuFunctorDesc libs__polyhedron__libs__polyhedron__du_functor_desc_polyhedron_0_1;
+
+#line 194 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_stag_ordered_polyhedron_0_0[1];
+
+#line 197 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_stag_ordered_polyhedron_0_1[1];
+
+#line 200 "libs.polyhedron.c"
+static const MR_DuPtagLayout libs__polyhedron__libs__polyhedron__du_ptag_ordered_polyhedron_0[2];
+
+#line 203 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_name_ordered_polyhedron_0[2];
+
+#line 206 "libs.polyhedron.c"
+static const MR_Integer libs__polyhedron__libs__polyhedron__functor_number_map_polyhedron_0[2];
+
+#line 209 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____constr_info_0_0_10001(
+#line 212 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 214 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2);
+
+#line 217 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____constr_info_0_0_10001(
+#line 220 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 222 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 224 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3);
+
+#line 227 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____convex_hull_result_0_0_10001(
+#line 230 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 232 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2);
+
+#line 235 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____convex_hull_result_0_0_10001(
+#line 238 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 240 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 242 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3);
+
+#line 245 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____polyhedra_0_0_10001(
+#line 248 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 250 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2);
+
+#line 253 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____polyhedra_0_0_10001(
+#line 256 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 258 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 260 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3);
+
+#line 263 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____polyhedra_info_0_0_10001(
+#line 266 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 268 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2);
+
+#line 271 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____polyhedra_info_0_0_10001(
+#line 274 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 276 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 278 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3);
+
+#line 281 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____polyhedron_0_0_10001(
+#line 284 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 286 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2);
+
+#line 289 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____polyhedron_0_0_10001(
+#line 292 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 294 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 296 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3);
+
+#line 299 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____sigma_var_0_0_10001(
+#line 302 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 304 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2);
+
+#line 307 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____sigma_var_0_0_10001(
+#line 310 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 312 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 314 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3);
+
+#line 317 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____sigma_vars_0_0_10001(
+#line 320 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 322 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2);
+
+#line 325 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____sigma_vars_0_0_10001(
+#line 328 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 330 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 332 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3);
+
+#line 335 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____var_map_0_0_10001(
+#line 338 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 340 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2);
+
+#line 343 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____var_map_0_0_10001(
+#line 346 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 348 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 350 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3);
+
+#line 353 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____var_maps_0_0_10001(
+#line 356 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 358 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2);
+
+#line 361 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____var_maps_0_0_10001(
+#line 364 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 366 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 368 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3);
+
+#line 361 "polyhedron.m"
+static MR_Word MR_CALL 
+libs__polyhedron__IntroducedFrom__func__convex_hull__361__1_2_f_0(
+#line 361 "polyhedron.m"
+  MR_Word libs__polyhedron__LambdaHeadVar__1_40,
+#line 361 "polyhedron.m"
+  MR_Word libs__polyhedron__LambdaHeadVar__2_41);
+
+#line 542 "polyhedron.m"
+static MR_Word MR_CALL 
+libs__polyhedron__IntroducedFrom__func__project_all__542__1_3_f_0(
+#line 542 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_5,
+#line 542 "polyhedron.m"
+  MR_Word libs__polyhedron__Locals_6,
+#line 542 "polyhedron.m"
+  MR_Word libs__polyhedron__LambdaHeadVar__1_15);
+
+#line 311 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____var_maps_0_0(
+#line 311 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 311 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 311 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3);
+
+#line 311 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____var_maps_0_0(
+#line 311 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 311 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2);
+
+#line 309 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____var_map_0_0(
+#line 309 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 309 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 309 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3);
+
+#line 309 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____var_map_0_0(
+#line 309 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 309 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2);
+
+#line 318 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____sigma_vars_0_0(
+#line 318 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 318 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 318 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3);
+
+#line 318 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____sigma_vars_0_0(
+#line 318 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 318 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2);
+
+#line 316 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____sigma_var_0_0(
+#line 316 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 316 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 316 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3);
+
+#line 316 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____sigma_var_0_0(
+#line 316 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 316 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2);
+
+#line 320 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____polyhedra_info_0_0(
+#line 320 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 320 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 320 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3);
+
+#line 320 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____polyhedra_info_0_0(
+#line 320 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 320 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2);
+
+#line 305 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____convex_hull_result_0_0(
+#line 305 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 305 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 305 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3);
+
+#line 305 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____convex_hull_result_0_0(
+#line 305 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 305 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2);
+
+#line 338 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____constr_info_0_0(
+#line 338 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 338 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 338 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3);
+
+#line 338 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____constr_info_0_0(
+#line 338 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 338 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2);
+
+#line 491 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron__make_last_terms_4_p_0(
+#line 491 "polyhedron.m"
+  MR_Word libs__polyhedron__OriginalVar_5,
+#line 491 "polyhedron.m"
+  MR_Word libs__polyhedron__VarMap_6,
+#line 491 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_Terms_0_9,
+#line 491 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_Terms_10);
+
+#line 487 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron__make_last_constraint_2_f_0_1(
+#line 487 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 487 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 487 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 487 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_3);
+
+#line 484 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron__make_last_constraint_2_f_0(
+#line 484 "polyhedron.m"
+  MR_Word libs__polyhedron__VarMaps_4,
+#line 484 "polyhedron.m"
+  MR_Word libs__polyhedron__OriginalVar_5,
+#line 484 "polyhedron.m"
+  MR_Word * libs__polyhedron__Constraint_6);
+
+#line 480 "polyhedron.m"
+static MR_Word MR_CALL 
+libs__polyhedron__get_keys_from_map_2_f_0(
+#line 480 "polyhedron.m"
+  MR_Word libs__polyhedron__Map_4,
+#line 480 "polyhedron.m"
+  MR_Word libs__polyhedron__KeySet_5);
+
+#line 471 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron__add_last_constraints_2_f_0_2(
+#line 471 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 471 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 471 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_2);
+
+#line 478 "polyhedron.m"
+static MR_Box MR_CALL 
+libs__polyhedron__add_last_constraints_2_f_0_1(
+#line 478 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 478 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 478 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_2);
+
+#line 467 "polyhedron.m"
+static MR_Word MR_CALL 
+libs__polyhedron__add_last_constraints_2_f_0(
+#line 467 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_Constraints_0_8,
+#line 467 "polyhedron.m"
+  MR_Word libs__polyhedron__VarMaps_5);
+
+#line 434 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__change_var_6_p_0(
+#line 434 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_Term_0_13,
+#line 434 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_Term_14,
+#line 434 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_VarMap_0_15,
+#line 434 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_VarMap_16,
+#line 434 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_Varset_0_17,
+#line 434 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_Varset_18);
+
+#line 425 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__transform_constraint_7_p_0_1(
+#line 425 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 425 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 425 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_2,
+#line 425 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_3,
+#line 425 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_4,
+#line 425 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_5,
+#line 425 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_6);
+
+#line 419 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__transform_constraint_7_p_0(
+#line 419 "polyhedron.m"
+  MR_Word libs__polyhedron__Sigma_8,
+#line 419 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_Constraint_0_15,
+#line 419 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_Constraint_16,
+#line 419 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_VarMap_0_17,
+#line 419 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_VarMap_18,
+#line 419 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_Varset_0_19,
+#line 419 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_Varset_20);
+
+#line 407 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__transform_polyhedron_5_p_0_1(
+#line 407 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 407 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 407 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_2,
+#line 407 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_3,
+#line 407 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_4,
+#line 407 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_5,
+#line 407 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_6);
+
+#line 400 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__transform_polyhedron_5_p_0(
+#line 400 "polyhedron.m"
+  MR_Word libs__polyhedron__Poly_6,
+#line 400 "polyhedron.m"
+  MR_Word libs__polyhedron__Polys0_7,
+#line 400 "polyhedron.m"
+  MR_Word * libs__polyhedron__Polys_8,
+#line 400 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_PolyInfo_0_16,
+#line 400 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_PolyInfo_17);
+
+#line 361 "polyhedron.m"
+static MR_Box MR_CALL 
+libs__polyhedron__convex_hull_4_p_0_4(
+#line 361 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 361 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 361 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_2);
+
+#line 461 "polyhedron.m"
+static MR_Box MR_CALL 
+libs__polyhedron__convex_hull_4_p_0_3(
+#line 461 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 461 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1);
+
+#line 457 "polyhedron.m"
+static MR_Box MR_CALL 
+libs__polyhedron__convex_hull_4_p_0_2(
+#line 457 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 457 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1);
+
+#line 398 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__convex_hull_4_p_0_1(
+#line 398 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 398 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 398 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 398 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_3,
+#line 398 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_4,
+#line 398 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_5);
+
+#line 347 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__convex_hull_4_p_0(
+#line 347 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 347 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__2_2,
+#line 347 "polyhedron.m"
+  MR_Word libs__polyhedron__MaybeMaxSize_3,
+#line 347 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset0_4);
+
+#line 526 "polyhedron.m"
+static MR_Box MR_CALL 
+libs__polyhedron__project_all_3_f_0_1(
+#line 526 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 526 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1);
+
+#line 518 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron__widen_3_f_0_1(
+#line 518 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 518 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1);
+
+#line 235 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron__is_universe_1_p_0_1(
+#line 235 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 235 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1);
+
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_1[8][2];
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_2[9][3];
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_3[1][1];
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_4[1][4];
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_5[4][6];
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_6[2][7];
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_7[1][8];
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_8[2][5];
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_9[1][10];
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_10[1][9];
+
+
+
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_1[8][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_generic_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&libs__polyhedron_scalar_common_1[1]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__varset__varset__type_ctor_info_varset_1)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_generic_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&libs__polyhedron_scalar_common_1[1]))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&libs__polyhedron_scalar_common_2[1]))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedron_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&libs__polyhedron_scalar_common_2[0]))
+  },
+};
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_2[9][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&libs__polyhedron_scalar_common_1[1])),
+    ((MR_Box) (&libs__polyhedron_scalar_common_1[1]))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&libs__polyhedron_scalar_common_1[1])),
+    ((MR_Box) (&libs__rat__libs__rat__type_ctor_info_rat_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&libs__polyhedron_scalar_common_4[0])),
+    ((MR_Box) (libs__polyhedron__is_universe_1_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&libs__polyhedron_scalar_common_7[0])),
+    ((MR_Box) (libs__polyhedron__convex_hull_4_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&libs__polyhedron_scalar_common_8[0])),
+    ((MR_Box) (libs__polyhedron__convex_hull_4_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&libs__polyhedron_scalar_common_8[1])),
+    ((MR_Box) (libs__polyhedron__convex_hull_4_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&libs__polyhedron_scalar_common_5[1])),
+    ((MR_Box) (libs__polyhedron__convex_hull_4_p_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&libs__polyhedron_scalar_common_10[0])),
+    ((MR_Box) (libs__polyhedron__transform_constraint_7_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&libs__polyhedron_scalar_common_5[2])),
+    ((MR_Box) (libs__polyhedron__add_last_constraints_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_3[1][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_4[1][4] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0))
+  },
+};
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_5[4][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&libs__polyhedron__varset__pti_varset_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__list__pti_list_1__plain_libs__lp_rational__type_ctor_info_constraint_0)),
+    ((MR_Box) (&libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&libs__polyhedron__tree234__pti_tree234_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_term__ti_var_1term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__list__pti_list_1__plain_term__ti_var_1term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__list__pti_list_1__plain_term__ti_var_1term__type_ctor_info_generic_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&libs__polyhedron__tree234__pti_tree234_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_term__ti_var_1term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__set_ordlist__pti_set_ordlist_1__plain_term__ti_var_1term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__set_ordlist__pti_set_ordlist_1__plain_term__ti_var_1term__type_ctor_info_generic_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&libs__polyhedron__list__pti_list_1__plain_tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__term__pti_var_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0))
+  },
+};
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_6[2][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&libs__polyhedron__varset__pti_varset_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__list__pti_list_1__plain_term__ti_var_1term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedron_0)),
+    ((MR_Box) (&libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedron_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&libs__polyhedron__term__pti_var_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__tree234__pti_tree234_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_term__ti_var_1term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__list__pti_list_1__plain_pair__ti_pair_2term__ti_var_1term__type_ctor_info_generic_0libs__rat__type_ctor_info_rat_0)),
+    ((MR_Box) (&libs__polyhedron__list__pti_list_1__plain_pair__ti_pair_2term__ti_var_1term__type_ctor_info_generic_0libs__rat__type_ctor_info_rat_0))
+  },
+};
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_7[1][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&libs__polyhedron__list__pti_list_1__plain_libs__lp_rational__type_ctor_info_constraint_0)),
+    ((MR_Box) (&libs__polyhedron__list__pti_list_1__plain_libs__lp_rational__type_ctor_info_constraint_0)),
+    ((MR_Box) (&libs__polyhedron__list__pti_list_1__plain_libs__lp_rational__type_ctor_info_constraint_0)),
+    ((MR_Box) (&libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedra_info_0)),
+    ((MR_Box) (&libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedra_info_0))
+  },
+};
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_8[2][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&libs__polyhedron__term__pti_var_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&libs__polyhedron__term__pti_var_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__pair__pti_pair_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_libs__rat__type_ctor_info_rat_0))
+  },
+};
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_9[1][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&libs__polyhedron__term__pti_var_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0)),
+    ((MR_Box) (&libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0)),
+    ((MR_Box) (&libs__polyhedron__tree234__pti_tree234_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_term__ti_var_1term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__tree234__pti_tree234_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_term__ti_var_1term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__varset__pti_varset_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__varset__pti_varset_1__plain_term__type_ctor_info_generic_0))
+  },
+};
+
+static /* final */ const MR_Box libs__polyhedron_scalar_common_10[1][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&libs__polyhedron__pair__pti_pair_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_libs__rat__type_ctor_info_rat_0)),
+    ((MR_Box) (&libs__polyhedron__pair__pti_pair_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_libs__rat__type_ctor_info_rat_0)),
+    ((MR_Box) (&libs__polyhedron__tree234__pti_tree234_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_term__ti_var_1term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__tree234__pti_tree234_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_term__ti_var_1term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__varset__pti_varset_1__plain_term__type_ctor_info_generic_0)),
+    ((MR_Box) (&libs__polyhedron__varset__pti_varset_1__plain_term__type_ctor_info_generic_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+
+
+
+#line 1022 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__varset__pti_varset_1__plain_term__type_ctor_info_generic_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__term__term__type_ctor_info_generic_0
+  }
+};
+
+#line 1030 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__list__pti_list_1__plain_libs__lp_rational__type_ctor_info_constraint_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0
+  }
+};
+
+#line 1038 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct1 libs__polyhedron__term__ti_var_1term__type_ctor_info_generic_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &mercury__term__term__type_ctor_info_generic_0
+  }
+};
+
+#line 1046 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__list__pti_list_1__plain_term__ti_var_1term__type_ctor_info_generic_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &libs__polyhedron__term__ti_var_1term__type_ctor_info_generic_0
+  }
+};
+
+#line 1054 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__term__pti_var_1__plain_term__type_ctor_info_generic_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__term__term__type_ctor_info_generic_0
+  }
+};
+
+#line 1062 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct2 libs__polyhedron__pair__pti_pair_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_libs__rat__type_ctor_info_rat_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &libs__polyhedron__term__ti_var_1term__type_ctor_info_generic_0,
+    (MR_PseudoTypeInfo) &libs__rat__libs__rat__type_ctor_info_rat_0
+  }
+};
+
+#line 1071 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct2 libs__polyhedron__tree234__pti_tree234_2__plain_term__ti_var_1term__type_ctor_info_generic_0__plain_term__ti_var_1term__type_ctor_info_generic_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &libs__polyhedron__term__ti_var_1term__type_ctor_info_generic_0,
+    (MR_PseudoTypeInfo) &libs__polyhedron__term__ti_var_1term__type_ctor_info_generic_0
+  }
+};
+
+#line 1080 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__set_ordlist__pti_set_ordlist_1__plain_term__ti_var_1term__type_ctor_info_generic_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) &libs__polyhedron__term__ti_var_1term__type_ctor_info_generic_0
+  }
+};
+
+#line 1088 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct2 libs__polyhedron__tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &libs__polyhedron__term__ti_var_1term__type_ctor_info_generic_0,
+    (MR_TypeInfo) &libs__polyhedron__term__ti_var_1term__type_ctor_info_generic_0
+  }
+};
+
+#line 1097 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__list__pti_list_1__plain_tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &libs__polyhedron__tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0
+  }
+};
+
+#line 1105 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct2 libs__polyhedron__pair__ti_pair_2term__ti_var_1term__type_ctor_info_generic_0libs__rat__type_ctor_info_rat_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &libs__polyhedron__term__ti_var_1term__type_ctor_info_generic_0,
+    (MR_TypeInfo) &libs__rat__libs__rat__type_ctor_info_rat_0
+  }
+};
+
+#line 1114 "libs.polyhedron.c"
+static const MR_FA_PseudoTypeInfo_Struct1 libs__polyhedron__list__pti_list_1__plain_pair__ti_pair_2term__ti_var_1term__type_ctor_info_generic_0libs__rat__type_ctor_info_rat_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &libs__polyhedron__pair__ti_pair_2term__ti_var_1term__type_ctor_info_generic_0libs__rat__type_ctor_info_rat_0
+  }
+};
+
+#line 1122 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct1 libs__polyhedron__varset__ti_varset_1term__type_ctor_info_generic_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_TypeInfo) &mercury__term__term__type_ctor_info_generic_0
+  }
+};
+
+#line 1130 "libs.polyhedron.c"
+static const MR_PseudoTypeInfo libs__polyhedron__libs__polyhedron__field_types_constr_info_0_0[2] = {
+  (MR_PseudoTypeInfo) &libs__polyhedron__tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0,
+  (MR_PseudoTypeInfo) &libs__polyhedron__varset__ti_varset_1term__type_ctor_info_generic_0
+};
+
+#line 1136 "libs.polyhedron.c"
+static const MR_ConstString libs__polyhedron__libs__polyhedron__field_names_constr_info_0_0[2] = {
+  (MR_String) "var_map",
+  (MR_String) "constr_varset"
+};
+
+#line 1142 "libs.polyhedron.c"
+static const MR_DuFunctorDesc libs__polyhedron__libs__polyhedron__du_functor_desc_constr_info_0_0 = {
+  (MR_String) "constr_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  libs__polyhedron__libs__polyhedron__field_types_constr_info_0_0,
+  libs__polyhedron__libs__polyhedron__field_names_constr_info_0_0,
+  NULL,
+  NULL
+};
+
+#line 1157 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_stag_ordered_constr_info_0_0[1] = {
+  &libs__polyhedron__libs__polyhedron__du_functor_desc_constr_info_0_0
+};
+
+#line 1162 "libs.polyhedron.c"
+static const MR_DuPtagLayout libs__polyhedron__libs__polyhedron__du_ptag_ordered_constr_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    libs__polyhedron__libs__polyhedron__du_stag_ordered_constr_info_0_0
+  }
+};
+
+#line 1171 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_name_ordered_constr_info_0[1] = {
+  &libs__polyhedron__libs__polyhedron__du_functor_desc_constr_info_0_0
+};
+
+#line 1176 "libs.polyhedron.c"
+static const MR_Integer libs__polyhedron__libs__polyhedron__functor_number_map_constr_info_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1181 "libs.polyhedron.c"
+const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_constr_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (libs__polyhedron____Unify____constr_info_0_0_10001)),
+  ((MR_Box) (libs__polyhedron____Compare____constr_info_0_0_10001)),
+  (MR_String) "libs.polyhedron",
+  (MR_String) "constr_info",
+  {     libs__polyhedron__libs__polyhedron__du_name_ordered_constr_info_0 },
+  {     libs__polyhedron__libs__polyhedron__du_ptag_ordered_constr_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  libs__polyhedron__libs__polyhedron__functor_number_map_constr_info_0
+};
+
+#line 1198 "libs.polyhedron.c"
+static const MR_PseudoTypeInfo libs__polyhedron__libs__polyhedron__field_types_convex_hull_result_0_0[1] = {
+  (MR_PseudoTypeInfo) &libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedron_0
+};
+
+#line 1203 "libs.polyhedron.c"
+static const MR_DuFunctorDesc libs__polyhedron__libs__polyhedron__du_functor_desc_convex_hull_result_0_0 = {
+  (MR_String) "ok",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  libs__polyhedron__libs__polyhedron__field_types_convex_hull_result_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1218 "libs.polyhedron.c"
+static const MR_DuFunctorDesc libs__polyhedron__libs__polyhedron__du_functor_desc_convex_hull_result_0_1 = {
+  (MR_String) "aborted",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1233 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_stag_ordered_convex_hull_result_0_0[1] = {
+  &libs__polyhedron__libs__polyhedron__du_functor_desc_convex_hull_result_0_1
+};
+
+#line 1238 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_stag_ordered_convex_hull_result_0_1[1] = {
+  &libs__polyhedron__libs__polyhedron__du_functor_desc_convex_hull_result_0_0
+};
+
+#line 1243 "libs.polyhedron.c"
+static const MR_DuPtagLayout libs__polyhedron__libs__polyhedron__du_ptag_ordered_convex_hull_result_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    libs__polyhedron__libs__polyhedron__du_stag_ordered_convex_hull_result_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    libs__polyhedron__libs__polyhedron__du_stag_ordered_convex_hull_result_0_1
+  }
+};
+
+#line 1257 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_name_ordered_convex_hull_result_0[2] = {
+  &libs__polyhedron__libs__polyhedron__du_functor_desc_convex_hull_result_0_1,
+  &libs__polyhedron__libs__polyhedron__du_functor_desc_convex_hull_result_0_0
+};
+
+#line 1263 "libs.polyhedron.c"
+static const MR_Integer libs__polyhedron__libs__polyhedron__functor_number_map_convex_hull_result_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+#line 1269 "libs.polyhedron.c"
+const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_convex_hull_result_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (libs__polyhedron____Unify____convex_hull_result_0_0_10001)),
+  ((MR_Box) (libs__polyhedron____Compare____convex_hull_result_0_0_10001)),
+  (MR_String) "libs.polyhedron",
+  (MR_String) "convex_hull_result",
+  {     libs__polyhedron__libs__polyhedron__du_name_ordered_convex_hull_result_0 },
+  {     libs__polyhedron__libs__polyhedron__du_ptag_ordered_convex_hull_result_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  libs__polyhedron__libs__polyhedron__functor_number_map_convex_hull_result_0
+};
+
+#line 1286 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct1 libs__polyhedron__list__ti_list_1libs__polyhedron__type_ctor_info_polyhedron_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedron_0
+  }
+};
+
+#line 1294 "libs.polyhedron.c"
+const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedra_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (libs__polyhedron____Unify____polyhedra_0_0_10001)),
+  ((MR_Box) (libs__polyhedron____Compare____polyhedra_0_0_10001)),
+  (MR_String) "libs.polyhedron",
+  (MR_String) "polyhedra",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &libs__polyhedron__list__ti_list_1libs__polyhedron__type_ctor_info_polyhedron_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1311 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct1 libs__polyhedron__list__ti_list_1tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &libs__polyhedron__tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0
+  }
+};
+
+#line 1319 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct1 libs__polyhedron__list__ti_list_1term__ti_var_1term__type_ctor_info_generic_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &libs__polyhedron__term__ti_var_1term__type_ctor_info_generic_0
+  }
+};
+
+#line 1327 "libs.polyhedron.c"
+static const MR_PseudoTypeInfo libs__polyhedron__libs__polyhedron__field_types_polyhedra_info_0_0[3] = {
+  (MR_PseudoTypeInfo) &libs__polyhedron__list__ti_list_1tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0,
+  (MR_PseudoTypeInfo) &libs__polyhedron__list__ti_list_1term__ti_var_1term__type_ctor_info_generic_0,
+  (MR_PseudoTypeInfo) &libs__polyhedron__varset__ti_varset_1term__type_ctor_info_generic_0
+};
+
+#line 1334 "libs.polyhedron.c"
+static const MR_ConstString libs__polyhedron__libs__polyhedron__field_names_polyhedra_info_0_0[3] = {
+  (MR_String) "var_maps",
+  (MR_String) "sigmas",
+  (MR_String) "poly_varset"
+};
+
+#line 1341 "libs.polyhedron.c"
+static const MR_DuFunctorDesc libs__polyhedron__libs__polyhedron__du_functor_desc_polyhedra_info_0_0 = {
+  (MR_String) "polyhedra_info",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  libs__polyhedron__libs__polyhedron__field_types_polyhedra_info_0_0,
+  libs__polyhedron__libs__polyhedron__field_names_polyhedra_info_0_0,
+  NULL,
+  NULL
+};
+
+#line 1356 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_stag_ordered_polyhedra_info_0_0[1] = {
+  &libs__polyhedron__libs__polyhedron__du_functor_desc_polyhedra_info_0_0
+};
+
+#line 1361 "libs.polyhedron.c"
+static const MR_DuPtagLayout libs__polyhedron__libs__polyhedron__du_ptag_ordered_polyhedra_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    libs__polyhedron__libs__polyhedron__du_stag_ordered_polyhedra_info_0_0
+  }
+};
+
+#line 1370 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_name_ordered_polyhedra_info_0[1] = {
+  &libs__polyhedron__libs__polyhedron__du_functor_desc_polyhedra_info_0_0
+};
+
+#line 1375 "libs.polyhedron.c"
+static const MR_Integer libs__polyhedron__libs__polyhedron__functor_number_map_polyhedra_info_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1380 "libs.polyhedron.c"
+const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedra_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (libs__polyhedron____Unify____polyhedra_info_0_0_10001)),
+  ((MR_Box) (libs__polyhedron____Compare____polyhedra_info_0_0_10001)),
+  (MR_String) "libs.polyhedron",
+  (MR_String) "polyhedra_info",
+  {     libs__polyhedron__libs__polyhedron__du_name_ordered_polyhedra_info_0 },
+  {     libs__polyhedron__libs__polyhedron__du_ptag_ordered_polyhedra_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  libs__polyhedron__libs__polyhedron__functor_number_map_polyhedra_info_0
+};
+
+#line 1397 "libs.polyhedron.c"
+static const MR_FA_TypeInfo_Struct1 libs__polyhedron__list__ti_list_1libs__lp_rational__type_ctor_info_constraint_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0
+  }
+};
+
+#line 1405 "libs.polyhedron.c"
+static const MR_PseudoTypeInfo libs__polyhedron__libs__polyhedron__field_types_polyhedron_0_0[1] = {
+  (MR_PseudoTypeInfo) &libs__polyhedron__list__ti_list_1libs__lp_rational__type_ctor_info_constraint_0
+};
+
+#line 1410 "libs.polyhedron.c"
+static const MR_DuFunctorDesc libs__polyhedron__libs__polyhedron__du_functor_desc_polyhedron_0_0 = {
+  (MR_String) "eqns",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  libs__polyhedron__libs__polyhedron__field_types_polyhedron_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1425 "libs.polyhedron.c"
+static const MR_DuFunctorDesc libs__polyhedron__libs__polyhedron__du_functor_desc_polyhedron_0_1 = {
+  (MR_String) "empty_poly",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1440 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_stag_ordered_polyhedron_0_0[1] = {
+  &libs__polyhedron__libs__polyhedron__du_functor_desc_polyhedron_0_1
+};
+
+#line 1445 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_stag_ordered_polyhedron_0_1[1] = {
+  &libs__polyhedron__libs__polyhedron__du_functor_desc_polyhedron_0_0
+};
+
+#line 1450 "libs.polyhedron.c"
+static const MR_DuPtagLayout libs__polyhedron__libs__polyhedron__du_ptag_ordered_polyhedron_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    libs__polyhedron__libs__polyhedron__du_stag_ordered_polyhedron_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    libs__polyhedron__libs__polyhedron__du_stag_ordered_polyhedron_0_1
+  }
+};
+
+#line 1464 "libs.polyhedron.c"
+static const MR_DuFunctorDescPtr libs__polyhedron__libs__polyhedron__du_name_ordered_polyhedron_0[2] = {
+  &libs__polyhedron__libs__polyhedron__du_functor_desc_polyhedron_0_1,
+  &libs__polyhedron__libs__polyhedron__du_functor_desc_polyhedron_0_0
+};
+
+#line 1470 "libs.polyhedron.c"
+static const MR_Integer libs__polyhedron__libs__polyhedron__functor_number_map_polyhedron_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+#line 1476 "libs.polyhedron.c"
+const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedron_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (libs__polyhedron____Unify____polyhedron_0_0_10001)),
+  ((MR_Box) (libs__polyhedron____Compare____polyhedron_0_0_10001)),
+  (MR_String) "libs.polyhedron",
+  (MR_String) "polyhedron",
+  {     libs__polyhedron__libs__polyhedron__du_name_ordered_polyhedron_0 },
+  {     libs__polyhedron__libs__polyhedron__du_ptag_ordered_polyhedron_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  libs__polyhedron__libs__polyhedron__functor_number_map_polyhedron_0
+};
+
+#line 1493 "libs.polyhedron.c"
+const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_sigma_var_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (libs__polyhedron____Unify____sigma_var_0_0_10001)),
+  ((MR_Box) (libs__polyhedron____Compare____sigma_var_0_0_10001)),
+  (MR_String) "libs.polyhedron",
+  (MR_String) "sigma_var",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &libs__polyhedron__term__ti_var_1term__type_ctor_info_generic_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1510 "libs.polyhedron.c"
+const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_sigma_vars_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (libs__polyhedron____Unify____sigma_vars_0_0_10001)),
+  ((MR_Box) (libs__polyhedron____Compare____sigma_vars_0_0_10001)),
+  (MR_String) "libs.polyhedron",
+  (MR_String) "sigma_vars",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &libs__polyhedron__list__ti_list_1term__ti_var_1term__type_ctor_info_generic_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1527 "libs.polyhedron.c"
+const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_var_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (libs__polyhedron____Unify____var_map_0_0_10001)),
+  ((MR_Box) (libs__polyhedron____Compare____var_map_0_0_10001)),
+  (MR_String) "libs.polyhedron",
+  (MR_String) "var_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &libs__polyhedron__tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1544 "libs.polyhedron.c"
+const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_var_maps_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (libs__polyhedron____Unify____var_maps_0_0_10001)),
+  ((MR_Box) (libs__polyhedron____Compare____var_maps_0_0_10001)),
+  (MR_String) "libs.polyhedron",
+  (MR_String) "var_maps",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &libs__polyhedron__list__ti_list_1tree234__ti_tree234_2term__ti_var_1term__type_ctor_info_generic_0term__ti_var_1term__type_ctor_info_generic_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1561 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____constr_info_0_0_10001(
+#line 1564 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 1566 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2)
+#line 1568 "libs.polyhedron.c"
+{
+#line 1570 "libs.polyhedron.c"
+  {
+#line 1572 "libs.polyhedron.c"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 1575 "libs.polyhedron.c"
+    {
+#line 1577 "libs.polyhedron.c"
+      libs__polyhedron__succeeded = libs__polyhedron____Unify____constr_info_0_0(((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2));
+    }
+#line 1580 "libs.polyhedron.c"
+    return libs__polyhedron__succeeded;
+#line 1582 "libs.polyhedron.c"
+  }
+#line 1584 "libs.polyhedron.c"
+}
+
+#line 1587 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____constr_info_0_0_10001(
+#line 1590 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 1592 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 1594 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3)
+#line 1596 "libs.polyhedron.c"
+{
+#line 1598 "libs.polyhedron.c"
+  {
+#line 1600 "libs.polyhedron.c"
+    MR_Word libs__polyhedron__conv0_HeadVar__1_1;
+
+#line 1603 "libs.polyhedron.c"
+    {
+#line 1605 "libs.polyhedron.c"
+      libs__polyhedron____Compare____constr_info_0_0(&libs__polyhedron__conv0_HeadVar__1_1, ((MR_Word) libs__polyhedron__wrapper_arg_2), ((MR_Word) libs__polyhedron__wrapper_arg_3));
+    }
+#line 1608 "libs.polyhedron.c"
+    *libs__polyhedron__wrapper_arg_1 = ((MR_Box) (libs__polyhedron__conv0_HeadVar__1_1));
+#line 1610 "libs.polyhedron.c"
+  }
+#line 1612 "libs.polyhedron.c"
+}
+
+#line 1615 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____convex_hull_result_0_0_10001(
+#line 1618 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 1620 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2)
+#line 1622 "libs.polyhedron.c"
+{
+#line 1624 "libs.polyhedron.c"
+  {
+#line 1626 "libs.polyhedron.c"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 1629 "libs.polyhedron.c"
+    {
+#line 1631 "libs.polyhedron.c"
+      libs__polyhedron__succeeded = libs__polyhedron____Unify____convex_hull_result_0_0(((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2));
+    }
+#line 1634 "libs.polyhedron.c"
+    return libs__polyhedron__succeeded;
+#line 1636 "libs.polyhedron.c"
+  }
+#line 1638 "libs.polyhedron.c"
+}
+
+#line 1641 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____convex_hull_result_0_0_10001(
+#line 1644 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 1646 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 1648 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3)
+#line 1650 "libs.polyhedron.c"
+{
+#line 1652 "libs.polyhedron.c"
+  {
+#line 1654 "libs.polyhedron.c"
+    MR_Word libs__polyhedron__conv0_HeadVar__1_1;
+
+#line 1657 "libs.polyhedron.c"
+    {
+#line 1659 "libs.polyhedron.c"
+      libs__polyhedron____Compare____convex_hull_result_0_0(&libs__polyhedron__conv0_HeadVar__1_1, ((MR_Word) libs__polyhedron__wrapper_arg_2), ((MR_Word) libs__polyhedron__wrapper_arg_3));
+    }
+#line 1662 "libs.polyhedron.c"
+    *libs__polyhedron__wrapper_arg_1 = ((MR_Box) (libs__polyhedron__conv0_HeadVar__1_1));
+#line 1664 "libs.polyhedron.c"
+  }
+#line 1666 "libs.polyhedron.c"
+}
+
+#line 1669 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____polyhedra_0_0_10001(
+#line 1672 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 1674 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2)
+#line 1676 "libs.polyhedron.c"
+{
+#line 1678 "libs.polyhedron.c"
+  {
+#line 1680 "libs.polyhedron.c"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 1683 "libs.polyhedron.c"
+    {
+#line 1685 "libs.polyhedron.c"
+      libs__polyhedron__succeeded = libs__polyhedron____Unify____polyhedra_0_0(((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2));
+    }
+#line 1688 "libs.polyhedron.c"
+    return libs__polyhedron__succeeded;
+#line 1690 "libs.polyhedron.c"
+  }
+#line 1692 "libs.polyhedron.c"
+}
+
+#line 1695 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____polyhedra_0_0_10001(
+#line 1698 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 1700 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 1702 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3)
+#line 1704 "libs.polyhedron.c"
+{
+#line 1706 "libs.polyhedron.c"
+  {
+#line 1708 "libs.polyhedron.c"
+    MR_Word libs__polyhedron__conv0_HeadVar__1_1;
+
+#line 1711 "libs.polyhedron.c"
+    {
+#line 1713 "libs.polyhedron.c"
+      libs__polyhedron____Compare____polyhedra_0_0(&libs__polyhedron__conv0_HeadVar__1_1, ((MR_Word) libs__polyhedron__wrapper_arg_2), ((MR_Word) libs__polyhedron__wrapper_arg_3));
+    }
+#line 1716 "libs.polyhedron.c"
+    *libs__polyhedron__wrapper_arg_1 = ((MR_Box) (libs__polyhedron__conv0_HeadVar__1_1));
+#line 1718 "libs.polyhedron.c"
+  }
+#line 1720 "libs.polyhedron.c"
+}
+
+#line 1723 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____polyhedra_info_0_0_10001(
+#line 1726 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 1728 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2)
+#line 1730 "libs.polyhedron.c"
+{
+#line 1732 "libs.polyhedron.c"
+  {
+#line 1734 "libs.polyhedron.c"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 1737 "libs.polyhedron.c"
+    {
+#line 1739 "libs.polyhedron.c"
+      libs__polyhedron__succeeded = libs__polyhedron____Unify____polyhedra_info_0_0(((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2));
+    }
+#line 1742 "libs.polyhedron.c"
+    return libs__polyhedron__succeeded;
+#line 1744 "libs.polyhedron.c"
+  }
+#line 1746 "libs.polyhedron.c"
+}
+
+#line 1749 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____polyhedra_info_0_0_10001(
+#line 1752 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 1754 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 1756 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3)
+#line 1758 "libs.polyhedron.c"
+{
+#line 1760 "libs.polyhedron.c"
+  {
+#line 1762 "libs.polyhedron.c"
+    MR_Word libs__polyhedron__conv0_HeadVar__1_1;
+
+#line 1765 "libs.polyhedron.c"
+    {
+#line 1767 "libs.polyhedron.c"
+      libs__polyhedron____Compare____polyhedra_info_0_0(&libs__polyhedron__conv0_HeadVar__1_1, ((MR_Word) libs__polyhedron__wrapper_arg_2), ((MR_Word) libs__polyhedron__wrapper_arg_3));
+    }
+#line 1770 "libs.polyhedron.c"
+    *libs__polyhedron__wrapper_arg_1 = ((MR_Box) (libs__polyhedron__conv0_HeadVar__1_1));
+#line 1772 "libs.polyhedron.c"
+  }
+#line 1774 "libs.polyhedron.c"
+}
+
+#line 1777 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____polyhedron_0_0_10001(
+#line 1780 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 1782 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2)
+#line 1784 "libs.polyhedron.c"
+{
+#line 1786 "libs.polyhedron.c"
+  {
+#line 1788 "libs.polyhedron.c"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 1791 "libs.polyhedron.c"
+    {
+#line 1793 "libs.polyhedron.c"
+      libs__polyhedron__succeeded = libs__polyhedron____Unify____polyhedron_0_0(((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2));
+    }
+#line 1796 "libs.polyhedron.c"
+    return libs__polyhedron__succeeded;
+#line 1798 "libs.polyhedron.c"
+  }
+#line 1800 "libs.polyhedron.c"
+}
+
+#line 1803 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____polyhedron_0_0_10001(
+#line 1806 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 1808 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 1810 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3)
+#line 1812 "libs.polyhedron.c"
+{
+#line 1814 "libs.polyhedron.c"
+  {
+#line 1816 "libs.polyhedron.c"
+    MR_Word libs__polyhedron__conv0_HeadVar__1_1;
+
+#line 1819 "libs.polyhedron.c"
+    {
+#line 1821 "libs.polyhedron.c"
+      libs__polyhedron____Compare____polyhedron_0_0(&libs__polyhedron__conv0_HeadVar__1_1, ((MR_Word) libs__polyhedron__wrapper_arg_2), ((MR_Word) libs__polyhedron__wrapper_arg_3));
+    }
+#line 1824 "libs.polyhedron.c"
+    *libs__polyhedron__wrapper_arg_1 = ((MR_Box) (libs__polyhedron__conv0_HeadVar__1_1));
+#line 1826 "libs.polyhedron.c"
+  }
+#line 1828 "libs.polyhedron.c"
+}
+
+#line 1831 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____sigma_var_0_0_10001(
+#line 1834 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 1836 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2)
+#line 1838 "libs.polyhedron.c"
+{
+#line 1840 "libs.polyhedron.c"
+  {
+#line 1842 "libs.polyhedron.c"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 1845 "libs.polyhedron.c"
+    {
+#line 1847 "libs.polyhedron.c"
+      libs__polyhedron__succeeded = libs__polyhedron____Unify____sigma_var_0_0(((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2));
+    }
+#line 1850 "libs.polyhedron.c"
+    return libs__polyhedron__succeeded;
+#line 1852 "libs.polyhedron.c"
+  }
+#line 1854 "libs.polyhedron.c"
+}
+
+#line 1857 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____sigma_var_0_0_10001(
+#line 1860 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 1862 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 1864 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3)
+#line 1866 "libs.polyhedron.c"
+{
+#line 1868 "libs.polyhedron.c"
+  {
+#line 1870 "libs.polyhedron.c"
+    MR_Word libs__polyhedron__conv0_HeadVar__1_1;
+
+#line 1873 "libs.polyhedron.c"
+    {
+#line 1875 "libs.polyhedron.c"
+      libs__polyhedron____Compare____sigma_var_0_0(&libs__polyhedron__conv0_HeadVar__1_1, ((MR_Word) libs__polyhedron__wrapper_arg_2), ((MR_Word) libs__polyhedron__wrapper_arg_3));
+    }
+#line 1878 "libs.polyhedron.c"
+    *libs__polyhedron__wrapper_arg_1 = ((MR_Box) (libs__polyhedron__conv0_HeadVar__1_1));
+#line 1880 "libs.polyhedron.c"
+  }
+#line 1882 "libs.polyhedron.c"
+}
+
+#line 1885 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____sigma_vars_0_0_10001(
+#line 1888 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 1890 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2)
+#line 1892 "libs.polyhedron.c"
+{
+#line 1894 "libs.polyhedron.c"
+  {
+#line 1896 "libs.polyhedron.c"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 1899 "libs.polyhedron.c"
+    {
+#line 1901 "libs.polyhedron.c"
+      libs__polyhedron__succeeded = libs__polyhedron____Unify____sigma_vars_0_0(((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2));
+    }
+#line 1904 "libs.polyhedron.c"
+    return libs__polyhedron__succeeded;
+#line 1906 "libs.polyhedron.c"
+  }
+#line 1908 "libs.polyhedron.c"
+}
+
+#line 1911 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____sigma_vars_0_0_10001(
+#line 1914 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 1916 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 1918 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3)
+#line 1920 "libs.polyhedron.c"
+{
+#line 1922 "libs.polyhedron.c"
+  {
+#line 1924 "libs.polyhedron.c"
+    MR_Word libs__polyhedron__conv0_HeadVar__1_1;
+
+#line 1927 "libs.polyhedron.c"
+    {
+#line 1929 "libs.polyhedron.c"
+      libs__polyhedron____Compare____sigma_vars_0_0(&libs__polyhedron__conv0_HeadVar__1_1, ((MR_Word) libs__polyhedron__wrapper_arg_2), ((MR_Word) libs__polyhedron__wrapper_arg_3));
+    }
+#line 1932 "libs.polyhedron.c"
+    *libs__polyhedron__wrapper_arg_1 = ((MR_Box) (libs__polyhedron__conv0_HeadVar__1_1));
+#line 1934 "libs.polyhedron.c"
+  }
+#line 1936 "libs.polyhedron.c"
+}
+
+#line 1939 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____var_map_0_0_10001(
+#line 1942 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 1944 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2)
+#line 1946 "libs.polyhedron.c"
+{
+#line 1948 "libs.polyhedron.c"
+  {
+#line 1950 "libs.polyhedron.c"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 1953 "libs.polyhedron.c"
+    {
+#line 1955 "libs.polyhedron.c"
+      libs__polyhedron__succeeded = libs__polyhedron____Unify____var_map_0_0(((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2));
+    }
+#line 1958 "libs.polyhedron.c"
+    return libs__polyhedron__succeeded;
+#line 1960 "libs.polyhedron.c"
+  }
+#line 1962 "libs.polyhedron.c"
+}
+
+#line 1965 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____var_map_0_0_10001(
+#line 1968 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 1970 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 1972 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3)
+#line 1974 "libs.polyhedron.c"
+{
+#line 1976 "libs.polyhedron.c"
+  {
+#line 1978 "libs.polyhedron.c"
+    MR_Word libs__polyhedron__conv0_HeadVar__1_1;
+
+#line 1981 "libs.polyhedron.c"
+    {
+#line 1983 "libs.polyhedron.c"
+      libs__polyhedron____Compare____var_map_0_0(&libs__polyhedron__conv0_HeadVar__1_1, ((MR_Word) libs__polyhedron__wrapper_arg_2), ((MR_Word) libs__polyhedron__wrapper_arg_3));
+    }
+#line 1986 "libs.polyhedron.c"
+    *libs__polyhedron__wrapper_arg_1 = ((MR_Box) (libs__polyhedron__conv0_HeadVar__1_1));
+#line 1988 "libs.polyhedron.c"
+  }
+#line 1990 "libs.polyhedron.c"
+}
+
+#line 1993 "libs.polyhedron.c"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____var_maps_0_0_10001(
+#line 1996 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 1998 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2)
+#line 2000 "libs.polyhedron.c"
+{
+#line 2002 "libs.polyhedron.c"
+  {
+#line 2004 "libs.polyhedron.c"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 2007 "libs.polyhedron.c"
+    {
+#line 2009 "libs.polyhedron.c"
+      libs__polyhedron__succeeded = libs__polyhedron____Unify____var_maps_0_0(((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2));
+    }
+#line 2012 "libs.polyhedron.c"
+    return libs__polyhedron__succeeded;
+#line 2014 "libs.polyhedron.c"
+  }
+#line 2016 "libs.polyhedron.c"
+}
+
+#line 2019 "libs.polyhedron.c"
+static void MR_CALL 
+libs__polyhedron____Compare____var_maps_0_0_10001(
+#line 2022 "libs.polyhedron.c"
+  MR_Box * libs__polyhedron__wrapper_arg_1,
+#line 2024 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 2026 "libs.polyhedron.c"
+  MR_Box libs__polyhedron__wrapper_arg_3)
+#line 2028 "libs.polyhedron.c"
+{
+#line 2030 "libs.polyhedron.c"
+  {
+#line 2032 "libs.polyhedron.c"
+    MR_Word libs__polyhedron__conv0_HeadVar__1_1;
+
+#line 2035 "libs.polyhedron.c"
+    {
+#line 2037 "libs.polyhedron.c"
+      libs__polyhedron____Compare____var_maps_0_0(&libs__polyhedron__conv0_HeadVar__1_1, ((MR_Word) libs__polyhedron__wrapper_arg_2), ((MR_Word) libs__polyhedron__wrapper_arg_3));
+    }
+#line 2040 "libs.polyhedron.c"
+    *libs__polyhedron__wrapper_arg_1 = ((MR_Box) (libs__polyhedron__conv0_HeadVar__1_1));
+#line 2042 "libs.polyhedron.c"
+  }
+#line 2044 "libs.polyhedron.c"
+}
+
+#line 361 "polyhedron.m"
+static MR_Word MR_CALL 
+libs__polyhedron__IntroducedFrom__func__convex_hull__361__1_2_f_0(
+#line 361 "polyhedron.m"
+  MR_Word libs__polyhedron__LambdaHeadVar__1_40,
+#line 361 "polyhedron.m"
+  MR_Word libs__polyhedron__LambdaHeadVar__2_41)
+#line 361 "polyhedron.m"
+{
+#line 361 "polyhedron.m"
+  {
+#line 361 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 361 "polyhedron.m"
+    MR_Word libs__polyhedron__LambdaHeadVar__3_42;
+#line 361 "polyhedron.m"
+    MR_Word libs__polyhedron__TypeInfo_56_56 = (MR_Word) &libs__polyhedron_scalar_common_1[1];
+#line 361 "polyhedron.m"
+    MR_Word libs__polyhedron__V_43_43;
+
+#line 362 "polyhedron.m"
+    {
+#line 362 "polyhedron.m"
+      libs__polyhedron__V_43_43 = mercury__map__values_1_f_0(libs__polyhedron__TypeInfo_56_56, libs__polyhedron__TypeInfo_56_56, libs__polyhedron__LambdaHeadVar__1_40);
+    }
+#line 362 "polyhedron.m"
+    {
+#line 362 "polyhedron.m"
+      libs__polyhedron__LambdaHeadVar__3_42 = mercury__list__f_43_43_2_f_0(libs__polyhedron__TypeInfo_56_56, libs__polyhedron__LambdaHeadVar__2_41, libs__polyhedron__V_43_43);
+    }
+#line 361 "polyhedron.m"
+    return libs__polyhedron__LambdaHeadVar__3_42;
+#line 361 "polyhedron.m"
+  }
+#line 361 "polyhedron.m"
+}
+
+#line 542 "polyhedron.m"
+static MR_Word MR_CALL 
+libs__polyhedron__IntroducedFrom__func__project_all__542__1_3_f_0(
+#line 542 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_5,
+#line 542 "polyhedron.m"
+  MR_Word libs__polyhedron__Locals_6,
+#line 542 "polyhedron.m"
+  MR_Word libs__polyhedron__LambdaHeadVar__1_15)
+#line 542 "polyhedron.m"
+{
+#line 542 "polyhedron.m"
+  {
+#line 542 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 542 "polyhedron.m"
+    MR_Word libs__polyhedron__LambdaHeadVar__2_16;
+
+#line 542 "polyhedron.m"
+    if ((libs__polyhedron__LambdaHeadVar__1_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 544 "polyhedron.m"
+      libs__polyhedron__LambdaHeadVar__2_16 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 542 "polyhedron.m"
+    else
+#line 528 "polyhedron.m"
+      {
+#line 528 "polyhedron.m"
+        MR_Word libs__polyhedron__Constraints0_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__LambdaHeadVar__1_15, (MR_Integer) 0)));
+#line 528 "polyhedron.m"
+        MR_Word libs__polyhedron__ProjectionResult_11;
+
+#line 529 "polyhedron.m"
+        {
+#line 529 "polyhedron.m"
+          libs__lp_rational__project_4_p_0(libs__polyhedron__Locals_6, libs__polyhedron__Varset_5, libs__polyhedron__Constraints0_10, &libs__polyhedron__ProjectionResult_11);
+        }
+#line 534 "polyhedron.m"
+#line 534 "polyhedron.m"
+        switch (MR_tag((MR_Word) libs__polyhedron__ProjectionResult_11)) {
+#line 534 "polyhedron.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 534 "polyhedron.m"
+          case (MR_Integer) 0:
+#line 534 "polyhedron.m"
+#line 534 "polyhedron.m"
+            switch (MR_unmkbody(libs__polyhedron__ProjectionResult_11)) {
+#line 534 "polyhedron.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 534 "polyhedron.m"
+              case (MR_Integer) 0:
+#line 536 "polyhedron.m"
+                libs__polyhedron__LambdaHeadVar__2_16 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 534 "polyhedron.m"
+                break;
+#line 534 "polyhedron.m"
+              case (MR_Integer) 1:
+#line 532 "polyhedron.m"
+                {
+#line 533 "polyhedron.m"
+                  {
+#line 533 "polyhedron.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "libs.polyhedron", (MR_String) "function \140libs.polyhedron.project_all\'/3", (MR_String) "abort from project");
+                  }
+#line 532 "polyhedron.m"
+                }
+#line 534 "polyhedron.m"
+                break;
+#line 534 "polyhedron.m"
+            }
+#line 534 "polyhedron.m"
+            break;
+#line 534 "polyhedron.m"
+          case (MR_Integer) 1:
+#line 538 "polyhedron.m"
+            {
+#line 538 "polyhedron.m"
+              MR_Word libs__polyhedron__Constraints1_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__ProjectionResult_11, (MR_Integer) 0)));
+#line 538 "polyhedron.m"
+              MR_Word libs__polyhedron__Constraints_13;
+
+#line 539 "polyhedron.m"
+              {
+#line 539 "polyhedron.m"
+                libs__lp_rational__restore_equalities_2_p_0(libs__polyhedron__Constraints1_12, &libs__polyhedron__Constraints_13);
+              }
+#line 540 "polyhedron.m"
+              {
+#line 540 "polyhedron.m"
+                libs__polyhedron__LambdaHeadVar__2_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 540 "polyhedron.m"
+                MR_hl_field(MR_mktag(1), libs__polyhedron__LambdaHeadVar__2_16, 0) = ((MR_Box) (libs__polyhedron__Constraints_13));
+#line 540 "polyhedron.m"
+              }
+#line 538 "polyhedron.m"
+            }
+#line 534 "polyhedron.m"
+            break;
+#line 534 "polyhedron.m"
+        }
+#line 528 "polyhedron.m"
+      }
+#line 542 "polyhedron.m"
+    return libs__polyhedron__LambdaHeadVar__2_16;
+#line 542 "polyhedron.m"
+  }
+#line 542 "polyhedron.m"
+}
+
+#line 311 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____var_maps_0_0(
+#line 311 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 311 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 311 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3)
+#line 311 "polyhedron.m"
+{
+#line 311 "polyhedron.m"
+  {
+#line 311 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 311 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar1_4 = libs__polyhedron__HeadVar__2_2;
+#line 311 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar2_5 = libs__polyhedron__HeadVar__3_3;
+
+#line 311 "polyhedron.m"
+    {
+#line 311 "polyhedron.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &libs__polyhedron_scalar_common_1[7], libs__polyhedron__HeadVar__1_1, ((MR_Box) (libs__polyhedron__Cast_HeadVar1_4)), ((MR_Box) (libs__polyhedron__Cast_HeadVar2_5)));
+    }
+#line 311 "polyhedron.m"
+  }
+#line 311 "polyhedron.m"
+}
+
+#line 311 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____var_maps_0_0(
+#line 311 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 311 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2)
+#line 311 "polyhedron.m"
+{
+#line 311 "polyhedron.m"
+  {
+#line 311 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 311 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar1_3 = libs__polyhedron__HeadVar__1_1;
+#line 311 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar2_4 = libs__polyhedron__HeadVar__2_2;
+
+#line 311 "polyhedron.m"
+    {
+#line 311 "polyhedron.m"
+      libs__polyhedron__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &libs__polyhedron_scalar_common_1[7], ((MR_Box) (libs__polyhedron__Cast_HeadVar1_3)), ((MR_Box) (libs__polyhedron__Cast_HeadVar2_4)));
+    }
+#line 311 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 311 "polyhedron.m"
+  }
+#line 311 "polyhedron.m"
+}
+
+#line 309 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____var_map_0_0(
+#line 309 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 309 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 309 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3)
+#line 309 "polyhedron.m"
+{
+#line 309 "polyhedron.m"
+  {
+#line 309 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 309 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar1_4 = libs__polyhedron__HeadVar__2_2;
+#line 309 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar2_5 = libs__polyhedron__HeadVar__3_3;
+
+#line 309 "polyhedron.m"
+    {
+#line 309 "polyhedron.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &libs__polyhedron_scalar_common_2[0], libs__polyhedron__HeadVar__1_1, ((MR_Box) (libs__polyhedron__Cast_HeadVar1_4)), ((MR_Box) (libs__polyhedron__Cast_HeadVar2_5)));
+    }
+#line 309 "polyhedron.m"
+  }
+#line 309 "polyhedron.m"
+}
+
+#line 309 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____var_map_0_0(
+#line 309 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 309 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2)
+#line 309 "polyhedron.m"
+{
+#line 309 "polyhedron.m"
+  {
+#line 309 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 309 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar1_3 = libs__polyhedron__HeadVar__1_1;
+#line 309 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar2_4 = libs__polyhedron__HeadVar__2_2;
+
+#line 309 "polyhedron.m"
+    {
+#line 309 "polyhedron.m"
+      libs__polyhedron__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &libs__polyhedron_scalar_common_2[0], ((MR_Box) (libs__polyhedron__Cast_HeadVar1_3)), ((MR_Box) (libs__polyhedron__Cast_HeadVar2_4)));
+    }
+#line 309 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 309 "polyhedron.m"
+  }
+#line 309 "polyhedron.m"
+}
+
+#line 318 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____sigma_vars_0_0(
+#line 318 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 318 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 318 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3)
+#line 318 "polyhedron.m"
+{
+#line 318 "polyhedron.m"
+  {
+#line 318 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 318 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar1_4 = libs__polyhedron__HeadVar__2_2;
+#line 318 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar2_5 = libs__polyhedron__HeadVar__3_3;
+
+#line 318 "polyhedron.m"
+    {
+#line 318 "polyhedron.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &libs__polyhedron_scalar_common_1[2], libs__polyhedron__HeadVar__1_1, ((MR_Box) (libs__polyhedron__Cast_HeadVar1_4)), ((MR_Box) (libs__polyhedron__Cast_HeadVar2_5)));
+    }
+#line 318 "polyhedron.m"
+  }
+#line 318 "polyhedron.m"
+}
+
+#line 318 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____sigma_vars_0_0(
+#line 318 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 318 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2)
+#line 318 "polyhedron.m"
+{
+#line 318 "polyhedron.m"
+  {
+#line 318 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 318 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar1_3 = libs__polyhedron__HeadVar__1_1;
+#line 318 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar2_4 = libs__polyhedron__HeadVar__2_2;
+
+#line 318 "polyhedron.m"
+    {
+#line 318 "polyhedron.m"
+      libs__polyhedron__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &libs__polyhedron_scalar_common_1[2], ((MR_Box) (libs__polyhedron__Cast_HeadVar1_3)), ((MR_Box) (libs__polyhedron__Cast_HeadVar2_4)));
+    }
+#line 318 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 318 "polyhedron.m"
+  }
+#line 318 "polyhedron.m"
+}
+
+#line 316 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____sigma_var_0_0(
+#line 316 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 316 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 316 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3)
+#line 316 "polyhedron.m"
+{
+#line 316 "polyhedron.m"
+  {
+#line 316 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 316 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar1_4 = libs__polyhedron__HeadVar__2_2;
+#line 316 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar2_5 = libs__polyhedron__HeadVar__3_3;
+
+#line 316 "polyhedron.m"
+    {
+#line 316 "polyhedron.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &libs__polyhedron_scalar_common_1[1], libs__polyhedron__HeadVar__1_1, ((MR_Box) (libs__polyhedron__Cast_HeadVar1_4)), ((MR_Box) (libs__polyhedron__Cast_HeadVar2_5)));
+    }
+#line 316 "polyhedron.m"
+  }
+#line 316 "polyhedron.m"
+}
+
+#line 316 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____sigma_var_0_0(
+#line 316 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 316 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2)
+#line 316 "polyhedron.m"
+{
+#line 316 "polyhedron.m"
+  {
+#line 316 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 316 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar1_3 = libs__polyhedron__HeadVar__1_1;
+#line 316 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar2_4 = libs__polyhedron__HeadVar__2_2;
+
+#line 316 "polyhedron.m"
+    {
+#line 316 "polyhedron.m"
+      libs__polyhedron__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &libs__polyhedron_scalar_common_1[1], ((MR_Box) (libs__polyhedron__Cast_HeadVar1_3)), ((MR_Box) (libs__polyhedron__Cast_HeadVar2_4)));
+    }
+#line 316 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 316 "polyhedron.m"
+  }
+#line 316 "polyhedron.m"
+}
+
+#line 198 "polyhedron.m"
+void MR_CALL 
+libs__polyhedron____Compare____polyhedron_0_0(
+#line 198 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 198 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 198 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3)
+#line 198 "polyhedron.m"
+{
+#line 198 "polyhedron.m"
+  {
+#line 198 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 198 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastX_8 = (MR_Integer) libs__polyhedron__HeadVar__2_2;
+#line 198 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastY_9 = (MR_Integer) libs__polyhedron__HeadVar__3_3;
+
+#line 198 "polyhedron.m"
+    libs__polyhedron__succeeded = (libs__polyhedron__CastX_8 == libs__polyhedron__CastY_9);
+#line 198 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 2456 "libs.polyhedron.c"
+      *libs__polyhedron__HeadVar__1_1 = (MR_Integer) 0;
+#line 198 "polyhedron.m"
+    else
+#line 198 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 198 "polyhedron.m"
+      if ((libs__polyhedron__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 198 "polyhedron.m"
+        *libs__polyhedron__HeadVar__1_1 = (MR_Integer) 0;
+#line 198 "polyhedron.m"
+      else
+#line 2468 "libs.polyhedron.c"
+        *libs__polyhedron__HeadVar__1_1 = (MR_Integer) 2;
+#line 198 "polyhedron.m"
+    else
+#line 198 "polyhedron.m"
+      {
+#line 198 "polyhedron.m"
+        MR_Word libs__polyhedron__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 198 "polyhedron.m"
+        if ((libs__polyhedron__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 2479 "libs.polyhedron.c"
+          *libs__polyhedron__HeadVar__1_1 = (MR_Integer) 1;
+#line 198 "polyhedron.m"
+        else
+#line 198 "polyhedron.m"
+          {
+#line 198 "polyhedron.m"
+            MR_Word libs__polyhedron__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 198 "polyhedron.m"
+            {
+#line 198 "polyhedron.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &libs__polyhedron_scalar_common_1[0], libs__polyhedron__HeadVar__1_1, ((MR_Box) (libs__polyhedron__V_11_11)), ((MR_Box) (libs__polyhedron__V_5_5)));
+            }
+#line 198 "polyhedron.m"
+          }
+#line 198 "polyhedron.m"
+      }
+#line 198 "polyhedron.m"
+  }
+#line 198 "polyhedron.m"
+}
+
+#line 198 "polyhedron.m"
+MR_bool MR_CALL 
+libs__polyhedron____Unify____polyhedron_0_0(
+#line 198 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 198 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2)
+#line 198 "polyhedron.m"
+{
+#line 198 "polyhedron.m"
+  {
+#line 198 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 198 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastX_7 = (MR_Integer) libs__polyhedron__HeadVar__1_1;
+#line 198 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastY_8 = (MR_Integer) libs__polyhedron__HeadVar__2_2;
+
+#line 198 "polyhedron.m"
+    libs__polyhedron__succeeded = (libs__polyhedron__CastX_7 == libs__polyhedron__CastY_8);
+#line 198 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 198 "polyhedron.m"
+      libs__polyhedron__succeeded = MR_TRUE;
+#line 198 "polyhedron.m"
+    else
+#line 198 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 198 "polyhedron.m"
+      {
+#line 198 "polyhedron.m"
+        MR_Integer libs__polyhedron__CastX_5 = (MR_Integer) libs__polyhedron__HeadVar__1_1;
+#line 198 "polyhedron.m"
+        MR_Integer libs__polyhedron__CastY_6 = (MR_Integer) libs__polyhedron__HeadVar__2_2;
+
+#line 198 "polyhedron.m"
+        libs__polyhedron__succeeded = (libs__polyhedron__CastY_6 == libs__polyhedron__CastX_5);
+#line 198 "polyhedron.m"
+      }
+#line 198 "polyhedron.m"
+    else
+#line 198 "polyhedron.m"
+      {
+#line 198 "polyhedron.m"
+        MR_Word libs__polyhedron__TypeInfo_9_9;
+#line 198 "polyhedron.m"
+        MR_Word libs__polyhedron__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+#line 198 "polyhedron.m"
+        MR_Word libs__polyhedron__V_4_4;
+
+#line 198 "polyhedron.m"
+        libs__polyhedron__succeeded = ((MR_tag((MR_Word) libs__polyhedron__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 198 "polyhedron.m"
+        if (libs__polyhedron__succeeded)
+#line 198 "polyhedron.m"
+          {
+#line 198 "polyhedron.m"
+            libs__polyhedron__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__2_2, (MR_Integer) 0)));
+#line 2560 "libs.polyhedron.c"
+            libs__polyhedron__TypeInfo_9_9 = (MR_Word) &libs__polyhedron_scalar_common_1[0];
+#line 2562 "libs.polyhedron.c"
+            {
+#line 2564 "libs.polyhedron.c"
+              libs__polyhedron__succeeded = mercury__builtin__unify_2_p_0(libs__polyhedron__TypeInfo_9_9, ((MR_Box) (libs__polyhedron__V_3_3)), ((MR_Box) (libs__polyhedron__V_4_4)));
+            }
+#line 198 "polyhedron.m"
+          }
+#line 198 "polyhedron.m"
+      }
+#line 198 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 198 "polyhedron.m"
+  }
+#line 198 "polyhedron.m"
+}
+
+#line 320 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____polyhedra_info_0_0(
+#line 320 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 320 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 320 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3)
+#line 320 "polyhedron.m"
+{
+#line 320 "polyhedron.m"
+  {
+#line 320 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 320 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastX_12 = (MR_Integer) libs__polyhedron__HeadVar__2_2;
+#line 320 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastY_13 = (MR_Integer) libs__polyhedron__HeadVar__3_3;
+
+#line 320 "polyhedron.m"
+    libs__polyhedron__succeeded = (libs__polyhedron__CastX_12 == libs__polyhedron__CastY_13);
+#line 320 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 2602 "libs.polyhedron.c"
+      *libs__polyhedron__HeadVar__1_1 = (MR_Integer) 0;
+#line 320 "polyhedron.m"
+    else
+#line 320 "polyhedron.m"
+      {
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__2_2, (MR_Integer) 0)));
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__2_2, (MR_Integer) 1)));
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__2_2, (MR_Integer) 2)));
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__3_3, (MR_Integer) 0)));
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__3_3, (MR_Integer) 1)));
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__3_3, (MR_Integer) 2)));
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_10_10;
+
+#line 320 "polyhedron.m"
+        {
+#line 320 "polyhedron.m"
+          mercury__builtin__compare_3_p_0((MR_Word) &libs__polyhedron_scalar_common_1[7], &libs__polyhedron__V_10_10, ((MR_Box) (libs__polyhedron__V_4_4)), ((MR_Box) (libs__polyhedron__V_7_7)));
+        }
+#line 2628 "libs.polyhedron.c"
+        libs__polyhedron__succeeded = (libs__polyhedron__V_10_10 == (MR_Integer) 0);
+#line 320 "polyhedron.m"
+        libs__polyhedron__succeeded = !(libs__polyhedron__succeeded);
+#line 320 "polyhedron.m"
+        if (libs__polyhedron__succeeded)
+#line 320 "polyhedron.m"
+          *libs__polyhedron__HeadVar__1_1 = libs__polyhedron__V_10_10;
+#line 320 "polyhedron.m"
+        else
+#line 320 "polyhedron.m"
+          {
+#line 320 "polyhedron.m"
+            MR_Word libs__polyhedron__V_11_11;
+
+#line 320 "polyhedron.m"
+            {
+#line 320 "polyhedron.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &libs__polyhedron_scalar_common_1[2], &libs__polyhedron__V_11_11, ((MR_Box) (libs__polyhedron__V_5_5)), ((MR_Box) (libs__polyhedron__V_8_8)));
+            }
+#line 2648 "libs.polyhedron.c"
+            libs__polyhedron__succeeded = (libs__polyhedron__V_11_11 == (MR_Integer) 0);
+#line 320 "polyhedron.m"
+            libs__polyhedron__succeeded = !(libs__polyhedron__succeeded);
+#line 320 "polyhedron.m"
+            if (libs__polyhedron__succeeded)
+#line 320 "polyhedron.m"
+              *libs__polyhedron__HeadVar__1_1 = libs__polyhedron__V_11_11;
+#line 320 "polyhedron.m"
+            else
+#line 320 "polyhedron.m"
+              {
+#line 320 "polyhedron.m"
+                {
+#line 320 "polyhedron.m"
+                  mercury__builtin__compare_3_p_0((MR_Word) &libs__polyhedron_scalar_common_1[3], libs__polyhedron__HeadVar__1_1, ((MR_Box) (libs__polyhedron__V_6_6)), ((MR_Box) (libs__polyhedron__V_9_9)));
+                }
+#line 320 "polyhedron.m"
+              }
+#line 320 "polyhedron.m"
+          }
+#line 320 "polyhedron.m"
+      }
+#line 320 "polyhedron.m"
+  }
+#line 320 "polyhedron.m"
+}
+
+#line 320 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____polyhedra_info_0_0(
+#line 320 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 320 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2)
+#line 320 "polyhedron.m"
+{
+#line 320 "polyhedron.m"
+  {
+#line 320 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 320 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastX_9 = (MR_Integer) libs__polyhedron__HeadVar__1_1;
+#line 320 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastY_10 = (MR_Integer) libs__polyhedron__HeadVar__2_2;
+
+#line 320 "polyhedron.m"
+    libs__polyhedron__succeeded = (libs__polyhedron__CastX_9 == libs__polyhedron__CastY_10);
+#line 320 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 320 "polyhedron.m"
+      libs__polyhedron__succeeded = MR_TRUE;
+#line 320 "polyhedron.m"
+    else
+#line 320 "polyhedron.m"
+      {
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__TypeInfo_12_12;
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__TypeInfo_13_13;
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__1_1, (MR_Integer) 1)));
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__1_1, (MR_Integer) 2)));
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__2_2, (MR_Integer) 0)));
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__2_2, (MR_Integer) 1)));
+#line 320 "polyhedron.m"
+        MR_Word libs__polyhedron__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__2_2, (MR_Integer) 2)));
+
+#line 2721 "libs.polyhedron.c"
+        {
+#line 2723 "libs.polyhedron.c"
+          libs__polyhedron__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &libs__polyhedron_scalar_common_1[7], ((MR_Box) (libs__polyhedron__V_3_3)), ((MR_Box) (libs__polyhedron__V_6_6)));
+        }
+#line 320 "polyhedron.m"
+        if (libs__polyhedron__succeeded)
+#line 320 "polyhedron.m"
+          {
+#line 2730 "libs.polyhedron.c"
+            libs__polyhedron__TypeInfo_12_12 = (MR_Word) &libs__polyhedron_scalar_common_1[2];
+#line 2732 "libs.polyhedron.c"
+            {
+#line 2734 "libs.polyhedron.c"
+              libs__polyhedron__succeeded = mercury__builtin__unify_2_p_0(libs__polyhedron__TypeInfo_12_12, ((MR_Box) (libs__polyhedron__V_4_4)), ((MR_Box) (libs__polyhedron__V_7_7)));
+            }
+#line 320 "polyhedron.m"
+            if (libs__polyhedron__succeeded)
+#line 320 "polyhedron.m"
+              {
+#line 2741 "libs.polyhedron.c"
+                libs__polyhedron__TypeInfo_13_13 = (MR_Word) &libs__polyhedron_scalar_common_1[3];
+#line 2743 "libs.polyhedron.c"
+                {
+#line 2745 "libs.polyhedron.c"
+                  libs__polyhedron__succeeded = mercury__builtin__unify_2_p_0(libs__polyhedron__TypeInfo_13_13, ((MR_Box) (libs__polyhedron__V_5_5)), ((MR_Box) (libs__polyhedron__V_8_8)));
+                }
+#line 320 "polyhedron.m"
+              }
+#line 320 "polyhedron.m"
+          }
+#line 320 "polyhedron.m"
+      }
+#line 320 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 320 "polyhedron.m"
+  }
+#line 320 "polyhedron.m"
+}
+
+#line 59 "polyhedron.m"
+void MR_CALL 
+libs__polyhedron____Compare____polyhedra_0_0(
+#line 59 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 59 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 59 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3)
+#line 59 "polyhedron.m"
+{
+#line 59 "polyhedron.m"
+  {
+#line 59 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 59 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar1_4 = libs__polyhedron__HeadVar__2_2;
+#line 59 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar2_5 = libs__polyhedron__HeadVar__3_3;
+
+#line 59 "polyhedron.m"
+    {
+#line 59 "polyhedron.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &libs__polyhedron_scalar_common_1[6], libs__polyhedron__HeadVar__1_1, ((MR_Box) (libs__polyhedron__Cast_HeadVar1_4)), ((MR_Box) (libs__polyhedron__Cast_HeadVar2_5)));
+    }
+#line 59 "polyhedron.m"
+  }
+#line 59 "polyhedron.m"
+}
+
+#line 59 "polyhedron.m"
+MR_bool MR_CALL 
+libs__polyhedron____Unify____polyhedra_0_0(
+#line 59 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 59 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2)
+#line 59 "polyhedron.m"
+{
+#line 59 "polyhedron.m"
+  {
+#line 59 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 59 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar1_3 = libs__polyhedron__HeadVar__1_1;
+#line 59 "polyhedron.m"
+    MR_Word libs__polyhedron__Cast_HeadVar2_4 = libs__polyhedron__HeadVar__2_2;
+
+#line 59 "polyhedron.m"
+    {
+#line 59 "polyhedron.m"
+      libs__polyhedron__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &libs__polyhedron_scalar_common_1[6], ((MR_Box) (libs__polyhedron__Cast_HeadVar1_3)), ((MR_Box) (libs__polyhedron__Cast_HeadVar2_4)));
+    }
+#line 59 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 59 "polyhedron.m"
+  }
+#line 59 "polyhedron.m"
+}
+
+#line 305 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____convex_hull_result_0_0(
+#line 305 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 305 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 305 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3)
+#line 305 "polyhedron.m"
+{
+#line 305 "polyhedron.m"
+  {
+#line 305 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 305 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastX_8 = (MR_Integer) libs__polyhedron__HeadVar__2_2;
+#line 305 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastY_9 = (MR_Integer) libs__polyhedron__HeadVar__3_3;
+
+#line 305 "polyhedron.m"
+    libs__polyhedron__succeeded = (libs__polyhedron__CastX_8 == libs__polyhedron__CastY_9);
+#line 305 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 2845 "libs.polyhedron.c"
+      *libs__polyhedron__HeadVar__1_1 = (MR_Integer) 0;
+#line 305 "polyhedron.m"
+    else
+#line 305 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 305 "polyhedron.m"
+      if ((libs__polyhedron__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 305 "polyhedron.m"
+        *libs__polyhedron__HeadVar__1_1 = (MR_Integer) 0;
+#line 305 "polyhedron.m"
+      else
+#line 2857 "libs.polyhedron.c"
+        *libs__polyhedron__HeadVar__1_1 = (MR_Integer) 2;
+#line 305 "polyhedron.m"
+    else
+#line 305 "polyhedron.m"
+      {
+#line 305 "polyhedron.m"
+        MR_Word libs__polyhedron__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 305 "polyhedron.m"
+        if ((libs__polyhedron__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 2868 "libs.polyhedron.c"
+          *libs__polyhedron__HeadVar__1_1 = (MR_Integer) 1;
+#line 305 "polyhedron.m"
+        else
+#line 305 "polyhedron.m"
+          {
+#line 305 "polyhedron.m"
+            MR_Word libs__polyhedron__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 305 "polyhedron.m"
+            {
+#line 305 "polyhedron.m"
+              libs__polyhedron____Compare____polyhedron_0_0(libs__polyhedron__HeadVar__1_1, libs__polyhedron__V_11_11, libs__polyhedron__V_5_5);
+            }
+#line 305 "polyhedron.m"
+          }
+#line 305 "polyhedron.m"
+      }
+#line 305 "polyhedron.m"
+  }
+#line 305 "polyhedron.m"
+}
+
+#line 305 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____convex_hull_result_0_0(
+#line 305 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 305 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2)
+#line 305 "polyhedron.m"
+{
+#line 305 "polyhedron.m"
+  {
+#line 305 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 305 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastX_7 = (MR_Integer) libs__polyhedron__HeadVar__1_1;
+#line 305 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastY_8 = (MR_Integer) libs__polyhedron__HeadVar__2_2;
+
+#line 305 "polyhedron.m"
+    libs__polyhedron__succeeded = (libs__polyhedron__CastX_7 == libs__polyhedron__CastY_8);
+#line 305 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 305 "polyhedron.m"
+      libs__polyhedron__succeeded = MR_TRUE;
+#line 305 "polyhedron.m"
+    else
+#line 305 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 305 "polyhedron.m"
+      {
+#line 305 "polyhedron.m"
+        MR_Integer libs__polyhedron__CastX_5 = (MR_Integer) libs__polyhedron__HeadVar__1_1;
+#line 305 "polyhedron.m"
+        MR_Integer libs__polyhedron__CastY_6 = (MR_Integer) libs__polyhedron__HeadVar__2_2;
+
+#line 305 "polyhedron.m"
+        libs__polyhedron__succeeded = (libs__polyhedron__CastY_6 == libs__polyhedron__CastX_5);
+#line 305 "polyhedron.m"
+      }
+#line 305 "polyhedron.m"
+    else
+#line 305 "polyhedron.m"
+      {
+#line 305 "polyhedron.m"
+        MR_Word libs__polyhedron__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+#line 305 "polyhedron.m"
+        MR_Word libs__polyhedron__V_4_4;
+
+#line 305 "polyhedron.m"
+        libs__polyhedron__succeeded = ((MR_tag((MR_Word) libs__polyhedron__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 305 "polyhedron.m"
+        if (libs__polyhedron__succeeded)
+#line 305 "polyhedron.m"
+          {
+#line 305 "polyhedron.m"
+            libs__polyhedron__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__2_2, (MR_Integer) 0)));
+#line 2947 "libs.polyhedron.c"
+            {
+#line 2949 "libs.polyhedron.c"
+              libs__polyhedron__succeeded = libs__polyhedron____Unify____polyhedron_0_0(libs__polyhedron__V_3_3, libs__polyhedron__V_4_4);
+            }
+#line 305 "polyhedron.m"
+          }
+#line 305 "polyhedron.m"
+      }
+#line 305 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 305 "polyhedron.m"
+  }
+#line 305 "polyhedron.m"
+}
+
+#line 338 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron____Compare____constr_info_0_0(
+#line 338 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__1_1,
+#line 338 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 338 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3)
+#line 338 "polyhedron.m"
+{
+#line 338 "polyhedron.m"
+  {
+#line 338 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 338 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastX_9 = (MR_Integer) libs__polyhedron__HeadVar__2_2;
+#line 338 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastY_10 = (MR_Integer) libs__polyhedron__HeadVar__3_3;
+
+#line 338 "polyhedron.m"
+    libs__polyhedron__succeeded = (libs__polyhedron__CastX_9 == libs__polyhedron__CastY_10);
+#line 338 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 2987 "libs.polyhedron.c"
+      *libs__polyhedron__HeadVar__1_1 = (MR_Integer) 0;
+#line 338 "polyhedron.m"
+    else
+#line 338 "polyhedron.m"
+      {
+#line 338 "polyhedron.m"
+        MR_Word libs__polyhedron__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__2_2, (MR_Integer) 0)));
+#line 338 "polyhedron.m"
+        MR_Word libs__polyhedron__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__2_2, (MR_Integer) 1)));
+#line 338 "polyhedron.m"
+        MR_Word libs__polyhedron__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__3_3, (MR_Integer) 0)));
+#line 338 "polyhedron.m"
+        MR_Word libs__polyhedron__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__3_3, (MR_Integer) 1)));
+#line 338 "polyhedron.m"
+        MR_Word libs__polyhedron__V_8_8;
+
+#line 338 "polyhedron.m"
+        {
+#line 338 "polyhedron.m"
+          mercury__builtin__compare_3_p_0((MR_Word) &libs__polyhedron_scalar_common_2[0], &libs__polyhedron__V_8_8, ((MR_Box) (libs__polyhedron__V_4_4)), ((MR_Box) (libs__polyhedron__V_6_6)));
+        }
+#line 3009 "libs.polyhedron.c"
+        libs__polyhedron__succeeded = (libs__polyhedron__V_8_8 == (MR_Integer) 0);
+#line 338 "polyhedron.m"
+        libs__polyhedron__succeeded = !(libs__polyhedron__succeeded);
+#line 338 "polyhedron.m"
+        if (libs__polyhedron__succeeded)
+#line 338 "polyhedron.m"
+          *libs__polyhedron__HeadVar__1_1 = libs__polyhedron__V_8_8;
+#line 338 "polyhedron.m"
+        else
+#line 338 "polyhedron.m"
+          {
+#line 338 "polyhedron.m"
+            {
+#line 338 "polyhedron.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &libs__polyhedron_scalar_common_1[3], libs__polyhedron__HeadVar__1_1, ((MR_Box) (libs__polyhedron__V_5_5)), ((MR_Box) (libs__polyhedron__V_7_7)));
+            }
+#line 338 "polyhedron.m"
+          }
+#line 338 "polyhedron.m"
+      }
+#line 338 "polyhedron.m"
+  }
+#line 338 "polyhedron.m"
+}
+
+#line 338 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron____Unify____constr_info_0_0(
+#line 338 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 338 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2)
+#line 338 "polyhedron.m"
+{
+#line 338 "polyhedron.m"
+  {
+#line 338 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 338 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastX_7 = (MR_Integer) libs__polyhedron__HeadVar__1_1;
+#line 338 "polyhedron.m"
+    MR_Integer libs__polyhedron__CastY_8 = (MR_Integer) libs__polyhedron__HeadVar__2_2;
+
+#line 338 "polyhedron.m"
+    libs__polyhedron__succeeded = (libs__polyhedron__CastX_7 == libs__polyhedron__CastY_8);
+#line 338 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 338 "polyhedron.m"
+      libs__polyhedron__succeeded = MR_TRUE;
+#line 338 "polyhedron.m"
+    else
+#line 338 "polyhedron.m"
+      {
+#line 338 "polyhedron.m"
+        MR_Word libs__polyhedron__TypeInfo_10_10;
+#line 338 "polyhedron.m"
+        MR_Word libs__polyhedron__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+#line 338 "polyhedron.m"
+        MR_Word libs__polyhedron__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__1_1, (MR_Integer) 1)));
+#line 338 "polyhedron.m"
+        MR_Word libs__polyhedron__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__2_2, (MR_Integer) 0)));
+#line 338 "polyhedron.m"
+        MR_Word libs__polyhedron__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__HeadVar__2_2, (MR_Integer) 1)));
+
+#line 3074 "libs.polyhedron.c"
+        {
+#line 3076 "libs.polyhedron.c"
+          libs__polyhedron__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &libs__polyhedron_scalar_common_2[0], ((MR_Box) (libs__polyhedron__V_3_3)), ((MR_Box) (libs__polyhedron__V_5_5)));
+        }
+#line 338 "polyhedron.m"
+        if (libs__polyhedron__succeeded)
+#line 338 "polyhedron.m"
+          {
+#line 3083 "libs.polyhedron.c"
+            libs__polyhedron__TypeInfo_10_10 = (MR_Word) &libs__polyhedron_scalar_common_1[3];
+#line 3085 "libs.polyhedron.c"
+            {
+#line 3087 "libs.polyhedron.c"
+              libs__polyhedron__succeeded = mercury__builtin__unify_2_p_0(libs__polyhedron__TypeInfo_10_10, ((MR_Box) (libs__polyhedron__V_4_4)), ((MR_Box) (libs__polyhedron__V_6_6)));
+            }
+#line 338 "polyhedron.m"
+          }
+#line 338 "polyhedron.m"
+      }
+#line 338 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 338 "polyhedron.m"
+  }
+#line 338 "polyhedron.m"
+}
+
+#line 491 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron__make_last_terms_4_p_0(
+#line 491 "polyhedron.m"
+  MR_Word libs__polyhedron__OriginalVar_5,
+#line 491 "polyhedron.m"
+  MR_Word libs__polyhedron__VarMap_6,
+#line 491 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_Terms_0_9,
+#line 491 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_Terms_10)
+#line 491 "polyhedron.m"
+{
+#line 494 "polyhedron.m"
+  {
+#line 494 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 494 "polyhedron.m"
+    MR_Word libs__polyhedron__TypeInfo_15_15 = (MR_Word) &libs__polyhedron_scalar_common_1[1];
+#line 494 "polyhedron.m"
+    MR_Word libs__polyhedron__TypeInfo_16_16;
+#line 494 "polyhedron.m"
+    MR_Word libs__polyhedron__NewVar_8;
+#line 494 "polyhedron.m"
+    MR_Word libs__polyhedron__V_11_11;
+#line 494 "polyhedron.m"
+    MR_Word libs__polyhedron__V_13_13;
+#line 494 "polyhedron.m"
+    MR_Word libs__polyhedron__V_14_14;
+#line 495 "polyhedron.m"
+    MR_Box libs__polyhedron__conv0_NewVar_8;
+
+#line 495 "polyhedron.m"
+    {
+#line 495 "polyhedron.m"
+      libs__polyhedron__succeeded = mercury__map__search_3_p_0(libs__polyhedron__TypeInfo_15_15, libs__polyhedron__TypeInfo_15_15, libs__polyhedron__VarMap_6, ((MR_Box) (libs__polyhedron__OriginalVar_5)), &libs__polyhedron__conv0_NewVar_8);
+    }
+#line 495 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 495 "polyhedron.m"
+      {
+#line 495 "polyhedron.m"
+        libs__polyhedron__NewVar_8 = ((MR_Word) libs__polyhedron__conv0_NewVar_8);
+#line 495 "polyhedron.m"
+        libs__polyhedron__succeeded = MR_TRUE;
+#line 495 "polyhedron.m"
+      }
+#line 494 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 494 "polyhedron.m"
+      {
+#line 496 "polyhedron.m"
+        {
+#line 496 "polyhedron.m"
+          libs__polyhedron__V_14_14 = libs__rat__one_0_f_0();
+        }
+#line 496 "polyhedron.m"
+        {
+#line 496 "polyhedron.m"
+          libs__polyhedron__V_13_13 = libs__rat__f_minus_1_f_0(libs__polyhedron__V_14_14);
+        }
+#line 3162 "libs.polyhedron.c"
+        libs__polyhedron__TypeInfo_16_16 = (MR_Word) &libs__polyhedron_scalar_common_2[1];
+#line 496 "polyhedron.m"
+        {
+#line 496 "polyhedron.m"
+          libs__polyhedron__V_11_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 496 "polyhedron.m"
+          MR_hl_field(MR_mktag(0), libs__polyhedron__V_11_11, 0) = ((MR_Box) (libs__polyhedron__NewVar_8));
+#line 496 "polyhedron.m"
+          MR_hl_field(MR_mktag(0), libs__polyhedron__V_11_11, 1) = ((MR_Box) (libs__polyhedron__V_13_13));
+#line 496 "polyhedron.m"
+        }
+#line 496 "polyhedron.m"
+        {
+#line 496 "polyhedron.m"
+          mercury__list__cons_3_p_0(libs__polyhedron__TypeInfo_16_16, ((MR_Box) (libs__polyhedron__V_11_11)), libs__polyhedron__STATE_VARIABLE_Terms_0_9, libs__polyhedron__STATE_VARIABLE_Terms_10);
+        }
+#line 496 "polyhedron.m"
+        libs__polyhedron__succeeded = MR_TRUE;
+#line 494 "polyhedron.m"
+      }
+#line 494 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 494 "polyhedron.m"
+  }
+#line 491 "polyhedron.m"
+}
+
+#line 487 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron__make_last_constraint_2_f_0_1(
+#line 487 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 487 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 487 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 487 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_3)
+#line 487 "polyhedron.m"
+{
+#line 487 "polyhedron.m"
+  {
+#line 487 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 487 "polyhedron.m"
+    MR_Box libs__polyhedron__closure = libs__polyhedron__closure_arg;
+#line 487 "polyhedron.m"
+    MR_Word libs__polyhedron__conv0_STATE_VARIABLE_Terms_10;
+
+#line 487 "polyhedron.m"
+    {
+#line 487 "polyhedron.m"
+      libs__polyhedron__succeeded = libs__polyhedron__make_last_terms_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__closure, (MR_Integer) 3))), ((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2), &libs__polyhedron__conv0_STATE_VARIABLE_Terms_10);
+    }
+#line 487 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 487 "polyhedron.m"
+      {
+#line 487 "polyhedron.m"
+        *libs__polyhedron__wrapper_arg_3 = ((MR_Box) (libs__polyhedron__conv0_STATE_VARIABLE_Terms_10));
+#line 487 "polyhedron.m"
+        libs__polyhedron__succeeded = MR_TRUE;
+#line 487 "polyhedron.m"
+      }
+#line 487 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 487 "polyhedron.m"
+  }
+#line 487 "polyhedron.m"
+}
+
+#line 484 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron__make_last_constraint_2_f_0(
+#line 484 "polyhedron.m"
+  MR_Word libs__polyhedron__VarMaps_4,
+#line 484 "polyhedron.m"
+  MR_Word libs__polyhedron__OriginalVar_5,
+#line 484 "polyhedron.m"
+  MR_Word * libs__polyhedron__Constraint_6)
+#line 484 "polyhedron.m"
+{
+#line 486 "polyhedron.m"
+  {
+#line 486 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 486 "polyhedron.m"
+    MR_Word libs__polyhedron__LastTerms_7;
+#line 486 "polyhedron.m"
+    MR_Word libs__polyhedron__AllTerms_8;
+#line 486 "polyhedron.m"
+    MR_Word libs__polyhedron__V_9_9;
+#line 486 "polyhedron.m"
+    MR_Word libs__polyhedron__V_11_11;
+#line 486 "polyhedron.m"
+    MR_Word libs__polyhedron__V_12_12;
+#line 486 "polyhedron.m"
+    MR_Word libs__polyhedron__V_13_13;
+#line 486 "polyhedron.m"
+    MR_Word libs__polyhedron__V_14_14;
+#line 487 "polyhedron.m"
+    MR_Box libs__polyhedron__conv1_LastTerms_7;
+
+#line 487 "polyhedron.m"
+    {
+#line 487 "polyhedron.m"
+      libs__polyhedron__V_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 487 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_9_9, 0) = ((MR_Box) (&libs__polyhedron_scalar_common_6[1]));
+#line 487 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_9_9, 1) = ((MR_Box) (libs__polyhedron__make_last_constraint_2_f_0_1));
+#line 487 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_9_9, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 487 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_9_9, 3) = ((MR_Box) (libs__polyhedron__OriginalVar_5));
+#line 487 "polyhedron.m"
+    }
+#line 487 "polyhedron.m"
+    {
+#line 487 "polyhedron.m"
+      libs__polyhedron__succeeded = mercury__list__foldl_4_p_3((MR_Word) &libs__polyhedron_scalar_common_2[0], (MR_Word) &libs__polyhedron_scalar_common_1[5], libs__polyhedron__V_9_9, libs__polyhedron__VarMaps_4, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &libs__polyhedron__conv1_LastTerms_7);
+    }
+#line 487 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 487 "polyhedron.m"
+      {
+#line 487 "polyhedron.m"
+        libs__polyhedron__LastTerms_7 = ((MR_Word) libs__polyhedron__conv1_LastTerms_7);
+#line 487 "polyhedron.m"
+        libs__polyhedron__succeeded = MR_TRUE;
+#line 487 "polyhedron.m"
+      }
+#line 486 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 486 "polyhedron.m"
+      {
+#line 488 "polyhedron.m"
+        {
+#line 488 "polyhedron.m"
+          libs__polyhedron__V_12_12 = libs__rat__one_0_f_0();
+        }
+#line 489 "polyhedron.m"
+        libs__polyhedron__V_13_13 = (MR_Integer) 1;
+#line 488 "polyhedron.m"
+        {
+#line 488 "polyhedron.m"
+          libs__polyhedron__V_11_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 488 "polyhedron.m"
+          MR_hl_field(MR_mktag(0), libs__polyhedron__V_11_11, 0) = ((MR_Box) (libs__polyhedron__OriginalVar_5));
+#line 488 "polyhedron.m"
+          MR_hl_field(MR_mktag(0), libs__polyhedron__V_11_11, 1) = ((MR_Box) (libs__polyhedron__V_12_12));
+#line 488 "polyhedron.m"
+        }
+#line 488 "polyhedron.m"
+        {
+#line 488 "polyhedron.m"
+          libs__polyhedron__AllTerms_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 488 "polyhedron.m"
+          MR_hl_field(MR_mktag(1), libs__polyhedron__AllTerms_8, 0) = ((MR_Box) (libs__polyhedron__V_11_11));
+#line 488 "polyhedron.m"
+          MR_hl_field(MR_mktag(1), libs__polyhedron__AllTerms_8, 1) = ((MR_Box) (libs__polyhedron__LastTerms_7));
+#line 488 "polyhedron.m"
+        }
+#line 489 "polyhedron.m"
+        {
+#line 489 "polyhedron.m"
+          libs__polyhedron__V_14_14 = libs__rat__zero_0_f_0();
+        }
+#line 489 "polyhedron.m"
+        {
+#line 489 "polyhedron.m"
+          *libs__polyhedron__Constraint_6 = libs__lp_rational__construct_constraint_3_f_0(libs__polyhedron__AllTerms_8, libs__polyhedron__V_13_13, libs__polyhedron__V_14_14);
+        }
+#line 489 "polyhedron.m"
+        libs__polyhedron__succeeded = MR_TRUE;
+#line 486 "polyhedron.m"
+      }
+#line 486 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 486 "polyhedron.m"
+  }
+#line 484 "polyhedron.m"
+}
+
+#line 480 "polyhedron.m"
+static MR_Word MR_CALL 
+libs__polyhedron__get_keys_from_map_2_f_0(
+#line 480 "polyhedron.m"
+  MR_Word libs__polyhedron__Map_4,
+#line 480 "polyhedron.m"
+  MR_Word libs__polyhedron__KeySet_5)
+#line 480 "polyhedron.m"
+{
+#line 482 "polyhedron.m"
+  {
+#line 482 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 482 "polyhedron.m"
+    MR_Word libs__polyhedron__HeadVar__3_3;
+#line 482 "polyhedron.m"
+    MR_Word libs__polyhedron__TypeInfo_7_7 = (MR_Word) &libs__polyhedron_scalar_common_1[1];
+#line 482 "polyhedron.m"
+    MR_Word libs__polyhedron__V_6_6;
+
+#line 482 "polyhedron.m"
+    {
+#line 482 "polyhedron.m"
+      libs__polyhedron__V_6_6 = mercury__map__keys_1_f_0(libs__polyhedron__TypeInfo_7_7, libs__polyhedron__TypeInfo_7_7, libs__polyhedron__Map_4);
+    }
+#line 482 "polyhedron.m"
+    {
+#line 482 "polyhedron.m"
+      libs__polyhedron__HeadVar__3_3 = mercury__set__insert_list_2_f_0(libs__polyhedron__TypeInfo_7_7, libs__polyhedron__KeySet_5, libs__polyhedron__V_6_6);
+    }
+#line 482 "polyhedron.m"
+    return libs__polyhedron__HeadVar__3_3;
+#line 482 "polyhedron.m"
+  }
+#line 480 "polyhedron.m"
+}
+
+#line 471 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron__add_last_constraints_2_f_0_2(
+#line 471 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 471 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 471 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_2)
+#line 471 "polyhedron.m"
+{
+#line 471 "polyhedron.m"
+  {
+#line 471 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 471 "polyhedron.m"
+    MR_Box libs__polyhedron__closure = libs__polyhedron__closure_arg;
+#line 471 "polyhedron.m"
+    MR_Word libs__polyhedron__conv2_Constraint_6;
+
+#line 471 "polyhedron.m"
+    {
+#line 471 "polyhedron.m"
+      libs__polyhedron__succeeded = libs__polyhedron__make_last_constraint_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__closure, (MR_Integer) 3))), ((MR_Word) libs__polyhedron__wrapper_arg_1), &libs__polyhedron__conv2_Constraint_6);
+    }
+#line 471 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 471 "polyhedron.m"
+      {
+#line 471 "polyhedron.m"
+        *libs__polyhedron__wrapper_arg_2 = ((MR_Box) (libs__polyhedron__conv2_Constraint_6));
+#line 471 "polyhedron.m"
+        libs__polyhedron__succeeded = MR_TRUE;
+#line 471 "polyhedron.m"
+      }
+#line 471 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 471 "polyhedron.m"
+  }
+#line 471 "polyhedron.m"
+}
+
+#line 478 "polyhedron.m"
+static MR_Box MR_CALL 
+libs__polyhedron__add_last_constraints_2_f_0_1(
+#line 478 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 478 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 478 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_2)
+#line 478 "polyhedron.m"
+{
+#line 478 "polyhedron.m"
+  {
+#line 478 "polyhedron.m"
+    MR_Box libs__polyhedron__wrapper_arg_3;
+#line 478 "polyhedron.m"
+    MR_Box libs__polyhedron__closure = libs__polyhedron__closure_arg;
+#line 478 "polyhedron.m"
+    MR_Word libs__polyhedron__conv0_HeadVar__3_3;
+
+#line 478 "polyhedron.m"
+    {
+#line 478 "polyhedron.m"
+      libs__polyhedron__conv0_HeadVar__3_3 = libs__polyhedron__get_keys_from_map_2_f_0(((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2));
+    }
+#line 478 "polyhedron.m"
+    libs__polyhedron__wrapper_arg_3 = ((MR_Box) (libs__polyhedron__conv0_HeadVar__3_3));
+#line 478 "polyhedron.m"
+    return libs__polyhedron__wrapper_arg_3;
+#line 478 "polyhedron.m"
+  }
+#line 478 "polyhedron.m"
+}
+
+#line 467 "polyhedron.m"
+static MR_Word MR_CALL 
+libs__polyhedron__add_last_constraints_2_f_0(
+#line 467 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_Constraints_0_8,
+#line 467 "polyhedron.m"
+  MR_Word libs__polyhedron__VarMaps_5)
+#line 467 "polyhedron.m"
+{
+#line 469 "polyhedron.m"
+  {
+#line 469 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 469 "polyhedron.m"
+    MR_Word libs__polyhedron__STATE_VARIABLE_Constraints_9;
+#line 469 "polyhedron.m"
+    MR_Word libs__polyhedron__TypeCtorInfo_14_14;
+#line 469 "polyhedron.m"
+    MR_Word libs__polyhedron__Keys_6;
+#line 469 "polyhedron.m"
+    MR_Word libs__polyhedron__NewLastConstraints_7;
+#line 469 "polyhedron.m"
+    MR_Word libs__polyhedron__V_10_10;
+#line 469 "polyhedron.m"
+    MR_Word libs__polyhedron__V_11_11;
+#line 469 "polyhedron.m"
+    MR_Word libs__polyhedron__V_19_19;
+#line 478 "polyhedron.m"
+    MR_Box libs__polyhedron__conv1_Keys_6;
+
+#line 478 "polyhedron.m"
+    {
+#line 478 "polyhedron.m"
+      libs__polyhedron__V_19_19 = mercury__set__init_0_f_0((MR_Word) &libs__polyhedron_scalar_common_1[1]);
+    }
+#line 478 "polyhedron.m"
+    {
+#line 478 "polyhedron.m"
+      libs__polyhedron__conv1_Keys_6 = mercury__list__foldl_3_f_0((MR_Word) &libs__polyhedron_scalar_common_2[0], (MR_Word) &libs__polyhedron_scalar_common_1[4], (MR_Word) &libs__polyhedron_scalar_common_2[8], libs__polyhedron__VarMaps_5, ((MR_Box) (libs__polyhedron__V_19_19)));
+    }
+#line 478 "polyhedron.m"
+    libs__polyhedron__Keys_6 = ((MR_Word) libs__polyhedron__conv1_Keys_6);
+#line 3502 "libs.polyhedron.c"
+    libs__polyhedron__TypeCtorInfo_14_14 = (MR_Word) &libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0;
+#line 471 "polyhedron.m"
+    {
+#line 471 "polyhedron.m"
+      libs__polyhedron__V_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 471 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_10_10, 0) = ((MR_Box) (&libs__polyhedron_scalar_common_5[3]));
+#line 471 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_10_10, 1) = ((MR_Box) (libs__polyhedron__add_last_constraints_2_f_0_2));
+#line 471 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_10_10, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 471 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_10_10, 3) = ((MR_Box) (libs__polyhedron__VarMaps_5));
+#line 471 "polyhedron.m"
+    }
+#line 471 "polyhedron.m"
+    {
+#line 471 "polyhedron.m"
+      libs__polyhedron__NewLastConstraints_7 = mercury__set__filter_map_2_f_0((MR_Word) &libs__polyhedron_scalar_common_1[1], libs__polyhedron__TypeCtorInfo_14_14, libs__polyhedron__V_10_10, libs__polyhedron__Keys_6);
+    }
+#line 472 "polyhedron.m"
+    {
+#line 472 "polyhedron.m"
+      libs__polyhedron__V_11_11 = mercury__set__to_sorted_list_1_f_0(libs__polyhedron__TypeCtorInfo_14_14, libs__polyhedron__NewLastConstraints_7);
+    }
+#line 472 "polyhedron.m"
+    {
+#line 472 "polyhedron.m"
+      mercury__list__append_3_p_1(libs__polyhedron__TypeCtorInfo_14_14, libs__polyhedron__V_11_11, libs__polyhedron__STATE_VARIABLE_Constraints_0_8, &libs__polyhedron__STATE_VARIABLE_Constraints_9);
+    }
+#line 469 "polyhedron.m"
+    return libs__polyhedron__STATE_VARIABLE_Constraints_9;
+#line 469 "polyhedron.m"
+  }
+#line 467 "polyhedron.m"
+}
+
+#line 434 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__change_var_6_p_0(
+#line 434 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_Term_0_13,
+#line 434 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_Term_14,
+#line 434 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_VarMap_0_15,
+#line 434 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_VarMap_16,
+#line 434 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_Varset_0_17,
+#line 434 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_Varset_18)
+#line 434 "polyhedron.m"
+{
+#line 439 "polyhedron.m"
+  {
+#line 439 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 439 "polyhedron.m"
+    MR_Word libs__polyhedron__Coefficient_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__STATE_VARIABLE_Term_0_13, (MR_Integer) 1)));
+#line 439 "polyhedron.m"
+    MR_Word libs__polyhedron__STATE_VARIABLE_Var_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__STATE_VARIABLE_Term_0_13, (MR_Integer) 0)));
+#line 439 "polyhedron.m"
+    MR_Word libs__polyhedron__STATE_VARIABLE_Var_23_23;
+#line 444 "polyhedron.m"
+    MR_Word libs__polyhedron__STATE_VARIABLE_Var_20_20;
+#line 442 "polyhedron.m"
+    MR_Word libs__polyhedron__TypeInfo_25_25 = (MR_Word) &libs__polyhedron_scalar_common_1[1];
+#line 442 "polyhedron.m"
+    MR_Box libs__polyhedron__conv0_STATE_VARIABLE_Var_20_20;
+
+#line 442 "polyhedron.m"
+    {
+#line 442 "polyhedron.m"
+      libs__polyhedron__succeeded = mercury__map__search_3_p_0(libs__polyhedron__TypeInfo_25_25, libs__polyhedron__TypeInfo_25_25, libs__polyhedron__STATE_VARIABLE_VarMap_0_15, ((MR_Box) (libs__polyhedron__STATE_VARIABLE_Var_19_19)), &libs__polyhedron__conv0_STATE_VARIABLE_Var_20_20);
+    }
+#line 442 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 442 "polyhedron.m"
+      {
+#line 442 "polyhedron.m"
+        libs__polyhedron__STATE_VARIABLE_Var_20_20 = ((MR_Word) libs__polyhedron__conv0_STATE_VARIABLE_Var_20_20);
+#line 442 "polyhedron.m"
+        libs__polyhedron__succeeded = MR_TRUE;
+#line 442 "polyhedron.m"
+      }
+#line 444 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 443 "polyhedron.m"
+      {
+#line 443 "polyhedron.m"
+        libs__polyhedron__STATE_VARIABLE_Var_23_23 = libs__polyhedron__STATE_VARIABLE_Var_20_20;
+#line 443 "polyhedron.m"
+        *libs__polyhedron__STATE_VARIABLE_Varset_18 = libs__polyhedron__STATE_VARIABLE_Varset_0_17;
+#line 443 "polyhedron.m"
+        *libs__polyhedron__STATE_VARIABLE_VarMap_16 = libs__polyhedron__STATE_VARIABLE_VarMap_0_15;
+#line 443 "polyhedron.m"
+      }
+#line 444 "polyhedron.m"
+    else
+#line 445 "polyhedron.m"
+      {
+#line 445 "polyhedron.m"
+        MR_Word libs__polyhedron__TypeInfo_27_27;
+
+#line 445 "polyhedron.m"
+        {
+#line 445 "polyhedron.m"
+          mercury__varset__new_var_3_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, &libs__polyhedron__STATE_VARIABLE_Var_23_23, libs__polyhedron__STATE_VARIABLE_Varset_0_17, libs__polyhedron__STATE_VARIABLE_Varset_18);
+        }
+#line 3613 "libs.polyhedron.c"
+        libs__polyhedron__TypeInfo_27_27 = (MR_Word) &libs__polyhedron_scalar_common_1[1];
+#line 446 "polyhedron.m"
+        {
+#line 446 "polyhedron.m"
+          mercury__map__det_insert_4_p_0(libs__polyhedron__TypeInfo_27_27, libs__polyhedron__TypeInfo_27_27, ((MR_Box) (libs__polyhedron__STATE_VARIABLE_Var_19_19)), ((MR_Box) (libs__polyhedron__STATE_VARIABLE_Var_23_23)), libs__polyhedron__STATE_VARIABLE_VarMap_0_15, libs__polyhedron__STATE_VARIABLE_VarMap_16);
+        }
+#line 445 "polyhedron.m"
+      }
+#line 449 "polyhedron.m"
+    {
+#line 449 "polyhedron.m"
+      MR_Word base;
+#line 449 "polyhedron.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 449 "polyhedron.m"
+      *libs__polyhedron__STATE_VARIABLE_Term_14 = base;
+#line 449 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (libs__polyhedron__STATE_VARIABLE_Var_23_23));
+#line 449 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (libs__polyhedron__Coefficient_11));
+#line 449 "polyhedron.m"
+    }
+#line 439 "polyhedron.m"
+  }
+#line 434 "polyhedron.m"
+}
+
+#line 425 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__transform_constraint_7_p_0_1(
+#line 425 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 425 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 425 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_2,
+#line 425 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_3,
+#line 425 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_4,
+#line 425 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_5,
+#line 425 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_6)
+#line 425 "polyhedron.m"
+{
+#line 425 "polyhedron.m"
+  {
+#line 425 "polyhedron.m"
+    MR_Box libs__polyhedron__closure = libs__polyhedron__closure_arg;
+#line 425 "polyhedron.m"
+    MR_Word libs__polyhedron__conv2_STATE_VARIABLE_Term_14;
+#line 425 "polyhedron.m"
+    MR_Word libs__polyhedron__conv1_STATE_VARIABLE_VarMap_16;
+#line 425 "polyhedron.m"
+    MR_Word libs__polyhedron__conv0_STATE_VARIABLE_Varset_18;
+
+#line 425 "polyhedron.m"
+    {
+#line 425 "polyhedron.m"
+      libs__polyhedron__change_var_6_p_0(((MR_Word) libs__polyhedron__wrapper_arg_1), &libs__polyhedron__conv2_STATE_VARIABLE_Term_14, ((MR_Word) libs__polyhedron__wrapper_arg_3), &libs__polyhedron__conv1_STATE_VARIABLE_VarMap_16, ((MR_Word) libs__polyhedron__wrapper_arg_5), &libs__polyhedron__conv0_STATE_VARIABLE_Varset_18);
+    }
+#line 425 "polyhedron.m"
+    *libs__polyhedron__wrapper_arg_2 = ((MR_Box) (libs__polyhedron__conv2_STATE_VARIABLE_Term_14));
+#line 425 "polyhedron.m"
+    *libs__polyhedron__wrapper_arg_4 = ((MR_Box) (libs__polyhedron__conv1_STATE_VARIABLE_VarMap_16));
+#line 425 "polyhedron.m"
+    *libs__polyhedron__wrapper_arg_6 = ((MR_Box) (libs__polyhedron__conv0_STATE_VARIABLE_Varset_18));
+#line 425 "polyhedron.m"
+  }
+#line 425 "polyhedron.m"
+}
+
+#line 419 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__transform_constraint_7_p_0(
+#line 419 "polyhedron.m"
+  MR_Word libs__polyhedron__Sigma_8,
+#line 419 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_Constraint_0_15,
+#line 419 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_Constraint_16,
+#line 419 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_VarMap_0_17,
+#line 419 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_VarMap_18,
+#line 419 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_Varset_0_19,
+#line 419 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_Varset_20)
+#line 419 "polyhedron.m"
+{
+#line 424 "polyhedron.m"
+  {
+#line 424 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 424 "polyhedron.m"
+    MR_Word libs__polyhedron__TypeInfo_37_37;
+#line 424 "polyhedron.m"
+    MR_Word libs__polyhedron__Op_13;
+#line 424 "polyhedron.m"
+    MR_Word libs__polyhedron__Const_14;
+#line 424 "polyhedron.m"
+    MR_Word libs__polyhedron__STATE_VARIABLE_Terms_21_21;
+#line 424 "polyhedron.m"
+    MR_Word libs__polyhedron__STATE_VARIABLE_Terms_23_23;
+#line 424 "polyhedron.m"
+    MR_Word libs__polyhedron__V_26_26;
+#line 424 "polyhedron.m"
+    MR_Word libs__polyhedron__STATE_VARIABLE_Terms_27_27;
+#line 424 "polyhedron.m"
+    MR_Word libs__polyhedron__V_28_28;
+#line 424 "polyhedron.m"
+    MR_Word libs__polyhedron__V_30_30;
+#line 425 "polyhedron.m"
+    MR_Box libs__polyhedron__conv4_STATE_VARIABLE_VarMap_18;
+#line 425 "polyhedron.m"
+    MR_Box libs__polyhedron__conv3_STATE_VARIABLE_Varset_20;
+
+#line 424 "polyhedron.m"
+    {
+#line 424 "polyhedron.m"
+      libs__lp_rational__deconstruct_constraint_4_p_0(libs__polyhedron__STATE_VARIABLE_Constraint_0_15, &libs__polyhedron__STATE_VARIABLE_Terms_21_21, &libs__polyhedron__Op_13, &libs__polyhedron__Const_14);
+    }
+#line 3738 "libs.polyhedron.c"
+    libs__polyhedron__TypeInfo_37_37 = (MR_Word) &libs__polyhedron_scalar_common_2[1];
+#line 425 "polyhedron.m"
+    {
+#line 425 "polyhedron.m"
+      mercury__list__map_foldl2_7_p_0(libs__polyhedron__TypeInfo_37_37, libs__polyhedron__TypeInfo_37_37, (MR_Word) &libs__polyhedron_scalar_common_2[0], (MR_Word) &libs__polyhedron_scalar_common_1[3], (MR_Word) &libs__polyhedron_scalar_common_2[7], libs__polyhedron__STATE_VARIABLE_Terms_21_21, &libs__polyhedron__STATE_VARIABLE_Terms_23_23, ((MR_Box) (libs__polyhedron__STATE_VARIABLE_VarMap_0_17)), &libs__polyhedron__conv4_STATE_VARIABLE_VarMap_18, ((MR_Box) (libs__polyhedron__STATE_VARIABLE_Varset_0_19)), &libs__polyhedron__conv3_STATE_VARIABLE_Varset_20);
+    }
+#line 425 "polyhedron.m"
+    *libs__polyhedron__STATE_VARIABLE_VarMap_18 = ((MR_Word) libs__polyhedron__conv4_STATE_VARIABLE_VarMap_18);
+#line 425 "polyhedron.m"
+    *libs__polyhedron__STATE_VARIABLE_Varset_20 = ((MR_Word) libs__polyhedron__conv3_STATE_VARIABLE_Varset_20);
+#line 426 "polyhedron.m"
+    {
+#line 426 "polyhedron.m"
+      libs__polyhedron__V_28_28 = libs__rat__f_minus_1_f_0(libs__polyhedron__Const_14);
+    }
+#line 426 "polyhedron.m"
+    {
+#line 426 "polyhedron.m"
+      libs__polyhedron__V_26_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 426 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_26_26, 0) = ((MR_Box) (libs__polyhedron__Sigma_8));
+#line 426 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_26_26, 1) = ((MR_Box) (libs__polyhedron__V_28_28));
+#line 426 "polyhedron.m"
+    }
+#line 426 "polyhedron.m"
+    {
+#line 426 "polyhedron.m"
+      mercury__list__cons_3_p_0(libs__polyhedron__TypeInfo_37_37, ((MR_Box) (libs__polyhedron__V_26_26)), libs__polyhedron__STATE_VARIABLE_Terms_23_23, &libs__polyhedron__STATE_VARIABLE_Terms_27_27);
+    }
+#line 427 "polyhedron.m"
+    {
+#line 427 "polyhedron.m"
+      libs__polyhedron__V_30_30 = libs__rat__zero_0_f_0();
+    }
+#line 427 "polyhedron.m"
+    {
+#line 427 "polyhedron.m"
+      *libs__polyhedron__STATE_VARIABLE_Constraint_16 = libs__lp_rational__construct_constraint_3_f_0(libs__polyhedron__STATE_VARIABLE_Terms_27_27, libs__polyhedron__Op_13, libs__polyhedron__V_30_30);
+    }
+#line 424 "polyhedron.m"
+  }
+#line 419 "polyhedron.m"
+}
+
+#line 407 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__transform_polyhedron_5_p_0_1(
+#line 407 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 407 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 407 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_2,
+#line 407 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_3,
+#line 407 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_4,
+#line 407 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_5,
+#line 407 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_6)
+#line 407 "polyhedron.m"
+{
+#line 407 "polyhedron.m"
+  {
+#line 407 "polyhedron.m"
+    MR_Box libs__polyhedron__closure = libs__polyhedron__closure_arg;
+#line 407 "polyhedron.m"
+    MR_Word libs__polyhedron__conv2_STATE_VARIABLE_Constraint_16;
+#line 407 "polyhedron.m"
+    MR_Word libs__polyhedron__conv1_STATE_VARIABLE_VarMap_18;
+#line 407 "polyhedron.m"
+    MR_Word libs__polyhedron__conv0_STATE_VARIABLE_Varset_20;
+
+#line 407 "polyhedron.m"
+    {
+#line 407 "polyhedron.m"
+      libs__polyhedron__transform_constraint_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__closure, (MR_Integer) 3))), ((MR_Word) libs__polyhedron__wrapper_arg_1), &libs__polyhedron__conv2_STATE_VARIABLE_Constraint_16, ((MR_Word) libs__polyhedron__wrapper_arg_3), &libs__polyhedron__conv1_STATE_VARIABLE_VarMap_18, ((MR_Word) libs__polyhedron__wrapper_arg_5), &libs__polyhedron__conv0_STATE_VARIABLE_Varset_20);
+    }
+#line 407 "polyhedron.m"
+    *libs__polyhedron__wrapper_arg_2 = ((MR_Box) (libs__polyhedron__conv2_STATE_VARIABLE_Constraint_16));
+#line 407 "polyhedron.m"
+    *libs__polyhedron__wrapper_arg_4 = ((MR_Box) (libs__polyhedron__conv1_STATE_VARIABLE_VarMap_18));
+#line 407 "polyhedron.m"
+    *libs__polyhedron__wrapper_arg_6 = ((MR_Box) (libs__polyhedron__conv0_STATE_VARIABLE_Varset_20));
+#line 407 "polyhedron.m"
+  }
+#line 407 "polyhedron.m"
+}
+
+#line 400 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__transform_polyhedron_5_p_0(
+#line 400 "polyhedron.m"
+  MR_Word libs__polyhedron__Poly_6,
+#line 400 "polyhedron.m"
+  MR_Word libs__polyhedron__Polys0_7,
+#line 400 "polyhedron.m"
+  MR_Word * libs__polyhedron__Polys_8,
+#line 400 "polyhedron.m"
+  MR_Word libs__polyhedron__STATE_VARIABLE_PolyInfo_0_16,
+#line 400 "polyhedron.m"
+  MR_Word * libs__polyhedron__STATE_VARIABLE_PolyInfo_17)
+#line 400 "polyhedron.m"
+{
+#line 405 "polyhedron.m"
+  {
+#line 405 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__TypeInfo_33_33;
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__TypeCtorInfo_34_34;
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__VarMaps_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__STATE_VARIABLE_PolyInfo_0_16, (MR_Integer) 0)));
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__Sigmas_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__STATE_VARIABLE_PolyInfo_0_16, (MR_Integer) 1)));
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__Sigma_13;
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__NewEqns_14;
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__VarMap_15;
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__STATE_VARIABLE_Varset_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__STATE_VARIABLE_PolyInfo_0_16, (MR_Integer) 2)));
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__STATE_VARIABLE_Varset_19_19;
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__V_20_20;
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__V_21_21;
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__STATE_VARIABLE_Varset_22_22;
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__V_24_24;
+#line 405 "polyhedron.m"
+    MR_Word libs__polyhedron__V_25_25;
+#line 407 "polyhedron.m"
+    MR_Box libs__polyhedron__conv4_VarMap_15;
+#line 407 "polyhedron.m"
+    MR_Box libs__polyhedron__conv3_STATE_VARIABLE_Varset_22_22;
+
+#line 406 "polyhedron.m"
+    {
+#line 406 "polyhedron.m"
+      mercury__varset__new_var_3_p_0((MR_Word) &mercury__term__term__type_ctor_info_generic_0, &libs__polyhedron__Sigma_13, libs__polyhedron__STATE_VARIABLE_Varset_18_18, &libs__polyhedron__STATE_VARIABLE_Varset_19_19);
+    }
+#line 407 "polyhedron.m"
+    {
+#line 407 "polyhedron.m"
+      libs__polyhedron__V_20_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 407 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_20_20, 0) = ((MR_Box) (&libs__polyhedron_scalar_common_9[0]));
+#line 407 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_20_20, 1) = ((MR_Box) (libs__polyhedron__transform_polyhedron_5_p_0_1));
+#line 407 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_20_20, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 407 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_20_20, 3) = ((MR_Box) (libs__polyhedron__Sigma_13));
+#line 407 "polyhedron.m"
+    }
+#line 3901 "libs.polyhedron.c"
+    libs__polyhedron__TypeInfo_33_33 = (MR_Word) &libs__polyhedron_scalar_common_1[1];
+#line 408 "polyhedron.m"
+    {
+#line 408 "polyhedron.m"
+      libs__polyhedron__V_21_21 = mercury__map__init_0_f_0(libs__polyhedron__TypeInfo_33_33, libs__polyhedron__TypeInfo_33_33);
+    }
+#line 3908 "libs.polyhedron.c"
+    libs__polyhedron__TypeCtorInfo_34_34 = (MR_Word) &libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0;
+#line 407 "polyhedron.m"
+    {
+#line 407 "polyhedron.m"
+      mercury__list__map_foldl2_7_p_0(libs__polyhedron__TypeCtorInfo_34_34, libs__polyhedron__TypeCtorInfo_34_34, (MR_Word) &libs__polyhedron_scalar_common_2[0], (MR_Word) &libs__polyhedron_scalar_common_1[3], libs__polyhedron__V_20_20, libs__polyhedron__Poly_6, &libs__polyhedron__NewEqns_14, ((MR_Box) (libs__polyhedron__V_21_21)), &libs__polyhedron__conv4_VarMap_15, ((MR_Box) (libs__polyhedron__STATE_VARIABLE_Varset_19_19)), &libs__polyhedron__conv3_STATE_VARIABLE_Varset_22_22);
+    }
+#line 407 "polyhedron.m"
+    libs__polyhedron__VarMap_15 = ((MR_Word) libs__polyhedron__conv4_VarMap_15);
+#line 407 "polyhedron.m"
+    libs__polyhedron__STATE_VARIABLE_Varset_22_22 = ((MR_Word) libs__polyhedron__conv3_STATE_VARIABLE_Varset_22_22);
+#line 409 "polyhedron.m"
+    {
+#line 409 "polyhedron.m"
+      *libs__polyhedron__Polys_8 = mercury__list__f_43_43_2_f_0(libs__polyhedron__TypeCtorInfo_34_34, libs__polyhedron__NewEqns_14, libs__polyhedron__Polys0_7);
+    }
+#line 410 "polyhedron.m"
+    {
+#line 410 "polyhedron.m"
+      libs__polyhedron__V_24_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 410 "polyhedron.m"
+      MR_hl_field(MR_mktag(1), libs__polyhedron__V_24_24, 0) = ((MR_Box) (libs__polyhedron__VarMap_15));
+#line 410 "polyhedron.m"
+      MR_hl_field(MR_mktag(1), libs__polyhedron__V_24_24, 1) = ((MR_Box) (libs__polyhedron__VarMaps_11));
+#line 410 "polyhedron.m"
+    }
+#line 410 "polyhedron.m"
+    {
+#line 410 "polyhedron.m"
+      libs__polyhedron__V_25_25 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 410 "polyhedron.m"
+      MR_hl_field(MR_mktag(1), libs__polyhedron__V_25_25, 0) = ((MR_Box) (libs__polyhedron__Sigma_13));
+#line 410 "polyhedron.m"
+      MR_hl_field(MR_mktag(1), libs__polyhedron__V_25_25, 1) = ((MR_Box) (libs__polyhedron__Sigmas_12));
+#line 410 "polyhedron.m"
+    }
+#line 410 "polyhedron.m"
+    {
+#line 410 "polyhedron.m"
+      MR_Word base;
+#line 410 "polyhedron.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 410 "polyhedron.m"
+      *libs__polyhedron__STATE_VARIABLE_PolyInfo_17 = base;
+#line 410 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (libs__polyhedron__V_24_24));
+#line 410 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (libs__polyhedron__V_25_25));
+#line 410 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (libs__polyhedron__STATE_VARIABLE_Varset_22_22));
+#line 410 "polyhedron.m"
+    }
+#line 405 "polyhedron.m"
+  }
+#line 400 "polyhedron.m"
+}
+
+#line 361 "polyhedron.m"
+static MR_Box MR_CALL 
+libs__polyhedron__convex_hull_4_p_0_4(
+#line 361 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 361 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 361 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_2)
+#line 361 "polyhedron.m"
+{
+#line 361 "polyhedron.m"
+  {
+#line 361 "polyhedron.m"
+    MR_Box libs__polyhedron__wrapper_arg_3;
+#line 361 "polyhedron.m"
+    MR_Box libs__polyhedron__closure = libs__polyhedron__closure_arg;
+#line 361 "polyhedron.m"
+    MR_Word libs__polyhedron__conv6_LambdaHeadVar__3_42;
+
+#line 361 "polyhedron.m"
+    {
+#line 361 "polyhedron.m"
+      libs__polyhedron__conv6_LambdaHeadVar__3_42 = libs__polyhedron__IntroducedFrom__func__convex_hull__361__1_2_f_0(((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2));
+    }
+#line 361 "polyhedron.m"
+    libs__polyhedron__wrapper_arg_3 = ((MR_Box) (libs__polyhedron__conv6_LambdaHeadVar__3_42));
+#line 361 "polyhedron.m"
+    return libs__polyhedron__wrapper_arg_3;
+#line 361 "polyhedron.m"
+  }
+#line 361 "polyhedron.m"
+}
+
+#line 461 "polyhedron.m"
+static MR_Box MR_CALL 
+libs__polyhedron__convex_hull_4_p_0_3(
+#line 461 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 461 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1)
+#line 461 "polyhedron.m"
+{
+#line 461 "polyhedron.m"
+  {
+#line 461 "polyhedron.m"
+    MR_Box libs__polyhedron__wrapper_arg_2;
+#line 461 "polyhedron.m"
+    MR_Box libs__polyhedron__closure = libs__polyhedron__closure_arg;
+#line 461 "polyhedron.m"
+    MR_Word libs__polyhedron__conv5_HeadVar__2_2;
+
+#line 461 "polyhedron.m"
+    {
+#line 461 "polyhedron.m"
+      libs__polyhedron__conv5_HeadVar__2_2 = libs__lp_rational__lp_term_1_f_0(((MR_Word) libs__polyhedron__wrapper_arg_1));
+    }
+#line 461 "polyhedron.m"
+    libs__polyhedron__wrapper_arg_2 = ((MR_Box) (libs__polyhedron__conv5_HeadVar__2_2));
+#line 461 "polyhedron.m"
+    return libs__polyhedron__wrapper_arg_2;
+#line 461 "polyhedron.m"
+  }
+#line 461 "polyhedron.m"
+}
+
+#line 457 "polyhedron.m"
+static MR_Box MR_CALL 
+libs__polyhedron__convex_hull_4_p_0_2(
+#line 457 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 457 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1)
+#line 457 "polyhedron.m"
+{
+#line 457 "polyhedron.m"
+  {
+#line 457 "polyhedron.m"
+    MR_Box libs__polyhedron__wrapper_arg_2;
+#line 457 "polyhedron.m"
+    MR_Box libs__polyhedron__closure = libs__polyhedron__closure_arg;
+#line 457 "polyhedron.m"
+    MR_Word libs__polyhedron__conv4_HeadVar__2_2;
+
+#line 457 "polyhedron.m"
+    {
+#line 457 "polyhedron.m"
+      libs__polyhedron__conv4_HeadVar__2_2 = libs__lp_rational__make_nonneg_constr_1_f_0(((MR_Word) libs__polyhedron__wrapper_arg_1));
+    }
+#line 457 "polyhedron.m"
+    libs__polyhedron__wrapper_arg_2 = ((MR_Box) (libs__polyhedron__conv4_HeadVar__2_2));
+#line 457 "polyhedron.m"
+    return libs__polyhedron__wrapper_arg_2;
+#line 457 "polyhedron.m"
+  }
+#line 457 "polyhedron.m"
+}
+
+#line 398 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__convex_hull_4_p_0_1(
+#line 398 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 398 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1,
+#line 398 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_2,
+#line 398 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_3,
+#line 398 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_4,
+#line 398 "polyhedron.m"
+  MR_Box * libs__polyhedron__wrapper_arg_5)
+#line 398 "polyhedron.m"
+{
+#line 398 "polyhedron.m"
+  {
+#line 398 "polyhedron.m"
+    MR_Box libs__polyhedron__closure = libs__polyhedron__closure_arg;
+#line 398 "polyhedron.m"
+    MR_Word libs__polyhedron__conv1_Polys_8;
+#line 398 "polyhedron.m"
+    MR_Word libs__polyhedron__conv0_STATE_VARIABLE_PolyInfo_17;
+
+#line 398 "polyhedron.m"
+    {
+#line 398 "polyhedron.m"
+      libs__polyhedron__transform_polyhedron_5_p_0(((MR_Word) libs__polyhedron__wrapper_arg_1), ((MR_Word) libs__polyhedron__wrapper_arg_2), &libs__polyhedron__conv1_Polys_8, ((MR_Word) libs__polyhedron__wrapper_arg_4), &libs__polyhedron__conv0_STATE_VARIABLE_PolyInfo_17);
+    }
+#line 398 "polyhedron.m"
+    *libs__polyhedron__wrapper_arg_3 = ((MR_Box) (libs__polyhedron__conv1_Polys_8));
+#line 398 "polyhedron.m"
+    *libs__polyhedron__wrapper_arg_5 = ((MR_Box) (libs__polyhedron__conv0_STATE_VARIABLE_PolyInfo_17));
+#line 398 "polyhedron.m"
+  }
+#line 398 "polyhedron.m"
+}
+
+#line 347 "polyhedron.m"
+static void MR_CALL 
+libs__polyhedron__convex_hull_4_p_0(
+#line 347 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 347 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__2_2,
+#line 347 "polyhedron.m"
+  MR_Word libs__polyhedron__MaybeMaxSize_3,
+#line 347 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset0_4)
+#line 347 "polyhedron.m"
+{
+#line 350 "polyhedron.m"
+  {
+#line 350 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 350 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 350 "polyhedron.m"
+      {
+#line 351 "polyhedron.m"
+        {
+#line 351 "polyhedron.m"
+          mercury__require__unexpected_3_p_0((MR_String) "libs.polyhedron", (MR_String) "predicate \140libs.polyhedron.convex_hull\'/4", (MR_String) "empty list");
+#line 351 "polyhedron.m"
+          return;
+        }
+#line 350 "polyhedron.m"
+      }
+#line 350 "polyhedron.m"
+    else
+#line 350 "polyhedron.m"
+      {
+#line 350 "polyhedron.m"
+        MR_Word libs__polyhedron__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 1)));
+#line 350 "polyhedron.m"
+        MR_Word libs__polyhedron__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+
+#line 350 "polyhedron.m"
+        if ((libs__polyhedron__V_60_60 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 352 "polyhedron.m"
+          {
+#line 352 "polyhedron.m"
+            MR_Word base;
+#line 352 "polyhedron.m"
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 352 "polyhedron.m"
+            *libs__polyhedron__HeadVar__2_2 = base;
+#line 352 "polyhedron.m"
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (libs__polyhedron__V_61_61));
+#line 352 "polyhedron.m"
+          }
+#line 350 "polyhedron.m"
+        else
+#line 353 "polyhedron.m"
+          {
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__TypeInfo_18_75;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__TypeInfo_17_90;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__TypeCtorInfo_18_91;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__PolyInfo0_22;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__Matrix0_23;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__PolyInfo_24;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__VarMaps_25;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__Sigmas_26;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__Varset_27;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__Matrix1_28;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__Matrix_29;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__VarsToEliminate_34;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__ProjectionResult_35;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__V_44_44;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__SigmaConstraints_81;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__SigmaTerms_82;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__STATE_VARIABLE_Constraints_11_84;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__V_86_86;
+#line 353 "polyhedron.m"
+            MR_Word libs__polyhedron__V_89_89;
+#line 398 "polyhedron.m"
+            MR_Box libs__polyhedron__conv3_Matrix0_23;
+#line 398 "polyhedron.m"
+            MR_Box libs__polyhedron__conv2_PolyInfo_24;
+#line 364 "polyhedron.m"
+            MR_Box libs__polyhedron__conv7_V_44_44;
+
+#line 356 "polyhedron.m"
+            {
+#line 356 "polyhedron.m"
+              libs__polyhedron__PolyInfo0_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 356 "polyhedron.m"
+              MR_hl_field(MR_mktag(0), libs__polyhedron__PolyInfo0_22, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 356 "polyhedron.m"
+              MR_hl_field(MR_mktag(0), libs__polyhedron__PolyInfo0_22, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 356 "polyhedron.m"
+              MR_hl_field(MR_mktag(0), libs__polyhedron__PolyInfo0_22, 2) = ((MR_Box) (libs__polyhedron__Varset0_4));
+#line 356 "polyhedron.m"
+            }
+#line 4218 "libs.polyhedron.c"
+            libs__polyhedron__TypeInfo_18_75 = (MR_Word) &libs__polyhedron_scalar_common_1[0];
+#line 398 "polyhedron.m"
+            {
+#line 398 "polyhedron.m"
+              mercury__list__foldl2_6_p_0(libs__polyhedron__TypeInfo_18_75, libs__polyhedron__TypeInfo_18_75, (MR_Word) &libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedra_info_0, (MR_Word) &libs__polyhedron_scalar_common_2[3], libs__polyhedron__HeadVar__1_1, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &libs__polyhedron__conv3_Matrix0_23, ((MR_Box) (libs__polyhedron__PolyInfo0_22)), &libs__polyhedron__conv2_PolyInfo_24);
+            }
+#line 398 "polyhedron.m"
+            libs__polyhedron__Matrix0_23 = ((MR_Word) libs__polyhedron__conv3_Matrix0_23);
+#line 398 "polyhedron.m"
+            libs__polyhedron__PolyInfo_24 = ((MR_Word) libs__polyhedron__conv2_PolyInfo_24);
+#line 358 "polyhedron.m"
+            libs__polyhedron__VarMaps_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__PolyInfo_24, (MR_Integer) 0)));
+#line 358 "polyhedron.m"
+            libs__polyhedron__Sigmas_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__PolyInfo_24, (MR_Integer) 1)));
+#line 358 "polyhedron.m"
+            libs__polyhedron__Varset_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__PolyInfo_24, (MR_Integer) 2)));
+#line 4235 "libs.polyhedron.c"
+            libs__polyhedron__TypeInfo_17_90 = (MR_Word) &libs__polyhedron_scalar_common_1[1];
+#line 4237 "libs.polyhedron.c"
+            libs__polyhedron__TypeCtorInfo_18_91 = (MR_Word) &libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0;
+#line 457 "polyhedron.m"
+            {
+#line 457 "polyhedron.m"
+              libs__polyhedron__SigmaConstraints_81 = mercury__list__map_2_f_0(libs__polyhedron__TypeInfo_17_90, libs__polyhedron__TypeCtorInfo_18_91, (MR_Word) &libs__polyhedron_scalar_common_2[4], libs__polyhedron__Sigmas_26);
+            }
+#line 458 "polyhedron.m"
+            {
+#line 458 "polyhedron.m"
+              mercury__list__append_3_p_1(libs__polyhedron__TypeCtorInfo_18_91, libs__polyhedron__SigmaConstraints_81, libs__polyhedron__Matrix0_23, &libs__polyhedron__STATE_VARIABLE_Constraints_11_84);
+            }
+#line 461 "polyhedron.m"
+            {
+#line 461 "polyhedron.m"
+              libs__polyhedron__SigmaTerms_82 = mercury__list__map_2_f_0(libs__polyhedron__TypeInfo_17_90, (MR_Word) &libs__polyhedron_scalar_common_2[1], (MR_Word) &libs__polyhedron_scalar_common_2[5], libs__polyhedron__Sigmas_26);
+            }
+#line 462 "polyhedron.m"
+            {
+#line 462 "polyhedron.m"
+              libs__polyhedron__V_89_89 = libs__rat__one_0_f_0();
+            }
+#line 462 "polyhedron.m"
+            {
+#line 462 "polyhedron.m"
+              libs__polyhedron__V_86_86 = libs__lp_rational__construct_constraint_3_f_0(libs__polyhedron__SigmaTerms_82, (MR_Integer) 1, libs__polyhedron__V_89_89);
+            }
+#line 462 "polyhedron.m"
+            {
+#line 462 "polyhedron.m"
+              mercury__list__cons_3_p_0(libs__polyhedron__TypeCtorInfo_18_91, ((MR_Box) (libs__polyhedron__V_86_86)), libs__polyhedron__STATE_VARIABLE_Constraints_11_84, &libs__polyhedron__Matrix1_28);
+            }
+#line 360 "polyhedron.m"
+            {
+#line 360 "polyhedron.m"
+              libs__polyhedron__Matrix_29 = libs__polyhedron__add_last_constraints_2_f_0(libs__polyhedron__Matrix1_28, libs__polyhedron__VarMaps_25);
+            }
+#line 364 "polyhedron.m"
+            {
+#line 364 "polyhedron.m"
+              libs__polyhedron__conv7_V_44_44 = mercury__list__foldl_3_f_0((MR_Word) &libs__polyhedron_scalar_common_2[0], (MR_Word) &libs__polyhedron_scalar_common_1[2], (MR_Word) &libs__polyhedron_scalar_common_2[6], libs__polyhedron__VarMaps_25, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))));
+            }
+#line 364 "polyhedron.m"
+            libs__polyhedron__V_44_44 = ((MR_Word) libs__polyhedron__conv7_V_44_44);
+#line 364 "polyhedron.m"
+            {
+#line 364 "polyhedron.m"
+              libs__polyhedron__VarsToEliminate_34 = mercury__list__f_43_43_2_f_0((MR_Word) &libs__polyhedron_scalar_common_1[1], libs__polyhedron__Sigmas_26, libs__polyhedron__V_44_44);
+            }
+#line 371 "polyhedron.m"
+            {
+#line 371 "polyhedron.m"
+              libs__lp_rational__project_5_p_0(libs__polyhedron__VarsToEliminate_34, libs__polyhedron__Varset_27, libs__polyhedron__MaybeMaxSize_3, libs__polyhedron__Matrix_29, &libs__polyhedron__ProjectionResult_35);
+            }
+#line 377 "polyhedron.m"
+#line 377 "polyhedron.m"
+            switch (MR_tag((MR_Word) libs__polyhedron__ProjectionResult_35)) {
+#line 377 "polyhedron.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 377 "polyhedron.m"
+              case (MR_Integer) 0:
+#line 377 "polyhedron.m"
+#line 377 "polyhedron.m"
+                switch (MR_unmkbody(libs__polyhedron__ProjectionResult_35)) {
+#line 377 "polyhedron.m"
+                  default: /*NOTREACHED*/ MR_assert(0);
+#line 377 "polyhedron.m"
+                  case (MR_Integer) 0:
+#line 378 "polyhedron.m"
+                    *libs__polyhedron__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 377 "polyhedron.m"
+                    break;
+#line 377 "polyhedron.m"
+                  case (MR_Integer) 1:
+#line 375 "polyhedron.m"
+                    {
+#line 375 "polyhedron.m"
+                      MR_Word libs__polyhedron__V_51_51;
+
+#line 376 "polyhedron.m"
+                      {
+#line 376 "polyhedron.m"
+                        libs__polyhedron__V_51_51 = libs__lp_rational__nonneg_box_2_f_0(libs__polyhedron__VarsToEliminate_34, libs__polyhedron__Matrix_29);
+                      }
+#line 376 "polyhedron.m"
+                      {
+#line 376 "polyhedron.m"
+                        MR_Word base;
+#line 376 "polyhedron.m"
+                        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 376 "polyhedron.m"
+                        *libs__polyhedron__HeadVar__2_2 = base;
+#line 376 "polyhedron.m"
+                        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (libs__polyhedron__V_51_51));
+#line 376 "polyhedron.m"
+                      }
+#line 375 "polyhedron.m"
+                    }
+#line 377 "polyhedron.m"
+                    break;
+#line 377 "polyhedron.m"
+                }
+#line 377 "polyhedron.m"
+                break;
+#line 377 "polyhedron.m"
+              case (MR_Integer) 1:
+#line 382 "polyhedron.m"
+                {
+#line 382 "polyhedron.m"
+                  MR_Word libs__polyhedron__STATE_VARIABLE_Hull_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__ProjectionResult_35, (MR_Integer) 0)));
+#line 382 "polyhedron.m"
+                  MR_Word libs__polyhedron__STATE_VARIABLE_Hull_47_47;
+#line 382 "polyhedron.m"
+                  MR_Word libs__polyhedron__STATE_VARIABLE_Hull_48_48;
+#line 389 "polyhedron.m"
+                  MR_Word libs__polyhedron__STATE_VARIABLE_Hull_49_49;
+
+#line 383 "polyhedron.m"
+                  {
+#line 383 "polyhedron.m"
+                    libs__lp_rational__restore_equalities_2_p_0(libs__polyhedron__STATE_VARIABLE_Hull_46_46, &libs__polyhedron__STATE_VARIABLE_Hull_47_47);
+                  }
+#line 386 "polyhedron.m"
+                  {
+#line 386 "polyhedron.m"
+                    libs__polyhedron__STATE_VARIABLE_Hull_48_48 = libs__lp_rational__simplify_constraints_1_f_0(libs__polyhedron__STATE_VARIABLE_Hull_47_47);
+                  }
+#line 387 "polyhedron.m"
+                  {
+#line 387 "polyhedron.m"
+                    libs__polyhedron__succeeded = libs__lp_rational__remove_some_entailed_constraints_3_p_0(libs__polyhedron__Varset_27, libs__polyhedron__STATE_VARIABLE_Hull_48_48, &libs__polyhedron__STATE_VARIABLE_Hull_49_49);
+                  }
+#line 389 "polyhedron.m"
+                  if (libs__polyhedron__succeeded)
+#line 388 "polyhedron.m"
+                    {
+#line 388 "polyhedron.m"
+                      MR_Word base;
+#line 388 "polyhedron.m"
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 388 "polyhedron.m"
+                      *libs__polyhedron__HeadVar__2_2 = base;
+#line 388 "polyhedron.m"
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (libs__polyhedron__STATE_VARIABLE_Hull_49_49));
+#line 388 "polyhedron.m"
+                    }
+#line 389 "polyhedron.m"
+                  else
+#line 389 "polyhedron.m"
+                    *libs__polyhedron__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 382 "polyhedron.m"
+                }
+#line 377 "polyhedron.m"
+                break;
+#line 377 "polyhedron.m"
+            }
+#line 353 "polyhedron.m"
+          }
+#line 350 "polyhedron.m"
+      }
+#line 350 "polyhedron.m"
+  }
+#line 347 "polyhedron.m"
+}
+
+#line 179 "polyhedron.m"
+void MR_CALL 
+libs__polyhedron__write_polyhedron_4_p_0(
+#line 179 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 179 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_2)
+#line 179 "polyhedron.m"
+{
+#line 595 "polyhedron.m"
+  {
+#line 595 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 595 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 595 "polyhedron.m"
+      {
+#line 596 "polyhedron.m"
+        {
+#line 596 "polyhedron.m"
+          mercury__io__write_string_3_p_0((MR_String) "\tEmpty\n");
+        }
+#line 595 "polyhedron.m"
+      }
+#line 595 "polyhedron.m"
+    else
+#line 595 "polyhedron.m"
+      {
+#line 595 "polyhedron.m"
+        MR_Word libs__polyhedron__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+
+#line 595 "polyhedron.m"
+        if ((libs__polyhedron__V_27_27 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 597 "polyhedron.m"
+          {
+#line 598 "polyhedron.m"
+            {
+#line 598 "polyhedron.m"
+              mercury__io__write_string_3_p_0((MR_String) "\tUniverse\n");
+            }
+#line 597 "polyhedron.m"
+          }
+#line 595 "polyhedron.m"
+        else
+#line 600 "polyhedron.m"
+          {
+#line 600 "polyhedron.m"
+            libs__lp_rational__write_constraints_4_p_0(libs__polyhedron__V_27_27, libs__polyhedron__Varset_2);
+          }
+#line 595 "polyhedron.m"
+      }
+#line 595 "polyhedron.m"
+  }
+#line 179 "polyhedron.m"
+}
+
+#line 174 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__zero_vars_2_f_0(
+#line 174 "polyhedron.m"
+  MR_Word libs__polyhedron__Vars_1,
+#line 174 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2)
+#line 174 "polyhedron.m"
+{
+#line 586 "polyhedron.m"
+  {
+#line 586 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 586 "polyhedron.m"
+    MR_Word libs__polyhedron__HeadVar__3_3;
+
+#line 586 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 586 "polyhedron.m"
+      libs__polyhedron__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 586 "polyhedron.m"
+    else
+#line 587 "polyhedron.m"
+      {
+#line 587 "polyhedron.m"
+        MR_Word libs__polyhedron__Constraints0_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__2_2, (MR_Integer) 0)));
+#line 587 "polyhedron.m"
+        MR_Word libs__polyhedron__Constraints_7;
+
+#line 588 "polyhedron.m"
+        {
+#line 588 "polyhedron.m"
+          libs__polyhedron__Constraints_7 = libs__lp_rational__set_vars_to_zero_2_f_0(libs__polyhedron__Vars_1, libs__polyhedron__Constraints0_6);
+        }
+#line 587 "polyhedron.m"
+        {
+#line 587 "polyhedron.m"
+          libs__polyhedron__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 587 "polyhedron.m"
+          MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__3_3, 0) = ((MR_Box) (libs__polyhedron__Constraints_7));
+#line 587 "polyhedron.m"
+        }
+#line 587 "polyhedron.m"
+      }
+#line 586 "polyhedron.m"
+    return libs__polyhedron__HeadVar__3_3;
+#line 586 "polyhedron.m"
+  }
+#line 174 "polyhedron.m"
+}
+
+#line 161 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__substitute_vars_2_f_0(
+#line 161 "polyhedron.m"
+  MR_Word libs__polyhedron__SubstMap_4,
+#line 161 "polyhedron.m"
+  MR_Word libs__polyhedron__Polyhedron0_5)
+#line 161 "polyhedron.m"
+{
+#line 576 "polyhedron.m"
+  {
+#line 576 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 576 "polyhedron.m"
+    MR_Word libs__polyhedron__Polyhedron_6;
+#line 576 "polyhedron.m"
+    MR_Word libs__polyhedron__Constraints0_7;
+#line 576 "polyhedron.m"
+    MR_Word libs__polyhedron__Constraints_8;
+
+#line 228 "polyhedron.m"
+    if ((libs__polyhedron__Polyhedron0_5 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 229 "polyhedron.m"
+      {
+#line 230 "polyhedron.m"
+        MR_Box libs__polyhedron__conv0_Constraints0_7;
+
+#line 230 "polyhedron.m"
+        {
+#line 230 "polyhedron.m"
+          libs__polyhedron__conv0_Constraints0_7 = mercury__require__unexpected_3_f_0((MR_Word) &libs__polyhedron_scalar_common_1[0], (MR_String) "libs.polyhedron", (MR_String) "function \140libs.polyhedron.non_false_constraints\'/1", (MR_String) "empty polyhedron");
+        }
+#line 230 "polyhedron.m"
+        libs__polyhedron__Constraints0_7 = ((MR_Word) libs__polyhedron__conv0_Constraints0_7);
+#line 229 "polyhedron.m"
+      }
+#line 228 "polyhedron.m"
+    else
+#line 228 "polyhedron.m"
+      libs__polyhedron__Constraints0_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__Polyhedron0_5, (MR_Integer) 0)));
+#line 578 "polyhedron.m"
+    {
+#line 578 "polyhedron.m"
+      libs__polyhedron__Constraints_8 = libs__lp_rational__substitute_vars_2_f_0(libs__polyhedron__SubstMap_4, libs__polyhedron__Constraints0_7);
+    }
+#line 579 "polyhedron.m"
+    {
+#line 579 "polyhedron.m"
+      libs__polyhedron__Polyhedron_6 = libs__polyhedron__from_constraints_1_f_0(libs__polyhedron__Constraints_8);
+    }
+#line 576 "polyhedron.m"
+    return libs__polyhedron__Polyhedron_6;
+#line 576 "polyhedron.m"
+  }
+#line 161 "polyhedron.m"
+}
+
+#line 160 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__substitute_vars_3_f_0(
+#line 160 "polyhedron.m"
+  MR_Word libs__polyhedron__OldVars_5,
+#line 160 "polyhedron.m"
+  MR_Word libs__polyhedron__NewVars_6,
+#line 160 "polyhedron.m"
+  MR_Word libs__polyhedron__Polyhedron0_7)
+#line 160 "polyhedron.m"
+{
+#line 571 "polyhedron.m"
+  {
+#line 571 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 571 "polyhedron.m"
+    MR_Word libs__polyhedron__Polyhedron_8;
+#line 571 "polyhedron.m"
+    MR_Word libs__polyhedron__Constraints0_9;
+#line 571 "polyhedron.m"
+    MR_Word libs__polyhedron__Constraints_10;
+
+#line 228 "polyhedron.m"
+    if ((libs__polyhedron__Polyhedron0_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 229 "polyhedron.m"
+      {
+#line 230 "polyhedron.m"
+        MR_Box libs__polyhedron__conv0_Constraints0_9;
+
+#line 230 "polyhedron.m"
+        {
+#line 230 "polyhedron.m"
+          libs__polyhedron__conv0_Constraints0_9 = mercury__require__unexpected_3_f_0((MR_Word) &libs__polyhedron_scalar_common_1[0], (MR_String) "libs.polyhedron", (MR_String) "function \140libs.polyhedron.non_false_constraints\'/1", (MR_String) "empty polyhedron");
+        }
+#line 230 "polyhedron.m"
+        libs__polyhedron__Constraints0_9 = ((MR_Word) libs__polyhedron__conv0_Constraints0_9);
+#line 229 "polyhedron.m"
+      }
+#line 228 "polyhedron.m"
+    else
+#line 228 "polyhedron.m"
+      libs__polyhedron__Constraints0_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__Polyhedron0_7, (MR_Integer) 0)));
+#line 573 "polyhedron.m"
+    {
+#line 573 "polyhedron.m"
+      libs__polyhedron__Constraints_10 = libs__lp_rational__substitute_vars_3_f_0(libs__polyhedron__OldVars_5, libs__polyhedron__NewVars_6, libs__polyhedron__Constraints0_9);
+    }
+#line 574 "polyhedron.m"
+    {
+#line 574 "polyhedron.m"
+      libs__polyhedron__Polyhedron_8 = libs__polyhedron__from_constraints_1_f_0(libs__polyhedron__Constraints_10);
+    }
+#line 571 "polyhedron.m"
+    return libs__polyhedron__Polyhedron_8;
+#line 571 "polyhedron.m"
+  }
+#line 160 "polyhedron.m"
+}
+
+#line 151 "polyhedron.m"
+void MR_CALL 
+libs__polyhedron__project_4_p_0(
+#line 151 "polyhedron.m"
+  MR_Word libs__polyhedron__Vars_1,
+#line 151 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_2,
+#line 151 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3,
+#line 151 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__4_4)
+#line 151 "polyhedron.m"
+{
+#line 551 "polyhedron.m"
+  {
+#line 551 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 551 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 551 "polyhedron.m"
+      *libs__polyhedron__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 551 "polyhedron.m"
+    else
+#line 552 "polyhedron.m"
+      {
+#line 552 "polyhedron.m"
+        MR_Word libs__polyhedron__Constraints0_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__3_3, (MR_Integer) 0)));
+#line 552 "polyhedron.m"
+        MR_Word libs__polyhedron__ProjectionResult_11;
+
+#line 553 "polyhedron.m"
+        {
+#line 553 "polyhedron.m"
+          libs__lp_rational__project_4_p_0(libs__polyhedron__Vars_1, libs__polyhedron__Varset_2, libs__polyhedron__Constraints0_9, &libs__polyhedron__ProjectionResult_11);
+        }
+#line 557 "polyhedron.m"
+#line 557 "polyhedron.m"
+        switch (MR_tag((MR_Word) libs__polyhedron__ProjectionResult_11)) {
+#line 557 "polyhedron.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 557 "polyhedron.m"
+          case (MR_Integer) 0:
+#line 557 "polyhedron.m"
+#line 557 "polyhedron.m"
+            switch (MR_unmkbody(libs__polyhedron__ProjectionResult_11)) {
+#line 557 "polyhedron.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 557 "polyhedron.m"
+              case (MR_Integer) 0:
+#line 559 "polyhedron.m"
+                *libs__polyhedron__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 557 "polyhedron.m"
+                break;
+#line 557 "polyhedron.m"
+              case (MR_Integer) 1:
+#line 555 "polyhedron.m"
+                {
+#line 556 "polyhedron.m"
+                  {
+#line 556 "polyhedron.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "libs.polyhedron", (MR_String) "predicate \140libs.polyhedron.project\'/4", (MR_String) "abort from project");
+#line 556 "polyhedron.m"
+                    return;
+                  }
+#line 555 "polyhedron.m"
+                }
+#line 557 "polyhedron.m"
+                break;
+#line 557 "polyhedron.m"
+            }
+#line 557 "polyhedron.m"
+            break;
+#line 557 "polyhedron.m"
+          case (MR_Integer) 1:
+#line 561 "polyhedron.m"
+            {
+#line 561 "polyhedron.m"
+              MR_Word libs__polyhedron__Constraints1_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__ProjectionResult_11, (MR_Integer) 0)));
+#line 561 "polyhedron.m"
+              MR_Word libs__polyhedron__Constraints_13;
+
+#line 562 "polyhedron.m"
+              {
+#line 562 "polyhedron.m"
+                libs__lp_rational__restore_equalities_2_p_0(libs__polyhedron__Constraints1_12, &libs__polyhedron__Constraints_13);
+              }
+#line 563 "polyhedron.m"
+              {
+#line 563 "polyhedron.m"
+                MR_Word base;
+#line 563 "polyhedron.m"
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 563 "polyhedron.m"
+                *libs__polyhedron__HeadVar__4_4 = base;
+#line 563 "polyhedron.m"
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (libs__polyhedron__Constraints_13));
+#line 563 "polyhedron.m"
+              }
+#line 561 "polyhedron.m"
+            }
+#line 557 "polyhedron.m"
+            break;
+#line 557 "polyhedron.m"
+        }
+#line 552 "polyhedron.m"
+      }
+#line 551 "polyhedron.m"
+  }
+#line 151 "polyhedron.m"
+}
+
+#line 150 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__project_3_f_0(
+#line 150 "polyhedron.m"
+  MR_Word libs__polyhedron__Vars_5,
+#line 150 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_6,
+#line 150 "polyhedron.m"
+  MR_Word libs__polyhedron__Polyhedron0_7)
+#line 150 "polyhedron.m"
+{
+#line 549 "polyhedron.m"
+  {
+#line 549 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 549 "polyhedron.m"
+    MR_Word libs__polyhedron__Polyhedron_8;
+
+#line 549 "polyhedron.m"
+    {
+#line 549 "polyhedron.m"
+      libs__polyhedron__project_4_p_0(libs__polyhedron__Vars_5, libs__polyhedron__Varset_6, libs__polyhedron__Polyhedron0_7, &libs__polyhedron__Polyhedron_8);
+    }
+#line 549 "polyhedron.m"
+    return libs__polyhedron__Polyhedron_8;
+#line 549 "polyhedron.m"
+  }
+#line 150 "polyhedron.m"
+}
+
+#line 526 "polyhedron.m"
+static MR_Box MR_CALL 
+libs__polyhedron__project_all_3_f_0_1(
+#line 526 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 526 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1)
+#line 526 "polyhedron.m"
+{
+#line 526 "polyhedron.m"
+  {
+#line 526 "polyhedron.m"
+    MR_Box libs__polyhedron__wrapper_arg_2;
+#line 526 "polyhedron.m"
+    MR_Box libs__polyhedron__closure = libs__polyhedron__closure_arg;
+#line 526 "polyhedron.m"
+    MR_Word libs__polyhedron__conv0_LambdaHeadVar__2_16;
+
+#line 526 "polyhedron.m"
+    {
+#line 526 "polyhedron.m"
+      libs__polyhedron__conv0_LambdaHeadVar__2_16 = libs__polyhedron__IntroducedFrom__func__project_all__542__1_3_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__closure, (MR_Integer) 4))), ((MR_Word) libs__polyhedron__wrapper_arg_1));
+    }
+#line 526 "polyhedron.m"
+    libs__polyhedron__wrapper_arg_2 = ((MR_Box) (libs__polyhedron__conv0_LambdaHeadVar__2_16));
+#line 526 "polyhedron.m"
+    return libs__polyhedron__wrapper_arg_2;
+#line 526 "polyhedron.m"
+  }
+#line 526 "polyhedron.m"
+}
+
+#line 148 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__project_all_3_f_0(
+#line 148 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_5,
+#line 148 "polyhedron.m"
+  MR_Word libs__polyhedron__Locals_6,
+#line 148 "polyhedron.m"
+  MR_Word libs__polyhedron__Polyhedra_7)
+#line 148 "polyhedron.m"
+{
+#line 525 "polyhedron.m"
+  {
+#line 525 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 525 "polyhedron.m"
+    MR_Word libs__polyhedron__HeadVar__4_4;
+#line 525 "polyhedron.m"
+    MR_Word libs__polyhedron__TypeCtorInfo_21_21 = (MR_Word) &libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedron_0;
+#line 525 "polyhedron.m"
+    MR_Word libs__polyhedron__V_14_14;
+
+#line 526 "polyhedron.m"
+    {
+#line 526 "polyhedron.m"
+      libs__polyhedron__V_14_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 526 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_14_14, 0) = ((MR_Box) (&libs__polyhedron_scalar_common_6[0]));
+#line 526 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_14_14, 1) = ((MR_Box) (libs__polyhedron__project_all_3_f_0_1));
+#line 526 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_14_14, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 526 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_14_14, 3) = ((MR_Box) (libs__polyhedron__Varset_5));
+#line 526 "polyhedron.m"
+      MR_hl_field(MR_mktag(0), libs__polyhedron__V_14_14, 4) = ((MR_Box) (libs__polyhedron__Locals_6));
+#line 526 "polyhedron.m"
+    }
+#line 526 "polyhedron.m"
+    {
+#line 526 "polyhedron.m"
+      libs__polyhedron__HeadVar__4_4 = mercury__list__map_2_f_0(libs__polyhedron__TypeCtorInfo_21_21, libs__polyhedron__TypeCtorInfo_21_21, libs__polyhedron__V_14_14, libs__polyhedron__Polyhedra_7);
+    }
+#line 525 "polyhedron.m"
+    return libs__polyhedron__HeadVar__4_4;
+#line 525 "polyhedron.m"
+  }
+#line 148 "polyhedron.m"
+}
+
+#line 518 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron__widen_3_f_0_1(
+#line 518 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 518 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1)
+#line 518 "polyhedron.m"
+{
+#line 518 "polyhedron.m"
+  {
+#line 518 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 518 "polyhedron.m"
+    MR_Box libs__polyhedron__closure = libs__polyhedron__closure_arg;
+
+#line 518 "polyhedron.m"
+    {
+#line 518 "polyhedron.m"
+      libs__polyhedron__succeeded = libs__lp_rational__entailed_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), libs__polyhedron__closure, (MR_Integer) 4))), ((MR_Word) libs__polyhedron__wrapper_arg_1));
+    }
+#line 518 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 518 "polyhedron.m"
+  }
+#line 518 "polyhedron.m"
+}
+
+#line 142 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__widen_3_f_0(
+#line 142 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 142 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 142 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_3)
+#line 142 "polyhedron.m"
+{
+#line 512 "polyhedron.m"
+  {
+#line 512 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 512 "polyhedron.m"
+    MR_Word libs__polyhedron__HeadVar__4_4;
+
+#line 512 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 512 "polyhedron.m"
+      if ((libs__polyhedron__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 512 "polyhedron.m"
+        libs__polyhedron__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 512 "polyhedron.m"
+      else
+#line 515 "polyhedron.m"
+        {
+#line 516 "polyhedron.m"
+          MR_Box libs__polyhedron__conv0_HeadVar__4_4;
+
+#line 516 "polyhedron.m"
+          {
+#line 516 "polyhedron.m"
+            libs__polyhedron__conv0_HeadVar__4_4 = mercury__require__unexpected_3_f_0((MR_Word) &libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedron_0, (MR_String) "libs.polyhedron", (MR_String) "function \140libs.polyhedron.widen\'/3", (MR_String) "empty polyhedron");
+          }
+#line 516 "polyhedron.m"
+          libs__polyhedron__HeadVar__4_4 = ((MR_Word) libs__polyhedron__conv0_HeadVar__4_4);
+#line 515 "polyhedron.m"
+        }
+#line 512 "polyhedron.m"
+    else
+#line 512 "polyhedron.m"
+      {
+#line 512 "polyhedron.m"
+        MR_Word libs__polyhedron__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+
+#line 512 "polyhedron.m"
+        if ((libs__polyhedron__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 513 "polyhedron.m"
+          {
+#line 514 "polyhedron.m"
+            MR_Box libs__polyhedron__conv1_HeadVar__4_4;
+
+#line 514 "polyhedron.m"
+            {
+#line 514 "polyhedron.m"
+              libs__polyhedron__conv1_HeadVar__4_4 = mercury__require__unexpected_3_f_0((MR_Word) &libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedron_0, (MR_String) "libs.polyhedron", (MR_String) "function \140libs.polyhedron.widen\'/3", (MR_String) "empty polyhedron");
+            }
+#line 514 "polyhedron.m"
+            libs__polyhedron__HeadVar__4_4 = ((MR_Word) libs__polyhedron__conv1_HeadVar__4_4);
+#line 513 "polyhedron.m"
+          }
+#line 512 "polyhedron.m"
+        else
+#line 517 "polyhedron.m"
+          {
+#line 517 "polyhedron.m"
+            MR_Word libs__polyhedron__Poly2_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__2_2, (MR_Integer) 0)));
+#line 517 "polyhedron.m"
+            MR_Word libs__polyhedron__WidenedEqns_19;
+#line 517 "polyhedron.m"
+            MR_Word libs__polyhedron__V_20_20;
+
+#line 518 "polyhedron.m"
+            {
+#line 518 "polyhedron.m"
+              libs__polyhedron__V_20_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 518 "polyhedron.m"
+              MR_hl_field(MR_mktag(0), libs__polyhedron__V_20_20, 0) = ((MR_Box) (&libs__polyhedron_scalar_common_5[0]));
+#line 518 "polyhedron.m"
+              MR_hl_field(MR_mktag(0), libs__polyhedron__V_20_20, 1) = ((MR_Box) (libs__polyhedron__widen_3_f_0_1));
+#line 518 "polyhedron.m"
+              MR_hl_field(MR_mktag(0), libs__polyhedron__V_20_20, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 518 "polyhedron.m"
+              MR_hl_field(MR_mktag(0), libs__polyhedron__V_20_20, 3) = ((MR_Box) (libs__polyhedron__Varset_3));
+#line 518 "polyhedron.m"
+              MR_hl_field(MR_mktag(0), libs__polyhedron__V_20_20, 4) = ((MR_Box) (libs__polyhedron__Poly2_17));
+#line 518 "polyhedron.m"
+            }
+#line 518 "polyhedron.m"
+            {
+#line 518 "polyhedron.m"
+              libs__polyhedron__WidenedEqns_19 = mercury__list__filter_2_f_0((MR_Word) &libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0, libs__polyhedron__V_20_20, libs__polyhedron__V_25_25);
+            }
+#line 517 "polyhedron.m"
+            {
+#line 517 "polyhedron.m"
+              libs__polyhedron__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 517 "polyhedron.m"
+              MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__4_4, 0) = ((MR_Box) (libs__polyhedron__WidenedEqns_19));
+#line 517 "polyhedron.m"
+            }
+#line 517 "polyhedron.m"
+          }
+#line 512 "polyhedron.m"
+      }
+#line 512 "polyhedron.m"
+    return libs__polyhedron__HeadVar__4_4;
+#line 512 "polyhedron.m"
+  }
+#line 142 "polyhedron.m"
+}
+
+#line 134 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__bounding_box_2_f_0(
+#line 134 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 134 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_2)
+#line 134 "polyhedron.m"
+{
+#line 503 "polyhedron.m"
+  {
+#line 503 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 503 "polyhedron.m"
+    MR_Word libs__polyhedron__HeadVar__3_3;
+
+#line 503 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 503 "polyhedron.m"
+      libs__polyhedron__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 503 "polyhedron.m"
+    else
+#line 504 "polyhedron.m"
+      {
+#line 504 "polyhedron.m"
+        MR_Word libs__polyhedron__Constraints_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+#line 504 "polyhedron.m"
+        MR_Word libs__polyhedron__V_7_7;
+
+#line 505 "polyhedron.m"
+        {
+#line 505 "polyhedron.m"
+          libs__polyhedron__V_7_7 = libs__lp_rational__bounding_box_2_f_0(libs__polyhedron__Varset_2, libs__polyhedron__Constraints_5);
+        }
+#line 505 "polyhedron.m"
+        {
+#line 505 "polyhedron.m"
+          libs__polyhedron__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 505 "polyhedron.m"
+          MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__3_3, 0) = ((MR_Box) (libs__polyhedron__V_7_7));
+#line 505 "polyhedron.m"
+        }
+#line 504 "polyhedron.m"
+      }
+#line 503 "polyhedron.m"
+    return libs__polyhedron__HeadVar__3_3;
+#line 503 "polyhedron.m"
+  }
+#line 134 "polyhedron.m"
+}
+
+#line 128 "polyhedron.m"
+void MR_CALL 
+libs__polyhedron__convex_union_5_p_0(
+#line 128 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_1,
+#line 128 "polyhedron.m"
+  MR_Word libs__polyhedron__MaybeMaxSize_2,
+#line 128 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__3_3,
+#line 128 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__4_4,
+#line 128 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__5_5)
+#line 128 "polyhedron.m"
+{
+#line 278 "polyhedron.m"
+  {
+#line 278 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 278 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 278 "polyhedron.m"
+      if ((libs__polyhedron__HeadVar__4_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 278 "polyhedron.m"
+        *libs__polyhedron__HeadVar__5_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 278 "polyhedron.m"
+      else
+#line 282 "polyhedron.m"
+        *libs__polyhedron__HeadVar__5_5 = libs__polyhedron__HeadVar__4_4;
+#line 278 "polyhedron.m"
+    else
+#line 278 "polyhedron.m"
+      {
+#line 278 "polyhedron.m"
+        MR_Word libs__polyhedron__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 278 "polyhedron.m"
+        if ((libs__polyhedron__HeadVar__4_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 280 "polyhedron.m"
+          *libs__polyhedron__HeadVar__5_5 = libs__polyhedron__HeadVar__3_3;
+#line 278 "polyhedron.m"
+        else
+#line 284 "polyhedron.m"
+          {
+#line 284 "polyhedron.m"
+            MR_Word libs__polyhedron__ConstraintsB_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__4_4, (MR_Integer) 0)));
+#line 284 "polyhedron.m"
+            MR_Word libs__polyhedron__V_19_19;
+#line 284 "polyhedron.m"
+            MR_Word libs__polyhedron__V_20_20;
+
+#line 285 "polyhedron.m"
+            {
+#line 285 "polyhedron.m"
+              libs__polyhedron__V_20_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 285 "polyhedron.m"
+              MR_hl_field(MR_mktag(1), libs__polyhedron__V_20_20, 0) = ((MR_Box) (libs__polyhedron__ConstraintsB_17));
+#line 285 "polyhedron.m"
+              MR_hl_field(MR_mktag(1), libs__polyhedron__V_20_20, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 285 "polyhedron.m"
+            }
+#line 285 "polyhedron.m"
+            {
+#line 285 "polyhedron.m"
+              libs__polyhedron__V_19_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 285 "polyhedron.m"
+              MR_hl_field(MR_mktag(1), libs__polyhedron__V_19_19, 0) = ((MR_Box) (libs__polyhedron__V_22_22));
+#line 285 "polyhedron.m"
+              MR_hl_field(MR_mktag(1), libs__polyhedron__V_19_19, 1) = ((MR_Box) (libs__polyhedron__V_20_20));
+#line 285 "polyhedron.m"
+            }
+#line 285 "polyhedron.m"
+            {
+#line 285 "polyhedron.m"
+              libs__polyhedron__convex_hull_4_p_0(libs__polyhedron__V_19_19, libs__polyhedron__HeadVar__5_5, libs__polyhedron__MaybeMaxSize_2, libs__polyhedron__Varset_1);
+            }
+#line 284 "polyhedron.m"
+          }
+#line 278 "polyhedron.m"
+      }
+#line 278 "polyhedron.m"
+  }
+#line 128 "polyhedron.m"
+}
+
+#line 126 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__convex_union_4_f_0(
+#line 126 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_6,
+#line 126 "polyhedron.m"
+  MR_Word libs__polyhedron__MaxMatrixSize_7,
+#line 126 "polyhedron.m"
+  MR_Word libs__polyhedron__PolyhedronA_8,
+#line 126 "polyhedron.m"
+  MR_Word libs__polyhedron__PolyhedronB_9)
+#line 126 "polyhedron.m"
+{
+#line 276 "polyhedron.m"
+  {
+#line 276 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 276 "polyhedron.m"
+    MR_Word libs__polyhedron__Polyhedron_10;
+
+#line 276 "polyhedron.m"
+    {
+#line 276 "polyhedron.m"
+      libs__polyhedron__convex_union_5_p_0(libs__polyhedron__Varset_6, libs__polyhedron__MaxMatrixSize_7, libs__polyhedron__PolyhedronA_8, libs__polyhedron__PolyhedronB_9, &libs__polyhedron__Polyhedron_10);
+    }
+#line 276 "polyhedron.m"
+    return libs__polyhedron__Polyhedron_10;
+#line 276 "polyhedron.m"
+  }
+#line 126 "polyhedron.m"
+}
+
+#line 119 "polyhedron.m"
+void MR_CALL 
+libs__polyhedron__convex_union_4_p_0(
+#line 119 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_5,
+#line 119 "polyhedron.m"
+  MR_Word libs__polyhedron__PolyhedronA_6,
+#line 119 "polyhedron.m"
+  MR_Word libs__polyhedron__PolyhedronB_7,
+#line 119 "polyhedron.m"
+  MR_Word * libs__polyhedron__Polyhedron_8)
+#line 119 "polyhedron.m"
+{
+#line 272 "polyhedron.m"
+  {
+#line 272 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 273 "polyhedron.m"
+    {
+#line 273 "polyhedron.m"
+      libs__polyhedron__convex_union_5_p_0(libs__polyhedron__Varset_5, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), libs__polyhedron__PolyhedronA_6, libs__polyhedron__PolyhedronB_7, libs__polyhedron__Polyhedron_8);
+    }
+#line 272 "polyhedron.m"
+  }
+#line 119 "polyhedron.m"
+}
+
+#line 117 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__convex_union_3_f_0(
+#line 117 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_5,
+#line 117 "polyhedron.m"
+  MR_Word libs__polyhedron__PolyhedronA_6,
+#line 117 "polyhedron.m"
+  MR_Word libs__polyhedron__PolyhedronB_7)
+#line 117 "polyhedron.m"
+{
+#line 269 "polyhedron.m"
+  {
+#line 269 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 269 "polyhedron.m"
+    MR_Word libs__polyhedron__Polyhedron_8;
+
+#line 270 "polyhedron.m"
+    {
+#line 270 "polyhedron.m"
+      libs__polyhedron__convex_union_5_p_0(libs__polyhedron__Varset_5, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), libs__polyhedron__PolyhedronA_6, libs__polyhedron__PolyhedronB_7, &libs__polyhedron__Polyhedron_8);
+    }
+#line 269 "polyhedron.m"
+    return libs__polyhedron__Polyhedron_8;
+#line 269 "polyhedron.m"
+  }
+#line 117 "polyhedron.m"
+}
+
+#line 111 "polyhedron.m"
+void MR_CALL 
+libs__polyhedron__intersection_3_p_0(
+#line 111 "polyhedron.m"
+  MR_Word libs__polyhedron__PolyA_4,
+#line 111 "polyhedron.m"
+  MR_Word libs__polyhedron__PolyB_5,
+#line 111 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__3_3)
+#line 111 "polyhedron.m"
+{
+#line 250 "polyhedron.m"
+  {
+#line 250 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 250 "polyhedron.m"
+    {
+#line 250 "polyhedron.m"
+      *libs__polyhedron__HeadVar__3_3 = libs__polyhedron__intersection_2_f_0(libs__polyhedron__PolyA_4, libs__polyhedron__PolyB_5);
+    }
+#line 250 "polyhedron.m"
+  }
+#line 111 "polyhedron.m"
+}
+
+#line 110 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__intersection_2_f_0(
+#line 110 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1,
+#line 110 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2)
+#line 110 "polyhedron.m"
+{
+#line 252 "polyhedron.m"
+  {
+#line 252 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 252 "polyhedron.m"
+    MR_Word libs__polyhedron__HeadVar__3_3;
+
+#line 252 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 252 "polyhedron.m"
+      libs__polyhedron__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 252 "polyhedron.m"
+    else
+#line 252 "polyhedron.m"
+      {
+#line 252 "polyhedron.m"
+        MR_Word libs__polyhedron__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+
+#line 252 "polyhedron.m"
+        if ((libs__polyhedron__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 253 "polyhedron.m"
+          libs__polyhedron__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 252 "polyhedron.m"
+        else
+#line 254 "polyhedron.m"
+          {
+#line 254 "polyhedron.m"
+            MR_Word libs__polyhedron__MatrixB_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__2_2, (MR_Integer) 0)));
+#line 254 "polyhedron.m"
+            MR_Word libs__polyhedron__Constraints_8;
+#line 254 "polyhedron.m"
+            MR_Word libs__polyhedron__Constraints0_9;
+#line 254 "polyhedron.m"
+            MR_Word libs__polyhedron__Constraints1_10;
+
+#line 255 "polyhedron.m"
+            {
+#line 255 "polyhedron.m"
+              libs__polyhedron__Constraints0_9 = mercury__list__f_43_43_2_f_0((MR_Word) &libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0, libs__polyhedron__V_12_12, libs__polyhedron__MatrixB_7);
+            }
+#line 256 "polyhedron.m"
+            {
+#line 256 "polyhedron.m"
+              libs__lp_rational__restore_equalities_2_p_0(libs__polyhedron__Constraints0_9, &libs__polyhedron__Constraints1_10);
+            }
+#line 257 "polyhedron.m"
+            {
+#line 257 "polyhedron.m"
+              libs__polyhedron__Constraints_8 = libs__lp_rational__simplify_constraints_1_f_0(libs__polyhedron__Constraints1_10);
+            }
+#line 254 "polyhedron.m"
+            {
+#line 254 "polyhedron.m"
+              libs__polyhedron__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 254 "polyhedron.m"
+              MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__3_3, 0) = ((MR_Box) (libs__polyhedron__Constraints_8));
+#line 254 "polyhedron.m"
+            }
+#line 254 "polyhedron.m"
+          }
+#line 252 "polyhedron.m"
+      }
+#line 252 "polyhedron.m"
+    return libs__polyhedron__HeadVar__3_3;
+#line 252 "polyhedron.m"
+  }
+#line 110 "polyhedron.m"
+}
+
+#line 103 "polyhedron.m"
+void MR_CALL 
+libs__polyhedron__optimize_3_p_0(
+#line 103 "polyhedron.m"
+  MR_Word libs__polyhedron__Varset_1,
+#line 103 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__2_2,
+#line 103 "polyhedron.m"
+  MR_Word * libs__polyhedron__HeadVar__3_3)
+#line 103 "polyhedron.m"
+{
+#line 237 "polyhedron.m"
+  {
+#line 237 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 237 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 237 "polyhedron.m"
+      *libs__polyhedron__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 237 "polyhedron.m"
+    else
+#line 238 "polyhedron.m"
+      {
+#line 238 "polyhedron.m"
+        MR_Word libs__polyhedron__Constraints0_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__2_2, (MR_Integer) 0)));
+#line 238 "polyhedron.m"
+        MR_Word libs__polyhedron__Constraints_8;
+
+#line 239 "polyhedron.m"
+        {
+#line 239 "polyhedron.m"
+          libs__polyhedron__Constraints_8 = libs__lp_rational__simplify_constraints_1_f_0(libs__polyhedron__Constraints0_6);
+        }
+#line 240 "polyhedron.m"
+        {
+#line 240 "polyhedron.m"
+          libs__polyhedron__succeeded = libs__lp_rational__inconsistent_2_p_0(libs__polyhedron__Varset_1, libs__polyhedron__Constraints_8);
+        }
+#line 242 "polyhedron.m"
+        if (libs__polyhedron__succeeded)
+#line 241 "polyhedron.m"
+          *libs__polyhedron__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 242 "polyhedron.m"
+        else
+#line 242 "polyhedron.m"
+          {
+#line 242 "polyhedron.m"
+            MR_Word base;
+#line 242 "polyhedron.m"
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 242 "polyhedron.m"
+            *libs__polyhedron__HeadVar__3_3 = base;
+#line 242 "polyhedron.m"
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (libs__polyhedron__Constraints_8));
+#line 242 "polyhedron.m"
+          }
+#line 238 "polyhedron.m"
+      }
+#line 237 "polyhedron.m"
+  }
+#line 103 "polyhedron.m"
+}
+
+#line 235 "polyhedron.m"
+static MR_bool MR_CALL 
+libs__polyhedron__is_universe_1_p_0_1(
+#line 235 "polyhedron.m"
+  MR_Box libs__polyhedron__closure_arg,
+#line 235 "polyhedron.m"
+  MR_Box libs__polyhedron__wrapper_arg_1)
+#line 235 "polyhedron.m"
+{
+#line 235 "polyhedron.m"
+  {
+#line 235 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 235 "polyhedron.m"
+    MR_Box libs__polyhedron__closure = libs__polyhedron__closure_arg;
+
+#line 235 "polyhedron.m"
+    {
+#line 235 "polyhedron.m"
+      libs__polyhedron__succeeded = libs__lp_rational__nonneg_constr_1_p_0(((MR_Word) libs__polyhedron__wrapper_arg_1));
+    }
+#line 235 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 235 "polyhedron.m"
+  }
+#line 235 "polyhedron.m"
+}
+
+#line 97 "polyhedron.m"
+MR_bool MR_CALL 
+libs__polyhedron__is_universe_1_p_0(
+#line 97 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1)
+#line 97 "polyhedron.m"
+{
+#line 234 "polyhedron.m"
+  {
+#line 234 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded = ((MR_tag((MR_Word) libs__polyhedron__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1)));
+#line 234 "polyhedron.m"
+    MR_Word libs__polyhedron__TypeCtorInfo_5_5;
+#line 234 "polyhedron.m"
+    MR_Word libs__polyhedron__Constraints_2;
+#line 234 "polyhedron.m"
+    MR_Word libs__polyhedron__V_3_3;
+
+#line 234 "polyhedron.m"
+    if (libs__polyhedron__succeeded)
+#line 234 "polyhedron.m"
+      {
+#line 234 "polyhedron.m"
+        libs__polyhedron__Constraints_2 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+#line 235 "polyhedron.m"
+        libs__polyhedron__V_3_3 = (MR_Word) &libs__polyhedron_scalar_common_2[2];
+#line 5441 "libs.polyhedron.c"
+        libs__polyhedron__TypeCtorInfo_5_5 = (MR_Word) &libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0;
+#line 235 "polyhedron.m"
+        {
+#line 235 "polyhedron.m"
+          libs__polyhedron__succeeded = mercury__list__all_true_2_p_0(libs__polyhedron__TypeCtorInfo_5_5, libs__polyhedron__V_3_3, libs__polyhedron__Constraints_2);
+        }
+#line 234 "polyhedron.m"
+      }
+#line 234 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 234 "polyhedron.m"
+  }
+#line 97 "polyhedron.m"
+}
+
+#line 91 "polyhedron.m"
+MR_bool MR_CALL 
+libs__polyhedron__is_empty_1_p_0(
+#line 91 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1)
+#line 91 "polyhedron.m"
+{
+#line 232 "polyhedron.m"
+  {
+#line 232 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded = (libs__polyhedron__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+
+#line 232 "polyhedron.m"
+    return libs__polyhedron__succeeded;
+#line 232 "polyhedron.m"
+  }
+#line 91 "polyhedron.m"
+}
+
+#line 82 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__non_false_constraints_1_f_0(
+#line 82 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1)
+#line 82 "polyhedron.m"
+{
+#line 228 "polyhedron.m"
+  {
+#line 228 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 228 "polyhedron.m"
+    MR_Word libs__polyhedron__HeadVar__2_2;
+
+#line 228 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 229 "polyhedron.m"
+      {
+#line 230 "polyhedron.m"
+        MR_Box libs__polyhedron__conv0_HeadVar__2_2;
+
+#line 230 "polyhedron.m"
+        {
+#line 230 "polyhedron.m"
+          libs__polyhedron__conv0_HeadVar__2_2 = mercury__require__unexpected_3_f_0((MR_Word) &libs__polyhedron_scalar_common_1[0], (MR_String) "libs.polyhedron", (MR_String) "function \140libs.polyhedron.non_false_constraints\'/1", (MR_String) "empty polyhedron");
+        }
+#line 230 "polyhedron.m"
+        libs__polyhedron__HeadVar__2_2 = ((MR_Word) libs__polyhedron__conv0_HeadVar__2_2);
+#line 229 "polyhedron.m"
+      }
+#line 228 "polyhedron.m"
+    else
+#line 228 "polyhedron.m"
+      libs__polyhedron__HeadVar__2_2 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+#line 228 "polyhedron.m"
+    return libs__polyhedron__HeadVar__2_2;
+#line 228 "polyhedron.m"
+  }
+#line 82 "polyhedron.m"
+}
+
+#line 78 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__constraints_1_f_0(
+#line 78 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1)
+#line 78 "polyhedron.m"
+{
+#line 225 "polyhedron.m"
+  {
+#line 225 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 225 "polyhedron.m"
+    MR_Word libs__polyhedron__HeadVar__2_2;
+
+#line 225 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 226 "polyhedron.m"
+      {
+#line 226 "polyhedron.m"
+        MR_Word libs__polyhedron__V_4_4;
+
+#line 226 "polyhedron.m"
+        {
+#line 226 "polyhedron.m"
+          libs__polyhedron__V_4_4 = libs__lp_rational__false_constraint_0_f_0();
+        }
+#line 226 "polyhedron.m"
+        {
+#line 226 "polyhedron.m"
+          libs__polyhedron__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 226 "polyhedron.m"
+          MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__2_2, 0) = ((MR_Box) (libs__polyhedron__V_4_4));
+#line 226 "polyhedron.m"
+          MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__2_2, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 226 "polyhedron.m"
+        }
+#line 226 "polyhedron.m"
+      }
+#line 225 "polyhedron.m"
+    else
+#line 225 "polyhedron.m"
+      libs__polyhedron__HeadVar__2_2 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+#line 225 "polyhedron.m"
+    return libs__polyhedron__HeadVar__2_2;
+#line 225 "polyhedron.m"
+  }
+#line 78 "polyhedron.m"
+}
+
+#line 73 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__from_constraints_1_f_0(
+#line 73 "polyhedron.m"
+  MR_Word libs__polyhedron__HeadVar__1_1)
+#line 73 "polyhedron.m"
+{
+#line 216 "polyhedron.m"
+  {
+#line 216 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+#line 216 "polyhedron.m"
+    MR_Word libs__polyhedron__HeadVar__2_2;
+
+#line 216 "polyhedron.m"
+    if ((libs__polyhedron__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 216 "polyhedron.m"
+      {
+#line 216 "polyhedron.m"
+        libs__polyhedron__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), &libs__polyhedron_scalar_common_3[0]);
+#line 216 "polyhedron.m"
+      }
+#line 216 "polyhedron.m"
+    else
+#line 217 "polyhedron.m"
+      {
+#line 217 "polyhedron.m"
+        MR_Word libs__polyhedron__C_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 0)));
+#line 217 "polyhedron.m"
+        MR_Word libs__polyhedron__Cs_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__1_1, (MR_Integer) 1)));
+
+#line 218 "polyhedron.m"
+        {
+#line 218 "polyhedron.m"
+          libs__polyhedron__succeeded = libs__lp_rational__is_false_1_p_0(libs__polyhedron__C_4);
+        }
+#line 220 "polyhedron.m"
+        if (libs__polyhedron__succeeded)
+#line 207 "polyhedron.m"
+          libs__polyhedron__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 220 "polyhedron.m"
+        else
+#line 221 "polyhedron.m"
+          {
+#line 221 "polyhedron.m"
+            MR_Word libs__polyhedron__Polyhedron0_7;
+#line 221 "polyhedron.m"
+            MR_Word libs__polyhedron__V_9_9;
+
+#line 221 "polyhedron.m"
+            {
+#line 221 "polyhedron.m"
+              libs__polyhedron__Polyhedron0_7 = libs__polyhedron__from_constraints_1_f_0(libs__polyhedron__Cs_5);
+            }
+#line 222 "polyhedron.m"
+            {
+#line 222 "polyhedron.m"
+              libs__polyhedron__V_9_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 222 "polyhedron.m"
+              MR_hl_field(MR_mktag(1), libs__polyhedron__V_9_9, 0) = ((MR_Box) (libs__polyhedron__C_4));
+#line 222 "polyhedron.m"
+              MR_hl_field(MR_mktag(1), libs__polyhedron__V_9_9, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 222 "polyhedron.m"
+            }
+#line 252 "polyhedron.m"
+            if ((libs__polyhedron__Polyhedron0_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 253 "polyhedron.m"
+              libs__polyhedron__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 252 "polyhedron.m"
+            else
+#line 254 "polyhedron.m"
+              {
+#line 254 "polyhedron.m"
+                MR_Word libs__polyhedron__MatrixB_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), libs__polyhedron__Polyhedron0_7, (MR_Integer) 0)));
+#line 254 "polyhedron.m"
+                MR_Word libs__polyhedron__Constraints_15;
+#line 254 "polyhedron.m"
+                MR_Word libs__polyhedron__Constraints0_16;
+#line 254 "polyhedron.m"
+                MR_Word libs__polyhedron__Constraints1_17;
+
+#line 255 "polyhedron.m"
+                {
+#line 255 "polyhedron.m"
+                  libs__polyhedron__Constraints0_16 = mercury__list__f_43_43_2_f_0((MR_Word) &libs__lp_rational__libs__lp_rational__type_ctor_info_constraint_0, libs__polyhedron__V_9_9, libs__polyhedron__MatrixB_14);
+                }
+#line 256 "polyhedron.m"
+                {
+#line 256 "polyhedron.m"
+                  libs__lp_rational__restore_equalities_2_p_0(libs__polyhedron__Constraints0_16, &libs__polyhedron__Constraints1_17);
+                }
+#line 257 "polyhedron.m"
+                {
+#line 257 "polyhedron.m"
+                  libs__polyhedron__Constraints_15 = libs__lp_rational__simplify_constraints_1_f_0(libs__polyhedron__Constraints1_17);
+                }
+#line 254 "polyhedron.m"
+                {
+#line 254 "polyhedron.m"
+                  libs__polyhedron__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 254 "polyhedron.m"
+                  MR_hl_field(MR_mktag(1), libs__polyhedron__HeadVar__2_2, 0) = ((MR_Box) (libs__polyhedron__Constraints_15));
+#line 254 "polyhedron.m"
+                }
+#line 254 "polyhedron.m"
+              }
+#line 221 "polyhedron.m"
+          }
+#line 217 "polyhedron.m"
+      }
+#line 216 "polyhedron.m"
+    return libs__polyhedron__HeadVar__2_2;
+#line 216 "polyhedron.m"
+  }
+#line 73 "polyhedron.m"
+}
+
+#line 69 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__universe_0_f_0(void)
+#line 69 "polyhedron.m"
+{
+#line 209 "polyhedron.m"
+  {
+#line 209 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 209 "polyhedron.m"
+    return (MR_Word) MR_mkword(MR_mktag(1), &libs__polyhedron_scalar_common_3[0]);
+#line 209 "polyhedron.m"
+  }
+#line 69 "polyhedron.m"
+}
+
+#line 65 "polyhedron.m"
+MR_Word MR_CALL 
+libs__polyhedron__empty_0_f_0(void)
+#line 65 "polyhedron.m"
+{
+#line 207 "polyhedron.m"
+  {
+#line 207 "polyhedron.m"
+    MR_bool libs__polyhedron__succeeded;
+
+#line 207 "polyhedron.m"
+    return (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 207 "polyhedron.m"
+  }
+#line 65 "polyhedron.m"
+}
+
+void mercury__libs__polyhedron__init(void)
+{
+}
+
+void mercury__libs__polyhedron__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&libs__polyhedron__libs__polyhedron__type_ctor_info_constr_info_0);
+	MR_register_type_ctor_info(&libs__polyhedron__libs__polyhedron__type_ctor_info_convex_hull_result_0);
+	MR_register_type_ctor_info(&libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedra_0);
+	MR_register_type_ctor_info(&libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedra_info_0);
+	MR_register_type_ctor_info(&libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedron_0);
+	MR_register_type_ctor_info(&libs__polyhedron__libs__polyhedron__type_ctor_info_sigma_var_0);
+	MR_register_type_ctor_info(&libs__polyhedron__libs__polyhedron__type_ctor_info_sigma_vars_0);
+	MR_register_type_ctor_info(&libs__polyhedron__libs__polyhedron__type_ctor_info_var_map_0);
+	MR_register_type_ctor_info(&libs__polyhedron__libs__polyhedron__type_ctor_info_var_maps_0);
+}
+
+void mercury__libs__polyhedron__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module libs.polyhedron. */
