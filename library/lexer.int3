@@ -1,0 +1,22 @@
+:- module lexer.
+:- interface.
+:- type integer_base
+	where	type_is_abstract_enum(2).
+:- type integer_size
+	where	type_is_abstract_enum(3).
+:- type line_context.
+:- type line_posn.
+:- type offset.
+:- type signedness
+	where	type_is_abstract_enum(1).
+:- type token.
+:- type token_context.
+:- type token_list.
+:- type_representation(integer_base, du_repn(enum("base_2", "base_8", ["base_10", "base_16"],  no_c_j_cs))).
+:- type_representation(integer_size, du_repn(enum("size_word", "size_8_bit", ["size_16_bit", "size_32_bit", "size_64_bit"],  no_c_j_cs))).
+:- type_representation(line_context, is_word_aligned_ptr).
+:- type_representation(line_posn, du_repn(notag("line_posn", int,  no_c_j_cs))).
+:- type_representation(offset, is_eqv_to(int)).
+:- type_representation(signedness, du_repn(enum("signed", "unsigned", [],  no_c_j_cs))).
+:- type_representation(string_token_context, is_eqv_to(lexer.token_context)).
+:- type_representation(token_context, is_eqv_to(int)).

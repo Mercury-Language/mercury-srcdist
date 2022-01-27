@@ -1,0 +1,16 @@
+:- module (recompilation.usage).
+:- interface.
+:- use_module hlds.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module (hlds.hlds_module).
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.module_imports).
+:- use_module (parse_tree.prog_data).
+:- use_module (recompilation.used_file).
+:- pred construct_used_file_contents(hlds.hlds_module.module_info, recompilation.recompilation_info, parse_tree.module_imports.maybe_top_module, parse_tree.module_imports.module_timestamp_map, recompilation.used_file.used_file_contents).
+:- mode construct_used_file_contents((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
