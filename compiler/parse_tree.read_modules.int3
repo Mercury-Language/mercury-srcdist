@@ -1,0 +1,31 @@
+:- module (parse_tree.read_modules).
+:- interface.
+:- type have_read_module(PT).
+:- type have_read_module_int0_map.
+:- type have_read_module_int1_map.
+:- type have_read_module_int2_map.
+:- type have_read_module_int3_map.
+:- type have_read_module_int_map.
+:- type have_read_module_key(Kind).
+:- type have_read_module_map(Key, PT).
+:- type have_read_module_maps.
+:- type have_read_module_opt_map.
+:- type have_read_module_plain_opt_map.
+:- type have_read_module_rcu_map.
+:- type have_read_module_src_map.
+:- type have_read_module_trans_opt_map.
+:- type maybe_ignore_errors
+	where	type_is_abstract_enum(1).
+:- type_representation(have_read_module_int0_map, is_eqv_to(parse_tree.read_modules.have_read_module_map(module_name, parse_tree_int0))).
+:- type_representation(have_read_module_int1_map, is_eqv_to(parse_tree.read_modules.have_read_module_map(module_name, parse_tree_int1))).
+:- type_representation(have_read_module_int2_map, is_eqv_to(parse_tree.read_modules.have_read_module_map(module_name, parse_tree_int2))).
+:- type_representation(have_read_module_int3_map, is_eqv_to(parse_tree.read_modules.have_read_module_map(module_name, parse_tree_int3))).
+:- type_representation(have_read_module_int_map, is_eqv_to(parse_tree.read_modules.have_read_module_map(parse_tree.read_modules.have_read_module_key(int_file_kind), parse_tree_int))).
+:- type_representation(have_read_module_map(V_1, V_2), is_eqv_to(map(V_1, parse_tree.read_modules.have_read_module(V_2)))).
+:- type_representation(have_read_module_maps, is_word_aligned_ptr).
+:- type_representation(have_read_module_opt_map, is_eqv_to(parse_tree.read_modules.have_read_module_map(parse_tree.read_modules.have_read_module_key(opt_file_kind), parse_tree_opt))).
+:- type_representation(have_read_module_plain_opt_map, is_eqv_to(parse_tree.read_modules.have_read_module_map(module_name, parse_tree_plain_opt))).
+:- type_representation(have_read_module_rcu_map, is_eqv_to(map(module_name, raw_compilation_unit))).
+:- type_representation(have_read_module_src_map, is_eqv_to(parse_tree.read_modules.have_read_module_map(module_name, parse_tree_src))).
+:- type_representation(have_read_module_trans_opt_map, is_eqv_to(parse_tree.read_modules.have_read_module_map(module_name, parse_tree_trans_opt))).
+:- type_representation(maybe_ignore_errors, du_repn(enum("ignore_errors", "do_not_ignore_errors", [],  no_c_j_cs))).

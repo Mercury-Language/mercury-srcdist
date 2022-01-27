@@ -1,0 +1,4 @@
+:- module stack.
+:- interface.
+:- type stack(T).
+:- type_representation(stack(V_1), du_repn(notag("stack", list.list(V_1),  no_c_j_cs))).

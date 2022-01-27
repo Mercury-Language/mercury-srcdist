@@ -1,0 +1,4 @@
+:- module mcov.
+:- interface.
+:- type_representation(option_table, is_eqv_to(getopt.option_table(mcov.option))).
+:- type_representation(trace_counts_list, is_eqv_to(assoc_list.assoc_list(mdbcomp.trace_counts.proc_label_in_context, mdbcomp.trace_counts.proc_trace_counts))).
