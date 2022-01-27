@@ -1,0 +1,72 @@
+/*
+** Automatically generated from `llds_to_x86_64.m'
+** by the Mercury compiler,
+** version rotd-14.01.1-2014-05-28, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.llds_to_x86_64. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__llds_to_x86_64
+#define MR_HEADER_GUARD_ll_backend__llds_to_x86_64
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__LLDS_TO_X86_64_DECL_GUARD
+#define LL_BACKEND__LLDS_TO_X86_64_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 42 "ll_backend.llds_to_x86_64.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__llds_to_x86_64__ll_backend__llds_to_x86_64__type_ctor_info_binop_0;
+
+#line 42 "llds_to_x86_64.m"
+void MR_CALL 
+ll_backend__llds_to_x86_64__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_108_108_100_115_95_116_111_95_120_56_54_95_54_52_95_97_115_109_95_95_91_49_93_95_48_3_p_0(
+#line 42 "llds_to_x86_64.m"
+  MR_Word ll_backend__llds_to_x86_64__param_1,
+#line 42 "llds_to_x86_64.m"
+  MR_Word * ll_backend__llds_to_x86_64__param_2);
+
+#line 42 "llds_to_x86_64.m"
+void MR_CALL 
+ll_backend__llds_to_x86_64__llds_to_x86_64_asm_3_p_0(
+#line 42 "llds_to_x86_64.m"
+  MR_Word ll_backend__llds_to_x86_64__param_1,
+#line 42 "llds_to_x86_64.m"
+  MR_Word ll_backend__llds_to_x86_64__param_2,
+#line 42 "llds_to_x86_64.m"
+  MR_Word * ll_backend__llds_to_x86_64__param_3);
+
+void mercury__ll_backend__llds_to_x86_64__init(void);
+void mercury__ll_backend__llds_to_x86_64__init_type_tables(void);
+void mercury__ll_backend__llds_to_x86_64__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.llds_to_x86_64 */
+
+/* :- end_interface ll_backend.llds_to_x86_64. */

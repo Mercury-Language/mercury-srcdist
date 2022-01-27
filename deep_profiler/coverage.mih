@@ -1,0 +1,229 @@
+/*
+** Automatically generated from `coverage.m'
+** by the Mercury compiler,
+** version rotd-14.01.1-2014-05-28, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module coverage. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_coverage
+#define MR_HEADER_GUARD_coverage
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef COVERAGE_DECL_GUARD
+#define COVERAGE_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "coverage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct coverage__coverage__type_ctor_info_coverage_after_0;
+
+#line 44 "coverage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct coverage__coverage__type_ctor_info_coverage_before_0;
+
+#line 47 "coverage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct coverage__coverage__type_ctor_info_coverage_info_0;
+
+#line 50 "coverage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct coverage__coverage__type_ctor_info_coverage_point_0;
+
+#line 53 "coverage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct coverage__coverage__type_ctor_info_coverage_reference_info_1;
+
+#line 56 "coverage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct coverage__coverage__type_ctor_info_sum_coverage_after_0;
+
+#line 59 "coverage.mih.tmp"
+extern const MR_TypeCtorInfo_Struct coverage__coverage__type_ctor_info_sum_coverage_before_0;
+
+#line 61 "coverage.m"
+void MR_CALL 
+coverage____Compare____coverage_point_0_0(
+#line 61 "coverage.m"
+  MR_Word * coverage__param_1,
+#line 61 "coverage.m"
+  MR_Word coverage__param_2,
+#line 61 "coverage.m"
+  MR_Word coverage__param_3);
+
+#line 61 "coverage.m"
+MR_bool MR_CALL 
+coverage____Unify____coverage_point_0_0(
+#line 61 "coverage.m"
+  MR_Word coverage__param_1,
+#line 61 "coverage.m"
+  MR_Word coverage__param_2);
+
+#line 30 "coverage.m"
+void MR_CALL 
+coverage____Compare____coverage_info_0_0(
+#line 30 "coverage.m"
+  MR_Word * coverage__param_1,
+#line 30 "coverage.m"
+  MR_Word coverage__param_2,
+#line 30 "coverage.m"
+  MR_Word coverage__param_3);
+
+#line 30 "coverage.m"
+MR_bool MR_CALL 
+coverage____Unify____coverage_info_0_0(
+#line 30 "coverage.m"
+  MR_Word coverage__param_1,
+#line 30 "coverage.m"
+  MR_Word coverage__param_2);
+
+#line 108 "coverage.m"
+void MR_CALL 
+coverage__add_coverage_point_to_map_5_p_0(
+#line 108 "coverage.m"
+  MR_Word coverage__param_1,
+#line 108 "coverage.m"
+  MR_Word coverage__param_2,
+#line 108 "coverage.m"
+  MR_Word * coverage__param_3,
+#line 108 "coverage.m"
+  MR_Word coverage__param_4,
+#line 108 "coverage.m"
+  MR_Word * coverage__param_5);
+
+#line 95 "coverage.m"
+void MR_CALL 
+coverage__goal_annotate_with_coverage_9_p_0(
+#line 95 "coverage.m"
+  MR_Word coverage__param_1,
+#line 95 "coverage.m"
+  MR_Word coverage__param_2,
+#line 95 "coverage.m"
+  MR_Word coverage__param_3,
+#line 95 "coverage.m"
+  MR_Word coverage__param_4,
+#line 95 "coverage.m"
+  MR_Word coverage__param_5,
+#line 95 "coverage.m"
+  MR_Word coverage__param_6,
+#line 95 "coverage.m"
+  MR_Word coverage__param_7,
+#line 95 "coverage.m"
+  MR_Word coverage__param_8,
+#line 95 "coverage.m"
+  MR_Word coverage__param_9,
+#line 95 "coverage.m"
+  MR_Word * coverage__param_10);
+
+#line 87 "coverage.m"
+void MR_CALL 
+coverage__procrep_annotate_with_coverage_8_p_0(
+#line 87 "coverage.m"
+  MR_Word coverage__param_1,
+#line 87 "coverage.m"
+  MR_Word coverage__param_2,
+#line 87 "coverage.m"
+  MR_Word coverage__param_3,
+#line 87 "coverage.m"
+  MR_Word coverage__param_4,
+#line 87 "coverage.m"
+  MR_Word coverage__param_5,
+#line 87 "coverage.m"
+  MR_Word coverage__param_6,
+#line 87 "coverage.m"
+  MR_Word coverage__param_7,
+#line 87 "coverage.m"
+  MR_Word coverage__param_8,
+#line 87 "coverage.m"
+  MR_Word * coverage__param_9);
+
+#line 80 "coverage.m"
+void MR_CALL 
+coverage__coverage_point_arrays_to_list_3_p_0(
+#line 80 "coverage.m"
+  MR_ArrayPtr coverage__param_1,
+#line 80 "coverage.m"
+  MR_ArrayPtr coverage__param_2,
+#line 80 "coverage.m"
+  MR_Word * coverage__param_3);
+
+#line 53 "coverage.m"
+void MR_CALL 
+coverage__get_coverage_after_det_2_p_0(
+#line 53 "coverage.m"
+  MR_Word coverage__param_1,
+#line 53 "coverage.m"
+  MR_Integer * coverage__param_2);
+
+#line 51 "coverage.m"
+void MR_CALL 
+coverage__get_coverage_before_and_after_det_3_p_0(
+#line 51 "coverage.m"
+  MR_Word coverage__param_1,
+#line 51 "coverage.m"
+  MR_Integer * coverage__param_2,
+#line 51 "coverage.m"
+  MR_Integer * coverage__param_3);
+
+#line 50 "coverage.m"
+void MR_CALL 
+coverage__get_coverage_before_det_2_p_0(
+#line 50 "coverage.m"
+  MR_Word coverage__param_1,
+#line 50 "coverage.m"
+  MR_Integer * coverage__param_2);
+
+#line 48 "coverage.m"
+MR_bool MR_CALL 
+coverage__get_coverage_after_2_p_0(
+#line 48 "coverage.m"
+  MR_Word coverage__param_1,
+#line 48 "coverage.m"
+  MR_Integer * coverage__param_2);
+
+#line 46 "coverage.m"
+MR_bool MR_CALL 
+coverage__get_coverage_before_and_after_3_p_0(
+#line 46 "coverage.m"
+  MR_Word coverage__param_1,
+#line 46 "coverage.m"
+  MR_Integer * coverage__param_2,
+#line 46 "coverage.m"
+  MR_Integer * coverage__param_3);
+
+#line 45 "coverage.m"
+MR_bool MR_CALL 
+coverage__get_coverage_before_2_p_0(
+#line 45 "coverage.m"
+  MR_Word coverage__param_1,
+#line 45 "coverage.m"
+  MR_Integer * coverage__param_2);
+
+void mercury__coverage__init(void);
+void mercury__coverage__init_type_tables(void);
+void mercury__coverage__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_coverage */
+
+/* :- end_interface coverage. */

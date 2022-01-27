@@ -1,0 +1,643 @@
+/*
+** Automatically generated from `hlds_args.m'
+** by the Mercury compiler,
+** version rotd-14.01.1-2014-05-28, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.hlds_args. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_args
+#define MR_HEADER_GUARD_hlds__hlds_args
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_ARGS_DECL_GUARD
+#define HLDS__HLDS_ARGS_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "hlds.hlds_args.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_args__hlds__hlds_args__type_ctor_info_poly_arg_vector_1;
+
+#line 45 "hlds.hlds_args.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_args__hlds__hlds_args__type_ctor_info_proc_arg_vector_1;
+
+#line 232 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args____Compare____proc_arg_vector_1_0(
+#line 232 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 232 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_2,
+#line 232 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 232 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_4);
+
+#line 232 "hlds_args.m"
+MR_bool MR_CALL 
+hlds__hlds_args____Unify____proc_arg_vector_1_0(
+#line 232 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 232 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 232 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3);
+
+#line 670 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args____Compare____poly_arg_vector_1_0(
+#line 670 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 670 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_2,
+#line 670 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 670 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_4);
+
+#line 670 "hlds_args.m"
+MR_bool MR_CALL 
+hlds__hlds_args____Unify____poly_arg_vector_1_0(
+#line 670 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 670 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 670 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3);
+
+#line 215 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__poly_arg_vector_to_list_1_f_0(
+#line 215 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 215 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2);
+
+#line 207 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__poly_arg_vector_set_exist_typeclass_infos_3_p_0(
+#line 207 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 207 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 207 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 207 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 205 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__poly_arg_vector_set_univ_typeclass_infos_3_p_0(
+#line 205 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 205 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 205 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 205 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 203 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__poly_arg_vector_set_exist_type_infos_3_p_0(
+#line 203 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 203 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 203 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 203 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 201 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__poly_arg_vector_set_univ_type_infos_3_p_0(
+#line 201 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 201 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 201 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 201 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 199 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__poly_arg_vector_set_instance_typeclass_infos_3_p_0(
+#line 199 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 199 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 199 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 199 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 197 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__poly_arg_vector_set_instance_type_infos_3_p_0(
+#line 197 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 197 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 197 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 197 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 195 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__poly_arg_vector_init_0_f_0(
+#line 195 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1);
+
+#line 174 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_foldl4_corresponding3_12_p_0(
+#line 174 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 174 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 174 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 174 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_4,
+#line 174 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_5,
+#line 174 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_6,
+#line 174 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_7,
+#line 174 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_8,
+#line 174 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_9,
+#line 174 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_10,
+#line 174 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_11,
+#line 174 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_12,
+#line 174 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_13,
+#line 174 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_14,
+#line 174 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_15,
+#line 174 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_16,
+#line 174 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_17,
+#line 174 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_18,
+#line 174 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_19);
+
+#line 168 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_foldl3_corresponding3_10_p_0(
+#line 168 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 168 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 168 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 168 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_4,
+#line 168 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_5,
+#line 168 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_6,
+#line 168 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_7,
+#line 168 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_8,
+#line 168 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_9,
+#line 168 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_10,
+#line 168 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_11,
+#line 168 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_12,
+#line 168 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_13,
+#line 168 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_14,
+#line 168 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_15,
+#line 168 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_16);
+
+#line 162 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_foldl2_corresponding3_8_p_0(
+#line 162 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 162 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 162 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 162 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_4,
+#line 162 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_5,
+#line 162 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_6,
+#line 162 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_7,
+#line 162 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_8,
+#line 162 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_9,
+#line 162 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_10,
+#line 162 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_11,
+#line 162 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_12,
+#line 162 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_13);
+
+#line 156 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_foldl3_corresponding_9_p_0(
+#line 156 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 156 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 156 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 156 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_4,
+#line 156 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_5,
+#line 156 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_6,
+#line 156 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_7,
+#line 156 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_8,
+#line 156 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_9,
+#line 156 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_10,
+#line 156 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_11,
+#line 156 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_12,
+#line 156 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_13,
+#line 156 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_14);
+
+#line 151 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_map_corresponding_foldl2_8_p_0(
+#line 151 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 151 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 151 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 151 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_4,
+#line 151 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_5,
+#line 151 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_6,
+#line 151 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_7,
+#line 151 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_8,
+#line 151 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_9,
+#line 151 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_10,
+#line 151 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_11,
+#line 151 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_12,
+#line 151 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_13);
+
+#line 148 "hlds_args.m"
+MR_bool MR_CALL 
+hlds__hlds_args__proc_arg_vector_all_true_2_p_0(
+#line 148 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 148 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 148 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3);
+
+#line 143 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_map_corresponding_4_p_0(
+#line 143 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 143 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 143 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 143 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_4,
+#line 143 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_5,
+#line 143 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_6,
+#line 143 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_7);
+
+#line 140 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_map_3_p_0(
+#line 140 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 140 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 140 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 140 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_4,
+#line 140 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_5);
+
+#line 137 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__proc_arg_vector_map_2_f_0(
+#line 137 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 137 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 137 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 137 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_4);
+
+#line 125 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_to_func_args_3_p_0(
+#line 125 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 125 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 125 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_3,
+#line 125 "hlds_args.m"
+  MR_Box * hlds__hlds_args__param_4);
+
+#line 119 "hlds_args.m"
+MR_bool MR_CALL 
+hlds__hlds_args__proc_arg_vector_member_2_p_0(
+#line 119 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 119 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 119 "hlds_args.m"
+  MR_Box hlds__hlds_args__param_3);
+
+#line 112 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_partition_poly_args_3_p_0(
+#line 112 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 112 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 112 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_3,
+#line 112 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 104 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__apply_renaming_to_proc_arg_vector_3_p_0(
+#line 104 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 104 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 104 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 104 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 99 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__proc_arg_vector_to_set_1_f_0(
+#line 99 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 99 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2);
+
+#line 95 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__proc_arg_vector_to_list_1_f_0(
+#line 95 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 95 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2);
+
+#line 81 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_set_maybe_ret_value_3_p_0(
+#line 81 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 81 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 81 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 81 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 79 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_set_user_args_3_p_0(
+#line 79 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 79 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 79 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 79 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 77 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_set_exist_typeclass_infos_3_p_0(
+#line 77 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 77 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 77 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 77 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 75 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_set_univ_typeclass_infos_3_p_0(
+#line 75 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 75 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 75 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 75 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 73 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_set_exist_type_infos_3_p_0(
+#line 73 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 73 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 73 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 73 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 71 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_set_univ_type_infos_3_p_0(
+#line 71 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 71 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 71 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 71 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 69 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_set_instance_typeclass_infos_3_p_0(
+#line 69 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 69 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 69 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 69 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 67 "hlds_args.m"
+void MR_CALL 
+hlds__hlds_args__proc_arg_vector_set_instance_type_infos_3_p_0(
+#line 67 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 67 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 67 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3,
+#line 67 "hlds_args.m"
+  MR_Word * hlds__hlds_args__param_4);
+
+#line 65 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__proc_arg_vector_get_maybe_ret_value_1_f_0(
+#line 65 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 65 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2);
+
+#line 64 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__proc_arg_vector_get_user_args_1_f_0(
+#line 64 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 64 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2);
+
+#line 62 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__proc_arg_vector_get_exist_typeclass_infos_1_f_0(
+#line 62 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 62 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2);
+
+#line 61 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__proc_arg_vector_get_univ_typeclass_infos_1_f_0(
+#line 61 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 61 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2);
+
+#line 60 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__proc_arg_vector_get_exist_type_infos_1_f_0(
+#line 60 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 60 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2);
+
+#line 59 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__proc_arg_vector_get_univ_type_infos_1_f_0(
+#line 59 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 59 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2);
+
+#line 57 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__proc_arg_vector_get_instance_typeclass_infos_1_f_0(
+#line 57 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 57 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2);
+
+#line 55 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__proc_arg_vector_get_instance_type_infos_1_f_0(
+#line 55 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 55 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2);
+
+#line 48 "hlds_args.m"
+MR_Word MR_CALL 
+hlds__hlds_args__proc_arg_vector_init_2_f_0(
+#line 48 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_1,
+#line 48 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_2,
+#line 48 "hlds_args.m"
+  MR_Word hlds__hlds_args__param_3);
+
+void mercury__hlds__hlds_args__init(void);
+void mercury__hlds__hlds_args__init_type_tables(void);
+void mercury__hlds__hlds_args__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.hlds_args */
+
+/* :- end_interface hlds.hlds_args. */

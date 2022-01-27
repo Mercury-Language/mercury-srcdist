@@ -1,0 +1,914 @@
+/*
+** Automatically generated from `declarative_edt.m'
+** by the Mercury compiler,
+** version rotd-14.01.1-2014-05-28, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdb.declarative_edt. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_mdb__declarative_edt
+#define MR_HEADER_GUARD_mdb__declarative_edt
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__DECLARATIVE_EDT_DECL_GUARD
+#define MDB__DECLARATIVE_EDT_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+
+#line 42 "mdb.declarative_edt.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_find_origin_response_0;
+
+#line 45 "mdb.declarative_edt.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_maybe_found_descendant_0;
+
+#line 48 "mdb.declarative_edt.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_primitive_op_type_0;
+
+#line 51 "mdb.declarative_edt.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_search_space_1;
+
+#line 54 "mdb.declarative_edt.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_subterm_mode_0;
+
+#line 57 "mdb.declarative_edt.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_subterm_origin_1;
+
+#line 60 "mdb.declarative_edt.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_suspect_1;
+
+#line 63 "mdb.declarative_edt.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_suspect_id_0;
+
+#line 66 "mdb.declarative_edt.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_suspect_status_0;
+
+#line 69 "mdb.declarative_edt.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_edt__mdb__declarative_edt__type_ctor_info_weighting_heuristic_0;
+
+#line 72 "mdb.declarative_edt.mih.tmp"
+extern const MR_TypeClassDeclStruct mdb__declarative_edt__mdb__declarative_edt__type_class_decl_mercury_edt_2;
+
+#line 550 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt____Compare____weighting_heuristic_0_0(
+#line 550 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_1,
+#line 550 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 550 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3);
+
+#line 550 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____weighting_heuristic_0_0(
+#line 550 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 550 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2);
+
+#line 631 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt____Compare____suspect_id_0_0(
+#line 631 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_1,
+#line 631 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_2,
+#line 631 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3);
+
+#line 631 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____suspect_id_0_0(
+#line 631 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_1,
+#line 631 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_2);
+
+#line 195 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt____Compare____subterm_origin_1_0(
+#line 195 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 195 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_2,
+#line 195 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 195 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_4);
+
+#line 195 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____subterm_origin_1_0(
+#line 195 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 195 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 195 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3);
+
+#line 191 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt____Compare____subterm_mode_0_0(
+#line 191 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_1,
+#line 191 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 191 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3);
+
+#line 191 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____subterm_mode_0_0(
+#line 191 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 191 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2);
+
+#line 633 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt____Compare____search_space_1_0(
+#line 633 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 633 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_2,
+#line 633 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 633 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_4);
+
+#line 633 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____search_space_1_0(
+#line 633 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 633 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 633 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3);
+
+#line 220 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt____Compare____primitive_op_type_0_0(
+#line 220 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_1,
+#line 220 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 220 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3);
+
+#line 220 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____primitive_op_type_0_0(
+#line 220 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 220 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2);
+
+#line 494 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt____Compare____maybe_found_descendant_0_0(
+#line 494 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_1,
+#line 494 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 494 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3);
+
+#line 494 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____maybe_found_descendant_0_0(
+#line 494 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 494 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2);
+
+#line 375 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt____Compare____find_origin_response_0_0(
+#line 375 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_1,
+#line 375 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 375 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3);
+
+#line 375 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt____Unify____find_origin_response_0_0(
+#line 375 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 375 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2);
+
+#line 564 "declarative_edt.m"
+MR_Word MR_CALL 
+mdb__declarative_edt__get_current_maybe_weighting_1_f_0(
+#line 564 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 564 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2);
+
+#line 558 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__update_weighting_heuristic_4_p_0(
+#line 558 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 558 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 558 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 558 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_4,
+#line 558 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_5);
+
+#line 547 "declarative_edt.m"
+MR_Word MR_CALL 
+mdb__declarative_edt__get_proc_label_for_suspect_3_f_0(
+#line 547 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 547 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 547 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 547 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_4);
+
+#line 542 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__maybe_check_search_space_consistency_3_p_0(
+#line 542 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 542 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 542 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 542 "declarative_edt.m"
+  MR_String mdb__declarative_edt__param_4);
+
+#line 535 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__revise_root_3_p_0(
+#line 535 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 535 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 535 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 535 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_4);
+
+#line 529 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__give_up_subterm_tracking_3_p_0(
+#line 529 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 529 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 529 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3,
+#line 529 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_4);
+
+#line 523 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_inadmissible_2_p_0(
+#line 523 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 523 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 523 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3);
+
+#line 518 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_correct_or_inadmissible_2_p_0(
+#line 518 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 518 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 518 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3);
+
+#line 513 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__get_path_4_p_0(
+#line 513 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 513 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 513 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3,
+#line 513 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_4,
+#line 513 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_5);
+
+#line 504 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__choose_skipped_suspect_2_p_0(
+#line 504 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 504 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 504 "declarative_edt.m"
+  MR_Integer * mdb__declarative_edt__param_3);
+
+#line 490 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__first_unknown_descendant_6_p_0(
+#line 490 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 490 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 490 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 490 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_4,
+#line 490 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_5,
+#line 490 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_6,
+#line 490 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_7);
+
+#line 479 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_ignored_2_p_0(
+#line 479 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 479 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 479 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3);
+
+#line 475 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_skipped_2_p_0(
+#line 475 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 475 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 475 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3);
+
+#line 471 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_erroneous_2_p_0(
+#line 471 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 471 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 471 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3);
+
+#line 467 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_unknown_2_p_0(
+#line 467 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 467 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 467 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3);
+
+#line 462 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_in_excluded_complement_2_p_0(
+#line 462 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 462 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 462 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3);
+
+#line 456 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__suspect_in_excluded_subtree_2_p_0(
+#line 456 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 456 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 456 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3);
+
+#line 450 "declarative_edt.m"
+MR_Integer MR_CALL 
+mdb__declarative_edt__get_weight_2_f_0(
+#line 450 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 450 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 450 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3);
+
+#line 446 "declarative_edt.m"
+MR_Box MR_CALL 
+mdb__declarative_edt__get_edt_node_2_f_0(
+#line 446 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 446 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 446 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3);
+
+#line 441 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__extend_search_space_upwards_4_p_0(
+#line 441 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 441 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 441 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 441 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_4,
+#line 441 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_5);
+
+#line 433 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__incorporate_explicit_supertree_5_p_0(
+#line 433 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 433 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 433 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 433 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_4,
+#line 433 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_5,
+#line 433 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_6);
+
+#line 424 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__incorporate_explicit_subtree_4_p_0(
+#line 424 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 424 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_2,
+#line 424 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 424 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_4,
+#line 424 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_5);
+
+#line 417 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__travel_up_4_p_0(
+#line 417 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 417 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 417 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3,
+#line 417 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_4,
+#line 417 "declarative_edt.m"
+  MR_Integer * mdb__declarative_edt__param_5);
+
+#line 411 "declarative_edt.m"
+MR_Integer MR_CALL 
+mdb__declarative_edt__suspect_depth_2_f_0(
+#line 411 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 411 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 411 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3);
+
+#line 369 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__find_subterm_origin_11_p_0(
+#line 369 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 369 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 369 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 369 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_4,
+#line 369 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_5,
+#line 369 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_6,
+#line 369 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_7,
+#line 369 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_8,
+#line 369 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_9,
+#line 369 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_10,
+#line 369 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_11,
+#line 369 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_12);
+
+#line 342 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__lookup_subterm_node_8_p_0(
+#line 342 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 342 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 342 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3,
+#line 342 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_4,
+#line 342 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_5,
+#line 342 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_6,
+#line 342 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_7,
+#line 342 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_8,
+#line 342 "declarative_edt.m"
+  MR_Box * mdb__declarative_edt__param_9);
+
+#line 333 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__skip_suspect_3_p_0(
+#line 333 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 333 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_2,
+#line 333 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 333 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_4);
+
+#line 328 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__ignore_suspect_4_p_0(
+#line 328 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 328 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 328 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3,
+#line 328 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_4,
+#line 328 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_5);
+
+#line 323 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__assert_suspect_is_inadmissible_3_p_0(
+#line 323 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 323 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_2,
+#line 323 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 323 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_4);
+
+#line 318 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__assert_suspect_is_erroneous_3_p_0(
+#line 318 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 318 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_2,
+#line 318 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 318 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_4);
+
+#line 312 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__assert_suspect_is_correct_3_p_0(
+#line 312 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 312 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_2,
+#line 312 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 312 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_4);
+
+#line 307 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__parent_3_p_0(
+#line 307 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 307 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 307 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_3,
+#line 307 "declarative_edt.m"
+  MR_Integer * mdb__declarative_edt__param_4);
+
+#line 298 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__children_6_p_0(
+#line 298 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 298 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 298 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 298 "declarative_edt.m"
+  MR_Integer mdb__declarative_edt__param_4,
+#line 298 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_5,
+#line 298 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_6,
+#line 298 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_7);
+
+#line 288 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__non_ignored_descendants_6_p_0(
+#line 288 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 288 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 288 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 288 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_4,
+#line 288 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_5,
+#line 288 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_6,
+#line 288 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_7);
+
+#line 278 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__topmost_det_2_p_0(
+#line 278 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 278 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 278 "declarative_edt.m"
+  MR_Integer * mdb__declarative_edt__param_3);
+
+#line 273 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__root_2_p_0(
+#line 273 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 273 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_2,
+#line 273 "declarative_edt.m"
+  MR_Integer * mdb__declarative_edt__param_3);
+
+#line 262 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__initialise_search_space_4_p_0(
+#line 262 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 262 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 262 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_3,
+#line 262 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_4,
+#line 262 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_5);
+
+#line 257 "declarative_edt.m"
+MR_Word MR_CALL 
+mdb__declarative_edt__empty_search_space_0_f_0(
+#line 257 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1);
+
+#line 226 "declarative_edt.m"
+MR_String MR_CALL 
+mdb__declarative_edt__primitive_op_type_to_string_1_f_0(
+#line 226 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1);
+
+#line 188 "declarative_edt.m"
+MR_Integer MR_CALL 
+mdb__declarative_edt__edt_arg_pos_to_user_arg_num_3_f_0(
+#line 188 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 188 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 188 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 188 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_4);
+
+#line 183 "declarative_edt.m"
+MR_Word MR_CALL 
+mdb__declarative_edt__edt_proc_label_2_f_0(
+#line 183 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 183 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 183 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3);
+
+#line 178 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__edt_context_4_p_0(
+#line 178 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 178 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 178 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 178 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_4,
+#line 178 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_5);
+
+#line 171 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__edt_subtree_suspicion_4_p_0(
+#line 171 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 171 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 171 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 171 "declarative_edt.m"
+  MR_Integer * mdb__declarative_edt__param_4,
+#line 171 "declarative_edt.m"
+  MR_Integer * mdb__declarative_edt__param_5);
+
+#line 164 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__edt_number_of_events_4_p_0(
+#line 164 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 164 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 164 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 164 "declarative_edt.m"
+  MR_Integer * mdb__declarative_edt__param_4,
+#line 164 "declarative_edt.m"
+  MR_Integer * mdb__declarative_edt__param_5);
+
+#line 155 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__edt_topmost_node_2_p_0(
+#line 155 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 155 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 155 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3);
+
+#line 150 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__edt_same_nodes_3_p_0(
+#line 150 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 150 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 150 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 150 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_4);
+
+#line 145 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__edt_is_implicit_root_2_p_0(
+#line 145 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 145 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 145 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3);
+
+#line 139 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__edt_subterm_mode_5_p_0(
+#line 139 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 139 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 139 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 139 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_4,
+#line 139 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_5,
+#line 139 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_6);
+
+#line 134 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__edt_dependency_6_p_0(
+#line 134 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 134 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 134 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 134 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_4,
+#line 134 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_5,
+#line 134 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_6,
+#line 134 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_7);
+
+#line 129 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__edt_parent_3_p_0(
+#line 129 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 129 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 129 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 129 "declarative_edt.m"
+  MR_Box * mdb__declarative_edt__param_4);
+
+#line 119 "declarative_edt.m"
+MR_bool MR_CALL 
+mdb__declarative_edt__edt_children_3_p_0(
+#line 119 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 119 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 119 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 119 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_4);
+
+#line 114 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__edt_get_i_bug_4_p_0(
+#line 114 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 114 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 114 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 114 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_4,
+#line 114 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_5);
+
+#line 108 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__edt_get_e_bug_3_p_0(
+#line 108 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 108 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 108 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 108 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_4);
+
+#line 103 "declarative_edt.m"
+void MR_CALL 
+mdb__declarative_edt__edt_question_3_p_0(
+#line 103 "declarative_edt.m"
+  MR_Word mdb__declarative_edt__param_1,
+#line 103 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_2,
+#line 103 "declarative_edt.m"
+  MR_Box mdb__declarative_edt__param_3,
+#line 103 "declarative_edt.m"
+  MR_Word * mdb__declarative_edt__param_4);
+
+void mercury__mdb__declarative_edt__init(void);
+void mercury__mdb__declarative_edt__init_type_tables(void);
+void mercury__mdb__declarative_edt__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_mdb.declarative_edt */
+
+/* :- end_interface mdb.declarative_edt. */

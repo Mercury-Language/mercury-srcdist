@@ -1,0 +1,10 @@
+:- module (ll_backend.frameopt).
+:- interface.
+:- import_module bool.
+:- import_module counter.
+:- import_module list.
+:- import_module set_tree234.
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- implementation.
+:- typeclass block_entry_exit(En, Ex) <= ((En -> Ex), (Ex -> En)).

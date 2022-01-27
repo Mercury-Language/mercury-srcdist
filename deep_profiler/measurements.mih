@@ -1,0 +1,800 @@
+/*
+** Automatically generated from `measurements.m'
+** by the Mercury compiler,
+** version rotd-14.01.1-2014-05-28, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module measurements. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_measurements
+#define MR_HEADER_GUARD_measurements
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MEASUREMENTS_DECL_GUARD
+#define MEASUREMENTS_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "measurements.mih.tmp"
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_cost_0;
+
+#line 44 "measurements.mih.tmp"
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_cs_cost_csq_0;
+
+#line 47 "measurements.mih.tmp"
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_goal_cost_csq_0;
+
+#line 50 "measurements.mih.tmp"
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_inherit_prof_info_0;
+
+#line 53 "measurements.mih.tmp"
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_is_active_0;
+
+#line 56 "measurements.mih.tmp"
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_own_prof_info_0;
+
+#line 59 "measurements.mih.tmp"
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_parallel_exec_metrics_incomplete_0;
+
+#line 62 "measurements.mih.tmp"
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_parallel_exec_metrics_internal_0;
+
+#line 65 "measurements.mih.tmp"
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_parallelism_amount_0;
+
+#line 68 "measurements.mih.tmp"
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_proc_cost_csq_0;
+
+#line 71 "measurements.mih.tmp"
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_recursion_depth_0;
+
+#line 74 "measurements.mih.tmp"
+extern const MR_TypeCtorInfo_Struct measurements__measurements__type_ctor_info_static_coverage_info_0;
+
+#line 923 "measurements.m"
+void MR_CALL 
+measurements____Compare____static_coverage_info_0_0(
+#line 923 "measurements.m"
+  MR_Word * measurements__param_1,
+#line 923 "measurements.m"
+  MR_Word measurements__param_2,
+#line 923 "measurements.m"
+  MR_Word measurements__param_3);
+
+#line 923 "measurements.m"
+MR_bool MR_CALL 
+measurements____Unify____static_coverage_info_0_0(
+#line 923 "measurements.m"
+  MR_Word measurements__param_1,
+#line 923 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 900 "measurements.m"
+void MR_CALL 
+measurements____Compare____recursion_depth_0_0(
+#line 900 "measurements.m"
+  MR_Word * measurements__param_1,
+#line 900 "measurements.m"
+  MR_Word measurements__param_2,
+#line 900 "measurements.m"
+  MR_Word measurements__param_3);
+
+#line 900 "measurements.m"
+MR_bool MR_CALL 
+measurements____Unify____recursion_depth_0_0(
+#line 900 "measurements.m"
+  MR_Word measurements__param_1,
+#line 900 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 647 "measurements.m"
+void MR_CALL 
+measurements____Compare____proc_cost_csq_0_0(
+#line 647 "measurements.m"
+  MR_Word * measurements__param_1,
+#line 647 "measurements.m"
+  MR_Word measurements__param_2,
+#line 647 "measurements.m"
+  MR_Word measurements__param_3);
+
+#line 647 "measurements.m"
+MR_bool MR_CALL 
+measurements____Unify____proc_cost_csq_0_0(
+#line 647 "measurements.m"
+  MR_Word measurements__param_1,
+#line 647 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 957 "measurements.m"
+void MR_CALL 
+measurements____Compare____parallelism_amount_0_0(
+#line 957 "measurements.m"
+  MR_Word * measurements__param_1,
+#line 957 "measurements.m"
+  MR_Word measurements__param_2,
+#line 957 "measurements.m"
+  MR_Word measurements__param_3);
+
+#line 957 "measurements.m"
+MR_bool MR_CALL 
+measurements____Unify____parallelism_amount_0_0(
+#line 957 "measurements.m"
+  MR_Word measurements__param_1,
+#line 957 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 998 "measurements.m"
+void MR_CALL 
+measurements____Compare____parallel_exec_metrics_incomplete_0_0(
+#line 998 "measurements.m"
+  MR_Word * measurements__param_1,
+#line 998 "measurements.m"
+  MR_Word measurements__param_2,
+#line 998 "measurements.m"
+  MR_Word measurements__param_3);
+
+#line 998 "measurements.m"
+MR_bool MR_CALL 
+measurements____Unify____parallel_exec_metrics_incomplete_0_0(
+#line 998 "measurements.m"
+  MR_Word measurements__param_1,
+#line 998 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 325 "measurements.m"
+void MR_CALL 
+measurements____Compare____own_prof_info_0_0(
+#line 325 "measurements.m"
+  MR_Word * measurements__param_1,
+#line 325 "measurements.m"
+  MR_Word measurements__param_2,
+#line 325 "measurements.m"
+  MR_Word measurements__param_3);
+
+#line 325 "measurements.m"
+MR_bool MR_CALL 
+measurements____Unify____own_prof_info_0_0(
+#line 325 "measurements.m"
+  MR_Word measurements__param_1,
+#line 325 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 80 "measurements.m"
+void MR_CALL 
+measurements____Compare____is_active_0_0(
+#line 80 "measurements.m"
+  MR_Word * measurements__param_1,
+#line 80 "measurements.m"
+  MR_Word measurements__param_2,
+#line 80 "measurements.m"
+  MR_Word measurements__param_3);
+
+#line 80 "measurements.m"
+MR_bool MR_CALL 
+measurements____Unify____is_active_0_0(
+#line 80 "measurements.m"
+  MR_Word measurements__param_1,
+#line 80 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 368 "measurements.m"
+void MR_CALL 
+measurements____Compare____inherit_prof_info_0_0(
+#line 368 "measurements.m"
+  MR_Word * measurements__param_1,
+#line 368 "measurements.m"
+  MR_Word measurements__param_2,
+#line 368 "measurements.m"
+  MR_Word measurements__param_3);
+
+#line 368 "measurements.m"
+MR_bool MR_CALL 
+measurements____Unify____inherit_prof_info_0_0(
+#line 368 "measurements.m"
+  MR_Word measurements__param_1,
+#line 368 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 727 "measurements.m"
+void MR_CALL 
+measurements____Compare____goal_cost_csq_0_0(
+#line 727 "measurements.m"
+  MR_Word * measurements__param_1,
+#line 727 "measurements.m"
+  MR_Word measurements__param_2,
+#line 727 "measurements.m"
+  MR_Word measurements__param_3);
+
+#line 727 "measurements.m"
+MR_bool MR_CALL 
+measurements____Unify____goal_cost_csq_0_0(
+#line 727 "measurements.m"
+  MR_Word measurements__param_1,
+#line 727 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 662 "measurements.m"
+void MR_CALL 
+measurements____Compare____cs_cost_csq_0_0(
+#line 662 "measurements.m"
+  MR_Word * measurements__param_1,
+#line 662 "measurements.m"
+  MR_Word measurements__param_2,
+#line 662 "measurements.m"
+  MR_Word measurements__param_3);
+
+#line 662 "measurements.m"
+MR_bool MR_CALL 
+measurements____Unify____cs_cost_csq_0_0(
+#line 662 "measurements.m"
+  MR_Word measurements__param_1,
+#line 662 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 309 "measurements.m"
+void MR_CALL 
+measurements__weighted_average_3_p_0(
+#line 309 "measurements.m"
+  MR_Word measurements__param_1,
+#line 309 "measurements.m"
+  MR_Word measurements__param_2,
+#line 309 "measurements.m"
+  MR_Float * measurements__param_3);
+
+#line 304 "measurements.m"
+MR_Integer MR_CALL 
+measurements__parallel_exec_metrics_get_num_calls_1_f_0(
+#line 304 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 297 "measurements.m"
+MR_Word MR_CALL 
+measurements__finalise_parallel_exec_metrics_1_f_0(
+#line 297 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 290 "measurements.m"
+MR_Word MR_CALL 
+measurements__init_empty_parallel_exec_metrics_7_f_0(
+#line 290 "measurements.m"
+  MR_Float measurements__param_1,
+#line 290 "measurements.m"
+  MR_Float measurements__param_2,
+#line 290 "measurements.m"
+  MR_Integer measurements__param_3,
+#line 290 "measurements.m"
+  MR_Float measurements__param_4,
+#line 290 "measurements.m"
+  MR_Float measurements__param_5,
+#line 290 "measurements.m"
+  MR_Float measurements__param_6,
+#line 290 "measurements.m"
+  MR_Float measurements__param_7);
+
+#line 280 "measurements.m"
+MR_Word MR_CALL 
+measurements__init_parallel_exec_metrics_incomplete_6_f_0(
+#line 280 "measurements.m"
+  MR_Word measurements__param_1,
+#line 280 "measurements.m"
+  MR_Float measurements__param_2,
+#line 280 "measurements.m"
+  MR_Float measurements__param_3,
+#line 280 "measurements.m"
+  MR_Float measurements__param_4,
+#line 280 "measurements.m"
+  MR_Float measurements__param_5,
+#line 280 "measurements.m"
+  MR_Float measurements__param_6);
+
+#line 257 "measurements.m"
+MR_bool MR_CALL 
+measurements__exceeded_desired_parallelism_2_p_0(
+#line 257 "measurements.m"
+  MR_Float measurements__param_1,
+#line 257 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 250 "measurements.m"
+void MR_CALL 
+measurements__sub_computation_parallelism_3_p_0(
+#line 250 "measurements.m"
+  MR_Word measurements__param_1,
+#line 250 "measurements.m"
+  MR_Float measurements__param_2,
+#line 250 "measurements.m"
+  MR_Word * measurements__param_3);
+
+#line 248 "measurements.m"
+void MR_CALL 
+measurements__sub_computation_parallelism_4_p_0(
+#line 248 "measurements.m"
+  MR_Word measurements__param_1,
+#line 248 "measurements.m"
+  MR_Float measurements__param_2,
+#line 248 "measurements.m"
+  MR_Word measurements__param_3,
+#line 248 "measurements.m"
+  MR_Word * measurements__param_4);
+
+#line 231 "measurements.m"
+MR_Word MR_CALL 
+measurements__some_parallelism_1_f_0(
+#line 231 "measurements.m"
+  MR_Float measurements__param_1);
+
+#line 229 "measurements.m"
+MR_Word MR_CALL 
+measurements__no_parallelism_0_f_0(void);
+
+#line 220 "measurements.m"
+MR_Word MR_CALL 
+measurements__static_coverage_maybe_get_coverage_points_1_f_0(
+#line 220 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 217 "measurements.m"
+void MR_CALL 
+measurements__array_to_static_coverage_2_p_0(
+#line 217 "measurements.m"
+  MR_ArrayPtr measurements__param_1,
+#line 217 "measurements.m"
+  MR_Word * measurements__param_2);
+
+#line 214 "measurements.m"
+void MR_CALL 
+measurements__add_coverage_arrays_3_p_0(
+#line 214 "measurements.m"
+  MR_ArrayPtr measurements__param_1,
+#line 214 "measurements.m"
+  MR_Word measurements__param_2,
+#line 214 "measurements.m"
+  MR_Word * measurements__param_3);
+
+#line 212 "measurements.m"
+MR_Word MR_CALL 
+measurements__zero_static_coverage_0_f_0(void);
+
+#line 206 "measurements.m"
+MR_bool MR_CALL 
+measurements__recursion_depth_is_base_case_1_p_0(
+#line 206 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 204 "measurements.m"
+void MR_CALL 
+measurements__recursion_depth_descend_2_p_0(
+#line 204 "measurements.m"
+  MR_Word measurements__param_1,
+#line 204 "measurements.m"
+  MR_Word * measurements__param_2);
+
+#line 201 "measurements.m"
+MR_Integer MR_CALL 
+measurements__recursion_depth_to_int_1_f_0(
+#line 201 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 200 "measurements.m"
+MR_Float MR_CALL 
+measurements__recursion_depth_to_float_1_f_0(
+#line 200 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 198 "measurements.m"
+MR_Word MR_CALL 
+measurements__recursion_depth_from_float_1_f_0(
+#line 198 "measurements.m"
+  MR_Float measurements__param_1);
+
+#line 192 "measurements.m"
+MR_Word MR_CALL 
+measurements__goal_cost_change_calls_2_f_0(
+#line 192 "measurements.m"
+  MR_Word measurements__param_1,
+#line 192 "measurements.m"
+  MR_Integer measurements__param_2);
+
+#line 190 "measurements.m"
+MR_Integer MR_CALL 
+measurements__goal_cost_get_calls_1_f_0(
+#line 190 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 188 "measurements.m"
+MR_Float MR_CALL 
+measurements__goal_cost_get_total_1_f_0(
+#line 188 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 186 "measurements.m"
+MR_Float MR_CALL 
+measurements__goal_cost_get_percall_1_f_0(
+#line 186 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 183 "measurements.m"
+MR_Word MR_CALL 
+measurements__add_goal_costs_branch_3_f_0(
+#line 183 "measurements.m"
+  MR_Integer measurements__param_1,
+#line 183 "measurements.m"
+  MR_Word measurements__param_2,
+#line 183 "measurements.m"
+  MR_Word measurements__param_3);
+
+#line 177 "measurements.m"
+MR_Word MR_CALL 
+measurements__add_goal_costs_seq_2_f_0(
+#line 177 "measurements.m"
+  MR_Word measurements__param_1,
+#line 177 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 168 "measurements.m"
+MR_Word MR_CALL 
+measurements__call_goal_cost_1_f_0(
+#line 168 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 166 "measurements.m"
+MR_Word MR_CALL 
+measurements__call_goal_cost_2_f_0(
+#line 166 "measurements.m"
+  MR_Integer measurements__param_1,
+#line 166 "measurements.m"
+  MR_Float measurements__param_2);
+
+#line 162 "measurements.m"
+MR_Word MR_CALL 
+measurements__dead_goal_cost_0_f_0(void);
+
+#line 156 "measurements.m"
+MR_Word MR_CALL 
+measurements__atomic_goal_cost_1_f_0(
+#line 156 "measurements.m"
+  MR_Integer measurements__param_1);
+
+#line 144 "measurements.m"
+MR_Word MR_CALL 
+measurements__cs_cost_per_proc_call_2_f_0(
+#line 144 "measurements.m"
+  MR_Word measurements__param_1,
+#line 144 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 141 "measurements.m"
+void MR_CALL 
+measurements__cs_cost_to_proc_cost_3_p_0(
+#line 141 "measurements.m"
+  MR_Word measurements__param_1,
+#line 141 "measurements.m"
+  MR_Integer measurements__param_2,
+#line 141 "measurements.m"
+  MR_Word * measurements__param_3);
+
+#line 137 "measurements.m"
+MR_Float MR_CALL 
+measurements__cs_cost_get_calls_1_f_0(
+#line 137 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 133 "measurements.m"
+MR_Float MR_CALL 
+measurements__cs_cost_get_percall_1_f_0(
+#line 133 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 128 "measurements.m"
+MR_Float MR_CALL 
+measurements__cs_cost_get_total_1_f_0(
+#line 128 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 124 "measurements.m"
+MR_Integer MR_CALL 
+measurements__proc_cost_get_calls_rec_1_f_0(
+#line 124 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 123 "measurements.m"
+MR_Integer MR_CALL 
+measurements__proc_cost_get_calls_nonrec_1_f_0(
+#line 123 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 122 "measurements.m"
+MR_Integer MR_CALL 
+measurements__proc_cost_get_calls_total_1_f_0(
+#line 122 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 118 "measurements.m"
+MR_Float MR_CALL 
+measurements__proc_cost_get_total_1_f_0(
+#line 118 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 114 "measurements.m"
+MR_Word MR_CALL 
+measurements__zero_cs_cost_0_f_0(void);
+
+#line 110 "measurements.m"
+MR_Word MR_CALL 
+measurements__build_cs_cost_csq_percall_2_f_0(
+#line 110 "measurements.m"
+  MR_Float measurements__param_1,
+#line 110 "measurements.m"
+  MR_Float measurements__param_2);
+
+#line 106 "measurements.m"
+MR_Word MR_CALL 
+measurements__build_cs_cost_csq_2_f_0(
+#line 106 "measurements.m"
+  MR_Integer measurements__param_1,
+#line 106 "measurements.m"
+  MR_Float measurements__param_2);
+
+#line 102 "measurements.m"
+MR_Word MR_CALL 
+measurements__build_proc_cost_csq_3_f_0(
+#line 102 "measurements.m"
+  MR_Integer measurements__param_1,
+#line 102 "measurements.m"
+  MR_Integer measurements__param_2,
+#line 102 "measurements.m"
+  MR_Integer measurements__param_3);
+
+#line 88 "measurements.m"
+MR_Word MR_CALL 
+measurements__compute_is_active_1_f_0(
+#line 88 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 78 "measurements.m"
+MR_String MR_CALL 
+measurements__own_to_string_1_f_0(
+#line 78 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 75 "measurements.m"
+void MR_CALL 
+measurements__decompress_profile_10_p_0(
+#line 75 "measurements.m"
+  MR_Word measurements__param_1,
+#line 75 "measurements.m"
+  MR_Integer * measurements__param_2,
+#line 75 "measurements.m"
+  MR_Integer * measurements__param_3,
+#line 75 "measurements.m"
+  MR_Integer * measurements__param_4,
+#line 75 "measurements.m"
+  MR_Integer * measurements__param_5,
+#line 75 "measurements.m"
+  MR_Integer * measurements__param_6,
+#line 75 "measurements.m"
+  MR_Integer * measurements__param_7,
+#line 75 "measurements.m"
+  MR_Integer * measurements__param_8,
+#line 75 "measurements.m"
+  MR_Integer * measurements__param_9,
+#line 75 "measurements.m"
+  MR_Integer * measurements__param_10);
+
+#line 73 "measurements.m"
+MR_Word MR_CALL 
+measurements__compress_profile_1_f_0(
+#line 73 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 71 "measurements.m"
+MR_Word MR_CALL 
+measurements__compress_profile_8_f_0(
+#line 71 "measurements.m"
+  MR_Integer measurements__param_1,
+#line 71 "measurements.m"
+  MR_Integer measurements__param_2,
+#line 71 "measurements.m"
+  MR_Integer measurements__param_3,
+#line 71 "measurements.m"
+  MR_Integer measurements__param_4,
+#line 71 "measurements.m"
+  MR_Integer measurements__param_5,
+#line 71 "measurements.m"
+  MR_Integer measurements__param_6,
+#line 71 "measurements.m"
+  MR_Integer measurements__param_7,
+#line 71 "measurements.m"
+  MR_Integer measurements__param_8);
+
+#line 69 "measurements.m"
+MR_Word MR_CALL 
+measurements__sum_inherit_infos_1_f_0(
+#line 69 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 68 "measurements.m"
+MR_Word MR_CALL 
+measurements__sum_own_infos_1_f_0(
+#line 68 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 66 "measurements.m"
+MR_Word MR_CALL 
+measurements__add_own_to_own_2_f_0(
+#line 66 "measurements.m"
+  MR_Word measurements__param_1,
+#line 66 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 65 "measurements.m"
+MR_Word MR_CALL 
+measurements__add_inherit_to_own_2_f_0(
+#line 65 "measurements.m"
+  MR_Word measurements__param_1,
+#line 65 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 63 "measurements.m"
+MR_Word MR_CALL 
+measurements__subtract_inherit_from_inherit_2_f_0(
+#line 63 "measurements.m"
+  MR_Word measurements__param_1,
+#line 63 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 61 "measurements.m"
+MR_Word MR_CALL 
+measurements__subtract_own_from_inherit_2_f_0(
+#line 61 "measurements.m"
+  MR_Word measurements__param_1,
+#line 61 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 59 "measurements.m"
+MR_Word MR_CALL 
+measurements__add_own_to_inherit_2_f_0(
+#line 59 "measurements.m"
+  MR_Word measurements__param_1,
+#line 59 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 57 "measurements.m"
+MR_Word MR_CALL 
+measurements__add_inherit_to_inherit_2_f_0(
+#line 57 "measurements.m"
+  MR_Word measurements__param_1,
+#line 57 "measurements.m"
+  MR_Word measurements__param_2);
+
+#line 55 "measurements.m"
+MR_bool MR_CALL 
+measurements__is_zero_inherit_prof_info_1_p_0(
+#line 55 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 53 "measurements.m"
+MR_Word MR_CALL 
+measurements__zero_inherit_prof_info_0_f_0(void);
+
+#line 51 "measurements.m"
+MR_Integer MR_CALL 
+measurements__inherit_words_1_f_0(
+#line 51 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 50 "measurements.m"
+MR_Integer MR_CALL 
+measurements__inherit_allocs_1_f_0(
+#line 50 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 49 "measurements.m"
+MR_Integer MR_CALL 
+measurements__inherit_callseqs_1_f_0(
+#line 49 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 48 "measurements.m"
+MR_Integer MR_CALL 
+measurements__inherit_quanta_1_f_0(
+#line 48 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 46 "measurements.m"
+MR_bool MR_CALL 
+measurements__is_zero_own_prof_info_1_p_0(
+#line 46 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 44 "measurements.m"
+MR_Word MR_CALL 
+measurements__zero_own_prof_info_0_f_0(void);
+
+#line 42 "measurements.m"
+MR_Integer MR_CALL 
+measurements__words_1_f_0(
+#line 42 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 41 "measurements.m"
+MR_Integer MR_CALL 
+measurements__allocs_1_f_0(
+#line 41 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 40 "measurements.m"
+MR_Integer MR_CALL 
+measurements__callseqs_1_f_0(
+#line 40 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 39 "measurements.m"
+MR_Integer MR_CALL 
+measurements__quanta_1_f_0(
+#line 39 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 38 "measurements.m"
+MR_Integer MR_CALL 
+measurements__excps_1_f_0(
+#line 38 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 37 "measurements.m"
+MR_Integer MR_CALL 
+measurements__redos_1_f_0(
+#line 37 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 36 "measurements.m"
+MR_Integer MR_CALL 
+measurements__fails_1_f_0(
+#line 36 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 35 "measurements.m"
+MR_Integer MR_CALL 
+measurements__exits_1_f_0(
+#line 35 "measurements.m"
+  MR_Word measurements__param_1);
+
+#line 34 "measurements.m"
+MR_Integer MR_CALL 
+measurements__calls_1_f_0(
+#line 34 "measurements.m"
+  MR_Word measurements__param_1);
+
+void mercury__measurements__init(void);
+void mercury__measurements__init_type_tables(void);
+void mercury__measurements__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_measurements */
+
+/* :- end_interface measurements. */

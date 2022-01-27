@@ -1,0 +1,206 @@
+/*
+** Automatically generated from `add_pred.m'
+** by the Mercury compiler,
+** version rotd-14.01.1-2014-05-28, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.make_hlds.add_pred. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__add_pred
+#define MR_HEADER_GUARD_hlds__make_hlds__add_pred
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__ADD_PRED_DECL_GUARD
+#define HLDS__MAKE_HLDS__ADD_PRED_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+
+#line 66 "add_pred.m"
+void MR_CALL 
+hlds__make_hlds__add_pred__preds_add_implicit_for_assertion_11_p_0(
+#line 66 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_1,
+#line 66 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_2,
+#line 66 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_3,
+#line 66 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_4,
+#line 66 "add_pred.m"
+  MR_Integer hlds__make_hlds__add_pred__param_5,
+#line 66 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_6,
+#line 66 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_7,
+#line 66 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_8,
+#line 66 "add_pred.m"
+  MR_Word * hlds__make_hlds__add_pred__param_9,
+#line 66 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_10,
+#line 66 "add_pred.m"
+  MR_Word * hlds__make_hlds__add_pred__param_11);
+
+#line 60 "add_pred.m"
+void MR_CALL 
+hlds__make_hlds__add_pred__preds_add_implicit_report_error_14_p_0(
+#line 60 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_1,
+#line 60 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_2,
+#line 60 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_3,
+#line 60 "add_pred.m"
+  MR_Integer hlds__make_hlds__add_pred__param_4,
+#line 60 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_5,
+#line 60 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_6,
+#line 60 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_7,
+#line 60 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_8,
+#line 60 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_9,
+#line 60 "add_pred.m"
+  MR_Word * hlds__make_hlds__add_pred__param_10,
+#line 60 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_11,
+#line 60 "add_pred.m"
+  MR_Word * hlds__make_hlds__add_pred__param_12,
+#line 60 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_13,
+#line 60 "add_pred.m"
+  MR_Word * hlds__make_hlds__add_pred__param_14);
+
+#line 49 "add_pred.m"
+void MR_CALL 
+hlds__make_hlds__add_pred__module_add_mode_13_p_0(
+#line 49 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_1,
+#line 49 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_2,
+#line 49 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_3,
+#line 49 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_4,
+#line 49 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_5,
+#line 49 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_6,
+#line 49 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_7,
+#line 49 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_8,
+#line 49 "add_pred.m"
+  MR_Word * hlds__make_hlds__add_pred__param_9,
+#line 49 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_10,
+#line 49 "add_pred.m"
+  MR_Word * hlds__make_hlds__add_pred__param_11,
+#line 49 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_12,
+#line 49 "add_pred.m"
+  MR_Word * hlds__make_hlds__add_pred__param_13);
+
+#line 42 "add_pred.m"
+void MR_CALL 
+hlds__make_hlds__add_pred__do_add_new_proc_12_p_0(
+#line 42 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_1,
+#line 42 "add_pred.m"
+  MR_Integer hlds__make_hlds__add_pred__param_2,
+#line 42 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_3,
+#line 42 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_4,
+#line 42 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_5,
+#line 42 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_6,
+#line 42 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_7,
+#line 42 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_8,
+#line 42 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_9,
+#line 42 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_10,
+#line 42 "add_pred.m"
+  MR_Word * hlds__make_hlds__add_pred__param_11,
+#line 42 "add_pred.m"
+  MR_Integer * hlds__make_hlds__add_pred__param_12);
+
+#line 34 "add_pred.m"
+void MR_CALL 
+hlds__make_hlds__add_pred__module_add_pred_or_func_17_p_0(
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_1,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_2,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_3,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_4,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_5,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_6,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_7,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_8,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_9,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_10,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_11,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_12,
+#line 34 "add_pred.m"
+  MR_Word * hlds__make_hlds__add_pred__param_13,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_14,
+#line 34 "add_pred.m"
+  MR_Word * hlds__make_hlds__add_pred__param_15,
+#line 34 "add_pred.m"
+  MR_Word hlds__make_hlds__add_pred__param_16,
+#line 34 "add_pred.m"
+  MR_Word * hlds__make_hlds__add_pred__param_17);
+
+void mercury__hlds__make_hlds__add_pred__init(void);
+void mercury__hlds__make_hlds__add_pred__init_type_tables(void);
+void mercury__hlds__make_hlds__add_pred__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.make_hlds.add_pred */
+
+/* :- end_interface hlds.make_hlds.add_pred. */

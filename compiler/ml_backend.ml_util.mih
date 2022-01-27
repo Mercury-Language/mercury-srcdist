@@ -1,0 +1,311 @@
+/*
+** Automatically generated from `ml_util.m'
+** by the Mercury compiler,
+** version rotd-14.01.1-2014-05-28, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.ml_util. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_util
+#define MR_HEADER_GUARD_ml_backend__ml_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_UTIL_DECL_GUARD
+#define ML_BACKEND__ML_UTIL_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+#line 188 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__wrap_init_obj_1_f_0(
+#line 188 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1);
+
+#line 185 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_reserved_address_2_f_0(
+#line 185 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 185 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 183 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_boxed_int_1_f_0(
+#line 183 "ml_util.m"
+  MR_Integer ml_backend__ml_util__param_1);
+
+#line 181 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_bool_1_f_0(
+#line 181 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1);
+
+#line 179 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_int_1_f_0(
+#line 179 "ml_util.m"
+  MR_Integer ml_backend__ml_util__param_1);
+
+#line 177 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_foreign_2_f_0(
+#line 177 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 177 "ml_util.m"
+  MR_String ml_backend__ml_util__param_2);
+
+#line 175 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_string_1_f_0(
+#line 175 "ml_util.m"
+  MR_String ml_backend__ml_util__param_1);
+
+#line 173 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_null_pointer_1_f_0(
+#line 173 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1);
+
+#line 170 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_maybe_3_f_0(
+#line 170 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 170 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2,
+#line 170 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_3,
+#line 170 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_4);
+
+#line 168 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_array_2_f_0(
+#line 168 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 168 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2,
+#line 168 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_3);
+
+#line 166 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__gen_init_builtin_const_1_f_0(
+#line 166 "ml_util.m"
+  MR_String ml_backend__ml_util__param_1);
+
+#line 157 "ml_util.m"
+MR_bool MR_CALL 
+ml_backend__ml_util__type_ctor_needs_lowlevel_rep_2_p_0(
+#line 157 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 157 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 154 "ml_util.m"
+MR_bool MR_CALL 
+ml_backend__ml_util__type_needs_lowlevel_rep_2_p_0(
+#line 154 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 154 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 147 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__lval_contains_var_2_f_0(
+#line 147 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 147 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 145 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__lvals_contains_var_2_f_0(
+#line 145 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 145 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 143 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__rval_contains_var_2_f_0(
+#line 143 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 143 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 141 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__maybe_rval_contains_var_2_f_0(
+#line 141 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 141 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 139 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__rvals_contains_var_2_f_0(
+#line 139 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 139 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 137 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__initializer_contains_var_2_f_0(
+#line 137 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 137 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 120 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__defn_contains_var_2_f_0(
+#line 120 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 120 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 115 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__defns_contains_var_2_f_0(
+#line 115 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 115 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 110 "ml_util.m"
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_is_public_1_p_0(
+#line 110 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1);
+
+#line 105 "ml_util.m"
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_is_commit_type_var_1_p_0(
+#line 105 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1);
+
+#line 100 "ml_util.m"
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_is_type_ctor_info_1_p_0(
+#line 100 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1);
+
+#line 95 "ml_util.m"
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_is_function_1_p_0(
+#line 95 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1);
+
+#line 91 "ml_util.m"
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_is_type_1_p_0(
+#line 91 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1);
+
+#line 86 "ml_util.m"
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_contains_outline_foreign_proc_2_p_0(
+#line 86 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 86 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 78 "ml_util.m"
+MR_bool MR_CALL 
+ml_backend__ml_util__defn_contains_foreign_code_2_p_0(
+#line 78 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 78 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 60 "ml_util.m"
+void MR_CALL 
+ml_backend__ml_util__has_foreign_languages_2_p_0(
+#line 60 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 60 "ml_util.m"
+  MR_Word * ml_backend__ml_util__param_2);
+
+#line 58 "ml_util.m"
+MR_Word MR_CALL 
+ml_backend__ml_util__statement_contains_var_2_f_0(
+#line 58 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 58 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 53 "ml_util.m"
+void MR_CALL 
+ml_backend__ml_util__stmt_contains_statement_2_p_0(
+#line 53 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 53 "ml_util.m"
+  MR_Word * ml_backend__ml_util__param_2,
+#line 53 "ml_util.m"
+  MR_Cont ml_backend__ml_util__param_3,
+#line 53 "ml_util.m"
+  void * ml_backend__ml_util__param_4);
+
+#line 51 "ml_util.m"
+void MR_CALL 
+ml_backend__ml_util__statement_contains_statement_2_p_0(
+#line 51 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 51 "ml_util.m"
+  MR_Word * ml_backend__ml_util__param_2,
+#line 51 "ml_util.m"
+  MR_Cont ml_backend__ml_util__param_3,
+#line 51 "ml_util.m"
+  void * ml_backend__ml_util__param_4);
+
+#line 41 "ml_util.m"
+MR_bool MR_CALL 
+ml_backend__ml_util__can_optimize_tailcall_2_p_0(
+#line 41 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1,
+#line 41 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_2);
+
+#line 34 "ml_util.m"
+MR_bool MR_CALL 
+ml_backend__ml_util__defns_contain_main_1_p_0(
+#line 34 "ml_util.m"
+  MR_Word ml_backend__ml_util__param_1);
+
+void mercury__ml_backend__ml_util__init(void);
+void mercury__ml_backend__ml_util__init_type_tables(void);
+void mercury__ml_backend__ml_util__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.ml_util */
+
+/* :- end_interface ml_backend.ml_util. */

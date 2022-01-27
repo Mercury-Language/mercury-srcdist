@@ -1,0 +1,489 @@
+/*
+** Automatically generated from `prim_data.m'
+** by the Mercury compiler,
+** version rotd-14.01.1-2014-05-28, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdbcomp.prim_data. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_mdbcomp__prim_data
+#define MR_HEADER_GUARD_mdbcomp__prim_data
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDBCOMP__PRIM_DATA_DECL_GUARD
+#define MDBCOMP__PRIM_DATA_DECL_GUARD
+#include "mdbcomp.mih"
+
+#endif
+
+
+
+
+#line 42 "mdbcomp.prim_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_module_name_0;
+
+#line 45 "mdbcomp.prim_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_pred_or_func_0;
+
+#line 48 "mdbcomp.prim_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_proc_label_0;
+
+#line 51 "mdbcomp.prim_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_special_pred_id_0;
+
+#line 54 "mdbcomp.prim_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_sym_name_0;
+
+#line 57 "mdbcomp.prim_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_trace_port_0;
+
+#line 38 "prim_data.m"
+void MR_CALL 
+mdbcomp__prim_data____Compare____trace_port_0_0(
+#line 38 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_1,
+#line 38 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2,
+#line 38 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_3);
+
+#line 38 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data____Unify____trace_port_0_0(
+#line 38 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 38 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2);
+
+#line 59 "prim_data.m"
+void MR_CALL 
+mdbcomp__prim_data____Compare____sym_name_0_0(
+#line 59 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_1,
+#line 59 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2,
+#line 59 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_3);
+
+#line 59 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data____Unify____sym_name_0_0(
+#line 59 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 59 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2);
+
+#line 106 "prim_data.m"
+void MR_CALL 
+mdbcomp__prim_data____Compare____special_pred_id_0_0(
+#line 106 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_1,
+#line 106 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2,
+#line 106 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_3);
+
+#line 106 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data____Unify____special_pred_id_0_0(
+#line 106 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 106 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2);
+
+#line 86 "prim_data.m"
+void MR_CALL 
+mdbcomp__prim_data____Compare____proc_label_0_0(
+#line 86 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_1,
+#line 86 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2,
+#line 86 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_3);
+
+#line 86 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data____Unify____proc_label_0_0(
+#line 86 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 86 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2);
+
+#line 26 "prim_data.m"
+void MR_CALL 
+mdbcomp__prim_data____Compare____pred_or_func_0_0(
+#line 26 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_1,
+#line 26 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2,
+#line 26 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_3);
+
+#line 26 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data____Unify____pred_or_func_0_0(
+#line 26 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 26 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2);
+
+#line 63 "prim_data.m"
+void MR_CALL 
+mdbcomp__prim_data____Compare____module_name_0_0(
+#line 63 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_1,
+#line 63 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2,
+#line 63 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_3);
+
+#line 63 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data____Unify____module_name_0_0(
+#line 63 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 63 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2);
+
+#line 386 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data__non_traced_mercury_builtin_module_1_p_0(
+#line 386 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1);
+
+#line 382 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data__any_mercury_builtin_module_1_p_0(
+#line 382 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1);
+
+#line 377 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data__is_std_lib_module_name_2_p_0(
+#line 377 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 377 "prim_data.m"
+  MR_String * mdbcomp__prim_data__param_2);
+
+#line 375 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_std_lib_module_name_1_f_0(
+#line 375 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1);
+
+#line 370 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_io_module_0_f_0(void);
+
+#line 366 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_string_module_0_f_0(void);
+
+#line 362 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_list_module_0_f_0(void);
+
+#line 358 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_ssdb_builtin_module_0_f_0(void);
+
+#line 353 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_rtti_implementation_builtin_module_0_f_0(void);
+
+#line 348 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_par_builtin_module_0_f_0(void);
+
+#line 343 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_term_size_prof_builtin_module_0_f_0(void);
+
+#line 337 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_profiling_builtin_module_0_f_0(void);
+
+#line 331 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_table_statistics_module_0_f_0(void);
+
+#line 323 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_table_builtin_module_0_f_0(void);
+
+#line 316 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_univ_module_0_f_0(void);
+
+#line 311 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_exception_module_0_f_0(void);
+
+#line 306 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_stm_builtin_module_0_f_0(void);
+
+#line 300 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_region_builtin_module_0_f_0(void);
+
+#line 294 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_private_builtin_module_0_f_0(void);
+
+#line 286 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__mercury_public_builtin_module_0_f_0(void);
+
+#line 279 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__all_builtin_modules_0_f_0(void);
+
+#line 272 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data__strip_outermost_qualifier_3_p_0(
+#line 272 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 272 "prim_data.m"
+  MR_String * mdbcomp__prim_data__param_2,
+#line 272 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_3);
+
+#line 268 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__add_outermost_qualifier_2_f_0(
+#line 268 "prim_data.m"
+  MR_String mdbcomp__prim_data__param_1,
+#line 268 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2);
+
+#line 261 "prim_data.m"
+MR_String MR_CALL 
+mdbcomp__prim_data__outermost_qualifier_1_f_0(
+#line 261 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1);
+
+#line 257 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__transform_sym_base_name_2_f_0(
+#line 257 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 257 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2);
+
+#line 249 "prim_data.m"
+void MR_CALL 
+mdbcomp__prim_data__add_sym_name_suffix_3_p_0(
+#line 249 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 249 "prim_data.m"
+  MR_String mdbcomp__prim_data__param_2,
+#line 249 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_3);
+
+#line 240 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data__remove_sym_name_suffix_3_p_0(
+#line 240 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 240 "prim_data.m"
+  MR_String mdbcomp__prim_data__param_2,
+#line 240 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_3);
+
+#line 231 "prim_data.m"
+void MR_CALL 
+mdbcomp__prim_data__remove_sym_name_prefix_3_p_1(
+#line 231 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_1,
+#line 231 "prim_data.m"
+  MR_String mdbcomp__prim_data__param_2,
+#line 231 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_3);
+
+#line 230 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data__remove_sym_name_prefix_3_p_0(
+#line 230 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 230 "prim_data.m"
+  MR_String mdbcomp__prim_data__param_2,
+#line 230 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_3);
+
+#line 220 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data__match_sym_name_2_p_0(
+#line 220 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 220 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2);
+
+#line 212 "prim_data.m"
+void MR_CALL 
+mdbcomp__prim_data__sym_name_get_module_name_default_name_4_p_0(
+#line 212 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 212 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2,
+#line 212 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_3,
+#line 212 "prim_data.m"
+  MR_String * mdbcomp__prim_data__param_4);
+
+#line 204 "prim_data.m"
+void MR_CALL 
+mdbcomp__prim_data__sym_name_get_module_name_default_3_p_0(
+#line 204 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 204 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2,
+#line 204 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_3);
+
+#line 196 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data__sym_name_get_module_name_2_p_0(
+#line 196 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 196 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_2);
+
+#line 189 "prim_data.m"
+MR_String MR_CALL 
+mdbcomp__prim_data__unqualify_name_1_f_0(
+#line 189 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1);
+
+#line 185 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data__is_submodule_2_p_0(
+#line 185 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 185 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_2);
+
+#line 178 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__sym_name_to_list_1_f_0(
+#line 178 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1);
+
+#line 172 "prim_data.m"
+MR_String MR_CALL 
+mdbcomp__prim_data__sym_name_to_string_1_f_0(
+#line 172 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1);
+
+#line 165 "prim_data.m"
+MR_String MR_CALL 
+mdbcomp__prim_data__sym_name_to_string_sep_2_f_0(
+#line 165 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 165 "prim_data.m"
+  MR_String mdbcomp__prim_data__param_2);
+
+#line 158 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__string_to_sym_name_1_f_0(
+#line 158 "prim_data.m"
+  MR_String mdbcomp__prim_data__param_1);
+
+#line 151 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__string_to_sym_name_sep_2_f_0(
+#line 151 "prim_data.m"
+  MR_String mdbcomp__prim_data__param_1,
+#line 151 "prim_data.m"
+  MR_String mdbcomp__prim_data__param_2);
+
+#line 142 "prim_data.m"
+MR_Integer MR_CALL 
+mdbcomp__prim_data__get_special_pred_id_arity_1_f_0(
+#line 142 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1);
+
+#line 136 "prim_data.m"
+MR_String MR_CALL 
+mdbcomp__prim_data__get_special_pred_id_target_name_1_f_0(
+#line 136 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1);
+
+#line 129 "prim_data.m"
+MR_String MR_CALL 
+mdbcomp__prim_data__get_special_pred_id_generic_name_1_f_0(
+#line 129 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1);
+
+#line 122 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data__special_pred_name_arity_4_p_2(
+#line 122 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_1,
+#line 122 "prim_data.m"
+  MR_String * mdbcomp__prim_data__param_2,
+#line 122 "prim_data.m"
+  MR_String mdbcomp__prim_data__param_3,
+#line 122 "prim_data.m"
+  MR_Integer * mdbcomp__prim_data__param_4);
+
+#line 121 "prim_data.m"
+MR_bool MR_CALL 
+mdbcomp__prim_data__special_pred_name_arity_4_p_1(
+#line 121 "prim_data.m"
+  MR_Word * mdbcomp__prim_data__param_1,
+#line 121 "prim_data.m"
+  MR_String mdbcomp__prim_data__param_2,
+#line 121 "prim_data.m"
+  MR_String * mdbcomp__prim_data__param_3,
+#line 121 "prim_data.m"
+  MR_Integer * mdbcomp__prim_data__param_4);
+
+#line 120 "prim_data.m"
+void MR_CALL 
+mdbcomp__prim_data__special_pred_name_arity_4_p_0(
+#line 120 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1,
+#line 120 "prim_data.m"
+  MR_String * mdbcomp__prim_data__param_2,
+#line 120 "prim_data.m"
+  MR_String * mdbcomp__prim_data__param_3,
+#line 120 "prim_data.m"
+  MR_Integer * mdbcomp__prim_data__param_4);
+
+#line 71 "prim_data.m"
+MR_Word MR_CALL 
+mdbcomp__prim_data__get_ancestors_1_f_0(
+#line 71 "prim_data.m"
+  MR_Word mdbcomp__prim_data__param_1);
+
+void mercury__mdbcomp__prim_data__init(void);
+void mercury__mdbcomp__prim_data__init_type_tables(void);
+void mercury__mdbcomp__prim_data__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_mdbcomp.prim_data */
+
+/* :- end_interface mdbcomp.prim_data. */

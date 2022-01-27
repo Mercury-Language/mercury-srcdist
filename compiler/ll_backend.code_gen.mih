@@ -1,0 +1,65 @@
+/*
+** Automatically generated from `code_gen.m'
+** by the Mercury compiler,
+** version rotd-14.01.1-2014-05-28, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.code_gen. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__code_gen
+#define MR_HEADER_GUARD_ll_backend__code_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__CODE_GEN_DECL_GUARD
+#define LL_BACKEND__CODE_GEN_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 37 "code_gen.m"
+void MR_CALL 
+ll_backend__code_gen__generate_goal_5_p_0(
+#line 37 "code_gen.m"
+  MR_Word ll_backend__code_gen__param_1,
+#line 37 "code_gen.m"
+  MR_Word ll_backend__code_gen__param_2,
+#line 37 "code_gen.m"
+  MR_Word * ll_backend__code_gen__param_3,
+#line 37 "code_gen.m"
+  MR_Word ll_backend__code_gen__param_4,
+#line 37 "code_gen.m"
+  MR_Word * ll_backend__code_gen__param_5);
+
+void mercury__ll_backend__code_gen__init(void);
+void mercury__ll_backend__code_gen__init_type_tables(void);
+void mercury__ll_backend__code_gen__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.code_gen */
+
+/* :- end_interface ll_backend.code_gen. */

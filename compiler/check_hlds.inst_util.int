@@ -1,0 +1,32 @@
+:- module (check_hlds.inst_util).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.instmap).
+:- import_module (parse_tree.prog_data).
+:- pred abstractly_unify_inst(parse_tree.prog_data.is_live, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, parse_tree.prog_data.unify_is_real, parse_tree.prog_data.mer_inst, parse_tree.prog_data.determinism, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode abstractly_unify_inst((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred abstractly_unify_inst_functor(parse_tree.prog_data.is_live, parse_tree.prog_data.mer_inst, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.is_live), parse_tree.prog_data.unify_is_real, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_inst, parse_tree.prog_data.determinism, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode abstractly_unify_inst_functor((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred ho_inst_info_is_nonstandard_func_mode(hlds.hlds_module.module_info, parse_tree.prog_data.ho_inst_info).
+:- mode ho_inst_info_is_nonstandard_func_mode((builtin.in), (builtin.in)) is semidet.
+:- pred inst_contains_any(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_contains_any((builtin.in), (builtin.in)) is semidet.
+:- pred inst_contains_nonstandard_func_mode(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst).
+:- mode inst_contains_nonstandard_func_mode((builtin.in), (builtin.in)) is semidet.
+:- func inst_may_restrict_cons_ids(hlds.hlds_module.module_info, parse_tree.prog_data.mer_inst) = bool.bool.
+:- pred inst_merge(parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, maybe.maybe(parse_tree.prog_data.mer_type), parse_tree.prog_data.mer_inst, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode inst_merge((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred make_mostly_uniq_inst(parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode make_mostly_uniq_inst((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred make_shared_inst_list(list.list(parse_tree.prog_data.mer_inst), list.list(parse_tree.prog_data.mer_inst), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode make_shared_inst_list((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred pred_inst_info_is_nonstandard_func_mode(hlds.hlds_module.module_info, parse_tree.prog_data.pred_inst_info).
+:- mode pred_inst_info_is_nonstandard_func_mode((builtin.in), (builtin.in)) is semidet.
+:- func pred_inst_info_standard_func_mode(parse_tree.prog_data.arity) = parse_tree.prog_data.pred_inst_info.
+:- pred var_inst_contains_any(hlds.hlds_module.module_info, hlds.instmap.instmap, parse_tree.prog_data.prog_var).
+:- mode var_inst_contains_any((builtin.in), (builtin.in), (builtin.in)) is semidet.

@@ -1,0 +1,23 @@
+:- module term.
+:- interface.
+:- import_module enum.
+:- import_module list.
+:- import_module map.
+:- import_module type_desc.
+:- import_module univ.
+:- type const.
+:- type context.
+:- type generic.
+:- type substitution.
+:- type term.
+:- type term_to_type_arg_context.
+:- type term_to_type_context.
+:- type var.
+:- type substitution(T).
+:- type term(T).
+:- type term_to_type_error(T).
+:- type term_to_type_result(T).
+:- type var(T).
+:- type var_supply(T).
+:- type term_to_type_result(T, U).
+:- instance (enum(term.var(V_1))).

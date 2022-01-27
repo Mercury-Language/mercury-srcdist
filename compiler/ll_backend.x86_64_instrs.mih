@@ -1,0 +1,675 @@
+/*
+** Automatically generated from `x86_64_instrs.m'
+** by the Mercury compiler,
+** version rotd-14.01.1-2014-05-28, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.x86_64_instrs. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__x86_64_instrs
+#define MR_HEADER_GUARD_ll_backend__x86_64_instrs
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__X86_64_INSTRS_DECL_GUARD
+#define LL_BACKEND__X86_64_INSTRS_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 42 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_base_address_0;
+
+#line 45 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_condition_0;
+
+#line 48 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_direction_0;
+
+#line 51 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_flags_reg_0;
+
+#line 54 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_imm_operand_0;
+
+#line 57 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_instr_ptr_0;
+
+#line 60 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_int16_0;
+
+#line 63 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_int32_0;
+
+#line 66 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_int8_0;
+
+#line 69 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_label_name_0;
+
+#line 72 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_offset_0;
+
+#line 75 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_operand_0;
+
+#line 78 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_pseudo_op_0;
+
+#line 81 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_pseudo_section_flag_0;
+
+#line 84 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_pseudo_section_type_0;
+
+#line 87 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_pseudo_section_type_desc_0;
+
+#line 90 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_rel_offset_0;
+
+#line 93 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_rmrol_0;
+
+#line 96 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_uint16_0;
+
+#line 99 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_uint32_0;
+
+#line 102 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_uint8_0;
+
+#line 105 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_x86_64_inst_0;
+
+#line 108 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_x86_64_instr_0;
+
+#line 111 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_x86_64_instruction_0;
+
+#line 114 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_x86_64_mem_ref_0;
+
+#line 117 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_x86_64_module_0;
+
+#line 120 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_x86_64_procedure_0;
+
+#line 123 "ll_backend.x86_64_instrs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__x86_64_instrs__ll_backend__x86_64_instrs__type_ctor_info_x86_64_reg_0;
+
+#line 697 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____x86_64_reg_0_0(
+#line 697 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 697 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 697 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 697 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____x86_64_reg_0_0(
+#line 697 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 697 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 55 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____x86_64_procedure_0_0(
+#line 55 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 55 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 55 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 55 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____x86_64_procedure_0_0(
+#line 55 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 55 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 36 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____x86_64_module_0_0(
+#line 36 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 36 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 36 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 36 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____x86_64_module_0_0(
+#line 36 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 36 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 749 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____x86_64_mem_ref_0_0(
+#line 749 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 749 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 749 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 749 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____x86_64_mem_ref_0_0(
+#line 749 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 749 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 82 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____x86_64_instruction_0_0(
+#line 82 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 82 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 82 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 82 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____x86_64_instruction_0_0(
+#line 82 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 82 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 90 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____x86_64_instr_0_0(
+#line 90 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 90 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 90 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 90 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____x86_64_instr_0_0(
+#line 90 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 90 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 812 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____x86_64_inst_0_0(
+#line 812 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 812 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 812 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 812 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Index____x86_64_inst_0_0(
+#line 812 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 812 "x86_64_instrs.m"
+  MR_Integer * ll_backend__x86_64_instrs__param_2);
+
+#line 812 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____x86_64_inst_0_0(
+#line 812 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 812 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 106 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____uint8_0_0(
+#line 106 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 106 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 106 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 106 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____uint8_0_0(
+#line 106 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 106 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 108 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____uint32_0_0(
+#line 108 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 108 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 108 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 108 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____uint32_0_0(
+#line 108 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 108 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 107 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____uint16_0_0(
+#line 107 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 107 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 107 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 107 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____uint16_0_0(
+#line 107 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 107 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 796 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____rmrol_0_0(
+#line 796 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 796 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 796 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 796 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____rmrol_0_0(
+#line 796 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 796 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 788 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____rel_offset_0_0(
+#line 788 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 788 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 788 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 788 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____rel_offset_0_0(
+#line 788 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 788 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 169 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____pseudo_section_type_desc_0_0(
+#line 169 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 169 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 169 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 169 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____pseudo_section_type_desc_0_0(
+#line 169 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 169 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 163 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____pseudo_section_type_0_0(
+#line 163 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 163 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 163 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 163 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____pseudo_section_type_0_0(
+#line 163 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 163 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 154 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____pseudo_section_flag_0_0(
+#line 154 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 154 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 154 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 154 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____pseudo_section_flag_0_0(
+#line 154 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 154 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 182 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____pseudo_op_0_0(
+#line 182 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 182 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 182 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 182 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Index____pseudo_op_0_0(
+#line 182 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 182 "x86_64_instrs.m"
+  MR_Integer * ll_backend__x86_64_instrs__param_2);
+
+#line 182 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____pseudo_op_0_0(
+#line 182 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 182 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 774 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____operand_0_0(
+#line 774 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 774 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 774 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 774 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____operand_0_0(
+#line 774 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 774 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 695 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____offset_0_0(
+#line 695 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 695 "x86_64_instrs.m"
+  MR_Integer ll_backend__x86_64_instrs__param_2,
+#line 695 "x86_64_instrs.m"
+  MR_Integer ll_backend__x86_64_instrs__param_3);
+
+#line 695 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____offset_0_0(
+#line 695 "x86_64_instrs.m"
+  MR_Integer ll_backend__x86_64_instrs__param_1,
+#line 695 "x86_64_instrs.m"
+  MR_Integer ll_backend__x86_64_instrs__param_2);
+
+#line 88 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____label_name_0_0(
+#line 88 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 88 "x86_64_instrs.m"
+  MR_String ll_backend__x86_64_instrs__param_2,
+#line 88 "x86_64_instrs.m"
+  MR_String ll_backend__x86_64_instrs__param_3);
+
+#line 88 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____label_name_0_0(
+#line 88 "x86_64_instrs.m"
+  MR_String ll_backend__x86_64_instrs__param_1,
+#line 88 "x86_64_instrs.m"
+  MR_String ll_backend__x86_64_instrs__param_2);
+
+#line 100 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____int8_0_0(
+#line 100 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 100 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 100 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 100 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____int8_0_0(
+#line 100 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 100 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 102 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____int32_0_0(
+#line 102 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 102 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 102 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 102 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____int32_0_0(
+#line 102 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 102 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 101 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____int16_0_0(
+#line 101 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 101 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 101 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 101 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____int16_0_0(
+#line 101 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 101 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 723 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____instr_ptr_0_0(
+#line 723 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 723 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 723 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 723 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____instr_ptr_0_0(
+#line 723 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 723 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 739 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____imm_operand_0_0(
+#line 739 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 739 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 739 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 739 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____imm_operand_0_0(
+#line 739 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 739 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 688 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____flags_reg_0_0(
+#line 688 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 688 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 688 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 688 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____flags_reg_0_0(
+#line 688 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 688 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 114 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____direction_0_0(
+#line 114 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 114 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 114 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 114 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____direction_0_0(
+#line 114 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 114 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 120 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____condition_0_0(
+#line 120 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 120 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 120 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 120 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____condition_0_0(
+#line 120 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 120 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 762 "x86_64_instrs.m"
+void MR_CALL 
+ll_backend__x86_64_instrs____Compare____base_address_0_0(
+#line 762 "x86_64_instrs.m"
+  MR_Word * ll_backend__x86_64_instrs__param_1,
+#line 762 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2,
+#line 762 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_3);
+
+#line 762 "x86_64_instrs.m"
+MR_bool MR_CALL 
+ll_backend__x86_64_instrs____Unify____base_address_0_0(
+#line 762 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1,
+#line 762 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_2);
+
+#line 1328 "x86_64_instrs.m"
+MR_Integer MR_CALL 
+ll_backend__x86_64_instrs__num_x86_64_regs_0_f_0(void);
+
+#line 48 "x86_64_instrs.m"
+MR_Word MR_CALL 
+ll_backend__x86_64_instrs__init_x86_64_instruction_0_f_0(void);
+
+#line 46 "x86_64_instrs.m"
+MR_Word MR_CALL 
+ll_backend__x86_64_instrs__init_x86_64_proc_1_f_0(
+#line 46 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1);
+
+#line 44 "x86_64_instrs.m"
+MR_Word MR_CALL 
+ll_backend__x86_64_instrs__init_x86_64_module_1_f_0(
+#line 44 "x86_64_instrs.m"
+  MR_Word ll_backend__x86_64_instrs__param_1);
+
+void mercury__ll_backend__x86_64_instrs__init(void);
+void mercury__ll_backend__x86_64_instrs__init_type_tables(void);
+void mercury__ll_backend__x86_64_instrs__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.x86_64_instrs */
+
+/* :- end_interface ll_backend.x86_64_instrs. */
