@@ -1,0 +1,422 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Mmake.common - shared Mmake variables and rules for the test directories.
+#
+# The Mmakefile in each test directory must set several make variables.
+#
+# - It must set TESTS_DIR to ".." in order to allow Mmake.common to find
+#   files such as DEFNS_FOR_TESTS. (The Mmakefile in the top test direcory
+#   sets TESTS_DIR to ".", which refers to the same directory from a different
+#   starting point.)
+#
+# - It must set THIS_DIR to the name of the specific test directory,
+#   e.g. benchmarks, hard_coded, etc.
+#
+# - It must set PROGS to the names of the main modules of the test programs.
+#
+# - It must set TESTS to the names of the tests. For each test, there must be
+#   targets test.depend, test.runtest and test.realclean, unless the test ends
+#   in `-nodepend', in which case the `-nodepend' suffix will be stripped off
+#   and the test.depend target is not required.
+#
+# If the variable ERROR_FILE is set, only the tests which failed in
+# the test run which produced the specified error log file will be run.
+#
+# The main targets defined here are runtests_dir and runtests_local:
+#
+# runtests_dir:
+#   The target that tools/bootcheck invokes by default.
+#
+# runtests_local:
+#   The target that runtests_dir invokes to do the work, and which
+#   tools/bootcheck invokes directly if it is asked to run only a selected
+#   subset of the tests.
+#
+# Both of these execute the test cases in one directory. There is also a
+# "runtests" target in tests/Mmakefile, which is there to be invoked manually
+# (it is never invoked by tools/bootcheck), which invokes "mmake runtests_dir"
+# in *all* the test directories.
+#
+#-----------------------------------------------------------------------------#
+
+MAIN_TARGET = runtests
+
+# Set up to test a particular workspace.
+ifdef WORKSPACE
+
+# Make sure we don't get the installed versions of the libraries.
+LINK_STATIC = yes
+include $(WORKSPACE)/Mmake.workspace
+
+# Some tests only work if the workspace was compiled with `--use-subdirs'.
+ifneq ($(shell [ -d $(WORKSPACE)/library/Mercury ] || echo no_subdir),no_subdir)
+WORKSPACE_HAS_SUBDIRS = true
+endif
+
+endif
+
+# Note: Mmake lets you override MCFLAGS for a particular file by setting
+# MCFLAGS-foo. Similarly, you can override GRADEFLAGS for a particular
+# file by setting both GRADEFLAGS-foo.
+
+ifndef DIFF_OPTS
+DIFF_OPTS = -u
+endif
+
+# Override this with `RUN_RECOMPILATION_TESTS=no' if your compiler
+# cannot run smart recompilation. This is only necessary for compilers
+# built in deep profiling grades, because smart recompilation uses
+# exception handling, which does not yet work with deep profiling.
+RUN_RECOMPILATION_TESTS=yes
+
+# The Java interpreter.
+JAVA=java
+
+# We avoid picking up parameter settings from $HOME/.mdbrc that could cause
+# spurious differences between the outputs of the debugger test cases
+# and their expected outputs.
+
+# We suppress the printing of the banner, because different workspaces
+# may get different version numbers printed in it. This would otherwise be
+# the source of irrelevant difference between the actual and expected outputs.
+
+MDB = HOME=/nonexistent MERCURY_SUPPRESS_MDB_BANNER=yes \
+	MERCURY_DEBUGGER_INIT=$(WORKSPACE)/scripts/test_mdbrc mdb
+
+MDB_NOINIT = HOME=/nonexistent MERCURY_SUPPRESS_MDB_BANNER=yes \
+	MERCURY_DEBUGGER_INIT="" mdb
+
+# Debugger test cases can standardize the reported event numbers and call
+# sequence numbers by using $(MDB_STD) instead of $(MDB) on the command line.
+
+MDB_STD = MERCURY_OPTIONS="$$MERCURY_OPTIONS -de" $(MDB)
+
+MDB_STD_NOINIT = MERCURY_OPTIONS="$$MERCURY_OPTIONS -de" $(MDB_NOINIT)
+
+PARAMS_MSG = in grade $(GRADE)
+
+include $(TESTS_DIR)/DEFNS_FOR_TESTS
+-include $(TESTS_DIR)/Mmake.params
+
+MCFLAGS += --flags $(TESTS_DIR)/TESTS_FLAGS
+ifdef WORKSPACE_FLAGS
+MCFLAGS += --flags $(TESTS_DIR)/WS_FLAGS
+endif
+
+# Avoid trying to make this file with `mmc --make' if it doesn't exist.
+$(TESTS_DIR)/Mmake.params: ;
+
+#-----------------------------------------------------------------------------#
+
+.PRECIOUS: %.res %.err_res %.out %.err
+
+# If there is a `.inp' file, then we pipe that in as the command's input.
+# Then we run the command, with stdout and stderr both redirected to the
+# `.out' file. Finally if the command fails (returns non-zero exit status),
+# we print out the contents of the `.out' file. We use `grep . $@ /dev/null'
+# to print out the contents, because that precedes each line of output with
+# the filename, which is helpful when running a parallel make.
+%.out: %
+	{ [ -f $*.inp ] && cat $*.inp; } | ./$< > $@ 2>&1 || \
+		{ grep . $@ /dev/null; exit 1; }
+
+# DIFF_WO stands for "diff with opts". We define it to allow the actions
+# for %.int_exp_res to fit onto one line.
+DIFF_WO = diff $(DIFF_OPTS)
+
+# For some test cases, there is more than one valid output.
+# We try matching the output with the `.exp' file, and if that doesn't succeed,
+# and there are `.exp2', `.exp3', `.exp4' or `.exp5' files, then we try
+# matching against those too. If none succeed, we put the shortest of the diffs
+# into the `.res' file.
+
+%.res: %.exp %.out
+	@echo "Comparing $*.out with $*.exp*,"
+	@echo "	results in $@"
+	@-rm -f $@ $*.res[1-5]
+	@{ $(DIFF_WO) $*.exp $*.out > $*.res1 && \
+		echo "Matched $*.exp" && \
+		cp $*.res1 $@; } || \
+	{ test -f $*.exp2 && \
+		$(DIFF_WO) $*.exp2 $*.out > $*.res2 && \
+		echo "Matched $*.exp2" && \
+		cp $*.res2 $@; } || \
+	{ test -f $*.exp3 && \
+		$(DIFF_WO) $*.exp3 $*.out > $*.res3 && \
+		echo "Matched $*.exp3" && \
+		cp $*.res3 $@; } || \
+	{ test -f $*.exp4 && \
+		$(DIFF_WO) $*.exp4 $*.out > $*.res4 && \
+		echo "Matched $*.exp4" && \
+		cp $*.res4 $@; } || \
+	{ test -f $*.exp5 && \
+		$(DIFF_WO) $*.exp5 $*.out > $*.res5 && \
+		echo "Matched $*.exp5" && \
+		cp $*.res5 $@; } || \
+	{ shortest=`wc -l $*.res[1-5] | grep -v total | sort -n | \
+		head -1 | awk '{ print $$2; }' `; \
+		echo "** $*.out did not match the expected output"; \
+		echo "** (closest match was $$shortest)"; \
+		cp $$shortest $@; \
+		cat $@; \
+		exit 1; }
+
+# Likewise, we try matching a .err file with .err_exp, .err_exp2,
+# and so on up to .err_exp5.
+
+%.err_res: %.err_exp %.err
+	@echo "Comparing $*.err with $*.err_exp*,"
+	@echo "	results in $@"
+	@-rm -f $@ $*.err_res[1-5]
+	@{ $(DIFF_WO) $*.err_exp $*.err > $*.err_res1 && \
+		echo "Matched $*.err_exp" && \
+		cp $*.err_res1 $@; } || \
+	{ test -f $*.err_exp2 && \
+		$(DIFF_WO) $*.err_exp2 $*.err > $*.err_res2 && \
+		echo "Matched $*.err_exp2" && \
+		cp $*.err_res2 $@; } || \
+	{ test -f $*.err_exp3 && \
+		$(DIFF_WO) $*.err_exp3 $*.err > $*.err_res3 && \
+		echo "Matched $*.err_exp3" && \
+		cp $*.err_res3 $@; } || \
+	{ test -f $*.err_exp4 && \
+		$(DIFF_WO) $*.err_exp4 $*.err > $*.err_res4 && \
+		echo "Matched $*.err_exp4" && \
+		cp $*.err_res4 $@; } || \
+	{ test -f $*.err_exp5 && \
+		$(DIFF_WO) $*.err_exp5 $*.err > $*.err_res5 && \
+		echo "Matched $*.err_exp5" && \
+		cp $*.err_res5 $@; } || \
+	{ shortest=`wc -l $*.err_res[1-5] | grep -v total | sort -n | \
+		head -1 | awk '{ print $$2; }' `; \
+		echo "** $*.err did not match the expected error output"; \
+		echo "** (closest match was $$shortest)"; \
+		cp $$shortest $@; \
+		cat $@; \
+		exit 1; }
+
+# Likewise, we try matching a .int_err file with .int_err_exp, .int_err_exp2,
+# and so on up to .int_err_exp5.
+
+%.int_err_res: %.int_err_exp %.int_err
+	@echo "Comparing $*.int_err with $*.int_err_exp*,"
+	@echo "	results in $@"
+	@-rm -f $@ $*.int_err_res[1-5]
+	@{ $(DIFF_WO) $*.int_err_exp $*.int_err > $*.int_err_res1 && \
+		echo "Matched $*.int_err_exp" && \
+		cp $*.int_err_res1 $@; } || \
+	{ test -f $*.int_err_exp2 && \
+		$(DIFF_WO) $*.int_err_exp2 $*.int_err > $*.int_err_res2 && \
+		echo "Matched $*.int_err_exp2" && \
+		cp $*.int_err_res2 $@; } || \
+	{ test -f $*.int_err_exp3 && \
+		$(DIFF_WO) $*.int_err_exp3 $*.int_err > $*.int_err_res3 && \
+		echo "Matched $*.int_err_exp3" && \
+		cp $*.int_err_res3 $@; } || \
+	{ test -f $*.int_err_exp4 && \
+		$(DIFF_WO) $*.int_err_exp4 $*.int_err > $*.int_err_res4 && \
+		echo "Matched $*.int_err_exp4" && \
+		cp $*.int_err_res4 $@; } || \
+	{ test -f $*.int_err_exp5 && \
+		$(DIFF_WO) $*.int_err_exp5 $*.int_err > $*.int_err_res5 && \
+		echo "Matched $*.int_err_exp5" && \
+		cp $*.int_err_res5 $@; } || \
+	{ shortest=`wc -l $*.int_err_res[1-5] | grep -v total | sort -n | \
+		head -1 | awk '{ print $$2; }' `; \
+		echo "** $*.int_err did not match the expected error output"; \
+		echo "** (closest match was $$shortest)"; \
+		cp $$shortest $@; \
+		cat $@; \
+		exit 1; }
+
+# Likewise, we try matching a .optfile_out file with .optfile_exp,
+# .optfile_exp2, and so on up to .optfile_exp5.
+
+%.optfile_res: %.optfile_exp %.optfile_out
+	@echo "Comparing $*.optfile_out with $*.optfile_exp*,"
+	@echo "	results in $@"
+	@-rm -f $@ $*.optfile_res[1-5]
+	@{ $(DIFF_WO) $*.optfile_exp $*.optfile_out > $*.optfile_res1 && \
+		echo "Matched $*.optfile_exp" && \
+		cp $*.optfile_res1 $@; } || \
+	{ test -f $*.optfile_exp2 && \
+		$(DIFF_WO) $*.optfile_exp2 $*.out > $*.optfile_res2 && \
+		echo "Matched $*.optfile_exp2" && \
+		cp $*.optfile_res2 $@; } || \
+	{ test -f $*.optfile_exp3 && \
+		$(DIFF_WO) $*.optfile_exp3 $*.optfile_out > $*.optfile_res3 && \
+		echo "Matched $*.exp3" && \
+		cp $*.optfile_res3 $@; } || \
+	{ test -f $*.optfile_exp4 && \
+		$(DIFF_WO) $*.optfile_exp4 $*.optfile_out > $*.optfile_res4 && \
+		echo "Matched $*.optfile_exp4" && \
+		cp $*.optfile_res4 $@; } || \
+	{ test -f $*.optfile_exp5 && \
+		$(DIFF_WO) $*.optfile_exp5 $*.optfile_out > $*.optfile_res5 && \
+		echo "Matched $*.optfile_exp5" && \
+		cp $*.optfile_res5 $@; } || \
+	{ shortest=`wc -l $*.optfile_res[1-5] | grep -v total | sort -n | \
+		head -1 | awk '{ print $$2; }' `; \
+		echo "** $*.optfile_out did not match the expected output"; \
+		echo "** (closest match was $$shortest)"; \
+		cp $$shortest $@; \
+		cat $@; \
+		exit 1; }
+
+#-----------------------------------------------------------------------------#
+
+MERCURY_MAIN_MODULES = $(PROGS)
+
+ERROR_OUTPUT_FILE = runtests.errs
+
+realclean_local: clean_logs clean_errors
+
+clean_local: clean_out clean_res clean_trace_counts
+
+# XXX what is this target for??
+clean_mc: clean_c clean_o clean_out clean_res
+
+clean_out:
+	rm -f *.out
+
+clean_res:
+	rm -f *.res* *.err_res*
+
+clean_logs:
+	rm -f *.log
+
+clean_errors:
+	rm -f $(ERROR_OUTPUT_FILE) FAILED_TESTS
+
+clean_trace_counts:
+	rm -f *.pass1 *.pass2 *.pass3 *.fail
+
+.PHONY: runtests_dir runtests_local check_dir check_local
+
+all:		runtests_dir
+
+check_dir:	runtests_dir
+
+check_local:	runtests_local
+
+runtests_dir:
+	+@if mmake -k runtests_local; then \
+		rm -f $(ERROR_OUTPUT_FILE); \
+	else \
+		echo SOME TESTS FAILED: see FAILED_TESTS and $(ERROR_OUTPUT_FILE); \
+		exit 1; \
+	fi
+
+# If the variable ERROR_FILE is set, only the tests which failed in
+# the test run which produced the specified error log file will be run.
+
+ifdef ERROR_FILE
+ifndef TESTS_TO_RUN
+TESTS_TO_RUN := $(shell awk '/^FAILED TEST/ { print $$3 }' $(ERROR_FILE))
+export TESTS_TO_RUN
+endif
+endif
+
+ifdef SPECIFIED_TESTS
+THIS_DIR_TESTS_TO_RUN := $(SPECIFIED_TESTS)
+else
+ifdef FAILED_TESTS_ONLY
+# FAILED_TESTS contains the names of failed tests from subdirectories
+# as well as this directory. We want to run the failed tests from this
+# directory only.
+THIS_DIR_TESTS_TO_RUN := $(shell egrep -v / FAILED_TESTS)
+else
+ifdef TESTS_TO_RUN
+THIS_DIR_TESTS_TO_RUN := $(shell echo $(patsubst $(THIS_DIR)/%,%,\
+		$(filter $(THIS_DIR)/%,$(TESTS_TO_RUN))) \
+		| tr ' ' '\n' | grep -v /)
+else
+THIS_DIR_TESTS_TO_RUN := $(strip $(TESTS))
+endif
+endif
+endif
+
+ifeq ($(THIS_DIR_TESTS_TO_RUN),)
+
+runtests_local: ;
+
+else
+
+# Run multiple rm commands at once to speed up `mmake realclean' on
+# slow NFS filesystems.
+# XXX We used to do this, but if the tests are being run with parallel make,
+# it results a huge number of processes being run because make's jobserver
+# mechanism is disabled if `-j' is specified on the command line of a sub-make.
+# RM_JFACTOR=-j10
+RM_JFACTOR=
+
+# Clean up after any previous test run.
+.PHONY: start_runtests_local
+start_runtests_local:
+	@echo STARTING tests in $(THIS_DIR) $(PARAMS_MSG) at `date`
+	@echo cleaning up the directory before the tests
+	+@if ls -lt | head -2 | egrep CLEAN > /dev/null 2>&1; then \
+		rm -f CLEAN > /dev/null 2>&1; \
+	else \
+		rm -f CLEAN > /dev/null 2>&1; \
+		mmake $(RM_JFACTOR) realclean_local > /dev/null 2>&1; \
+		rm -f *.d *.dep *.int *.int2 *.int3 > /dev/null 2>&1; \
+		rm -f *.date *.date3 *.opt *.optdate > /dev/null 2>&1; \
+		rm -f *.trans_opt *.trans_opt_date > /dev/null 2>&1; \
+		rm -f .mercury_trace_counts* > /dev/null 2>&1; \
+		rm -f .date* > /dev/null 2>&1; \
+	fi
+	@> FAILED_TESTS
+
+# Run a single test, cleaning up if it succeeds, or producing a log file
+# if the test fails.
+
+.PHONY: %.log
+%.log: start_runtests_local
+	+@test_full=$*; \
+	test=$(*:%-nodepend=%); \
+	params_msg="$(PARAMS_MSG)"; \
+	this_dir="$(THIS_DIR)"; \
+	tests_dir="$(TESTS_DIR)"; \
+	export test_full; \
+	export test; \
+	export params_msg; \
+	export this_dir; \
+	export tests_dir; \
+	$(TESTS_DIR)/run_one_test
+
+# XXX In some test directories, several test cases depend on the same target,
+# so the tests cannot be run in parallel, for two reasons, First, because
+# the different invocations of mmake for different tests above may all attempt
+# to create the target at the same time, and second, the invocation of
+# `mmake $$test.realclean' after a test could be run before other users
+# of the shared target are finished with it.
+#
+# Test directories which have such shared targets should set MAYBE_J1 to -j1.
+# Other test directories should set it to the empty string.
+#
+# We want to run all the tests, even if some fail, so run the tests
+# using `mmake -k'.
+
+TEST_LOGS = $(THIS_DIR_TESTS_TO_RUN:%=%.log)
+runtests_local:
+	+@ \
+	mmake -k $(MAYBE_J1) $(TEST_LOGS); \
+	touch DUMMY.log; \
+	cat *.log > $(ERROR_OUTPUT_FILE); \
+	rm -f DUMMY.log; \
+	if [ ! -s $(ERROR_OUTPUT_FILE) ]; then \
+		echo "PASSED ALL TESTS in $(THIS_DIR) $(PARAMS_MSG)"; \
+		echo cleaning up the directory after the tests; \
+		mmake $(RM_JFACTOR) realclean_local > /dev/null 2>&1; \
+		rm core > /dev/null 2>&1; \
+		touch CLEAN; \
+	else \
+		echo "FAILED tests in $(THIS_DIR) $(PARAMS_MSG)"; \
+		exit 1; \
+	fi
+
+endif	# THIS_DIR_TESTS_TO_RUN != ""
+
+#-----------------------------------------------------------------------------#

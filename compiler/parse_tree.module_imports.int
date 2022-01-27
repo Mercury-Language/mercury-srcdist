@@ -1,0 +1,74 @@
+:- module (parse_tree.module_imports).
+:- interface.
+:- use_module libs.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module set.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.timestamp).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.file_kind).
+:- use_module (parse_tree.parse_error).
+:- use_module (parse_tree.prog_data_foreign).
+:- use_module (parse_tree.prog_item).
+:- type burdened_aug_comp_unit
+    --->    burdened_aug_comp_unit(((parse_tree.module_imports).bacu_baggage) :: parse_tree.module_imports.module_baggage, ((parse_tree.module_imports).bacu_acu) :: parse_tree.prog_item.aug_compilation_unit).
+:- type grabbed_file
+    --->    gf_src(parse_tree.prog_item.parse_tree_module_src)
+    ;       gf_int0(parse_tree.prog_item.parse_tree_int0, parse_tree.prog_item.read_why_int0)
+    ;       gf_int1(parse_tree.prog_item.parse_tree_int1, parse_tree.prog_item.read_why_int1)
+    ;       gf_int2(parse_tree.prog_item.parse_tree_int2, parse_tree.prog_item.read_why_int2)
+    ;       gf_int3(parse_tree.prog_item.parse_tree_int3, parse_tree.prog_item.read_why_int3).
+:- type grabbed_file_map == map.map(mdbcomp.sym_name.module_name, parse_tree.module_imports.grabbed_file).
+:- type maybe_top_module
+    --->    top_module(set.set(mdbcomp.sym_name.module_name))
+    ;       not_top_module .
+:- type module_baggage
+    --->    module_baggage(((parse_tree.module_imports).mb_source_file_name) :: libs.file_util.file_name, ((parse_tree.module_imports).mb_source_file_dir) :: libs.file_util.dir_name, ((parse_tree.module_imports).mb_source_file_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.module_imports).mb_maybe_top_module) :: parse_tree.module_imports.maybe_top_module, ((parse_tree.module_imports).mb_maybe_timestamp_map) :: maybe.maybe(parse_tree.module_imports.module_timestamp_map), ((parse_tree.module_imports).mb_grabbed_file_map) :: parse_tree.module_imports.grabbed_file_map, ((parse_tree.module_imports).mb_specs) :: list.list(parse_tree.error_util.error_spec), ((parse_tree.module_imports).mb_errors) :: parse_tree.parse_error.read_module_errors).
+:- type module_dep_info
+    --->    module_dep_info_imports(parse_tree.module_imports.burdened_aug_comp_unit)
+    ;       module_dep_info_summary(parse_tree.module_imports.module_dep_summary).
+:- type module_dep_summary
+    --->    module_dep_summary(((parse_tree.module_imports).mds_source_file_name) :: string, ((parse_tree.module_imports).mds_source_file_dir) :: string, ((parse_tree.module_imports).mds_source_file_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.module_imports).mds_module_name) :: mdbcomp.sym_name.module_name, ((parse_tree.module_imports).mds_children) :: set.set(mdbcomp.sym_name.module_name), ((parse_tree.module_imports).mds_maybe_top_module) :: parse_tree.module_imports.maybe_top_module, ((parse_tree.module_imports).mds_int_deps) :: set.set(mdbcomp.sym_name.module_name), ((parse_tree.module_imports).mds_imp_deps) :: set.set(mdbcomp.sym_name.module_name), ((parse_tree.module_imports).mds_fact_table_file_names) :: set.set(string), ((parse_tree.module_imports).mds_fims) :: set.set(parse_tree.prog_data_foreign.fim_spec), ((parse_tree.module_imports).mds_foreign_include_files) :: set.set(parse_tree.prog_data_foreign.foreign_include_file_info), ((parse_tree.module_imports).mds_contains_foreign_code) :: parse_tree.prog_item.contains_foreign_code, ((parse_tree.module_imports).mds_contains_foreign_export) :: parse_tree.prog_item.contains_foreign_export).
+:- type module_timestamp
+    --->    module_timestamp(((parse_tree.module_imports).mts_file_kind) :: parse_tree.file_kind.file_kind, ((parse_tree.module_imports).mts_timestamp) :: libs.timestamp.timestamp, ((parse_tree.module_imports).mts_avail_kind) :: parse_tree.module_imports.recomp_avail).
+:- type module_timestamp_map == map.map(mdbcomp.sym_name.module_name, parse_tree.module_imports.module_timestamp).
+:- type recomp_avail
+    --->    recomp_avail_src 
+    ;       recomp_avail_int_import 
+    ;       recomp_avail_imp_import 
+    ;       recomp_avail_int_use 
+    ;       recomp_avail_imp_use 
+    ;       recomp_avail_int_use_imp_import .
+:- pred aug_compilation_unit_get_int_imp_deps(parse_tree.prog_item.aug_compilation_unit, set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode aug_compilation_unit_get_int_imp_deps((builtin.in), (builtin.out), (builtin.out)) is det.
+:- func get_nested_children_list_of_top_module(parse_tree.module_imports.maybe_top_module) = list.list(mdbcomp.sym_name.module_name).
+:- func get_nested_children_of_top_module(parse_tree.module_imports.maybe_top_module) = set.set(mdbcomp.sym_name.module_name).
+:- pred module_dep_info_get_children(parse_tree.module_imports.module_dep_info, set.set(mdbcomp.sym_name.module_name)).
+:- mode module_dep_info_get_children((builtin.in), (builtin.out)) is det.
+:- pred module_dep_info_get_fact_tables(parse_tree.module_imports.module_dep_info, set.set(string)).
+:- mode module_dep_info_get_fact_tables((builtin.in), (builtin.out)) is det.
+:- pred module_dep_info_get_fims(parse_tree.module_imports.module_dep_info, set.set(parse_tree.prog_data_foreign.fim_spec)).
+:- mode module_dep_info_get_fims((builtin.in), (builtin.out)) is det.
+:- pred module_dep_info_get_foreign_include_files(parse_tree.module_imports.module_dep_info, set.set(parse_tree.prog_data_foreign.foreign_include_file_info)).
+:- mode module_dep_info_get_foreign_include_files((builtin.in), (builtin.out)) is det.
+:- pred module_dep_info_get_imp_deps(parse_tree.module_imports.module_dep_info, set.set(mdbcomp.sym_name.module_name)).
+:- mode module_dep_info_get_imp_deps((builtin.in), (builtin.out)) is det.
+:- pred module_dep_info_get_int_deps(parse_tree.module_imports.module_dep_info, set.set(mdbcomp.sym_name.module_name)).
+:- mode module_dep_info_get_int_deps((builtin.in), (builtin.out)) is det.
+:- pred module_dep_info_get_maybe_top_module(parse_tree.module_imports.module_dep_info, parse_tree.module_imports.maybe_top_module).
+:- mode module_dep_info_get_maybe_top_module((builtin.in), (builtin.out)) is det.
+:- pred module_dep_info_get_module_name(parse_tree.module_imports.module_dep_info, mdbcomp.sym_name.module_name).
+:- mode module_dep_info_get_module_name((builtin.in), (builtin.out)) is det.
+:- pred module_dep_info_get_source_file_dir(parse_tree.module_imports.module_dep_info, string).
+:- mode module_dep_info_get_source_file_dir((builtin.in), (builtin.out)) is det.
+:- pred module_dep_info_get_source_file_module_name(parse_tree.module_imports.module_dep_info, mdbcomp.sym_name.module_name).
+:- mode module_dep_info_get_source_file_module_name((builtin.in), (builtin.out)) is det.
+:- pred module_dep_info_get_source_file_name(parse_tree.module_imports.module_dep_info, string).
+:- mode module_dep_info_get_source_file_name((builtin.in), (builtin.out)) is det.
+:- pred parse_tree_src_to_burdened_aug_comp_unit_list(libs.globals.globals, libs.file_util.file_name, parse_tree.prog_item.parse_tree_src, parse_tree.parse_error.read_module_errors, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec), list.list(parse_tree.module_imports.burdened_aug_comp_unit)).
+:- mode parse_tree_src_to_burdened_aug_comp_unit_list((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.

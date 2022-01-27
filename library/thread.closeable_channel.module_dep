@@ -1,0 +1,14 @@
+module(2, "thread.closeable_channel.m",
+	(thread.closeable_channel),
+	{thread},
+	{bool, builtin, io, private_builtin},
+	{maybe, require, (thread.mvar)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).

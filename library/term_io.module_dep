@@ -1,0 +1,14 @@
+module(2, "term_io.m",
+	term_io,
+	{},
+	{builtin, char, io, ops, private_builtin, stream, term, varset},
+	{bool, int, integer, list, mercury_term_lexer, mercury_term_parser, string, (stream.string_writer), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main,
+	{}
+).
