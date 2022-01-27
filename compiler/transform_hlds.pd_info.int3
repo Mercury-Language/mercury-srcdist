@@ -1,0 +1,15 @@
+:- module (transform_hlds.pd_info).
+:- interface.
+:- type goal_version_index.
+:- type maybe_version.
+:- type pd_arg_info.
+:- type pd_info.
+:- type pd_proc_arg_info.
+:- type unfold_info.
+:- type useless_versions.
+:- type version_index.
+:- type version_info.
+:- type version_is_exact
+	where	type_is_abstract_enum(1).
+:- type branch_info_map(T).
+:- type pd_branch_info(T).

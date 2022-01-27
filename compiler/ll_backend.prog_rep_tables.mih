@@ -1,0 +1,149 @@
+/*
+** Automatically generated from `prog_rep_tables.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-01-02, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.prog_rep_tables. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__prog_rep_tables
+#define MR_HEADER_GUARD_ll_backend__prog_rep_tables
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__PROG_REP_TABLES_DECL_GUARD
+#define LL_BACKEND__PROG_REP_TABLES_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 42 "ll_backend.prog_rep_tables.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__prog_rep_tables__ll_backend__prog_rep_tables__type_ctor_info_string_table_info_0;
+
+#line 45 "ll_backend.prog_rep_tables.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__prog_rep_tables__ll_backend__prog_rep_tables__type_ctor_info_type_table_info_0;
+
+#line 257 "prog_rep_tables.m"
+void MR_CALL 
+ll_backend__prog_rep_tables____Compare____type_table_info_0_0(
+#line 257 "prog_rep_tables.m"
+  MR_Word * ll_backend__prog_rep_tables__param_1,
+#line 257 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_2,
+#line 257 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_3);
+
+#line 257 "prog_rep_tables.m"
+MR_bool MR_CALL 
+ll_backend__prog_rep_tables____Unify____type_table_info_0_0(
+#line 257 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_1,
+#line 257 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_2);
+
+#line 69 "prog_rep_tables.m"
+void MR_CALL 
+ll_backend__prog_rep_tables____Compare____string_table_info_0_0(
+#line 69 "prog_rep_tables.m"
+  MR_Word * ll_backend__prog_rep_tables__param_1,
+#line 69 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_2,
+#line 69 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_3);
+
+#line 69 "prog_rep_tables.m"
+MR_bool MR_CALL 
+ll_backend__prog_rep_tables____Unify____string_table_info_0_0(
+#line 69 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_1,
+#line 69 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_2);
+
+#line 46 "prog_rep_tables.m"
+void MR_CALL 
+ll_backend__prog_rep_tables__get_type_table_contents_3_p_0(
+#line 46 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_1,
+#line 46 "prog_rep_tables.m"
+  MR_Integer * ll_backend__prog_rep_tables__param_2,
+#line 46 "prog_rep_tables.m"
+  MR_Word * ll_backend__prog_rep_tables__param_3);
+
+#line 42 "prog_rep_tables.m"
+void MR_CALL 
+ll_backend__prog_rep_tables__lookup_type_in_table_6_p_0(
+#line 42 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_1,
+#line 42 "prog_rep_tables.m"
+  MR_Integer * ll_backend__prog_rep_tables__param_2,
+#line 42 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_3,
+#line 42 "prog_rep_tables.m"
+  MR_Word * ll_backend__prog_rep_tables__param_4,
+#line 42 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_5,
+#line 42 "prog_rep_tables.m"
+  MR_Word * ll_backend__prog_rep_tables__param_6);
+
+#line 40 "prog_rep_tables.m"
+MR_Word MR_CALL 
+ll_backend__prog_rep_tables__init_type_table_info_0_f_0(void);
+
+#line 33 "prog_rep_tables.m"
+void MR_CALL 
+ll_backend__prog_rep_tables__get_string_table_contents_3_p_0(
+#line 33 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_1,
+#line 33 "prog_rep_tables.m"
+  MR_Word * ll_backend__prog_rep_tables__param_2,
+#line 33 "prog_rep_tables.m"
+  MR_Integer * ll_backend__prog_rep_tables__param_3);
+
+#line 30 "prog_rep_tables.m"
+void MR_CALL 
+ll_backend__prog_rep_tables__lookup_string_in_table_4_p_0(
+#line 30 "prog_rep_tables.m"
+  MR_String ll_backend__prog_rep_tables__param_1,
+#line 30 "prog_rep_tables.m"
+  MR_Integer * ll_backend__prog_rep_tables__param_2,
+#line 30 "prog_rep_tables.m"
+  MR_Word ll_backend__prog_rep_tables__param_3,
+#line 30 "prog_rep_tables.m"
+  MR_Word * ll_backend__prog_rep_tables__param_4);
+
+#line 28 "prog_rep_tables.m"
+MR_Word MR_CALL 
+ll_backend__prog_rep_tables__init_string_table_info_0_f_0(void);
+
+void mercury__ll_backend__prog_rep_tables__init(void);
+void mercury__ll_backend__prog_rep_tables__init_type_tables(void);
+void mercury__ll_backend__prog_rep_tables__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.prog_rep_tables */
+
+/* :- end_interface ll_backend.prog_rep_tables. */

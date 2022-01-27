@@ -1,0 +1,94 @@
+/*
+** Automatically generated from `check_typeclass.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-01-02, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.check_typeclass. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__check_typeclass
+#define MR_HEADER_GUARD_check_hlds__check_typeclass
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__CHECK_TYPECLASS_DECL_GUARD
+#define CHECK_HLDS__CHECK_TYPECLASS_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "check_hlds.check_typeclass.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__check_typeclass__check_hlds__check_typeclass__type_ctor_info_bad_instance_type_kind_0;
+
+#line 45 "check_hlds.check_typeclass.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__check_typeclass__check_hlds__check_typeclass__type_ctor_info_class_path_0;
+
+#line 48 "check_hlds.check_typeclass.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__check_typeclass__check_hlds__check_typeclass__type_ctor_info_induced_fundep_0;
+
+#line 51 "check_hlds.check_typeclass.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__check_typeclass__check_hlds__check_typeclass__type_ctor_info_induced_fundeps_0;
+
+#line 54 "check_hlds.check_typeclass.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__check_typeclass__check_hlds__check_typeclass__type_ctor_info_instance_arg_result_0;
+
+#line 57 "check_hlds.check_typeclass.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__check_typeclass__check_hlds__check_typeclass__type_ctor_info_instance_check_info_0;
+
+#line 60 "check_hlds.check_typeclass.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__check_typeclass__check_hlds__check_typeclass__type_ctor_info_instance_method_info_0;
+
+#line 63 "check_hlds.check_typeclass.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__check_typeclass__check_hlds__check_typeclass__type_ctor_info_modes_and_detism_0;
+
+#line 66 "check_hlds.check_typeclass.mih.tmp"
+extern const MR_TypeCtorInfo_Struct check_hlds__check_typeclass__check_hlds__check_typeclass__type_ctor_info_quant_error_type_0;
+
+#line 101 "check_typeclass.m"
+void MR_CALL 
+check_hlds__check_typeclass__check_typeclasses_6_p_0(
+#line 101 "check_typeclass.m"
+  MR_Word check_hlds__check_typeclass__param_1,
+#line 101 "check_typeclass.m"
+  MR_Word * check_hlds__check_typeclass__param_2,
+#line 101 "check_typeclass.m"
+  MR_Word check_hlds__check_typeclass__param_3,
+#line 101 "check_typeclass.m"
+  MR_Word * check_hlds__check_typeclass__param_4,
+#line 101 "check_typeclass.m"
+  MR_Word check_hlds__check_typeclass__param_5,
+#line 101 "check_typeclass.m"
+  MR_Word * check_hlds__check_typeclass__param_6);
+
+void mercury__check_hlds__check_typeclass__init(void);
+void mercury__check_hlds__check_typeclass__init_type_tables(void);
+void mercury__check_hlds__check_typeclass__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.check_typeclass */
+
+/* :- end_interface check_hlds.check_typeclass. */

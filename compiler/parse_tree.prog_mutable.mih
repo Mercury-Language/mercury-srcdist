@@ -1,0 +1,289 @@
+/*
+** Automatically generated from `prog_mutable.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-01-02, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.prog_mutable. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_mutable
+#define MR_HEADER_GUARD_parse_tree__prog_mutable
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_MUTABLE_DECL_GUARD
+#define PARSE_TREE__PROG_MUTABLE_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+#line 591 "prog_mutable.m"
+MR_String MR_CALL 
+parse_tree__prog_mutable__mutable_mutex_var_name_1_f_0(
+#line 591 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_1);
+
+#line 584 "prog_mutable.m"
+MR_String MR_CALL 
+parse_tree__prog_mutable__mutable_c_var_name_2_f_0(
+#line 584 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 584 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2);
+
+#line 582 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_pre_init_pred_sym_name_2_f_0(
+#line 582 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 582 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2);
+
+#line 580 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_init_pred_sym_name_2_f_0(
+#line 580 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 580 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2);
+
+#line 578 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_secret_set_pred_sym_name_2_f_0(
+#line 578 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 578 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2);
+
+#line 562 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_set_pred_sym_name_2_f_0(
+#line 562 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 562 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2);
+
+#line 560 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_get_pred_sym_name_2_f_0(
+#line 560 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 560 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2);
+
+#line 558 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_unsafe_set_pred_sym_name_2_f_0(
+#line 558 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 558 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2);
+
+#line 557 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_unsafe_get_pred_sym_name_2_f_0(
+#line 557 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 557 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2);
+
+#line 556 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_unlock_pred_sym_name_2_f_0(
+#line 556 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 556 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2);
+
+#line 555 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_lock_pred_sym_name_2_f_0(
+#line 555 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 555 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2);
+
+#line 551 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_pre_init_pred_decl_3_f_0(
+#line 551 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 551 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2,
+#line 551 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_3);
+
+#line 544 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__mutable_init_pred_decl_3_f_0(
+#line 544 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 544 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2,
+#line 544 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_3);
+
+#line 539 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__io_set_pred_decl_5_f_0(
+#line 539 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 539 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2,
+#line 539 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_3,
+#line 539 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_4,
+#line 539 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_5);
+
+#line 533 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__io_get_pred_decl_5_f_0(
+#line 533 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 533 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2,
+#line 533 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_3,
+#line 533 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_4,
+#line 533 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_5);
+
+#line 527 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__constant_set_pred_decl_5_f_0(
+#line 527 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 527 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2,
+#line 527 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_3,
+#line 527 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_4,
+#line 527 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_5);
+
+#line 519 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__constant_get_pred_decl_5_f_0(
+#line 519 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 519 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2,
+#line 519 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_3,
+#line 519 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_4,
+#line 519 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_5);
+
+#line 513 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__std_set_pred_decl_5_f_0(
+#line 513 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 513 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2,
+#line 513 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_3,
+#line 513 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_4,
+#line 513 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_5);
+
+#line 507 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__std_get_pred_decl_5_f_0(
+#line 507 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 507 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2,
+#line 507 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_3,
+#line 507 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_4,
+#line 507 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_5);
+
+#line 502 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__unlock_pred_decl_3_f_0(
+#line 502 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 502 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2,
+#line 502 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_3);
+
+#line 501 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__lock_pred_decl_3_f_0(
+#line 501 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 501 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2,
+#line 501 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_3);
+
+#line 499 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__unsafe_set_pred_decl_5_f_0(
+#line 499 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 499 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2,
+#line 499 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_3,
+#line 499 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_4,
+#line 499 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_5);
+
+#line 497 "prog_mutable.m"
+MR_Word MR_CALL 
+parse_tree__prog_mutable__unsafe_get_pred_decl_5_f_0(
+#line 497 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_1,
+#line 497 "prog_mutable.m"
+  MR_String parse_tree__prog_mutable__param_2,
+#line 497 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_3,
+#line 497 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_4,
+#line 497 "prog_mutable.m"
+  MR_Word parse_tree__prog_mutable__param_5);
+
+void mercury__parse_tree__prog_mutable__init(void);
+void mercury__parse_tree__prog_mutable__init_type_tables(void);
+void mercury__parse_tree__prog_mutable__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.prog_mutable */
+
+/* :- end_interface parse_tree.prog_mutable. */

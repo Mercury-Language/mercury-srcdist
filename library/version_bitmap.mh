@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `version_bitmap.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-01-02, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+*/
+#ifndef VERSION_BITMAP_MH
+#define VERSION_BITMAP_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef VERSION_BITMAP_DECL_GUARD
+#define VERSION_BITMAP_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* VERSION_BITMAP_MH */

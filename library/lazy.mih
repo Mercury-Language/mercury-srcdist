@@ -1,0 +1,156 @@
+/*
+** Automatically generated from `lazy.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-01-02, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module lazy. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_lazy
+#define MR_HEADER_GUARD_lazy
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LAZY_DECL_GUARD
+#define LAZY_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "lazy.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__lazy__lazy__type_ctor_info_lazy_1;
+
+#line 44 "lazy.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__lazy__lazy__type_ctor_info_lazy_state_1;
+
+#line 122 "lazy.m"
+void MR_CALL 
+mercury__lazy____Compare____lazy_state_1_0(
+#line 122 "lazy.m"
+  MR_Word mercury__lazy__param_1,
+#line 122 "lazy.m"
+  MR_Word * mercury__lazy__param_2,
+#line 122 "lazy.m"
+  MR_Word mercury__lazy__param_3,
+#line 122 "lazy.m"
+  MR_Word mercury__lazy__param_4);
+
+#line 122 "lazy.m"
+MR_bool MR_CALL 
+mercury__lazy____Unify____lazy_state_1_0(
+#line 122 "lazy.m"
+  MR_Word mercury__lazy__param_1,
+#line 122 "lazy.m"
+  MR_Word mercury__lazy__param_2,
+#line 122 "lazy.m"
+  MR_Word mercury__lazy__param_3);
+
+#line 114 "lazy.m"
+void MR_CALL 
+mercury__lazy____Compare____lazy_1_0(
+#line 114 "lazy.m"
+  MR_Word mercury__lazy__param_1,
+#line 114 "lazy.m"
+  MR_Word * mercury__lazy__param_2,
+#line 114 "lazy.m"
+  MR_Word mercury__lazy__param_3,
+#line 114 "lazy.m"
+  MR_Word mercury__lazy__param_4);
+
+#line 114 "lazy.m"
+MR_bool MR_CALL 
+mercury__lazy____Unify____lazy_1_0(
+#line 114 "lazy.m"
+  MR_Word mercury__lazy__param_1,
+#line 114 "lazy.m"
+  MR_Word mercury__lazy__param_2,
+#line 114 "lazy.m"
+  MR_Word mercury__lazy__param_3);
+
+#line 78 "lazy.m"
+void MR_CALL 
+mercury__lazy__compare_values_3_p_0(
+#line 78 "lazy.m"
+  MR_Word mercury__lazy__param_1,
+#line 78 "lazy.m"
+  MR_Word * mercury__lazy__param_2,
+#line 78 "lazy.m"
+  MR_Word mercury__lazy__param_3,
+#line 78 "lazy.m"
+  MR_Word mercury__lazy__param_4);
+
+#line 76 "lazy.m"
+MR_bool MR_CALL 
+mercury__lazy__equal_values_2_p_0(
+#line 76 "lazy.m"
+  MR_Word mercury__lazy__param_1,
+#line 76 "lazy.m"
+  MR_Word mercury__lazy__param_2,
+#line 76 "lazy.m"
+  MR_Word mercury__lazy__param_3);
+
+#line 72 "lazy.m"
+MR_bool MR_CALL 
+mercury__lazy__read_if_val_2_p_0(
+#line 72 "lazy.m"
+  MR_Word mercury__lazy__param_1,
+#line 72 "lazy.m"
+  MR_Word mercury__lazy__param_2,
+#line 72 "lazy.m"
+  MR_Box * mercury__lazy__param_3);
+
+#line 66 "lazy.m"
+MR_Box MR_CALL 
+mercury__lazy__force_1_f_0(
+#line 66 "lazy.m"
+  MR_Word mercury__lazy__param_1,
+#line 66 "lazy.m"
+  MR_Word mercury__lazy__param_2);
+
+#line 55 "lazy.m"
+MR_Word MR_CALL 
+mercury__lazy__delay_1_f_0(
+#line 55 "lazy.m"
+  MR_Word mercury__lazy__param_1,
+#line 55 "lazy.m"
+  MR_Word mercury__lazy__param_2);
+
+#line 51 "lazy.m"
+MR_Word MR_CALL 
+mercury__lazy__val_1_f_0(
+#line 51 "lazy.m"
+  MR_Word mercury__lazy__param_1,
+#line 51 "lazy.m"
+  MR_Box mercury__lazy__param_2);
+
+void mercury__lazy__init(void);
+void mercury__lazy__init_type_tables(void);
+void mercury__lazy__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_lazy */
+
+/* :- end_interface lazy. */

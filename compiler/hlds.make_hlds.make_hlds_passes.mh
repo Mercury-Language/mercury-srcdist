@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `make_hlds_passes.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-01-02, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+*/
+#ifndef HLDS__MAKE_HLDS__MAKE_HLDS_PASSES_MH
+#define HLDS__MAKE_HLDS__MAKE_HLDS_PASSES_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef HLDS__MAKE_HLDS__MAKE_HLDS_PASSES_DECL_GUARD
+#define HLDS__MAKE_HLDS__MAKE_HLDS_PASSES_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* HLDS__MAKE_HLDS__MAKE_HLDS_PASSES_MH */

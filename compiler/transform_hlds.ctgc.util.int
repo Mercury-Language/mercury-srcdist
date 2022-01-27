@@ -1,0 +1,20 @@
+:- module ((transform_hlds.ctgc).util).
+:- interface.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- func get_type_substitution(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, list.list(parse_tree.prog_data.mer_type), parse_tree.prog_data.tvarset, hlds.hlds_pred.head_type_params) = parse_tree.prog_data.tsubst.
+:- func get_variable_renaming(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, parse_tree.prog_data.prog_vars) = parse_tree.prog_data.prog_var_renaming.
+:- pred pred_requires_analysis(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id).
+:- mode pred_requires_analysis((builtin.in), (builtin.in)) is semidet.
+:- pred pred_requires_no_analysis(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id).
+:- mode pred_requires_no_analysis((builtin.in), (builtin.in)) is semidet.
+:- pred some_preds_requiring_no_analysis(hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_proc_id)).
+:- mode some_preds_requiring_no_analysis((builtin.in), (builtin.in)) is semidet.
+:- pred top_cell_may_be_reusable(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode top_cell_may_be_reusable((builtin.in), (builtin.in)) is semidet.
+:- pred type_needs_sharing_analysis(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode type_needs_sharing_analysis((builtin.in), (builtin.in)) is semidet.
+:- pred var_needs_sharing_analysis(hlds.hlds_module.module_info, hlds.hlds_pred.proc_info, parse_tree.prog_data.prog_var).
+:- mode var_needs_sharing_analysis((builtin.in), (builtin.in), (builtin.in)) is semidet.

@@ -1,0 +1,224 @@
+/*
+** Automatically generated from `declarative_user.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-01-02, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdb.declarative_user. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_mdb__declarative_user
+#define MR_HEADER_GUARD_mdb__declarative_user
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__DECLARATIVE_USER_DECL_GUARD
+#define MDB__DECLARATIVE_USER_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+
+#line 42 "mdb.declarative_user.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_user__mdb__declarative_user__type_ctor_info_user_command_0;
+
+#line 45 "mdb.declarative_user.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_user__mdb__declarative_user__type_ctor_info_user_question_1;
+
+#line 48 "mdb.declarative_user.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_user__mdb__declarative_user__type_ctor_info_user_response_1;
+
+#line 51 "mdb.declarative_user.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_user__mdb__declarative_user__type_ctor_info_user_search_mode_0;
+
+#line 54 "mdb.declarative_user.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__declarative_user__mdb__declarative_user__type_ctor_info_user_state_0;
+
+#line 198 "declarative_user.m"
+void MR_CALL 
+mdb__declarative_user____Compare____user_state_0_0(
+#line 198 "declarative_user.m"
+  MR_Word * mdb__declarative_user__param_1,
+#line 198 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_2,
+#line 198 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_3);
+
+#line 198 "declarative_user.m"
+MR_bool MR_CALL 
+mdb__declarative_user____Unify____user_state_0_0(
+#line 198 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1,
+#line 198 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_2);
+
+#line 55 "declarative_user.m"
+void MR_CALL 
+mdb__declarative_user____Compare____user_search_mode_0_0(
+#line 55 "declarative_user.m"
+  MR_Word * mdb__declarative_user__param_1,
+#line 55 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_2,
+#line 55 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_3);
+
+#line 55 "declarative_user.m"
+MR_bool MR_CALL 
+mdb__declarative_user____Unify____user_search_mode_0_0(
+#line 55 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1,
+#line 55 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_2);
+
+#line 36 "declarative_user.m"
+void MR_CALL 
+mdb__declarative_user____Compare____user_response_1_0(
+#line 36 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1,
+#line 36 "declarative_user.m"
+  MR_Word * mdb__declarative_user__param_2,
+#line 36 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_3,
+#line 36 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_4);
+
+#line 36 "declarative_user.m"
+MR_bool MR_CALL 
+mdb__declarative_user____Unify____user_response_1_0(
+#line 36 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1,
+#line 36 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_2,
+#line 36 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_3);
+
+#line 32 "declarative_user.m"
+void MR_CALL 
+mdb__declarative_user____Compare____user_question_1_0(
+#line 32 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1,
+#line 32 "declarative_user.m"
+  MR_Word * mdb__declarative_user__param_2,
+#line 32 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_3,
+#line 32 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_4);
+
+#line 32 "declarative_user.m"
+MR_bool MR_CALL 
+mdb__declarative_user____Unify____user_question_1_0(
+#line 32 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1,
+#line 32 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_2,
+#line 32 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_3);
+
+#line 99 "declarative_user.m"
+void MR_CALL 
+mdb__declarative_user__set_user_testing_flag_3_p_0(
+#line 99 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1,
+#line 99 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_2,
+#line 99 "declarative_user.m"
+  MR_Word * mdb__declarative_user__param_3);
+
+#line 95 "declarative_user.m"
+MR_Word MR_CALL 
+mdb__declarative_user__get_user_input_stream_1_f_0(
+#line 95 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1);
+
+#line 91 "declarative_user.m"
+MR_Word MR_CALL 
+mdb__declarative_user__get_user_output_stream_1_f_0(
+#line 91 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1);
+
+#line 86 "declarative_user.m"
+void MR_CALL 
+mdb__declarative_user__set_browser_state_3_p_0(
+#line 86 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1,
+#line 86 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_2,
+#line 86 "declarative_user.m"
+  MR_Word * mdb__declarative_user__param_3);
+
+#line 82 "declarative_user.m"
+MR_Word MR_CALL 
+mdb__declarative_user__get_browser_state_1_f_0(
+#line 82 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1);
+
+#line 77 "declarative_user.m"
+void MR_CALL 
+mdb__declarative_user__user_confirm_bug_6_p_0(
+#line 77 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1,
+#line 77 "declarative_user.m"
+  MR_Word * mdb__declarative_user__param_2,
+#line 77 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_3,
+#line 77 "declarative_user.m"
+  MR_Word * mdb__declarative_user__param_4);
+
+#line 72 "declarative_user.m"
+void MR_CALL 
+mdb__declarative_user__query_user_6_p_0(
+#line 72 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1,
+#line 72 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_2,
+#line 72 "declarative_user.m"
+  MR_Word * mdb__declarative_user__param_3,
+#line 72 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_4,
+#line 72 "declarative_user.m"
+  MR_Word * mdb__declarative_user__param_5);
+
+#line 63 "declarative_user.m"
+void MR_CALL 
+mdb__declarative_user__user_state_init_5_p_0(
+#line 63 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_1,
+#line 63 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_2,
+#line 63 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_3,
+#line 63 "declarative_user.m"
+  MR_Word mdb__declarative_user__param_4,
+#line 63 "declarative_user.m"
+  MR_Word * mdb__declarative_user__param_5);
+
+void mercury__mdb__declarative_user__init(void);
+void mercury__mdb__declarative_user__init_type_tables(void);
+void mercury__mdb__declarative_user__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_mdb.declarative_user */
+
+/* :- end_interface mdb.declarative_user. */

@@ -1,0 +1,87 @@
+/*
+** Automatically generated from `prog_io_dcg.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-01-02, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.prog_io_dcg. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_io_dcg
+#define MR_HEADER_GUARD_parse_tree__prog_io_dcg
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_IO_DCG_DECL_GUARD
+#define PARSE_TREE__PROG_IO_DCG_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+#line 47 "prog_io_dcg.m"
+void MR_CALL 
+parse_tree__prog_io_dcg__parse_dcg_pred_goal_7_p_0(
+#line 47 "prog_io_dcg.m"
+  MR_Word parse_tree__prog_io_dcg__param_1,
+#line 47 "prog_io_dcg.m"
+  MR_Word parse_tree__prog_io_dcg__param_2,
+#line 47 "prog_io_dcg.m"
+  MR_Word * parse_tree__prog_io_dcg__param_3,
+#line 47 "prog_io_dcg.m"
+  MR_Word * parse_tree__prog_io_dcg__param_4,
+#line 47 "prog_io_dcg.m"
+  MR_Word * parse_tree__prog_io_dcg__param_5,
+#line 47 "prog_io_dcg.m"
+  MR_Word parse_tree__prog_io_dcg__param_6,
+#line 47 "prog_io_dcg.m"
+  MR_Word * parse_tree__prog_io_dcg__param_7);
+
+#line 37 "prog_io_dcg.m"
+void MR_CALL 
+parse_tree__prog_io_dcg__parse_dcg_clause_7_p_0(
+#line 37 "prog_io_dcg.m"
+  MR_Word parse_tree__prog_io_dcg__param_1,
+#line 37 "prog_io_dcg.m"
+  MR_Word parse_tree__prog_io_dcg__param_2,
+#line 37 "prog_io_dcg.m"
+  MR_Word parse_tree__prog_io_dcg__param_3,
+#line 37 "prog_io_dcg.m"
+  MR_Word parse_tree__prog_io_dcg__param_4,
+#line 37 "prog_io_dcg.m"
+  MR_Word parse_tree__prog_io_dcg__param_5,
+#line 37 "prog_io_dcg.m"
+  MR_Integer parse_tree__prog_io_dcg__param_6,
+#line 37 "prog_io_dcg.m"
+  MR_Word * parse_tree__prog_io_dcg__param_7);
+
+void mercury__parse_tree__prog_io_dcg__init(void);
+void mercury__parse_tree__prog_io_dcg__init_type_tables(void);
+void mercury__parse_tree__prog_io_dcg__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.prog_io_dcg */
+
+/* :- end_interface parse_tree.prog_io_dcg. */

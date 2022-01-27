@@ -1,0 +1,21 @@
+:- module (libs.lp_rational).
+:- interface.
+:- type coefficient.
+:- type constant.
+:- type constraint.
+:- type constraints.
+:- type direction
+	where	type_is_abstract_enum(1).
+:- type entailment_result
+	where	type_is_abstract_enum(2).
+:- type lp_operator
+	where	type_is_abstract_enum(2).
+:- type lp_result.
+:- type lp_term.
+:- type lp_terms.
+:- type lp_var.
+:- type lp_vars.
+:- type lp_varset.
+:- type objective.
+:- type output_var.
+:- type projection_result.

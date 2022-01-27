@@ -1,0 +1,430 @@
+/*
+** Automatically generated from `autopar_types.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-01-02, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdprof_fb.automatic_parallelism.autopar_types. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_mdprof_fb__automatic_parallelism__autopar_types
+#define MR_HEADER_GUARD_mdprof_fb__automatic_parallelism__autopar_types
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDPROF_FB__AUTOMATIC_PARALLELISM__AUTOPAR_TYPES_DECL_GUARD
+#define MDPROF_FB__AUTOMATIC_PARALLELISM__AUTOPAR_TYPES_DECL_GUARD
+#include "mdprof_fb.mih"
+#include "mdprof_fb.automatic_parallelism.mih"
+
+#endif
+
+
+
+
+#line 43 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_candidate_par_conjunctions_0;
+
+#line 46 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_dependency_graphs_0;
+
+#line 49 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_dependent_conjunct_execution_0;
+
+#line 52 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_implicit_parallelism_info_0;
+
+#line 55 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_incomplete_parallelisation_0;
+
+#line 58 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_inst_map_info_0;
+
+#line 61 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_is_costly_goal_0;
+
+#line 64 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_lazy_var_use_map_0;
+
+#line 67 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_parallel_execution_overlap_0;
+
+#line 70 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_parallelisation_cost_data_0;
+
+#line 73 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_0;
+
+#line 76 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+#line 79 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_type_0;
+
+#line 82 "mdprof_fb.automatic_parallelism.autopar_types.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_var_and_mode_0;
+
+#line 139 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____var_and_mode_0_0(
+#line 139 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 139 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 139 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 139 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____var_and_mode_0_0(
+#line 139 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 139 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 98 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____pard_goal_type_0_0(
+#line 98 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 98 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 98 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 98 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____pard_goal_type_0_0(
+#line 98 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 98 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 68 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____pard_goal_detail_annotation_0_0(
+#line 68 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 68 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 68 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 68 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____pard_goal_detail_annotation_0_0(
+#line 68 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 68 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 66 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____pard_goal_detail_0_0(
+#line 66 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 66 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 66 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 66 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____pard_goal_detail_0_0(
+#line 66 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 66 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 211 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____parallelisation_cost_data_0_0(
+#line 211 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 211 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 211 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 211 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____parallelisation_cost_data_0_0(
+#line 211 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 211 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 224 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____parallel_execution_overlap_0_0(
+#line 224 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 224 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 224 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 224 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____parallel_execution_overlap_0_0(
+#line 224 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 224 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 96 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____lazy_var_use_map_0_0(
+#line 96 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 96 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 96 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 96 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____lazy_var_use_map_0_0(
+#line 96 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 96 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 125 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____is_costly_goal_0_0(
+#line 125 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 125 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 125 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 125 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____is_costly_goal_0_0(
+#line 125 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 125 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 154 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____inst_map_info_0_0(
+#line 154 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 154 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 154 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 154 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____inst_map_info_0_0(
+#line 154 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 154 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 175 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____incomplete_parallelisation_0_0(
+#line 175 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 175 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 175 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 175 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____incomplete_parallelisation_0_0(
+#line 175 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 175 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 43 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____implicit_parallelism_info_0_0(
+#line 43 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 43 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 43 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 43 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____implicit_parallelism_info_0_0(
+#line 43 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 43 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 235 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____dependent_conjunct_execution_0_0(
+#line 235 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 235 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 235 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 235 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____dependent_conjunct_execution_0_0(
+#line 235 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 235 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 169 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____dependency_graphs_0_0(
+#line 169 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 169 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 169 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 169 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____dependency_graphs_0_0(
+#line 169 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 169 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 145 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Compare____candidate_par_conjunctions_0_0(
+#line 145 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 145 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 145 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 145 "autopar_types.m"
+MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types____Unify____candidate_par_conjunctions_0_0(
+#line 145 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 145 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 265 "autopar_types.m"
+MR_Word MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types__ip_calc_sharedvars_set_1_f_0(
+#line 265 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1);
+
+#line 263 "autopar_types.m"
+MR_Integer MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types__ip_get_num_goals_middle_1_f_0(
+#line 263 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1);
+
+#line 261 "autopar_types.m"
+MR_Integer MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types__ip_get_num_parallel_conjuncts_1_f_0(
+#line 261 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1);
+
+#line 259 "autopar_types.m"
+MR_Integer MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types__ip_get_num_goals_1_f_0(
+#line 259 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1);
+
+#line 256 "autopar_types.m"
+MR_Word MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types__ip_get_par_conjs_1_f_0(
+#line 256 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1);
+
+#line 253 "autopar_types.m"
+MR_Word MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types__ip_get_goals_after_1_f_0(
+#line 253 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1);
+
+#line 250 "autopar_types.m"
+MR_Word MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types__ip_get_goals_before_1_f_0(
+#line 250 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1);
+
+#line 132 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types__identify_costly_goals_3_p_0(
+#line 132 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 132 "autopar_types.m"
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 132 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+#line 129 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types__identify_costly_goal_2_p_0(
+#line 129 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 129 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_2);
+
+#line 119 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types__conj_produced_and_consumed_vars_5_p_0(
+#line 119 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 119 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 119 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_3,
+#line 119 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_4,
+#line 119 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_5);
+
+#line 109 "autopar_types.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_types__pard_goal_detail_to_pard_goal_3_p_0(
+#line 109 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_1,
+#line 109 "autopar_types.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_types__param_2,
+#line 109 "autopar_types.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_types__param_3);
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_types__init(void);
+void mercury__mdprof_fb__automatic_parallelism__autopar_types__init_type_tables(void);
+void mercury__mdprof_fb__automatic_parallelism__autopar_types__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_mdprof_fb.automatic_parallelism.autopar_types */
+
+/* :- end_interface mdprof_fb.automatic_parallelism.autopar_types. */

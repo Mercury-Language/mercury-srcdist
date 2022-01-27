@@ -1,0 +1,357 @@
+/*
+** Automatically generated from `opt_debug.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-01-02, configured for x86_64-apple-darwin12.5.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.opt_debug. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__opt_debug
+#define MR_HEADER_GUARD_ll_backend__opt_debug
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__OPT_DEBUG_DECL_GUARD
+#define LL_BACKEND__OPT_DEBUG_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 136 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_fullinstrs_3_f_0(
+#line 136 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 136 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2,
+#line 136 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_3);
+
+#line 134 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_fullinstr_3_f_0(
+#line 134 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 134 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2,
+#line 134 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_3);
+
+#line 132 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_instr_3_f_0(
+#line 132 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 132 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2,
+#line 132 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_3);
+
+#line 130 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_stack_incr_kind_1_f_0(
+#line 130 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 128 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_code_model_1_f_0(
+#line 128 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 126 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_bool_1_f_0(
+#line 126 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 124 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_code_addrs_2_f_0(
+#line 124 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 124 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 122 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_code_addr_2_f_0(
+#line 122 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 122 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 120 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_maybe_rvals_3_f_0(
+#line 120 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 120 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2,
+#line 120 "opt_debug.m"
+  MR_Integer ll_backend__opt_debug__param_3);
+
+#line 118 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_proclabel_1_f_0(
+#line 118 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 116 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_label_pairs_2_f_0(
+#line 116 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 116 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 114 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_labels_2_f_0(
+#line 114 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 114 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 111 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_labels_or_not_reached_2_f_0(
+#line 111 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 111 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 109 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_label_2_f_0(
+#line 109 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 109 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 107 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_binop_1_f_0(
+#line 107 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 105 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_unop_1_f_0(
+#line 105 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 103 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_layout_name_1_f_0(
+#line 103 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 101 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_layout_array_name_1_f_0(
+#line 101 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 99 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_layout_slot_name_1_f_0(
+#line 99 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 97 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_tc_rtti_name_1_f_0(
+#line 97 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 95 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_rtti_name_1_f_0(
+#line 95 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 93 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_rtti_type_class_instance_types_1_f_0(
+#line 93 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 91 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_rtti_type_class_name_1_f_0(
+#line 91 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 89 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_rtti_type_ctor_1_f_0(
+#line 89 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 87 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_data_id_1_f_0(
+#line 87 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 85 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_const_2_f_0(
+#line 85 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 85 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 83 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_mem_ref_2_f_0(
+#line 83 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 83 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 81 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_rvals_2_f_0(
+#line 81 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 81 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 79 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_rval_2_f_0(
+#line 79 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 79 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 77 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_lvals_2_f_0(
+#line 77 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 77 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 75 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_lval_2_f_0(
+#line 75 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 75 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 73 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_reg_2_f_0(
+#line 73 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 73 "opt_debug.m"
+  MR_Integer ll_backend__opt_debug__param_2);
+
+#line 71 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_livevals_2_f_0(
+#line 71 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 71 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 68 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_livemaplist_2_f_0(
+#line 68 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 68 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 66 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_livemap_2_f_0(
+#line 66 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 66 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2);
+
+#line 64 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_intlist_1_f_0(
+#line 64 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1);
+
+#line 62 "opt_debug.m"
+MR_String MR_CALL 
+ll_backend__opt_debug__dump_instrs_3_f_0(
+#line 62 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 62 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2,
+#line 62 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_3);
+
+#line 53 "opt_debug.m"
+void MR_CALL 
+ll_backend__opt_debug__write_instrs_5_p_0(
+#line 53 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 53 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2,
+#line 53 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_3);
+
+#line 45 "opt_debug.m"
+void MR_CALL 
+ll_backend__opt_debug__maybe_write_instrs_6_p_0(
+#line 45 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 45 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_2,
+#line 45 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_3,
+#line 45 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_4);
+
+#line 37 "opt_debug.m"
+void MR_CALL 
+ll_backend__opt_debug__msg_5_p_0(
+#line 37 "opt_debug.m"
+  MR_Word ll_backend__opt_debug__param_1,
+#line 37 "opt_debug.m"
+  MR_Integer ll_backend__opt_debug__param_2,
+#line 37 "opt_debug.m"
+  MR_String ll_backend__opt_debug__param_3);
+
+void mercury__ll_backend__opt_debug__init(void);
+void mercury__ll_backend__opt_debug__init_type_tables(void);
+void mercury__ll_backend__opt_debug__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.opt_debug */
+
+/* :- end_interface ll_backend.opt_debug. */

@@ -1,0 +1,37 @@
+:- module analysis_utils.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module measurements.
+:- import_module pair.
+:- import_module profile.
+:- import_module report.
+:- import_module set.
+:- import_module (mdbcomp.goal_path).
+:- import_module (mdbcomp.program_representation).
+:- type callee
+	--->	callee((analysis_utils.c_clique) :: profile.clique_ptr, (analysis_utils.c_csd) :: profile.call_site_dynamic_ptr).
+:- type cost_and_callees == analysis_utils.cost_and_callees(analysis_utils.callee).
+:- type higher_order
+	--->	first_order_call 
+	;	higher_order_call .
+:- type cost_and_callees(Callee)
+	--->	cost_and_callees((analysis_utils.cac_cost) :: measurements.cs_cost_csq, (analysis_utils.cac_exits) :: int, (analysis_utils.cac_callees) :: set.set(Callee), (analysis_utils.cac_call_site_is_ho) :: analysis_utils.higher_order).
+:- pred build_dynamic_call_site_cost_and_callee_map(profile.deep, pair.pair(profile.call_site_static_ptr, profile.call_site_array_slot), map.map(mdbcomp.goal_path.reverse_goal_path, analysis_utils.cost_and_callees), map.map(mdbcomp.goal_path.reverse_goal_path, analysis_utils.cost_and_callees)).
+:- mode build_dynamic_call_site_cost_and_callee_map((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred build_recursive_call_site_cost_map(profile.deep, profile.clique_ptr, profile.proc_dynamic_ptr, report.recursion_type, maybe.maybe(measurements.recursion_depth), maybe.maybe_error(map.map(mdbcomp.goal_path.reverse_goal_path, measurements.cs_cost_csq))).
+:- mode build_recursive_call_site_cost_map((builtin.in), (builtin.in), (builtin.in), builtin.in((report.recursion_type_known_costs)), builtin.in(maybe.maybe_yes(ground)), builtin.out(maybe.maybe_error_ok(ground))) is det.
+:- mode build_recursive_call_site_cost_map((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred build_static_call_site_cost_and_callee_map(profile.deep, profile.call_site_static_ptr, map.map(mdbcomp.goal_path.reverse_goal_path, analysis_utils.cost_and_callees(profile.proc_static_ptr)), map.map(mdbcomp.goal_path.reverse_goal_path, analysis_utils.cost_and_callees(profile.proc_static_ptr))).
+:- mode build_static_call_site_cost_and_callee_map((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred cost_and_callees_is_recursive(profile.clique_ptr, analysis_utils.cost_and_callees).
+:- mode cost_and_callees_is_recursive((builtin.in), (builtin.in)) is semidet.
+:- pred deep_get_maybe_procrep(profile.deep, profile.proc_static_ptr, maybe.maybe_error(mdbcomp.program_representation.proc_rep)).
+:- mode deep_get_maybe_procrep((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred find_clique_first_and_other_procs(profile.deep, profile.clique_ptr, maybe.maybe(profile.proc_dynamic_ptr), list.list(profile.proc_dynamic_ptr)).
+:- mode find_clique_first_and_other_procs((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred proc_dynamic_paired_call_site_slots(profile.deep, profile.proc_dynamic_ptr, assoc_list.assoc_list(profile.call_site_static_ptr, profile.call_site_array_slot)).
+:- mode proc_dynamic_paired_call_site_slots((builtin.in), (builtin.in), (builtin.out)) is det.
