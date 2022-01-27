@@ -1,0 +1,91 @@
+/*
+** Automatically generated from `inst_mode_type_prop.m'
+** by the Mercury compiler,
+** version rotd-2021-12-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.inst_mode_type_prop.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__inst_mode_type_prop
+#define MR_HEADER_GUARD_check_hlds__inst_mode_type_prop
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__INST_MODE_TYPE_PROP_DECL_GUARD
+#define CHECK_HLDS__INST_MODE_TYPE_PROP_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+check_hlds__inst_mode_type_prop__propagate_ctor_info_into_bound_inst_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__inst_mode_type_prop__propagate_type_into_inst_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__inst_mode_type_prop__propagate_type_into_mode_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+check_hlds__inst_mode_type_prop__propagate_types_into_inst_list_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+check_hlds__inst_mode_type_prop__propagate_types_into_mode_list_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void mercury__check_hlds__inst_mode_type_prop__init(void);
+void mercury__check_hlds__inst_mode_type_prop__init_type_tables(void);
+void mercury__check_hlds__inst_mode_type_prop__init_debugger(void);
+const char *mercury__check_hlds__inst_mode_type_prop__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.inst_mode_type_prop
+
+// :- end_interface check_hlds.inst_mode_type_prop.
