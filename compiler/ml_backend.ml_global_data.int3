@@ -1,0 +1,30 @@
+:- module (ml_backend.ml_global_data).
+:- interface.
+:- type have_unboxed_floats
+	where	type_is_abstract_enum(1).
+:- type have_unboxed_int64s
+	where	type_is_abstract_enum(1).
+:- type ml_alloc_site_data.
+:- type ml_global_data.
+:- type ml_rtti_rval_type_map.
+:- type ml_rval_and_type.
+:- type ml_scalar_cell_group.
+:- type ml_scalar_cell_map.
+:- type ml_vector_cell_group.
+:- type ml_vector_cell_map.
+:- type use_common_cells
+	where	type_is_abstract_enum(1).
+:- type_representation(have_unboxed_floats, du_repn(enum("have_unboxed_floats", "do_not_have_unboxed_floats", [],  no_c_j_cs))).
+:- type_representation(have_unboxed_int64s, du_repn(enum("have_unboxed_int64s", "do_not_have_unboxed_int64s", [],  no_c_j_cs))).
+:- type_representation(ml_alloc_id_map, is_eqv_to(bimap(mlds_alloc_id, ml_backend.ml_global_data.ml_alloc_site_data))).
+:- type_representation(ml_alloc_site_data, is_word_aligned_ptr).
+:- type_representation(ml_global_data, is_word_aligned_ptr).
+:- type_representation(ml_rtti_rval_type_map, is_eqv_to(map(rtti_id, ml_backend.ml_global_data.ml_rval_and_type))).
+:- type_representation(ml_rval_and_type, is_word_aligned_ptr).
+:- type_representation(ml_scalar_cell_group, is_word_aligned_ptr).
+:- type_representation(ml_scalar_cell_map, is_eqv_to(map(ml_scalar_common_type_num, ml_backend.ml_global_data.ml_scalar_cell_group))).
+:- type_representation(ml_scalar_cell_type_map, is_eqv_to(map(ml_scalar_cell_type, ml_scalar_common_type_num))).
+:- type_representation(ml_vector_cell_group, is_word_aligned_ptr).
+:- type_representation(ml_vector_cell_map, is_eqv_to(map(ml_vector_common_type_num, ml_backend.ml_global_data.ml_vector_cell_group))).
+:- type_representation(ml_vector_cell_type_map, is_eqv_to(map(list(mlds_type), ml_vector_common_type_num))).
+:- type_representation(use_common_cells, du_repn(enum("do_not_use_common_cells", "use_common_cells", [],  no_c_j_cs))).
