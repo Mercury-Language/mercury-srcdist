@@ -1,0 +1,6 @@
+:- module (libs.compiler_util).
+:- interface.
+:- type warning_or_error
+    --->    we_warning 
+    ;       we_error .
+:- type_representation(warning_or_error, du_repn(enum("we_warning", "we_error", [],  no_c_j_cs))).

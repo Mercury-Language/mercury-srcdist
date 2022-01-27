@@ -1,0 +1,86 @@
+:- module (random.system_rng).
+:- use_module array.
+:- use_module bool.
+:- use_module builtin.
+:- use_module exception.
+:- use_module float.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module math.
+:- use_module maybe.
+:- use_module mutvar.
+:- use_module private_builtin.
+:- use_module uint.
+:- use_module uint32.
+
+:- type system_rng
+    --->    system_rng .
+:- pragma foreign_type(java, system_rng, "java.security.SecureRandom").
+:- pragma foreign_type(csharp, system_rng, "System.Security.Cryptography.RandomNumberGenerator").
+
+:- instance (random.urandom(random.system_rng.system_rng, io.state)).
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", float).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", mutvar).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("C#", (random.system_rng)).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", mutvar).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("Java", (random.system_rng)).
+
+(random.system_rng).generate_uint16(V_5, V_6, V_8, V_9) :-
+    V_10 = "No system RNG available" : string,
+    private_builtin.sorry(V_10),
+    V_9 = V_8.
+
+(random.system_rng).generate_uint32(V_5, V_6, V_8, V_9) :-
+    V_10 = "No system RNG available" : string,
+    private_builtin.sorry(V_10),
+    V_9 = V_8.
+
+(random.system_rng).generate_uint64(V_5, V_6, V_8, V_9) :-
+    V_10 = "No system RNG available" : string,
+    private_builtin.sorry(V_10),
+    V_9 = V_8.
+
+(random.system_rng).generate_uint8(V_5, V_6, V_8, V_9) :-
+    V_10 = "No system RNG available" : string,
+    private_builtin.sorry(V_10),
+    V_9 = V_8.
+
+(random.system_rng).have_system_rng :-
+    builtin.semidet_false.
+
+:- pragma termination_info((random.system_rng).'ClassMethod_for_random__urandom____random__system_rng__system_rng__arity0__io__state__arity0______random__generate_uint16_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((random.system_rng).'ClassMethod_for_random__urandom____random__system_rng__system_rng__arity0__io__state__arity0______random__generate_uint32_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((random.system_rng).'ClassMethod_for_random__urandom____random__system_rng__system_rng__arity0__io__state__arity0______random__generate_uint64_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((random.system_rng).'ClassMethod_for_random__urandom____random__system_rng__system_rng__arity0__io__state__arity0______random__generate_uint8_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((random.system_rng).close_system_rng((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((random.system_rng).generate_uint16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((random.system_rng).generate_uint32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((random.system_rng).generate_uint64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((random.system_rng).generate_uint8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(((random.system_rng).have_system_rng), finite(0, []), can_loop).
+:- pragma termination_info((random.system_rng).open_system_rng((builtin.out), (builtin.di), (builtin.uo)), finite(1, [no, yes, no]), cannot_loop).
+
+:- pragma exceptions(predicate, ((random.system_rng).close_system_rng), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.system_rng).generate_uint16), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.system_rng).generate_uint32), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.system_rng).generate_uint64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.system_rng).generate_uint8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.system_rng).have_system_rng), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((random.system_rng).open_system_rng), 3, 0, will_not_throw).

@@ -1,0 +1,6 @@
+:- module (random.system_rng).
+:- interface.
+:- import_module maybe.
+:- type system_rng.
+:- instance (urandom(random.system_rng.system_rng, io)).
+:- type_representation(system_rng, du_repn(direct_dummy("system_rng",  c_j_cs(no_foreign, foreign_type("java.security.SecureRandom", []), foreign_type("System.Security.Cryptography.RandomNumberGenerator", []))))).

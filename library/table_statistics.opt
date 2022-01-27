@@ -1,0 +1,61 @@
+:- module table_statistics.
+:- use_module bool.
+:- use_module builtin.
+:- use_module float.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module maybe.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module table_builtin.
+:- use_module (string.format).
+:- use_module (string.parse_util).
+
+:- type ml_table_stats_ptr
+    --->    ml_table_stats_ptr(builtin.c_pointer).
+:- pragma foreign_type(c, ml_table_stats_ptr, "MR_TableStats *", [can_pass_as_mercury_type]).
+:- type ml_table_step_desc_ptr
+    --->    ml_table_step_desc_ptr(builtin.c_pointer).
+:- pragma foreign_type(c, ml_table_step_desc_ptr, "const MR_TableStepDesc *", [can_pass_as_mercury_type]).
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", table_builtin).
+:- pragma foreign_import_module("C", table_statistics).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", string).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", string).
+
+table_statistics.dummy_proc_table_statistics = V_2 :-
+    V_3 = table_statistics.table_stats(V_5, V_6, V_7) : table_statistics.table_stats,
+    V_5 = 0 : int,
+    V_6 = 0 : int,
+    V_7 = list.[] : list.list(table_statistics.table_step_stats),
+    V_4 = table_statistics.table_stats_curr_prev(V_3, V_8) : table_statistics.table_stats_curr_prev,
+    V_8 = V_3,
+    V_2 = table_statistics.proc_table_statistics(V_4, V_9) : table_statistics.proc_table_statistics,
+    V_9 = maybe.no : maybe.maybe(table_statistics.table_stats_curr_prev).
+
+table_statistics.write_table_stats(V_4, V_7, V_8) :-
+    io.output_stream(V_6, V_7, V_9),
+    table_statistics.write_table_stats(V_6, V_4, V_9, V_8).
+
+:- pragma termination_info((table_statistics.dummy_proc_table_statistics) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(table_statistics.table_stats_difference((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(table_statistics.write_table_stats((builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(table_statistics.write_table_stats((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(function, (table_statistics.dummy_proc_table_statistics), 1, 0, will_not_throw).
+:- pragma exceptions(function, (table_statistics.table_stats_difference), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (table_statistics.write_table_stats), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (table_statistics.write_table_stats), 4, 0, may_throw(user_exception)).

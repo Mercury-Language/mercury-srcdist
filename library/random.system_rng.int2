@@ -1,0 +1,12 @@
+:- module (random.system_rng).
+:- interface.
+:- type system_rng.
+:- instance (random.urandom(random.system_rng.system_rng, io.io)).
+:- type_representation(system_rng, du_repn(direct_dummy("system_rng",  c_j_cs(no_foreign, foreign_type("java.security.SecureRandom", []), foreign_type("System.Security.Cryptography.RandomNumberGenerator", []))))).
+:- implementation.
+:- pragma foreign_import_module("C#", (random.system_rng)).
+:- pragma foreign_import_module("Java", (random.system_rng)).
+:- type system_rng
+    --->    system_rng .
+:- pragma foreign_type(java, system_rng, "java.security.SecureRandom").
+:- pragma foreign_type(csharp, system_rng, "System.Security.Cryptography.RandomNumberGenerator").

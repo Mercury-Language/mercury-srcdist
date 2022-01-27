@@ -1,0 +1,13 @@
+module(1, "table_builtin.m",
+	table_builtin,
+	{},
+	{builtin, io, private_builtin},
+	{builtin, io, private_builtin, require, univ},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - table_builtin},
+	no_foreign_export,
+	no_main
+).
