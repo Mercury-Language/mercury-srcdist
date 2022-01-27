@@ -1,0 +1,14 @@
+:- module (hlds.mark_tail_calls).
+:- interface.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.error_util).
+:- type maybe_changed
+    --->    not_changed 
+    ;       maybe_changed .
+:- pred mark_tail_calls_in_pred(hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode mark_tail_calls_in_pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred mark_tail_calls_in_proc(hlds.hlds_module.module_info, hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_info, list.list(parse_tree.error_util.error_spec), hlds.mark_tail_calls.maybe_changed, hlds.hlds_pred.proc_info, hlds.hlds_pred.proc_info).
+:- mode mark_tail_calls_in_proc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
