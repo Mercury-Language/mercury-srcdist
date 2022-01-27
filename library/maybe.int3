@@ -1,0 +1,10 @@
+:- module maybe.
+:- interface.
+:- type maybe_error.
+:- type maybe(T).
+:- type maybe_error(T).
+:- type maybe_error(T, E).
+:- inst (maybe(I)) == bound(no ; yes(I)).
+:- inst (maybe_error(I)) == bound(error(ground) ; ok(I)).
+:- inst (maybe_error_ok(I)) == bound(ok(I)).
+:- inst (maybe_yes(I)) == bound(yes(I)).

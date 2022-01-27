@@ -1,0 +1,267 @@
+/*
+** Automatically generated from `version_bitmap.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-02-06, configured for x86_64-apple-darwin13.0.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module version_bitmap. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_version_bitmap
+#define MR_HEADER_GUARD_version_bitmap
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef VERSION_BITMAP_DECL_GUARD
+#define VERSION_BITMAP_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "version_bitmap.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__version_bitmap__version_bitmap__type_ctor_info_version_bitmap_0;
+
+#line 129 "version_bitmap.m"
+void MR_CALL 
+mercury__version_bitmap____Compare____version_bitmap_0_0(
+#line 129 "version_bitmap.m"
+  MR_Word * mercury__version_bitmap__param_1,
+#line 129 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_2,
+#line 129 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_3);
+
+#line 129 "version_bitmap.m"
+MR_bool MR_CALL 
+mercury__version_bitmap____Unify____version_bitmap_0_0(
+#line 129 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1,
+#line 129 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_2);
+
+#line 259 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__complement_2_2_f_0(
+#line 259 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_1,
+#line 259 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_2);
+
+#line 169 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__clear_filler_bits_1_f_0(
+#line 169 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1);
+
+#line 109 "version_bitmap.m"
+void MR_CALL 
+mercury__version_bitmap__unsafe_rewind_2_p_0(
+#line 109 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1,
+#line 109 "version_bitmap.m"
+  MR_Box * mercury__version_bitmap__param_2);
+
+#line 105 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__unsafe_rewind_1_f_0(
+#line 105 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1);
+
+#line 96 "version_bitmap.m"
+void MR_CALL 
+mercury__version_bitmap__resize_4_p_0(
+#line 96 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_1,
+#line 96 "version_bitmap.m"
+  MR_Word mercury__version_bitmap__param_2,
+#line 96 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_3,
+#line 96 "version_bitmap.m"
+  MR_Box * mercury__version_bitmap__param_4);
+
+#line 92 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__resize_3_f_0(
+#line 92 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1,
+#line 92 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_2,
+#line 92 "version_bitmap.m"
+  MR_Word mercury__version_bitmap__param_3);
+
+#line 84 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__xor_2_f_0(
+#line 84 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1,
+#line 84 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_2);
+
+#line 82 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__difference_2_f_0(
+#line 82 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1,
+#line 82 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_2);
+
+#line 80 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__intersect_2_f_0(
+#line 80 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1,
+#line 80 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_2);
+
+#line 78 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__union_2_f_0(
+#line 78 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1,
+#line 78 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_2);
+
+#line 76 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__complement_1_f_0(
+#line 76 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1);
+
+#line 72 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__copy_1_f_0(
+#line 72 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1);
+
+#line 68 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__f_98_105_116_32_58_61_3_f_0(
+#line 68 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_1,
+#line 68 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_2,
+#line 68 "version_bitmap.m"
+  MR_Word mercury__version_bitmap__param_3);
+
+#line 64 "version_bitmap.m"
+MR_Word MR_CALL 
+mercury__version_bitmap__bit_2_f_0(
+#line 64 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_1,
+#line 64 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_2);
+
+#line 60 "version_bitmap.m"
+MR_bool MR_CALL 
+mercury__version_bitmap__is_clear_2_p_0(
+#line 60 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1,
+#line 60 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_2);
+
+#line 59 "version_bitmap.m"
+MR_bool MR_CALL 
+mercury__version_bitmap__is_set_2_p_0(
+#line 59 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1,
+#line 59 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_2);
+
+#line 54 "version_bitmap.m"
+void MR_CALL 
+mercury__version_bitmap__flip_3_p_0(
+#line 54 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_1,
+#line 54 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_2,
+#line 54 "version_bitmap.m"
+  MR_Box * mercury__version_bitmap__param_3);
+
+#line 53 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__flip_2_f_0(
+#line 53 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1,
+#line 53 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_2);
+
+#line 51 "version_bitmap.m"
+void MR_CALL 
+mercury__version_bitmap__clear_3_p_0(
+#line 51 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_1,
+#line 51 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_2,
+#line 51 "version_bitmap.m"
+  MR_Box * mercury__version_bitmap__param_3);
+
+#line 50 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__clear_2_f_0(
+#line 50 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1,
+#line 50 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_2);
+
+#line 48 "version_bitmap.m"
+void MR_CALL 
+mercury__version_bitmap__set_3_p_0(
+#line 48 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_1,
+#line 48 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_2,
+#line 48 "version_bitmap.m"
+  MR_Box * mercury__version_bitmap__param_3);
+
+#line 47 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__set_2_f_0(
+#line 47 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1,
+#line 47 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_2);
+
+#line 41 "version_bitmap.m"
+MR_Integer MR_CALL 
+mercury__version_bitmap__num_bits_1_f_0(
+#line 41 "version_bitmap.m"
+  MR_Box mercury__version_bitmap__param_1);
+
+#line 37 "version_bitmap.m"
+MR_Box MR_CALL 
+mercury__version_bitmap__init_2_f_0(
+#line 37 "version_bitmap.m"
+  MR_Integer mercury__version_bitmap__param_1,
+#line 37 "version_bitmap.m"
+  MR_Word mercury__version_bitmap__param_2);
+
+void mercury__version_bitmap__init(void);
+void mercury__version_bitmap__init_type_tables(void);
+void mercury__version_bitmap__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_version_bitmap */
+
+/* :- end_interface version_bitmap. */

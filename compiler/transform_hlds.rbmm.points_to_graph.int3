@@ -1,0 +1,11 @@
+:- module ((transform_hlds.rbmm).points_to_graph).
+:- interface.
+:- type rpt_graph.
+:- type rptg_edge.
+:- type rptg_edge_content.
+:- type rptg_edge_info.
+:- type rptg_edges.
+:- type rptg_node.
+:- type rptg_node_content.
+:- type rptg_nodes.
+:- type rptg_outedges.

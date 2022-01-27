@@ -1,0 +1,15 @@
+:- module (ml_backend.ml_target_util).
+:- interface.
+:- import_module bool.
+:- import_module (libs.globals).
+:- func globals_target_supports_break_and_continue(libs.globals.globals) = bool.bool.
+:- func globals_target_supports_computed_goto(libs.globals.globals) = bool.bool.
+:- func globals_target_supports_goto(libs.globals.globals) = bool.bool.
+:- func globals_target_supports_int_switch(libs.globals.globals) = bool.bool.
+:- func globals_target_supports_string_switch(libs.globals.globals) = bool.bool.
+:- func target_supports_break_and_continue(libs.globals.compilation_target) = bool.bool.
+:- func target_supports_computed_goto(libs.globals.compilation_target) = bool.bool.
+:- func target_supports_goto(libs.globals.compilation_target) = bool.bool.
+:- func target_supports_inheritence(libs.globals.compilation_target) = bool.bool.
+:- func target_supports_int_switch(libs.globals.compilation_target) = bool.bool.
+:- func target_supports_string_switch(libs.globals.compilation_target) = bool.bool.

@@ -1,0 +1,61 @@
+/*
+** Automatically generated from `ml_proc_gen.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-02-06, configured for x86_64-apple-darwin13.0.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.ml_proc_gen. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_proc_gen
+#define MR_HEADER_GUARD_ml_backend__ml_proc_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_PROC_GEN_DECL_GUARD
+#define ML_BACKEND__ML_PROC_GEN_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+#line 24 "ml_proc_gen.m"
+void MR_CALL 
+ml_backend__ml_proc_gen__ml_code_gen_3_p_0(
+#line 24 "ml_proc_gen.m"
+  MR_Word ml_backend__ml_proc_gen__param_1,
+#line 24 "ml_proc_gen.m"
+  MR_Word * ml_backend__ml_proc_gen__param_2,
+#line 24 "ml_proc_gen.m"
+  MR_Word * ml_backend__ml_proc_gen__param_3);
+
+void mercury__ml_backend__ml_proc_gen__init(void);
+void mercury__ml_backend__ml_proc_gen__init_type_tables(void);
+void mercury__ml_backend__ml_proc_gen__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.ml_proc_gen */
+
+/* :- end_interface ml_backend.ml_proc_gen. */

@@ -1,0 +1,99 @@
+/*
+** Automatically generated from `recompilation.version.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-02-06, configured for x86_64-apple-darwin13.0.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module recompilation.version. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_recompilation__version
+#define MR_HEADER_GUARD_recompilation__version
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef RECOMPILATION__VERSION_DECL_GUARD
+#define RECOMPILATION__VERSION_DECL_GUARD
+#include "recompilation.mih"
+
+#endif
+
+
+
+
+#line 42 "recompilation.version.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__version__recompilation__version__type_ctor_info_gathered_item_info_0;
+
+#line 45 "recompilation.version.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__version__recompilation__version__type_ctor_info_gathered_item_map_0;
+
+#line 48 "recompilation.version.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__version__recompilation__version__type_ctor_info_gathered_items_0;
+
+#line 51 "recompilation.version.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__version__recompilation__version__type_ctor_info_instance_item_map_0;
+
+#line 54 "recompilation.version.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__version__recompilation__version__type_ctor_info_item_version_numbers_result_0;
+
+#line 57 "recompilation.version.mih.tmp"
+extern const MR_TypeCtorInfo_Struct recompilation__version__recompilation__version__type_ctor_info_maybe_pred_or_func_id_0;
+
+#line 43 "recompilation.version.m"
+MR_Integer MR_CALL 
+recompilation__version__version_numbers_version_number_0_f_0(void);
+
+#line 38 "recompilation.version.m"
+void MR_CALL 
+recompilation__version__parse_version_numbers_2_p_0(
+#line 38 "recompilation.version.m"
+  MR_Word recompilation__version__param_1,
+#line 38 "recompilation.version.m"
+  MR_Word * recompilation__version__param_2);
+
+#line 36 "recompilation.version.m"
+void MR_CALL 
+recompilation__version__write_version_numbers_3_p_0(
+#line 36 "recompilation.version.m"
+  MR_Word recompilation__version__param_1);
+
+#line 33 "recompilation.version.m"
+void MR_CALL 
+recompilation__version__compute_version_numbers_4_p_0(
+#line 33 "recompilation.version.m"
+  MR_Word recompilation__version__param_1,
+#line 33 "recompilation.version.m"
+  MR_Word recompilation__version__param_2,
+#line 33 "recompilation.version.m"
+  MR_Word recompilation__version__param_3,
+#line 33 "recompilation.version.m"
+  MR_Word * recompilation__version__param_4);
+
+void mercury__recompilation__version__init(void);
+void mercury__recompilation__version__init_type_tables(void);
+void mercury__recompilation__version__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_recompilation.version */
+
+/* :- end_interface recompilation.version. */

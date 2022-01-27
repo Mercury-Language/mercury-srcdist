@@ -1,0 +1,95 @@
+/*
+** Automatically generated from `counter.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-02-06, configured for x86_64-apple-darwin13.0.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module counter. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_counter
+#define MR_HEADER_GUARD_counter
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef COUNTER_DECL_GUARD
+#define COUNTER_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "counter.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__counter__counter__type_ctor_info_counter_0;
+
+#line 50 "counter.m"
+void MR_CALL 
+mercury__counter____Compare____counter_0_0(
+#line 50 "counter.m"
+  MR_Word * mercury__counter__param_1,
+#line 50 "counter.m"
+  MR_Word mercury__counter__param_2,
+#line 50 "counter.m"
+  MR_Word mercury__counter__param_3);
+
+#line 50 "counter.m"
+MR_bool MR_CALL 
+mercury__counter____Unify____counter_0_0(
+#line 50 "counter.m"
+  MR_Word mercury__counter__param_1,
+#line 50 "counter.m"
+  MR_Word mercury__counter__param_2);
+
+#line 41 "counter.m"
+void MR_CALL 
+mercury__counter__allocate_3_p_0(
+#line 41 "counter.m"
+  MR_Integer * mercury__counter__param_1,
+#line 41 "counter.m"
+  MR_Word mercury__counter__param_2,
+#line 41 "counter.m"
+  MR_Word * mercury__counter__param_3);
+
+#line 35 "counter.m"
+MR_Word MR_CALL 
+mercury__counter__init_1_f_0(
+#line 35 "counter.m"
+  MR_Integer mercury__counter__param_1);
+
+#line 31 "counter.m"
+void MR_CALL 
+mercury__counter__init_2_p_0(
+#line 31 "counter.m"
+  MR_Integer mercury__counter__param_1,
+#line 31 "counter.m"
+  MR_Word * mercury__counter__param_2);
+
+void mercury__counter__init(void);
+void mercury__counter__init_type_tables(void);
+void mercury__counter__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_counter */
+
+/* :- end_interface counter. */

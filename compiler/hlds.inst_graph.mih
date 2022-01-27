@@ -1,0 +1,447 @@
+/*
+** Automatically generated from `inst_graph.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-02-06, configured for x86_64-apple-darwin13.0.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.inst_graph. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__inst_graph
+#define MR_HEADER_GUARD_hlds__inst_graph
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__INST_GRAPH_DECL_GUARD
+#define HLDS__INST_GRAPH_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "hlds.inst_graph.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__inst_graph__hlds__inst_graph__type_ctor_info_inst_graph_0;
+
+#line 45 "hlds.inst_graph.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__inst_graph__hlds__inst_graph__type_ctor_info_inst_graph_info_0;
+
+#line 48 "hlds.inst_graph.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__inst_graph__hlds__inst_graph__type_ctor_info_maybe_parent_0;
+
+#line 51 "hlds.inst_graph.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__inst_graph__hlds__inst_graph__type_ctor_info_node_0;
+
+#line 31 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph____Compare____node_0_0(
+#line 31 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_1,
+#line 31 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 31 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3);
+
+#line 31 "inst_graph.m"
+MR_bool MR_CALL 
+hlds__inst_graph____Unify____node_0_0(
+#line 31 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 31 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2);
+
+#line 46 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph____Compare____maybe_parent_0_0(
+#line 46 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_1,
+#line 46 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 46 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3);
+
+#line 46 "inst_graph.m"
+MR_bool MR_CALL 
+hlds__inst_graph____Unify____maybe_parent_0_0(
+#line 46 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 46 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2);
+
+#line 445 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph____Compare____inst_graph_info_0_0(
+#line 445 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_1,
+#line 445 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 445 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3);
+
+#line 445 "inst_graph.m"
+MR_bool MR_CALL 
+hlds__inst_graph____Unify____inst_graph_info_0_0(
+#line 445 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 445 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2);
+
+#line 29 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph____Compare____inst_graph_0_0(
+#line 29 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_1,
+#line 29 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 29 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3);
+
+#line 29 "inst_graph.m"
+MR_bool MR_CALL 
+hlds__inst_graph____Unify____inst_graph_0_0(
+#line 29 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 29 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2);
+
+#line 180 "inst_graph.m"
+MR_Word MR_CALL 
+hlds__inst_graph__f_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_105_110_115_116_95_103_114_97_112_104_32_58_61_2_f_0(
+#line 180 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 180 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2);
+
+#line 179 "inst_graph.m"
+MR_Word MR_CALL 
+hlds__inst_graph__implementation_inst_graph_1_f_0(
+#line 179 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1);
+
+#line 177 "inst_graph.m"
+MR_Word MR_CALL 
+hlds__inst_graph__f_105_110_116_101_114_102_97_99_101_95_118_97_114_115_101_116_32_58_61_2_f_0(
+#line 177 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 177 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2);
+
+#line 176 "inst_graph.m"
+MR_Word MR_CALL 
+hlds__inst_graph__interface_varset_1_f_0(
+#line 176 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1);
+
+#line 174 "inst_graph.m"
+MR_Word MR_CALL 
+hlds__inst_graph__f_105_110_116_101_114_102_97_99_101_95_118_97_114_115_32_58_61_2_f_0(
+#line 174 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 174 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2);
+
+#line 173 "inst_graph.m"
+MR_Word MR_CALL 
+hlds__inst_graph__interface_vars_1_f_0(
+#line 173 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1);
+
+#line 170 "inst_graph.m"
+MR_Word MR_CALL 
+hlds__inst_graph__f_105_110_116_101_114_102_97_99_101_95_105_110_115_116_95_103_114_97_112_104_32_58_61_2_f_0(
+#line 170 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 170 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2);
+
+#line 169 "inst_graph.m"
+MR_Word MR_CALL 
+hlds__inst_graph__interface_inst_graph_1_f_0(
+#line 169 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1);
+
+#line 167 "inst_graph.m"
+MR_Word MR_CALL 
+hlds__inst_graph__inst_graph_info_init_0_f_0(void);
+
+#line 158 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__corresponding_members_4_p_0(
+#line 158 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 158 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 158 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3,
+#line 158 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_4,
+#line 158 "inst_graph.m"
+  MR_Box * hlds__inst_graph__param_5,
+#line 158 "inst_graph.m"
+  MR_Box * hlds__inst_graph__param_6,
+#line 158 "inst_graph.m"
+  MR_Cont hlds__inst_graph__param_7,
+#line 158 "inst_graph.m"
+  void * hlds__inst_graph__param_8);
+
+#line 154 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__dump_4_p_0(
+#line 154 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 154 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2);
+
+#line 141 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__merge_7_p_0(
+#line 141 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 141 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 141 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3,
+#line 141 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_4,
+#line 141 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_5,
+#line 141 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_6,
+#line 141 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_7);
+
+#line 134 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__corresponding_nodes_from_lists_6_p_0(
+#line 134 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 134 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 134 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3,
+#line 134 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_4,
+#line 134 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_5,
+#line 134 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_6,
+#line 134 "inst_graph.m"
+  MR_Cont hlds__inst_graph__param_7,
+#line 134 "inst_graph.m"
+  void * hlds__inst_graph__param_8);
+
+#line 131 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__two_graphs_corresponding_nodes_6_p_0(
+#line 131 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 131 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 131 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3,
+#line 131 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_4,
+#line 131 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_5,
+#line 131 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_6,
+#line 131 "inst_graph.m"
+  MR_Cont hlds__inst_graph__param_7,
+#line 131 "inst_graph.m"
+  void * hlds__inst_graph__param_8);
+
+#line 128 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__same_graph_corresponding_nodes_5_p_0(
+#line 128 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 128 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 128 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3,
+#line 128 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_4,
+#line 128 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_5,
+#line 128 "inst_graph.m"
+  MR_Cont hlds__inst_graph__param_6,
+#line 128 "inst_graph.m"
+  void * hlds__inst_graph__param_7);
+
+#line 123 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__foldl_reachable_from_list2_7_p_0(
+#line 123 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 123 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 123 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3,
+#line 123 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_4,
+#line 123 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_5,
+#line 123 "inst_graph.m"
+  MR_Box hlds__inst_graph__param_6,
+#line 123 "inst_graph.m"
+  MR_Box * hlds__inst_graph__param_7,
+#line 123 "inst_graph.m"
+  MR_Box hlds__inst_graph__param_8,
+#line 123 "inst_graph.m"
+  MR_Box * hlds__inst_graph__param_9);
+
+#line 117 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__foldl_reachable2_7_p_0(
+#line 117 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 117 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 117 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3,
+#line 117 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_4,
+#line 117 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_5,
+#line 117 "inst_graph.m"
+  MR_Box hlds__inst_graph__param_6,
+#line 117 "inst_graph.m"
+  MR_Box * hlds__inst_graph__param_7,
+#line 117 "inst_graph.m"
+  MR_Box hlds__inst_graph__param_8,
+#line 117 "inst_graph.m"
+  MR_Box * hlds__inst_graph__param_9);
+
+#line 111 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__foldl_reachable_from_list_5_p_0(
+#line 111 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 111 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 111 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3,
+#line 111 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_4,
+#line 111 "inst_graph.m"
+  MR_Box hlds__inst_graph__param_5,
+#line 111 "inst_graph.m"
+  MR_Box * hlds__inst_graph__param_6);
+
+#line 103 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__foldl_reachable_5_p_0(
+#line 103 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 103 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 103 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3,
+#line 103 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_4,
+#line 103 "inst_graph.m"
+  MR_Box hlds__inst_graph__param_5,
+#line 103 "inst_graph.m"
+  MR_Box * hlds__inst_graph__param_6);
+
+#line 95 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__reachable_from_list_3_p_0(
+#line 95 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 95 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 95 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_3,
+#line 95 "inst_graph.m"
+  MR_Cont hlds__inst_graph__param_4,
+#line 95 "inst_graph.m"
+  void * hlds__inst_graph__param_5);
+
+#line 89 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__reachable_3_p_0(
+#line 89 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 89 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 89 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_3,
+#line 89 "inst_graph.m"
+  MR_Cont hlds__inst_graph__param_4,
+#line 89 "inst_graph.m"
+  void * hlds__inst_graph__param_5);
+
+#line 82 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__descendant_3_p_0(
+#line 82 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 82 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 82 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_3,
+#line 82 "inst_graph.m"
+  MR_Cont hlds__inst_graph__param_4,
+#line 82 "inst_graph.m"
+  void * hlds__inst_graph__param_5);
+
+#line 76 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__top_level_node_3_p_0(
+#line 76 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 76 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 76 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_3);
+
+#line 69 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__set_parent_4_p_0(
+#line 69 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 69 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_2,
+#line 69 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_3,
+#line 69 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_4);
+
+#line 62 "inst_graph.m"
+void MR_CALL 
+hlds__inst_graph__init_2_p_0(
+#line 62 "inst_graph.m"
+  MR_Word hlds__inst_graph__param_1,
+#line 62 "inst_graph.m"
+  MR_Word * hlds__inst_graph__param_2);
+
+void mercury__hlds__inst_graph__init(void);
+void mercury__hlds__inst_graph__init_type_tables(void);
+void mercury__hlds__inst_graph__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.inst_graph */
+
+/* :- end_interface hlds.inst_graph. */

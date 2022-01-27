@@ -1,0 +1,9 @@
+:- module (check_hlds.stratify).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.error_util).
+:- pred check_module_for_stratification(hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec)).
+:- mode check_module_for_stratification((builtin.in), (builtin.out), (builtin.out)) is det.

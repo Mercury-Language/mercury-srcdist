@@ -1,0 +1,101 @@
+/*
+** Automatically generated from `livemap.m'
+** by the Mercury compiler,
+** version 14.01-beta-2014-02-06, configured for x86_64-apple-darwin13.0.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.livemap. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__livemap
+#define MR_HEADER_GUARD_ll_backend__livemap
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__LIVEMAP_DECL_GUARD
+#define LL_BACKEND__LIVEMAP_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 42 "ll_backend.livemap.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__livemap__ll_backend__livemap__type_ctor_info_livemap_0;
+
+#line 45 "ll_backend.livemap.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__livemap__ll_backend__livemap__type_ctor_info_lvalset_0;
+
+#line 29 "livemap.m"
+void MR_CALL 
+ll_backend__livemap____Compare____lvalset_0_0(
+#line 29 "livemap.m"
+  MR_Word * ll_backend__livemap__param_1,
+#line 29 "livemap.m"
+  MR_Word ll_backend__livemap__param_2,
+#line 29 "livemap.m"
+  MR_Word ll_backend__livemap__param_3);
+
+#line 29 "livemap.m"
+MR_bool MR_CALL 
+ll_backend__livemap____Unify____lvalset_0_0(
+#line 29 "livemap.m"
+  MR_Word ll_backend__livemap__param_1,
+#line 29 "livemap.m"
+  MR_Word ll_backend__livemap__param_2);
+
+#line 28 "livemap.m"
+void MR_CALL 
+ll_backend__livemap____Compare____livemap_0_0(
+#line 28 "livemap.m"
+  MR_Word * ll_backend__livemap__param_1,
+#line 28 "livemap.m"
+  MR_Word ll_backend__livemap__param_2,
+#line 28 "livemap.m"
+  MR_Word ll_backend__livemap__param_3);
+
+#line 28 "livemap.m"
+MR_bool MR_CALL 
+ll_backend__livemap____Unify____livemap_0_0(
+#line 28 "livemap.m"
+  MR_Word ll_backend__livemap__param_1,
+#line 28 "livemap.m"
+  MR_Word ll_backend__livemap__param_2);
+
+#line 36 "livemap.m"
+void MR_CALL 
+ll_backend__livemap__build_livemap_2_p_0(
+#line 36 "livemap.m"
+  MR_Word ll_backend__livemap__param_1,
+#line 36 "livemap.m"
+  MR_Word * ll_backend__livemap__param_2);
+
+void mercury__ll_backend__livemap__init(void);
+void mercury__ll_backend__livemap__init_type_tables(void);
+void mercury__ll_backend__livemap__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.livemap */
+
+/* :- end_interface ll_backend.livemap. */
