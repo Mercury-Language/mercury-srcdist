@@ -1,0 +1,21 @@
+:- module parsing_utils.
+:- interface.
+:- import_module char.
+:- import_module list.
+:- import_module maybe.
+:- import_module unit.
+:- type line_numbers.
+:- type parse_result(T)
+	--->	ok(T)
+	;	error((parsing_utils.error_message) :: maybe.maybe(string), (parsing_utils.error_line) :: int, (parsing_utils.error_col) :: int).
+:- type parser(T) == pred(parsing_utils.src, T, parsing_utils.ps, parsing_utils.ps).
+:- type parser_with_state(T, S) == pred(parsing_utils.src, T, S, S, parsing_utils.ps, parsing_utils.ps).
+:- type ps.
+:- type skip_whitespace_pred == parsing_utils.parser(unit.unit).
+:- type src.
+:- inst (parser) == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet).
+:- inst (parser_with_state) == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet).
+:- implementation.
+:- import_module array.
+:- type line_numbers == array.array(int).
+:- type ps == int.

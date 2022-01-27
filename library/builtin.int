@@ -1,0 +1,92 @@
+:- module builtin.
+:- interface.
+:- type c_pointer.
+:- type compare(T) == pred(builtin.comparison_result, T, T).
+:- type comparison_func(T) == (func(T, T) = builtin.comparison_result).
+:- type comparison_pred(T) == pred(T, T, builtin.comparison_result).
+:- type comparison_result
+	--->	(=) 
+	;	(<) 
+	;	(>) .
+:- type unify(T) == pred(T, T).
+:- inst (compare) == (pred((builtin.uo), (builtin.in), (builtin.in)) is det).
+:- inst (comparison_func) == builtin.comparison_func(ground).
+:- inst (comparison_func(I)) == (func(builtin.in(I), builtin.in(I)) = (builtin.out) is det).
+:- inst (comparison_pred) == builtin.comparison_pred(ground).
+:- inst (comparison_pred(I)) == (pred(builtin.in(I), builtin.in(I), (builtin.out)) is det).
+:- inst (dead) == clobbered.
+:- inst (mostly_dead) == mostly_clobbered.
+:- inst (new) == free.
+:- inst (old) == any.
+:- inst (unify) == (pred((builtin.in), (builtin.in)) is semidet).
+:- mode (di) == (unique >> clobbered).
+:- mode (di(Inst)) == (Inst >> clobbered).
+:- mode (ia) == (any >> any).
+:- mode (in) == (ground >> ground).
+:- mode (in(Inst)) == (Inst >> Inst).
+:- mode (input) == (ground >> ground).
+:- mode (mdi) == (mostly_unique >> mostly_clobbered).
+:- mode (mdi(Inst)) == (Inst >> mostly_clobbered).
+:- mode (mui) == (mostly_unique >> mostly_unique).
+:- mode (muo) == (free >> mostly_unique).
+:- mode (no) == ((builtin.new) >> (builtin.old)).
+:- mode (oa) == (free >> any).
+:- mode (oo) == ((builtin.old) >> (builtin.old)).
+:- mode (out) == (free >> ground).
+:- mode (out(Inst)) == (free >> Inst).
+:- mode (output) == (free >> ground).
+:- mode (ui) == (unique >> unique).
+:- mode (unused) == (free >> free).
+:- mode (uo) == (free >> unique).
+:- pred @<(T, T).
+:- mode @<((builtin.in), (builtin.in)) is semidet.
+:- pred @=<(T, T).
+:- mode @=<((builtin.in), (builtin.in)) is semidet.
+:- pred @>(T, T).
+:- mode @>((builtin.in), (builtin.in)) is semidet.
+:- pred @>=(T, T).
+:- mode @>=((builtin.in), (builtin.in)) is semidet.
+:- pred cc_multi_equal(T, T).
+:- mode cc_multi_equal((builtin.di), (builtin.uo)) is cc_multi.
+:- mode cc_multi_equal((builtin.in), (builtin.out)) is cc_multi.
+:- pred compare(builtin.comparison_result, T, T).
+:- mode compare((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- mode compare((builtin.uo), (builtin.ui), (builtin.ui)) is det.
+:- mode compare((builtin.uo), (builtin.ui), (builtin.in)) is det.
+:- mode compare((builtin.uo), (builtin.in), (builtin.ui)) is det.
+:- pred compare_representation(builtin.comparison_result, T, T).
+:- mode compare_representation((builtin.uo), (builtin.in), (builtin.in)) is cc_multi.
+:- pred copy(T, T).
+:- mode copy((builtin.ui), (builtin.uo)) is det.
+:- mode copy((builtin.in), (builtin.uo)) is det.
+:- pred dynamic_cast(T1, T2).
+:- mode dynamic_cast((builtin.in), (builtin.out)) is semidet.
+:- pred false is failure.
+:- impure func get_one_solution((pred T)) = T.
+:- mode get_one_solution((pred((builtin.out)) is cc_multi)) = (builtin.out) is det.
+:- mode get_one_solution((pred((builtin.out)) is cc_nondet)) = (builtin.out) is semidet.
+:- impure pred get_one_solution_io(pred(T, IO, IO), T, IO, IO).
+:- mode get_one_solution_io((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- impure pred impure_true is det.
+:- impure pred init_runtime_hooks is det.
+:- func ordering(T, T) = builtin.comparison_result.
+:- func promise_only_solution((pred T)) = T.
+:- mode promise_only_solution((pred((builtin.out)) is cc_multi)) = (builtin.out) is det.
+:- mode promise_only_solution((pred((builtin.uo)) is cc_multi)) = (builtin.uo) is det.
+:- mode promise_only_solution((pred((builtin.out)) is cc_nondet)) = (builtin.out) is semidet.
+:- mode promise_only_solution((pred((builtin.uo)) is cc_nondet)) = (builtin.uo) is semidet.
+:- pred promise_only_solution_io(pred(T, IO, IO), T, IO, IO).
+:- mode promise_only_solution_io(builtin.in((pred((builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred semidet_fail is semidet.
+:- pred semidet_false is semidet.
+:- pred semidet_succeed is semidet.
+:- pred semidet_true is semidet.
+:- semipure pred semipure_true is det.
+:- pred unify(T, T).
+:- mode unify((builtin.in), (builtin.in)) is semidet.
+:- func unsafe_cast_any_to_ground(T) = T.
+:- mode unsafe_cast_any_to_ground((builtin.ia)) = (builtin.out) is det.
+:- func unsafe_promise_unique(T) = T.
+:- mode unsafe_promise_unique((builtin.in)) = (builtin.uo) is det.
+:- pred unsafe_promise_unique(T, T).
+:- mode unsafe_promise_unique((builtin.in), (builtin.uo)) is det.

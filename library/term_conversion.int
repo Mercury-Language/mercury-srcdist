@@ -1,0 +1,30 @@
+:- module term_conversion.
+:- interface.
+:- import_module list.
+:- import_module term.
+:- import_module type_desc.
+:- import_module univ.
+:- type term_to_type_arg_context
+	--->	arg_context(term.const, int, term.context).
+:- type term_to_type_context == list.list(term_conversion.term_to_type_arg_context).
+:- type term_to_type_error(T)
+	--->	type_error(term.term(T), type_desc.type_desc, term.context, term_conversion.term_to_type_context)
+	;	mode_error(term.var(T), term_conversion.term_to_type_context).
+:- type term_to_type_result(T) == term_conversion.term_to_type_result(T, term.generic).
+:- type term_to_type_result(T, U)
+	--->	ok(T)
+	;	error(term_conversion.term_to_type_error(U)).
+:- func det_term_to_type(term.term(V_1)) = T.
+:- pred det_term_to_type(term.term(V_1), T).
+:- mode det_term_to_type((builtin.in), (builtin.out)) is det.
+:- pred term_to_type(term.term(U), T).
+:- mode term_to_type((builtin.in), (builtin.out)) is semidet.
+:- func try_term_to_type(term.term(U)) = term_conversion.term_to_type_result(T, U).
+:- pred try_term_to_type(term.term(U), term_conversion.term_to_type_result(T, U)).
+:- mode try_term_to_type((builtin.in), (builtin.out)) is det.
+:- func type_to_term(T) = term.term(V_2).
+:- pred type_to_term(T, term.term(V_2)).
+:- mode type_to_term((builtin.in), (builtin.out)) is det.
+:- func univ_to_term(univ.univ) = term.term(V_1).
+:- pred univ_to_term(univ.univ, term.term(V_1)).
+:- mode univ_to_term((builtin.in), (builtin.out)) is det.

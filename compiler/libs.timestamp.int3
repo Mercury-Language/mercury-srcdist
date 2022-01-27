@@ -1,0 +1,5 @@
+:- module (libs.timestamp).
+:- interface.
+:- type maybe_return_timestamp
+	where	type_is_abstract_enum(1).
+:- type timestamp.

@@ -1,0 +1,15 @@
+:- module (parse_tree.prog_type).
+:- interface.
+:- type ctor_defn.
+:- type is_builtin_dummy_type_ctor
+	where	type_is_abstract_enum(1).
+:- type polymorphism_cell.
+:- type type_ctor_cat_builtin
+	where	type_is_abstract_enum(2).
+:- type type_ctor_cat_enum
+	where	type_is_abstract_enum(1).
+:- type type_ctor_cat_system
+	where	type_is_abstract_enum(2).
+:- type type_ctor_cat_user
+	where	type_is_abstract_enum(2).
+:- type type_ctor_category.

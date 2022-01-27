@@ -1,0 +1,58 @@
+/*
+** Automatically generated from `mlds_to_ilasm.m'
+** by the Mercury compiler,
+** version rotd-2015-03-10
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.mlds_to_ilasm. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_ilasm
+#define MR_HEADER_GUARD_ml_backend__mlds_to_ilasm
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_ILASM_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_ILASM_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+ml_backend__mlds_to_ilasm__output_mlds_via_ilasm_5_p_0(
+  MR_Word ml_backend__mlds_to_ilasm__param_1,
+  MR_Word ml_backend__mlds_to_ilasm__param_2,
+  MR_Word * ml_backend__mlds_to_ilasm__param_3);
+
+void mercury__ml_backend__mlds_to_ilasm__init(void);
+void mercury__ml_backend__mlds_to_ilasm__init_type_tables(void);
+void mercury__ml_backend__mlds_to_ilasm__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.mlds_to_ilasm */
+
+/* :- end_interface ml_backend.mlds_to_ilasm. */
