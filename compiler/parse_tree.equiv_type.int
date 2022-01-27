@@ -1,0 +1,34 @@
+:- module (parse_tree.equiv_type).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module recompilation.
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- type equiv_type_info == maybe.maybe(parse_tree.equiv_type.expanded_item_set).
+:- type eqv_map == map.map(parse_tree.prog_data.type_ctor, parse_tree.equiv_type.eqv_type_body).
+:- type eqv_type_body
+	--->	eqv_type_body(parse_tree.prog_data.tvarset, list.list(parse_tree.prog_data.type_param), parse_tree.prog_data.mer_type).
+:- type expanded_item_set.
+:- pred expand_eqv_types(mdbcomp.sym_name.module_name, list.list(parse_tree.prog_item.item), list.list(parse_tree.prog_item.item), parse_tree.prog_data.event_spec_map, parse_tree.prog_data.event_spec_map, parse_tree.equiv_type.eqv_map, parse_tree.prog_data.used_modules, maybe.maybe(recompilation.recompilation_info), maybe.maybe(recompilation.recompilation_info), list.list(parse_tree.error_util.error_spec)).
+:- mode expand_eqv_types((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred finish_recording_expanded_items(recompilation.item_id, parse_tree.equiv_type.equiv_type_info, maybe.maybe(recompilation.recompilation_info), maybe.maybe(recompilation.recompilation_info)).
+:- mode finish_recording_expanded_items((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_start_recording_expanded_items(mdbcomp.sym_name.module_name, mdbcomp.sym_name.sym_name, maybe.maybe(recompilation.recompilation_info), parse_tree.equiv_type.equiv_type_info).
+:- mode maybe_start_recording_expanded_items((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred replace_in_ctors(parse_tree.equiv_type.eqv_map, list.list(parse_tree.prog_data.constructor), list.list(parse_tree.prog_data.constructor), parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, parse_tree.equiv_type.equiv_type_info, parse_tree.equiv_type.equiv_type_info).
+:- mode replace_in_ctors((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred replace_in_prog_constraints(parse_tree.equiv_type.eqv_map, parse_tree.prog_data.prog_constraints, parse_tree.prog_data.prog_constraints, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, parse_tree.equiv_type.equiv_type_info, parse_tree.equiv_type.equiv_type_info).
+:- mode replace_in_prog_constraints((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred replace_in_type(parse_tree.equiv_type.eqv_map, parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type, bool.bool, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, parse_tree.equiv_type.equiv_type_info, parse_tree.equiv_type.equiv_type_info).
+:- mode replace_in_type((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred replace_in_type_list(parse_tree.equiv_type.eqv_map, list.list(parse_tree.prog_data.mer_type), list.list(parse_tree.prog_data.mer_type), bool.bool, parse_tree.prog_data.tvarset, parse_tree.prog_data.tvarset, parse_tree.equiv_type.equiv_type_info, parse_tree.equiv_type.equiv_type_info).
+:- mode replace_in_type_list((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- implementation.
+:- import_module pair.
+:- import_module set.
+:- type expanded_item_set == pair.pair(mdbcomp.sym_name.module_name, set.set(recompilation.item_id)).

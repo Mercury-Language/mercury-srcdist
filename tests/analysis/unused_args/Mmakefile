@@ -1,0 +1,26 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+
+THIS_DIR = analysis/unused_args
+
+# Delete options which are incompatible with --intermodule-analysis.
+# These are currently set for nightly tests.
+override EXTRA_MCFLAGS := $(patsubst --intermodule-opt%,,$(EXTRA_MCFLAGS))
+override EXTRA_MCFLAGS := $(patsubst --transitive-%,,$(EXTRA_MCFLAGS))
+
+#-----------------------------------------------------------------------------#
+
+SUBDIRS=
+TESTS=ua_m1-nodepend
+TESTS_DIR=../..
+include $(TESTS_DIR)/Mmake.common
+
+ua_m1.runtest:
+	MC=$(MC) ./unused_args_runtest.sh
+
+realclean_local:
+	$(RM) ua_m1.m
+	$(RM) -r Mercury
+
+#-----------------------------------------------------------------------------#

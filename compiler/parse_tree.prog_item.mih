@@ -1,0 +1,962 @@
+/*
+** Automatically generated from `prog_item.m'
+** by the Mercury compiler,
+** version rotd-2015-01-28
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.prog_item. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_item
+#define MR_HEADER_GUARD_parse_tree__prog_item
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_ITEM_DECL_GUARD
+#define PARSE_TREE__PROG_ITEM_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_catch_any_expr_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_catch_expr_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_class_method_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_class_methods_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_compilation_unit_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_contains_foreign_code_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_contains_foreign_export_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_foreign_name_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_goal_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_clause_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_compiler_attributes_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_finalise_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_initialise_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_maybe_attrs_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_module_defn_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_module_end_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_module_start_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mutable_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_nothing_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_promise_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_warning_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_maybe_allow_export_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_maybe_is_mutable_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_module_defn_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_module_foreign_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_mutable_thread_local_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_mutable_trailed_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_mutable_var_attributes_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_exceptions_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_fact_table_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_code_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_decl_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_enum_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_export_enum_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_import_module_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_proc_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_proc_export_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_mm_tabling_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_oisu_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_require_feature_set_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_source_file_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_structure_reuse_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_structure_sharing_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_tabled_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_termination2_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_termination_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_trailing_info_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_type_spec_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_unused_args_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_type_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pred_name_arity_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pred_name_arity_mpf_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pred_name_arity_pf_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pred_name_arity_pf_mn_0;
+
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pred_name_modes_pf_0;
+
+void MR_CALL 
+parse_tree__prog_item__get_item_list_foreign_code_6_p_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word * parse_tree__prog_item__param_3,
+  MR_Word * parse_tree__prog_item__param_4,
+  MR_Word * parse_tree__prog_item__param_5,
+  MR_Word * parse_tree__prog_item__param_6);
+
+void MR_CALL 
+parse_tree__prog_item__set_mutable_add_foreign_name_3_p_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word * parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item__set_mutable_var_attach_to_io_state_3_p_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word * parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item__set_mutable_var_constant_3_p_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word * parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item__set_mutable_var_thread_local_3_p_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word * parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item__set_mutable_var_trailed_3_p_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word * parse_tree__prog_item__param_3);
+
+MR_Word MR_CALL 
+parse_tree__prog_item__default_mutable_attributes_0_f_0(void);
+
+MR_Word MR_CALL 
+parse_tree__prog_item__get_item_context_1_f_0(
+  MR_Word parse_tree__prog_item__param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_item__goal_get_context_1_f_0(
+  MR_Word parse_tree__prog_item__param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_item__mutable_var_attach_to_io_state_1_f_0(
+  MR_Word parse_tree__prog_item__param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_item__mutable_var_constant_1_f_0(
+  MR_Word parse_tree__prog_item__param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_item__mutable_var_maybe_foreign_names_1_f_0(
+  MR_Word parse_tree__prog_item__param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_item__mutable_var_thread_local_1_f_0(
+  MR_Word parse_tree__prog_item__param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_item__mutable_var_trailed_1_f_0(
+  MR_Word parse_tree__prog_item__param_1);
+
+MR_Word MR_CALL 
+parse_tree__prog_item__pragma_allowed_in_interface_1_f_0(
+  MR_Word parse_tree__prog_item__param_1);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____catch_any_expr_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____catch_expr_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____class_method_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____class_methods_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____compilation_unit_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____contains_foreign_code_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____contains_foreign_export_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____foreign_name_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____goal_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_clause_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_compiler_attributes_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_finalise_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_initialise_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_inst_defn_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_instance_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_maybe_attrs_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_mode_decl_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_mode_defn_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_module_defn_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_module_end_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_module_start_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_mutable_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_nothing_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_pragma_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_pred_decl_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_promise_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_type_defn_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_typeclass_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____item_warning_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____maybe_allow_export_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____maybe_is_mutable_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____module_defn_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____mutable_thread_local_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____mutable_trailed_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____mutable_var_attributes_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_exceptions_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_fact_table_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_code_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_decl_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_enum_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_export_enum_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_import_module_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_proc_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_foreign_proc_export_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_mm_tabling_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_oisu_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_require_feature_set_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_source_file_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_structure_reuse_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_structure_sharing_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_tabled_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_termination2_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_termination_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_trailing_info_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_type_spec_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_info_unused_args_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pragma_type_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pred_name_arity_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pred_name_arity_mpf_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pred_name_arity_pf_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pred_name_arity_pf_mn_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Compare____pred_name_modes_pf_0_0(
+  MR_Word * parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2,
+  MR_Word parse_tree__prog_item__param_3);
+
+void MR_CALL 
+parse_tree__prog_item____Index____goal_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Integer * parse_tree__prog_item__param_2);
+
+void MR_CALL 
+parse_tree__prog_item____Index____item_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Integer * parse_tree__prog_item__param_2);
+
+void MR_CALL 
+parse_tree__prog_item____Index____pragma_type_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Integer * parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____catch_any_expr_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____catch_expr_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____class_method_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____class_methods_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____compilation_unit_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____contains_foreign_code_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____contains_foreign_export_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____foreign_name_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____goal_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_clause_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_compiler_attributes_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_finalise_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_initialise_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_inst_defn_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_instance_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_maybe_attrs_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_mode_decl_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_mode_defn_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_module_defn_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_module_end_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_module_start_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_mutable_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_nothing_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_pragma_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_pred_decl_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_promise_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_type_defn_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_typeclass_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____item_warning_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____maybe_allow_export_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____maybe_is_mutable_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____module_defn_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____mutable_thread_local_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____mutable_trailed_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____mutable_var_attributes_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_exceptions_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_fact_table_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_code_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_decl_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_enum_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_export_enum_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_import_module_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_proc_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_foreign_proc_export_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_mm_tabling_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_oisu_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_require_feature_set_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_source_file_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_structure_reuse_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_structure_sharing_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_tabled_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_termination2_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_termination_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_trailing_info_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_type_spec_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_info_unused_args_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pragma_type_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pred_name_arity_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pred_name_arity_mpf_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pred_name_arity_pf_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pred_name_arity_pf_mn_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+MR_bool MR_CALL 
+parse_tree__prog_item____Unify____pred_name_modes_pf_0_0(
+  MR_Word parse_tree__prog_item__param_1,
+  MR_Word parse_tree__prog_item__param_2);
+
+void mercury__parse_tree__prog_item__init(void);
+void mercury__parse_tree__prog_item__init_type_tables(void);
+void mercury__parse_tree__prog_item__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.prog_item */
+
+/* :- end_interface parse_tree.prog_item. */

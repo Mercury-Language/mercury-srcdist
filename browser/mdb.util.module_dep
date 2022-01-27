@@ -1,0 +1,13 @@
+module(1, "util.m",
+	(mdb.util),
+	{mdb},
+	{builtin, bool, io, list, (mdbcomp.prim_data), private_builtin},
+	{builtin, bool, io, list, (mdbcomp.prim_data), require, string, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.util), "C" - (mdb.util)},
+	contains_foreign_export,
+	no_main
+).

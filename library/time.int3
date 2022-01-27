@@ -1,0 +1,10 @@
+:- module time.
+:- interface.
+:- type clock_t.
+:- type dst
+	where	type_is_abstract_enum(1).
+:- type time_error.
+:- type time_t.
+:- type time_t_rep.
+:- type tm.
+:- type tms.

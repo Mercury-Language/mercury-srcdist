@@ -1,0 +1,195 @@
+:- module term.
+:- pragma termination_info(term.get_term_context((builtin.in)) = (builtin.out), finite(-2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.try_term_to_type((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.try_term_to_type((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.term_to_type((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.det_term_to_type((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.det_term_to_type((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.type_to_term((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.type_to_term((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.univ_to_term((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.univ_to_term((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.vars((builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.vars((builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.vars_2((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(term.vars_2((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(term.vars_list((builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.vars_list((builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.contains_var((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(term.contains_var((builtin.in), (builtin.out)), finite(-2, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.contains_var_list((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(term.contains_var_list((builtin.in), (builtin.out)), finite(-4, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.unify_term((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.unify_term_list((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.unify_term_dont_bind((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.unify_term_list_dont_bind((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.list_subsumes((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.rename((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(term.rename((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term.rename_list((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(term.rename_list((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term.substitute((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(term.substitute((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term.substitute_list((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(term.substitute_list((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term.substitute_corresponding((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.substitute_corresponding((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.substitute_corresponding_list((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.substitute_corresponding_list((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.apply_rec_substitution((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.apply_rec_substitution((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.apply_rec_substitution_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.apply_rec_substitution_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.apply_substitution((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.apply_substitution((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.apply_substitution_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.apply_substitution_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.apply_renaming((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.apply_renaming((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.apply_renaming_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.apply_renaming_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.occurs((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(term.occurs_list((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(term.relabel_variable((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(term.relabel_variable((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term.relabel_variables((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(term.relabel_variables((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term.apply_variable_renaming((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.apply_variable_renaming((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.apply_variable_renaming_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.apply_variable_renaming_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.apply_variable_renaming_to_var((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.apply_variable_renaming_to_var((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.apply_variable_renaming_to_vars((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(term.apply_variable_renaming_to_vars((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.is_ground_in_bindings((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(term.is_ground((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info((term.init_var_supply) = (builtin.out), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(term.init_var_supply((builtin.out)), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(term.init_var_supply((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(term.create_var((builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term.var_id((builtin.in)) = (builtin.out), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.var_to_int((builtin.in)) = (builtin.out), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.var_to_int((builtin.in), (builtin.out)), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.context_line((builtin.in)) = (builtin.out), finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info(term.context_line((builtin.in), (builtin.out)), finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info(term.context_file((builtin.in)) = (builtin.out), finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info(term.context_file((builtin.in), (builtin.out)), finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info((term.context_init) = (builtin.out), finite(2, [no]), cannot_loop).
+:- pragma termination_info(term.context_init((builtin.out)), finite(2, [no]), cannot_loop).
+:- pragma termination_info(term.context_init((builtin.in), (builtin.in)) = (builtin.out), finite(2, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(term.context_init((builtin.in), (builtin.in), (builtin.out)), finite(2, [yes, yes, no]), cannot_loop).
+:- pragma termination_info(term.term_list_to_var_list((builtin.in)) = (builtin.out), finite(0, [no, yes, no]), can_loop).
+:- pragma termination_info(term.term_list_to_var_list((builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.var_list_to_term_list((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(term.var_list_to_term_list((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term.generic_term((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(term.coerce((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(term.coerce((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term.coerce_var((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(term.coerce_var((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term.coerce_var_supply((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(term.coerce_var_supply((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(term.var_supply_max_var((builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.var_supply_num_allocated((builtin.in)) = (builtin.out), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.vars_2_list((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(term.build_subst((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(term.is_ground_list((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(term.'ClassMethod_for_enum__enum____term__var__arity1______enum__to_int_1'((builtin.in)) = (builtin.out), finite(-1, [no, yes, no]), cannot_loop).
+:- pragma termination_info(term.'ClassMethod_for_enum__enum____term__var__arity1______enum__from_int_1'((builtin.in)) = (builtin.out), finite(1, [no, yes, no]), cannot_loop).
+:- pragma exceptions(function, (term.get_term_context), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term.try_term_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.try_term_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.term_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term.det_term_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.det_term_to_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term.type_to_term), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.type_to_term), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term.univ_to_term), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.univ_to_term), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term.vars), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.vars), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term.vars_2), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.vars_2), 3, 0, will_not_throw).
+:- pragma exceptions(function, (term.vars_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.vars_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.contains_var), 2, 0, conditional).
+:- pragma exceptions(predicate, (term.contains_var), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (term.contains_var_list), 2, 0, conditional).
+:- pragma exceptions(predicate, (term.contains_var_list), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (term.unify_term), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.unify_term_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.unify_term_dont_bind), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.unify_term_list_dont_bind), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.list_subsumes), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term.rename), 4, 0, conditional).
+:- pragma exceptions(predicate, (term.rename), 4, 0, conditional).
+:- pragma exceptions(function, (term.rename_list), 4, 0, conditional).
+:- pragma exceptions(predicate, (term.rename_list), 4, 0, conditional).
+:- pragma exceptions(function, (term.substitute), 4, 0, conditional).
+:- pragma exceptions(predicate, (term.substitute), 4, 0, conditional).
+:- pragma exceptions(function, (term.substitute_list), 4, 0, conditional).
+:- pragma exceptions(predicate, (term.substitute_list), 4, 0, conditional).
+:- pragma exceptions(function, (term.substitute_corresponding), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.substitute_corresponding), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term.substitute_corresponding_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.substitute_corresponding_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (term.apply_rec_substitution), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.apply_rec_substitution), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (term.apply_rec_substitution_to_list), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.apply_rec_substitution_to_list), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (term.apply_substitution), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.apply_substitution), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (term.apply_substitution_to_list), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.apply_substitution_to_list), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (term.apply_renaming), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.apply_renaming), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (term.apply_renaming_to_list), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.apply_renaming_to_list), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.occurs), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.occurs_list), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (term.relabel_variable), 4, 0, conditional).
+:- pragma exceptions(predicate, (term.relabel_variable), 4, 0, conditional).
+:- pragma exceptions(function, (term.relabel_variables), 4, 0, conditional).
+:- pragma exceptions(predicate, (term.relabel_variables), 4, 0, conditional).
+:- pragma exceptions(function, (term.apply_variable_renaming), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.apply_variable_renaming), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (term.apply_variable_renaming_to_list), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.apply_variable_renaming_to_list), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (term.apply_variable_renaming_to_var), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.apply_variable_renaming_to_var), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (term.apply_variable_renaming_to_vars), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.apply_variable_renaming_to_vars), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.is_ground_in_bindings), 2, 0, may_throw(type_exception)).
+:- pragma exceptions(predicate, (term.is_ground), 1, 0, will_not_throw).
+:- pragma exceptions(function, (term.init_var_supply), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.init_var_supply), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.init_var_supply), 1, 1, will_not_throw).
+:- pragma exceptions(predicate, (term.create_var), 3, 0, will_not_throw).
+:- pragma exceptions(function, (term.var_id), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term.var_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.var_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term.context_line), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.context_line), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term.context_file), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.context_file), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term.context_init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.context_init), 1, 0, will_not_throw).
+:- pragma exceptions(function, (term.context_init), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.context_init), 3, 0, will_not_throw).
+:- pragma exceptions(function, (term.term_list_to_var_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.term_list_to_var_list), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term.var_list_to_term_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.var_list_to_term_list), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.generic_term), 1, 0, will_not_throw).
+:- pragma exceptions(function, (term.coerce), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.coerce), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term.coerce_var), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.coerce_var), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term.coerce_var_supply), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.coerce_var_supply), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term.var_supply_max_var), 2, 0, will_not_throw).
+:- pragma exceptions(function, (term.var_supply_num_allocated), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.vars_2_list), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (term.build_subst), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (term.is_ground_list), 1, 0, will_not_throw).

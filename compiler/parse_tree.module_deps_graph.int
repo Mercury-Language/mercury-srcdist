@@ -1,0 +1,21 @@
+:- module (parse_tree.module_deps_graph).
+:- interface.
+:- import_module digraph.
+:- import_module io.
+:- import_module list.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.deps_map).
+:- import_module (parse_tree.module_imports).
+:- type deps_graph == digraph.digraph(mdbcomp.sym_name.module_name).
+:- type deps_graph_key == digraph.digraph_key(mdbcomp.sym_name.module_name).
+:- type lookup_module_and_imports == ((func mdbcomp.sym_name.module_name) = parse_tree.module_imports.module_and_imports).
+:- mode (lookup_module_and_imports) == builtin.in((func((builtin.in)) = (builtin.out) is det)).
+:- pred add_module_relations(parse_tree.module_deps_graph.lookup_module_and_imports, mdbcomp.sym_name.module_name, digraph.digraph(mdbcomp.sym_name.module_name), digraph.digraph(mdbcomp.sym_name.module_name), digraph.digraph(mdbcomp.sym_name.module_name), digraph.digraph(mdbcomp.sym_name.module_name)).
+:- mode add_module_relations(((parse_tree.module_deps_graph).lookup_module_and_imports), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred deps_list_to_deps_graph(list.list(parse_tree.deps_map.deps), parse_tree.deps_map.deps_map, parse_tree.module_deps_graph.deps_graph, parse_tree.module_deps_graph.deps_graph, parse_tree.module_deps_graph.deps_graph, parse_tree.module_deps_graph.deps_graph).
+:- mode deps_list_to_deps_graph((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred get_dependencies_from_graph(parse_tree.module_deps_graph.deps_graph, mdbcomp.sym_name.module_name, list.list(mdbcomp.sym_name.module_name)).
+:- mode get_dependencies_from_graph((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_output_imports_graph(libs.globals.globals, mdbcomp.sym_name.module_name, digraph.digraph(mdbcomp.sym_name.sym_name), digraph.digraph(mdbcomp.sym_name.sym_name), io.io, io.io).
+:- mode maybe_output_imports_graph((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

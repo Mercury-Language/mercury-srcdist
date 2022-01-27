@@ -1,0 +1,13 @@
+module(1, "term_size_prof_builtin.m",
+	term_size_prof_builtin,
+	{},
+	{builtin, private_builtin},
+	{builtin, require, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - term_size_prof_builtin, "C" - term_size_prof_builtin},
+	no_foreign_export,
+	no_main
+).

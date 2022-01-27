@@ -1,0 +1,107 @@
+:- module (mdbcomp.goal_path).
+:- interface.
+:- import_module array.
+:- import_module bimap.
+:- import_module char.
+:- import_module map.
+:- import_module maybe.
+:- type containing_goal
+	--->	whole_body_goal 
+	;	containing_goal(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.goal_path_step).
+:- type containing_goal_map == map.map(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.containing_goal).
+:- type forward_goal_path
+	--->	fgp_nil 
+	;	fgp_cons(mdbcomp.goal_path.goal_path_step, mdbcomp.goal_path.forward_goal_path).
+:- type goal_forward_path_map == map.map(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.forward_goal_path).
+:- type goal_id
+	--->	goal_id(int).
+:- type goal_path_step
+	--->	step_conj(int)
+	;	step_disj(int)
+	;	step_switch(int, mdbcomp.goal_path.maybe_switch_num_functors)
+	;	step_ite_cond 
+	;	step_ite_then 
+	;	step_ite_else 
+	;	step_neg 
+	;	step_scope(mdbcomp.goal_path.maybe_cut)
+	;	step_lambda 
+	;	step_try 
+	;	step_atomic_main 
+	;	step_atomic_orelse(int).
+:- type goal_path_string == string.
+:- type goal_reverse_path_bimap == bimap.bimap(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.reverse_goal_path).
+:- type goal_reverse_path_map == map.map(mdbcomp.goal_path.goal_id, mdbcomp.goal_path.reverse_goal_path).
+:- type maybe_cut
+	--->	scope_is_cut 
+	;	scope_is_no_cut .
+:- type maybe_switch_num_functors
+	--->	unknown_num_functors_in_type 
+	;	known_num_functors_in_type(int).
+:- type reverse_goal_path
+	--->	rgp_nil 
+	;	rgp_cons(mdbcomp.goal_path.reverse_goal_path, mdbcomp.goal_path.goal_path_step).
+:- type goal_attr_array(T)
+	--->	goal_attr_array(array.array(maybe.maybe(T))).
+:- inst (uniq_goal_attr_array) == bound(goal_attr_array((array.uniq_array))).
+:- mode (gaa_di) == builtin.di(((mdbcomp.goal_path).uniq_goal_attr_array)).
+:- mode (gaa_uo) == builtin.out(((mdbcomp.goal_path).uniq_goal_attr_array)).
+:- func create_forward_goal_path_map(mdbcomp.goal_path.containing_goal_map) = mdbcomp.goal_path.goal_forward_path_map.
+:- func create_goal_id_array(mdbcomp.goal_path.goal_id) = mdbcomp.goal_path.goal_attr_array(T).
+:- mode create_goal_id_array((builtin.in)) = ((mdbcomp.goal_path).gaa_uo) is det.
+:- func create_goal_id_array(mdbcomp.goal_path.goal_id, T) = mdbcomp.goal_path.goal_attr_array(T).
+:- mode create_goal_id_array((builtin.in), (builtin.in)) = ((mdbcomp.goal_path).gaa_uo) is det.
+:- func create_reverse_goal_path_bimap(mdbcomp.goal_path.containing_goal_map) = mdbcomp.goal_path.goal_reverse_path_bimap.
+:- func create_reverse_goal_path_map(mdbcomp.goal_path.containing_goal_map) = mdbcomp.goal_path.goal_reverse_path_map.
+:- pred fgp_to_rgp(mdbcomp.goal_path.forward_goal_path, mdbcomp.goal_path.reverse_goal_path).
+:- mode fgp_to_rgp((builtin.in), (builtin.out)) is det.
+:- func get_goal_attribute_det(mdbcomp.goal_path.goal_attr_array(T), mdbcomp.goal_path.goal_id) = T.
+:- func goal_id_for_head_constraints = mdbcomp.goal_path.goal_id.
+:- pred goal_id_inside(mdbcomp.goal_path.containing_goal_map, mdbcomp.goal_path.goal_id, mdbcomp.goal_path.goal_id).
+:- mode goal_id_inside((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- func goal_id_to_forward_path(mdbcomp.goal_path.containing_goal_map, mdbcomp.goal_path.goal_id) = mdbcomp.goal_path.forward_goal_path.
+:- func goal_id_to_reverse_path(mdbcomp.goal_path.containing_goal_map, mdbcomp.goal_path.goal_id) = mdbcomp.goal_path.reverse_goal_path.
+:- func goal_path_add_at_end(mdbcomp.goal_path.forward_goal_path, mdbcomp.goal_path.goal_path_step) = mdbcomp.goal_path.forward_goal_path.
+:- pred goal_path_from_string(string, mdbcomp.goal_path.forward_goal_path).
+:- mode goal_path_from_string((builtin.in), (builtin.out)) is semidet.
+:- pred goal_path_from_string_det(string, mdbcomp.goal_path.forward_goal_path).
+:- mode goal_path_from_string_det((builtin.in), (builtin.out)) is det.
+:- pred goal_path_get_first(mdbcomp.goal_path.forward_goal_path, mdbcomp.goal_path.goal_path_step).
+:- mode goal_path_get_first((builtin.in), (builtin.out)) is semidet.
+:- pred goal_path_get_last(mdbcomp.goal_path.forward_goal_path, mdbcomp.goal_path.goal_path_step).
+:- mode goal_path_get_last((builtin.in), (builtin.out)) is semidet.
+:- pred goal_path_inside(mdbcomp.goal_path.forward_goal_path, mdbcomp.goal_path.forward_goal_path).
+:- mode goal_path_inside((builtin.in), (builtin.in)) is semidet.
+:- pred goal_path_inside_relative(mdbcomp.goal_path.forward_goal_path, mdbcomp.goal_path.forward_goal_path, mdbcomp.goal_path.forward_goal_path).
+:- mode goal_path_inside_relative((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred goal_path_remove_first(mdbcomp.goal_path.forward_goal_path, mdbcomp.goal_path.forward_goal_path, mdbcomp.goal_path.goal_path_step).
+:- mode goal_path_remove_first((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred goal_path_remove_last(mdbcomp.goal_path.forward_goal_path, mdbcomp.goal_path.forward_goal_path, mdbcomp.goal_path.goal_path_step).
+:- mode goal_path_remove_last((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred goal_path_step_from_string(string, mdbcomp.goal_path.goal_path_step).
+:- mode goal_path_step_from_string((builtin.in), (builtin.out)) is semidet.
+:- func goal_path_to_string(mdbcomp.goal_path.forward_goal_path) = string.
+:- pred is_goal_path_separator(char.char).
+:- mode is_goal_path_separator((builtin.in)) is semidet.
+:- pred is_valid_goal_id(mdbcomp.goal_path.goal_id).
+:- mode is_valid_goal_id((builtin.in)) is semidet.
+:- func rev_goal_path_add_at_end(mdbcomp.goal_path.reverse_goal_path, mdbcomp.goal_path.goal_path_step) = mdbcomp.goal_path.reverse_goal_path.
+:- pred rev_goal_path_from_string(string, mdbcomp.goal_path.reverse_goal_path).
+:- mode rev_goal_path_from_string((builtin.in), (builtin.out)) is semidet.
+:- pred rev_goal_path_from_string_det(string, mdbcomp.goal_path.reverse_goal_path).
+:- mode rev_goal_path_from_string_det((builtin.in), (builtin.out)) is det.
+:- pred rev_goal_path_get_last(mdbcomp.goal_path.reverse_goal_path, mdbcomp.goal_path.goal_path_step).
+:- mode rev_goal_path_get_last((builtin.in), (builtin.out)) is semidet.
+:- pred rev_goal_path_inside(mdbcomp.goal_path.reverse_goal_path, mdbcomp.goal_path.reverse_goal_path).
+:- mode rev_goal_path_inside((builtin.in), (builtin.in)) is semidet.
+:- pred rev_goal_path_inside_relative(mdbcomp.goal_path.reverse_goal_path, mdbcomp.goal_path.reverse_goal_path, mdbcomp.goal_path.reverse_goal_path).
+:- mode rev_goal_path_inside_relative((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred rev_goal_path_remove_last(mdbcomp.goal_path.reverse_goal_path, mdbcomp.goal_path.reverse_goal_path, mdbcomp.goal_path.goal_path_step).
+:- mode rev_goal_path_remove_last((builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred rev_goal_path_remove_type_info(mdbcomp.goal_path.reverse_goal_path, mdbcomp.goal_path.reverse_goal_path).
+:- mode rev_goal_path_remove_type_info((builtin.in), (builtin.out)) is det.
+:- func rev_goal_path_to_string(mdbcomp.goal_path.reverse_goal_path) = string.
+:- pred rgp_to_fgp(mdbcomp.goal_path.reverse_goal_path, mdbcomp.goal_path.forward_goal_path).
+:- mode rgp_to_fgp((builtin.in), (builtin.out)) is det.
+:- pred update_goal_attribute(mdbcomp.goal_path.goal_id, T, mdbcomp.goal_path.goal_attr_array(T), mdbcomp.goal_path.goal_attr_array(T)).
+:- mode update_goal_attribute((builtin.in), (builtin.in), ((mdbcomp.goal_path).gaa_di), ((mdbcomp.goal_path).gaa_uo)) is det.
+:- func whole_body_goal_id = mdbcomp.goal_path.goal_id.
