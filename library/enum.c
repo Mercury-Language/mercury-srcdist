@@ -1,0 +1,504 @@
+/*
+** Automatically generated from `enum.m'
+** by the Mercury compiler,
+** version rotd-2015-07-28
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module enum. */
+/* :- implementation. */
+
+/*
+INIT mercury__enum__init
+ENDINIT
+*/
+
+#include "enum.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "benchmarking.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "calendar.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "dir.mih"
+#include "erlang_rtti_implementation.mih"
+#include "exception.mih"
+#include "float.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "lexer.mih"
+#include "list.mih"
+#include "map.mih"
+#include "math.mih"
+#include "maybe.mih"
+#include "mutvar.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parser.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "solutions.mih"
+#include "std_util.mih"
+#include "stm_builtin.mih"
+#include "store.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "table_builtin.mih"
+#include "term.mih"
+#include "term_conversion.mih"
+#include "term_io.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "version_array.mih"
+#include "stream.string_writer.mih"
+#include "string.format.mih"
+#include "string.parse_runtime.mih"
+#include "string.parse_util.mih"
+#include "string.to_string.mih"
+
+
+
+
+#line 93 "enum.c"
+static const MR_ConstString mercury__enum__enum__type_class_id_var_names_enum_1[1];
+
+#line 96 "enum.c"
+static const MR_TypeClassMethod mercury__enum__enum__type_class_id_method_ids_enum_1[2];
+
+#line 99 "enum.c"
+static const MR_TypeClassId mercury__enum__enum__type_class_id_enum_1;
+
+#line 13 "ops.opt"
+static MR_Integer MR_CALL 
+mercury__enum__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_in__ops_0(void);
+
+
+static /* final */ const MR_Box mercury__enum_scalar_common_1[1][3];
+
+static /* final */ const MR_Box mercury__enum_scalar_common_2[1][4];
+
+static /* final */ const MR_Box mercury__enum_scalar_common_3[2][5];
+
+
+
+
+static /* final */ const MR_Box mercury__enum_scalar_common_1[1][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__stream__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__enum_scalar_common_2[1][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__output__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__enum_scalar_common_1[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__enum_scalar_common_3[2][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__string__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__enum_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__character__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__enum_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_character_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+
+
+#include "builtin.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "int.mh"
+#include "array.mh"
+#include "array.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "array.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "time.mh"
+#include "time.mh"
+#include "array.mh"
+#include "array.mh"
+#include "dir.mh"
+#include "dir.mh"
+#include "table_builtin.mh"
+#include "table_builtin.mh"
+#include "benchmarking.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "char.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "construct.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "array.mh"
+#include "array.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "dir.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "float.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "rtti_implementation.mh"
+#include "array.mh"
+#include "array.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "table_builtin.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "version_array.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "time.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "type_desc.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "exception.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "stm_builtin.mh"
+#include "stm_builtin.mh"
+#include "store.mh"
+#include "store.mh"
+#include "stm_builtin.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "store.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "math.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "pretty_printer.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "array.mh"
+#include "array.mh"
+#include "version_array.mh"
+#include "version_array.mh"
+#include "string.mh"
+#include "array.mh"
+#include "array.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "version_array.mh"
+#include "version_array.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "private_builtin.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "array.mh"
+#include "array.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "dir.mh"
+#include "dir.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "stm_builtin.mh"
+#include "stm_builtin.mh"
+#include "store.mh"
+#include "store.mh"
+#include "table_builtin.mh"
+#include "table_builtin.mh"
+#include "time.mh"
+#include "time.mh"
+#include "version_array.mh"
+#include "version_array.mh"
+
+
+
+#line 323 "enum.c"
+static const MR_ConstString mercury__enum__enum__type_class_id_var_names_enum_1[1] = {
+  (MR_String) "T"
+};
+
+#line 328 "enum.c"
+static const MR_TypeClassMethod mercury__enum__enum__type_class_id_method_ids_enum_1[2] = {
+  {
+    (MR_String) "to_int",
+    (MR_Integer) 2,
+    mercury__private_builtin__MR_FUNCTION
+  },
+  {
+    (MR_String) "from_int",
+    (MR_Integer) 2,
+    mercury__private_builtin__MR_FUNCTION
+  }
+};
+
+#line 342 "enum.c"
+static const MR_TypeClassId mercury__enum__enum__type_class_id_enum_1 = {
+  (MR_String) "enum",
+  (MR_String) "enum",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  (MR_Integer) 2,
+  mercury__enum__enum__type_class_id_var_names_enum_1,
+  mercury__enum__enum__type_class_id_method_ids_enum_1
+};
+
+#line 353 "enum.c"
+const MR_TypeClassDeclStruct mercury__enum__enum__type_class_decl_enum_1 = {
+  &mercury__enum__enum__type_class_id_enum_1,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 13 "ops.opt"
+static MR_Integer MR_CALL 
+mercury__enum__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_in__ops_0(void)
+#line 13 "ops.opt"
+{
+#line 38 "ops.opt"
+  {
+#line 38 "ops.opt"
+    MR_bool mercury__enum__succeeded;
+
+#line 38 "ops.opt"
+    return (MR_Integer) 1200;
+#line 38 "ops.opt"
+  }
+#line 13 "ops.opt"
+}
+
+#line 33 "enum.m"
+MR_Box MR_CALL 
+mercury__enum__det_from_int_1_f_0(
+#line 33 "enum.m"
+  MR_Word mercury__enum__TypeClassInfo_for_enum_9,
+#line 33 "enum.m"
+  MR_Integer mercury__enum__I_3)
+#line 33 "enum.m"
+{
+#line 45 "enum.m"
+  {
+#line 45 "enum.m"
+    MR_bool mercury__enum__succeeded;
+#line 45 "enum.m"
+    MR_Box mercury__enum__X_4;
+#line 45 "enum.m"
+    MR_Box mercury__enum__X0_5;
+#line 395 "enum.c"
+    MR_bool MR_CALL (* mercury__enum__func_0)(MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__enum__TypeClassInfo_for_enum_9, (MR_Integer) 0)), (MR_Integer) 6)));
+
+#line 398 "enum.c"
+    {
+#line 400 "enum.c"
+      mercury__enum__succeeded = mercury__enum__func_0(((MR_Box) mercury__enum__TypeClassInfo_for_enum_9), ((MR_Box) (mercury__enum__I_3)), &mercury__enum__X0_5);
+    }
+#line 45 "enum.m"
+    if (mercury__enum__succeeded)
+#line 44 "enum.m"
+      mercury__enum__X_4 = mercury__enum__X0_5;
+#line 45 "enum.m"
+    else
+#line 46 "enum.m"
+      {
+#line 46 "enum.m"
+        {
+#line 46 "enum.m"
+          mercury__require__unexpected_3_p_0((MR_String) "enum", (MR_String) "function \140enum.det_from_int\'/1", (MR_String) "from_int failed");
+        }
+#line 46 "enum.m"
+      }
+#line 45 "enum.m"
+    return mercury__enum__X_4;
+#line 45 "enum.m"
+  }
+#line 33 "enum.m"
+}
+
+#line 27 "enum.m"
+MR_bool MR_CALL 
+mercury__enum__from_int_1_f_0(
+#line 27 "enum.m"
+  MR_Word mercury__enum__TypeClassInfo_for_enum_3,
+#line 27 "enum.m"
+  MR_Integer mercury__enum__HeadVar__1_1,
+#line 27 "enum.m"
+  MR_Box * mercury__enum__HeadVar__2_2)
+#line 27 "enum.m"
+{
+#line 436 "enum.c"
+  {
+#line 438 "enum.c"
+    MR_bool mercury__enum__succeeded;
+#line 440 "enum.c"
+    MR_bool MR_CALL (* mercury__enum__func_0)(MR_Box, MR_Box, MR_Box *) = ((MR_bool MR_CALL (*)(MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__enum__TypeClassInfo_for_enum_3, (MR_Integer) 0)), (MR_Integer) 6)));
+
+#line 443 "enum.c"
+    {
+#line 445 "enum.c"
+      return mercury__enum__succeeded = mercury__enum__func_0(((MR_Box) mercury__enum__TypeClassInfo_for_enum_3), ((MR_Box) (mercury__enum__HeadVar__1_1)), mercury__enum__HeadVar__2_2);
+    }
+#line 448 "enum.c"
+    return mercury__enum__succeeded;
+#line 450 "enum.c"
+  }
+#line 27 "enum.m"
+}
+
+#line 26 "enum.m"
+MR_Integer MR_CALL 
+mercury__enum__to_int_1_f_0(
+#line 26 "enum.m"
+  MR_Word mercury__enum__TypeClassInfo_for_enum_3,
+#line 26 "enum.m"
+  MR_Box mercury__enum__HeadVar__1_1)
+#line 26 "enum.m"
+{
+#line 464 "enum.c"
+  {
+#line 466 "enum.c"
+    MR_bool mercury__enum__succeeded;
+#line 468 "enum.c"
+    MR_Integer mercury__enum__HeadVar__2_2;
+#line 470 "enum.c"
+    MR_Box MR_CALL (* mercury__enum__func_0)(MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), mercury__enum__TypeClassInfo_for_enum_3, (MR_Integer) 0)), (MR_Integer) 5)));
+#line 472 "enum.c"
+    MR_Box mercury__enum__conv1_HeadVar__2_2;
+
+#line 475 "enum.c"
+    {
+#line 477 "enum.c"
+      mercury__enum__conv1_HeadVar__2_2 = mercury__enum__func_0(((MR_Box) mercury__enum__TypeClassInfo_for_enum_3), mercury__enum__HeadVar__1_1);
+    }
+#line 480 "enum.c"
+    mercury__enum__HeadVar__2_2 = ((MR_Integer) mercury__enum__conv1_HeadVar__2_2);
+#line 482 "enum.c"
+    return mercury__enum__HeadVar__2_2;
+#line 484 "enum.c"
+  }
+#line 26 "enum.m"
+}
+
+void mercury__enum__init(void)
+{
+}
+
+void mercury__enum__init_type_tables(void)
+{
+}
+
+void mercury__enum__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module enum. */

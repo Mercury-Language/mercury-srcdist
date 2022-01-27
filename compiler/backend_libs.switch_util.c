@@ -1,0 +1,14743 @@
+/*
+** Automatically generated from `switch_util.m'
+** by the Mercury compiler,
+** version rotd-2015-07-28
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module backend_libs.switch_util. */
+/* :- implementation. */
+
+/*
+INIT mercury__backend_libs__switch_util__init
+ENDINIT
+*/
+
+#include "backend_libs.switch_util.mih"
+
+
+#include "analysis.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "backend_libs.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "hlds.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "backend_libs.builtin_ops.mih"
+#include "backend_libs.rtti.mih"
+#include "backend_libs.string_encoding.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.type_util.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.code_model.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_code_util.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "parse_tree.status.mih"
+#include "string.format.mih"
+#include "string.parse_util.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+#line 145 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_soln_consts_1__pseudo_2;
+
+#line 148 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_2;
+
+#line 151 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1;
+
+#line 154 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1;
+
+#line 157 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1;
+
+#line 160 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1;
+
+#line 163 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1;
+
+#line 166 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0;
+
+#line 169 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__plain_hlds__hlds_goal__type_ctor_info_case_id_0__plain_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0;
+
+#line 172 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1;
+
+#line 175 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__pseudo_1__pseudo_list__pti_list_1__pseudo_2;
+
+#line 178 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_3_0[1];
+
+#line 181 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_0;
+
+#line 184 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__pseudo_1__pseudo_backend_libs__switch_util__pti_soln_consts_1__pseudo_2;
+
+#line 187 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_3_1[2];
+
+#line 190 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_1;
+
+#line 193 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_3_0[1];
+
+#line 196 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_3_1[1];
+
+#line 199 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_case_consts_3[2];
+
+#line 202 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_case_consts_3[2];
+
+#line 205 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_case_consts_3[2];
+
+#line 208 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+#line 211 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+#line 214 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_several_llds_0_0[2];
+
+#line 217 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_several_llds_0_0;
+
+#line 220 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_several_llds_0_0[1];
+
+#line 223 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_case_consts_several_llds_0[1];
+
+#line 226 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_case_consts_several_llds_0[1];
+
+#line 229 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_case_consts_several_llds_0[1];
+
+#line 232 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct2 backend_libs__switch_util__tree234__ti_tree234_2hlds__hlds_goal__type_ctor_info_case_id_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0;
+
+#line 235 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_0;
+
+#line 238 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_1;
+
+#line 241 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_is_int_switch_0[2];
+
+#line 244 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_is_int_switch_0[2];
+
+#line 247 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_is_int_switch_0[2];
+
+#line 250 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_0;
+
+#line 253 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_1;
+
+#line 256 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_may_use_smart_indexing_0[2];
+
+#line 259 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_may_use_smart_indexing_0[2];
+
+#line 262 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_may_use_smart_indexing_0[2];
+
+#line 265 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_maybe_int_switch_info_0_0[3];
+
+#line 268 "backend_libs.switch_util.c"
+static const MR_ConstString backend_libs__switch_util__backend_libs__switch_util__field_names_maybe_int_switch_info_0_0[3];
+
+#line 271 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_0;
+
+#line 274 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_1;
+
+#line 277 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_maybe_int_switch_info_0_0[1];
+
+#line 280 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_maybe_int_switch_info_0_1[1];
+
+#line 283 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_maybe_int_switch_info_0[2];
+
+#line 286 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_maybe_int_switch_info_0[2];
+
+#line 289 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_maybe_int_switch_info_0[2];
+
+#line 292 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_0;
+
+#line 295 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_1;
+
+#line 298 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_need_bit_vec_check_0[2];
+
+#line 301 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_need_bit_vec_check_0[2];
+
+#line 304 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_need_bit_vec_check_0[2];
+
+#line 307 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_0;
+
+#line 310 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_1;
+
+#line 313 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_need_range_check_0[2];
+
+#line 316 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_need_range_check_0[2];
+
+#line 319 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_need_range_check_0[2];
+
+#line 322 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_1;
+
+#line 325 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_1_0[2];
+
+#line 328 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_1_0;
+
+#line 331 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_1_0[1];
+
+#line 334 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_1[1];
+
+#line 337 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_1[1];
+
+#line 340 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_1[1];
+
+#line 343 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_entry_1_0[2];
+
+#line 346 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_entry_1_0;
+
+#line 349 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_entry_1_0[1];
+
+#line 352 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_entry_1[1];
+
+#line 355 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_entry_1[1];
+
+#line 358 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_entry_1[1];
+
+#line 361 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__list__ti_list_1builtin__type_ctor_info_int_0;
+
+#line 364 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_group_entry_1_0[3];
+
+#line 367 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_group_entry_1_0;
+
+#line 370 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_group_entry_1_0[1];
+
+#line 373 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_group_entry_1[1];
+
+#line 376 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_group_entry_1[1];
+
+#line 379 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_group_entry_1[1];
+
+#line 382 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1;
+
+#line 385 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_entry_1__pseudo_1;
+
+#line 388 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_backend_libs__switch_util__pti_ptag_case_entry_1__pseudo_1;
+
+#line 391 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1__pseudo_backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1;
+
+#line 394 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_rev_map_entry_1_0[4];
+
+#line 397 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_rev_map_entry_1_0;
+
+#line 400 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_rev_map_entry_1_0[1];
+
+#line 403 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_rev_map_entry_1[1];
+
+#line 406 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_rev_map_entry_1[1];
+
+#line 409 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_rev_map_entry_1[1];
+
+#line 412 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct2 backend_libs__switch_util__pair__ti_pair_2backend_libs__rtti__type_ctor_info_sectag_locn_0builtin__type_ctor_info_int_0;
+
+#line 415 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct2 backend_libs__switch_util__tree234__ti_tree234_2builtin__type_ctor_info_int_0pair__ti_pair_2backend_libs__rtti__type_ctor_info_sectag_locn_0builtin__type_ctor_info_int_0;
+
+#line 418 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_1;
+
+#line 421 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_soln_consts_1_0[1];
+
+#line 424 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_0;
+
+#line 427 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_list__pti_list_1__pseudo_1;
+
+#line 430 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_soln_consts_1_1[2];
+
+#line 433 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_1;
+
+#line 436 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_soln_consts_1_0[1];
+
+#line 439 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_soln_consts_1_1[1];
+
+#line 442 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_soln_consts_1[2];
+
+#line 445 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_soln_consts_1[2];
+
+#line 448 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_soln_consts_1[2];
+
+#line 451 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_1;
+
+#line 454 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_1;
+
+#line 457 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_string_hash_slot_1_0[3];
+
+#line 460 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_string_hash_slot_1_0;
+
+#line 463 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_string_hash_slot_1_0[1];
+
+#line 466 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_string_hash_slot_1[1];
+
+#line 469 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_string_hash_slot_1[1];
+
+#line 472 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_string_hash_slot_1[1];
+
+#line 475 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_0;
+
+#line 478 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_1;
+
+#line 481 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_2;
+
+#line 484 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_3;
+
+#line 487 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_switch_category_0[4];
+
+#line 490 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_switch_category_0[4];
+
+#line 493 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_switch_category_0[4];
+
+#line 496 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_0;
+
+#line 499 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_1;
+
+#line 502 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_table_size_upgrade_0[2];
+
+#line 505 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_table_size_upgrade_0[2];
+
+#line 508 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_table_size_upgrade_0[2];
+
+#line 511 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_consts_3_0_10001(
+#line 514 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 516 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 518 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 520 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4,
+#line 522 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_5);
+
+#line 525 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____case_consts_3_0_10001(
+#line 528 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 530 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 532 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 534 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_4,
+#line 536 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_5,
+#line 538 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_6);
+
+#line 541 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_consts_several_llds_0_0_10001(
+#line 544 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 546 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+#line 549 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____case_consts_several_llds_0_0_10001(
+#line 552 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 554 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 556 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 559 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_id_ptags_map_0_0_10001(
+#line 562 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 564 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+#line 567 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____case_id_ptags_map_0_0_10001(
+#line 570 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 572 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 574 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 577 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____is_int_switch_0_0_10001(
+#line 580 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 582 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+#line 585 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____is_int_switch_0_0_10001(
+#line 588 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 590 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 592 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 595 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____may_use_smart_indexing_0_0_10001(
+#line 598 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 600 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+#line 603 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____may_use_smart_indexing_0_0_10001(
+#line 606 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 608 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 610 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 613 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____maybe_int_switch_info_0_0_10001(
+#line 616 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 618 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+#line 621 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____maybe_int_switch_info_0_0_10001(
+#line 624 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 626 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 628 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 631 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____need_bit_vec_check_0_0_10001(
+#line 634 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 636 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+#line 639 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____need_bit_vec_check_0_0_10001(
+#line 642 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 644 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 646 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 649 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____need_range_check_0_0_10001(
+#line 652 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 654 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+#line 657 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____need_range_check_0_0_10001(
+#line 660 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 662 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 664 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 667 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_1_0_10001(
+#line 670 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 672 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 674 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 677 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_1_0_10001(
+#line 680 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 682 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 684 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 686 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+#line 689 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_entry_1_0_10001(
+#line 692 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 694 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 696 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 699 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_entry_1_0_10001(
+#line 702 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 704 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 706 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 708 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+#line 711 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_group_entry_1_0_10001(
+#line 714 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 716 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 718 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 721 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_group_entry_1_0_10001(
+#line 724 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 726 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 728 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 730 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+#line 733 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_group_list_1_0_10001(
+#line 736 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 738 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 740 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 743 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_group_list_1_0_10001(
+#line 746 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 748 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 750 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 752 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+#line 755 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_list_1_0_10001(
+#line 758 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 760 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 762 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 765 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_list_1_0_10001(
+#line 768 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 770 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 772 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 774 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+#line 777 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_map_1_0_10001(
+#line 780 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 782 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 784 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 787 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_map_1_0_10001(
+#line 790 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 792 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 794 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 796 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+#line 799 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_1_0_10001(
+#line 802 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 804 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 806 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 809 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_1_0_10001(
+#line 812 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 814 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 816 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 818 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+#line 821 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_entry_1_0_10001(
+#line 824 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 826 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 828 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 831 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_entry_1_0_10001(
+#line 834 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 836 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 838 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 840 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+#line 843 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_count_map_0_0_10001(
+#line 846 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 848 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+#line 851 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_count_map_0_0_10001(
+#line 854 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 856 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 858 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 861 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____soln_consts_1_0_10001(
+#line 864 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 866 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 868 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 871 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____soln_consts_1_0_10001(
+#line 874 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 876 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 878 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 880 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+#line 883 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____stag_goal_list_1_0_10001(
+#line 886 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 888 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 890 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 893 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____stag_goal_list_1_0_10001(
+#line 896 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 898 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 900 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 902 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+#line 905 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____stag_goal_map_1_0_10001(
+#line 908 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 910 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 912 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 915 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____stag_goal_map_1_0_10001(
+#line 918 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 920 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 922 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 924 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+#line 927 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____string_hash_slot_1_0_10001(
+#line 930 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 932 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 934 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 937 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____string_hash_slot_1_0_10001(
+#line 940 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 942 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 944 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 946 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4);
+
+#line 949 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____switch_category_0_0_10001(
+#line 952 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 954 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+#line 957 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____switch_category_0_0_10001(
+#line 960 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 962 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 964 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 967 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____table_size_upgrade_0_0_10001(
+#line 970 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 972 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2);
+
+#line 975 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____table_size_upgrade_0_0_10001(
+#line 978 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 980 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 982 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3);
+
+#line 1266 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_114_111_117_112_95_99_97_115_101_115_95_98_121_95_112_116_97_103_95_108_111_111_112_95_95_91_50_44_32_51_44_32_52_93_95_48_12_p_0_1(
+#line 1266 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 1266 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 1266 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 1266 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_3,
+#line 1266 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_4,
+#line 1266 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_5);
+
+#line 1251 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_114_111_117_112_95_99_97_115_101_115_95_98_121_95_112_116_97_103_95_108_111_111_112_95_95_91_50_44_32_51_44_32_52_93_95_48_12_p_0(
+#line 1251 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_65,
+#line 1251 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1251 "switch_util.m"
+  MR_Word backend_libs__switch_util__RepresentCase_2,
+#line 1251 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0_3,
+#line 1251 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateA_4,
+#line 1251 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0_5,
+#line 1251 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateB_6,
+#line 1251 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0_7,
+#line 1251 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateC_8,
+#line 1251 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0_9,
+#line 1251 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_10,
+#line 1251 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_11,
+#line 1251 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_12);
+
+#line 1117 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0_1(
+#line 1117 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 1117 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 1117 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 1117 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_3);
+
+#line 1103 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0(
+#line 1103 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_54,
+#line 1103 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1103 "switch_util.m"
+  MR_Word backend_libs__switch_util__RepresentCase_2,
+#line 1103 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0_3,
+#line 1103 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateA_4,
+#line 1103 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0_5,
+#line 1103 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateB_6,
+#line 1103 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0_7,
+#line 1103 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateC_8,
+#line 1103 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_9,
+#line 1103 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_10);
+
+#line 792 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_106_101_99_116_95_115_111_108_110_95_99_111_110_115_116_115_95_116_111_95_111_110_101_95_115_111_108_110_95_95_91_49_44_32_51_93_95_48_3_p_0(
+#line 792 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_8,
+#line 792 "switch_util.m"
+  MR_Word backend_libs__switch_util__Solns_5,
+#line 792 "switch_util.m"
+  MR_Word * backend_libs__switch_util__Values_6);
+
+#line 455 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0_1(
+#line 455 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 455 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 455 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 455 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 455 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_4,
+#line 455 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_5,
+#line 455 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_6,
+#line 455 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_7,
+#line 455 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_8,
+#line 455 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_9,
+#line 455 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_10);
+
+#line 443 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0(
+#line 443 "switch_util.m"
+  MR_Word backend_libs__switch_util__ModuleInfo_1,
+#line 443 "switch_util.m"
+  MR_Integer backend_libs__switch_util__CaseNum_3,
+#line 443 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__4_4,
+#line 443 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__5_5,
+#line 443 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_6,
+#line 443 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LowerLimit_7,
+#line 443 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_8,
+#line 443 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_UpperLimit_9,
+#line 443 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumValues_0_10,
+#line 443 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumValues_11,
+#line 443 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_12,
+#line 443 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_13);
+
+#line 437 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0_1(
+#line 437 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 437 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 437 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2);
+
+#line 429 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0(
+#line 429 "switch_util.m"
+  MR_Word backend_libs__switch_util__ModuleInfo_1,
+#line 429 "switch_util.m"
+  MR_Integer backend_libs__switch_util__CaseNum_3,
+#line 429 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__4_4,
+#line 429 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__5_5);
+
+#line 422 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0_2(
+#line 422 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 422 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 422 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2);
+
+#line 403 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0_1(
+#line 403 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 403 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 403 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 403 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 403 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_4,
+#line 403 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_5,
+#line 403 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_6,
+#line 403 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_7,
+#line 403 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_8,
+#line 403 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_9,
+#line 403 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_10);
+
+#line 1406 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__IntroducedFrom__pred__build_ptag_case_rev_map__1406__1_3_p_0(
+#line 1406 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_42,
+#line 1406 "switch_util.m"
+  MR_Word backend_libs__switch_util__Case_14,
+#line 1406 "switch_util.m"
+  MR_Word backend_libs__switch_util__OldCase_21);
+
+#line 1301 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__IntroducedFrom__pred__group_case_by_ptag__1301__1_2_p_0(
+#line 1301 "switch_util.m"
+  MR_Word backend_libs__switch_util__StagLoc_21,
+#line 1301 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_74);
+
+#line 1315 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__IntroducedFrom__pred__group_case_by_ptag__1315__1_2_p_0(
+#line 1315 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_63,
+#line 1315 "switch_util.m"
+  MR_Word backend_libs__switch_util__StagLoc_94);
+
+#line 1373 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_entry_1_0(
+#line 1373 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_17,
+#line 1373 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 1373 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 1373 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3);
+
+#line 1373 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_entry_1_0(
+#line 1373 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_13,
+#line 1373 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1373 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2);
+
+#line 1388 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_1_0(
+#line 1388 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+#line 1388 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 1388 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 1388 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3);
+
+#line 1388 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_1_0(
+#line 1388 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+#line 1388 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1388 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2);
+
+#line 391 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util____Compare____is_int_switch_0_0(
+#line 391 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 391 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 391 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3);
+
+#line 391 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____is_int_switch_0_0(
+#line 391 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+#line 391 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2);
+
+#line 1406 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__build_ptag_case_rev_map_4_p_0_1(
+#line 1406 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg);
+
+#line 1391 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__build_ptag_case_rev_map_4_p_0(
+#line 1391 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_42,
+#line 1391 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1391 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 1391 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3,
+#line 1391 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_RevMap_4);
+
+#line 1366 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__interpret_rev_map_entry_2_p_0(
+#line 1366 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_9,
+#line 1366 "switch_util.m"
+  MR_Word backend_libs__switch_util__RevEntry_3,
+#line 1366 "switch_util.m"
+  MR_Word * backend_libs__switch_util__GroupEntry_4);
+
+#line 1301 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__group_case_by_ptag_7_p_0_2(
+#line 1301 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg);
+
+#line 1315 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__group_case_by_ptag_7_p_0_1(
+#line 1315 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg);
+
+#line 1271 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__group_case_by_ptag_7_p_0(
+#line 1271 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_107,
+#line 1271 "switch_util.m"
+  MR_Word backend_libs__switch_util__CaseId_8,
+#line 1271 "switch_util.m"
+  MR_Box backend_libs__switch_util__CaseRep_9,
+#line 1271 "switch_util.m"
+  MR_Word backend_libs__switch_util__TaggedConsId_10,
+#line 1271 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_0_52,
+#line 1271 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_53,
+#line 1271 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54,
+#line 1271 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55);
+
+#line 1158 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__get_ptag_counts_loop_5_p_0(
+#line 1158 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1158 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2,
+#line 1158 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_3,
+#line 1158 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4,
+#line 1158 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_5);
+
+#line 1120 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__add_string_binary_entry_4_p_0(
+#line 1120 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_19,
+#line 1120 "switch_util.m"
+  MR_Box backend_libs__switch_util__CaseRep_5,
+#line 1120 "switch_util.m"
+  MR_Word backend_libs__switch_util__TaggedConsId_6,
+#line 1120 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_12,
+#line 1120 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_13);
+
+#line 1081 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__next_free_hash_slot_5_p_0_1(
+#line 1081 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg);
+
+#line 1075 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__next_free_hash_slot_5_p_0(
+#line 1075 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_17,
+#line 1075 "switch_util.m"
+  MR_Word backend_libs__switch_util__Map_6,
+#line 1075 "switch_util.m"
+  MR_Word backend_libs__switch_util__HomeMap_7,
+#line 1075 "switch_util.m"
+  MR_Integer backend_libs__switch_util__TableSize_8,
+#line 1075 "switch_util.m"
+  MR_Integer backend_libs__switch_util__LastUsed_9,
+#line 1075 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__FreeSlot_10);
+
+#line 1055 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__follow_hash_chain_3_p_0(
+#line 1055 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_12,
+#line 1055 "switch_util.m"
+  MR_Word backend_libs__switch_util__Map_4,
+#line 1055 "switch_util.m"
+  MR_Integer backend_libs__switch_util__Slot_5,
+#line 1055 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__LastSlot_6);
+
+#line 1021 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__calc_string_hash_slots_loop_over_hash_strings_8_p_0(
+#line 1021 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_64,
+#line 1021 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1021 "switch_util.m"
+  MR_Integer backend_libs__switch_util__HeadVar__2_2,
+#line 1021 "switch_util.m"
+  MR_Integer backend_libs__switch_util__HeadVar__3_3,
+#line 1021 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__4_4,
+#line 1021 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_5,
+#line 1021 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SlotMap_6,
+#line 1021 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_7,
+#line 1021 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LastUsed_8);
+
+#line 1006 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__calc_string_hash_slots_loop_over_hashes_7_p_0(
+#line 1006 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_32,
+#line 1006 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1006 "switch_util.m"
+  MR_Integer backend_libs__switch_util__TableSize_2,
+#line 1006 "switch_util.m"
+  MR_Word backend_libs__switch_util__HashMap_3,
+#line 1006 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_4,
+#line 1006 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SlotMap_5,
+#line 1006 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_6,
+#line 1006 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LastUsed_7);
+
+#line 991 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__calc_string_hash_slots_4_p_0(
+#line 991 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_19,
+#line 991 "switch_util.m"
+  MR_Integer backend_libs__switch_util__TableSize_5,
+#line 991 "switch_util.m"
+  MR_Word backend_libs__switch_util__HashValList_6,
+#line 991 "switch_util.m"
+  MR_Word backend_libs__switch_util__HashMap_7,
+#line 991 "switch_util.m"
+  MR_Word * backend_libs__switch_util__SlotMap_8);
+
+#line 945 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__string_hash_case_14_p_0(
+#line 945 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_67,
+#line 945 "switch_util.m"
+  MR_Word backend_libs__switch_util__StrCaseRep_15,
+#line 945 "switch_util.m"
+  MR_Integer backend_libs__switch_util__HashMask_16,
+#line 945 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_31,
+#line 945 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap4_32,
+#line 945 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_33,
+#line 945 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap5_34,
+#line 945 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_35,
+#line 945 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap6_36,
+#line 945 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_37,
+#line 945 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_38,
+#line 945 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_39,
+#line 945 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_40,
+#line 945 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_41,
+#line 945 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_42);
+
+#line 924 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__string_hash_cases_14_p_0(
+#line 924 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_67,
+#line 924 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 924 "switch_util.m"
+  MR_Integer backend_libs__switch_util__HashMask_2,
+#line 924 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_3,
+#line 924 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap4_4,
+#line 924 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_5,
+#line 924 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap5_6,
+#line 924 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_7,
+#line 924 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap6_8,
+#line 924 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_9,
+#line 924 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_10,
+#line 924 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_11,
+#line 924 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_12,
+#line 924 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_13,
+#line 924 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_14);
+
+#line 792 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__project_soln_consts_to_one_soln_3_p_0(
+#line 792 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Key_7,
+#line 792 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_8,
+#line 792 "switch_util.m"
+  MR_Box backend_libs__switch_util___Key_4,
+#line 792 "switch_util.m"
+  MR_Word backend_libs__switch_util__Solns_5,
+#line 792 "switch_util.m"
+  MR_Word * backend_libs__switch_util__Values_6);
+
+#line 722 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__filter_out_failing_cases_loop_5_p_0(
+#line 722 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 722 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0_2,
+#line 722 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_3,
+#line 722 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_4,
+#line 722 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_5);
+
+#line 492 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__num_cons_ids_in_tagged_cases_loop_5_p_0(
+#line 492 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 492 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0_2,
+#line 492 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumConsIds_3,
+#line 492 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumArms_0_4,
+#line 492 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumArms_5);
+
+#line 470 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__tag_cons_id_in_int_switch_11_p_0(
+#line 470 "switch_util.m"
+  MR_Word backend_libs__switch_util__ModuleInfo_12,
+#line 470 "switch_util.m"
+  MR_Word backend_libs__switch_util__ConsId_13,
+#line 470 "switch_util.m"
+  MR_Word * backend_libs__switch_util__TaggedConsId_14,
+#line 470 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_21,
+#line 470 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LowerLimit_22,
+#line 470 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_23,
+#line 470 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_UpperLimit_24,
+#line 470 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumValues_0_25,
+#line 470 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumValues_26,
+#line 470 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_27,
+#line 470 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_28);
+
+#line 464 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__tag_cons_id_3_p_0(
+#line 464 "switch_util.m"
+  MR_Word backend_libs__switch_util__ModuleInfo_4,
+#line 464 "switch_util.m"
+  MR_Word backend_libs__switch_util__ConsId_5,
+#line 464 "switch_util.m"
+  MR_Word * backend_libs__switch_util__TaggedConsId_6);
+
+#line 1364 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__order_ptags_by_count_3_p_0_1(
+#line 1364 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 1364 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 1364 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2);
+
+#line 790 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__project_all_to_one_solution_2_p_0_1(
+#line 790 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 790 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 790 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 790 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_3);
+
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_1[5][2];
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_2[3][3];
+
+static /* final */ const MR_Integer backend_libs__switch_util_scalar_common_4[1][3];
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_5[2][8];
+
+static /* final */ const MR_Integer backend_libs__switch_util_scalar_common_6[1][2];
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_7[3][6];
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_8[2][5];
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_9[1][14];
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_10[1][11];
+
+
+#line 514 "switch_util.m"
+/* sealed */ struct backend_libs__switch_util__vector_common_type_3_0_s {
+#line 514 "switch_util.m"
+  const MR_Word backend_libs__switch_util__vector_common_type_3_0__vct_3_f_0;
+#line 514 "switch_util.m"
+};
+
+static /* final */ const struct backend_libs__switch_util__vector_common_type_3_0_s backend_libs__switch_util_vector_common_3[4];
+
+
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_1[5][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&parse_tree__set_of_var__parse_tree__set_of_var__type_ctor_info_set_of_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) ((MR_Integer) 1)),
+    ((MR_Box) ((MR_Integer) -1))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) ((MR_Integer) -1))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_2[3][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0)),
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_1[0]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_2[0]))
+  },
+};
+
+static /* final */ const MR_Integer backend_libs__switch_util_scalar_common_4[1][3] = {
+  /* row 0 */
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 33,
+    (MR_Integer) 65
+  },
+};
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_5[2][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_4[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__pti_soln_consts_1__pseudo_2)),
+    ((MR_Box) (&backend_libs__switch_util__list__pti_list_1__pseudo_2))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_6[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0)),
+    ((MR_Box) (&backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1)),
+    ((MR_Box) (&backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1))
+  },
+};
+
+static /* final */ const MR_Integer backend_libs__switch_util_scalar_common_6[1][2] = {
+  /* row 0 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 33
+  },
+};
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_7[3][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_6[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_6[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_8[2][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0)),
+    ((MR_Box) (&backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_9[1][14] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 11)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0)),
+    ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0))
+  },
+};
+
+static /* final */ const MR_Box backend_libs__switch_util_scalar_common_10[1][11] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&backend_libs__switch_util_scalar_common_6[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0)),
+    ((MR_Box) (&backend_libs__switch_util__tree234__pti_tree234_2__plain_hlds__hlds_goal__type_ctor_info_case_id_0__plain_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&backend_libs__switch_util__tree234__pti_tree234_2__plain_hlds__hlds_goal__type_ctor_info_case_id_0__plain_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1)),
+    ((MR_Box) (&backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1))
+  },
+};
+
+
+static /* final */ const struct backend_libs__switch_util__vector_common_type_3_0_s backend_libs__switch_util_vector_common_3[4] = {
+  /* row 0 */   {     (MR_Integer) 0 },
+  /* row 1 */   {     (MR_Integer) 3 },
+  /* row 2 */   {     (MR_Integer) 0 },
+  /* row 3 */   {     (MR_Integer) 1 },
+};
+
+
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "mdbcomp.rtti_access.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+#line 1853 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_soln_consts_1__pseudo_2 = {
+  &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 2
+  }
+};
+
+#line 1861 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_2 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 2
+  }
+};
+
+#line 1869 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1 = {
+  &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 1877 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1 = {
+  &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_entry_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 1885 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1 = {
+  &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 1893 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 1902 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__pair__pti_pair_2__plain_builtin__type_ctor_info_string_0__pseudo_1
+  }
+};
+
+#line 1910 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+#line 1918 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__plain_hlds__hlds_goal__type_ctor_info_case_id_0__plain_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0,
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0
+  }
+};
+
+#line 1927 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1
+  }
+};
+
+#line 1936 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__pseudo_1__pseudo_list__pti_list_1__pseudo_2 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_2
+  }
+};
+
+#line 1945 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_3_0[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__pti_tree234_2__pseudo_1__pseudo_list__pti_list_1__pseudo_2
+};
+
+#line 1950 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_0 = {
+  (MR_String) "all_one_soln",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_3_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1965 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__pseudo_1__pseudo_backend_libs__switch_util__pti_soln_consts_1__pseudo_2 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_soln_consts_1__pseudo_2
+  }
+};
+
+#line 1974 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_3_1[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__pti_tree234_2__pseudo_1__pseudo_backend_libs__switch_util__pti_soln_consts_1__pseudo_2,
+  (MR_PseudoTypeInfo) (MR_Integer) 3
+};
+
+#line 1980 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_1 = {
+  (MR_String) "some_several_solns",
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_3_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1995 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_3_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_0
+};
+
+#line 2000 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_3_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_1
+};
+
+#line 2005 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_case_consts_3[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_3_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_3_1
+  }
+};
+
+#line 2019 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_case_consts_3[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_0,
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_3_1
+};
+
+#line 2025 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_case_consts_3[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2031 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_consts_3 = {
+  (MR_Integer) 3,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____case_consts_3_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____case_consts_3_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "case_consts",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_case_consts_3 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_case_consts_3 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_case_consts_3
+};
+
+#line 2048 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+#line 2056 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_TypeInfo) &backend_libs__switch_util__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+#line 2064 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_several_llds_0_0[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__sparse_bitset__ti_sparse_bitset_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0
+};
+
+#line 2070 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_several_llds_0_0 = {
+  (MR_String) "case_consts_several_llds",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_case_consts_several_llds_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2085 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_several_llds_0_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_several_llds_0_0
+};
+
+#line 2090 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_case_consts_several_llds_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_case_consts_several_llds_0_0
+  }
+};
+
+#line 2099 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_case_consts_several_llds_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_case_consts_several_llds_0_0
+};
+
+#line 2104 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_case_consts_several_llds_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2109 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_consts_several_llds_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____case_consts_several_llds_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____case_consts_several_llds_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "case_consts_several_llds",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_case_consts_several_llds_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_case_consts_several_llds_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_case_consts_several_llds_0
+};
+
+#line 2126 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct2 backend_libs__switch_util__tree234__ti_tree234_2hlds__hlds_goal__type_ctor_info_case_id_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0,
+    (MR_TypeInfo) &backend_libs__switch_util__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0
+  }
+};
+
+#line 2135 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_id_ptags_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (backend_libs__switch_util____Unify____case_id_ptags_map_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____case_id_ptags_map_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "case_id_ptags_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__ti_tree234_2hlds__hlds_goal__type_ctor_info_case_id_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2152 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_0 = {
+  (MR_String) "is_int_switch",
+  (MR_Integer) 0
+};
+
+#line 2158 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_1 = {
+  (MR_String) "is_not_int_switch",
+  (MR_Integer) 1
+};
+
+#line 2164 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_is_int_switch_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_1
+};
+
+#line 2170 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_is_int_switch_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_is_int_switch_0_1
+};
+
+#line 2176 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_is_int_switch_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2182 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__switch_util____Unify____is_int_switch_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____is_int_switch_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "is_int_switch",
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_is_int_switch_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_is_int_switch_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_is_int_switch_0
+};
+
+#line 2199 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_0 = {
+  (MR_String) "may_not_use_smart_indexing",
+  (MR_Integer) 0
+};
+
+#line 2205 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_1 = {
+  (MR_String) "may_use_smart_indexing",
+  (MR_Integer) 1
+};
+
+#line 2211 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_may_use_smart_indexing_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_1
+};
+
+#line 2217 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_may_use_smart_indexing_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_may_use_smart_indexing_0_1
+};
+
+#line 2223 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_may_use_smart_indexing_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2229 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_may_use_smart_indexing_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__switch_util____Unify____may_use_smart_indexing_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____may_use_smart_indexing_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "may_use_smart_indexing",
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_may_use_smart_indexing_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_may_use_smart_indexing_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_may_use_smart_indexing_0
+};
+
+#line 2246 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_maybe_int_switch_info_0_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+#line 2253 "backend_libs.switch_util.c"
+static const MR_ConstString backend_libs__switch_util__backend_libs__switch_util__field_names_maybe_int_switch_info_0_0[3] = {
+  (MR_String) "lower_limit",
+  (MR_String) "upper_limit",
+  (MR_String) "num_values"
+};
+
+#line 2260 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_0 = {
+  (MR_String) "int_switch",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_maybe_int_switch_info_0_0,
+  backend_libs__switch_util__backend_libs__switch_util__field_names_maybe_int_switch_info_0_0,
+  NULL,
+  NULL
+};
+
+#line 2275 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_1 = {
+  (MR_String) "not_int_switch",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2290 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_maybe_int_switch_info_0_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_1
+};
+
+#line 2295 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_maybe_int_switch_info_0_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_0
+};
+
+#line 2300 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_maybe_int_switch_info_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_maybe_int_switch_info_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_maybe_int_switch_info_0_1
+  }
+};
+
+#line 2314 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_maybe_int_switch_info_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_maybe_int_switch_info_0_1
+};
+
+#line 2320 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_maybe_int_switch_info_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2326 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_maybe_int_switch_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____maybe_int_switch_info_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____maybe_int_switch_info_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "maybe_int_switch_info",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_maybe_int_switch_info_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_maybe_int_switch_info_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_maybe_int_switch_info_0
+};
+
+#line 2343 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_0 = {
+  (MR_String) "need_bit_vec_check",
+  (MR_Integer) 0
+};
+
+#line 2349 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_1 = {
+  (MR_String) "dont_need_bit_vec_check",
+  (MR_Integer) 1
+};
+
+#line 2355 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_need_bit_vec_check_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_1
+};
+
+#line 2361 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_need_bit_vec_check_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_1,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_bit_vec_check_0_0
+};
+
+#line 2367 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_need_bit_vec_check_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+#line 2373 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_need_bit_vec_check_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__switch_util____Unify____need_bit_vec_check_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____need_bit_vec_check_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "need_bit_vec_check",
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_need_bit_vec_check_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_need_bit_vec_check_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_need_bit_vec_check_0
+};
+
+#line 2390 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_0 = {
+  (MR_String) "need_range_check",
+  (MR_Integer) 0
+};
+
+#line 2396 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_1 = {
+  (MR_String) "dont_need_range_check",
+  (MR_Integer) 1
+};
+
+#line 2402 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_need_range_check_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_1
+};
+
+#line 2408 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_need_range_check_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_1,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_need_range_check_0_0
+};
+
+#line 2414 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_need_range_check_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+#line 2420 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_need_range_check_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__switch_util____Unify____need_range_check_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____need_range_check_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "need_range_check",
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_need_range_check_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_need_range_check_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_need_range_check_0
+};
+
+#line 2437 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_1 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 2446 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_1_0[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_1
+};
+
+#line 2452 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_1_0 = {
+  (MR_String) "ptag_case",
+  (MR_Integer) 2,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2467 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_1_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_1_0
+};
+
+#line 2472 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_1_0
+  }
+};
+
+#line 2481 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_1_0
+};
+
+#line 2486 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_1[1] = {
+  (MR_Integer) 0
+};
+
+#line 2491 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_1 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_1
+};
+
+#line 2508 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_entry_1_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1
+};
+
+#line 2514 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_entry_1_0 = {
+  (MR_String) "ptag_case_entry",
+  (MR_Integer) 2,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_entry_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2529 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_entry_1_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_entry_1_0
+};
+
+#line 2534 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_entry_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_entry_1_0
+  }
+};
+
+#line 2543 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_entry_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_entry_1_0
+};
+
+#line 2548 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_entry_1[1] = {
+  (MR_Integer) 0
+};
+
+#line 2553 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_entry_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_entry_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_entry_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_entry",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_entry_1 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_entry_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_entry_1
+};
+
+#line 2570 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct1 backend_libs__switch_util__list__ti_list_1builtin__type_ctor_info_int_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+#line 2578 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_group_entry_1_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__list__ti_list_1builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1
+};
+
+#line 2585 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_group_entry_1_0 = {
+  (MR_String) "ptag_case_group_entry",
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_group_entry_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2600 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_group_entry_1_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_group_entry_1_0
+};
+
+#line 2605 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_group_entry_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_group_entry_1_0
+  }
+};
+
+#line 2614 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_group_entry_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_group_entry_1_0
+};
+
+#line 2619 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_group_entry_1[1] = {
+  (MR_Integer) 0
+};
+
+#line 2624 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_entry_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_group_entry_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_group_entry_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_group_entry",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_group_entry_1 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_group_entry_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_group_entry_1
+};
+
+#line 2641 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1
+  }
+};
+
+#line 2649 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_list_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_group_list_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_group_list_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_group_list",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_backend_libs__switch_util__pti_ptag_case_group_entry_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2666 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_entry_1__pseudo_1 = {
+  &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_entry_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 2674 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_backend_libs__switch_util__pti_ptag_case_entry_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_entry_1__pseudo_1
+  }
+};
+
+#line 2682 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_list_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_list_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_list_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_list",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_backend_libs__switch_util__pti_ptag_case_entry_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2699 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_map_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_map_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_map_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2716 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__tree234__pti_tree234_2__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1__pseudo_backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1,
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1
+  }
+};
+
+#line 2725 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_rev_map_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_rev_map_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_rev_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__pti_tree234_2__pseudo_backend_libs__switch_util__pti_ptag_case_1__pseudo_1__pseudo_backend_libs__switch_util__pti_ptag_case_rev_map_entry_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2742 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_rev_map_entry_1_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__list__ti_list_1builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__backend_libs__switch_util__pti_ptag_case_1__pseudo_1
+};
+
+#line 2750 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_rev_map_entry_1_0 = {
+  (MR_String) "ptag_case_rev_map_entry",
+  (MR_Integer) 4,
+  (MR_Integer) 8,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_ptag_case_rev_map_entry_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2765 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_rev_map_entry_1_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_rev_map_entry_1_0
+};
+
+#line 2770 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_rev_map_entry_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_ptag_case_rev_map_entry_1_0
+  }
+};
+
+#line 2779 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_rev_map_entry_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_ptag_case_rev_map_entry_1_0
+};
+
+#line 2784 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_rev_map_entry_1[1] = {
+  (MR_Integer) 0
+};
+
+#line 2789 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_case_rev_map_entry_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_case_rev_map_entry_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_case_rev_map_entry",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_ptag_case_rev_map_entry_1 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_ptag_case_rev_map_entry_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_ptag_case_rev_map_entry_1
+};
+
+#line 2806 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct2 backend_libs__switch_util__pair__ti_pair_2backend_libs__rtti__type_ctor_info_sectag_locn_0builtin__type_ctor_info_int_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+  }
+};
+
+#line 2815 "backend_libs.switch_util.c"
+static const MR_FA_TypeInfo_Struct2 backend_libs__switch_util__tree234__ti_tree234_2builtin__type_ctor_info_int_0pair__ti_pair_2backend_libs__rtti__type_ctor_info_sectag_locn_0builtin__type_ctor_info_int_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &backend_libs__switch_util__pair__ti_pair_2backend_libs__rtti__type_ctor_info_sectag_locn_0builtin__type_ctor_info_int_0
+  }
+};
+
+#line 2824 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_count_map_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (backend_libs__switch_util____Unify____ptag_count_map_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____ptag_count_map_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "ptag_count_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__ti_tree234_2builtin__type_ctor_info_int_0pair__ti_pair_2backend_libs__rtti__type_ctor_info_sectag_locn_0builtin__type_ctor_info_int_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2841 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 2849 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_soln_consts_1_0[1] = {
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_1
+};
+
+#line 2854 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_0 = {
+  (MR_String) "one_soln",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_soln_consts_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2869 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_list__pti_list_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_1
+  }
+};
+
+#line 2877 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_soln_consts_1_1[2] = {
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_1,
+  (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_list__pti_list_1__pseudo_1
+};
+
+#line 2883 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_1 = {
+  (MR_String) "several_solns",
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_soln_consts_1_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2898 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_soln_consts_1_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_0
+};
+
+#line 2903 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_soln_consts_1_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_1
+};
+
+#line 2908 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_soln_consts_1[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_soln_consts_1_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_soln_consts_1_1
+  }
+};
+
+#line 2922 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_soln_consts_1[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_0,
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_soln_consts_1_1
+};
+
+#line 2928 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_soln_consts_1[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2934 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____soln_consts_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____soln_consts_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "soln_consts",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_soln_consts_1 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_soln_consts_1 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_soln_consts_1
+};
+
+#line 2951 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct2 backend_libs__switch_util__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_1 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 2960 "backend_libs.switch_util.c"
+static const MR_FA_PseudoTypeInfo_Struct1 backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &backend_libs__switch_util__pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_1
+  }
+};
+
+#line 2968 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_stag_goal_list_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (backend_libs__switch_util____Unify____stag_goal_list_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____stag_goal_list_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "stag_goal_list",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__list__pti_list_1__pseudo_pair__pti_pair_2__plain_builtin__type_ctor_info_int_0__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2985 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_stag_goal_map_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (backend_libs__switch_util____Unify____stag_goal_map_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____stag_goal_map_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "stag_goal_map",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &backend_libs__switch_util__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 3002 "backend_libs.switch_util.c"
+static const MR_PseudoTypeInfo backend_libs__switch_util__backend_libs__switch_util__field_types_string_hash_slot_1_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) (MR_Integer) 1
+};
+
+#line 3009 "backend_libs.switch_util.c"
+static const MR_DuFunctorDesc backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_string_hash_slot_1_0 = {
+  (MR_String) "string_hash_slot",
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  backend_libs__switch_util__backend_libs__switch_util__field_types_string_hash_slot_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 3024 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_string_hash_slot_1_0[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_string_hash_slot_1_0
+};
+
+#line 3029 "backend_libs.switch_util.c"
+static const MR_DuPtagLayout backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_string_hash_slot_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    backend_libs__switch_util__backend_libs__switch_util__du_stag_ordered_string_hash_slot_1_0
+  }
+};
+
+#line 3038 "backend_libs.switch_util.c"
+static const MR_DuFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_string_hash_slot_1[1] = {
+  &backend_libs__switch_util__backend_libs__switch_util__du_functor_desc_string_hash_slot_1_0
+};
+
+#line 3043 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_string_hash_slot_1[1] = {
+  (MR_Integer) 0
+};
+
+#line 3048 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (backend_libs__switch_util____Unify____string_hash_slot_1_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____string_hash_slot_1_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "string_hash_slot",
+  {     backend_libs__switch_util__backend_libs__switch_util__du_name_ordered_string_hash_slot_1 },
+  {     backend_libs__switch_util__backend_libs__switch_util__du_ptag_ordered_string_hash_slot_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_string_hash_slot_1
+};
+
+#line 3065 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_0 = {
+  (MR_String) "atomic_switch",
+  (MR_Integer) 0
+};
+
+#line 3071 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_1 = {
+  (MR_String) "string_switch",
+  (MR_Integer) 1
+};
+
+#line 3077 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_2 = {
+  (MR_String) "tag_switch",
+  (MR_Integer) 2
+};
+
+#line 3083 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_3 = {
+  (MR_String) "float_switch",
+  (MR_Integer) 3
+};
+
+#line 3089 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_switch_category_0[4] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_1,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_2,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_3
+};
+
+#line 3097 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_switch_category_0[4] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_3,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_1,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_switch_category_0_2
+};
+
+#line 3105 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_switch_category_0[4] = {
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 3,
+  (MR_Integer) 1
+};
+
+#line 3113 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_switch_category_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__switch_util____Unify____switch_category_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____switch_category_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "switch_category",
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_switch_category_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_switch_category_0 },
+  (MR_Integer) 4,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_switch_category_0
+};
+
+#line 3130 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_0 = {
+  (MR_String) "keep_first_size",
+  (MR_Integer) 0
+};
+
+#line 3136 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDesc backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_1 = {
+  (MR_String) "allow_doubling",
+  (MR_Integer) 1
+};
+
+#line 3142 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_table_size_upgrade_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_0,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_1
+};
+
+#line 3148 "backend_libs.switch_util.c"
+static const MR_EnumFunctorDescPtr backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_table_size_upgrade_0[2] = {
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_1,
+  &backend_libs__switch_util__backend_libs__switch_util__enum_functor_desc_table_size_upgrade_0_0
+};
+
+#line 3154 "backend_libs.switch_util.c"
+static const MR_Integer backend_libs__switch_util__backend_libs__switch_util__functor_number_map_table_size_upgrade_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+#line 3160 "backend_libs.switch_util.c"
+const MR_TypeCtorInfo_Struct backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_table_size_upgrade_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (backend_libs__switch_util____Unify____table_size_upgrade_0_0_10001)),
+  ((MR_Box) (backend_libs__switch_util____Compare____table_size_upgrade_0_0_10001)),
+  (MR_String) "backend_libs.switch_util",
+  (MR_String) "table_size_upgrade",
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_name_ordered_table_size_upgrade_0 },
+  {     backend_libs__switch_util__backend_libs__switch_util__enum_value_ordered_table_size_upgrade_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  backend_libs__switch_util__backend_libs__switch_util__functor_number_map_table_size_upgrade_0
+};
+
+#line 3177 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_consts_3_0_10001(
+#line 3180 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3182 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3184 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 3186 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4,
+#line 3188 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_5)
+#line 3190 "backend_libs.switch_util.c"
+{
+#line 3192 "backend_libs.switch_util.c"
+  {
+#line 3194 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3197 "backend_libs.switch_util.c"
+    {
+#line 3199 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____case_consts_3_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4), ((MR_Word) backend_libs__switch_util__wrapper_arg_5));
+    }
+#line 3202 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3204 "backend_libs.switch_util.c"
+  }
+#line 3206 "backend_libs.switch_util.c"
+}
+
+#line 3209 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____case_consts_3_0_10001(
+#line 3212 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3214 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3216 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 3218 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_4,
+#line 3220 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_5,
+#line 3222 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_6)
+#line 3224 "backend_libs.switch_util.c"
+{
+#line 3226 "backend_libs.switch_util.c"
+  {
+#line 3228 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3231 "backend_libs.switch_util.c"
+    {
+#line 3233 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____case_consts_3_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_5), ((MR_Word) backend_libs__switch_util__wrapper_arg_6));
+    }
+#line 3236 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_4 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3238 "backend_libs.switch_util.c"
+  }
+#line 3240 "backend_libs.switch_util.c"
+}
+
+#line 3243 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_consts_several_llds_0_0_10001(
+#line 3246 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3248 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+#line 3250 "backend_libs.switch_util.c"
+{
+#line 3252 "backend_libs.switch_util.c"
+  {
+#line 3254 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3257 "backend_libs.switch_util.c"
+    {
+#line 3259 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____case_consts_several_llds_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+#line 3262 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3264 "backend_libs.switch_util.c"
+  }
+#line 3266 "backend_libs.switch_util.c"
+}
+
+#line 3269 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____case_consts_several_llds_0_0_10001(
+#line 3272 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 3274 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3276 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3278 "backend_libs.switch_util.c"
+{
+#line 3280 "backend_libs.switch_util.c"
+  {
+#line 3282 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3285 "backend_libs.switch_util.c"
+    {
+#line 3287 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____case_consts_several_llds_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3290 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3292 "backend_libs.switch_util.c"
+  }
+#line 3294 "backend_libs.switch_util.c"
+}
+
+#line 3297 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_id_ptags_map_0_0_10001(
+#line 3300 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3302 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+#line 3304 "backend_libs.switch_util.c"
+{
+#line 3306 "backend_libs.switch_util.c"
+  {
+#line 3308 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3311 "backend_libs.switch_util.c"
+    {
+#line 3313 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____case_id_ptags_map_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+#line 3316 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3318 "backend_libs.switch_util.c"
+  }
+#line 3320 "backend_libs.switch_util.c"
+}
+
+#line 3323 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____case_id_ptags_map_0_0_10001(
+#line 3326 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 3328 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3330 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3332 "backend_libs.switch_util.c"
+{
+#line 3334 "backend_libs.switch_util.c"
+  {
+#line 3336 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3339 "backend_libs.switch_util.c"
+    {
+#line 3341 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____case_id_ptags_map_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3344 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3346 "backend_libs.switch_util.c"
+  }
+#line 3348 "backend_libs.switch_util.c"
+}
+
+#line 3351 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____is_int_switch_0_0_10001(
+#line 3354 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3356 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+#line 3358 "backend_libs.switch_util.c"
+{
+#line 3360 "backend_libs.switch_util.c"
+  {
+#line 3362 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3365 "backend_libs.switch_util.c"
+    {
+#line 3367 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____is_int_switch_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+#line 3370 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3372 "backend_libs.switch_util.c"
+  }
+#line 3374 "backend_libs.switch_util.c"
+}
+
+#line 3377 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____is_int_switch_0_0_10001(
+#line 3380 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 3382 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3384 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3386 "backend_libs.switch_util.c"
+{
+#line 3388 "backend_libs.switch_util.c"
+  {
+#line 3390 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3393 "backend_libs.switch_util.c"
+    {
+#line 3395 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____is_int_switch_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3398 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3400 "backend_libs.switch_util.c"
+  }
+#line 3402 "backend_libs.switch_util.c"
+}
+
+#line 3405 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____may_use_smart_indexing_0_0_10001(
+#line 3408 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3410 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+#line 3412 "backend_libs.switch_util.c"
+{
+#line 3414 "backend_libs.switch_util.c"
+  {
+#line 3416 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3419 "backend_libs.switch_util.c"
+    {
+#line 3421 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____may_use_smart_indexing_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+#line 3424 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3426 "backend_libs.switch_util.c"
+  }
+#line 3428 "backend_libs.switch_util.c"
+}
+
+#line 3431 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____may_use_smart_indexing_0_0_10001(
+#line 3434 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 3436 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3438 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3440 "backend_libs.switch_util.c"
+{
+#line 3442 "backend_libs.switch_util.c"
+  {
+#line 3444 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3447 "backend_libs.switch_util.c"
+    {
+#line 3449 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____may_use_smart_indexing_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3452 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3454 "backend_libs.switch_util.c"
+  }
+#line 3456 "backend_libs.switch_util.c"
+}
+
+#line 3459 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____maybe_int_switch_info_0_0_10001(
+#line 3462 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3464 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+#line 3466 "backend_libs.switch_util.c"
+{
+#line 3468 "backend_libs.switch_util.c"
+  {
+#line 3470 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3473 "backend_libs.switch_util.c"
+    {
+#line 3475 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____maybe_int_switch_info_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+#line 3478 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3480 "backend_libs.switch_util.c"
+  }
+#line 3482 "backend_libs.switch_util.c"
+}
+
+#line 3485 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____maybe_int_switch_info_0_0_10001(
+#line 3488 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 3490 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3492 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3494 "backend_libs.switch_util.c"
+{
+#line 3496 "backend_libs.switch_util.c"
+  {
+#line 3498 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3501 "backend_libs.switch_util.c"
+    {
+#line 3503 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____maybe_int_switch_info_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3506 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3508 "backend_libs.switch_util.c"
+  }
+#line 3510 "backend_libs.switch_util.c"
+}
+
+#line 3513 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____need_bit_vec_check_0_0_10001(
+#line 3516 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3518 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+#line 3520 "backend_libs.switch_util.c"
+{
+#line 3522 "backend_libs.switch_util.c"
+  {
+#line 3524 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3527 "backend_libs.switch_util.c"
+    {
+#line 3529 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____need_bit_vec_check_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+#line 3532 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3534 "backend_libs.switch_util.c"
+  }
+#line 3536 "backend_libs.switch_util.c"
+}
+
+#line 3539 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____need_bit_vec_check_0_0_10001(
+#line 3542 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 3544 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3546 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3548 "backend_libs.switch_util.c"
+{
+#line 3550 "backend_libs.switch_util.c"
+  {
+#line 3552 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3555 "backend_libs.switch_util.c"
+    {
+#line 3557 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____need_bit_vec_check_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3560 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3562 "backend_libs.switch_util.c"
+  }
+#line 3564 "backend_libs.switch_util.c"
+}
+
+#line 3567 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____need_range_check_0_0_10001(
+#line 3570 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3572 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+#line 3574 "backend_libs.switch_util.c"
+{
+#line 3576 "backend_libs.switch_util.c"
+  {
+#line 3578 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3581 "backend_libs.switch_util.c"
+    {
+#line 3583 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____need_range_check_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+#line 3586 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3588 "backend_libs.switch_util.c"
+  }
+#line 3590 "backend_libs.switch_util.c"
+}
+
+#line 3593 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____need_range_check_0_0_10001(
+#line 3596 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 3598 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3600 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3602 "backend_libs.switch_util.c"
+{
+#line 3604 "backend_libs.switch_util.c"
+  {
+#line 3606 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3609 "backend_libs.switch_util.c"
+    {
+#line 3611 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____need_range_check_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3614 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3616 "backend_libs.switch_util.c"
+  }
+#line 3618 "backend_libs.switch_util.c"
+}
+
+#line 3621 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_1_0_10001(
+#line 3624 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3626 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3628 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3630 "backend_libs.switch_util.c"
+{
+#line 3632 "backend_libs.switch_util.c"
+  {
+#line 3634 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3637 "backend_libs.switch_util.c"
+    {
+#line 3639 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3642 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3644 "backend_libs.switch_util.c"
+  }
+#line 3646 "backend_libs.switch_util.c"
+}
+
+#line 3649 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_1_0_10001(
+#line 3652 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3654 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 3656 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 3658 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+#line 3660 "backend_libs.switch_util.c"
+{
+#line 3662 "backend_libs.switch_util.c"
+  {
+#line 3664 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3667 "backend_libs.switch_util.c"
+    {
+#line 3669 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____ptag_case_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+#line 3672 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3674 "backend_libs.switch_util.c"
+  }
+#line 3676 "backend_libs.switch_util.c"
+}
+
+#line 3679 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_entry_1_0_10001(
+#line 3682 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3684 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3686 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3688 "backend_libs.switch_util.c"
+{
+#line 3690 "backend_libs.switch_util.c"
+  {
+#line 3692 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3695 "backend_libs.switch_util.c"
+    {
+#line 3697 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_entry_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3700 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3702 "backend_libs.switch_util.c"
+  }
+#line 3704 "backend_libs.switch_util.c"
+}
+
+#line 3707 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_entry_1_0_10001(
+#line 3710 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3712 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 3714 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 3716 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+#line 3718 "backend_libs.switch_util.c"
+{
+#line 3720 "backend_libs.switch_util.c"
+  {
+#line 3722 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3725 "backend_libs.switch_util.c"
+    {
+#line 3727 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____ptag_case_entry_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+#line 3730 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3732 "backend_libs.switch_util.c"
+  }
+#line 3734 "backend_libs.switch_util.c"
+}
+
+#line 3737 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_group_entry_1_0_10001(
+#line 3740 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3742 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3744 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3746 "backend_libs.switch_util.c"
+{
+#line 3748 "backend_libs.switch_util.c"
+  {
+#line 3750 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3753 "backend_libs.switch_util.c"
+    {
+#line 3755 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_group_entry_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3758 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3760 "backend_libs.switch_util.c"
+  }
+#line 3762 "backend_libs.switch_util.c"
+}
+
+#line 3765 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_group_entry_1_0_10001(
+#line 3768 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3770 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 3772 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 3774 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+#line 3776 "backend_libs.switch_util.c"
+{
+#line 3778 "backend_libs.switch_util.c"
+  {
+#line 3780 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3783 "backend_libs.switch_util.c"
+    {
+#line 3785 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____ptag_case_group_entry_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+#line 3788 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3790 "backend_libs.switch_util.c"
+  }
+#line 3792 "backend_libs.switch_util.c"
+}
+
+#line 3795 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_group_list_1_0_10001(
+#line 3798 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3800 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3802 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3804 "backend_libs.switch_util.c"
+{
+#line 3806 "backend_libs.switch_util.c"
+  {
+#line 3808 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3811 "backend_libs.switch_util.c"
+    {
+#line 3813 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_group_list_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3816 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3818 "backend_libs.switch_util.c"
+  }
+#line 3820 "backend_libs.switch_util.c"
+}
+
+#line 3823 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_group_list_1_0_10001(
+#line 3826 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3828 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 3830 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 3832 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+#line 3834 "backend_libs.switch_util.c"
+{
+#line 3836 "backend_libs.switch_util.c"
+  {
+#line 3838 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3841 "backend_libs.switch_util.c"
+    {
+#line 3843 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____ptag_case_group_list_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+#line 3846 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3848 "backend_libs.switch_util.c"
+  }
+#line 3850 "backend_libs.switch_util.c"
+}
+
+#line 3853 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_list_1_0_10001(
+#line 3856 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3858 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3860 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3862 "backend_libs.switch_util.c"
+{
+#line 3864 "backend_libs.switch_util.c"
+  {
+#line 3866 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3869 "backend_libs.switch_util.c"
+    {
+#line 3871 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_list_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3874 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3876 "backend_libs.switch_util.c"
+  }
+#line 3878 "backend_libs.switch_util.c"
+}
+
+#line 3881 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_list_1_0_10001(
+#line 3884 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3886 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 3888 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 3890 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+#line 3892 "backend_libs.switch_util.c"
+{
+#line 3894 "backend_libs.switch_util.c"
+  {
+#line 3896 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3899 "backend_libs.switch_util.c"
+    {
+#line 3901 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____ptag_case_list_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+#line 3904 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3906 "backend_libs.switch_util.c"
+  }
+#line 3908 "backend_libs.switch_util.c"
+}
+
+#line 3911 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_map_1_0_10001(
+#line 3914 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3916 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3918 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3920 "backend_libs.switch_util.c"
+{
+#line 3922 "backend_libs.switch_util.c"
+  {
+#line 3924 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3927 "backend_libs.switch_util.c"
+    {
+#line 3929 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_map_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3932 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3934 "backend_libs.switch_util.c"
+  }
+#line 3936 "backend_libs.switch_util.c"
+}
+
+#line 3939 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_map_1_0_10001(
+#line 3942 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3944 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 3946 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 3948 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+#line 3950 "backend_libs.switch_util.c"
+{
+#line 3952 "backend_libs.switch_util.c"
+  {
+#line 3954 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 3957 "backend_libs.switch_util.c"
+    {
+#line 3959 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____ptag_case_map_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+#line 3962 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 3964 "backend_libs.switch_util.c"
+  }
+#line 3966 "backend_libs.switch_util.c"
+}
+
+#line 3969 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_1_0_10001(
+#line 3972 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 3974 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 3976 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 3978 "backend_libs.switch_util.c"
+{
+#line 3980 "backend_libs.switch_util.c"
+  {
+#line 3982 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 3985 "backend_libs.switch_util.c"
+    {
+#line 3987 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_rev_map_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 3990 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 3992 "backend_libs.switch_util.c"
+  }
+#line 3994 "backend_libs.switch_util.c"
+}
+
+#line 3997 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_1_0_10001(
+#line 4000 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4002 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 4004 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 4006 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+#line 4008 "backend_libs.switch_util.c"
+{
+#line 4010 "backend_libs.switch_util.c"
+  {
+#line 4012 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 4015 "backend_libs.switch_util.c"
+    {
+#line 4017 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____ptag_case_rev_map_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+#line 4020 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 4022 "backend_libs.switch_util.c"
+  }
+#line 4024 "backend_libs.switch_util.c"
+}
+
+#line 4027 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_entry_1_0_10001(
+#line 4030 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4032 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 4034 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 4036 "backend_libs.switch_util.c"
+{
+#line 4038 "backend_libs.switch_util.c"
+  {
+#line 4040 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 4043 "backend_libs.switch_util.c"
+    {
+#line 4045 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_rev_map_entry_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 4048 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 4050 "backend_libs.switch_util.c"
+  }
+#line 4052 "backend_libs.switch_util.c"
+}
+
+#line 4055 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_entry_1_0_10001(
+#line 4058 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4060 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 4062 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 4064 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+#line 4066 "backend_libs.switch_util.c"
+{
+#line 4068 "backend_libs.switch_util.c"
+  {
+#line 4070 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 4073 "backend_libs.switch_util.c"
+    {
+#line 4075 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____ptag_case_rev_map_entry_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+#line 4078 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 4080 "backend_libs.switch_util.c"
+  }
+#line 4082 "backend_libs.switch_util.c"
+}
+
+#line 4085 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_count_map_0_0_10001(
+#line 4088 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4090 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+#line 4092 "backend_libs.switch_util.c"
+{
+#line 4094 "backend_libs.switch_util.c"
+  {
+#line 4096 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 4099 "backend_libs.switch_util.c"
+    {
+#line 4101 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_count_map_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+#line 4104 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 4106 "backend_libs.switch_util.c"
+  }
+#line 4108 "backend_libs.switch_util.c"
+}
+
+#line 4111 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_count_map_0_0_10001(
+#line 4114 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 4116 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 4118 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 4120 "backend_libs.switch_util.c"
+{
+#line 4122 "backend_libs.switch_util.c"
+  {
+#line 4124 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 4127 "backend_libs.switch_util.c"
+    {
+#line 4129 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____ptag_count_map_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 4132 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 4134 "backend_libs.switch_util.c"
+  }
+#line 4136 "backend_libs.switch_util.c"
+}
+
+#line 4139 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____soln_consts_1_0_10001(
+#line 4142 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4144 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 4146 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 4148 "backend_libs.switch_util.c"
+{
+#line 4150 "backend_libs.switch_util.c"
+  {
+#line 4152 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 4155 "backend_libs.switch_util.c"
+    {
+#line 4157 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____soln_consts_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 4160 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 4162 "backend_libs.switch_util.c"
+  }
+#line 4164 "backend_libs.switch_util.c"
+}
+
+#line 4167 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____soln_consts_1_0_10001(
+#line 4170 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4172 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 4174 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 4176 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+#line 4178 "backend_libs.switch_util.c"
+{
+#line 4180 "backend_libs.switch_util.c"
+  {
+#line 4182 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 4185 "backend_libs.switch_util.c"
+    {
+#line 4187 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____soln_consts_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+#line 4190 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 4192 "backend_libs.switch_util.c"
+  }
+#line 4194 "backend_libs.switch_util.c"
+}
+
+#line 4197 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____stag_goal_list_1_0_10001(
+#line 4200 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4202 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 4204 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 4206 "backend_libs.switch_util.c"
+{
+#line 4208 "backend_libs.switch_util.c"
+  {
+#line 4210 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 4213 "backend_libs.switch_util.c"
+    {
+#line 4215 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____stag_goal_list_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 4218 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 4220 "backend_libs.switch_util.c"
+  }
+#line 4222 "backend_libs.switch_util.c"
+}
+
+#line 4225 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____stag_goal_list_1_0_10001(
+#line 4228 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4230 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 4232 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 4234 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+#line 4236 "backend_libs.switch_util.c"
+{
+#line 4238 "backend_libs.switch_util.c"
+  {
+#line 4240 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 4243 "backend_libs.switch_util.c"
+    {
+#line 4245 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____stag_goal_list_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+#line 4248 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 4250 "backend_libs.switch_util.c"
+  }
+#line 4252 "backend_libs.switch_util.c"
+}
+
+#line 4255 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____stag_goal_map_1_0_10001(
+#line 4258 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4260 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 4262 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 4264 "backend_libs.switch_util.c"
+{
+#line 4266 "backend_libs.switch_util.c"
+  {
+#line 4268 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 4271 "backend_libs.switch_util.c"
+    {
+#line 4273 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____stag_goal_map_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 4276 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 4278 "backend_libs.switch_util.c"
+  }
+#line 4280 "backend_libs.switch_util.c"
+}
+
+#line 4283 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____stag_goal_map_1_0_10001(
+#line 4286 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4288 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 4290 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 4292 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+#line 4294 "backend_libs.switch_util.c"
+{
+#line 4296 "backend_libs.switch_util.c"
+  {
+#line 4298 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 4301 "backend_libs.switch_util.c"
+    {
+#line 4303 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____stag_goal_map_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+#line 4306 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 4308 "backend_libs.switch_util.c"
+  }
+#line 4310 "backend_libs.switch_util.c"
+}
+
+#line 4313 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____string_hash_slot_1_0_10001(
+#line 4316 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4318 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 4320 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 4322 "backend_libs.switch_util.c"
+{
+#line 4324 "backend_libs.switch_util.c"
+  {
+#line 4326 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 4329 "backend_libs.switch_util.c"
+    {
+#line 4331 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____string_hash_slot_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 4334 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 4336 "backend_libs.switch_util.c"
+  }
+#line 4338 "backend_libs.switch_util.c"
+}
+
+#line 4341 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____string_hash_slot_1_0_10001(
+#line 4344 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4346 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 4348 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 4350 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_4)
+#line 4352 "backend_libs.switch_util.c"
+{
+#line 4354 "backend_libs.switch_util.c"
+  {
+#line 4356 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 4359 "backend_libs.switch_util.c"
+    {
+#line 4361 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____string_hash_slot_1_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_3), ((MR_Word) backend_libs__switch_util__wrapper_arg_4));
+    }
+#line 4364 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 4366 "backend_libs.switch_util.c"
+  }
+#line 4368 "backend_libs.switch_util.c"
+}
+
+#line 4371 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____switch_category_0_0_10001(
+#line 4374 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4376 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+#line 4378 "backend_libs.switch_util.c"
+{
+#line 4380 "backend_libs.switch_util.c"
+  {
+#line 4382 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 4385 "backend_libs.switch_util.c"
+    {
+#line 4387 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____switch_category_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+#line 4390 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 4392 "backend_libs.switch_util.c"
+  }
+#line 4394 "backend_libs.switch_util.c"
+}
+
+#line 4397 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____switch_category_0_0_10001(
+#line 4400 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 4402 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 4404 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 4406 "backend_libs.switch_util.c"
+{
+#line 4408 "backend_libs.switch_util.c"
+  {
+#line 4410 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 4413 "backend_libs.switch_util.c"
+    {
+#line 4415 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____switch_category_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 4418 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 4420 "backend_libs.switch_util.c"
+  }
+#line 4422 "backend_libs.switch_util.c"
+}
+
+#line 4425 "backend_libs.switch_util.c"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____table_size_upgrade_0_0_10001(
+#line 4428 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 4430 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2)
+#line 4432 "backend_libs.switch_util.c"
+{
+#line 4434 "backend_libs.switch_util.c"
+  {
+#line 4436 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 4439 "backend_libs.switch_util.c"
+    {
+#line 4441 "backend_libs.switch_util.c"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____table_size_upgrade_0_0(((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2));
+    }
+#line 4444 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 4446 "backend_libs.switch_util.c"
+  }
+#line 4448 "backend_libs.switch_util.c"
+}
+
+#line 4451 "backend_libs.switch_util.c"
+static void MR_CALL 
+backend_libs__switch_util____Compare____table_size_upgrade_0_0_10001(
+#line 4454 "backend_libs.switch_util.c"
+  MR_Box * backend_libs__switch_util__wrapper_arg_1,
+#line 4456 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 4458 "backend_libs.switch_util.c"
+  MR_Box backend_libs__switch_util__wrapper_arg_3)
+#line 4460 "backend_libs.switch_util.c"
+{
+#line 4462 "backend_libs.switch_util.c"
+  {
+#line 4464 "backend_libs.switch_util.c"
+    MR_Word backend_libs__switch_util__conv0_HeadVar__1_1;
+
+#line 4467 "backend_libs.switch_util.c"
+    {
+#line 4469 "backend_libs.switch_util.c"
+      backend_libs__switch_util____Compare____table_size_upgrade_0_0(&backend_libs__switch_util__conv0_HeadVar__1_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), ((MR_Word) backend_libs__switch_util__wrapper_arg_3));
+    }
+#line 4472 "backend_libs.switch_util.c"
+    *backend_libs__switch_util__wrapper_arg_1 = ((MR_Box) (backend_libs__switch_util__conv0_HeadVar__1_1));
+#line 4474 "backend_libs.switch_util.c"
+  }
+#line 4476 "backend_libs.switch_util.c"
+}
+
+#line 1266 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_114_111_117_112_95_99_97_115_101_115_95_98_121_95_112_116_97_103_95_108_111_111_112_95_95_91_50_44_32_51_44_32_52_93_95_48_12_p_0_1(
+#line 1266 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 1266 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 1266 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 1266 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_3,
+#line 1266 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_4,
+#line 1266 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_5)
+#line 1266 "switch_util.m"
+{
+#line 1266 "switch_util.m"
+  {
+#line 1266 "switch_util.m"
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+#line 1266 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv2_STATE_VARIABLE_CaseIdPtagsMap_53;
+#line 1266 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv1_STATE_VARIABLE_PtagCaseMap_55;
+
+#line 1266 "switch_util.m"
+    {
+#line 1266 "switch_util.m"
+      backend_libs__switch_util__group_case_by_ptag_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4))), (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 5)), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), &backend_libs__switch_util__conv2_STATE_VARIABLE_CaseIdPtagsMap_53, ((MR_Word) backend_libs__switch_util__wrapper_arg_4), &backend_libs__switch_util__conv1_STATE_VARIABLE_PtagCaseMap_55);
+    }
+#line 1266 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_3 = ((MR_Box) (backend_libs__switch_util__conv2_STATE_VARIABLE_CaseIdPtagsMap_53));
+#line 1266 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_5 = ((MR_Box) (backend_libs__switch_util__conv1_STATE_VARIABLE_PtagCaseMap_55));
+#line 1266 "switch_util.m"
+  }
+#line 1266 "switch_util.m"
+}
+
+#line 1251 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_114_111_117_112_95_99_97_115_101_115_95_98_121_95_112_116_97_103_95_108_111_111_112_95_95_91_50_44_32_51_44_32_52_93_95_48_12_p_0(
+#line 1251 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_65,
+#line 1251 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1251 "switch_util.m"
+  MR_Word backend_libs__switch_util__RepresentCase_2,
+#line 1251 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0_3,
+#line 1251 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateA_4,
+#line 1251 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0_5,
+#line 1251 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateB_6,
+#line 1251 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0_7,
+#line 1251 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateC_8,
+#line 1251 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0_9,
+#line 1251 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_10,
+#line 1251 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_11,
+#line 1251 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_12)
+#line 1251 "switch_util.m"
+{
+#line 1258 "switch_util.m"
+  while (MR_TRUE)
+#line 1258 "switch_util.m"
+    {
+#line 1258 "switch_util.m"
+      /* tailcall optimized into a loop */
+#line 1258 "switch_util.m"
+      {
+#line 1258 "switch_util.m"
+        MR_bool backend_libs__switch_util__succeeded;
+
+#line 1258 "switch_util.m"
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1258 "switch_util.m"
+          {
+#line 1259 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_12 = backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_11;
+#line 1259 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_10 = backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0_9;
+#line 1259 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_StateC_8 = backend_libs__switch_util__STATE_VARIABLE_StateC_0_7;
+#line 1259 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_StateB_6 = backend_libs__switch_util__STATE_VARIABLE_StateB_0_5;
+#line 1259 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_StateA_4 = backend_libs__switch_util__STATE_VARIABLE_StateA_0_3;
+#line 1258 "switch_util.m"
+          }
+#line 1258 "switch_util.m"
+        else
+#line 1261 "switch_util.m"
+          {
+#line 1261 "switch_util.m"
+            MR_Word backend_libs__switch_util__TypeInfo_78_78;
+#line 1261 "switch_util.m"
+            MR_Word backend_libs__switch_util__TypeInfo_80_80;
+#line 1261 "switch_util.m"
+            MR_Word backend_libs__switch_util__TaggedCase_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 1261 "switch_util.m"
+            MR_Word backend_libs__switch_util__TaggedCases_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 1261 "switch_util.m"
+            MR_Word backend_libs__switch_util__MainTaggedConsId_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_29, (MR_Integer) 0)));
+#line 1261 "switch_util.m"
+            MR_Word backend_libs__switch_util__OtherConsIds_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_29, (MR_Integer) 1)));
+#line 1261 "switch_util.m"
+            MR_Word backend_libs__switch_util__CaseId_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_29, (MR_Integer) 2)));
+#line 1261 "switch_util.m"
+            MR_Box backend_libs__switch_util__CaseRep_41;
+#line 1261 "switch_util.m"
+            MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_52_52;
+#line 1261 "switch_util.m"
+            MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_53_53;
+#line 1261 "switch_util.m"
+            MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_54_54;
+#line 1261 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_55_55;
+#line 1261 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_56_56;
+#line 1261 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_57_57;
+#line 1261 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_58_58;
+#line 1261 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_59_59;
+#line 1262 "switch_util.m"
+            MR_Word backend_libs__switch_util___Goal_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_29, (MR_Integer) 3)));
+#line 1263 "switch_util.m"
+            void MR_CALL (* backend_libs__switch_util__func_0)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__RepresentCase_2, (MR_Integer) 1)));
+#line 1266 "switch_util.m"
+            MR_Box backend_libs__switch_util__conv4_STATE_VARIABLE_CaseNumPtagsMap_58_58;
+#line 1266 "switch_util.m"
+            MR_Box backend_libs__switch_util__conv3_STATE_VARIABLE_PtagCaseMap_59_59;
+
+#line 1263 "switch_util.m"
+            {
+#line 1263 "switch_util.m"
+              backend_libs__switch_util__func_0(((MR_Box) backend_libs__switch_util__RepresentCase_2), ((MR_Box) (backend_libs__switch_util__TaggedCase_29)), &backend_libs__switch_util__CaseRep_41, backend_libs__switch_util__STATE_VARIABLE_StateA_0_3, &backend_libs__switch_util__STATE_VARIABLE_StateA_52_52, backend_libs__switch_util__STATE_VARIABLE_StateB_0_5, &backend_libs__switch_util__STATE_VARIABLE_StateB_53_53, backend_libs__switch_util__STATE_VARIABLE_StateC_0_7, &backend_libs__switch_util__STATE_VARIABLE_StateC_54_54);
+            }
+#line 1264 "switch_util.m"
+            {
+#line 1264 "switch_util.m"
+              backend_libs__switch_util__group_case_by_ptag_7_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_65, backend_libs__switch_util__CaseId_39, backend_libs__switch_util__CaseRep_41, backend_libs__switch_util__MainTaggedConsId_37, backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0_9, &backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_55_55, backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_11, &backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_56_56);
+            }
+#line 1266 "switch_util.m"
+            {
+#line 1266 "switch_util.m"
+              backend_libs__switch_util__V_57_57 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 1266 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_10[0]));
+#line 1266 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 1) = ((MR_Box) (backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_114_111_117_112_95_99_97_115_101_115_95_98_121_95_112_116_97_103_95_108_111_111_112_95_95_91_50_44_32_51_44_32_52_93_95_48_12_p_0_1));
+#line 1266 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 1266 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 3) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_65));
+#line 1266 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 4) = ((MR_Box) (backend_libs__switch_util__CaseId_39));
+#line 1266 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 5) = backend_libs__switch_util__CaseRep_41;
+#line 1266 "switch_util.m"
+            }
+#line 4650 "backend_libs.switch_util.c"
+            {
+#line 4652 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeInfo_78_78 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 4654 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_78_78, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 4656 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_78_78, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_65));
+#line 4658 "backend_libs.switch_util.c"
+            }
+#line 4660 "backend_libs.switch_util.c"
+            {
+#line 4662 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeInfo_80_80 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 4664 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_80_80, 0) = ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2));
+#line 4666 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_80_80, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0));
+#line 4668 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_80_80, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_78_78));
+#line 4670 "backend_libs.switch_util.c"
+            }
+#line 1266 "switch_util.m"
+            {
+#line 1266 "switch_util.m"
+              mercury__list__foldl2_6_p_0((MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, (MR_Word) &backend_libs__switch_util_scalar_common_2[1], backend_libs__switch_util__TypeInfo_80_80, backend_libs__switch_util__V_57_57, backend_libs__switch_util__OtherConsIds_38, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_55_55)), &backend_libs__switch_util__conv4_STATE_VARIABLE_CaseNumPtagsMap_58_58, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_56_56)), &backend_libs__switch_util__conv3_STATE_VARIABLE_PtagCaseMap_59_59);
+            }
+#line 1266 "switch_util.m"
+            backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_58_58 = ((MR_Word) backend_libs__switch_util__conv4_STATE_VARIABLE_CaseNumPtagsMap_58_58);
+#line 1266 "switch_util.m"
+            backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_59_59 = ((MR_Word) backend_libs__switch_util__conv3_STATE_VARIABLE_PtagCaseMap_59_59);
+#line 1268 "switch_util.m"
+            /* direct tailcall eliminated */
+#line 1268 "switch_util.m"
+            {
+#line 1268 "switch_util.m"
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__TaggedCases_30;
+#line 1268 "switch_util.m"
+              MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0__tmp_copy_3 = backend_libs__switch_util__STATE_VARIABLE_StateA_52_52;
+#line 1268 "switch_util.m"
+              MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0__tmp_copy_5 = backend_libs__switch_util__STATE_VARIABLE_StateB_53_53;
+#line 1268 "switch_util.m"
+              MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0__tmp_copy_7 = backend_libs__switch_util__STATE_VARIABLE_StateC_54_54;
+#line 1268 "switch_util.m"
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0__tmp_copy_9 = backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_58_58;
+#line 1268 "switch_util.m"
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0__tmp_copy_11 = backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_59_59;
+
+#line 1268 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_11 = backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0__tmp_copy_11;
+#line 1268 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0_9 = backend_libs__switch_util__STATE_VARIABLE_CaseNumPtagsMap_0__tmp_copy_9;
+#line 1268 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_StateC_0_7 = backend_libs__switch_util__STATE_VARIABLE_StateC_0__tmp_copy_7;
+#line 1268 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_StateB_0_5 = backend_libs__switch_util__STATE_VARIABLE_StateB_0__tmp_copy_5;
+#line 1268 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_StateA_0_3 = backend_libs__switch_util__STATE_VARIABLE_StateA_0__tmp_copy_3;
+#line 1268 "switch_util.m"
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+#line 1268 "switch_util.m"
+            }
+#line 1268 "switch_util.m"
+            continue;
+#line 1261 "switch_util.m"
+          }
+#line 1258 "switch_util.m"
+      }
+#line 1258 "switch_util.m"
+      break;
+#line 1258 "switch_util.m"
+    }
+#line 1251 "switch_util.m"
+}
+
+#line 1117 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0_1(
+#line 1117 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 1117 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 1117 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 1117 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_3)
+#line 1117 "switch_util.m"
+{
+#line 1117 "switch_util.m"
+  {
+#line 1117 "switch_util.m"
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+#line 1117 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv1_STATE_VARIABLE_UnsortedTable_13;
+
+#line 1117 "switch_util.m"
+    {
+#line 1117 "switch_util.m"
+      backend_libs__switch_util__add_string_binary_entry_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4)), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), ((MR_Word) backend_libs__switch_util__wrapper_arg_2), &backend_libs__switch_util__conv1_STATE_VARIABLE_UnsortedTable_13);
+    }
+#line 1117 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_3 = ((MR_Box) (backend_libs__switch_util__conv1_STATE_VARIABLE_UnsortedTable_13));
+#line 1117 "switch_util.m"
+  }
+#line 1117 "switch_util.m"
+}
+
+#line 1103 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0(
+#line 1103 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_54,
+#line 1103 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1103 "switch_util.m"
+  MR_Word backend_libs__switch_util__RepresentCase_2,
+#line 1103 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0_3,
+#line 1103 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateA_4,
+#line 1103 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0_5,
+#line 1103 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateB_6,
+#line 1103 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0_7,
+#line 1103 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateC_8,
+#line 1103 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_9,
+#line 1103 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_10)
+#line 1103 "switch_util.m"
+{
+#line 1109 "switch_util.m"
+  {
+#line 1109 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 1109 "switch_util.m"
+    if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1109 "switch_util.m"
+      {
+#line 1109 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_10 = backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_9;
+#line 1109 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_StateC_8 = backend_libs__switch_util__STATE_VARIABLE_StateC_0_7;
+#line 1109 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_StateB_6 = backend_libs__switch_util__STATE_VARIABLE_StateB_0_5;
+#line 1109 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_StateA_4 = backend_libs__switch_util__STATE_VARIABLE_StateA_0_3;
+#line 1109 "switch_util.m"
+      }
+#line 1109 "switch_util.m"
+    else
+#line 1111 "switch_util.m"
+      {
+#line 1111 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_64_64;
+#line 1111 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_66_66;
+#line 1111 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedCase_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 1111 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedCases_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 1111 "switch_util.m"
+        MR_Box backend_libs__switch_util__CaseRep_31;
+#line 1111 "switch_util.m"
+        MR_Word backend_libs__switch_util__MainTaggedConsId_32;
+#line 1111 "switch_util.m"
+        MR_Word backend_libs__switch_util__OtherTaggedConsIds_33;
+#line 1111 "switch_util.m"
+        MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_44_44;
+#line 1111 "switch_util.m"
+        MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_45_45;
+#line 1111 "switch_util.m"
+        MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_46_46;
+#line 1111 "switch_util.m"
+        MR_Word backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_47_47;
+#line 1111 "switch_util.m"
+        MR_Word backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_51_51;
+#line 1111 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_52_52;
+#line 1114 "switch_util.m"
+        void MR_CALL (* backend_libs__switch_util__func_0)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *);
+#line 1115 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_34_34;
+#line 1115 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_35_35;
+#line 1117 "switch_util.m"
+        MR_Box backend_libs__switch_util__conv2_STATE_VARIABLE_UnsortedTable_10;
+
+#line 1112 "switch_util.m"
+        {
+#line 1112 "switch_util.m"
+          backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_54, backend_libs__switch_util__TaggedCases_25, backend_libs__switch_util__RepresentCase_2, backend_libs__switch_util__STATE_VARIABLE_StateA_0_3, &backend_libs__switch_util__STATE_VARIABLE_StateA_44_44, backend_libs__switch_util__STATE_VARIABLE_StateB_0_5, &backend_libs__switch_util__STATE_VARIABLE_StateB_45_45, backend_libs__switch_util__STATE_VARIABLE_StateC_0_7, &backend_libs__switch_util__STATE_VARIABLE_StateC_46_46, backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_9, &backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_47_47);
+        }
+#line 1114 "switch_util.m"
+        backend_libs__switch_util__func_0 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__RepresentCase_2, (MR_Integer) 1)));
+#line 1114 "switch_util.m"
+        {
+#line 1114 "switch_util.m"
+          backend_libs__switch_util__func_0(((MR_Box) backend_libs__switch_util__RepresentCase_2), ((MR_Box) (backend_libs__switch_util__TaggedCase_24)), &backend_libs__switch_util__CaseRep_31, backend_libs__switch_util__STATE_VARIABLE_StateA_44_44, backend_libs__switch_util__STATE_VARIABLE_StateA_4, backend_libs__switch_util__STATE_VARIABLE_StateB_45_45, backend_libs__switch_util__STATE_VARIABLE_StateB_6, backend_libs__switch_util__STATE_VARIABLE_StateC_46_46, backend_libs__switch_util__STATE_VARIABLE_StateC_8);
+        }
+#line 1115 "switch_util.m"
+        backend_libs__switch_util__MainTaggedConsId_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_24, (MR_Integer) 0)));
+#line 1115 "switch_util.m"
+        backend_libs__switch_util__OtherTaggedConsIds_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_24, (MR_Integer) 1)));
+#line 1115 "switch_util.m"
+        backend_libs__switch_util__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_24, (MR_Integer) 2)));
+#line 1115 "switch_util.m"
+        backend_libs__switch_util__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_24, (MR_Integer) 3)));
+#line 1116 "switch_util.m"
+        {
+#line 1116 "switch_util.m"
+          backend_libs__switch_util__add_string_binary_entry_4_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_54, backend_libs__switch_util__CaseRep_31, backend_libs__switch_util__MainTaggedConsId_32, backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_47_47, &backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_51_51);
+        }
+#line 1117 "switch_util.m"
+        {
+#line 1117 "switch_util.m"
+          backend_libs__switch_util__V_52_52 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 1117 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_52_52, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_5[1]));
+#line 1117 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_52_52, 1) = ((MR_Box) (backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0_1));
+#line 1117 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_52_52, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 1117 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_52_52, 3) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_54));
+#line 1117 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_52_52, 4) = backend_libs__switch_util__CaseRep_31;
+#line 1117 "switch_util.m"
+        }
+#line 4883 "backend_libs.switch_util.c"
+        {
+#line 4885 "backend_libs.switch_util.c"
+          backend_libs__switch_util__TypeInfo_64_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 4887 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_64_64, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+#line 4889 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_64_64, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+#line 4891 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_64_64, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_54));
+#line 4893 "backend_libs.switch_util.c"
+        }
+#line 4895 "backend_libs.switch_util.c"
+        {
+#line 4897 "backend_libs.switch_util.c"
+          backend_libs__switch_util__TypeInfo_66_66 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 4899 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_66_66, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+#line 4901 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_66_66, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_64_64));
+#line 4903 "backend_libs.switch_util.c"
+        }
+#line 1117 "switch_util.m"
+        {
+#line 1117 "switch_util.m"
+          mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, backend_libs__switch_util__TypeInfo_66_66, backend_libs__switch_util__V_52_52, backend_libs__switch_util__OtherTaggedConsIds_33, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_51_51)), &backend_libs__switch_util__conv2_STATE_VARIABLE_UnsortedTable_10);
+        }
+#line 1117 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_10 = ((MR_Word) backend_libs__switch_util__conv2_STATE_VARIABLE_UnsortedTable_10);
+#line 1111 "switch_util.m"
+      }
+#line 1109 "switch_util.m"
+  }
+#line 1103 "switch_util.m"
+}
+
+#line 792 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_106_101_99_116_95_115_111_108_110_95_99_111_110_115_116_115_95_116_111_95_111_110_101_95_115_111_108_110_95_95_91_49_44_32_51_93_95_48_3_p_0(
+#line 792 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_8,
+#line 792 "switch_util.m"
+  MR_Word backend_libs__switch_util__Solns_5,
+#line 792 "switch_util.m"
+  MR_Word * backend_libs__switch_util__Values_6)
+#line 792 "switch_util.m"
+{
+#line 796 "switch_util.m"
+  {
+#line 796 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__Solns_5)) == (MR_mktag((MR_Integer) 0)));
+
+#line 796 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 796 "switch_util.m"
+      *backend_libs__switch_util__Values_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Solns_5, (MR_Integer) 0)));
+#line 796 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 796 "switch_util.m"
+  }
+#line 792 "switch_util.m"
+}
+
+#line 455 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0_1(
+#line 455 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 455 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 455 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 455 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 455 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_4,
+#line 455 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_5,
+#line 455 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_6,
+#line 455 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_7,
+#line 455 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_8,
+#line 455 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_9,
+#line 455 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_10)
+#line 455 "switch_util.m"
+{
+#line 455 "switch_util.m"
+  {
+#line 455 "switch_util.m"
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+#line 455 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv4_TaggedConsId_14;
+#line 455 "switch_util.m"
+    MR_Integer backend_libs__switch_util__conv3_STATE_VARIABLE_LowerLimit_22;
+#line 455 "switch_util.m"
+    MR_Integer backend_libs__switch_util__conv2_STATE_VARIABLE_UpperLimit_24;
+#line 455 "switch_util.m"
+    MR_Integer backend_libs__switch_util__conv1_STATE_VARIABLE_NumValues_26;
+#line 455 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv0_STATE_VARIABLE_IsIntSwitch_28;
+
+#line 455 "switch_util.m"
+    {
+#line 455 "switch_util.m"
+      backend_libs__switch_util__tag_cons_id_in_int_switch_11_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv4_TaggedConsId_14, ((MR_Integer) backend_libs__switch_util__wrapper_arg_3), &backend_libs__switch_util__conv3_STATE_VARIABLE_LowerLimit_22, ((MR_Integer) backend_libs__switch_util__wrapper_arg_5), &backend_libs__switch_util__conv2_STATE_VARIABLE_UpperLimit_24, ((MR_Integer) backend_libs__switch_util__wrapper_arg_7), &backend_libs__switch_util__conv1_STATE_VARIABLE_NumValues_26, ((MR_Word) backend_libs__switch_util__wrapper_arg_9), &backend_libs__switch_util__conv0_STATE_VARIABLE_IsIntSwitch_28);
+    }
+#line 455 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv4_TaggedConsId_14));
+#line 455 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_4 = ((MR_Box) (backend_libs__switch_util__conv3_STATE_VARIABLE_LowerLimit_22));
+#line 455 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_6 = ((MR_Box) (backend_libs__switch_util__conv2_STATE_VARIABLE_UpperLimit_24));
+#line 455 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_8 = ((MR_Box) (backend_libs__switch_util__conv1_STATE_VARIABLE_NumValues_26));
+#line 455 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_10 = ((MR_Box) (backend_libs__switch_util__conv0_STATE_VARIABLE_IsIntSwitch_28));
+#line 455 "switch_util.m"
+  }
+#line 455 "switch_util.m"
+}
+
+#line 443 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0(
+#line 443 "switch_util.m"
+  MR_Word backend_libs__switch_util__ModuleInfo_1,
+#line 443 "switch_util.m"
+  MR_Integer backend_libs__switch_util__CaseNum_3,
+#line 443 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__4_4,
+#line 443 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__5_5,
+#line 443 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_6,
+#line 443 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LowerLimit_7,
+#line 443 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_8,
+#line 443 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_UpperLimit_9,
+#line 443 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumValues_0_10,
+#line 443 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumValues_11,
+#line 443 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_12,
+#line 443 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_13)
+#line 443 "switch_util.m"
+{
+#line 447 "switch_util.m"
+  {
+#line 447 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 447 "switch_util.m"
+    if ((backend_libs__switch_util__HeadVar__4_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 447 "switch_util.m"
+      {
+#line 447 "switch_util.m"
+        *backend_libs__switch_util__HeadVar__5_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 448 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_13 = backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_12;
+#line 448 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_NumValues_11 = backend_libs__switch_util__STATE_VARIABLE_NumValues_0_10;
+#line 447 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_UpperLimit_9 = backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_8;
+#line 447 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_LowerLimit_7 = backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_6;
+#line 447 "switch_util.m"
+      }
+#line 447 "switch_util.m"
+    else
+#line 451 "switch_util.m"
+      {
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeCtorInfo_81_81;
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__Case_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__4_4, (MR_Integer) 0)));
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__Cases_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__4_4, (MR_Integer) 1)));
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedCase_34;
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedCases_35;
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__MainConsId_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_32, (MR_Integer) 0)));
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__OtherConsIds_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_32, (MR_Integer) 1)));
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__Goal_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_32, (MR_Integer) 2)));
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedMainConsId_43;
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedOtherConsIds_44;
+#line 451 "switch_util.m"
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_LowerLimit_53_53;
+#line 451 "switch_util.m"
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_UpperLimit_54_54;
+#line 451 "switch_util.m"
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumValues_55_55;
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_56_56;
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_57_57;
+#line 451 "switch_util.m"
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_LowerLimit_58_58;
+#line 451 "switch_util.m"
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_UpperLimit_59_59;
+#line 451 "switch_util.m"
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumValues_60_60;
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_61_61;
+#line 451 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_62_62;
+#line 451 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_63_63;
+#line 455 "switch_util.m"
+        MR_Box backend_libs__switch_util__conv8_STATE_VARIABLE_LowerLimit_58_58;
+#line 455 "switch_util.m"
+        MR_Box backend_libs__switch_util__conv7_STATE_VARIABLE_UpperLimit_59_59;
+#line 455 "switch_util.m"
+        MR_Box backend_libs__switch_util__conv6_STATE_VARIABLE_NumValues_60_60;
+#line 455 "switch_util.m"
+        MR_Box backend_libs__switch_util__conv5_STATE_VARIABLE_IsIntSwitch_61_61;
+
+#line 453 "switch_util.m"
+        {
+#line 453 "switch_util.m"
+          backend_libs__switch_util__tag_cons_id_in_int_switch_11_p_0(backend_libs__switch_util__ModuleInfo_1, backend_libs__switch_util__MainConsId_40, &backend_libs__switch_util__TaggedMainConsId_43, backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_6, &backend_libs__switch_util__STATE_VARIABLE_LowerLimit_53_53, backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_8, &backend_libs__switch_util__STATE_VARIABLE_UpperLimit_54_54, backend_libs__switch_util__STATE_VARIABLE_NumValues_0_10, &backend_libs__switch_util__STATE_VARIABLE_NumValues_55_55, backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_12, &backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_56_56);
+        }
+#line 455 "switch_util.m"
+        {
+#line 455 "switch_util.m"
+          backend_libs__switch_util__V_57_57 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 455 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_9[0]));
+#line 455 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 1) = ((MR_Box) (backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0_1));
+#line 455 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 455 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_57_57, 3) = ((MR_Box) (backend_libs__switch_util__ModuleInfo_1));
+#line 455 "switch_util.m"
+        }
+#line 5132 "backend_libs.switch_util.c"
+        backend_libs__switch_util__TypeCtorInfo_81_81 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 455 "switch_util.m"
+        {
+#line 455 "switch_util.m"
+          mercury__list__map_foldl4_11_p_1((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, backend_libs__switch_util__TypeCtorInfo_81_81, backend_libs__switch_util__TypeCtorInfo_81_81, backend_libs__switch_util__TypeCtorInfo_81_81, (MR_Word) &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0, backend_libs__switch_util__V_57_57, backend_libs__switch_util__OtherConsIds_41, &backend_libs__switch_util__TaggedOtherConsIds_44, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_LowerLimit_53_53)), &backend_libs__switch_util__conv8_STATE_VARIABLE_LowerLimit_58_58, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_UpperLimit_54_54)), &backend_libs__switch_util__conv7_STATE_VARIABLE_UpperLimit_59_59, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_NumValues_55_55)), &backend_libs__switch_util__conv6_STATE_VARIABLE_NumValues_60_60, ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_56_56)), &backend_libs__switch_util__conv5_STATE_VARIABLE_IsIntSwitch_61_61);
+        }
+#line 455 "switch_util.m"
+        backend_libs__switch_util__STATE_VARIABLE_LowerLimit_58_58 = ((MR_Integer) backend_libs__switch_util__conv8_STATE_VARIABLE_LowerLimit_58_58);
+#line 455 "switch_util.m"
+        backend_libs__switch_util__STATE_VARIABLE_UpperLimit_59_59 = ((MR_Integer) backend_libs__switch_util__conv7_STATE_VARIABLE_UpperLimit_59_59);
+#line 455 "switch_util.m"
+        backend_libs__switch_util__STATE_VARIABLE_NumValues_60_60 = ((MR_Integer) backend_libs__switch_util__conv6_STATE_VARIABLE_NumValues_60_60);
+#line 455 "switch_util.m"
+        backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_61_61 = ((MR_Word) backend_libs__switch_util__conv5_STATE_VARIABLE_IsIntSwitch_61_61);
+#line 459 "switch_util.m"
+        backend_libs__switch_util__V_62_62 = (MR_Word) backend_libs__switch_util__CaseNum_3;
+#line 458 "switch_util.m"
+        {
+#line 458 "switch_util.m"
+          backend_libs__switch_util__TaggedCase_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 458 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_34, 0) = ((MR_Box) (backend_libs__switch_util__TaggedMainConsId_43));
+#line 458 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_34, 1) = ((MR_Box) (backend_libs__switch_util__TaggedOtherConsIds_44));
+#line 458 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_34, 2) = ((MR_Box) (backend_libs__switch_util__V_62_62));
+#line 458 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_34, 3) = ((MR_Box) (backend_libs__switch_util__Goal_42));
+#line 458 "switch_util.m"
+        }
+#line 460 "switch_util.m"
+        backend_libs__switch_util__V_63_63 = (backend_libs__switch_util__CaseNum_3 + (MR_Integer) 1);
+#line 460 "switch_util.m"
+        {
+#line 460 "switch_util.m"
+          backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0(backend_libs__switch_util__ModuleInfo_1, backend_libs__switch_util__V_63_63, backend_libs__switch_util__Cases_33, &backend_libs__switch_util__TaggedCases_35, backend_libs__switch_util__STATE_VARIABLE_LowerLimit_58_58, backend_libs__switch_util__STATE_VARIABLE_LowerLimit_7, backend_libs__switch_util__STATE_VARIABLE_UpperLimit_59_59, backend_libs__switch_util__STATE_VARIABLE_UpperLimit_9, backend_libs__switch_util__STATE_VARIABLE_NumValues_60_60, backend_libs__switch_util__STATE_VARIABLE_NumValues_11, backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_61_61, backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_13);
+        }
+#line 450 "switch_util.m"
+        {
+#line 450 "switch_util.m"
+          MR_Word base;
+#line 450 "switch_util.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 450 "switch_util.m"
+          *backend_libs__switch_util__HeadVar__5_5 = base;
+#line 450 "switch_util.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (backend_libs__switch_util__TaggedCase_34));
+#line 450 "switch_util.m"
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (backend_libs__switch_util__TaggedCases_35));
+#line 450 "switch_util.m"
+        }
+#line 451 "switch_util.m"
+      }
+#line 447 "switch_util.m"
+  }
+#line 443 "switch_util.m"
+}
+
+#line 437 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0_1(
+#line 437 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 437 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 437 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2)
+#line 437 "switch_util.m"
+{
+#line 437 "switch_util.m"
+  {
+#line 437 "switch_util.m"
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+#line 437 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv0_TaggedConsId_6;
+
+#line 437 "switch_util.m"
+    {
+#line 437 "switch_util.m"
+      backend_libs__switch_util__tag_cons_id_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv0_TaggedConsId_6);
+    }
+#line 437 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv0_TaggedConsId_6));
+#line 437 "switch_util.m"
+  }
+#line 437 "switch_util.m"
+}
+
+#line 429 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0(
+#line 429 "switch_util.m"
+  MR_Word backend_libs__switch_util__ModuleInfo_1,
+#line 429 "switch_util.m"
+  MR_Integer backend_libs__switch_util__CaseNum_3,
+#line 429 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__4_4,
+#line 429 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__5_5)
+#line 429 "switch_util.m"
+{
+#line 432 "switch_util.m"
+  {
+#line 432 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 432 "switch_util.m"
+    if ((backend_libs__switch_util__HeadVar__4_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 432 "switch_util.m"
+      *backend_libs__switch_util__HeadVar__5_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 432 "switch_util.m"
+    else
+#line 434 "switch_util.m"
+      {
+#line 434 "switch_util.m"
+        MR_Word backend_libs__switch_util__Case_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__4_4, (MR_Integer) 0)));
+#line 434 "switch_util.m"
+        MR_Word backend_libs__switch_util__Cases_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__4_4, (MR_Integer) 1)));
+#line 434 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedCase_14;
+#line 434 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedCases_15;
+#line 434 "switch_util.m"
+        MR_Word backend_libs__switch_util__MainConsId_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_12, (MR_Integer) 0)));
+#line 434 "switch_util.m"
+        MR_Word backend_libs__switch_util__OtherConsIds_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_12, (MR_Integer) 1)));
+#line 434 "switch_util.m"
+        MR_Word backend_libs__switch_util__Goal_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_12, (MR_Integer) 2)));
+#line 434 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedMainConsId_19;
+#line 434 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedOtherConsIds_20;
+#line 434 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_21_21;
+#line 434 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_22_22;
+#line 434 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_23_23;
+#line 434 "switch_util.m"
+        MR_Word backend_libs__switch_util__ConsTag_32;
+
+#line 467 "switch_util.m"
+        {
+#line 467 "switch_util.m"
+          backend_libs__switch_util__ConsTag_32 = hlds__hlds_code_util__cons_id_to_tag_2_f_0(backend_libs__switch_util__ModuleInfo_1, backend_libs__switch_util__MainConsId_16);
+        }
+#line 468 "switch_util.m"
+        {
+#line 468 "switch_util.m"
+          backend_libs__switch_util__TaggedMainConsId_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 468 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedMainConsId_19, 0) = ((MR_Box) (backend_libs__switch_util__MainConsId_16));
+#line 468 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedMainConsId_19, 1) = ((MR_Box) (backend_libs__switch_util__ConsTag_32));
+#line 468 "switch_util.m"
+        }
+#line 437 "switch_util.m"
+        {
+#line 437 "switch_util.m"
+          backend_libs__switch_util__V_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 437 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_21_21, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_7[2]));
+#line 437 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_21_21, 1) = ((MR_Box) (backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0_1));
+#line 437 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_21_21, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 437 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_21_21, 3) = ((MR_Box) (backend_libs__switch_util__ModuleInfo_1));
+#line 437 "switch_util.m"
+        }
+#line 437 "switch_util.m"
+        {
+#line 437 "switch_util.m"
+          mercury__list__map_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, backend_libs__switch_util__V_21_21, backend_libs__switch_util__OtherConsIds_17, &backend_libs__switch_util__TaggedOtherConsIds_20);
+        }
+#line 439 "switch_util.m"
+        backend_libs__switch_util__V_22_22 = (MR_Word) backend_libs__switch_util__CaseNum_3;
+#line 438 "switch_util.m"
+        {
+#line 438 "switch_util.m"
+          backend_libs__switch_util__TaggedCase_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 438 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_14, 0) = ((MR_Box) (backend_libs__switch_util__TaggedMainConsId_19));
+#line 438 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_14, 1) = ((MR_Box) (backend_libs__switch_util__TaggedOtherConsIds_20));
+#line 438 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_14, 2) = ((MR_Box) (backend_libs__switch_util__V_22_22));
+#line 438 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_14, 3) = ((MR_Box) (backend_libs__switch_util__Goal_18));
+#line 438 "switch_util.m"
+        }
+#line 440 "switch_util.m"
+        backend_libs__switch_util__V_23_23 = (backend_libs__switch_util__CaseNum_3 + (MR_Integer) 1);
+#line 440 "switch_util.m"
+        {
+#line 440 "switch_util.m"
+          backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0(backend_libs__switch_util__ModuleInfo_1, backend_libs__switch_util__V_23_23, backend_libs__switch_util__Cases_13, &backend_libs__switch_util__TaggedCases_15);
+        }
+#line 434 "switch_util.m"
+        {
+#line 434 "switch_util.m"
+          MR_Word base;
+#line 434 "switch_util.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 434 "switch_util.m"
+          *backend_libs__switch_util__HeadVar__5_5 = base;
+#line 434 "switch_util.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (backend_libs__switch_util__TaggedCase_14));
+#line 434 "switch_util.m"
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (backend_libs__switch_util__TaggedCases_15));
+#line 434 "switch_util.m"
+        }
+#line 434 "switch_util.m"
+      }
+#line 432 "switch_util.m"
+  }
+#line 429 "switch_util.m"
+}
+
+#line 422 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0_2(
+#line 422 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 422 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 422 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2)
+#line 422 "switch_util.m"
+{
+#line 422 "switch_util.m"
+  {
+#line 422 "switch_util.m"
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+#line 422 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv9_TaggedConsId_6;
+
+#line 422 "switch_util.m"
+    {
+#line 422 "switch_util.m"
+      backend_libs__switch_util__tag_cons_id_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv9_TaggedConsId_6);
+    }
+#line 422 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv9_TaggedConsId_6));
+#line 422 "switch_util.m"
+  }
+#line 422 "switch_util.m"
+}
+
+#line 403 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0_1(
+#line 403 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 403 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 403 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2,
+#line 403 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_3,
+#line 403 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_4,
+#line 403 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_5,
+#line 403 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_6,
+#line 403 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_7,
+#line 403 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_8,
+#line 403 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_9,
+#line 403 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_10)
+#line 403 "switch_util.m"
+{
+#line 403 "switch_util.m"
+  {
+#line 403 "switch_util.m"
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+#line 403 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv4_TaggedConsId_14;
+#line 403 "switch_util.m"
+    MR_Integer backend_libs__switch_util__conv3_STATE_VARIABLE_LowerLimit_22;
+#line 403 "switch_util.m"
+    MR_Integer backend_libs__switch_util__conv2_STATE_VARIABLE_UpperLimit_24;
+#line 403 "switch_util.m"
+    MR_Integer backend_libs__switch_util__conv1_STATE_VARIABLE_NumValues_26;
+#line 403 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv0_STATE_VARIABLE_IsIntSwitch_28;
+
+#line 403 "switch_util.m"
+    {
+#line 403 "switch_util.m"
+      backend_libs__switch_util__tag_cons_id_in_int_switch_11_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv4_TaggedConsId_14, ((MR_Integer) backend_libs__switch_util__wrapper_arg_3), &backend_libs__switch_util__conv3_STATE_VARIABLE_LowerLimit_22, ((MR_Integer) backend_libs__switch_util__wrapper_arg_5), &backend_libs__switch_util__conv2_STATE_VARIABLE_UpperLimit_24, ((MR_Integer) backend_libs__switch_util__wrapper_arg_7), &backend_libs__switch_util__conv1_STATE_VARIABLE_NumValues_26, ((MR_Word) backend_libs__switch_util__wrapper_arg_9), &backend_libs__switch_util__conv0_STATE_VARIABLE_IsIntSwitch_28);
+    }
+#line 403 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv4_TaggedConsId_14));
+#line 403 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_4 = ((MR_Box) (backend_libs__switch_util__conv3_STATE_VARIABLE_LowerLimit_22));
+#line 403 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_6 = ((MR_Box) (backend_libs__switch_util__conv2_STATE_VARIABLE_UpperLimit_24));
+#line 403 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_8 = ((MR_Box) (backend_libs__switch_util__conv1_STATE_VARIABLE_NumValues_26));
+#line 403 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_10 = ((MR_Box) (backend_libs__switch_util__conv0_STATE_VARIABLE_IsIntSwitch_28));
+#line 403 "switch_util.m"
+  }
+#line 403 "switch_util.m"
+}
+
+#line 62 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0(
+#line 62 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 62 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3,
+#line 62 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__4_4,
+#line 62 "switch_util.m"
+  MR_Word * backend_libs__switch_util__MaybeIntSwitchLimits_5)
+#line 62 "switch_util.m"
+{
+#line 395 "switch_util.m"
+  {
+#line 395 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 395 "switch_util.m"
+    if ((backend_libs__switch_util__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 395 "switch_util.m"
+      {
+#line 395 "switch_util.m"
+        *backend_libs__switch_util__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 396 "switch_util.m"
+        {
+#line 396 "switch_util.m"
+          mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.tag_cases\'/5", (MR_String) "no cases");
+#line 396 "switch_util.m"
+          return;
+        }
+#line 395 "switch_util.m"
+      }
+#line 395 "switch_util.m"
+    else
+#line 398 "switch_util.m"
+      {
+#line 398 "switch_util.m"
+        MR_Word backend_libs__switch_util__Case_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+#line 398 "switch_util.m"
+        MR_Word backend_libs__switch_util__Cases_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+#line 398 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedCase_16;
+#line 398 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedCases_17;
+#line 398 "switch_util.m"
+        MR_Word backend_libs__switch_util__MainConsId_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_14, (MR_Integer) 0)));
+#line 398 "switch_util.m"
+        MR_Word backend_libs__switch_util__OtherConsIds_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_14, (MR_Integer) 1)));
+#line 398 "switch_util.m"
+        MR_Word backend_libs__switch_util__Goal_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_14, (MR_Integer) 2)));
+#line 398 "switch_util.m"
+        MR_Word backend_libs__switch_util__MainConsTag_22;
+#line 398 "switch_util.m"
+        MR_Word backend_libs__switch_util__TaggedMainConsId_23;
+#line 421 "switch_util.m"
+        MR_Integer backend_libs__switch_util__IntTag_24;
+
+#line 400 "switch_util.m"
+        {
+#line 400 "switch_util.m"
+          backend_libs__switch_util__MainConsTag_22 = hlds__hlds_code_util__cons_id_to_tag_2_f_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__MainConsId_19);
+        }
+#line 401 "switch_util.m"
+        {
+#line 401 "switch_util.m"
+          backend_libs__switch_util__TaggedMainConsId_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 401 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedMainConsId_23, 0) = ((MR_Box) (backend_libs__switch_util__MainConsId_19));
+#line 401 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedMainConsId_23, 1) = ((MR_Box) (backend_libs__switch_util__MainConsTag_22));
+#line 401 "switch_util.m"
+        }
+#line 402 "switch_util.m"
+        backend_libs__switch_util__succeeded = ((((MR_tag((MR_Word) backend_libs__switch_util__MainConsTag_22)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__MainConsTag_22, (MR_Integer) 0)))) == (MR_Integer) 0)));
+#line 402 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 402 "switch_util.m"
+          {
+#line 402 "switch_util.m"
+            backend_libs__switch_util__IntTag_24 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__MainConsTag_22, (MR_Integer) 1)));
+#line 406 "switch_util.m"
+            {
+#line 406 "switch_util.m"
+              MR_Word backend_libs__switch_util__TypeCtorInfo_58_58;
+#line 406 "switch_util.m"
+              MR_Word backend_libs__switch_util__TaggedOtherConsIds_25;
+#line 406 "switch_util.m"
+              MR_Integer backend_libs__switch_util__LowerLimit1_26;
+#line 406 "switch_util.m"
+              MR_Integer backend_libs__switch_util__UpperLimit1_27;
+#line 406 "switch_util.m"
+              MR_Integer backend_libs__switch_util__NumValues1_28;
+#line 406 "switch_util.m"
+              MR_Word backend_libs__switch_util__IsIntSwitch1_29;
+#line 406 "switch_util.m"
+              MR_Integer backend_libs__switch_util__LowerLimit_30;
+#line 406 "switch_util.m"
+              MR_Integer backend_libs__switch_util__UpperLimit_31;
+#line 406 "switch_util.m"
+              MR_Integer backend_libs__switch_util__NumValues_32;
+#line 406 "switch_util.m"
+              MR_Word backend_libs__switch_util__IsIntSwitch_33;
+#line 406 "switch_util.m"
+              MR_Word backend_libs__switch_util__V_34_34;
+#line 403 "switch_util.m"
+              MR_Box backend_libs__switch_util__conv8_LowerLimit1_26;
+#line 403 "switch_util.m"
+              MR_Box backend_libs__switch_util__conv7_UpperLimit1_27;
+#line 403 "switch_util.m"
+              MR_Box backend_libs__switch_util__conv6_NumValues1_28;
+#line 403 "switch_util.m"
+              MR_Box backend_libs__switch_util__conv5_IsIntSwitch1_29;
+
+#line 403 "switch_util.m"
+              {
+#line 403 "switch_util.m"
+                backend_libs__switch_util__V_34_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 403 "switch_util.m"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_34_34, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_9[0]));
+#line 403 "switch_util.m"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_34_34, 1) = ((MR_Box) (backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0_1));
+#line 403 "switch_util.m"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_34_34, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 403 "switch_util.m"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_34_34, 3) = ((MR_Box) (backend_libs__switch_util__HeadVar__1_1));
+#line 403 "switch_util.m"
+              }
+#line 5572 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeCtorInfo_58_58 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 403 "switch_util.m"
+              {
+#line 403 "switch_util.m"
+                mercury__list__map_foldl4_11_p_1((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, backend_libs__switch_util__TypeCtorInfo_58_58, backend_libs__switch_util__TypeCtorInfo_58_58, backend_libs__switch_util__TypeCtorInfo_58_58, (MR_Word) &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0, backend_libs__switch_util__V_34_34, backend_libs__switch_util__OtherConsIds_20, &backend_libs__switch_util__TaggedOtherConsIds_25, ((MR_Box) (backend_libs__switch_util__IntTag_24)), &backend_libs__switch_util__conv8_LowerLimit1_26, ((MR_Box) (backend_libs__switch_util__IntTag_24)), &backend_libs__switch_util__conv7_UpperLimit1_27, ((MR_Box) ((MR_Integer) 1)), &backend_libs__switch_util__conv6_NumValues1_28, ((MR_Box) ((MR_Integer) 0)), &backend_libs__switch_util__conv5_IsIntSwitch1_29);
+              }
+#line 403 "switch_util.m"
+              backend_libs__switch_util__LowerLimit1_26 = ((MR_Integer) backend_libs__switch_util__conv8_LowerLimit1_26);
+#line 403 "switch_util.m"
+              backend_libs__switch_util__UpperLimit1_27 = ((MR_Integer) backend_libs__switch_util__conv7_UpperLimit1_27);
+#line 403 "switch_util.m"
+              backend_libs__switch_util__NumValues1_28 = ((MR_Integer) backend_libs__switch_util__conv6_NumValues1_28);
+#line 403 "switch_util.m"
+              backend_libs__switch_util__IsIntSwitch1_29 = ((MR_Word) backend_libs__switch_util__conv5_IsIntSwitch1_29);
+#line 407 "switch_util.m"
+              {
+#line 407 "switch_util.m"
+                backend_libs__switch_util__TaggedCase_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 407 "switch_util.m"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 0) = ((MR_Box) (backend_libs__switch_util__TaggedMainConsId_23));
+#line 407 "switch_util.m"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 1) = ((MR_Box) (backend_libs__switch_util__TaggedOtherConsIds_25));
+#line 407 "switch_util.m"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 2) = ((MR_Box) (((MR_Box) ((MR_Integer) 0))));
+#line 407 "switch_util.m"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 3) = ((MR_Box) (backend_libs__switch_util__Goal_21));
+#line 407 "switch_util.m"
+              }
+#line 409 "switch_util.m"
+              {
+#line 409 "switch_util.m"
+                backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_105_110_95_105_110_116_95_115_119_105_116_99_104_95_95_91_50_93_95_48_13_p_0(backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1, backend_libs__switch_util__Cases_15, &backend_libs__switch_util__TaggedCases_17, backend_libs__switch_util__LowerLimit1_26, &backend_libs__switch_util__LowerLimit_30, backend_libs__switch_util__UpperLimit1_27, &backend_libs__switch_util__UpperLimit_31, backend_libs__switch_util__NumValues1_28, &backend_libs__switch_util__NumValues_32, backend_libs__switch_util__IsIntSwitch1_29, &backend_libs__switch_util__IsIntSwitch_33);
+              }
+#line 417 "switch_util.m"
+#line 417 "switch_util.m"
+              switch (backend_libs__switch_util__IsIntSwitch_33) {
+#line 417 "switch_util.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 417 "switch_util.m"
+                case (MR_Integer) 0:
+#line 415 "switch_util.m"
+                  {
+#line 415 "switch_util.m"
+                    MR_Word base;
+#line 415 "switch_util.m"
+                    base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+#line 415 "switch_util.m"
+                    *backend_libs__switch_util__MaybeIntSwitchLimits_5 = base;
+#line 415 "switch_util.m"
+                    MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (backend_libs__switch_util__LowerLimit_30));
+#line 415 "switch_util.m"
+                    MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (backend_libs__switch_util__UpperLimit_31));
+#line 415 "switch_util.m"
+                    MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (backend_libs__switch_util__NumValues_32));
+#line 415 "switch_util.m"
+                  }
+#line 417 "switch_util.m"
+                  break;
+#line 417 "switch_util.m"
+                case (MR_Integer) 1:
+#line 419 "switch_util.m"
+                  *backend_libs__switch_util__MaybeIntSwitchLimits_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 417 "switch_util.m"
+                  break;
+#line 417 "switch_util.m"
+              }
+#line 406 "switch_util.m"
+            }
+#line 402 "switch_util.m"
+          }
+#line 402 "switch_util.m"
+        else
+#line 422 "switch_util.m"
+          {
+#line 422 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_41_41;
+#line 422 "switch_util.m"
+            MR_Word backend_libs__switch_util__TaggedOtherConsIds_45;
+
+#line 422 "switch_util.m"
+            {
+#line 422 "switch_util.m"
+              backend_libs__switch_util__V_41_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 422 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_41_41, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_7[2]));
+#line 422 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_41_41, 1) = ((MR_Box) (backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0_2));
+#line 422 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_41_41, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 422 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_41_41, 3) = ((MR_Box) (backend_libs__switch_util__HeadVar__1_1));
+#line 422 "switch_util.m"
+            }
+#line 422 "switch_util.m"
+            {
+#line 422 "switch_util.m"
+              mercury__list__map_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, backend_libs__switch_util__V_41_41, backend_libs__switch_util__OtherConsIds_20, &backend_libs__switch_util__TaggedOtherConsIds_45);
+            }
+#line 423 "switch_util.m"
+            {
+#line 423 "switch_util.m"
+              backend_libs__switch_util__TaggedCase_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 423 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 0) = ((MR_Box) (backend_libs__switch_util__TaggedMainConsId_23));
+#line 423 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 1) = ((MR_Box) (backend_libs__switch_util__TaggedOtherConsIds_45));
+#line 423 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 2) = ((MR_Box) (((MR_Box) ((MR_Integer) 0))));
+#line 423 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_16, 3) = ((MR_Box) (backend_libs__switch_util__Goal_21));
+#line 423 "switch_util.m"
+            }
+#line 425 "switch_util.m"
+            {
+#line 425 "switch_util.m"
+              backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_112_108_97_105_110_95_95_91_50_93_95_48_5_p_0(backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1, backend_libs__switch_util__Cases_15, &backend_libs__switch_util__TaggedCases_17);
+            }
+#line 426 "switch_util.m"
+            *backend_libs__switch_util__MaybeIntSwitchLimits_5 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 422 "switch_util.m"
+          }
+#line 398 "switch_util.m"
+        {
+#line 398 "switch_util.m"
+          MR_Word base;
+#line 398 "switch_util.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 398 "switch_util.m"
+          *backend_libs__switch_util__HeadVar__4_4 = base;
+#line 398 "switch_util.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (backend_libs__switch_util__TaggedCase_16));
+#line 398 "switch_util.m"
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (backend_libs__switch_util__TaggedCases_17));
+#line 398 "switch_util.m"
+        }
+#line 398 "switch_util.m"
+      }
+#line 395 "switch_util.m"
+  }
+#line 62 "switch_util.m"
+}
+
+#line 1406 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__IntroducedFrom__pred__build_ptag_case_rev_map__1406__1_3_p_0(
+#line 1406 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_42,
+#line 1406 "switch_util.m"
+  MR_Word backend_libs__switch_util__Case_14,
+#line 1406 "switch_util.m"
+  MR_Word backend_libs__switch_util__OldCase_21)
+#line 1406 "switch_util.m"
+{
+#line 1406 "switch_util.m"
+  {
+#line 1406 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 1406 "switch_util.m"
+    {
+#line 1406 "switch_util.m"
+      return backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_42, backend_libs__switch_util__Case_14, backend_libs__switch_util__OldCase_21);
+    }
+#line 1406 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 1406 "switch_util.m"
+  }
+#line 1406 "switch_util.m"
+}
+
+#line 1301 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__IntroducedFrom__pred__group_case_by_ptag__1301__1_2_p_0(
+#line 1301 "switch_util.m"
+  MR_Word backend_libs__switch_util__StagLoc_21,
+#line 1301 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_74)
+#line 1301 "switch_util.m"
+{
+#line 1301 "switch_util.m"
+  {
+#line 1301 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__StagLoc_21 == backend_libs__switch_util__HeadVar__2_74);
+
+#line 1301 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 1301 "switch_util.m"
+  }
+#line 1301 "switch_util.m"
+}
+
+#line 1315 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__IntroducedFrom__pred__group_case_by_ptag__1315__1_2_p_0(
+#line 1315 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_63,
+#line 1315 "switch_util.m"
+  MR_Word backend_libs__switch_util__StagLoc_94)
+#line 1315 "switch_util.m"
+{
+#line 1315 "switch_util.m"
+  {
+#line 1315 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__StagLoc_94 == backend_libs__switch_util__HeadVar__1_63);
+
+#line 1315 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 1315 "switch_util.m"
+  }
+#line 1315 "switch_util.m"
+}
+
+#line 202 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____table_size_upgrade_0_0(
+#line 202 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 202 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 202 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 202 "switch_util.m"
+{
+#line 202 "switch_util.m"
+  {
+#line 202 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 202 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cast_HeadVar1_4 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 202 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cast_HeadVar2_5 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 202 "switch_util.m"
+    {
+#line 202 "switch_util.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+#line 202 "switch_util.m"
+      return;
+    }
+#line 202 "switch_util.m"
+  }
+#line 202 "switch_util.m"
+}
+
+#line 202 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____table_size_upgrade_0_0(
+#line 202 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+#line 202 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 202 "switch_util.m"
+{
+#line 5826 "backend_libs.switch_util.c"
+  {
+#line 5828 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__HeadVar__2_1 == backend_libs__switch_util__HeadVar__2_2);
+
+#line 5831 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 5833 "backend_libs.switch_util.c"
+  }
+#line 202 "switch_util.m"
+}
+
+#line 77 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____switch_category_0_0(
+#line 77 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 77 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 77 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 77 "switch_util.m"
+{
+#line 77 "switch_util.m"
+  {
+#line 77 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 77 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cast_HeadVar1_4 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 77 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cast_HeadVar2_5 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 77 "switch_util.m"
+    {
+#line 77 "switch_util.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+#line 77 "switch_util.m"
+      return;
+    }
+#line 77 "switch_util.m"
+  }
+#line 77 "switch_util.m"
+}
+
+#line 77 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____switch_category_0_0(
+#line 77 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+#line 77 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 77 "switch_util.m"
+{
+#line 5879 "backend_libs.switch_util.c"
+  {
+#line 5881 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__HeadVar__2_1 == backend_libs__switch_util__HeadVar__2_2);
+
+#line 5884 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 5886 "backend_libs.switch_util.c"
+  }
+#line 77 "switch_util.m"
+}
+
+#line 199 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____string_hash_slot_1_0(
+#line 199 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_14,
+#line 199 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 199 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 199 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 199 "switch_util.m"
+{
+#line 199 "switch_util.m"
+  {
+#line 199 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 199 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_12 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 199 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_13 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 199 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_12 == backend_libs__switch_util__CastY_13);
+#line 199 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 5917 "backend_libs.switch_util.c"
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+#line 199 "switch_util.m"
+    else
+#line 199 "switch_util.m"
+      {
+#line 199 "switch_util.m"
+        MR_String backend_libs__switch_util__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 199 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 199 "switch_util.m"
+        MR_Box backend_libs__switch_util__V_6_6 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2));
+#line 199 "switch_util.m"
+        MR_String backend_libs__switch_util__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+#line 199 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+#line 199 "switch_util.m"
+        MR_Box backend_libs__switch_util__V_9_9 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 2));
+#line 199 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_10_10;
+
+#line 199 "switch_util.m"
+        {
+#line 199 "switch_util.m"
+          mercury__private_builtin__builtin_compare_string_3_p_0(&backend_libs__switch_util__V_10_10, backend_libs__switch_util__V_4_4, backend_libs__switch_util__V_7_7);
+        }
+#line 5943 "backend_libs.switch_util.c"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_10_10 == (MR_Integer) 0);
+#line 199 "switch_util.m"
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 199 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 199 "switch_util.m"
+          *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_10_10;
+#line 199 "switch_util.m"
+        else
+#line 199 "switch_util.m"
+          {
+#line 199 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_11_11;
+
+#line 199 "switch_util.m"
+            {
+#line 199 "switch_util.m"
+              mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_11_11, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_8_8);
+            }
+#line 5963 "backend_libs.switch_util.c"
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_11_11 == (MR_Integer) 0);
+#line 199 "switch_util.m"
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 199 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 199 "switch_util.m"
+              *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_11_11;
+#line 199 "switch_util.m"
+            else
+#line 199 "switch_util.m"
+              {
+#line 199 "switch_util.m"
+                mercury__builtin__compare_3_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_14, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_6_6, backend_libs__switch_util__V_9_9);
+#line 199 "switch_util.m"
+                return;
+              }
+#line 199 "switch_util.m"
+          }
+#line 199 "switch_util.m"
+      }
+#line 199 "switch_util.m"
+  }
+#line 199 "switch_util.m"
+}
+
+#line 199 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____string_hash_slot_1_0(
+#line 199 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_11,
+#line 199 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 199 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 199 "switch_util.m"
+{
+#line 199 "switch_util.m"
+  {
+#line 199 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 199 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+#line 199 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+#line 199 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+#line 199 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 199 "switch_util.m"
+      backend_libs__switch_util__succeeded = MR_TRUE;
+#line 199 "switch_util.m"
+    else
+#line 199 "switch_util.m"
+      {
+#line 199 "switch_util.m"
+        MR_String backend_libs__switch_util__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 199 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 199 "switch_util.m"
+        MR_Box backend_libs__switch_util__V_5_5 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 2));
+#line 199 "switch_util.m"
+        MR_String backend_libs__switch_util__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 199 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 199 "switch_util.m"
+        MR_Box backend_libs__switch_util__V_8_8 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2));
+
+#line 6032 "backend_libs.switch_util.c"
+        backend_libs__switch_util__succeeded = (strcmp(backend_libs__switch_util__V_3_3, backend_libs__switch_util__V_6_6) == 0);
+#line 199 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 199 "switch_util.m"
+          {
+#line 6038 "backend_libs.switch_util.c"
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_4_4 == backend_libs__switch_util__V_7_7);
+#line 199 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 6042 "backend_libs.switch_util.c"
+              {
+#line 6044 "backend_libs.switch_util.c"
+                return backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_11, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_8_8);
+              }
+#line 199 "switch_util.m"
+          }
+#line 199 "switch_util.m"
+      }
+#line 199 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 199 "switch_util.m"
+  }
+#line 199 "switch_util.m"
+}
+
+#line 302 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____stag_goal_map_1_0(
+#line 302 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+#line 302 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 302 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 302 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 302 "switch_util.m"
+{
+#line 302 "switch_util.m"
+  {
+#line 302 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 302 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+#line 302 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+#line 302 "switch_util.m"
+    {
+#line 302 "switch_util.m"
+      mercury__tree234____Compare____tree234_2_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_6, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+#line 302 "switch_util.m"
+      return;
+    }
+#line 302 "switch_util.m"
+  }
+#line 302 "switch_util.m"
+}
+
+#line 302 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____stag_goal_map_1_0(
+#line 302 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+#line 302 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 302 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 302 "switch_util.m"
+{
+#line 302 "switch_util.m"
+  {
+#line 302 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 302 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+#line 302 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+#line 302 "switch_util.m"
+    {
+#line 302 "switch_util.m"
+      return backend_libs__switch_util__succeeded = mercury__tree234____Unify____tree234_2_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_5, backend_libs__switch_util__Cast_HeadVar1_3, backend_libs__switch_util__Cast_HeadVar2_4);
+    }
+#line 302 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 302 "switch_util.m"
+  }
+#line 302 "switch_util.m"
+}
+
+#line 303 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____stag_goal_list_1_0(
+#line 303 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+#line 303 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 303 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 303 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 303 "switch_util.m"
+{
+#line 303 "switch_util.m"
+  {
+#line 303 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 303 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_9_9;
+#line 303 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+#line 303 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+#line 6148 "backend_libs.switch_util.c"
+    {
+#line 6150 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 6152 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+#line 6154 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0));
+#line 6156 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_6));
+#line 6158 "backend_libs.switch_util.c"
+    }
+#line 303 "switch_util.m"
+    {
+#line 303 "switch_util.m"
+      mercury__list____Compare____list_1_0(backend_libs__switch_util__TypeInfo_9_9, backend_libs__switch_util__HeadVar__1_1, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_4, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_5);
+#line 303 "switch_util.m"
+      return;
+    }
+#line 303 "switch_util.m"
+  }
+#line 303 "switch_util.m"
+}
+
+#line 303 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____stag_goal_list_1_0(
+#line 303 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+#line 303 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 303 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 303 "switch_util.m"
+{
+#line 303 "switch_util.m"
+  {
+#line 303 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 303 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_8_8;
+#line 303 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+#line 303 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+#line 6194 "backend_libs.switch_util.c"
+    {
+#line 6196 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 6198 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+#line 6200 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0));
+#line 6202 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_5));
+#line 6204 "backend_libs.switch_util.c"
+    }
+#line 303 "switch_util.m"
+    {
+#line 303 "switch_util.m"
+      return backend_libs__switch_util__succeeded = mercury__list____Unify____list_1_0(backend_libs__switch_util__TypeInfo_8_8, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_3, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_4);
+    }
+#line 303 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 303 "switch_util.m"
+  }
+#line 303 "switch_util.m"
+}
+
+#line 148 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____soln_consts_1_0(
+#line 148 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_19,
+#line 148 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 148 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 148 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 148 "switch_util.m"
+{
+#line 148 "switch_util.m"
+  {
+#line 148 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 148 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_17 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 148 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_18 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 148 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_17 == backend_libs__switch_util__CastY_18);
+#line 148 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 6244 "backend_libs.switch_util.c"
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+#line 148 "switch_util.m"
+    else
+#line 148 "switch_util.m"
+    if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0))))
+#line 148 "switch_util.m"
+      {
+#line 148 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 148 "switch_util.m"
+        if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+#line 148 "switch_util.m"
+          {
+#line 148 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 148 "switch_util.m"
+            {
+#line 148 "switch_util.m"
+              mercury__list____Compare____list_1_0(backend_libs__switch_util__TypeInfo_for_Rval_19, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_27_27, backend_libs__switch_util__V_5_5);
+#line 148 "switch_util.m"
+              return;
+            }
+#line 148 "switch_util.m"
+          }
+#line 148 "switch_util.m"
+        else
+#line 6273 "backend_libs.switch_util.c"
+          *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 1;
+#line 148 "switch_util.m"
+      }
+#line 148 "switch_util.m"
+    else
+#line 148 "switch_util.m"
+      {
+#line 148 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 148 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 148 "switch_util.m"
+        if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+#line 6288 "backend_libs.switch_util.c"
+          *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 2;
+#line 148 "switch_util.m"
+        else
+#line 148 "switch_util.m"
+          {
+#line 148 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+#line 148 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+#line 148 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_16_16;
+
+#line 148 "switch_util.m"
+            {
+#line 148 "switch_util.m"
+              mercury__list____Compare____list_1_0(backend_libs__switch_util__TypeInfo_for_Rval_19, &backend_libs__switch_util__V_16_16, backend_libs__switch_util__V_29_29, backend_libs__switch_util__V_14_14);
+            }
+#line 6306 "backend_libs.switch_util.c"
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_16_16 == (MR_Integer) 0);
+#line 148 "switch_util.m"
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 148 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 148 "switch_util.m"
+              *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_16_16;
+#line 148 "switch_util.m"
+            else
+#line 148 "switch_util.m"
+              {
+#line 148 "switch_util.m"
+                MR_Word backend_libs__switch_util__TypeInfo_23_23;
+
+#line 6321 "backend_libs.switch_util.c"
+                {
+#line 6323 "backend_libs.switch_util.c"
+                  backend_libs__switch_util__TypeInfo_23_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6325 "backend_libs.switch_util.c"
+                  MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_23_23, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+#line 6327 "backend_libs.switch_util.c"
+                  MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_23_23, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_19));
+#line 6329 "backend_libs.switch_util.c"
+                }
+#line 148 "switch_util.m"
+                {
+#line 148 "switch_util.m"
+                  mercury__list____Compare____list_1_0(backend_libs__switch_util__TypeInfo_23_23, backend_libs__switch_util__HeadVar__1_1, (MR_Word) backend_libs__switch_util__V_28_28, (MR_Word) backend_libs__switch_util__V_15_15);
+#line 148 "switch_util.m"
+                  return;
+                }
+#line 148 "switch_util.m"
+              }
+#line 148 "switch_util.m"
+          }
+#line 148 "switch_util.m"
+      }
+#line 148 "switch_util.m"
+  }
+#line 148 "switch_util.m"
+}
+
+#line 148 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____soln_consts_1_0(
+#line 148 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_11,
+#line 148 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 148 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 148 "switch_util.m"
+{
+#line 148 "switch_util.m"
+  {
+#line 148 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 148 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+#line 148 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+#line 148 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+#line 148 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 148 "switch_util.m"
+      backend_libs__switch_util__succeeded = MR_TRUE;
+#line 148 "switch_util.m"
+    else
+#line 148 "switch_util.m"
+    if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+#line 148 "switch_util.m"
+      {
+#line 148 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 148 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_4_4;
+
+#line 148 "switch_util.m"
+        backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+#line 148 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 148 "switch_util.m"
+          {
+#line 148 "switch_util.m"
+            backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 6394 "backend_libs.switch_util.c"
+            {
+#line 6396 "backend_libs.switch_util.c"
+              return backend_libs__switch_util__succeeded = mercury__list____Unify____list_1_0(backend_libs__switch_util__TypeInfo_for_Rval_11, backend_libs__switch_util__V_3_3, backend_libs__switch_util__V_4_4);
+            }
+#line 148 "switch_util.m"
+          }
+#line 148 "switch_util.m"
+      }
+#line 148 "switch_util.m"
+    else
+#line 148 "switch_util.m"
+      {
+#line 148 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeCtorInfo_14_14;
+#line 148 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_17_17;
+#line 148 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 148 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 148 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_7_7;
+#line 148 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_8_8;
+
+#line 148 "switch_util.m"
+        backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 148 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 148 "switch_util.m"
+          {
+#line 148 "switch_util.m"
+            backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 148 "switch_util.m"
+            backend_libs__switch_util__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 6430 "backend_libs.switch_util.c"
+            backend_libs__switch_util__TypeCtorInfo_14_14 = (MR_Word) &mercury__list__list__type_ctor_info_list_1;
+#line 6432 "backend_libs.switch_util.c"
+            {
+#line 6434 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeInfo_17_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6436 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_17_17, 0) = ((MR_Box) (backend_libs__switch_util__TypeCtorInfo_14_14));
+#line 6438 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_17_17, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_11));
+#line 6440 "backend_libs.switch_util.c"
+            }
+#line 6442 "backend_libs.switch_util.c"
+            {
+#line 6444 "backend_libs.switch_util.c"
+              backend_libs__switch_util__succeeded = mercury__list____Unify____list_1_0(backend_libs__switch_util__TypeInfo_for_Rval_11, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_7_7);
+            }
+#line 148 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 6449 "backend_libs.switch_util.c"
+              {
+#line 6451 "backend_libs.switch_util.c"
+                return backend_libs__switch_util__succeeded = mercury__list____Unify____list_1_0(backend_libs__switch_util__TypeInfo_17_17, (MR_Word) backend_libs__switch_util__V_6_6, (MR_Word) backend_libs__switch_util__V_8_8);
+              }
+#line 148 "switch_util.m"
+          }
+#line 148 "switch_util.m"
+      }
+#line 148 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 148 "switch_util.m"
+  }
+#line 148 "switch_util.m"
+}
+
+#line 310 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_count_map_0_0(
+#line 310 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 310 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 310 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 310 "switch_util.m"
+{
+#line 310 "switch_util.m"
+  {
+#line 310 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 310 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+#line 310 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+#line 310 "switch_util.m"
+    {
+#line 310 "switch_util.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[2], backend_libs__switch_util__HeadVar__1_1, ((MR_Box) (backend_libs__switch_util__Cast_HeadVar1_4)), ((MR_Box) (backend_libs__switch_util__Cast_HeadVar2_5)));
+#line 310 "switch_util.m"
+      return;
+    }
+#line 310 "switch_util.m"
+  }
+#line 310 "switch_util.m"
+}
+
+#line 310 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_count_map_0_0(
+#line 310 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 310 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 310 "switch_util.m"
+{
+#line 310 "switch_util.m"
+  {
+#line 310 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 310 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+#line 310 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+#line 310 "switch_util.m"
+    {
+#line 310 "switch_util.m"
+      return backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[2], ((MR_Box) (backend_libs__switch_util__Cast_HeadVar1_3)), ((MR_Box) (backend_libs__switch_util__Cast_HeadVar2_4)));
+    }
+#line 310 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 310 "switch_util.m"
+  }
+#line 310 "switch_util.m"
+}
+
+#line 1373 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_entry_1_0(
+#line 1373 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_17,
+#line 1373 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 1373 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 1373 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 1373 "switch_util.m"
+{
+#line 1373 "switch_util.m"
+  {
+#line 1373 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1373 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_15 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 1373 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_16 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 1373 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_15 == backend_libs__switch_util__CastY_16);
+#line 1373 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 6553 "backend_libs.switch_util.c"
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+#line 1373 "switch_util.m"
+    else
+#line 1373 "switch_util.m"
+      {
+#line 1373 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 1373 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 1373 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2)));
+#line 1373 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 3)));
+#line 1373 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+#line 1373 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+#line 1373 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 2)));
+#line 1373 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 3)));
+#line 1373 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_12_12;
+
+#line 1373 "switch_util.m"
+        {
+#line 1373 "switch_util.m"
+          mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_12_12, backend_libs__switch_util__V_4_4, backend_libs__switch_util__V_8_8);
+        }
+#line 6583 "backend_libs.switch_util.c"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_12_12 == (MR_Integer) 0);
+#line 1373 "switch_util.m"
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 1373 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 1373 "switch_util.m"
+          *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_12_12;
+#line 1373 "switch_util.m"
+        else
+#line 1373 "switch_util.m"
+          {
+#line 1373 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_13_13;
+
+#line 1373 "switch_util.m"
+            {
+#line 1373 "switch_util.m"
+              mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_13_13, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_9_9);
+            }
+#line 6603 "backend_libs.switch_util.c"
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_13_13 == (MR_Integer) 0);
+#line 1373 "switch_util.m"
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 1373 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 1373 "switch_util.m"
+              *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_13_13;
+#line 1373 "switch_util.m"
+            else
+#line 1373 "switch_util.m"
+              {
+#line 1373 "switch_util.m"
+                MR_Word backend_libs__switch_util__V_14_14;
+
+#line 1373 "switch_util.m"
+                {
+#line 1373 "switch_util.m"
+                  mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_1[2], &backend_libs__switch_util__V_14_14, ((MR_Box) (backend_libs__switch_util__V_6_6)), ((MR_Box) (backend_libs__switch_util__V_10_10)));
+                }
+#line 6623 "backend_libs.switch_util.c"
+                backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_14_14 == (MR_Integer) 0);
+#line 1373 "switch_util.m"
+                backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 1373 "switch_util.m"
+                if (backend_libs__switch_util__succeeded)
+#line 1373 "switch_util.m"
+                  *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_14_14;
+#line 1373 "switch_util.m"
+                else
+#line 1373 "switch_util.m"
+                  {
+#line 1373 "switch_util.m"
+                    backend_libs__switch_util____Compare____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_17, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_7_7, backend_libs__switch_util__V_11_11);
+#line 1373 "switch_util.m"
+                    return;
+                  }
+#line 1373 "switch_util.m"
+              }
+#line 1373 "switch_util.m"
+          }
+#line 1373 "switch_util.m"
+      }
+#line 1373 "switch_util.m"
+  }
+#line 1373 "switch_util.m"
+}
+
+#line 1373 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_entry_1_0(
+#line 1373 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_13,
+#line 1373 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1373 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 1373 "switch_util.m"
+{
+#line 1373 "switch_util.m"
+  {
+#line 1373 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1373 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_11 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+#line 1373 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_12 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+#line 1373 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_11 == backend_libs__switch_util__CastY_12);
+#line 1373 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 1373 "switch_util.m"
+      backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1373 "switch_util.m"
+    else
+#line 1373 "switch_util.m"
+      {
+#line 1373 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_14_14;
+#line 1373 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 1373 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 1373 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 2)));
+#line 1373 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 3)));
+#line 1373 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 1373 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 1373 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2)));
+#line 1373 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 3)));
+
+#line 6700 "backend_libs.switch_util.c"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_3_3 == backend_libs__switch_util__V_7_7);
+#line 1373 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 1373 "switch_util.m"
+          {
+#line 6706 "backend_libs.switch_util.c"
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_4_4 == backend_libs__switch_util__V_8_8);
+#line 1373 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 1373 "switch_util.m"
+              {
+#line 6712 "backend_libs.switch_util.c"
+                backend_libs__switch_util__TypeInfo_14_14 = (MR_Word) &backend_libs__switch_util_scalar_common_1[2];
+#line 6714 "backend_libs.switch_util.c"
+                {
+#line 6716 "backend_libs.switch_util.c"
+                  backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0(backend_libs__switch_util__TypeInfo_14_14, ((MR_Box) (backend_libs__switch_util__V_5_5)), ((MR_Box) (backend_libs__switch_util__V_9_9)));
+                }
+#line 1373 "switch_util.m"
+                if (backend_libs__switch_util__succeeded)
+#line 6721 "backend_libs.switch_util.c"
+                  {
+#line 6723 "backend_libs.switch_util.c"
+                    return backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_13, backend_libs__switch_util__V_6_6, backend_libs__switch_util__V_10_10);
+                  }
+#line 1373 "switch_util.m"
+              }
+#line 1373 "switch_util.m"
+          }
+#line 1373 "switch_util.m"
+      }
+#line 1373 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 1373 "switch_util.m"
+  }
+#line 1373 "switch_util.m"
+}
+
+#line 1388 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_rev_map_1_0(
+#line 1388 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+#line 1388 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 1388 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 1388 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 1388 "switch_util.m"
+{
+#line 1388 "switch_util.m"
+  {
+#line 1388 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1388 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_8_8;
+#line 1388 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_10_10;
+#line 1388 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+#line 1388 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+#line 6765 "backend_libs.switch_util.c"
+    {
+#line 6767 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6769 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 6771 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_6));
+#line 6773 "backend_libs.switch_util.c"
+    }
+#line 6775 "backend_libs.switch_util.c"
+    {
+#line 6777 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6779 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_10_10, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1));
+#line 6781 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_10_10, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_6));
+#line 6783 "backend_libs.switch_util.c"
+    }
+#line 1388 "switch_util.m"
+    {
+#line 1388 "switch_util.m"
+      mercury__tree234____Compare____tree234_2_0(backend_libs__switch_util__TypeInfo_8_8, backend_libs__switch_util__TypeInfo_10_10, backend_libs__switch_util__HeadVar__1_1, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_4, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_5);
+#line 1388 "switch_util.m"
+      return;
+    }
+#line 1388 "switch_util.m"
+  }
+#line 1388 "switch_util.m"
+}
+
+#line 1388 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_rev_map_1_0(
+#line 1388 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+#line 1388 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1388 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 1388 "switch_util.m"
+{
+#line 1388 "switch_util.m"
+  {
+#line 1388 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1388 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_7_7;
+#line 1388 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_9_9;
+#line 1388 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+#line 1388 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+#line 6821 "backend_libs.switch_util.c"
+    {
+#line 6823 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6825 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_7_7, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 6827 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_7_7, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_5));
+#line 6829 "backend_libs.switch_util.c"
+    }
+#line 6831 "backend_libs.switch_util.c"
+    {
+#line 6833 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6835 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1));
+#line 6837 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_5));
+#line 6839 "backend_libs.switch_util.c"
+    }
+#line 1388 "switch_util.m"
+    {
+#line 1388 "switch_util.m"
+      return backend_libs__switch_util__succeeded = mercury__tree234____Unify____tree234_2_0(backend_libs__switch_util__TypeInfo_7_7, backend_libs__switch_util__TypeInfo_9_9, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_3, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_4);
+    }
+#line 1388 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 1388 "switch_util.m"
+  }
+#line 1388 "switch_util.m"
+}
+
+#line 257 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_map_1_0(
+#line 257 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+#line 257 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 257 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 257 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 257 "switch_util.m"
+{
+#line 257 "switch_util.m"
+  {
+#line 257 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 257 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_9_9;
+#line 257 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+#line 257 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+#line 6877 "backend_libs.switch_util.c"
+    {
+#line 6879 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6881 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 6883 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_9_9, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_6));
+#line 6885 "backend_libs.switch_util.c"
+    }
+#line 257 "switch_util.m"
+    {
+#line 257 "switch_util.m"
+      mercury__tree234____Compare____tree234_2_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_9_9, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+#line 257 "switch_util.m"
+      return;
+    }
+#line 257 "switch_util.m"
+  }
+#line 257 "switch_util.m"
+}
+
+#line 257 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_map_1_0(
+#line 257 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+#line 257 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 257 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 257 "switch_util.m"
+{
+#line 257 "switch_util.m"
+  {
+#line 257 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 257 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_8_8;
+#line 257 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+#line 257 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+#line 6921 "backend_libs.switch_util.c"
+    {
+#line 6923 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6925 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 6927 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_5));
+#line 6929 "backend_libs.switch_util.c"
+    }
+#line 257 "switch_util.m"
+    {
+#line 257 "switch_util.m"
+      return backend_libs__switch_util__succeeded = mercury__tree234____Unify____tree234_2_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_8_8, backend_libs__switch_util__Cast_HeadVar1_3, backend_libs__switch_util__Cast_HeadVar2_4);
+    }
+#line 257 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 257 "switch_util.m"
+  }
+#line 257 "switch_util.m"
+}
+
+#line 305 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_list_1_0(
+#line 305 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+#line 305 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 305 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 305 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 305 "switch_util.m"
+{
+#line 305 "switch_util.m"
+  {
+#line 305 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 305 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_8_8;
+#line 305 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+#line 305 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+#line 6967 "backend_libs.switch_util.c"
+    {
+#line 6969 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6971 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_entry_1));
+#line 6973 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_6));
+#line 6975 "backend_libs.switch_util.c"
+    }
+#line 305 "switch_util.m"
+    {
+#line 305 "switch_util.m"
+      mercury__list____Compare____list_1_0(backend_libs__switch_util__TypeInfo_8_8, backend_libs__switch_util__HeadVar__1_1, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_4, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_5);
+#line 305 "switch_util.m"
+      return;
+    }
+#line 305 "switch_util.m"
+  }
+#line 305 "switch_util.m"
+}
+
+#line 305 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_list_1_0(
+#line 305 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+#line 305 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 305 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 305 "switch_util.m"
+{
+#line 305 "switch_util.m"
+  {
+#line 305 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 305 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_7_7;
+#line 305 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+#line 305 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+#line 7011 "backend_libs.switch_util.c"
+    {
+#line 7013 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 7015 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_7_7, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_entry_1));
+#line 7017 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_7_7, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_5));
+#line 7019 "backend_libs.switch_util.c"
+    }
+#line 305 "switch_util.m"
+    {
+#line 305 "switch_util.m"
+      return backend_libs__switch_util__succeeded = mercury__list____Unify____list_1_0(backend_libs__switch_util__TypeInfo_7_7, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_3, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_4);
+    }
+#line 305 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 305 "switch_util.m"
+  }
+#line 305 "switch_util.m"
+}
+
+#line 306 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_group_list_1_0(
+#line 306 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_6,
+#line 306 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 306 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 306 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 306 "switch_util.m"
+{
+#line 306 "switch_util.m"
+  {
+#line 306 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 306 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_8_8;
+#line 306 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+#line 306 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+#line 7057 "backend_libs.switch_util.c"
+    {
+#line 7059 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 7061 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_entry_1));
+#line 7063 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_8_8, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_6));
+#line 7065 "backend_libs.switch_util.c"
+    }
+#line 306 "switch_util.m"
+    {
+#line 306 "switch_util.m"
+      mercury__list____Compare____list_1_0(backend_libs__switch_util__TypeInfo_8_8, backend_libs__switch_util__HeadVar__1_1, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_4, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_5);
+#line 306 "switch_util.m"
+      return;
+    }
+#line 306 "switch_util.m"
+  }
+#line 306 "switch_util.m"
+}
+
+#line 306 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_group_list_1_0(
+#line 306 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_5,
+#line 306 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 306 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 306 "switch_util.m"
+{
+#line 306 "switch_util.m"
+  {
+#line 306 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 306 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_7_7;
+#line 306 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+#line 306 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+#line 7101 "backend_libs.switch_util.c"
+    {
+#line 7103 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 7105 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_7_7, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_entry_1));
+#line 7107 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_7_7, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_5));
+#line 7109 "backend_libs.switch_util.c"
+    }
+#line 306 "switch_util.m"
+    {
+#line 306 "switch_util.m"
+      return backend_libs__switch_util__succeeded = mercury__list____Unify____list_1_0(backend_libs__switch_util__TypeInfo_7_7, (MR_Word) backend_libs__switch_util__Cast_HeadVar1_3, (MR_Word) backend_libs__switch_util__Cast_HeadVar2_4);
+    }
+#line 306 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 306 "switch_util.m"
+  }
+#line 306 "switch_util.m"
+}
+
+#line 274 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_group_entry_1_0(
+#line 274 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_14,
+#line 274 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 274 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 274 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 274 "switch_util.m"
+{
+#line 274 "switch_util.m"
+  {
+#line 274 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 274 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_12 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 274 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_13 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 274 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_12 == backend_libs__switch_util__CastY_13);
+#line 274 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 7149 "backend_libs.switch_util.c"
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+#line 274 "switch_util.m"
+    else
+#line 274 "switch_util.m"
+      {
+#line 274 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 274 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 274 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2)));
+#line 274 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+#line 274 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+#line 274 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 2)));
+#line 274 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_10_10;
+
+#line 274 "switch_util.m"
+        {
+#line 274 "switch_util.m"
+          mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_10_10, backend_libs__switch_util__V_4_4, backend_libs__switch_util__V_7_7);
+        }
+#line 7175 "backend_libs.switch_util.c"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_10_10 == (MR_Integer) 0);
+#line 274 "switch_util.m"
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 274 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 274 "switch_util.m"
+          *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_10_10;
+#line 274 "switch_util.m"
+        else
+#line 274 "switch_util.m"
+          {
+#line 274 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_11_11;
+
+#line 274 "switch_util.m"
+            {
+#line 274 "switch_util.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_1[2], &backend_libs__switch_util__V_11_11, ((MR_Box) (backend_libs__switch_util__V_5_5)), ((MR_Box) (backend_libs__switch_util__V_8_8)));
+            }
+#line 7195 "backend_libs.switch_util.c"
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_11_11 == (MR_Integer) 0);
+#line 274 "switch_util.m"
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 274 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 274 "switch_util.m"
+              *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_11_11;
+#line 274 "switch_util.m"
+            else
+#line 274 "switch_util.m"
+              {
+#line 274 "switch_util.m"
+                backend_libs__switch_util____Compare____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_14, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_6_6, backend_libs__switch_util__V_9_9);
+#line 274 "switch_util.m"
+                return;
+              }
+#line 274 "switch_util.m"
+          }
+#line 274 "switch_util.m"
+      }
+#line 274 "switch_util.m"
+  }
+#line 274 "switch_util.m"
+}
+
+#line 274 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_group_entry_1_0(
+#line 274 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_11,
+#line 274 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 274 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 274 "switch_util.m"
+{
+#line 274 "switch_util.m"
+  {
+#line 274 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 274 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+#line 274 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+#line 274 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+#line 274 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 274 "switch_util.m"
+      backend_libs__switch_util__succeeded = MR_TRUE;
+#line 274 "switch_util.m"
+    else
+#line 274 "switch_util.m"
+      {
+#line 274 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_12_12;
+#line 274 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 274 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 274 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 2)));
+#line 274 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 274 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 274 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2)));
+
+#line 7266 "backend_libs.switch_util.c"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_3_3 == backend_libs__switch_util__V_6_6);
+#line 274 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 274 "switch_util.m"
+          {
+#line 7272 "backend_libs.switch_util.c"
+            backend_libs__switch_util__TypeInfo_12_12 = (MR_Word) &backend_libs__switch_util_scalar_common_1[2];
+#line 7274 "backend_libs.switch_util.c"
+            {
+#line 7276 "backend_libs.switch_util.c"
+              backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0(backend_libs__switch_util__TypeInfo_12_12, ((MR_Box) (backend_libs__switch_util__V_4_4)), ((MR_Box) (backend_libs__switch_util__V_7_7)));
+            }
+#line 274 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 7281 "backend_libs.switch_util.c"
+              {
+#line 7283 "backend_libs.switch_util.c"
+                return backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_11, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_8_8);
+              }
+#line 274 "switch_util.m"
+          }
+#line 274 "switch_util.m"
+      }
+#line 274 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 274 "switch_util.m"
+  }
+#line 274 "switch_util.m"
+}
+
+#line 260 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_entry_1_0(
+#line 260 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_11,
+#line 260 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 260 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 260 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 260 "switch_util.m"
+{
+#line 260 "switch_util.m"
+  {
+#line 260 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 260 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 260 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 260 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+#line 260 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 7323 "backend_libs.switch_util.c"
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+#line 260 "switch_util.m"
+    else
+#line 260 "switch_util.m"
+      {
+#line 260 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 260 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 260 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+#line 260 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+#line 260 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_8_8;
+
+#line 260 "switch_util.m"
+        {
+#line 260 "switch_util.m"
+          mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_8_8, backend_libs__switch_util__V_4_4, backend_libs__switch_util__V_6_6);
+        }
+#line 7345 "backend_libs.switch_util.c"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_8_8 == (MR_Integer) 0);
+#line 260 "switch_util.m"
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 260 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 260 "switch_util.m"
+          *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_8_8;
+#line 260 "switch_util.m"
+        else
+#line 260 "switch_util.m"
+          {
+#line 260 "switch_util.m"
+            backend_libs__switch_util____Compare____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_11, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_7_7);
+#line 260 "switch_util.m"
+            return;
+          }
+#line 260 "switch_util.m"
+      }
+#line 260 "switch_util.m"
+  }
+#line 260 "switch_util.m"
+}
+
+#line 260 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_entry_1_0(
+#line 260 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_9,
+#line 260 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 260 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 260 "switch_util.m"
+{
+#line 260 "switch_util.m"
+  {
+#line 260 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 260 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_7 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+#line 260 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_8 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+#line 260 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_7 == backend_libs__switch_util__CastY_8);
+#line 260 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 260 "switch_util.m"
+      backend_libs__switch_util__succeeded = MR_TRUE;
+#line 260 "switch_util.m"
+    else
+#line 260 "switch_util.m"
+      {
+#line 260 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 260 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 260 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 260 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+
+#line 7408 "backend_libs.switch_util.c"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_3_3 == backend_libs__switch_util__V_5_5);
+#line 260 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 7412 "backend_libs.switch_util.c"
+          {
+#line 7414 "backend_libs.switch_util.c"
+            return backend_libs__switch_util__succeeded = backend_libs__switch_util____Unify____ptag_case_1_0(backend_libs__switch_util__TypeInfo_for_CaseRep_9, backend_libs__switch_util__V_4_4, backend_libs__switch_util__V_6_6);
+          }
+#line 260 "switch_util.m"
+      }
+#line 260 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 260 "switch_util.m"
+  }
+#line 260 "switch_util.m"
+}
+
+#line 289 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____ptag_case_1_0(
+#line 289 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_11,
+#line 289 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 289 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 289 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 289 "switch_util.m"
+{
+#line 289 "switch_util.m"
+  {
+#line 289 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 289 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 289 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 289 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+#line 289 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 7452 "backend_libs.switch_util.c"
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+#line 289 "switch_util.m"
+    else
+#line 289 "switch_util.m"
+      {
+#line 289 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 289 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 289 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+#line 289 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+#line 289 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_8_8;
+#line 289 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_16_16 = (MR_Integer) backend_libs__switch_util__V_4_4;
+#line 289 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_17_17 = (MR_Integer) backend_libs__switch_util__V_6_6;
+
+#line 289 "switch_util.m"
+        {
+#line 289 "switch_util.m"
+          mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_8_8, backend_libs__switch_util__V_16_16, backend_libs__switch_util__V_17_17);
+        }
+#line 7478 "backend_libs.switch_util.c"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_8_8 == (MR_Integer) 0);
+#line 289 "switch_util.m"
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 289 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 289 "switch_util.m"
+          *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_8_8;
+#line 289 "switch_util.m"
+        else
+#line 289 "switch_util.m"
+          {
+#line 289 "switch_util.m"
+            {
+#line 289 "switch_util.m"
+              mercury__tree234____Compare____tree234_2_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_11, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_5_5, backend_libs__switch_util__V_7_7);
+#line 289 "switch_util.m"
+              return;
+            }
+#line 289 "switch_util.m"
+          }
+#line 289 "switch_util.m"
+      }
+#line 289 "switch_util.m"
+  }
+#line 289 "switch_util.m"
+}
+
+#line 289 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____ptag_case_1_0(
+#line 289 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_9,
+#line 289 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 289 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 289 "switch_util.m"
+{
+#line 289 "switch_util.m"
+  {
+#line 289 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 289 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_7 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+#line 289 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_8 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+#line 289 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_7 == backend_libs__switch_util__CastY_8);
+#line 289 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 289 "switch_util.m"
+      backend_libs__switch_util__succeeded = MR_TRUE;
+#line 289 "switch_util.m"
+    else
+#line 289 "switch_util.m"
+      {
+#line 289 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeCtorInfo_10_10;
+#line 289 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 289 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 289 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 289 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+
+#line 7547 "backend_libs.switch_util.c"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_3_3 == backend_libs__switch_util__V_5_5);
+#line 289 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 289 "switch_util.m"
+          {
+#line 7553 "backend_libs.switch_util.c"
+            backend_libs__switch_util__TypeCtorInfo_10_10 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 7555 "backend_libs.switch_util.c"
+            {
+#line 7557 "backend_libs.switch_util.c"
+              return backend_libs__switch_util__succeeded = mercury__tree234____Unify____tree234_2_0(backend_libs__switch_util__TypeCtorInfo_10_10, backend_libs__switch_util__TypeInfo_for_CaseRep_9, backend_libs__switch_util__V_4_4, backend_libs__switch_util__V_6_6);
+            }
+#line 289 "switch_util.m"
+          }
+#line 289 "switch_util.m"
+      }
+#line 289 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 289 "switch_util.m"
+  }
+#line 289 "switch_util.m"
+}
+
+#line 153 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____need_range_check_0_0(
+#line 153 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 153 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 153 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 153 "switch_util.m"
+{
+#line 153 "switch_util.m"
+  {
+#line 153 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 153 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cast_HeadVar1_4 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 153 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cast_HeadVar2_5 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 153 "switch_util.m"
+    {
+#line 153 "switch_util.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+#line 153 "switch_util.m"
+      return;
+    }
+#line 153 "switch_util.m"
+  }
+#line 153 "switch_util.m"
+}
+
+#line 153 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____need_range_check_0_0(
+#line 153 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+#line 153 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 153 "switch_util.m"
+{
+#line 7612 "backend_libs.switch_util.c"
+  {
+#line 7614 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__HeadVar__2_1 == backend_libs__switch_util__HeadVar__2_2);
+
+#line 7617 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 7619 "backend_libs.switch_util.c"
+  }
+#line 153 "switch_util.m"
+}
+
+#line 157 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____need_bit_vec_check_0_0(
+#line 157 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 157 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 157 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 157 "switch_util.m"
+{
+#line 157 "switch_util.m"
+  {
+#line 157 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 157 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cast_HeadVar1_4 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 157 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cast_HeadVar2_5 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 157 "switch_util.m"
+    {
+#line 157 "switch_util.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+#line 157 "switch_util.m"
+      return;
+    }
+#line 157 "switch_util.m"
+  }
+#line 157 "switch_util.m"
+}
+
+#line 157 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____need_bit_vec_check_0_0(
+#line 157 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+#line 157 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 157 "switch_util.m"
+{
+#line 7665 "backend_libs.switch_util.c"
+  {
+#line 7667 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__HeadVar__2_1 == backend_libs__switch_util__HeadVar__2_2);
+
+#line 7670 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 7672 "backend_libs.switch_util.c"
+  }
+#line 157 "switch_util.m"
+}
+
+#line 47 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____maybe_int_switch_info_0_0(
+#line 47 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 47 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 47 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 47 "switch_util.m"
+{
+#line 47 "switch_util.m"
+  {
+#line 47 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 47 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_18 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 47 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_19 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 47 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_18 == backend_libs__switch_util__CastY_19);
+#line 47 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 7701 "backend_libs.switch_util.c"
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+#line 47 "switch_util.m"
+    else
+#line 47 "switch_util.m"
+    if ((backend_libs__switch_util__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 47 "switch_util.m"
+      if ((backend_libs__switch_util__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 47 "switch_util.m"
+        *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+#line 47 "switch_util.m"
+      else
+#line 7713 "backend_libs.switch_util.c"
+        *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 2;
+#line 47 "switch_util.m"
+    else
+#line 47 "switch_util.m"
+      {
+#line 47 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2)));
+#line 47 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 47 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 47 "switch_util.m"
+        if ((backend_libs__switch_util__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 7728 "backend_libs.switch_util.c"
+          *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 1;
+#line 47 "switch_util.m"
+        else
+#line 47 "switch_util.m"
+          {
+#line 47 "switch_util.m"
+            MR_Integer backend_libs__switch_util__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+#line 47 "switch_util.m"
+            MR_Integer backend_libs__switch_util__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+#line 47 "switch_util.m"
+            MR_Integer backend_libs__switch_util__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 2)));
+#line 47 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_10_10;
+
+#line 47 "switch_util.m"
+            {
+#line 47 "switch_util.m"
+              mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_10_10, backend_libs__switch_util__V_25_25, backend_libs__switch_util__V_7_7);
+            }
+#line 7748 "backend_libs.switch_util.c"
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_10_10 == (MR_Integer) 0);
+#line 47 "switch_util.m"
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 47 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 47 "switch_util.m"
+              *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_10_10;
+#line 47 "switch_util.m"
+            else
+#line 47 "switch_util.m"
+              {
+#line 47 "switch_util.m"
+                MR_Word backend_libs__switch_util__V_11_11;
+
+#line 47 "switch_util.m"
+                {
+#line 47 "switch_util.m"
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&backend_libs__switch_util__V_11_11, backend_libs__switch_util__V_24_24, backend_libs__switch_util__V_8_8);
+                }
+#line 7768 "backend_libs.switch_util.c"
+                backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_11_11 == (MR_Integer) 0);
+#line 47 "switch_util.m"
+                backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 47 "switch_util.m"
+                if (backend_libs__switch_util__succeeded)
+#line 47 "switch_util.m"
+                  *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_11_11;
+#line 47 "switch_util.m"
+                else
+#line 47 "switch_util.m"
+                  {
+#line 47 "switch_util.m"
+                    mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_23_23, backend_libs__switch_util__V_9_9);
+#line 47 "switch_util.m"
+                    return;
+                  }
+#line 47 "switch_util.m"
+              }
+#line 47 "switch_util.m"
+          }
+#line 47 "switch_util.m"
+      }
+#line 47 "switch_util.m"
+  }
+#line 47 "switch_util.m"
+}
+
+#line 47 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____maybe_int_switch_info_0_0(
+#line 47 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 47 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 47 "switch_util.m"
+{
+#line 47 "switch_util.m"
+  {
+#line 47 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 47 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_11 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+#line 47 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_12 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+#line 47 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_11 == backend_libs__switch_util__CastY_12);
+#line 47 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 47 "switch_util.m"
+      backend_libs__switch_util__succeeded = MR_TRUE;
+#line 47 "switch_util.m"
+    else
+#line 47 "switch_util.m"
+    if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 47 "switch_util.m"
+      {
+#line 47 "switch_util.m"
+        MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+#line 47 "switch_util.m"
+        MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+#line 47 "switch_util.m"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastY_10 == backend_libs__switch_util__CastX_9);
+#line 47 "switch_util.m"
+      }
+#line 47 "switch_util.m"
+    else
+#line 47 "switch_util.m"
+      {
+#line 47 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 47 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 47 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 2)));
+#line 47 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_6_6;
+#line 47 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_7_7;
+#line 47 "switch_util.m"
+        MR_Integer backend_libs__switch_util__V_8_8;
+
+#line 47 "switch_util.m"
+        backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 47 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 47 "switch_util.m"
+          {
+#line 47 "switch_util.m"
+            backend_libs__switch_util__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 47 "switch_util.m"
+            backend_libs__switch_util__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 47 "switch_util.m"
+            backend_libs__switch_util__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 2)));
+#line 7864 "backend_libs.switch_util.c"
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_3_3 == backend_libs__switch_util__V_6_6);
+#line 47 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 47 "switch_util.m"
+              {
+#line 7870 "backend_libs.switch_util.c"
+                backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_4_4 == backend_libs__switch_util__V_7_7);
+#line 47 "switch_util.m"
+                if (backend_libs__switch_util__succeeded)
+#line 7874 "backend_libs.switch_util.c"
+                  backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_5_5 == backend_libs__switch_util__V_8_8);
+#line 47 "switch_util.m"
+              }
+#line 47 "switch_util.m"
+          }
+#line 47 "switch_util.m"
+      }
+#line 47 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 47 "switch_util.m"
+  }
+#line 47 "switch_util.m"
+}
+
+#line 94 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____may_use_smart_indexing_0_0(
+#line 94 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 94 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 94 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 94 "switch_util.m"
+{
+#line 94 "switch_util.m"
+  {
+#line 94 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 94 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cast_HeadVar1_4 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 94 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cast_HeadVar2_5 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 94 "switch_util.m"
+    {
+#line 94 "switch_util.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+#line 94 "switch_util.m"
+      return;
+    }
+#line 94 "switch_util.m"
+  }
+#line 94 "switch_util.m"
+}
+
+#line 94 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____may_use_smart_indexing_0_0(
+#line 94 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+#line 94 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 94 "switch_util.m"
+{
+#line 7930 "backend_libs.switch_util.c"
+  {
+#line 7932 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__HeadVar__2_1 == backend_libs__switch_util__HeadVar__2_2);
+
+#line 7935 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 7937 "backend_libs.switch_util.c"
+  }
+#line 94 "switch_util.m"
+}
+
+#line 391 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util____Compare____is_int_switch_0_0(
+#line 391 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 391 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 391 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 391 "switch_util.m"
+{
+#line 391 "switch_util.m"
+  {
+#line 391 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 391 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cast_HeadVar1_4 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 391 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cast_HeadVar2_5 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 391 "switch_util.m"
+    {
+#line 391 "switch_util.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__Cast_HeadVar1_4, backend_libs__switch_util__Cast_HeadVar2_5);
+#line 391 "switch_util.m"
+      return;
+    }
+#line 391 "switch_util.m"
+  }
+#line 391 "switch_util.m"
+}
+
+#line 391 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util____Unify____is_int_switch_0_0(
+#line 391 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_1,
+#line 391 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 391 "switch_util.m"
+{
+#line 7983 "backend_libs.switch_util.c"
+  {
+#line 7985 "backend_libs.switch_util.c"
+    MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__HeadVar__2_1 == backend_libs__switch_util__HeadVar__2_2);
+
+#line 7988 "backend_libs.switch_util.c"
+    return backend_libs__switch_util__succeeded;
+#line 7990 "backend_libs.switch_util.c"
+  }
+#line 391 "switch_util.m"
+}
+
+#line 315 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____case_id_ptags_map_0_0(
+#line 315 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 315 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 315 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 315 "switch_util.m"
+{
+#line 315 "switch_util.m"
+  {
+#line 315 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 315 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_4 = backend_libs__switch_util__HeadVar__2_2;
+#line 315 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_5 = backend_libs__switch_util__HeadVar__3_3;
+
+#line 315 "switch_util.m"
+    {
+#line 315 "switch_util.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[1], backend_libs__switch_util__HeadVar__1_1, ((MR_Box) (backend_libs__switch_util__Cast_HeadVar1_4)), ((MR_Box) (backend_libs__switch_util__Cast_HeadVar2_5)));
+#line 315 "switch_util.m"
+      return;
+    }
+#line 315 "switch_util.m"
+  }
+#line 315 "switch_util.m"
+}
+
+#line 315 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_id_ptags_map_0_0(
+#line 315 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 315 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 315 "switch_util.m"
+{
+#line 315 "switch_util.m"
+  {
+#line 315 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 315 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar1_3 = backend_libs__switch_util__HeadVar__1_1;
+#line 315 "switch_util.m"
+    MR_Word backend_libs__switch_util__Cast_HeadVar2_4 = backend_libs__switch_util__HeadVar__2_2;
+
+#line 315 "switch_util.m"
+    {
+#line 315 "switch_util.m"
+      return backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[1], ((MR_Box) (backend_libs__switch_util__Cast_HeadVar1_3)), ((MR_Box) (backend_libs__switch_util__Cast_HeadVar2_4)));
+    }
+#line 315 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 315 "switch_util.m"
+  }
+#line 315 "switch_util.m"
+}
+
+#line 137 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____case_consts_several_llds_0_0(
+#line 137 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 137 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 137 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 137 "switch_util.m"
+{
+#line 137 "switch_util.m"
+  {
+#line 137 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 137 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 137 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 137 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+#line 137 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 8081 "backend_libs.switch_util.c"
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+#line 137 "switch_util.m"
+    else
+#line 137 "switch_util.m"
+      {
+#line 137 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 137 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+#line 137 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+#line 137 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1)));
+#line 137 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_8_8;
+
+#line 137 "switch_util.m"
+        {
+#line 137 "switch_util.m"
+          mercury__builtin__compare_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_1[1], &backend_libs__switch_util__V_8_8, ((MR_Box) (backend_libs__switch_util__V_4_4)), ((MR_Box) (backend_libs__switch_util__V_6_6)));
+        }
+#line 8103 "backend_libs.switch_util.c"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_8_8 == (MR_Integer) 0);
+#line 137 "switch_util.m"
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 137 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 137 "switch_util.m"
+          *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_8_8;
+#line 137 "switch_util.m"
+        else
+#line 137 "switch_util.m"
+          {
+#line 137 "switch_util.m"
+            MR_Integer backend_libs__switch_util__V_13_13 = (MR_Integer) backend_libs__switch_util__V_5_5;
+#line 137 "switch_util.m"
+            MR_Integer backend_libs__switch_util__V_14_14 = (MR_Integer) backend_libs__switch_util__V_7_7;
+
+#line 137 "switch_util.m"
+            {
+#line 137 "switch_util.m"
+              mercury__private_builtin__builtin_compare_int_3_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_13_13, backend_libs__switch_util__V_14_14);
+#line 137 "switch_util.m"
+              return;
+            }
+#line 137 "switch_util.m"
+          }
+#line 137 "switch_util.m"
+      }
+#line 137 "switch_util.m"
+  }
+#line 137 "switch_util.m"
+}
+
+#line 137 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_consts_several_llds_0_0(
+#line 137 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 137 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 137 "switch_util.m"
+{
+#line 137 "switch_util.m"
+  {
+#line 137 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 137 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_7 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+#line 137 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_8 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+#line 137 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_7 == backend_libs__switch_util__CastY_8);
+#line 137 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 137 "switch_util.m"
+      backend_libs__switch_util__succeeded = MR_TRUE;
+#line 137 "switch_util.m"
+    else
+#line 137 "switch_util.m"
+      {
+#line 137 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 137 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 137 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 137 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1)));
+
+#line 8173 "backend_libs.switch_util.c"
+        {
+#line 8175 "backend_libs.switch_util.c"
+          backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &backend_libs__switch_util_scalar_common_1[1], ((MR_Box) (backend_libs__switch_util__V_3_3)), ((MR_Box) (backend_libs__switch_util__V_5_5)));
+        }
+#line 137 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 8180 "backend_libs.switch_util.c"
+          backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_4_4 == backend_libs__switch_util__V_6_6);
+#line 137 "switch_util.m"
+      }
+#line 137 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 137 "switch_util.m"
+  }
+#line 137 "switch_util.m"
+}
+
+#line 128 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util____Compare____case_consts_3_0(
+#line 128 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Key_19,
+#line 128 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_20,
+#line 128 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_SeveralInfo_21,
+#line 128 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__1_1,
+#line 128 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 128 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3)
+#line 128 "switch_util.m"
+{
+#line 128 "switch_util.m"
+  {
+#line 128 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 128 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_17 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+#line 128 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_18 = (MR_Integer) backend_libs__switch_util__HeadVar__3_3;
+
+#line 128 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_17 == backend_libs__switch_util__CastY_18);
+#line 128 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 8221 "backend_libs.switch_util.c"
+      *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 0;
+#line 128 "switch_util.m"
+    else
+#line 128 "switch_util.m"
+    if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0))))
+#line 128 "switch_util.m"
+      {
+#line 128 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 128 "switch_util.m"
+        if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+#line 128 "switch_util.m"
+          {
+#line 128 "switch_util.m"
+            MR_Word backend_libs__switch_util__TypeInfo_27_27;
+#line 128 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 8241 "backend_libs.switch_util.c"
+            {
+#line 8243 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeInfo_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 8245 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_27_27, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+#line 8247 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_27_27, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_20));
+#line 8249 "backend_libs.switch_util.c"
+            }
+#line 128 "switch_util.m"
+            {
+#line 128 "switch_util.m"
+              mercury__tree234____Compare____tree234_2_0(backend_libs__switch_util__TypeInfo_for_Key_19, backend_libs__switch_util__TypeInfo_27_27, backend_libs__switch_util__HeadVar__1_1, (MR_Word) backend_libs__switch_util__V_30_30, (MR_Word) backend_libs__switch_util__V_5_5);
+#line 128 "switch_util.m"
+              return;
+            }
+#line 128 "switch_util.m"
+          }
+#line 128 "switch_util.m"
+        else
+#line 8262 "backend_libs.switch_util.c"
+          *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 1;
+#line 128 "switch_util.m"
+      }
+#line 128 "switch_util.m"
+    else
+#line 128 "switch_util.m"
+      {
+#line 128 "switch_util.m"
+        MR_Box backend_libs__switch_util__V_31_31 = (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1));
+#line 128 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 128 "switch_util.m"
+        if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+#line 8277 "backend_libs.switch_util.c"
+          *backend_libs__switch_util__HeadVar__1_1 = (MR_Integer) 2;
+#line 128 "switch_util.m"
+        else
+#line 128 "switch_util.m"
+          {
+#line 128 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 0)));
+#line 128 "switch_util.m"
+            MR_Box backend_libs__switch_util__V_15_15 = (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__3_3, (MR_Integer) 1));
+#line 128 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_16_16;
+#line 128 "switch_util.m"
+            MR_Word backend_libs__switch_util__TypeInfo_23_23;
+
+#line 8292 "backend_libs.switch_util.c"
+            {
+#line 8294 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeInfo_23_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 8296 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_23_23, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1));
+#line 8298 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_23_23, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_20));
+#line 8300 "backend_libs.switch_util.c"
+            }
+#line 128 "switch_util.m"
+            {
+#line 128 "switch_util.m"
+              mercury__tree234____Compare____tree234_2_0(backend_libs__switch_util__TypeInfo_for_Key_19, backend_libs__switch_util__TypeInfo_23_23, &backend_libs__switch_util__V_16_16, (MR_Word) backend_libs__switch_util__V_32_32, (MR_Word) backend_libs__switch_util__V_14_14);
+            }
+#line 8307 "backend_libs.switch_util.c"
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_16_16 == (MR_Integer) 0);
+#line 128 "switch_util.m"
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 128 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 128 "switch_util.m"
+              *backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__V_16_16;
+#line 128 "switch_util.m"
+            else
+#line 128 "switch_util.m"
+              {
+#line 128 "switch_util.m"
+                mercury__builtin__compare_3_p_0(backend_libs__switch_util__TypeInfo_for_SeveralInfo_21, backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__V_31_31, backend_libs__switch_util__V_15_15);
+#line 128 "switch_util.m"
+                return;
+              }
+#line 128 "switch_util.m"
+          }
+#line 128 "switch_util.m"
+      }
+#line 128 "switch_util.m"
+  }
+#line 128 "switch_util.m"
+}
+
+#line 128 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util____Unify____case_consts_3_0(
+#line 128 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Key_11,
+#line 128 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_12,
+#line 128 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_SeveralInfo_13,
+#line 128 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 128 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2)
+#line 128 "switch_util.m"
+{
+#line 128 "switch_util.m"
+  {
+#line 128 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 128 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastX_9 = (MR_Integer) backend_libs__switch_util__HeadVar__1_1;
+#line 128 "switch_util.m"
+    MR_Integer backend_libs__switch_util__CastY_10 = (MR_Integer) backend_libs__switch_util__HeadVar__2_2;
+
+#line 128 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__CastX_9 == backend_libs__switch_util__CastY_10);
+#line 128 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 128 "switch_util.m"
+      backend_libs__switch_util__succeeded = MR_TRUE;
+#line 128 "switch_util.m"
+    else
+#line 128 "switch_util.m"
+    if (((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+#line 128 "switch_util.m"
+      {
+#line 128 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeCtorInfo_14_14;
+#line 128 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_15_15;
+#line 128 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 128 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_4_4;
+
+#line 128 "switch_util.m"
+        backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+#line 128 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 128 "switch_util.m"
+          {
+#line 128 "switch_util.m"
+            backend_libs__switch_util__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 8386 "backend_libs.switch_util.c"
+            backend_libs__switch_util__TypeCtorInfo_14_14 = (MR_Word) &mercury__list__list__type_ctor_info_list_1;
+#line 8388 "backend_libs.switch_util.c"
+            {
+#line 8390 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeInfo_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 8392 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_15_15, 0) = ((MR_Box) (backend_libs__switch_util__TypeCtorInfo_14_14));
+#line 8394 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_15_15, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_12));
+#line 8396 "backend_libs.switch_util.c"
+            }
+#line 8398 "backend_libs.switch_util.c"
+            {
+#line 8400 "backend_libs.switch_util.c"
+              return backend_libs__switch_util__succeeded = mercury__tree234____Unify____tree234_2_0(backend_libs__switch_util__TypeInfo_for_Key_11, backend_libs__switch_util__TypeInfo_15_15, (MR_Word) backend_libs__switch_util__V_3_3, (MR_Word) backend_libs__switch_util__V_4_4);
+            }
+#line 128 "switch_util.m"
+          }
+#line 128 "switch_util.m"
+      }
+#line 128 "switch_util.m"
+    else
+#line 128 "switch_util.m"
+      {
+#line 128 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeCtorInfo_18_18;
+#line 128 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_19_19;
+#line 128 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 128 "switch_util.m"
+        MR_Box backend_libs__switch_util__V_6_6 = (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1));
+#line 128 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_7_7;
+#line 128 "switch_util.m"
+        MR_Box backend_libs__switch_util__V_8_8;
+
+#line 128 "switch_util.m"
+        backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 128 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 128 "switch_util.m"
+          {
+#line 128 "switch_util.m"
+            backend_libs__switch_util__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 0)));
+#line 128 "switch_util.m"
+            backend_libs__switch_util__V_8_8 = (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__2_2, (MR_Integer) 1));
+#line 8434 "backend_libs.switch_util.c"
+            backend_libs__switch_util__TypeCtorInfo_18_18 = (MR_Word) &backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1;
+#line 8436 "backend_libs.switch_util.c"
+            {
+#line 8438 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeInfo_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 8440 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_19_19, 0) = ((MR_Box) (backend_libs__switch_util__TypeCtorInfo_18_18));
+#line 8442 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_19_19, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_12));
+#line 8444 "backend_libs.switch_util.c"
+            }
+#line 8446 "backend_libs.switch_util.c"
+            {
+#line 8448 "backend_libs.switch_util.c"
+              backend_libs__switch_util__succeeded = mercury__tree234____Unify____tree234_2_0(backend_libs__switch_util__TypeInfo_for_Key_11, backend_libs__switch_util__TypeInfo_19_19, (MR_Word) backend_libs__switch_util__V_5_5, (MR_Word) backend_libs__switch_util__V_7_7);
+            }
+#line 128 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 8453 "backend_libs.switch_util.c"
+              {
+#line 8455 "backend_libs.switch_util.c"
+                return backend_libs__switch_util__succeeded = mercury__builtin__unify_2_p_0(backend_libs__switch_util__TypeInfo_for_SeveralInfo_13, backend_libs__switch_util__V_6_6, backend_libs__switch_util__V_8_8);
+              }
+#line 128 "switch_util.m"
+          }
+#line 128 "switch_util.m"
+      }
+#line 128 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 128 "switch_util.m"
+  }
+#line 128 "switch_util.m"
+}
+
+#line 1406 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__build_ptag_case_rev_map_4_p_0_1(
+#line 1406 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg)
+#line 1406 "switch_util.m"
+{
+#line 1406 "switch_util.m"
+  {
+#line 1406 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1406 "switch_util.m"
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+
+#line 1406 "switch_util.m"
+    {
+#line 1406 "switch_util.m"
+      return backend_libs__switch_util__succeeded = backend_libs__switch_util__IntroducedFrom__pred__build_ptag_case_rev_map__1406__1_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 5))));
+    }
+#line 1406 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 1406 "switch_util.m"
+  }
+#line 1406 "switch_util.m"
+}
+
+#line 1391 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__build_ptag_case_rev_map_4_p_0(
+#line 1391 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_42,
+#line 1391 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1391 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 1391 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3,
+#line 1391 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_RevMap_4)
+#line 1391 "switch_util.m"
+{
+#line 1395 "switch_util.m"
+  while (MR_TRUE)
+#line 1395 "switch_util.m"
+    {
+#line 1395 "switch_util.m"
+      /* tailcall optimized into a loop */
+#line 1395 "switch_util.m"
+      {
+#line 1395 "switch_util.m"
+        MR_bool backend_libs__switch_util__succeeded;
+
+#line 1395 "switch_util.m"
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1395 "switch_util.m"
+          *backend_libs__switch_util__STATE_VARIABLE_RevMap_4 = backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3;
+#line 1395 "switch_util.m"
+        else
+#line 1396 "switch_util.m"
+          {
+#line 1396 "switch_util.m"
+            MR_Word backend_libs__switch_util__Entry_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 1396 "switch_util.m"
+            MR_Word backend_libs__switch_util__Entries_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 1396 "switch_util.m"
+            MR_Integer backend_libs__switch_util__Ptag_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Entry_9, (MR_Integer) 0)));
+#line 1396 "switch_util.m"
+            MR_Word backend_libs__switch_util__Case_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Entry_9, (MR_Integer) 1)));
+#line 1396 "switch_util.m"
+            MR_Word backend_libs__switch_util__CountSecTagLocn_15;
+#line 1396 "switch_util.m"
+            MR_Integer backend_libs__switch_util__Count_16;
+#line 1396 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_25_25;
+#line 1396 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_RevMap_36_36;
+#line 1398 "switch_util.m"
+            MR_Box backend_libs__switch_util__conv0_V_25_25;
+
+#line 1398 "switch_util.m"
+            {
+#line 1398 "switch_util.m"
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__HeadVar__2_2, backend_libs__switch_util__Ptag_13, &backend_libs__switch_util__conv0_V_25_25);
+            }
+#line 1398 "switch_util.m"
+            backend_libs__switch_util__V_25_25 = ((MR_Word) backend_libs__switch_util__conv0_V_25_25);
+#line 1398 "switch_util.m"
+            backend_libs__switch_util__CountSecTagLocn_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_25_25, (MR_Integer) 0)));
+#line 1398 "switch_util.m"
+            backend_libs__switch_util__Count_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_25_25, (MR_Integer) 1)));
+#line 1414 "switch_util.m"
+#line 1414 "switch_util.m"
+            switch (backend_libs__switch_util__CountSecTagLocn_15) {
+#line 1414 "switch_util.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 1414 "switch_util.m"
+              case (MR_Integer) 2:
+#line 1414 "switch_util.m"
+              case (MR_Integer) 3:
+#line 1417 "switch_util.m"
+                {
+#line 1417 "switch_util.m"
+                  MR_Word backend_libs__switch_util__TypeInfo_60_60;
+#line 1417 "switch_util.m"
+                  MR_Word backend_libs__switch_util__TypeInfo_62_62;
+#line 1417 "switch_util.m"
+                  MR_Word backend_libs__switch_util__NewEntry_41;
+#line 1431 "switch_util.m"
+                  MR_Word backend_libs__switch_util__conv1_STATE_VARIABLE_RevMap_36_36;
+
+#line 1430 "switch_util.m"
+                  {
+#line 1430 "switch_util.m"
+                    backend_libs__switch_util__NewEntry_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1430 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_41, 0) = ((MR_Box) (backend_libs__switch_util__Count_16));
+#line 1430 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_41, 1) = ((MR_Box) (backend_libs__switch_util__Ptag_13));
+#line 1430 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_41, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1430 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_41, 3) = ((MR_Box) (backend_libs__switch_util__Case_14));
+#line 1430 "switch_util.m"
+                  }
+#line 8593 "backend_libs.switch_util.c"
+                  {
+#line 8595 "backend_libs.switch_util.c"
+                    backend_libs__switch_util__TypeInfo_60_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 8597 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_60_60, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 8599 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_60_60, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+#line 8601 "backend_libs.switch_util.c"
+                  }
+#line 8603 "backend_libs.switch_util.c"
+                  {
+#line 8605 "backend_libs.switch_util.c"
+                    backend_libs__switch_util__TypeInfo_62_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 8607 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_62_62, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1));
+#line 8609 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_62_62, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+#line 8611 "backend_libs.switch_util.c"
+                  }
+#line 1431 "switch_util.m"
+                  {
+#line 1431 "switch_util.m"
+                    mercury__map__det_insert_4_p_0(backend_libs__switch_util__TypeInfo_60_60, backend_libs__switch_util__TypeInfo_62_62, ((MR_Box) (backend_libs__switch_util__Case_14)), ((MR_Box) (backend_libs__switch_util__NewEntry_41)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3, &backend_libs__switch_util__conv1_STATE_VARIABLE_RevMap_36_36);
+                  }
+#line 1431 "switch_util.m"
+                  backend_libs__switch_util__STATE_VARIABLE_RevMap_36_36 = (MR_Word) backend_libs__switch_util__conv1_STATE_VARIABLE_RevMap_36_36;
+#line 1417 "switch_util.m"
+                }
+#line 1414 "switch_util.m"
+                break;
+#line 1414 "switch_util.m"
+              case (MR_Integer) 0:
+#line 1414 "switch_util.m"
+              case (MR_Integer) 1:
+#line 1410 "switch_util.m"
+                {
+#line 1410 "switch_util.m"
+                  MR_Word backend_libs__switch_util__TypeInfo_46_46;
+#line 1410 "switch_util.m"
+                  MR_Word backend_libs__switch_util__TypeInfo_48_48;
+#line 1410 "switch_util.m"
+                  MR_Word backend_libs__switch_util__OldEntry_17;
+#line 1403 "switch_util.m"
+                  MR_Box backend_libs__switch_util__conv2_OldEntry_17;
+
+#line 8639 "backend_libs.switch_util.c"
+                  {
+#line 8641 "backend_libs.switch_util.c"
+                    backend_libs__switch_util__TypeInfo_46_46 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 8643 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_46_46, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 8645 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_46_46, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+#line 8647 "backend_libs.switch_util.c"
+                  }
+#line 8649 "backend_libs.switch_util.c"
+                  {
+#line 8651 "backend_libs.switch_util.c"
+                    backend_libs__switch_util__TypeInfo_48_48 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 8653 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_48_48, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1));
+#line 8655 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_48_48, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+#line 8657 "backend_libs.switch_util.c"
+                  }
+#line 1403 "switch_util.m"
+                  {
+#line 1403 "switch_util.m"
+                    backend_libs__switch_util__succeeded = mercury__map__search_3_p_0(backend_libs__switch_util__TypeInfo_46_46, backend_libs__switch_util__TypeInfo_48_48, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3, ((MR_Box) (backend_libs__switch_util__Case_14)), &backend_libs__switch_util__conv2_OldEntry_17);
+                  }
+#line 1403 "switch_util.m"
+                  if (backend_libs__switch_util__succeeded)
+#line 1403 "switch_util.m"
+                    {
+#line 1403 "switch_util.m"
+                      backend_libs__switch_util__OldEntry_17 = ((MR_Word) backend_libs__switch_util__conv2_OldEntry_17);
+#line 1403 "switch_util.m"
+                      backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1403 "switch_util.m"
+                    }
+#line 1410 "switch_util.m"
+                  if (backend_libs__switch_util__succeeded)
+#line 1405 "switch_util.m"
+                    {
+#line 1405 "switch_util.m"
+                      MR_Integer backend_libs__switch_util__OldCount_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__OldEntry_17, (MR_Integer) 0)));
+#line 1405 "switch_util.m"
+                      MR_Integer backend_libs__switch_util__OldFirstPtag_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__OldEntry_17, (MR_Integer) 1)));
+#line 1405 "switch_util.m"
+                      MR_Word backend_libs__switch_util__OldLaterPtags0_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__OldEntry_17, (MR_Integer) 2)));
+#line 1405 "switch_util.m"
+                      MR_Word backend_libs__switch_util__OldCase_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__OldEntry_17, (MR_Integer) 3)));
+#line 1405 "switch_util.m"
+                      MR_Word backend_libs__switch_util__NewEntry_22;
+#line 1405 "switch_util.m"
+                      MR_Word backend_libs__switch_util__V_28_28;
+#line 1405 "switch_util.m"
+                      MR_Integer backend_libs__switch_util__V_32_32;
+#line 1405 "switch_util.m"
+                      MR_Word backend_libs__switch_util__V_33_33;
+#line 1405 "switch_util.m"
+                      MR_Word backend_libs__switch_util__V_34_34;
+#line 1409 "switch_util.m"
+                      MR_Word backend_libs__switch_util__conv3_STATE_VARIABLE_RevMap_36_36;
+
+#line 1406 "switch_util.m"
+                      {
+#line 1406 "switch_util.m"
+                        backend_libs__switch_util__V_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 1406 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_28_28, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_7[1]));
+#line 1406 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_28_28, 1) = ((MR_Box) (backend_libs__switch_util__build_ptag_case_rev_map_4_p_0_1));
+#line 1406 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_28_28, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 1406 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_28_28, 3) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+#line 1406 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_28_28, 4) = ((MR_Box) (backend_libs__switch_util__Case_14));
+#line 1406 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_28_28, 5) = ((MR_Box) (backend_libs__switch_util__OldCase_21));
+#line 1406 "switch_util.m"
+                      }
+#line 1406 "switch_util.m"
+                      {
+#line 1406 "switch_util.m"
+                        mercury__require__expect_4_p_0(backend_libs__switch_util__V_28_28, (MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.build_ptag_case_rev_map\'/4", (MR_String) "Case != OldCase");
+                      }
+#line 1407 "switch_util.m"
+                      backend_libs__switch_util__V_32_32 = (backend_libs__switch_util__OldCount_18 + backend_libs__switch_util__Count_16);
+#line 1408 "switch_util.m"
+                      {
+#line 1408 "switch_util.m"
+                        backend_libs__switch_util__V_34_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1408 "switch_util.m"
+                        MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_34_34, 0) = ((MR_Box) (backend_libs__switch_util__Ptag_13));
+#line 1408 "switch_util.m"
+                        MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_34_34, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1408 "switch_util.m"
+                      }
+#line 1408 "switch_util.m"
+                      {
+#line 1408 "switch_util.m"
+                        backend_libs__switch_util__V_33_33 = mercury__list__f_43_43_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__OldLaterPtags0_20, backend_libs__switch_util__V_34_34);
+                      }
+#line 1407 "switch_util.m"
+                      {
+#line 1407 "switch_util.m"
+                        backend_libs__switch_util__NewEntry_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1407 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_22, 0) = ((MR_Box) (backend_libs__switch_util__V_32_32));
+#line 1407 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_22, 1) = ((MR_Box) (backend_libs__switch_util__OldFirstPtag_19));
+#line 1407 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_22, 2) = ((MR_Box) (backend_libs__switch_util__V_33_33));
+#line 1407 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_22, 3) = ((MR_Box) (backend_libs__switch_util__OldCase_21));
+#line 1407 "switch_util.m"
+                      }
+#line 1409 "switch_util.m"
+                      {
+#line 1409 "switch_util.m"
+                        mercury__map__det_update_4_p_0(backend_libs__switch_util__TypeInfo_46_46, backend_libs__switch_util__TypeInfo_48_48, ((MR_Box) (backend_libs__switch_util__Case_14)), ((MR_Box) (backend_libs__switch_util__NewEntry_22)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3, &backend_libs__switch_util__conv3_STATE_VARIABLE_RevMap_36_36);
+                      }
+#line 1409 "switch_util.m"
+                      backend_libs__switch_util__STATE_VARIABLE_RevMap_36_36 = (MR_Word) backend_libs__switch_util__conv3_STATE_VARIABLE_RevMap_36_36;
+#line 1405 "switch_util.m"
+                    }
+#line 1410 "switch_util.m"
+                  else
+#line 1411 "switch_util.m"
+                    {
+#line 1411 "switch_util.m"
+                      MR_Word backend_libs__switch_util__TypeInfo_56_56;
+#line 1411 "switch_util.m"
+                      MR_Word backend_libs__switch_util__TypeInfo_58_58;
+#line 1411 "switch_util.m"
+                      MR_Word backend_libs__switch_util__NewEntry_40;
+#line 1412 "switch_util.m"
+                      MR_Word backend_libs__switch_util__conv4_STATE_VARIABLE_RevMap_36_36;
+
+#line 1411 "switch_util.m"
+                      {
+#line 1411 "switch_util.m"
+                        backend_libs__switch_util__NewEntry_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1411 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_40, 0) = ((MR_Box) (backend_libs__switch_util__Count_16));
+#line 1411 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_40, 1) = ((MR_Box) (backend_libs__switch_util__Ptag_13));
+#line 1411 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_40, 2) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1411 "switch_util.m"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewEntry_40, 3) = ((MR_Box) (backend_libs__switch_util__Case_14));
+#line 1411 "switch_util.m"
+                      }
+#line 8789 "backend_libs.switch_util.c"
+                      {
+#line 8791 "backend_libs.switch_util.c"
+                        backend_libs__switch_util__TypeInfo_56_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 8793 "backend_libs.switch_util.c"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_56_56, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 8795 "backend_libs.switch_util.c"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_56_56, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+#line 8797 "backend_libs.switch_util.c"
+                      }
+#line 8799 "backend_libs.switch_util.c"
+                      {
+#line 8801 "backend_libs.switch_util.c"
+                        backend_libs__switch_util__TypeInfo_58_58 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 8803 "backend_libs.switch_util.c"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_58_58, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1));
+#line 8805 "backend_libs.switch_util.c"
+                        MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_58_58, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_42));
+#line 8807 "backend_libs.switch_util.c"
+                      }
+#line 1412 "switch_util.m"
+                      {
+#line 1412 "switch_util.m"
+                        mercury__map__det_insert_4_p_0(backend_libs__switch_util__TypeInfo_56_56, backend_libs__switch_util__TypeInfo_58_58, ((MR_Box) (backend_libs__switch_util__Case_14)), ((MR_Box) (backend_libs__switch_util__NewEntry_40)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3, &backend_libs__switch_util__conv4_STATE_VARIABLE_RevMap_36_36);
+                      }
+#line 1412 "switch_util.m"
+                      backend_libs__switch_util__STATE_VARIABLE_RevMap_36_36 = (MR_Word) backend_libs__switch_util__conv4_STATE_VARIABLE_RevMap_36_36;
+#line 1411 "switch_util.m"
+                    }
+#line 1410 "switch_util.m"
+                }
+#line 1414 "switch_util.m"
+                break;
+#line 1414 "switch_util.m"
+            }
+#line 1433 "switch_util.m"
+            /* direct tailcall eliminated */
+#line 1433 "switch_util.m"
+            {
+#line 1433 "switch_util.m"
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__Entries_10;
+#line 1433 "switch_util.m"
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_RevMap_0__tmp_copy_3 = backend_libs__switch_util__STATE_VARIABLE_RevMap_36_36;
+
+#line 1433 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_RevMap_0_3 = backend_libs__switch_util__STATE_VARIABLE_RevMap_0__tmp_copy_3;
+#line 1433 "switch_util.m"
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+#line 1433 "switch_util.m"
+            }
+#line 1433 "switch_util.m"
+            continue;
+#line 1396 "switch_util.m"
+          }
+#line 1395 "switch_util.m"
+      }
+#line 1395 "switch_util.m"
+      break;
+#line 1395 "switch_util.m"
+    }
+#line 1391 "switch_util.m"
+}
+
+#line 1366 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__interpret_rev_map_entry_2_p_0(
+#line 1366 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_9,
+#line 1366 "switch_util.m"
+  MR_Word backend_libs__switch_util__RevEntry_3,
+#line 1366 "switch_util.m"
+  MR_Word * backend_libs__switch_util__GroupEntry_4)
+#line 1366 "switch_util.m"
+{
+#line 1369 "switch_util.m"
+  {
+#line 1369 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1369 "switch_util.m"
+    MR_Integer backend_libs__switch_util__MainPtag_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__RevEntry_3, (MR_Integer) 1)));
+#line 1369 "switch_util.m"
+    MR_Word backend_libs__switch_util__OtherPtags_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__RevEntry_3, (MR_Integer) 2)));
+#line 1369 "switch_util.m"
+    MR_Word backend_libs__switch_util__Case_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__RevEntry_3, (MR_Integer) 3)));
+#line 1370 "switch_util.m"
+    MR_Integer backend_libs__switch_util___Count_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__RevEntry_3, (MR_Integer) 0)));
+
+#line 1371 "switch_util.m"
+    {
+#line 1371 "switch_util.m"
+      MR_Word base;
+#line 1371 "switch_util.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1371 "switch_util.m"
+      *backend_libs__switch_util__GroupEntry_4 = base;
+#line 1371 "switch_util.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (backend_libs__switch_util__MainPtag_6));
+#line 1371 "switch_util.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (backend_libs__switch_util__OtherPtags_7));
+#line 1371 "switch_util.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (backend_libs__switch_util__Case_8));
+#line 1371 "switch_util.m"
+    }
+#line 1369 "switch_util.m"
+  }
+#line 1366 "switch_util.m"
+}
+
+#line 1301 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__group_case_by_ptag_7_p_0_2(
+#line 1301 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg)
+#line 1301 "switch_util.m"
+{
+#line 1301 "switch_util.m"
+  {
+#line 1301 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1301 "switch_util.m"
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+
+#line 1301 "switch_util.m"
+    {
+#line 1301 "switch_util.m"
+      return backend_libs__switch_util__succeeded = backend_libs__switch_util__IntroducedFrom__pred__group_case_by_ptag__1301__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4))));
+    }
+#line 1301 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 1301 "switch_util.m"
+  }
+#line 1301 "switch_util.m"
+}
+
+#line 1315 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__group_case_by_ptag_7_p_0_1(
+#line 1315 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg)
+#line 1315 "switch_util.m"
+{
+#line 1315 "switch_util.m"
+  {
+#line 1315 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1315 "switch_util.m"
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+
+#line 1315 "switch_util.m"
+    {
+#line 1315 "switch_util.m"
+      return backend_libs__switch_util__succeeded = backend_libs__switch_util__IntroducedFrom__pred__group_case_by_ptag__1315__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4))));
+    }
+#line 1315 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 1315 "switch_util.m"
+  }
+#line 1315 "switch_util.m"
+}
+
+#line 1271 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__group_case_by_ptag_7_p_0(
+#line 1271 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_107,
+#line 1271 "switch_util.m"
+  MR_Word backend_libs__switch_util__CaseId_8,
+#line 1271 "switch_util.m"
+  MR_Box backend_libs__switch_util__CaseRep_9,
+#line 1271 "switch_util.m"
+  MR_Word backend_libs__switch_util__TaggedConsId_10,
+#line 1271 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_0_52,
+#line 1271 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_53,
+#line 1271 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54,
+#line 1271 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55)
+#line 1271 "switch_util.m"
+{
+#line 1276 "switch_util.m"
+  {
+#line 1276 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1276 "switch_util.m"
+    MR_Word backend_libs__switch_util__Tag_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedConsId_10, (MR_Integer) 1)));
+#line 1276 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Primary_15;
+#line 1277 "switch_util.m"
+    MR_Word backend_libs__switch_util___ConsId_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedConsId_10, (MR_Integer) 0)));
+#line 1348 "switch_util.m"
+    MR_Word backend_libs__switch_util__Ptags0_50;
+#line 1345 "switch_util.m"
+    MR_Box backend_libs__switch_util__conv12_Ptags0_50;
+
+#line 1297 "switch_util.m"
+#line 1297 "switch_util.m"
+    switch (MR_tag((MR_Word) backend_libs__switch_util__Tag_14)) {
+#line 1297 "switch_util.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1297 "switch_util.m"
+      case (MR_Integer) 0:
+#line 1297 "switch_util.m"
+#line 1297 "switch_util.m"
+        switch (MR_unmkbody(backend_libs__switch_util__Tag_14)) {
+#line 1297 "switch_util.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 1297 "switch_util.m"
+          case (MR_Integer) 0:
+#line 1289 "switch_util.m"
+            {
+#line 1290 "switch_util.m"
+              MR_Word backend_libs__switch_util__TypeInfo_110_146;
+#line 1290 "switch_util.m"
+              MR_Word backend_libs__switch_util___Group_142;
+#line 1290 "switch_util.m"
+              MR_Box backend_libs__switch_util__conv8__Group_142;
+
+#line 1281 "switch_util.m"
+              backend_libs__switch_util__Primary_15 = (MR_Integer) 0;
+#line 9010 "backend_libs.switch_util.c"
+              {
+#line 9012 "backend_libs.switch_util.c"
+                backend_libs__switch_util__TypeInfo_110_146 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 9014 "backend_libs.switch_util.c"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_110_146, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 9016 "backend_libs.switch_util.c"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_110_146, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+#line 9018 "backend_libs.switch_util.c"
+              }
+#line 1290 "switch_util.m"
+              {
+#line 1290 "switch_util.m"
+                backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_110_146, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, backend_libs__switch_util__Primary_15, &backend_libs__switch_util__conv8__Group_142);
+              }
+#line 1290 "switch_util.m"
+              if (backend_libs__switch_util__succeeded)
+#line 1290 "switch_util.m"
+                {
+#line 1290 "switch_util.m"
+                  backend_libs__switch_util___Group_142 = ((MR_Word) backend_libs__switch_util__conv8__Group_142);
+#line 1290 "switch_util.m"
+                  backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1290 "switch_util.m"
+                }
+#line 1292 "switch_util.m"
+              if (backend_libs__switch_util__succeeded)
+#line 1291 "switch_util.m"
+                {
+#line 1291 "switch_util.m"
+                  {
+#line 1291 "switch_util.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "unshared tag is shared");
+#line 1291 "switch_util.m"
+                    return;
+                  }
+#line 1291 "switch_util.m"
+                }
+#line 1292 "switch_util.m"
+              else
+#line 1293 "switch_util.m"
+                {
+#line 1293 "switch_util.m"
+                  MR_Word backend_libs__switch_util__TypeInfo_113_155;
+#line 1293 "switch_util.m"
+                  MR_Word backend_libs__switch_util__StagGoalMap_150;
+#line 1293 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_152_152;
+#line 1294 "switch_util.m"
+                  MR_Word backend_libs__switch_util__conv9_STATE_VARIABLE_PtagCaseMap_55;
+
+#line 1293 "switch_util.m"
+                  {
+#line 1293 "switch_util.m"
+                    backend_libs__switch_util__StagGoalMap_150 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_107, ((MR_Box) ((MR_Integer) -1)), backend_libs__switch_util__CaseRep_9);
+                  }
+#line 1294 "switch_util.m"
+                  {
+#line 1294 "switch_util.m"
+                    backend_libs__switch_util__V_152_152 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1294 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_152_152, 0) = ((MR_Box) ((MR_Integer) 0));
+#line 1294 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_152_152, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_150));
+#line 1294 "switch_util.m"
+                  }
+#line 9076 "backend_libs.switch_util.c"
+                  {
+#line 9078 "backend_libs.switch_util.c"
+                    backend_libs__switch_util__TypeInfo_113_155 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 9080 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_113_155, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 9082 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_113_155, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+#line 9084 "backend_libs.switch_util.c"
+                  }
+#line 1294 "switch_util.m"
+                  {
+#line 1294 "switch_util.m"
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_113_155, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_152_152)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv9_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+#line 1294 "switch_util.m"
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv9_STATE_VARIABLE_PtagCaseMap_55;
+#line 1293 "switch_util.m"
+                }
+#line 1289 "switch_util.m"
+            }
+#line 1297 "switch_util.m"
+            break;
+#line 1297 "switch_util.m"
+          case (MR_Integer) 1:
+#line 1342 "switch_util.m"
+            {
+#line 1343 "switch_util.m"
+              {
+#line 1343 "switch_util.m"
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "non-du tag");
+#line 1343 "switch_util.m"
+                return;
+              }
+#line 1342 "switch_util.m"
+            }
+#line 1297 "switch_util.m"
+            break;
+#line 1297 "switch_util.m"
+        }
+#line 1297 "switch_util.m"
+        break;
+#line 1297 "switch_util.m"
+      case (MR_Integer) 1:
+#line 1297 "switch_util.m"
+      case (MR_Integer) 2:
+#line 1342 "switch_util.m"
+        {
+#line 1343 "switch_util.m"
+          {
+#line 1343 "switch_util.m"
+            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "non-du tag");
+#line 1343 "switch_util.m"
+            return;
+          }
+#line 1342 "switch_util.m"
+        }
+#line 1297 "switch_util.m"
+        break;
+#line 1297 "switch_util.m"
+      case (MR_Integer) 3:
+#line 1297 "switch_util.m"
+#line 1297 "switch_util.m"
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 0)))) {
+#line 1297 "switch_util.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 1297 "switch_util.m"
+          case (MR_Integer) 0:
+#line 1297 "switch_util.m"
+          case (MR_Integer) 1:
+#line 1297 "switch_util.m"
+          case (MR_Integer) 2:
+#line 1297 "switch_util.m"
+          case (MR_Integer) 3:
+#line 1297 "switch_util.m"
+          case (MR_Integer) 4:
+#line 1297 "switch_util.m"
+          case (MR_Integer) 5:
+#line 1297 "switch_util.m"
+          case (MR_Integer) 6:
+#line 1297 "switch_util.m"
+          case (MR_Integer) 7:
+#line 1297 "switch_util.m"
+          case (MR_Integer) 8:
+#line 1297 "switch_util.m"
+          case (MR_Integer) 9:
+#line 1297 "switch_util.m"
+          case (MR_Integer) 10:
+#line 1297 "switch_util.m"
+          case (MR_Integer) 15:
+#line 1297 "switch_util.m"
+          case (MR_Integer) 16:
+#line 1342 "switch_util.m"
+            {
+#line 1343 "switch_util.m"
+              {
+#line 1343 "switch_util.m"
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "non-du tag");
+#line 1343 "switch_util.m"
+                return;
+              }
+#line 1342 "switch_util.m"
+            }
+#line 1297 "switch_util.m"
+            break;
+#line 1297 "switch_util.m"
+          case (MR_Integer) 11:
+#line 1289 "switch_util.m"
+            {
+#line 1290 "switch_util.m"
+              MR_Word backend_libs__switch_util__TypeInfo_110_187;
+#line 1290 "switch_util.m"
+              MR_Word backend_libs__switch_util___Group_183;
+#line 1290 "switch_util.m"
+              MR_Box backend_libs__switch_util__conv10__Group_183;
+
+#line 1284 "switch_util.m"
+              backend_libs__switch_util__Primary_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 1)));
+#line 9194 "backend_libs.switch_util.c"
+              {
+#line 9196 "backend_libs.switch_util.c"
+                backend_libs__switch_util__TypeInfo_110_187 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 9198 "backend_libs.switch_util.c"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_110_187, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 9200 "backend_libs.switch_util.c"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_110_187, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+#line 9202 "backend_libs.switch_util.c"
+              }
+#line 1290 "switch_util.m"
+              {
+#line 1290 "switch_util.m"
+                backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_110_187, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, backend_libs__switch_util__Primary_15, &backend_libs__switch_util__conv10__Group_183);
+              }
+#line 1290 "switch_util.m"
+              if (backend_libs__switch_util__succeeded)
+#line 1290 "switch_util.m"
+                {
+#line 1290 "switch_util.m"
+                  backend_libs__switch_util___Group_183 = ((MR_Word) backend_libs__switch_util__conv10__Group_183);
+#line 1290 "switch_util.m"
+                  backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1290 "switch_util.m"
+                }
+#line 1292 "switch_util.m"
+              if (backend_libs__switch_util__succeeded)
+#line 1291 "switch_util.m"
+                {
+#line 1291 "switch_util.m"
+                  {
+#line 1291 "switch_util.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "unshared tag is shared");
+#line 1291 "switch_util.m"
+                    return;
+                  }
+#line 1291 "switch_util.m"
+                }
+#line 1292 "switch_util.m"
+              else
+#line 1293 "switch_util.m"
+                {
+#line 1293 "switch_util.m"
+                  MR_Word backend_libs__switch_util__TypeInfo_113_196;
+#line 1293 "switch_util.m"
+                  MR_Word backend_libs__switch_util__StagGoalMap_191;
+#line 1293 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_193_193;
+#line 1294 "switch_util.m"
+                  MR_Word backend_libs__switch_util__conv11_STATE_VARIABLE_PtagCaseMap_55;
+
+#line 1293 "switch_util.m"
+                  {
+#line 1293 "switch_util.m"
+                    backend_libs__switch_util__StagGoalMap_191 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_107, ((MR_Box) ((MR_Integer) -1)), backend_libs__switch_util__CaseRep_9);
+                  }
+#line 1294 "switch_util.m"
+                  {
+#line 1294 "switch_util.m"
+                    backend_libs__switch_util__V_193_193 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1294 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_193_193, 0) = ((MR_Box) ((MR_Integer) 0));
+#line 1294 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_193_193, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_191));
+#line 1294 "switch_util.m"
+                  }
+#line 9260 "backend_libs.switch_util.c"
+                  {
+#line 9262 "backend_libs.switch_util.c"
+                    backend_libs__switch_util__TypeInfo_113_196 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 9264 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_113_196, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 9266 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_113_196, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+#line 9268 "backend_libs.switch_util.c"
+                  }
+#line 1294 "switch_util.m"
+                  {
+#line 1294 "switch_util.m"
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_113_196, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_193_193)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv11_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+#line 1294 "switch_util.m"
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv11_STATE_VARIABLE_PtagCaseMap_55;
+#line 1293 "switch_util.m"
+                }
+#line 1289 "switch_util.m"
+            }
+#line 1297 "switch_util.m"
+            break;
+#line 1297 "switch_util.m"
+          case (MR_Integer) 12:
+#line 1289 "switch_util.m"
+            {
+#line 1290 "switch_util.m"
+              MR_Word backend_libs__switch_util__TypeInfo_110_110;
+#line 1290 "switch_util.m"
+              MR_Word backend_libs__switch_util___Group_17;
+#line 1290 "switch_util.m"
+              MR_Box backend_libs__switch_util__conv0__Group_17;
+
+#line 1287 "switch_util.m"
+              backend_libs__switch_util__Primary_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 1)));
+#line 9296 "backend_libs.switch_util.c"
+              {
+#line 9298 "backend_libs.switch_util.c"
+                backend_libs__switch_util__TypeInfo_110_110 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 9300 "backend_libs.switch_util.c"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_110_110, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 9302 "backend_libs.switch_util.c"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_110_110, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+#line 9304 "backend_libs.switch_util.c"
+              }
+#line 1290 "switch_util.m"
+              {
+#line 1290 "switch_util.m"
+                backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_110_110, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, backend_libs__switch_util__Primary_15, &backend_libs__switch_util__conv0__Group_17);
+              }
+#line 1290 "switch_util.m"
+              if (backend_libs__switch_util__succeeded)
+#line 1290 "switch_util.m"
+                {
+#line 1290 "switch_util.m"
+                  backend_libs__switch_util___Group_17 = ((MR_Word) backend_libs__switch_util__conv0__Group_17);
+#line 1290 "switch_util.m"
+                  backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1290 "switch_util.m"
+                }
+#line 1292 "switch_util.m"
+              if (backend_libs__switch_util__succeeded)
+#line 1291 "switch_util.m"
+                {
+#line 1291 "switch_util.m"
+                  {
+#line 1291 "switch_util.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "unshared tag is shared");
+#line 1291 "switch_util.m"
+                    return;
+                  }
+#line 1291 "switch_util.m"
+                }
+#line 1292 "switch_util.m"
+              else
+#line 1293 "switch_util.m"
+                {
+#line 1293 "switch_util.m"
+                  MR_Word backend_libs__switch_util__TypeInfo_113_113;
+#line 1293 "switch_util.m"
+                  MR_Word backend_libs__switch_util__StagGoalMap_18;
+#line 1293 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_85_85;
+#line 1294 "switch_util.m"
+                  MR_Word backend_libs__switch_util__conv1_STATE_VARIABLE_PtagCaseMap_55;
+
+#line 1293 "switch_util.m"
+                  {
+#line 1293 "switch_util.m"
+                    backend_libs__switch_util__StagGoalMap_18 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_107, ((MR_Box) ((MR_Integer) -1)), backend_libs__switch_util__CaseRep_9);
+                  }
+#line 1294 "switch_util.m"
+                  {
+#line 1294 "switch_util.m"
+                    backend_libs__switch_util__V_85_85 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1294 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_85_85, 0) = ((MR_Box) ((MR_Integer) 1));
+#line 1294 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_85_85, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_18));
+#line 1294 "switch_util.m"
+                  }
+#line 9362 "backend_libs.switch_util.c"
+                  {
+#line 9364 "backend_libs.switch_util.c"
+                    backend_libs__switch_util__TypeInfo_113_113 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 9366 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_113_113, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 9368 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_113_113, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+#line 9370 "backend_libs.switch_util.c"
+                  }
+#line 1294 "switch_util.m"
+                  {
+#line 1294 "switch_util.m"
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_113_113, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_85_85)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv1_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+#line 1294 "switch_util.m"
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv1_STATE_VARIABLE_PtagCaseMap_55;
+#line 1293 "switch_util.m"
+                }
+#line 1289 "switch_util.m"
+            }
+#line 1297 "switch_util.m"
+            break;
+#line 1297 "switch_util.m"
+          case (MR_Integer) 13:
+#line 1298 "switch_util.m"
+            {
+#line 1298 "switch_util.m"
+              MR_Integer backend_libs__switch_util__Secondary_19;
+#line 1306 "switch_util.m"
+              MR_Word backend_libs__switch_util__TypeInfo_116_116;
+#line 1306 "switch_util.m"
+              MR_Word backend_libs__switch_util__Group_20;
+#line 1299 "switch_util.m"
+              MR_Box backend_libs__switch_util__conv5_Group_20;
+
+#line 1298 "switch_util.m"
+              backend_libs__switch_util__Primary_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 1)));
+#line 1298 "switch_util.m"
+              backend_libs__switch_util__Secondary_19 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 2)));
+#line 9402 "backend_libs.switch_util.c"
+              {
+#line 9404 "backend_libs.switch_util.c"
+                backend_libs__switch_util__TypeInfo_116_116 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 9406 "backend_libs.switch_util.c"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_116_116, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 9408 "backend_libs.switch_util.c"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_116_116, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+#line 9410 "backend_libs.switch_util.c"
+              }
+#line 1299 "switch_util.m"
+              {
+#line 1299 "switch_util.m"
+                backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_116_116, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, backend_libs__switch_util__Primary_15, &backend_libs__switch_util__conv5_Group_20);
+              }
+#line 1299 "switch_util.m"
+              if (backend_libs__switch_util__succeeded)
+#line 1299 "switch_util.m"
+                {
+#line 1299 "switch_util.m"
+                  backend_libs__switch_util__Group_20 = ((MR_Word) backend_libs__switch_util__conv5_Group_20);
+#line 1299 "switch_util.m"
+                  backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1299 "switch_util.m"
+                }
+#line 1306 "switch_util.m"
+              if (backend_libs__switch_util__succeeded)
+#line 1300 "switch_util.m"
+                {
+#line 1300 "switch_util.m"
+                  MR_Word backend_libs__switch_util__StagLoc_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Group_20, (MR_Integer) 0)));
+#line 1300 "switch_util.m"
+                  MR_Word backend_libs__switch_util__StagGoalMap0_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Group_20, (MR_Integer) 1)));
+#line 1300 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_70_70;
+#line 1300 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_75_75;
+#line 1300 "switch_util.m"
+                  MR_Word backend_libs__switch_util__StagGoalMap_89;
+#line 1304 "switch_util.m"
+                  MR_Word backend_libs__switch_util__conv6_STATE_VARIABLE_PtagCaseMap_55;
+
+#line 1301 "switch_util.m"
+                  {
+#line 1301 "switch_util.m"
+                    backend_libs__switch_util__V_70_70 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 1301 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_70_70, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_8[1]));
+#line 1301 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_70_70, 1) = ((MR_Box) (backend_libs__switch_util__group_case_by_ptag_7_p_0_2));
+#line 1301 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_70_70, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 1301 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_70_70, 3) = ((MR_Box) (backend_libs__switch_util__StagLoc_21));
+#line 1301 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_70_70, 4) = ((MR_Box) ((MR_Integer) 3));
+#line 1301 "switch_util.m"
+                  }
+#line 1301 "switch_util.m"
+                  {
+#line 1301 "switch_util.m"
+                    mercury__require__expect_4_p_0(backend_libs__switch_util__V_70_70, (MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "remote tag is shared with non-remote");
+                  }
+#line 1303 "switch_util.m"
+                  {
+#line 1303 "switch_util.m"
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_107, backend_libs__switch_util__Secondary_19, backend_libs__switch_util__CaseRep_9, backend_libs__switch_util__StagGoalMap0_22, &backend_libs__switch_util__StagGoalMap_89);
+                  }
+#line 1304 "switch_util.m"
+                  {
+#line 1304 "switch_util.m"
+                    backend_libs__switch_util__V_75_75 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1304 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_75_75, 0) = ((MR_Box) ((MR_Integer) 3));
+#line 1304 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_75_75, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_89));
+#line 1304 "switch_util.m"
+                  }
+#line 1304 "switch_util.m"
+                  {
+#line 1304 "switch_util.m"
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_116_116, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_75_75)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv6_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+#line 1304 "switch_util.m"
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv6_STATE_VARIABLE_PtagCaseMap_55;
+#line 1300 "switch_util.m"
+                }
+#line 1306 "switch_util.m"
+              else
+#line 1307 "switch_util.m"
+                {
+#line 1307 "switch_util.m"
+                  MR_Word backend_libs__switch_util__TypeInfo_123_123;
+#line 1307 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_78_78;
+#line 1307 "switch_util.m"
+                  MR_Word backend_libs__switch_util__StagGoalMap_90;
+#line 1308 "switch_util.m"
+                  MR_Word backend_libs__switch_util__conv7_STATE_VARIABLE_PtagCaseMap_55;
+
+#line 1307 "switch_util.m"
+                  {
+#line 1307 "switch_util.m"
+                    backend_libs__switch_util__StagGoalMap_90 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_107, ((MR_Box) (backend_libs__switch_util__Secondary_19)), backend_libs__switch_util__CaseRep_9);
+                  }
+#line 1308 "switch_util.m"
+                  {
+#line 1308 "switch_util.m"
+                    backend_libs__switch_util__V_78_78 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1308 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_78_78, 0) = ((MR_Box) ((MR_Integer) 3));
+#line 1308 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_78_78, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_90));
+#line 1308 "switch_util.m"
+                  }
+#line 9517 "backend_libs.switch_util.c"
+                  {
+#line 9519 "backend_libs.switch_util.c"
+                    backend_libs__switch_util__TypeInfo_123_123 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 9521 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_123_123, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 9523 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_123_123, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+#line 9525 "backend_libs.switch_util.c"
+                  }
+#line 1308 "switch_util.m"
+                  {
+#line 1308 "switch_util.m"
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_123_123, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_78_78)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv7_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+#line 1308 "switch_util.m"
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv7_STATE_VARIABLE_PtagCaseMap_55;
+#line 1307 "switch_util.m"
+                }
+#line 1298 "switch_util.m"
+            }
+#line 1297 "switch_util.m"
+            break;
+#line 1297 "switch_util.m"
+          case (MR_Integer) 14:
+#line 1312 "switch_util.m"
+            {
+#line 1312 "switch_util.m"
+              MR_Integer backend_libs__switch_util__Secondary_102;
+#line 1320 "switch_util.m"
+              MR_Word backend_libs__switch_util__TypeInfo_126_126;
+#line 1320 "switch_util.m"
+              MR_Word backend_libs__switch_util__Group_98;
+#line 1313 "switch_util.m"
+              MR_Box backend_libs__switch_util__conv2_Group_98;
+
+#line 1312 "switch_util.m"
+              backend_libs__switch_util__Primary_15 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 1)));
+#line 1312 "switch_util.m"
+              backend_libs__switch_util__Secondary_102 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_14, (MR_Integer) 2)));
+#line 9557 "backend_libs.switch_util.c"
+              {
+#line 9559 "backend_libs.switch_util.c"
+                backend_libs__switch_util__TypeInfo_126_126 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 9561 "backend_libs.switch_util.c"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_126_126, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 9563 "backend_libs.switch_util.c"
+                MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_126_126, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+#line 9565 "backend_libs.switch_util.c"
+              }
+#line 1313 "switch_util.m"
+              {
+#line 1313 "switch_util.m"
+                backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_126_126, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, backend_libs__switch_util__Primary_15, &backend_libs__switch_util__conv2_Group_98);
+              }
+#line 1313 "switch_util.m"
+              if (backend_libs__switch_util__succeeded)
+#line 1313 "switch_util.m"
+                {
+#line 1313 "switch_util.m"
+                  backend_libs__switch_util__Group_98 = ((MR_Word) backend_libs__switch_util__conv2_Group_98);
+#line 1313 "switch_util.m"
+                  backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1313 "switch_util.m"
+                }
+#line 1320 "switch_util.m"
+              if (backend_libs__switch_util__succeeded)
+#line 1314 "switch_util.m"
+                {
+#line 1314 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_59_59;
+#line 1314 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_64_64;
+#line 1314 "switch_util.m"
+                  MR_Word backend_libs__switch_util__StagGoalMap_93;
+#line 1314 "switch_util.m"
+                  MR_Word backend_libs__switch_util__StagLoc_94 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Group_98, (MR_Integer) 0)));
+#line 1314 "switch_util.m"
+                  MR_Word backend_libs__switch_util__StagGoalMap0_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Group_98, (MR_Integer) 1)));
+#line 1318 "switch_util.m"
+                  MR_Word backend_libs__switch_util__conv3_STATE_VARIABLE_PtagCaseMap_55;
+
+#line 1315 "switch_util.m"
+                  {
+#line 1315 "switch_util.m"
+                    backend_libs__switch_util__V_59_59 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 1315 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_59_59, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_8[1]));
+#line 1315 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_59_59, 1) = ((MR_Box) (backend_libs__switch_util__group_case_by_ptag_7_p_0_1));
+#line 1315 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_59_59, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 1315 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_59_59, 3) = ((MR_Box) ((MR_Integer) 2));
+#line 1315 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_59_59, 4) = ((MR_Box) (backend_libs__switch_util__StagLoc_94));
+#line 1315 "switch_util.m"
+                  }
+#line 1315 "switch_util.m"
+                  {
+#line 1315 "switch_util.m"
+                    mercury__require__expect_4_p_0(backend_libs__switch_util__V_59_59, (MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.group_case_by_ptag\'/7", (MR_String) "local tag is shared with non-local");
+                  }
+#line 1317 "switch_util.m"
+                  {
+#line 1317 "switch_util.m"
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_107, backend_libs__switch_util__Secondary_102, backend_libs__switch_util__CaseRep_9, backend_libs__switch_util__StagGoalMap0_95, &backend_libs__switch_util__StagGoalMap_93);
+                  }
+#line 1318 "switch_util.m"
+                  {
+#line 1318 "switch_util.m"
+                    backend_libs__switch_util__V_64_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1318 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_64_64, 0) = ((MR_Box) ((MR_Integer) 2));
+#line 1318 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_64_64, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_93));
+#line 1318 "switch_util.m"
+                  }
+#line 1318 "switch_util.m"
+                  {
+#line 1318 "switch_util.m"
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_126_126, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_64_64)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv3_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+#line 1318 "switch_util.m"
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv3_STATE_VARIABLE_PtagCaseMap_55;
+#line 1314 "switch_util.m"
+                }
+#line 1320 "switch_util.m"
+              else
+#line 1321 "switch_util.m"
+                {
+#line 1321 "switch_util.m"
+                  MR_Word backend_libs__switch_util__TypeInfo_133_133;
+#line 1321 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_67_67;
+#line 1321 "switch_util.m"
+                  MR_Word backend_libs__switch_util__StagGoalMap_96;
+#line 1322 "switch_util.m"
+                  MR_Word backend_libs__switch_util__conv4_STATE_VARIABLE_PtagCaseMap_55;
+
+#line 1321 "switch_util.m"
+                  {
+#line 1321 "switch_util.m"
+                    backend_libs__switch_util__StagGoalMap_96 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_for_CaseRep_107, ((MR_Box) (backend_libs__switch_util__Secondary_102)), backend_libs__switch_util__CaseRep_9);
+                  }
+#line 1322 "switch_util.m"
+                  {
+#line 1322 "switch_util.m"
+                    backend_libs__switch_util__V_67_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1322 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_67_67, 0) = ((MR_Box) ((MR_Integer) 2));
+#line 1322 "switch_util.m"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_67_67, 1) = ((MR_Box) (backend_libs__switch_util__StagGoalMap_96));
+#line 1322 "switch_util.m"
+                  }
+#line 9672 "backend_libs.switch_util.c"
+                  {
+#line 9674 "backend_libs.switch_util.c"
+                    backend_libs__switch_util__TypeInfo_133_133 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 9676 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_133_133, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 9678 "backend_libs.switch_util.c"
+                    MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_133_133, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_107));
+#line 9680 "backend_libs.switch_util.c"
+                  }
+#line 1322 "switch_util.m"
+                  {
+#line 1322 "switch_util.m"
+                    mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_133_133, backend_libs__switch_util__Primary_15, ((MR_Box) (backend_libs__switch_util__V_67_67)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_0_54, &backend_libs__switch_util__conv4_STATE_VARIABLE_PtagCaseMap_55);
+                  }
+#line 1322 "switch_util.m"
+                  *backend_libs__switch_util__STATE_VARIABLE_PtagCaseMap_55 = (MR_Word) backend_libs__switch_util__conv4_STATE_VARIABLE_PtagCaseMap_55;
+#line 1321 "switch_util.m"
+                }
+#line 1312 "switch_util.m"
+            }
+#line 1297 "switch_util.m"
+            break;
+#line 1297 "switch_util.m"
+        }
+#line 1297 "switch_util.m"
+        break;
+#line 1297 "switch_util.m"
+    }
+#line 1345 "switch_util.m"
+    {
+#line 1345 "switch_util.m"
+      backend_libs__switch_util__succeeded = mercury__map__search_3_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &backend_libs__switch_util_scalar_common_1[0], backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_0_52, ((MR_Box) (backend_libs__switch_util__CaseId_8)), &backend_libs__switch_util__conv12_Ptags0_50);
+    }
+#line 1345 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 1345 "switch_util.m"
+      {
+#line 1345 "switch_util.m"
+        backend_libs__switch_util__Ptags0_50 = ((MR_Word) backend_libs__switch_util__conv12_Ptags0_50);
+#line 1345 "switch_util.m"
+        backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1345 "switch_util.m"
+      }
+#line 1348 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 1346 "switch_util.m"
+      {
+#line 1346 "switch_util.m"
+        MR_Word backend_libs__switch_util__Ptags_51;
+
+#line 1346 "switch_util.m"
+        {
+#line 1346 "switch_util.m"
+          mercury__set__insert_3_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (backend_libs__switch_util__Primary_15)), backend_libs__switch_util__Ptags0_50, &backend_libs__switch_util__Ptags_51);
+        }
+#line 1347 "switch_util.m"
+        {
+#line 1347 "switch_util.m"
+          mercury__map__det_update_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &backend_libs__switch_util_scalar_common_1[0], ((MR_Box) (backend_libs__switch_util__CaseId_8)), ((MR_Box) (backend_libs__switch_util__Ptags_51)), backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_0_52, backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_53);
+#line 1347 "switch_util.m"
+          return;
+        }
+#line 1346 "switch_util.m"
+      }
+#line 1348 "switch_util.m"
+    else
+#line 1349 "switch_util.m"
+      {
+#line 1349 "switch_util.m"
+        MR_Word backend_libs__switch_util__Ptags_106;
+
+#line 1349 "switch_util.m"
+        {
+#line 1349 "switch_util.m"
+          backend_libs__switch_util__Ptags_106 = mercury__set__make_singleton_set_1_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, ((MR_Box) (backend_libs__switch_util__Primary_15)));
+        }
+#line 1350 "switch_util.m"
+        {
+#line 1350 "switch_util.m"
+          mercury__map__det_insert_4_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &backend_libs__switch_util_scalar_common_1[0], ((MR_Box) (backend_libs__switch_util__CaseId_8)), ((MR_Box) (backend_libs__switch_util__Ptags_106)), backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_0_52, backend_libs__switch_util__STATE_VARIABLE_CaseIdPtagsMap_53);
+#line 1350 "switch_util.m"
+          return;
+        }
+#line 1349 "switch_util.m"
+      }
+#line 1276 "switch_util.m"
+  }
+#line 1271 "switch_util.m"
+}
+
+#line 1158 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__get_ptag_counts_loop_5_p_0(
+#line 1158 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1158 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2,
+#line 1158 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_3,
+#line 1158 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4,
+#line 1158 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_5)
+#line 1158 "switch_util.m"
+{
+#line 1161 "switch_util.m"
+  while (MR_TRUE)
+#line 1161 "switch_util.m"
+    {
+#line 1161 "switch_util.m"
+      /* tailcall optimized into a loop */
+#line 1161 "switch_util.m"
+      {
+#line 1161 "switch_util.m"
+        MR_bool backend_libs__switch_util__succeeded;
+
+#line 1161 "switch_util.m"
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1161 "switch_util.m"
+          {
+#line 1161 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_5 = backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4;
+#line 1161 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_3 = backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2;
+#line 1161 "switch_util.m"
+          }
+#line 1161 "switch_util.m"
+        else
+#line 1162 "switch_util.m"
+          {
+#line 1162 "switch_util.m"
+            MR_Word backend_libs__switch_util__Tag_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 1162 "switch_util.m"
+            MR_Word backend_libs__switch_util__Tags_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 1162 "switch_util.m"
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78;
+#line 1162 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83;
+
+#line 1181 "switch_util.m"
+#line 1181 "switch_util.m"
+            switch (MR_tag((MR_Word) backend_libs__switch_util__Tag_12)) {
+#line 1181 "switch_util.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 1181 "switch_util.m"
+              case (MR_Integer) 0:
+#line 1181 "switch_util.m"
+#line 1181 "switch_util.m"
+                switch (MR_unmkbody(backend_libs__switch_util__Tag_12)) {
+#line 1181 "switch_util.m"
+                  default: /*NOTREACHED*/ MR_assert(0);
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 0:
+#line 1174 "switch_util.m"
+                    {
+#line 1176 "switch_util.m"
+                      MR_Word backend_libs__switch_util__V_117_117;
+#line 1176 "switch_util.m"
+                      MR_Box backend_libs__switch_util__conv3_V_117_117;
+
+#line 1175 "switch_util.m"
+                      {
+#line 1175 "switch_util.m"
+                        mercury__int__max_3_p_0((MR_Integer) 0, backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2, &backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78);
+                      }
+#line 1176 "switch_util.m"
+                      {
+#line 1176 "switch_util.m"
+                        backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, (MR_Integer) 0, &backend_libs__switch_util__conv3_V_117_117);
+                      }
+#line 1176 "switch_util.m"
+                      if (backend_libs__switch_util__succeeded)
+#line 1176 "switch_util.m"
+                        {
+#line 1176 "switch_util.m"
+                          backend_libs__switch_util__V_117_117 = ((MR_Word) backend_libs__switch_util__conv3_V_117_117);
+#line 1176 "switch_util.m"
+                          backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1176 "switch_util.m"
+                        }
+#line 1178 "switch_util.m"
+                      if (backend_libs__switch_util__succeeded)
+#line 1177 "switch_util.m"
+                        {
+#line 1177 "switch_util.m"
+                          {
+#line 1177 "switch_util.m"
+                            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "unshared tag is shared");
+#line 1177 "switch_util.m"
+                            return;
+                          }
+#line 1177 "switch_util.m"
+                        }
+#line 1178 "switch_util.m"
+                      else
+#line 1179 "switch_util.m"
+                        {
+#line 1179 "switch_util.m"
+                          {
+#line 1179 "switch_util.m"
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], (MR_Integer) 0, ((MR_Box) (&backend_libs__switch_util_scalar_common_1[4])), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+#line 1179 "switch_util.m"
+                        }
+#line 1174 "switch_util.m"
+                    }
+#line 1181 "switch_util.m"
+                    break;
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 1:
+#line 1238 "switch_util.m"
+                    {
+#line 1239 "switch_util.m"
+                      {
+#line 1239 "switch_util.m"
+                        mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "non-du tag");
+#line 1239 "switch_util.m"
+                        return;
+                      }
+#line 1238 "switch_util.m"
+                    }
+#line 1181 "switch_util.m"
+                    break;
+#line 1181 "switch_util.m"
+                }
+#line 1181 "switch_util.m"
+                break;
+#line 1181 "switch_util.m"
+              case (MR_Integer) 1:
+#line 1181 "switch_util.m"
+              case (MR_Integer) 2:
+#line 1238 "switch_util.m"
+                {
+#line 1239 "switch_util.m"
+                  {
+#line 1239 "switch_util.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "non-du tag");
+#line 1239 "switch_util.m"
+                    return;
+                  }
+#line 1238 "switch_util.m"
+                }
+#line 1181 "switch_util.m"
+                break;
+#line 1181 "switch_util.m"
+              case (MR_Integer) 3:
+#line 1181 "switch_util.m"
+#line 1181 "switch_util.m"
+                switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 0)))) {
+#line 1181 "switch_util.m"
+                  default: /*NOTREACHED*/ MR_assert(0);
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 0:
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 1:
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 2:
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 3:
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 4:
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 5:
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 6:
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 7:
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 8:
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 9:
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 10:
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 15:
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 16:
+#line 1238 "switch_util.m"
+                    {
+#line 1239 "switch_util.m"
+                      {
+#line 1239 "switch_util.m"
+                        mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "non-du tag");
+#line 1239 "switch_util.m"
+                        return;
+                      }
+#line 1238 "switch_util.m"
+                    }
+#line 1181 "switch_util.m"
+                    break;
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 11:
+#line 1174 "switch_util.m"
+                    {
+#line 1174 "switch_util.m"
+                      MR_Integer backend_libs__switch_util__Primary_171 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 1)));
+#line 1176 "switch_util.m"
+                      MR_Word backend_libs__switch_util__V_150_150;
+#line 1176 "switch_util.m"
+                      MR_Box backend_libs__switch_util__conv4_V_150_150;
+
+#line 1175 "switch_util.m"
+                      {
+#line 1175 "switch_util.m"
+                        mercury__int__max_3_p_0(backend_libs__switch_util__Primary_171, backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2, &backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78);
+                      }
+#line 1176 "switch_util.m"
+                      {
+#line 1176 "switch_util.m"
+                        backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, backend_libs__switch_util__Primary_171, &backend_libs__switch_util__conv4_V_150_150);
+                      }
+#line 1176 "switch_util.m"
+                      if (backend_libs__switch_util__succeeded)
+#line 1176 "switch_util.m"
+                        {
+#line 1176 "switch_util.m"
+                          backend_libs__switch_util__V_150_150 = ((MR_Word) backend_libs__switch_util__conv4_V_150_150);
+#line 1176 "switch_util.m"
+                          backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1176 "switch_util.m"
+                        }
+#line 1178 "switch_util.m"
+                      if (backend_libs__switch_util__succeeded)
+#line 1177 "switch_util.m"
+                        {
+#line 1177 "switch_util.m"
+                          {
+#line 1177 "switch_util.m"
+                            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "unshared tag is shared");
+#line 1177 "switch_util.m"
+                            return;
+                          }
+#line 1177 "switch_util.m"
+                        }
+#line 1178 "switch_util.m"
+                      else
+#line 1179 "switch_util.m"
+                        {
+#line 1179 "switch_util.m"
+                          {
+#line 1179 "switch_util.m"
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__Primary_171, ((MR_Box) (&backend_libs__switch_util_scalar_common_1[4])), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+#line 1179 "switch_util.m"
+                        }
+#line 1174 "switch_util.m"
+                    }
+#line 1181 "switch_util.m"
+                    break;
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 12:
+#line 1174 "switch_util.m"
+                    {
+#line 1174 "switch_util.m"
+                      MR_Integer backend_libs__switch_util__Primary_16 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 1)));
+#line 1176 "switch_util.m"
+                      MR_Word backend_libs__switch_util__V_18_18;
+#line 1176 "switch_util.m"
+                      MR_Box backend_libs__switch_util__conv0_V_18_18;
+
+#line 1175 "switch_util.m"
+                      {
+#line 1175 "switch_util.m"
+                        mercury__int__max_3_p_0(backend_libs__switch_util__Primary_16, backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2, &backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78);
+                      }
+#line 1176 "switch_util.m"
+                      {
+#line 1176 "switch_util.m"
+                        backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, backend_libs__switch_util__Primary_16, &backend_libs__switch_util__conv0_V_18_18);
+                      }
+#line 1176 "switch_util.m"
+                      if (backend_libs__switch_util__succeeded)
+#line 1176 "switch_util.m"
+                        {
+#line 1176 "switch_util.m"
+                          backend_libs__switch_util__V_18_18 = ((MR_Word) backend_libs__switch_util__conv0_V_18_18);
+#line 1176 "switch_util.m"
+                          backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1176 "switch_util.m"
+                        }
+#line 1178 "switch_util.m"
+                      if (backend_libs__switch_util__succeeded)
+#line 1177 "switch_util.m"
+                        {
+#line 1177 "switch_util.m"
+                          {
+#line 1177 "switch_util.m"
+                            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "unshared tag is shared");
+#line 1177 "switch_util.m"
+                            return;
+                          }
+#line 1177 "switch_util.m"
+                        }
+#line 1178 "switch_util.m"
+                      else
+#line 1179 "switch_util.m"
+                        {
+#line 1179 "switch_util.m"
+                          {
+#line 1179 "switch_util.m"
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__Primary_16, ((MR_Box) (&backend_libs__switch_util_scalar_common_1[3])), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+#line 1179 "switch_util.m"
+                        }
+#line 1174 "switch_util.m"
+                    }
+#line 1181 "switch_util.m"
+                    break;
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 13:
+#line 1182 "switch_util.m"
+                    {
+#line 1182 "switch_util.m"
+                      MR_Integer backend_libs__switch_util__Secondary_19 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 2)));
+#line 1182 "switch_util.m"
+                      MR_Integer backend_libs__switch_util__Primary_87 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 1)));
+#line 1198 "switch_util.m"
+                      MR_Word backend_libs__switch_util__Target_20;
+#line 1184 "switch_util.m"
+                      MR_Box backend_libs__switch_util__conv2_Target_20;
+
+#line 1183 "switch_util.m"
+                      {
+#line 1183 "switch_util.m"
+                        mercury__int__max_3_p_0(backend_libs__switch_util__Primary_87, backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2, &backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78);
+                      }
+#line 1184 "switch_util.m"
+                      {
+#line 1184 "switch_util.m"
+                        backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, backend_libs__switch_util__Primary_87, &backend_libs__switch_util__conv2_Target_20);
+                      }
+#line 1184 "switch_util.m"
+                      if (backend_libs__switch_util__succeeded)
+#line 1184 "switch_util.m"
+                        {
+#line 1184 "switch_util.m"
+                          backend_libs__switch_util__Target_20 = ((MR_Word) backend_libs__switch_util__conv2_Target_20);
+#line 1184 "switch_util.m"
+                          backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1184 "switch_util.m"
+                        }
+#line 1198 "switch_util.m"
+                      if (backend_libs__switch_util__succeeded)
+#line 1185 "switch_util.m"
+                        {
+#line 1185 "switch_util.m"
+                          MR_Word backend_libs__switch_util__TagType_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Target_20, (MR_Integer) 0)));
+#line 1185 "switch_util.m"
+                          MR_Integer backend_libs__switch_util__MaxSoFar_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Target_20, (MR_Integer) 1)));
+#line 1185 "switch_util.m"
+                          MR_Integer backend_libs__switch_util__Max_23;
+#line 1185 "switch_util.m"
+                          MR_Word backend_libs__switch_util__V_72_72;
+
+#line 1188 "switch_util.m"
+#line 1188 "switch_util.m"
+                          switch (backend_libs__switch_util__TagType_21) {
+#line 1188 "switch_util.m"
+                            default: /*NOTREACHED*/ MR_assert(0);
+#line 1188 "switch_util.m"
+                            case (MR_Integer) 2:
+#line 1188 "switch_util.m"
+                            case (MR_Integer) 0:
+#line 1188 "switch_util.m"
+                            case (MR_Integer) 1:
+#line 1192 "switch_util.m"
+                              {
+#line 1193 "switch_util.m"
+                                {
+#line 1193 "switch_util.m"
+                                  mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "remote tag is shared with non-remote");
+#line 1193 "switch_util.m"
+                                  return;
+                                }
+#line 1192 "switch_util.m"
+                              }
+#line 1188 "switch_util.m"
+                              break;
+#line 1188 "switch_util.m"
+                            case (MR_Integer) 3:
+#line 1187 "switch_util.m"
+                              {
+#line 1187 "switch_util.m"
+                              }
+#line 1188 "switch_util.m"
+                              break;
+#line 1188 "switch_util.m"
+                          }
+#line 1196 "switch_util.m"
+                          {
+#line 1196 "switch_util.m"
+                            mercury__int__max_3_p_0(backend_libs__switch_util__Secondary_19, backend_libs__switch_util__MaxSoFar_22, &backend_libs__switch_util__Max_23);
+                          }
+#line 1197 "switch_util.m"
+                          {
+#line 1197 "switch_util.m"
+                            backend_libs__switch_util__V_72_72 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1197 "switch_util.m"
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_72_72, 0) = ((MR_Box) ((MR_Integer) 3));
+#line 1197 "switch_util.m"
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_72_72, 1) = ((MR_Box) (backend_libs__switch_util__Max_23));
+#line 1197 "switch_util.m"
+                          }
+#line 1197 "switch_util.m"
+                          {
+#line 1197 "switch_util.m"
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__Primary_87, ((MR_Box) (backend_libs__switch_util__V_72_72)), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+#line 1185 "switch_util.m"
+                        }
+#line 1198 "switch_util.m"
+                      else
+#line 1199 "switch_util.m"
+                        {
+#line 1199 "switch_util.m"
+                          MR_Word backend_libs__switch_util__V_75_75;
+
+#line 1199 "switch_util.m"
+                          {
+#line 1199 "switch_util.m"
+                            backend_libs__switch_util__V_75_75 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1199 "switch_util.m"
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_75_75, 0) = ((MR_Box) ((MR_Integer) 3));
+#line 1199 "switch_util.m"
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_75_75, 1) = ((MR_Box) (backend_libs__switch_util__Secondary_19));
+#line 1199 "switch_util.m"
+                          }
+#line 1199 "switch_util.m"
+                          {
+#line 1199 "switch_util.m"
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__Primary_87, ((MR_Box) (backend_libs__switch_util__V_75_75)), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+#line 1199 "switch_util.m"
+                        }
+#line 1182 "switch_util.m"
+                    }
+#line 1181 "switch_util.m"
+                    break;
+#line 1181 "switch_util.m"
+                  case (MR_Integer) 14:
+#line 1202 "switch_util.m"
+                    {
+#line 1202 "switch_util.m"
+                      MR_Integer backend_libs__switch_util__Primary_95 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 1)));
+#line 1202 "switch_util.m"
+                      MR_Integer backend_libs__switch_util__Secondary_96 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_12, (MR_Integer) 2)));
+#line 1218 "switch_util.m"
+                      MR_Word backend_libs__switch_util__Target_91;
+#line 1204 "switch_util.m"
+                      MR_Box backend_libs__switch_util__conv1_Target_91;
+
+#line 1203 "switch_util.m"
+                      {
+#line 1203 "switch_util.m"
+                        mercury__int__max_3_p_0(backend_libs__switch_util__Primary_95, backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2, &backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78);
+                      }
+#line 1204 "switch_util.m"
+                      {
+#line 1204 "switch_util.m"
+                        backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, backend_libs__switch_util__Primary_95, &backend_libs__switch_util__conv1_Target_91);
+                      }
+#line 1204 "switch_util.m"
+                      if (backend_libs__switch_util__succeeded)
+#line 1204 "switch_util.m"
+                        {
+#line 1204 "switch_util.m"
+                          backend_libs__switch_util__Target_91 = ((MR_Word) backend_libs__switch_util__conv1_Target_91);
+#line 1204 "switch_util.m"
+                          backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1204 "switch_util.m"
+                        }
+#line 1218 "switch_util.m"
+                      if (backend_libs__switch_util__succeeded)
+#line 1205 "switch_util.m"
+                        {
+#line 1205 "switch_util.m"
+                          MR_Word backend_libs__switch_util__V_62_62;
+#line 1205 "switch_util.m"
+                          MR_Word backend_libs__switch_util__TagType_88 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Target_91, (MR_Integer) 0)));
+#line 1205 "switch_util.m"
+                          MR_Integer backend_libs__switch_util__MaxSoFar_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Target_91, (MR_Integer) 1)));
+#line 1205 "switch_util.m"
+                          MR_Integer backend_libs__switch_util__Max_90;
+
+#line 1208 "switch_util.m"
+#line 1208 "switch_util.m"
+                          switch (backend_libs__switch_util__TagType_88) {
+#line 1208 "switch_util.m"
+                            default: /*NOTREACHED*/ MR_assert(0);
+#line 1208 "switch_util.m"
+                            case (MR_Integer) 2:
+#line 1207 "switch_util.m"
+                              {
+#line 1207 "switch_util.m"
+                              }
+#line 1208 "switch_util.m"
+                              break;
+#line 1208 "switch_util.m"
+                            case (MR_Integer) 0:
+#line 1208 "switch_util.m"
+                            case (MR_Integer) 1:
+#line 1208 "switch_util.m"
+                            case (MR_Integer) 3:
+#line 1212 "switch_util.m"
+                              {
+#line 1213 "switch_util.m"
+                                {
+#line 1213 "switch_util.m"
+                                  mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts_loop\'/5", (MR_String) "local tag is shared with non-local");
+#line 1213 "switch_util.m"
+                                  return;
+                                }
+#line 1212 "switch_util.m"
+                              }
+#line 1208 "switch_util.m"
+                              break;
+#line 1208 "switch_util.m"
+                          }
+#line 1216 "switch_util.m"
+                          {
+#line 1216 "switch_util.m"
+                            mercury__int__max_3_p_0(backend_libs__switch_util__Secondary_96, backend_libs__switch_util__MaxSoFar_89, &backend_libs__switch_util__Max_90);
+                          }
+#line 1217 "switch_util.m"
+                          {
+#line 1217 "switch_util.m"
+                            backend_libs__switch_util__V_62_62 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1217 "switch_util.m"
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_62_62, 0) = ((MR_Box) ((MR_Integer) 2));
+#line 1217 "switch_util.m"
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_62_62, 1) = ((MR_Box) (backend_libs__switch_util__Max_90));
+#line 1217 "switch_util.m"
+                          }
+#line 1217 "switch_util.m"
+                          {
+#line 1217 "switch_util.m"
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__Primary_95, ((MR_Box) (backend_libs__switch_util__V_62_62)), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+#line 1205 "switch_util.m"
+                        }
+#line 1218 "switch_util.m"
+                      else
+#line 1219 "switch_util.m"
+                        {
+#line 1219 "switch_util.m"
+                          MR_Word backend_libs__switch_util__V_65_65;
+
+#line 1219 "switch_util.m"
+                          {
+#line 1219 "switch_util.m"
+                            backend_libs__switch_util__V_65_65 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1219 "switch_util.m"
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_65_65, 0) = ((MR_Box) ((MR_Integer) 2));
+#line 1219 "switch_util.m"
+                            MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_65_65, 1) = ((MR_Box) (backend_libs__switch_util__Secondary_96));
+#line 1219 "switch_util.m"
+                          }
+#line 1219 "switch_util.m"
+                          {
+#line 1219 "switch_util.m"
+                            mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0((MR_Word) &backend_libs__switch_util_scalar_common_2[0], backend_libs__switch_util__Primary_95, ((MR_Box) (backend_libs__switch_util__V_65_65)), backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83);
+                          }
+#line 1219 "switch_util.m"
+                        }
+#line 1202 "switch_util.m"
+                    }
+#line 1181 "switch_util.m"
+                    break;
+#line 1181 "switch_util.m"
+                }
+#line 1181 "switch_util.m"
+                break;
+#line 1181 "switch_util.m"
+            }
+#line 1241 "switch_util.m"
+            /* direct tailcall eliminated */
+#line 1241 "switch_util.m"
+            {
+#line 1241 "switch_util.m"
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__Tags_13;
+#line 1241 "switch_util.m"
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0__tmp_copy_2 = backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_78_78;
+#line 1241 "switch_util.m"
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0__tmp_copy_4 = backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_83_83;
+
+#line 1241 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0_4 = backend_libs__switch_util__STATE_VARIABLE_PtagCountMap_0__tmp_copy_4;
+#line 1241 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0_2 = backend_libs__switch_util__STATE_VARIABLE_MaxPrimary_0__tmp_copy_2;
+#line 1241 "switch_util.m"
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+#line 1241 "switch_util.m"
+            }
+#line 1241 "switch_util.m"
+            continue;
+#line 1162 "switch_util.m"
+          }
+#line 1161 "switch_util.m"
+      }
+#line 1161 "switch_util.m"
+      break;
+#line 1161 "switch_util.m"
+    }
+#line 1158 "switch_util.m"
+}
+
+#line 1120 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__add_string_binary_entry_4_p_0(
+#line 1120 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_19,
+#line 1120 "switch_util.m"
+  MR_Box backend_libs__switch_util__CaseRep_5,
+#line 1120 "switch_util.m"
+  MR_Word backend_libs__switch_util__TaggedConsId_6,
+#line 1120 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_12,
+#line 1120 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_13)
+#line 1120 "switch_util.m"
+{
+#line 1123 "switch_util.m"
+  {
+#line 1123 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1123 "switch_util.m"
+    MR_Word backend_libs__switch_util__Tag_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedConsId_6, (MR_Integer) 1)));
+#line 1123 "switch_util.m"
+    MR_String backend_libs__switch_util__String_11;
+#line 1123 "switch_util.m"
+    MR_Word backend_libs__switch_util__V_18_18;
+#line 1124 "switch_util.m"
+    MR_Word backend_libs__switch_util___ConsId_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedConsId_6, (MR_Integer) 0)));
+#line 1127 "switch_util.m"
+    MR_String backend_libs__switch_util__StringPrime_10;
+
+#line 1125 "switch_util.m"
+    backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__Tag_9)) == (MR_mktag((MR_Integer) 1)));
+#line 1125 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 1125 "switch_util.m"
+      {
+#line 1125 "switch_util.m"
+        backend_libs__switch_util__StringPrime_10 = ((MR_String) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__Tag_9, (MR_Integer) 0)));
+#line 1126 "switch_util.m"
+        backend_libs__switch_util__String_11 = backend_libs__switch_util__StringPrime_10;
+#line 1125 "switch_util.m"
+      }
+#line 1125 "switch_util.m"
+    else
+#line 1128 "switch_util.m"
+      {
+#line 1128 "switch_util.m"
+        {
+#line 1128 "switch_util.m"
+          mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.add_string_binary_entry\'/4", (MR_String) "non-string case\?");
+#line 1128 "switch_util.m"
+          return;
+        }
+#line 1128 "switch_util.m"
+      }
+#line 1130 "switch_util.m"
+    {
+#line 1130 "switch_util.m"
+      backend_libs__switch_util__V_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1130 "switch_util.m"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_18_18, 0) = ((MR_Box) (backend_libs__switch_util__String_11));
+#line 1130 "switch_util.m"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_18_18, 1) = backend_libs__switch_util__CaseRep_5;
+#line 1130 "switch_util.m"
+    }
+#line 1130 "switch_util.m"
+    {
+#line 1130 "switch_util.m"
+      MR_Word base;
+#line 1130 "switch_util.m"
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1130 "switch_util.m"
+      *backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_13 = base;
+#line 1130 "switch_util.m"
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (backend_libs__switch_util__V_18_18));
+#line 1130 "switch_util.m"
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_UnsortedTable_0_12));
+#line 1130 "switch_util.m"
+    }
+#line 1123 "switch_util.m"
+  }
+#line 1120 "switch_util.m"
+}
+
+#line 1081 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__next_free_hash_slot_5_p_0_1(
+#line 1081 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg)
+#line 1081 "switch_util.m"
+{
+#line 1081 "switch_util.m"
+  {
+#line 1081 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1081 "switch_util.m"
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+
+#line 1081 "switch_util.m"
+    {
+#line 1081 "switch_util.m"
+      return backend_libs__switch_util__succeeded = mercury__int__f_less_than_2_p_0(((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4))));
+    }
+#line 1081 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 1081 "switch_util.m"
+  }
+#line 1081 "switch_util.m"
+}
+
+#line 1075 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__next_free_hash_slot_5_p_0(
+#line 1075 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_17,
+#line 1075 "switch_util.m"
+  MR_Word backend_libs__switch_util__Map_6,
+#line 1075 "switch_util.m"
+  MR_Word backend_libs__switch_util__HomeMap_7,
+#line 1075 "switch_util.m"
+  MR_Integer backend_libs__switch_util__TableSize_8,
+#line 1075 "switch_util.m"
+  MR_Integer backend_libs__switch_util__LastUsed_9,
+#line 1075 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__FreeSlot_10)
+#line 1075 "switch_util.m"
+{
+#line 1079 "switch_util.m"
+  while (MR_TRUE)
+#line 1079 "switch_util.m"
+    {
+#line 1079 "switch_util.m"
+      /* tailcall optimized into a loop */
+#line 1079 "switch_util.m"
+      {
+#line 1079 "switch_util.m"
+        MR_bool backend_libs__switch_util__succeeded;
+#line 1079 "switch_util.m"
+        MR_Integer backend_libs__switch_util__NextSlot_11 = (backend_libs__switch_util__LastUsed_9 + (MR_Integer) 1);
+#line 1079 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_13_13;
+#line 1083 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_20_20;
+#line 1084 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeCtorInfo_21_21;
+#line 1084 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeCtorInfo_22_22;
+#line 1084 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeCtorInfo_23_23;
+#line 1084 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_24_24;
+#line 1084 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeCtorInfo_25_25;
+#line 1084 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_26_26;
+
+#line 1081 "switch_util.m"
+        {
+#line 1081 "switch_util.m"
+          backend_libs__switch_util__V_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 1081 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_8[0]));
+#line 1081 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 1) = ((MR_Box) (backend_libs__switch_util__next_free_hash_slot_5_p_0_1));
+#line 1081 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 1081 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 3) = ((MR_Box) (backend_libs__switch_util__NextSlot_11));
+#line 1081 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 4) = ((MR_Box) (backend_libs__switch_util__TableSize_8));
+#line 1081 "switch_util.m"
+        }
+#line 1081 "switch_util.m"
+        {
+#line 1081 "switch_util.m"
+          mercury__require__expect_4_p_0(backend_libs__switch_util__V_13_13, (MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.next_free_hash_slot\'/5", (MR_String) "overflow");
+        }
+#line 10556 "backend_libs.switch_util.c"
+        {
+#line 10558 "backend_libs.switch_util.c"
+          backend_libs__switch_util__TypeInfo_20_20 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 10560 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_20_20, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1));
+#line 10562 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_20_20, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_17));
+#line 10564 "backend_libs.switch_util.c"
+        }
+#line 1083 "switch_util.m"
+        {
+#line 1083 "switch_util.m"
+          backend_libs__switch_util__succeeded = mercury__map__contains_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_20_20, backend_libs__switch_util__Map_6, ((MR_Box) (backend_libs__switch_util__NextSlot_11)));
+        }
+#line 1083 "switch_util.m"
+        backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 1083 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 1083 "switch_util.m"
+          {
+#line 10577 "backend_libs.switch_util.c"
+            backend_libs__switch_util__TypeCtorInfo_21_21 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 10579 "backend_libs.switch_util.c"
+            backend_libs__switch_util__TypeCtorInfo_25_25 = (MR_Word) &mercury__list__list__type_ctor_info_list_1;
+#line 10581 "backend_libs.switch_util.c"
+            backend_libs__switch_util__TypeCtorInfo_23_23 = (MR_Word) &mercury__pair__pair__type_ctor_info_pair_2;
+#line 10583 "backend_libs.switch_util.c"
+            backend_libs__switch_util__TypeCtorInfo_22_22 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 10585 "backend_libs.switch_util.c"
+            {
+#line 10587 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeInfo_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 10589 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_24_24, 0) = ((MR_Box) (backend_libs__switch_util__TypeCtorInfo_23_23));
+#line 10591 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_24_24, 1) = ((MR_Box) (backend_libs__switch_util__TypeCtorInfo_22_22));
+#line 10593 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_24_24, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_17));
+#line 10595 "backend_libs.switch_util.c"
+            }
+#line 10597 "backend_libs.switch_util.c"
+            {
+#line 10599 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeInfo_26_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 10601 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_26_26, 0) = ((MR_Box) (backend_libs__switch_util__TypeCtorInfo_25_25));
+#line 10603 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_26_26, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_24_24));
+#line 10605 "backend_libs.switch_util.c"
+            }
+#line 1084 "switch_util.m"
+            {
+#line 1084 "switch_util.m"
+              backend_libs__switch_util__succeeded = mercury__map__contains_2_p_0(backend_libs__switch_util__TypeCtorInfo_21_21, backend_libs__switch_util__TypeInfo_26_26, backend_libs__switch_util__HomeMap_7, ((MR_Box) (backend_libs__switch_util__NextSlot_11)));
+            }
+#line 1084 "switch_util.m"
+            backend_libs__switch_util__succeeded = !(backend_libs__switch_util__succeeded);
+#line 1083 "switch_util.m"
+          }
+#line 1087 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 1086 "switch_util.m"
+          *backend_libs__switch_util__FreeSlot_10 = backend_libs__switch_util__NextSlot_11;
+#line 1087 "switch_util.m"
+        else
+#line 1088 "switch_util.m"
+          {
+#line 1088 "switch_util.m"
+            /* direct tailcall eliminated */
+#line 1088 "switch_util.m"
+            {
+#line 1088 "switch_util.m"
+              MR_Integer backend_libs__switch_util__LastUsed__tmp_copy_9 = backend_libs__switch_util__NextSlot_11;
+
+#line 1088 "switch_util.m"
+              backend_libs__switch_util__LastUsed_9 = backend_libs__switch_util__LastUsed__tmp_copy_9;
+#line 1088 "switch_util.m"
+            }
+#line 1088 "switch_util.m"
+            continue;
+#line 1088 "switch_util.m"
+          }
+#line 1079 "switch_util.m"
+      }
+#line 1079 "switch_util.m"
+      break;
+#line 1079 "switch_util.m"
+    }
+#line 1075 "switch_util.m"
+}
+
+#line 1055 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__follow_hash_chain_3_p_0(
+#line 1055 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_12,
+#line 1055 "switch_util.m"
+  MR_Word backend_libs__switch_util__Map_4,
+#line 1055 "switch_util.m"
+  MR_Integer backend_libs__switch_util__Slot_5,
+#line 1055 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__LastSlot_6)
+#line 1055 "switch_util.m"
+{
+#line 1058 "switch_util.m"
+  while (MR_TRUE)
+#line 1058 "switch_util.m"
+    {
+#line 1058 "switch_util.m"
+      /* tailcall optimized into a loop */
+#line 1058 "switch_util.m"
+      {
+#line 1058 "switch_util.m"
+        MR_bool backend_libs__switch_util__succeeded;
+#line 1058 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_15_15;
+#line 1058 "switch_util.m"
+        MR_Integer backend_libs__switch_util__NextSlot_8;
+#line 1058 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_10_10;
+#line 1059 "switch_util.m"
+        MR_Box backend_libs__switch_util__conv0_V_10_10;
+#line 1059 "switch_util.m"
+        MR_String backend_libs__switch_util__V_7_7;
+#line 1059 "switch_util.m"
+        MR_Box backend_libs__switch_util__V_9_9;
+
+#line 10684 "backend_libs.switch_util.c"
+        {
+#line 10686 "backend_libs.switch_util.c"
+          backend_libs__switch_util__TypeInfo_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 10688 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_15_15, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1));
+#line 10690 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_15_15, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_12));
+#line 10692 "backend_libs.switch_util.c"
+        }
+#line 1059 "switch_util.m"
+        {
+#line 1059 "switch_util.m"
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_15_15, (MR_Word) backend_libs__switch_util__Map_4, backend_libs__switch_util__Slot_5, &backend_libs__switch_util__conv0_V_10_10);
+        }
+#line 1059 "switch_util.m"
+        backend_libs__switch_util__V_10_10 = ((MR_Word) backend_libs__switch_util__conv0_V_10_10);
+#line 1059 "switch_util.m"
+        backend_libs__switch_util__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_10_10, (MR_Integer) 0)));
+#line 1059 "switch_util.m"
+        backend_libs__switch_util__NextSlot_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_10_10, (MR_Integer) 1)));
+#line 1059 "switch_util.m"
+        backend_libs__switch_util__V_9_9 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_10_10, (MR_Integer) 2));
+#line 1061 "switch_util.m"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__NextSlot_8 >= (MR_Integer) 0);
+#line 1061 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 1062 "switch_util.m"
+          {
+#line 1062 "switch_util.m"
+            backend_libs__switch_util__succeeded = mercury__map__contains_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_15_15, backend_libs__switch_util__Map_4, ((MR_Box) (backend_libs__switch_util__NextSlot_8)));
+          }
+#line 1065 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 1064 "switch_util.m"
+          {
+#line 1064 "switch_util.m"
+            /* direct tailcall eliminated */
+#line 1064 "switch_util.m"
+            {
+#line 1064 "switch_util.m"
+              MR_Integer backend_libs__switch_util__Slot__tmp_copy_5 = backend_libs__switch_util__NextSlot_8;
+
+#line 1064 "switch_util.m"
+              backend_libs__switch_util__Slot_5 = backend_libs__switch_util__Slot__tmp_copy_5;
+#line 1064 "switch_util.m"
+            }
+#line 1064 "switch_util.m"
+            continue;
+#line 1064 "switch_util.m"
+          }
+#line 1065 "switch_util.m"
+        else
+#line 1066 "switch_util.m"
+          *backend_libs__switch_util__LastSlot_6 = backend_libs__switch_util__Slot_5;
+#line 1058 "switch_util.m"
+      }
+#line 1058 "switch_util.m"
+      break;
+#line 1058 "switch_util.m"
+    }
+#line 1055 "switch_util.m"
+}
+
+#line 1021 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__calc_string_hash_slots_loop_over_hash_strings_8_p_0(
+#line 1021 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_64,
+#line 1021 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1021 "switch_util.m"
+  MR_Integer backend_libs__switch_util__HeadVar__2_2,
+#line 1021 "switch_util.m"
+  MR_Integer backend_libs__switch_util__HeadVar__3_3,
+#line 1021 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__4_4,
+#line 1021 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_5,
+#line 1021 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SlotMap_6,
+#line 1021 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_7,
+#line 1021 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LastUsed_8)
+#line 1021 "switch_util.m"
+{
+#line 1028 "switch_util.m"
+  {
+#line 1028 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 1028 "switch_util.m"
+    if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1028 "switch_util.m"
+      {
+#line 1029 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_LastUsed_8 = backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_7;
+#line 1029 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_SlotMap_6 = backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_5;
+#line 1028 "switch_util.m"
+      }
+#line 1028 "switch_util.m"
+    else
+#line 1031 "switch_util.m"
+      {
+#line 1031 "switch_util.m"
+        MR_Word backend_libs__switch_util__StringCaseRep_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 1031 "switch_util.m"
+        MR_Word backend_libs__switch_util__StringCaseReps_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 1031 "switch_util.m"
+        MR_String backend_libs__switch_util__String_25;
+#line 1031 "switch_util.m"
+        MR_Box backend_libs__switch_util__CaseRep_26;
+#line 1031 "switch_util.m"
+        MR_Word backend_libs__switch_util__NewSlot_27;
+#line 1031 "switch_util.m"
+        MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39;
+#line 1031 "switch_util.m"
+        MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_40_40;
+#line 1048 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_67_67;
+
+#line 1032 "switch_util.m"
+        {
+#line 1032 "switch_util.m"
+          backend_libs__switch_util__calc_string_hash_slots_loop_over_hash_strings_8_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_64, backend_libs__switch_util__StringCaseReps_19, backend_libs__switch_util__HeadVar__2_2, backend_libs__switch_util__HeadVar__3_3, backend_libs__switch_util__HeadVar__4_4, backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_5, &backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_7, &backend_libs__switch_util__STATE_VARIABLE_LastUsed_40_40);
+        }
+#line 1034 "switch_util.m"
+        backend_libs__switch_util__String_25 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__StringCaseRep_18, (MR_Integer) 0)));
+#line 1034 "switch_util.m"
+        backend_libs__switch_util__CaseRep_26 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__StringCaseRep_18, (MR_Integer) 1));
+#line 1035 "switch_util.m"
+        {
+#line 1035 "switch_util.m"
+          backend_libs__switch_util__NewSlot_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1035 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewSlot_27, 0) = ((MR_Box) (backend_libs__switch_util__String_25));
+#line 1035 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewSlot_27, 1) = ((MR_Box) ((MR_Integer) -1));
+#line 1035 "switch_util.m"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__NewSlot_27, 2) = backend_libs__switch_util__CaseRep_26;
+#line 1035 "switch_util.m"
+        }
+#line 10828 "backend_libs.switch_util.c"
+        {
+#line 10830 "backend_libs.switch_util.c"
+          backend_libs__switch_util__TypeInfo_67_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 10832 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_67_67, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1));
+#line 10834 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_67_67, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_64));
+#line 10836 "backend_libs.switch_util.c"
+        }
+#line 1036 "switch_util.m"
+        {
+#line 1036 "switch_util.m"
+          backend_libs__switch_util__succeeded = mercury__map__contains_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_67_67, backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, ((MR_Box) (backend_libs__switch_util__HeadVar__3_3)));
+        }
+#line 1048 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 1037 "switch_util.m"
+          {
+#line 1037 "switch_util.m"
+            MR_Integer backend_libs__switch_util__ChainEnd_28;
+#line 1037 "switch_util.m"
+            MR_Word backend_libs__switch_util__ChainEndSlot0_29;
+#line 1037 "switch_util.m"
+            MR_String backend_libs__switch_util__PrevString_30;
+#line 1037 "switch_util.m"
+            MR_Box backend_libs__switch_util__PrevCaseRep_32;
+#line 1037 "switch_util.m"
+            MR_Word backend_libs__switch_util__ChainEndSlot_33;
+#line 1037 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_43_43;
+#line 1039 "switch_util.m"
+            MR_Box backend_libs__switch_util__conv0_ChainEndSlot0_29;
+#line 1040 "switch_util.m"
+            MR_Integer backend_libs__switch_util__V_31_31;
+#line 1042 "switch_util.m"
+            MR_Word backend_libs__switch_util__conv1_STATE_VARIABLE_SlotMap_43_43;
+#line 1043 "switch_util.m"
+            MR_Word backend_libs__switch_util__conv2_STATE_VARIABLE_SlotMap_6;
+
+#line 1037 "switch_util.m"
+            {
+#line 1037 "switch_util.m"
+              backend_libs__switch_util__follow_hash_chain_3_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_64, backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, backend_libs__switch_util__HeadVar__3_3, &backend_libs__switch_util__ChainEnd_28);
+            }
+#line 1038 "switch_util.m"
+            {
+#line 1038 "switch_util.m"
+              backend_libs__switch_util__next_free_hash_slot_5_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_64, backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, backend_libs__switch_util__HeadVar__4_4, backend_libs__switch_util__HeadVar__2_2, backend_libs__switch_util__STATE_VARIABLE_LastUsed_40_40, backend_libs__switch_util__STATE_VARIABLE_LastUsed_8);
+            }
+#line 1039 "switch_util.m"
+            {
+#line 1039 "switch_util.m"
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_108_111_111_107_117_112_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_67_67, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, backend_libs__switch_util__ChainEnd_28, &backend_libs__switch_util__conv0_ChainEndSlot0_29);
+            }
+#line 1039 "switch_util.m"
+            backend_libs__switch_util__ChainEndSlot0_29 = ((MR_Word) backend_libs__switch_util__conv0_ChainEndSlot0_29);
+#line 1040 "switch_util.m"
+            backend_libs__switch_util__PrevString_30 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__ChainEndSlot0_29, (MR_Integer) 0)));
+#line 1040 "switch_util.m"
+            backend_libs__switch_util__V_31_31 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__ChainEndSlot0_29, (MR_Integer) 1)));
+#line 1040 "switch_util.m"
+            backend_libs__switch_util__PrevCaseRep_32 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__ChainEndSlot0_29, (MR_Integer) 2));
+#line 1041 "switch_util.m"
+            {
+#line 1041 "switch_util.m"
+              backend_libs__switch_util__ChainEndSlot_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1041 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__ChainEndSlot_33, 0) = ((MR_Box) (backend_libs__switch_util__PrevString_30));
+#line 1041 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__ChainEndSlot_33, 1) = ((MR_Box) (*backend_libs__switch_util__STATE_VARIABLE_LastUsed_8));
+#line 1041 "switch_util.m"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__ChainEndSlot_33, 2) = backend_libs__switch_util__PrevCaseRep_32;
+#line 1041 "switch_util.m"
+            }
+#line 1042 "switch_util.m"
+            {
+#line 1042 "switch_util.m"
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_67_67, backend_libs__switch_util__ChainEnd_28, ((MR_Box) (backend_libs__switch_util__ChainEndSlot_33)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, &backend_libs__switch_util__conv1_STATE_VARIABLE_SlotMap_43_43);
+            }
+#line 1042 "switch_util.m"
+            backend_libs__switch_util__STATE_VARIABLE_SlotMap_43_43 = (MR_Word) backend_libs__switch_util__conv1_STATE_VARIABLE_SlotMap_43_43;
+#line 1043 "switch_util.m"
+            {
+#line 1043 "switch_util.m"
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_67_67, *backend_libs__switch_util__STATE_VARIABLE_LastUsed_8, ((MR_Box) (backend_libs__switch_util__NewSlot_27)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_SlotMap_43_43, &backend_libs__switch_util__conv2_STATE_VARIABLE_SlotMap_6);
+            }
+#line 1043 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_SlotMap_6 = (MR_Word) backend_libs__switch_util__conv2_STATE_VARIABLE_SlotMap_6;
+#line 1037 "switch_util.m"
+          }
+#line 1048 "switch_util.m"
+        else
+#line 1049 "switch_util.m"
+          {
+#line 1049 "switch_util.m"
+            MR_Word backend_libs__switch_util__TypeInfo_73_73;
+#line 1049 "switch_util.m"
+            MR_Word backend_libs__switch_util__conv3_STATE_VARIABLE_SlotMap_6;
+
+#line 10928 "backend_libs.switch_util.c"
+            {
+#line 10930 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeInfo_73_73 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 10932 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_73_73, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1));
+#line 10934 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_73_73, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_64));
+#line 10936 "backend_libs.switch_util.c"
+            }
+#line 1049 "switch_util.m"
+            {
+#line 1049 "switch_util.m"
+              mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_73_73, backend_libs__switch_util__HeadVar__3_3, ((MR_Box) (backend_libs__switch_util__NewSlot_27)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_SlotMap_39_39, &backend_libs__switch_util__conv3_STATE_VARIABLE_SlotMap_6);
+            }
+#line 1049 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_SlotMap_6 = (MR_Word) backend_libs__switch_util__conv3_STATE_VARIABLE_SlotMap_6;
+#line 1049 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_LastUsed_8 = backend_libs__switch_util__STATE_VARIABLE_LastUsed_40_40;
+#line 1049 "switch_util.m"
+          }
+#line 1031 "switch_util.m"
+      }
+#line 1028 "switch_util.m"
+  }
+#line 1021 "switch_util.m"
+}
+
+#line 1006 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__calc_string_hash_slots_loop_over_hashes_7_p_0(
+#line 1006 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_32,
+#line 1006 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 1006 "switch_util.m"
+  MR_Integer backend_libs__switch_util__TableSize_2,
+#line 1006 "switch_util.m"
+  MR_Word backend_libs__switch_util__HashMap_3,
+#line 1006 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_4,
+#line 1006 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SlotMap_5,
+#line 1006 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_6,
+#line 1006 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LastUsed_7)
+#line 1006 "switch_util.m"
+{
+#line 1013 "switch_util.m"
+  while (MR_TRUE)
+#line 1013 "switch_util.m"
+    {
+#line 1013 "switch_util.m"
+      /* tailcall optimized into a loop */
+#line 1013 "switch_util.m"
+      {
+#line 1013 "switch_util.m"
+        MR_bool backend_libs__switch_util__succeeded;
+
+#line 1013 "switch_util.m"
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1013 "switch_util.m"
+          {
+#line 1013 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_LastUsed_7 = backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_6;
+#line 1013 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_SlotMap_5 = backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_4;
+#line 1013 "switch_util.m"
+          }
+#line 1013 "switch_util.m"
+        else
+#line 1015 "switch_util.m"
+          {
+#line 1015 "switch_util.m"
+            MR_Integer backend_libs__switch_util__HashVal_16;
+#line 1015 "switch_util.m"
+            MR_Word backend_libs__switch_util__StringCaseReps_17;
+#line 1015 "switch_util.m"
+            MR_Word backend_libs__switch_util__Rest_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 1015 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 1015 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_28_28;
+#line 1015 "switch_util.m"
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_29_29;
+
+#line 1014 "switch_util.m"
+            backend_libs__switch_util__HashVal_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_27_27, (MR_Integer) 0)));
+#line 1014 "switch_util.m"
+            backend_libs__switch_util__StringCaseReps_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_27_27, (MR_Integer) 1)));
+#line 1016 "switch_util.m"
+            {
+#line 1016 "switch_util.m"
+              backend_libs__switch_util__calc_string_hash_slots_loop_over_hash_strings_8_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_32, backend_libs__switch_util__StringCaseReps_17, backend_libs__switch_util__TableSize_2, backend_libs__switch_util__HashVal_16, backend_libs__switch_util__HashMap_3, backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_4, &backend_libs__switch_util__STATE_VARIABLE_SlotMap_28_28, backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_6, &backend_libs__switch_util__STATE_VARIABLE_LastUsed_29_29);
+            }
+#line 1018 "switch_util.m"
+            /* direct tailcall eliminated */
+#line 1018 "switch_util.m"
+            {
+#line 1018 "switch_util.m"
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__Rest_18;
+#line 1018 "switch_util.m"
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_SlotMap_0__tmp_copy_4 = backend_libs__switch_util__STATE_VARIABLE_SlotMap_28_28;
+#line 1018 "switch_util.m"
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_LastUsed_0__tmp_copy_6 = backend_libs__switch_util__STATE_VARIABLE_LastUsed_29_29;
+
+#line 1018 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_LastUsed_0_6 = backend_libs__switch_util__STATE_VARIABLE_LastUsed_0__tmp_copy_6;
+#line 1018 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_SlotMap_0_4 = backend_libs__switch_util__STATE_VARIABLE_SlotMap_0__tmp_copy_4;
+#line 1018 "switch_util.m"
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+#line 1018 "switch_util.m"
+            }
+#line 1018 "switch_util.m"
+            continue;
+#line 1015 "switch_util.m"
+          }
+#line 1013 "switch_util.m"
+      }
+#line 1013 "switch_util.m"
+      break;
+#line 1013 "switch_util.m"
+    }
+#line 1006 "switch_util.m"
+}
+
+#line 991 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__calc_string_hash_slots_4_p_0(
+#line 991 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_19,
+#line 991 "switch_util.m"
+  MR_Integer backend_libs__switch_util__TableSize_5,
+#line 991 "switch_util.m"
+  MR_Word backend_libs__switch_util__HashValList_6,
+#line 991 "switch_util.m"
+  MR_Word backend_libs__switch_util__HashMap_7,
+#line 991 "switch_util.m"
+  MR_Word * backend_libs__switch_util__SlotMap_8)
+#line 991 "switch_util.m"
+{
+#line 996 "switch_util.m"
+  {
+#line 996 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 996 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_22_22;
+#line 996 "switch_util.m"
+    MR_Word backend_libs__switch_util__V_14_14;
+#line 1000 "switch_util.m"
+    MR_Integer backend_libs__switch_util__V_10_10;
+
+#line 11082 "backend_libs.switch_util.c"
+    {
+#line 11084 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 11086 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_22_22, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1));
+#line 11088 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_22_22, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_19));
+#line 11090 "backend_libs.switch_util.c"
+    }
+#line 1001 "switch_util.m"
+    {
+#line 1001 "switch_util.m"
+      backend_libs__switch_util__V_14_14 = mercury__map__init_0_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_22_22);
+    }
+#line 1000 "switch_util.m"
+    {
+#line 1000 "switch_util.m"
+      backend_libs__switch_util__calc_string_hash_slots_loop_over_hashes_7_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_19, backend_libs__switch_util__HashValList_6, backend_libs__switch_util__TableSize_5, backend_libs__switch_util__HashMap_7, backend_libs__switch_util__V_14_14, backend_libs__switch_util__SlotMap_8, (MR_Integer) 0, &backend_libs__switch_util__V_10_10);
+    }
+#line 996 "switch_util.m"
+  }
+#line 991 "switch_util.m"
+}
+
+#line 945 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__string_hash_case_14_p_0(
+#line 945 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_67,
+#line 945 "switch_util.m"
+  MR_Word backend_libs__switch_util__StrCaseRep_15,
+#line 945 "switch_util.m"
+  MR_Integer backend_libs__switch_util__HashMask_16,
+#line 945 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_31,
+#line 945 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap4_32,
+#line 945 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_33,
+#line 945 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap5_34,
+#line 945 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_35,
+#line 945 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap6_36,
+#line 945 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_37,
+#line 945 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_38,
+#line 945 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_39,
+#line 945 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_40,
+#line 945 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_41,
+#line 945 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_42)
+#line 945 "switch_util.m"
+{
+#line 956 "switch_util.m"
+  {
+#line 956 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 956 "switch_util.m"
+    MR_String backend_libs__switch_util__String_23 = ((MR_String) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__StrCaseRep_15, (MR_Integer) 0)));
+#line 956 "switch_util.m"
+    MR_Integer backend_libs__switch_util__HashVal4_25;
+#line 956 "switch_util.m"
+    MR_Integer backend_libs__switch_util__HashVal5_26;
+#line 956 "switch_util.m"
+    MR_Integer backend_libs__switch_util__HashVal6_27;
+#line 956 "switch_util.m"
+    MR_Integer backend_libs__switch_util__V_43_43;
+#line 956 "switch_util.m"
+    MR_Integer backend_libs__switch_util__V_44_44;
+#line 956 "switch_util.m"
+    MR_Integer backend_libs__switch_util__V_45_45;
+#line 957 "switch_util.m"
+    MR_Box backend_libs__switch_util___CaseRep_24 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__StrCaseRep_15, (MR_Integer) 1));
+#line 964 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_73_73;
+#line 964 "switch_util.m"
+    MR_Word backend_libs__switch_util__OldEntries4_28;
+#line 961 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_71_71;
+#line 961 "switch_util.m"
+    MR_Box backend_libs__switch_util__conv0_OldEntries4_28;
+#line 970 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_91_91;
+#line 970 "switch_util.m"
+    MR_Word backend_libs__switch_util__OldEntries5_29;
+#line 967 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_89_89;
+#line 967 "switch_util.m"
+    MR_Box backend_libs__switch_util__conv3_OldEntries5_29;
+#line 976 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_109_109;
+#line 976 "switch_util.m"
+    MR_Word backend_libs__switch_util__OldEntries6_30;
+#line 973 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_107_107;
+#line 973 "switch_util.m"
+    MR_Box backend_libs__switch_util__conv6_OldEntries6_30;
+
+#line 958 "switch_util.m"
+    {
+#line 958 "switch_util.m"
+      backend_libs__switch_util__V_43_43 = mercury__string__hash4_1_f_0(backend_libs__switch_util__String_23);
+    }
+#line 958 "switch_util.m"
+    backend_libs__switch_util__HashVal4_25 = (backend_libs__switch_util__V_43_43 & backend_libs__switch_util__HashMask_16);
+#line 959 "switch_util.m"
+    {
+#line 959 "switch_util.m"
+      backend_libs__switch_util__V_44_44 = mercury__string__hash5_1_f_0(backend_libs__switch_util__String_23);
+    }
+#line 959 "switch_util.m"
+    backend_libs__switch_util__HashVal5_26 = (backend_libs__switch_util__V_44_44 & backend_libs__switch_util__HashMask_16);
+#line 960 "switch_util.m"
+    {
+#line 960 "switch_util.m"
+      backend_libs__switch_util__V_45_45 = mercury__string__hash6_1_f_0(backend_libs__switch_util__String_23);
+    }
+#line 960 "switch_util.m"
+    backend_libs__switch_util__HashVal6_27 = (backend_libs__switch_util__V_45_45 & backend_libs__switch_util__HashMask_16);
+#line 11208 "backend_libs.switch_util.c"
+    {
+#line 11210 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_71_71 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 11212 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_71_71, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+#line 11214 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_71_71, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+#line 11216 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_71_71, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_67));
+#line 11218 "backend_libs.switch_util.c"
+    }
+#line 11220 "backend_libs.switch_util.c"
+    {
+#line 11222 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_73_73 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 11224 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_73_73, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+#line 11226 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_73_73, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_71_71));
+#line 11228 "backend_libs.switch_util.c"
+    }
+#line 961 "switch_util.m"
+    {
+#line 961 "switch_util.m"
+      backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_73_73, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_31, backend_libs__switch_util__HashVal4_25, &backend_libs__switch_util__conv0_OldEntries4_28);
+    }
+#line 961 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 961 "switch_util.m"
+      {
+#line 961 "switch_util.m"
+        backend_libs__switch_util__OldEntries4_28 = ((MR_Word) backend_libs__switch_util__conv0_OldEntries4_28);
+#line 961 "switch_util.m"
+        backend_libs__switch_util__succeeded = MR_TRUE;
+#line 961 "switch_util.m"
+      }
+#line 964 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 962 "switch_util.m"
+      {
+#line 962 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_46_46;
+#line 962 "switch_util.m"
+        MR_Word backend_libs__switch_util__conv1_STATE_VARIABLE_HashMap4_32;
+
+#line 962 "switch_util.m"
+        {
+#line 962 "switch_util.m"
+          backend_libs__switch_util__V_46_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 962 "switch_util.m"
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_46_46, 0) = ((MR_Box) (backend_libs__switch_util__StrCaseRep_15));
+#line 962 "switch_util.m"
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_46_46, 1) = ((MR_Box) (backend_libs__switch_util__OldEntries4_28));
+#line 962 "switch_util.m"
+        }
+#line 962 "switch_util.m"
+        {
+#line 962 "switch_util.m"
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_73_73, backend_libs__switch_util__HashVal4_25, ((MR_Box) (backend_libs__switch_util__V_46_46)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_31, &backend_libs__switch_util__conv1_STATE_VARIABLE_HashMap4_32);
+        }
+#line 962 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_HashMap4_32 = (MR_Word) backend_libs__switch_util__conv1_STATE_VARIABLE_HashMap4_32;
+#line 963 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_38 = (backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_37 + (MR_Integer) 1);
+#line 962 "switch_util.m"
+      }
+#line 964 "switch_util.m"
+    else
+#line 965 "switch_util.m"
+      {
+#line 965 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_83_83;
+#line 965 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_85_85;
+#line 965 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_50_50;
+#line 965 "switch_util.m"
+        MR_Word backend_libs__switch_util__conv2_STATE_VARIABLE_HashMap4_32;
+
+#line 965 "switch_util.m"
+        {
+#line 965 "switch_util.m"
+          backend_libs__switch_util__V_50_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 965 "switch_util.m"
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_50_50, 0) = ((MR_Box) (backend_libs__switch_util__StrCaseRep_15));
+#line 965 "switch_util.m"
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_50_50, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 965 "switch_util.m"
+        }
+#line 11298 "backend_libs.switch_util.c"
+        {
+#line 11300 "backend_libs.switch_util.c"
+          backend_libs__switch_util__TypeInfo_83_83 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 11302 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_83_83, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+#line 11304 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_83_83, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+#line 11306 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_83_83, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_67));
+#line 11308 "backend_libs.switch_util.c"
+        }
+#line 11310 "backend_libs.switch_util.c"
+        {
+#line 11312 "backend_libs.switch_util.c"
+          backend_libs__switch_util__TypeInfo_85_85 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 11314 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_85_85, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+#line 11316 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_85_85, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_83_83));
+#line 11318 "backend_libs.switch_util.c"
+        }
+#line 965 "switch_util.m"
+        {
+#line 965 "switch_util.m"
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_85_85, backend_libs__switch_util__HashVal4_25, ((MR_Box) (backend_libs__switch_util__V_50_50)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_31, &backend_libs__switch_util__conv2_STATE_VARIABLE_HashMap4_32);
+        }
+#line 965 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_HashMap4_32 = (MR_Word) backend_libs__switch_util__conv2_STATE_VARIABLE_HashMap4_32;
+#line 965 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_38 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_37;
+#line 965 "switch_util.m"
+      }
+#line 11331 "backend_libs.switch_util.c"
+    {
+#line 11333 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_89_89 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 11335 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_89_89, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+#line 11337 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_89_89, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+#line 11339 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_89_89, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_67));
+#line 11341 "backend_libs.switch_util.c"
+    }
+#line 11343 "backend_libs.switch_util.c"
+    {
+#line 11345 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_91_91 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 11347 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_91_91, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+#line 11349 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_91_91, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_89_89));
+#line 11351 "backend_libs.switch_util.c"
+    }
+#line 967 "switch_util.m"
+    {
+#line 967 "switch_util.m"
+      backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_91_91, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_33, backend_libs__switch_util__HashVal5_26, &backend_libs__switch_util__conv3_OldEntries5_29);
+    }
+#line 967 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 967 "switch_util.m"
+      {
+#line 967 "switch_util.m"
+        backend_libs__switch_util__OldEntries5_29 = ((MR_Word) backend_libs__switch_util__conv3_OldEntries5_29);
+#line 967 "switch_util.m"
+        backend_libs__switch_util__succeeded = MR_TRUE;
+#line 967 "switch_util.m"
+      }
+#line 970 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 968 "switch_util.m"
+      {
+#line 968 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_53_53;
+#line 968 "switch_util.m"
+        MR_Word backend_libs__switch_util__conv4_STATE_VARIABLE_HashMap5_34;
+
+#line 968 "switch_util.m"
+        {
+#line 968 "switch_util.m"
+          backend_libs__switch_util__V_53_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 968 "switch_util.m"
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_53_53, 0) = ((MR_Box) (backend_libs__switch_util__StrCaseRep_15));
+#line 968 "switch_util.m"
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_53_53, 1) = ((MR_Box) (backend_libs__switch_util__OldEntries5_29));
+#line 968 "switch_util.m"
+        }
+#line 968 "switch_util.m"
+        {
+#line 968 "switch_util.m"
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_91_91, backend_libs__switch_util__HashVal5_26, ((MR_Box) (backend_libs__switch_util__V_53_53)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_33, &backend_libs__switch_util__conv4_STATE_VARIABLE_HashMap5_34);
+        }
+#line 968 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_HashMap5_34 = (MR_Word) backend_libs__switch_util__conv4_STATE_VARIABLE_HashMap5_34;
+#line 969 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_40 = (backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_39 + (MR_Integer) 1);
+#line 968 "switch_util.m"
+      }
+#line 970 "switch_util.m"
+    else
+#line 971 "switch_util.m"
+      {
+#line 971 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_101_101;
+#line 971 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_103_103;
+#line 971 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_57_57;
+#line 971 "switch_util.m"
+        MR_Word backend_libs__switch_util__conv5_STATE_VARIABLE_HashMap5_34;
+
+#line 971 "switch_util.m"
+        {
+#line 971 "switch_util.m"
+          backend_libs__switch_util__V_57_57 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 971 "switch_util.m"
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_57_57, 0) = ((MR_Box) (backend_libs__switch_util__StrCaseRep_15));
+#line 971 "switch_util.m"
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_57_57, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 971 "switch_util.m"
+        }
+#line 11421 "backend_libs.switch_util.c"
+        {
+#line 11423 "backend_libs.switch_util.c"
+          backend_libs__switch_util__TypeInfo_101_101 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 11425 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_101_101, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+#line 11427 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_101_101, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+#line 11429 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_101_101, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_67));
+#line 11431 "backend_libs.switch_util.c"
+        }
+#line 11433 "backend_libs.switch_util.c"
+        {
+#line 11435 "backend_libs.switch_util.c"
+          backend_libs__switch_util__TypeInfo_103_103 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 11437 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_103_103, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+#line 11439 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_103_103, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_101_101));
+#line 11441 "backend_libs.switch_util.c"
+        }
+#line 971 "switch_util.m"
+        {
+#line 971 "switch_util.m"
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_103_103, backend_libs__switch_util__HashVal5_26, ((MR_Box) (backend_libs__switch_util__V_57_57)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_33, &backend_libs__switch_util__conv5_STATE_VARIABLE_HashMap5_34);
+        }
+#line 971 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_HashMap5_34 = (MR_Word) backend_libs__switch_util__conv5_STATE_VARIABLE_HashMap5_34;
+#line 971 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_40 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_39;
+#line 971 "switch_util.m"
+      }
+#line 11454 "backend_libs.switch_util.c"
+    {
+#line 11456 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_107_107 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 11458 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_107_107, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+#line 11460 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_107_107, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+#line 11462 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_107_107, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_67));
+#line 11464 "backend_libs.switch_util.c"
+    }
+#line 11466 "backend_libs.switch_util.c"
+    {
+#line 11468 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_109_109 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 11470 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_109_109, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+#line 11472 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_109_109, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_107_107));
+#line 11474 "backend_libs.switch_util.c"
+    }
+#line 973 "switch_util.m"
+    {
+#line 973 "switch_util.m"
+      backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_109_109, (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_35, backend_libs__switch_util__HashVal6_27, &backend_libs__switch_util__conv6_OldEntries6_30);
+    }
+#line 973 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 973 "switch_util.m"
+      {
+#line 973 "switch_util.m"
+        backend_libs__switch_util__OldEntries6_30 = ((MR_Word) backend_libs__switch_util__conv6_OldEntries6_30);
+#line 973 "switch_util.m"
+        backend_libs__switch_util__succeeded = MR_TRUE;
+#line 973 "switch_util.m"
+      }
+#line 976 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 974 "switch_util.m"
+      {
+#line 974 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_60_60;
+#line 974 "switch_util.m"
+        MR_Word backend_libs__switch_util__conv7_STATE_VARIABLE_HashMap6_36;
+
+#line 974 "switch_util.m"
+        {
+#line 974 "switch_util.m"
+          backend_libs__switch_util__V_60_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 974 "switch_util.m"
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_60_60, 0) = ((MR_Box) (backend_libs__switch_util__StrCaseRep_15));
+#line 974 "switch_util.m"
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_60_60, 1) = ((MR_Box) (backend_libs__switch_util__OldEntries6_30));
+#line 974 "switch_util.m"
+        }
+#line 974 "switch_util.m"
+        {
+#line 974 "switch_util.m"
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_100_101_116_95_117_112_100_97_116_101_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_109_109, backend_libs__switch_util__HashVal6_27, ((MR_Box) (backend_libs__switch_util__V_60_60)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_35, &backend_libs__switch_util__conv7_STATE_VARIABLE_HashMap6_36);
+        }
+#line 974 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_HashMap6_36 = (MR_Word) backend_libs__switch_util__conv7_STATE_VARIABLE_HashMap6_36;
+#line 975 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_42 = (backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_41 + (MR_Integer) 1);
+#line 974 "switch_util.m"
+      }
+#line 976 "switch_util.m"
+    else
+#line 977 "switch_util.m"
+      {
+#line 977 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_119_119;
+#line 977 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeInfo_121_121;
+#line 977 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_64_64;
+#line 977 "switch_util.m"
+        MR_Word backend_libs__switch_util__conv8_STATE_VARIABLE_HashMap6_36;
+
+#line 977 "switch_util.m"
+        {
+#line 977 "switch_util.m"
+          backend_libs__switch_util__V_64_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 977 "switch_util.m"
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_64_64, 0) = ((MR_Box) (backend_libs__switch_util__StrCaseRep_15));
+#line 977 "switch_util.m"
+          MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_64_64, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 977 "switch_util.m"
+        }
+#line 11544 "backend_libs.switch_util.c"
+        {
+#line 11546 "backend_libs.switch_util.c"
+          backend_libs__switch_util__TypeInfo_119_119 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 11548 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_119_119, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+#line 11550 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_119_119, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+#line 11552 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_119_119, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_67));
+#line 11554 "backend_libs.switch_util.c"
+        }
+#line 11556 "backend_libs.switch_util.c"
+        {
+#line 11558 "backend_libs.switch_util.c"
+          backend_libs__switch_util__TypeInfo_121_121 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 11560 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_121_121, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+#line 11562 "backend_libs.switch_util.c"
+          MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_121_121, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_119_119));
+#line 11564 "backend_libs.switch_util.c"
+        }
+#line 977 "switch_util.m"
+        {
+#line 977 "switch_util.m"
+          mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_95_100_101_116_95_105_110_115_101_114_116_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_4_p_0(backend_libs__switch_util__TypeInfo_121_121, backend_libs__switch_util__HashVal6_27, ((MR_Box) (backend_libs__switch_util__V_64_64)), (MR_Word) backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_35, &backend_libs__switch_util__conv8_STATE_VARIABLE_HashMap6_36);
+        }
+#line 977 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_HashMap6_36 = (MR_Word) backend_libs__switch_util__conv8_STATE_VARIABLE_HashMap6_36;
+#line 977 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_42 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_41;
+#line 977 "switch_util.m"
+      }
+#line 956 "switch_util.m"
+  }
+#line 945 "switch_util.m"
+}
+
+#line 924 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__string_hash_cases_14_p_0(
+#line 924 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_67,
+#line 924 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 924 "switch_util.m"
+  MR_Integer backend_libs__switch_util__HashMask_2,
+#line 924 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_3,
+#line 924 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap4_4,
+#line 924 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_5,
+#line 924 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap5_6,
+#line 924 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_7,
+#line 924 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_HashMap6_8,
+#line 924 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_9,
+#line 924 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_10,
+#line 924 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_11,
+#line 924 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_12,
+#line 924 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_13,
+#line 924 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_14)
+#line 924 "switch_util.m"
+{
+#line 933 "switch_util.m"
+  while (MR_TRUE)
+#line 933 "switch_util.m"
+    {
+#line 933 "switch_util.m"
+      /* tailcall optimized into a loop */
+#line 933 "switch_util.m"
+      {
+#line 933 "switch_util.m"
+        MR_bool backend_libs__switch_util__succeeded;
+
+#line 933 "switch_util.m"
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 933 "switch_util.m"
+          {
+#line 934 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_14 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_13;
+#line 934 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_12 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_11;
+#line 934 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_10 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_9;
+#line 933 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_HashMap6_8 = backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_7;
+#line 933 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_HashMap5_6 = backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_5;
+#line 933 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_HashMap4_4 = backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_3;
+#line 933 "switch_util.m"
+          }
+#line 933 "switch_util.m"
+        else
+#line 937 "switch_util.m"
+          {
+#line 937 "switch_util.m"
+            MR_Word backend_libs__switch_util__StrData_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 937 "switch_util.m"
+            MR_Word backend_libs__switch_util__StrsDatas_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 937 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap4_55_55;
+#line 937 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap5_56_56;
+#line 937 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap6_57_57;
+#line 937 "switch_util.m"
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_58_58;
+#line 937 "switch_util.m"
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_59_59;
+#line 937 "switch_util.m"
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_60_60;
+
+#line 938 "switch_util.m"
+            {
+#line 938 "switch_util.m"
+              backend_libs__switch_util__string_hash_case_14_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_67, backend_libs__switch_util__StrData_34, backend_libs__switch_util__HashMask_2, backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_3, &backend_libs__switch_util__STATE_VARIABLE_HashMap4_55_55, backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_5, &backend_libs__switch_util__STATE_VARIABLE_HashMap5_56_56, backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_7, &backend_libs__switch_util__STATE_VARIABLE_HashMap6_57_57, backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_9, &backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_58_58, backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_11, &backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_59_59, backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_13, &backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_60_60);
+            }
+#line 941 "switch_util.m"
+            /* direct tailcall eliminated */
+#line 941 "switch_util.m"
+            {
+#line 941 "switch_util.m"
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__StrsDatas_35;
+#line 941 "switch_util.m"
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap4_0__tmp_copy_3 = backend_libs__switch_util__STATE_VARIABLE_HashMap4_55_55;
+#line 941 "switch_util.m"
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap5_0__tmp_copy_5 = backend_libs__switch_util__STATE_VARIABLE_HashMap5_56_56;
+#line 941 "switch_util.m"
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_HashMap6_0__tmp_copy_7 = backend_libs__switch_util__STATE_VARIABLE_HashMap6_57_57;
+#line 941 "switch_util.m"
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0__tmp_copy_9 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_58_58;
+#line 941 "switch_util.m"
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0__tmp_copy_11 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_59_59;
+#line 941 "switch_util.m"
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0__tmp_copy_13 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_60_60;
+
+#line 941 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0_13 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions6_0__tmp_copy_13;
+#line 941 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0_11 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions5_0__tmp_copy_11;
+#line 941 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0_9 = backend_libs__switch_util__STATE_VARIABLE_NumCollisions4_0__tmp_copy_9;
+#line 941 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_HashMap6_0_7 = backend_libs__switch_util__STATE_VARIABLE_HashMap6_0__tmp_copy_7;
+#line 941 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_HashMap5_0_5 = backend_libs__switch_util__STATE_VARIABLE_HashMap5_0__tmp_copy_5;
+#line 941 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_HashMap4_0_3 = backend_libs__switch_util__STATE_VARIABLE_HashMap4_0__tmp_copy_3;
+#line 941 "switch_util.m"
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+#line 941 "switch_util.m"
+            }
+#line 941 "switch_util.m"
+            continue;
+#line 937 "switch_util.m"
+          }
+#line 933 "switch_util.m"
+      }
+#line 933 "switch_util.m"
+      break;
+#line 933 "switch_util.m"
+    }
+#line 924 "switch_util.m"
+}
+
+#line 792 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__project_soln_consts_to_one_soln_3_p_0(
+#line 792 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Key_7,
+#line 792 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_8,
+#line 792 "switch_util.m"
+  MR_Box backend_libs__switch_util___Key_4,
+#line 792 "switch_util.m"
+  MR_Word backend_libs__switch_util__Solns_5,
+#line 792 "switch_util.m"
+  MR_Word * backend_libs__switch_util__Values_6)
+#line 792 "switch_util.m"
+{
+#line 796 "switch_util.m"
+  {
+#line 796 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 796 "switch_util.m"
+    {
+#line 796 "switch_util.m"
+      return backend_libs__switch_util__succeeded = backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_114_111_106_101_99_116_95_115_111_108_110_95_99_111_110_115_116_115_95_116_111_95_111_110_101_95_115_111_108_110_95_95_91_49_44_32_51_93_95_48_3_p_0(backend_libs__switch_util__TypeInfo_for_Rval_8, backend_libs__switch_util__Solns_5, backend_libs__switch_util__Values_6);
+    }
+#line 796 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 796 "switch_util.m"
+  }
+#line 792 "switch_util.m"
+}
+
+#line 722 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__filter_out_failing_cases_loop_5_p_0(
+#line 722 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 722 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0_2,
+#line 722 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_3,
+#line 722 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_4,
+#line 722 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_5)
+#line 722 "switch_util.m"
+{
+#line 726 "switch_util.m"
+  while (MR_TRUE)
+#line 726 "switch_util.m"
+    {
+#line 726 "switch_util.m"
+      /* tailcall optimized into a loop */
+#line 726 "switch_util.m"
+      {
+#line 726 "switch_util.m"
+        MR_bool backend_libs__switch_util__succeeded;
+
+#line 726 "switch_util.m"
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 726 "switch_util.m"
+          {
+#line 726 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_5 = backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_4;
+#line 726 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_3 = backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0_2;
+#line 726 "switch_util.m"
+          }
+#line 726 "switch_util.m"
+        else
+#line 728 "switch_util.m"
+          {
+#line 728 "switch_util.m"
+            MR_Word backend_libs__switch_util__TaggedCase_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 728 "switch_util.m"
+            MR_Word backend_libs__switch_util__TaggedCases_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 728 "switch_util.m"
+            MR_Word backend_libs__switch_util__Goal_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 3)));
+#line 728 "switch_util.m"
+            MR_Word backend_libs__switch_util__GoalExpr_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Goal_19, (MR_Integer) 0)));
+#line 728 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_27_27;
+#line 728 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_28_28;
+#line 729 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 0)));
+#line 729 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 1)));
+#line 729 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 2)));
+#line 730 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Goal_19, (MR_Integer) 1)));
+#line 731 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_26_26;
+
+#line 731 "switch_util.m"
+            backend_libs__switch_util__succeeded = ((((MR_tag((MR_Word) backend_libs__switch_util__GoalExpr_20)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__GoalExpr_20, (MR_Integer) 0)))) == (MR_Integer) 3)));
+#line 731 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 731 "switch_util.m"
+              {
+#line 731 "switch_util.m"
+                backend_libs__switch_util__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__GoalExpr_20, (MR_Integer) 1)));
+#line 731 "switch_util.m"
+                backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_26_26 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 731 "switch_util.m"
+              }
+#line 733 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 732 "switch_util.m"
+              {
+#line 732 "switch_util.m"
+                backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_27_27 = (MR_Integer) 0;
+#line 732 "switch_util.m"
+                backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_28_28 = backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0_2;
+#line 732 "switch_util.m"
+              }
+#line 733 "switch_util.m"
+            else
+#line 734 "switch_util.m"
+              {
+#line 734 "switch_util.m"
+                {
+#line 734 "switch_util.m"
+                  backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_28_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 734 "switch_util.m"
+                  MR_hl_field(MR_mktag(1), backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_28_28, 0) = ((MR_Box) (backend_libs__switch_util__TaggedCase_12));
+#line 734 "switch_util.m"
+                  MR_hl_field(MR_mktag(1), backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_28_28, 1) = ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0_2));
+#line 734 "switch_util.m"
+                }
+#line 734 "switch_util.m"
+                backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_27_27 = backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_4;
+#line 734 "switch_util.m"
+              }
+#line 736 "switch_util.m"
+            /* direct tailcall eliminated */
+#line 736 "switch_util.m"
+            {
+#line 736 "switch_util.m"
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__TaggedCases_13;
+#line 736 "switch_util.m"
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0__tmp_copy_2 = backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_28_28;
+#line 736 "switch_util.m"
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0__tmp_copy_4 = backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_27_27;
+
+#line 736 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_4 = backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0__tmp_copy_4;
+#line 736 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0_2 = backend_libs__switch_util__STATE_VARIABLE_RevTaggedCases_0__tmp_copy_2;
+#line 736 "switch_util.m"
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+#line 736 "switch_util.m"
+            }
+#line 736 "switch_util.m"
+            continue;
+#line 728 "switch_util.m"
+          }
+#line 726 "switch_util.m"
+      }
+#line 726 "switch_util.m"
+      break;
+#line 726 "switch_util.m"
+    }
+#line 722 "switch_util.m"
+}
+
+#line 492 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__num_cons_ids_in_tagged_cases_loop_5_p_0(
+#line 492 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 492 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0_2,
+#line 492 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumConsIds_3,
+#line 492 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumArms_0_4,
+#line 492 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumArms_5)
+#line 492 "switch_util.m"
+{
+#line 495 "switch_util.m"
+  while (MR_TRUE)
+#line 495 "switch_util.m"
+    {
+#line 495 "switch_util.m"
+      /* tailcall optimized into a loop */
+#line 495 "switch_util.m"
+      {
+#line 495 "switch_util.m"
+        MR_bool backend_libs__switch_util__succeeded;
+
+#line 495 "switch_util.m"
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 495 "switch_util.m"
+          {
+#line 495 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_NumArms_5 = backend_libs__switch_util__STATE_VARIABLE_NumArms_0_4;
+#line 495 "switch_util.m"
+            *backend_libs__switch_util__STATE_VARIABLE_NumConsIds_3 = backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0_2;
+#line 495 "switch_util.m"
+          }
+#line 495 "switch_util.m"
+        else
+#line 497 "switch_util.m"
+          {
+#line 497 "switch_util.m"
+            MR_Word backend_libs__switch_util__TaggedCase_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 497 "switch_util.m"
+            MR_Word backend_libs__switch_util__TaggedCases_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 497 "switch_util.m"
+            MR_Word backend_libs__switch_util__OtherCondIds_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 1)));
+#line 497 "switch_util.m"
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumConsIds_24_24;
+#line 497 "switch_util.m"
+            MR_Integer backend_libs__switch_util__V_25_25 = (backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0_2 + (MR_Integer) 1);
+#line 497 "switch_util.m"
+            MR_Integer backend_libs__switch_util__V_27_27;
+#line 497 "switch_util.m"
+            MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumArms_28_28;
+#line 498 "switch_util.m"
+            MR_Word backend_libs__switch_util___MainConsId_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 0)));
+#line 498 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 2)));
+#line 498 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__TaggedCase_12, (MR_Integer) 3)));
+
+#line 499 "switch_util.m"
+            {
+#line 499 "switch_util.m"
+              backend_libs__switch_util__V_27_27 = mercury__list__length_1_f_0((MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_tagged_cons_id_0, backend_libs__switch_util__OtherCondIds_17);
+            }
+#line 499 "switch_util.m"
+            backend_libs__switch_util__STATE_VARIABLE_NumConsIds_24_24 = (backend_libs__switch_util__V_25_25 + backend_libs__switch_util__V_27_27);
+#line 500 "switch_util.m"
+            backend_libs__switch_util__STATE_VARIABLE_NumArms_28_28 = (backend_libs__switch_util__STATE_VARIABLE_NumArms_0_4 + (MR_Integer) 1);
+#line 501 "switch_util.m"
+            /* direct tailcall eliminated */
+#line 501 "switch_util.m"
+            {
+#line 501 "switch_util.m"
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__TaggedCases_13;
+#line 501 "switch_util.m"
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0__tmp_copy_2 = backend_libs__switch_util__STATE_VARIABLE_NumConsIds_24_24;
+#line 501 "switch_util.m"
+              MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumArms_0__tmp_copy_4 = backend_libs__switch_util__STATE_VARIABLE_NumArms_28_28;
+
+#line 501 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_NumArms_0_4 = backend_libs__switch_util__STATE_VARIABLE_NumArms_0__tmp_copy_4;
+#line 501 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0_2 = backend_libs__switch_util__STATE_VARIABLE_NumConsIds_0__tmp_copy_2;
+#line 501 "switch_util.m"
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+#line 501 "switch_util.m"
+            }
+#line 501 "switch_util.m"
+            continue;
+#line 497 "switch_util.m"
+          }
+#line 495 "switch_util.m"
+      }
+#line 495 "switch_util.m"
+      break;
+#line 495 "switch_util.m"
+    }
+#line 492 "switch_util.m"
+}
+
+#line 470 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__tag_cons_id_in_int_switch_11_p_0(
+#line 470 "switch_util.m"
+  MR_Word backend_libs__switch_util__ModuleInfo_12,
+#line 470 "switch_util.m"
+  MR_Word backend_libs__switch_util__ConsId_13,
+#line 470 "switch_util.m"
+  MR_Word * backend_libs__switch_util__TaggedConsId_14,
+#line 470 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_21,
+#line 470 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_LowerLimit_22,
+#line 470 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_23,
+#line 470 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_UpperLimit_24,
+#line 470 "switch_util.m"
+  MR_Integer backend_libs__switch_util__STATE_VARIABLE_NumValues_0_25,
+#line 470 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__STATE_VARIABLE_NumValues_26,
+#line 470 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_27,
+#line 470 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_28)
+#line 470 "switch_util.m"
+{
+#line 476 "switch_util.m"
+  {
+#line 476 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 476 "switch_util.m"
+    MR_Word backend_libs__switch_util__ConsTag_19;
+#line 483 "switch_util.m"
+    MR_Integer backend_libs__switch_util__IntTag_20;
+
+#line 477 "switch_util.m"
+    {
+#line 477 "switch_util.m"
+      backend_libs__switch_util__ConsTag_19 = hlds__hlds_code_util__cons_id_to_tag_2_f_0(backend_libs__switch_util__ModuleInfo_12, backend_libs__switch_util__ConsId_13);
+    }
+#line 478 "switch_util.m"
+    {
+#line 478 "switch_util.m"
+      MR_Word base;
+#line 478 "switch_util.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 478 "switch_util.m"
+      *backend_libs__switch_util__TaggedConsId_14 = base;
+#line 478 "switch_util.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (backend_libs__switch_util__ConsId_13));
+#line 478 "switch_util.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (backend_libs__switch_util__ConsTag_19));
+#line 478 "switch_util.m"
+    }
+#line 479 "switch_util.m"
+    backend_libs__switch_util__succeeded = ((((MR_tag((MR_Word) backend_libs__switch_util__ConsTag_19)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__ConsTag_19, (MR_Integer) 0)))) == (MR_Integer) 0)));
+#line 479 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 479 "switch_util.m"
+      {
+#line 479 "switch_util.m"
+        backend_libs__switch_util__IntTag_20 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__ConsTag_19, (MR_Integer) 1)));
+#line 480 "switch_util.m"
+        {
+#line 480 "switch_util.m"
+          mercury__int__min_3_p_0(backend_libs__switch_util__IntTag_20, backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_21, backend_libs__switch_util__STATE_VARIABLE_LowerLimit_22);
+        }
+#line 481 "switch_util.m"
+        {
+#line 481 "switch_util.m"
+          mercury__int__max_3_p_0(backend_libs__switch_util__IntTag_20, backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_23, backend_libs__switch_util__STATE_VARIABLE_UpperLimit_24);
+        }
+#line 482 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_NumValues_26 = (backend_libs__switch_util__STATE_VARIABLE_NumValues_0_25 + (MR_Integer) 1);
+#line 480 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_28 = backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_0_27;
+#line 479 "switch_util.m"
+      }
+#line 479 "switch_util.m"
+    else
+#line 484 "switch_util.m"
+      {
+#line 484 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_IsIntSwitch_28 = (MR_Integer) 1;
+#line 484 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_NumValues_26 = backend_libs__switch_util__STATE_VARIABLE_NumValues_0_25;
+#line 484 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_UpperLimit_24 = backend_libs__switch_util__STATE_VARIABLE_UpperLimit_0_23;
+#line 484 "switch_util.m"
+        *backend_libs__switch_util__STATE_VARIABLE_LowerLimit_22 = backend_libs__switch_util__STATE_VARIABLE_LowerLimit_0_21;
+#line 484 "switch_util.m"
+      }
+#line 476 "switch_util.m"
+  }
+#line 470 "switch_util.m"
+}
+
+#line 464 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__tag_cons_id_3_p_0(
+#line 464 "switch_util.m"
+  MR_Word backend_libs__switch_util__ModuleInfo_4,
+#line 464 "switch_util.m"
+  MR_Word backend_libs__switch_util__ConsId_5,
+#line 464 "switch_util.m"
+  MR_Word * backend_libs__switch_util__TaggedConsId_6)
+#line 464 "switch_util.m"
+{
+#line 466 "switch_util.m"
+  {
+#line 466 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 466 "switch_util.m"
+    MR_Word backend_libs__switch_util__ConsTag_7;
+
+#line 467 "switch_util.m"
+    {
+#line 467 "switch_util.m"
+      backend_libs__switch_util__ConsTag_7 = hlds__hlds_code_util__cons_id_to_tag_2_f_0(backend_libs__switch_util__ModuleInfo_4, backend_libs__switch_util__ConsId_5);
+    }
+#line 468 "switch_util.m"
+    {
+#line 468 "switch_util.m"
+      MR_Word base;
+#line 468 "switch_util.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 468 "switch_util.m"
+      *backend_libs__switch_util__TaggedConsId_6 = base;
+#line 468 "switch_util.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (backend_libs__switch_util__ConsId_5));
+#line 468 "switch_util.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (backend_libs__switch_util__ConsTag_7));
+#line 468 "switch_util.m"
+    }
+#line 466 "switch_util.m"
+  }
+#line 464 "switch_util.m"
+}
+
+#line 364 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__get_string_tag_2_p_0(
+#line 364 "switch_util.m"
+  MR_Word backend_libs__switch_util__ConsTag_3,
+#line 364 "switch_util.m"
+  MR_String * backend_libs__switch_util__Str_4)
+#line 364 "switch_util.m"
+{
+#line 1470 "switch_util.m"
+  {
+#line 1470 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__ConsTag_3)) == (MR_mktag((MR_Integer) 1)));
+#line 1470 "switch_util.m"
+    MR_String backend_libs__switch_util__StrPrime_5;
+
+#line 1468 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 1468 "switch_util.m"
+      {
+#line 1468 "switch_util.m"
+        backend_libs__switch_util__StrPrime_5 = ((MR_String) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__ConsTag_3, (MR_Integer) 0)));
+#line 1469 "switch_util.m"
+        *backend_libs__switch_util__Str_4 = backend_libs__switch_util__StrPrime_5;
+#line 1468 "switch_util.m"
+      }
+#line 1468 "switch_util.m"
+    else
+#line 1471 "switch_util.m"
+      {
+#line 1471 "switch_util.m"
+        {
+#line 1471 "switch_util.m"
+          mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_string_tag\'/2", (MR_String) "not string_tag");
+#line 1471 "switch_util.m"
+          return;
+        }
+#line 1471 "switch_util.m"
+      }
+#line 1470 "switch_util.m"
+  }
+#line 364 "switch_util.m"
+}
+
+#line 359 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__get_int_tag_2_p_0(
+#line 359 "switch_util.m"
+  MR_Word backend_libs__switch_util__ConsTag_3,
+#line 359 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__Int_4)
+#line 359 "switch_util.m"
+{
+#line 1463 "switch_util.m"
+  {
+#line 1463 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded = ((((MR_tag((MR_Word) backend_libs__switch_util__ConsTag_3)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__ConsTag_3, (MR_Integer) 0)))) == (MR_Integer) 0)));
+#line 1463 "switch_util.m"
+    MR_Integer backend_libs__switch_util__IntPrime_5;
+
+#line 1461 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 1461 "switch_util.m"
+      {
+#line 1461 "switch_util.m"
+        backend_libs__switch_util__IntPrime_5 = ((MR_Integer) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__ConsTag_3, (MR_Integer) 1)));
+#line 1462 "switch_util.m"
+        *backend_libs__switch_util__Int_4 = backend_libs__switch_util__IntPrime_5;
+#line 1461 "switch_util.m"
+      }
+#line 1461 "switch_util.m"
+    else
+#line 1464 "switch_util.m"
+      {
+#line 1464 "switch_util.m"
+        {
+#line 1464 "switch_util.m"
+          mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_int_tag\'/2", (MR_String) "not int_tag");
+#line 1464 "switch_util.m"
+          return;
+        }
+#line 1464 "switch_util.m"
+      }
+#line 1463 "switch_util.m"
+  }
+#line 359 "switch_util.m"
+}
+
+#line 351 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__get_ptag_counts_4_p_0(
+#line 351 "switch_util.m"
+  MR_Word backend_libs__switch_util__Type_5,
+#line 351 "switch_util.m"
+  MR_Word backend_libs__switch_util__ModuleInfo_6,
+#line 351 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__MaxPrimary_7,
+#line 351 "switch_util.m"
+  MR_Word * backend_libs__switch_util__PtagCountMap_8)
+#line 351 "switch_util.m"
+{
+#line 1138 "switch_util.m"
+  {
+#line 1138 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1138 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeCtor_9;
+#line 1138 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeTable_10;
+#line 1138 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeDefn_11;
+#line 1138 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeBody_12;
+#line 1138 "switch_util.m"
+    MR_Word backend_libs__switch_util__TagList_23;
+#line 1138 "switch_util.m"
+    MR_Word backend_libs__switch_util__PtagCountMap0_29;
+
+#line 1139 "switch_util.m"
+    {
+#line 1139 "switch_util.m"
+      parse_tree__prog_type__type_to_ctor_det_2_p_0(backend_libs__switch_util__Type_5, &backend_libs__switch_util__TypeCtor_9);
+    }
+#line 1140 "switch_util.m"
+    {
+#line 1140 "switch_util.m"
+      hlds__hlds_module__module_info_get_type_table_2_p_0(backend_libs__switch_util__ModuleInfo_6, &backend_libs__switch_util__TypeTable_10);
+    }
+#line 1141 "switch_util.m"
+    {
+#line 1141 "switch_util.m"
+      hlds__hlds_data__lookup_type_ctor_defn_3_p_0(backend_libs__switch_util__TypeTable_10, backend_libs__switch_util__TypeCtor_9, &backend_libs__switch_util__TypeDefn_11);
+    }
+#line 1142 "switch_util.m"
+    {
+#line 1142 "switch_util.m"
+      hlds__hlds_data__get_type_defn_body_2_p_0(backend_libs__switch_util__TypeDefn_11, &backend_libs__switch_util__TypeBody_12);
+    }
+#line 1147 "switch_util.m"
+#line 1147 "switch_util.m"
+    switch (MR_tag((MR_Word) backend_libs__switch_util__TypeBody_12)) {
+#line 1147 "switch_util.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1147 "switch_util.m"
+      case (MR_Integer) 0:
+#line 1152 "switch_util.m"
+        {
+#line 1153 "switch_util.m"
+          {
+#line 1153 "switch_util.m"
+            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts\'/4", (MR_String) "non-du type");
+#line 1153 "switch_util.m"
+            return;
+          }
+#line 1152 "switch_util.m"
+        }
+#line 1147 "switch_util.m"
+        break;
+#line 1147 "switch_util.m"
+      case (MR_Integer) 1:
+#line 1144 "switch_util.m"
+        {
+#line 1144 "switch_util.m"
+          MR_Word backend_libs__switch_util__TypeCtorInfo_34_34 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0;
+#line 1144 "switch_util.m"
+          MR_Word backend_libs__switch_util__TypeCtorInfo_35_35 = (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0;
+#line 1144 "switch_util.m"
+          MR_Word backend_libs__switch_util__ConsTable_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 1)));
+#line 1144 "switch_util.m"
+          MR_Word backend_libs__switch_util__ConsList_22;
+#line 1144 "switch_util.m"
+          MR_Word backend_libs__switch_util__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 0)));
+#line 1144 "switch_util.m"
+          MR_Word backend_libs__switch_util__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 2)));
+#line 1144 "switch_util.m"
+          MR_Word backend_libs__switch_util__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 3)));
+#line 1144 "switch_util.m"
+          MR_Word backend_libs__switch_util__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 4)));
+#line 1144 "switch_util.m"
+          MR_Word backend_libs__switch_util__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 5)));
+#line 1144 "switch_util.m"
+          MR_Word backend_libs__switch_util__V_19_19 = ((((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 6)))) & (MR_Integer) 1);
+#line 1144 "switch_util.m"
+          MR_Word backend_libs__switch_util__V_20_20 = ((((((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 6)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+#line 1144 "switch_util.m"
+          MR_Word backend_libs__switch_util__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_12, (MR_Integer) 7)));
+
+#line 1145 "switch_util.m"
+          {
+#line 1145 "switch_util.m"
+            mercury__map__to_assoc_list_2_p_0(backend_libs__switch_util__TypeCtorInfo_34_34, backend_libs__switch_util__TypeCtorInfo_35_35, backend_libs__switch_util__ConsTable_14, &backend_libs__switch_util__ConsList_22);
+          }
+#line 1146 "switch_util.m"
+          {
+#line 1146 "switch_util.m"
+            mercury__assoc_list__values_2_p_0(backend_libs__switch_util__TypeCtorInfo_34_34, backend_libs__switch_util__TypeCtorInfo_35_35, backend_libs__switch_util__ConsList_22, &backend_libs__switch_util__TagList_23);
+          }
+#line 1144 "switch_util.m"
+        }
+#line 1147 "switch_util.m"
+        break;
+#line 1147 "switch_util.m"
+      case (MR_Integer) 2:
+#line 1152 "switch_util.m"
+        {
+#line 1153 "switch_util.m"
+          {
+#line 1153 "switch_util.m"
+            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts\'/4", (MR_String) "non-du type");
+#line 1153 "switch_util.m"
+            return;
+          }
+#line 1152 "switch_util.m"
+        }
+#line 1147 "switch_util.m"
+        break;
+#line 1147 "switch_util.m"
+      case (MR_Integer) 3:
+#line 1152 "switch_util.m"
+        {
+#line 1153 "switch_util.m"
+          {
+#line 1153 "switch_util.m"
+            mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.get_ptag_counts\'/4", (MR_String) "non-du type");
+#line 1153 "switch_util.m"
+            return;
+          }
+#line 1152 "switch_util.m"
+        }
+#line 1147 "switch_util.m"
+        break;
+#line 1147 "switch_util.m"
+    }
+#line 1155 "switch_util.m"
+    {
+#line 1155 "switch_util.m"
+      mercury__map__init_1_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &backend_libs__switch_util_scalar_common_2[0], &backend_libs__switch_util__PtagCountMap0_29);
+    }
+#line 1156 "switch_util.m"
+    {
+#line 1156 "switch_util.m"
+      backend_libs__switch_util__get_ptag_counts_loop_5_p_0(backend_libs__switch_util__TagList_23, (MR_Integer) -1, backend_libs__switch_util__MaxPrimary_7, backend_libs__switch_util__PtagCountMap0_29, backend_libs__switch_util__PtagCountMap_8);
+#line 1156 "switch_util.m"
+      return;
+    }
+#line 1138 "switch_util.m"
+  }
+#line 351 "switch_util.m"
+}
+
+#line 345 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__order_ptags_by_value_4_p_0(
+#line 345 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_18,
+#line 345 "switch_util.m"
+  MR_Integer backend_libs__switch_util__Ptag_5,
+#line 345 "switch_util.m"
+  MR_Integer backend_libs__switch_util__MaxPtag_6,
+#line 345 "switch_util.m"
+  MR_Word backend_libs__switch_util__PtagCaseMap0_7,
+#line 345 "switch_util.m"
+  MR_Word * backend_libs__switch_util__PtagCaseList_8)
+#line 345 "switch_util.m"
+{
+#line 1449 "switch_util.m"
+  while (MR_TRUE)
+#line 1449 "switch_util.m"
+    {
+#line 1449 "switch_util.m"
+      /* tailcall optimized into a loop */
+#line 1449 "switch_util.m"
+      {
+#line 1449 "switch_util.m"
+        MR_bool backend_libs__switch_util__succeeded = (backend_libs__switch_util__MaxPtag_6 >= backend_libs__switch_util__Ptag_5);
+
+#line 1449 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 1439 "switch_util.m"
+          {
+#line 1439 "switch_util.m"
+            MR_Integer backend_libs__switch_util__NextPtag_9 = (backend_libs__switch_util__Ptag_5 + (MR_Integer) 1);
+#line 1446 "switch_util.m"
+            MR_Word backend_libs__switch_util__TypeInfo_21_21;
+#line 1446 "switch_util.m"
+            MR_Word backend_libs__switch_util__PtagCase_10;
+#line 1440 "switch_util.m"
+            MR_Box backend_libs__switch_util__conv0_PtagCase_10;
+
+#line 12418 "backend_libs.switch_util.c"
+            {
+#line 12420 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeInfo_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 12422 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_21_21, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 12424 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_21_21, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_18));
+#line 12426 "backend_libs.switch_util.c"
+            }
+#line 1440 "switch_util.m"
+            {
+#line 1440 "switch_util.m"
+              backend_libs__switch_util__succeeded = mercury__map__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_115_101_97_114_99_104_95_95_91_75_32_61_32_105_110_116_93_95_48_95_49_3_p_0(backend_libs__switch_util__TypeInfo_21_21, (MR_Word) backend_libs__switch_util__PtagCaseMap0_7, backend_libs__switch_util__Ptag_5, &backend_libs__switch_util__conv0_PtagCase_10);
+            }
+#line 1440 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 1440 "switch_util.m"
+              {
+#line 1440 "switch_util.m"
+                backend_libs__switch_util__PtagCase_10 = ((MR_Word) backend_libs__switch_util__conv0_PtagCase_10);
+#line 1440 "switch_util.m"
+                backend_libs__switch_util__succeeded = MR_TRUE;
+#line 1440 "switch_util.m"
+              }
+#line 1446 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 1441 "switch_util.m"
+              {
+#line 1441 "switch_util.m"
+                MR_Word backend_libs__switch_util__PtagCaseMap1_11;
+#line 1441 "switch_util.m"
+                MR_Word backend_libs__switch_util__PtagCaseList1_12;
+#line 1441 "switch_util.m"
+                MR_Word backend_libs__switch_util__PtagCaseEntry_13;
+
+#line 1441 "switch_util.m"
+                {
+#line 1441 "switch_util.m"
+                  mercury__map__delete_3_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_21_21, ((MR_Box) (backend_libs__switch_util__Ptag_5)), backend_libs__switch_util__PtagCaseMap0_7, &backend_libs__switch_util__PtagCaseMap1_11);
+                }
+#line 1442 "switch_util.m"
+                {
+#line 1442 "switch_util.m"
+                  backend_libs__switch_util__order_ptags_by_value_4_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_18, backend_libs__switch_util__NextPtag_9, backend_libs__switch_util__MaxPtag_6, backend_libs__switch_util__PtagCaseMap1_11, &backend_libs__switch_util__PtagCaseList1_12);
+                }
+#line 1444 "switch_util.m"
+                {
+#line 1444 "switch_util.m"
+                  backend_libs__switch_util__PtagCaseEntry_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1444 "switch_util.m"
+                  MR_hl_field(MR_mktag(0), backend_libs__switch_util__PtagCaseEntry_13, 0) = ((MR_Box) (backend_libs__switch_util__Ptag_5));
+#line 1444 "switch_util.m"
+                  MR_hl_field(MR_mktag(0), backend_libs__switch_util__PtagCaseEntry_13, 1) = ((MR_Box) (backend_libs__switch_util__PtagCase_10));
+#line 1444 "switch_util.m"
+                }
+#line 1445 "switch_util.m"
+                {
+#line 1445 "switch_util.m"
+                  MR_Word base;
+#line 1445 "switch_util.m"
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1445 "switch_util.m"
+                  *backend_libs__switch_util__PtagCaseList_8 = base;
+#line 1445 "switch_util.m"
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (backend_libs__switch_util__PtagCaseEntry_13));
+#line 1445 "switch_util.m"
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (backend_libs__switch_util__PtagCaseList1_12));
+#line 1445 "switch_util.m"
+                }
+#line 1441 "switch_util.m"
+              }
+#line 1446 "switch_util.m"
+            else
+#line 1447 "switch_util.m"
+              {
+#line 1447 "switch_util.m"
+                /* direct tailcall eliminated */
+#line 1447 "switch_util.m"
+                {
+#line 1447 "switch_util.m"
+                  MR_Integer backend_libs__switch_util__Ptag__tmp_copy_5 = backend_libs__switch_util__NextPtag_9;
+
+#line 1447 "switch_util.m"
+                  backend_libs__switch_util__Ptag_5 = backend_libs__switch_util__Ptag__tmp_copy_5;
+#line 1447 "switch_util.m"
+                }
+#line 1447 "switch_util.m"
+                continue;
+#line 1447 "switch_util.m"
+              }
+#line 1439 "switch_util.m"
+          }
+#line 1449 "switch_util.m"
+        else
+#line 1452 "switch_util.m"
+          {
+#line 1450 "switch_util.m"
+            MR_Word backend_libs__switch_util__TypeInfo_27_27;
+
+#line 12518 "backend_libs.switch_util.c"
+            {
+#line 12520 "backend_libs.switch_util.c"
+              backend_libs__switch_util__TypeInfo_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 12522 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_27_27, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 12524 "backend_libs.switch_util.c"
+              MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_27_27, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_18));
+#line 12526 "backend_libs.switch_util.c"
+            }
+#line 1450 "switch_util.m"
+            {
+#line 1450 "switch_util.m"
+              backend_libs__switch_util__succeeded = mercury__map__is_empty_1_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_27_27, backend_libs__switch_util__PtagCaseMap0_7);
+            }
+#line 1452 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 1451 "switch_util.m"
+              *backend_libs__switch_util__PtagCaseList_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1452 "switch_util.m"
+            else
+#line 1453 "switch_util.m"
+              {
+#line 1453 "switch_util.m"
+                {
+#line 1453 "switch_util.m"
+                  mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.order_ptags_by_value\'/4", (MR_String) "PtagCaseMap0 is not empty");
+#line 1453 "switch_util.m"
+                  return;
+                }
+#line 1453 "switch_util.m"
+              }
+#line 1452 "switch_util.m"
+          }
+#line 1449 "switch_util.m"
+      }
+#line 1449 "switch_util.m"
+      break;
+#line 1449 "switch_util.m"
+    }
+#line 345 "switch_util.m"
+}
+
+#line 1364 "switch_util.m"
+static void MR_CALL 
+backend_libs__switch_util__order_ptags_by_count_3_p_0_1(
+#line 1364 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 1364 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 1364 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_2)
+#line 1364 "switch_util.m"
+{
+#line 1364 "switch_util.m"
+  {
+#line 1364 "switch_util.m"
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+#line 1364 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv3_GroupEntry_4;
+
+#line 1364 "switch_util.m"
+    {
+#line 1364 "switch_util.m"
+      backend_libs__switch_util__interpret_rev_map_entry_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) backend_libs__switch_util__wrapper_arg_1), &backend_libs__switch_util__conv3_GroupEntry_4);
+    }
+#line 1364 "switch_util.m"
+    *backend_libs__switch_util__wrapper_arg_2 = ((MR_Box) (backend_libs__switch_util__conv3_GroupEntry_4));
+#line 1364 "switch_util.m"
+  }
+#line 1364 "switch_util.m"
+}
+
+#line 335 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__order_ptags_by_count_3_p_0(
+#line 335 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_14,
+#line 335 "switch_util.m"
+  MR_Word backend_libs__switch_util__PtagCountMap_4,
+#line 335 "switch_util.m"
+  MR_Word backend_libs__switch_util__PtagCaseMap_5,
+#line 335 "switch_util.m"
+  MR_Word * backend_libs__switch_util__PtagGroupCaseList_6)
+#line 335 "switch_util.m"
+{
+#line 1355 "switch_util.m"
+  {
+#line 1355 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1355 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_17_17;
+#line 1355 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_19_19;
+#line 1355 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_23_23;
+#line 1355 "switch_util.m"
+    MR_Word backend_libs__switch_util__PtagCaseList_7;
+#line 1355 "switch_util.m"
+    MR_Word backend_libs__switch_util__PtagCaseRevMap_8;
+#line 1355 "switch_util.m"
+    MR_Word backend_libs__switch_util__PtagCaseRevList_9;
+#line 1355 "switch_util.m"
+    MR_Word backend_libs__switch_util__PtagCaseRevSortedList_10;
+#line 1355 "switch_util.m"
+    MR_Word backend_libs__switch_util__PtagCaseSortedList_11;
+#line 1355 "switch_util.m"
+    MR_Word backend_libs__switch_util__V_12_12;
+#line 1355 "switch_util.m"
+    MR_Word backend_libs__switch_util__V_13_13;
+#line 1358 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv0_V_12_12;
+#line 1360 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv1_PtagCaseRevSortedList_10;
+#line 1363 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv2_PtagCaseSortedList_11;
+
+#line 12635 "backend_libs.switch_util.c"
+    {
+#line 12637 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_17_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 12639 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_17_17, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 12641 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_17_17, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_14));
+#line 12643 "backend_libs.switch_util.c"
+    }
+#line 1356 "switch_util.m"
+    {
+#line 1356 "switch_util.m"
+      mercury__map__to_assoc_list_2_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_17_17, backend_libs__switch_util__PtagCaseMap_5, &backend_libs__switch_util__PtagCaseList_7);
+    }
+#line 12650 "backend_libs.switch_util.c"
+    {
+#line 12652 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 12654 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_19_19, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1));
+#line 12656 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_19_19, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_14));
+#line 12658 "backend_libs.switch_util.c"
+    }
+#line 1358 "switch_util.m"
+    {
+#line 1358 "switch_util.m"
+      backend_libs__switch_util__conv0_V_12_12 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeInfo_17_17, backend_libs__switch_util__TypeInfo_19_19);
+    }
+#line 1358 "switch_util.m"
+    backend_libs__switch_util__V_12_12 = (MR_Word) backend_libs__switch_util__conv0_V_12_12;
+#line 1357 "switch_util.m"
+    {
+#line 1357 "switch_util.m"
+      backend_libs__switch_util__build_ptag_case_rev_map_4_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_14, backend_libs__switch_util__PtagCaseList_7, backend_libs__switch_util__PtagCountMap_4, backend_libs__switch_util__V_12_12, &backend_libs__switch_util__PtagCaseRevMap_8);
+    }
+#line 1359 "switch_util.m"
+    {
+#line 1359 "switch_util.m"
+      mercury__map__values_2_p_0(backend_libs__switch_util__TypeInfo_17_17, backend_libs__switch_util__TypeInfo_19_19, (MR_Word) backend_libs__switch_util__PtagCaseRevMap_8, &backend_libs__switch_util__PtagCaseRevList_9);
+    }
+#line 1360 "switch_util.m"
+    {
+#line 1360 "switch_util.m"
+      mercury__list__sort_2_p_0(backend_libs__switch_util__TypeInfo_19_19, (MR_Word) backend_libs__switch_util__PtagCaseRevList_9, &backend_libs__switch_util__conv1_PtagCaseRevSortedList_10);
+    }
+#line 1360 "switch_util.m"
+    backend_libs__switch_util__PtagCaseRevSortedList_10 = (MR_Word) backend_libs__switch_util__conv1_PtagCaseRevSortedList_10;
+#line 1363 "switch_util.m"
+    {
+#line 1363 "switch_util.m"
+      mercury__list__reverse_2_p_0(backend_libs__switch_util__TypeInfo_19_19, (MR_Word) backend_libs__switch_util__PtagCaseRevSortedList_10, &backend_libs__switch_util__conv2_PtagCaseSortedList_11);
+    }
+#line 1363 "switch_util.m"
+    backend_libs__switch_util__PtagCaseSortedList_11 = (MR_Word) backend_libs__switch_util__conv2_PtagCaseSortedList_11;
+#line 1364 "switch_util.m"
+    {
+#line 1364 "switch_util.m"
+      backend_libs__switch_util__V_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1364 "switch_util.m"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_7[0]));
+#line 1364 "switch_util.m"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 1) = ((MR_Box) (backend_libs__switch_util__order_ptags_by_count_3_p_0_1));
+#line 1364 "switch_util.m"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 1364 "switch_util.m"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_13_13, 3) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_14));
+#line 1364 "switch_util.m"
+    }
+#line 12705 "backend_libs.switch_util.c"
+    {
+#line 12707 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_23_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 12709 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_23_23, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_entry_1));
+#line 12711 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_23_23, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_14));
+#line 12713 "backend_libs.switch_util.c"
+    }
+#line 1364 "switch_util.m"
+    {
+#line 1364 "switch_util.m"
+      mercury__list__map_3_p_0(backend_libs__switch_util__TypeInfo_19_19, backend_libs__switch_util__TypeInfo_23_23, (MR_Word) backend_libs__switch_util__V_13_13, (MR_Word) backend_libs__switch_util__PtagCaseSortedList_11, backend_libs__switch_util__PtagGroupCaseList_6);
+#line 1364 "switch_util.m"
+      return;
+    }
+#line 1355 "switch_util.m"
+  }
+#line 335 "switch_util.m"
+}
+
+#line 320 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__group_cases_by_ptag_10_p_0(
+#line 320 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_29,
+#line 320 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_StateA_30,
+#line 320 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_StateB_31,
+#line 320 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_StateC_32,
+#line 320 "switch_util.m"
+  MR_Word backend_libs__switch_util__TaggedCases_11,
+#line 320 "switch_util.m"
+  MR_Word backend_libs__switch_util__RepresentCase_12,
+#line 320 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0_18,
+#line 320 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateA_19,
+#line 320 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0_20,
+#line 320 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateB_21,
+#line 320 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0_22,
+#line 320 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateC_23,
+#line 320 "switch_util.m"
+  MR_Word * backend_libs__switch_util__CaseNumPtagsMap_16,
+#line 320 "switch_util.m"
+  MR_Word * backend_libs__switch_util__PtagCaseMap_17)
+#line 320 "switch_util.m"
+{
+#line 1246 "switch_util.m"
+  {
+#line 1246 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1246 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_37_37;
+#line 1246 "switch_util.m"
+    MR_Word backend_libs__switch_util__V_27_27;
+#line 1246 "switch_util.m"
+    MR_Word backend_libs__switch_util__V_28_28;
+
+#line 1249 "switch_util.m"
+    {
+#line 1249 "switch_util.m"
+      backend_libs__switch_util__V_27_27 = mercury__map__init_0_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_id_0, (MR_Word) &backend_libs__switch_util_scalar_common_1[0]);
+    }
+#line 12776 "backend_libs.switch_util.c"
+    {
+#line 12778 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_37_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 12780 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_37_37, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1));
+#line 12782 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_37_37, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_29));
+#line 12784 "backend_libs.switch_util.c"
+    }
+#line 1249 "switch_util.m"
+    {
+#line 1249 "switch_util.m"
+      backend_libs__switch_util__V_28_28 = mercury__map__init_0_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, backend_libs__switch_util__TypeInfo_37_37);
+    }
+#line 1247 "switch_util.m"
+    {
+#line 1247 "switch_util.m"
+      backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_114_111_117_112_95_99_97_115_101_115_95_98_121_95_112_116_97_103_95_108_111_111_112_95_95_91_50_44_32_51_44_32_52_93_95_48_12_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_29, backend_libs__switch_util__TaggedCases_11, backend_libs__switch_util__RepresentCase_12, backend_libs__switch_util__STATE_VARIABLE_StateA_0_18, backend_libs__switch_util__STATE_VARIABLE_StateA_19, backend_libs__switch_util__STATE_VARIABLE_StateB_0_20, backend_libs__switch_util__STATE_VARIABLE_StateB_21, backend_libs__switch_util__STATE_VARIABLE_StateC_0_22, backend_libs__switch_util__STATE_VARIABLE_StateC_23, backend_libs__switch_util__V_27_27, backend_libs__switch_util__CaseNumPtagsMap_16, backend_libs__switch_util__V_28_28, backend_libs__switch_util__PtagCaseMap_17);
+#line 1247 "switch_util.m"
+      return;
+    }
+#line 1246 "switch_util.m"
+  }
+#line 320 "switch_util.m"
+}
+
+#line 226 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__string_binary_cases_9_p_0(
+#line 226 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_27,
+#line 226 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_StateA_28,
+#line 226 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_StateB_29,
+#line 226 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_StateC_30,
+#line 226 "switch_util.m"
+  MR_Word backend_libs__switch_util__TaggedCases_10,
+#line 226 "switch_util.m"
+  MR_Word backend_libs__switch_util__RepresentCase_11,
+#line 226 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateA_0_17,
+#line 226 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateA_18,
+#line 226 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateB_0_19,
+#line 226 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateB_20,
+#line 226 "switch_util.m"
+  MR_Box backend_libs__switch_util__STATE_VARIABLE_StateC_0_21,
+#line 226 "switch_util.m"
+  MR_Box * backend_libs__switch_util__STATE_VARIABLE_StateC_22,
+#line 226 "switch_util.m"
+  MR_Word * backend_libs__switch_util__SortedTable_15)
+#line 226 "switch_util.m"
+{
+#line 1098 "switch_util.m"
+  {
+#line 1098 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 1098 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_33_33;
+#line 1098 "switch_util.m"
+    MR_Word backend_libs__switch_util__UnsortedTable_16;
+#line 1101 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv0_SortedTable_15;
+
+#line 1099 "switch_util.m"
+    {
+#line 1099 "switch_util.m"
+      backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_116_114_105_110_103_95_98_105_110_97_114_121_95_101_110_116_114_105_101_115_95_95_91_50_44_32_51_44_32_52_93_95_48_10_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_27, backend_libs__switch_util__TaggedCases_10, backend_libs__switch_util__RepresentCase_11, backend_libs__switch_util__STATE_VARIABLE_StateA_0_17, backend_libs__switch_util__STATE_VARIABLE_StateA_18, backend_libs__switch_util__STATE_VARIABLE_StateB_0_19, backend_libs__switch_util__STATE_VARIABLE_StateB_20, backend_libs__switch_util__STATE_VARIABLE_StateC_0_21, backend_libs__switch_util__STATE_VARIABLE_StateC_22, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &backend_libs__switch_util__UnsortedTable_16);
+    }
+#line 12850 "backend_libs.switch_util.c"
+    {
+#line 12852 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_33_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 12854 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_33_33, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+#line 12856 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_33_33, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+#line 12858 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_33_33, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_27));
+#line 12860 "backend_libs.switch_util.c"
+    }
+#line 1101 "switch_util.m"
+    {
+#line 1101 "switch_util.m"
+      mercury__list__sort_2_p_0(backend_libs__switch_util__TypeInfo_33_33, (MR_Word) backend_libs__switch_util__UnsortedTable_16, &backend_libs__switch_util__conv0_SortedTable_15);
+    }
+#line 1101 "switch_util.m"
+    *backend_libs__switch_util__SortedTable_15 = (MR_Word) backend_libs__switch_util__conv0_SortedTable_15;
+#line 1098 "switch_util.m"
+  }
+#line 226 "switch_util.m"
+}
+
+#line 213 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__construct_string_hash_cases_6_p_0(
+#line 213 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_CaseRep_81,
+#line 213 "switch_util.m"
+  MR_Word backend_libs__switch_util__StrsDatas_7,
+#line 213 "switch_util.m"
+  MR_Word backend_libs__switch_util__Upgrade_8,
+#line 213 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__TableSize_9,
+#line 213 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HashSlotsMap_10,
+#line 213 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HashOp_11,
+#line 213 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__NumCollisions_12)
+#line 213 "switch_util.m"
+{
+#line 830 "switch_util.m"
+  {
+#line 830 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_84_84;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeCtorInfo_85_85;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_87_87;
+#line 830 "switch_util.m"
+    MR_Integer backend_libs__switch_util__NumStrs_13;
+#line 830 "switch_util.m"
+    MR_Integer backend_libs__switch_util__LogNumStrs_14;
+#line 830 "switch_util.m"
+    MR_Integer backend_libs__switch_util__RoundedUpNumStrs_15;
+#line 830 "switch_util.m"
+    MR_Integer backend_libs__switch_util__TableSizeA_16;
+#line 830 "switch_util.m"
+    MR_Integer backend_libs__switch_util__HashMaskA_17;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__HashValsMap4A_18;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__HashValsMap5A_19;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__HashValsMap6A_20;
+#line 830 "switch_util.m"
+    MR_Integer backend_libs__switch_util__NumCollisions4A_21;
+#line 830 "switch_util.m"
+    MR_Integer backend_libs__switch_util__NumCollisions5A_22;
+#line 830 "switch_util.m"
+    MR_Integer backend_libs__switch_util__NumCollisions6A_23;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__HashValsMapA_25;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__HashOpA_26;
+#line 830 "switch_util.m"
+    MR_Integer backend_libs__switch_util__NumCollisionsA_27;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__HashValsMap_28;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__HashValsList_37;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__V_41_41;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__V_42_42;
+#line 830 "switch_util.m"
+    MR_Word backend_libs__switch_util__V_43_43;
+
+#line 12942 "backend_libs.switch_util.c"
+    {
+#line 12944 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_84_84 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 12946 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_84_84, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+#line 12948 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_84_84, 1) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0));
+#line 12950 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_84_84, 2) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_CaseRep_81));
+#line 12952 "backend_libs.switch_util.c"
+    }
+#line 837 "switch_util.m"
+    {
+#line 837 "switch_util.m"
+      mercury__list__length_2_p_0(backend_libs__switch_util__TypeInfo_84_84, (MR_Word) backend_libs__switch_util__StrsDatas_7, &backend_libs__switch_util__NumStrs_13);
+    }
+#line 838 "switch_util.m"
+    {
+#line 838 "switch_util.m"
+      mercury__int__log2_2_p_0(backend_libs__switch_util__NumStrs_13, &backend_libs__switch_util__LogNumStrs_14);
+    }
+#line 839 "switch_util.m"
+    {
+#line 839 "switch_util.m"
+      mercury__int__pow_3_p_0((MR_Integer) 2, backend_libs__switch_util__LogNumStrs_14, &backend_libs__switch_util__RoundedUpNumStrs_15);
+    }
+#line 841 "switch_util.m"
+    backend_libs__switch_util__TableSizeA_16 = ((MR_Integer) 2 * backend_libs__switch_util__RoundedUpNumStrs_15);
+#line 844 "switch_util.m"
+    backend_libs__switch_util__HashMaskA_17 = (backend_libs__switch_util__TableSizeA_16 - (MR_Integer) 1);
+#line 12973 "backend_libs.switch_util.c"
+    backend_libs__switch_util__TypeCtorInfo_85_85 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 12975 "backend_libs.switch_util.c"
+    {
+#line 12977 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_87_87 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 12979 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_87_87, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+#line 12981 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_87_87, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_84_84));
+#line 12983 "backend_libs.switch_util.c"
+    }
+#line 846 "switch_util.m"
+    {
+#line 846 "switch_util.m"
+      backend_libs__switch_util__V_41_41 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87);
+    }
+#line 846 "switch_util.m"
+    {
+#line 846 "switch_util.m"
+      backend_libs__switch_util__V_42_42 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87);
+    }
+#line 847 "switch_util.m"
+    {
+#line 847 "switch_util.m"
+      backend_libs__switch_util__V_43_43 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87);
+    }
+#line 845 "switch_util.m"
+    {
+#line 845 "switch_util.m"
+      backend_libs__switch_util__string_hash_cases_14_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_81, backend_libs__switch_util__StrsDatas_7, backend_libs__switch_util__HashMaskA_17, backend_libs__switch_util__V_41_41, &backend_libs__switch_util__HashValsMap4A_18, backend_libs__switch_util__V_42_42, &backend_libs__switch_util__HashValsMap5A_19, backend_libs__switch_util__V_43_43, &backend_libs__switch_util__HashValsMap6A_20, (MR_Integer) 0, &backend_libs__switch_util__NumCollisions4A_21, (MR_Integer) 0, &backend_libs__switch_util__NumCollisions5A_22, (MR_Integer) 0, &backend_libs__switch_util__NumCollisions6A_23);
+    }
+#line 853 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisions4A_21 <= backend_libs__switch_util__NumCollisions5A_22);
+#line 853 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 853 "switch_util.m"
+      backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisions4A_21 <= backend_libs__switch_util__NumCollisions6A_23);
+#line 857 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 854 "switch_util.m"
+      {
+#line 854 "switch_util.m"
+        backend_libs__switch_util__HashValsMapA_25 = backend_libs__switch_util__HashValsMap4A_18;
+#line 855 "switch_util.m"
+        backend_libs__switch_util__HashOpA_26 = (MR_Integer) 11;
+#line 856 "switch_util.m"
+        backend_libs__switch_util__NumCollisionsA_27 = backend_libs__switch_util__NumCollisions4A_21;
+#line 854 "switch_util.m"
+      }
+#line 857 "switch_util.m"
+    else
+#line 861 "switch_util.m"
+      {
+#line 857 "switch_util.m"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisions5A_22 <= backend_libs__switch_util__NumCollisions6A_23);
+#line 861 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 858 "switch_util.m"
+          {
+#line 858 "switch_util.m"
+            backend_libs__switch_util__HashValsMapA_25 = backend_libs__switch_util__HashValsMap5A_19;
+#line 859 "switch_util.m"
+            backend_libs__switch_util__HashOpA_26 = (MR_Integer) 12;
+#line 860 "switch_util.m"
+            backend_libs__switch_util__NumCollisionsA_27 = backend_libs__switch_util__NumCollisions5A_22;
+#line 858 "switch_util.m"
+          }
+#line 861 "switch_util.m"
+        else
+#line 862 "switch_util.m"
+          {
+#line 862 "switch_util.m"
+            backend_libs__switch_util__HashValsMapA_25 = backend_libs__switch_util__HashValsMap6A_20;
+#line 863 "switch_util.m"
+            backend_libs__switch_util__HashOpA_26 = (MR_Integer) 13;
+#line 864 "switch_util.m"
+            backend_libs__switch_util__NumCollisionsA_27 = backend_libs__switch_util__NumCollisions6A_23;
+#line 862 "switch_util.m"
+          }
+#line 861 "switch_util.m"
+      }
+#line 868 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisionsA_27 == (MR_Integer) 0);
+#line 869 "switch_util.m"
+    if (!(backend_libs__switch_util__succeeded))
+#line 869 "switch_util.m"
+      backend_libs__switch_util__succeeded = (backend_libs__switch_util__Upgrade_8 == (MR_Integer) 0);
+#line 876 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 872 "switch_util.m"
+      {
+#line 872 "switch_util.m"
+        *backend_libs__switch_util__TableSize_9 = backend_libs__switch_util__TableSizeA_16;
+#line 873 "switch_util.m"
+        backend_libs__switch_util__HashValsMap_28 = backend_libs__switch_util__HashValsMapA_25;
+#line 874 "switch_util.m"
+        *backend_libs__switch_util__HashOp_11 = backend_libs__switch_util__HashOpA_26;
+#line 875 "switch_util.m"
+        *backend_libs__switch_util__NumCollisions_12 = backend_libs__switch_util__NumCollisionsA_27;
+#line 872 "switch_util.m"
+      }
+#line 876 "switch_util.m"
+    else
+#line 877 "switch_util.m"
+      {
+#line 877 "switch_util.m"
+        MR_Integer backend_libs__switch_util__TableSizeB_29 = ((MR_Integer) 4 * backend_libs__switch_util__RoundedUpNumStrs_15);
+#line 877 "switch_util.m"
+        MR_Integer backend_libs__switch_util__HashMaskB_30 = (backend_libs__switch_util__TableSizeB_29 - (MR_Integer) 1);
+#line 877 "switch_util.m"
+        MR_Word backend_libs__switch_util__HashValsMap4B_31;
+#line 877 "switch_util.m"
+        MR_Word backend_libs__switch_util__HashValsMap5B_32;
+#line 877 "switch_util.m"
+        MR_Word backend_libs__switch_util__HashValsMap6B_33;
+#line 877 "switch_util.m"
+        MR_Integer backend_libs__switch_util__NumCollisions4B_34;
+#line 877 "switch_util.m"
+        MR_Integer backend_libs__switch_util__NumCollisions5B_35;
+#line 877 "switch_util.m"
+        MR_Integer backend_libs__switch_util__NumCollisions6B_36;
+#line 877 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_59_59;
+#line 877 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_60_60;
+#line 877 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_61_61;
+
+#line 882 "switch_util.m"
+        {
+#line 882 "switch_util.m"
+          backend_libs__switch_util__V_59_59 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87);
+        }
+#line 882 "switch_util.m"
+        {
+#line 882 "switch_util.m"
+          backend_libs__switch_util__V_60_60 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87);
+        }
+#line 883 "switch_util.m"
+        {
+#line 883 "switch_util.m"
+          backend_libs__switch_util__V_61_61 = mercury__map__init_0_f_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87);
+        }
+#line 881 "switch_util.m"
+        {
+#line 881 "switch_util.m"
+          backend_libs__switch_util__string_hash_cases_14_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_81, backend_libs__switch_util__StrsDatas_7, backend_libs__switch_util__HashMaskB_30, backend_libs__switch_util__V_59_59, &backend_libs__switch_util__HashValsMap4B_31, backend_libs__switch_util__V_60_60, &backend_libs__switch_util__HashValsMap5B_32, backend_libs__switch_util__V_61_61, &backend_libs__switch_util__HashValsMap6B_33, (MR_Integer) 0, &backend_libs__switch_util__NumCollisions4B_34, (MR_Integer) 0, &backend_libs__switch_util__NumCollisions5B_35, (MR_Integer) 0, &backend_libs__switch_util__NumCollisions6B_36);
+        }
+#line 890 "switch_util.m"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisions4B_34 == (MR_Integer) 0);
+#line 895 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 891 "switch_util.m"
+          {
+#line 891 "switch_util.m"
+            *backend_libs__switch_util__TableSize_9 = backend_libs__switch_util__TableSizeB_29;
+#line 892 "switch_util.m"
+            backend_libs__switch_util__HashValsMap_28 = backend_libs__switch_util__HashValsMap4B_31;
+#line 893 "switch_util.m"
+            *backend_libs__switch_util__HashOp_11 = (MR_Integer) 11;
+#line 894 "switch_util.m"
+            *backend_libs__switch_util__NumCollisions_12 = backend_libs__switch_util__NumCollisions4B_34;
+#line 891 "switch_util.m"
+          }
+#line 895 "switch_util.m"
+        else
+#line 900 "switch_util.m"
+          {
+#line 895 "switch_util.m"
+            backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisions5B_35 == (MR_Integer) 0);
+#line 900 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 896 "switch_util.m"
+              {
+#line 896 "switch_util.m"
+                *backend_libs__switch_util__TableSize_9 = backend_libs__switch_util__TableSizeB_29;
+#line 897 "switch_util.m"
+                backend_libs__switch_util__HashValsMap_28 = backend_libs__switch_util__HashValsMap5B_32;
+#line 898 "switch_util.m"
+                *backend_libs__switch_util__HashOp_11 = (MR_Integer) 12;
+#line 899 "switch_util.m"
+                *backend_libs__switch_util__NumCollisions_12 = backend_libs__switch_util__NumCollisions5B_35;
+#line 896 "switch_util.m"
+              }
+#line 900 "switch_util.m"
+            else
+#line 905 "switch_util.m"
+              {
+#line 900 "switch_util.m"
+                backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumCollisions6B_36 == (MR_Integer) 0);
+#line 905 "switch_util.m"
+                if (backend_libs__switch_util__succeeded)
+#line 901 "switch_util.m"
+                  {
+#line 901 "switch_util.m"
+                    *backend_libs__switch_util__TableSize_9 = backend_libs__switch_util__TableSizeB_29;
+#line 902 "switch_util.m"
+                    backend_libs__switch_util__HashValsMap_28 = backend_libs__switch_util__HashValsMap6B_33;
+#line 903 "switch_util.m"
+                    *backend_libs__switch_util__HashOp_11 = (MR_Integer) 13;
+#line 904 "switch_util.m"
+                    *backend_libs__switch_util__NumCollisions_12 = backend_libs__switch_util__NumCollisions6B_36;
+#line 901 "switch_util.m"
+                  }
+#line 905 "switch_util.m"
+                else
+#line 906 "switch_util.m"
+                  {
+#line 906 "switch_util.m"
+                    *backend_libs__switch_util__TableSize_9 = backend_libs__switch_util__TableSizeA_16;
+#line 907 "switch_util.m"
+                    backend_libs__switch_util__HashValsMap_28 = backend_libs__switch_util__HashValsMapA_25;
+#line 908 "switch_util.m"
+                    *backend_libs__switch_util__HashOp_11 = backend_libs__switch_util__HashOpA_26;
+#line 909 "switch_util.m"
+                    *backend_libs__switch_util__NumCollisions_12 = backend_libs__switch_util__NumCollisionsA_27;
+#line 906 "switch_util.m"
+                  }
+#line 905 "switch_util.m"
+              }
+#line 900 "switch_util.m"
+          }
+#line 877 "switch_util.m"
+      }
+#line 919 "switch_util.m"
+    {
+#line 919 "switch_util.m"
+      mercury__map__to_assoc_list_2_p_0(backend_libs__switch_util__TypeCtorInfo_85_85, backend_libs__switch_util__TypeInfo_87_87, backend_libs__switch_util__HashValsMap_28, &backend_libs__switch_util__HashValsList_37);
+    }
+#line 920 "switch_util.m"
+    {
+#line 920 "switch_util.m"
+      backend_libs__switch_util__calc_string_hash_slots_4_p_0(backend_libs__switch_util__TypeInfo_for_CaseRep_81, *backend_libs__switch_util__TableSize_9, backend_libs__switch_util__HashValsList_37, backend_libs__switch_util__HashValsMap_28, backend_libs__switch_util__HashSlotsMap_10);
+#line 920 "switch_util.m"
+      return;
+    }
+#line 830 "switch_util.m"
+  }
+#line 213 "switch_util.m"
+}
+
+#line 192 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__get_word_bits_3_p_0(
+#line 192 "switch_util.m"
+  MR_Word backend_libs__switch_util__Globals_4,
+#line 192 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__WordBits_5,
+#line 192 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__Log2WordBits_6)
+#line 192 "switch_util.m"
+{
+#line 810 "switch_util.m"
+  {
+#line 810 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 810 "switch_util.m"
+    MR_Integer backend_libs__switch_util__HostWordBits_7;
+#line 810 "switch_util.m"
+    MR_Integer backend_libs__switch_util__TargetWordBits_8;
+#line 810 "switch_util.m"
+    MR_Integer backend_libs__switch_util__WordBits0_9;
+#line 810 "switch_util.m"
+    MR_Integer backend_libs__switch_util__V_14_14;
+#line 810 "switch_util.m"
+    MR_Integer backend_libs__switch_util__V_15_15;
+
+#line 811 "switch_util.m"
+    {
+#line 811 "switch_util.m"
+      mercury__int__bits_per_int_1_p_0(&backend_libs__switch_util__HostWordBits_7);
+    }
+#line 812 "switch_util.m"
+    {
+#line 812 "switch_util.m"
+      libs__globals__lookup_int_option_3_p_0(backend_libs__switch_util__Globals_4, (MR_Integer) 241, &backend_libs__switch_util__TargetWordBits_8);
+    }
+#line 813 "switch_util.m"
+    {
+#line 813 "switch_util.m"
+      mercury__int__min_3_p_0(backend_libs__switch_util__HostWordBits_7, backend_libs__switch_util__TargetWordBits_8, &backend_libs__switch_util__WordBits0_9);
+    }
+#line 821 "switch_util.m"
+    backend_libs__switch_util__V_14_14 = (backend_libs__switch_util__WordBits0_9 + (MR_Integer) 1);
+#line 821 "switch_util.m"
+    {
+#line 821 "switch_util.m"
+      mercury__int__log2_2_p_0(backend_libs__switch_util__V_14_14, &backend_libs__switch_util__V_15_15);
+    }
+#line 821 "switch_util.m"
+    *backend_libs__switch_util__Log2WordBits_6 = (backend_libs__switch_util__V_15_15 - (MR_Integer) 1);
+#line 816 "switch_util.m"
+    {
+#line 816 "switch_util.m"
+      mercury__int__pow_3_p_0((MR_Integer) 2, *backend_libs__switch_util__Log2WordBits_6, backend_libs__switch_util__WordBits_5);
+#line 816 "switch_util.m"
+      return;
+    }
+#line 810 "switch_util.m"
+  }
+#line 192 "switch_util.m"
+}
+
+#line 173 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__project_solns_to_rval_lists_3_p_0(
+#line 173 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_T_21,
+#line 173 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_22,
+#line 173 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 173 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_RvalsList_0_2,
+#line 173 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_RvalsList_3)
+#line 173 "switch_util.m"
+{
+#line 798 "switch_util.m"
+  while (MR_TRUE)
+#line 798 "switch_util.m"
+    {
+#line 798 "switch_util.m"
+      /* tailcall optimized into a loop */
+#line 798 "switch_util.m"
+      {
+#line 798 "switch_util.m"
+        MR_bool backend_libs__switch_util__succeeded;
+
+#line 798 "switch_util.m"
+        if ((backend_libs__switch_util__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 798 "switch_util.m"
+          *backend_libs__switch_util__STATE_VARIABLE_RvalsList_3 = backend_libs__switch_util__STATE_VARIABLE_RvalsList_0_2;
+#line 798 "switch_util.m"
+        else
+#line 799 "switch_util.m"
+          {
+#line 799 "switch_util.m"
+            MR_Word backend_libs__switch_util__Case_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 0)));
+#line 799 "switch_util.m"
+            MR_Word backend_libs__switch_util__Cases_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__HeadVar__1_1, (MR_Integer) 1)));
+#line 799 "switch_util.m"
+            MR_Word backend_libs__switch_util__Soln_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_7, (MR_Integer) 1)));
+#line 799 "switch_util.m"
+            MR_Word backend_libs__switch_util__STATE_VARIABLE_RvalsList_19_19;
+#line 800 "switch_util.m"
+            MR_Box backend_libs__switch_util___Index_10 = (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Case_7, (MR_Integer) 0));
+
+#line 804 "switch_util.m"
+            if (((MR_tag((MR_Word) backend_libs__switch_util__Soln_11)) == (MR_mktag((MR_Integer) 0))))
+#line 802 "switch_util.m"
+              {
+#line 802 "switch_util.m"
+                MR_Word backend_libs__switch_util__Rvals_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__Soln_11, (MR_Integer) 0)));
+
+#line 803 "switch_util.m"
+                {
+#line 803 "switch_util.m"
+                  backend_libs__switch_util__STATE_VARIABLE_RvalsList_19_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 803 "switch_util.m"
+                  MR_hl_field(MR_mktag(1), backend_libs__switch_util__STATE_VARIABLE_RvalsList_19_19, 0) = ((MR_Box) (backend_libs__switch_util__Rvals_12));
+#line 803 "switch_util.m"
+                  MR_hl_field(MR_mktag(1), backend_libs__switch_util__STATE_VARIABLE_RvalsList_19_19, 1) = ((MR_Box) (backend_libs__switch_util__STATE_VARIABLE_RvalsList_0_2));
+#line 803 "switch_util.m"
+                }
+#line 802 "switch_util.m"
+              }
+#line 804 "switch_util.m"
+            else
+#line 805 "switch_util.m"
+              {
+#line 805 "switch_util.m"
+                MR_Word backend_libs__switch_util__TypeInfo_24_24;
+#line 805 "switch_util.m"
+                MR_Word backend_libs__switch_util__FirstSolnRvals_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__Soln_11, (MR_Integer) 0)));
+#line 805 "switch_util.m"
+                MR_Word backend_libs__switch_util__LaterSolnsRvalsList_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__Soln_11, (MR_Integer) 1)));
+#line 805 "switch_util.m"
+                MR_Word backend_libs__switch_util__V_18_18;
+
+#line 13354 "backend_libs.switch_util.c"
+                {
+#line 13356 "backend_libs.switch_util.c"
+                  backend_libs__switch_util__TypeInfo_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 13358 "backend_libs.switch_util.c"
+                  MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_24_24, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+#line 13360 "backend_libs.switch_util.c"
+                  MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_24_24, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_22));
+#line 13362 "backend_libs.switch_util.c"
+                }
+#line 806 "switch_util.m"
+                {
+#line 806 "switch_util.m"
+                  backend_libs__switch_util__V_18_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 806 "switch_util.m"
+                  MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_18_18, 0) = ((MR_Box) (backend_libs__switch_util__FirstSolnRvals_13));
+#line 806 "switch_util.m"
+                  MR_hl_field(MR_mktag(1), backend_libs__switch_util__V_18_18, 1) = ((MR_Box) (backend_libs__switch_util__LaterSolnsRvalsList_14));
+#line 806 "switch_util.m"
+                }
+#line 806 "switch_util.m"
+                {
+#line 806 "switch_util.m"
+                  backend_libs__switch_util__STATE_VARIABLE_RvalsList_19_19 = mercury__list__f_43_43_2_f_0(backend_libs__switch_util__TypeInfo_24_24, backend_libs__switch_util__V_18_18, backend_libs__switch_util__STATE_VARIABLE_RvalsList_0_2);
+                }
+#line 805 "switch_util.m"
+              }
+#line 808 "switch_util.m"
+            /* direct tailcall eliminated */
+#line 808 "switch_util.m"
+            {
+#line 808 "switch_util.m"
+              MR_Word backend_libs__switch_util__HeadVar__1__tmp_copy_1 = backend_libs__switch_util__Cases_8;
+#line 808 "switch_util.m"
+              MR_Word backend_libs__switch_util__STATE_VARIABLE_RvalsList_0__tmp_copy_2 = backend_libs__switch_util__STATE_VARIABLE_RvalsList_19_19;
+
+#line 808 "switch_util.m"
+              backend_libs__switch_util__STATE_VARIABLE_RvalsList_0_2 = backend_libs__switch_util__STATE_VARIABLE_RvalsList_0__tmp_copy_2;
+#line 808 "switch_util.m"
+              backend_libs__switch_util__HeadVar__1_1 = backend_libs__switch_util__HeadVar__1__tmp_copy_1;
+#line 808 "switch_util.m"
+            }
+#line 808 "switch_util.m"
+            continue;
+#line 799 "switch_util.m"
+          }
+#line 798 "switch_util.m"
+      }
+#line 798 "switch_util.m"
+      break;
+#line 798 "switch_util.m"
+    }
+#line 173 "switch_util.m"
+}
+
+#line 790 "switch_util.m"
+static MR_bool MR_CALL 
+backend_libs__switch_util__project_all_to_one_solution_2_p_0_1(
+#line 790 "switch_util.m"
+  MR_Box backend_libs__switch_util__closure_arg,
+#line 790 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_1,
+#line 790 "switch_util.m"
+  MR_Box backend_libs__switch_util__wrapper_arg_2,
+#line 790 "switch_util.m"
+  MR_Box * backend_libs__switch_util__wrapper_arg_3)
+#line 790 "switch_util.m"
+{
+#line 790 "switch_util.m"
+  {
+#line 790 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 790 "switch_util.m"
+    MR_Box backend_libs__switch_util__closure = backend_libs__switch_util__closure_arg;
+#line 790 "switch_util.m"
+    MR_Word backend_libs__switch_util__conv0_Values_6;
+
+#line 790 "switch_util.m"
+    {
+#line 790 "switch_util.m"
+      backend_libs__switch_util__succeeded = backend_libs__switch_util__project_soln_consts_to_one_soln_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), backend_libs__switch_util__closure, (MR_Integer) 4))), backend_libs__switch_util__wrapper_arg_1, ((MR_Word) backend_libs__switch_util__wrapper_arg_2), &backend_libs__switch_util__conv0_Values_6);
+    }
+#line 790 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 790 "switch_util.m"
+      {
+#line 790 "switch_util.m"
+        *backend_libs__switch_util__wrapper_arg_3 = ((MR_Box) (backend_libs__switch_util__conv0_Values_6));
+#line 790 "switch_util.m"
+        backend_libs__switch_util__succeeded = MR_TRUE;
+#line 790 "switch_util.m"
+      }
+#line 790 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 790 "switch_util.m"
+  }
+#line 790 "switch_util.m"
+}
+
+#line 170 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util__project_all_to_one_solution_2_p_0(
+#line 170 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Key_6,
+#line 170 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeInfo_for_Rval_7,
+#line 170 "switch_util.m"
+  MR_Word backend_libs__switch_util__CaseSolns_3,
+#line 170 "switch_util.m"
+  MR_Word * backend_libs__switch_util__CaseValuePairs_4)
+#line 170 "switch_util.m"
+{
+#line 789 "switch_util.m"
+  {
+#line 789 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 789 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_12_12;
+#line 789 "switch_util.m"
+    MR_Word backend_libs__switch_util__TypeInfo_14_14;
+#line 789 "switch_util.m"
+    MR_Word backend_libs__switch_util__V_5_5;
+
+#line 790 "switch_util.m"
+    {
+#line 790 "switch_util.m"
+      backend_libs__switch_util__V_5_5 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 790 "switch_util.m"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_5_5, 0) = ((MR_Box) (&backend_libs__switch_util_scalar_common_5[0]));
+#line 790 "switch_util.m"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_5_5, 1) = ((MR_Box) (backend_libs__switch_util__project_all_to_one_solution_2_p_0_1));
+#line 790 "switch_util.m"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_5_5, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 790 "switch_util.m"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_5_5, 3) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Key_6));
+#line 790 "switch_util.m"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__V_5_5, 4) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_7));
+#line 790 "switch_util.m"
+    }
+#line 13493 "backend_libs.switch_util.c"
+    {
+#line 13495 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_12_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 13497 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_12_12, 0) = ((MR_Box) (&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1));
+#line 13499 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_12_12, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_7));
+#line 13501 "backend_libs.switch_util.c"
+    }
+#line 13503 "backend_libs.switch_util.c"
+    {
+#line 13505 "backend_libs.switch_util.c"
+      backend_libs__switch_util__TypeInfo_14_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 13507 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_14_14, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+#line 13509 "backend_libs.switch_util.c"
+      MR_hl_field(MR_mktag(0), backend_libs__switch_util__TypeInfo_14_14, 1) = ((MR_Box) (backend_libs__switch_util__TypeInfo_for_Rval_7));
+#line 13511 "backend_libs.switch_util.c"
+    }
+#line 790 "switch_util.m"
+    {
+#line 790 "switch_util.m"
+      return backend_libs__switch_util__succeeded = mercury__map__map_values_3_p_1(backend_libs__switch_util__TypeInfo_for_Key_6, backend_libs__switch_util__TypeInfo_12_12, backend_libs__switch_util__TypeInfo_14_14, (MR_Word) backend_libs__switch_util__V_5_5, (MR_Word) backend_libs__switch_util__CaseSolns_3, backend_libs__switch_util__CaseValuePairs_4);
+    }
+#line 789 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 789 "switch_util.m"
+  }
+#line 170 "switch_util.m"
+}
+
+#line 165 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util__find_int_lookup_switch_params_11_p_0(
+#line 165 "switch_util.m"
+  MR_Word backend_libs__switch_util__ModuleInfo_12,
+#line 165 "switch_util.m"
+  MR_Word backend_libs__switch_util__SwitchVarType_13,
+#line 165 "switch_util.m"
+  MR_Word backend_libs__switch_util__SwitchCanFail_14,
+#line 165 "switch_util.m"
+  MR_Integer backend_libs__switch_util__LowerLimit_15,
+#line 165 "switch_util.m"
+  MR_Integer backend_libs__switch_util__UpperLimit_16,
+#line 165 "switch_util.m"
+  MR_Integer backend_libs__switch_util__NumValues_17,
+#line 165 "switch_util.m"
+  MR_Integer backend_libs__switch_util__ReqDensity_18,
+#line 165 "switch_util.m"
+  MR_Word * backend_libs__switch_util__NeedBitVecCheck_19,
+#line 165 "switch_util.m"
+  MR_Word * backend_libs__switch_util__NeedRangeCheck_20,
+#line 165 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__FirstVal_21,
+#line 165 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__LastVal_22)
+#line 165 "switch_util.m"
+{
+#line 741 "switch_util.m"
+  {
+#line 741 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 741 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Span_23 = (backend_libs__switch_util__UpperLimit_16 - backend_libs__switch_util__LowerLimit_15);
+#line 741 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Range_24 = (backend_libs__switch_util__Span_23 + (MR_Integer) 1);
+#line 741 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Density_25;
+#line 741 "switch_util.m"
+    MR_Word backend_libs__switch_util__NeedBitVecCheck0_26;
+#line 741 "switch_util.m"
+    MR_Integer backend_libs__switch_util__V_37_37 = (backend_libs__switch_util__NumValues_17 * (MR_Integer) 100);
+
+#line 696 "switch_util.m"
+    {
+#line 696 "switch_util.m"
+      backend_libs__switch_util__Density_25 = mercury__int__f_47_47_2_f_0(backend_libs__switch_util__V_37_37, backend_libs__switch_util__Range_24);
+    }
+#line 748 "switch_util.m"
+    backend_libs__switch_util__succeeded = (backend_libs__switch_util__Density_25 > backend_libs__switch_util__ReqDensity_18);
+#line 741 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 741 "switch_util.m"
+      {
+#line 752 "switch_util.m"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__NumValues_17 == backend_libs__switch_util__Range_24);
+#line 754 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 753 "switch_util.m"
+          backend_libs__switch_util__NeedBitVecCheck0_26 = (MR_Integer) 1;
+#line 754 "switch_util.m"
+        else
+#line 755 "switch_util.m"
+          backend_libs__switch_util__NeedBitVecCheck0_26 = (MR_Integer) 0;
+#line 781 "switch_util.m"
+#line 781 "switch_util.m"
+        switch (backend_libs__switch_util__SwitchCanFail_14) {
+#line 781 "switch_util.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 781 "switch_util.m"
+          case (MR_Integer) 0:
+#line 758 "switch_util.m"
+            {
+#line 758 "switch_util.m"
+              MR_Word backend_libs__switch_util__TypeCategory_27;
+#line 775 "switch_util.m"
+              MR_Integer backend_libs__switch_util__TypeRange_30;
+#line 767 "switch_util.m"
+              MR_Integer backend_libs__switch_util__DetDensity_31;
+#line 767 "switch_util.m"
+              MR_Integer backend_libs__switch_util__V_42_42;
+#line 767 "switch_util.m"
+              MR_Integer backend_libs__switch_util__V_43_43;
+#line 766 "switch_util.m"
+              MR_Integer backend_libs__switch_util__V_28_28;
+#line 766 "switch_util.m"
+              MR_Integer backend_libs__switch_util__V_29_29;
+
+#line 764 "switch_util.m"
+              {
+#line 764 "switch_util.m"
+                backend_libs__switch_util__TypeCategory_27 = check_hlds__type_util__classify_type_2_f_0(backend_libs__switch_util__ModuleInfo_12, backend_libs__switch_util__SwitchVarType_13);
+              }
+#line 766 "switch_util.m"
+              {
+#line 766 "switch_util.m"
+                backend_libs__switch_util__succeeded = backend_libs__switch_util__type_range_6_p_0(backend_libs__switch_util__ModuleInfo_12, backend_libs__switch_util__TypeCategory_27, backend_libs__switch_util__SwitchVarType_13, &backend_libs__switch_util__V_28_28, &backend_libs__switch_util__V_29_29, &backend_libs__switch_util__TypeRange_30);
+              }
+#line 767 "switch_util.m"
+              if (backend_libs__switch_util__succeeded)
+#line 767 "switch_util.m"
+                {
+#line 696 "switch_util.m"
+                  backend_libs__switch_util__V_43_43 = (MR_Integer) 100;
+#line 696 "switch_util.m"
+                  backend_libs__switch_util__V_42_42 = (backend_libs__switch_util__NumValues_17 * backend_libs__switch_util__V_43_43);
+#line 696 "switch_util.m"
+                  {
+#line 696 "switch_util.m"
+                    backend_libs__switch_util__DetDensity_31 = mercury__int__f_47_47_2_f_0(backend_libs__switch_util__V_42_42, backend_libs__switch_util__TypeRange_30);
+                  }
+#line 769 "switch_util.m"
+                  backend_libs__switch_util__succeeded = (backend_libs__switch_util__DetDensity_31 > backend_libs__switch_util__ReqDensity_18);
+#line 767 "switch_util.m"
+                }
+#line 775 "switch_util.m"
+              if (backend_libs__switch_util__succeeded)
+#line 771 "switch_util.m"
+                {
+#line 771 "switch_util.m"
+                  *backend_libs__switch_util__NeedRangeCheck_20 = (MR_Integer) 1;
+#line 772 "switch_util.m"
+                  *backend_libs__switch_util__NeedBitVecCheck_19 = (MR_Integer) 0;
+#line 773 "switch_util.m"
+                  *backend_libs__switch_util__FirstVal_21 = (MR_Integer) 0;
+#line 774 "switch_util.m"
+                  *backend_libs__switch_util__LastVal_22 = (backend_libs__switch_util__TypeRange_30 - (MR_Integer) 1);
+#line 771 "switch_util.m"
+                }
+#line 775 "switch_util.m"
+              else
+#line 776 "switch_util.m"
+                {
+#line 776 "switch_util.m"
+                  *backend_libs__switch_util__NeedRangeCheck_20 = (MR_Integer) 0;
+#line 777 "switch_util.m"
+                  *backend_libs__switch_util__NeedBitVecCheck_19 = backend_libs__switch_util__NeedBitVecCheck0_26;
+#line 778 "switch_util.m"
+                  *backend_libs__switch_util__FirstVal_21 = backend_libs__switch_util__LowerLimit_15;
+#line 779 "switch_util.m"
+                  *backend_libs__switch_util__LastVal_22 = backend_libs__switch_util__UpperLimit_16;
+#line 776 "switch_util.m"
+                }
+#line 758 "switch_util.m"
+            }
+#line 781 "switch_util.m"
+            break;
+#line 781 "switch_util.m"
+          case (MR_Integer) 1:
+#line 782 "switch_util.m"
+            {
+#line 783 "switch_util.m"
+              *backend_libs__switch_util__NeedRangeCheck_20 = (MR_Integer) 1;
+#line 784 "switch_util.m"
+              *backend_libs__switch_util__NeedBitVecCheck_19 = backend_libs__switch_util__NeedBitVecCheck0_26;
+#line 785 "switch_util.m"
+              *backend_libs__switch_util__FirstVal_21 = backend_libs__switch_util__LowerLimit_15;
+#line 786 "switch_util.m"
+              *backend_libs__switch_util__LastVal_22 = backend_libs__switch_util__UpperLimit_16;
+#line 782 "switch_util.m"
+            }
+#line 781 "switch_util.m"
+            break;
+#line 781 "switch_util.m"
+        }
+#line 781 "switch_util.m"
+        backend_libs__switch_util__succeeded = MR_TRUE;
+#line 741 "switch_util.m"
+      }
+#line 741 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 741 "switch_util.m"
+  }
+#line 165 "switch_util.m"
+}
+
+#line 161 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__filter_out_failing_cases_if_needed_5_p_0(
+#line 161 "switch_util.m"
+  MR_Word backend_libs__switch_util__CodeModel_6,
+#line 161 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_TaggedCases_0_9,
+#line 161 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_TaggedCases_10,
+#line 161 "switch_util.m"
+  MR_Word backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_11,
+#line 161 "switch_util.m"
+  MR_Word * backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_12)
+#line 161 "switch_util.m"
+{
+#line 708 "switch_util.m"
+  {
+#line 708 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 708 "switch_util.m"
+#line 708 "switch_util.m"
+    switch (backend_libs__switch_util__CodeModel_6) {
+#line 708 "switch_util.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 708 "switch_util.m"
+      case (MR_Integer) 0:
+#line 711 "switch_util.m"
+        {
+#line 711 "switch_util.m"
+          *backend_libs__switch_util__STATE_VARIABLE_TaggedCases_10 = backend_libs__switch_util__STATE_VARIABLE_TaggedCases_0_9;
+#line 711 "switch_util.m"
+          *backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_12 = backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_11;
+#line 711 "switch_util.m"
+        }
+#line 708 "switch_util.m"
+        break;
+#line 708 "switch_util.m"
+      case (MR_Integer) 2:
+#line 708 "switch_util.m"
+      case (MR_Integer) 1:
+#line 717 "switch_util.m"
+        {
+#line 717 "switch_util.m"
+          MR_Word backend_libs__switch_util__RevTaggedCases_20;
+
+#line 718 "switch_util.m"
+          {
+#line 718 "switch_util.m"
+            backend_libs__switch_util__filter_out_failing_cases_loop_5_p_0(backend_libs__switch_util__STATE_VARIABLE_TaggedCases_0_9, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &backend_libs__switch_util__RevTaggedCases_20, backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_0_11, backend_libs__switch_util__STATE_VARIABLE_SwitchCanFail_12);
+          }
+#line 720 "switch_util.m"
+          {
+#line 720 "switch_util.m"
+            mercury__list__reverse_2_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_tagged_case_0, backend_libs__switch_util__RevTaggedCases_20, backend_libs__switch_util__STATE_VARIABLE_TaggedCases_10);
+#line 720 "switch_util.m"
+            return;
+          }
+#line 717 "switch_util.m"
+        }
+#line 708 "switch_util.m"
+        break;
+#line 708 "switch_util.m"
+    }
+#line 708 "switch_util.m"
+  }
+#line 161 "switch_util.m"
+}
+
+#line 121 "switch_util.m"
+MR_Integer MR_CALL 
+backend_libs__switch_util__switch_density_2_f_0(
+#line 121 "switch_util.m"
+  MR_Integer backend_libs__switch_util__NumCases_4,
+#line 121 "switch_util.m"
+  MR_Integer backend_libs__switch_util__Range_5)
+#line 121 "switch_util.m"
+{
+#line 695 "switch_util.m"
+  {
+#line 695 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 695 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Density_6;
+#line 695 "switch_util.m"
+    MR_Integer backend_libs__switch_util__V_7_7 = (backend_libs__switch_util__NumCases_4 * (MR_Integer) 100);
+
+#line 696 "switch_util.m"
+    {
+#line 696 "switch_util.m"
+      return backend_libs__switch_util__Density_6 = mercury__int__f_47_47_2_f_0(backend_libs__switch_util__V_7_7, backend_libs__switch_util__Range_5);
+    }
+#line 695 "switch_util.m"
+    return backend_libs__switch_util__Density_6;
+#line 695 "switch_util.m"
+  }
+#line 121 "switch_util.m"
+}
+
+#line 116 "switch_util.m"
+MR_bool MR_CALL 
+backend_libs__switch_util__type_range_6_p_0(
+#line 116 "switch_util.m"
+  MR_Word backend_libs__switch_util__ModuleInfo_7,
+#line 116 "switch_util.m"
+  MR_Word backend_libs__switch_util__TypeCtorCat_8,
+#line 116 "switch_util.m"
+  MR_Word backend_libs__switch_util__Type_9,
+#line 116 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__Min_10,
+#line 116 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__Max_11,
+#line 116 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__NumValues_12)
+#line 116 "switch_util.m"
+{
+#line 665 "switch_util.m"
+  {
+#line 665 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 665 "switch_util.m"
+    MR_Integer backend_libs__switch_util__V_40_40;
+#line 665 "switch_util.m"
+    MR_Integer backend_libs__switch_util__V_41_41;
+
+#line 673 "switch_util.m"
+    if (((MR_tag((MR_Word) backend_libs__switch_util__TypeCtorCat_8)) == (MR_mktag((MR_Integer) 1))))
+#line 667 "switch_util.m"
+      {
+#line 667 "switch_util.m"
+        MR_Word backend_libs__switch_util__Globals_13;
+#line 667 "switch_util.m"
+        MR_Word backend_libs__switch_util__Target_14;
+#line 667 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeCtorCat_8, (MR_Integer) 0)));
+
+#line 667 "switch_util.m"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_39_39 == (MR_Integer) 2);
+#line 667 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 667 "switch_util.m"
+          {
+#line 670 "switch_util.m"
+            {
+#line 670 "switch_util.m"
+              hlds__hlds_module__module_info_get_globals_2_p_0(backend_libs__switch_util__ModuleInfo_7, &backend_libs__switch_util__Globals_13);
+            }
+#line 671 "switch_util.m"
+            {
+#line 671 "switch_util.m"
+              libs__globals__get_target_2_p_0(backend_libs__switch_util__Globals_13, &backend_libs__switch_util__Target_14);
+            }
+#line 672 "switch_util.m"
+            {
+#line 672 "switch_util.m"
+              backend_libs__string_encoding__target_char_range_3_p_0(backend_libs__switch_util__Target_14, backend_libs__switch_util__Min_10, backend_libs__switch_util__Max_11);
+            }
+#line 672 "switch_util.m"
+            backend_libs__switch_util__succeeded = MR_TRUE;
+#line 667 "switch_util.m"
+          }
+#line 667 "switch_util.m"
+      }
+#line 673 "switch_util.m"
+    else
+#line 673 "switch_util.m"
+    if (((MR_tag((MR_Word) backend_libs__switch_util__TypeCtorCat_8)) == (MR_mktag((MR_Integer) 2))))
+#line 674 "switch_util.m"
+      {
+#line 674 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeCtor_15;
+#line 674 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeTable_16;
+#line 674 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeDefn_17;
+#line 674 "switch_util.m"
+        MR_Word backend_libs__switch_util__TypeBody_18;
+#line 674 "switch_util.m"
+        MR_Word backend_libs__switch_util__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(2), backend_libs__switch_util__TypeCtorCat_8, (MR_Integer) 0)));
+
+#line 674 "switch_util.m"
+        backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_34_34 == (MR_Integer) 0);
+#line 674 "switch_util.m"
+        if (backend_libs__switch_util__succeeded)
+#line 674 "switch_util.m"
+          {
+#line 675 "switch_util.m"
+            *backend_libs__switch_util__Min_10 = (MR_Integer) 0;
+#line 676 "switch_util.m"
+            {
+#line 676 "switch_util.m"
+              parse_tree__prog_type__type_to_ctor_det_2_p_0(backend_libs__switch_util__Type_9, &backend_libs__switch_util__TypeCtor_15);
+            }
+#line 677 "switch_util.m"
+            {
+#line 677 "switch_util.m"
+              hlds__hlds_module__module_info_get_type_table_2_p_0(backend_libs__switch_util__ModuleInfo_7, &backend_libs__switch_util__TypeTable_16);
+            }
+#line 678 "switch_util.m"
+            {
+#line 678 "switch_util.m"
+              hlds__hlds_data__lookup_type_ctor_defn_3_p_0(backend_libs__switch_util__TypeTable_16, backend_libs__switch_util__TypeCtor_15, &backend_libs__switch_util__TypeDefn_17);
+            }
+#line 679 "switch_util.m"
+            {
+#line 679 "switch_util.m"
+              hlds__hlds_data__get_type_defn_body_2_p_0(backend_libs__switch_util__TypeDefn_17, &backend_libs__switch_util__TypeBody_18);
+            }
+#line 684 "switch_util.m"
+#line 684 "switch_util.m"
+            switch (MR_tag((MR_Word) backend_libs__switch_util__TypeBody_18)) {
+#line 684 "switch_util.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 684 "switch_util.m"
+              case (MR_Integer) 0:
+#line 689 "switch_util.m"
+                {
+#line 690 "switch_util.m"
+                  {
+#line 690 "switch_util.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.type_range\'/6", (MR_String) "enum type is not d.u. type\?");
+                  }
+#line 689 "switch_util.m"
+                }
+#line 684 "switch_util.m"
+                break;
+#line 684 "switch_util.m"
+              case (MR_Integer) 1:
+#line 681 "switch_util.m"
+                {
+#line 681 "switch_util.m"
+                  MR_Word backend_libs__switch_util__ConsTable_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 1)));
+#line 681 "switch_util.m"
+                  MR_Integer backend_libs__switch_util__TypeRange_28;
+#line 681 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 0)));
+#line 681 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 2)));
+#line 681 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 3)));
+#line 681 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 4)));
+#line 681 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 5)));
+#line 681 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_25_25 = ((((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 6)))) & (MR_Integer) 1);
+#line 681 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_26_26 = ((((((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 6)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+#line 681 "switch_util.m"
+                  MR_Word backend_libs__switch_util__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__TypeBody_18, (MR_Integer) 7)));
+
+#line 682 "switch_util.m"
+                  {
+#line 682 "switch_util.m"
+                    mercury__map__count_2_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_cons_id_0, (MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_cons_tag_0, backend_libs__switch_util__ConsTable_20, &backend_libs__switch_util__TypeRange_28);
+                  }
+#line 683 "switch_util.m"
+                  *backend_libs__switch_util__Max_11 = (backend_libs__switch_util__TypeRange_28 - (MR_Integer) 1);
+#line 681 "switch_util.m"
+                }
+#line 684 "switch_util.m"
+                break;
+#line 684 "switch_util.m"
+              case (MR_Integer) 2:
+#line 689 "switch_util.m"
+                {
+#line 690 "switch_util.m"
+                  {
+#line 690 "switch_util.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.type_range\'/6", (MR_String) "enum type is not d.u. type\?");
+                  }
+#line 689 "switch_util.m"
+                }
+#line 684 "switch_util.m"
+                break;
+#line 684 "switch_util.m"
+              case (MR_Integer) 3:
+#line 689 "switch_util.m"
+                {
+#line 690 "switch_util.m"
+                  {
+#line 690 "switch_util.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "predicate \140backend_libs.switch_util.type_range\'/6", (MR_String) "enum type is not d.u. type\?");
+                  }
+#line 689 "switch_util.m"
+                }
+#line 684 "switch_util.m"
+                break;
+#line 684 "switch_util.m"
+            }
+#line 684 "switch_util.m"
+            backend_libs__switch_util__succeeded = MR_TRUE;
+#line 674 "switch_util.m"
+          }
+#line 674 "switch_util.m"
+      }
+#line 673 "switch_util.m"
+    else
+#line 673 "switch_util.m"
+      backend_libs__switch_util__succeeded = MR_FALSE;
+#line 665 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 665 "switch_util.m"
+      {
+#line 693 "switch_util.m"
+        backend_libs__switch_util__V_40_40 = (*backend_libs__switch_util__Max_11 - *backend_libs__switch_util__Min_10);
+#line 693 "switch_util.m"
+        backend_libs__switch_util__V_41_41 = (MR_Integer) 1;
+#line 693 "switch_util.m"
+        *backend_libs__switch_util__NumValues_12 = (backend_libs__switch_util__V_40_40 + backend_libs__switch_util__V_41_41);
+#line 693 "switch_util.m"
+        backend_libs__switch_util__succeeded = MR_TRUE;
+#line 665 "switch_util.m"
+      }
+#line 665 "switch_util.m"
+    return backend_libs__switch_util__succeeded;
+#line 665 "switch_util.m"
+  }
+#line 116 "switch_util.m"
+}
+
+#line 101 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__find_switch_category_4_p_0(
+#line 101 "switch_util.m"
+  MR_Word backend_libs__switch_util__ModuleInfo_5,
+#line 101 "switch_util.m"
+  MR_Word backend_libs__switch_util__SwitchVarType_6,
+#line 101 "switch_util.m"
+  MR_Word * backend_libs__switch_util__SwitchCategory_7,
+#line 101 "switch_util.m"
+  MR_Word * backend_libs__switch_util__MayUseSmartIndexing_8)
+#line 101 "switch_util.m"
+{
+#line 600 "switch_util.m"
+  {
+#line 600 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 600 "switch_util.m"
+    MR_Word backend_libs__switch_util__SwitchTypeCtorCat_9;
+#line 600 "switch_util.m"
+    MR_Word backend_libs__switch_util__Globals_10;
+
+#line 601 "switch_util.m"
+    {
+#line 601 "switch_util.m"
+      backend_libs__switch_util__SwitchTypeCtorCat_9 = check_hlds__type_util__classify_type_2_f_0(backend_libs__switch_util__ModuleInfo_5, backend_libs__switch_util__SwitchVarType_6);
+    }
+#line 602 "switch_util.m"
+    {
+#line 602 "switch_util.m"
+      *backend_libs__switch_util__SwitchCategory_7 = backend_libs__switch_util__type_ctor_cat_to_switch_cat_1_f_0(backend_libs__switch_util__SwitchTypeCtorCat_9);
+    }
+#line 604 "switch_util.m"
+    {
+#line 604 "switch_util.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(backend_libs__switch_util__ModuleInfo_5, &backend_libs__switch_util__Globals_10);
+    }
+#line 609 "switch_util.m"
+    {
+#line 609 "switch_util.m"
+      MR_Word backend_libs__switch_util__SmartIndexing_11;
+
+#line 609 "switch_util.m"
+      {
+#line 609 "switch_util.m"
+        libs__globals__lookup_bool_option_3_p_0(backend_libs__switch_util__Globals_10, (MR_Integer) 434, &backend_libs__switch_util__SmartIndexing_11);
+      }
+#line 610 "switch_util.m"
+      backend_libs__switch_util__succeeded = (backend_libs__switch_util__SmartIndexing_11 == (MR_Integer) 0);
+#line 609 "switch_util.m"
+    }
+#line 611 "switch_util.m"
+    if (!(backend_libs__switch_util__succeeded))
+#line 611 "switch_util.m"
+      {
+#line 646 "switch_util.m"
+#line 646 "switch_util.m"
+        switch (*backend_libs__switch_util__SwitchCategory_7) {
+#line 646 "switch_util.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 646 "switch_util.m"
+          case (MR_Integer) 0:
+#line 646 "switch_util.m"
+            {
+#line 646 "switch_util.m"
+              MR_Word backend_libs__switch_util__SmartIndexingForCategory_12;
+
+#line 647 "switch_util.m"
+              {
+#line 647 "switch_util.m"
+                libs__globals__lookup_bool_option_3_p_0(backend_libs__switch_util__Globals_10, (MR_Integer) 447, &backend_libs__switch_util__SmartIndexingForCategory_12);
+              }
+#line 616 "switch_util.m"
+              backend_libs__switch_util__succeeded = (backend_libs__switch_util__SmartIndexingForCategory_12 == (MR_Integer) 0);
+#line 646 "switch_util.m"
+            }
+#line 646 "switch_util.m"
+            break;
+#line 646 "switch_util.m"
+          case (MR_Integer) 3:
+#line 655 "switch_util.m"
+            {
+#line 655 "switch_util.m"
+              MR_Word backend_libs__switch_util__SmartIndexingForCategory_34;
+
+#line 656 "switch_util.m"
+              {
+#line 656 "switch_util.m"
+                libs__globals__lookup_bool_option_3_p_0(backend_libs__switch_util__Globals_10, (MR_Integer) 450, &backend_libs__switch_util__SmartIndexingForCategory_34);
+              }
+#line 616 "switch_util.m"
+              backend_libs__switch_util__succeeded = (backend_libs__switch_util__SmartIndexingForCategory_34 == (MR_Integer) 0);
+#line 655 "switch_util.m"
+            }
+#line 646 "switch_util.m"
+            break;
+#line 646 "switch_util.m"
+          case (MR_Integer) 1:
+#line 649 "switch_util.m"
+            {
+#line 649 "switch_util.m"
+              MR_Word backend_libs__switch_util__SmartIndexingForCategory_35;
+
+#line 650 "switch_util.m"
+              {
+#line 650 "switch_util.m"
+                libs__globals__lookup_bool_option_3_p_0(backend_libs__switch_util__Globals_10, (MR_Integer) 448, &backend_libs__switch_util__SmartIndexingForCategory_35);
+              }
+#line 616 "switch_util.m"
+              backend_libs__switch_util__succeeded = (backend_libs__switch_util__SmartIndexingForCategory_35 == (MR_Integer) 0);
+#line 649 "switch_util.m"
+            }
+#line 646 "switch_util.m"
+            break;
+#line 646 "switch_util.m"
+          case (MR_Integer) 2:
+#line 652 "switch_util.m"
+            {
+#line 652 "switch_util.m"
+              MR_Word backend_libs__switch_util__SmartIndexingForCategory_36;
+
+#line 653 "switch_util.m"
+              {
+#line 653 "switch_util.m"
+                libs__globals__lookup_bool_option_3_p_0(backend_libs__switch_util__Globals_10, (MR_Integer) 449, &backend_libs__switch_util__SmartIndexingForCategory_36);
+              }
+#line 616 "switch_util.m"
+              backend_libs__switch_util__succeeded = (backend_libs__switch_util__SmartIndexingForCategory_36 == (MR_Integer) 0);
+#line 652 "switch_util.m"
+            }
+#line 646 "switch_util.m"
+            break;
+#line 646 "switch_util.m"
+        }
+#line 611 "switch_util.m"
+        if (!(backend_libs__switch_util__succeeded))
+#line 626 "switch_util.m"
+          {
+#line 626 "switch_util.m"
+            MR_Word backend_libs__switch_util__TypeTable_13;
+#line 626 "switch_util.m"
+            MR_Word backend_libs__switch_util__SwitchVarTypeCtor_14;
+#line 626 "switch_util.m"
+            MR_Word backend_libs__switch_util__SwitchVarTypeDefn_15;
+#line 626 "switch_util.m"
+            MR_Word backend_libs__switch_util__SwitchVarTypeBody_16;
+#line 626 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_17_17;
+#line 633 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_19_19;
+#line 633 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_20_20;
+#line 633 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_21_21;
+#line 633 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_22_22;
+#line 633 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_23_23;
+#line 633 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_24_24;
+#line 633 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_25_25;
+#line 633 "switch_util.m"
+            MR_Word backend_libs__switch_util__V_26_26;
+
+#line 626 "switch_util.m"
+            {
+#line 626 "switch_util.m"
+              hlds__hlds_module__module_info_get_type_table_2_p_0(backend_libs__switch_util__ModuleInfo_5, &backend_libs__switch_util__TypeTable_13);
+            }
+#line 627 "switch_util.m"
+            {
+#line 627 "switch_util.m"
+              parse_tree__prog_type__type_to_ctor_det_2_p_0(backend_libs__switch_util__SwitchVarType_6, &backend_libs__switch_util__SwitchVarTypeCtor_14);
+            }
+#line 630 "switch_util.m"
+            {
+#line 630 "switch_util.m"
+              backend_libs__switch_util__succeeded = hlds__hlds_data__search_type_ctor_defn_3_p_0(backend_libs__switch_util__TypeTable_13, backend_libs__switch_util__SwitchVarTypeCtor_14, &backend_libs__switch_util__SwitchVarTypeDefn_15);
+            }
+#line 626 "switch_util.m"
+            if (backend_libs__switch_util__succeeded)
+#line 626 "switch_util.m"
+              {
+#line 632 "switch_util.m"
+                {
+#line 632 "switch_util.m"
+                  hlds__hlds_data__get_type_defn_body_2_p_0(backend_libs__switch_util__SwitchVarTypeDefn_15, &backend_libs__switch_util__SwitchVarTypeBody_16);
+                }
+#line 633 "switch_util.m"
+                backend_libs__switch_util__succeeded = ((MR_tag((MR_Word) backend_libs__switch_util__SwitchVarTypeBody_16)) == (MR_mktag((MR_Integer) 1)));
+#line 633 "switch_util.m"
+                if (backend_libs__switch_util__succeeded)
+#line 633 "switch_util.m"
+                  {
+#line 633 "switch_util.m"
+                    backend_libs__switch_util__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 0)));
+#line 633 "switch_util.m"
+                    backend_libs__switch_util__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 1)));
+#line 633 "switch_util.m"
+                    backend_libs__switch_util__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 2)));
+#line 633 "switch_util.m"
+                    backend_libs__switch_util__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 3)));
+#line 633 "switch_util.m"
+                    backend_libs__switch_util__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 4)));
+#line 633 "switch_util.m"
+                    backend_libs__switch_util__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 5)));
+#line 633 "switch_util.m"
+                    backend_libs__switch_util__V_25_25 = ((((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 6)))) & (MR_Integer) 1);
+#line 633 "switch_util.m"
+                    backend_libs__switch_util__V_17_17 = ((((((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 6)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+#line 633 "switch_util.m"
+                    backend_libs__switch_util__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__SwitchVarTypeBody_16, (MR_Integer) 7)));
+#line 633 "switch_util.m"
+                    backend_libs__switch_util__succeeded = (backend_libs__switch_util__V_17_17 == (MR_Integer) 0);
+#line 633 "switch_util.m"
+                  }
+#line 626 "switch_util.m"
+              }
+#line 626 "switch_util.m"
+          }
+#line 611 "switch_util.m"
+      }
+#line 637 "switch_util.m"
+    if (backend_libs__switch_util__succeeded)
+#line 636 "switch_util.m"
+      *backend_libs__switch_util__MayUseSmartIndexing_8 = (MR_Integer) 0;
+#line 637 "switch_util.m"
+    else
+#line 638 "switch_util.m"
+      *backend_libs__switch_util__MayUseSmartIndexing_8 = (MR_Integer) 1;
+#line 600 "switch_util.m"
+  }
+#line 101 "switch_util.m"
+}
+
+#line 92 "switch_util.m"
+MR_Integer MR_CALL 
+backend_libs__switch_util__estimate_switch_tag_test_cost_1_f_0(
+#line 92 "switch_util.m"
+  MR_Word backend_libs__switch_util__Tag_3)
+#line 92 "switch_util.m"
+{
+#line 546 "switch_util.m"
+  {
+#line 546 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 546 "switch_util.m"
+    MR_Integer backend_libs__switch_util__Cost_4;
+
+#line 546 "switch_util.m"
+#line 546 "switch_util.m"
+    switch (MR_tag((MR_Word) backend_libs__switch_util__Tag_3)) {
+#line 546 "switch_util.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 546 "switch_util.m"
+      case (MR_Integer) 0:
+#line 546 "switch_util.m"
+#line 546 "switch_util.m"
+        switch (MR_unmkbody(backend_libs__switch_util__Tag_3)) {
+#line 546 "switch_util.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 546 "switch_util.m"
+          case (MR_Integer) 0:
+#line 555 "switch_util.m"
+            backend_libs__switch_util__Cost_4 = (MR_Integer) 2;
+#line 546 "switch_util.m"
+            break;
+#line 546 "switch_util.m"
+          case (MR_Integer) 1:
+#line 595 "switch_util.m"
+            {
+#line 596 "switch_util.m"
+              {
+#line 596 "switch_util.m"
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.estimate_switch_tag_test_cost\'/1", (MR_String) "non-switch tag");
+              }
+#line 595 "switch_util.m"
+            }
+#line 546 "switch_util.m"
+            break;
+#line 546 "switch_util.m"
+        }
+#line 546 "switch_util.m"
+        break;
+#line 546 "switch_util.m"
+      case (MR_Integer) 1:
+#line 573 "switch_util.m"
+        {
+#line 573 "switch_util.m"
+          MR_String backend_libs__switch_util__String_16 = ((MR_String) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__Tag_3, (MR_Integer) 0)));
+#line 573 "switch_util.m"
+          MR_Integer backend_libs__switch_util__V_46_46;
+#line 573 "switch_util.m"
+          MR_Integer backend_libs__switch_util__V_48_48;
+
+#line 579 "switch_util.m"
+          {
+#line 579 "switch_util.m"
+            backend_libs__switch_util__V_48_48 = mercury__string__length_1_f_0(backend_libs__switch_util__String_16);
+          }
+#line 579 "switch_util.m"
+          backend_libs__switch_util__V_46_46 = ((MR_Integer) 2 * backend_libs__switch_util__V_48_48);
+#line 579 "switch_util.m"
+          backend_libs__switch_util__Cost_4 = ((MR_Integer) 1 + backend_libs__switch_util__V_46_46);
+#line 573 "switch_util.m"
+        }
+#line 546 "switch_util.m"
+        break;
+#line 546 "switch_util.m"
+      case (MR_Integer) 2:
+#line 566 "switch_util.m"
+        backend_libs__switch_util__Cost_4 = (MR_Integer) 3;
+#line 546 "switch_util.m"
+        break;
+#line 546 "switch_util.m"
+      case (MR_Integer) 3:
+#line 546 "switch_util.m"
+#line 546 "switch_util.m"
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_3, (MR_Integer) 0)))) {
+#line 546 "switch_util.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 546 "switch_util.m"
+          case (MR_Integer) 0:
+#line 546 "switch_util.m"
+          case (MR_Integer) 1:
+#line 546 "switch_util.m"
+          case (MR_Integer) 14:
+#line 546 "switch_util.m"
+          case (MR_Integer) 15:
+#line 548 "switch_util.m"
+            backend_libs__switch_util__Cost_4 = (MR_Integer) 1;
+#line 546 "switch_util.m"
+            break;
+#line 546 "switch_util.m"
+          case (MR_Integer) 2:
+#line 546 "switch_util.m"
+          case (MR_Integer) 3:
+#line 546 "switch_util.m"
+          case (MR_Integer) 4:
+#line 546 "switch_util.m"
+          case (MR_Integer) 5:
+#line 546 "switch_util.m"
+          case (MR_Integer) 6:
+#line 546 "switch_util.m"
+          case (MR_Integer) 7:
+#line 546 "switch_util.m"
+          case (MR_Integer) 8:
+#line 546 "switch_util.m"
+          case (MR_Integer) 9:
+#line 546 "switch_util.m"
+          case (MR_Integer) 10:
+#line 595 "switch_util.m"
+            {
+#line 596 "switch_util.m"
+              {
+#line 596 "switch_util.m"
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.estimate_switch_tag_test_cost\'/1", (MR_String) "non-switch tag");
+              }
+#line 595 "switch_util.m"
+            }
+#line 546 "switch_util.m"
+            break;
+#line 546 "switch_util.m"
+          case (MR_Integer) 11:
+#line 546 "switch_util.m"
+          case (MR_Integer) 12:
+#line 561 "switch_util.m"
+            backend_libs__switch_util__Cost_4 = (MR_Integer) 2;
+#line 546 "switch_util.m"
+            break;
+#line 546 "switch_util.m"
+          case (MR_Integer) 13:
+#line 571 "switch_util.m"
+            backend_libs__switch_util__Cost_4 = (MR_Integer) 4;
+#line 546 "switch_util.m"
+            break;
+#line 546 "switch_util.m"
+          case (MR_Integer) 16:
+#line 581 "switch_util.m"
+            {
+#line 581 "switch_util.m"
+              MR_Word backend_libs__switch_util__RAs_17 = ((MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_3, (MR_Integer) 1)));
+#line 581 "switch_util.m"
+              MR_Word backend_libs__switch_util__SubTag_18 = ((MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__Tag_3, (MR_Integer) 2)));
+#line 581 "switch_util.m"
+              MR_Integer backend_libs__switch_util__V_41_41;
+#line 581 "switch_util.m"
+              MR_Integer backend_libs__switch_util__V_43_43;
+#line 581 "switch_util.m"
+              MR_Integer backend_libs__switch_util__V_44_44;
+
+#line 583 "switch_util.m"
+              {
+#line 583 "switch_util.m"
+                backend_libs__switch_util__V_43_43 = mercury__list__length_1_f_0((MR_Word) &hlds__hlds_data__hlds__hlds_data__type_ctor_info_reserved_address_0, backend_libs__switch_util__RAs_17);
+              }
+#line 583 "switch_util.m"
+              backend_libs__switch_util__V_41_41 = ((MR_Integer) 2 * backend_libs__switch_util__V_43_43);
+#line 583 "switch_util.m"
+              {
+#line 583 "switch_util.m"
+                backend_libs__switch_util__V_44_44 = backend_libs__switch_util__estimate_switch_tag_test_cost_1_f_0(backend_libs__switch_util__SubTag_18);
+              }
+#line 583 "switch_util.m"
+              backend_libs__switch_util__Cost_4 = (backend_libs__switch_util__V_41_41 + backend_libs__switch_util__V_44_44);
+#line 581 "switch_util.m"
+            }
+#line 546 "switch_util.m"
+            break;
+#line 546 "switch_util.m"
+        }
+#line 546 "switch_util.m"
+        break;
+#line 546 "switch_util.m"
+    }
+#line 546 "switch_util.m"
+    return backend_libs__switch_util__Cost_4;
+#line 546 "switch_util.m"
+  }
+#line 92 "switch_util.m"
+}
+
+#line 85 "switch_util.m"
+MR_Word MR_CALL 
+backend_libs__switch_util__type_ctor_cat_to_switch_cat_1_f_0(
+#line 85 "switch_util.m"
+  MR_Word backend_libs__switch_util__CtorCat_3)
+#line 85 "switch_util.m"
+{
+#line 514 "switch_util.m"
+  {
+#line 514 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+#line 514 "switch_util.m"
+    MR_Word backend_libs__switch_util__SwitchCat_4;
+
+#line 514 "switch_util.m"
+#line 514 "switch_util.m"
+    switch (MR_tag((MR_Word) backend_libs__switch_util__CtorCat_3)) {
+#line 514 "switch_util.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 514 "switch_util.m"
+      case (MR_Integer) 0:
+#line 514 "switch_util.m"
+#line 514 "switch_util.m"
+        switch (MR_unmkbody(backend_libs__switch_util__CtorCat_3)) {
+#line 514 "switch_util.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 514 "switch_util.m"
+          case (MR_Integer) 0:
+#line 534 "switch_util.m"
+            {
+#line 537 "switch_util.m"
+              {
+#line 537 "switch_util.m"
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+              }
+#line 534 "switch_util.m"
+            }
+#line 514 "switch_util.m"
+            break;
+#line 514 "switch_util.m"
+          case (MR_Integer) 1:
+#line 534 "switch_util.m"
+            {
+#line 537 "switch_util.m"
+              {
+#line 537 "switch_util.m"
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+              }
+#line 534 "switch_util.m"
+            }
+#line 514 "switch_util.m"
+            break;
+#line 514 "switch_util.m"
+          case (MR_Integer) 2:
+#line 534 "switch_util.m"
+            {
+#line 537 "switch_util.m"
+              {
+#line 537 "switch_util.m"
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+              }
+#line 534 "switch_util.m"
+            }
+#line 514 "switch_util.m"
+            break;
+#line 514 "switch_util.m"
+          case (MR_Integer) 3:
+#line 534 "switch_util.m"
+            {
+#line 537 "switch_util.m"
+              {
+#line 537 "switch_util.m"
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+              }
+#line 534 "switch_util.m"
+            }
+#line 514 "switch_util.m"
+            break;
+#line 514 "switch_util.m"
+          case (MR_Integer) 4:
+#line 534 "switch_util.m"
+            {
+#line 537 "switch_util.m"
+              {
+#line 537 "switch_util.m"
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+              }
+#line 534 "switch_util.m"
+            }
+#line 514 "switch_util.m"
+            break;
+#line 514 "switch_util.m"
+        }
+#line 514 "switch_util.m"
+        break;
+#line 514 "switch_util.m"
+      case (MR_Integer) 1:
+#line 514 "switch_util.m"
+        {
+#line 514 "switch_util.m"
+          MR_Word backend_libs__switch_util__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(1), backend_libs__switch_util__CtorCat_3, (MR_Integer) 0)));
+
+#line 514 "switch_util.m"
+          backend_libs__switch_util__SwitchCat_4 = ((&backend_libs__switch_util_vector_common_3[0 + backend_libs__switch_util__V_41_41]))->backend_libs__switch_util__vector_common_type_3_0__vct_3_f_0;
+#line 514 "switch_util.m"
+        }
+#line 514 "switch_util.m"
+        break;
+#line 514 "switch_util.m"
+      case (MR_Integer) 2:
+#line 515 "switch_util.m"
+        backend_libs__switch_util__SwitchCat_4 = (MR_Integer) 0;
+#line 514 "switch_util.m"
+        break;
+#line 514 "switch_util.m"
+      case (MR_Integer) 3:
+#line 514 "switch_util.m"
+#line 514 "switch_util.m"
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__CtorCat_3, (MR_Integer) 0)))) {
+#line 514 "switch_util.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 514 "switch_util.m"
+          case (MR_Integer) 0:
+#line 534 "switch_util.m"
+            {
+#line 537 "switch_util.m"
+              {
+#line 537 "switch_util.m"
+                mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+              }
+#line 534 "switch_util.m"
+            }
+#line 514 "switch_util.m"
+            break;
+#line 514 "switch_util.m"
+          case (MR_Integer) 1:
+#line 514 "switch_util.m"
+            {
+#line 514 "switch_util.m"
+              MR_Word backend_libs__switch_util__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(3), backend_libs__switch_util__CtorCat_3, (MR_Integer) 1)));
+
+#line 514 "switch_util.m"
+#line 514 "switch_util.m"
+              switch (backend_libs__switch_util__V_42_42) {
+#line 514 "switch_util.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 514 "switch_util.m"
+                case (MR_Integer) 0:
+#line 534 "switch_util.m"
+                  {
+#line 537 "switch_util.m"
+                    {
+#line 537 "switch_util.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+                    }
+#line 534 "switch_util.m"
+                  }
+#line 514 "switch_util.m"
+                  break;
+#line 514 "switch_util.m"
+                case (MR_Integer) 2:
+#line 524 "switch_util.m"
+                  backend_libs__switch_util__SwitchCat_4 = (MR_Integer) 2;
+#line 514 "switch_util.m"
+                  break;
+#line 514 "switch_util.m"
+                case (MR_Integer) 1:
+#line 534 "switch_util.m"
+                  {
+#line 537 "switch_util.m"
+                    {
+#line 537 "switch_util.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "backend_libs.switch_util", (MR_String) "function \140backend_libs.switch_util.type_ctor_cat_to_switch_cat\'/1", (MR_String) "bad type ctor cat");
+                    }
+#line 534 "switch_util.m"
+                  }
+#line 514 "switch_util.m"
+                  break;
+#line 514 "switch_util.m"
+              }
+#line 514 "switch_util.m"
+            }
+#line 514 "switch_util.m"
+            break;
+#line 514 "switch_util.m"
+        }
+#line 514 "switch_util.m"
+        break;
+#line 514 "switch_util.m"
+    }
+#line 514 "switch_util.m"
+    return backend_libs__switch_util__SwitchCat_4;
+#line 514 "switch_util.m"
+  }
+#line 85 "switch_util.m"
+}
+
+#line 69 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__num_cons_ids_in_tagged_cases_3_p_0(
+#line 69 "switch_util.m"
+  MR_Word backend_libs__switch_util__TaggedCases_4,
+#line 69 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__NumConsIds_5,
+#line 69 "switch_util.m"
+  MR_Integer * backend_libs__switch_util__NumArms_6)
+#line 69 "switch_util.m"
+{
+#line 489 "switch_util.m"
+  {
+#line 489 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 490 "switch_util.m"
+    {
+#line 490 "switch_util.m"
+      backend_libs__switch_util__num_cons_ids_in_tagged_cases_loop_5_p_0(backend_libs__switch_util__TaggedCases_4, (MR_Integer) 0, backend_libs__switch_util__NumConsIds_5, (MR_Integer) 0, backend_libs__switch_util__NumArms_6);
+#line 490 "switch_util.m"
+      return;
+    }
+#line 489 "switch_util.m"
+  }
+#line 69 "switch_util.m"
+}
+
+#line 62 "switch_util.m"
+void MR_CALL 
+backend_libs__switch_util__tag_cases_5_p_0(
+#line 62 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__1_1,
+#line 62 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__2_2,
+#line 62 "switch_util.m"
+  MR_Word backend_libs__switch_util__HeadVar__3_3,
+#line 62 "switch_util.m"
+  MR_Word * backend_libs__switch_util__HeadVar__4_4,
+#line 62 "switch_util.m"
+  MR_Word * backend_libs__switch_util__MaybeIntSwitchLimits_5)
+#line 62 "switch_util.m"
+{
+#line 395 "switch_util.m"
+  {
+#line 395 "switch_util.m"
+    MR_bool backend_libs__switch_util__succeeded;
+
+#line 395 "switch_util.m"
+    {
+#line 395 "switch_util.m"
+      backend_libs__switch_util__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_97_103_95_99_97_115_101_115_95_95_91_50_93_95_48_5_p_0(backend_libs__switch_util__HeadVar__1_1, backend_libs__switch_util__HeadVar__3_3, backend_libs__switch_util__HeadVar__4_4, backend_libs__switch_util__MaybeIntSwitchLimits_5);
+#line 395 "switch_util.m"
+      return;
+    }
+#line 395 "switch_util.m"
+  }
+#line 62 "switch_util.m"
+}
+
+void mercury__backend_libs__switch_util__init(void)
+{
+}
+
+void mercury__backend_libs__switch_util__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_consts_3);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_consts_several_llds_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_case_id_ptags_map_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_is_int_switch_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_may_use_smart_indexing_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_maybe_int_switch_info_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_need_bit_vec_check_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_need_range_check_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_entry_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_entry_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_group_list_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_list_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_map_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_case_rev_map_entry_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_ptag_count_map_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_soln_consts_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_stag_goal_list_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_stag_goal_map_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_string_hash_slot_1);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_switch_category_0);
+	MR_register_type_ctor_info(&backend_libs__switch_util__backend_libs__switch_util__type_ctor_info_table_size_upgrade_0);
+}
+
+void mercury__backend_libs__switch_util__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module backend_libs.switch_util. */

@@ -1,0 +1,13 @@
+module(1, "builtin.m",
+	builtin,
+	{},
+	{builtin, private_builtin},
+	{builtin, int, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - builtin, "C#" - builtin, "Java" - builtin, "Erlang" - builtin, "C" - builtin},
+	contains_foreign_export,
+	no_main
+).

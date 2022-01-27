@@ -1,0 +1,98 @@
+:- module (hlds.pred_table).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module set_tree234.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.module_qual).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.status).
+:- type constraint_search == pred(int, list.list(parse_tree.prog_data.prog_constraint)).
+:- type is_fully_qualified
+    --->    is_fully_qualified 
+    ;       may_be_partially_qualified .
+:- type mode_no
+    --->    only_mode 
+    ;       mode_no(int).
+:- type pred_table == map.map(hlds.hlds_pred.pred_id, hlds.hlds_pred.pred_info).
+:- type predicate_table.
+:- inst (constraint_search) == (pred((builtin.in), (builtin.out)) is semidet).
+:- pred find_matching_pred_id(hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_id), parse_tree.prog_data.tvarset, parse_tree.prog_data.existq_tvars, list.list(parse_tree.prog_data.mer_type), hlds.hlds_pred.head_type_params, maybe.maybe(hlds.pred_table.constraint_search), parse_tree.prog_data.prog_context, hlds.hlds_pred.pred_id, mdbcomp.sym_name.sym_name).
+:- mode find_matching_pred_id((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), builtin.in(maybe.maybe(((hlds.pred_table).constraint_search))), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred get_next_pred_id(hlds.pred_table.predicate_table, hlds.hlds_pred.pred_id).
+:- mode get_next_pred_id((builtin.in), (builtin.out)) is det.
+:- pred get_pred_id_and_proc_id_by_types(hlds.pred_table.is_fully_qualified, mdbcomp.sym_name.sym_name, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.tvarset, parse_tree.prog_data.existq_tvars, list.list(parse_tree.prog_data.mer_type), hlds.hlds_pred.head_type_params, hlds.hlds_module.module_info, parse_tree.prog_data.prog_context, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id).
+:- mode get_pred_id_and_proc_id_by_types((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_pred_id_by_types(hlds.pred_table.is_fully_qualified, mdbcomp.sym_name.sym_name, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.tvarset, parse_tree.prog_data.existq_tvars, list.list(parse_tree.prog_data.mer_type), hlds.hlds_pred.head_type_params, hlds.hlds_module.module_info, parse_tree.prog_data.prog_context, hlds.hlds_pred.pred_id).
+:- mode get_pred_id_by_types((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred get_proc_id(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id).
+:- mode get_proc_id((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred lookup_builtin_pred_proc_id(hlds.hlds_module.module_info, mdbcomp.sym_name.module_name, string, mdbcomp.prim_data.pred_or_func, parse_tree.prog_data.arity, hlds.pred_table.mode_no, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id).
+:- mode lookup_builtin_pred_proc_id((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred predicate_table_get_preds(hlds.pred_table.predicate_table, hlds.pred_table.pred_table).
+:- mode predicate_table_get_preds((builtin.in), (builtin.out)) is det.
+:- pred predicate_table_get_valid_pred_id_set(hlds.pred_table.predicate_table, set_tree234.set_tree234(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_get_valid_pred_id_set((builtin.in), (builtin.out)) is det.
+:- pred predicate_table_init(hlds.pred_table.predicate_table).
+:- mode predicate_table_init((builtin.out)) is det.
+:- pred predicate_table_insert(hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_id, hlds.pred_table.predicate_table, hlds.pred_table.predicate_table).
+:- mode predicate_table_insert((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_insert_qual(hlds.hlds_pred.pred_info, parse_tree.status.need_qualifier, parse_tree.module_qual.partial_qualifier_info, hlds.hlds_pred.pred_id, hlds.pred_table.predicate_table, hlds.pred_table.predicate_table).
+:- mode predicate_table_insert_qual((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_func_m_n_a(hlds.pred_table.predicate_table, hlds.pred_table.is_fully_qualified, mdbcomp.sym_name.module_name, string, parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_func_m_n_a((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_func_name(hlds.pred_table.predicate_table, string, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_func_name((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_func_name_arity(hlds.pred_table.predicate_table, string, parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_func_name_arity((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_func_sym(hlds.pred_table.predicate_table, hlds.pred_table.is_fully_qualified, mdbcomp.sym_name.sym_name, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_func_sym((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_func_sym_arity(hlds.pred_table.predicate_table, hlds.pred_table.is_fully_qualified, mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_func_sym_arity((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_m_n_a(hlds.pred_table.predicate_table, hlds.pred_table.is_fully_qualified, mdbcomp.sym_name.module_name, string, parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_m_n_a((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_name(hlds.pred_table.predicate_table, string, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_name((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_name_arity(hlds.pred_table.predicate_table, string, parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_name_arity((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_pf_m_n_a(hlds.pred_table.predicate_table, hlds.pred_table.is_fully_qualified, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.module_name, string, parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_pf_m_n_a((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_pf_name_arity(hlds.pred_table.predicate_table, mdbcomp.prim_data.pred_or_func, string, parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_pf_name_arity((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_pf_sym(hlds.pred_table.predicate_table, hlds.pred_table.is_fully_qualified, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.sym_name, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_pf_sym((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_pf_sym_arity(hlds.pred_table.predicate_table, hlds.pred_table.is_fully_qualified, mdbcomp.prim_data.pred_or_func, mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_pf_sym_arity((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_pred_m_n_a(hlds.pred_table.predicate_table, hlds.pred_table.is_fully_qualified, mdbcomp.sym_name.module_name, string, parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_pred_m_n_a((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_pred_name(hlds.pred_table.predicate_table, string, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_pred_name((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_pred_name_arity(hlds.pred_table.predicate_table, string, parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_pred_name_arity((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_pred_sym(hlds.pred_table.predicate_table, hlds.pred_table.is_fully_qualified, mdbcomp.sym_name.sym_name, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_pred_sym((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_pred_sym_arity(hlds.pred_table.predicate_table, hlds.pred_table.is_fully_qualified, mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_pred_sym_arity((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_sym(hlds.pred_table.predicate_table, hlds.pred_table.is_fully_qualified, mdbcomp.sym_name.sym_name, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_sym((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_lookup_sym_arity(hlds.pred_table.predicate_table, hlds.pred_table.is_fully_qualified, mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity, list.list(hlds.hlds_pred.pred_id)).
+:- mode predicate_table_lookup_sym_arity((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_make_pred_id_invalid(hlds.hlds_pred.pred_id, hlds.pred_table.predicate_table, hlds.pred_table.predicate_table).
+:- mode predicate_table_make_pred_id_invalid((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_make_pred_ids_invalid(list.list(hlds.hlds_pred.pred_id), hlds.pred_table.predicate_table, hlds.pred_table.predicate_table).
+:- mode predicate_table_make_pred_ids_invalid((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_optimize(hlds.pred_table.predicate_table, hlds.pred_table.predicate_table).
+:- mode predicate_table_optimize((builtin.in), (builtin.out)) is det.
+:- pred predicate_table_remove_predicate(hlds.hlds_pred.pred_id, hlds.pred_table.predicate_table, hlds.pred_table.predicate_table).
+:- mode predicate_table_remove_predicate((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_restrict(parse_tree.module_qual.partial_qualifier_info, list.list(hlds.hlds_pred.pred_id), hlds.pred_table.predicate_table, hlds.pred_table.predicate_table).
+:- mode predicate_table_restrict((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred predicate_table_set_preds(hlds.pred_table.pred_table, hlds.pred_table.predicate_table, hlds.pred_table.predicate_table).
+:- mode predicate_table_set_preds((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred resolve_pred_overloading(hlds.hlds_module.module_info, hlds.hlds_pred.pred_markers, parse_tree.prog_data.tvarset, parse_tree.prog_data.existq_tvars, list.list(parse_tree.prog_data.mer_type), hlds.hlds_pred.head_type_params, parse_tree.prog_data.prog_context, mdbcomp.sym_name.sym_name, mdbcomp.sym_name.sym_name, hlds.hlds_pred.pred_id).
+:- mode resolve_pred_overloading((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.

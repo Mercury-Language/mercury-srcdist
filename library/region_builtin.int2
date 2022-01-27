@@ -1,0 +1,9 @@
+:- module region_builtin.
+:- interface.
+:- import_module io.
+:- type region.
+:- implementation.
+:- pragma foreign_type(c, region, "MR_RegionHeader *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, region, "java.lang.Object").
+:- pragma foreign_type(csharp, region, "object").
+:- pragma foreign_type(erlang, region, "").

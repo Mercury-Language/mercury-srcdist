@@ -1,0 +1,64 @@
+:- module random.
+:- use_module array, builtin, int, list, private_builtin.
+:- type supply
+    --->    rs(int).
+:- pred random.params(int, int, int).
+:- mode random.params((builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred random.perform_sampling(int, array.array(T_1), list.list(T_1), list.list(T_1), random.supply, random.supply).
+:- mode random.perform_sampling((builtin.in), (array.array_di), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode random.perform_sampling((builtin.in), (array.array_di), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred random.test_2(int, list.list(int), random.supply, random.supply).
+:- mode random.test_2((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode random.test_2((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+random.init(I0_3, random.rs(RS_4)) :-
+    builtin.copy(I0_3, RS_4).
+random.randmax(M1_4, RS_5, RS_5) :-
+    random.params(_A_6, _C_7, M_8),
+    M1_4 = int.(M_8 - V_9),
+    V_9 = 1 : int.
+random.randcount(M_4, RS_5, RS_5) :-
+    random.params(_A_6, _C_7, M_4).
+random.permutation(List0_5, List_6, STATE_VARIABLE_RS_0_10, STATE_VARIABLE_RS_11) :-
+    Samples_8 = array.array(List0_5),
+    Len_9 = array.size(Samples_8),
+    V_12 = list.[] : list.list(T_1),
+    random.perform_sampling(Len_9, Samples_8, V_12, List_6, STATE_VARIABLE_RS_0_10, STATE_VARIABLE_RS_11).
+random.test(Seed_5, N_6, Nums_7, Max_8) :-
+    random.init(Seed_5, RS_9),
+    random.randmax(Max_8, RS_9, RS1_10),
+    random.test_2(N_6, Nums_7, RS1_10, _RS2_11).
+random.params(9301, 49297, 233280).
+:- pragma exceptions(predicate, (random.init), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.random), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.random), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.random), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.random), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.randmax), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (random.randmax), 3, 1, will_not_throw).
+:- pragma exceptions(predicate, (random.randcount), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (random.randcount), 3, 1, will_not_throw).
+:- pragma exceptions(predicate, (random.permutation), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.permutation), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.test), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.params), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (random.perform_sampling), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.perform_sampling), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.test_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.test_2), 4, 1, may_throw(user_exception)).
+:- pragma termination_info(random.init((builtin.in), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.random((builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.random((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.random((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.random((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.randmax((builtin.out), (builtin.mdi), (builtin.muo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(random.randmax((builtin.out), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(random.randcount((builtin.out), (builtin.mdi), (builtin.muo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(random.randcount((builtin.out), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(random.permutation((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.permutation((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.test((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.params((builtin.out), (builtin.out), (builtin.out)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(random.perform_sampling((builtin.in), (array.array_di), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.perform_sampling((builtin.in), (array.array_di), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.test_2((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.test_2((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).

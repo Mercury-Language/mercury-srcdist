@@ -1,0 +1,13 @@
+module(1, "browser_info.m",
+	(mdb.browser_info),
+	{mdb},
+	{builtin, bool, getopt, io, list, maybe, stream, univ, (mdb.browser_term), (mdb.parse), (mdb.term_rep), (mdbcomp.program_representation), private_builtin},
+	{builtin, bool, deconstruct, getopt, io, list, maybe, require, stream, string, type_desc, univ, (mdb.browser_term), (mdb.parse), (mdb.term_rep), (mdbcomp.program_representation), private_builtin, stream, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (mdb.browser_info), "C" - (mdb.browser_info)},
+	contains_foreign_export,
+	no_main
+).

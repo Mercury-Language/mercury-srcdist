@@ -1,0 +1,19 @@
+:- module mutvar.
+:- use_module builtin, private_builtin.
+:- type mutvar(T)
+    --->    mutvar(private_builtin.ref(T)).
+:- pragma foreign_type(java, mutvar(T), "mutvar.Mutvar").
+:- pragma foreign_type(csharp, mutvar(T), "object[]").
+:- pragma foreign_type(erlang, mutvar(T), "").
+:- pragma exceptions(predicate, (mutvar.new_mutvar), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (mutvar.new_mutvar), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (mutvar.new_mutvar0), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (mutvar.get_mutvar), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (mutvar.set_mutvar), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (mutvar.clear_mutvar), 1, 0, will_not_throw).
+:- pragma termination_info(mutvar.new_mutvar((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(mutvar.new_mutvar((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(mutvar.new_mutvar0((builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(mutvar.get_mutvar((builtin.in), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(mutvar.set_mutvar((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(mutvar.clear_mutvar((builtin.in)), finite(0, [no, no]), cannot_loop).

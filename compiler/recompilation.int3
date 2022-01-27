@@ -1,0 +1,41 @@
+:- module recompilation.
+:- interface.
+:- import_module check_hlds.
+:- import_module hlds.
+:- import_module io.
+:- import_module libs.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module pair.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module term.
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- include_module (recompilation.check).
+:- include_module (recompilation.usage).
+:- include_module (recompilation.version).
+:- type eqv_expanded_info.
+:- type eqv_expanded_item_set.
+:- type functor_set.
+:- type instance_version_numbers.
+:- type item_id.
+:- type item_id_set(T).
+:- type item_id_set(Map, Set, Cons).
+:- type item_name.
+:- type item_type
+	where	type_is_abstract_enum(4).
+:- type item_version_numbers.
+:- type module_qualifier.
+:- type pred_or_func_set.
+:- type recompilation_info.
+:- type simple_item_set.
+:- type used_items.
+:- type version_number.
+:- type version_number_map.
+:- type version_numbers.
+:- inst (pred_or_func) == bound(function_item ; predicate_item).
+:- inst (simple_item) == bound(inst_item ; mode_item ; type_abstract_item ; type_body_item ; typeclass_item).

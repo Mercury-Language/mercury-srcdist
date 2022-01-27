@@ -1,0 +1,9 @@
+:- module (transform_hlds.tupling).
+:- interface.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- pred tuple_arguments(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode tuple_arguments((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- type opt_tuple_alloc
+    --->    opt_tuple_alloc .

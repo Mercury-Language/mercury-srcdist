@@ -1,0 +1,13 @@
+module(1, "list.m",
+	list,
+	{},
+	{builtin, pretty_printer, term, private_builtin},
+	{builtin, int, pretty_printer, require, set_tree234, string, term, private_builtin, stream, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - list, "C#" - list, "Java" - list, "IL" - list, "Erlang" - list, "C" - list},
+	contains_foreign_export,
+	no_main
+).

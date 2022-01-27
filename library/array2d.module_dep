@@ -1,0 +1,13 @@
+module(1, "array2d.m",
+	array2d,
+	{},
+	{builtin, array, list, private_builtin},
+	{builtin, array, int, list, require, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

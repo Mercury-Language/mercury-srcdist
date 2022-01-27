@@ -1,0 +1,21 @@
+:- module par_builtin.
+:- pragma termination_info(par_builtin.new_future((builtin.in), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.wait_future((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.get_future((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.signal_future((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(par_builtin.lc_create((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.lc_free_slot((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(par_builtin.lc_join_and_terminate((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(par_builtin.lc_default_num_contexts((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((par_builtin.evaluate_parallelism_condition), finite(0, []), cannot_loop).
+:- pragma termination_info(par_builtin.par_cond_close_stats_file((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma exceptions(predicate, (par_builtin.new_future), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.wait_future), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.get_future), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.signal_future), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.lc_create), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.lc_free_slot), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.lc_join_and_terminate), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.lc_default_num_contexts), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.evaluate_parallelism_condition), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (par_builtin.par_cond_close_stats_file), 2, 0, will_not_throw).

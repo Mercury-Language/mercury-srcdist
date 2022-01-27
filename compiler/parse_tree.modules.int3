@@ -1,0 +1,3 @@
+:- module (parse_tree.modules).
+:- interface.
+:- type aug_section_maker.

@@ -1,0 +1,11 @@
+:- module (parse_tree.status).
+:- interface.
+:- type aug_module_section.
+:- type import_locn
+	where	type_is_abstract_enum(2).
+:- type import_status.
+:- type item_status.
+:- type module_section
+	where	type_is_abstract_enum(1).
+:- type need_qualifier
+	where	type_is_abstract_enum(1).

@@ -1,0 +1,41 @@
+/*
+** Automatically generated from `timestamp.m'
+** by the Mercury compiler,
+** version rotd-2015-07-28
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+*/
+#ifndef LIBS__TIMESTAMP_MH
+#define LIBS__TIMESTAMP_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef LIBS__TIMESTAMP_DECL_GUARD
+#define LIBS__TIMESTAMP_DECL_GUARD
+#line 101 "timestamp.m"
+
+    #include "mercury_string.h"
+    #include <time.h>
+
+#line 34 "libs.timestamp.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* LIBS__TIMESTAMP_MH */
