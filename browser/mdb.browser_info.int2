@@ -1,0 +1,76 @@
+:- module (mdb.browser_info).
+:- interface.
+:- import_module bool.
+:- import_module getopt.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module stream.
+:- import_module univ.
+:- import_module (mdb.browser_term).
+:- import_module (mdb.parse).
+:- import_module (mdb.term_rep).
+:- import_module (mdbcomp.program_representation).
+:- type browse_caller_type
+    --->    print 
+    ;       browse 
+    ;       print_all .
+:- type browser_db
+    --->    browser_db(((mdb.browser_info).browser_stream_db) :: io.stream_db).
+:- type browser_info
+    --->    browser_info(((mdb.browser_info).bri_term) :: mdb.browser_term.browser_term, ((mdb.browser_info).bri_dirs) :: list.list(mdb.browser_info.down_dir), ((mdb.browser_info).bri_caller_type) :: mdb.browser_info.browse_caller_type, ((mdb.browser_info).bri_format) :: maybe.maybe(mdb.browser_info.portray_format), ((mdb.browser_info).bri_state) :: mdb.browser_info.browser_persistent_state, ((mdb.browser_info).bri_maybe_track) :: mdb.browser_info.maybe_track_subterm(list.list(mdb.browser_info.down_dir)), ((mdb.browser_info).bri_maybe_mode_func) :: maybe.maybe(mdb.browser_info.browser_mode_func)).
+:- type browser_mode_func == ((func list.list(mdb.browser_info.down_dir)) = mdb.browser_info.browser_term_mode).
+:- type browser_persistent_state.
+:- type browser_term_mode
+    --->    input 
+    ;       output 
+    ;       unbound 
+    ;       not_applicable .
+:- type debugger
+    --->    debugger_internal 
+    ;       debugger_external .
+:- type down_dir
+    --->    down_child_num(int)
+    ;       down_child_name(string).
+:- type format_params
+    --->    format_params(((mdb.browser_info).depth) :: int, ((mdb.browser_info).size) :: int, ((mdb.browser_info).width) :: int, ((mdb.browser_info).lines) :: int).
+:- type how_track_subterm
+    --->    track_accurate 
+    ;       track_fast .
+:- type maybe_track_subterm(P)
+    --->    no_track 
+    ;       track(mdb.browser_info.how_track_subterm, mdb.browser_info.should_assert_invalid, P).
+:- type param_cmd
+    --->    format(getopt.maybe_option_table(mdb.parse.setting_option), mdb.browser_info.setting)
+    ;       format_param(getopt.maybe_option_table(mdb.parse.setting_option), mdb.browser_info.setting)
+    ;       num_io_actions(int)
+    ;       print_params .
+:- type portray_format
+    --->    flat 
+    ;       raw_pretty 
+    ;       verbose 
+    ;       pretty .
+:- type setting
+    --->    setting_depth(int)
+    ;       setting_size(int)
+    ;       setting_width(int)
+    ;       setting_lines(int)
+    ;       setting_format(mdb.browser_info.portray_format).
+:- type should_assert_invalid
+    --->    assert_invalid 
+    ;       no_assert_invalid .
+:- type term_browser_response
+    --->    browser_str(string)
+    ;       browser_int(int)
+    ;       browser_nl 
+    ;       browser_end_command 
+    ;       browser_quit .
+:- type up_down_dir
+    --->    updown_parent 
+    ;       updown_child_num(int)
+    ;       updown_child_name(string).
+:- instance (stream.output(mdb.browser_info.debugger, io.io)).
+:- instance (stream.stream(mdb.browser_info.debugger, io.io)).
+:- instance (stream.writer(mdb.browser_info.debugger, int, io.io)).
+:- instance (stream.writer(mdb.browser_info.debugger, string, io.io)).

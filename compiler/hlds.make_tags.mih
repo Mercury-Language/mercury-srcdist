@@ -1,0 +1,76 @@
+/*
+** Automatically generated from `make_tags.m'
+** by the Mercury compiler,
+** version rotd-2016-05-05
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.make_tags. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__make_tags
+#define MR_HEADER_GUARD_hlds__make_tags
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_TAGS_DECL_GUARD
+#define HLDS__MAKE_TAGS_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__make_tags__hlds__make_tags__type_ctor_info_direct_arg_cond_0;
+
+void MR_CALL 
+hlds__make_tags__assign_constructor_tags_8_p_0(
+  MR_Word hlds__make_tags__param_1,
+  MR_Word hlds__make_tags__param_2,
+  MR_Word hlds__make_tags__param_3,
+  MR_Word hlds__make_tags__param_4,
+  MR_Word hlds__make_tags__param_5,
+  MR_Word * hlds__make_tags__param_6,
+  MR_Word * hlds__make_tags__param_7,
+  MR_Word * hlds__make_tags__param_8);
+
+void MR_CALL 
+hlds__make_tags__compute_cheaper_tag_test_2_p_0(
+  MR_Word hlds__make_tags__param_1,
+  MR_Word * hlds__make_tags__param_2);
+
+void MR_CALL 
+hlds__make_tags__post_process_type_defns_3_p_0(
+  MR_Word hlds__make_tags__param_1,
+  MR_Word * hlds__make_tags__param_2,
+  MR_Word * hlds__make_tags__param_3);
+
+void mercury__hlds__make_tags__init(void);
+void mercury__hlds__make_tags__init_type_tables(void);
+void mercury__hlds__make_tags__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.make_tags */
+
+/* :- end_interface hlds.make_tags. */

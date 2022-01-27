@@ -1,0 +1,11 @@
+:- module (parse_tree.check_raw_comp_unit).
+:- interface.
+:- import_module libs.
+:- import_module list.
+:- import_module (libs.globals).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_item).
+:- pred check_for_no_exports(libs.globals.globals, parse_tree.prog_item.raw_compilation_unit, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode check_for_no_exports((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred check_int_for_no_exports(parse_tree.prog_item.raw_compilation_unit, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode check_int_for_no_exports((builtin.in), (builtin.in), (builtin.out)) is det.
