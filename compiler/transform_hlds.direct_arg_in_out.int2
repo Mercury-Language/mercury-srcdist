@@ -1,0 +1,7 @@
+:- module (transform_hlds.direct_arg_in_out).
+:- interface.
+:- type_representation(case_varmap, is_eqv_to(transform_hlds.direct_arg_in_out.arm_varmap(hlds.hlds_goal.case))).
+:- type_representation(clone_in_out_map, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, one_or_more.one_or_more(int)))).
+:- type_representation(direct_arg_proc_in_out_map, is_eqv_to(map.map(hlds.hlds_pred.pred_proc_id, transform_hlds.direct_arg_in_out.direct_arg_proc_in_out))).
+:- type_representation(direct_arg_var_map, is_eqv_to(bimap.bimap(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var))).
+:- type_representation(goal_varmap, is_eqv_to(transform_hlds.direct_arg_in_out.arm_varmap(hlds.hlds_goal.hlds_goal))).

@@ -1,0 +1,6 @@
+:- module (hlds.add_pred).
+:- interface.
+:- type part_of_predmode
+    --->    not_part_of_predmode 
+    ;       part_of_predmode .
+:- type_representation(part_of_predmode, du_repn(enum("not_part_of_predmode", "part_of_predmode", [],  no_c_j_cs))).

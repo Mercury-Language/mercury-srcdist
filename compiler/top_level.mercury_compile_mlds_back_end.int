@@ -1,0 +1,22 @@
+:- module (top_level.mercury_compile_mlds_back_end).
+:- interface.
+:- use_module bool.
+:- use_module hlds.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module ml_backend.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.passes_aux).
+:- use_module (libs.globals).
+:- use_module (ml_backend.mlds).
+:- use_module (parse_tree.error_util).
+:- pred mlds_backend(hlds.hlds_module.module_info, hlds.hlds_module.module_info, ml_backend.mlds.mlds, list.list(parse_tree.error_util.error_spec), hlds.passes_aux.dump_info, hlds.passes_aux.dump_info, io.io, io.io).
+:- mode mlds_backend((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_to_csharp(hlds.hlds_module.module_info, ml_backend.mlds.mlds, bool.bool, io.io, io.io).
+:- mode mlds_to_csharp((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_to_high_level_c(libs.globals.globals, ml_backend.mlds.mlds, bool.bool, io.io, io.io).
+:- mode mlds_to_high_level_c((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred mlds_to_java(hlds.hlds_module.module_info, ml_backend.mlds.mlds, bool.bool, io.io, io.io).
+:- mode mlds_to_java((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

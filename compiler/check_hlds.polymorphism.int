@@ -1,0 +1,28 @@
+:- module (check_hlds.polymorphism).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_goal).
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.hlds_rtti).
+:- use_module (parse_tree.error_util).
+:- use_module (parse_tree.maybe_error).
+:- use_module (parse_tree.prog_data).
+:- pred build_type_info_type(parse_tree.prog_data.mer_type, parse_tree.prog_data.mer_type).
+:- mode build_type_info_type((builtin.in), (builtin.out)) is det.
+:- pred build_typeclass_info_type(parse_tree.prog_data.prog_constraint, parse_tree.prog_data.mer_type).
+:- mode build_typeclass_info_type((builtin.in), (builtin.out)) is det.
+:- pred polymorphism_process_generated_pred(hlds.hlds_pred.pred_id, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode polymorphism_process_generated_pred((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred polymorphism_process_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_id), parse_tree.maybe_error.maybe_safe_to_continue, list.list(parse_tree.error_util.error_spec)).
+:- mode polymorphism_process_module((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred post_copy_polymorphism(list.list(hlds.hlds_pred.pred_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode post_copy_polymorphism((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_is_type_info_or_ctor_type(parse_tree.prog_data.mer_type).
+:- mode type_is_type_info_or_ctor_type((builtin.in)) is semidet.
+:- pred type_is_typeclass_info(parse_tree.prog_data.mer_type).
+:- mode type_is_typeclass_info((builtin.in)) is semidet.
+:- pred unification_typeinfos_rtti_varmaps(parse_tree.prog_data.mer_type, hlds.hlds_rtti.rtti_varmaps, hlds.hlds_goal.unification, hlds.hlds_goal.unification, hlds.hlds_goal.hlds_goal_info, hlds.hlds_goal.hlds_goal_info).
+:- mode unification_typeinfos_rtti_varmaps((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,31 @@
+:- module (hlds.make_hlds).
+:- interface.
+:- use_module cord.
+:- use_module list.
+:- type found_invalid_inst_or_mode
+    --->    did_not_find_invalid_inst_or_mode 
+    ;       found_invalid_inst_or_mode .
+:- type found_invalid_type
+    --->    did_not_find_invalid_type 
+    ;       found_invalid_type .
+:- type ims_cord(T) == cord.cord(hlds.make_hlds.ims_sub_list(T)).
+:- type ims_list(T) == list.list(hlds.make_hlds.ims_sub_list(T)).
+:- type ims_sub_list(T)
+    --->    ims_sub_list(hlds.status.item_mercury_status, list.list(T)).
+:- type make_hlds_qual_info.
+:- type sec_cord(T) == cord.cord(hlds.make_hlds.sec_sub_list(T)).
+:- type sec_info
+    --->    sec_info(hlds.status.item_mercury_status, parse_tree.prog_data.need_qualifier).
+:- type sec_list(T) == list.list(hlds.make_hlds.sec_sub_list(T)).
+:- type sec_sub_list(T)
+    --->    sec_sub_list(hlds.make_hlds.sec_info, list.list(T)).
+:- type_representation(found_invalid_inst_or_mode, du_repn(enum("did_not_find_invalid_inst_or_mode", "found_invalid_inst_or_mode", [],  no_c_j_cs))).
+:- type_representation(found_invalid_type, du_repn(enum("did_not_find_invalid_type", "found_invalid_type", [],  no_c_j_cs))).
+:- type_representation(ims_cord(V_1), is_eqv_to(cord.cord(hlds.make_hlds.ims_sub_list(V_1)))).
+:- type_representation(ims_list(V_1), is_eqv_to(list.list(hlds.make_hlds.ims_sub_list(V_1)))).
+:- type_representation(make_hlds_qual_info, is_eqv_to(hlds.make_hlds.qual_info.qual_info)).
+:- type_representation(sec_cord(V_1), is_eqv_to(cord.cord(hlds.make_hlds.sec_sub_list(V_1)))).
+:- type_representation(sec_info, is_word_aligned_ptr).
+:- type_representation(sec_list(V_1), is_eqv_to(list.list(hlds.make_hlds.sec_sub_list(V_1)))).
+:- implementation.
+:- type make_hlds_qual_info == hlds.make_hlds.qual_info.qual_info.
