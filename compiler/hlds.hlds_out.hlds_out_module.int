@@ -1,0 +1,15 @@
+:- module ((hlds.hlds_out).hlds_out_module).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.vartypes).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module ((hlds.hlds_out).hlds_out_util).
+:- pred write_hlds(int, hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_hlds((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_promise(hlds.hlds_out.hlds_out_util.hlds_out_info, hlds.hlds_module.module_info, parse_tree.prog_data.prog_varset, hlds.vartypes.maybe_vartypes, parse_tree.prog_data.var_name_print, int, parse_tree.prog_data.promise_type, hlds.hlds_pred.pred_id, mdbcomp.prim_data.pred_or_func, list.list(parse_tree.prog_data.prog_var), hlds.hlds_clauses.clause, io.io, io.io).
+:- mode write_promise((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,13 @@
+module(1, "thread.semaphore.m",
+	(thread.semaphore),
+	{thread},
+	{bool, builtin, io, private_builtin},
+	{bool, builtin, io, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - (thread.semaphore), "C#" - (thread.semaphore), "Java" - (thread.semaphore), "IL" - (thread.semaphore), "Erlang" - (thread.semaphore)},
+	no_foreign_export,
+	no_main
+).

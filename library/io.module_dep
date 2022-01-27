@@ -1,0 +1,13 @@
+module(1, "io.m",
+	io,
+	{},
+	{bitmap, bool, builtin, char, deconstruct, list, map, maybe, ops, private_builtin, stream, string, time, univ},
+	{array, benchmarking, bitmap, bool, builtin, char, deconstruct, dir, enum, exception, int, list, map, maybe, ops, parser, private_builtin, require, rtti_implementation, stream, string, table_builtin, term, term_conversion, term_io, time, type_desc, univ, (stream.string_writer), (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - io, "C" - string, "C" - time, "C#" - io, "Java" - io, "IL" - io, "Erlang" - io},
+	contains_foreign_export,
+	no_main
+).

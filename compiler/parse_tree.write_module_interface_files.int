@@ -1,0 +1,15 @@
+:- module (parse_tree.write_module_interface_files).
+:- interface.
+:- import_module io.
+:- import_module maybe.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_item).
+:- pred write_interface_file(libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, parse_tree.prog_item.raw_compilation_unit, maybe.maybe(libs.timestamp.timestamp), io.io, io.io).
+:- mode write_interface_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_private_interface_file(libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, parse_tree.prog_item.raw_compilation_unit, maybe.maybe(libs.timestamp.timestamp), io.io, io.io).
+:- mode write_private_interface_file((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_short_interface_file(libs.globals.globals, libs.file_util.file_name, parse_tree.prog_item.raw_compilation_unit, io.io, io.io).
+:- mode write_short_interface_file((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

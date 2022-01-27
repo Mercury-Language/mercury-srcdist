@@ -1,0 +1,45 @@
+:- module (transform_hlds.intermod).
+:- interface.
+:- import_module io.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_item).
+:- type maybe_should_write
+    --->    should_not_write 
+    ;       should_write .
+:- type should_write_for
+    --->    for_analysis_framework 
+    ;       for_pragma .
+:- pred adjust_pred_status_for_opt_export(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode adjust_pred_status_for_opt_export((builtin.in), (builtin.out)) is det.
+:- pred append_exception_pragmas_to_opt_file(hlds.hlds_module.module_info, io.io, io.io).
+:- mode append_exception_pragmas_to_opt_file((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred append_mm_tabling_pragmas_to_opt_file(hlds.hlds_module.module_info, io.io, io.io).
+:- mode append_mm_tabling_pragmas_to_opt_file((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred append_structure_reuse_pragmas_to_opt_file(hlds.hlds_module.module_info, io.io, io.io).
+:- mode append_structure_reuse_pragmas_to_opt_file((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred append_structure_sharing_pragmas_to_opt_file(hlds.hlds_module.module_info, io.io, io.io).
+:- mode append_structure_sharing_pragmas_to_opt_file((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred append_termination2_pragmas_to_opt_file(hlds.hlds_module.module_info, io.io, io.io).
+:- mode append_termination2_pragmas_to_opt_file((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred append_termination_pragmas_to_opt_file(hlds.hlds_module.module_info, io.io, io.io).
+:- mode append_termination_pragmas_to_opt_file((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred append_trailing_pragmas_to_opt_file(hlds.hlds_module.module_info, io.io, io.io).
+:- mode append_trailing_pragmas_to_opt_file((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred append_unused_arg_pragmas_to_opt_file(hlds.hlds_module.module_info, set.set(parse_tree.prog_item.pragma_info_unused_args), io.io, io.io).
+:- mode append_unused_arg_pragmas_to_opt_file((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred should_write_exception_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, transform_hlds.intermod.should_write_for, transform_hlds.intermod.maybe_should_write).
+:- mode should_write_exception_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred should_write_mm_tabling_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, transform_hlds.intermod.should_write_for, transform_hlds.intermod.maybe_should_write).
+:- mode should_write_mm_tabling_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred should_write_reuse_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, transform_hlds.intermod.should_write_for, transform_hlds.intermod.maybe_should_write).
+:- mode should_write_reuse_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred should_write_sharing_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, transform_hlds.intermod.should_write_for, transform_hlds.intermod.maybe_should_write).
+:- mode should_write_sharing_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred should_write_trailing_info(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.pred_info, transform_hlds.intermod.should_write_for, transform_hlds.intermod.maybe_should_write).
+:- mode should_write_trailing_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred write_initial_opt_file(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_initial_opt_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_trans_opt_file(hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_trans_opt_file((builtin.in), (builtin.di), (builtin.uo)) is det.

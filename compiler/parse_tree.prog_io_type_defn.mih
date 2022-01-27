@@ -1,0 +1,78 @@
+/*
+** Automatically generated from `prog_io_type_defn.m'
+** by the Mercury compiler,
+** version rotd-2015-09-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.prog_io_type_defn. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_io_type_defn
+#define MR_HEADER_GUARD_parse_tree__prog_io_type_defn
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_IO_TYPE_DEFN_DECL_GUARD
+#define PARSE_TREE__PROG_IO_TYPE_DEFN_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+parse_tree__prog_io_type_defn__parse_type_decl_where_part_if_present_6_p_0(
+  MR_Word parse_tree__prog_io_type_defn__param_1,
+  MR_Word parse_tree__prog_io_type_defn__param_2,
+  MR_Word parse_tree__prog_io_type_defn__param_3,
+  MR_Word parse_tree__prog_io_type_defn__param_4,
+  MR_Word * parse_tree__prog_io_type_defn__param_5,
+  MR_Word * parse_tree__prog_io_type_defn__param_6);
+
+void MR_CALL 
+parse_tree__prog_io_type_defn__parse_type_defn_7_p_0(
+  MR_Word parse_tree__prog_io_type_defn__param_1,
+  MR_Word parse_tree__prog_io_type_defn__param_2,
+  MR_Word parse_tree__prog_io_type_defn__param_3,
+  MR_Word parse_tree__prog_io_type_defn__param_4,
+  MR_Word parse_tree__prog_io_type_defn__param_5,
+  MR_Integer parse_tree__prog_io_type_defn__param_6,
+  MR_Word * parse_tree__prog_io_type_defn__param_7);
+
+void MR_CALL 
+parse_tree__prog_io_type_defn__parse_type_defn_head_4_p_0(
+  MR_Word parse_tree__prog_io_type_defn__param_1,
+  MR_Word parse_tree__prog_io_type_defn__param_2,
+  MR_Word parse_tree__prog_io_type_defn__param_3,
+  MR_Word * parse_tree__prog_io_type_defn__param_4);
+
+void mercury__parse_tree__prog_io_type_defn__init(void);
+void mercury__parse_tree__prog_io_type_defn__init_type_tables(void);
+void mercury__parse_tree__prog_io_type_defn__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.prog_io_type_defn */
+
+/* :- end_interface parse_tree.prog_io_type_defn. */

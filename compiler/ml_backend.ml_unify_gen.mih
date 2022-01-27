@@ -1,0 +1,135 @@
+/*
+** Automatically generated from `ml_unify_gen.m'
+** by the Mercury compiler,
+** version rotd-2015-09-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.ml_unify_gen. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_unify_gen
+#define MR_HEADER_GUARD_ml_backend__ml_unify_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_UNIFY_GEN_DECL_GUARD
+#define ML_BACKEND__ML_UNIFY_GEN_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_unify_gen__ml_backend__ml_unify_gen__type_ctor_info_field_offset_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_unify_gen__ml_backend__ml_unify_gen__type_ctor_info_ml_const_struct_info_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_unify_gen__ml_backend__ml_unify_gen__type_ctor_info_take_addr_info_0;
+
+void MR_CALL 
+ml_backend__ml_unify_gen__ml_cons_id_to_tag_3_p_0(
+  MR_Word ml_backend__ml_unify_gen__param_1,
+  MR_Word ml_backend__ml_unify_gen__param_2,
+  MR_Word * ml_backend__ml_unify_gen__param_3);
+
+void MR_CALL 
+ml_backend__ml_unify_gen__ml_gen_const_structs_4_p_0(
+  MR_Word ml_backend__ml_unify_gen__param_1,
+  MR_Word * ml_backend__ml_unify_gen__param_2,
+  MR_Word ml_backend__ml_unify_gen__param_3,
+  MR_Word * ml_backend__ml_unify_gen__param_4);
+
+void MR_CALL 
+ml_backend__ml_unify_gen__ml_gen_ground_term_5_p_0(
+  MR_Word ml_backend__ml_unify_gen__param_1,
+  MR_Word ml_backend__ml_unify_gen__param_2,
+  MR_Word * ml_backend__ml_unify_gen__param_3,
+  MR_Word ml_backend__ml_unify_gen__param_4,
+  MR_Word * ml_backend__ml_unify_gen__param_5);
+
+void MR_CALL 
+ml_backend__ml_unify_gen__ml_gen_known_tag_test_5_p_0(
+  MR_Word ml_backend__ml_unify_gen__param_1,
+  MR_Word ml_backend__ml_unify_gen__param_2,
+  MR_Word * ml_backend__ml_unify_gen__param_3,
+  MR_Word ml_backend__ml_unify_gen__param_4,
+  MR_Word * ml_backend__ml_unify_gen__param_5);
+
+void MR_CALL 
+ml_backend__ml_unify_gen__ml_gen_new_object_15_p_0(
+  MR_Word ml_backend__ml_unify_gen__param_1,
+  MR_Word ml_backend__ml_unify_gen__param_2,
+  MR_Integer ml_backend__ml_unify_gen__param_3,
+  MR_Word ml_backend__ml_unify_gen__param_4,
+  MR_Word ml_backend__ml_unify_gen__param_5,
+  MR_Word ml_backend__ml_unify_gen__param_6,
+  MR_Word ml_backend__ml_unify_gen__param_7,
+  MR_Word ml_backend__ml_unify_gen__param_8,
+  MR_Word ml_backend__ml_unify_gen__param_9,
+  MR_Word ml_backend__ml_unify_gen__param_10,
+  MR_Word ml_backend__ml_unify_gen__param_11,
+  MR_Word ml_backend__ml_unify_gen__param_12,
+  MR_Word * ml_backend__ml_unify_gen__param_13,
+  MR_Word ml_backend__ml_unify_gen__param_14,
+  MR_Word * ml_backend__ml_unify_gen__param_15);
+
+void MR_CALL 
+ml_backend__ml_unify_gen__ml_gen_tag_test_5_p_0(
+  MR_Word ml_backend__ml_unify_gen__param_1,
+  MR_Word ml_backend__ml_unify_gen__param_2,
+  MR_Word * ml_backend__ml_unify_gen__param_3,
+  MR_Word ml_backend__ml_unify_gen__param_4,
+  MR_Word * ml_backend__ml_unify_gen__param_5);
+
+void MR_CALL 
+ml_backend__ml_unify_gen__ml_gen_unification_6_p_0(
+  MR_Word ml_backend__ml_unify_gen__param_1,
+  MR_Word ml_backend__ml_unify_gen__param_2,
+  MR_Word ml_backend__ml_unify_gen__param_3,
+  MR_Word * ml_backend__ml_unify_gen__param_4,
+  MR_Word ml_backend__ml_unify_gen__param_5,
+  MR_Word * ml_backend__ml_unify_gen__param_6);
+
+MR_Word MR_CALL 
+ml_backend__ml_unify_gen__ml_gen_reserved_address_3_f_0(
+  MR_Word ml_backend__ml_unify_gen__param_1,
+  MR_Word ml_backend__ml_unify_gen__param_2,
+  MR_Word ml_backend__ml_unify_gen__param_3);
+
+MR_Word MR_CALL 
+ml_backend__ml_unify_gen__ml_gen_secondary_tag_rval_4_f_0(
+  MR_Word ml_backend__ml_unify_gen__param_1,
+  MR_Integer ml_backend__ml_unify_gen__param_2,
+  MR_Word ml_backend__ml_unify_gen__param_3,
+  MR_Word ml_backend__ml_unify_gen__param_4);
+
+void mercury__ml_backend__ml_unify_gen__init(void);
+void mercury__ml_backend__ml_unify_gen__init_type_tables(void);
+void mercury__ml_backend__ml_unify_gen__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.ml_unify_gen */
+
+/* :- end_interface ml_backend.ml_unify_gen. */

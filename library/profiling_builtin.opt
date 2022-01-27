@@ -1,0 +1,104 @@
+:- module profiling_builtin.
+:- use_module builtin.
+:- use_module private_builtin.
+
+:- type call_site_dynamic
+    --->    call_site_dynamic(builtin.c_pointer).
+:- pragma foreign_type(il, call_site_dynamic, "class [mscorlib]System.Object").
+:- pragma foreign_type(c, call_site_dynamic, "MR_CallSiteDynamic *").
+:- type proc_dynamic
+    --->    proc_dynamic(builtin.c_pointer).
+:- pragma foreign_type(il, proc_dynamic, "class [mscorlib]System.Object").
+:- pragma foreign_type(c, proc_dynamic, "MR_ProcDynamic *").
+:- type proc_layout
+    --->    proc_layout(builtin.c_pointer).
+:- pragma foreign_type(il, proc_layout, "class [mscorlib]System.Object").
+:- pragma foreign_type(c, proc_layout, "MR_ProcLayout *").
+
+:- pragma foreign_import_module("C", profiling_builtin).
+:- pragma foreign_import_module("IL", profiling_builtin).
+:- pragma foreign_import_module("Erlang", profiling_builtin).
+
+:- pragma exceptions(predicate, (profiling_builtin.increment_dynamic_coverage_point_count), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.increment_static_coverage_point_count), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.prepare_for_callback), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.prepare_for_ho_call), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.prepare_for_method_call), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.prepare_for_normal_call), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.prepare_for_special_call), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.prepare_for_tail_call), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.reset_activation_info_ac), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.reset_activation_info_sr), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_exit_1), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_exit_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_exit_3), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_exit_4), 6, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_exit_5), 7, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_exit_6), 8, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_exit_7), 9, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_exit_8), 10, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_exit_9), 11, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_fail_1), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_fail_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_fail_3), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_fail_4), 6, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_fail_5), 7, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_fail_6), 8, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_fail_7), 9, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_fail_8), 10, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.restore_recursion_depth_fail_9), 11, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.rezero_activation_info_ac), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.rezero_activation_info_sr), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.save_and_zero_activation_info_ac), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.save_and_zero_activation_info_sr), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.save_recursion_depth_1), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.save_recursion_depth_2), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.save_recursion_depth_3), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.save_recursion_depth_4), 6, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.save_recursion_depth_5), 7, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.save_recursion_depth_6), 8, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.save_recursion_depth_7), 9, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.save_recursion_depth_8), 10, 0, will_not_throw).
+:- pragma exceptions(predicate, (profiling_builtin.save_recursion_depth_9), 11, 0, will_not_throw).
+
+:- pragma termination_info(profiling_builtin.increment_dynamic_coverage_point_count((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.increment_static_coverage_point_count((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.prepare_for_callback((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.prepare_for_ho_call((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.prepare_for_method_call((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.prepare_for_normal_call((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.prepare_for_special_call((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.prepare_for_tail_call((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.reset_activation_info_ac((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.reset_activation_info_sr((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_exit_1((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_exit_2((builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_exit_3((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_exit_4((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_exit_5((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_exit_6((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_exit_7((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_exit_8((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_exit_9((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no, no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_fail_1((builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_fail_2((builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_fail_3((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_fail_4((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_fail_5((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_fail_6((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_fail_7((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_fail_8((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(profiling_builtin.restore_recursion_depth_fail_9((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no, no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info((profiling_builtin.rezero_activation_info_ac), finite(0, []), cannot_loop).
+:- pragma termination_info((profiling_builtin.rezero_activation_info_sr), finite(0, []), cannot_loop).
+:- pragma termination_info(profiling_builtin.save_and_zero_activation_info_ac((builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(profiling_builtin.save_and_zero_activation_info_sr((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(profiling_builtin.save_recursion_depth_1((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(profiling_builtin.save_recursion_depth_2((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(profiling_builtin.save_recursion_depth_3((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(profiling_builtin.save_recursion_depth_4((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(profiling_builtin.save_recursion_depth_5((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(profiling_builtin.save_recursion_depth_6((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(profiling_builtin.save_recursion_depth_7((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(profiling_builtin.save_recursion_depth_8((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(profiling_builtin.save_recursion_depth_9((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).

@@ -1,0 +1,11063 @@
+/*
+** Automatically generated from `exception_analysis.m'
+** by the Mercury compiler,
+** version rotd-2015-09-18
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.exception_analysis. */
+/* :- implementation. */
+
+/*
+INIT mercury__transform_hlds__exception_analysis__init
+ENDINIT
+*/
+
+#include "transform_hlds.exception_analysis.mih"
+
+
+#include "analysis.mih"
+#include "check_hlds.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "transform_hlds.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.type_util.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.builtin_modules.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.dependency_graph.mih"
+#include "transform_hlds.intermod.mih"
+#include "transform_hlds.mmc_analysis.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+#line 452 "exception_analysis.m"
+struct transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0_s {
+#line 458 "exception_analysis.m"
+  MR_bool transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded;
+#line 458 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__CallPredInfo_18;
+#line 477 "exception_analysis.m"
+  jmp_buf transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__commit_0;
+#line 477 "exception_analysis.m"
+  MR_String transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__Name_23;
+#line 477 "exception_analysis.m"
+  MR_Integer transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__Arity_24;
+#line 477 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__SpecialPredId_25;
+#line 477 "exception_analysis.m"
+  MR_String transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__V_51_51;
+#line 477 "exception_analysis.m"
+  MR_Integer transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__V_52_52;
+#line 452 "exception_analysis.m"
+};
+
+#line 253 "exception_analysis.m"
+struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s {
+#line 253 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1;
+#line 256 "exception_analysis.m"
+  MR_bool transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded;
+#line 263 "exception_analysis.m"
+  jmp_buf transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_0;
+#line 263 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__ProcResult_14;
+#line 264 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv0_ProcResult_14;
+#line 280 "exception_analysis.m"
+  jmp_buf transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_1;
+#line 280 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_15;
+#line 280 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_20_20;
+#line 281 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv1_EResult_15;
+#line 286 "exception_analysis.m"
+  jmp_buf transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_2;
+#line 286 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_21_21;
+#line 286 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__CResult_28;
+#line 286 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv2_CResult_28;
+#line 818 "exception_analysis.m"
+  jmp_buf transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_3;
+#line 818 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__Result_57;
+#line 818 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_58_58;
+#line 819 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv3_Result_57;
+#line 296 "exception_analysis.m"
+  jmp_buf transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_4;
+#line 296 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_22_22;
+#line 296 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_23_23;
+#line 296 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_50;
+#line 297 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv4_EResult_50;
+#line 302 "exception_analysis.m"
+  jmp_buf transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_5;
+#line 302 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_24_24;
+#line 302 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_25_25;
+#line 302 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__TResult_29;
+#line 302 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv5_TResult_29;
+#line 253 "exception_analysis.m"
+};
+
+
+#line 224 "transform_hlds.exception_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__exception_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+
+#line 227 "transform_hlds.exception_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__exception_analysis__list__pti_list_1__plain_transform_hlds__exception_analysis__type_ctor_info_proc_result_0;
+
+#line 230 "transform_hlds.exception_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__exception_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0;
+
+#line 233 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_functor_desc_closures_exception_status_0_0;
+
+#line 236 "transform_hlds.exception_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__exception_analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+
+#line 239 "transform_hlds.exception_analysis.c"
+static const MR_PseudoTypeInfo transform_hlds__exception_analysis__transform_hlds__exception_analysis__field_types_closures_exception_status_0_1[1];
+
+#line 242 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_functor_desc_closures_exception_status_0_1;
+
+#line 245 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_stag_ordered_closures_exception_status_0_0[1];
+
+#line 248 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_stag_ordered_closures_exception_status_0_1[1];
+
+#line 251 "transform_hlds.exception_analysis.c"
+static const MR_DuPtagLayout transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_ptag_ordered_closures_exception_status_0[2];
+
+#line 254 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_name_ordered_closures_exception_status_0[2];
+
+#line 257 "transform_hlds.exception_analysis.c"
+static const MR_Integer transform_hlds__exception_analysis__transform_hlds__exception_analysis__functor_number_map_closures_exception_status_0[2];
+
+#line 260 "transform_hlds.exception_analysis.c"
+static const MR_Integer transform_hlds__exception_analysis__transform_hlds__exception_analysis__functor_number_map_exception_analysis_answer_0[1];
+
+#line 263 "transform_hlds.exception_analysis.c"
+static const MR_NotagFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__notag_functor_desc_exception_analysis_answer_0;
+
+#line 266 "transform_hlds.exception_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__exception_analysis__maybe__ti_maybe_1analysis__type_ctor_info_analysis_status_0;
+
+#line 269 "transform_hlds.exception_analysis.c"
+static const MR_PseudoTypeInfo transform_hlds__exception_analysis__transform_hlds__exception_analysis__field_types_proc_result_0_0[4];
+
+#line 272 "transform_hlds.exception_analysis.c"
+static const MR_ConstString transform_hlds__exception_analysis__transform_hlds__exception_analysis__field_names_proc_result_0_0[4];
+
+#line 275 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_functor_desc_proc_result_0_0;
+
+#line 278 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_stag_ordered_proc_result_0_0[1];
+
+#line 281 "transform_hlds.exception_analysis.c"
+static const MR_DuPtagLayout transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_ptag_ordered_proc_result_0[1];
+
+#line 284 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_name_ordered_proc_result_0[1];
+
+#line 287 "transform_hlds.exception_analysis.c"
+static const MR_Integer transform_hlds__exception_analysis__transform_hlds__exception_analysis__functor_number_map_proc_result_0[1];
+
+#line 290 "transform_hlds.exception_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__exception_analysis__list__ti_list_1transform_hlds__exception_analysis__type_ctor_info_proc_result_0;
+
+#line 293 "transform_hlds.exception_analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_functor_desc_type_status_0_0;
+
+#line 296 "transform_hlds.exception_analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_functor_desc_type_status_0_1;
+
+#line 299 "transform_hlds.exception_analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_functor_desc_type_status_0_2;
+
+#line 302 "transform_hlds.exception_analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_value_ordered_type_status_0[3];
+
+#line 305 "transform_hlds.exception_analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_name_ordered_type_status_0[3];
+
+#line 308 "transform_hlds.exception_analysis.c"
+static const MR_Integer transform_hlds__exception_analysis__transform_hlds__exception_analysis__functor_number_map_type_status_0[3];
+
+#line 311 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____closures_exception_status_0_0_10001(
+#line 314 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 316 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2);
+
+#line 319 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____closures_exception_status_0_0_10001(
+#line 322 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_1,
+#line 324 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 326 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 329 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____exception_analysis_answer_0_0_10001(
+#line 332 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 334 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2);
+
+#line 337 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____exception_analysis_answer_0_0_10001(
+#line 340 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_1,
+#line 342 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 344 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 347 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____proc_result_0_0_10001(
+#line 350 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 352 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2);
+
+#line 355 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____proc_result_0_0_10001(
+#line 358 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_1,
+#line 360 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 362 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 365 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____proc_results_0_0_10001(
+#line 368 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 370 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2);
+
+#line 373 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____proc_results_0_0_10001(
+#line 376 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_1,
+#line 378 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 380 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 383 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____scc_0_0_10001(
+#line 386 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 388 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2);
+
+#line 391 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____scc_0_0_10001(
+#line 394 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_1,
+#line 396 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 398 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 401 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____type_status_0_0_10001(
+#line 404 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 406 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2);
+
+#line 409 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____type_status_0_0_10001(
+#line 412 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_1,
+#line 414 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 416 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 419 "transform_hlds.exception_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__to_term____transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__to_term_1_1_f_0_10001(
+#line 422 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 424 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1);
+
+#line 427 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__to_term____transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__from_term_2_2_p_0_10001(
+#line 430 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 432 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 434 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_2);
+
+#line 437 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0_10001(
+#line 440 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 442 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 444 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 446 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 449 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__equivalent_3_3_p_0_10001(
+#line 452 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 454 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 456 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 458 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 461 "transform_hlds.exception_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__analysis_name_2_2_f_0_10001(
+#line 464 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg);
+
+#line 467 "transform_hlds.exception_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0_10001(
+#line 470 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg);
+
+#line 473 "transform_hlds.exception_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0_10001(
+#line 476 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg);
+
+#line 479 "transform_hlds.exception_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__bottom_2_2_f_0_10001(
+#line 482 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 484 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1);
+
+#line 487 "transform_hlds.exception_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__top_2_2_f_0_10001(
+#line 490 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 492 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1);
+
+#line 495 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__get_func_info_6_6_p_0_10001(
+#line 498 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 500 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 502 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 504 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3,
+#line 506 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_6);
+
+#line 1044 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_93_95_48_3_p_0(
+#line 1044 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Status_8,
+#line 1044 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Status_3);
+
+#line 1038 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_93_95_48_3_p_0(
+#line 1038 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Answer1_4,
+#line 1038 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Answer2_5);
+
+#line 1033 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_103_101_116_95_102_117_110_99_95_105_110_102_111_95_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_6_p_0(void);
+
+#line 1032 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_112_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1031 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_98_111_116_116_111_109_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1030 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_112_114_101_102_101_114_114_101_100_95_102_105_120_112_111_105_110_116_95_116_121_112_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1029 "exception_analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_118_101_114_115_105_111_110_95_110_117_109_98_101_114_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1028 "exception_analysis.m"
+static MR_String MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_110_97_109_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 422 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__IntroducedFrom__func__check_goal_for_exceptions_2__422__1_1_f_0(
+#line 422 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_95);
+
+#line 1058 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__to_term____transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__from_term_2_2_p_0(
+#line 1058 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 1058 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__2_2);
+
+#line 1057 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__to_term____transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__to_term_1_1_f_0(
+#line 1057 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1);
+
+#line 1044 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__equivalent_3_3_p_0(
+#line 1044 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Status_8,
+#line 1044 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Status_3);
+
+#line 1038 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0(
+#line 1038 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Answer1_4,
+#line 1038 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Answer2_5);
+
+#line 1033 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__get_func_info_6_6_p_0(
+#line 1033 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_17,
+#line 1033 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_18,
+#line 1033 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_19);
+
+#line 1032 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__top_2_2_f_0(void);
+
+#line 1031 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__bottom_2_2_f_0(void);
+
+#line 1030 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0(void);
+
+#line 1029 "exception_analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0(void);
+
+#line 1028 "exception_analysis.m"
+static MR_String MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__analysis_name_2_2_f_0(void);
+
+#line 854 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____type_status_0_0(
+#line 854 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__1_1,
+#line 854 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2,
+#line 854 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3);
+
+#line 854 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____type_status_0_0(
+#line 854 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_1,
+#line 854 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2);
+
+#line 196 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____scc_0_0(
+#line 196 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__1_1,
+#line 196 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2,
+#line 196 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3);
+
+#line 196 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____scc_0_0(
+#line 196 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 196 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2);
+
+#line 198 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____proc_results_0_0(
+#line 198 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__1_1,
+#line 198 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2,
+#line 198 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3);
+
+#line 198 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____proc_results_0_0(
+#line 198 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 198 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2);
+
+#line 200 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____proc_result_0_0(
+#line 200 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__1_1,
+#line 200 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2,
+#line 200 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3);
+
+#line 200 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____proc_result_0_0(
+#line 200 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 200 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2);
+
+#line 606 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____closures_exception_status_0_0(
+#line 606 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__1_1,
+#line 606 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2,
+#line 606 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3);
+
+#line 606 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____closures_exception_status_0_0(
+#line 606 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 606 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2);
+
+#line 1135 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__maybe_record_exception_result_2_6_p_0(
+#line 1135 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ModuleInfo_7,
+#line 1135 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PredId_8,
+#line 1135 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PredInfo_9,
+#line 1135 "exception_analysis.m"
+  MR_Integer transform_hlds__exception_analysis__ProcId_10,
+#line 1135 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_0_18,
+#line 1135 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_19);
+
+#line 1132 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__maybe_record_exception_result_4_p_0_1(
+#line 1132 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 1132 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 1132 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 1132 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 1126 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__maybe_record_exception_result_4_p_0(
+#line 1126 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ModuleInfo_5,
+#line 1126 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PredId_6,
+#line 1126 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_0_10,
+#line 1126 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_11);
+
+#line 873 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_type_2_3_f_0_2(
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 873 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 873 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_type_2_3_f_0_1(
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 873 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 911 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__check_type_2_3_f_0(
+#line 911 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ModuleInfo_5,
+#line 911 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Type_6,
+#line 911 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__CtorCat_7);
+
+#line 895 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__check_type_2_f_0(
+#line 895 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ModuleInfo_4,
+#line 895 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Type_5);
+
+#line 875 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_type_4_p_0(
+#line 875 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ModuleInfo_5,
+#line 875 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Type_6,
+#line 875 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Status_0_8,
+#line 875 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Status_9);
+
+#line 873 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_vars_6_p_0_1(
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 873 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 775 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_vars_6_p_0(
+#line 775 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ModuleInfo_7,
+#line 775 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_8,
+#line 775 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Vars_9,
+#line 775 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__MaybeAnalysisStatus_10,
+#line 775 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_14,
+#line 775 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_15);
+
+#line 723 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_nonrecursive_call_8_p_0(
+#line 723 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_9,
+#line 723 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PPId_10,
+#line 723 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Args_11,
+#line 723 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PredInfo_12,
+#line 723 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_27,
+#line 723 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_28,
+#line 723 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29,
+#line 723 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_30);
+
+#line 705 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_maybe_analysis_status_3_p_0(
+#line 705 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__MaybeStatusA_4,
+#line 705 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__MaybeStatusB_5,
+#line 705 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__MaybeStatus_6);
+
+#line 679 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__update_proc_result_4_p_0(
+#line 679 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__CurrentStatus_5,
+#line 679 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__CurrentAnalysisStatus_6,
+#line 679 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_12,
+#line 679 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_13);
+
+#line 634 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__get_closure_exception_status_8_p_0(
+#line 634 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__IntermodAnalysis_9,
+#line 634 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PPId_10,
+#line 634 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_MaybeWillNotThrow_0_23,
+#line 634 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_MaybeWillNotThrow_24,
+#line 634 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_AS_0_25,
+#line 634 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_AS_26,
+#line 634 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_27,
+#line 634 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_28);
+
+#line 574 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goals_for_exceptions_7_p_0(
+#line 574 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__SCC_1,
+#line 574 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_2,
+#line 574 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3,
+#line 574 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_4,
+#line 574 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_5,
+#line 574 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_6,
+#line 574 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_7);
+
+#line 630 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_generic_call_8_p_0_1(
+#line 630 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 630 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 630 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 630 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3,
+#line 630 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_4,
+#line 630 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_5,
+#line 630 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_6,
+#line 630 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_7);
+
+#line 508 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_generic_call_8_p_0(
+#line 508 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_9,
+#line 508 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Details_10,
+#line 508 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Args_11,
+#line 508 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__GoalInfo_12,
+#line 508 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34,
+#line 508 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_35,
+#line 508 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_36,
+#line 508 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_37);
+
+#line 873 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_5(
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 873 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 873 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_1(
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 873 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 477 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_2(
+#line 477 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 477 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_3(
+#line 477 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 477 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_4(
+#line 477 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 452 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0(
+#line 452 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__SCC_10,
+#line 452 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_11,
+#line 452 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__CallPredId_12,
+#line 452 "exception_analysis.m"
+  MR_Integer transform_hlds__exception_analysis__CallProcId_13,
+#line 452 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__CallArgs_14,
+#line 452 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_32,
+#line 452 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_33,
+#line 452 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_34,
+#line 452 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_35);
+
+#line 422 "exception_analysis.m"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_2_8_p_0_1(
+#line 422 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 422 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1);
+
+#line 367 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_2_8_p_0(
+#line 367 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__SCC_9,
+#line 367 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_10,
+#line 367 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__GoalExpr_11,
+#line 367 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__GoalInfo_12,
+#line 367 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77,
+#line 367 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_78,
+#line 367 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79,
+#line 367 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80);
+
+#line 354 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_7_p_0(
+#line 354 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__SCC_8,
+#line 354 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_9,
+#line 354 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3,
+#line 354 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_14,
+#line 354 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_15,
+#line 354 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_16,
+#line 354 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_17);
+
+#line 336 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_proc_for_exceptions_6_p_0(
+#line 336 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__SCC_7,
+#line 336 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PPId_8,
+#line 336 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Results_0_20,
+#line 336 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Results_21,
+#line 336 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_22,
+#line 336 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_23);
+
+#line 326 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__maybe_analysis_status_2_p_0(
+#line 326 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ProcResult_3,
+#line 326 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__2_2);
+
+#line 323 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_26(
+#line 323 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 323 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 323 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 323 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 322 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_25(
+#line 322 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 322 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 322 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_2);
+
+#line 263 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_1(
+#line 263 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 264 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_3(
+#line 264 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 263 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_2(
+#line 263 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 263 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_4(
+#line 263 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 280 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_5(
+#line 280 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 281 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_7(
+#line 281 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 280 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_6(
+#line 280 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 280 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_8(
+#line 280 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 286 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_9(
+#line 286 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 286 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_11(
+#line 286 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 286 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_10(
+#line 286 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 286 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_12(
+#line 286 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 818 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_13(
+#line 818 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 819 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_15(
+#line 819 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 818 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_14(
+#line 818 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 818 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_16(
+#line 818 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 296 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_17(
+#line 296 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 297 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_19(
+#line 297 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 296 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_18(
+#line 296 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 296 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_20(
+#line 296 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 302 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_21(
+#line 302 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 302 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_23(
+#line 302 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 302 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_22(
+#line 302 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 302 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_24(
+#line 302 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg);
+
+#line 253 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0(
+#line 253 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 253 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__SCC_Result_2,
+#line 253 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__MaybeAnalysisStatus_3);
+
+#line 233 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__set_exception_info_4_p_0(
+#line 233 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ProcExceptionInfo_5,
+#line 233 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PPId_6,
+#line 233 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_11,
+#line 233 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_12);
+
+#line 231 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_scc_for_exceptions_3_p_0_2(
+#line 231 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 231 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 231 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 231 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 247 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_scc_for_exceptions_3_p_0_1(
+#line 247 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 247 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 247 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 247 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3,
+#line 247 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_4,
+#line 247 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_5);
+
+#line 220 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_scc_for_exceptions_3_p_0(
+#line 220 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__SCC_4,
+#line 220 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_10,
+#line 220 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_11);
+
+#line 1189 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__lookup_exception_analysis_result_4_p_0_1(
+#line 1189 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg);
+
+#line 184 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__analyse_exceptions_in_module_4_p_0_2(
+#line 184 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 184 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 184 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 184 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3);
+
+#line 155 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__analyse_exceptions_in_module_4_p_0_1(
+#line 155 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 155 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 155 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 155 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3);
+
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_1[7][2];
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_2[6][3];
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_3[4][5];
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_4[3][6];
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_5[3][7];
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_6[1][4];
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_7[4][1];
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_8[2][9];
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_10[1][11];
+
+
+#line 482 "exception_analysis.m"
+/* sealed */ struct transform_hlds__exception_analysis__vector_common_type_9_0_s {
+#line 482 "exception_analysis.m"
+  const MR_Word transform_hlds__exception_analysis__vector_common_type_9_0__vct_9_f_0;
+#line 482 "exception_analysis.m"
+};
+
+static /* final */ const struct transform_hlds__exception_analysis__vector_common_type_9_0_s transform_hlds__exception_analysis_vector_common_9[2];
+
+#line 968 "exception_analysis.m"
+/* sealed */ struct transform_hlds__exception_analysis__vector_common_type_11_0_s {
+#line 968 "exception_analysis.m"
+  const MR_String transform_hlds__exception_analysis__vector_common_type_11_0__vct_11_f_0;
+#line 968 "exception_analysis.m"
+};
+
+static /* final */ const struct transform_hlds__exception_analysis__vector_common_type_11_0_s transform_hlds__exception_analysis_vector_common_11[64];
+
+#line 968 "exception_analysis.m"
+/* sealed */ struct transform_hlds__exception_analysis__vector_common_type_12_0_s {
+#line 968 "exception_analysis.m"
+  const MR_String transform_hlds__exception_analysis__vector_common_type_12_0__vct_12_f_0;
+#line 968 "exception_analysis.m"
+  const MR_Integer transform_hlds__exception_analysis__vector_common_type_12_0__vct_12_f_1;
+#line 968 "exception_analysis.m"
+};
+
+static /* final */ const struct transform_hlds__exception_analysis__vector_common_type_12_0_s transform_hlds__exception_analysis_vector_common_12[5];
+
+#line 1078 "exception_analysis.m"
+/* sealed */ struct transform_hlds__exception_analysis__vector_common_type_13_0_s {
+#line 1078 "exception_analysis.m"
+  const MR_String transform_hlds__exception_analysis__vector_common_type_13_0__vct_13_f_0;
+#line 1078 "exception_analysis.m"
+  const MR_Word transform_hlds__exception_analysis__vector_common_type_13_0__vct_13_f_1;
+#line 1078 "exception_analysis.m"
+};
+
+static /* final */ const struct transform_hlds__exception_analysis__vector_common_type_13_0_s transform_hlds__exception_analysis_vector_common_13[4];
+
+
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_1[7][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__analysis__any_call__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__exception_analysis__exception_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_exception_analysis_answer_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_status_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_2[6][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__analysis__any_call__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_exception_analysis_answer_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_4[1])),
+    ((MR_Box) (transform_hlds__exception_analysis__analyse_exceptions_in_module_4_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_3[2])),
+    ((MR_Box) (transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_25)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_4[2])),
+    ((MR_Box) (transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_26)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_3[3])),
+    ((MR_Box) (transform_hlds__exception_analysis__check_goal_for_exceptions_2_8_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_3[4][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__call_pattern__arity2__analysis__no_func_info__arity0__analysis__any_call__arity0__)),
+    ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_2[0])),
+    ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_1[1])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__answer_pattern__arity2__analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_2[1])),
+    ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_1[2])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_exception_analysis_answer_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_4[3][6] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__analysis__arity3__analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_3[0])),
+    ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_3[1])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_exception_analysis_answer_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&transform_hlds__exception_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&transform_hlds__exception_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_5[3][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_exception_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_type_status_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_type_status_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_6[1][4] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_7[4][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_Integer) 2))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_8[2][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__exception_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__list__pti_list_1__plain_transform_hlds__exception_analysis__type_ctor_info_proc_result_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__list__pti_list_1__plain_transform_hlds__exception_analysis__type_ctor_info_proc_result_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__exception_analysis_scalar_common_10[1][11] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_closures_exception_status_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_closures_exception_status_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&transform_hlds__exception_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+};
+
+
+static /* final */ const struct transform_hlds__exception_analysis__vector_common_type_9_0_s transform_hlds__exception_analysis_vector_common_9[2] = {
+  /* row 0 */   {     (MR_Integer) 2 },
+  /* row 1 */   {     (MR_Integer) 0 },
+};
+
+static /* final */ const struct transform_hlds__exception_analysis__vector_common_type_11_0_s transform_hlds__exception_analysis_vector_common_11[64] = {
+  /* row 0 */   {     NULL },
+  /* row 1 */   {     NULL },
+  /* row 2 */   {     NULL },
+  /* row 3 */   {     NULL },
+  /* row 4 */   {     NULL },
+  /* row 5 */   {     NULL },
+  /* row 6 */   {     NULL },
+  /* row 7 */   {     (MR_String) "res" },
+  /* row 8 */   {     NULL },
+  /* row 9 */   {     NULL },
+  /* row 10 */   {     NULL },
+  /* row 11 */   {     NULL },
+  /* row 12 */   {     NULL },
+  /* row 13 */   {     NULL },
+  /* row 14 */   {     NULL },
+  /* row 15 */   {     (MR_String) "read_result" },
+  /* row 16 */   {     NULL },
+  /* row 17 */   {     NULL },
+  /* row 18 */   {     NULL },
+  /* row 19 */   {     NULL },
+  /* row 20 */   {     NULL },
+  /* row 21 */   {     NULL },
+  /* row 22 */   {     NULL },
+  /* row 23 */   {     NULL },
+  /* row 24 */   {     NULL },
+  /* row 25 */   {     (MR_String) "input_stream" },
+  /* row 26 */   {     NULL },
+  /* row 27 */   {     NULL },
+  /* row 28 */   {     NULL },
+  /* row 29 */   {     (MR_String) "error" },
+  /* row 30 */   {     NULL },
+  /* row 31 */   {     NULL },
+  /* row 32 */   {     NULL },
+  /* row 33 */   {     (MR_String) "binary_stream" },
+  /* row 34 */   {     NULL },
+  /* row 35 */   {     NULL },
+  /* row 36 */   {     NULL },
+  /* row 37 */   {     NULL },
+  /* row 38 */   {     NULL },
+  /* row 39 */   {     (MR_String) "stream_id" },
+  /* row 40 */   {     NULL },
+  /* row 41 */   {     NULL },
+  /* row 42 */   {     NULL },
+  /* row 43 */   {     NULL },
+  /* row 44 */   {     NULL },
+  /* row 45 */   {     NULL },
+  /* row 46 */   {     NULL },
+  /* row 47 */   {     (MR_String) "result" },
+  /* row 48 */   {     NULL },
+  /* row 49 */   {     (MR_String) "output_stream" },
+  /* row 50 */   {     NULL },
+  /* row 51 */   {     NULL },
+  /* row 52 */   {     (MR_String) "maybe_partial_res" },
+  /* row 53 */   {     NULL },
+  /* row 54 */   {     NULL },
+  /* row 55 */   {     NULL },
+  /* row 56 */   {     NULL },
+  /* row 57 */   {     NULL },
+  /* row 58 */   {     NULL },
+  /* row 59 */   {     NULL },
+  /* row 60 */   {     NULL },
+  /* row 61 */   {     NULL },
+  /* row 62 */   {     NULL },
+  /* row 63 */   {     NULL },
+};
+
+static /* final */ const struct transform_hlds__exception_analysis__vector_common_type_12_0_s transform_hlds__exception_analysis_vector_common_12[5] = {
+  /* row 0 */
+  {
+    (MR_String) "const",
+    (MR_Integer) 0
+  },
+  /* row 1 */
+  {
+    (MR_String) "context",
+    (MR_Integer) 1
+  },
+  /* row 2 */
+  {
+    (MR_String) "term",
+    (MR_Integer) 2
+  },
+  /* row 3 */
+  {
+    (MR_String) "var",
+    (MR_Integer) 3
+  },
+  /* row 4 */
+  {
+    (MR_String) "var_supply",
+    (MR_Integer) 4
+  },
+};
+
+static /* final */ const struct transform_hlds__exception_analysis__vector_common_type_13_0_s transform_hlds__exception_analysis_vector_common_13[4] = {
+  /* row 0 */
+  {
+    (MR_String) "conditional",
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))
+  },
+  /* row 1 */
+  {
+    (MR_String) "may_throw_type_exception",
+    (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[1])
+  },
+  /* row 2 */
+  {
+    (MR_String) "may_throw_user_exception",
+    (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0])
+  },
+  /* row 3 */
+  {
+    (MR_String) "will_not_throw",
+    (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))
+  },
+};
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+#line 1779 "transform_hlds.exception_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__exception_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+  }
+};
+
+#line 1787 "transform_hlds.exception_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__exception_analysis__list__pti_list_1__plain_transform_hlds__exception_analysis__type_ctor_info_proc_result_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0
+  }
+};
+
+#line 1795 "transform_hlds.exception_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__exception_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_PseudoTypeInfo) &analysis__analysis__type_ctor_info_analysis_status_0
+  }
+};
+
+#line 1803 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_functor_desc_closures_exception_status_0_0 = {
+  (MR_String) "may_throw",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1818 "transform_hlds.exception_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__exception_analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+  }
+};
+
+#line 1826 "transform_hlds.exception_analysis.c"
+static const MR_PseudoTypeInfo transform_hlds__exception_analysis__transform_hlds__exception_analysis__field_types_closures_exception_status_0_1[1] = {
+  (MR_PseudoTypeInfo) &transform_hlds__exception_analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+};
+
+#line 1831 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_functor_desc_closures_exception_status_0_1 = {
+  (MR_String) "maybe_will_not_throw",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  transform_hlds__exception_analysis__transform_hlds__exception_analysis__field_types_closures_exception_status_0_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1846 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_stag_ordered_closures_exception_status_0_0[1] = {
+  &transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_functor_desc_closures_exception_status_0_0
+};
+
+#line 1851 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_stag_ordered_closures_exception_status_0_1[1] = {
+  &transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_functor_desc_closures_exception_status_0_1
+};
+
+#line 1856 "transform_hlds.exception_analysis.c"
+static const MR_DuPtagLayout transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_ptag_ordered_closures_exception_status_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_stag_ordered_closures_exception_status_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_stag_ordered_closures_exception_status_0_1
+  }
+};
+
+#line 1870 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_name_ordered_closures_exception_status_0[2] = {
+  &transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_functor_desc_closures_exception_status_0_0,
+  &transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_functor_desc_closures_exception_status_0_1
+};
+
+#line 1876 "transform_hlds.exception_analysis.c"
+static const MR_Integer transform_hlds__exception_analysis__transform_hlds__exception_analysis__functor_number_map_closures_exception_status_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 1882 "transform_hlds.exception_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_closures_exception_status_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__exception_analysis____Unify____closures_exception_status_0_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis____Compare____closures_exception_status_0_0_10001)),
+  (MR_String) "transform_hlds.exception_analysis",
+  (MR_String) "closures_exception_status",
+  {     transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_name_ordered_closures_exception_status_0 },
+  {     transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_ptag_ordered_closures_exception_status_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  transform_hlds__exception_analysis__transform_hlds__exception_analysis__functor_number_map_closures_exception_status_0
+};
+
+#line 1899 "transform_hlds.exception_analysis.c"
+static const MR_Integer transform_hlds__exception_analysis__transform_hlds__exception_analysis__functor_number_map_exception_analysis_answer_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1904 "transform_hlds.exception_analysis.c"
+static const MR_NotagFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__notag_functor_desc_exception_analysis_answer_0 = {
+  (MR_String) "exception_analysis_answer",
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_exception_status_0,
+  NULL
+};
+
+#line 1911 "transform_hlds.exception_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_exception_analysis_answer_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (transform_hlds__exception_analysis____Unify____exception_analysis_answer_0_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis____Compare____exception_analysis_answer_0_0_10001)),
+  (MR_String) "transform_hlds.exception_analysis",
+  (MR_String) "exception_analysis_answer",
+  {     &transform_hlds__exception_analysis__transform_hlds__exception_analysis__notag_functor_desc_exception_analysis_answer_0 },
+  {     &transform_hlds__exception_analysis__transform_hlds__exception_analysis__notag_functor_desc_exception_analysis_answer_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__exception_analysis__transform_hlds__exception_analysis__functor_number_map_exception_analysis_answer_0
+};
+
+#line 1928 "transform_hlds.exception_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__exception_analysis__maybe__ti_maybe_1analysis__type_ctor_info_analysis_status_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &analysis__analysis__type_ctor_info_analysis_status_0
+  }
+};
+
+#line 1936 "transform_hlds.exception_analysis.c"
+static const MR_PseudoTypeInfo transform_hlds__exception_analysis__transform_hlds__exception_analysis__field_types_proc_result_0_0[4] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_exception_status_0,
+  (MR_PseudoTypeInfo) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_type_status_0,
+  (MR_PseudoTypeInfo) &transform_hlds__exception_analysis__maybe__ti_maybe_1analysis__type_ctor_info_analysis_status_0
+};
+
+#line 1944 "transform_hlds.exception_analysis.c"
+static const MR_ConstString transform_hlds__exception_analysis__transform_hlds__exception_analysis__field_names_proc_result_0_0[4] = {
+  (MR_String) "ppid",
+  (MR_String) "status",
+  (MR_String) "rec_calls",
+  (MR_String) "maybe_analysis_status"
+};
+
+#line 1952 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_functor_desc_proc_result_0_0 = {
+  (MR_String) "proc_result",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__exception_analysis__transform_hlds__exception_analysis__field_types_proc_result_0_0,
+  transform_hlds__exception_analysis__transform_hlds__exception_analysis__field_names_proc_result_0_0,
+  NULL,
+  NULL
+};
+
+#line 1967 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_stag_ordered_proc_result_0_0[1] = {
+  &transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_functor_desc_proc_result_0_0
+};
+
+#line 1972 "transform_hlds.exception_analysis.c"
+static const MR_DuPtagLayout transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_ptag_ordered_proc_result_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_stag_ordered_proc_result_0_0
+  }
+};
+
+#line 1981 "transform_hlds.exception_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_name_ordered_proc_result_0[1] = {
+  &transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_functor_desc_proc_result_0_0
+};
+
+#line 1986 "transform_hlds.exception_analysis.c"
+static const MR_Integer transform_hlds__exception_analysis__transform_hlds__exception_analysis__functor_number_map_proc_result_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1991 "transform_hlds.exception_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__exception_analysis____Unify____proc_result_0_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis____Compare____proc_result_0_0_10001)),
+  (MR_String) "transform_hlds.exception_analysis",
+  (MR_String) "proc_result",
+  {     transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_name_ordered_proc_result_0 },
+  {     transform_hlds__exception_analysis__transform_hlds__exception_analysis__du_ptag_ordered_proc_result_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__exception_analysis__transform_hlds__exception_analysis__functor_number_map_proc_result_0
+};
+
+#line 2008 "transform_hlds.exception_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__exception_analysis__list__ti_list_1transform_hlds__exception_analysis__type_ctor_info_proc_result_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0
+  }
+};
+
+#line 2016 "transform_hlds.exception_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_results_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__exception_analysis____Unify____proc_results_0_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis____Compare____proc_results_0_0_10001)),
+  (MR_String) "transform_hlds.exception_analysis",
+  (MR_String) "proc_results",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__exception_analysis__list__ti_list_1transform_hlds__exception_analysis__type_ctor_info_proc_result_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2033 "transform_hlds.exception_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_scc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__exception_analysis____Unify____scc_0_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis____Compare____scc_0_0_10001)),
+  (MR_String) "transform_hlds.exception_analysis",
+  (MR_String) "scc",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__exception_analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2050 "transform_hlds.exception_analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_functor_desc_type_status_0_0 = {
+  (MR_String) "type_will_not_throw",
+  (MR_Integer) 0
+};
+
+#line 2056 "transform_hlds.exception_analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_functor_desc_type_status_0_1 = {
+  (MR_String) "type_may_throw",
+  (MR_Integer) 1
+};
+
+#line 2062 "transform_hlds.exception_analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_functor_desc_type_status_0_2 = {
+  (MR_String) "type_conditional",
+  (MR_Integer) 2
+};
+
+#line 2068 "transform_hlds.exception_analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_value_ordered_type_status_0[3] = {
+  &transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_functor_desc_type_status_0_0,
+  &transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_functor_desc_type_status_0_1,
+  &transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_functor_desc_type_status_0_2
+};
+
+#line 2075 "transform_hlds.exception_analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_name_ordered_type_status_0[3] = {
+  &transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_functor_desc_type_status_0_2,
+  &transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_functor_desc_type_status_0_1,
+  &transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_functor_desc_type_status_0_0
+};
+
+#line 2082 "transform_hlds.exception_analysis.c"
+static const MR_Integer transform_hlds__exception_analysis__transform_hlds__exception_analysis__functor_number_map_type_status_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+#line 2089 "transform_hlds.exception_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_type_status_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (transform_hlds__exception_analysis____Unify____type_status_0_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis____Compare____type_status_0_0_10001)),
+  (MR_String) "transform_hlds.exception_analysis",
+  (MR_String) "type_status",
+  {     transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_name_ordered_type_status_0 },
+  {     transform_hlds__exception_analysis__transform_hlds__exception_analysis__enum_value_ordered_type_status_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  transform_hlds__exception_analysis__transform_hlds__exception_analysis__functor_number_map_type_status_0
+};
+
+#line 2106 "transform_hlds.exception_analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__to_term__arity1__transform_hlds__exception_analysis__exception_analysis_answer__arity0__[7] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (transform_hlds__exception_analysis__ClassMethod_for_analysis__to_term____transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__to_term_1_1_f_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis__ClassMethod_for_analysis__to_term____transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__from_term_2_2_p_0_10001))
+};
+
+#line 2117 "transform_hlds.exception_analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0__[7] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (transform_hlds__exception_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__equivalent_3_3_p_0_10001))
+};
+
+#line 2128 "transform_hlds.exception_analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__answer_pattern__arity2__analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0__[5] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0))
+};
+
+#line 2137 "transform_hlds.exception_analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__analysis__arity3__analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0__[11] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+  ((MR_Box) (transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__analysis_name_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__bottom_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__top_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__get_func_info_6_6_p_0_10001))
+};
+
+#line 2152 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____closures_exception_status_0_0_10001(
+#line 2155 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2157 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2)
+#line 2159 "transform_hlds.exception_analysis.c"
+{
+#line 2161 "transform_hlds.exception_analysis.c"
+  {
+#line 2163 "transform_hlds.exception_analysis.c"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 2166 "transform_hlds.exception_analysis.c"
+    {
+#line 2168 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__succeeded = transform_hlds__exception_analysis____Unify____closures_exception_status_0_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2));
+    }
+#line 2171 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__succeeded;
+#line 2173 "transform_hlds.exception_analysis.c"
+  }
+#line 2175 "transform_hlds.exception_analysis.c"
+}
+
+#line 2178 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____closures_exception_status_0_0_10001(
+#line 2181 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2183 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 2185 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3)
+#line 2187 "transform_hlds.exception_analysis.c"
+{
+#line 2189 "transform_hlds.exception_analysis.c"
+  {
+#line 2191 "transform_hlds.exception_analysis.c"
+    MR_Word transform_hlds__exception_analysis__conv0_HeadVar__1_1;
+
+#line 2194 "transform_hlds.exception_analysis.c"
+    {
+#line 2196 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis____Compare____closures_exception_status_0_0(&transform_hlds__exception_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_3));
+    }
+#line 2199 "transform_hlds.exception_analysis.c"
+    *transform_hlds__exception_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__1_1));
+#line 2201 "transform_hlds.exception_analysis.c"
+  }
+#line 2203 "transform_hlds.exception_analysis.c"
+}
+
+#line 2206 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____exception_analysis_answer_0_0_10001(
+#line 2209 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2211 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2)
+#line 2213 "transform_hlds.exception_analysis.c"
+{
+#line 2215 "transform_hlds.exception_analysis.c"
+  {
+#line 2217 "transform_hlds.exception_analysis.c"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 2220 "transform_hlds.exception_analysis.c"
+    {
+#line 2222 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__succeeded = transform_hlds__exception_analysis____Unify____exception_analysis_answer_0_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2));
+    }
+#line 2225 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__succeeded;
+#line 2227 "transform_hlds.exception_analysis.c"
+  }
+#line 2229 "transform_hlds.exception_analysis.c"
+}
+
+#line 2232 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____exception_analysis_answer_0_0_10001(
+#line 2235 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2237 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 2239 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3)
+#line 2241 "transform_hlds.exception_analysis.c"
+{
+#line 2243 "transform_hlds.exception_analysis.c"
+  {
+#line 2245 "transform_hlds.exception_analysis.c"
+    MR_Word transform_hlds__exception_analysis__conv0_HeadVar__1_1;
+
+#line 2248 "transform_hlds.exception_analysis.c"
+    {
+#line 2250 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis____Compare____exception_analysis_answer_0_0(&transform_hlds__exception_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_3));
+    }
+#line 2253 "transform_hlds.exception_analysis.c"
+    *transform_hlds__exception_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__1_1));
+#line 2255 "transform_hlds.exception_analysis.c"
+  }
+#line 2257 "transform_hlds.exception_analysis.c"
+}
+
+#line 2260 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____proc_result_0_0_10001(
+#line 2263 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2265 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2)
+#line 2267 "transform_hlds.exception_analysis.c"
+{
+#line 2269 "transform_hlds.exception_analysis.c"
+  {
+#line 2271 "transform_hlds.exception_analysis.c"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 2274 "transform_hlds.exception_analysis.c"
+    {
+#line 2276 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__succeeded = transform_hlds__exception_analysis____Unify____proc_result_0_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2));
+    }
+#line 2279 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__succeeded;
+#line 2281 "transform_hlds.exception_analysis.c"
+  }
+#line 2283 "transform_hlds.exception_analysis.c"
+}
+
+#line 2286 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____proc_result_0_0_10001(
+#line 2289 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2291 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 2293 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3)
+#line 2295 "transform_hlds.exception_analysis.c"
+{
+#line 2297 "transform_hlds.exception_analysis.c"
+  {
+#line 2299 "transform_hlds.exception_analysis.c"
+    MR_Word transform_hlds__exception_analysis__conv0_HeadVar__1_1;
+
+#line 2302 "transform_hlds.exception_analysis.c"
+    {
+#line 2304 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis____Compare____proc_result_0_0(&transform_hlds__exception_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_3));
+    }
+#line 2307 "transform_hlds.exception_analysis.c"
+    *transform_hlds__exception_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__1_1));
+#line 2309 "transform_hlds.exception_analysis.c"
+  }
+#line 2311 "transform_hlds.exception_analysis.c"
+}
+
+#line 2314 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____proc_results_0_0_10001(
+#line 2317 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2319 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2)
+#line 2321 "transform_hlds.exception_analysis.c"
+{
+#line 2323 "transform_hlds.exception_analysis.c"
+  {
+#line 2325 "transform_hlds.exception_analysis.c"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 2328 "transform_hlds.exception_analysis.c"
+    {
+#line 2330 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__succeeded = transform_hlds__exception_analysis____Unify____proc_results_0_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2));
+    }
+#line 2333 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__succeeded;
+#line 2335 "transform_hlds.exception_analysis.c"
+  }
+#line 2337 "transform_hlds.exception_analysis.c"
+}
+
+#line 2340 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____proc_results_0_0_10001(
+#line 2343 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2345 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 2347 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3)
+#line 2349 "transform_hlds.exception_analysis.c"
+{
+#line 2351 "transform_hlds.exception_analysis.c"
+  {
+#line 2353 "transform_hlds.exception_analysis.c"
+    MR_Word transform_hlds__exception_analysis__conv0_HeadVar__1_1;
+
+#line 2356 "transform_hlds.exception_analysis.c"
+    {
+#line 2358 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis____Compare____proc_results_0_0(&transform_hlds__exception_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_3));
+    }
+#line 2361 "transform_hlds.exception_analysis.c"
+    *transform_hlds__exception_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__1_1));
+#line 2363 "transform_hlds.exception_analysis.c"
+  }
+#line 2365 "transform_hlds.exception_analysis.c"
+}
+
+#line 2368 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____scc_0_0_10001(
+#line 2371 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2373 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2)
+#line 2375 "transform_hlds.exception_analysis.c"
+{
+#line 2377 "transform_hlds.exception_analysis.c"
+  {
+#line 2379 "transform_hlds.exception_analysis.c"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 2382 "transform_hlds.exception_analysis.c"
+    {
+#line 2384 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__succeeded = transform_hlds__exception_analysis____Unify____scc_0_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2));
+    }
+#line 2387 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__succeeded;
+#line 2389 "transform_hlds.exception_analysis.c"
+  }
+#line 2391 "transform_hlds.exception_analysis.c"
+}
+
+#line 2394 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____scc_0_0_10001(
+#line 2397 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2399 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 2401 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3)
+#line 2403 "transform_hlds.exception_analysis.c"
+{
+#line 2405 "transform_hlds.exception_analysis.c"
+  {
+#line 2407 "transform_hlds.exception_analysis.c"
+    MR_Word transform_hlds__exception_analysis__conv0_HeadVar__1_1;
+
+#line 2410 "transform_hlds.exception_analysis.c"
+    {
+#line 2412 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis____Compare____scc_0_0(&transform_hlds__exception_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_3));
+    }
+#line 2415 "transform_hlds.exception_analysis.c"
+    *transform_hlds__exception_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__1_1));
+#line 2417 "transform_hlds.exception_analysis.c"
+  }
+#line 2419 "transform_hlds.exception_analysis.c"
+}
+
+#line 2422 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____type_status_0_0_10001(
+#line 2425 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2427 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2)
+#line 2429 "transform_hlds.exception_analysis.c"
+{
+#line 2431 "transform_hlds.exception_analysis.c"
+  {
+#line 2433 "transform_hlds.exception_analysis.c"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 2436 "transform_hlds.exception_analysis.c"
+    {
+#line 2438 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__succeeded = transform_hlds__exception_analysis____Unify____type_status_0_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2));
+    }
+#line 2441 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__succeeded;
+#line 2443 "transform_hlds.exception_analysis.c"
+  }
+#line 2445 "transform_hlds.exception_analysis.c"
+}
+
+#line 2448 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____type_status_0_0_10001(
+#line 2451 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2453 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 2455 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3)
+#line 2457 "transform_hlds.exception_analysis.c"
+{
+#line 2459 "transform_hlds.exception_analysis.c"
+  {
+#line 2461 "transform_hlds.exception_analysis.c"
+    MR_Word transform_hlds__exception_analysis__conv0_HeadVar__1_1;
+
+#line 2464 "transform_hlds.exception_analysis.c"
+    {
+#line 2466 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis____Compare____type_status_0_0(&transform_hlds__exception_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_3));
+    }
+#line 2469 "transform_hlds.exception_analysis.c"
+    *transform_hlds__exception_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__1_1));
+#line 2471 "transform_hlds.exception_analysis.c"
+  }
+#line 2473 "transform_hlds.exception_analysis.c"
+}
+
+#line 2476 "transform_hlds.exception_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__to_term____transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__to_term_1_1_f_0_10001(
+#line 2479 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 2481 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1)
+#line 2483 "transform_hlds.exception_analysis.c"
+{
+#line 2485 "transform_hlds.exception_analysis.c"
+  {
+#line 2487 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__wrapper_arg_2;
+#line 2489 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__closure;
+#line 2491 "transform_hlds.exception_analysis.c"
+    MR_Word transform_hlds__exception_analysis__conv0_HeadVar__2_2;
+
+#line 2494 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 2496 "transform_hlds.exception_analysis.c"
+    {
+#line 2498 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__conv0_HeadVar__2_2 = transform_hlds__exception_analysis__ClassMethod_for_analysis__to_term____transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__to_term_1_1_f_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1));
+    }
+#line 2501 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__2_2));
+#line 2503 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__wrapper_arg_2;
+#line 2505 "transform_hlds.exception_analysis.c"
+  }
+#line 2507 "transform_hlds.exception_analysis.c"
+}
+
+#line 2510 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__to_term____transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__from_term_2_2_p_0_10001(
+#line 2513 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 2515 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2517 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_2)
+#line 2519 "transform_hlds.exception_analysis.c"
+{
+#line 2521 "transform_hlds.exception_analysis.c"
+  {
+#line 2523 "transform_hlds.exception_analysis.c"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 2525 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__closure;
+#line 2527 "transform_hlds.exception_analysis.c"
+    MR_Word transform_hlds__exception_analysis__conv0_HeadVar__2_2;
+
+#line 2530 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 2532 "transform_hlds.exception_analysis.c"
+    {
+#line 2534 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__succeeded = transform_hlds__exception_analysis__ClassMethod_for_analysis__to_term____transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__from_term_2_2_p_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), &transform_hlds__exception_analysis__conv0_HeadVar__2_2);
+    }
+#line 2537 "transform_hlds.exception_analysis.c"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 2539 "transform_hlds.exception_analysis.c"
+      {
+#line 2541 "transform_hlds.exception_analysis.c"
+        *transform_hlds__exception_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__2_2));
+#line 2543 "transform_hlds.exception_analysis.c"
+        transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 2545 "transform_hlds.exception_analysis.c"
+      }
+#line 2547 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__succeeded;
+#line 2549 "transform_hlds.exception_analysis.c"
+  }
+#line 2551 "transform_hlds.exception_analysis.c"
+}
+
+#line 2554 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0_10001(
+#line 2557 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 2559 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2561 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 2563 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3)
+#line 2565 "transform_hlds.exception_analysis.c"
+{
+#line 2567 "transform_hlds.exception_analysis.c"
+  {
+#line 2569 "transform_hlds.exception_analysis.c"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 2571 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__closure;
+
+#line 2574 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 2576 "transform_hlds.exception_analysis.c"
+    {
+#line 2578 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__succeeded = transform_hlds__exception_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_3));
+    }
+#line 2581 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__succeeded;
+#line 2583 "transform_hlds.exception_analysis.c"
+  }
+#line 2585 "transform_hlds.exception_analysis.c"
+}
+
+#line 2588 "transform_hlds.exception_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__equivalent_3_3_p_0_10001(
+#line 2591 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 2593 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2595 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 2597 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3)
+#line 2599 "transform_hlds.exception_analysis.c"
+{
+#line 2601 "transform_hlds.exception_analysis.c"
+  {
+#line 2603 "transform_hlds.exception_analysis.c"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 2605 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__closure;
+
+#line 2608 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 2610 "transform_hlds.exception_analysis.c"
+    {
+#line 2612 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__succeeded = transform_hlds__exception_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__equivalent_3_3_p_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_3));
+    }
+#line 2615 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__succeeded;
+#line 2617 "transform_hlds.exception_analysis.c"
+  }
+#line 2619 "transform_hlds.exception_analysis.c"
+}
+
+#line 2622 "transform_hlds.exception_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__analysis_name_2_2_f_0_10001(
+#line 2625 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg)
+#line 2627 "transform_hlds.exception_analysis.c"
+{
+#line 2629 "transform_hlds.exception_analysis.c"
+  {
+#line 2631 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__wrapper_arg_3;
+#line 2633 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__closure;
+#line 2635 "transform_hlds.exception_analysis.c"
+    MR_String transform_hlds__exception_analysis__conv0_HeadVar__3_3;
+
+#line 2638 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 2640 "transform_hlds.exception_analysis.c"
+    {
+#line 2642 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__conv0_HeadVar__3_3 = transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__analysis_name_2_2_f_0();
+    }
+#line 2645 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__3_3));
+#line 2647 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__wrapper_arg_3;
+#line 2649 "transform_hlds.exception_analysis.c"
+  }
+#line 2651 "transform_hlds.exception_analysis.c"
+}
+
+#line 2654 "transform_hlds.exception_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0_10001(
+#line 2657 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg)
+#line 2659 "transform_hlds.exception_analysis.c"
+{
+#line 2661 "transform_hlds.exception_analysis.c"
+  {
+#line 2663 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__wrapper_arg_3;
+#line 2665 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__closure;
+#line 2667 "transform_hlds.exception_analysis.c"
+    MR_Integer transform_hlds__exception_analysis__conv0_HeadVar__3_3;
+
+#line 2670 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 2672 "transform_hlds.exception_analysis.c"
+    {
+#line 2674 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__conv0_HeadVar__3_3 = transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0();
+    }
+#line 2677 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__3_3));
+#line 2679 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__wrapper_arg_3;
+#line 2681 "transform_hlds.exception_analysis.c"
+  }
+#line 2683 "transform_hlds.exception_analysis.c"
+}
+
+#line 2686 "transform_hlds.exception_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0_10001(
+#line 2689 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg)
+#line 2691 "transform_hlds.exception_analysis.c"
+{
+#line 2693 "transform_hlds.exception_analysis.c"
+  {
+#line 2695 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__wrapper_arg_3;
+#line 2697 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__closure;
+#line 2699 "transform_hlds.exception_analysis.c"
+    MR_Word transform_hlds__exception_analysis__conv0_HeadVar__3_3;
+
+#line 2702 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 2704 "transform_hlds.exception_analysis.c"
+    {
+#line 2706 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__conv0_HeadVar__3_3 = transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0();
+    }
+#line 2709 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__3_3));
+#line 2711 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__wrapper_arg_3;
+#line 2713 "transform_hlds.exception_analysis.c"
+  }
+#line 2715 "transform_hlds.exception_analysis.c"
+}
+
+#line 2718 "transform_hlds.exception_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__bottom_2_2_f_0_10001(
+#line 2721 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 2723 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1)
+#line 2725 "transform_hlds.exception_analysis.c"
+{
+#line 2727 "transform_hlds.exception_analysis.c"
+  {
+#line 2729 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__wrapper_arg_3;
+#line 2731 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__closure;
+#line 2733 "transform_hlds.exception_analysis.c"
+    MR_Word transform_hlds__exception_analysis__conv0_HeadVar__3_3;
+
+#line 2736 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 2738 "transform_hlds.exception_analysis.c"
+    {
+#line 2740 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__conv0_HeadVar__3_3 = transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__bottom_2_2_f_0();
+    }
+#line 2743 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__3_3));
+#line 2745 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__wrapper_arg_3;
+#line 2747 "transform_hlds.exception_analysis.c"
+  }
+#line 2749 "transform_hlds.exception_analysis.c"
+}
+
+#line 2752 "transform_hlds.exception_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__top_2_2_f_0_10001(
+#line 2755 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 2757 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1)
+#line 2759 "transform_hlds.exception_analysis.c"
+{
+#line 2761 "transform_hlds.exception_analysis.c"
+  {
+#line 2763 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__wrapper_arg_3;
+#line 2765 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__closure;
+#line 2767 "transform_hlds.exception_analysis.c"
+    MR_Word transform_hlds__exception_analysis__conv0_HeadVar__3_3;
+
+#line 2770 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 2772 "transform_hlds.exception_analysis.c"
+    {
+#line 2774 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__conv0_HeadVar__3_3 = transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__top_2_2_f_0();
+    }
+#line 2777 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__3_3));
+#line 2779 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__wrapper_arg_3;
+#line 2781 "transform_hlds.exception_analysis.c"
+  }
+#line 2783 "transform_hlds.exception_analysis.c"
+}
+
+#line 2786 "transform_hlds.exception_analysis.c"
+static void MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__get_func_info_6_6_p_0_10001(
+#line 2789 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 2791 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 2793 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 2795 "transform_hlds.exception_analysis.c"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_3,
+#line 2797 "transform_hlds.exception_analysis.c"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_6)
+#line 2799 "transform_hlds.exception_analysis.c"
+{
+#line 2801 "transform_hlds.exception_analysis.c"
+  {
+#line 2803 "transform_hlds.exception_analysis.c"
+    MR_Box transform_hlds__exception_analysis__closure;
+
+#line 2806 "transform_hlds.exception_analysis.c"
+    transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 2808 "transform_hlds.exception_analysis.c"
+    {
+#line 2810 "transform_hlds.exception_analysis.c"
+      transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__get_func_info_6_6_p_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_3));
+    }
+#line 2813 "transform_hlds.exception_analysis.c"
+  }
+#line 2815 "transform_hlds.exception_analysis.c"
+}
+
+#line 1044 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_93_95_48_3_p_0(
+#line 1044 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Status_8,
+#line 1044 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Status_3)
+#line 1044 "exception_analysis.m"
+{
+#line 1044 "exception_analysis.m"
+  {
+#line 1044 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 1044 "exception_analysis.m"
+    {
+#line 1044 "exception_analysis.m"
+      return transform_hlds__exception_analysis__succeeded = transform_hlds__exception_analysis____Unify____exception_analysis_answer_0_0(transform_hlds__exception_analysis__Status_3, transform_hlds__exception_analysis__Status_8);
+    }
+#line 1044 "exception_analysis.m"
+    return transform_hlds__exception_analysis__succeeded;
+#line 1044 "exception_analysis.m"
+  }
+#line 1044 "exception_analysis.m"
+}
+
+#line 1038 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_93_95_48_3_p_0(
+#line 1038 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Answer1_4,
+#line 1038 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Answer2_5)
+#line 1038 "exception_analysis.m"
+{
+#line 1038 "exception_analysis.m"
+  {
+#line 1038 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1038 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Status1_6 = (MR_Word) transform_hlds__exception_analysis__Answer1_4;
+#line 1038 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Status2_7 = (MR_Word) transform_hlds__exception_analysis__Answer2_5;
+
+#line 1050 "exception_analysis.m"
+#line 1050 "exception_analysis.m"
+    switch (MR_tag((MR_Word) transform_hlds__exception_analysis__Status1_6)) {
+#line 1050 "exception_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1050 "exception_analysis.m"
+      case (MR_Integer) 0:
+#line 1050 "exception_analysis.m"
+#line 1050 "exception_analysis.m"
+        switch (MR_unmkbody(transform_hlds__exception_analysis__Status1_6)) {
+#line 1050 "exception_analysis.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 1050 "exception_analysis.m"
+          case (MR_Integer) 0:
+#line 1050 "exception_analysis.m"
+            if ((transform_hlds__exception_analysis__Status2_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 1050 "exception_analysis.m"
+              transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 1050 "exception_analysis.m"
+            else
+#line 1050 "exception_analysis.m"
+            if (((MR_tag((MR_Word) transform_hlds__exception_analysis__Status2_7)) == (MR_mktag((MR_Integer) 1))))
+#line 1051 "exception_analysis.m"
+              transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 1050 "exception_analysis.m"
+            else
+#line 1050 "exception_analysis.m"
+              transform_hlds__exception_analysis__succeeded = MR_FALSE;
+#line 1050 "exception_analysis.m"
+            break;
+#line 1050 "exception_analysis.m"
+          case (MR_Integer) 1:
+#line 1052 "exception_analysis.m"
+            {
+#line 1052 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_10_10;
+
+#line 1052 "exception_analysis.m"
+              transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__Status2_7)) == (MR_mktag((MR_Integer) 1)));
+#line 1052 "exception_analysis.m"
+              if (transform_hlds__exception_analysis__succeeded)
+#line 1052 "exception_analysis.m"
+                transform_hlds__exception_analysis__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__Status2_7, (MR_Integer) 0)));
+#line 1052 "exception_analysis.m"
+            }
+#line 1050 "exception_analysis.m"
+            break;
+#line 1050 "exception_analysis.m"
+        }
+#line 1050 "exception_analysis.m"
+        break;
+#line 1050 "exception_analysis.m"
+      case (MR_Integer) 1:
+#line 1053 "exception_analysis.m"
+        {
+#line 1053 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__Status1_6, (MR_Integer) 0)));
+#line 1053 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_12_12;
+
+#line 1053 "exception_analysis.m"
+          transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__V_11_11 == (MR_Integer) 1);
+#line 1053 "exception_analysis.m"
+          if (transform_hlds__exception_analysis__succeeded)
+#line 1053 "exception_analysis.m"
+            {
+#line 1054 "exception_analysis.m"
+              transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__Status2_7)) == (MR_mktag((MR_Integer) 1)));
+#line 1054 "exception_analysis.m"
+              if (transform_hlds__exception_analysis__succeeded)
+#line 1054 "exception_analysis.m"
+                {
+#line 1054 "exception_analysis.m"
+                  transform_hlds__exception_analysis__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__Status2_7, (MR_Integer) 0)));
+#line 1054 "exception_analysis.m"
+                  transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__V_12_12 == (MR_Integer) 0);
+#line 1054 "exception_analysis.m"
+                }
+#line 1053 "exception_analysis.m"
+            }
+#line 1053 "exception_analysis.m"
+        }
+#line 1050 "exception_analysis.m"
+        break;
+#line 1050 "exception_analysis.m"
+    }
+#line 1038 "exception_analysis.m"
+    return transform_hlds__exception_analysis__succeeded;
+#line 1038 "exception_analysis.m"
+  }
+#line 1038 "exception_analysis.m"
+}
+
+#line 1033 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_103_101_116_95_102_117_110_99_95_105_110_102_111_95_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_6_p_0(void)
+#line 1033 "exception_analysis.m"
+{
+#line 1033 "exception_analysis.m"
+  {
+#line 1033 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 1033 "exception_analysis.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1033 "exception_analysis.m"
+  }
+#line 1033 "exception_analysis.m"
+}
+
+#line 1032 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_112_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1032 "exception_analysis.m"
+{
+#line 1032 "exception_analysis.m"
+  {
+#line 1032 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 1032 "exception_analysis.m"
+    return (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0])));
+#line 1032 "exception_analysis.m"
+  }
+#line 1032 "exception_analysis.m"
+}
+
+#line 1031 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_98_111_116_116_111_109_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1031 "exception_analysis.m"
+{
+#line 1031 "exception_analysis.m"
+  {
+#line 1031 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 1031 "exception_analysis.m"
+    return (MR_Word) ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1031 "exception_analysis.m"
+  }
+#line 1031 "exception_analysis.m"
+}
+
+#line 1030 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_112_114_101_102_101_114_114_101_100_95_102_105_120_112_111_105_110_116_95_116_121_112_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1030 "exception_analysis.m"
+{
+#line 1030 "exception_analysis.m"
+  {
+#line 1030 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 1030 "exception_analysis.m"
+    return (MR_Integer) 0;
+#line 1030 "exception_analysis.m"
+  }
+#line 1030 "exception_analysis.m"
+}
+
+#line 1029 "exception_analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_118_101_114_115_105_111_110_95_110_117_109_98_101_114_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1029 "exception_analysis.m"
+{
+#line 1029 "exception_analysis.m"
+  {
+#line 1029 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 1029 "exception_analysis.m"
+    return (MR_Integer) 1;
+#line 1029 "exception_analysis.m"
+  }
+#line 1029 "exception_analysis.m"
+}
+
+#line 1028 "exception_analysis.m"
+static MR_String MR_CALL 
+transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_110_97_109_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1028 "exception_analysis.m"
+{
+#line 1024 "exception_analysis.m"
+  {
+#line 1024 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 1024 "exception_analysis.m"
+    return (MR_String) "exception_analysis";
+#line 1024 "exception_analysis.m"
+  }
+#line 1028 "exception_analysis.m"
+}
+
+#line 422 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__IntroducedFrom__func__check_goal_for_exceptions_2__422__1_1_f_0(
+#line 422 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_95)
+#line 422 "exception_analysis.m"
+{
+#line 422 "exception_analysis.m"
+  {
+#line 422 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 422 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__HeadVar__2_96 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__1_95, (MR_Integer) 2)));
+#line 422 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_112_112 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__1_95, (MR_Integer) 0)));
+#line 422 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_113_113 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__1_95, (MR_Integer) 1)));
+
+#line 422 "exception_analysis.m"
+    return transform_hlds__exception_analysis__HeadVar__2_96;
+#line 422 "exception_analysis.m"
+  }
+#line 422 "exception_analysis.m"
+}
+
+#line 1058 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__to_term____transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__from_term_2_2_p_0(
+#line 1058 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 1058 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__2_2)
+#line 1058 "exception_analysis.m"
+{
+#line 1070 "exception_analysis.m"
+  {
+#line 1070 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0)));
+#line 1070 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Status_4;
+#line 1070 "exception_analysis.m"
+    MR_String transform_hlds__exception_analysis__String_5;
+#line 1070 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_7_7;
+#line 1070 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_8_8;
+#line 1071 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_6_6;
+#line 1078 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__lo_0;
+#line 1078 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__hi_1;
+#line 1078 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__mid_2;
+#line 1078 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__result_3;
+
+#line 1071 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 1071 "exception_analysis.m"
+      {
+#line 1071 "exception_analysis.m"
+        transform_hlds__exception_analysis__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__1_1, (MR_Integer) 0)));
+#line 1071 "exception_analysis.m"
+        transform_hlds__exception_analysis__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__1_1, (MR_Integer) 1)));
+#line 1071 "exception_analysis.m"
+        transform_hlds__exception_analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__1_1, (MR_Integer) 2)));
+#line 1071 "exception_analysis.m"
+        transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__V_8_8 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1070 "exception_analysis.m"
+        if (transform_hlds__exception_analysis__succeeded)
+#line 1070 "exception_analysis.m"
+          {
+#line 1071 "exception_analysis.m"
+            transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__V_7_7)) == (MR_mktag((MR_Integer) 0)));
+#line 1071 "exception_analysis.m"
+            if (transform_hlds__exception_analysis__succeeded)
+#line 1071 "exception_analysis.m"
+              {
+#line 1071 "exception_analysis.m"
+                transform_hlds__exception_analysis__String_5 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_7_7, (MR_Integer) 0)));
+#line 1078 "exception_analysis.m"
+                /* binary string simple lookup switch */
+#line 1078 "exception_analysis.m"
+                transform_hlds__exception_analysis__lo_0 = (MR_Integer) 0;
+#line 1078 "exception_analysis.m"
+                transform_hlds__exception_analysis__hi_1 = (MR_Integer) 3;
+#line 1078 "exception_analysis.m"
+                do
+#line 1078 "exception_analysis.m"
+                  {
+#line 1078 "exception_analysis.m"
+                    transform_hlds__exception_analysis__mid_2 = (((transform_hlds__exception_analysis__lo_0 + transform_hlds__exception_analysis__hi_1)) / (MR_Integer) 2);
+#line 1078 "exception_analysis.m"
+                    transform_hlds__exception_analysis__result_3 = MR_strcmp(transform_hlds__exception_analysis__String_5, ((&transform_hlds__exception_analysis_vector_common_13[0 + transform_hlds__exception_analysis__mid_2]))->transform_hlds__exception_analysis__vector_common_type_13_0__vct_13_f_0);
+#line 1078 "exception_analysis.m"
+                    if ((transform_hlds__exception_analysis__result_3 == (MR_Integer) 0))
+#line 1078 "exception_analysis.m"
+                      {
+#line 1078 "exception_analysis.m"
+                        transform_hlds__exception_analysis__Status_4 = ((&transform_hlds__exception_analysis_vector_common_13[0 + transform_hlds__exception_analysis__mid_2]))->transform_hlds__exception_analysis__vector_common_type_13_0__vct_13_f_1;
+#line 1078 "exception_analysis.m"
+                        transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 1078 "exception_analysis.m"
+                        /* jump out of search loop */
+#line 1078 "exception_analysis.m"
+                        goto label_0;
+#line 1078 "exception_analysis.m"
+                      }
+#line 1078 "exception_analysis.m"
+                    else
+#line 1078 "exception_analysis.m"
+                    if ((transform_hlds__exception_analysis__result_3 < (MR_Integer) 0))
+#line 1078 "exception_analysis.m"
+                      transform_hlds__exception_analysis__hi_1 = (transform_hlds__exception_analysis__mid_2 - (MR_Integer) 1);
+#line 1078 "exception_analysis.m"
+                    else
+#line 1078 "exception_analysis.m"
+                      transform_hlds__exception_analysis__lo_0 = (transform_hlds__exception_analysis__mid_2 + (MR_Integer) 1);
+#line 1078 "exception_analysis.m"
+                  }
+#line 1078 "exception_analysis.m"
+                while ((transform_hlds__exception_analysis__lo_0 <= transform_hlds__exception_analysis__hi_1));
+#line 1078 "exception_analysis.m"
+                transform_hlds__exception_analysis__succeeded = MR_FALSE;
+#line 1078 "exception_analysis.m"
+              label_0:;
+#line 1070 "exception_analysis.m"
+                if (transform_hlds__exception_analysis__succeeded)
+#line 1070 "exception_analysis.m"
+                  {
+#line 1070 "exception_analysis.m"
+                    *transform_hlds__exception_analysis__HeadVar__2_2 = (MR_Word) transform_hlds__exception_analysis__Status_4;
+#line 1070 "exception_analysis.m"
+                    transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 1070 "exception_analysis.m"
+                  }
+#line 1071 "exception_analysis.m"
+              }
+#line 1070 "exception_analysis.m"
+          }
+#line 1071 "exception_analysis.m"
+      }
+#line 1070 "exception_analysis.m"
+    return transform_hlds__exception_analysis__succeeded;
+#line 1070 "exception_analysis.m"
+  }
+#line 1058 "exception_analysis.m"
+}
+
+#line 1057 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__to_term____transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__to_term_1_1_f_0(
+#line 1057 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1)
+#line 1057 "exception_analysis.m"
+{
+#line 1063 "exception_analysis.m"
+  {
+#line 1063 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1063 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__HeadVar__2_2;
+#line 1063 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Status_5 = (MR_Word) transform_hlds__exception_analysis__HeadVar__1_1;
+#line 1063 "exception_analysis.m"
+    MR_String transform_hlds__exception_analysis__String_6;
+#line 1063 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_7_7;
+#line 1063 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_9_9;
+
+#line 1078 "exception_analysis.m"
+#line 1078 "exception_analysis.m"
+    switch (MR_tag((MR_Word) transform_hlds__exception_analysis__Status_5)) {
+#line 1078 "exception_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1078 "exception_analysis.m"
+      case (MR_Integer) 0:
+#line 1078 "exception_analysis.m"
+#line 1078 "exception_analysis.m"
+        switch (MR_unmkbody(transform_hlds__exception_analysis__Status_5)) {
+#line 1078 "exception_analysis.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 1078 "exception_analysis.m"
+          case (MR_Integer) 0:
+#line 1078 "exception_analysis.m"
+            transform_hlds__exception_analysis__String_6 = (MR_String) "will_not_throw";
+#line 1078 "exception_analysis.m"
+            break;
+#line 1078 "exception_analysis.m"
+          case (MR_Integer) 1:
+#line 1079 "exception_analysis.m"
+            transform_hlds__exception_analysis__String_6 = (MR_String) "conditional";
+#line 1078 "exception_analysis.m"
+            break;
+#line 1078 "exception_analysis.m"
+        }
+#line 1078 "exception_analysis.m"
+        break;
+#line 1078 "exception_analysis.m"
+      case (MR_Integer) 1:
+#line 1078 "exception_analysis.m"
+        {
+#line 1078 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__Status_5, (MR_Integer) 0)));
+
+#line 1078 "exception_analysis.m"
+#line 1078 "exception_analysis.m"
+          switch (transform_hlds__exception_analysis__V_12_12) {
+#line 1078 "exception_analysis.m"
+            default: /*NOTREACHED*/ MR_assert(0);
+#line 1078 "exception_analysis.m"
+            case (MR_Integer) 1:
+#line 1081 "exception_analysis.m"
+              transform_hlds__exception_analysis__String_6 = (MR_String) "may_throw_type_exception";
+#line 1078 "exception_analysis.m"
+              break;
+#line 1078 "exception_analysis.m"
+            case (MR_Integer) 0:
+#line 1083 "exception_analysis.m"
+              transform_hlds__exception_analysis__String_6 = (MR_String) "may_throw_user_exception";
+#line 1078 "exception_analysis.m"
+              break;
+#line 1078 "exception_analysis.m"
+          }
+#line 1078 "exception_analysis.m"
+        }
+#line 1078 "exception_analysis.m"
+        break;
+#line 1078 "exception_analysis.m"
+    }
+#line 1066 "exception_analysis.m"
+    {
+#line 1066 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1066 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_7_7, 0) = ((MR_Box) (transform_hlds__exception_analysis__String_6));
+#line 1066 "exception_analysis.m"
+    }
+#line 1066 "exception_analysis.m"
+    {
+#line 1066 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_9_9 = mercury__term__context_init_0_f_0();
+    }
+#line 1066 "exception_analysis.m"
+    {
+#line 1066 "exception_analysis.m"
+      transform_hlds__exception_analysis__HeadVar__2_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1066 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__2_2, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_7_7));
+#line 1066 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__2_2, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1066 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__2_2, 2) = ((MR_Box) (transform_hlds__exception_analysis__V_9_9));
+#line 1066 "exception_analysis.m"
+    }
+#line 1063 "exception_analysis.m"
+    return transform_hlds__exception_analysis__HeadVar__2_2;
+#line 1063 "exception_analysis.m"
+  }
+#line 1057 "exception_analysis.m"
+}
+
+#line 1044 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__equivalent_3_3_p_0(
+#line 1044 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Status_8,
+#line 1044 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Status_3)
+#line 1044 "exception_analysis.m"
+{
+#line 1044 "exception_analysis.m"
+  {
+#line 1044 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 1044 "exception_analysis.m"
+    {
+#line 1044 "exception_analysis.m"
+      return transform_hlds__exception_analysis__succeeded = transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_93_95_48_3_p_0(transform_hlds__exception_analysis__Status_8, transform_hlds__exception_analysis__Status_3);
+    }
+#line 1044 "exception_analysis.m"
+    return transform_hlds__exception_analysis__succeeded;
+#line 1044 "exception_analysis.m"
+  }
+#line 1044 "exception_analysis.m"
+}
+
+#line 1038 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0(
+#line 1038 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Answer1_4,
+#line 1038 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Answer2_5)
+#line 1038 "exception_analysis.m"
+{
+#line 1038 "exception_analysis.m"
+  {
+#line 1038 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 1038 "exception_analysis.m"
+    {
+#line 1038 "exception_analysis.m"
+      return transform_hlds__exception_analysis__succeeded = transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_93_95_48_3_p_0(transform_hlds__exception_analysis__Answer1_4, transform_hlds__exception_analysis__Answer2_5);
+    }
+#line 1038 "exception_analysis.m"
+    return transform_hlds__exception_analysis__succeeded;
+#line 1038 "exception_analysis.m"
+  }
+#line 1038 "exception_analysis.m"
+}
+
+#line 1033 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__get_func_info_6_6_p_0(
+#line 1033 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_17,
+#line 1033 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_18,
+#line 1033 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_19)
+#line 1033 "exception_analysis.m"
+{
+#line 1033 "exception_analysis.m"
+  {
+#line 1033 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 1033 "exception_analysis.m"
+    {
+#line 1033 "exception_analysis.m"
+      transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_103_101_116_95_102_117_110_99_95_105_110_102_111_95_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_6_p_0();
+#line 1033 "exception_analysis.m"
+      return;
+    }
+#line 1033 "exception_analysis.m"
+  }
+#line 1033 "exception_analysis.m"
+}
+
+#line 1032 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__top_2_2_f_0(void)
+#line 1032 "exception_analysis.m"
+{
+#line 1032 "exception_analysis.m"
+  {
+#line 1032 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1032 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__HeadVar__3_3;
+
+#line 1032 "exception_analysis.m"
+    {
+#line 1032 "exception_analysis.m"
+      return transform_hlds__exception_analysis__HeadVar__3_3 = transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_112_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1032 "exception_analysis.m"
+    return transform_hlds__exception_analysis__HeadVar__3_3;
+#line 1032 "exception_analysis.m"
+  }
+#line 1032 "exception_analysis.m"
+}
+
+#line 1031 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__bottom_2_2_f_0(void)
+#line 1031 "exception_analysis.m"
+{
+#line 1031 "exception_analysis.m"
+  {
+#line 1031 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1031 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__HeadVar__3_3;
+
+#line 1031 "exception_analysis.m"
+    {
+#line 1031 "exception_analysis.m"
+      return transform_hlds__exception_analysis__HeadVar__3_3 = transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_98_111_116_116_111_109_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1031 "exception_analysis.m"
+    return transform_hlds__exception_analysis__HeadVar__3_3;
+#line 1031 "exception_analysis.m"
+  }
+#line 1031 "exception_analysis.m"
+}
+
+#line 1030 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0(void)
+#line 1030 "exception_analysis.m"
+{
+#line 1030 "exception_analysis.m"
+  {
+#line 1030 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1030 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__HeadVar__3_3;
+
+#line 1030 "exception_analysis.m"
+    {
+#line 1030 "exception_analysis.m"
+      return transform_hlds__exception_analysis__HeadVar__3_3 = transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_112_114_101_102_101_114_114_101_100_95_102_105_120_112_111_105_110_116_95_116_121_112_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1030 "exception_analysis.m"
+    return transform_hlds__exception_analysis__HeadVar__3_3;
+#line 1030 "exception_analysis.m"
+  }
+#line 1030 "exception_analysis.m"
+}
+
+#line 1029 "exception_analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0(void)
+#line 1029 "exception_analysis.m"
+{
+#line 1029 "exception_analysis.m"
+  {
+#line 1029 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1029 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__HeadVar__3_3;
+
+#line 1029 "exception_analysis.m"
+    {
+#line 1029 "exception_analysis.m"
+      return transform_hlds__exception_analysis__HeadVar__3_3 = transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_118_101_114_115_105_111_110_95_110_117_109_98_101_114_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1029 "exception_analysis.m"
+    return transform_hlds__exception_analysis__HeadVar__3_3;
+#line 1029 "exception_analysis.m"
+  }
+#line 1029 "exception_analysis.m"
+}
+
+#line 1028 "exception_analysis.m"
+static MR_String MR_CALL 
+transform_hlds__exception_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__exception_analysis__exception_analysis_answer__arity0______analysis__analysis_name_2_2_f_0(void)
+#line 1028 "exception_analysis.m"
+{
+#line 1024 "exception_analysis.m"
+  {
+#line 1024 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1024 "exception_analysis.m"
+    MR_String transform_hlds__exception_analysis__HeadVar__3_3;
+
+#line 1024 "exception_analysis.m"
+    {
+#line 1024 "exception_analysis.m"
+      return transform_hlds__exception_analysis__HeadVar__3_3 = transform_hlds__exception_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_95_101_120_99_101_112_116_105_111_110_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_110_97_109_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1024 "exception_analysis.m"
+    return transform_hlds__exception_analysis__HeadVar__3_3;
+#line 1024 "exception_analysis.m"
+  }
+#line 1028 "exception_analysis.m"
+}
+
+#line 854 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____type_status_0_0(
+#line 854 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__1_1,
+#line 854 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2,
+#line 854 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3)
+#line 854 "exception_analysis.m"
+{
+#line 854 "exception_analysis.m"
+  {
+#line 854 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 854 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__Cast_HeadVar1_4 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__2_2;
+#line 854 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__Cast_HeadVar2_5 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__3_3;
+
+#line 854 "exception_analysis.m"
+    {
+#line 854 "exception_analysis.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__exception_analysis__HeadVar__1_1, transform_hlds__exception_analysis__Cast_HeadVar1_4, transform_hlds__exception_analysis__Cast_HeadVar2_5);
+#line 854 "exception_analysis.m"
+      return;
+    }
+#line 854 "exception_analysis.m"
+  }
+#line 854 "exception_analysis.m"
+}
+
+#line 854 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____type_status_0_0(
+#line 854 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_1,
+#line 854 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2)
+#line 854 "exception_analysis.m"
+{
+#line 3562 "transform_hlds.exception_analysis.c"
+  {
+#line 3564 "transform_hlds.exception_analysis.c"
+    MR_bool transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__HeadVar__2_1 == transform_hlds__exception_analysis__HeadVar__2_2);
+
+#line 3567 "transform_hlds.exception_analysis.c"
+    return transform_hlds__exception_analysis__succeeded;
+#line 3569 "transform_hlds.exception_analysis.c"
+  }
+#line 854 "exception_analysis.m"
+}
+
+#line 196 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____scc_0_0(
+#line 196 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__1_1,
+#line 196 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2,
+#line 196 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3)
+#line 196 "exception_analysis.m"
+{
+#line 196 "exception_analysis.m"
+  {
+#line 196 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 196 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Cast_HeadVar1_4 = transform_hlds__exception_analysis__HeadVar__2_2;
+#line 196 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Cast_HeadVar2_5 = transform_hlds__exception_analysis__HeadVar__3_3;
+
+#line 196 "exception_analysis.m"
+    {
+#line 196 "exception_analysis.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_1[0], transform_hlds__exception_analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__exception_analysis__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__exception_analysis__Cast_HeadVar2_5)));
+#line 196 "exception_analysis.m"
+      return;
+    }
+#line 196 "exception_analysis.m"
+  }
+#line 196 "exception_analysis.m"
+}
+
+#line 196 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____scc_0_0(
+#line 196 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 196 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2)
+#line 196 "exception_analysis.m"
+{
+#line 196 "exception_analysis.m"
+  {
+#line 196 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 196 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Cast_HeadVar1_3 = transform_hlds__exception_analysis__HeadVar__1_1;
+#line 196 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Cast_HeadVar2_4 = transform_hlds__exception_analysis__HeadVar__2_2;
+
+#line 196 "exception_analysis.m"
+    {
+#line 196 "exception_analysis.m"
+      return transform_hlds__exception_analysis__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_1[0], ((MR_Box) (transform_hlds__exception_analysis__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__exception_analysis__Cast_HeadVar2_4)));
+    }
+#line 196 "exception_analysis.m"
+    return transform_hlds__exception_analysis__succeeded;
+#line 196 "exception_analysis.m"
+  }
+#line 196 "exception_analysis.m"
+}
+
+#line 198 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____proc_results_0_0(
+#line 198 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__1_1,
+#line 198 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2,
+#line 198 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3)
+#line 198 "exception_analysis.m"
+{
+#line 198 "exception_analysis.m"
+  {
+#line 198 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 198 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Cast_HeadVar1_4 = transform_hlds__exception_analysis__HeadVar__2_2;
+#line 198 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Cast_HeadVar2_5 = transform_hlds__exception_analysis__HeadVar__3_3;
+
+#line 198 "exception_analysis.m"
+    {
+#line 198 "exception_analysis.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_1[3], transform_hlds__exception_analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__exception_analysis__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__exception_analysis__Cast_HeadVar2_5)));
+#line 198 "exception_analysis.m"
+      return;
+    }
+#line 198 "exception_analysis.m"
+  }
+#line 198 "exception_analysis.m"
+}
+
+#line 198 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____proc_results_0_0(
+#line 198 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 198 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2)
+#line 198 "exception_analysis.m"
+{
+#line 198 "exception_analysis.m"
+  {
+#line 198 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 198 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Cast_HeadVar1_3 = transform_hlds__exception_analysis__HeadVar__1_1;
+#line 198 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Cast_HeadVar2_4 = transform_hlds__exception_analysis__HeadVar__2_2;
+
+#line 198 "exception_analysis.m"
+    {
+#line 198 "exception_analysis.m"
+      return transform_hlds__exception_analysis__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_1[3], ((MR_Box) (transform_hlds__exception_analysis__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__exception_analysis__Cast_HeadVar2_4)));
+    }
+#line 198 "exception_analysis.m"
+    return transform_hlds__exception_analysis__succeeded;
+#line 198 "exception_analysis.m"
+  }
+#line 198 "exception_analysis.m"
+}
+
+#line 200 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____proc_result_0_0(
+#line 200 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__1_1,
+#line 200 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2,
+#line 200 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3)
+#line 200 "exception_analysis.m"
+{
+#line 200 "exception_analysis.m"
+  {
+#line 200 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 200 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__CastX_15 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__2_2;
+#line 200 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__CastY_16 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__3_3;
+
+#line 200 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__CastX_15 == transform_hlds__exception_analysis__CastY_16);
+#line 200 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 3722 "transform_hlds.exception_analysis.c"
+      *transform_hlds__exception_analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 200 "exception_analysis.m"
+    else
+#line 200 "exception_analysis.m"
+      {
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__2_2, (MR_Integer) 0)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__2_2, (MR_Integer) 1)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__2_2, (MR_Integer) 2)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__2_2, (MR_Integer) 3)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__3_3, (MR_Integer) 0)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__3_3, (MR_Integer) 1)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__3_3, (MR_Integer) 2)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__3_3, (MR_Integer) 3)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_12_12;
+
+#line 200 "exception_analysis.m"
+        {
+#line 200 "exception_analysis.m"
+          hlds__hlds_pred____Compare____pred_proc_id_0_0(&transform_hlds__exception_analysis__V_12_12, transform_hlds__exception_analysis__V_4_4, transform_hlds__exception_analysis__V_8_8);
+        }
+#line 3752 "transform_hlds.exception_analysis.c"
+        transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__V_12_12 == (MR_Integer) 0);
+#line 200 "exception_analysis.m"
+        transform_hlds__exception_analysis__succeeded = !(transform_hlds__exception_analysis__succeeded);
+#line 200 "exception_analysis.m"
+        if (transform_hlds__exception_analysis__succeeded)
+#line 200 "exception_analysis.m"
+          *transform_hlds__exception_analysis__HeadVar__1_1 = transform_hlds__exception_analysis__V_12_12;
+#line 200 "exception_analysis.m"
+        else
+#line 200 "exception_analysis.m"
+          {
+#line 200 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__V_13_13;
+
+#line 200 "exception_analysis.m"
+            {
+#line 200 "exception_analysis.m"
+              parse_tree__prog_data____Compare____exception_status_0_0(&transform_hlds__exception_analysis__V_13_13, transform_hlds__exception_analysis__V_5_5, transform_hlds__exception_analysis__V_9_9);
+            }
+#line 3772 "transform_hlds.exception_analysis.c"
+            transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__V_13_13 == (MR_Integer) 0);
+#line 200 "exception_analysis.m"
+            transform_hlds__exception_analysis__succeeded = !(transform_hlds__exception_analysis__succeeded);
+#line 200 "exception_analysis.m"
+            if (transform_hlds__exception_analysis__succeeded)
+#line 200 "exception_analysis.m"
+              *transform_hlds__exception_analysis__HeadVar__1_1 = transform_hlds__exception_analysis__V_13_13;
+#line 200 "exception_analysis.m"
+            else
+#line 200 "exception_analysis.m"
+              {
+#line 200 "exception_analysis.m"
+                MR_Word transform_hlds__exception_analysis__V_14_14;
+#line 200 "exception_analysis.m"
+                MR_Integer transform_hlds__exception_analysis__V_21_21 = (MR_Integer) transform_hlds__exception_analysis__V_6_6;
+#line 200 "exception_analysis.m"
+                MR_Integer transform_hlds__exception_analysis__V_22_22 = (MR_Integer) transform_hlds__exception_analysis__V_10_10;
+
+#line 200 "exception_analysis.m"
+                {
+#line 200 "exception_analysis.m"
+                  mercury__private_builtin__builtin_compare_int_3_p_0(&transform_hlds__exception_analysis__V_14_14, transform_hlds__exception_analysis__V_21_21, transform_hlds__exception_analysis__V_22_22);
+                }
+#line 3796 "transform_hlds.exception_analysis.c"
+                transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__V_14_14 == (MR_Integer) 0);
+#line 200 "exception_analysis.m"
+                transform_hlds__exception_analysis__succeeded = !(transform_hlds__exception_analysis__succeeded);
+#line 200 "exception_analysis.m"
+                if (transform_hlds__exception_analysis__succeeded)
+#line 200 "exception_analysis.m"
+                  *transform_hlds__exception_analysis__HeadVar__1_1 = transform_hlds__exception_analysis__V_14_14;
+#line 200 "exception_analysis.m"
+                else
+#line 200 "exception_analysis.m"
+                  {
+#line 200 "exception_analysis.m"
+                    {
+#line 200 "exception_analysis.m"
+                      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_1[4], transform_hlds__exception_analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__exception_analysis__V_7_7)), ((MR_Box) (transform_hlds__exception_analysis__V_11_11)));
+#line 200 "exception_analysis.m"
+                      return;
+                    }
+#line 200 "exception_analysis.m"
+                  }
+#line 200 "exception_analysis.m"
+              }
+#line 200 "exception_analysis.m"
+          }
+#line 200 "exception_analysis.m"
+      }
+#line 200 "exception_analysis.m"
+  }
+#line 200 "exception_analysis.m"
+}
+
+#line 200 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____proc_result_0_0(
+#line 200 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 200 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2)
+#line 200 "exception_analysis.m"
+{
+#line 200 "exception_analysis.m"
+  {
+#line 200 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 200 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__CastX_11 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__1_1;
+#line 200 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__CastY_12 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__2_2;
+
+#line 200 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__CastX_11 == transform_hlds__exception_analysis__CastY_12);
+#line 200 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 200 "exception_analysis.m"
+      transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 200 "exception_analysis.m"
+    else
+#line 200 "exception_analysis.m"
+      {
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__TypeInfo_15_15;
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__1_1, (MR_Integer) 0)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__1_1, (MR_Integer) 1)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__1_1, (MR_Integer) 2)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__1_1, (MR_Integer) 3)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__2_2, (MR_Integer) 0)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__2_2, (MR_Integer) 1)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__2_2, (MR_Integer) 2)));
+#line 200 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__2_2, (MR_Integer) 3)));
+
+#line 3875 "transform_hlds.exception_analysis.c"
+        {
+#line 3877 "transform_hlds.exception_analysis.c"
+          transform_hlds__exception_analysis__succeeded = hlds__hlds_pred____Unify____pred_proc_id_0_0(transform_hlds__exception_analysis__V_3_3, transform_hlds__exception_analysis__V_7_7);
+        }
+#line 200 "exception_analysis.m"
+        if (transform_hlds__exception_analysis__succeeded)
+#line 200 "exception_analysis.m"
+          {
+#line 3884 "transform_hlds.exception_analysis.c"
+            {
+#line 3886 "transform_hlds.exception_analysis.c"
+              transform_hlds__exception_analysis__succeeded = parse_tree__prog_data____Unify____exception_status_0_0(transform_hlds__exception_analysis__V_4_4, transform_hlds__exception_analysis__V_8_8);
+            }
+#line 200 "exception_analysis.m"
+            if (transform_hlds__exception_analysis__succeeded)
+#line 200 "exception_analysis.m"
+              {
+#line 3893 "transform_hlds.exception_analysis.c"
+                transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__V_5_5 == transform_hlds__exception_analysis__V_9_9);
+#line 200 "exception_analysis.m"
+                if (transform_hlds__exception_analysis__succeeded)
+#line 200 "exception_analysis.m"
+                  {
+#line 3899 "transform_hlds.exception_analysis.c"
+                    transform_hlds__exception_analysis__TypeInfo_15_15 = (MR_Word) &transform_hlds__exception_analysis_scalar_common_1[4];
+#line 3901 "transform_hlds.exception_analysis.c"
+                    {
+#line 3903 "transform_hlds.exception_analysis.c"
+                      return transform_hlds__exception_analysis__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__exception_analysis__TypeInfo_15_15, ((MR_Box) (transform_hlds__exception_analysis__V_6_6)), ((MR_Box) (transform_hlds__exception_analysis__V_10_10)));
+                    }
+#line 200 "exception_analysis.m"
+                  }
+#line 200 "exception_analysis.m"
+              }
+#line 200 "exception_analysis.m"
+          }
+#line 200 "exception_analysis.m"
+      }
+#line 200 "exception_analysis.m"
+    return transform_hlds__exception_analysis__succeeded;
+#line 200 "exception_analysis.m"
+  }
+#line 200 "exception_analysis.m"
+}
+
+#line 1019 "exception_analysis.m"
+void MR_CALL 
+transform_hlds__exception_analysis____Compare____exception_analysis_answer_0_0(
+#line 1019 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__1_1,
+#line 1019 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2,
+#line 1019 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3)
+#line 1019 "exception_analysis.m"
+{
+#line 1019 "exception_analysis.m"
+  {
+#line 1019 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1019 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__CastX_6 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__2_2;
+#line 1019 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__CastY_7 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__3_3;
+
+#line 1019 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__CastX_6 == transform_hlds__exception_analysis__CastY_7);
+#line 1019 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 3945 "transform_hlds.exception_analysis.c"
+      *transform_hlds__exception_analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 1019 "exception_analysis.m"
+    else
+#line 1019 "exception_analysis.m"
+      {
+#line 1019 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_4_4 = (MR_Word) transform_hlds__exception_analysis__HeadVar__2_2;
+#line 1019 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_5_5 = (MR_Word) transform_hlds__exception_analysis__HeadVar__3_3;
+
+#line 1019 "exception_analysis.m"
+        {
+#line 1019 "exception_analysis.m"
+          parse_tree__prog_data____Compare____exception_status_0_0(transform_hlds__exception_analysis__HeadVar__1_1, transform_hlds__exception_analysis__V_4_4, transform_hlds__exception_analysis__V_5_5);
+#line 1019 "exception_analysis.m"
+          return;
+        }
+#line 1019 "exception_analysis.m"
+      }
+#line 1019 "exception_analysis.m"
+  }
+#line 1019 "exception_analysis.m"
+}
+
+#line 1019 "exception_analysis.m"
+MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____exception_analysis_answer_0_0(
+#line 1019 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 1019 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2)
+#line 1019 "exception_analysis.m"
+{
+#line 1019 "exception_analysis.m"
+  {
+#line 1019 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1019 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__CastX_5 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__1_1;
+#line 1019 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__CastY_6 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__2_2;
+
+#line 1019 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__CastX_5 == transform_hlds__exception_analysis__CastY_6);
+#line 1019 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 1019 "exception_analysis.m"
+      transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 1019 "exception_analysis.m"
+    else
+#line 1019 "exception_analysis.m"
+      {
+#line 1019 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_3_3 = (MR_Word) transform_hlds__exception_analysis__HeadVar__1_1;
+#line 1019 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_4_4 = (MR_Word) transform_hlds__exception_analysis__HeadVar__2_2;
+
+#line 4003 "transform_hlds.exception_analysis.c"
+        {
+#line 4005 "transform_hlds.exception_analysis.c"
+          return transform_hlds__exception_analysis__succeeded = parse_tree__prog_data____Unify____exception_status_0_0(transform_hlds__exception_analysis__V_3_3, transform_hlds__exception_analysis__V_4_4);
+        }
+#line 1019 "exception_analysis.m"
+      }
+#line 1019 "exception_analysis.m"
+    return transform_hlds__exception_analysis__succeeded;
+#line 1019 "exception_analysis.m"
+  }
+#line 1019 "exception_analysis.m"
+}
+
+#line 606 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis____Compare____closures_exception_status_0_0(
+#line 606 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__1_1,
+#line 606 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2,
+#line 606 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3)
+#line 606 "exception_analysis.m"
+{
+#line 606 "exception_analysis.m"
+  {
+#line 606 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 606 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__CastX_8 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__2_2;
+#line 606 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__CastY_9 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__3_3;
+
+#line 606 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__CastX_8 == transform_hlds__exception_analysis__CastY_9);
+#line 606 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 4041 "transform_hlds.exception_analysis.c"
+      *transform_hlds__exception_analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 606 "exception_analysis.m"
+    else
+#line 606 "exception_analysis.m"
+    if ((transform_hlds__exception_analysis__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 606 "exception_analysis.m"
+      if ((transform_hlds__exception_analysis__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 606 "exception_analysis.m"
+        *transform_hlds__exception_analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 606 "exception_analysis.m"
+      else
+#line 4053 "transform_hlds.exception_analysis.c"
+        *transform_hlds__exception_analysis__HeadVar__1_1 = (MR_Integer) 1;
+#line 606 "exception_analysis.m"
+    else
+#line 606 "exception_analysis.m"
+      {
+#line 606 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 606 "exception_analysis.m"
+        if ((transform_hlds__exception_analysis__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 4064 "transform_hlds.exception_analysis.c"
+          *transform_hlds__exception_analysis__HeadVar__1_1 = (MR_Integer) 2;
+#line 606 "exception_analysis.m"
+        else
+#line 606 "exception_analysis.m"
+          {
+#line 606 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 606 "exception_analysis.m"
+            {
+#line 606 "exception_analysis.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_1[0], transform_hlds__exception_analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__exception_analysis__V_11_11)), ((MR_Box) (transform_hlds__exception_analysis__V_7_7)));
+#line 606 "exception_analysis.m"
+              return;
+            }
+#line 606 "exception_analysis.m"
+          }
+#line 606 "exception_analysis.m"
+      }
+#line 606 "exception_analysis.m"
+  }
+#line 606 "exception_analysis.m"
+}
+
+#line 606 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis____Unify____closures_exception_status_0_0(
+#line 606 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 606 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__2_2)
+#line 606 "exception_analysis.m"
+{
+#line 606 "exception_analysis.m"
+  {
+#line 606 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 606 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__CastX_7 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__1_1;
+#line 606 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__CastY_8 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__2_2;
+
+#line 606 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__CastX_7 == transform_hlds__exception_analysis__CastY_8);
+#line 606 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 606 "exception_analysis.m"
+      transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 606 "exception_analysis.m"
+    else
+#line 606 "exception_analysis.m"
+    if ((transform_hlds__exception_analysis__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 606 "exception_analysis.m"
+      {
+#line 606 "exception_analysis.m"
+        MR_Integer transform_hlds__exception_analysis__CastX_3 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__1_1;
+#line 606 "exception_analysis.m"
+        MR_Integer transform_hlds__exception_analysis__CastY_4 = (MR_Integer) transform_hlds__exception_analysis__HeadVar__2_2;
+
+#line 606 "exception_analysis.m"
+        transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__CastY_4 == transform_hlds__exception_analysis__CastX_3);
+#line 606 "exception_analysis.m"
+      }
+#line 606 "exception_analysis.m"
+    else
+#line 606 "exception_analysis.m"
+      {
+#line 606 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__TypeInfo_9_9;
+#line 606 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__HeadVar__1_1, (MR_Integer) 0)));
+#line 606 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_6_6;
+
+#line 606 "exception_analysis.m"
+        transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 606 "exception_analysis.m"
+        if (transform_hlds__exception_analysis__succeeded)
+#line 606 "exception_analysis.m"
+          {
+#line 606 "exception_analysis.m"
+            transform_hlds__exception_analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__HeadVar__2_2, (MR_Integer) 0)));
+#line 4147 "transform_hlds.exception_analysis.c"
+            transform_hlds__exception_analysis__TypeInfo_9_9 = (MR_Word) &transform_hlds__exception_analysis_scalar_common_1[0];
+#line 4149 "transform_hlds.exception_analysis.c"
+            {
+#line 4151 "transform_hlds.exception_analysis.c"
+              return transform_hlds__exception_analysis__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__exception_analysis__TypeInfo_9_9, ((MR_Box) (transform_hlds__exception_analysis__V_5_5)), ((MR_Box) (transform_hlds__exception_analysis__V_6_6)));
+            }
+#line 606 "exception_analysis.m"
+          }
+#line 606 "exception_analysis.m"
+      }
+#line 606 "exception_analysis.m"
+    return transform_hlds__exception_analysis__succeeded;
+#line 606 "exception_analysis.m"
+  }
+#line 606 "exception_analysis.m"
+}
+
+#line 1135 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__maybe_record_exception_result_2_6_p_0(
+#line 1135 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ModuleInfo_7,
+#line 1135 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PredId_8,
+#line 1135 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PredInfo_9,
+#line 1135 "exception_analysis.m"
+  MR_Integer transform_hlds__exception_analysis__ProcId_10,
+#line 1135 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_0_18,
+#line 1135 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_19)
+#line 1135 "exception_analysis.m"
+{
+#line 1139 "exception_analysis.m"
+  {
+#line 1139 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1139 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__ShouldWrite_12;
+
+#line 1140 "exception_analysis.m"
+    {
+#line 1140 "exception_analysis.m"
+      transform_hlds__intermod__should_write_exception_info_6_p_0(transform_hlds__exception_analysis__ModuleInfo_7, transform_hlds__exception_analysis__PredId_8, transform_hlds__exception_analysis__ProcId_10, transform_hlds__exception_analysis__PredInfo_9, (MR_Integer) 0, &transform_hlds__exception_analysis__ShouldWrite_12);
+    }
+#line 1149 "exception_analysis.m"
+#line 1149 "exception_analysis.m"
+    switch (transform_hlds__exception_analysis__ShouldWrite_12) {
+#line 1149 "exception_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1149 "exception_analysis.m"
+      case (MR_Integer) 0:
+#line 1150 "exception_analysis.m"
+        *transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_19 = transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_0_18;
+#line 1149 "exception_analysis.m"
+        break;
+#line 1149 "exception_analysis.m"
+      case (MR_Integer) 1:
+#line 1143 "exception_analysis.m"
+        {
+#line 1143 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__PPId_13;
+#line 1143 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__Status_14;
+#line 1143 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__ResultStatus_15;
+#line 1143 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__ModuleName_16;
+#line 1143 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__FuncId_17;
+#line 1143 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_22_22;
+#line 1143 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__ProcInfo_30;
+#line 1143 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__MaybeExceptionInfo_31;
+#line 1157 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis___PredInfo_29;
+
+#line 1144 "exception_analysis.m"
+          {
+#line 1144 "exception_analysis.m"
+            transform_hlds__exception_analysis__PPId_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1144 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__PPId_13, 0) = ((MR_Box) (transform_hlds__exception_analysis__PredId_8));
+#line 1144 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__PPId_13, 1) = ((MR_Box) (transform_hlds__exception_analysis__ProcId_10));
+#line 1144 "exception_analysis.m"
+          }
+#line 1157 "exception_analysis.m"
+          {
+#line 1157 "exception_analysis.m"
+            hlds__hlds_module__module_info_pred_proc_info_4_p_0(transform_hlds__exception_analysis__ModuleInfo_7, transform_hlds__exception_analysis__PPId_13, &transform_hlds__exception_analysis___PredInfo_29, &transform_hlds__exception_analysis__ProcInfo_30);
+          }
+#line 1158 "exception_analysis.m"
+          {
+#line 1158 "exception_analysis.m"
+            hlds__hlds_pred__proc_info_get_exception_info_2_p_0(transform_hlds__exception_analysis__ProcInfo_30, &transform_hlds__exception_analysis__MaybeExceptionInfo_31);
+          }
+#line 1168 "exception_analysis.m"
+          if ((transform_hlds__exception_analysis__MaybeExceptionInfo_31 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1169 "exception_analysis.m"
+            {
+#line 1171 "exception_analysis.m"
+              transform_hlds__exception_analysis__Status_14 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0]);
+#line 1172 "exception_analysis.m"
+              transform_hlds__exception_analysis__ResultStatus_15 = (MR_Integer) 2;
+#line 1169 "exception_analysis.m"
+            }
+#line 1168 "exception_analysis.m"
+          else
+#line 1160 "exception_analysis.m"
+            {
+#line 1160 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__ProcExceptionInfo_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeExceptionInfo_31, (MR_Integer) 0)));
+#line 1160 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__MaybeResultStatus_33;
+
+#line 1161 "exception_analysis.m"
+              transform_hlds__exception_analysis__Status_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__ProcExceptionInfo_32, (MR_Integer) 0)));
+#line 1161 "exception_analysis.m"
+              transform_hlds__exception_analysis__MaybeResultStatus_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__ProcExceptionInfo_32, (MR_Integer) 1)));
+#line 1164 "exception_analysis.m"
+              if ((transform_hlds__exception_analysis__MaybeResultStatus_33 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1165 "exception_analysis.m"
+                {
+#line 1166 "exception_analysis.m"
+                  {
+#line 1166 "exception_analysis.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.exception_analysis", (MR_String) "predicate \140transform_hlds.exception_analysis.lookup_proc_exception_info\'/4", (MR_String) "no result status");
+#line 1166 "exception_analysis.m"
+                    return;
+                  }
+#line 1165 "exception_analysis.m"
+                }
+#line 1164 "exception_analysis.m"
+              else
+#line 1163 "exception_analysis.m"
+                transform_hlds__exception_analysis__ResultStatus_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeResultStatus_33, (MR_Integer) 0)));
+#line 1160 "exception_analysis.m"
+            }
+#line 1146 "exception_analysis.m"
+          {
+#line 1146 "exception_analysis.m"
+            transform_hlds__mmc_analysis__module_name_func_id_4_p_0(transform_hlds__exception_analysis__ModuleInfo_7, transform_hlds__exception_analysis__PPId_13, &transform_hlds__exception_analysis__ModuleName_16, &transform_hlds__exception_analysis__FuncId_17);
+          }
+#line 1147 "exception_analysis.m"
+          mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1148 "exception_analysis.m"
+          transform_hlds__exception_analysis__V_22_22 = (MR_Word) transform_hlds__exception_analysis__Status_14;
+#line 1147 "exception_analysis.m"
+          {
+#line 1147 "exception_analysis.m"
+            analysis__record_result_7_p_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_4[0], transform_hlds__exception_analysis__ModuleName_16, transform_hlds__exception_analysis__FuncId_17, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) (transform_hlds__exception_analysis__V_22_22)), transform_hlds__exception_analysis__ResultStatus_15, transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_0_18, transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_19);
+#line 1147 "exception_analysis.m"
+            return;
+          }
+#line 1143 "exception_analysis.m"
+        }
+#line 1149 "exception_analysis.m"
+        break;
+#line 1149 "exception_analysis.m"
+    }
+#line 1139 "exception_analysis.m"
+  }
+#line 1135 "exception_analysis.m"
+}
+
+#line 1132 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__maybe_record_exception_result_4_p_0_1(
+#line 1132 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 1132 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 1132 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 1132 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3)
+#line 1132 "exception_analysis.m"
+{
+#line 1132 "exception_analysis.m"
+  {
+#line 1132 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 1132 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv0_STATE_VARIABLE_AnalysisInfo_19;
+
+#line 1132 "exception_analysis.m"
+    {
+#line 1132 "exception_analysis.m"
+      transform_hlds__exception_analysis__maybe_record_exception_result_2_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 5))), ((MR_Integer) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), &transform_hlds__exception_analysis__conv0_STATE_VARIABLE_AnalysisInfo_19);
+    }
+#line 1132 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv0_STATE_VARIABLE_AnalysisInfo_19));
+#line 1132 "exception_analysis.m"
+  }
+#line 1132 "exception_analysis.m"
+}
+
+#line 1126 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__maybe_record_exception_result_4_p_0(
+#line 1126 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ModuleInfo_5,
+#line 1126 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PredId_6,
+#line 1126 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_0_10,
+#line 1126 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_11)
+#line 1126 "exception_analysis.m"
+{
+#line 1129 "exception_analysis.m"
+  {
+#line 1129 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1129 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__PredInfo_8;
+#line 1129 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__ProcIds_9;
+#line 1129 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_12_12;
+#line 1132 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__conv1_STATE_VARIABLE_AnalysisInfo_11;
+
+#line 1130 "exception_analysis.m"
+    {
+#line 1130 "exception_analysis.m"
+      hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__exception_analysis__ModuleInfo_5, transform_hlds__exception_analysis__PredId_6, &transform_hlds__exception_analysis__PredInfo_8);
+    }
+#line 1131 "exception_analysis.m"
+    {
+#line 1131 "exception_analysis.m"
+      transform_hlds__exception_analysis__ProcIds_9 = hlds__hlds_pred__pred_info_procids_1_f_0(transform_hlds__exception_analysis__PredInfo_8);
+    }
+#line 1132 "exception_analysis.m"
+    {
+#line 1132 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_12_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 1132 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_12_12, 0) = ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_8[1]));
+#line 1132 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_12_12, 1) = ((MR_Box) (transform_hlds__exception_analysis__maybe_record_exception_result_4_p_0_1));
+#line 1132 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_12_12, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 1132 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_12_12, 3) = ((MR_Box) (transform_hlds__exception_analysis__ModuleInfo_5));
+#line 1132 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_12_12, 4) = ((MR_Box) (transform_hlds__exception_analysis__PredId_6));
+#line 1132 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_12_12, 5) = ((MR_Box) (transform_hlds__exception_analysis__PredInfo_8));
+#line 1132 "exception_analysis.m"
+    }
+#line 1132 "exception_analysis.m"
+    {
+#line 1132 "exception_analysis.m"
+      mercury__list__foldl_4_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &analysis__analysis__type_ctor_info_analysis_info_0, transform_hlds__exception_analysis__V_12_12, transform_hlds__exception_analysis__ProcIds_9, ((MR_Box) (transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_0_10)), &transform_hlds__exception_analysis__conv1_STATE_VARIABLE_AnalysisInfo_11);
+    }
+#line 1132 "exception_analysis.m"
+    *transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_11 = ((MR_Word) transform_hlds__exception_analysis__conv1_STATE_VARIABLE_AnalysisInfo_11);
+#line 1129 "exception_analysis.m"
+  }
+#line 1126 "exception_analysis.m"
+}
+
+#line 873 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_type_2_3_f_0_2(
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 873 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3)
+#line 873 "exception_analysis.m"
+{
+#line 873 "exception_analysis.m"
+  {
+#line 873 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 873 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv2_STATE_VARIABLE_Status_9;
+
+#line 873 "exception_analysis.m"
+    {
+#line 873 "exception_analysis.m"
+      transform_hlds__exception_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), &transform_hlds__exception_analysis__conv2_STATE_VARIABLE_Status_9);
+    }
+#line 873 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv2_STATE_VARIABLE_Status_9));
+#line 873 "exception_analysis.m"
+  }
+#line 873 "exception_analysis.m"
+}
+
+#line 873 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_type_2_3_f_0_1(
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 873 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3)
+#line 873 "exception_analysis.m"
+{
+#line 873 "exception_analysis.m"
+  {
+#line 873 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 873 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv0_STATE_VARIABLE_Status_9;
+
+#line 873 "exception_analysis.m"
+    {
+#line 873 "exception_analysis.m"
+      transform_hlds__exception_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), &transform_hlds__exception_analysis__conv0_STATE_VARIABLE_Status_9);
+    }
+#line 873 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv0_STATE_VARIABLE_Status_9));
+#line 873 "exception_analysis.m"
+  }
+#line 873 "exception_analysis.m"
+}
+
+#line 911 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__check_type_2_3_f_0(
+#line 911 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ModuleInfo_5,
+#line 911 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Type_6,
+#line 911 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__CtorCat_7)
+#line 911 "exception_analysis.m"
+{
+#line 920 "exception_analysis.m"
+  {
+#line 920 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 920 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__WillThrow_8;
+
+#line 920 "exception_analysis.m"
+#line 920 "exception_analysis.m"
+    switch (MR_tag((MR_Word) transform_hlds__exception_analysis__CtorCat_7)) {
+#line 920 "exception_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 920 "exception_analysis.m"
+      case (MR_Integer) 0:
+#line 920 "exception_analysis.m"
+#line 920 "exception_analysis.m"
+        switch (MR_unmkbody(transform_hlds__exception_analysis__CtorCat_7)) {
+#line 920 "exception_analysis.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 920 "exception_analysis.m"
+          case (MR_Integer) 0:
+#line 920 "exception_analysis.m"
+          case (MR_Integer) 2:
+#line 920 "exception_analysis.m"
+          case (MR_Integer) 4:
+#line 921 "exception_analysis.m"
+            transform_hlds__exception_analysis__WillThrow_8 = (MR_Integer) 0;
+#line 920 "exception_analysis.m"
+            break;
+#line 920 "exception_analysis.m"
+          case (MR_Integer) 1:
+#line 926 "exception_analysis.m"
+            {
+#line 926 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__Args_12;
+#line 926 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_24_24;
+#line 927 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis___TypeCtor_11;
+#line 873 "exception_analysis.m"
+              MR_Box transform_hlds__exception_analysis__conv1_WillThrow_8;
+
+#line 927 "exception_analysis.m"
+              {
+#line 927 "exception_analysis.m"
+                parse_tree__prog_type__type_to_ctor_and_args_det_3_p_0(transform_hlds__exception_analysis__Type_6, &transform_hlds__exception_analysis___TypeCtor_11, &transform_hlds__exception_analysis__Args_12);
+              }
+#line 873 "exception_analysis.m"
+              {
+#line 873 "exception_analysis.m"
+                transform_hlds__exception_analysis__V_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 873 "exception_analysis.m"
+                MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_24_24, 0) = ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_5[2]));
+#line 873 "exception_analysis.m"
+                MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_24_24, 1) = ((MR_Box) (transform_hlds__exception_analysis__check_type_2_3_f_0_1));
+#line 873 "exception_analysis.m"
+                MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_24_24, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 873 "exception_analysis.m"
+                MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_24_24, 3) = ((MR_Box) (transform_hlds__exception_analysis__ModuleInfo_5));
+#line 873 "exception_analysis.m"
+              }
+#line 873 "exception_analysis.m"
+              {
+#line 873 "exception_analysis.m"
+                mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_type_status_0, transform_hlds__exception_analysis__V_24_24, transform_hlds__exception_analysis__Args_12, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__exception_analysis__conv1_WillThrow_8);
+              }
+#line 873 "exception_analysis.m"
+              transform_hlds__exception_analysis__WillThrow_8 = ((MR_Word) transform_hlds__exception_analysis__conv1_WillThrow_8);
+#line 926 "exception_analysis.m"
+            }
+#line 920 "exception_analysis.m"
+            break;
+#line 920 "exception_analysis.m"
+          case (MR_Integer) 3:
+#line 924 "exception_analysis.m"
+            transform_hlds__exception_analysis__WillThrow_8 = (MR_Integer) 2;
+#line 920 "exception_analysis.m"
+            break;
+#line 920 "exception_analysis.m"
+        }
+#line 920 "exception_analysis.m"
+        break;
+#line 920 "exception_analysis.m"
+      case (MR_Integer) 1:
+#line 921 "exception_analysis.m"
+        transform_hlds__exception_analysis__WillThrow_8 = (MR_Integer) 0;
+#line 920 "exception_analysis.m"
+        break;
+#line 920 "exception_analysis.m"
+      case (MR_Integer) 2:
+#line 934 "exception_analysis.m"
+        {
+#line 931 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis___UC_14;
+
+#line 931 "exception_analysis.m"
+          {
+#line 931 "exception_analysis.m"
+            transform_hlds__exception_analysis__succeeded = check_hlds__type_util__type_has_user_defined_equality_pred_3_p_0(transform_hlds__exception_analysis__ModuleInfo_5, transform_hlds__exception_analysis__Type_6, &transform_hlds__exception_analysis___UC_14);
+          }
+#line 934 "exception_analysis.m"
+          if (transform_hlds__exception_analysis__succeeded)
+#line 933 "exception_analysis.m"
+            transform_hlds__exception_analysis__WillThrow_8 = (MR_Integer) 1;
+#line 934 "exception_analysis.m"
+          else
+#line 935 "exception_analysis.m"
+            transform_hlds__exception_analysis__WillThrow_8 = (MR_Integer) 0;
+#line 934 "exception_analysis.m"
+        }
+#line 920 "exception_analysis.m"
+        break;
+#line 920 "exception_analysis.m"
+      case (MR_Integer) 3:
+#line 920 "exception_analysis.m"
+#line 920 "exception_analysis.m"
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__CtorCat_7, (MR_Integer) 0)))) {
+#line 920 "exception_analysis.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 920 "exception_analysis.m"
+          case (MR_Integer) 0:
+#line 921 "exception_analysis.m"
+            transform_hlds__exception_analysis__WillThrow_8 = (MR_Integer) 0;
+#line 920 "exception_analysis.m"
+            break;
+#line 920 "exception_analysis.m"
+          case (MR_Integer) 1:
+#line 938 "exception_analysis.m"
+            {
+#line 938 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__TypeCtor_16;
+#line 938 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__Args_19;
+#line 940 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis___UC_17;
+
+#line 939 "exception_analysis.m"
+              {
+#line 939 "exception_analysis.m"
+                parse_tree__prog_type__type_to_ctor_and_args_det_3_p_0(transform_hlds__exception_analysis__Type_6, &transform_hlds__exception_analysis__TypeCtor_16, &transform_hlds__exception_analysis__Args_19);
+              }
+#line 940 "exception_analysis.m"
+              {
+#line 940 "exception_analysis.m"
+                transform_hlds__exception_analysis__succeeded = check_hlds__type_util__type_has_user_defined_equality_pred_3_p_0(transform_hlds__exception_analysis__ModuleInfo_5, transform_hlds__exception_analysis__Type_6, &transform_hlds__exception_analysis___UC_17);
+              }
+#line 945 "exception_analysis.m"
+              if (transform_hlds__exception_analysis__succeeded)
+#line 944 "exception_analysis.m"
+                transform_hlds__exception_analysis__WillThrow_8 = (MR_Integer) 1;
+#line 945 "exception_analysis.m"
+              else
+#line 947 "exception_analysis.m"
+                {
+#line 962 "exception_analysis.m"
+                  MR_String transform_hlds__exception_analysis__ModuleName_32;
+#line 962 "exception_analysis.m"
+                  MR_String transform_hlds__exception_analysis__CtorName_33;
+#line 962 "exception_analysis.m"
+                  MR_Integer transform_hlds__exception_analysis__Arity_34 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__TypeCtor_16, (MR_Integer) 1)));
+#line 962 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__TypeCtor_16, (MR_Integer) 0)));
+#line 962 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__V_36_36;
+
+#line 963 "exception_analysis.m"
+                  transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__V_35_35)) == (MR_mktag((MR_Integer) 1)));
+#line 963 "exception_analysis.m"
+                  if (transform_hlds__exception_analysis__succeeded)
+#line 963 "exception_analysis.m"
+                    {
+#line 963 "exception_analysis.m"
+                      transform_hlds__exception_analysis__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__V_35_35, (MR_Integer) 0)));
+#line 963 "exception_analysis.m"
+                      transform_hlds__exception_analysis__CtorName_33 = ((MR_String) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__V_35_35, (MR_Integer) 1)));
+#line 963 "exception_analysis.m"
+                      transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__V_36_36)) == (MR_mktag((MR_Integer) 0)));
+#line 963 "exception_analysis.m"
+                      if (transform_hlds__exception_analysis__succeeded)
+#line 963 "exception_analysis.m"
+                        {
+#line 963 "exception_analysis.m"
+                          transform_hlds__exception_analysis__ModuleName_32 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_36_36, (MR_Integer) 0)));
+#line 968 "exception_analysis.m"
+                          {
+#line 968 "exception_analysis.m"
+                            MR_Integer transform_hlds__exception_analysis__case_num_6 = (MR_Integer) -1;
+
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                            switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 0)) {
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 97:
+#line 968 "exception_analysis.m"
+                                if (MR_offset_streq(1, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "assoc_list"))
+#line 968 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 0;
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 98:
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 1)) {
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 97:
+#line 968 "exception_analysis.m"
+                                    if (MR_offset_streq(2, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "bag"))
+#line 968 "exception_analysis.m"
+                                      transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 1;
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 105:
+#line 968 "exception_analysis.m"
+                                    if (MR_offset_streq(2, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "bimap"))
+#line 968 "exception_analysis.m"
+                                      transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 2;
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 117:
+#line 968 "exception_analysis.m"
+                                    if (MR_offset_streq(2, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "builtin"))
+#line 968 "exception_analysis.m"
+                                      transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 3;
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 99:
+#line 968 "exception_analysis.m"
+                                if (MR_offset_streq(1, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "cord"))
+#line 968 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 4;
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 101:
+#line 968 "exception_analysis.m"
+                                if (MR_offset_streq(1, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "eqvclass"))
+#line 968 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 5;
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 105:
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 1)) {
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 110:
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                    switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 2)) {
+#line 968 "exception_analysis.m"
+                                      case (MR_Integer) 106:
+#line 968 "exception_analysis.m"
+                                        if (MR_offset_streq(3, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "injection"))
+#line 968 "exception_analysis.m"
+                                          transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 6;
+#line 968 "exception_analysis.m"
+                                        break;
+#line 968 "exception_analysis.m"
+                                      case (MR_Integer) 116:
+#line 968 "exception_analysis.m"
+                                        if (MR_offset_streq(3, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "integer"))
+#line 968 "exception_analysis.m"
+                                          transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 7;
+#line 968 "exception_analysis.m"
+                                        break;
+#line 968 "exception_analysis.m"
+                                    }
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 111:
+#line 968 "exception_analysis.m"
+                                    if (MR_offset_streq(2, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "io"))
+#line 968 "exception_analysis.m"
+                                      transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 8;
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 108:
+#line 968 "exception_analysis.m"
+                                if (MR_offset_streq(1, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "list"))
+#line 968 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 9;
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 109:
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 1)) {
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 97:
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                    switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 2)) {
+#line 968 "exception_analysis.m"
+                                      case (MR_Integer) 112:
+#line 968 "exception_analysis.m"
+                                        if (MR_offset_streq(3, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "map"))
+#line 968 "exception_analysis.m"
+                                          transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 10;
+#line 968 "exception_analysis.m"
+                                        break;
+#line 968 "exception_analysis.m"
+                                      case (MR_Integer) 121:
+#line 968 "exception_analysis.m"
+                                        if (((((MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 3)) == (MR_Integer) 98)) && (((MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 4)) == (MR_Integer) 101))))
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                          switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 5)) {
+#line 968 "exception_analysis.m"
+                                            case (MR_Integer) 0:
+#line 968 "exception_analysis.m"
+                                              transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 11;
+#line 968 "exception_analysis.m"
+                                              break;
+#line 968 "exception_analysis.m"
+                                            case (MR_Integer) 95:
+#line 968 "exception_analysis.m"
+                                              if (MR_offset_streq(6, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "maybe_error"))
+#line 968 "exception_analysis.m"
+                                                transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 12;
+#line 968 "exception_analysis.m"
+                                              break;
+#line 968 "exception_analysis.m"
+                                          }
+#line 968 "exception_analysis.m"
+                                        break;
+#line 968 "exception_analysis.m"
+                                    }
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 117:
+#line 968 "exception_analysis.m"
+                                    if (MR_offset_streq(2, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "multi_map"))
+#line 968 "exception_analysis.m"
+                                      transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 13;
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 112:
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 1)) {
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 97:
+#line 968 "exception_analysis.m"
+                                    if (MR_offset_streq(2, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "pair"))
+#line 968 "exception_analysis.m"
+                                      transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 14;
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 113:
+#line 968 "exception_analysis.m"
+                                    if (MR_offset_streq(2, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "pqueue"))
+#line 968 "exception_analysis.m"
+                                      transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 15;
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 113:
+#line 968 "exception_analysis.m"
+                                if (MR_offset_streq(1, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "queue"))
+#line 968 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 16;
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 114:
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 1)) {
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 97:
+#line 968 "exception_analysis.m"
+                                    if (MR_offset_streq(2, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "rational"))
+#line 968 "exception_analysis.m"
+                                      transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 17;
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 98:
+#line 968 "exception_analysis.m"
+                                    if (MR_offset_streq(2, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "rbtree"))
+#line 968 "exception_analysis.m"
+                                      transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 18;
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 116:
+#line 968 "exception_analysis.m"
+                                    if (MR_offset_streq(2, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "rtree"))
+#line 968 "exception_analysis.m"
+                                      transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 19;
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 115:
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 1)) {
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 101:
+#line 968 "exception_analysis.m"
+                                    if (((MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 2)) == (MR_Integer) 116))
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                      switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 3)) {
+#line 968 "exception_analysis.m"
+                                        case (MR_Integer) 0:
+#line 968 "exception_analysis.m"
+                                          transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 20;
+#line 968 "exception_analysis.m"
+                                          break;
+#line 968 "exception_analysis.m"
+                                        case (MR_Integer) 95:
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                          switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 4)) {
+#line 968 "exception_analysis.m"
+                                            case (MR_Integer) 98:
+#line 968 "exception_analysis.m"
+                                              if (MR_offset_streq(5, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "set_bbbtree"))
+#line 968 "exception_analysis.m"
+                                                transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 21;
+#line 968 "exception_analysis.m"
+                                              break;
+#line 968 "exception_analysis.m"
+                                            case (MR_Integer) 99:
+#line 968 "exception_analysis.m"
+                                              if (MR_offset_streq(5, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "set_ctree234"))
+#line 968 "exception_analysis.m"
+                                                transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 22;
+#line 968 "exception_analysis.m"
+                                              break;
+#line 968 "exception_analysis.m"
+                                            case (MR_Integer) 111:
+#line 968 "exception_analysis.m"
+                                              if (MR_offset_streq(5, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "set_ordlist"))
+#line 968 "exception_analysis.m"
+                                                transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 23;
+#line 968 "exception_analysis.m"
+                                              break;
+#line 968 "exception_analysis.m"
+                                            case (MR_Integer) 116:
+#line 968 "exception_analysis.m"
+                                              if (MR_offset_streq(5, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "set_tree234"))
+#line 968 "exception_analysis.m"
+                                                transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 24;
+#line 968 "exception_analysis.m"
+                                              break;
+#line 968 "exception_analysis.m"
+                                            case (MR_Integer) 117:
+#line 968 "exception_analysis.m"
+                                              if (MR_offset_streq(5, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "set_unordlist"))
+#line 968 "exception_analysis.m"
+                                                transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 25;
+#line 968 "exception_analysis.m"
+                                              break;
+#line 968 "exception_analysis.m"
+                                          }
+#line 968 "exception_analysis.m"
+                                          break;
+#line 968 "exception_analysis.m"
+                                      }
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                  case (MR_Integer) 116:
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                    switch (MR_nth_code_unit(transform_hlds__exception_analysis__ModuleName_32, 2)) {
+#line 968 "exception_analysis.m"
+                                      case (MR_Integer) 97:
+#line 968 "exception_analysis.m"
+                                        if (MR_offset_streq(3, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "stack"))
+#line 968 "exception_analysis.m"
+                                          transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 26;
+#line 968 "exception_analysis.m"
+                                        break;
+#line 968 "exception_analysis.m"
+                                      case (MR_Integer) 114:
+#line 968 "exception_analysis.m"
+                                        if (MR_offset_streq(3, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "string"))
+#line 968 "exception_analysis.m"
+                                          transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 27;
+#line 968 "exception_analysis.m"
+                                        break;
+#line 968 "exception_analysis.m"
+                                    }
+#line 968 "exception_analysis.m"
+                                    break;
+#line 968 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 116:
+#line 968 "exception_analysis.m"
+                                if (MR_offset_streq(1, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "term"))
+#line 968 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 28;
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 118:
+#line 968 "exception_analysis.m"
+                                if (MR_offset_streq(1, transform_hlds__exception_analysis__ModuleName_32, (MR_String) "varset"))
+#line 968 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__case_num_6 = (MR_Integer) 29;
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                            }
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                            switch (transform_hlds__exception_analysis__case_num_6) {
+#line 968 "exception_analysis.m"
+                              default:
+#line 968 "exception_analysis.m"
+                                transform_hlds__exception_analysis__succeeded = MR_FALSE;
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 0:
+#line 968 "exception_analysis.m"
+                                {
+#line 968 "exception_analysis.m"
+                                  /* case "assoc_list" */
+#line 968 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "assoc_list") == 0);
+#line 968 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 968 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 968 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 1:
+#line 969 "exception_analysis.m"
+                                {
+#line 969 "exception_analysis.m"
+                                  /* case "bag" */
+#line 969 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "bag") == 0);
+#line 969 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 969 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 969 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 2:
+#line 970 "exception_analysis.m"
+                                {
+#line 970 "exception_analysis.m"
+                                  /* case "bimap" */
+#line 970 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "bimap") == 0);
+#line 970 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 970 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 2);
+#line 970 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 3:
+#line 971 "exception_analysis.m"
+                                {
+#line 971 "exception_analysis.m"
+                                  /* case "builtin" */
+#line 971 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "c_pointer") == 0);
+#line 971 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 971 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 0);
+#line 971 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 4:
+#line 972 "exception_analysis.m"
+                                {
+#line 972 "exception_analysis.m"
+                                  /* case "cord" */
+#line 972 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "cord") == 0);
+#line 972 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 972 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 972 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 5:
+#line 973 "exception_analysis.m"
+                                {
+#line 973 "exception_analysis.m"
+                                  /* case "eqvclass" */
+#line 973 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "eqvclass") == 0);
+#line 973 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 973 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 973 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 6:
+#line 974 "exception_analysis.m"
+                                {
+#line 974 "exception_analysis.m"
+                                  /* case "injection" */
+#line 974 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "injection") == 0);
+#line 974 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 974 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 2);
+#line 974 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 7:
+#line 975 "exception_analysis.m"
+                                {
+#line 975 "exception_analysis.m"
+                                  /* case "integer" */
+#line 975 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "integer") == 0);
+#line 975 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 975 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 0);
+#line 975 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 8:
+#line 968 "exception_analysis.m"
+                                {
+#line 968 "exception_analysis.m"
+                                  /* case "io" */
+#line 968 "exception_analysis.m"
+                                  {
+#line 968 "exception_analysis.m"
+                                    MR_Integer transform_hlds__exception_analysis__slot_0;
+#line 968 "exception_analysis.m"
+                                    MR_String transform_hlds__exception_analysis__str_1;
+
+#line 968 "exception_analysis.m"
+                                    /* hashed string jump switch */
+#line 968 "exception_analysis.m"
+                                    /* compute the hash value of the input string */
+#line 968 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__slot_0 = ((MR_hash_string4(transform_hlds__exception_analysis__CtorName_33)) & (MR_Integer) 63);
+#line 968 "exception_analysis.m"
+                                    /* no collisions; no hash chain loop */
+#line 968 "exception_analysis.m"
+                                    /* lookup the string for this hash slot */
+#line 968 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__str_1 = ((&transform_hlds__exception_analysis_vector_common_11[0 + transform_hlds__exception_analysis__slot_0]))->transform_hlds__exception_analysis__vector_common_type_11_0__vct_11_f_0;
+#line 968 "exception_analysis.m"
+                                    /* did we find a match? */
+#line 968 "exception_analysis.m"
+                                    if ((((transform_hlds__exception_analysis__str_1 != NULL)) && ((strcmp(transform_hlds__exception_analysis__str_1, transform_hlds__exception_analysis__CtorName_33) == 0))))
+#line 968 "exception_analysis.m"
+                                      {
+#line 968 "exception_analysis.m"
+                                        /* we found a match; dispatch to the corresponding code */
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                        switch (transform_hlds__exception_analysis__slot_0) {
+#line 968 "exception_analysis.m"
+                                          default: /*NOTREACHED*/ MR_assert(0);
+#line 968 "exception_analysis.m"
+                                          case (MR_Integer) 7:
+#line 968 "exception_analysis.m"
+                                            {
+#line 968 "exception_analysis.m"
+                                              /* case "res" */
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                              switch (transform_hlds__exception_analysis__Arity_34) {
+#line 968 "exception_analysis.m"
+                                                default:
+#line 968 "exception_analysis.m"
+                                                  transform_hlds__exception_analysis__succeeded = MR_FALSE;
+#line 968 "exception_analysis.m"
+                                                  break;
+#line 968 "exception_analysis.m"
+                                                case (MR_Integer) 0:
+#line 980 "exception_analysis.m"
+                                                  transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 968 "exception_analysis.m"
+                                                  break;
+#line 968 "exception_analysis.m"
+                                                case (MR_Integer) 1:
+#line 981 "exception_analysis.m"
+                                                  transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 968 "exception_analysis.m"
+                                                  break;
+#line 968 "exception_analysis.m"
+                                              }
+#line 968 "exception_analysis.m"
+                                            }
+#line 968 "exception_analysis.m"
+                                            break;
+#line 968 "exception_analysis.m"
+                                          case (MR_Integer) 15:
+#line 985 "exception_analysis.m"
+                                            {
+#line 985 "exception_analysis.m"
+                                              /* case "read_result" */
+#line 985 "exception_analysis.m"
+                                              transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 985 "exception_analysis.m"
+                                            }
+#line 968 "exception_analysis.m"
+                                            break;
+#line 968 "exception_analysis.m"
+                                          case (MR_Integer) 25:
+#line 976 "exception_analysis.m"
+                                            {
+#line 976 "exception_analysis.m"
+                                              /* case "input_stream" */
+#line 976 "exception_analysis.m"
+                                              transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 0);
+#line 976 "exception_analysis.m"
+                                            }
+#line 968 "exception_analysis.m"
+                                            break;
+#line 968 "exception_analysis.m"
+                                          case (MR_Integer) 29:
+#line 986 "exception_analysis.m"
+                                            {
+#line 986 "exception_analysis.m"
+                                              /* case "error" */
+#line 986 "exception_analysis.m"
+                                              transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 0);
+#line 986 "exception_analysis.m"
+                                            }
+#line 968 "exception_analysis.m"
+                                            break;
+#line 968 "exception_analysis.m"
+                                          case (MR_Integer) 33:
+#line 978 "exception_analysis.m"
+                                            {
+#line 978 "exception_analysis.m"
+                                              /* case "binary_stream" */
+#line 978 "exception_analysis.m"
+                                              transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 0);
+#line 978 "exception_analysis.m"
+                                            }
+#line 968 "exception_analysis.m"
+                                            break;
+#line 968 "exception_analysis.m"
+                                          case (MR_Integer) 39:
+#line 979 "exception_analysis.m"
+                                            {
+#line 979 "exception_analysis.m"
+                                              /* case "stream_id" */
+#line 979 "exception_analysis.m"
+                                              transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 0);
+#line 979 "exception_analysis.m"
+                                            }
+#line 968 "exception_analysis.m"
+                                            break;
+#line 968 "exception_analysis.m"
+                                          case (MR_Integer) 47:
+#line 968 "exception_analysis.m"
+                                            {
+#line 968 "exception_analysis.m"
+                                              /* case "result" */
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                              switch (transform_hlds__exception_analysis__Arity_34) {
+#line 968 "exception_analysis.m"
+                                                default:
+#line 968 "exception_analysis.m"
+                                                  transform_hlds__exception_analysis__succeeded = MR_FALSE;
+#line 968 "exception_analysis.m"
+                                                  break;
+#line 968 "exception_analysis.m"
+                                                case (MR_Integer) 0:
+#line 983 "exception_analysis.m"
+                                                  transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 968 "exception_analysis.m"
+                                                  break;
+#line 968 "exception_analysis.m"
+                                                case (MR_Integer) 1:
+#line 984 "exception_analysis.m"
+                                                  transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 968 "exception_analysis.m"
+                                                  break;
+#line 968 "exception_analysis.m"
+                                              }
+#line 968 "exception_analysis.m"
+                                            }
+#line 968 "exception_analysis.m"
+                                            break;
+#line 968 "exception_analysis.m"
+                                          case (MR_Integer) 49:
+#line 977 "exception_analysis.m"
+                                            {
+#line 977 "exception_analysis.m"
+                                              /* case "output_stream" */
+#line 977 "exception_analysis.m"
+                                              transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 0);
+#line 977 "exception_analysis.m"
+                                            }
+#line 968 "exception_analysis.m"
+                                            break;
+#line 968 "exception_analysis.m"
+                                          case (MR_Integer) 52:
+#line 982 "exception_analysis.m"
+                                            {
+#line 982 "exception_analysis.m"
+                                              /* case "maybe_partial_res" */
+#line 982 "exception_analysis.m"
+                                              transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 982 "exception_analysis.m"
+                                            }
+#line 968 "exception_analysis.m"
+                                            break;
+#line 968 "exception_analysis.m"
+                                        }
+#line 968 "exception_analysis.m"
+                                        /* jump out of search loop */
+#line 968 "exception_analysis.m"
+                                        goto label_0;
+#line 968 "exception_analysis.m"
+                                      }
+#line 968 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = MR_FALSE;
+#line 968 "exception_analysis.m"
+                                  label_0:;
+#line 968 "exception_analysis.m"
+                                  }
+#line 968 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 9:
+#line 987 "exception_analysis.m"
+                                {
+#line 987 "exception_analysis.m"
+                                  /* case "list" */
+#line 987 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "list") == 0);
+#line 987 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 987 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 987 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 10:
+#line 988 "exception_analysis.m"
+                                {
+#line 988 "exception_analysis.m"
+                                  /* case "map" */
+#line 988 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "map") == 0);
+#line 988 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 988 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 2);
+#line 988 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 11:
+#line 989 "exception_analysis.m"
+                                {
+#line 989 "exception_analysis.m"
+                                  /* case "maybe" */
+#line 989 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "maybe") == 0);
+#line 989 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 989 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 989 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 12:
+#line 990 "exception_analysis.m"
+                                {
+#line 990 "exception_analysis.m"
+                                  /* case "maybe_error" */
+#line 990 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "maybe_error") == 0);
+#line 990 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 990 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 990 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 13:
+#line 991 "exception_analysis.m"
+                                {
+#line 991 "exception_analysis.m"
+                                  /* case "multi_map" */
+#line 991 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "multi_map") == 0);
+#line 991 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 991 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 2);
+#line 991 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 14:
+#line 992 "exception_analysis.m"
+                                {
+#line 992 "exception_analysis.m"
+                                  /* case "pair" */
+#line 992 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "pair") == 0);
+#line 992 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 992 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 2);
+#line 992 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 15:
+#line 993 "exception_analysis.m"
+                                {
+#line 993 "exception_analysis.m"
+                                  /* case "pqueue" */
+#line 993 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "pqueue") == 0);
+#line 993 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 993 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 2);
+#line 993 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 16:
+#line 994 "exception_analysis.m"
+                                {
+#line 994 "exception_analysis.m"
+                                  /* case "queue" */
+#line 994 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "queue") == 0);
+#line 994 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 994 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 994 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 17:
+#line 995 "exception_analysis.m"
+                                {
+#line 995 "exception_analysis.m"
+                                  /* case "rational" */
+#line 995 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "rational") == 0);
+#line 995 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 995 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 0);
+#line 995 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 18:
+#line 996 "exception_analysis.m"
+                                {
+#line 996 "exception_analysis.m"
+                                  /* case "rbtree" */
+#line 996 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "rbtree") == 0);
+#line 996 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 996 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 2);
+#line 996 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 19:
+#line 997 "exception_analysis.m"
+                                {
+#line 997 "exception_analysis.m"
+                                  /* case "rtree" */
+#line 997 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "rtree") == 0);
+#line 997 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 997 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 2);
+#line 997 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 20:
+#line 998 "exception_analysis.m"
+                                {
+#line 998 "exception_analysis.m"
+                                  /* case "set" */
+#line 998 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "set") == 0);
+#line 998 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 998 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 998 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 21:
+#line 999 "exception_analysis.m"
+                                {
+#line 999 "exception_analysis.m"
+                                  /* case "set_bbbtree" */
+#line 999 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "set_bbbtree") == 0);
+#line 999 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 999 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 999 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 22:
+#line 1000 "exception_analysis.m"
+                                {
+#line 1000 "exception_analysis.m"
+                                  /* case "set_ctree234" */
+#line 1000 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "set_ctree234") == 0);
+#line 1000 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 1000 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 1000 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 23:
+#line 1001 "exception_analysis.m"
+                                {
+#line 1001 "exception_analysis.m"
+                                  /* case "set_ordlist" */
+#line 1001 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "set_ordlist") == 0);
+#line 1001 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 1001 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 1001 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 24:
+#line 1002 "exception_analysis.m"
+                                {
+#line 1002 "exception_analysis.m"
+                                  /* case "set_tree234" */
+#line 1002 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "set_tree234") == 0);
+#line 1002 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 1002 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 1002 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 25:
+#line 1003 "exception_analysis.m"
+                                {
+#line 1003 "exception_analysis.m"
+                                  /* case "set_unordlist" */
+#line 1003 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "set_unordlist") == 0);
+#line 1003 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 1003 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 1003 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 26:
+#line 1004 "exception_analysis.m"
+                                {
+#line 1004 "exception_analysis.m"
+                                  /* case "stack" */
+#line 1004 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "stack") == 0);
+#line 1004 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 1004 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 1004 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 27:
+#line 968 "exception_analysis.m"
+                                {
+#line 968 "exception_analysis.m"
+                                  /* case "string" */
+#line 1006 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 0);
+#line 968 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 968 "exception_analysis.m"
+                                    {
+#line 968 "exception_analysis.m"
+                                      if ((strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "poly_type") == 0))
+#line 1005 "exception_analysis.m"
+                                        transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 968 "exception_analysis.m"
+                                      else
+#line 968 "exception_analysis.m"
+                                      if ((strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "justified_column") == 0))
+#line 1006 "exception_analysis.m"
+                                        transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 968 "exception_analysis.m"
+                                      else
+#line 968 "exception_analysis.m"
+                                        transform_hlds__exception_analysis__succeeded = MR_FALSE;
+#line 968 "exception_analysis.m"
+                                    }
+#line 968 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 28:
+#line 968 "exception_analysis.m"
+                                {
+#line 968 "exception_analysis.m"
+                                  /* case "term" */
+#line 968 "exception_analysis.m"
+                                  {
+#line 968 "exception_analysis.m"
+                                    MR_Integer transform_hlds__exception_analysis__lo_2;
+#line 968 "exception_analysis.m"
+                                    MR_Integer transform_hlds__exception_analysis__hi_3;
+#line 968 "exception_analysis.m"
+                                    MR_Integer transform_hlds__exception_analysis__mid_4;
+#line 968 "exception_analysis.m"
+                                    MR_Integer transform_hlds__exception_analysis__result_5;
+
+#line 968 "exception_analysis.m"
+                                    /* binary string jump switch */
+#line 968 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__lo_2 = (MR_Integer) 0;
+#line 968 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__hi_3 = (MR_Integer) 4;
+#line 968 "exception_analysis.m"
+                                    do
+#line 968 "exception_analysis.m"
+                                      {
+#line 968 "exception_analysis.m"
+                                        transform_hlds__exception_analysis__mid_4 = (((transform_hlds__exception_analysis__lo_2 + transform_hlds__exception_analysis__hi_3)) / (MR_Integer) 2);
+#line 968 "exception_analysis.m"
+                                        transform_hlds__exception_analysis__result_5 = MR_strcmp(transform_hlds__exception_analysis__CtorName_33, ((&transform_hlds__exception_analysis_vector_common_12[0 + transform_hlds__exception_analysis__mid_4]))->transform_hlds__exception_analysis__vector_common_type_12_0__vct_12_f_0);
+#line 968 "exception_analysis.m"
+                                        if ((transform_hlds__exception_analysis__result_5 == (MR_Integer) 0))
+#line 968 "exception_analysis.m"
+                                          {
+#line 968 "exception_analysis.m"
+#line 968 "exception_analysis.m"
+                                            switch (((&transform_hlds__exception_analysis_vector_common_12[0 + transform_hlds__exception_analysis__mid_4]))->transform_hlds__exception_analysis__vector_common_type_12_0__vct_12_f_1) {
+#line 968 "exception_analysis.m"
+                                              default: /*NOTREACHED*/ MR_assert(0);
+#line 968 "exception_analysis.m"
+                                              case (MR_Integer) 0:
+#line 1008 "exception_analysis.m"
+                                                {
+#line 1008 "exception_analysis.m"
+                                                  /* case "const" */
+#line 1008 "exception_analysis.m"
+                                                  transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 0);
+#line 1008 "exception_analysis.m"
+                                                }
+#line 968 "exception_analysis.m"
+                                                break;
+#line 968 "exception_analysis.m"
+                                              case (MR_Integer) 1:
+#line 1009 "exception_analysis.m"
+                                                {
+#line 1009 "exception_analysis.m"
+                                                  /* case "context" */
+#line 1009 "exception_analysis.m"
+                                                  transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 0);
+#line 1009 "exception_analysis.m"
+                                                }
+#line 968 "exception_analysis.m"
+                                                break;
+#line 968 "exception_analysis.m"
+                                              case (MR_Integer) 2:
+#line 1007 "exception_analysis.m"
+                                                {
+#line 1007 "exception_analysis.m"
+                                                  /* case "term" */
+#line 1007 "exception_analysis.m"
+                                                  transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 1007 "exception_analysis.m"
+                                                }
+#line 968 "exception_analysis.m"
+                                                break;
+#line 968 "exception_analysis.m"
+                                              case (MR_Integer) 3:
+#line 1010 "exception_analysis.m"
+                                                {
+#line 1010 "exception_analysis.m"
+                                                  /* case "var" */
+#line 1010 "exception_analysis.m"
+                                                  transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 1010 "exception_analysis.m"
+                                                }
+#line 968 "exception_analysis.m"
+                                                break;
+#line 968 "exception_analysis.m"
+                                              case (MR_Integer) 4:
+#line 1011 "exception_analysis.m"
+                                                {
+#line 1011 "exception_analysis.m"
+                                                  /* case "var_supply" */
+#line 1011 "exception_analysis.m"
+                                                  transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 1011 "exception_analysis.m"
+                                                }
+#line 968 "exception_analysis.m"
+                                                break;
+#line 968 "exception_analysis.m"
+                                            }
+#line 968 "exception_analysis.m"
+                                            /* jump out of search loop */
+#line 968 "exception_analysis.m"
+                                            goto label_1;
+#line 968 "exception_analysis.m"
+                                          }
+#line 968 "exception_analysis.m"
+                                        else
+#line 968 "exception_analysis.m"
+                                        if ((transform_hlds__exception_analysis__result_5 < (MR_Integer) 0))
+#line 968 "exception_analysis.m"
+                                          transform_hlds__exception_analysis__hi_3 = (transform_hlds__exception_analysis__mid_4 - (MR_Integer) 1);
+#line 968 "exception_analysis.m"
+                                        else
+#line 968 "exception_analysis.m"
+                                          transform_hlds__exception_analysis__lo_2 = (transform_hlds__exception_analysis__mid_4 + (MR_Integer) 1);
+#line 968 "exception_analysis.m"
+                                      }
+#line 968 "exception_analysis.m"
+                                    while ((transform_hlds__exception_analysis__lo_2 <= transform_hlds__exception_analysis__hi_3));
+#line 968 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = MR_FALSE;
+#line 968 "exception_analysis.m"
+                                  label_1:;
+#line 968 "exception_analysis.m"
+                                  }
+#line 968 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                              case (MR_Integer) 29:
+#line 1012 "exception_analysis.m"
+                                {
+#line 1012 "exception_analysis.m"
+                                  /* case "varset" */
+#line 1012 "exception_analysis.m"
+                                  transform_hlds__exception_analysis__succeeded = (strcmp(transform_hlds__exception_analysis__CtorName_33, (MR_String) "varset") == 0);
+#line 1012 "exception_analysis.m"
+                                  if (transform_hlds__exception_analysis__succeeded)
+#line 1012 "exception_analysis.m"
+                                    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__Arity_34 == (MR_Integer) 1);
+#line 1012 "exception_analysis.m"
+                                }
+#line 968 "exception_analysis.m"
+                                break;
+#line 968 "exception_analysis.m"
+                            }
+#line 968 "exception_analysis.m"
+                          }
+#line 963 "exception_analysis.m"
+                        }
+#line 963 "exception_analysis.m"
+                    }
+#line 947 "exception_analysis.m"
+                  if (transform_hlds__exception_analysis__succeeded)
+#line 872 "exception_analysis.m"
+                    {
+#line 872 "exception_analysis.m"
+                      MR_Word transform_hlds__exception_analysis__V_40_40;
+#line 873 "exception_analysis.m"
+                      MR_Box transform_hlds__exception_analysis__conv3_WillThrow_8;
+
+#line 873 "exception_analysis.m"
+                      {
+#line 873 "exception_analysis.m"
+                        transform_hlds__exception_analysis__V_40_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 873 "exception_analysis.m"
+                        MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_40_40, 0) = ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_5[2]));
+#line 873 "exception_analysis.m"
+                        MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_40_40, 1) = ((MR_Box) (transform_hlds__exception_analysis__check_type_2_3_f_0_2));
+#line 873 "exception_analysis.m"
+                        MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_40_40, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 873 "exception_analysis.m"
+                        MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_40_40, 3) = ((MR_Box) (transform_hlds__exception_analysis__ModuleInfo_5));
+#line 873 "exception_analysis.m"
+                      }
+#line 873 "exception_analysis.m"
+                      {
+#line 873 "exception_analysis.m"
+                        mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_type_status_0, transform_hlds__exception_analysis__V_40_40, transform_hlds__exception_analysis__Args_19, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__exception_analysis__conv3_WillThrow_8);
+                      }
+#line 873 "exception_analysis.m"
+                      transform_hlds__exception_analysis__WillThrow_8 = ((MR_Word) transform_hlds__exception_analysis__conv3_WillThrow_8);
+#line 872 "exception_analysis.m"
+                    }
+#line 947 "exception_analysis.m"
+                  else
+#line 948 "exception_analysis.m"
+                    transform_hlds__exception_analysis__WillThrow_8 = (MR_Integer) 1;
+#line 947 "exception_analysis.m"
+                }
+#line 938 "exception_analysis.m"
+            }
+#line 920 "exception_analysis.m"
+            break;
+#line 920 "exception_analysis.m"
+        }
+#line 920 "exception_analysis.m"
+        break;
+#line 920 "exception_analysis.m"
+    }
+#line 920 "exception_analysis.m"
+    return transform_hlds__exception_analysis__WillThrow_8;
+#line 920 "exception_analysis.m"
+  }
+#line 911 "exception_analysis.m"
+}
+
+#line 895 "exception_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__exception_analysis__check_type_2_f_0(
+#line 895 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ModuleInfo_4,
+#line 895 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Type_5)
+#line 895 "exception_analysis.m"
+{
+#line 906 "exception_analysis.m"
+  {
+#line 906 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 906 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Status_6;
+
+#line 899 "exception_analysis.m"
+    {
+#line 899 "exception_analysis.m"
+      transform_hlds__exception_analysis__succeeded = check_hlds__type_util__type_is_solver_type_2_p_0(transform_hlds__exception_analysis__ModuleInfo_4, transform_hlds__exception_analysis__Type_5);
+    }
+#line 900 "exception_analysis.m"
+    if (!(transform_hlds__exception_analysis__succeeded))
+#line 900 "exception_analysis.m"
+      {
+#line 900 "exception_analysis.m"
+        transform_hlds__exception_analysis__succeeded = check_hlds__type_util__type_is_existq_type_2_p_0(transform_hlds__exception_analysis__ModuleInfo_4, transform_hlds__exception_analysis__Type_5);
+      }
+#line 906 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 905 "exception_analysis.m"
+      transform_hlds__exception_analysis__Status_6 = (MR_Integer) 1;
+#line 906 "exception_analysis.m"
+    else
+#line 907 "exception_analysis.m"
+      {
+#line 907 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__TypeCategory_7;
+
+#line 907 "exception_analysis.m"
+        {
+#line 907 "exception_analysis.m"
+          transform_hlds__exception_analysis__TypeCategory_7 = check_hlds__type_util__classify_type_2_f_0(transform_hlds__exception_analysis__ModuleInfo_4, transform_hlds__exception_analysis__Type_5);
+        }
+#line 908 "exception_analysis.m"
+        {
+#line 908 "exception_analysis.m"
+          return transform_hlds__exception_analysis__Status_6 = transform_hlds__exception_analysis__check_type_2_3_f_0(transform_hlds__exception_analysis__ModuleInfo_4, transform_hlds__exception_analysis__Type_5, transform_hlds__exception_analysis__TypeCategory_7);
+        }
+#line 907 "exception_analysis.m"
+      }
+#line 906 "exception_analysis.m"
+    return transform_hlds__exception_analysis__Status_6;
+#line 906 "exception_analysis.m"
+  }
+#line 895 "exception_analysis.m"
+}
+
+#line 875 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_type_4_p_0(
+#line 875 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ModuleInfo_5,
+#line 875 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Type_6,
+#line 875 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Status_0_8,
+#line 875 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Status_9)
+#line 875 "exception_analysis.m"
+{
+#line 878 "exception_analysis.m"
+  {
+#line 878 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 878 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_10_10;
+
+#line 879 "exception_analysis.m"
+    {
+#line 879 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_10_10 = transform_hlds__exception_analysis__check_type_2_f_0(transform_hlds__exception_analysis__ModuleInfo_5, transform_hlds__exception_analysis__Type_6);
+    }
+#line 884 "exception_analysis.m"
+#line 884 "exception_analysis.m"
+    switch (transform_hlds__exception_analysis__V_10_10) {
+#line 884 "exception_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 884 "exception_analysis.m"
+      case (MR_Integer) 2:
+#line 884 "exception_analysis.m"
+#line 884 "exception_analysis.m"
+        switch (transform_hlds__exception_analysis__STATE_VARIABLE_Status_0_8) {
+#line 884 "exception_analysis.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 884 "exception_analysis.m"
+          case (MR_Integer) 2:
+#line 889 "exception_analysis.m"
+            *transform_hlds__exception_analysis__STATE_VARIABLE_Status_9 = (MR_Integer) 2;
+#line 884 "exception_analysis.m"
+            break;
+#line 884 "exception_analysis.m"
+          case (MR_Integer) 1:
+#line 890 "exception_analysis.m"
+            *transform_hlds__exception_analysis__STATE_VARIABLE_Status_9 = (MR_Integer) 1;
+#line 884 "exception_analysis.m"
+            break;
+#line 884 "exception_analysis.m"
+          case (MR_Integer) 0:
+#line 888 "exception_analysis.m"
+            *transform_hlds__exception_analysis__STATE_VARIABLE_Status_9 = (MR_Integer) 2;
+#line 884 "exception_analysis.m"
+            break;
+#line 884 "exception_analysis.m"
+        }
+#line 884 "exception_analysis.m"
+        break;
+#line 884 "exception_analysis.m"
+      case (MR_Integer) 1:
+#line 891 "exception_analysis.m"
+        *transform_hlds__exception_analysis__STATE_VARIABLE_Status_9 = (MR_Integer) 1;
+#line 884 "exception_analysis.m"
+        break;
+#line 884 "exception_analysis.m"
+      case (MR_Integer) 0:
+#line 884 "exception_analysis.m"
+#line 884 "exception_analysis.m"
+        switch (transform_hlds__exception_analysis__STATE_VARIABLE_Status_0_8) {
+#line 884 "exception_analysis.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 884 "exception_analysis.m"
+          case (MR_Integer) 2:
+#line 886 "exception_analysis.m"
+            *transform_hlds__exception_analysis__STATE_VARIABLE_Status_9 = (MR_Integer) 2;
+#line 884 "exception_analysis.m"
+            break;
+#line 884 "exception_analysis.m"
+          case (MR_Integer) 1:
+#line 887 "exception_analysis.m"
+            *transform_hlds__exception_analysis__STATE_VARIABLE_Status_9 = (MR_Integer) 1;
+#line 884 "exception_analysis.m"
+            break;
+#line 884 "exception_analysis.m"
+          case (MR_Integer) 0:
+#line 885 "exception_analysis.m"
+            *transform_hlds__exception_analysis__STATE_VARIABLE_Status_9 = (MR_Integer) 0;
+#line 884 "exception_analysis.m"
+            break;
+#line 884 "exception_analysis.m"
+        }
+#line 884 "exception_analysis.m"
+        break;
+#line 884 "exception_analysis.m"
+    }
+#line 878 "exception_analysis.m"
+  }
+#line 875 "exception_analysis.m"
+}
+
+#line 873 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_vars_6_p_0_1(
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 873 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3)
+#line 873 "exception_analysis.m"
+{
+#line 873 "exception_analysis.m"
+  {
+#line 873 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 873 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv0_STATE_VARIABLE_Status_9;
+
+#line 873 "exception_analysis.m"
+    {
+#line 873 "exception_analysis.m"
+      transform_hlds__exception_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), &transform_hlds__exception_analysis__conv0_STATE_VARIABLE_Status_9);
+    }
+#line 873 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv0_STATE_VARIABLE_Status_9));
+#line 873 "exception_analysis.m"
+  }
+#line 873 "exception_analysis.m"
+}
+
+#line 775 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_vars_6_p_0(
+#line 775 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ModuleInfo_7,
+#line 775 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_8,
+#line 775 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Vars_9,
+#line 775 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__MaybeAnalysisStatus_10,
+#line 775 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_14,
+#line 775 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_15)
+#line 775 "exception_analysis.m"
+{
+#line 778 "exception_analysis.m"
+  {
+#line 778 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 778 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Types_12;
+#line 778 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__TypeStatus_13;
+#line 778 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_24_24;
+#line 873 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__conv1_TypeStatus_13;
+
+#line 779 "exception_analysis.m"
+    {
+#line 779 "exception_analysis.m"
+      hlds__vartypes__lookup_var_types_3_p_0(transform_hlds__exception_analysis__VarTypes_8, transform_hlds__exception_analysis__Vars_9, &transform_hlds__exception_analysis__Types_12);
+    }
+#line 873 "exception_analysis.m"
+    {
+#line 873 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 873 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_24_24, 0) = ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_5[2]));
+#line 873 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_24_24, 1) = ((MR_Box) (transform_hlds__exception_analysis__check_vars_6_p_0_1));
+#line 873 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_24_24, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 873 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_24_24, 3) = ((MR_Box) (transform_hlds__exception_analysis__ModuleInfo_7));
+#line 873 "exception_analysis.m"
+    }
+#line 873 "exception_analysis.m"
+    {
+#line 873 "exception_analysis.m"
+      mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_type_status_0, transform_hlds__exception_analysis__V_24_24, transform_hlds__exception_analysis__Types_12, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__exception_analysis__conv1_TypeStatus_13);
+    }
+#line 873 "exception_analysis.m"
+    transform_hlds__exception_analysis__TypeStatus_13 = ((MR_Word) transform_hlds__exception_analysis__conv1_TypeStatus_13);
+#line 783 "exception_analysis.m"
+#line 783 "exception_analysis.m"
+    switch (transform_hlds__exception_analysis__TypeStatus_13) {
+#line 783 "exception_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 783 "exception_analysis.m"
+      case (MR_Integer) 2:
+#line 788 "exception_analysis.m"
+        {
+#line 789 "exception_analysis.m"
+          {
+#line 789 "exception_analysis.m"
+            transform_hlds__exception_analysis__update_proc_result_4_p_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)), transform_hlds__exception_analysis__MaybeAnalysisStatus_10, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_14, transform_hlds__exception_analysis__STATE_VARIABLE_Result_15);
+#line 789 "exception_analysis.m"
+            return;
+          }
+#line 788 "exception_analysis.m"
+        }
+#line 783 "exception_analysis.m"
+        break;
+#line 783 "exception_analysis.m"
+      case (MR_Integer) 1:
+#line 784 "exception_analysis.m"
+        {
+#line 785 "exception_analysis.m"
+          {
+#line 785 "exception_analysis.m"
+            transform_hlds__exception_analysis__update_proc_result_4_p_0((MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[1]), transform_hlds__exception_analysis__MaybeAnalysisStatus_10, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_14, transform_hlds__exception_analysis__STATE_VARIABLE_Result_15);
+#line 785 "exception_analysis.m"
+            return;
+          }
+#line 784 "exception_analysis.m"
+        }
+#line 783 "exception_analysis.m"
+        break;
+#line 783 "exception_analysis.m"
+      case (MR_Integer) 0:
+#line 782 "exception_analysis.m"
+        *transform_hlds__exception_analysis__STATE_VARIABLE_Result_15 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_14;
+#line 783 "exception_analysis.m"
+        break;
+#line 783 "exception_analysis.m"
+    }
+#line 778 "exception_analysis.m"
+  }
+#line 775 "exception_analysis.m"
+}
+
+#line 723 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_nonrecursive_call_8_p_0(
+#line 723 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_9,
+#line 723 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PPId_10,
+#line 723 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Args_11,
+#line 723 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PredInfo_12,
+#line 723 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_27,
+#line 723 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_28,
+#line 723 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29,
+#line 723 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_30)
+#line 723 "exception_analysis.m"
+{
+#line 729 "exception_analysis.m"
+  {
+#line 729 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 729 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Globals_15;
+#line 729 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__IntermodAnalysis_16;
+
+#line 730 "exception_analysis.m"
+    {
+#line 730 "exception_analysis.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29, &transform_hlds__exception_analysis__Globals_15);
+    }
+#line 731 "exception_analysis.m"
+    {
+#line 731 "exception_analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__exception_analysis__Globals_15, (MR_Integer) 335, &transform_hlds__exception_analysis__IntermodAnalysis_16);
+    }
+#line 736 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__IntermodAnalysis_16 == (MR_Integer) 1);
+#line 736 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 737 "exception_analysis.m"
+      {
+#line 737 "exception_analysis.m"
+        transform_hlds__exception_analysis__succeeded = hlds__hlds_pred__pred_info_is_imported_not_external_1_p_0(transform_hlds__exception_analysis__PredInfo_12);
+      }
+#line 743 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 740 "exception_analysis.m"
+      {
+#line 740 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__TypeClassInfo_for_analysis_78;
+#line 740 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__CalleeResult_17;
+#line 740 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__AnalysisStatus_18;
+#line 740 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__MaybeAnalysisStatus_19;
+#line 740 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__AnalysisInfo0_52;
+#line 740 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__AnalysisInfo_53;
+#line 740 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__ModuleName_62;
+#line 740 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__FuncId_63;
+#line 740 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__MaybeBestResult_65;
+
+#line 1095 "exception_analysis.m"
+        {
+#line 1095 "exception_analysis.m"
+          hlds__hlds_module__module_info_get_analysis_info_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29, &transform_hlds__exception_analysis__AnalysisInfo0_52);
+        }
+#line 1106 "exception_analysis.m"
+        {
+#line 1106 "exception_analysis.m"
+          transform_hlds__mmc_analysis__module_name_func_id_4_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29, transform_hlds__exception_analysis__PPId_10, &transform_hlds__exception_analysis__ModuleName_62, &transform_hlds__exception_analysis__FuncId_63);
+        }
+#line 1107 "exception_analysis.m"
+        mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1108 "exception_analysis.m"
+        mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 6286 "transform_hlds.exception_analysis.c"
+        transform_hlds__exception_analysis__TypeClassInfo_for_analysis_78 = (MR_Word) &transform_hlds__exception_analysis_scalar_common_4[0];
+#line 1108 "exception_analysis.m"
+        {
+#line 1108 "exception_analysis.m"
+          analysis__lookup_best_result_6_p_0(transform_hlds__exception_analysis__TypeClassInfo_for_analysis_78, transform_hlds__exception_analysis__AnalysisInfo0_52, transform_hlds__exception_analysis__ModuleName_62, transform_hlds__exception_analysis__FuncId_63, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) ((MR_Integer) 0)), &transform_hlds__exception_analysis__MaybeBestResult_65);
+        }
+#line 1116 "exception_analysis.m"
+        if ((transform_hlds__exception_analysis__MaybeBestResult_65 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1117 "exception_analysis.m"
+          {
+#line 1117 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__Answer_69;
+#line 6299 "transform_hlds.exception_analysis.c"
+            MR_Box MR_CALL (* transform_hlds__exception_analysis__func_0)(MR_Box, MR_Box);
+#line 6301 "transform_hlds.exception_analysis.c"
+            MR_Box transform_hlds__exception_analysis__conv1_Answer_69;
+
+#line 1120 "exception_analysis.m"
+            mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 6306 "transform_hlds.exception_analysis.c"
+            transform_hlds__exception_analysis__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__TypeClassInfo_for_analysis_78, (MR_Integer) 0)), (MR_Integer) 9)));
+#line 6308 "transform_hlds.exception_analysis.c"
+            {
+#line 6310 "transform_hlds.exception_analysis.c"
+              transform_hlds__exception_analysis__conv1_Answer_69 = transform_hlds__exception_analysis__func_0(((MR_Box) transform_hlds__exception_analysis__TypeClassInfo_for_analysis_78), ((MR_Box) ((MR_Integer) 0)));
+            }
+#line 6313 "transform_hlds.exception_analysis.c"
+            transform_hlds__exception_analysis__Answer_69 = ((MR_Word) transform_hlds__exception_analysis__conv1_Answer_69);
+#line 1121 "exception_analysis.m"
+            transform_hlds__exception_analysis__CalleeResult_17 = (MR_Word) transform_hlds__exception_analysis__Answer_69;
+#line 1122 "exception_analysis.m"
+            transform_hlds__exception_analysis__AnalysisStatus_18 = (MR_Integer) 2;
+#line 1123 "exception_analysis.m"
+            {
+#line 1123 "exception_analysis.m"
+              analysis__record_request_6_p_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_3[0], (MR_String) "exception_analysis", transform_hlds__exception_analysis__ModuleName_62, transform_hlds__exception_analysis__FuncId_63, ((MR_Box) ((MR_Integer) 0)), transform_hlds__exception_analysis__AnalysisInfo0_52, &transform_hlds__exception_analysis__AnalysisInfo_53);
+            }
+#line 1117 "exception_analysis.m"
+          }
+#line 1116 "exception_analysis.m"
+        else
+#line 1112 "exception_analysis.m"
+          {
+#line 1112 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__BestAnswer_67;
+#line 1112 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeBestResult_65, (MR_Integer) 0)));
+#line 1114 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__V_76_76;
+
+#line 1111 "exception_analysis.m"
+            transform_hlds__exception_analysis__BestAnswer_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_74_74, (MR_Integer) 1)));
+#line 1111 "exception_analysis.m"
+            transform_hlds__exception_analysis__AnalysisStatus_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_74_74, (MR_Integer) 2)));
+#line 1113 "exception_analysis.m"
+            transform_hlds__exception_analysis__CalleeResult_17 = (MR_Word) transform_hlds__exception_analysis__BestAnswer_67;
+#line 1114 "exception_analysis.m"
+            mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1114 "exception_analysis.m"
+            {
+#line 1114 "exception_analysis.m"
+              analysis__record_dependency_7_p_0(transform_hlds__exception_analysis__TypeClassInfo_for_analysis_78, transform_hlds__exception_analysis__ModuleName_62, transform_hlds__exception_analysis__FuncId_63, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) ((MR_Integer) 0)), transform_hlds__exception_analysis__AnalysisInfo0_52, &transform_hlds__exception_analysis__AnalysisInfo_53);
+            }
+#line 1112 "exception_analysis.m"
+          }
+#line 1098 "exception_analysis.m"
+        {
+#line 1098 "exception_analysis.m"
+          hlds__hlds_module__module_info_set_analysis_info_3_p_0(transform_hlds__exception_analysis__AnalysisInfo_53, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_30);
+        }
+#line 741 "exception_analysis.m"
+        {
+#line 741 "exception_analysis.m"
+          transform_hlds__exception_analysis__MaybeAnalysisStatus_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 741 "exception_analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeAnalysisStatus_19, 0) = ((MR_Box) (transform_hlds__exception_analysis__AnalysisStatus_18));
+#line 741 "exception_analysis.m"
+        }
+#line 742 "exception_analysis.m"
+        {
+#line 742 "exception_analysis.m"
+          transform_hlds__exception_analysis__update_proc_result_4_p_0(transform_hlds__exception_analysis__CalleeResult_17, transform_hlds__exception_analysis__MaybeAnalysisStatus_19, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_27, transform_hlds__exception_analysis__STATE_VARIABLE_Result_28);
+#line 742 "exception_analysis.m"
+          return;
+        }
+#line 740 "exception_analysis.m"
+      }
+#line 743 "exception_analysis.m"
+    else
+#line 744 "exception_analysis.m"
+      {
+#line 744 "exception_analysis.m"
+        MR_Integer transform_hlds__exception_analysis__ProcId_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__PPId_10, (MR_Integer) 1)));
+#line 744 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__ProcInfo_22;
+#line 744 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__MaybeCalleeExceptionInfo_23;
+#line 744 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__PPId_10, (MR_Integer) 0)));
+
+#line 745 "exception_analysis.m"
+        {
+#line 745 "exception_analysis.m"
+          hlds__hlds_pred__pred_info_proc_info_3_p_0(transform_hlds__exception_analysis__PredInfo_12, transform_hlds__exception_analysis__ProcId_21, &transform_hlds__exception_analysis__ProcInfo_22);
+        }
+#line 746 "exception_analysis.m"
+        {
+#line 746 "exception_analysis.m"
+          hlds__hlds_pred__proc_info_get_exception_info_2_p_0(transform_hlds__exception_analysis__ProcInfo_22, &transform_hlds__exception_analysis__MaybeCalleeExceptionInfo_23);
+        }
+#line 764 "exception_analysis.m"
+        if ((transform_hlds__exception_analysis__MaybeCalleeExceptionInfo_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 765 "exception_analysis.m"
+          {
+#line 765 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__MaybeAnalysisStatus_43;
+
+#line 1177 "exception_analysis.m"
+#line 1177 "exception_analysis.m"
+            switch (transform_hlds__exception_analysis__IntermodAnalysis_16) {
+#line 1177 "exception_analysis.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 1177 "exception_analysis.m"
+              case (MR_Integer) 0:
+#line 1177 "exception_analysis.m"
+                transform_hlds__exception_analysis__MaybeAnalysisStatus_43 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1177 "exception_analysis.m"
+                break;
+#line 1177 "exception_analysis.m"
+              case (MR_Integer) 1:
+#line 1178 "exception_analysis.m"
+                {
+#line 1178 "exception_analysis.m"
+                  transform_hlds__exception_analysis__MaybeAnalysisStatus_43 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[2]);
+#line 1178 "exception_analysis.m"
+                }
+#line 1177 "exception_analysis.m"
+                break;
+#line 1177 "exception_analysis.m"
+            }
+#line 770 "exception_analysis.m"
+            {
+#line 770 "exception_analysis.m"
+              transform_hlds__exception_analysis__update_proc_result_4_p_0((MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0]), transform_hlds__exception_analysis__MaybeAnalysisStatus_43, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_27, transform_hlds__exception_analysis__STATE_VARIABLE_Result_28);
+            }
+#line 765 "exception_analysis.m"
+          }
+#line 764 "exception_analysis.m"
+        else
+#line 748 "exception_analysis.m"
+          {
+#line 748 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__CalleeExceptionInfo_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeCalleeExceptionInfo_23, (MR_Integer) 0)));
+#line 748 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__CalleeExceptionStatus_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__CalleeExceptionInfo_24, (MR_Integer) 0)));
+#line 748 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__MaybeAnalysisStatus_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__CalleeExceptionInfo_24, (MR_Integer) 1)));
+
+#line 755 "exception_analysis.m"
+#line 755 "exception_analysis.m"
+            switch (MR_tag((MR_Word) transform_hlds__exception_analysis__CalleeExceptionStatus_25)) {
+#line 755 "exception_analysis.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 755 "exception_analysis.m"
+              case (MR_Integer) 0:
+#line 755 "exception_analysis.m"
+#line 755 "exception_analysis.m"
+                switch (MR_unmkbody(transform_hlds__exception_analysis__CalleeExceptionStatus_25)) {
+#line 755 "exception_analysis.m"
+                  default: /*NOTREACHED*/ MR_assert(0);
+#line 755 "exception_analysis.m"
+                  case (MR_Integer) 0:
+#line 752 "exception_analysis.m"
+                    {
+#line 753 "exception_analysis.m"
+                      {
+#line 753 "exception_analysis.m"
+                        transform_hlds__exception_analysis__update_proc_result_4_p_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), transform_hlds__exception_analysis__MaybeAnalysisStatus_42, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_27, transform_hlds__exception_analysis__STATE_VARIABLE_Result_28);
+                      }
+#line 752 "exception_analysis.m"
+                    }
+#line 755 "exception_analysis.m"
+                    break;
+#line 755 "exception_analysis.m"
+                  case (MR_Integer) 1:
+#line 761 "exception_analysis.m"
+                    {
+#line 761 "exception_analysis.m"
+                      transform_hlds__exception_analysis__check_vars_6_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29, transform_hlds__exception_analysis__VarTypes_9, transform_hlds__exception_analysis__Args_11, transform_hlds__exception_analysis__MaybeAnalysisStatus_42, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_27, transform_hlds__exception_analysis__STATE_VARIABLE_Result_28);
+                    }
+#line 755 "exception_analysis.m"
+                    break;
+#line 755 "exception_analysis.m"
+                }
+#line 755 "exception_analysis.m"
+                break;
+#line 755 "exception_analysis.m"
+              case (MR_Integer) 1:
+#line 757 "exception_analysis.m"
+                {
+#line 757 "exception_analysis.m"
+                  transform_hlds__exception_analysis__update_proc_result_4_p_0(transform_hlds__exception_analysis__CalleeExceptionStatus_25, transform_hlds__exception_analysis__MaybeAnalysisStatus_42, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_27, transform_hlds__exception_analysis__STATE_VARIABLE_Result_28);
+                }
+#line 755 "exception_analysis.m"
+                break;
+#line 755 "exception_analysis.m"
+            }
+#line 748 "exception_analysis.m"
+          }
+#line 744 "exception_analysis.m"
+        *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_30 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29;
+#line 744 "exception_analysis.m"
+      }
+#line 729 "exception_analysis.m"
+  }
+#line 723 "exception_analysis.m"
+}
+
+#line 705 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_maybe_analysis_status_3_p_0(
+#line 705 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__MaybeStatusA_4,
+#line 705 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__MaybeStatusB_5,
+#line 705 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__MaybeStatus_6)
+#line 705 "exception_analysis.m"
+{
+#line 714 "exception_analysis.m"
+  {
+#line 714 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__MaybeStatusA_4)) == (MR_mktag((MR_Integer) 1)));
+#line 714 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__StatusA_7;
+#line 714 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__StatusB_8;
+
+#line 710 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 710 "exception_analysis.m"
+      {
+#line 710 "exception_analysis.m"
+        transform_hlds__exception_analysis__StatusA_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeStatusA_4, (MR_Integer) 0)));
+#line 711 "exception_analysis.m"
+        transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__MaybeStatusB_5)) == (MR_mktag((MR_Integer) 1)));
+#line 711 "exception_analysis.m"
+        if (transform_hlds__exception_analysis__succeeded)
+#line 711 "exception_analysis.m"
+          transform_hlds__exception_analysis__StatusB_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeStatusB_5, (MR_Integer) 0)));
+#line 710 "exception_analysis.m"
+      }
+#line 714 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 713 "exception_analysis.m"
+      {
+#line 713 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_9_9;
+
+#line 713 "exception_analysis.m"
+        {
+#line 713 "exception_analysis.m"
+          transform_hlds__exception_analysis__V_9_9 = analysis__lub_2_f_0(transform_hlds__exception_analysis__StatusA_7, transform_hlds__exception_analysis__StatusB_8);
+        }
+#line 713 "exception_analysis.m"
+        {
+#line 713 "exception_analysis.m"
+          MR_Word base;
+#line 713 "exception_analysis.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 713 "exception_analysis.m"
+          *transform_hlds__exception_analysis__MaybeStatus_6 = base;
+#line 713 "exception_analysis.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_9_9));
+#line 713 "exception_analysis.m"
+        }
+#line 713 "exception_analysis.m"
+      }
+#line 714 "exception_analysis.m"
+    else
+#line 715 "exception_analysis.m"
+      *transform_hlds__exception_analysis__MaybeStatus_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 714 "exception_analysis.m"
+  }
+#line 705 "exception_analysis.m"
+}
+
+#line 679 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__update_proc_result_4_p_0(
+#line 679 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__CurrentStatus_5,
+#line 679 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__CurrentAnalysisStatus_6,
+#line 679 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_12,
+#line 679 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_13)
+#line 679 "exception_analysis.m"
+{
+#line 682 "exception_analysis.m"
+  {
+#line 682 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 682 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__OldStatus_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_12, (MR_Integer) 1)));
+#line 682 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__OldAnalysisStatus_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_12, (MR_Integer) 3)));
+#line 682 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__NewStatus_10;
+#line 682 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__NewAnalysisStatus_11;
+#line 682 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_22_22;
+#line 682 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_24_24;
+#line 683 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_12, (MR_Integer) 0)));
+#line 683 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_12, (MR_Integer) 2)));
+#line 714 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__StatusA_47;
+#line 714 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__StatusB_48;
+#line 688 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_23_23;
+#line 688 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_25_25;
+
+#line 694 "exception_analysis.m"
+#line 694 "exception_analysis.m"
+    switch (MR_tag((MR_Word) transform_hlds__exception_analysis__CurrentStatus_5)) {
+#line 694 "exception_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 694 "exception_analysis.m"
+      case (MR_Integer) 0:
+#line 694 "exception_analysis.m"
+#line 694 "exception_analysis.m"
+        switch (MR_unmkbody(transform_hlds__exception_analysis__CurrentStatus_5)) {
+#line 694 "exception_analysis.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 694 "exception_analysis.m"
+          case (MR_Integer) 0:
+#line 694 "exception_analysis.m"
+            transform_hlds__exception_analysis__NewStatus_10 = transform_hlds__exception_analysis__OldStatus_8;
+#line 694 "exception_analysis.m"
+            break;
+#line 694 "exception_analysis.m"
+          case (MR_Integer) 1:
+#line 694 "exception_analysis.m"
+#line 694 "exception_analysis.m"
+            switch (MR_tag((MR_Word) transform_hlds__exception_analysis__OldStatus_8)) {
+#line 694 "exception_analysis.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 694 "exception_analysis.m"
+              case (MR_Integer) 0:
+#line 694 "exception_analysis.m"
+#line 694 "exception_analysis.m"
+                switch (MR_unmkbody(transform_hlds__exception_analysis__OldStatus_8)) {
+#line 694 "exception_analysis.m"
+                  default: /*NOTREACHED*/ MR_assert(0);
+#line 694 "exception_analysis.m"
+                  case (MR_Integer) 0:
+#line 701 "exception_analysis.m"
+                    transform_hlds__exception_analysis__NewStatus_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+#line 694 "exception_analysis.m"
+                    break;
+#line 694 "exception_analysis.m"
+                  case (MR_Integer) 1:
+#line 699 "exception_analysis.m"
+                    transform_hlds__exception_analysis__NewStatus_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+#line 694 "exception_analysis.m"
+                    break;
+#line 694 "exception_analysis.m"
+                }
+#line 694 "exception_analysis.m"
+                break;
+#line 694 "exception_analysis.m"
+              case (MR_Integer) 1:
+#line 703 "exception_analysis.m"
+                transform_hlds__exception_analysis__NewStatus_10 = transform_hlds__exception_analysis__OldStatus_8;
+#line 694 "exception_analysis.m"
+                break;
+#line 694 "exception_analysis.m"
+            }
+#line 694 "exception_analysis.m"
+            break;
+#line 694 "exception_analysis.m"
+        }
+#line 694 "exception_analysis.m"
+        break;
+#line 694 "exception_analysis.m"
+      case (MR_Integer) 1:
+#line 694 "exception_analysis.m"
+        {
+#line 694 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__CurrentStatus_5, (MR_Integer) 0)));
+
+#line 694 "exception_analysis.m"
+#line 694 "exception_analysis.m"
+          switch (transform_hlds__exception_analysis__V_43_43) {
+#line 694 "exception_analysis.m"
+            default: /*NOTREACHED*/ MR_assert(0);
+#line 694 "exception_analysis.m"
+            case (MR_Integer) 1:
+#line 694 "exception_analysis.m"
+#line 694 "exception_analysis.m"
+              switch (MR_tag((MR_Word) transform_hlds__exception_analysis__OldStatus_8)) {
+#line 694 "exception_analysis.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 694 "exception_analysis.m"
+                case (MR_Integer) 0:
+#line 694 "exception_analysis.m"
+#line 694 "exception_analysis.m"
+                  switch (MR_unmkbody(transform_hlds__exception_analysis__OldStatus_8)) {
+#line 694 "exception_analysis.m"
+                    default: /*NOTREACHED*/ MR_assert(0);
+#line 694 "exception_analysis.m"
+                    case (MR_Integer) 0:
+#line 696 "exception_analysis.m"
+                      transform_hlds__exception_analysis__NewStatus_10 = transform_hlds__exception_analysis__CurrentStatus_5;
+#line 694 "exception_analysis.m"
+                      break;
+#line 694 "exception_analysis.m"
+                    case (MR_Integer) 1:
+#line 697 "exception_analysis.m"
+                      transform_hlds__exception_analysis__NewStatus_10 = transform_hlds__exception_analysis__CurrentStatus_5;
+#line 694 "exception_analysis.m"
+                      break;
+#line 694 "exception_analysis.m"
+                  }
+#line 694 "exception_analysis.m"
+                  break;
+#line 694 "exception_analysis.m"
+                case (MR_Integer) 1:
+#line 698 "exception_analysis.m"
+                  transform_hlds__exception_analysis__NewStatus_10 = transform_hlds__exception_analysis__OldStatus_8;
+#line 694 "exception_analysis.m"
+                  break;
+#line 694 "exception_analysis.m"
+              }
+#line 694 "exception_analysis.m"
+              break;
+#line 694 "exception_analysis.m"
+            case (MR_Integer) 0:
+#line 695 "exception_analysis.m"
+              transform_hlds__exception_analysis__NewStatus_10 = transform_hlds__exception_analysis__CurrentStatus_5;
+#line 694 "exception_analysis.m"
+              break;
+#line 694 "exception_analysis.m"
+          }
+#line 694 "exception_analysis.m"
+        }
+#line 694 "exception_analysis.m"
+        break;
+#line 694 "exception_analysis.m"
+    }
+#line 710 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__CurrentAnalysisStatus_6)) == (MR_mktag((MR_Integer) 1)));
+#line 710 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 710 "exception_analysis.m"
+      {
+#line 710 "exception_analysis.m"
+        transform_hlds__exception_analysis__StatusA_47 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__CurrentAnalysisStatus_6, (MR_Integer) 0)));
+#line 711 "exception_analysis.m"
+        transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__OldAnalysisStatus_9)) == (MR_mktag((MR_Integer) 1)));
+#line 711 "exception_analysis.m"
+        if (transform_hlds__exception_analysis__succeeded)
+#line 711 "exception_analysis.m"
+          transform_hlds__exception_analysis__StatusB_48 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__OldAnalysisStatus_9, (MR_Integer) 0)));
+#line 710 "exception_analysis.m"
+      }
+#line 714 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 713 "exception_analysis.m"
+      {
+#line 713 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_49_49;
+
+#line 713 "exception_analysis.m"
+        {
+#line 713 "exception_analysis.m"
+          transform_hlds__exception_analysis__V_49_49 = analysis__lub_2_f_0(transform_hlds__exception_analysis__StatusA_47, transform_hlds__exception_analysis__StatusB_48);
+        }
+#line 713 "exception_analysis.m"
+        {
+#line 713 "exception_analysis.m"
+          transform_hlds__exception_analysis__NewAnalysisStatus_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 713 "exception_analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__NewAnalysisStatus_11, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_49_49));
+#line 713 "exception_analysis.m"
+        }
+#line 713 "exception_analysis.m"
+      }
+#line 714 "exception_analysis.m"
+    else
+#line 715 "exception_analysis.m"
+      transform_hlds__exception_analysis__NewAnalysisStatus_11 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 688 "exception_analysis.m"
+    transform_hlds__exception_analysis__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_12, (MR_Integer) 0)));
+#line 688 "exception_analysis.m"
+    transform_hlds__exception_analysis__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_12, (MR_Integer) 1)));
+#line 688 "exception_analysis.m"
+    transform_hlds__exception_analysis__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_12, (MR_Integer) 2)));
+#line 688 "exception_analysis.m"
+    transform_hlds__exception_analysis__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_12, (MR_Integer) 3)));
+#line 689 "exception_analysis.m"
+    {
+#line 689 "exception_analysis.m"
+      MR_Word base;
+#line 689 "exception_analysis.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 689 "exception_analysis.m"
+      *transform_hlds__exception_analysis__STATE_VARIABLE_Result_13 = base;
+#line 689 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_22_22));
+#line 689 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__exception_analysis__NewStatus_10));
+#line 689 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__exception_analysis__V_24_24));
+#line 689 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__exception_analysis__NewAnalysisStatus_11));
+#line 689 "exception_analysis.m"
+    }
+#line 682 "exception_analysis.m"
+  }
+#line 679 "exception_analysis.m"
+}
+
+#line 634 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__get_closure_exception_status_8_p_0(
+#line 634 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__IntermodAnalysis_9,
+#line 634 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PPId_10,
+#line 634 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_MaybeWillNotThrow_0_23,
+#line 634 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_MaybeWillNotThrow_24,
+#line 634 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_AS_0_25,
+#line 634 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_AS_26,
+#line 634 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_27,
+#line 634 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_28)
+#line 634 "exception_analysis.m"
+{
+#line 640 "exception_analysis.m"
+  {
+#line 640 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 640 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__PredInfo_14;
+#line 640 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__ProcInfo_15;
+#line 640 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__ExceptionStatus_16;
+#line 640 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__MaybeAnalysisStatus_18;
+#line 714 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__StatusA_75;
+#line 714 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__StatusB_76;
+
+#line 641 "exception_analysis.m"
+    {
+#line 641 "exception_analysis.m"
+      hlds__hlds_module__module_info_pred_proc_info_4_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_27, transform_hlds__exception_analysis__PPId_10, &transform_hlds__exception_analysis__PredInfo_14, &transform_hlds__exception_analysis__ProcInfo_15);
+    }
+#line 643 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__IntermodAnalysis_9 == (MR_Integer) 1);
+#line 643 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 644 "exception_analysis.m"
+      {
+#line 644 "exception_analysis.m"
+        transform_hlds__exception_analysis__succeeded = hlds__hlds_pred__pred_info_is_imported_not_external_1_p_0(transform_hlds__exception_analysis__PredInfo_14);
+      }
+#line 649 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 647 "exception_analysis.m"
+      {
+#line 647 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__TypeClassInfo_for_analysis_67;
+#line 647 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__AnalysisStatus_17;
+#line 647 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__AnalysisInfo0_41;
+#line 647 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__AnalysisInfo_42;
+#line 647 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__ModuleName_51;
+#line 647 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__FuncId_52;
+#line 647 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__MaybeBestResult_54;
+
+#line 1095 "exception_analysis.m"
+        {
+#line 1095 "exception_analysis.m"
+          hlds__hlds_module__module_info_get_analysis_info_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_27, &transform_hlds__exception_analysis__AnalysisInfo0_41);
+        }
+#line 1106 "exception_analysis.m"
+        {
+#line 1106 "exception_analysis.m"
+          transform_hlds__mmc_analysis__module_name_func_id_4_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_27, transform_hlds__exception_analysis__PPId_10, &transform_hlds__exception_analysis__ModuleName_51, &transform_hlds__exception_analysis__FuncId_52);
+        }
+#line 1107 "exception_analysis.m"
+        mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1108 "exception_analysis.m"
+        mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 6902 "transform_hlds.exception_analysis.c"
+        transform_hlds__exception_analysis__TypeClassInfo_for_analysis_67 = (MR_Word) &transform_hlds__exception_analysis_scalar_common_4[0];
+#line 1108 "exception_analysis.m"
+        {
+#line 1108 "exception_analysis.m"
+          analysis__lookup_best_result_6_p_0(transform_hlds__exception_analysis__TypeClassInfo_for_analysis_67, transform_hlds__exception_analysis__AnalysisInfo0_41, transform_hlds__exception_analysis__ModuleName_51, transform_hlds__exception_analysis__FuncId_52, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) ((MR_Integer) 0)), &transform_hlds__exception_analysis__MaybeBestResult_54);
+        }
+#line 1116 "exception_analysis.m"
+        if ((transform_hlds__exception_analysis__MaybeBestResult_54 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1117 "exception_analysis.m"
+          {
+#line 1117 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__Answer_58;
+#line 6915 "transform_hlds.exception_analysis.c"
+            MR_Box MR_CALL (* transform_hlds__exception_analysis__func_0)(MR_Box, MR_Box);
+#line 6917 "transform_hlds.exception_analysis.c"
+            MR_Box transform_hlds__exception_analysis__conv1_Answer_58;
+
+#line 1120 "exception_analysis.m"
+            mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 6922 "transform_hlds.exception_analysis.c"
+            transform_hlds__exception_analysis__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__TypeClassInfo_for_analysis_67, (MR_Integer) 0)), (MR_Integer) 9)));
+#line 6924 "transform_hlds.exception_analysis.c"
+            {
+#line 6926 "transform_hlds.exception_analysis.c"
+              transform_hlds__exception_analysis__conv1_Answer_58 = transform_hlds__exception_analysis__func_0(((MR_Box) transform_hlds__exception_analysis__TypeClassInfo_for_analysis_67), ((MR_Box) ((MR_Integer) 0)));
+            }
+#line 6929 "transform_hlds.exception_analysis.c"
+            transform_hlds__exception_analysis__Answer_58 = ((MR_Word) transform_hlds__exception_analysis__conv1_Answer_58);
+#line 1121 "exception_analysis.m"
+            transform_hlds__exception_analysis__ExceptionStatus_16 = (MR_Word) transform_hlds__exception_analysis__Answer_58;
+#line 1122 "exception_analysis.m"
+            transform_hlds__exception_analysis__AnalysisStatus_17 = (MR_Integer) 2;
+#line 1123 "exception_analysis.m"
+            {
+#line 1123 "exception_analysis.m"
+              analysis__record_request_6_p_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_3[0], (MR_String) "exception_analysis", transform_hlds__exception_analysis__ModuleName_51, transform_hlds__exception_analysis__FuncId_52, ((MR_Box) ((MR_Integer) 0)), transform_hlds__exception_analysis__AnalysisInfo0_41, &transform_hlds__exception_analysis__AnalysisInfo_42);
+            }
+#line 1117 "exception_analysis.m"
+          }
+#line 1116 "exception_analysis.m"
+        else
+#line 1112 "exception_analysis.m"
+          {
+#line 1112 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__BestAnswer_56;
+#line 1112 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeBestResult_54, (MR_Integer) 0)));
+#line 1114 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__V_65_65;
+
+#line 1111 "exception_analysis.m"
+            transform_hlds__exception_analysis__BestAnswer_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_63_63, (MR_Integer) 1)));
+#line 1111 "exception_analysis.m"
+            transform_hlds__exception_analysis__AnalysisStatus_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_63_63, (MR_Integer) 2)));
+#line 1113 "exception_analysis.m"
+            transform_hlds__exception_analysis__ExceptionStatus_16 = (MR_Word) transform_hlds__exception_analysis__BestAnswer_56;
+#line 1114 "exception_analysis.m"
+            mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1114 "exception_analysis.m"
+            {
+#line 1114 "exception_analysis.m"
+              analysis__record_dependency_7_p_0(transform_hlds__exception_analysis__TypeClassInfo_for_analysis_67, transform_hlds__exception_analysis__ModuleName_51, transform_hlds__exception_analysis__FuncId_52, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) ((MR_Integer) 0)), transform_hlds__exception_analysis__AnalysisInfo0_41, &transform_hlds__exception_analysis__AnalysisInfo_42);
+            }
+#line 1112 "exception_analysis.m"
+          }
+#line 1098 "exception_analysis.m"
+        {
+#line 1098 "exception_analysis.m"
+          hlds__hlds_module__module_info_set_analysis_info_3_p_0(transform_hlds__exception_analysis__AnalysisInfo_42, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_27, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_28);
+        }
+#line 648 "exception_analysis.m"
+        {
+#line 648 "exception_analysis.m"
+          transform_hlds__exception_analysis__MaybeAnalysisStatus_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 648 "exception_analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeAnalysisStatus_18, 0) = ((MR_Box) (transform_hlds__exception_analysis__AnalysisStatus_17));
+#line 648 "exception_analysis.m"
+        }
+#line 647 "exception_analysis.m"
+      }
+#line 649 "exception_analysis.m"
+    else
+#line 650 "exception_analysis.m"
+      {
+#line 650 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__MaybeExceptionInfo_19;
+
+#line 650 "exception_analysis.m"
+        {
+#line 650 "exception_analysis.m"
+          hlds__hlds_pred__proc_info_get_exception_info_2_p_0(transform_hlds__exception_analysis__ProcInfo_15, &transform_hlds__exception_analysis__MaybeExceptionInfo_19);
+        }
+#line 655 "exception_analysis.m"
+        if ((transform_hlds__exception_analysis__MaybeExceptionInfo_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 656 "exception_analysis.m"
+          {
+#line 657 "exception_analysis.m"
+            transform_hlds__exception_analysis__ExceptionStatus_16 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0]);
+#line 1177 "exception_analysis.m"
+#line 1177 "exception_analysis.m"
+            switch (transform_hlds__exception_analysis__IntermodAnalysis_9) {
+#line 1177 "exception_analysis.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 1177 "exception_analysis.m"
+              case (MR_Integer) 0:
+#line 1177 "exception_analysis.m"
+                transform_hlds__exception_analysis__MaybeAnalysisStatus_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1177 "exception_analysis.m"
+                break;
+#line 1177 "exception_analysis.m"
+              case (MR_Integer) 1:
+#line 1178 "exception_analysis.m"
+                {
+#line 1178 "exception_analysis.m"
+                  transform_hlds__exception_analysis__MaybeAnalysisStatus_18 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[2]);
+#line 1178 "exception_analysis.m"
+                }
+#line 1177 "exception_analysis.m"
+                break;
+#line 1177 "exception_analysis.m"
+            }
+#line 656 "exception_analysis.m"
+          }
+#line 655 "exception_analysis.m"
+        else
+#line 652 "exception_analysis.m"
+          {
+#line 652 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__ProcExceptionInfo_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeExceptionInfo_19, (MR_Integer) 0)));
+
+#line 653 "exception_analysis.m"
+            transform_hlds__exception_analysis__ExceptionStatus_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__ProcExceptionInfo_20, (MR_Integer) 0)));
+#line 653 "exception_analysis.m"
+            transform_hlds__exception_analysis__MaybeAnalysisStatus_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__ProcExceptionInfo_20, (MR_Integer) 1)));
+#line 652 "exception_analysis.m"
+          }
+#line 650 "exception_analysis.m"
+        *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_28 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_27;
+#line 650 "exception_analysis.m"
+      }
+#line 663 "exception_analysis.m"
+    if ((transform_hlds__exception_analysis__STATE_VARIABLE_MaybeWillNotThrow_0_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 662 "exception_analysis.m"
+      *transform_hlds__exception_analysis__STATE_VARIABLE_MaybeWillNotThrow_24 = transform_hlds__exception_analysis__STATE_VARIABLE_MaybeWillNotThrow_0_23;
+#line 663 "exception_analysis.m"
+    else
+#line 664 "exception_analysis.m"
+      {
+#line 664 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__Conditionals_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__STATE_VARIABLE_MaybeWillNotThrow_0_23, (MR_Integer) 0)));
+
+#line 668 "exception_analysis.m"
+#line 668 "exception_analysis.m"
+        switch (MR_tag((MR_Word) transform_hlds__exception_analysis__ExceptionStatus_16)) {
+#line 668 "exception_analysis.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 668 "exception_analysis.m"
+          case (MR_Integer) 0:
+#line 668 "exception_analysis.m"
+#line 668 "exception_analysis.m"
+            switch (MR_unmkbody(transform_hlds__exception_analysis__ExceptionStatus_16)) {
+#line 668 "exception_analysis.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 668 "exception_analysis.m"
+              case (MR_Integer) 0:
+#line 669 "exception_analysis.m"
+                *transform_hlds__exception_analysis__STATE_VARIABLE_MaybeWillNotThrow_24 = transform_hlds__exception_analysis__STATE_VARIABLE_MaybeWillNotThrow_0_23;
+#line 668 "exception_analysis.m"
+                break;
+#line 668 "exception_analysis.m"
+              case (MR_Integer) 1:
+#line 666 "exception_analysis.m"
+                {
+#line 666 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__V_33_33;
+
+#line 667 "exception_analysis.m"
+                  {
+#line 667 "exception_analysis.m"
+                    transform_hlds__exception_analysis__V_33_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 667 "exception_analysis.m"
+                    MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__V_33_33, 0) = ((MR_Box) (transform_hlds__exception_analysis__PPId_10));
+#line 667 "exception_analysis.m"
+                    MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__V_33_33, 1) = ((MR_Box) (transform_hlds__exception_analysis__Conditionals_21));
+#line 667 "exception_analysis.m"
+                  }
+#line 667 "exception_analysis.m"
+                  {
+#line 667 "exception_analysis.m"
+                    MR_Word base;
+#line 667 "exception_analysis.m"
+                    base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 667 "exception_analysis.m"
+                    *transform_hlds__exception_analysis__STATE_VARIABLE_MaybeWillNotThrow_24 = base;
+#line 667 "exception_analysis.m"
+                    MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_33_33));
+#line 667 "exception_analysis.m"
+                  }
+#line 666 "exception_analysis.m"
+                }
+#line 668 "exception_analysis.m"
+                break;
+#line 668 "exception_analysis.m"
+            }
+#line 668 "exception_analysis.m"
+            break;
+#line 668 "exception_analysis.m"
+          case (MR_Integer) 1:
+#line 672 "exception_analysis.m"
+            *transform_hlds__exception_analysis__STATE_VARIABLE_MaybeWillNotThrow_24 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 668 "exception_analysis.m"
+            break;
+#line 668 "exception_analysis.m"
+        }
+#line 664 "exception_analysis.m"
+      }
+#line 710 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__MaybeAnalysisStatus_18)) == (MR_mktag((MR_Integer) 1)));
+#line 710 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 710 "exception_analysis.m"
+      {
+#line 710 "exception_analysis.m"
+        transform_hlds__exception_analysis__StatusA_75 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeAnalysisStatus_18, (MR_Integer) 0)));
+#line 711 "exception_analysis.m"
+        transform_hlds__exception_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__STATE_VARIABLE_AS_0_25)) == (MR_mktag((MR_Integer) 1)));
+#line 711 "exception_analysis.m"
+        if (transform_hlds__exception_analysis__succeeded)
+#line 711 "exception_analysis.m"
+          transform_hlds__exception_analysis__StatusB_76 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__STATE_VARIABLE_AS_0_25, (MR_Integer) 0)));
+#line 710 "exception_analysis.m"
+      }
+#line 714 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 713 "exception_analysis.m"
+      {
+#line 713 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_77_77;
+
+#line 713 "exception_analysis.m"
+        {
+#line 713 "exception_analysis.m"
+          transform_hlds__exception_analysis__V_77_77 = analysis__lub_2_f_0(transform_hlds__exception_analysis__StatusA_75, transform_hlds__exception_analysis__StatusB_76);
+        }
+#line 713 "exception_analysis.m"
+        {
+#line 713 "exception_analysis.m"
+          MR_Word base;
+#line 713 "exception_analysis.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 713 "exception_analysis.m"
+          *transform_hlds__exception_analysis__STATE_VARIABLE_AS_26 = base;
+#line 713 "exception_analysis.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_77_77));
+#line 713 "exception_analysis.m"
+        }
+#line 713 "exception_analysis.m"
+      }
+#line 714 "exception_analysis.m"
+    else
+#line 715 "exception_analysis.m"
+      *transform_hlds__exception_analysis__STATE_VARIABLE_AS_26 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 640 "exception_analysis.m"
+  }
+#line 634 "exception_analysis.m"
+}
+
+#line 574 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goals_for_exceptions_7_p_0(
+#line 574 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__SCC_1,
+#line 574 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_2,
+#line 574 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3,
+#line 574 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_4,
+#line 574 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_5,
+#line 574 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_6,
+#line 574 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_7)
+#line 574 "exception_analysis.m"
+{
+#line 578 "exception_analysis.m"
+  while (MR_TRUE)
+#line 578 "exception_analysis.m"
+    {
+#line 578 "exception_analysis.m"
+      /* tailcall optimized into a loop */
+#line 578 "exception_analysis.m"
+      {
+#line 578 "exception_analysis.m"
+        MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 578 "exception_analysis.m"
+        if ((transform_hlds__exception_analysis__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 578 "exception_analysis.m"
+          {
+#line 578 "exception_analysis.m"
+            *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_7 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_6;
+#line 578 "exception_analysis.m"
+            *transform_hlds__exception_analysis__STATE_VARIABLE_Result_5 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_4;
+#line 578 "exception_analysis.m"
+          }
+#line 578 "exception_analysis.m"
+        else
+#line 580 "exception_analysis.m"
+          {
+#line 580 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__Goal_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__HeadVar__3_3, (MR_Integer) 0)));
+#line 580 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__Goals_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__HeadVar__3_3, (MR_Integer) 1)));
+#line 580 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__CurrentStatus_22;
+#line 580 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27;
+#line 580 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_28_28;
+#line 580 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__GoalExpr_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Goal_18, (MR_Integer) 0)));
+#line 580 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__GoalInfo_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Goal_18, (MR_Integer) 1)));
+#line 360 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__V_47_47;
+#line 587 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__V_33_33;
+#line 587 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__V_34_34;
+#line 587 "exception_analysis.m"
+            MR_Word transform_hlds__exception_analysis__V_35_35;
+
+#line 360 "exception_analysis.m"
+            {
+#line 360 "exception_analysis.m"
+              transform_hlds__exception_analysis__V_47_47 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(transform_hlds__exception_analysis__GoalInfo_44);
+            }
+#line 360 "exception_analysis.m"
+            transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__V_47_47 == (MR_Integer) 6);
+#line 362 "exception_analysis.m"
+            if (transform_hlds__exception_analysis__succeeded)
+#line 361 "exception_analysis.m"
+              {
+#line 361 "exception_analysis.m"
+                MR_Word transform_hlds__exception_analysis__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_4, (MR_Integer) 0)));
+#line 361 "exception_analysis.m"
+                MR_Word transform_hlds__exception_analysis__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_4, (MR_Integer) 2)));
+#line 361 "exception_analysis.m"
+                MR_Word transform_hlds__exception_analysis__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_4, (MR_Integer) 3)));
+#line 361 "exception_analysis.m"
+                MR_Word transform_hlds__exception_analysis__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_4, (MR_Integer) 1)));
+
+#line 361 "exception_analysis.m"
+                {
+#line 361 "exception_analysis.m"
+                  transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 361 "exception_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_53_53));
+#line 361 "exception_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0])));
+#line 361 "exception_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27, 2) = ((MR_Box) (transform_hlds__exception_analysis__V_55_55));
+#line 361 "exception_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27, 3) = ((MR_Box) (transform_hlds__exception_analysis__V_56_56));
+#line 361 "exception_analysis.m"
+                }
+#line 361 "exception_analysis.m"
+                transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_28_28 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_6;
+#line 361 "exception_analysis.m"
+              }
+#line 362 "exception_analysis.m"
+            else
+#line 363 "exception_analysis.m"
+              {
+#line 363 "exception_analysis.m"
+                transform_hlds__exception_analysis__check_goal_for_exceptions_2_8_p_0(transform_hlds__exception_analysis__SCC_1, transform_hlds__exception_analysis__VarTypes_2, transform_hlds__exception_analysis__GoalExpr_43, transform_hlds__exception_analysis__GoalInfo_44, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_4, &transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_6, &transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_28_28);
+              }
+#line 587 "exception_analysis.m"
+            transform_hlds__exception_analysis__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27, (MR_Integer) 0)));
+#line 587 "exception_analysis.m"
+            transform_hlds__exception_analysis__CurrentStatus_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27, (MR_Integer) 1)));
+#line 587 "exception_analysis.m"
+            transform_hlds__exception_analysis__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27, (MR_Integer) 2)));
+#line 587 "exception_analysis.m"
+            transform_hlds__exception_analysis__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27, (MR_Integer) 3)));
+#line 590 "exception_analysis.m"
+#line 590 "exception_analysis.m"
+            switch (MR_tag((MR_Word) transform_hlds__exception_analysis__CurrentStatus_22)) {
+#line 590 "exception_analysis.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 590 "exception_analysis.m"
+              case (MR_Integer) 0:
+#line 590 "exception_analysis.m"
+#line 590 "exception_analysis.m"
+                switch (MR_unmkbody(transform_hlds__exception_analysis__CurrentStatus_22)) {
+#line 590 "exception_analysis.m"
+                  default: /*NOTREACHED*/ MR_assert(0);
+#line 590 "exception_analysis.m"
+                  case (MR_Integer) 0:
+#line 594 "exception_analysis.m"
+                    {
+#line 594 "exception_analysis.m"
+                      /* direct tailcall eliminated */
+#line 594 "exception_analysis.m"
+                      {
+#line 594 "exception_analysis.m"
+                        MR_Word transform_hlds__exception_analysis__HeadVar__3__tmp_copy_3 = transform_hlds__exception_analysis__Goals_19;
+#line 594 "exception_analysis.m"
+                        MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0__tmp_copy_4 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27;
+#line 594 "exception_analysis.m"
+                        MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0__tmp_copy_6 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_28_28;
+
+#line 594 "exception_analysis.m"
+                        transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_6 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0__tmp_copy_6;
+#line 594 "exception_analysis.m"
+                        transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_4 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0__tmp_copy_4;
+#line 594 "exception_analysis.m"
+                        transform_hlds__exception_analysis__HeadVar__3_3 = transform_hlds__exception_analysis__HeadVar__3__tmp_copy_3;
+#line 594 "exception_analysis.m"
+                      }
+#line 594 "exception_analysis.m"
+                      continue;
+#line 594 "exception_analysis.m"
+                    }
+#line 590 "exception_analysis.m"
+                    break;
+#line 590 "exception_analysis.m"
+                  case (MR_Integer) 1:
+#line 594 "exception_analysis.m"
+                    {
+#line 594 "exception_analysis.m"
+                      /* direct tailcall eliminated */
+#line 594 "exception_analysis.m"
+                      {
+#line 594 "exception_analysis.m"
+                        MR_Word transform_hlds__exception_analysis__HeadVar__3__tmp_copy_3 = transform_hlds__exception_analysis__Goals_19;
+#line 594 "exception_analysis.m"
+                        MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0__tmp_copy_4 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27;
+#line 594 "exception_analysis.m"
+                        MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0__tmp_copy_6 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_28_28;
+
+#line 594 "exception_analysis.m"
+                        transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_6 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0__tmp_copy_6;
+#line 594 "exception_analysis.m"
+                        transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_4 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0__tmp_copy_4;
+#line 594 "exception_analysis.m"
+                        transform_hlds__exception_analysis__HeadVar__3_3 = transform_hlds__exception_analysis__HeadVar__3__tmp_copy_3;
+#line 594 "exception_analysis.m"
+                      }
+#line 594 "exception_analysis.m"
+                      continue;
+#line 594 "exception_analysis.m"
+                    }
+#line 590 "exception_analysis.m"
+                    break;
+#line 590 "exception_analysis.m"
+                }
+#line 590 "exception_analysis.m"
+                break;
+#line 590 "exception_analysis.m"
+              case (MR_Integer) 1:
+#line 590 "exception_analysis.m"
+                {
+#line 590 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__CurrentStatus_22, (MR_Integer) 0)));
+
+#line 590 "exception_analysis.m"
+#line 590 "exception_analysis.m"
+                  switch (transform_hlds__exception_analysis__V_36_36) {
+#line 590 "exception_analysis.m"
+                    default: /*NOTREACHED*/ MR_assert(0);
+#line 590 "exception_analysis.m"
+                    case (MR_Integer) 1:
+#line 595 "exception_analysis.m"
+                      {
+#line 595 "exception_analysis.m"
+                        /* direct tailcall eliminated */
+#line 595 "exception_analysis.m"
+                        {
+#line 595 "exception_analysis.m"
+                          MR_Word transform_hlds__exception_analysis__HeadVar__3__tmp_copy_3 = transform_hlds__exception_analysis__Goals_19;
+#line 595 "exception_analysis.m"
+                          MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0__tmp_copy_4 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27;
+#line 595 "exception_analysis.m"
+                          MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0__tmp_copy_6 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_28_28;
+
+#line 595 "exception_analysis.m"
+                          transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_6 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0__tmp_copy_6;
+#line 595 "exception_analysis.m"
+                          transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_4 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0__tmp_copy_4;
+#line 595 "exception_analysis.m"
+                          transform_hlds__exception_analysis__HeadVar__3_3 = transform_hlds__exception_analysis__HeadVar__3__tmp_copy_3;
+#line 595 "exception_analysis.m"
+                        }
+#line 595 "exception_analysis.m"
+                        continue;
+#line 595 "exception_analysis.m"
+                      }
+#line 590 "exception_analysis.m"
+                      break;
+#line 590 "exception_analysis.m"
+                    case (MR_Integer) 0:
+#line 589 "exception_analysis.m"
+                      {
+#line 589 "exception_analysis.m"
+                        *transform_hlds__exception_analysis__STATE_VARIABLE_Result_5 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_27_27;
+#line 589 "exception_analysis.m"
+                        *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_7 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_28_28;
+#line 589 "exception_analysis.m"
+                      }
+#line 590 "exception_analysis.m"
+                      break;
+#line 590 "exception_analysis.m"
+                  }
+#line 590 "exception_analysis.m"
+                }
+#line 590 "exception_analysis.m"
+                break;
+#line 590 "exception_analysis.m"
+            }
+#line 580 "exception_analysis.m"
+          }
+#line 578 "exception_analysis.m"
+      }
+#line 578 "exception_analysis.m"
+      break;
+#line 578 "exception_analysis.m"
+    }
+#line 574 "exception_analysis.m"
+}
+
+#line 630 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_generic_call_8_p_0_1(
+#line 630 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 630 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 630 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 630 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3,
+#line 630 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_4,
+#line 630 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_5,
+#line 630 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_6,
+#line 630 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_7)
+#line 630 "exception_analysis.m"
+{
+#line 630 "exception_analysis.m"
+  {
+#line 630 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 630 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv3_STATE_VARIABLE_MaybeWillNotThrow_24;
+#line 630 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv2_STATE_VARIABLE_AS_26;
+#line 630 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv1_STATE_VARIABLE_ModuleInfo_28;
+
+#line 630 "exception_analysis.m"
+    {
+#line 630 "exception_analysis.m"
+      transform_hlds__exception_analysis__get_closure_exception_status_8_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), &transform_hlds__exception_analysis__conv3_STATE_VARIABLE_MaybeWillNotThrow_24, ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_4), &transform_hlds__exception_analysis__conv2_STATE_VARIABLE_AS_26, ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_6), &transform_hlds__exception_analysis__conv1_STATE_VARIABLE_ModuleInfo_28);
+    }
+#line 630 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv3_STATE_VARIABLE_MaybeWillNotThrow_24));
+#line 630 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__exception_analysis__conv2_STATE_VARIABLE_AS_26));
+#line 630 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_7 = ((MR_Box) (transform_hlds__exception_analysis__conv1_STATE_VARIABLE_ModuleInfo_28));
+#line 630 "exception_analysis.m"
+  }
+#line 630 "exception_analysis.m"
+}
+
+#line 508 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_generic_call_8_p_0(
+#line 508 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_9,
+#line 508 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Details_10,
+#line 508 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__Args_11,
+#line 508 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__GoalInfo_12,
+#line 508 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34,
+#line 508 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_35,
+#line 508 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_36,
+#line 508 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_37)
+#line 508 "exception_analysis.m"
+{
+#line 514 "exception_analysis.m"
+  {
+#line 514 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 514 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Globals_15;
+#line 514 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__IntermodAnalysis_16;
+
+#line 515 "exception_analysis.m"
+    {
+#line 515 "exception_analysis.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_36, &transform_hlds__exception_analysis__Globals_15);
+    }
+#line 516 "exception_analysis.m"
+    {
+#line 516 "exception_analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__exception_analysis__Globals_15, (MR_Integer) 335, &transform_hlds__exception_analysis__IntermodAnalysis_16);
+    }
+#line 564 "exception_analysis.m"
+#line 564 "exception_analysis.m"
+    switch (MR_tag((MR_Word) transform_hlds__exception_analysis__Details_10)) {
+#line 564 "exception_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 564 "exception_analysis.m"
+      case (MR_Integer) 0:
+#line 519 "exception_analysis.m"
+        {
+#line 519 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__Var_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Details_10, (MR_Integer) 0)));
+#line 519 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__ClosureValueMap_21;
+#line 519 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Details_10, (MR_Integer) 1)));
+#line 519 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Details_10, (MR_Integer) 2)));
+#line 519 "exception_analysis.m"
+          MR_Integer transform_hlds__exception_analysis__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Details_10, (MR_Integer) 3)));
+#line 561 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__ClosureValues_22;
+#line 521 "exception_analysis.m"
+          MR_Box transform_hlds__exception_analysis__conv0_ClosureValues_22;
+
+#line 520 "exception_analysis.m"
+          {
+#line 520 "exception_analysis.m"
+            transform_hlds__exception_analysis__ClosureValueMap_21 = hlds__hlds_goal__goal_info_get_ho_values_1_f_0(transform_hlds__exception_analysis__GoalInfo_12);
+          }
+#line 521 "exception_analysis.m"
+          {
+#line 521 "exception_analysis.m"
+            transform_hlds__exception_analysis__succeeded = mercury__map__elem_2_f_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_1[5], (MR_Word) &transform_hlds__exception_analysis_scalar_common_1[6], ((MR_Box) (transform_hlds__exception_analysis__Var_17)), transform_hlds__exception_analysis__ClosureValueMap_21, &transform_hlds__exception_analysis__conv0_ClosureValues_22);
+          }
+#line 521 "exception_analysis.m"
+          if (transform_hlds__exception_analysis__succeeded)
+#line 521 "exception_analysis.m"
+            {
+#line 521 "exception_analysis.m"
+              transform_hlds__exception_analysis__ClosureValues_22 = ((MR_Word) transform_hlds__exception_analysis__conv0_ClosureValues_22);
+#line 521 "exception_analysis.m"
+              transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 521 "exception_analysis.m"
+            }
+#line 561 "exception_analysis.m"
+          if (transform_hlds__exception_analysis__succeeded)
+#line 523 "exception_analysis.m"
+            {
+#line 523 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__MaybeWillNotThrow_23;
+#line 523 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__MaybeAnalysisStatus_24;
+#line 523 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__AnalysisStatus0_71;
+#line 523 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_72_72;
+#line 629 "exception_analysis.m"
+              MR_Box transform_hlds__exception_analysis__conv6_MaybeWillNotThrow_23;
+#line 629 "exception_analysis.m"
+              MR_Box transform_hlds__exception_analysis__conv5_MaybeAnalysisStatus_24;
+#line 629 "exception_analysis.m"
+              MR_Box transform_hlds__exception_analysis__conv4_STATE_VARIABLE_ModuleInfo_37;
+
+#line 1177 "exception_analysis.m"
+#line 1177 "exception_analysis.m"
+              switch (transform_hlds__exception_analysis__IntermodAnalysis_16) {
+#line 1177 "exception_analysis.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 1177 "exception_analysis.m"
+                case (MR_Integer) 0:
+#line 1177 "exception_analysis.m"
+                  transform_hlds__exception_analysis__AnalysisStatus0_71 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1177 "exception_analysis.m"
+                  break;
+#line 1177 "exception_analysis.m"
+                case (MR_Integer) 1:
+#line 1178 "exception_analysis.m"
+                  {
+#line 1178 "exception_analysis.m"
+                    transform_hlds__exception_analysis__AnalysisStatus0_71 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[2]);
+#line 1178 "exception_analysis.m"
+                  }
+#line 1177 "exception_analysis.m"
+                  break;
+#line 1177 "exception_analysis.m"
+              }
+#line 630 "exception_analysis.m"
+              {
+#line 630 "exception_analysis.m"
+                transform_hlds__exception_analysis__V_72_72 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 630 "exception_analysis.m"
+                MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_72_72, 0) = ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_10[0]));
+#line 630 "exception_analysis.m"
+                MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_72_72, 1) = ((MR_Box) (transform_hlds__exception_analysis__check_goal_for_exceptions_generic_call_8_p_0_1));
+#line 630 "exception_analysis.m"
+                MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_72_72, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 630 "exception_analysis.m"
+                MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_72_72, 3) = ((MR_Box) (transform_hlds__exception_analysis__IntermodAnalysis_16));
+#line 630 "exception_analysis.m"
+              }
+#line 629 "exception_analysis.m"
+              {
+#line 629 "exception_analysis.m"
+                mercury__set__fold3_8_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_closures_exception_status_0, (MR_Word) &transform_hlds__exception_analysis_scalar_common_1[4], (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, transform_hlds__exception_analysis__V_72_72, transform_hlds__exception_analysis__ClosureValues_22, ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[3]))), &transform_hlds__exception_analysis__conv6_MaybeWillNotThrow_23, ((MR_Box) (transform_hlds__exception_analysis__AnalysisStatus0_71)), &transform_hlds__exception_analysis__conv5_MaybeAnalysisStatus_24, ((MR_Box) (transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_36)), &transform_hlds__exception_analysis__conv4_STATE_VARIABLE_ModuleInfo_37);
+              }
+#line 629 "exception_analysis.m"
+              transform_hlds__exception_analysis__MaybeWillNotThrow_23 = ((MR_Word) transform_hlds__exception_analysis__conv6_MaybeWillNotThrow_23);
+#line 629 "exception_analysis.m"
+              transform_hlds__exception_analysis__MaybeAnalysisStatus_24 = ((MR_Word) transform_hlds__exception_analysis__conv5_MaybeAnalysisStatus_24);
+#line 629 "exception_analysis.m"
+              *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_37 = ((MR_Word) transform_hlds__exception_analysis__conv4_STATE_VARIABLE_ModuleInfo_37);
+#line 557 "exception_analysis.m"
+              if ((transform_hlds__exception_analysis__MaybeWillNotThrow_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 558 "exception_analysis.m"
+                {
+#line 559 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, (MR_Integer) 0)));
+#line 559 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, (MR_Integer) 2)));
+#line 559 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, (MR_Integer) 3)));
+#line 559 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, (MR_Integer) 1)));
+
+#line 559 "exception_analysis.m"
+                  {
+#line 559 "exception_analysis.m"
+                    MR_Word base;
+#line 559 "exception_analysis.m"
+                    base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 559 "exception_analysis.m"
+                    *transform_hlds__exception_analysis__STATE_VARIABLE_Result_35 = base;
+#line 559 "exception_analysis.m"
+                    MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_50_50));
+#line 559 "exception_analysis.m"
+                    MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0])));
+#line 559 "exception_analysis.m"
+                    MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__exception_analysis__V_52_52));
+#line 559 "exception_analysis.m"
+                    MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__exception_analysis__V_53_53));
+#line 559 "exception_analysis.m"
+                  }
+#line 558 "exception_analysis.m"
+                }
+#line 557 "exception_analysis.m"
+              else
+#line 525 "exception_analysis.m"
+                {
+#line 525 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__ConditionalProcs_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeWillNotThrow_23, (MR_Integer) 0)));
+
+#line 530 "exception_analysis.m"
+                  if ((transform_hlds__exception_analysis__ConditionalProcs_25 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 527 "exception_analysis.m"
+                    *transform_hlds__exception_analysis__STATE_VARIABLE_Result_35 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34;
+#line 530 "exception_analysis.m"
+                  else
+#line 554 "exception_analysis.m"
+                    {
+#line 554 "exception_analysis.m"
+                      transform_hlds__exception_analysis__check_vars_6_p_0(*transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_37, transform_hlds__exception_analysis__VarTypes_9, transform_hlds__exception_analysis__Args_11, transform_hlds__exception_analysis__MaybeAnalysisStatus_24, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, transform_hlds__exception_analysis__STATE_VARIABLE_Result_35);
+#line 554 "exception_analysis.m"
+                      return;
+                    }
+#line 525 "exception_analysis.m"
+                }
+#line 523 "exception_analysis.m"
+            }
+#line 561 "exception_analysis.m"
+          else
+#line 562 "exception_analysis.m"
+            {
+#line 562 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, (MR_Integer) 0)));
+#line 562 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, (MR_Integer) 2)));
+#line 562 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, (MR_Integer) 3)));
+#line 562 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, (MR_Integer) 1)));
+
+#line 562 "exception_analysis.m"
+              {
+#line 562 "exception_analysis.m"
+                MR_Word base;
+#line 562 "exception_analysis.m"
+                base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 562 "exception_analysis.m"
+                *transform_hlds__exception_analysis__STATE_VARIABLE_Result_35 = base;
+#line 562 "exception_analysis.m"
+                MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_54_54));
+#line 562 "exception_analysis.m"
+                MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0])));
+#line 562 "exception_analysis.m"
+                MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__exception_analysis__V_56_56));
+#line 562 "exception_analysis.m"
+                MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__exception_analysis__V_57_57));
+#line 562 "exception_analysis.m"
+              }
+#line 562 "exception_analysis.m"
+              *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_37 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_36;
+#line 562 "exception_analysis.m"
+            }
+#line 519 "exception_analysis.m"
+        }
+#line 564 "exception_analysis.m"
+        break;
+#line 564 "exception_analysis.m"
+      case (MR_Integer) 1:
+#line 566 "exception_analysis.m"
+        {
+#line 567 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, (MR_Integer) 0)));
+#line 567 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, (MR_Integer) 2)));
+#line 567 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, (MR_Integer) 3)));
+#line 567 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34, (MR_Integer) 1)));
+
+#line 567 "exception_analysis.m"
+          {
+#line 567 "exception_analysis.m"
+            MR_Word base;
+#line 567 "exception_analysis.m"
+            base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 567 "exception_analysis.m"
+            *transform_hlds__exception_analysis__STATE_VARIABLE_Result_35 = base;
+#line 567 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_58_58));
+#line 567 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0])));
+#line 567 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__exception_analysis__V_60_60));
+#line 567 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__exception_analysis__V_61_61));
+#line 567 "exception_analysis.m"
+          }
+#line 566 "exception_analysis.m"
+          *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_37 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_36;
+#line 566 "exception_analysis.m"
+        }
+#line 564 "exception_analysis.m"
+        break;
+#line 564 "exception_analysis.m"
+      case (MR_Integer) 2:
+#line 569 "exception_analysis.m"
+        {
+#line 569 "exception_analysis.m"
+          *transform_hlds__exception_analysis__STATE_VARIABLE_Result_35 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34;
+#line 569 "exception_analysis.m"
+          *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_37 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_36;
+#line 569 "exception_analysis.m"
+        }
+#line 564 "exception_analysis.m"
+        break;
+#line 564 "exception_analysis.m"
+      case (MR_Integer) 3:
+#line 571 "exception_analysis.m"
+        {
+#line 571 "exception_analysis.m"
+          *transform_hlds__exception_analysis__STATE_VARIABLE_Result_35 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_34;
+#line 571 "exception_analysis.m"
+          *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_37 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_36;
+#line 571 "exception_analysis.m"
+        }
+#line 564 "exception_analysis.m"
+        break;
+#line 564 "exception_analysis.m"
+    }
+#line 514 "exception_analysis.m"
+  }
+#line 508 "exception_analysis.m"
+}
+
+#line 873 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_5(
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 873 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3)
+#line 873 "exception_analysis.m"
+{
+#line 873 "exception_analysis.m"
+  {
+#line 873 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 873 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv2_STATE_VARIABLE_Status_9;
+
+#line 873 "exception_analysis.m"
+    {
+#line 873 "exception_analysis.m"
+      transform_hlds__exception_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), &transform_hlds__exception_analysis__conv2_STATE_VARIABLE_Status_9);
+    }
+#line 873 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv2_STATE_VARIABLE_Status_9));
+#line 873 "exception_analysis.m"
+  }
+#line 873 "exception_analysis.m"
+}
+
+#line 873 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_1(
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 873 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 873 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3)
+#line 873 "exception_analysis.m"
+{
+#line 873 "exception_analysis.m"
+  {
+#line 873 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 873 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv0_STATE_VARIABLE_Status_9;
+
+#line 873 "exception_analysis.m"
+    {
+#line 873 "exception_analysis.m"
+      transform_hlds__exception_analysis__check_type_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), &transform_hlds__exception_analysis__conv0_STATE_VARIABLE_Status_9);
+    }
+#line 873 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv0_STATE_VARIABLE_Status_9));
+#line 873 "exception_analysis.m"
+  }
+#line 873 "exception_analysis.m"
+}
+
+#line 477 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_2(
+#line 477 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 477 "exception_analysis.m"
+{
+#line 477 "exception_analysis.m"
+  {
+#line 477 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 477 "exception_analysis.m"
+    MR_builtin_longjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__commit_0, 1);
+#line 477 "exception_analysis.m"
+  }
+#line 477 "exception_analysis.m"
+}
+
+#line 477 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_3(
+#line 477 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 477 "exception_analysis.m"
+{
+#line 477 "exception_analysis.m"
+  {
+#line 477 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 477 "exception_analysis.m"
+    {
+#line 484 "exception_analysis.m"
+      MR_String transform_hlds__exception_analysis__V_26_26;
+
+#line 484 "exception_analysis.m"
+      {
+#line 484 "exception_analysis.m"
+        mdbcomp__prim_data__special_pred_name_arity_4_p_0((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__SpecialPredId_25, &(transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__V_51_51, &transform_hlds__exception_analysis__V_26_26, &(transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__V_52_52);
+      }
+#line 484 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded = (strcmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__Name_23, (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__V_51_51) == 0);
+#line 477 "exception_analysis.m"
+      if ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded)
+#line 477 "exception_analysis.m"
+        {
+#line 484 "exception_analysis.m"
+          (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded = ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__Arity_24 == (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__V_52_52);
+#line 484 "exception_analysis.m"
+          if ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded)
+#line 484 "exception_analysis.m"
+            {
+#line 484 "exception_analysis.m"
+              transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_2(transform_hlds__exception_analysis__env_ptr);
+#line 484 "exception_analysis.m"
+              return;
+            }
+#line 477 "exception_analysis.m"
+        }
+#line 477 "exception_analysis.m"
+    }
+#line 477 "exception_analysis.m"
+  }
+#line 477 "exception_analysis.m"
+}
+
+#line 477 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_4(
+#line 477 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 477 "exception_analysis.m"
+{
+#line 477 "exception_analysis.m"
+  {
+#line 477 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 477 "exception_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__commit_0) == 0)
+#line 477 "exception_analysis.m"
+      {
+#line 477 "exception_analysis.m"
+        {
+#line 477 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__ModuleName_22;
+
+#line 477 "exception_analysis.m"
+          {
+#line 477 "exception_analysis.m"
+            transform_hlds__exception_analysis__ModuleName_22 = hlds__hlds_pred__pred_info_module_1_f_0((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__CallPredInfo_18);
+          }
+#line 478 "exception_analysis.m"
+          {
+#line 478 "exception_analysis.m"
+            (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded = mdbcomp__builtin_modules__any_mercury_builtin_module_1_p_0(transform_hlds__exception_analysis__ModuleName_22);
+          }
+#line 477 "exception_analysis.m"
+          if ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded)
+#line 477 "exception_analysis.m"
+            {
+#line 479 "exception_analysis.m"
+              {
+#line 479 "exception_analysis.m"
+                (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__Name_23 = hlds__hlds_pred__pred_info_name_1_f_0((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__CallPredInfo_18);
+              }
+#line 480 "exception_analysis.m"
+              {
+#line 480 "exception_analysis.m"
+                (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__Arity_24 = hlds__hlds_pred__pred_info_orig_arity_1_f_0((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__CallPredInfo_18);
+              }
+#line 482 "exception_analysis.m"
+              {
+#line 482 "exception_analysis.m"
+                MR_Integer transform_hlds__exception_analysis__slot_1 = (MR_Integer) 0;
+
+#line 482 "exception_analysis.m"
+                do
+#line 482 "exception_analysis.m"
+                  {
+#line 482 "exception_analysis.m"
+                    (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__SpecialPredId_25 = ((&transform_hlds__exception_analysis_vector_common_9[0 + transform_hlds__exception_analysis__slot_1]))->transform_hlds__exception_analysis__vector_common_type_9_0__vct_9_f_0;
+#line 482 "exception_analysis.m"
+                    {
+#line 482 "exception_analysis.m"
+                      transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_3(transform_hlds__exception_analysis__env_ptr);
+                    }
+#line 482 "exception_analysis.m"
+                    transform_hlds__exception_analysis__slot_1 = (transform_hlds__exception_analysis__slot_1 + (MR_Integer) 1);
+#line 482 "exception_analysis.m"
+                  }
+#line 482 "exception_analysis.m"
+                while ((transform_hlds__exception_analysis__slot_1 < (MR_Integer) 2));
+#line 482 "exception_analysis.m"
+              }
+#line 477 "exception_analysis.m"
+            }
+#line 477 "exception_analysis.m"
+        }
+#line 477 "exception_analysis.m"
+        (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded = MR_FALSE;
+#line 477 "exception_analysis.m"
+      }
+#line 477 "exception_analysis.m"
+    else
+#line 477 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded = MR_TRUE;
+#line 477 "exception_analysis.m"
+  }
+#line 477 "exception_analysis.m"
+}
+
+#line 452 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0(
+#line 452 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__SCC_10,
+#line 452 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_11,
+#line 452 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__CallPredId_12,
+#line 452 "exception_analysis.m"
+  MR_Integer transform_hlds__exception_analysis__CallProcId_13,
+#line 452 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__CallArgs_14,
+#line 452 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_32,
+#line 452 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_33,
+#line 452 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_34,
+#line 452 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_35)
+#line 452 "exception_analysis.m"
+{
+#line 452 "exception_analysis.m"
+  {
+#line 452 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0_s transform_hlds__exception_analysis__env;
+
+#line 458 "exception_analysis.m"
+    {
+#line 458 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__CallPPId_17;
+
+#line 459 "exception_analysis.m"
+      {
+#line 459 "exception_analysis.m"
+        transform_hlds__exception_analysis__CallPPId_17 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 459 "exception_analysis.m"
+        MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__CallPPId_17, 0) = ((MR_Box) (transform_hlds__exception_analysis__CallPredId_12));
+#line 459 "exception_analysis.m"
+        MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__CallPPId_17, 1) = ((MR_Box) (transform_hlds__exception_analysis__CallProcId_13));
+#line 459 "exception_analysis.m"
+      }
+#line 460 "exception_analysis.m"
+      {
+#line 460 "exception_analysis.m"
+        hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_34, transform_hlds__exception_analysis__CallPredId_12, &(transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__CallPredInfo_18);
+      }
+#line 463 "exception_analysis.m"
+      {
+#line 463 "exception_analysis.m"
+        (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded = mercury__list__member_2_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, ((MR_Box) (transform_hlds__exception_analysis__CallPPId_17)), transform_hlds__exception_analysis__SCC_10);
+      }
+#line 469 "exception_analysis.m"
+      if ((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded)
+#line 465 "exception_analysis.m"
+        {
+#line 465 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__Types_19;
+#line 465 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__TypeStatus_20;
+#line 465 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__NewTypeStatus_21;
+#line 465 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_36_36;
+#line 465 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_43_43;
+#line 465 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_44_44;
+#line 465 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_45_45;
+#line 465 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_56_56;
+#line 873 "exception_analysis.m"
+          MR_Box transform_hlds__exception_analysis__conv1_TypeStatus_20;
+
+#line 465 "exception_analysis.m"
+          {
+#line 465 "exception_analysis.m"
+            hlds__vartypes__lookup_var_types_3_p_0(transform_hlds__exception_analysis__VarTypes_11, transform_hlds__exception_analysis__CallArgs_14, &transform_hlds__exception_analysis__Types_19);
+          }
+#line 873 "exception_analysis.m"
+          {
+#line 873 "exception_analysis.m"
+            transform_hlds__exception_analysis__V_56_56 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 873 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_56_56, 0) = ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_5[2]));
+#line 873 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_56_56, 1) = ((MR_Box) (transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_1));
+#line 873 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_56_56, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 873 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_56_56, 3) = ((MR_Box) (transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_34));
+#line 873 "exception_analysis.m"
+          }
+#line 873 "exception_analysis.m"
+          {
+#line 873 "exception_analysis.m"
+            mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_type_status_0, transform_hlds__exception_analysis__V_56_56, transform_hlds__exception_analysis__Types_19, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__exception_analysis__conv1_TypeStatus_20);
+          }
+#line 873 "exception_analysis.m"
+          transform_hlds__exception_analysis__TypeStatus_20 = ((MR_Word) transform_hlds__exception_analysis__conv1_TypeStatus_20);
+#line 467 "exception_analysis.m"
+          transform_hlds__exception_analysis__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_32, (MR_Integer) 0)));
+#line 467 "exception_analysis.m"
+          transform_hlds__exception_analysis__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_32, (MR_Integer) 1)));
+#line 467 "exception_analysis.m"
+          transform_hlds__exception_analysis__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_32, (MR_Integer) 2)));
+#line 467 "exception_analysis.m"
+          transform_hlds__exception_analysis__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_32, (MR_Integer) 3)));
+#line 884 "exception_analysis.m"
+#line 884 "exception_analysis.m"
+          switch (transform_hlds__exception_analysis__TypeStatus_20) {
+#line 884 "exception_analysis.m"
+            default: /*NOTREACHED*/ MR_assert(0);
+#line 884 "exception_analysis.m"
+            case (MR_Integer) 2:
+#line 884 "exception_analysis.m"
+#line 884 "exception_analysis.m"
+              switch (transform_hlds__exception_analysis__V_36_36) {
+#line 884 "exception_analysis.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 884 "exception_analysis.m"
+                case (MR_Integer) 2:
+#line 889 "exception_analysis.m"
+                  transform_hlds__exception_analysis__NewTypeStatus_21 = (MR_Integer) 2;
+#line 884 "exception_analysis.m"
+                  break;
+#line 884 "exception_analysis.m"
+                case (MR_Integer) 1:
+#line 890 "exception_analysis.m"
+                  transform_hlds__exception_analysis__NewTypeStatus_21 = (MR_Integer) 1;
+#line 884 "exception_analysis.m"
+                  break;
+#line 884 "exception_analysis.m"
+                case (MR_Integer) 0:
+#line 888 "exception_analysis.m"
+                  transform_hlds__exception_analysis__NewTypeStatus_21 = (MR_Integer) 2;
+#line 884 "exception_analysis.m"
+                  break;
+#line 884 "exception_analysis.m"
+              }
+#line 884 "exception_analysis.m"
+              break;
+#line 884 "exception_analysis.m"
+            case (MR_Integer) 1:
+#line 891 "exception_analysis.m"
+              transform_hlds__exception_analysis__NewTypeStatus_21 = (MR_Integer) 1;
+#line 884 "exception_analysis.m"
+              break;
+#line 884 "exception_analysis.m"
+            case (MR_Integer) 0:
+#line 884 "exception_analysis.m"
+#line 884 "exception_analysis.m"
+              switch (transform_hlds__exception_analysis__V_36_36) {
+#line 884 "exception_analysis.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 884 "exception_analysis.m"
+                case (MR_Integer) 2:
+#line 886 "exception_analysis.m"
+                  transform_hlds__exception_analysis__NewTypeStatus_21 = (MR_Integer) 2;
+#line 884 "exception_analysis.m"
+                  break;
+#line 884 "exception_analysis.m"
+                case (MR_Integer) 1:
+#line 887 "exception_analysis.m"
+                  transform_hlds__exception_analysis__NewTypeStatus_21 = (MR_Integer) 1;
+#line 884 "exception_analysis.m"
+                  break;
+#line 884 "exception_analysis.m"
+                case (MR_Integer) 0:
+#line 885 "exception_analysis.m"
+                  transform_hlds__exception_analysis__NewTypeStatus_21 = (MR_Integer) 0;
+#line 884 "exception_analysis.m"
+                  break;
+#line 884 "exception_analysis.m"
+              }
+#line 884 "exception_analysis.m"
+              break;
+#line 884 "exception_analysis.m"
+          }
+#line 468 "exception_analysis.m"
+          {
+#line 468 "exception_analysis.m"
+            MR_Word base;
+#line 468 "exception_analysis.m"
+            base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 468 "exception_analysis.m"
+            *transform_hlds__exception_analysis__STATE_VARIABLE_Result_33 = base;
+#line 468 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_43_43));
+#line 468 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__exception_analysis__V_44_44));
+#line 468 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__exception_analysis__NewTypeStatus_21));
+#line 468 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__exception_analysis__V_45_45));
+#line 468 "exception_analysis.m"
+          }
+#line 465 "exception_analysis.m"
+          *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_35 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_34;
+#line 465 "exception_analysis.m"
+        }
+#line 469 "exception_analysis.m"
+      else
+#line 474 "exception_analysis.m"
+        {
+#line 470 "exception_analysis.m"
+          {
+#line 470 "exception_analysis.m"
+            (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded = hlds__hlds_pred__pred_info_is_builtin_1_p_0((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__CallPredInfo_18);
+          }
+#line 474 "exception_analysis.m"
+          if ((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded)
+#line 473 "exception_analysis.m"
+            {
+#line 473 "exception_analysis.m"
+              *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_35 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_34;
+#line 473 "exception_analysis.m"
+              *transform_hlds__exception_analysis__STATE_VARIABLE_Result_33 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_32;
+#line 473 "exception_analysis.m"
+            }
+#line 474 "exception_analysis.m"
+          else
+#line 503 "exception_analysis.m"
+            {
+#line 477 "exception_analysis.m"
+              {
+#line 477 "exception_analysis.m"
+                transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_4(&transform_hlds__exception_analysis__env);
+              }
+#line 485 "exception_analysis.m"
+              if (!((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded))
+#line 486 "exception_analysis.m"
+                {
+#line 486 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__Origin_27;
+#line 486 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__SpecialPredId_42;
+#line 487 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__V_28_28;
+
+#line 486 "exception_analysis.m"
+                  {
+#line 486 "exception_analysis.m"
+                    hlds__hlds_pred__pred_info_get_origin_2_p_0((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__CallPredInfo_18, &transform_hlds__exception_analysis__Origin_27);
+                  }
+#line 487 "exception_analysis.m"
+                  (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded = ((MR_tag((MR_Word) transform_hlds__exception_analysis__Origin_27)) == (MR_mktag((MR_Integer) 0)));
+#line 487 "exception_analysis.m"
+                  if ((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded)
+#line 487 "exception_analysis.m"
+                    {
+#line 487 "exception_analysis.m"
+                      transform_hlds__exception_analysis__SpecialPredId_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Origin_27, (MR_Integer) 0)));
+#line 487 "exception_analysis.m"
+                      transform_hlds__exception_analysis__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Origin_27, (MR_Integer) 1)));
+#line 489 "exception_analysis.m"
+#line 489 "exception_analysis.m"
+                      switch (transform_hlds__exception_analysis__SpecialPredId_42) {
+#line 489 "exception_analysis.m"
+                        default:
+#line 489 "exception_analysis.m"
+                          (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded = MR_FALSE;
+#line 489 "exception_analysis.m"
+                          break;
+#line 489 "exception_analysis.m"
+                        case (MR_Integer) 2:
+#line 488 "exception_analysis.m"
+                          (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded = MR_TRUE;
+#line 489 "exception_analysis.m"
+                          break;
+#line 489 "exception_analysis.m"
+                        case (MR_Integer) 0:
+#line 489 "exception_analysis.m"
+                          (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded = MR_TRUE;
+#line 489 "exception_analysis.m"
+                          break;
+#line 489 "exception_analysis.m"
+                      }
+#line 487 "exception_analysis.m"
+                    }
+#line 486 "exception_analysis.m"
+                }
+#line 503 "exception_analysis.m"
+              if ((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__succeeded)
+#line 497 "exception_analysis.m"
+                {
+#line 497 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__Globals_29;
+#line 497 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__IntermodAnalysis_30;
+#line 497 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__MaybeAnalysisStatus_31;
+#line 497 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__Types_72;
+#line 497 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__TypeStatus_73;
+#line 497 "exception_analysis.m"
+                  MR_Word transform_hlds__exception_analysis__V_82_82;
+#line 873 "exception_analysis.m"
+                  MR_Box transform_hlds__exception_analysis__conv3_TypeStatus_73;
+
+#line 497 "exception_analysis.m"
+                  {
+#line 497 "exception_analysis.m"
+                    hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_34, &transform_hlds__exception_analysis__Globals_29);
+                  }
+#line 498 "exception_analysis.m"
+                  {
+#line 498 "exception_analysis.m"
+                    libs__globals__lookup_bool_option_3_p_0(transform_hlds__exception_analysis__Globals_29, (MR_Integer) 335, &transform_hlds__exception_analysis__IntermodAnalysis_30);
+                  }
+#line 1177 "exception_analysis.m"
+#line 1177 "exception_analysis.m"
+                  switch (transform_hlds__exception_analysis__IntermodAnalysis_30) {
+#line 1177 "exception_analysis.m"
+                    default: /*NOTREACHED*/ MR_assert(0);
+#line 1177 "exception_analysis.m"
+                    case (MR_Integer) 0:
+#line 1177 "exception_analysis.m"
+                      transform_hlds__exception_analysis__MaybeAnalysisStatus_31 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1177 "exception_analysis.m"
+                      break;
+#line 1177 "exception_analysis.m"
+                    case (MR_Integer) 1:
+#line 1178 "exception_analysis.m"
+                      {
+#line 1178 "exception_analysis.m"
+                        transform_hlds__exception_analysis__MaybeAnalysisStatus_31 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[2]);
+#line 1178 "exception_analysis.m"
+                      }
+#line 1177 "exception_analysis.m"
+                      break;
+#line 1177 "exception_analysis.m"
+                  }
+#line 779 "exception_analysis.m"
+                  {
+#line 779 "exception_analysis.m"
+                    hlds__vartypes__lookup_var_types_3_p_0(transform_hlds__exception_analysis__VarTypes_11, transform_hlds__exception_analysis__CallArgs_14, &transform_hlds__exception_analysis__Types_72);
+                  }
+#line 873 "exception_analysis.m"
+                  {
+#line 873 "exception_analysis.m"
+                    transform_hlds__exception_analysis__V_82_82 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 873 "exception_analysis.m"
+                    MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_82_82, 0) = ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_5[2]));
+#line 873 "exception_analysis.m"
+                    MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_82_82, 1) = ((MR_Box) (transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_5));
+#line 873 "exception_analysis.m"
+                    MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_82_82, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 873 "exception_analysis.m"
+                    MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_82_82, 3) = ((MR_Box) (transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_34));
+#line 873 "exception_analysis.m"
+                  }
+#line 873 "exception_analysis.m"
+                  {
+#line 873 "exception_analysis.m"
+                    mercury__list__foldl_4_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0, (MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_type_status_0, transform_hlds__exception_analysis__V_82_82, transform_hlds__exception_analysis__Types_72, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__exception_analysis__conv3_TypeStatus_73);
+                  }
+#line 873 "exception_analysis.m"
+                  transform_hlds__exception_analysis__TypeStatus_73 = ((MR_Word) transform_hlds__exception_analysis__conv3_TypeStatus_73);
+#line 783 "exception_analysis.m"
+#line 783 "exception_analysis.m"
+                  switch (transform_hlds__exception_analysis__TypeStatus_73) {
+#line 783 "exception_analysis.m"
+                    default: /*NOTREACHED*/ MR_assert(0);
+#line 783 "exception_analysis.m"
+                    case (MR_Integer) 2:
+#line 788 "exception_analysis.m"
+                      {
+#line 789 "exception_analysis.m"
+                        {
+#line 789 "exception_analysis.m"
+                          transform_hlds__exception_analysis__update_proc_result_4_p_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)), transform_hlds__exception_analysis__MaybeAnalysisStatus_31, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_32, transform_hlds__exception_analysis__STATE_VARIABLE_Result_33);
+                        }
+#line 788 "exception_analysis.m"
+                      }
+#line 783 "exception_analysis.m"
+                      break;
+#line 783 "exception_analysis.m"
+                    case (MR_Integer) 1:
+#line 784 "exception_analysis.m"
+                      {
+#line 785 "exception_analysis.m"
+                        {
+#line 785 "exception_analysis.m"
+                          transform_hlds__exception_analysis__update_proc_result_4_p_0((MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[1]), transform_hlds__exception_analysis__MaybeAnalysisStatus_31, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_32, transform_hlds__exception_analysis__STATE_VARIABLE_Result_33);
+                        }
+#line 784 "exception_analysis.m"
+                      }
+#line 783 "exception_analysis.m"
+                      break;
+#line 783 "exception_analysis.m"
+                    case (MR_Integer) 0:
+#line 782 "exception_analysis.m"
+                      *transform_hlds__exception_analysis__STATE_VARIABLE_Result_33 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_32;
+#line 783 "exception_analysis.m"
+                      break;
+#line 783 "exception_analysis.m"
+                  }
+#line 497 "exception_analysis.m"
+                  *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_35 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_34;
+#line 497 "exception_analysis.m"
+                }
+#line 503 "exception_analysis.m"
+              else
+#line 504 "exception_analysis.m"
+                {
+#line 504 "exception_analysis.m"
+                  transform_hlds__exception_analysis__check_nonrecursive_call_8_p_0(transform_hlds__exception_analysis__VarTypes_11, transform_hlds__exception_analysis__CallPPId_17, transform_hlds__exception_analysis__CallArgs_14, (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0_env_0__CallPredInfo_18, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_32, transform_hlds__exception_analysis__STATE_VARIABLE_Result_33, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_34, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_35);
+#line 504 "exception_analysis.m"
+                  return;
+                }
+#line 503 "exception_analysis.m"
+            }
+#line 474 "exception_analysis.m"
+        }
+#line 458 "exception_analysis.m"
+    }
+#line 452 "exception_analysis.m"
+  }
+#line 452 "exception_analysis.m"
+}
+
+#line 422 "exception_analysis.m"
+static MR_Box MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_2_8_p_0_1(
+#line 422 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 422 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1)
+#line 422 "exception_analysis.m"
+{
+#line 422 "exception_analysis.m"
+  {
+#line 422 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__wrapper_arg_2;
+#line 422 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 422 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv0_HeadVar__2_96;
+
+#line 422 "exception_analysis.m"
+    {
+#line 422 "exception_analysis.m"
+      transform_hlds__exception_analysis__conv0_HeadVar__2_96 = transform_hlds__exception_analysis__IntroducedFrom__func__check_goal_for_exceptions_2__422__1_1_f_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1));
+    }
+#line 422 "exception_analysis.m"
+    transform_hlds__exception_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__exception_analysis__conv0_HeadVar__2_96));
+#line 422 "exception_analysis.m"
+    return transform_hlds__exception_analysis__wrapper_arg_2;
+#line 422 "exception_analysis.m"
+  }
+#line 422 "exception_analysis.m"
+}
+
+#line 367 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_2_8_p_0(
+#line 367 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__SCC_9,
+#line 367 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_10,
+#line 367 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__GoalExpr_11,
+#line 367 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__GoalInfo_12,
+#line 367 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77,
+#line 367 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_78,
+#line 367 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79,
+#line 367 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80)
+#line 367 "exception_analysis.m"
+{
+#line 374 "exception_analysis.m"
+  {
+#line 374 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+
+#line 374 "exception_analysis.m"
+#line 374 "exception_analysis.m"
+    switch (MR_tag((MR_Word) transform_hlds__exception_analysis__GoalExpr_11)) {
+#line 374 "exception_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 374 "exception_analysis.m"
+      case (MR_Integer) 0:
+#line 430 "exception_analysis.m"
+        {
+#line 430 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__SubGoal_72 = (MR_Word) MR_body(((MR_Word) transform_hlds__exception_analysis__GoalExpr_11), (MR_Integer) 0);
+
+#line 431 "exception_analysis.m"
+          {
+#line 431 "exception_analysis.m"
+            transform_hlds__exception_analysis__check_goal_for_exceptions_7_p_0(transform_hlds__exception_analysis__SCC_9, transform_hlds__exception_analysis__VarTypes_10, transform_hlds__exception_analysis__SubGoal_72, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77, transform_hlds__exception_analysis__STATE_VARIABLE_Result_78, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80);
+#line 431 "exception_analysis.m"
+            return;
+          }
+#line 430 "exception_analysis.m"
+        }
+#line 374 "exception_analysis.m"
+        break;
+#line 374 "exception_analysis.m"
+      case (MR_Integer) 1:
+#line 374 "exception_analysis.m"
+        {
+#line 374 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__Kind_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 3)));
+#line 374 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 0)));
+#line 374 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 1)));
+#line 374 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 2)));
+#line 374 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 4)));
+
+#line 379 "exception_analysis.m"
+#line 379 "exception_analysis.m"
+          switch (MR_tag((MR_Word) transform_hlds__exception_analysis__Kind_18)) {
+#line 379 "exception_analysis.m"
+            default: /*NOTREACHED*/ MR_assert(0);
+#line 379 "exception_analysis.m"
+            case (MR_Integer) 0:
+#line 380 "exception_analysis.m"
+              {
+#line 380 "exception_analysis.m"
+              }
+#line 379 "exception_analysis.m"
+              break;
+#line 379 "exception_analysis.m"
+            case (MR_Integer) 1:
+#line 381 "exception_analysis.m"
+              {
+#line 381 "exception_analysis.m"
+              }
+#line 379 "exception_analysis.m"
+              break;
+#line 379 "exception_analysis.m"
+            case (MR_Integer) 2:
+#line 382 "exception_analysis.m"
+              {
+#line 382 "exception_analysis.m"
+              }
+#line 379 "exception_analysis.m"
+              break;
+#line 379 "exception_analysis.m"
+            case (MR_Integer) 3:
+#line 379 "exception_analysis.m"
+#line 379 "exception_analysis.m"
+              switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__Kind_18, (MR_Integer) 0)))) {
+#line 379 "exception_analysis.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 379 "exception_analysis.m"
+                case (MR_Integer) 0:
+#line 383 "exception_analysis.m"
+                  {
+#line 383 "exception_analysis.m"
+                  }
+#line 379 "exception_analysis.m"
+                  break;
+#line 379 "exception_analysis.m"
+                case (MR_Integer) 1:
+#line 376 "exception_analysis.m"
+                  {
+#line 377 "exception_analysis.m"
+                    {
+#line 377 "exception_analysis.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.exception_analysis", (MR_String) "predicate \140transform_hlds.exception_analysis.check_goal_for_exceptions_2\'/8", (MR_String) "complicated unify during exception analysis.");
+#line 377 "exception_analysis.m"
+                      return;
+                    }
+#line 376 "exception_analysis.m"
+                  }
+#line 379 "exception_analysis.m"
+                  break;
+#line 379 "exception_analysis.m"
+              }
+#line 379 "exception_analysis.m"
+              break;
+#line 379 "exception_analysis.m"
+          }
+#line 374 "exception_analysis.m"
+          *transform_hlds__exception_analysis__STATE_VARIABLE_Result_78 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77;
+#line 374 "exception_analysis.m"
+          *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79;
+#line 374 "exception_analysis.m"
+        }
+#line 374 "exception_analysis.m"
+        break;
+#line 374 "exception_analysis.m"
+      case (MR_Integer) 2:
+#line 387 "exception_analysis.m"
+        {
+#line 387 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__CallPredId_40 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 0)));
+#line 387 "exception_analysis.m"
+          MR_Integer transform_hlds__exception_analysis__CallProcId_41 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 1)));
+#line 387 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__Args_42 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 2)));
+#line 387 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 3)));
+#line 387 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 4)));
+#line 387 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 5)));
+
+#line 388 "exception_analysis.m"
+          {
+#line 388 "exception_analysis.m"
+            transform_hlds__exception_analysis__check_goal_for_exceptions_plain_call_9_p_0(transform_hlds__exception_analysis__SCC_9, transform_hlds__exception_analysis__VarTypes_10, transform_hlds__exception_analysis__CallPredId_40, transform_hlds__exception_analysis__CallProcId_41, transform_hlds__exception_analysis__Args_42, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77, transform_hlds__exception_analysis__STATE_VARIABLE_Result_78, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80);
+#line 388 "exception_analysis.m"
+            return;
+          }
+#line 387 "exception_analysis.m"
+        }
+#line 374 "exception_analysis.m"
+        break;
+#line 374 "exception_analysis.m"
+      case (MR_Integer) 3:
+#line 374 "exception_analysis.m"
+#line 374 "exception_analysis.m"
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 0)))) {
+#line 374 "exception_analysis.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 374 "exception_analysis.m"
+          case (MR_Integer) 0:
+#line 391 "exception_analysis.m"
+            {
+#line 391 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__Details_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 1)));
+#line 391 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__Args_111 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 2)));
+#line 391 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 3)));
+#line 391 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 4)));
+#line 391 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 5)));
+
+#line 392 "exception_analysis.m"
+              {
+#line 392 "exception_analysis.m"
+                transform_hlds__exception_analysis__check_goal_for_exceptions_generic_call_8_p_0(transform_hlds__exception_analysis__VarTypes_10, transform_hlds__exception_analysis__Details_46, transform_hlds__exception_analysis__Args_111, transform_hlds__exception_analysis__GoalInfo_12, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77, transform_hlds__exception_analysis__STATE_VARIABLE_Result_78, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80);
+#line 392 "exception_analysis.m"
+                return;
+              }
+#line 391 "exception_analysis.m"
+            }
+#line 374 "exception_analysis.m"
+            break;
+#line 374 "exception_analysis.m"
+          case (MR_Integer) 1:
+#line 395 "exception_analysis.m"
+            {
+#line 395 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__Attributes_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 1)));
+#line 395 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__MayCallMercury_57;
+#line 395 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 2)));
+#line 395 "exception_analysis.m"
+              MR_Integer transform_hlds__exception_analysis__V_52_52 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 3)));
+#line 395 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 4)));
+#line 395 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 5)));
+#line 395 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 6)));
+#line 395 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 7)));
+
+#line 400 "exception_analysis.m"
+              {
+#line 400 "exception_analysis.m"
+                transform_hlds__exception_analysis__MayCallMercury_57 = parse_tree__prog_data__get_may_call_mercury_1_f_0(transform_hlds__exception_analysis__Attributes_50);
+              }
+#line 412 "exception_analysis.m"
+#line 412 "exception_analysis.m"
+              switch (transform_hlds__exception_analysis__MayCallMercury_57) {
+#line 412 "exception_analysis.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 412 "exception_analysis.m"
+                case (MR_Integer) 0:
+#line 402 "exception_analysis.m"
+                  {
+#line 402 "exception_analysis.m"
+                    MR_Word transform_hlds__exception_analysis__MayThrowException_58;
+
+#line 403 "exception_analysis.m"
+                    {
+#line 403 "exception_analysis.m"
+                      transform_hlds__exception_analysis__MayThrowException_58 = parse_tree__prog_data__get_may_throw_exception_1_f_0(transform_hlds__exception_analysis__Attributes_50);
+                    }
+#line 409 "exception_analysis.m"
+#line 409 "exception_analysis.m"
+                    switch (transform_hlds__exception_analysis__MayThrowException_58) {
+#line 409 "exception_analysis.m"
+                      default: /*NOTREACHED*/ MR_assert(0);
+#line 409 "exception_analysis.m"
+                      case (MR_Integer) 1:
+#line 407 "exception_analysis.m"
+                        {
+#line 408 "exception_analysis.m"
+                          MR_Word transform_hlds__exception_analysis__V_118_118 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77, (MR_Integer) 0)));
+#line 408 "exception_analysis.m"
+                          MR_Word transform_hlds__exception_analysis__V_120_120 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77, (MR_Integer) 2)));
+#line 408 "exception_analysis.m"
+                          MR_Word transform_hlds__exception_analysis__V_121_121 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77, (MR_Integer) 3)));
+#line 408 "exception_analysis.m"
+                          MR_Word transform_hlds__exception_analysis__V_119_119 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77, (MR_Integer) 1)));
+
+#line 408 "exception_analysis.m"
+                          {
+#line 408 "exception_analysis.m"
+                            MR_Word base;
+#line 408 "exception_analysis.m"
+                            base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 408 "exception_analysis.m"
+                            *transform_hlds__exception_analysis__STATE_VARIABLE_Result_78 = base;
+#line 408 "exception_analysis.m"
+                            MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_118_118));
+#line 408 "exception_analysis.m"
+                            MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0])));
+#line 408 "exception_analysis.m"
+                            MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__exception_analysis__V_120_120));
+#line 408 "exception_analysis.m"
+                            MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__exception_analysis__V_121_121));
+#line 408 "exception_analysis.m"
+                          }
+#line 407 "exception_analysis.m"
+                        }
+#line 409 "exception_analysis.m"
+                        break;
+#line 409 "exception_analysis.m"
+                      case (MR_Integer) 0:
+#line 410 "exception_analysis.m"
+                        *transform_hlds__exception_analysis__STATE_VARIABLE_Result_78 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77;
+#line 409 "exception_analysis.m"
+                        break;
+#line 409 "exception_analysis.m"
+                    }
+#line 402 "exception_analysis.m"
+                  }
+#line 412 "exception_analysis.m"
+                  break;
+#line 412 "exception_analysis.m"
+                case (MR_Integer) 1:
+#line 413 "exception_analysis.m"
+                  *transform_hlds__exception_analysis__STATE_VARIABLE_Result_78 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77;
+#line 412 "exception_analysis.m"
+                  break;
+#line 412 "exception_analysis.m"
+              }
+#line 395 "exception_analysis.m"
+              *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79;
+#line 395 "exception_analysis.m"
+            }
+#line 374 "exception_analysis.m"
+            break;
+#line 374 "exception_analysis.m"
+          case (MR_Integer) 2:
+#line 418 "exception_analysis.m"
+            {
+#line 418 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__Goals_59 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 2)));
+#line 417 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 1)));
+
+#line 419 "exception_analysis.m"
+              {
+#line 419 "exception_analysis.m"
+                transform_hlds__exception_analysis__check_goals_for_exceptions_7_p_0(transform_hlds__exception_analysis__SCC_9, transform_hlds__exception_analysis__VarTypes_10, transform_hlds__exception_analysis__Goals_59, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77, transform_hlds__exception_analysis__STATE_VARIABLE_Result_78, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80);
+#line 419 "exception_analysis.m"
+                return;
+              }
+#line 418 "exception_analysis.m"
+            }
+#line 374 "exception_analysis.m"
+            break;
+#line 374 "exception_analysis.m"
+          case (MR_Integer) 3:
+#line 418 "exception_analysis.m"
+            {
+#line 418 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__Goals_124 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 1)));
+
+#line 419 "exception_analysis.m"
+              {
+#line 419 "exception_analysis.m"
+                transform_hlds__exception_analysis__check_goals_for_exceptions_7_p_0(transform_hlds__exception_analysis__SCC_9, transform_hlds__exception_analysis__VarTypes_10, transform_hlds__exception_analysis__Goals_124, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77, transform_hlds__exception_analysis__STATE_VARIABLE_Result_78, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80);
+#line 419 "exception_analysis.m"
+                return;
+              }
+#line 418 "exception_analysis.m"
+            }
+#line 374 "exception_analysis.m"
+            break;
+#line 374 "exception_analysis.m"
+          case (MR_Integer) 4:
+#line 421 "exception_analysis.m"
+            {
+#line 421 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__Cases_63 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 3)));
+#line 421 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__CaseGoals_64;
+#line 421 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 1)));
+#line 421 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 2)));
+
+#line 422 "exception_analysis.m"
+              {
+#line 422 "exception_analysis.m"
+                transform_hlds__exception_analysis__CaseGoals_64 = mercury__list__map_2_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0, (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &transform_hlds__exception_analysis_scalar_common_2[5], transform_hlds__exception_analysis__Cases_63);
+              }
+#line 423 "exception_analysis.m"
+              {
+#line 423 "exception_analysis.m"
+                transform_hlds__exception_analysis__check_goals_for_exceptions_7_p_0(transform_hlds__exception_analysis__SCC_9, transform_hlds__exception_analysis__VarTypes_10, transform_hlds__exception_analysis__CaseGoals_64, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77, transform_hlds__exception_analysis__STATE_VARIABLE_Result_78, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80);
+#line 423 "exception_analysis.m"
+                return;
+              }
+#line 421 "exception_analysis.m"
+            }
+#line 374 "exception_analysis.m"
+            break;
+#line 374 "exception_analysis.m"
+          case (MR_Integer) 5:
+#line 433 "exception_analysis.m"
+            {
+#line 433 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__Reason_73 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 1)));
+#line 433 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__SubGoal_117 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 2)));
+#line 435 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__FGT_75;
+#line 435 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_74_74;
+
+#line 435 "exception_analysis.m"
+              transform_hlds__exception_analysis__succeeded = ((((MR_tag((MR_Word) transform_hlds__exception_analysis__Reason_73)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__Reason_73, (MR_Integer) 0)))) == (MR_Integer) 5)));
+#line 435 "exception_analysis.m"
+              if (transform_hlds__exception_analysis__succeeded)
+#line 435 "exception_analysis.m"
+                {
+#line 435 "exception_analysis.m"
+                  transform_hlds__exception_analysis__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__Reason_73, (MR_Integer) 1)));
+#line 435 "exception_analysis.m"
+                  transform_hlds__exception_analysis__FGT_75 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__Reason_73, (MR_Integer) 2)));
+#line 437 "exception_analysis.m"
+#line 437 "exception_analysis.m"
+                  switch (transform_hlds__exception_analysis__FGT_75) {
+#line 437 "exception_analysis.m"
+                    default:
+#line 437 "exception_analysis.m"
+                      transform_hlds__exception_analysis__succeeded = MR_FALSE;
+#line 437 "exception_analysis.m"
+                      break;
+#line 437 "exception_analysis.m"
+                    case (MR_Integer) 1:
+#line 436 "exception_analysis.m"
+                      transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 437 "exception_analysis.m"
+                      break;
+#line 437 "exception_analysis.m"
+                    case (MR_Integer) 2:
+#line 437 "exception_analysis.m"
+                      transform_hlds__exception_analysis__succeeded = MR_TRUE;
+#line 437 "exception_analysis.m"
+                      break;
+#line 437 "exception_analysis.m"
+                  }
+#line 435 "exception_analysis.m"
+                }
+#line 441 "exception_analysis.m"
+              if (transform_hlds__exception_analysis__succeeded)
+#line 440 "exception_analysis.m"
+                {
+#line 440 "exception_analysis.m"
+                  *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79;
+#line 440 "exception_analysis.m"
+                  *transform_hlds__exception_analysis__STATE_VARIABLE_Result_78 = transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77;
+#line 440 "exception_analysis.m"
+                }
+#line 441 "exception_analysis.m"
+              else
+#line 442 "exception_analysis.m"
+                {
+#line 442 "exception_analysis.m"
+                  transform_hlds__exception_analysis__check_goal_for_exceptions_7_p_0(transform_hlds__exception_analysis__SCC_9, transform_hlds__exception_analysis__VarTypes_10, transform_hlds__exception_analysis__SubGoal_117, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77, transform_hlds__exception_analysis__STATE_VARIABLE_Result_78, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80);
+#line 442 "exception_analysis.m"
+                  return;
+                }
+#line 433 "exception_analysis.m"
+            }
+#line 374 "exception_analysis.m"
+            break;
+#line 374 "exception_analysis.m"
+          case (MR_Integer) 6:
+#line 426 "exception_analysis.m"
+            {
+#line 426 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__If_69 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 2)));
+#line 426 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__Then_70 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 3)));
+#line 426 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__Else_71 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 4)));
+#line 426 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_88_88;
+#line 426 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_91_91;
+#line 426 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_92_92;
+#line 426 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__exception_analysis__GoalExpr_11, (MR_Integer) 1)));
+
+#line 427 "exception_analysis.m"
+              {
+#line 427 "exception_analysis.m"
+                transform_hlds__exception_analysis__V_92_92 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 427 "exception_analysis.m"
+                MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__V_92_92, 0) = ((MR_Box) (transform_hlds__exception_analysis__Else_71));
+#line 427 "exception_analysis.m"
+                MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__V_92_92, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 427 "exception_analysis.m"
+              }
+#line 427 "exception_analysis.m"
+              {
+#line 427 "exception_analysis.m"
+                transform_hlds__exception_analysis__V_91_91 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 427 "exception_analysis.m"
+                MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__V_91_91, 0) = ((MR_Box) (transform_hlds__exception_analysis__Then_70));
+#line 427 "exception_analysis.m"
+                MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__V_91_91, 1) = ((MR_Box) (transform_hlds__exception_analysis__V_92_92));
+#line 427 "exception_analysis.m"
+              }
+#line 427 "exception_analysis.m"
+              {
+#line 427 "exception_analysis.m"
+                transform_hlds__exception_analysis__V_88_88 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 427 "exception_analysis.m"
+                MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__V_88_88, 0) = ((MR_Box) (transform_hlds__exception_analysis__If_69));
+#line 427 "exception_analysis.m"
+                MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__V_88_88, 1) = ((MR_Box) (transform_hlds__exception_analysis__V_91_91));
+#line 427 "exception_analysis.m"
+              }
+#line 427 "exception_analysis.m"
+              {
+#line 427 "exception_analysis.m"
+                transform_hlds__exception_analysis__check_goals_for_exceptions_7_p_0(transform_hlds__exception_analysis__SCC_9, transform_hlds__exception_analysis__VarTypes_10, transform_hlds__exception_analysis__V_88_88, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_77, transform_hlds__exception_analysis__STATE_VARIABLE_Result_78, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_79, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_80);
+#line 427 "exception_analysis.m"
+                return;
+              }
+#line 426 "exception_analysis.m"
+            }
+#line 374 "exception_analysis.m"
+            break;
+#line 374 "exception_analysis.m"
+          case (MR_Integer) 7:
+#line 446 "exception_analysis.m"
+            {
+#line 448 "exception_analysis.m"
+              {
+#line 448 "exception_analysis.m"
+                mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.exception_analysis", (MR_String) "predicate \140transform_hlds.exception_analysis.check_goal_for_exceptions_2\'/8", (MR_String) "shorthand goal encountered during exception analysis.");
+#line 448 "exception_analysis.m"
+                return;
+              }
+#line 446 "exception_analysis.m"
+            }
+#line 374 "exception_analysis.m"
+            break;
+#line 374 "exception_analysis.m"
+        }
+#line 374 "exception_analysis.m"
+        break;
+#line 374 "exception_analysis.m"
+    }
+#line 374 "exception_analysis.m"
+  }
+#line 367 "exception_analysis.m"
+}
+
+#line 354 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_goal_for_exceptions_7_p_0(
+#line 354 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__SCC_8,
+#line 354 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__VarTypes_9,
+#line 354 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__3_3,
+#line 354 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_14,
+#line 354 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Result_15,
+#line 354 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_16,
+#line 354 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_17)
+#line 354 "exception_analysis.m"
+{
+#line 359 "exception_analysis.m"
+  {
+#line 359 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 359 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__GoalExpr_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__3_3, (MR_Integer) 0)));
+#line 359 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__GoalInfo_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__HeadVar__3_3, (MR_Integer) 1)));
+#line 360 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_18_18;
+
+#line 360 "exception_analysis.m"
+    {
+#line 360 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_18_18 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(transform_hlds__exception_analysis__GoalInfo_11);
+    }
+#line 360 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__V_18_18 == (MR_Integer) 6);
+#line 362 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 361 "exception_analysis.m"
+      {
+#line 361 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_14, (MR_Integer) 0)));
+#line 361 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_14, (MR_Integer) 2)));
+#line 361 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_14, (MR_Integer) 3)));
+#line 361 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_14, (MR_Integer) 1)));
+
+#line 361 "exception_analysis.m"
+        {
+#line 361 "exception_analysis.m"
+          MR_Word base;
+#line 361 "exception_analysis.m"
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 361 "exception_analysis.m"
+          *transform_hlds__exception_analysis__STATE_VARIABLE_Result_15 = base;
+#line 361 "exception_analysis.m"
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_24_24));
+#line 361 "exception_analysis.m"
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0])));
+#line 361 "exception_analysis.m"
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__exception_analysis__V_26_26));
+#line 361 "exception_analysis.m"
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (transform_hlds__exception_analysis__V_27_27));
+#line 361 "exception_analysis.m"
+        }
+#line 361 "exception_analysis.m"
+        *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_17 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_16;
+#line 361 "exception_analysis.m"
+      }
+#line 362 "exception_analysis.m"
+    else
+#line 363 "exception_analysis.m"
+      {
+#line 363 "exception_analysis.m"
+        transform_hlds__exception_analysis__check_goal_for_exceptions_2_8_p_0(transform_hlds__exception_analysis__SCC_8, transform_hlds__exception_analysis__VarTypes_9, transform_hlds__exception_analysis__GoalExpr_10, transform_hlds__exception_analysis__GoalInfo_11, transform_hlds__exception_analysis__STATE_VARIABLE_Result_0_14, transform_hlds__exception_analysis__STATE_VARIABLE_Result_15, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_16, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_17);
+#line 363 "exception_analysis.m"
+        return;
+      }
+#line 359 "exception_analysis.m"
+  }
+#line 354 "exception_analysis.m"
+}
+
+#line 336 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_proc_for_exceptions_6_p_0(
+#line 336 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__SCC_7,
+#line 336 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PPId_8,
+#line 336 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_Results_0_20,
+#line 336 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_Results_21,
+#line 336 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_22,
+#line 336 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_23)
+#line 336 "exception_analysis.m"
+{
+#line 340 "exception_analysis.m"
+  {
+#line 340 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 340 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__ProcInfo_12;
+#line 340 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Body_13;
+#line 340 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__VarTypes_14;
+#line 340 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Globals_15;
+#line 340 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__IntermodAnalysis_16;
+#line 340 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__MaybeAnalysisStatus0_17;
+#line 340 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Result0_18;
+#line 340 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Result_19;
+#line 340 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__GoalExpr_37;
+#line 340 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__GoalInfo_38;
+#line 341 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_11_11;
+#line 360 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_41_41;
+
+#line 341 "exception_analysis.m"
+    {
+#line 341 "exception_analysis.m"
+      hlds__hlds_module__module_info_pred_proc_info_4_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_22, transform_hlds__exception_analysis__PPId_8, &transform_hlds__exception_analysis__V_11_11, &transform_hlds__exception_analysis__ProcInfo_12);
+    }
+#line 342 "exception_analysis.m"
+    {
+#line 342 "exception_analysis.m"
+      hlds__hlds_pred__proc_info_get_goal_2_p_0(transform_hlds__exception_analysis__ProcInfo_12, &transform_hlds__exception_analysis__Body_13);
+    }
+#line 343 "exception_analysis.m"
+    {
+#line 343 "exception_analysis.m"
+      hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__exception_analysis__ProcInfo_12, &transform_hlds__exception_analysis__VarTypes_14);
+    }
+#line 344 "exception_analysis.m"
+    {
+#line 344 "exception_analysis.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_22, &transform_hlds__exception_analysis__Globals_15);
+    }
+#line 345 "exception_analysis.m"
+    {
+#line 345 "exception_analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__exception_analysis__Globals_15, (MR_Integer) 335, &transform_hlds__exception_analysis__IntermodAnalysis_16);
+    }
+#line 1177 "exception_analysis.m"
+#line 1177 "exception_analysis.m"
+    switch (transform_hlds__exception_analysis__IntermodAnalysis_16) {
+#line 1177 "exception_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1177 "exception_analysis.m"
+      case (MR_Integer) 0:
+#line 1177 "exception_analysis.m"
+        transform_hlds__exception_analysis__MaybeAnalysisStatus0_17 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1177 "exception_analysis.m"
+        break;
+#line 1177 "exception_analysis.m"
+      case (MR_Integer) 1:
+#line 1178 "exception_analysis.m"
+        {
+#line 1178 "exception_analysis.m"
+          transform_hlds__exception_analysis__MaybeAnalysisStatus0_17 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[2]);
+#line 1178 "exception_analysis.m"
+        }
+#line 1177 "exception_analysis.m"
+        break;
+#line 1177 "exception_analysis.m"
+    }
+#line 348 "exception_analysis.m"
+    {
+#line 348 "exception_analysis.m"
+      transform_hlds__exception_analysis__Result0_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 348 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Result0_18, 0) = ((MR_Box) (transform_hlds__exception_analysis__PPId_8));
+#line 348 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Result0_18, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 348 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Result0_18, 2) = ((MR_Box) ((MR_Integer) 0));
+#line 348 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Result0_18, 3) = ((MR_Box) (transform_hlds__exception_analysis__MaybeAnalysisStatus0_17));
+#line 348 "exception_analysis.m"
+    }
+#line 358 "exception_analysis.m"
+    transform_hlds__exception_analysis__GoalExpr_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Body_13, (MR_Integer) 0)));
+#line 358 "exception_analysis.m"
+    transform_hlds__exception_analysis__GoalInfo_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Body_13, (MR_Integer) 1)));
+#line 360 "exception_analysis.m"
+    {
+#line 360 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_41_41 = hlds__hlds_goal__goal_info_get_determinism_1_f_0(transform_hlds__exception_analysis__GoalInfo_38);
+    }
+#line 360 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__V_41_41 == (MR_Integer) 6);
+#line 362 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 361 "exception_analysis.m"
+      {
+#line 361 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Result0_18, (MR_Integer) 0)));
+#line 361 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Result0_18, (MR_Integer) 2)));
+#line 361 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Result0_18, (MR_Integer) 3)));
+#line 361 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Result0_18, (MR_Integer) 1)));
+
+#line 361 "exception_analysis.m"
+        {
+#line 361 "exception_analysis.m"
+          transform_hlds__exception_analysis__Result_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 361 "exception_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Result_19, 0) = ((MR_Box) (transform_hlds__exception_analysis__V_47_47));
+#line 361 "exception_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Result_19, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0])));
+#line 361 "exception_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Result_19, 2) = ((MR_Box) (transform_hlds__exception_analysis__V_49_49));
+#line 361 "exception_analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__Result_19, 3) = ((MR_Box) (transform_hlds__exception_analysis__V_50_50));
+#line 361 "exception_analysis.m"
+        }
+#line 361 "exception_analysis.m"
+        *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_23 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_22;
+#line 361 "exception_analysis.m"
+      }
+#line 362 "exception_analysis.m"
+    else
+#line 363 "exception_analysis.m"
+      {
+#line 363 "exception_analysis.m"
+        transform_hlds__exception_analysis__check_goal_for_exceptions_2_8_p_0(transform_hlds__exception_analysis__SCC_7, transform_hlds__exception_analysis__VarTypes_14, transform_hlds__exception_analysis__GoalExpr_37, transform_hlds__exception_analysis__GoalInfo_38, transform_hlds__exception_analysis__Result0_18, &transform_hlds__exception_analysis__Result_19, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_22, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_23);
+      }
+#line 352 "exception_analysis.m"
+    {
+#line 352 "exception_analysis.m"
+      mercury__list__cons_3_p_0((MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0, ((MR_Box) (transform_hlds__exception_analysis__Result_19)), transform_hlds__exception_analysis__STATE_VARIABLE_Results_0_20, transform_hlds__exception_analysis__STATE_VARIABLE_Results_21);
+#line 352 "exception_analysis.m"
+      return;
+    }
+#line 340 "exception_analysis.m"
+  }
+#line 336 "exception_analysis.m"
+}
+
+#line 326 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__maybe_analysis_status_2_p_0(
+#line 326 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ProcResult_3,
+#line 326 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__HeadVar__2_2)
+#line 326 "exception_analysis.m"
+{
+#line 329 "exception_analysis.m"
+  {
+#line 329 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 329 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__ProcResult_3, (MR_Integer) 0)));
+#line 329 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__ProcResult_3, (MR_Integer) 1)));
+#line 329 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__ProcResult_3, (MR_Integer) 2)));
+
+#line 329 "exception_analysis.m"
+    *transform_hlds__exception_analysis__HeadVar__2_2 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__ProcResult_3, (MR_Integer) 3)));
+#line 329 "exception_analysis.m"
+  }
+#line 326 "exception_analysis.m"
+}
+
+#line 323 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_26(
+#line 323 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 323 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 323 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 323 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3)
+#line 323 "exception_analysis.m"
+{
+#line 323 "exception_analysis.m"
+  {
+#line 323 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 323 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv7_MaybeStatus_6;
+
+#line 323 "exception_analysis.m"
+    {
+#line 323 "exception_analysis.m"
+      transform_hlds__exception_analysis__combine_maybe_analysis_status_3_p_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), &transform_hlds__exception_analysis__conv7_MaybeStatus_6);
+    }
+#line 323 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv7_MaybeStatus_6));
+#line 323 "exception_analysis.m"
+  }
+#line 323 "exception_analysis.m"
+}
+
+#line 322 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_25(
+#line 322 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 322 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 322 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_2)
+#line 322 "exception_analysis.m"
+{
+#line 322 "exception_analysis.m"
+  {
+#line 322 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 322 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv6_HeadVar__2_2;
+
+#line 322 "exception_analysis.m"
+    {
+#line 322 "exception_analysis.m"
+      transform_hlds__exception_analysis__maybe_analysis_status_2_p_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), &transform_hlds__exception_analysis__conv6_HeadVar__2_2);
+    }
+#line 322 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__exception_analysis__conv6_HeadVar__2_2));
+#line 322 "exception_analysis.m"
+  }
+#line 322 "exception_analysis.m"
+}
+
+#line 263 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_1(
+#line 263 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 263 "exception_analysis.m"
+{
+#line 263 "exception_analysis.m"
+  {
+#line 263 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 263 "exception_analysis.m"
+    MR_builtin_longjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_0, 1);
+#line 263 "exception_analysis.m"
+  }
+#line 263 "exception_analysis.m"
+}
+
+#line 264 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_3(
+#line 264 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 264 "exception_analysis.m"
+{
+#line 264 "exception_analysis.m"
+  {
+#line 264 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 264 "exception_analysis.m"
+    (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__ProcResult_14 = ((MR_Word) (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv0_ProcResult_14);
+#line 264 "exception_analysis.m"
+    {
+#line 264 "exception_analysis.m"
+      transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_2(transform_hlds__exception_analysis__env_ptr);
+#line 264 "exception_analysis.m"
+      return;
+    }
+#line 264 "exception_analysis.m"
+  }
+#line 264 "exception_analysis.m"
+}
+
+#line 263 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_2(
+#line 263 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 263 "exception_analysis.m"
+{
+#line 263 "exception_analysis.m"
+  {
+#line 263 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 263 "exception_analysis.m"
+    {
+#line 266 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__ProcResult_14, (MR_Integer) 1)));
+#line 266 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__ProcResult_14, (MR_Integer) 0)));
+#line 266 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__ProcResult_14, (MR_Integer) 2)));
+#line 266 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__ProcResult_14, (MR_Integer) 3)));
+
+#line 266 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = (transform_hlds__exception_analysis__V_19_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 265 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = !((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded);
+#line 265 "exception_analysis.m"
+      if ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 265 "exception_analysis.m"
+        {
+#line 265 "exception_analysis.m"
+          transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_1(transform_hlds__exception_analysis__env_ptr);
+#line 265 "exception_analysis.m"
+          return;
+        }
+#line 263 "exception_analysis.m"
+    }
+#line 263 "exception_analysis.m"
+  }
+#line 263 "exception_analysis.m"
+}
+
+#line 263 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_4(
+#line 263 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 263 "exception_analysis.m"
+{
+#line 263 "exception_analysis.m"
+  {
+#line 263 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 263 "exception_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_0) == 0)
+#line 263 "exception_analysis.m"
+      {
+#line 263 "exception_analysis.m"
+        {
+#line 264 "exception_analysis.m"
+          {
+#line 264 "exception_analysis.m"
+            mercury__list__member_2_p_1((MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0, &(transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv0_ProcResult_14, (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1, transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_3, transform_hlds__exception_analysis__env_ptr);
+          }
+#line 263 "exception_analysis.m"
+        }
+#line 263 "exception_analysis.m"
+        (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_FALSE;
+#line 263 "exception_analysis.m"
+      }
+#line 263 "exception_analysis.m"
+    else
+#line 263 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_TRUE;
+#line 263 "exception_analysis.m"
+  }
+#line 263 "exception_analysis.m"
+}
+
+#line 280 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_5(
+#line 280 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 280 "exception_analysis.m"
+{
+#line 280 "exception_analysis.m"
+  {
+#line 280 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 280 "exception_analysis.m"
+    MR_builtin_longjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_1, 1);
+#line 280 "exception_analysis.m"
+  }
+#line 280 "exception_analysis.m"
+}
+
+#line 281 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_7(
+#line 281 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 281 "exception_analysis.m"
+{
+#line 281 "exception_analysis.m"
+  {
+#line 281 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 281 "exception_analysis.m"
+    (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_15 = ((MR_Word) (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv1_EResult_15);
+#line 281 "exception_analysis.m"
+    {
+#line 281 "exception_analysis.m"
+      transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_6(transform_hlds__exception_analysis__env_ptr);
+#line 281 "exception_analysis.m"
+      return;
+    }
+#line 281 "exception_analysis.m"
+  }
+#line 281 "exception_analysis.m"
+}
+
+#line 280 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_6(
+#line 280 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 280 "exception_analysis.m"
+{
+#line 280 "exception_analysis.m"
+  {
+#line 280 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 280 "exception_analysis.m"
+    {
+#line 283 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_15, (MR_Integer) 0)));
+#line 283 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_34_34;
+#line 283 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_35_35;
+#line 283 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_16_16;
+
+#line 283 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_15, (MR_Integer) 1)));
+#line 283 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_15, (MR_Integer) 2)));
+#line 283 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_15, (MR_Integer) 3)));
+#line 283 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = ((MR_tag((MR_Word) (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_20_20)) == (MR_mktag((MR_Integer) 1)));
+#line 283 "exception_analysis.m"
+      if ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 283 "exception_analysis.m"
+        {
+#line 283 "exception_analysis.m"
+          transform_hlds__exception_analysis__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_20_20, (MR_Integer) 0)));
+#line 283 "exception_analysis.m"
+          {
+#line 283 "exception_analysis.m"
+            transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_5(transform_hlds__exception_analysis__env_ptr);
+#line 283 "exception_analysis.m"
+            return;
+          }
+#line 283 "exception_analysis.m"
+        }
+#line 280 "exception_analysis.m"
+    }
+#line 280 "exception_analysis.m"
+  }
+#line 280 "exception_analysis.m"
+}
+
+#line 280 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_8(
+#line 280 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 280 "exception_analysis.m"
+{
+#line 280 "exception_analysis.m"
+  {
+#line 280 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 280 "exception_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_1) == 0)
+#line 280 "exception_analysis.m"
+      {
+#line 280 "exception_analysis.m"
+        {
+#line 281 "exception_analysis.m"
+          {
+#line 281 "exception_analysis.m"
+            mercury__list__member_2_p_1((MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0, &(transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv1_EResult_15, (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1, transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_7, transform_hlds__exception_analysis__env_ptr);
+          }
+#line 280 "exception_analysis.m"
+        }
+#line 280 "exception_analysis.m"
+        (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_FALSE;
+#line 280 "exception_analysis.m"
+      }
+#line 280 "exception_analysis.m"
+    else
+#line 280 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_TRUE;
+#line 280 "exception_analysis.m"
+  }
+#line 280 "exception_analysis.m"
+}
+
+#line 286 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_9(
+#line 286 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 286 "exception_analysis.m"
+{
+#line 286 "exception_analysis.m"
+  {
+#line 286 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 286 "exception_analysis.m"
+    MR_builtin_longjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_2, 1);
+#line 286 "exception_analysis.m"
+  }
+#line 286 "exception_analysis.m"
+}
+
+#line 286 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_11(
+#line 286 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 286 "exception_analysis.m"
+{
+#line 286 "exception_analysis.m"
+  {
+#line 286 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 286 "exception_analysis.m"
+    (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__CResult_28 = ((MR_Word) (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv2_CResult_28);
+#line 286 "exception_analysis.m"
+    {
+#line 286 "exception_analysis.m"
+      transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_10(transform_hlds__exception_analysis__env_ptr);
+#line 286 "exception_analysis.m"
+      return;
+    }
+#line 286 "exception_analysis.m"
+  }
+#line 286 "exception_analysis.m"
+}
+
+#line 286 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_10(
+#line 286 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 286 "exception_analysis.m"
+{
+#line 286 "exception_analysis.m"
+  {
+#line 286 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 286 "exception_analysis.m"
+    {
+#line 287 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__CResult_28, (MR_Integer) 0)));
+#line 287 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_37_37;
+#line 287 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_38_38;
+
+#line 287 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__CResult_28, (MR_Integer) 1)));
+#line 287 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__CResult_28, (MR_Integer) 2)));
+#line 287 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__CResult_28, (MR_Integer) 3)));
+#line 287 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_21_21 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1))));
+#line 287 "exception_analysis.m"
+      if ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 287 "exception_analysis.m"
+        {
+#line 287 "exception_analysis.m"
+          transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_9(transform_hlds__exception_analysis__env_ptr);
+#line 287 "exception_analysis.m"
+          return;
+        }
+#line 286 "exception_analysis.m"
+    }
+#line 286 "exception_analysis.m"
+  }
+#line 286 "exception_analysis.m"
+}
+
+#line 286 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_12(
+#line 286 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 286 "exception_analysis.m"
+{
+#line 286 "exception_analysis.m"
+  {
+#line 286 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 286 "exception_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_2) == 0)
+#line 286 "exception_analysis.m"
+      {
+#line 286 "exception_analysis.m"
+        {
+#line 286 "exception_analysis.m"
+          {
+#line 286 "exception_analysis.m"
+            mercury__list__member_2_p_1((MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0, &(transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv2_CResult_28, (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1, transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_11, transform_hlds__exception_analysis__env_ptr);
+          }
+#line 286 "exception_analysis.m"
+        }
+#line 286 "exception_analysis.m"
+        (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_FALSE;
+#line 286 "exception_analysis.m"
+      }
+#line 286 "exception_analysis.m"
+    else
+#line 286 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_TRUE;
+#line 286 "exception_analysis.m"
+  }
+#line 286 "exception_analysis.m"
+}
+
+#line 818 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_13(
+#line 818 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 818 "exception_analysis.m"
+{
+#line 818 "exception_analysis.m"
+  {
+#line 818 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 818 "exception_analysis.m"
+    MR_builtin_longjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_3, 1);
+#line 818 "exception_analysis.m"
+  }
+#line 818 "exception_analysis.m"
+}
+
+#line 819 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_15(
+#line 819 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 819 "exception_analysis.m"
+{
+#line 819 "exception_analysis.m"
+  {
+#line 819 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 819 "exception_analysis.m"
+    (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__Result_57 = ((MR_Word) (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv3_Result_57);
+#line 819 "exception_analysis.m"
+    {
+#line 819 "exception_analysis.m"
+      transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_14(transform_hlds__exception_analysis__env_ptr);
+#line 819 "exception_analysis.m"
+      return;
+    }
+#line 819 "exception_analysis.m"
+  }
+#line 819 "exception_analysis.m"
+}
+
+#line 818 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_14(
+#line 818 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 818 "exception_analysis.m"
+{
+#line 818 "exception_analysis.m"
+  {
+#line 818 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 818 "exception_analysis.m"
+    {
+#line 821 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__Result_57, (MR_Integer) 0)));
+#line 821 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__Result_57, (MR_Integer) 1)));
+#line 821 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_62_62;
+
+#line 821 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__Result_57, (MR_Integer) 2)));
+#line 821 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__Result_57, (MR_Integer) 3)));
+#line 821 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_58_58 == (MR_Integer) 1);
+#line 821 "exception_analysis.m"
+      if ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 821 "exception_analysis.m"
+        {
+#line 821 "exception_analysis.m"
+          transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_13(transform_hlds__exception_analysis__env_ptr);
+#line 821 "exception_analysis.m"
+          return;
+        }
+#line 818 "exception_analysis.m"
+    }
+#line 818 "exception_analysis.m"
+  }
+#line 818 "exception_analysis.m"
+}
+
+#line 818 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_16(
+#line 818 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 818 "exception_analysis.m"
+{
+#line 818 "exception_analysis.m"
+  {
+#line 818 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 818 "exception_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_3) == 0)
+#line 818 "exception_analysis.m"
+      {
+#line 818 "exception_analysis.m"
+        {
+#line 819 "exception_analysis.m"
+          {
+#line 819 "exception_analysis.m"
+            mercury__list__member_2_p_1((MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0, &(transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv3_Result_57, (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1, transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_15, transform_hlds__exception_analysis__env_ptr);
+          }
+#line 818 "exception_analysis.m"
+        }
+#line 818 "exception_analysis.m"
+        (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_FALSE;
+#line 818 "exception_analysis.m"
+      }
+#line 818 "exception_analysis.m"
+    else
+#line 818 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_TRUE;
+#line 818 "exception_analysis.m"
+  }
+#line 818 "exception_analysis.m"
+}
+
+#line 296 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_17(
+#line 296 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 296 "exception_analysis.m"
+{
+#line 296 "exception_analysis.m"
+  {
+#line 296 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 296 "exception_analysis.m"
+    MR_builtin_longjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_4, 1);
+#line 296 "exception_analysis.m"
+  }
+#line 296 "exception_analysis.m"
+}
+
+#line 297 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_19(
+#line 297 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 297 "exception_analysis.m"
+{
+#line 297 "exception_analysis.m"
+  {
+#line 297 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 297 "exception_analysis.m"
+    (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_50 = ((MR_Word) (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv4_EResult_50);
+#line 297 "exception_analysis.m"
+    {
+#line 297 "exception_analysis.m"
+      transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_18(transform_hlds__exception_analysis__env_ptr);
+#line 297 "exception_analysis.m"
+      return;
+    }
+#line 297 "exception_analysis.m"
+  }
+#line 297 "exception_analysis.m"
+}
+
+#line 296 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_18(
+#line 296 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 296 "exception_analysis.m"
+{
+#line 296 "exception_analysis.m"
+  {
+#line 296 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 296 "exception_analysis.m"
+    {
+#line 299 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_50, (MR_Integer) 0)));
+#line 299 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_40_40;
+#line 299 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_41_41;
+
+#line 299 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_50, (MR_Integer) 1)));
+#line 299 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_50, (MR_Integer) 2)));
+#line 299 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__EResult_50, (MR_Integer) 3)));
+#line 299 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = ((MR_tag((MR_Word) (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_22_22)) == (MR_mktag((MR_Integer) 1)));
+#line 299 "exception_analysis.m"
+      if ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 299 "exception_analysis.m"
+        {
+#line 299 "exception_analysis.m"
+          (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_22_22, (MR_Integer) 0)));
+#line 296 "exception_analysis.m"
+          {
+#line 299 "exception_analysis.m"
+            (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_23_23 == (MR_Integer) 0);
+#line 299 "exception_analysis.m"
+            if ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 299 "exception_analysis.m"
+              {
+#line 299 "exception_analysis.m"
+                transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_17(transform_hlds__exception_analysis__env_ptr);
+#line 299 "exception_analysis.m"
+                return;
+              }
+#line 296 "exception_analysis.m"
+          }
+#line 299 "exception_analysis.m"
+        }
+#line 296 "exception_analysis.m"
+    }
+#line 296 "exception_analysis.m"
+  }
+#line 296 "exception_analysis.m"
+}
+
+#line 296 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_20(
+#line 296 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 296 "exception_analysis.m"
+{
+#line 296 "exception_analysis.m"
+  {
+#line 296 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 296 "exception_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_4) == 0)
+#line 296 "exception_analysis.m"
+      {
+#line 296 "exception_analysis.m"
+        {
+#line 297 "exception_analysis.m"
+          {
+#line 297 "exception_analysis.m"
+            mercury__list__member_2_p_1((MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0, &(transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv4_EResult_50, (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1, transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_19, transform_hlds__exception_analysis__env_ptr);
+          }
+#line 296 "exception_analysis.m"
+        }
+#line 296 "exception_analysis.m"
+        (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_FALSE;
+#line 296 "exception_analysis.m"
+      }
+#line 296 "exception_analysis.m"
+    else
+#line 296 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_TRUE;
+#line 296 "exception_analysis.m"
+  }
+#line 296 "exception_analysis.m"
+}
+
+#line 302 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_21(
+#line 302 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 302 "exception_analysis.m"
+{
+#line 302 "exception_analysis.m"
+  {
+#line 302 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 302 "exception_analysis.m"
+    MR_builtin_longjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_5, 1);
+#line 302 "exception_analysis.m"
+  }
+#line 302 "exception_analysis.m"
+}
+
+#line 302 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_23(
+#line 302 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 302 "exception_analysis.m"
+{
+#line 302 "exception_analysis.m"
+  {
+#line 302 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 302 "exception_analysis.m"
+    (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__TResult_29 = ((MR_Word) (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv5_TResult_29);
+#line 302 "exception_analysis.m"
+    {
+#line 302 "exception_analysis.m"
+      transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_22(transform_hlds__exception_analysis__env_ptr);
+#line 302 "exception_analysis.m"
+      return;
+    }
+#line 302 "exception_analysis.m"
+  }
+#line 302 "exception_analysis.m"
+}
+
+#line 302 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_22(
+#line 302 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 302 "exception_analysis.m"
+{
+#line 302 "exception_analysis.m"
+  {
+#line 302 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 302 "exception_analysis.m"
+    {
+#line 303 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__TResult_29, (MR_Integer) 0)));
+#line 303 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_43_43;
+#line 303 "exception_analysis.m"
+      MR_Word transform_hlds__exception_analysis__V_44_44;
+
+#line 303 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__TResult_29, (MR_Integer) 1)));
+#line 303 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__TResult_29, (MR_Integer) 2)));
+#line 303 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__TResult_29, (MR_Integer) 3)));
+#line 303 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = ((MR_tag((MR_Word) (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_24_24)) == (MR_mktag((MR_Integer) 1)));
+#line 303 "exception_analysis.m"
+      if ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 303 "exception_analysis.m"
+        {
+#line 303 "exception_analysis.m"
+          (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_24_24, (MR_Integer) 0)));
+#line 302 "exception_analysis.m"
+          {
+#line 303 "exception_analysis.m"
+            (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__V_25_25 == (MR_Integer) 1);
+#line 303 "exception_analysis.m"
+            if ((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 303 "exception_analysis.m"
+              {
+#line 303 "exception_analysis.m"
+                transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_21(transform_hlds__exception_analysis__env_ptr);
+#line 303 "exception_analysis.m"
+                return;
+              }
+#line 302 "exception_analysis.m"
+          }
+#line 303 "exception_analysis.m"
+        }
+#line 302 "exception_analysis.m"
+    }
+#line 302 "exception_analysis.m"
+  }
+#line 302 "exception_analysis.m"
+}
+
+#line 302 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_24(
+#line 302 "exception_analysis.m"
+  void * transform_hlds__exception_analysis__env_ptr_arg)
+#line 302 "exception_analysis.m"
+{
+#line 302 "exception_analysis.m"
+  {
+#line 302 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s * transform_hlds__exception_analysis__env_ptr = (struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s *) transform_hlds__exception_analysis__env_ptr_arg;
+
+#line 302 "exception_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__commit_5) == 0)
+#line 302 "exception_analysis.m"
+      {
+#line 302 "exception_analysis.m"
+        {
+#line 302 "exception_analysis.m"
+          {
+#line 302 "exception_analysis.m"
+            mercury__list__member_2_p_1((MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0, &(transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__conv5_TResult_29, (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1, transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_23, transform_hlds__exception_analysis__env_ptr);
+          }
+#line 302 "exception_analysis.m"
+        }
+#line 302 "exception_analysis.m"
+        (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_FALSE;
+#line 302 "exception_analysis.m"
+      }
+#line 302 "exception_analysis.m"
+    else
+#line 302 "exception_analysis.m"
+      (transform_hlds__exception_analysis__env_ptr)->transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = MR_TRUE;
+#line 302 "exception_analysis.m"
+  }
+#line 302 "exception_analysis.m"
+}
+
+#line 253 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0(
+#line 253 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__HeadVar__1_1,
+#line 253 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__SCC_Result_2,
+#line 253 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__MaybeAnalysisStatus_3)
+#line 253 "exception_analysis.m"
+{
+#line 253 "exception_analysis.m"
+  {
+#line 253 "exception_analysis.m"
+    struct transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0_s transform_hlds__exception_analysis__env;
+
+#line 253 "exception_analysis.m"
+    (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1 = transform_hlds__exception_analysis__HeadVar__1_1;
+#line 256 "exception_analysis.m"
+    if (((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 256 "exception_analysis.m"
+      {
+#line 257 "exception_analysis.m"
+        {
+#line 257 "exception_analysis.m"
+          mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.exception_analysis", (MR_String) "predicate \140transform_hlds.exception_analysis.combine_individual_proc_results\'/3", (MR_String) "Empty SCC during exception analysis.");
+#line 257 "exception_analysis.m"
+          return;
+        }
+#line 256 "exception_analysis.m"
+      }
+#line 256 "exception_analysis.m"
+    else
+#line 259 "exception_analysis.m"
+      {
+#line 259 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__TypeInfo_13_74;
+#line 259 "exception_analysis.m"
+        MR_Word transform_hlds__exception_analysis__MaybeAnalysisStatuses_66;
+#line 323 "exception_analysis.m"
+        MR_Box transform_hlds__exception_analysis__conv8_MaybeAnalysisStatus_3;
+
+#line 263 "exception_analysis.m"
+        {
+#line 263 "exception_analysis.m"
+          transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_4(&transform_hlds__exception_analysis__env);
+        }
+#line 263 "exception_analysis.m"
+        (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = !((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded);
+#line 270 "exception_analysis.m"
+        if ((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 269 "exception_analysis.m"
+          *transform_hlds__exception_analysis__SCC_Result_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 270 "exception_analysis.m"
+        else
+#line 291 "exception_analysis.m"
+          {
+#line 280 "exception_analysis.m"
+            {
+#line 280 "exception_analysis.m"
+              transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_8(&transform_hlds__exception_analysis__env);
+            }
+#line 280 "exception_analysis.m"
+            (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = !((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded);
+#line 284 "exception_analysis.m"
+            if ((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 286 "exception_analysis.m"
+              {
+#line 286 "exception_analysis.m"
+                transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_12(&transform_hlds__exception_analysis__env);
+              }
+#line 291 "exception_analysis.m"
+            if ((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 816 "exception_analysis.m"
+              {
+#line 818 "exception_analysis.m"
+                {
+#line 818 "exception_analysis.m"
+                  transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_16(&transform_hlds__exception_analysis__env);
+                }
+#line 818 "exception_analysis.m"
+                (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = !((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded);
+#line 816 "exception_analysis.m"
+                if ((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 824 "exception_analysis.m"
+                  *transform_hlds__exception_analysis__SCC_Result_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+#line 816 "exception_analysis.m"
+                else
+#line 828 "exception_analysis.m"
+                  {
+#line 828 "exception_analysis.m"
+                    *transform_hlds__exception_analysis__SCC_Result_2 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[1]);
+#line 828 "exception_analysis.m"
+                  }
+#line 816 "exception_analysis.m"
+              }
+#line 291 "exception_analysis.m"
+            else
+#line 307 "exception_analysis.m"
+              {
+#line 296 "exception_analysis.m"
+                {
+#line 296 "exception_analysis.m"
+                  transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_20(&transform_hlds__exception_analysis__env);
+                }
+#line 296 "exception_analysis.m"
+                (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded = !((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded);
+#line 300 "exception_analysis.m"
+                if ((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 302 "exception_analysis.m"
+                  {
+#line 302 "exception_analysis.m"
+                    transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_24(&transform_hlds__exception_analysis__env);
+                  }
+#line 307 "exception_analysis.m"
+                if ((transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__succeeded)
+#line 306 "exception_analysis.m"
+                  {
+#line 306 "exception_analysis.m"
+                    *transform_hlds__exception_analysis__SCC_Result_2 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[1]);
+#line 306 "exception_analysis.m"
+                  }
+#line 307 "exception_analysis.m"
+                else
+#line 308 "exception_analysis.m"
+                  {
+#line 308 "exception_analysis.m"
+                    *transform_hlds__exception_analysis__SCC_Result_2 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0]);
+#line 308 "exception_analysis.m"
+                  }
+#line 307 "exception_analysis.m"
+              }
+#line 291 "exception_analysis.m"
+          }
+#line 10282 "transform_hlds.exception_analysis.c"
+        transform_hlds__exception_analysis__TypeInfo_13_74 = (MR_Word) &transform_hlds__exception_analysis_scalar_common_1[4];
+#line 322 "exception_analysis.m"
+        {
+#line 322 "exception_analysis.m"
+          mercury__list__map_3_p_0((MR_Word) &transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0, transform_hlds__exception_analysis__TypeInfo_13_74, (MR_Word) &transform_hlds__exception_analysis_scalar_common_2[3], (transform_hlds__exception_analysis__env).transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0_env_0__HeadVar__1_1, &transform_hlds__exception_analysis__MaybeAnalysisStatuses_66);
+        }
+#line 323 "exception_analysis.m"
+        {
+#line 323 "exception_analysis.m"
+          mercury__list__foldl_4_p_0(transform_hlds__exception_analysis__TypeInfo_13_74, transform_hlds__exception_analysis__TypeInfo_13_74, (MR_Word) &transform_hlds__exception_analysis_scalar_common_2[4], transform_hlds__exception_analysis__MaybeAnalysisStatuses_66, ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[2]))), &transform_hlds__exception_analysis__conv8_MaybeAnalysisStatus_3);
+        }
+#line 323 "exception_analysis.m"
+        *transform_hlds__exception_analysis__MaybeAnalysisStatus_3 = ((MR_Word) transform_hlds__exception_analysis__conv8_MaybeAnalysisStatus_3);
+#line 259 "exception_analysis.m"
+      }
+#line 253 "exception_analysis.m"
+  }
+#line 253 "exception_analysis.m"
+}
+
+#line 233 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__set_exception_info_4_p_0(
+#line 233 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__ProcExceptionInfo_5,
+#line 233 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PPId_6,
+#line 233 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_11,
+#line 233 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_12)
+#line 233 "exception_analysis.m"
+{
+#line 236 "exception_analysis.m"
+  {
+#line 236 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 236 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__PredInfo0_8;
+#line 236 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__ProcInfo0_9;
+#line 236 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__ProcInfo_10;
+#line 236 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_13_13;
+
+#line 237 "exception_analysis.m"
+    {
+#line 237 "exception_analysis.m"
+      hlds__hlds_module__module_info_pred_proc_info_4_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_11, transform_hlds__exception_analysis__PPId_6, &transform_hlds__exception_analysis__PredInfo0_8, &transform_hlds__exception_analysis__ProcInfo0_9);
+    }
+#line 238 "exception_analysis.m"
+    {
+#line 238 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_13_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 238 "exception_analysis.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__V_13_13, 0) = ((MR_Box) (transform_hlds__exception_analysis__ProcExceptionInfo_5));
+#line 238 "exception_analysis.m"
+    }
+#line 238 "exception_analysis.m"
+    {
+#line 238 "exception_analysis.m"
+      hlds__hlds_pred__proc_info_set_exception_info_3_p_0(transform_hlds__exception_analysis__V_13_13, transform_hlds__exception_analysis__ProcInfo0_9, &transform_hlds__exception_analysis__ProcInfo_10);
+    }
+#line 239 "exception_analysis.m"
+    {
+#line 239 "exception_analysis.m"
+      hlds__hlds_module__module_info_set_pred_proc_info_5_p_0(transform_hlds__exception_analysis__PPId_6, transform_hlds__exception_analysis__PredInfo0_8, transform_hlds__exception_analysis__ProcInfo_10, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_11, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_12);
+#line 239 "exception_analysis.m"
+      return;
+    }
+#line 236 "exception_analysis.m"
+  }
+#line 233 "exception_analysis.m"
+}
+
+#line 231 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_scc_for_exceptions_3_p_0_2(
+#line 231 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 231 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 231 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 231 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3)
+#line 231 "exception_analysis.m"
+{
+#line 231 "exception_analysis.m"
+  {
+#line 231 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 231 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv4_STATE_VARIABLE_ModuleInfo_12;
+
+#line 231 "exception_analysis.m"
+    {
+#line 231 "exception_analysis.m"
+      transform_hlds__exception_analysis__set_exception_info_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), &transform_hlds__exception_analysis__conv4_STATE_VARIABLE_ModuleInfo_12);
+    }
+#line 231 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv4_STATE_VARIABLE_ModuleInfo_12));
+#line 231 "exception_analysis.m"
+  }
+#line 231 "exception_analysis.m"
+}
+
+#line 247 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_scc_for_exceptions_3_p_0_1(
+#line 247 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 247 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 247 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 247 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3,
+#line 247 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_4,
+#line 247 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_5)
+#line 247 "exception_analysis.m"
+{
+#line 247 "exception_analysis.m"
+  {
+#line 247 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 247 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv1_STATE_VARIABLE_Results_21;
+#line 247 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv0_STATE_VARIABLE_ModuleInfo_23;
+
+#line 247 "exception_analysis.m"
+    {
+#line 247 "exception_analysis.m"
+      transform_hlds__exception_analysis__check_proc_for_exceptions_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), &transform_hlds__exception_analysis__conv1_STATE_VARIABLE_Results_21, ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_4), &transform_hlds__exception_analysis__conv0_STATE_VARIABLE_ModuleInfo_23);
+    }
+#line 247 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv1_STATE_VARIABLE_Results_21));
+#line 247 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__exception_analysis__conv0_STATE_VARIABLE_ModuleInfo_23));
+#line 247 "exception_analysis.m"
+  }
+#line 247 "exception_analysis.m"
+}
+
+#line 220 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__check_scc_for_exceptions_3_p_0(
+#line 220 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__SCC_4,
+#line 220 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_10,
+#line 220 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_11)
+#line 220 "exception_analysis.m"
+{
+#line 223 "exception_analysis.m"
+  {
+#line 223 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 223 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__ProcResults_6;
+#line 223 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Status_7;
+#line 223 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__MaybeAnalysisStatus_8;
+#line 223 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__ProcExceptionInfo_9;
+#line 223 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_12_12;
+#line 223 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_13_13;
+#line 223 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_25_25;
+#line 247 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__conv3_ProcResults_6;
+#line 247 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__conv2_STATE_VARIABLE_ModuleInfo_12_12;
+#line 231 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__conv5_STATE_VARIABLE_ModuleInfo_11;
+
+#line 247 "exception_analysis.m"
+    {
+#line 247 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_25_25 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 247 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_25_25, 0) = ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_8[0]));
+#line 247 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_25_25, 1) = ((MR_Box) (transform_hlds__exception_analysis__check_scc_for_exceptions_3_p_0_1));
+#line 247 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_25_25, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 247 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_25_25, 3) = ((MR_Box) (transform_hlds__exception_analysis__SCC_4));
+#line 247 "exception_analysis.m"
+    }
+#line 247 "exception_analysis.m"
+    {
+#line 247 "exception_analysis.m"
+      mercury__list__foldl2_6_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__exception_analysis_scalar_common_1[3], (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, transform_hlds__exception_analysis__V_25_25, transform_hlds__exception_analysis__SCC_4, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &transform_hlds__exception_analysis__conv3_ProcResults_6, ((MR_Box) (transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_10)), &transform_hlds__exception_analysis__conv2_STATE_VARIABLE_ModuleInfo_12_12);
+    }
+#line 247 "exception_analysis.m"
+    transform_hlds__exception_analysis__ProcResults_6 = ((MR_Word) transform_hlds__exception_analysis__conv3_ProcResults_6);
+#line 247 "exception_analysis.m"
+    transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_12_12 = ((MR_Word) transform_hlds__exception_analysis__conv2_STATE_VARIABLE_ModuleInfo_12_12);
+#line 228 "exception_analysis.m"
+    {
+#line 228 "exception_analysis.m"
+      transform_hlds__exception_analysis__combine_individual_proc_results_3_p_0(transform_hlds__exception_analysis__ProcResults_6, &transform_hlds__exception_analysis__Status_7, &transform_hlds__exception_analysis__MaybeAnalysisStatus_8);
+    }
+#line 230 "exception_analysis.m"
+    {
+#line 230 "exception_analysis.m"
+      transform_hlds__exception_analysis__ProcExceptionInfo_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 230 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__ProcExceptionInfo_9, 0) = ((MR_Box) (transform_hlds__exception_analysis__Status_7));
+#line 230 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__ProcExceptionInfo_9, 1) = ((MR_Box) (transform_hlds__exception_analysis__MaybeAnalysisStatus_8));
+#line 230 "exception_analysis.m"
+    }
+#line 231 "exception_analysis.m"
+    {
+#line 231 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 231 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_13_13, 0) = ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_5[1]));
+#line 231 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_13_13, 1) = ((MR_Box) (transform_hlds__exception_analysis__check_scc_for_exceptions_3_p_0_2));
+#line 231 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_13_13, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 231 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_13_13, 3) = ((MR_Box) (transform_hlds__exception_analysis__ProcExceptionInfo_9));
+#line 231 "exception_analysis.m"
+    }
+#line 231 "exception_analysis.m"
+    {
+#line 231 "exception_analysis.m"
+      mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, transform_hlds__exception_analysis__V_13_13, transform_hlds__exception_analysis__SCC_4, ((MR_Box) (transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_12_12)), &transform_hlds__exception_analysis__conv5_STATE_VARIABLE_ModuleInfo_11);
+    }
+#line 231 "exception_analysis.m"
+    *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_11 = ((MR_Word) transform_hlds__exception_analysis__conv5_STATE_VARIABLE_ModuleInfo_11);
+#line 223 "exception_analysis.m"
+  }
+#line 220 "exception_analysis.m"
+}
+
+#line 1189 "exception_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__exception_analysis__lookup_exception_analysis_result_4_p_0_1(
+#line 1189 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg)
+#line 1189 "exception_analysis.m"
+{
+#line 1189 "exception_analysis.m"
+  {
+#line 1189 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1189 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+
+#line 1189 "exception_analysis.m"
+    {
+#line 1189 "exception_analysis.m"
+      return transform_hlds__exception_analysis__succeeded = hlds__hlds_pred__pred_info_is_imported_not_external_1_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 3))));
+    }
+#line 1189 "exception_analysis.m"
+    return transform_hlds__exception_analysis__succeeded;
+#line 1189 "exception_analysis.m"
+  }
+#line 1189 "exception_analysis.m"
+}
+
+#line 106 "exception_analysis.m"
+void MR_CALL 
+transform_hlds__exception_analysis__lookup_exception_analysis_result_4_p_0(
+#line 106 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__PPId_5,
+#line 106 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__ExceptionStatus_6,
+#line 106 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29,
+#line 106 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_30)
+#line 106 "exception_analysis.m"
+{
+#line 1185 "exception_analysis.m"
+  {
+#line 1185 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 1185 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__PredId_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__PPId_5, (MR_Integer) 0)));
+#line 1185 "exception_analysis.m"
+    MR_Integer transform_hlds__exception_analysis__ProcId_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__PPId_5, (MR_Integer) 1)));
+#line 1185 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__PredInfo_10;
+#line 1185 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__ProcInfo_11;
+#line 1185 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__IsImported_12;
+#line 1185 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Globals_13;
+#line 1185 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__IntermodAnalysis_14;
+#line 1185 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__ExceptionAnalysis_15;
+#line 1185 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__UseAnalysisRegistry_16;
+#line 1185 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_31_31;
+#line 1185 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__V_34_34;
+
+#line 1187 "exception_analysis.m"
+    {
+#line 1187 "exception_analysis.m"
+      hlds__hlds_module__module_info_pred_proc_info_5_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29, transform_hlds__exception_analysis__PredId_8, transform_hlds__exception_analysis__ProcId_9, &transform_hlds__exception_analysis__PredInfo_10, &transform_hlds__exception_analysis__ProcInfo_11);
+    }
+#line 1189 "exception_analysis.m"
+    {
+#line 1189 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_31_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1189 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_31_31, 0) = ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_6[0]));
+#line 1189 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_31_31, 1) = ((MR_Box) (transform_hlds__exception_analysis__lookup_exception_analysis_result_4_p_0_1));
+#line 1189 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_31_31, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 1189 "exception_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_31_31, 3) = ((MR_Box) (transform_hlds__exception_analysis__PredInfo_10));
+#line 1189 "exception_analysis.m"
+    }
+#line 1189 "exception_analysis.m"
+    {
+#line 1189 "exception_analysis.m"
+      transform_hlds__exception_analysis__IsImported_12 = mercury__bool__pred_to_bool_1_f_0(transform_hlds__exception_analysis__V_31_31);
+    }
+#line 1190 "exception_analysis.m"
+    {
+#line 1190 "exception_analysis.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29, &transform_hlds__exception_analysis__Globals_13);
+    }
+#line 1191 "exception_analysis.m"
+    {
+#line 1191 "exception_analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__exception_analysis__Globals_13, (MR_Integer) 335, &transform_hlds__exception_analysis__IntermodAnalysis_14);
+    }
+#line 1193 "exception_analysis.m"
+    {
+#line 1193 "exception_analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__exception_analysis__Globals_13, (MR_Integer) 433, &transform_hlds__exception_analysis__ExceptionAnalysis_15);
+    }
+#line 1201 "exception_analysis.m"
+    {
+#line 1201 "exception_analysis.m"
+      transform_hlds__exception_analysis__V_34_34 = mercury__bool__and_2_f_0(transform_hlds__exception_analysis__IsImported_12, transform_hlds__exception_analysis__IntermodAnalysis_14);
+    }
+#line 1202 "exception_analysis.m"
+    {
+#line 1202 "exception_analysis.m"
+      transform_hlds__exception_analysis__UseAnalysisRegistry_16 = mercury__bool__and_2_f_0(transform_hlds__exception_analysis__V_34_34, transform_hlds__exception_analysis__ExceptionAnalysis_15);
+    }
+#line 1215 "exception_analysis.m"
+#line 1215 "exception_analysis.m"
+    switch (transform_hlds__exception_analysis__UseAnalysisRegistry_16) {
+#line 1215 "exception_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1215 "exception_analysis.m"
+      case (MR_Integer) 0:
+#line 1206 "exception_analysis.m"
+        {
+#line 1206 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__MaybeProcExceptionInfo_17;
+
+#line 1207 "exception_analysis.m"
+          {
+#line 1207 "exception_analysis.m"
+            hlds__hlds_pred__proc_info_get_exception_info_2_p_0(transform_hlds__exception_analysis__ProcInfo_11, &transform_hlds__exception_analysis__MaybeProcExceptionInfo_17);
+          }
+#line 1211 "exception_analysis.m"
+          if ((transform_hlds__exception_analysis__MaybeProcExceptionInfo_17 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1212 "exception_analysis.m"
+            {
+#line 1213 "exception_analysis.m"
+              *transform_hlds__exception_analysis__ExceptionStatus_6 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0]);
+#line 1212 "exception_analysis.m"
+            }
+#line 1211 "exception_analysis.m"
+          else
+#line 1209 "exception_analysis.m"
+            {
+#line 1209 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__ProcExceptionInfo_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeProcExceptionInfo_17, (MR_Integer) 0)));
+#line 1210 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__V_19_19;
+
+#line 1210 "exception_analysis.m"
+              *transform_hlds__exception_analysis__ExceptionStatus_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__ProcExceptionInfo_18, (MR_Integer) 0)));
+#line 1210 "exception_analysis.m"
+              transform_hlds__exception_analysis__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__ProcExceptionInfo_18, (MR_Integer) 1)));
+#line 1209 "exception_analysis.m"
+            }
+#line 1206 "exception_analysis.m"
+          *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_30 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29;
+#line 1206 "exception_analysis.m"
+        }
+#line 1215 "exception_analysis.m"
+        break;
+#line 1215 "exception_analysis.m"
+      case (MR_Integer) 1:
+#line 1216 "exception_analysis.m"
+        {
+#line 1216 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__ModuleName_21;
+#line 1216 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__FuncId_22;
+#line 1216 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__MaybeBestResult_23;
+#line 1216 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_35_35;
+#line 1216 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_45_45;
+#line 1239 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_44_44;
+
+#line 1218 "exception_analysis.m"
+          {
+#line 1218 "exception_analysis.m"
+            hlds__hlds_module__module_info_get_analysis_info_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29, &transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_35_35);
+          }
+#line 1219 "exception_analysis.m"
+          {
+#line 1219 "exception_analysis.m"
+            transform_hlds__mmc_analysis__module_name_func_id_4_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29, transform_hlds__exception_analysis__PPId_5, &transform_hlds__exception_analysis__ModuleName_21, &transform_hlds__exception_analysis__FuncId_22);
+          }
+#line 1221 "exception_analysis.m"
+          mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1221 "exception_analysis.m"
+          mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1220 "exception_analysis.m"
+          {
+#line 1220 "exception_analysis.m"
+            analysis__lookup_best_result_6_p_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_4[0], transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_35_35, transform_hlds__exception_analysis__ModuleName_21, transform_hlds__exception_analysis__FuncId_22, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) ((MR_Integer) 0)), &transform_hlds__exception_analysis__MaybeBestResult_23);
+          }
+#line 1235 "exception_analysis.m"
+          if ((transform_hlds__exception_analysis__MaybeBestResult_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1236 "exception_analysis.m"
+            {
+#line 1237 "exception_analysis.m"
+              *transform_hlds__exception_analysis__ExceptionStatus_6 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__exception_analysis_scalar_common_7[0]);
+#line 1236 "exception_analysis.m"
+            }
+#line 1235 "exception_analysis.m"
+          else
+#line 1223 "exception_analysis.m"
+            {
+#line 1223 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__BestResult_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__exception_analysis__MaybeBestResult_23, (MR_Integer) 0)));
+#line 1223 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__Answer_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__BestResult_24, (MR_Integer) 1)));
+#line 1223 "exception_analysis.m"
+              MR_Word transform_hlds__exception_analysis__AnalysisStatus_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__BestResult_24, (MR_Integer) 2)));
+
+#line 1229 "exception_analysis.m"
+#line 1229 "exception_analysis.m"
+              switch (transform_hlds__exception_analysis__AnalysisStatus_27) {
+#line 1229 "exception_analysis.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 1229 "exception_analysis.m"
+                case (MR_Integer) 0:
+#line 1226 "exception_analysis.m"
+                  {
+#line 1227 "exception_analysis.m"
+                    {
+#line 1227 "exception_analysis.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.exception_analysis", (MR_String) "predicate \140transform_hlds.exception_analysis.lookup_exception_analysis_result\'/4", (MR_String) "invalid exception_analysis answer");
+#line 1227 "exception_analysis.m"
+                      return;
+                    }
+#line 1226 "exception_analysis.m"
+                  }
+#line 1229 "exception_analysis.m"
+                  break;
+#line 1229 "exception_analysis.m"
+                case (MR_Integer) 2:
+#line 1229 "exception_analysis.m"
+                case (MR_Integer) 1:
+#line 1233 "exception_analysis.m"
+                  *transform_hlds__exception_analysis__ExceptionStatus_6 = (MR_Word) transform_hlds__exception_analysis__Answer_26;
+#line 1229 "exception_analysis.m"
+                  break;
+#line 1229 "exception_analysis.m"
+              }
+#line 1223 "exception_analysis.m"
+            }
+#line 1239 "exception_analysis.m"
+          mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1239 "exception_analysis.m"
+          mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1239 "exception_analysis.m"
+          {
+#line 1239 "exception_analysis.m"
+            analysis__record_dependency_7_p_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_4[0], transform_hlds__exception_analysis__ModuleName_21, transform_hlds__exception_analysis__FuncId_22, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) ((MR_Integer) 0)), transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_35_35, &transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_45_45);
+          }
+#line 1241 "exception_analysis.m"
+          {
+#line 1241 "exception_analysis.m"
+            hlds__hlds_module__module_info_set_analysis_info_3_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_AnalysisInfo_45_45, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_29, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_30);
+#line 1241 "exception_analysis.m"
+            return;
+          }
+#line 1216 "exception_analysis.m"
+        }
+#line 1215 "exception_analysis.m"
+        break;
+#line 1215 "exception_analysis.m"
+    }
+#line 1185 "exception_analysis.m"
+  }
+#line 106 "exception_analysis.m"
+}
+
+#line 184 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__analyse_exceptions_in_module_4_p_0_2(
+#line 184 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 184 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 184 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 184 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3)
+#line 184 "exception_analysis.m"
+{
+#line 184 "exception_analysis.m"
+  {
+#line 184 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 184 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv2_STATE_VARIABLE_AnalysisInfo_11;
+
+#line 184 "exception_analysis.m"
+    {
+#line 184 "exception_analysis.m"
+      transform_hlds__exception_analysis__maybe_record_exception_result_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), &transform_hlds__exception_analysis__conv2_STATE_VARIABLE_AnalysisInfo_11);
+    }
+#line 184 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv2_STATE_VARIABLE_AnalysisInfo_11));
+#line 184 "exception_analysis.m"
+  }
+#line 184 "exception_analysis.m"
+}
+
+#line 155 "exception_analysis.m"
+static void MR_CALL 
+transform_hlds__exception_analysis__analyse_exceptions_in_module_4_p_0_1(
+#line 155 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__closure_arg,
+#line 155 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_1,
+#line 155 "exception_analysis.m"
+  MR_Box transform_hlds__exception_analysis__wrapper_arg_2,
+#line 155 "exception_analysis.m"
+  MR_Box * transform_hlds__exception_analysis__wrapper_arg_3)
+#line 155 "exception_analysis.m"
+{
+#line 155 "exception_analysis.m"
+  {
+#line 155 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__closure = transform_hlds__exception_analysis__closure_arg;
+#line 155 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__conv0_STATE_VARIABLE_ModuleInfo_11;
+
+#line 155 "exception_analysis.m"
+    {
+#line 155 "exception_analysis.m"
+      transform_hlds__exception_analysis__check_scc_for_exceptions_3_p_0(((MR_Word) transform_hlds__exception_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__exception_analysis__wrapper_arg_2), &transform_hlds__exception_analysis__conv0_STATE_VARIABLE_ModuleInfo_11);
+    }
+#line 155 "exception_analysis.m"
+    *transform_hlds__exception_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__exception_analysis__conv0_STATE_VARIABLE_ModuleInfo_11));
+#line 155 "exception_analysis.m"
+  }
+#line 155 "exception_analysis.m"
+}
+
+#line 94 "exception_analysis.m"
+void MR_CALL 
+transform_hlds__exception_analysis__analyse_exceptions_in_module_4_p_0(
+#line 94 "exception_analysis.m"
+  MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_16,
+#line 94 "exception_analysis.m"
+  MR_Word * transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_17)
+#line 94 "exception_analysis.m"
+{
+#line 151 "exception_analysis.m"
+  {
+#line 151 "exception_analysis.m"
+    MR_bool transform_hlds__exception_analysis__succeeded;
+#line 151 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__DepInfo_7;
+#line 151 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__SCCs_8;
+#line 151 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__Globals_9;
+#line 151 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__MakeOptInt_10;
+#line 151 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__IntermodAnalysis_11;
+#line 151 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__MakeAnalysisReg_12;
+#line 151 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_20_20;
+#line 151 "exception_analysis.m"
+    MR_Word transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_22_22;
+#line 155 "exception_analysis.m"
+    MR_Box transform_hlds__exception_analysis__conv1_STATE_VARIABLE_ModuleInfo_22_22;
+
+#line 152 "exception_analysis.m"
+    {
+#line 152 "exception_analysis.m"
+      transform_hlds__dependency_graph__module_info_ensure_dependency_info_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_0_16, &transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_20_20);
+    }
+#line 153 "exception_analysis.m"
+    {
+#line 153 "exception_analysis.m"
+      hlds__hlds_module__module_info_dependency_info_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_20_20, &transform_hlds__exception_analysis__DepInfo_7);
+    }
+#line 154 "exception_analysis.m"
+    {
+#line 154 "exception_analysis.m"
+      hlds__hlds_module__hlds_dependency_info_get_dependency_ordering_2_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, transform_hlds__exception_analysis__DepInfo_7, &transform_hlds__exception_analysis__SCCs_8);
+    }
+#line 155 "exception_analysis.m"
+    {
+#line 155 "exception_analysis.m"
+      mercury__list__foldl_4_p_0((MR_Word) &transform_hlds__exception_analysis_scalar_common_1[0], (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, (MR_Word) &transform_hlds__exception_analysis_scalar_common_2[2], transform_hlds__exception_analysis__SCCs_8, ((MR_Box) (transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_20_20)), &transform_hlds__exception_analysis__conv1_STATE_VARIABLE_ModuleInfo_22_22);
+    }
+#line 155 "exception_analysis.m"
+    transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_22_22 = ((MR_Word) transform_hlds__exception_analysis__conv1_STATE_VARIABLE_ModuleInfo_22_22);
+#line 157 "exception_analysis.m"
+    {
+#line 157 "exception_analysis.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_22_22, &transform_hlds__exception_analysis__Globals_9);
+    }
+#line 158 "exception_analysis.m"
+    {
+#line 158 "exception_analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__exception_analysis__Globals_9, (MR_Integer) 87, &transform_hlds__exception_analysis__MakeOptInt_10);
+    }
+#line 160 "exception_analysis.m"
+    {
+#line 160 "exception_analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__exception_analysis__Globals_9, (MR_Integer) 335, &transform_hlds__exception_analysis__IntermodAnalysis_11);
+    }
+#line 162 "exception_analysis.m"
+    {
+#line 162 "exception_analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__exception_analysis__Globals_9, (MR_Integer) 89, &transform_hlds__exception_analysis__MakeAnalysisReg_12);
+    }
+#line 168 "exception_analysis.m"
+    transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__MakeOptInt_10 == (MR_Integer) 1);
+#line 168 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 169 "exception_analysis.m"
+      transform_hlds__exception_analysis__succeeded = (transform_hlds__exception_analysis__IntermodAnalysis_11 == (MR_Integer) 0);
+#line 172 "exception_analysis.m"
+    if (transform_hlds__exception_analysis__succeeded)
+#line 171 "exception_analysis.m"
+      {
+#line 171 "exception_analysis.m"
+        transform_hlds__intermod__append_exception_pragmas_to_opt_file_3_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_22_22);
+      }
+#line 172 "exception_analysis.m"
+    else
+#line 172 "exception_analysis.m"
+      {
+#line 172 "exception_analysis.m"
+      }
+#line 187 "exception_analysis.m"
+#line 187 "exception_analysis.m"
+    switch (transform_hlds__exception_analysis__MakeAnalysisReg_12) {
+#line 187 "exception_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 187 "exception_analysis.m"
+      case (MR_Integer) 0:
+#line 188 "exception_analysis.m"
+        *transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_17 = transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_22_22;
+#line 187 "exception_analysis.m"
+        break;
+#line 187 "exception_analysis.m"
+      case (MR_Integer) 1:
+#line 181 "exception_analysis.m"
+        {
+#line 181 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__AnalysisInfo0_13;
+#line 181 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__PredIds_14;
+#line 181 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__AnalysisInfo_15;
+#line 181 "exception_analysis.m"
+          MR_Word transform_hlds__exception_analysis__V_27_27;
+#line 184 "exception_analysis.m"
+          MR_Box transform_hlds__exception_analysis__conv3_AnalysisInfo_15;
+
+#line 182 "exception_analysis.m"
+          {
+#line 182 "exception_analysis.m"
+            hlds__hlds_module__module_info_get_analysis_info_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_22_22, &transform_hlds__exception_analysis__AnalysisInfo0_13);
+          }
+#line 183 "exception_analysis.m"
+          {
+#line 183 "exception_analysis.m"
+            hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_22_22, &transform_hlds__exception_analysis__PredIds_14);
+          }
+#line 184 "exception_analysis.m"
+          {
+#line 184 "exception_analysis.m"
+            transform_hlds__exception_analysis__V_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 184 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_27_27, 0) = ((MR_Box) (&transform_hlds__exception_analysis_scalar_common_5[0]));
+#line 184 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_27_27, 1) = ((MR_Box) (transform_hlds__exception_analysis__analyse_exceptions_in_module_4_p_0_2));
+#line 184 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_27_27, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 184 "exception_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__exception_analysis__V_27_27, 3) = ((MR_Box) (transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_22_22));
+#line 184 "exception_analysis.m"
+          }
+#line 184 "exception_analysis.m"
+          {
+#line 184 "exception_analysis.m"
+            mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &analysis__analysis__type_ctor_info_analysis_info_0, transform_hlds__exception_analysis__V_27_27, transform_hlds__exception_analysis__PredIds_14, ((MR_Box) (transform_hlds__exception_analysis__AnalysisInfo0_13)), &transform_hlds__exception_analysis__conv3_AnalysisInfo_15);
+          }
+#line 184 "exception_analysis.m"
+          transform_hlds__exception_analysis__AnalysisInfo_15 = ((MR_Word) transform_hlds__exception_analysis__conv3_AnalysisInfo_15);
+#line 186 "exception_analysis.m"
+          {
+#line 186 "exception_analysis.m"
+            hlds__hlds_module__module_info_set_analysis_info_3_p_0(transform_hlds__exception_analysis__AnalysisInfo_15, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_22_22, transform_hlds__exception_analysis__STATE_VARIABLE_ModuleInfo_17);
+#line 186 "exception_analysis.m"
+            return;
+          }
+#line 181 "exception_analysis.m"
+        }
+#line 187 "exception_analysis.m"
+        break;
+#line 187 "exception_analysis.m"
+    }
+#line 151 "exception_analysis.m"
+  }
+#line 94 "exception_analysis.m"
+}
+
+void mercury__transform_hlds__exception_analysis__init(void)
+{
+}
+
+void mercury__transform_hlds__exception_analysis__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_closures_exception_status_0);
+	MR_register_type_ctor_info(&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_exception_analysis_answer_0);
+	MR_register_type_ctor_info(&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_result_0);
+	MR_register_type_ctor_info(&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_proc_results_0);
+	MR_register_type_ctor_info(&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_scc_0);
+	MR_register_type_ctor_info(&transform_hlds__exception_analysis__transform_hlds__exception_analysis__type_ctor_info_type_status_0);
+}
+
+void mercury__transform_hlds__exception_analysis__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module transform_hlds.exception_analysis. */

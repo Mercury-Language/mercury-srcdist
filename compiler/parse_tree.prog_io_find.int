@@ -1,0 +1,12 @@
+:- module (parse_tree.prog_io_find).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- pred find_module_name(libs.globals.globals, libs.file_util.file_name, maybe.maybe(mdbcomp.sym_name.module_name), io.io, io.io).
+:- mode find_module_name((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred search_for_module_source(libs.globals.globals, list.list(libs.file_util.dir_name), list.list(libs.file_util.dir_name), mdbcomp.sym_name.module_name, maybe.maybe_error(libs.file_util.file_name), io.io, io.io).
+:- mode search_for_module_source((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,29 @@
+:- module (ml_backend.ml_lookup_switch).
+:- interface.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module unit.
+:- import_module (backend_libs.switch_util).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (ml_backend.ml_gen_info).
+:- import_module (ml_backend.mlds).
+:- import_module (parse_tree.prog_data).
+:- type ml_lookup_switch_info
+    --->    ml_lookup_switch_info(((ml_backend.ml_lookup_switch).mllsi_cases) :: backend_libs.switch_util.case_consts(hlds.hlds_goal.case_id, ml_backend.mlds.mlds_rval, unit.unit), ((ml_backend.ml_lookup_switch).mllsi_out_variables) :: list.list(parse_tree.prog_data.prog_var), ((ml_backend.ml_lookup_switch).mllsi_out_types) :: list.list(ml_backend.mlds.mlds_type)).
+:- type ml_several_soln_lookup_vars
+    --->    ml_several_soln_lookup_vars(((ml_backend.ml_lookup_switch).msslv_num_later_solns_var) :: ml_backend.mlds.mlds_lval, ((ml_backend.ml_lookup_switch).msslv_later_slot_var) :: ml_backend.mlds.mlds_lval, ((ml_backend.ml_lookup_switch).msslv_limit_var) :: ml_backend.mlds.mlds_lval, ((ml_backend.ml_lookup_switch).msslv_limit_assign_statement) :: ml_backend.mlds.statement, ((ml_backend.ml_lookup_switch).msslv_incr_later_slot_statement) :: ml_backend.mlds.statement, ((ml_backend.ml_lookup_switch).msslv_denfs) :: list.list(ml_backend.mlds.mlds_defn)).
+:- pred make_several_soln_lookup_vars(ml_backend.mlds.mlds_context, ml_backend.ml_lookup_switch.ml_several_soln_lookup_vars, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode make_several_soln_lookup_vars((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_case_id_soln_consts_to_tag_soln_consts(pred(hlds.hlds_data.cons_tag, T), list.list(hlds.hlds_goal.tagged_case), map.map(hlds.hlds_goal.case_id, V), map.map(T, V)).
+:- mode ml_case_id_soln_consts_to_tag_soln_consts(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func ml_construct_later_soln_row(ml_backend.mlds.mlds_type, list.list(ml_backend.mlds.mlds_rval)) = ml_backend.mlds.mlds_initializer.
+:- func ml_default_value_for_type(ml_backend.mlds.mlds_type) = ml_backend.mlds.mlds_rval.
+:- pred ml_gen_atomic_lookup_switch(parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.tagged_case), ml_backend.ml_lookup_switch.ml_lookup_switch_info, hlds.code_model.code_model, parse_tree.prog_data.prog_context, int, int, backend_libs.switch_util.need_bit_vec_check, backend_libs.switch_util.need_range_check, ml_backend.mlds.statement, ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_atomic_lookup_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_gen_several_soln_lookup_code(parse_tree.prog_data.prog_context, ml_backend.mlds.mlds_context, ml_backend.mlds.mlds_rval, list.list(parse_tree.prog_data.prog_var), list.list(ml_backend.mlds.mlds_type), ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_type, ml_backend.mlds.mlds_field_id, ml_backend.mlds.mlds_field_id, list.list(ml_backend.mlds.mlds_field_id), list.list(ml_backend.mlds.mlds_field_id), ml_backend.mlds.mlds_vector_common, ml_backend.mlds.mlds_vector_common, backend_libs.switch_util.need_bit_vec_check, list.list(ml_backend.mlds.mlds_defn), list.list(ml_backend.mlds.statement), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_gen_several_soln_lookup_code((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred ml_is_lookup_switch(parse_tree.prog_data.prog_var, list.list(hlds.hlds_goal.tagged_case), hlds.hlds_goal.hlds_goal_info, hlds.code_model.code_model, maybe.maybe(ml_backend.ml_lookup_switch.ml_lookup_switch_info), ml_backend.ml_gen_info.ml_gen_info, ml_backend.ml_gen_info.ml_gen_info).
+:- mode ml_is_lookup_switch((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

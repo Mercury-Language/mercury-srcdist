@@ -1,0 +1,11 @@
+:- module (ll_backend.follow_vars).
+:- interface.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_llds).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.vartypes).
+:- pred find_final_follow_vars(hlds.hlds_pred.proc_info, hlds.hlds_llds.abs_follow_vars_map, int, int).
+:- mode find_final_follow_vars((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred find_follow_vars_in_goal(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, hlds.vartypes.vartypes, hlds.hlds_module.module_info, hlds.hlds_llds.abs_follow_vars_map, hlds.hlds_llds.abs_follow_vars_map, int, int, int, int).
+:- mode find_follow_vars_in_goal((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
