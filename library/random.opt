@@ -1,0 +1,267 @@
+:- module random.
+:- use_module array.
+:- use_module builtin.
+:- use_module float.
+:- use_module int.
+:- use_module io.
+:- use_module list.
+:- use_module math.
+:- use_module mutvar.
+:- use_module private_builtin.
+:- use_module uint.
+:- use_module uint32.
+
+:- type io_random(R)
+    --->    io_random(mutvar.mutvar(R)).
+:- type io_urandom(P, S)
+    --->    io_urandom(P, mutvar.mutvar(S)).
+:- type shared_random(P, S)
+    --->    shared_random((random.shared_random_params) :: P, (random.shared_random_state) :: S).
+:- type supply
+    --->    rs(int).
+:- type urandom_params(R)
+    --->    urandom_params .
+:- type urandom_state(R)
+    --->    urandom_state(R).
+
+:- instance (random.urandom(random.io_random(R), io.state)) <= (random.random(R)) where [
+	pred((random.generate_uint8)/4) is (random.io_random_gen_uint8),
+	pred((random.generate_uint16)/4) is (random.io_random_gen_uint16),
+	pred((random.generate_uint32)/4) is (random.io_random_gen_uint32),
+	pred((random.generate_uint64)/4) is (random.io_random_gen_uint64)
+].
+:- instance (random.urandom(random.io_urandom(P, S), io.state)) <= (random.urandom(P, S)) where [
+	pred((random.generate_uint8)/4) is (random.io_urandom_gen_uint8),
+	pred((random.generate_uint16)/4) is (random.io_urandom_gen_uint16),
+	pred((random.generate_uint32)/4) is (random.io_urandom_gen_uint32),
+	pred((random.generate_uint64)/4) is (random.io_urandom_gen_uint64)
+].
+
+:- pred random.io_random_gen_uint16(random.io_random(R_1), uint16, io.state, io.state) <= (random.random(R_1)).
+:- mode random.io_random_gen_uint16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma promise_pure((random.io_random_gen_uint16)/4).
+:- pred random.io_random_gen_uint32(random.io_random(R_1), uint32, io.state, io.state) <= (random.random(R_1)).
+:- mode random.io_random_gen_uint32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma promise_pure((random.io_random_gen_uint32)/4).
+:- pred random.io_random_gen_uint64(random.io_random(R_1), uint64, io.state, io.state) <= (random.random(R_1)).
+:- mode random.io_random_gen_uint64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma promise_pure((random.io_random_gen_uint64)/4).
+:- pred random.io_random_gen_uint8(random.io_random(R_1), uint8, io.state, io.state) <= (random.random(R_1)).
+:- mode random.io_random_gen_uint8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma promise_pure((random.io_random_gen_uint8)/4).
+:- pred random.io_urandom_gen_uint16(random.io_urandom(P_1, S_2), uint16, io.state, io.state) <= (random.urandom(P_1, S_2)).
+:- mode random.io_urandom_gen_uint16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma promise_pure((random.io_urandom_gen_uint16)/4).
+:- pred random.io_urandom_gen_uint32(random.io_urandom(P_1, S_2), uint32, io.state, io.state) <= (random.urandom(P_1, S_2)).
+:- mode random.io_urandom_gen_uint32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma promise_pure((random.io_urandom_gen_uint32)/4).
+:- pred random.io_urandom_gen_uint64(random.io_urandom(P_1, S_2), uint64, io.state, io.state) <= (random.urandom(P_1, S_2)).
+:- mode random.io_urandom_gen_uint64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma promise_pure((random.io_urandom_gen_uint64)/4).
+:- pred random.io_urandom_gen_uint8(random.io_urandom(P_1, S_2), uint8, io.state, io.state) <= (random.urandom(P_1, S_2)).
+:- mode random.io_urandom_gen_uint8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pragma promise_pure((random.io_urandom_gen_uint8)/4).
+:- pred random.params(int, int, int).
+:- mode random.params((builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred random.perform_sampling(int, array.array(T_1), list.list(T_1), list.list(T_1), random.supply, random.supply).
+:- mode random.perform_sampling((builtin.in), (array.array_di), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode random.perform_sampling((builtin.in), (array.array_di), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- pred random.test(int, int, list.list(int), int).
+:- mode random.test((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred random.test_2(int, list.list(int), random.supply, random.supply).
+:- mode random.test_2((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+
+random.init(V_3, random.rs(V_4)) :-
+    builtin.copy(V_3, V_4).
+
+random.make_shared_random(V_4, V_5) = random.shared_random(V_4, V_5).
+
+random.make_urandom(V_4, V_5, V_6) :-
+    V_5 = random.urandom_params : random.urandom_params(R_1),
+    V_6 = builtin.unsafe_promise_unique(V_7),
+    V_7 = random.urandom_state(V_4) : random.urandom_state(R_1).
+
+random.params(9301, 49297, 233280).
+
+random.permutation(V_5, V_6, V_10, V_11) :-
+    V_8 = array.array(V_5),
+    V_9 = array.size(V_8),
+    V_12 = list.[] : list.list(T_1),
+    random.perform_sampling(V_9, V_8, V_12, V_6, V_10, V_11).
+
+random.randcount(V_4, V_5, V_5) :-
+    random.params(V_6, V_7, V_4).
+
+random.randmax(V_4, V_5, V_5) :-
+    random.params(V_6, V_7, V_8),
+    V_4 = int.(V_8 - V_9),
+    V_9 = 1 : int.
+
+random.shuffle_list(V_5, V_6, V_10, V_11) :-
+    V_8 = array.array(V_5),
+    random.shuffle_array(V_8, V_9, V_10, V_11),
+    V_6 = array.to_list(V_9).
+
+random.shuffle_list(V_6, V_7, V_8, V_12, V_13) :-
+    V_10 = array.array(V_7),
+    random.shuffle_array(V_6, V_10, V_11, V_12, V_13),
+    V_8 = array.to_list(V_11).
+
+random.test(V_5, V_6, V_7, V_8) :-
+    random.init(V_5, V_9),
+    random.randmax(V_8, V_9, V_10),
+    random.test_2(V_6, V_7, V_10, V_11).
+
+random.uniform_float_in_01(V_4, V_8, V_9) :-
+    random.generate_uint64(V_6, V_8, V_9),
+    V_7 = 1.8446744073709552e+19 : float,
+    V_4 = float.(V_11 / V_7),
+    V_11 = float.cast_from_uint64(V_6).
+
+random.uniform_float_in_01(V_5, V_6, V_10, V_11) :-
+    random.generate_uint64(V_5, V_8, V_10, V_11),
+    V_9 = 1.8446744073709552e+19 : float,
+    V_6 = float.(V_13 / V_9),
+    V_13 = float.cast_from_uint64(V_8).
+
+random.uniform_float_in_range(V_6, V_7, V_8, V_11, V_12) :-
+    random.uniform_float_in_01(V_10, V_11, V_12),
+    V_8 = float.(V_6 + V_14),
+    V_14 = float.(V_10 * V_7).
+
+random.uniform_float_in_range(V_7, V_8, V_9, V_10, V_13, V_14) :-
+    random.uniform_float_in_01(V_7, V_12, V_13, V_14),
+    V_10 = float.(V_8 + V_16),
+    V_16 = float.(V_12 * V_9).
+
+:- pragma termination_info(random.'ClassMethod_for_random__random____random__shared_random__arity2______random__generate_uint16_3'((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__random____random__shared_random__arity2______random__generate_uint32_3'((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__random____random__shared_random__arity2______random__generate_uint64_3'((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__random____random__shared_random__arity2______random__generate_uint8_3'((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom____random__io_random__arity1__io__state__arity0______random__generate_uint16_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom____random__io_random__arity1__io__state__arity0______random__generate_uint32_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom____random__io_random__arity1__io__state__arity0______random__generate_uint64_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom____random__io_random__arity1__io__state__arity0______random__generate_uint8_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom____random__io_urandom__arity2__io__state__arity0______random__generate_uint16_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom____random__io_urandom__arity2__io__state__arity0______random__generate_uint32_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom____random__io_urandom__arity2__io__state__arity0______random__generate_uint64_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom____random__io_urandom__arity2__io__state__arity0______random__generate_uint8_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom____random__urandom_params__arity1__random__urandom_state__arity1______random__generate_uint16_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom____random__urandom_params__arity1__random__urandom_state__arity1______random__generate_uint32_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom____random__urandom_params__arity1__random__urandom_state__arity1______random__generate_uint64_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom____random__urandom_params__arity1__random__urandom_state__arity1______random__generate_uint8_4'((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.'ClassMethod_for_random__urandom_dup____random__urandom_state__arity1______random__urandom_dup_3'((builtin.di), (builtin.uo), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(random.generate_uint16((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.generate_uint16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.generate_uint32((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.generate_uint32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.generate_uint64((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.generate_uint64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.generate_uint8((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.generate_uint8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.init((builtin.in), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.io_random_gen_uint16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.io_random_gen_uint32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.io_random_gen_uint64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.io_random_gen_uint8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.io_urandom_gen_uint16((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.io_urandom_gen_uint32((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.io_urandom_gen_uint64((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.io_urandom_gen_uint8((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.make_io_random((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.make_io_urandom((builtin.in), (builtin.di), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.make_shared_random((builtin.in), (builtin.di)) = (builtin.out), finite(2, [no, no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(random.make_urandom((builtin.in), (builtin.out), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(random.normal_floats((builtin.out), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.normal_floats((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.normal_floats((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.normal_floats((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.params((builtin.out), (builtin.out), (builtin.out)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(random.perform_sampling((builtin.in), (array.array_di), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.perform_sampling((builtin.in), (array.array_di), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.permutation((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.permutation((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.randcount((builtin.out), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(random.randcount((builtin.out), (builtin.mdi), (builtin.muo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(random.randmax((builtin.out), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(random.randmax((builtin.out), (builtin.mdi), (builtin.muo)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(random.random((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.random((builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.random((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.random((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(random.shuffle_array((array.array_di), (array.array_uo), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.shuffle_array((builtin.in), (array.array_di), (array.array_uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.shuffle_list((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.shuffle_list((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.test((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.test_2((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.uniform_float_around_mid((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.uniform_float_around_mid((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.uniform_float_in_01((builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.uniform_float_in_01((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.uniform_float_in_range((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.uniform_float_in_range((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.uniform_int_in_range((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.uniform_int_in_range((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.uniform_uint_in_range((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(random.uniform_uint_in_range((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(random.urandom_dup((builtin.di), (builtin.uo), (builtin.uo)), infinite, can_loop).
+
+:- pragma exceptions(predicate, (random.generate_uint16), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.generate_uint16), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.generate_uint32), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.generate_uint32), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.generate_uint64), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.generate_uint64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.generate_uint8), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.generate_uint8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.init), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.io_random_gen_uint16), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.io_random_gen_uint32), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.io_random_gen_uint64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.io_random_gen_uint8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.io_urandom_gen_uint16), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.io_urandom_gen_uint32), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.io_urandom_gen_uint64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.io_urandom_gen_uint8), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.make_io_random), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.make_io_urandom), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (random.make_shared_random), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (random.make_urandom), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (random.normal_floats), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.normal_floats), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.normal_floats), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.normal_floats), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.params), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (random.perform_sampling), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.perform_sampling), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.permutation), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.permutation), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.randcount), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (random.randcount), 3, 1, will_not_throw).
+:- pragma exceptions(predicate, (random.randmax), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (random.randmax), 3, 1, will_not_throw).
+:- pragma exceptions(predicate, (random.random), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.random), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.random), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.random), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.shuffle_2), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.shuffle_2), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.shuffle_array), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.shuffle_array), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.shuffle_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.shuffle_list), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.test), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.test_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.uniform_float_around_mid), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.uniform_float_around_mid), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.uniform_float_in_01), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.uniform_float_in_01), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.uniform_float_in_range), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.uniform_float_in_range), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.uniform_int_in_range), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.uniform_int_in_range), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.uniform_to_normal), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.uniform_uint_in_range), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.uniform_uint_in_range), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (random.urandom_dup), 3, 0, may_throw(user_exception)).

@@ -1,0 +1,24 @@
+:- module (hlds.hlds_clauses).
+:- interface.
+:- type clause.
+:- type clause_applicable_modes.
+:- type clause_item_number_region.
+:- type clause_item_number_type
+	where	type_is_abstract_enum(1).
+:- type clause_item_number_types
+	where	type_is_abstract_enum(1).
+:- type clause_item_numbers.
+:- type clauses_info.
+:- type clauses_rep.
+:- type maybe_clause_syntax_errors
+	where	type_is_abstract_enum(1).
+:- type maybe_foreign_lang_clauses
+	where	type_is_abstract_enum(1).
+:- type_representation(clause, is_word_aligned_ptr).
+:- type_representation(clause_item_number_region, is_word_aligned_ptr).
+:- type_representation(clause_item_number_type, du_repn(enum("item_is_clause", "item_is_foreign_proc", [],  no_c_j_cs_e))).
+:- type_representation(clause_item_number_types, du_repn(enum("only_clauses", "clauses_and_foreign_procs", [],  no_c_j_cs_e))).
+:- type_representation(clauses_info, is_word_aligned_ptr).
+:- type_representation(clauses_rep, is_word_aligned_ptr).
+:- type_representation(maybe_clause_syntax_errors, du_repn(enum("no_clause_syntax_errors", "some_clause_syntax_errors", [],  no_c_j_cs_e))).
+:- type_representation(maybe_foreign_lang_clauses, du_repn(enum("no_foreign_lang_clauses", "some_foreign_lang_clauses", [],  no_c_j_cs_e))).
