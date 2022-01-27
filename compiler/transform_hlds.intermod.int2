@@ -1,0 +1,13 @@
+:- module (transform_hlds.intermod).
+:- interface.
+:- import_module io.
+:- import_module set.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_item).
+:- type maybe_should_write
+    --->    should_not_write 
+    ;       should_write .
+:- type should_write_for
+    --->    for_analysis_framework 
+    ;       for_pragma .

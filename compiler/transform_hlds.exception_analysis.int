@@ -1,0 +1,16 @@
+:- module (transform_hlds.exception_analysis).
+:- interface.
+:- import_module analysis.
+:- import_module io.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (parse_tree.prog_data).
+:- type exception_analysis_answer.
+:- pred analyse_exceptions_in_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode analyse_exceptions_in_module((builtin.in), (builtin.out)) is det.
+:- pred lookup_exception_analysis_result(hlds.hlds_pred.pred_proc_id, parse_tree.prog_data.exception_status, hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode lookup_exception_analysis_result((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- instance (analysis.analysis(analysis.no_func_info, analysis.any_call, transform_hlds.exception_analysis.exception_analysis_answer)).
+:- instance (analysis.answer_pattern(analysis.no_func_info, transform_hlds.exception_analysis.exception_analysis_answer)).
+:- instance (analysis.partial_order(analysis.no_func_info, transform_hlds.exception_analysis.exception_analysis_answer)).
+:- instance (analysis.to_term(transform_hlds.exception_analysis.exception_analysis_answer)).

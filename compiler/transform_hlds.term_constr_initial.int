@@ -1,0 +1,5 @@
+:- module (transform_hlds.term_constr_initial).
+:- interface.
+:- import_module (hlds.hlds_module).
+:- pred term2_preprocess_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode term2_preprocess_module((builtin.in), (builtin.out)) is det.

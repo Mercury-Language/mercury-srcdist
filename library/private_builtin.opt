@@ -1,0 +1,268 @@
+:- module private_builtin.
+:- use_module builtin.
+:- use_module char.
+:- use_module float.
+:- use_module int.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module type_desc.
+
+:- type base_typeclass_info.
+:- type heap_pointer.
+:- type ref(T).
+:- type type_ctor_info.
+:- type type_info.
+:- type typeclass_info.
+
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", private_builtin).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", private_builtin).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", private_builtin).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("Erlang", private_builtin).
+
+:- pred private_builtin.builtin_strcmp(int, string, string).
+:- mode private_builtin.builtin_strcmp((builtin.out), (builtin.in), (builtin.in)) is det.
+
+:- pragma inline((private_builtin.builtin_compare_character)/3).
+private_builtin.builtin_compare_character(V_4, V_5, V_6) :-
+    char.to_int(V_5, V_7),
+    char.to_int(V_6, V_8),
+    (if
+      int.(V_7 < V_8)
+    then
+      V_4 = builtin.(<) : builtin.comparison_result
+    else
+      (if
+        V_7 = V_8
+      then
+        V_4 = builtin.(=) : builtin.comparison_result
+      else
+        V_4 = builtin.(>) : builtin.comparison_result
+      )
+    ).
+
+:- pragma inline((private_builtin.builtin_compare_float)/3).
+private_builtin.builtin_compare_float(V_4, V_5, V_6) :-
+    (if
+      float.(V_5 < V_6)
+    then
+      V_4 = builtin.(<) : builtin.comparison_result
+    else
+      (if
+        float.(V_5 > V_6)
+      then
+        V_4 = builtin.(>) : builtin.comparison_result
+      else
+        V_4 = builtin.(=) : builtin.comparison_result
+      )
+    ).
+
+:- pragma inline((private_builtin.builtin_compare_int)/3).
+private_builtin.builtin_compare_int(V_4, V_5, V_6) :-
+    (if
+      int.(V_5 < V_6)
+    then
+      V_4 = builtin.(<) : builtin.comparison_result
+    else
+      (if
+        V_5 = V_6
+      then
+        V_4 = builtin.(=) : builtin.comparison_result
+      else
+        V_4 = builtin.(>) : builtin.comparison_result
+      )
+    ).
+
+:- pragma inline((private_builtin.builtin_compare_string)/3).
+private_builtin.builtin_compare_string(V_4, V_5, V_6) :-
+    private_builtin.builtin_strcmp(V_7, V_5, V_6),
+    (if
+      V_8 = 0 : int,
+      int.(V_7 < V_8)
+    then
+      V_4 = builtin.(<) : builtin.comparison_result
+    else
+      (if
+        V_7 = 0 : int
+      then
+        V_4 = builtin.(=) : builtin.comparison_result
+      else
+        V_4 = builtin.(>) : builtin.comparison_result
+      )
+    ).
+
+:- pragma foreign_proc("C", private_builtin.builtin_strcmp(Res :: (builtin.out), S1 :: (builtin.in), S2 :: (builtin.in)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    Res = strcmp(S1, S2);
+").
+
+private_builtin.builtin_unify_character(V_3, V_3).
+
+private_builtin.builtin_unify_float(V_3, V_3).
+
+private_builtin.builtin_unify_int(V_3, V_3).
+
+private_builtin.builtin_unify_string(V_3, V_3).
+
+:- pragma foreign_proc("C", private_builtin.instance_constraint_from_typeclass_info(TypeClassInfo0 :: (builtin.in), Index :: (builtin.in), TypeClassInfo :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    TypeClassInfo =
+        MR_typeclass_info_arg_typeclass_info(TypeClassInfo0, Index);
+").
+
+private_builtin.no_clauses(V_2) :-
+    V_3 = string.(V_4 ++ V_2),
+    V_4 = "no clauses for " : string,
+    require.error(V_3).
+
+:- pragma foreign_proc("C", private_builtin.semip, [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_semipure, will_not_modify_trail], "").
+
+:- pragma foreign_proc("C", private_builtin.superclass_from_typeclass_info(TypeClassInfo0 :: (builtin.in), Index :: (builtin.in), TypeClassInfo :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    TypeClassInfo =
+        MR_typeclass_info_superclass_info(TypeClassInfo0, Index);
+").
+
+:- pragma foreign_proc("C", private_builtin.trace_evaluate_runtime_condition, [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_semipure, may_modify_trail, doesnt_affect_liveness], "
+    /* All uses of this predicate should override the body. */
+    MR_fatal_error(\"trace_evaluate_runtime_condition called\");
+").
+
+:- pragma foreign_proc("C", private_builtin.type_info_from_typeclass_info(TypeClassInfo :: (builtin.in), Index :: (builtin.in), TypeInfo :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    TypeInfo = MR_typeclass_info_param_type_info(TypeClassInfo, Index);
+").
+
+:- pragma foreign_proc("C", private_builtin.unconstrained_type_info_from_typeclass_info(TypeClassInfo :: (builtin.in), Index :: (builtin.in), TypeInfo :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, will_not_modify_trail, doesnt_affect_liveness], "
+    TypeInfo = MR_typeclass_info_instance_tvar_type_info(TypeClassInfo, Index);
+").
+
+private_builtin.unused :-
+    (if
+      builtin.semidet_succeed
+    then
+      V_1 = "attempted use of dead predicate" : string,
+      require.error(V_1)
+    else
+      true
+    ).
+
+:- pragma exceptions(predicate, (private_builtin.builtin_compare_character), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.builtin_compare_float), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.builtin_compare_int), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.builtin_compare_non_canonical_type), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.builtin_compare_pred), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.builtin_compare_solver_type), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.builtin_compare_string), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.builtin_compare_tuple), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.builtin_compound_eq), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.builtin_compound_lt), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.builtin_int_gt), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.builtin_int_lt), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.builtin_strcmp), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.builtin_unify_character), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.builtin_unify_float), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.builtin_unify_int), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.builtin_unify_pred), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.builtin_unify_solver_type), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.builtin_unify_string), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.builtin_unify_tuple), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.compare_error), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.discard_ticket), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.free_heap), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.gc_trace), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.imp), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.instance_constraint_from_typeclass_info), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.mark_hp), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.mark_ticket_stack), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.no_clauses), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.nonvar), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.nonvar), 1, 1, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.nonvar), 1, 2, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.nyi_foreign_type_compare), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.nyi_foreign_type_unify), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.pointer_equal), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.prune_ticket), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.prune_tickets_to), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.reset_ticket_commit), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.reset_ticket_solve), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.reset_ticket_undo), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.restore_hp), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.semip), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.sorry), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.store_at_ref), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.store_at_ref_impure), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.store_ticket), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.superclass_from_typeclass_info), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.trace_evaluate_runtime_condition), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.type_info_from_typeclass_info), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.typed_compare), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.typed_unify), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.typed_unify), 2, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.unconstrained_type_info_from_typeclass_info), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.unsafe_type_cast), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.unused), 0, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (private_builtin.var), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.var), 1, 1, will_not_throw).
+:- pragma exceptions(predicate, (private_builtin.var), 1, 2, will_not_throw).
+
+:- pragma termination_info(private_builtin.builtin_compare_character((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(private_builtin.builtin_compare_float((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.builtin_compare_int((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.builtin_compare_non_canonical_type((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(private_builtin.builtin_compare_pred((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(private_builtin.builtin_compare_solver_type((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(private_builtin.builtin_compare_string((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.builtin_compare_tuple((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(private_builtin.builtin_compound_eq((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.builtin_compound_lt((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.builtin_int_gt((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.builtin_int_lt((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.builtin_strcmp((builtin.out), (builtin.in), (builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(private_builtin.builtin_unify_character((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.builtin_unify_float((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.builtin_unify_int((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.builtin_unify_pred((builtin.in), (builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(private_builtin.builtin_unify_solver_type((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(private_builtin.builtin_unify_string((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.builtin_unify_tuple((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info((private_builtin.compare_error), infinite, can_loop).
+:- pragma termination_info((private_builtin.discard_ticket), finite(0, []), cannot_loop).
+:- pragma termination_info(private_builtin.free_heap((builtin.di)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.gc_trace((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info((private_builtin.imp), finite(0, []), cannot_loop).
+:- pragma termination_info(private_builtin.instance_constraint_from_typeclass_info((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(private_builtin.mark_hp((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(private_builtin.mark_ticket_stack((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(private_builtin.no_clauses((builtin.in)), infinite, can_loop).
+:- pragma termination_info(private_builtin.nonvar((builtin.ui)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.nonvar((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.nonvar((builtin.unused)), infinite, cannot_loop).
+:- pragma termination_info(private_builtin.nyi_foreign_type_compare((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(private_builtin.nyi_foreign_type_unify((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(private_builtin.pointer_equal((builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info((private_builtin.prune_ticket), finite(0, []), cannot_loop).
+:- pragma termination_info(private_builtin.prune_tickets_to((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(private_builtin.reset_ticket_commit((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(private_builtin.reset_ticket_solve((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(private_builtin.reset_ticket_undo((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info(private_builtin.restore_hp((builtin.in)), finite(0, [no]), cannot_loop).
+:- pragma termination_info((private_builtin.semip), finite(0, []), cannot_loop).
+:- pragma termination_info(private_builtin.sorry((builtin.in)), infinite, can_loop).
+:- pragma termination_info(private_builtin.store_at_ref((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.store_at_ref_impure((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(private_builtin.store_ticket((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(private_builtin.superclass_from_typeclass_info((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((private_builtin.trace_evaluate_runtime_condition), finite(0, []), cannot_loop).
+:- pragma termination_info(private_builtin.type_info_from_typeclass_info((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(private_builtin.typed_compare((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no, no, no]), can_loop).
+:- pragma termination_info(private_builtin.typed_unify((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(private_builtin.typed_unify((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(private_builtin.unconstrained_type_info_from_typeclass_info((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(private_builtin.unsafe_type_cast((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((private_builtin.unused), finite(0, []), can_loop).
+:- pragma termination_info(private_builtin.var((builtin.ui)), infinite, cannot_loop).
+:- pragma termination_info(private_builtin.var((builtin.in)), infinite, cannot_loop).
+:- pragma termination_info(private_builtin.var((builtin.unused)), finite(0, [no, no]), cannot_loop).

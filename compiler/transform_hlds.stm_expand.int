@@ -1,0 +1,5 @@
+:- module (transform_hlds.stm_expand).
+:- interface.
+:- import_module (hlds.hlds_module).
+:- pred stm_process_module(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode stm_process_module((builtin.in), (builtin.out)) is det.

@@ -1,0 +1,13 @@
+:- module (transform_hlds.term_pass1).
+:- interface.
+:- import_module list.
+:- import_module pair.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (transform_hlds.term_errors).
+:- import_module (transform_hlds.term_util).
+:- type arg_size_result
+    --->    arg_size_ok(list.list(pair.pair(hlds.hlds_pred.pred_proc_id, int)), transform_hlds.term_util.used_args)
+    ;       arg_size_error(list.list(transform_hlds.term_errors.term_error)).
+:- pred find_arg_sizes_in_scc(hlds.hlds_module.module_info, transform_hlds.term_util.pass_info, list.list(hlds.hlds_pred.pred_proc_id), transform_hlds.term_pass1.arg_size_result, list.list(transform_hlds.term_errors.term_error)).
+:- mode find_arg_sizes_in_scc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.

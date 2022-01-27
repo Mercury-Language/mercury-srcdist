@@ -1,0 +1,72 @@
+:- module std_util.
+:- use_module builtin.
+:- use_module int.
+:- use_module maybe.
+:- use_module private_builtin.
+
+std_util.compose(V_5, V_6, V_7) = V_4 :-
+    V_4 = apply(V_5, V_8),
+    V_8 = apply(V_6, V_7).
+
+std_util.converse(V_5, V_6, V_7) = V_4 :-
+    V_4 = apply(V_5, V_7, V_6).
+
+std_util.id(V_3) = V_3.
+
+std_util.isnt(V_3, V_4) :-
+    \+ (
+      call(V_3, V_4)
+    ).
+
+std_util.maybe_func(V_4, V_5) = V_3 :-
+    (if
+      V_6 = apply(V_4, V_5)
+    then
+      V_3 = maybe.yes(V_6) : maybe.maybe(T2_2)
+    else
+      V_3 = maybe.no : maybe.maybe(T2_2)
+    ).
+
+std_util.maybe_pred(V_4, V_5, V_6) :-
+    (if
+      call(V_4, V_5, V_7)
+    then
+      V_6 = maybe.yes(V_7) : maybe.maybe(T2_2)
+    else
+      V_6 = maybe.no : maybe.maybe(T2_2)
+    ).
+
+std_util.negate(V_2) :-
+    \+ (
+      call(V_2)
+    ).
+
+std_util.pow(V_5, V_6, V_7) = V_4 :-
+    (if
+      V_6 = 0 : int
+    then
+      V_4 = V_7
+    else
+      V_4 = std_util.pow(V_5, V_8, V_10),
+      V_8 = int.(V_6 - V_9),
+      V_9 = 1 : int,
+      V_10 = apply(V_5, V_7)
+    ).
+
+:- pragma exceptions(function, (std_util.compose), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (std_util.converse), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (std_util.id), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (std_util.isnt), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (std_util.maybe_func), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (std_util.maybe_pred), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (std_util.negate), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (std_util.pow), 4, 0, may_throw(user_exception)).
+
+:- pragma termination_info(std_util.compose((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(std_util.converse((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(std_util.id((builtin.in)) = (builtin.out), finite(0, [no, yes, no]), cannot_loop).
+:- pragma termination_info(std_util.isnt(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(std_util.maybe_func((func((builtin.in)) = (builtin.out) is semidet), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(std_util.maybe_pred((pred((builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(std_util.negate(builtin.in(((pred) is semidet))), infinite, can_loop).
+:- pragma termination_info(std_util.pow((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).

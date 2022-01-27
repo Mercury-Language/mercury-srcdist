@@ -1,0 +1,11 @@
+:- module ((hlds.make_hlds).add_mode).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_item).
+:- pred module_add_inst_defn(parse_tree.prog_item.item_inst_defn_info, hlds.status.inst_status, bool.bool, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode module_add_inst_defn((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred module_add_mode_defn(parse_tree.prog_item.item_mode_defn_info, hlds.status.mode_status, bool.bool, hlds.hlds_module.module_info, hlds.hlds_module.module_info, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode module_add_mode_defn((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
