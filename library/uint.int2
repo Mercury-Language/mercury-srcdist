@@ -1,0 +1,4 @@
+:- module uint.
+:- interface.
+:- type placeholder_uint
+    --->    placeholder_uint .

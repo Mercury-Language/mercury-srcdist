@@ -1,0 +1,4 @@
+:- module (hlds.mark_tail_calls).
+:- interface.
+:- type maybe_changed
+	where	type_is_abstract_enum(1).
