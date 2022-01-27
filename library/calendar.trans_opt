@@ -1,0 +1,139 @@
+:- module calendar.
+
+:- pragma termination_info(calendar.add_duration((builtin.in), (builtin.in), (builtin.out)), finite(7, [no, no, no]), can_loop).
+:- pragma termination_info(calendar.compute_day_of_week((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(calendar.current_local_time((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(calendar.current_utc_time((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(calendar.date_from_string((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(calendar.date_to_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(calendar.day_duration((builtin.in), (builtin.in)) = (builtin.out), finite(4, [no, no, no]), cannot_loop).
+:- pragma termination_info(calendar.day_of_month((builtin.in)) = (builtin.out), finite(-7, [yes, no]), cannot_loop).
+:- pragma termination_info(calendar.day_of_week((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(calendar.days((builtin.in)) = (builtin.out), finite(-4, [yes, no]), cannot_loop).
+:- pragma termination_info(calendar.det_date_from_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(calendar.det_day_of_week_from_mod((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(calendar.det_duration_from_string((builtin.in)) = (builtin.out), finite(4, [no, no]), can_loop).
+:- pragma termination_info(calendar.det_init_date((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(7, [yes, no, yes, yes, yes, yes, yes, no]), can_loop).
+:- pragma termination_info(calendar.det_int0_to_month((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(calendar.det_int_to_month((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(calendar.duration((builtin.in), (builtin.in)) = (builtin.out), finite(4, [no, no, no]), can_loop).
+:- pragma termination_info(calendar.duration_from_string((builtin.in), (builtin.out)), finite(4, [no, no]), can_loop).
+:- pragma termination_info(calendar.duration_leq((builtin.in), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(calendar.duration_to_string((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(calendar.foldl2_days(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl2_days(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl2_days(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl2_days(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl2_days(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl2_days(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl3_days(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl3_days(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl3_days(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl3_days(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl3_days(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl3_days(((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl_days(((pred((builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl_days(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl_days(((pred((builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl_days(((pred((builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl_days(((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(calendar.foldl_days(((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(calendar.hour((builtin.in)) = (builtin.out), finite(-7, [yes, no]), cannot_loop).
+:- pragma termination_info(calendar.hours((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(calendar.init_date((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(7, [yes, no, yes, yes, yes, yes, yes, no]), can_loop).
+:- pragma termination_info(calendar.init_duration((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), finite(4, [no, no, no, no, no, no, no, no]), cannot_loop).
+:- pragma termination_info(calendar.int0_to_month((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(calendar.int0_to_month((builtin.out), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(calendar.int_to_month((builtin.in), (builtin.out)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(calendar.int_to_month((builtin.out), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(calendar.julian_day_number((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(calendar.local_time_offset((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(calendar.microsecond((builtin.in)) = (builtin.out), finite(-7, [yes, no]), cannot_loop).
+:- pragma termination_info(calendar.microseconds((builtin.in)) = (builtin.out), finite(-4, [yes, no]), cannot_loop).
+:- pragma termination_info(calendar.minute((builtin.in)) = (builtin.out), finite(-7, [yes, no]), cannot_loop).
+:- pragma termination_info(calendar.minutes((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(calendar.month((builtin.in)) = (builtin.out), finite(0, [no, no]), can_loop).
+:- pragma termination_info(calendar.month_to_int((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(calendar.month_to_int0((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(calendar.months((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(calendar.negate((builtin.in)) = (builtin.out), finite(4, [no, no]), cannot_loop).
+:- pragma termination_info(calendar.same_date((builtin.in), (builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(calendar.second((builtin.in)) = (builtin.out), finite(-7, [yes, no]), cannot_loop).
+:- pragma termination_info(calendar.seconds((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info((calendar.test_dates) = (builtin.out), finite(36, [no]), cannot_loop).
+:- pragma termination_info(calendar.tm_to_date((builtin.in)) = (builtin.out), finite(-2, [yes, no]), cannot_loop).
+:- pragma termination_info((calendar.unix_epoch) = (builtin.out), finite(7, [no]), cannot_loop).
+:- pragma termination_info(calendar.unpack_date((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), finite(-7, [yes, no, no, no, no, no, no, no]), can_loop).
+:- pragma termination_info(calendar.unpack_duration((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(calendar.year((builtin.in)) = (builtin.out), finite(-7, [yes, no]), cannot_loop).
+:- pragma termination_info(calendar.years((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info((calendar.zero_duration) = (builtin.out), finite(4, [no]), cannot_loop).
+
+:- pragma exceptions(predicate, (calendar.add_duration), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.compute_day_of_week), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.current_local_time), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.current_utc_time), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.date_from_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.date_to_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.day_duration), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.day_of_month), 2, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.day_of_week), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.days), 2, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.det_date_from_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.det_day_of_week_from_mod), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.det_duration_from_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.det_init_date), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.det_int0_to_month), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.det_int_to_month), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.duration), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.duration_from_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.duration_leq), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.duration_to_string), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl2_days), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl2_days), 7, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl2_days), 7, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl2_days), 7, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl2_days), 7, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl2_days), 7, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl3_days), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl3_days), 9, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl3_days), 9, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl3_days), 9, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl3_days), 9, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl3_days), 9, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl_days), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl_days), 5, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl_days), 5, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl_days), 5, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl_days), 5, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.foldl_days), 5, 5, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.hour), 2, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.hours), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.init_date), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.init_duration), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.int0_to_month), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (calendar.int0_to_month), 2, 1, will_not_throw).
+:- pragma exceptions(predicate, (calendar.int_to_month), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (calendar.int_to_month), 2, 1, will_not_throw).
+:- pragma exceptions(function, (calendar.julian_day_number), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.local_time_offset), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.microsecond), 2, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.microseconds), 2, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.minute), 2, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.minutes), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.month), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.month_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.month_to_int0), 2, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.months), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.negate), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (calendar.same_date), 2, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.second), 2, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.seconds), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.test_dates), 1, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.tm_to_date), 2, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.unix_epoch), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (calendar.unpack_date), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (calendar.unpack_duration), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.year), 2, 0, will_not_throw).
+:- pragma exceptions(function, (calendar.years), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (calendar.zero_duration), 1, 0, will_not_throw).

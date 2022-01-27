@@ -1,0 +1,6 @@
+:- module diet.
+:- interface.
+:- type diet(T).
+:- typeclass diet_element(T).
+:- instance (diet.diet_element(int)).
+:- type_representation(interval(V_1), is_eqv_to({V_1, V_1})).

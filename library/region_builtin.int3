@@ -1,0 +1,3 @@
+:- module region_builtin.
+:- interface.
+:- type region.

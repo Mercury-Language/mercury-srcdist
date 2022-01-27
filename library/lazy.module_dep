@@ -1,0 +1,13 @@
+module(1, "lazy.m",
+	lazy,
+	{},
+	{builtin, private_builtin},
+	{builtin, mutvar, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

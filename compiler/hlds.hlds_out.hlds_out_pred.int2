@@ -1,0 +1,6 @@
+:- module ((hlds.hlds_out).hlds_out_pred).
+:- interface.
+:- type write_which_modes
+    --->    write_actual_modes 
+    ;       write_declared_modes .
+:- type_representation(write_which_modes, du_repn(enum("write_actual_modes", "write_declared_modes", [],  no_c_j_cs))).

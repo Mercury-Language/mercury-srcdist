@@ -1,0 +1,101 @@
+:- module hash_table.
+:- interface.
+:- use_module array.
+:- use_module assoc_list.
+:- use_module char.
+:- type hash_bucket(K, V).
+:- type hash_pred(K) == pred(K, int).
+:- type hash_table(K, V).
+:- type hash_table(K, V)
+    --->    ht((hash_table.num_occupants) :: int, (hash_table.max_occupants) :: int, (hash_table.hash_pred) :: hash_table.hash_pred(K), (hash_table.buckets) :: array.array(hash_table.hash_bucket(K, V))).
+:- inst (hash_pred) == (pred((builtin.in), (builtin.out)) is det).
+:- inst (hash_table) for hash_table.hash_table/2 == bound(ht(ground, ground, (hash_table.hash_pred), (array.array))).
+:- mode (hash_table_di) == builtin.di((hash_table.hash_table)).
+:- mode (hash_table_ui) == builtin.in((hash_table.hash_table)).
+:- mode (hash_table_uo) == builtin.out((hash_table.hash_table)).
+:- pred char_hash(char.char, int).
+:- mode char_hash((builtin.in), (builtin.out)) is det.
+:- func copy(hash_table.hash_table(K, V)) = hash_table.hash_table(K, V).
+:- mode copy((hash_table.hash_table_ui)) = (hash_table.hash_table_uo) is det.
+:- pred delete(K, hash_table.hash_table(K, V), hash_table.hash_table(K, V)).
+:- mode delete((builtin.in), (hash_table.hash_table_di), (hash_table.hash_table_uo)) is det.
+:- func delete(hash_table.hash_table(K, V), K) = hash_table.hash_table(K, V).
+:- mode delete((hash_table.hash_table_di), (builtin.in)) = (hash_table.hash_table_uo) is det.
+:- pred det_insert(K, V, hash_table.hash_table(K, V), hash_table.hash_table(K, V)).
+:- mode det_insert((builtin.in), (builtin.in), (hash_table.hash_table_di), (hash_table.hash_table_uo)) is det.
+:- func det_insert(hash_table.hash_table(K, V), K, V) = hash_table.hash_table(K, V).
+:- mode det_insert((hash_table.hash_table_di), (builtin.in), (builtin.in)) = (hash_table.hash_table_uo) is det.
+:- pred det_update(K, V, hash_table.hash_table(K, V), hash_table.hash_table(K, V)).
+:- mode det_update((builtin.in), (builtin.in), (hash_table.hash_table_di), (hash_table.hash_table_uo)) is det.
+:- func det_update(hash_table.hash_table(K, V), K, V) = hash_table.hash_table(K, V).
+:- mode det_update((hash_table.hash_table_di), (builtin.in), (builtin.in)) = (hash_table.hash_table_uo) is det.
+:- func elem(K, hash_table.hash_table(K, V)) = V.
+:- mode elem((builtin.in), (hash_table.hash_table_ui)) = (builtin.out) is det.
+:- func 'elem :='(K, hash_table.hash_table(K, V), V) = hash_table.hash_table(K, V).
+:- mode 'elem :='((builtin.in), (hash_table.hash_table_di), (builtin.in)) = (hash_table.hash_table_uo) is det.
+:- pred float_hash(float, int).
+:- mode float_hash((builtin.in), (builtin.out)) is det.
+:- pred fold(pred(K, V, A, A), hash_table.hash_table(K, V), A, A).
+:- mode fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out)) is det.
+:- mode fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (hash_table.hash_table_ui), (builtin.mdi), (builtin.muo)) is det.
+:- mode fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (hash_table.hash_table_ui), (builtin.di), (builtin.uo)) is det.
+:- mode fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out)) is semidet.
+:- mode fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (hash_table.hash_table_ui), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (hash_table.hash_table_ui), (builtin.di), (builtin.uo)) is semidet.
+:- func fold((func(K, V, T) = T), hash_table.hash_table(K, V), T) = T.
+:- mode fold(((func((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det) >> (func((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det)), (hash_table.hash_table_ui), (builtin.in)) = (builtin.out) is det.
+:- mode fold(((func((builtin.in), (builtin.in), (builtin.di)) = (builtin.uo) is det) >> (func((builtin.in), (builtin.in), (builtin.di)) = (builtin.uo) is det)), (hash_table.hash_table_ui), (builtin.di)) = (builtin.uo) is det.
+:- pred fold2(pred(K, V, A, A, B, B), hash_table.hash_table(K, V), A, A, B, B).
+:- mode fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred fold3(pred(K, V, A, A, B, B, C, C), hash_table.hash_table(K, V), A, A, B, B, C, C).
+:- mode fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- func from_assoc_list(hash_table.hash_pred(K), assoc_list.assoc_list(K, V)) = hash_table.hash_table(K, V).
+:- mode from_assoc_list(builtin.in((hash_table.hash_pred)), (builtin.in)) = (hash_table.hash_table_uo) is det.
+:- func from_assoc_list(hash_table.hash_pred(K), int, float, assoc_list.assoc_list(K, V)) = hash_table.hash_table(K, V).
+:- mode from_assoc_list(builtin.in((hash_table.hash_pred)), (builtin.in), (builtin.in), (builtin.in)) = (hash_table.hash_table_uo) is det.
+:- pred generic_hash(T, int).
+:- mode generic_hash((builtin.in), (builtin.out)) is det.
+:- func hash_pred(hash_table.hash_table(K, V)) = hash_table.hash_pred(K).
+:- mode hash_pred((hash_table.hash_table_ui)) = builtin.out((hash_table.hash_pred)) is det.
+:- func init(hash_table.hash_pred(K), int, float) = hash_table.hash_table(K, V).
+:- mode init(builtin.in((hash_table.hash_pred)), (builtin.in), (builtin.in)) = (hash_table.hash_table_uo) is det.
+:- func init_default(hash_table.hash_pred(K)) = hash_table.hash_table(K, V).
+:- mode init_default(builtin.in((hash_table.hash_pred))) = (hash_table.hash_table_uo) is det.
+:- pred int_hash(int, int).
+:- mode int_hash((builtin.in), (builtin.out)) is det.
+:- func lookup(hash_table.hash_table(K, V), K) = V.
+:- mode lookup((hash_table.hash_table_ui), (builtin.in)) = (builtin.out) is det.
+:- func num_buckets(hash_table.hash_table(K, V)) = int.
+:- mode num_buckets((hash_table.hash_table_ui)) = (builtin.out) is det.
+:- func num_occupants(hash_table.hash_table(K, V)) = int.
+:- mode num_occupants((hash_table.hash_table_ui)) = (builtin.out) is det.
+:- pred search(hash_table.hash_table(K, V), K, V).
+:- mode search((hash_table.hash_table_ui), (builtin.in), (builtin.out)) is semidet.
+:- func search(hash_table.hash_table(K, V), K) = V.
+:- mode search((hash_table.hash_table_ui), (builtin.in)) = (builtin.out) is semidet.
+:- pred set(K, V, hash_table.hash_table(K, V), hash_table.hash_table(K, V)).
+:- mode set((builtin.in), (builtin.in), (hash_table.hash_table_di), (hash_table.hash_table_uo)) is det.
+:- func set(hash_table.hash_table(K, V), K, V) = hash_table.hash_table(K, V).
+:- mode set((hash_table.hash_table_di), (builtin.in), (builtin.in)) = (hash_table.hash_table_uo) is det.
+:- pred string_hash(string, int).
+:- mode string_hash((builtin.in), (builtin.out)) is det.
+:- func to_assoc_list(hash_table.hash_table(K, V)) = assoc_list.assoc_list(K, V).
+:- mode to_assoc_list((hash_table.hash_table_ui)) = (builtin.out) is det.
+:- pred uint_hash(uint, int).
+:- mode uint_hash((builtin.in), (builtin.out)) is det.
+:- pragma obsolete((hash_table.char_hash)/2, [(char.hash)/2]).
+:- pragma obsolete((hash_table.float_hash)/2, [(float.hash)/2]).
+:- pragma obsolete((hash_table.generic_hash)/2, []).
+:- pragma obsolete((hash_table.int_hash)/2, [(int.hash)/2]).
+:- pragma obsolete((hash_table.string_hash)/2, [(string.hash)/2]).
+:- pragma obsolete((hash_table.uint_hash)/2, [(uint.hash)/2]).
