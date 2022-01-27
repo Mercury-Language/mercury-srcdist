@@ -1,0 +1,153 @@
+:- module hash_table.
+
+:- pragma termination_info(hash_table.acc_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.char_hash((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(hash_table.copy((hash_table.hash_table_ui)) = (hash_table.hash_table_uo), infinite, cannot_loop).
+:- pragma termination_info(hash_table.delete((hash_table.hash_table_di), (builtin.in)) = (hash_table.hash_table_uo), infinite, can_loop).
+:- pragma termination_info(hash_table.delete((builtin.in), (hash_table.hash_table_di), (hash_table.hash_table_uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.det_insert((hash_table.hash_table_di), (builtin.in), (builtin.in)) = (hash_table.hash_table_uo), infinite, can_loop).
+:- pragma termination_info(hash_table.det_insert((builtin.in), (builtin.in), (hash_table.hash_table_di), (hash_table.hash_table_uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.det_update((hash_table.hash_table_di), (builtin.in), (builtin.in)) = (hash_table.hash_table_uo), infinite, can_loop).
+:- pragma termination_info(hash_table.det_update((builtin.in), (builtin.in), (hash_table.hash_table_di), (hash_table.hash_table_uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.elem((builtin.in), (hash_table.hash_table_ui)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(hash_table.'elem :='((builtin.in), (hash_table.hash_table_di), (builtin.in)) = (hash_table.hash_table_uo), infinite, can_loop).
+:- pragma termination_info(hash_table.find_slot((hash_table.hash_table_ui), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(hash_table.find_slot_2(builtin.in((hash_table.hash_pred)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.float_hash((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(hash_table.fold(((func((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det) >> (func((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det)), (hash_table.hash_table_ui), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(hash_table.fold(((func((builtin.in), (builtin.in), (builtin.di)) = (builtin.uo) is det) >> (func((builtin.in), (builtin.in), (builtin.di)) = (builtin.uo) is det)), (hash_table.hash_table_ui), (builtin.di)) = (builtin.uo), infinite, can_loop).
+:- pragma termination_info(hash_table.fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (hash_table.hash_table_ui), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (hash_table.hash_table_ui), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (hash_table.hash_table_ui), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (hash_table.hash_table_ui), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold2(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold2_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold2_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold2_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold2_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold2_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold2_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold3(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (hash_table.hash_table_ui), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold3_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold3_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold3_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold3_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold3_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold3_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold_f(((func((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det) >> (func((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold_f(((func((builtin.in), (builtin.in), (builtin.di)) = (builtin.uo) is det) >> (func((builtin.in), (builtin.in), (builtin.di)) = (builtin.uo) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold_p(((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold_p(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold_p(((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold_p(((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(hash_table.fold_p(((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet) >> (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.foldlf(((func((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det) >> (func((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.foldlf(((func((builtin.in), (builtin.in), (builtin.di)) = (builtin.uo) is det) >> (func((builtin.in), (builtin.in), (builtin.di)) = (builtin.uo) is det)), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.from_assoc_list(builtin.in((hash_table.hash_pred)), (builtin.in)) = (hash_table.hash_table_uo), infinite, can_loop).
+:- pragma termination_info(hash_table.from_assoc_list(builtin.in((hash_table.hash_pred)), (builtin.in), (builtin.in), (builtin.in)) = (hash_table.hash_table_uo), infinite, can_loop).
+:- pragma termination_info(hash_table.from_assoc_list_loop((builtin.in), (hash_table.hash_table_di), (hash_table.hash_table_uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.generic_hash((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.hash_bucket_search((builtin.in), (builtin.in), (builtin.out)), finite(-2, [no, no, yes, no, no]), cannot_loop).
+:- pragma termination_info(hash_table.hash_pred((hash_table.hash_table_ui)) = builtin.out((hash_table.hash_pred)), finite(-4, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(hash_table.init(builtin.in((hash_table.hash_pred)), (builtin.in), (builtin.in)) = (hash_table.hash_table_uo), infinite, cannot_loop).
+:- pragma termination_info(hash_table.init_default(builtin.in((hash_table.hash_pred))) = (hash_table.hash_table_uo), infinite, can_loop).
+:- pragma termination_info(hash_table.int_hash((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(hash_table.lookup((hash_table.hash_table_ui), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(hash_table.num_buckets((hash_table.hash_table_ui)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(hash_table.num_occupants((hash_table.hash_table_ui)) = (builtin.out), finite(-4, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(hash_table.search((hash_table.hash_table_ui), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(hash_table.search((hash_table.hash_table_ui), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(hash_table.set((hash_table.hash_table_di), (builtin.in), (builtin.in)) = (hash_table.hash_table_uo), infinite, can_loop).
+:- pragma termination_info(hash_table.set((builtin.in), (builtin.in), (hash_table.hash_table_di), (hash_table.hash_table_uo)), infinite, can_loop).
+:- pragma termination_info(hash_table.string_hash((builtin.in), (builtin.out)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(hash_table.to_assoc_list((hash_table.hash_table_ui)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(hash_table.uint_hash((builtin.in), (builtin.out)), infinite, cannot_loop).
+
+:- pragma exceptions(predicate, (hash_table.acc_assoc_list), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (hash_table.char_hash), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.copy), 1, 0, will_not_throw).
+:- pragma exceptions(function, (hash_table.delete), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.delete), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.det_insert), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.det_update), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.det_update), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.elem), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.'elem :='), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.find_slot), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.find_slot_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.float_hash), 2, 0, will_not_throw).
+:- pragma exceptions(function, (hash_table.fold), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.fold), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold2_p), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold2_p), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold2_p), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold2_p), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold2_p), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold2_p), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold3), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold3_p), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold3_p), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold3_p), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold3_p), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold3_p), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold3_p), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold_f), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold_f), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold_p), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold_p), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold_p), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold_p), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold_p), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.fold_p), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.foldlf), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.foldlf), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.from_assoc_list), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.from_assoc_list_loop), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.generic_hash), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.hash_bucket_search), 3, 0, may_throw(type_exception)).
+:- pragma exceptions(function, (hash_table.hash_pred), 1, 0, will_not_throw).
+:- pragma exceptions(function, (hash_table.init), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.init_default), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.int_hash), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.lookup), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.num_buckets), 1, 0, will_not_throw).
+:- pragma exceptions(function, (hash_table.num_occupants), 1, 0, will_not_throw).
+:- pragma exceptions(function, (hash_table.search), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (hash_table.set), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.string_hash), 2, 0, will_not_throw).
+:- pragma exceptions(function, (hash_table.to_assoc_list), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (hash_table.uint_hash), 2, 0, may_throw(user_exception)).

@@ -1,0 +1,60 @@
+/*
+** Automatically generated from `rbmm.execution_path.m'
+** by the Mercury compiler,
+** version rotd-2022-01-01
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module transform_hlds.rbmm.execution_path.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_transform_hlds__rbmm__execution_path
+#define MR_HEADER_GUARD_transform_hlds__rbmm__execution_path
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__RBMM__EXECUTION_PATH_DECL_GUARD
+#define TRANSFORM_HLDS__RBMM__EXECUTION_PATH_DECL_GUARD
+#include "transform_hlds.mih"
+#include "transform_hlds.rbmm.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+transform_hlds__rbmm__execution_path__execution_path_analysis_2_p_0(
+  MR_Word param_1,
+  MR_Word * param_2);
+
+void mercury__transform_hlds__rbmm__execution_path__init(void);
+void mercury__transform_hlds__rbmm__execution_path__init_type_tables(void);
+void mercury__transform_hlds__rbmm__execution_path__init_debugger(void);
+const char *mercury__transform_hlds__rbmm__execution_path__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_transform_hlds.rbmm.execution_path
+
+// :- end_interface transform_hlds.rbmm.execution_path.
