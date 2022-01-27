@@ -1,0 +1,23 @@
+:- module maybe.
+:- interface.
+:- import_module list.
+:- type maybe(T)
+	--->	no 
+	;	yes(T).
+:- type maybe_error
+	--->	ok 
+	;	error(string).
+:- type maybe_error(T) == maybe.maybe_error(T, string).
+:- type maybe_error(T, E)
+	--->	ok(T)
+	;	error(E).
+:- type maybe_errors(T) == maybe.maybe_errors(T, string).
+:- type maybe_errors(T, E)
+	--->	ok(T)
+	;	error(E, list.list(E)).
+:- inst (maybe(I)) == bound(no ; yes(I)).
+:- inst (maybe_error(I)) == bound(error(ground) ; ok(I)).
+:- inst (maybe_error_ok(I)) == bound(ok(I)).
+:- inst (maybe_errors(I)) == bound(error(ground) ; ok(I)).
+:- inst (maybe_errors_ok(I)) == bound(ok(I)).
+:- inst (maybe_yes(I)) == bound(yes(I)).

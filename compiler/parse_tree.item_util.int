@@ -1,0 +1,20 @@
+:- module (parse_tree.item_util).
+:- interface.
+:- import_module bool.
+:- import_module list.
+:- import_module (libs.globals).
+:- import_module (parse_tree.module_imports).
+:- import_module (parse_tree.prog_item).
+:- type short_interface_kind
+	--->	int2 
+	;	int3 .
+:- pred append_pseudo_decl(parse_tree.prog_item.module_defn, parse_tree.module_imports.module_and_imports, parse_tree.module_imports.module_and_imports).
+:- mode append_pseudo_decl((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func item_needs_foreign_imports(parse_tree.prog_item.item) = list.list(libs.globals.foreign_language).
+:- func item_needs_imports(parse_tree.prog_item.item) = bool.bool.
+:- pred make_abstract_defn(parse_tree.prog_item.item, parse_tree.item_util.short_interface_kind, parse_tree.prog_item.item).
+:- mode make_abstract_defn((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred make_abstract_unify_compare(parse_tree.prog_item.item, parse_tree.item_util.short_interface_kind, parse_tree.prog_item.item).
+:- mode make_abstract_unify_compare((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func make_instance_abstract(parse_tree.prog_item.item_instance_info) = parse_tree.prog_item.item_instance_info.
+:- func make_pseudo_decl(parse_tree.prog_item.module_defn) = parse_tree.prog_item.item.

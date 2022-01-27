@@ -1,0 +1,38 @@
+:- module (mdb.declarative_user).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module (mdb.browser_info).
+:- import_module (mdb.declarative_debugger).
+:- import_module (mdb.help).
+:- type user_question(T)
+	--->	plain_question(mdb.declarative_debugger.decl_question(T))
+	;	question_with_default(mdb.declarative_debugger.decl_question(T), mdb.declarative_debugger.decl_truth).
+:- type user_response(T)
+	--->	user_response_answer(mdb.declarative_debugger.decl_question(T), mdb.declarative_debugger.decl_answer(T))
+	;	user_response_trust_predicate(mdb.declarative_debugger.decl_question(T))
+	;	user_response_trust_module(mdb.declarative_debugger.decl_question(T))
+	;	user_response_show_info(io.output_stream)
+	;	user_response_change_search(mdb.declarative_user.user_search_mode)
+	;	user_response_undo 
+	;	user_response_exit_diagnosis(T)
+	;	user_response_abort_diagnosis .
+:- type user_search_mode
+	--->	user_top_down 
+	;	user_divide_and_query 
+	;	user_suspicion_divide_and_query 
+	;	user_binary .
+:- type user_state.
+:- func get_browser_state(mdb.declarative_user.user_state) = mdb.browser_info.browser_persistent_state.
+:- func get_user_input_stream(mdb.declarative_user.user_state) = io.input_stream.
+:- func get_user_output_stream(mdb.declarative_user.user_state) = io.output_stream.
+:- pred query_user(mdb.declarative_user.user_question(T), mdb.declarative_user.user_response(T), mdb.declarative_user.user_state, mdb.declarative_user.user_state, io.io, io.io).
+:- mode query_user((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred set_browser_state(mdb.browser_info.browser_persistent_state, mdb.declarative_user.user_state, mdb.declarative_user.user_state).
+:- mode set_browser_state((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred set_user_testing_flag(bool.bool, mdb.declarative_user.user_state, mdb.declarative_user.user_state).
+:- mode set_user_testing_flag((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred user_confirm_bug(mdb.declarative_debugger.decl_bug, mdb.declarative_debugger.decl_confirmation, mdb.declarative_user.user_state, mdb.declarative_user.user_state, io.io, io.io).
+:- mode user_confirm_bug((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred user_state_init(io.input_stream, io.output_stream, mdb.browser_info.browser_persistent_state, mdb.help.system, mdb.declarative_user.user_state).
+:- mode user_state_init((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

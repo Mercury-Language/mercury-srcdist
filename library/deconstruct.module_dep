@@ -1,0 +1,13 @@
+module(1, "deconstruct.m",
+	deconstruct,
+	{},
+	{builtin, construct, list, maybe, univ, private_builtin},
+	{builtin, construct, list, maybe, univ, int, require, type_desc, private_builtin, erlang_rtti_implementation, rtti_implementation},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - deconstruct, "C" - deconstruct},
+	no_foreign_export,
+	no_main
+).

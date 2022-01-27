@@ -1,0 +1,10479 @@
+/*
+** Automatically generated from `structure_sharing.analysis.m'
+** by the Mercury compiler,
+** version rotd-2015-03-24
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.ctgc.structure_sharing.analysis. */
+/* :- implementation. */
+
+/*
+INIT mercury__transform_hlds__ctgc__structure_sharing__analysis__init
+ENDINIT
+*/
+
+#include "transform_hlds.ctgc.structure_sharing.analysis.mih"
+
+
+#include "analysis.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "hlds.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "ll_backend.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "term_conversion.mih"
+#include "time.mih"
+#include "transform_hlds.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.simplify.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_out.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.passes_aux.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "libs.file_util.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "ll_backend.liveness.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_names.mih"
+#include "parse_tree.mercury_to_mercury.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_ctgc.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_out.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.ctgc.mih"
+#include "transform_hlds.dependency_graph.mih"
+#include "transform_hlds.mmc_analysis.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "check_hlds.simplify.simplify_proc.mih"
+#include "check_hlds.simplify.simplify_tasks.mih"
+#include "hlds.hlds_out.hlds_out_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+#include "transform_hlds.ctgc.fixpoint_table.mih"
+#include "transform_hlds.ctgc.selector.mih"
+#include "transform_hlds.ctgc.structure_sharing.mih"
+#include "transform_hlds.ctgc.util.mih"
+#include "transform_hlds.ctgc.structure_sharing.domain.mih"
+
+
+
+#line 1182 "structure_sharing.analysis.m"
+struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s {
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__ModuleInfo_8;
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__STATE_VARIABLE_AnalysisInfo_0_33;
+#line 163 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_bool transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded;
+#line 1216 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reasons_23;
+#line 1222 "structure_sharing.analysis.m"
+  jmp_buf transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__commit_0;
+#line 1222 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reason_24;
+#line 1222 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__conv0_Reason_24;
+#line 173 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reasons_130;
+#line 1222 "structure_sharing.analysis.m"
+  jmp_buf transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__commit_1;
+#line 1222 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reason_100;
+#line 1222 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__conv1_Reason_100;
+#line 1182 "structure_sharing.analysis.m"
+};
+
+
+#line 185 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0;
+
+#line 188 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0;
+
+#line 191 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+
+#line 194 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0;
+
+#line 197 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0;
+
+#line 200 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+
+#line 203 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_functor_desc_should_write_for_0_0;
+
+#line 206 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_functor_desc_should_write_for_0_1;
+
+#line 209 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_value_ordered_should_write_for_0[2];
+
+#line 212 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_name_ordered_should_write_for_0[2];
+
+#line 215 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_Integer transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__functor_number_map_should_write_for_0[2];
+
+#line 218 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__ti_fixpoint_table_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0;
+
+#line 221 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_answer_0_0;
+
+#line 224 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_answer_0_1;
+
+#line 227 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+#line 230 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+#line 233 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+#line 236 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__ctgc__structure_sharing__analysis__pair__ti_pair_2parse_tree__prog_data__type_ctor_info_datastruct_0parse_tree__prog_data__type_ctor_info_datastruct_0;
+
+#line 239 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__list__ti_list_1pair__ti_pair_2parse_tree__prog_data__type_ctor_info_datastruct_0parse_tree__prog_data__type_ctor_info_datastruct_0;
+
+#line 242 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_PseudoTypeInfo transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__field_types_structure_sharing_answer_0_2[3];
+
+#line 245 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_ConstString transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__field_names_structure_sharing_answer_0_2[3];
+
+#line 248 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_answer_0_2;
+
+#line 251 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_stag_ordered_structure_sharing_answer_0_0[2];
+
+#line 254 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_stag_ordered_structure_sharing_answer_0_1[1];
+
+#line 257 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuPtagLayout transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_ptag_ordered_structure_sharing_answer_0[2];
+
+#line 260 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_name_ordered_structure_sharing_answer_0[3];
+
+#line 263 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_Integer transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__functor_number_map_structure_sharing_answer_0[3];
+
+#line 266 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_functor_desc_structure_sharing_call_0_0;
+
+#line 269 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_value_ordered_structure_sharing_call_0[1];
+
+#line 272 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_name_ordered_structure_sharing_call_0[1];
+
+#line 275 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_Integer transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__functor_number_map_structure_sharing_call_0[1];
+
+#line 278 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_PseudoTypeInfo transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__field_types_structure_sharing_func_info_0_0[2];
+
+#line 281 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_ConstString transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__field_names_structure_sharing_func_info_0_0[2];
+
+#line 284 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_func_info_0_0;
+
+#line 287 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_stag_ordered_structure_sharing_func_info_0_0[1];
+
+#line 290 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuPtagLayout transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_ptag_ordered_structure_sharing_func_info_0[1];
+
+#line 293 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_name_ordered_structure_sharing_func_info_0[1];
+
+#line 296 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_Integer transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__functor_number_map_structure_sharing_func_info_0[1];
+
+#line 299 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____dep_procs_0_0_10001(
+#line 302 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 304 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2);
+
+#line 307 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____dep_procs_0_0_10001(
+#line 310 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 312 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 314 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 317 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____should_write_for_0_0_10001(
+#line 320 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 322 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2);
+
+#line 325 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____should_write_for_0_0_10001(
+#line 328 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 330 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 332 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 335 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____ss_fixpoint_table_0_0_10001(
+#line 338 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 340 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2);
+
+#line 343 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____ss_fixpoint_table_0_0_10001(
+#line 346 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 348 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 350 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 353 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_answer_0_0_10001(
+#line 356 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 358 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2);
+
+#line 361 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_answer_0_0_10001(
+#line 364 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 366 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 368 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 371 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_call_0_0_10001(
+#line 374 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 376 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2);
+
+#line 379 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_call_0_0_10001(
+#line 382 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 384 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 386 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 389 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_func_info_0_0_10001(
+#line 392 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 394 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2);
+
+#line 397 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_func_info_0_0_10001(
+#line 400 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 402 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 404 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 407 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__to_term_1_1_f_0_10001(
+#line 410 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 412 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1);
+
+#line 415 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__from_term_2_2_p_0_10001(
+#line 418 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 420 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 422 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2);
+
+#line 425 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__to_term_1_1_f_0_10001(
+#line 428 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 430 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1);
+
+#line 433 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__from_term_2_2_p_0_10001(
+#line 436 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 438 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 440 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2);
+
+#line 443 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__more_precise_than_3_3_p_0_10001(
+#line 446 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 448 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 450 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 452 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 455 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__equivalent_3_3_p_0_10001(
+#line 458 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 460 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 462 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 464 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 467 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__more_precise_than_3_3_p_0_10001(
+#line 470 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 472 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 474 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 476 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 479 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__equivalent_3_3_p_0_10001(
+#line 482 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 484 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 486 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 488 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 491 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__analysis_name_2_2_f_0_10001(
+#line 494 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg);
+
+#line 497 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__analysis_version_number_2_2_f_0_10001(
+#line 500 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg);
+
+#line 503 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0_10001(
+#line 506 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg);
+
+#line 509 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__bottom_2_2_f_0_10001(
+#line 512 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 514 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1);
+
+#line 517 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__top_2_2_f_0_10001(
+#line 520 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 522 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1);
+
+#line 525 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__get_func_info_6_6_p_0_10001(
+#line 528 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 530 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 532 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 534 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 536 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6);
+
+#line 1066 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_116_111_95_116_101_114_109_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_95_116_101_114_109_95_49_95_95_91_49_93_95_48_1_f_0(void);
+
+#line 1062 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_93_95_48_3_p_0(void);
+
+#line 1059 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_44_32_50_44_32_51_93_95_48_3_p_0(void);
+
+#line 1047 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_103_101_116_95_102_117_110_99_95_105_110_102_111_95_54_95_95_91_52_44_32_53_93_95_48_6_p_0(
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_17,
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleName_18,
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__FuncId_19,
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_22);
+
+#line 1045 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_112_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1044 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_98_111_116_116_111_109_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1043 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_112_114_101_102_101_114_114_101_100_95_102_105_120_112_111_105_110_116_95_116_121_112_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1042 "structure_sharing.analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_118_101_114_115_105_111_110_95_110_117_109_98_101_114_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1041 "structure_sharing.analysis.m"
+static MR_String MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_110_97_109_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 879 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_119_114_97_112_112_101_100_95_105_110_105_116_95_95_91_49_93_95_48_1_f_0(void);
+
+#line 438 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__IntroducedFrom__pred__analyse_scc__438__1_4_p_0(
+#line 438 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAndStatus_18,
+#line 438 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_37,
+#line 438 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_38,
+#line 438 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__4_39);
+
+#line 1069 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__from_term_2_2_p_0(
+#line 1069 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Term_3);
+
+#line 1066 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__to_term_1_1_f_0(void);
+
+#line 1124 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__from_term_2_2_p_0(
+#line 1124 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 1124 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2);
+
+#line 1123 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__to_term_1_1_f_0(
+#line 1123 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1);
+
+#line 1062 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__equivalent_3_3_p_0(
+#line 1062 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_7);
+
+#line 1059 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__more_precise_than_3_3_p_0(
+#line 1059 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_4);
+
+#line 1099 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__equivalent_3_3_p_0(
+#line 1099 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_4,
+#line 1099 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer1_5,
+#line 1099 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer2_6);
+
+#line 1079 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__more_precise_than_3_3_p_0(
+#line 1079 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_4,
+#line 1079 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer1_5,
+#line 1079 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer2_6);
+
+#line 1047 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__get_func_info_6_6_p_0(
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_17,
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleName_18,
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__FuncId_19,
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_22);
+
+#line 1045 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__top_2_2_f_0(
+#line 1045 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_12);
+
+#line 1044 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__bottom_2_2_f_0(
+#line 1044 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_10);
+
+#line 1043 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0(void);
+
+#line 1042 "structure_sharing.analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__analysis_version_number_2_2_f_0(void);
+
+#line 1041 "structure_sharing.analysis.m"
+static MR_String MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__analysis_name_2_2_f_0(void);
+
+#line 812 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____ss_fixpoint_table_0_0(
+#line 812 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 812 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2,
+#line 812 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3);
+
+#line 812 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____ss_fixpoint_table_0_0(
+#line 812 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 812 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2);
+
+#line 1308 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____should_write_for_0_0(
+#line 1308 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 1308 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2,
+#line 1308 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3);
+
+#line 1308 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____should_write_for_0_0(
+#line 1308 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_1,
+#line 1308 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2);
+
+#line 114 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____dep_procs_0_0(
+#line 114 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 114 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2,
+#line 114 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3);
+
+#line 114 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____dep_procs_0_0(
+#line 114 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 114 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2);
+
+#line 1272 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__handle_dep_procs_4_p_0(
+#line 1272 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_5,
+#line 1272 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__DepPPId_6,
+#line 1272 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_0_14,
+#line 1272 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_15);
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_1(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg);
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_3(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg);
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_2(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg);
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_4(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg);
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_5(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg);
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_7(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg);
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_6(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg);
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_8(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg);
+
+#line 1182 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0(
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_8,
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAsTable_9,
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_10,
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_11,
+#line 1182 "structure_sharing.analysis.m"
+  MR_Integer transform_hlds__ctgc__structure_sharing__analysis__ProcId_12,
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_0_33,
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_34);
+
+#line 1178 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_5_p_0_1(
+#line 1178 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 1178 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 1178 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 1178 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 1169 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_5_p_0(
+#line 1169 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_6,
+#line 1169 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAsTable_7,
+#line 1169 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_8,
+#line 1169 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_0_12,
+#line 1169 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_13);
+
+#line 973 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__write_proc_sharing_info_11_p_0(
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_12,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_13,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_14,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcTable_15,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredOrFunc_16,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SymName_17,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Context_18,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeVarSet_19,
+#line 973 "structure_sharing.analysis.m"
+  MR_Integer transform_hlds__ctgc__structure_sharing__analysis__ProcId_20);
+
+#line 940 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__make_opt_int_3_p_0_1(
+#line 940 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 940 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 940 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 940 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 922 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__make_opt_int_3_p_0(
+#line 922 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_4);
+
+#line 879 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__wrapped_init_1_f_0(
+#line 879 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis___Id_3);
+
+#line 897 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ss_fixpoint_table_new_as_6_p_0_1(
+#line 897 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 897 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 897 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2);
+
+#line 845 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ss_fixpoint_table_new_as_6_p_0(
+#line 845 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_7,
+#line 845 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8,
+#line 845 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Id_9,
+#line 845 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs_10,
+#line 845 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Table_0_12,
+#line 845 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Table_13);
+
+#line 800 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__update_sharing_in_table_4_p_0(
+#line 800 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__FixpointTable_5,
+#line 800 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PPId_6,
+#line 800 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_0_9,
+#line 800 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_10);
+
+#line 761 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_generic_call_8_p_0(
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_9,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_10,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__GenDetails_11,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__CallArgs_12,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Modes_13,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__GoalInfo_14,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_31,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_32);
+
+#line 744 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__lookup_sharing_8_p_0(
+#line 744 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_9,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_10,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PPId_11,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_17,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_18,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__SharingAs_13,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__Status_14,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__IsPredicted_15);
+
+#line 722 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_case_15_p_0(
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_16,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_17,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_18,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_19,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Sharing0_20,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Verbose_21,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Case_22,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_31,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_32,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_33,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_34,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_0_35,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_36,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_37,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_38);
+
+#line 703 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_disj_15_p_0(
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_16,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_17,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_18,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_19,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingBeforeDisj_20,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Verbose_21,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Goal_22,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_28,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_29,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_30,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_31,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_0_32,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_33,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_34,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_35);
+
+#line 678 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_with_progress_14_p_0(
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_18,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Verbose_19,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Goal_20,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_26,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_27,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_28,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_29,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_30,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_31,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_32,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_33);
+
+#line 634 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0_3(
+#line 634 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_8,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_9);
+
+#line 627 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0_2(
+#line 627 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_8,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_9);
+
+#line 569 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0_1(
+#line 569 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_8,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_9);
+
+#line 556 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0(
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_18,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Verbose_19,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Goal_20,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87);
+
+#line 482 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_pred_proc_9_p_0(
+#line 482 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_10,
+#line 482 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_11,
+#line 482 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PPId_12,
+#line 482 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_33,
+#line 482 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_34,
+#line 482 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_35,
+#line 482 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_36);
+
+#line 463 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_until_fixpoint_9_p_0_1(
+#line 463 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7);
+
+#line 448 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_until_fixpoint_9_p_0(
+#line 448 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_10,
+#line 448 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SCC_11,
+#line 448 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_12,
+#line 448 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_17,
+#line 448 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_18,
+#line 448 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_19,
+#line 448 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_20);
+
+#line 445 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0_4(
+#line 445 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 445 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 445 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 445 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 883 "structure_sharing.analysis.m"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0_3(
+#line 883 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 883 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1);
+
+#line 436 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0_2(
+#line 436 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 436 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 436 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 436 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 431 "structure_sharing.analysis.m"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0_1(
+#line 431 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 431 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1);
+
+#line 421 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0(
+#line 421 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_9,
+#line 421 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SCC_10,
+#line 421 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_0_24,
+#line 421 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_25,
+#line 421 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_26,
+#line 421 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_27);
+
+#line 409 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__save_sharing_in_module_info_4_p_0(
+#line 409 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PPId_5,
+#line 409 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_6,
+#line 409 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_14,
+#line 409 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_15);
+
+#line 401 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0_4(
+#line 401 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 401 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 401 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 401 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 399 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0_3(
+#line 399 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 399 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 399 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 399 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 387 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0_2(
+#line 387 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 387 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 387 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 387 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 387 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4);
+
+#line 379 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0_1(
+#line 379 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7);
+
+#line 368 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0(
+#line 368 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_17,
+#line 368 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_18,
+#line 368 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_0_19);
+
+#line 354 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__simplify_and_detect_liveness_proc_5_p_0(
+#line 354 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredProcId_6,
+#line 354 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_0_12,
+#line 354 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_13,
+#line 354 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_14,
+#line 354 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_15);
+
+#line 306 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer_to_domain_5_p_0(
+#line 306 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__MaybePPId_6,
+#line 306 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_7,
+#line 306 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8,
+#line 306 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer_9,
+#line 306 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__Sharing_10);
+
+#line 277 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__process_intermod_analysis_imported_sharing_in_proc_7_p_0(
+#line 277 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_8,
+#line 277 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__AnalysisInfo_9,
+#line 277 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_10,
+#line 277 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_11,
+#line 277 "structure_sharing.analysis.m"
+  MR_Integer transform_hlds__ctgc__structure_sharing__analysis__ProcId_12,
+#line 277 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_0_25,
+#line 277 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_26);
+
+#line 271 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__process_intermod_analysis_imported_sharing_in_pred_3_p_0_1(
+#line 271 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 271 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 271 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 271 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 244 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__process_intermod_analysis_imported_sharing_in_pred_3_p_0(
+#line 244 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_4,
+#line 244 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_10,
+#line 244 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_11);
+
+#line 193 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__process_imported_sharing_in_proc_4_p_0(
+#line 193 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_5,
+#line 193 "structure_sharing.analysis.m"
+  MR_Integer transform_hlds__ctgc__structure_sharing__analysis__ProcId_6,
+#line 193 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_0_18,
+#line 193 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_19);
+
+#line 188 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__process_imported_sharing_in_pred_3_p_0_1(
+#line 188 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 188 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 188 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 188 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 169 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__process_imported_sharing_in_pred_3_p_0(
+#line 169 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_4,
+#line 169 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_9,
+#line 169 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_10);
+
+#line 969 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__write_pred_sharing_info_4_p_0_1(
+#line 969 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 969 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 969 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 969 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 352 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_analysis_4_p_0_3(
+#line 352 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 352 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 352 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 352 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 352 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4,
+#line 352 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5);
+
+#line 241 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_analysis_4_p_0_2(
+#line 241 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 241 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 241 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 241 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+#line 167 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_analysis_4_p_0_1(
+#line 167 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 167 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 167 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 167 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3);
+
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[11][3];
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[9][2];
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_3[3][5];
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_4[3][6];
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_5[2][8];
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_6[1][14];
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_7[7][7];
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_8[2][10];
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_9[1][11];
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_10[1][12];
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_11[1][17];
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_12[2][18];
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_13[4][1];
+
+
+
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[11][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_call_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_answer_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&transform_hlds__ctgc__fixpoint_table__transform_hlds__ctgc__fixpoint_table__type_ctor_info_fixpoint_table_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_datastruct_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_datastruct_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_4[1])),
+    ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_analysis_4_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_4[1])),
+    ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_analysis_4_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_5[0])),
+    ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_analysis_4_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_7[1])),
+    ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_3[2])),
+    ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[9][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__term__term__type_ctor_info_var_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_call_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_answer_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[0]))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[5]))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[8]))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_3[3][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__call_pattern__arity2__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[1])),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[2])),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_call_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__answer_pattern__arity2__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[2])),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[3])),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_answer_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_4[3][6] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__analysis__arity3__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_3[0])),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_3[1])),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_func_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_call_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_answer_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_5[2][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_6[1][14] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 11)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&mdbcomp__prim_data__mdbcomp__prim_data__type_ctor_info_pred_or_func_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&mercury__term__term__type_ctor_info_context_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_7[7][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0))
+  },
+  /* row 5 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0))
+  },
+  /* row 6 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_8[2][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_9[1][11] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_10[1][12] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 9)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_11[1][17] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 14)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_status_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_12[2][18] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 15)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_status_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 15)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_0)),
+    ((MR_Box) (&transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_status_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__ctgc__structure_sharing__analysis_scalar_common_13[4][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_String) "b"))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_String) "t"))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_String) "sharing"))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) ((MR_String) "any"))
+  },
+};
+
+
+
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "time.mh"
+#include "time.mh"
+#include "array.mh"
+#include "array.mh"
+#include "mdbcomp.rtti_access.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+#line 2013 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_builtin__type_ctor_info_int_0__plain_hlds__hlds_pred__type_ctor_info_proc_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0
+  }
+};
+
+#line 2022 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__varset__pti_varset_1__plain_parse_tree__prog_data__type_ctor_info_tvar_type_0 = {
+  &mercury__varset__varset__type_ctor_info_varset_1,
+  {
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_tvar_type_0
+  }
+};
+
+#line 2030 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+  }
+};
+
+#line 2038 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__ctgc__structure_sharing__analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0
+  }
+};
+
+#line 2047 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__pti_fixpoint_table_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0 = {
+  &transform_hlds__ctgc__fixpoint_table__transform_hlds__ctgc__fixpoint_table__type_ctor_info_fixpoint_table_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0
+  }
+};
+
+#line 2056 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+  }
+};
+
+#line 2064 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_dep_procs_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis____Unify____dep_procs_0_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis____Compare____dep_procs_0_0_10001)),
+  (MR_String) "transform_hlds.ctgc.structure_sharing.analysis",
+  (MR_String) "dep_procs",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__ctgc__structure_sharing__analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2081 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_functor_desc_should_write_for_0_0 = {
+  (MR_String) "for_analysis_framework",
+  (MR_Integer) 0
+};
+
+#line 2087 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_functor_desc_should_write_for_0_1 = {
+  (MR_String) "for_pragma",
+  (MR_Integer) 1
+};
+
+#line 2093 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_value_ordered_should_write_for_0[2] = {
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_functor_desc_should_write_for_0_0,
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_functor_desc_should_write_for_0_1
+};
+
+#line 2099 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_name_ordered_should_write_for_0[2] = {
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_functor_desc_should_write_for_0_0,
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_functor_desc_should_write_for_0_1
+};
+
+#line 2105 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_Integer transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__functor_number_map_should_write_for_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2111 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_should_write_for_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis____Unify____should_write_for_0_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis____Compare____should_write_for_0_0_10001)),
+  (MR_String) "transform_hlds.ctgc.structure_sharing.analysis",
+  (MR_String) "should_write_for",
+  {     transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_name_ordered_should_write_for_0 },
+  {     transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_value_ordered_should_write_for_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__functor_number_map_should_write_for_0
+};
+
+#line 2128 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__ti_fixpoint_table_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0 = {
+  &transform_hlds__ctgc__fixpoint_table__transform_hlds__ctgc__fixpoint_table__type_ctor_info_fixpoint_table_2,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_TypeInfo) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0
+  }
+};
+
+#line 2137 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_ss_fixpoint_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis____Unify____ss_fixpoint_table_0_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis____Compare____ss_fixpoint_table_0_0_10001)),
+  (MR_String) "transform_hlds.ctgc.structure_sharing.analysis",
+  (MR_String) "ss_fixpoint_table",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__fixpoint_table__ti_fixpoint_table_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2154 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_answer_0_0 = {
+  (MR_String) "structure_sharing_answer_bottom",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2169 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_answer_0_1 = {
+  (MR_String) "structure_sharing_answer_top",
+  (MR_Integer) 0,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_LOCAL,
+  (MR_Integer) 0,
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  NULL,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2184 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+#line 2192 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &transform_hlds__ctgc__structure_sharing__analysis__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+#line 2200 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_type_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0
+  }
+};
+
+#line 2208 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__ctgc__structure_sharing__analysis__pair__ti_pair_2parse_tree__prog_data__type_ctor_info_datastruct_0parse_tree__prog_data__type_ctor_info_datastruct_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_datastruct_0,
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_datastruct_0
+  }
+};
+
+#line 2217 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__ctgc__structure_sharing__analysis__list__ti_list_1pair__ti_pair_2parse_tree__prog_data__type_ctor_info_datastruct_0parse_tree__prog_data__type_ctor_info_datastruct_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &transform_hlds__ctgc__structure_sharing__analysis__pair__ti_pair_2parse_tree__prog_data__type_ctor_info_datastruct_0parse_tree__prog_data__type_ctor_info_datastruct_0
+  }
+};
+
+#line 2225 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_PseudoTypeInfo transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__field_types_structure_sharing_answer_0_2[3] = {
+  (MR_PseudoTypeInfo) &transform_hlds__ctgc__structure_sharing__analysis__list__ti_list_1term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+  (MR_PseudoTypeInfo) &transform_hlds__ctgc__structure_sharing__analysis__list__ti_list_1parse_tree__prog_data__type_ctor_info_mer_type_0,
+  (MR_PseudoTypeInfo) &transform_hlds__ctgc__structure_sharing__analysis__list__ti_list_1pair__ti_pair_2parse_tree__prog_data__type_ctor_info_datastruct_0parse_tree__prog_data__type_ctor_info_datastruct_0
+};
+
+#line 2232 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_ConstString transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__field_names_structure_sharing_answer_0_2[3] = {
+  (MR_String) "ssar_vars",
+  (MR_String) "ssar_types",
+  (MR_String) "ssar_sharing"
+};
+
+#line 2239 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_answer_0_2 = {
+  (MR_String) "structure_sharing_answer_real",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__field_types_structure_sharing_answer_0_2,
+  transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__field_names_structure_sharing_answer_0_2,
+  NULL,
+  NULL
+};
+
+#line 2254 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_stag_ordered_structure_sharing_answer_0_0[2] = {
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_answer_0_0,
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_answer_0_1
+};
+
+#line 2260 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_stag_ordered_structure_sharing_answer_0_1[1] = {
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_answer_0_2
+};
+
+#line 2265 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuPtagLayout transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_ptag_ordered_structure_sharing_answer_0[2] = {
+  {
+    (MR_Integer) 2,
+    mercury__private_builtin__MR_SECTAG_LOCAL,
+    transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_stag_ordered_structure_sharing_answer_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_stag_ordered_structure_sharing_answer_0_1
+  }
+};
+
+#line 2279 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_name_ordered_structure_sharing_answer_0[3] = {
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_answer_0_0,
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_answer_0_2,
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_answer_0_1
+};
+
+#line 2286 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_Integer transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__functor_number_map_structure_sharing_answer_0[3] = {
+  (MR_Integer) 0,
+  (MR_Integer) 2,
+  (MR_Integer) 1
+};
+
+#line 2293 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_answer_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_answer_0_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_answer_0_0_10001)),
+  (MR_String) "transform_hlds.ctgc.structure_sharing.analysis",
+  (MR_String) "structure_sharing_answer",
+  {     transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_name_ordered_structure_sharing_answer_0 },
+  {     transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_ptag_ordered_structure_sharing_answer_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__functor_number_map_structure_sharing_answer_0
+};
+
+#line 2310 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_functor_desc_structure_sharing_call_0_0 = {
+  (MR_String) "structure_sharing_call",
+  (MR_Integer) 0
+};
+
+#line 2316 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_value_ordered_structure_sharing_call_0[1] = {
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_functor_desc_structure_sharing_call_0_0
+};
+
+#line 2321 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_EnumFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_name_ordered_structure_sharing_call_0[1] = {
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_functor_desc_structure_sharing_call_0_0
+};
+
+#line 2326 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_Integer transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__functor_number_map_structure_sharing_call_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2331 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_call_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DUMMY,
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_call_0_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_call_0_0_10001)),
+  (MR_String) "transform_hlds.ctgc.structure_sharing.analysis",
+  (MR_String) "structure_sharing_call",
+  {     transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_name_ordered_structure_sharing_call_0 },
+  {     transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__enum_value_ordered_structure_sharing_call_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__functor_number_map_structure_sharing_call_0
+};
+
+#line 2348 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_PseudoTypeInfo transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__field_types_structure_sharing_func_info_0_0[2] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0,
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0
+};
+
+#line 2354 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_ConstString transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__field_names_structure_sharing_func_info_0_0[2] = {
+  (MR_String) "ssfi_module",
+  (MR_String) "ssfi_proc"
+};
+
+#line 2360 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDesc transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_func_info_0_0 = {
+  (MR_String) "structure_sharing_func_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__field_types_structure_sharing_func_info_0_0,
+  transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__field_names_structure_sharing_func_info_0_0,
+  NULL,
+  NULL
+};
+
+#line 2375 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_stag_ordered_structure_sharing_func_info_0_0[1] = {
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_func_info_0_0
+};
+
+#line 2380 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuPtagLayout transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_ptag_ordered_structure_sharing_func_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_stag_ordered_structure_sharing_func_info_0_0
+  }
+};
+
+#line 2389 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_name_ordered_structure_sharing_func_info_0[1] = {
+  &transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_functor_desc_structure_sharing_func_info_0_0
+};
+
+#line 2394 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static const MR_Integer transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__functor_number_map_structure_sharing_func_info_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2399 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_func_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_func_info_0_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_func_info_0_0_10001)),
+  (MR_String) "transform_hlds.ctgc.structure_sharing.analysis",
+  (MR_String) "structure_sharing_func_info",
+  {     transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_name_ordered_structure_sharing_func_info_0 },
+  {     transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__du_ptag_ordered_structure_sharing_func_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__functor_number_map_structure_sharing_func_info_0
+};
+
+#line 2416 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__to_term__arity1__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0__[7] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__to_term_1_1_f_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__from_term_2_2_p_0_10001))
+};
+
+#line 2427 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__to_term__arity1__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__[7] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__to_term_1_1_f_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__from_term_2_2_p_0_10001))
+};
+
+#line 2438 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__partial_order__arity2__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0__[7] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__more_precise_than_3_3_p_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__equivalent_3_3_p_0_10001))
+};
+
+#line 2449 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__partial_order__arity2__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__[7] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__more_precise_than_3_3_p_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__equivalent_3_3_p_0_10001))
+};
+
+#line 2460 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__call_pattern__arity2__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__[5] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0))
+};
+
+#line 2469 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__answer_pattern__arity2__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0__[5] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0))
+};
+
+#line 2478 "transform_hlds.ctgc.structure_sharing.analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__analysis__arity3__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0__[11] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__analysis_name_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__analysis_version_number_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__bottom_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__top_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__get_func_info_6_6_p_0_10001))
+};
+
+#line 2493 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____dep_procs_0_0_10001(
+#line 2496 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2498 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2)
+#line 2500 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2502 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2504 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 2507 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2509 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis____Unify____dep_procs_0_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2));
+    }
+#line 2512 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 2514 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2516 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2519 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____dep_procs_0_0_10001(
+#line 2522 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2524 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 2526 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 2528 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2530 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2532 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1;
+
+#line 2535 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2537 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis____Compare____dep_procs_0_0(&transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3));
+    }
+#line 2540 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1));
+#line 2542 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2544 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2547 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____should_write_for_0_0_10001(
+#line 2550 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2552 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2)
+#line 2554 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2556 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2558 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 2561 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2563 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis____Unify____should_write_for_0_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2));
+    }
+#line 2566 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 2568 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2570 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2573 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____should_write_for_0_0_10001(
+#line 2576 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2578 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 2580 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 2582 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2584 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2586 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1;
+
+#line 2589 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2591 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis____Compare____should_write_for_0_0(&transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3));
+    }
+#line 2594 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1));
+#line 2596 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2598 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2601 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____ss_fixpoint_table_0_0_10001(
+#line 2604 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2606 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2)
+#line 2608 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2610 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2612 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 2615 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2617 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis____Unify____ss_fixpoint_table_0_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2));
+    }
+#line 2620 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 2622 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2624 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2627 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____ss_fixpoint_table_0_0_10001(
+#line 2630 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2632 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 2634 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 2636 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2638 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2640 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1;
+
+#line 2643 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2645 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis____Compare____ss_fixpoint_table_0_0(&transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3));
+    }
+#line 2648 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1));
+#line 2650 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2652 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2655 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_answer_0_0_10001(
+#line 2658 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2660 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2)
+#line 2662 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2664 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2666 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 2669 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2671 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_answer_0_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2));
+    }
+#line 2674 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 2676 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2678 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2681 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_answer_0_0_10001(
+#line 2684 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2686 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 2688 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 2690 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2692 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2694 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1;
+
+#line 2697 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2699 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_answer_0_0(&transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3));
+    }
+#line 2702 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1));
+#line 2704 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2706 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2709 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_call_0_0_10001(
+#line 2712 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2714 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2)
+#line 2716 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2718 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2720 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 2723 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2725 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_call_0_0();
+    }
+#line 2728 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 2730 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2732 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2735 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_call_0_0_10001(
+#line 2738 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2740 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 2742 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 2744 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2746 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2748 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1;
+
+#line 2751 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2753 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_call_0_0(&transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1);
+    }
+#line 2756 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1));
+#line 2758 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2760 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2763 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_func_info_0_0_10001(
+#line 2766 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2768 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2)
+#line 2770 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2772 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2774 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 2777 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2779 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_func_info_0_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2));
+    }
+#line 2782 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 2784 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2786 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2789 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_func_info_0_0_10001(
+#line 2792 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2794 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 2796 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 2798 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2800 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2802 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1;
+
+#line 2805 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2807 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_func_info_0_0(&transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3));
+    }
+#line 2810 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__1_1));
+#line 2812 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2814 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2817 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__to_term_1_1_f_0_10001(
+#line 2820 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 2822 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1)
+#line 2824 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2826 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2828 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2;
+#line 2830 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+#line 2832 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__2_2;
+
+#line 2835 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 2837 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2839 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__2_2 = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__to_term_1_1_f_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1));
+    }
+#line 2842 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__2_2));
+#line 2844 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2;
+#line 2846 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2848 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2851 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__from_term_2_2_p_0_10001(
+#line 2854 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 2856 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2858 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2)
+#line 2860 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2862 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2864 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 2866 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+#line 2868 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__2_2;
+
+#line 2871 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 2873 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2875 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__from_term_2_2_p_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), &transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__2_2);
+    }
+#line 2878 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 2880 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      {
+#line 2882 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__2_2));
+#line 2884 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        transform_hlds__ctgc__structure_sharing__analysis__succeeded = MR_TRUE;
+#line 2886 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      }
+#line 2888 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 2890 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2892 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2895 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__to_term_1_1_f_0_10001(
+#line 2898 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 2900 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1)
+#line 2902 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2904 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2906 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2;
+#line 2908 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+#line 2910 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_Term_3;
+
+#line 2913 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 2915 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2917 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__conv0_Term_3 = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__to_term_1_1_f_0();
+    }
+#line 2920 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_Term_3));
+#line 2922 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2;
+#line 2924 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2926 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2929 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__from_term_2_2_p_0_10001(
+#line 2932 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 2934 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2936 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2)
+#line 2938 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2940 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2942 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 2944 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+
+#line 2947 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 2949 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2951 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__from_term_2_2_p_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1));
+    }
+#line 2954 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 2956 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2958 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2961 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__more_precise_than_3_3_p_0_10001(
+#line 2964 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 2966 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 2968 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 2970 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 2972 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 2974 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 2976 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 2978 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+
+#line 2981 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 2983 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 2985 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__more_precise_than_3_3_p_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3));
+    }
+#line 2988 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 2990 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 2992 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 2995 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__equivalent_3_3_p_0_10001(
+#line 2998 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 3000 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 3002 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 3004 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 3006 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 3008 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 3010 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 3012 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+
+#line 3015 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 3017 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 3019 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__equivalent_3_3_p_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3));
+    }
+#line 3022 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 3024 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 3026 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 3029 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__more_precise_than_3_3_p_0_10001(
+#line 3032 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 3034 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 3036 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 3038 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 3040 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 3042 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 3044 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 3046 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+
+#line 3049 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 3051 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 3053 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__more_precise_than_3_3_p_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1));
+    }
+#line 3056 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 3058 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 3060 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 3063 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__equivalent_3_3_p_0_10001(
+#line 3066 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 3068 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 3070 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 3072 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 3074 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 3076 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 3078 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 3080 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+
+#line 3083 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 3085 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 3087 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__equivalent_3_3_p_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1));
+    }
+#line 3090 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 3092 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 3094 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 3097 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__analysis_name_2_2_f_0_10001(
+#line 3100 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg)
+#line 3102 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 3104 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 3106 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3;
+#line 3108 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+#line 3110 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3;
+
+#line 3113 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 3115 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 3117 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3 = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__analysis_name_2_2_f_0();
+    }
+#line 3120 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3));
+#line 3122 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3;
+#line 3124 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 3126 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 3129 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__analysis_version_number_2_2_f_0_10001(
+#line 3132 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg)
+#line 3134 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 3136 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 3138 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3;
+#line 3140 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+#line 3142 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3;
+
+#line 3145 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 3147 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 3149 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3 = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__analysis_version_number_2_2_f_0();
+    }
+#line 3152 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3));
+#line 3154 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3;
+#line 3156 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 3158 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 3161 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0_10001(
+#line 3164 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg)
+#line 3166 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 3168 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 3170 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3;
+#line 3172 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+#line 3174 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3;
+
+#line 3177 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 3179 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 3181 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3 = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0();
+    }
+#line 3184 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3));
+#line 3186 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3;
+#line 3188 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 3190 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 3193 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__bottom_2_2_f_0_10001(
+#line 3196 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 3198 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1)
+#line 3200 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 3202 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 3204 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3;
+#line 3206 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+#line 3208 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3;
+
+#line 3211 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 3213 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 3215 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3 = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__bottom_2_2_f_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1));
+    }
+#line 3218 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3));
+#line 3220 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3;
+#line 3222 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 3224 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 3227 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__top_2_2_f_0_10001(
+#line 3230 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 3232 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1)
+#line 3234 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 3236 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 3238 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3;
+#line 3240 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+#line 3242 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3;
+
+#line 3245 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 3247 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 3249 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3 = transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__top_2_2_f_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1));
+    }
+#line 3252 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3));
+#line 3254 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3;
+#line 3256 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 3258 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 3261 "transform_hlds.ctgc.structure_sharing.analysis.c"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__get_func_info_6_6_p_0_10001(
+#line 3264 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 3266 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 3268 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 3270 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 3272 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6)
+#line 3274 "transform_hlds.ctgc.structure_sharing.analysis.c"
+{
+#line 3276 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 3278 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure;
+#line 3280 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_FuncInfo_22;
+
+#line 3283 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 3285 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 3287 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__get_func_info_6_6_p_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3), &transform_hlds__ctgc__structure_sharing__analysis__conv0_FuncInfo_22);
+    }
+#line 3290 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_FuncInfo_22));
+#line 3292 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 3294 "transform_hlds.ctgc.structure_sharing.analysis.c"
+}
+
+#line 1066 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_116_111_95_116_101_114_109_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_95_116_101_114_109_95_49_95_95_91_49_93_95_48_1_f_0(void)
+#line 1066 "structure_sharing.analysis.m"
+{
+#line 1066 "structure_sharing.analysis.m"
+  {
+#line 1066 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1066 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Term_3;
+#line 1066 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_8_8;
+
+#line 1067 "structure_sharing.analysis.m"
+    {
+#line 1067 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_8_8 = mercury__term__context_init_0_f_0();
+    }
+#line 1067 "structure_sharing.analysis.m"
+    {
+#line 1067 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__Term_3 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1067 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__Term_3, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_13[3]));
+#line 1067 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__Term_3, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1067 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__Term_3, 2) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_8_8));
+#line 1067 "structure_sharing.analysis.m"
+    }
+#line 1066 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__Term_3;
+#line 1066 "structure_sharing.analysis.m"
+  }
+#line 1066 "structure_sharing.analysis.m"
+}
+
+#line 1062 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_93_95_48_3_p_0(void)
+#line 1062 "structure_sharing.analysis.m"
+{
+#line 1062 "structure_sharing.analysis.m"
+  {
+#line 1062 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded = (mercury__private_builtin__dummy_var == mercury__private_builtin__dummy_var);
+
+#line 1062 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1062 "structure_sharing.analysis.m"
+  }
+#line 1062 "structure_sharing.analysis.m"
+}
+
+#line 1059 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_44_32_50_44_32_51_93_95_48_3_p_0(void)
+#line 1059 "structure_sharing.analysis.m"
+{
+#line 1060 "structure_sharing.analysis.m"
+  {
+#line 1060 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1060 "structure_sharing.analysis.m"
+    {
+#line 1060 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__succeeded = mercury__builtin__semidet_fail_0_p_0();
+    }
+#line 1060 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1060 "structure_sharing.analysis.m"
+  }
+#line 1059 "structure_sharing.analysis.m"
+}
+
+#line 1047 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_103_101_116_95_102_117_110_99_95_105_110_102_111_95_54_95_95_91_52_44_32_53_93_95_48_6_p_0(
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_17,
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleName_18,
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__FuncId_19,
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_22)
+#line 1047 "structure_sharing.analysis.m"
+{
+#line 1047 "structure_sharing.analysis.m"
+  {
+#line 1047 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1047 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__PPId_23;
+#line 1047 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_24;
+
+#line 1048 "structure_sharing.analysis.m"
+    {
+#line 1048 "structure_sharing.analysis.m"
+      transform_hlds__mmc_analysis__func_id_to_ppid_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_17, transform_hlds__ctgc__structure_sharing__analysis__ModuleName_18, transform_hlds__ctgc__structure_sharing__analysis__FuncId_19, &transform_hlds__ctgc__structure_sharing__analysis__PPId_23);
+    }
+#line 1049 "structure_sharing.analysis.m"
+    {
+#line 1049 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_proc_info_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_17, transform_hlds__ctgc__structure_sharing__analysis__PPId_23, &transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_24);
+    }
+#line 1050 "structure_sharing.analysis.m"
+    {
+#line 1050 "structure_sharing.analysis.m"
+      MR_Word base;
+#line 1050 "structure_sharing.analysis.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1050 "structure_sharing.analysis.m"
+      *transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_22 = base;
+#line 1050 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_17));
+#line 1050 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_24));
+#line 1050 "structure_sharing.analysis.m"
+    }
+#line 1047 "structure_sharing.analysis.m"
+  }
+#line 1047 "structure_sharing.analysis.m"
+}
+
+#line 1045 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_112_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1045 "structure_sharing.analysis.m"
+{
+#line 1045 "structure_sharing.analysis.m"
+  {
+#line 1045 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1045 "structure_sharing.analysis.m"
+    return (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+#line 1045 "structure_sharing.analysis.m"
+  }
+#line 1045 "structure_sharing.analysis.m"
+}
+
+#line 1044 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_98_111_116_116_111_109_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1044 "structure_sharing.analysis.m"
+{
+#line 1044 "structure_sharing.analysis.m"
+  {
+#line 1044 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1044 "structure_sharing.analysis.m"
+    return (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1044 "structure_sharing.analysis.m"
+  }
+#line 1044 "structure_sharing.analysis.m"
+}
+
+#line 1043 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_112_114_101_102_101_114_114_101_100_95_102_105_120_112_111_105_110_116_95_116_121_112_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1043 "structure_sharing.analysis.m"
+{
+#line 1043 "structure_sharing.analysis.m"
+  {
+#line 1043 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1043 "structure_sharing.analysis.m"
+    return (MR_Integer) 1;
+#line 1043 "structure_sharing.analysis.m"
+  }
+#line 1043 "structure_sharing.analysis.m"
+}
+
+#line 1042 "structure_sharing.analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_118_101_114_115_105_111_110_95_110_117_109_98_101_114_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1042 "structure_sharing.analysis.m"
+{
+#line 1042 "structure_sharing.analysis.m"
+  {
+#line 1042 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1042 "structure_sharing.analysis.m"
+    return (MR_Integer) 2;
+#line 1042 "structure_sharing.analysis.m"
+  }
+#line 1042 "structure_sharing.analysis.m"
+}
+
+#line 1041 "structure_sharing.analysis.m"
+static MR_String MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_110_97_109_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1041 "structure_sharing.analysis.m"
+{
+#line 1036 "structure_sharing.analysis.m"
+  {
+#line 1036 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1036 "structure_sharing.analysis.m"
+    return (MR_String) "structure_sharing";
+#line 1036 "structure_sharing.analysis.m"
+  }
+#line 1041 "structure_sharing.analysis.m"
+}
+
+#line 1011 "structure_sharing.analysis.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 1011 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1)
+#line 1011 "structure_sharing.analysis.m"
+{
+#line 1011 "structure_sharing.analysis.m"
+  {
+#line 1011 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1011 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 1011 "structure_sharing.analysis.m"
+  }
+#line 1011 "structure_sharing.analysis.m"
+}
+
+#line 1011 "structure_sharing.analysis.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+#line 1011 "structure_sharing.analysis.m"
+{
+#line 1011 "structure_sharing.analysis.m"
+  {
+#line 1011 "structure_sharing.analysis.m"
+    return MR_TRUE;
+#line 1011 "structure_sharing.analysis.m"
+  }
+#line 1011 "structure_sharing.analysis.m"
+}
+
+#line 879 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_119_114_97_112_112_101_100_95_105_110_105_116_95_95_91_49_93_95_48_1_f_0(void)
+#line 879 "structure_sharing.analysis.m"
+{
+#line 881 "structure_sharing.analysis.m"
+  {
+#line 881 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 881 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+#line 881 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_4_4;
+
+#line 881 "structure_sharing.analysis.m"
+    {
+#line 881 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_4_4 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_init_0_f_0();
+    }
+#line 881 "structure_sharing.analysis.m"
+    {
+#line 881 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 881 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_4_4));
+#line 881 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, 1) = ((MR_Box) ((MR_Integer) 2));
+#line 881 "structure_sharing.analysis.m"
+    }
+#line 881 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+#line 881 "structure_sharing.analysis.m"
+  }
+#line 879 "structure_sharing.analysis.m"
+}
+
+#line 438 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__IntroducedFrom__pred__analyse_scc__438__1_4_p_0(
+#line 438 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAndStatus_18,
+#line 438 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_37,
+#line 438 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_38,
+#line 438 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__4_39)
+#line 438 "structure_sharing.analysis.m"
+{
+#line 438 "structure_sharing.analysis.m"
+  {
+#line 438 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 438 "structure_sharing.analysis.m"
+    {
+#line 438 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__domain__sharing_as_table_set_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_37, transform_hlds__ctgc__structure_sharing__analysis__SharingAndStatus_18, transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_38, transform_hlds__ctgc__structure_sharing__analysis__HeadVar__4_39);
+#line 438 "structure_sharing.analysis.m"
+      return;
+    }
+#line 438 "structure_sharing.analysis.m"
+  }
+#line 438 "structure_sharing.analysis.m"
+}
+
+#line 1069 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__from_term_2_2_p_0(
+#line 1069 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Term_3)
+#line 1069 "structure_sharing.analysis.m"
+{
+#line 1069 "structure_sharing.analysis.m"
+  {
+#line 1069 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1069 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_5_5;
+#line 1069 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__V_6_6;
+#line 1069 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_7_7;
+#line 1070 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_4_4;
+
+#line 1069 "structure_sharing.analysis.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1070 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__Term_3)) == (MR_mktag((MR_Integer) 0)));
+#line 1070 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1070 "structure_sharing.analysis.m"
+      {
+#line 1070 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__Term_3, (MR_Integer) 0)));
+#line 1070 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__Term_3, (MR_Integer) 1)));
+#line 1070 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__Term_3, (MR_Integer) 2)));
+#line 1070 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__V_7_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1069 "structure_sharing.analysis.m"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1069 "structure_sharing.analysis.m"
+          {
+#line 1070 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__V_5_5)) == (MR_mktag((MR_Integer) 0)));
+#line 1070 "structure_sharing.analysis.m"
+            if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1070 "structure_sharing.analysis.m"
+              {
+#line 1070 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_5_5, (MR_Integer) 0)));
+#line 1070 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__succeeded = (strcmp(transform_hlds__ctgc__structure_sharing__analysis__V_6_6, (MR_String) "any") == 0);
+#line 1070 "structure_sharing.analysis.m"
+              }
+#line 1069 "structure_sharing.analysis.m"
+          }
+#line 1070 "structure_sharing.analysis.m"
+      }
+#line 1069 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1069 "structure_sharing.analysis.m"
+  }
+#line 1069 "structure_sharing.analysis.m"
+}
+
+#line 1066 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__to_term_1_1_f_0(void)
+#line 1066 "structure_sharing.analysis.m"
+{
+#line 1066 "structure_sharing.analysis.m"
+  {
+#line 1066 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1066 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Term_3;
+
+#line 1066 "structure_sharing.analysis.m"
+    {
+#line 1066 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__Term_3 = transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_116_111_95_116_101_114_109_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_95_116_101_114_109_95_49_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 1066 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__Term_3;
+#line 1066 "structure_sharing.analysis.m"
+  }
+#line 1066 "structure_sharing.analysis.m"
+}
+
+#line 1124 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__from_term_2_2_p_0(
+#line 1124 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 1124 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2)
+#line 1124 "structure_sharing.analysis.m"
+{
+#line 1150 "structure_sharing.analysis.m"
+  {
+#line 1150 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0)));
+#line 1150 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_31_31;
+#line 1150 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_32_32;
+#line 1150 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__V_34_34;
+#line 1150 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_30_30;
+
+#line 1150 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1150 "structure_sharing.analysis.m"
+      {
+#line 1150 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, (MR_Integer) 0)));
+#line 1150 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, (MR_Integer) 1)));
+#line 1150 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, (MR_Integer) 2)));
+#line 1150 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__V_32_32)) == (MR_mktag((MR_Integer) 0)));
+#line 1150 "structure_sharing.analysis.m"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1150 "structure_sharing.analysis.m"
+          {
+#line 1150 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__V_34_34 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_32_32, (MR_Integer) 0)));
+#line 1150 "structure_sharing.analysis.m"
+            if ((transform_hlds__ctgc__structure_sharing__analysis__V_31_31 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1150 "structure_sharing.analysis.m"
+              if ((strcmp(transform_hlds__ctgc__structure_sharing__analysis__V_34_34, (MR_String) "b") == 0))
+#line 1151 "structure_sharing.analysis.m"
+                {
+#line 1151 "structure_sharing.analysis.m"
+                  *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1151 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__succeeded = MR_TRUE;
+#line 1151 "structure_sharing.analysis.m"
+                }
+#line 1150 "structure_sharing.analysis.m"
+              else
+#line 1150 "structure_sharing.analysis.m"
+              if ((strcmp(transform_hlds__ctgc__structure_sharing__analysis__V_34_34, (MR_String) "t") == 0))
+#line 1154 "structure_sharing.analysis.m"
+                {
+#line 1154 "structure_sharing.analysis.m"
+                  *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+#line 1154 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__succeeded = MR_TRUE;
+#line 1154 "structure_sharing.analysis.m"
+                }
+#line 1150 "structure_sharing.analysis.m"
+              else
+#line 1150 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__succeeded = MR_FALSE;
+#line 1150 "structure_sharing.analysis.m"
+            else
+#line 1157 "structure_sharing.analysis.m"
+              {
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_26_26;
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_27_27;
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_28_28;
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_29_29;
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVarsTerm_7;
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypesTerm_8;
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingPairsTerm_9;
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVars_11;
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__Types_12;
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingPairs_13;
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_17_17;
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_18_18;
+#line 1157 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_19_19;
+#line 1158 "structure_sharing.analysis.m"
+                MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVars_11;
+#line 1159 "structure_sharing.analysis.m"
+                MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv1_Types_12;
+#line 1160 "structure_sharing.analysis.m"
+                MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv2_SharingPairs_13;
+
+#line 1156 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__succeeded = (strcmp(transform_hlds__ctgc__structure_sharing__analysis__V_34_34, (MR_String) "sharing") == 0);
+#line 1157 "structure_sharing.analysis.m"
+                if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1157 "structure_sharing.analysis.m"
+                  {
+#line 1157 "structure_sharing.analysis.m"
+                    transform_hlds__ctgc__structure_sharing__analysis__HeadVarsTerm_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_31_31, (MR_Integer) 0)));
+#line 1157 "structure_sharing.analysis.m"
+                    transform_hlds__ctgc__structure_sharing__analysis__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_31_31, (MR_Integer) 1)));
+#line 1157 "structure_sharing.analysis.m"
+                    transform_hlds__ctgc__structure_sharing__analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__V_17_17)) == (MR_mktag((MR_Integer) 1)));
+#line 1157 "structure_sharing.analysis.m"
+                    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1157 "structure_sharing.analysis.m"
+                      {
+#line 1157 "structure_sharing.analysis.m"
+                        transform_hlds__ctgc__structure_sharing__analysis__TypesTerm_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_17_17, (MR_Integer) 0)));
+#line 1157 "structure_sharing.analysis.m"
+                        transform_hlds__ctgc__structure_sharing__analysis__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_17_17, (MR_Integer) 1)));
+#line 1157 "structure_sharing.analysis.m"
+                        transform_hlds__ctgc__structure_sharing__analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__V_18_18)) == (MR_mktag((MR_Integer) 1)));
+#line 1157 "structure_sharing.analysis.m"
+                        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1157 "structure_sharing.analysis.m"
+                          {
+#line 1157 "structure_sharing.analysis.m"
+                            transform_hlds__ctgc__structure_sharing__analysis__SharingPairsTerm_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_18_18, (MR_Integer) 0)));
+#line 1157 "structure_sharing.analysis.m"
+                            transform_hlds__ctgc__structure_sharing__analysis__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_18_18, (MR_Integer) 1)));
+#line 1157 "structure_sharing.analysis.m"
+                            transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__V_19_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1157 "structure_sharing.analysis.m"
+                            if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1157 "structure_sharing.analysis.m"
+                              {
+#line 3837 "transform_hlds.ctgc.structure_sharing.analysis.c"
+                                transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_26_26 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+#line 3839 "transform_hlds.ctgc.structure_sharing.analysis.c"
+                                transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_27_27 = (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[5];
+#line 1158 "structure_sharing.analysis.m"
+                                {
+#line 1158 "structure_sharing.analysis.m"
+                                  transform_hlds__ctgc__structure_sharing__analysis__succeeded = mercury__term_conversion__term_to_type_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_26_26, transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_27_27, transform_hlds__ctgc__structure_sharing__analysis__HeadVarsTerm_7, &transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVars_11);
+                                }
+#line 1158 "structure_sharing.analysis.m"
+                                if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1158 "structure_sharing.analysis.m"
+                                  {
+#line 1158 "structure_sharing.analysis.m"
+                                    transform_hlds__ctgc__structure_sharing__analysis__HeadVars_11 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVars_11);
+#line 1158 "structure_sharing.analysis.m"
+                                    transform_hlds__ctgc__structure_sharing__analysis__succeeded = MR_TRUE;
+#line 1158 "structure_sharing.analysis.m"
+                                  }
+#line 1157 "structure_sharing.analysis.m"
+                                if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1157 "structure_sharing.analysis.m"
+                                  {
+#line 3860 "transform_hlds.ctgc.structure_sharing.analysis.c"
+                                    transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_28_28 = (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[6];
+#line 1159 "structure_sharing.analysis.m"
+                                    {
+#line 1159 "structure_sharing.analysis.m"
+                                      transform_hlds__ctgc__structure_sharing__analysis__succeeded = mercury__term_conversion__term_to_type_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_26_26, transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_28_28, transform_hlds__ctgc__structure_sharing__analysis__TypesTerm_8, &transform_hlds__ctgc__structure_sharing__analysis__conv1_Types_12);
+                                    }
+#line 1159 "structure_sharing.analysis.m"
+                                    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1159 "structure_sharing.analysis.m"
+                                      {
+#line 1159 "structure_sharing.analysis.m"
+                                        transform_hlds__ctgc__structure_sharing__analysis__Types_12 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv1_Types_12);
+#line 1159 "structure_sharing.analysis.m"
+                                        transform_hlds__ctgc__structure_sharing__analysis__succeeded = MR_TRUE;
+#line 1159 "structure_sharing.analysis.m"
+                                      }
+#line 1157 "structure_sharing.analysis.m"
+                                    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1157 "structure_sharing.analysis.m"
+                                      {
+#line 3881 "transform_hlds.ctgc.structure_sharing.analysis.c"
+                                        transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_29_29 = (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[7];
+#line 1160 "structure_sharing.analysis.m"
+                                        {
+#line 1160 "structure_sharing.analysis.m"
+                                          transform_hlds__ctgc__structure_sharing__analysis__succeeded = mercury__term_conversion__term_to_type_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_26_26, transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_29_29, transform_hlds__ctgc__structure_sharing__analysis__SharingPairsTerm_9, &transform_hlds__ctgc__structure_sharing__analysis__conv2_SharingPairs_13);
+                                        }
+#line 1160 "structure_sharing.analysis.m"
+                                        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1160 "structure_sharing.analysis.m"
+                                          {
+#line 1160 "structure_sharing.analysis.m"
+                                            transform_hlds__ctgc__structure_sharing__analysis__SharingPairs_13 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv2_SharingPairs_13);
+#line 1160 "structure_sharing.analysis.m"
+                                            transform_hlds__ctgc__structure_sharing__analysis__succeeded = MR_TRUE;
+#line 1160 "structure_sharing.analysis.m"
+                                          }
+#line 1157 "structure_sharing.analysis.m"
+                                        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1157 "structure_sharing.analysis.m"
+                                          {
+#line 1161 "structure_sharing.analysis.m"
+                                            {
+#line 1161 "structure_sharing.analysis.m"
+                                              MR_Word base;
+#line 1161 "structure_sharing.analysis.m"
+                                              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+#line 1161 "structure_sharing.analysis.m"
+                                              *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2 = base;
+#line 1161 "structure_sharing.analysis.m"
+                                              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__HeadVars_11));
+#line 1161 "structure_sharing.analysis.m"
+                                              MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Types_12));
+#line 1161 "structure_sharing.analysis.m"
+                                              MR_hl_field(MR_mktag(1), base, 2) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingPairs_13));
+#line 1161 "structure_sharing.analysis.m"
+                                            }
+#line 1161 "structure_sharing.analysis.m"
+                                            transform_hlds__ctgc__structure_sharing__analysis__succeeded = MR_TRUE;
+#line 1157 "structure_sharing.analysis.m"
+                                          }
+#line 1157 "structure_sharing.analysis.m"
+                                      }
+#line 1157 "structure_sharing.analysis.m"
+                                  }
+#line 1157 "structure_sharing.analysis.m"
+                              }
+#line 1157 "structure_sharing.analysis.m"
+                          }
+#line 1157 "structure_sharing.analysis.m"
+                      }
+#line 1157 "structure_sharing.analysis.m"
+                  }
+#line 1157 "structure_sharing.analysis.m"
+              }
+#line 1150 "structure_sharing.analysis.m"
+          }
+#line 1150 "structure_sharing.analysis.m"
+      }
+#line 1150 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1150 "structure_sharing.analysis.m"
+  }
+#line 1124 "structure_sharing.analysis.m"
+}
+
+#line 1123 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__to_term____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__to_term_1_1_f_0(
+#line 1123 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1)
+#line 1123 "structure_sharing.analysis.m"
+{
+#line 1131 "structure_sharing.analysis.m"
+  {
+#line 1131 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1131 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+
+#line 1131 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1131 "structure_sharing.analysis.m"
+      {
+#line 1131 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_25_25;
+
+#line 1132 "structure_sharing.analysis.m"
+        {
+#line 1132 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_25_25 = mercury__term__context_init_0_f_0();
+        }
+#line 1132 "structure_sharing.analysis.m"
+        {
+#line 1132 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1132 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_13[0]));
+#line 1132 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1132 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, 2) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_25_25));
+#line 1132 "structure_sharing.analysis.m"
+        }
+#line 1131 "structure_sharing.analysis.m"
+      }
+#line 1131 "structure_sharing.analysis.m"
+    else
+#line 1131 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 1134 "structure_sharing.analysis.m"
+      {
+#line 1134 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_21_21;
+
+#line 1135 "structure_sharing.analysis.m"
+        {
+#line 1135 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_21_21 = mercury__term__context_init_0_f_0();
+        }
+#line 1135 "structure_sharing.analysis.m"
+        {
+#line 1135 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1135 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_13[1]));
+#line 1135 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1135 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, 2) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_21_21));
+#line 1135 "structure_sharing.analysis.m"
+        }
+#line 1134 "structure_sharing.analysis.m"
+      }
+#line 1131 "structure_sharing.analysis.m"
+    else
+#line 1137 "structure_sharing.analysis.m"
+      {
+#line 1137 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_27_27 = (MR_Word) &mercury__term__term__type_ctor_info_generic_0;
+#line 1137 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVars_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, (MR_Integer) 0)));
+#line 1137 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__Types_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, (MR_Integer) 1)));
+#line 1137 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingPairs_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, (MR_Integer) 2)));
+#line 1137 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVarsTerm_8;
+#line 1137 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypesTerm_9;
+#line 1137 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingPairsTerm_10;
+#line 1137 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_13_13;
+#line 1137 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_14_14;
+#line 1137 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_15_15;
+#line 1137 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_17_17;
+
+#line 1138 "structure_sharing.analysis.m"
+        {
+#line 1138 "structure_sharing.analysis.m"
+          mercury__term_conversion__type_to_term_2_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[5], transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_27_27, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__HeadVars_5)), &transform_hlds__ctgc__structure_sharing__analysis__HeadVarsTerm_8);
+        }
+#line 1139 "structure_sharing.analysis.m"
+        {
+#line 1139 "structure_sharing.analysis.m"
+          mercury__term_conversion__type_to_term_2_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[6], transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_27_27, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Types_6)), &transform_hlds__ctgc__structure_sharing__analysis__TypesTerm_9);
+        }
+#line 1140 "structure_sharing.analysis.m"
+        {
+#line 1140 "structure_sharing.analysis.m"
+          mercury__term_conversion__type_to_term_2_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[7], transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_27_27, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingPairs_7)), &transform_hlds__ctgc__structure_sharing__analysis__SharingPairsTerm_10);
+        }
+#line 1142 "structure_sharing.analysis.m"
+        {
+#line 1142 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_15_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1142 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_15_15, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingPairsTerm_10));
+#line 1142 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_15_15, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1142 "structure_sharing.analysis.m"
+        }
+#line 1142 "structure_sharing.analysis.m"
+        {
+#line 1142 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_14_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1142 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__TypesTerm_9));
+#line 1142 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_15_15));
+#line 1142 "structure_sharing.analysis.m"
+        }
+#line 1142 "structure_sharing.analysis.m"
+        {
+#line 1142 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_13_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1142 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_13_13, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__HeadVarsTerm_8));
+#line 1142 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_13_13, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_14_14));
+#line 1142 "structure_sharing.analysis.m"
+        }
+#line 1142 "structure_sharing.analysis.m"
+        {
+#line 1142 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_17_17 = mercury__term__context_init_0_f_0();
+        }
+#line 1141 "structure_sharing.analysis.m"
+        {
+#line 1141 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 1141 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_13[2]));
+#line 1141 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_13_13));
+#line 1141 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, 2) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_17_17));
+#line 1141 "structure_sharing.analysis.m"
+        }
+#line 1137 "structure_sharing.analysis.m"
+      }
+#line 1131 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+#line 1131 "structure_sharing.analysis.m"
+  }
+#line 1123 "structure_sharing.analysis.m"
+}
+
+#line 1062 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__equivalent_3_3_p_0(
+#line 1062 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_7)
+#line 1062 "structure_sharing.analysis.m"
+{
+#line 1062 "structure_sharing.analysis.m"
+  {
+#line 1062 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1062 "structure_sharing.analysis.m"
+    {
+#line 1062 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_93_95_48_3_p_0();
+    }
+#line 1062 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1062 "structure_sharing.analysis.m"
+  }
+#line 1062 "structure_sharing.analysis.m"
+}
+
+#line 1059 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0______analysis__more_precise_than_3_3_p_0(
+#line 1059 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_4)
+#line 1059 "structure_sharing.analysis.m"
+{
+#line 1060 "structure_sharing.analysis.m"
+  {
+#line 1060 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1060 "structure_sharing.analysis.m"
+    {
+#line 1060 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_44_32_50_44_32_51_93_95_48_3_p_0();
+    }
+#line 1060 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1060 "structure_sharing.analysis.m"
+  }
+#line 1059 "structure_sharing.analysis.m"
+}
+
+#line 1099 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__equivalent_3_3_p_0(
+#line 1099 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_4,
+#line 1099 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer1_5,
+#line 1099 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer2_6)
+#line 1099 "structure_sharing.analysis.m"
+{
+#line 1102 "structure_sharing.analysis.m"
+  {
+#line 1102 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1102 "structure_sharing.analysis.m"
+    {
+#line 1102 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_answer_0_0(transform_hlds__ctgc__structure_sharing__analysis__Answer1_5, transform_hlds__ctgc__structure_sharing__analysis__Answer2_6);
+    }
+#line 1102 "structure_sharing.analysis.m"
+    if (!(transform_hlds__ctgc__structure_sharing__analysis__succeeded))
+#line 1104 "structure_sharing.analysis.m"
+      {
+#line 1104 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_4, (MR_Integer) 0)));
+#line 1104 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_4, (MR_Integer) 1)));
+#line 1104 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVars_9;
+#line 1104 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__VarTypes_10;
+#line 1104 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_11;
+#line 1104 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__Sharing1_12;
+#line 1104 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__Sharing2_13;
+#line 1104 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs1_14;
+#line 1104 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs2_15;
+
+#line 1105 "structure_sharing.analysis.m"
+        {
+#line 1105 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_get_headvars_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, &transform_hlds__ctgc__structure_sharing__analysis__HeadVars_9);
+        }
+#line 1106 "structure_sharing.analysis.m"
+        {
+#line 1106 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, &transform_hlds__ctgc__structure_sharing__analysis__VarTypes_10);
+        }
+#line 1107 "structure_sharing.analysis.m"
+        {
+#line 1107 "structure_sharing.analysis.m"
+          parse_tree__prog_data__lookup_var_types_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__VarTypes_10, transform_hlds__ctgc__structure_sharing__analysis__HeadVars_9, &transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_11);
+        }
+#line 1108 "structure_sharing.analysis.m"
+        {
+#line 1108 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer_to_domain_5_p_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_11, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, transform_hlds__ctgc__structure_sharing__analysis__Answer1_5, &transform_hlds__ctgc__structure_sharing__analysis__Sharing1_12);
+        }
+#line 1110 "structure_sharing.analysis.m"
+        {
+#line 1110 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer_to_domain_5_p_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_11, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, transform_hlds__ctgc__structure_sharing__analysis__Answer2_6, &transform_hlds__ctgc__structure_sharing__analysis__Sharing2_13);
+        }
+#line 1112 "structure_sharing.analysis.m"
+        {
+#line 1112 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__SharingAs1_14 = transform_hlds__ctgc__structure_sharing__domain__from_structure_sharing_domain_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__Sharing1_12);
+        }
+#line 1113 "structure_sharing.analysis.m"
+        {
+#line 1113 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__SharingAs2_15 = transform_hlds__ctgc__structure_sharing__domain__from_structure_sharing_domain_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__Sharing2_13);
+        }
+#line 1114 "structure_sharing.analysis.m"
+        {
+#line 1114 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__domain__sharing_as_is_subsumed_by_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_7, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, transform_hlds__ctgc__structure_sharing__analysis__SharingAs2_15, transform_hlds__ctgc__structure_sharing__analysis__SharingAs1_14);
+        }
+#line 1104 "structure_sharing.analysis.m"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1116 "structure_sharing.analysis.m"
+          {
+#line 1116 "structure_sharing.analysis.m"
+            return transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__domain__sharing_as_is_subsumed_by_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_7, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, transform_hlds__ctgc__structure_sharing__analysis__SharingAs1_14, transform_hlds__ctgc__structure_sharing__analysis__SharingAs2_15);
+          }
+#line 1104 "structure_sharing.analysis.m"
+      }
+#line 1102 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1102 "structure_sharing.analysis.m"
+  }
+#line 1099 "structure_sharing.analysis.m"
+}
+
+#line 1079 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__partial_order____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__more_precise_than_3_3_p_0(
+#line 1079 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_4,
+#line 1079 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer1_5,
+#line 1079 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer2_6)
+#line 1079 "structure_sharing.analysis.m"
+{
+#line 1079 "structure_sharing.analysis.m"
+  {
+#line 1079 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1079 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_7;
+#line 1079 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8;
+#line 1079 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVars_9;
+#line 1079 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__VarTypes_10;
+#line 1079 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_11;
+#line 1079 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Sharing1_12;
+#line 1079 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Sharing2_13;
+#line 1079 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs1_14;
+#line 1079 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs2_15;
+#line 1079 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_16_16;
+#line 1079 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_17_17;
+
+#line 1081 "structure_sharing.analysis.m"
+    {
+#line 1081 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_answer_0_0(transform_hlds__ctgc__structure_sharing__analysis__Answer1_5, transform_hlds__ctgc__structure_sharing__analysis__Answer2_6);
+    }
+#line 1081 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__succeeded = !(transform_hlds__ctgc__structure_sharing__analysis__succeeded);
+#line 1079 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1079 "structure_sharing.analysis.m"
+      {
+#line 1083 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_4, (MR_Integer) 0)));
+#line 1083 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_4, (MR_Integer) 1)));
+#line 1084 "structure_sharing.analysis.m"
+        {
+#line 1084 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_get_headvars_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, &transform_hlds__ctgc__structure_sharing__analysis__HeadVars_9);
+        }
+#line 1085 "structure_sharing.analysis.m"
+        {
+#line 1085 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, &transform_hlds__ctgc__structure_sharing__analysis__VarTypes_10);
+        }
+#line 1086 "structure_sharing.analysis.m"
+        {
+#line 1086 "structure_sharing.analysis.m"
+          parse_tree__prog_data__lookup_var_types_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__VarTypes_10, transform_hlds__ctgc__structure_sharing__analysis__HeadVars_9, &transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_11);
+        }
+#line 1087 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__V_16_16 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1087 "structure_sharing.analysis.m"
+        {
+#line 1087 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer_to_domain_5_p_0(transform_hlds__ctgc__structure_sharing__analysis__V_16_16, transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_11, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, transform_hlds__ctgc__structure_sharing__analysis__Answer1_5, &transform_hlds__ctgc__structure_sharing__analysis__Sharing1_12);
+        }
+#line 1089 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__V_17_17 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1089 "structure_sharing.analysis.m"
+        {
+#line 1089 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer_to_domain_5_p_0(transform_hlds__ctgc__structure_sharing__analysis__V_17_17, transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_11, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, transform_hlds__ctgc__structure_sharing__analysis__Answer2_6, &transform_hlds__ctgc__structure_sharing__analysis__Sharing2_13);
+        }
+#line 1091 "structure_sharing.analysis.m"
+        {
+#line 1091 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__SharingAs1_14 = transform_hlds__ctgc__structure_sharing__domain__from_structure_sharing_domain_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__Sharing1_12);
+        }
+#line 1092 "structure_sharing.analysis.m"
+        {
+#line 1092 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__SharingAs2_15 = transform_hlds__ctgc__structure_sharing__domain__from_structure_sharing_domain_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__Sharing2_13);
+        }
+#line 1093 "structure_sharing.analysis.m"
+        {
+#line 1093 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__domain__sharing_as_is_subsumed_by_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_7, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, transform_hlds__ctgc__structure_sharing__analysis__SharingAs1_14, transform_hlds__ctgc__structure_sharing__analysis__SharingAs2_15);
+        }
+#line 1079 "structure_sharing.analysis.m"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1079 "structure_sharing.analysis.m"
+          {
+#line 1095 "structure_sharing.analysis.m"
+            {
+#line 1095 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__domain__sharing_as_is_subsumed_by_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_7, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, transform_hlds__ctgc__structure_sharing__analysis__SharingAs2_15, transform_hlds__ctgc__structure_sharing__analysis__SharingAs1_14);
+            }
+#line 1095 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__succeeded = !(transform_hlds__ctgc__structure_sharing__analysis__succeeded);
+#line 1079 "structure_sharing.analysis.m"
+          }
+#line 1079 "structure_sharing.analysis.m"
+      }
+#line 1079 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1079 "structure_sharing.analysis.m"
+  }
+#line 1079 "structure_sharing.analysis.m"
+}
+
+#line 1047 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__get_func_info_6_6_p_0(
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_17,
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleName_18,
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__FuncId_19,
+#line 1047 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_22)
+#line 1047 "structure_sharing.analysis.m"
+{
+#line 1047 "structure_sharing.analysis.m"
+  {
+#line 1047 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1047 "structure_sharing.analysis.m"
+    {
+#line 1047 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_103_101_116_95_102_117_110_99_95_105_110_102_111_95_54_95_95_91_52_44_32_53_93_95_48_6_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_17, transform_hlds__ctgc__structure_sharing__analysis__ModuleName_18, transform_hlds__ctgc__structure_sharing__analysis__FuncId_19, transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_22);
+#line 1047 "structure_sharing.analysis.m"
+      return;
+    }
+#line 1047 "structure_sharing.analysis.m"
+  }
+#line 1047 "structure_sharing.analysis.m"
+}
+
+#line 1045 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__top_2_2_f_0(
+#line 1045 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_12)
+#line 1045 "structure_sharing.analysis.m"
+{
+#line 1045 "structure_sharing.analysis.m"
+  {
+#line 1045 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1045 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+
+#line 1045 "structure_sharing.analysis.m"
+    {
+#line 1045 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3 = transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_112_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1045 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+#line 1045 "structure_sharing.analysis.m"
+  }
+#line 1045 "structure_sharing.analysis.m"
+}
+
+#line 1044 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__bottom_2_2_f_0(
+#line 1044 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_10)
+#line 1044 "structure_sharing.analysis.m"
+{
+#line 1044 "structure_sharing.analysis.m"
+  {
+#line 1044 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1044 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+
+#line 1044 "structure_sharing.analysis.m"
+    {
+#line 1044 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3 = transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_98_111_116_116_111_109_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1044 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+#line 1044 "structure_sharing.analysis.m"
+  }
+#line 1044 "structure_sharing.analysis.m"
+}
+
+#line 1043 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0(void)
+#line 1043 "structure_sharing.analysis.m"
+{
+#line 1043 "structure_sharing.analysis.m"
+  {
+#line 1043 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1043 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+
+#line 1043 "structure_sharing.analysis.m"
+    {
+#line 1043 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3 = transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_112_114_101_102_101_114_114_101_100_95_102_105_120_112_111_105_110_116_95_116_121_112_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1043 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+#line 1043 "structure_sharing.analysis.m"
+  }
+#line 1043 "structure_sharing.analysis.m"
+}
+
+#line 1042 "structure_sharing.analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__analysis_version_number_2_2_f_0(void)
+#line 1042 "structure_sharing.analysis.m"
+{
+#line 1042 "structure_sharing.analysis.m"
+  {
+#line 1042 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1042 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+
+#line 1042 "structure_sharing.analysis.m"
+    {
+#line 1042 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3 = transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_118_101_114_115_105_111_110_95_110_117_109_98_101_114_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1042 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+#line 1042 "structure_sharing.analysis.m"
+  }
+#line 1042 "structure_sharing.analysis.m"
+}
+
+#line 1041 "structure_sharing.analysis.m"
+static MR_String MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ClassMethod_for_analysis__analysis____transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_func_info__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_call__arity0__transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer__arity0______analysis__analysis_name_2_2_f_0(void)
+#line 1041 "structure_sharing.analysis.m"
+{
+#line 1036 "structure_sharing.analysis.m"
+  {
+#line 1036 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1036 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+
+#line 1036 "structure_sharing.analysis.m"
+    {
+#line 1036 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3 = transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_110_97_109_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 1036 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+#line 1036 "structure_sharing.analysis.m"
+  }
+#line 1041 "structure_sharing.analysis.m"
+}
+
+#line 1028 "structure_sharing.analysis.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_func_info_0_0(
+#line 1028 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 1028 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2,
+#line 1028 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3)
+#line 1028 "structure_sharing.analysis.m"
+{
+#line 1028 "structure_sharing.analysis.m"
+  {
+#line 1028 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1028 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CastX_9 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+#line 1028 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CastY_10 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+
+#line 1028 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__CastX_9 == transform_hlds__ctgc__structure_sharing__analysis__CastY_10);
+#line 1028 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 4558 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 1028 "structure_sharing.analysis.m"
+    else
+#line 1028 "structure_sharing.analysis.m"
+      {
+#line 1028 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, (MR_Integer) 0)));
+#line 1028 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, (MR_Integer) 1)));
+#line 1028 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3, (MR_Integer) 0)));
+#line 1028 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3, (MR_Integer) 1)));
+#line 1028 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_8_8;
+
+#line 1028 "structure_sharing.analysis.m"
+        {
+#line 1028 "structure_sharing.analysis.m"
+          hlds__hlds_module____Compare____module_info_0_0(&transform_hlds__ctgc__structure_sharing__analysis__V_8_8, transform_hlds__ctgc__structure_sharing__analysis__V_4_4, transform_hlds__ctgc__structure_sharing__analysis__V_6_6);
+        }
+#line 4580 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__V_8_8 == (MR_Integer) 0);
+#line 1028 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__succeeded = !(transform_hlds__ctgc__structure_sharing__analysis__succeeded);
+#line 1028 "structure_sharing.analysis.m"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1028 "structure_sharing.analysis.m"
+          *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = transform_hlds__ctgc__structure_sharing__analysis__V_8_8;
+#line 1028 "structure_sharing.analysis.m"
+        else
+#line 1028 "structure_sharing.analysis.m"
+          {
+#line 1028 "structure_sharing.analysis.m"
+            hlds__hlds_pred____Compare____proc_info_0_0(transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, transform_hlds__ctgc__structure_sharing__analysis__V_5_5, transform_hlds__ctgc__structure_sharing__analysis__V_7_7);
+#line 1028 "structure_sharing.analysis.m"
+            return;
+          }
+#line 1028 "structure_sharing.analysis.m"
+      }
+#line 1028 "structure_sharing.analysis.m"
+  }
+#line 1028 "structure_sharing.analysis.m"
+}
+
+#line 1028 "structure_sharing.analysis.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_func_info_0_0(
+#line 1028 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 1028 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2)
+#line 1028 "structure_sharing.analysis.m"
+{
+#line 1028 "structure_sharing.analysis.m"
+  {
+#line 1028 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1028 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CastX_7 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1;
+#line 1028 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CastY_8 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+
+#line 1028 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__CastX_7 == transform_hlds__ctgc__structure_sharing__analysis__CastY_8);
+#line 1028 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1028 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = MR_TRUE;
+#line 1028 "structure_sharing.analysis.m"
+    else
+#line 1028 "structure_sharing.analysis.m"
+      {
+#line 1028 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, (MR_Integer) 0)));
+#line 1028 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, (MR_Integer) 1)));
+#line 1028 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, (MR_Integer) 0)));
+#line 1028 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, (MR_Integer) 1)));
+
+#line 4641 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        {
+#line 4643 "transform_hlds.ctgc.structure_sharing.analysis.c"
+          transform_hlds__ctgc__structure_sharing__analysis__succeeded = hlds__hlds_module____Unify____module_info_0_0(transform_hlds__ctgc__structure_sharing__analysis__V_3_3, transform_hlds__ctgc__structure_sharing__analysis__V_5_5);
+        }
+#line 1028 "structure_sharing.analysis.m"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 4648 "transform_hlds.ctgc.structure_sharing.analysis.c"
+          {
+#line 4650 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            return transform_hlds__ctgc__structure_sharing__analysis__succeeded = hlds__hlds_pred____Unify____proc_info_0_0(transform_hlds__ctgc__structure_sharing__analysis__V_4_4, transform_hlds__ctgc__structure_sharing__analysis__V_6_6);
+          }
+#line 1028 "structure_sharing.analysis.m"
+      }
+#line 1028 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1028 "structure_sharing.analysis.m"
+  }
+#line 1028 "structure_sharing.analysis.m"
+}
+
+#line 1011 "structure_sharing.analysis.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_call_0_0(
+#line 1011 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1)
+#line 1011 "structure_sharing.analysis.m"
+{
+#line 1011 "structure_sharing.analysis.m"
+  {
+#line 1011 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1011 "structure_sharing.analysis.m"
+    {
+#line 1011 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1);
+#line 1011 "structure_sharing.analysis.m"
+      return;
+    }
+#line 1011 "structure_sharing.analysis.m"
+  }
+#line 1011 "structure_sharing.analysis.m"
+}
+
+#line 1011 "structure_sharing.analysis.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_call_0_0(void)
+#line 1011 "structure_sharing.analysis.m"
+{
+#line 1011 "structure_sharing.analysis.m"
+  {
+#line 1011 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 1011 "structure_sharing.analysis.m"
+    {
+#line 1011 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_99_116_103_99_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_95_97_110_97_108_121_115_105_115_95_95_115_116_114_117_99_116_117_114_101_95_115_104_97_114_105_110_103_95_99_97_108_108_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+#line 1011 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1011 "structure_sharing.analysis.m"
+  }
+#line 1011 "structure_sharing.analysis.m"
+}
+
+#line 1014 "structure_sharing.analysis.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____structure_sharing_answer_0_0(
+#line 1014 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 1014 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2,
+#line 1014 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3)
+#line 1014 "structure_sharing.analysis.m"
+{
+#line 1014 "structure_sharing.analysis.m"
+  {
+#line 1014 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1014 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CastX_24 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+#line 1014 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CastY_25 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+
+#line 1014 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__CastX_24 == transform_hlds__ctgc__structure_sharing__analysis__CastY_25);
+#line 1014 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 4732 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 1014 "structure_sharing.analysis.m"
+    else
+#line 1014 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1014 "structure_sharing.analysis.m"
+      if ((transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1014 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 1014 "structure_sharing.analysis.m"
+      else
+#line 1014 "structure_sharing.analysis.m"
+      if ((transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 1014 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = (MR_Integer) 1;
+#line 1014 "structure_sharing.analysis.m"
+      else
+#line 4750 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = (MR_Integer) 1;
+#line 1014 "structure_sharing.analysis.m"
+    else
+#line 1014 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 1014 "structure_sharing.analysis.m"
+      if ((transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1014 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = (MR_Integer) 2;
+#line 1014 "structure_sharing.analysis.m"
+      else
+#line 1014 "structure_sharing.analysis.m"
+      if ((transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 1014 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 1014 "structure_sharing.analysis.m"
+      else
+#line 4768 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = (MR_Integer) 1;
+#line 1014 "structure_sharing.analysis.m"
+    else
+#line 1014 "structure_sharing.analysis.m"
+      {
+#line 1014 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, (MR_Integer) 2)));
+#line 1014 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, (MR_Integer) 1)));
+#line 1014 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 1014 "structure_sharing.analysis.m"
+        if ((transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 4783 "transform_hlds.ctgc.structure_sharing.analysis.c"
+          *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = (MR_Integer) 2;
+#line 1014 "structure_sharing.analysis.m"
+        else
+#line 1014 "structure_sharing.analysis.m"
+        if ((transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 4789 "transform_hlds.ctgc.structure_sharing.analysis.c"
+          *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = (MR_Integer) 2;
+#line 1014 "structure_sharing.analysis.m"
+        else
+#line 1014 "structure_sharing.analysis.m"
+          {
+#line 1014 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3, (MR_Integer) 0)));
+#line 1014 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3, (MR_Integer) 1)));
+#line 1014 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3, (MR_Integer) 2)));
+#line 1014 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_22_22;
+
+#line 1014 "structure_sharing.analysis.m"
+            {
+#line 1014 "structure_sharing.analysis.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[5], &transform_hlds__ctgc__structure_sharing__analysis__V_22_22, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_31_31)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_19_19)));
+            }
+#line 4809 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__V_22_22 == (MR_Integer) 0);
+#line 1014 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__succeeded = !(transform_hlds__ctgc__structure_sharing__analysis__succeeded);
+#line 1014 "structure_sharing.analysis.m"
+            if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1014 "structure_sharing.analysis.m"
+              *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = transform_hlds__ctgc__structure_sharing__analysis__V_22_22;
+#line 1014 "structure_sharing.analysis.m"
+            else
+#line 1014 "structure_sharing.analysis.m"
+              {
+#line 1014 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_23_23;
+
+#line 1014 "structure_sharing.analysis.m"
+                {
+#line 1014 "structure_sharing.analysis.m"
+                  mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[6], &transform_hlds__ctgc__structure_sharing__analysis__V_23_23, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_30_30)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_20_20)));
+                }
+#line 4829 "transform_hlds.ctgc.structure_sharing.analysis.c"
+                transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__V_23_23 == (MR_Integer) 0);
+#line 1014 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__succeeded = !(transform_hlds__ctgc__structure_sharing__analysis__succeeded);
+#line 1014 "structure_sharing.analysis.m"
+                if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1014 "structure_sharing.analysis.m"
+                  *transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 = transform_hlds__ctgc__structure_sharing__analysis__V_23_23;
+#line 1014 "structure_sharing.analysis.m"
+                else
+#line 1014 "structure_sharing.analysis.m"
+                  {
+#line 1014 "structure_sharing.analysis.m"
+                    {
+#line 1014 "structure_sharing.analysis.m"
+                      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[7], transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_29_29)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_21_21)));
+#line 1014 "structure_sharing.analysis.m"
+                      return;
+                    }
+#line 1014 "structure_sharing.analysis.m"
+                  }
+#line 1014 "structure_sharing.analysis.m"
+              }
+#line 1014 "structure_sharing.analysis.m"
+          }
+#line 1014 "structure_sharing.analysis.m"
+      }
+#line 1014 "structure_sharing.analysis.m"
+  }
+#line 1014 "structure_sharing.analysis.m"
+}
+
+#line 1014 "structure_sharing.analysis.m"
+MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____structure_sharing_answer_0_0(
+#line 1014 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 1014 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2)
+#line 1014 "structure_sharing.analysis.m"
+{
+#line 1014 "structure_sharing.analysis.m"
+  {
+#line 1014 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1014 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CastX_13 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1;
+#line 1014 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CastY_14 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+
+#line 1014 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__CastX_13 == transform_hlds__ctgc__structure_sharing__analysis__CastY_14);
+#line 1014 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1014 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = MR_TRUE;
+#line 1014 "structure_sharing.analysis.m"
+    else
+#line 1014 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1014 "structure_sharing.analysis.m"
+      {
+#line 1014 "structure_sharing.analysis.m"
+        MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CastX_3 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1;
+#line 1014 "structure_sharing.analysis.m"
+        MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CastY_4 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+
+#line 1014 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__CastY_4 == transform_hlds__ctgc__structure_sharing__analysis__CastX_3);
+#line 1014 "structure_sharing.analysis.m"
+      }
+#line 1014 "structure_sharing.analysis.m"
+    else
+#line 1014 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 1014 "structure_sharing.analysis.m"
+      {
+#line 1014 "structure_sharing.analysis.m"
+        MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CastX_5 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1;
+#line 1014 "structure_sharing.analysis.m"
+        MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CastY_6 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+
+#line 1014 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__CastY_6 == transform_hlds__ctgc__structure_sharing__analysis__CastX_5);
+#line 1014 "structure_sharing.analysis.m"
+      }
+#line 1014 "structure_sharing.analysis.m"
+    else
+#line 1014 "structure_sharing.analysis.m"
+      {
+#line 1014 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_15_15;
+#line 1014 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_16_16;
+#line 1014 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_17_17;
+#line 1014 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, (MR_Integer) 0)));
+#line 1014 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, (MR_Integer) 1)));
+#line 1014 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, (MR_Integer) 2)));
+#line 1014 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_10_10;
+#line 1014 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_11_11;
+#line 1014 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_12_12;
+
+#line 1014 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 1014 "structure_sharing.analysis.m"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1014 "structure_sharing.analysis.m"
+          {
+#line 1014 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, (MR_Integer) 0)));
+#line 1014 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, (MR_Integer) 1)));
+#line 1014 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2, (MR_Integer) 2)));
+#line 4950 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_15_15 = (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[5];
+#line 4952 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            {
+#line 4954 "transform_hlds.ctgc.structure_sharing.analysis.c"
+              transform_hlds__ctgc__structure_sharing__analysis__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_15_15, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_7_7)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_10_10)));
+            }
+#line 1014 "structure_sharing.analysis.m"
+            if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1014 "structure_sharing.analysis.m"
+              {
+#line 4961 "transform_hlds.ctgc.structure_sharing.analysis.c"
+                transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_16_16 = (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[6];
+#line 4963 "transform_hlds.ctgc.structure_sharing.analysis.c"
+                {
+#line 4965 "transform_hlds.ctgc.structure_sharing.analysis.c"
+                  transform_hlds__ctgc__structure_sharing__analysis__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_16_16, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_8_8)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_11_11)));
+                }
+#line 1014 "structure_sharing.analysis.m"
+                if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1014 "structure_sharing.analysis.m"
+                  {
+#line 4972 "transform_hlds.ctgc.structure_sharing.analysis.c"
+                    transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_17_17 = (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[7];
+#line 4974 "transform_hlds.ctgc.structure_sharing.analysis.c"
+                    {
+#line 4976 "transform_hlds.ctgc.structure_sharing.analysis.c"
+                      return transform_hlds__ctgc__structure_sharing__analysis__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_17_17, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_9_9)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_12_12)));
+                    }
+#line 1014 "structure_sharing.analysis.m"
+                  }
+#line 1014 "structure_sharing.analysis.m"
+              }
+#line 1014 "structure_sharing.analysis.m"
+          }
+#line 1014 "structure_sharing.analysis.m"
+      }
+#line 1014 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1014 "structure_sharing.analysis.m"
+  }
+#line 1014 "structure_sharing.analysis.m"
+}
+
+#line 812 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____ss_fixpoint_table_0_0(
+#line 812 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 812 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2,
+#line 812 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3)
+#line 812 "structure_sharing.analysis.m"
+{
+#line 812 "structure_sharing.analysis.m"
+  {
+#line 812 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 812 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar1_4 = transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+#line 812 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar2_5 = transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+
+#line 812 "structure_sharing.analysis.m"
+    {
+#line 812 "structure_sharing.analysis.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[4], transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar2_5)));
+#line 812 "structure_sharing.analysis.m"
+      return;
+    }
+#line 812 "structure_sharing.analysis.m"
+  }
+#line 812 "structure_sharing.analysis.m"
+}
+
+#line 812 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____ss_fixpoint_table_0_0(
+#line 812 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 812 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2)
+#line 812 "structure_sharing.analysis.m"
+{
+#line 812 "structure_sharing.analysis.m"
+  {
+#line 812 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 812 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar1_3 = transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1;
+#line 812 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar2_4 = transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+
+#line 812 "structure_sharing.analysis.m"
+    {
+#line 812 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[4], ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar2_4)));
+    }
+#line 812 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 812 "structure_sharing.analysis.m"
+  }
+#line 812 "structure_sharing.analysis.m"
+}
+
+#line 1308 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____should_write_for_0_0(
+#line 1308 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 1308 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2,
+#line 1308 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3)
+#line 1308 "structure_sharing.analysis.m"
+{
+#line 1308 "structure_sharing.analysis.m"
+  {
+#line 1308 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1308 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar1_4 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+#line 1308 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar2_5 = (MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+
+#line 1308 "structure_sharing.analysis.m"
+    {
+#line 1308 "structure_sharing.analysis.m"
+      mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar1_4, transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar2_5);
+#line 1308 "structure_sharing.analysis.m"
+      return;
+    }
+#line 1308 "structure_sharing.analysis.m"
+  }
+#line 1308 "structure_sharing.analysis.m"
+}
+
+#line 1308 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____should_write_for_0_0(
+#line 1308 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_1,
+#line 1308 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2)
+#line 1308 "structure_sharing.analysis.m"
+{
+#line 5097 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 5099 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_1 == transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2);
+
+#line 5102 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 5104 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 1308 "structure_sharing.analysis.m"
+}
+
+#line 114 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Compare____dep_procs_0_0(
+#line 114 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 114 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2,
+#line 114 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3)
+#line 114 "structure_sharing.analysis.m"
+{
+#line 114 "structure_sharing.analysis.m"
+  {
+#line 114 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 114 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar1_4 = transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+#line 114 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar2_5 = transform_hlds__ctgc__structure_sharing__analysis__HeadVar__3_3;
+
+#line 114 "structure_sharing.analysis.m"
+    {
+#line 114 "structure_sharing.analysis.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[4], transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar2_5)));
+#line 114 "structure_sharing.analysis.m"
+      return;
+    }
+#line 114 "structure_sharing.analysis.m"
+  }
+#line 114 "structure_sharing.analysis.m"
+}
+
+#line 114 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis____Unify____dep_procs_0_0(
+#line 114 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1,
+#line 114 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2)
+#line 114 "structure_sharing.analysis.m"
+{
+#line 114 "structure_sharing.analysis.m"
+  {
+#line 114 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 114 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar1_3 = transform_hlds__ctgc__structure_sharing__analysis__HeadVar__1_1;
+#line 114 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar2_4 = transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+
+#line 114 "structure_sharing.analysis.m"
+    {
+#line 114 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[4], ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Cast_HeadVar2_4)));
+    }
+#line 114 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 114 "structure_sharing.analysis.m"
+  }
+#line 114 "structure_sharing.analysis.m"
+}
+
+#line 1272 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__handle_dep_procs_4_p_0(
+#line 1272 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_5,
+#line 1272 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__DepPPId_6,
+#line 1272 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_0_14,
+#line 1272 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_15)
+#line 1272 "structure_sharing.analysis.m"
+{
+#line 1275 "structure_sharing.analysis.m"
+  {
+#line 1275 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1275 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeClassInfo_for_analysis_17;
+#line 1275 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__DepModuleName_8;
+#line 1275 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__DepFuncId_9;
+#line 1275 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer_11;
+#line 1275 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_13;
+#line 5198 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    void MR_CALL (* transform_hlds__ctgc__structure_sharing__analysis__func_0)(MR_Box, MR_Box, MR_Box, MR_Box, MR_Box *);
+#line 5200 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv1_FuncInfo_13;
+
+#line 1277 "structure_sharing.analysis.m"
+    {
+#line 1277 "structure_sharing.analysis.m"
+      transform_hlds__mmc_analysis__module_name_func_id_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_5, transform_hlds__ctgc__structure_sharing__analysis__DepPPId_6, &transform_hlds__ctgc__structure_sharing__analysis__DepModuleName_8, &transform_hlds__ctgc__structure_sharing__analysis__DepFuncId_9);
+    }
+#line 1278 "structure_sharing.analysis.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 5210 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__TypeClassInfo_for_analysis_17 = (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_4[0];
+#line 5212 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__func_0 = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__TypeClassInfo_for_analysis_17, (MR_Integer) 0)), (MR_Integer) 10)));
+#line 5214 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    {
+#line 5216 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      transform_hlds__ctgc__structure_sharing__analysis__func_0(((MR_Box) transform_hlds__ctgc__structure_sharing__analysis__TypeClassInfo_for_analysis_17), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_5)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__DepModuleName_8)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__DepFuncId_9)), &transform_hlds__ctgc__structure_sharing__analysis__conv1_FuncInfo_13);
+    }
+#line 5219 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_13 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv1_FuncInfo_13);
+#line 1282 "structure_sharing.analysis.m"
+    {
+#line 1282 "structure_sharing.analysis.m"
+      analysis__record_dependency_7_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeClassInfo_for_analysis_17, transform_hlds__ctgc__structure_sharing__analysis__DepModuleName_8, transform_hlds__ctgc__structure_sharing__analysis__DepFuncId_9, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_13)), ((MR_Box) ((MR_Integer) 0)), transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_0_14, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_15);
+#line 1282 "structure_sharing.analysis.m"
+      return;
+    }
+#line 1275 "structure_sharing.analysis.m"
+  }
+#line 1272 "structure_sharing.analysis.m"
+}
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_1(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg)
+#line 1222 "structure_sharing.analysis.m"
+{
+#line 1222 "structure_sharing.analysis.m"
+  {
+#line 1222 "structure_sharing.analysis.m"
+    struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s * transform_hlds__ctgc__structure_sharing__analysis__env_ptr = (struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s *) transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg;
+
+#line 1222 "structure_sharing.analysis.m"
+    MR_builtin_longjmp((transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__commit_0, 1);
+#line 1222 "structure_sharing.analysis.m"
+  }
+#line 1222 "structure_sharing.analysis.m"
+}
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_3(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg)
+#line 1222 "structure_sharing.analysis.m"
+{
+#line 1222 "structure_sharing.analysis.m"
+  {
+#line 1222 "structure_sharing.analysis.m"
+    struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s * transform_hlds__ctgc__structure_sharing__analysis__env_ptr = (struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s *) transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg;
+
+#line 1222 "structure_sharing.analysis.m"
+    (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reason_24 = ((MR_Word) (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__conv0_Reason_24);
+#line 1222 "structure_sharing.analysis.m"
+    {
+#line 1222 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_2(transform_hlds__ctgc__structure_sharing__analysis__env_ptr);
+#line 1222 "structure_sharing.analysis.m"
+      return;
+    }
+#line 1222 "structure_sharing.analysis.m"
+  }
+#line 1222 "structure_sharing.analysis.m"
+}
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_2(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg)
+#line 1222 "structure_sharing.analysis.m"
+{
+#line 1222 "structure_sharing.analysis.m"
+  {
+#line 1222 "structure_sharing.analysis.m"
+    struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s * transform_hlds__ctgc__structure_sharing__analysis__env_ptr = (struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s *) transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg;
+
+#line 1263 "structure_sharing.analysis.m"
+    if (((MR_tag((MR_Word) (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reason_24)) == (MR_mktag((MR_Integer) 2))))
+#line 1263 "structure_sharing.analysis.m"
+      (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = MR_TRUE;
+#line 1263 "structure_sharing.analysis.m"
+    else
+#line 1263 "structure_sharing.analysis.m"
+    if (((MR_tag((MR_Word) (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reason_24)) == (MR_mktag((MR_Integer) 0))))
+#line 1265 "structure_sharing.analysis.m"
+      {
+#line 1265 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ShroudedPPId_75 = (MR_Word) MR_body(((MR_Word) (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reason_24), (MR_Integer) 0);
+#line 1265 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_76;
+#line 1265 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_78;
+#line 1265 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredModule_79;
+#line 1265 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_80_80;
+#line 1265 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_82_82;
+#line 1266 "structure_sharing.analysis.m"
+        MR_Integer transform_hlds__ctgc__structure_sharing__analysis__V_77_77;
+
+#line 1266 "structure_sharing.analysis.m"
+        {
+#line 1266 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_80_80 = hlds__hlds_pred__unshroud_pred_proc_id_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__ShroudedPPId_75);
+        }
+#line 1266 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__PredId_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_80_80, (MR_Integer) 0)));
+#line 1266 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__V_77_77 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_80_80, (MR_Integer) 1)));
+#line 1267 "structure_sharing.analysis.m"
+        {
+#line 1267 "structure_sharing.analysis.m"
+          hlds__hlds_module__module_info_pred_info_3_p_0((transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__ModuleInfo_8, transform_hlds__ctgc__structure_sharing__analysis__PredId_76, &transform_hlds__ctgc__structure_sharing__analysis__PredInfo_78);
+        }
+#line 1268 "structure_sharing.analysis.m"
+        {
+#line 1268 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__PredModule_79 = hlds__hlds_pred__pred_info_module_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_78);
+        }
+#line 1269 "structure_sharing.analysis.m"
+        {
+#line 1269 "structure_sharing.analysis.m"
+          analysis__module_is_local_3_p_0((transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__STATE_VARIABLE_AnalysisInfo_0_33, transform_hlds__ctgc__structure_sharing__analysis__PredModule_79, &transform_hlds__ctgc__structure_sharing__analysis__V_82_82);
+        }
+#line 1269 "structure_sharing.analysis.m"
+        (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = ((MR_Integer) 0 == transform_hlds__ctgc__structure_sharing__analysis__V_82_82);
+#line 1265 "structure_sharing.analysis.m"
+      }
+#line 1263 "structure_sharing.analysis.m"
+    else
+#line 1263 "structure_sharing.analysis.m"
+      (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = MR_FALSE;
+#line 1263 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded)
+#line 1263 "structure_sharing.analysis.m"
+      {
+#line 1263 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_1(transform_hlds__ctgc__structure_sharing__analysis__env_ptr);
+#line 1263 "structure_sharing.analysis.m"
+        return;
+      }
+#line 1222 "structure_sharing.analysis.m"
+  }
+#line 1222 "structure_sharing.analysis.m"
+}
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_4(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg)
+#line 1222 "structure_sharing.analysis.m"
+{
+#line 1222 "structure_sharing.analysis.m"
+  {
+#line 1222 "structure_sharing.analysis.m"
+    struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s * transform_hlds__ctgc__structure_sharing__analysis__env_ptr = (struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s *) transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg;
+
+#line 1222 "structure_sharing.analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__commit_0) == 0)
+#line 1222 "structure_sharing.analysis.m"
+      {
+#line 1222 "structure_sharing.analysis.m"
+        {
+#line 1222 "structure_sharing.analysis.m"
+          {
+#line 1222 "structure_sharing.analysis.m"
+            mercury__set__member_2_p_1((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_top_feedback_0, &(transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__conv0_Reason_24, (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reasons_23, transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_3, transform_hlds__ctgc__structure_sharing__analysis__env_ptr);
+          }
+#line 1222 "structure_sharing.analysis.m"
+        }
+#line 1222 "structure_sharing.analysis.m"
+        (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = MR_FALSE;
+#line 1222 "structure_sharing.analysis.m"
+      }
+#line 1222 "structure_sharing.analysis.m"
+    else
+#line 1222 "structure_sharing.analysis.m"
+      (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = MR_TRUE;
+#line 1222 "structure_sharing.analysis.m"
+  }
+#line 1222 "structure_sharing.analysis.m"
+}
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_5(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg)
+#line 1222 "structure_sharing.analysis.m"
+{
+#line 1222 "structure_sharing.analysis.m"
+  {
+#line 1222 "structure_sharing.analysis.m"
+    struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s * transform_hlds__ctgc__structure_sharing__analysis__env_ptr = (struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s *) transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg;
+
+#line 1222 "structure_sharing.analysis.m"
+    MR_builtin_longjmp((transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__commit_1, 1);
+#line 1222 "structure_sharing.analysis.m"
+  }
+#line 1222 "structure_sharing.analysis.m"
+}
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_7(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg)
+#line 1222 "structure_sharing.analysis.m"
+{
+#line 1222 "structure_sharing.analysis.m"
+  {
+#line 1222 "structure_sharing.analysis.m"
+    struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s * transform_hlds__ctgc__structure_sharing__analysis__env_ptr = (struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s *) transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg;
+
+#line 1222 "structure_sharing.analysis.m"
+    (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reason_100 = ((MR_Word) (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__conv1_Reason_100);
+#line 1222 "structure_sharing.analysis.m"
+    {
+#line 1222 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_6(transform_hlds__ctgc__structure_sharing__analysis__env_ptr);
+#line 1222 "structure_sharing.analysis.m"
+      return;
+    }
+#line 1222 "structure_sharing.analysis.m"
+  }
+#line 1222 "structure_sharing.analysis.m"
+}
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_6(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg)
+#line 1222 "structure_sharing.analysis.m"
+{
+#line 1222 "structure_sharing.analysis.m"
+  {
+#line 1222 "structure_sharing.analysis.m"
+    struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s * transform_hlds__ctgc__structure_sharing__analysis__env_ptr = (struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s *) transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg;
+
+#line 1263 "structure_sharing.analysis.m"
+    if (((MR_tag((MR_Word) (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reason_100)) == (MR_mktag((MR_Integer) 2))))
+#line 1263 "structure_sharing.analysis.m"
+      (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = MR_TRUE;
+#line 1263 "structure_sharing.analysis.m"
+    else
+#line 1263 "structure_sharing.analysis.m"
+    if (((MR_tag((MR_Word) (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reason_100)) == (MR_mktag((MR_Integer) 0))))
+#line 1265 "structure_sharing.analysis.m"
+      {
+#line 1265 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ShroudedPPId_84 = (MR_Word) MR_body(((MR_Word) (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reason_100), (MR_Integer) 0);
+#line 1265 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_85;
+#line 1265 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_87;
+#line 1265 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredModule_88;
+#line 1265 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_89_89;
+#line 1265 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_91_91;
+#line 1266 "structure_sharing.analysis.m"
+        MR_Integer transform_hlds__ctgc__structure_sharing__analysis__V_83_83;
+
+#line 1266 "structure_sharing.analysis.m"
+        {
+#line 1266 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_89_89 = hlds__hlds_pred__unshroud_pred_proc_id_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__ShroudedPPId_84);
+        }
+#line 1266 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__PredId_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_89_89, (MR_Integer) 0)));
+#line 1266 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__V_83_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_89_89, (MR_Integer) 1)));
+#line 1267 "structure_sharing.analysis.m"
+        {
+#line 1267 "structure_sharing.analysis.m"
+          hlds__hlds_module__module_info_pred_info_3_p_0((transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__ModuleInfo_8, transform_hlds__ctgc__structure_sharing__analysis__PredId_85, &transform_hlds__ctgc__structure_sharing__analysis__PredInfo_87);
+        }
+#line 1268 "structure_sharing.analysis.m"
+        {
+#line 1268 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__PredModule_88 = hlds__hlds_pred__pred_info_module_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_87);
+        }
+#line 1269 "structure_sharing.analysis.m"
+        {
+#line 1269 "structure_sharing.analysis.m"
+          analysis__module_is_local_3_p_0((transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__STATE_VARIABLE_AnalysisInfo_0_33, transform_hlds__ctgc__structure_sharing__analysis__PredModule_88, &transform_hlds__ctgc__structure_sharing__analysis__V_91_91);
+        }
+#line 1269 "structure_sharing.analysis.m"
+        (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = ((MR_Integer) 0 == transform_hlds__ctgc__structure_sharing__analysis__V_91_91);
+#line 1265 "structure_sharing.analysis.m"
+      }
+#line 1263 "structure_sharing.analysis.m"
+    else
+#line 1263 "structure_sharing.analysis.m"
+      (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = MR_FALSE;
+#line 1263 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded)
+#line 1263 "structure_sharing.analysis.m"
+      {
+#line 1263 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_5(transform_hlds__ctgc__structure_sharing__analysis__env_ptr);
+#line 1263 "structure_sharing.analysis.m"
+        return;
+      }
+#line 1222 "structure_sharing.analysis.m"
+  }
+#line 1222 "structure_sharing.analysis.m"
+}
+
+#line 1222 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_8(
+#line 1222 "structure_sharing.analysis.m"
+  void * transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg)
+#line 1222 "structure_sharing.analysis.m"
+{
+#line 1222 "structure_sharing.analysis.m"
+  {
+#line 1222 "structure_sharing.analysis.m"
+    struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s * transform_hlds__ctgc__structure_sharing__analysis__env_ptr = (struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s *) transform_hlds__ctgc__structure_sharing__analysis__env_ptr_arg;
+
+#line 1222 "structure_sharing.analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__commit_1) == 0)
+#line 1222 "structure_sharing.analysis.m"
+      {
+#line 1222 "structure_sharing.analysis.m"
+        {
+#line 1222 "structure_sharing.analysis.m"
+          {
+#line 1222 "structure_sharing.analysis.m"
+            mercury__set__member_2_p_1((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_top_feedback_0, &(transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__conv1_Reason_100, (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reasons_130, transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_7, transform_hlds__ctgc__structure_sharing__analysis__env_ptr);
+          }
+#line 1222 "structure_sharing.analysis.m"
+        }
+#line 1222 "structure_sharing.analysis.m"
+        (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = MR_FALSE;
+#line 1222 "structure_sharing.analysis.m"
+      }
+#line 1222 "structure_sharing.analysis.m"
+    else
+#line 1222 "structure_sharing.analysis.m"
+      (transform_hlds__ctgc__structure_sharing__analysis__env_ptr)->transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = MR_TRUE;
+#line 1222 "structure_sharing.analysis.m"
+  }
+#line 1222 "structure_sharing.analysis.m"
+}
+
+#line 1182 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0(
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_8,
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAsTable_9,
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_10,
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_11,
+#line 1182 "structure_sharing.analysis.m"
+  MR_Integer transform_hlds__ctgc__structure_sharing__analysis__ProcId_12,
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_0_33,
+#line 1182 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_34)
+#line 1182 "structure_sharing.analysis.m"
+{
+#line 1182 "structure_sharing.analysis.m"
+  {
+#line 1182 "structure_sharing.analysis.m"
+    struct transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0_s transform_hlds__ctgc__structure_sharing__analysis__env;
+
+#line 1182 "structure_sharing.analysis.m"
+    (transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__ModuleInfo_8 = transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_8;
+#line 1182 "structure_sharing.analysis.m"
+    (transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__STATE_VARIABLE_AnalysisInfo_0_33 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_0_33;
+#line 1318 "structure_sharing.analysis.m"
+    {
+#line 1318 "structure_sharing.analysis.m"
+      (transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = hlds__hlds_pred__procedure_is_exported_3_p_0((transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__ModuleInfo_8, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_11, transform_hlds__ctgc__structure_sharing__analysis__ProcId_12);
+    }
+#line 1318 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded)
+#line 1318 "structure_sharing.analysis.m"
+      {
+#line 1319 "structure_sharing.analysis.m"
+        {
+#line 1319 "structure_sharing.analysis.m"
+          (transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = hlds__hlds_pred__is_unify_or_compare_pred_1_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_11);
+        }
+#line 1319 "structure_sharing.analysis.m"
+        (transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = !((transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded);
+#line 1318 "structure_sharing.analysis.m"
+      }
+#line 5611 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded)
+#line 5613 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      {
+#line 5615 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_15;
+#line 5617 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__PPId_16;
+#line 5619 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer_21;
+#line 5621 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__Status_22;
+#line 5623 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleName_31;
+#line 5625 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__FuncId_32;
+#line 5627 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAsPrime_17;
+#line 5629 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__StatusPrime_18;
+#line 1195 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_36_36;
+
+#line 1192 "structure_sharing.analysis.m"
+        {
+#line 1192 "structure_sharing.analysis.m"
+          hlds__hlds_pred__pred_info_proc_info_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_11, transform_hlds__ctgc__structure_sharing__analysis__ProcId_12, &transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_15);
+        }
+#line 1193 "structure_sharing.analysis.m"
+        {
+#line 1193 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__PPId_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1193 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__PPId_16, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredId_10));
+#line 1193 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__PPId_16, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcId_12));
+#line 1193 "structure_sharing.analysis.m"
+        }
+#line 1195 "structure_sharing.analysis.m"
+        {
+#line 1195 "structure_sharing.analysis.m"
+          (transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = transform_hlds__ctgc__structure_sharing__domain__sharing_as_table_search_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__PPId_16, transform_hlds__ctgc__structure_sharing__analysis__SharingAsTable_9, &transform_hlds__ctgc__structure_sharing__analysis__V_36_36);
+        }
+#line 1195 "structure_sharing.analysis.m"
+        if ((transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded)
+#line 1195 "structure_sharing.analysis.m"
+          {
+#line 1196 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__SharingAsPrime_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_36_36, (MR_Integer) 0)));
+#line 1196 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__StatusPrime_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_36_36, (MR_Integer) 1)));
+#line 1196 "structure_sharing.analysis.m"
+            (transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = MR_TRUE;
+#line 1195 "structure_sharing.analysis.m"
+          }
+#line 5666 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        if ((transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded)
+#line 5668 "transform_hlds.ctgc.structure_sharing.analysis.c"
+          {
+#line 5670 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__Sharing_19;
+
+#line 1198 "structure_sharing.analysis.m"
+            {
+#line 1198 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__Sharing_19 = transform_hlds__ctgc__structure_sharing__domain__to_structure_sharing_domain_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__SharingAsPrime_17);
+            }
+#line 1215 "structure_sharing.analysis.m"
+            if ((transform_hlds__ctgc__structure_sharing__analysis__Sharing_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1212 "structure_sharing.analysis.m"
+              {
+#line 1213 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__Answer_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1214 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__Status_22 = (MR_Integer) 2;
+#line 1212 "structure_sharing.analysis.m"
+              }
+#line 1215 "structure_sharing.analysis.m"
+            else
+#line 1215 "structure_sharing.analysis.m"
+            if (((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__Sharing_19)) == (MR_mktag((MR_Integer) 1))))
+#line 1243 "structure_sharing.analysis.m"
+              {
+#line 1243 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingPairs_27 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__Sharing_19, (MR_Integer) 0)));
+#line 1243 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVars_28;
+#line 1243 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__VarTypes_29;
+#line 1243 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_30;
+
+#line 1244 "structure_sharing.analysis.m"
+                {
+#line 1244 "structure_sharing.analysis.m"
+                  hlds__hlds_pred__proc_info_get_headvars_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_15, &transform_hlds__ctgc__structure_sharing__analysis__HeadVars_28);
+                }
+#line 1245 "structure_sharing.analysis.m"
+                {
+#line 1245 "structure_sharing.analysis.m"
+                  hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_15, &transform_hlds__ctgc__structure_sharing__analysis__VarTypes_29);
+                }
+#line 1246 "structure_sharing.analysis.m"
+                {
+#line 1246 "structure_sharing.analysis.m"
+                  parse_tree__prog_data__lookup_var_types_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__VarTypes_29, transform_hlds__ctgc__structure_sharing__analysis__HeadVars_28, &transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_30);
+                }
+#line 1247 "structure_sharing.analysis.m"
+                {
+#line 1247 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__Answer_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+#line 1247 "structure_sharing.analysis.m"
+                  MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__Answer_21, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__HeadVars_28));
+#line 1247 "structure_sharing.analysis.m"
+                  MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__Answer_21, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_30));
+#line 1247 "structure_sharing.analysis.m"
+                  MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__Answer_21, 2) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingPairs_27));
+#line 1247 "structure_sharing.analysis.m"
+                }
+#line 1249 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__Status_22 = transform_hlds__ctgc__structure_sharing__analysis__StatusPrime_18;
+#line 1243 "structure_sharing.analysis.m"
+              }
+#line 1215 "structure_sharing.analysis.m"
+            else
+#line 1216 "structure_sharing.analysis.m"
+              {
+#line 1216 "structure_sharing.analysis.m"
+                (transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reasons_23 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__ctgc__structure_sharing__analysis__Sharing_19, (MR_Integer) 0)));
+#line 1217 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__Answer_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+#line 1222 "structure_sharing.analysis.m"
+                {
+#line 1222 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_4(&transform_hlds__ctgc__structure_sharing__analysis__env);
+                }
+#line 1226 "structure_sharing.analysis.m"
+                if ((transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded)
+#line 1225 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__Status_22 = (MR_Integer) 2;
+#line 1226 "structure_sharing.analysis.m"
+                else
+#line 1227 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__Status_22 = transform_hlds__ctgc__structure_sharing__analysis__StatusPrime_18;
+#line 1216 "structure_sharing.analysis.m"
+              }
+#line 5757 "transform_hlds.ctgc.structure_sharing.analysis.c"
+          }
+#line 5759 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        else
+#line 5761 "transform_hlds.ctgc.structure_sharing.analysis.c"
+          {
+#line 1202 "structure_sharing.analysis.m"
+            {
+#line 1202 "structure_sharing.analysis.m"
+              (transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded = transform_hlds__ctgc__structure_sharing__domain__bottom_sharing_is_safe_approximation_3_p_0((transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__ModuleInfo_8, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_11, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_15);
+            }
+#line 5768 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            if ((transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded)
+#line 5770 "transform_hlds.ctgc.structure_sharing.analysis.c"
+              {
+#line 1213 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__Answer_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1214 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__Status_22 = (MR_Integer) 2;
+#line 5776 "transform_hlds.ctgc.structure_sharing.analysis.c"
+              }
+#line 5778 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            else
+#line 5780 "transform_hlds.ctgc.structure_sharing.analysis.c"
+              {
+#line 1208 "structure_sharing.analysis.m"
+                {
+#line 1208 "structure_sharing.analysis.m"
+                  (transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__Reasons_130 = mercury__set__init_0_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_top_feedback_0);
+                }
+#line 1217 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__Answer_21 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1));
+#line 1222 "structure_sharing.analysis.m"
+                {
+#line 1222 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_8(&transform_hlds__ctgc__structure_sharing__analysis__env);
+                }
+#line 1226 "structure_sharing.analysis.m"
+                if ((transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__succeeded)
+#line 1225 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__Status_22 = (MR_Integer) 2;
+#line 1226 "structure_sharing.analysis.m"
+                else
+#line 1227 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__Status_22 = (MR_Integer) 2;
+#line 5802 "transform_hlds.ctgc.structure_sharing.analysis.c"
+              }
+#line 5804 "transform_hlds.ctgc.structure_sharing.analysis.c"
+          }
+#line 1251 "structure_sharing.analysis.m"
+        {
+#line 1251 "structure_sharing.analysis.m"
+          transform_hlds__mmc_analysis__module_name_func_id_4_p_0((transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__ModuleInfo_8, transform_hlds__ctgc__structure_sharing__analysis__PPId_16, &transform_hlds__ctgc__structure_sharing__analysis__ModuleName_31, &transform_hlds__ctgc__structure_sharing__analysis__FuncId_32);
+        }
+#line 1252 "structure_sharing.analysis.m"
+        mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1252 "structure_sharing.analysis.m"
+        {
+#line 1252 "structure_sharing.analysis.m"
+          analysis__record_result_7_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_4[0], transform_hlds__ctgc__structure_sharing__analysis__ModuleName_31, transform_hlds__ctgc__structure_sharing__analysis__FuncId_32, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Answer_21)), transform_hlds__ctgc__structure_sharing__analysis__Status_22, (transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__STATE_VARIABLE_AnalysisInfo_0_33, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_34);
+#line 1252 "structure_sharing.analysis.m"
+          return;
+        }
+#line 5820 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      }
+#line 5822 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    else
+#line 1255 "structure_sharing.analysis.m"
+      *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_34 = (transform_hlds__ctgc__structure_sharing__analysis__env).transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0_env_0__STATE_VARIABLE_AnalysisInfo_0_33;
+#line 1182 "structure_sharing.analysis.m"
+  }
+#line 1182 "structure_sharing.analysis.m"
+}
+
+#line 1178 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_5_p_0_1(
+#line 1178 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 1178 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 1178 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 1178 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 1178 "structure_sharing.analysis.m"
+{
+#line 1178 "structure_sharing.analysis.m"
+  {
+#line 1178 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 1178 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_AnalysisInfo_34;
+
+#line 1178 "structure_sharing.analysis.m"
+    {
+#line 1178 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_2_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 6))), ((MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_AnalysisInfo_34);
+    }
+#line 1178 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_AnalysisInfo_34));
+#line 1178 "structure_sharing.analysis.m"
+  }
+#line 1178 "structure_sharing.analysis.m"
+}
+
+#line 1169 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_5_p_0(
+#line 1169 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_6,
+#line 1169 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAsTable_7,
+#line 1169 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_8,
+#line 1169 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_0_12,
+#line 1169 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_13)
+#line 1169 "structure_sharing.analysis.m"
+{
+#line 1174 "structure_sharing.analysis.m"
+  {
+#line 1174 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_10;
+#line 1174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcIds_11;
+#line 1174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_14_14;
+#line 1177 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_AnalysisInfo_13;
+
+#line 1175 "structure_sharing.analysis.m"
+    {
+#line 1175 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_6, transform_hlds__ctgc__structure_sharing__analysis__PredId_8, &transform_hlds__ctgc__structure_sharing__analysis__PredInfo_10);
+    }
+#line 1176 "structure_sharing.analysis.m"
+    {
+#line 1176 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__ProcIds_11 = hlds__hlds_pred__pred_info_procids_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_10);
+    }
+#line 1178 "structure_sharing.analysis.m"
+    {
+#line 1178 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_14_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 1178 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_8[1]));
+#line 1178 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_5_p_0_1));
+#line 1178 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 1178 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_6));
+#line 1178 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 4) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingAsTable_7));
+#line 1178 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 5) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredId_8));
+#line 1178 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 6) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredInfo_10));
+#line 1178 "structure_sharing.analysis.m"
+    }
+#line 1177 "structure_sharing.analysis.m"
+    {
+#line 1177 "structure_sharing.analysis.m"
+      mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0, (MR_Word) &analysis__analysis__type_ctor_info_analysis_info_0, transform_hlds__ctgc__structure_sharing__analysis__V_14_14, transform_hlds__ctgc__structure_sharing__analysis__ProcIds_11, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_0_12)), &transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_AnalysisInfo_13);
+    }
+#line 1177 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_13 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_AnalysisInfo_13);
+#line 1174 "structure_sharing.analysis.m"
+  }
+#line 1169 "structure_sharing.analysis.m"
+}
+
+#line 973 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__write_proc_sharing_info_11_p_0(
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_12,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_13,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_14,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcTable_15,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredOrFunc_16,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SymName_17,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Context_18,
+#line 973 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeVarSet_19,
+#line 973 "structure_sharing.analysis.m"
+  MR_Integer transform_hlds__ctgc__structure_sharing__analysis__ProcId_20)
+#line 973 "structure_sharing.analysis.m"
+{
+#line 5956 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 5958 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 1318 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeSpecInfo_50;
+#line 1318 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeSpecForcePreds_52;
+#line 1330 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_51_51;
+#line 1330 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_53_53;
+#line 1330 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_54_54;
+#line 1331 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_18_55;
+
+#line 1318 "structure_sharing.analysis.m"
+    {
+#line 1318 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = hlds__hlds_pred__procedure_is_exported_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_12, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_14, transform_hlds__ctgc__structure_sharing__analysis__ProcId_20);
+    }
+#line 1318 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1318 "structure_sharing.analysis.m"
+      {
+#line 1319 "structure_sharing.analysis.m"
+        {
+#line 1319 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__succeeded = hlds__hlds_pred__is_unify_or_compare_pred_1_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_14);
+        }
+#line 1319 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__succeeded = !(transform_hlds__ctgc__structure_sharing__analysis__succeeded);
+#line 1318 "structure_sharing.analysis.m"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 1318 "structure_sharing.analysis.m"
+          {
+#line 1329 "structure_sharing.analysis.m"
+            {
+#line 1329 "structure_sharing.analysis.m"
+              hlds__hlds_module__module_info_get_type_spec_info_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_12, &transform_hlds__ctgc__structure_sharing__analysis__TypeSpecInfo_50);
+            }
+#line 1330 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__TypeSpecInfo_50, (MR_Integer) 0)));
+#line 1330 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__TypeSpecForcePreds_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__TypeSpecInfo_50, (MR_Integer) 1)));
+#line 1330 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__TypeSpecInfo_50, (MR_Integer) 2)));
+#line 1330 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__TypeSpecInfo_50, (MR_Integer) 3)));
+#line 6006 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_18_55 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0;
+#line 1331 "structure_sharing.analysis.m"
+            {
+#line 1331 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__succeeded = mercury__set__member_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_18_55, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredId_13)), transform_hlds__ctgc__structure_sharing__analysis__TypeSpecForcePreds_52);
+            }
+#line 1331 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__succeeded = !(transform_hlds__ctgc__structure_sharing__analysis__succeeded);
+#line 1318 "structure_sharing.analysis.m"
+          }
+#line 1318 "structure_sharing.analysis.m"
+      }
+#line 6019 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 6021 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      {
+#line 6023 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_23;
+#line 6025 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__MaybeSharingStatus_24;
+#line 6027 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__Modes_25;
+#line 6029 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__VarSet_26;
+#line 6031 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVars_27;
+#line 6033 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__VarTypes_28;
+#line 6035 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_29;
+#line 984 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv0_ProcInfo_23;
+
+#line 984 "structure_sharing.analysis.m"
+        {
+#line 984 "structure_sharing.analysis.m"
+          mercury__map__lookup_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0, (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0, transform_hlds__ctgc__structure_sharing__analysis__ProcTable_15, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcId_20)), &transform_hlds__ctgc__structure_sharing__analysis__conv0_ProcInfo_23);
+        }
+#line 984 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_23 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv0_ProcInfo_23);
+#line 985 "structure_sharing.analysis.m"
+        {
+#line 985 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_get_structure_sharing_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_23, &transform_hlds__ctgc__structure_sharing__analysis__MaybeSharingStatus_24);
+        }
+#line 986 "structure_sharing.analysis.m"
+        {
+#line 986 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_declared_argmodes_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_23, &transform_hlds__ctgc__structure_sharing__analysis__Modes_25);
+        }
+#line 987 "structure_sharing.analysis.m"
+        {
+#line 987 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_get_varset_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_23, &transform_hlds__ctgc__structure_sharing__analysis__VarSet_26);
+        }
+#line 988 "structure_sharing.analysis.m"
+        {
+#line 988 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_get_headvars_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_23, &transform_hlds__ctgc__structure_sharing__analysis__HeadVars_27);
+        }
+#line 989 "structure_sharing.analysis.m"
+        {
+#line 989 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_23, &transform_hlds__ctgc__structure_sharing__analysis__VarTypes_28);
+        }
+#line 990 "structure_sharing.analysis.m"
+        {
+#line 990 "structure_sharing.analysis.m"
+          parse_tree__prog_data__lookup_var_types_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__VarTypes_28, transform_hlds__ctgc__structure_sharing__analysis__HeadVars_27, &transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_29);
+        }
+#line 999 "structure_sharing.analysis.m"
+        if ((transform_hlds__ctgc__structure_sharing__analysis__MaybeSharingStatus_24 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1000 "structure_sharing.analysis.m"
+          {
+#line 1000 "structure_sharing.analysis.m"
+          }
+#line 999 "structure_sharing.analysis.m"
+        else
+#line 993 "structure_sharing.analysis.m"
+          {
+#line 993 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__Sharing_30;
+#line 993 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredNameModesPF_32;
+#line 993 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingInfo_33;
+#line 993 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__MaybeSharingStatus_24, (MR_Integer) 0)));
+#line 993 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_38_38;
+#line 993 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_39_39;
+#line 993 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_40_40;
+#line 993 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis___Status_31;
+
+#line 993 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__Sharing_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_37_37, (MR_Integer) 0)));
+#line 993 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis___Status_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_37_37, (MR_Integer) 1)));
+#line 994 "structure_sharing.analysis.m"
+            {
+#line 994 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__PredNameModesPF_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 994 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__PredNameModesPF_32, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SymName_17));
+#line 994 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__PredNameModesPF_32, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Modes_25));
+#line 994 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__PredNameModesPF_32, 2) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredOrFunc_16));
+#line 994 "structure_sharing.analysis.m"
+            }
+#line 996 "structure_sharing.analysis.m"
+            {
+#line 996 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_38_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 996 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_38_38, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Sharing_30));
+#line 996 "structure_sharing.analysis.m"
+            }
+#line 995 "structure_sharing.analysis.m"
+            {
+#line 995 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__SharingInfo_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 995 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingInfo_33, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredNameModesPF_32));
+#line 995 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingInfo_33, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__HeadVars_27));
+#line 995 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingInfo_33, 2) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_29));
+#line 995 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingInfo_33, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_38_38));
+#line 995 "structure_sharing.analysis.m"
+            }
+#line 998 "structure_sharing.analysis.m"
+            {
+#line 998 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_39_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 998 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_39_39, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__VarSet_26));
+#line 998 "structure_sharing.analysis.m"
+            }
+#line 998 "structure_sharing.analysis.m"
+            {
+#line 998 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_40_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 998 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_40_40, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__TypeVarSet_19));
+#line 998 "structure_sharing.analysis.m"
+            }
+#line 997 "structure_sharing.analysis.m"
+            {
+#line 997 "structure_sharing.analysis.m"
+              parse_tree__mercury_to_mercury__write_pragma_structure_sharing_info_6_p_0(transform_hlds__ctgc__structure_sharing__analysis__SharingInfo_33, transform_hlds__ctgc__structure_sharing__analysis__V_39_39, transform_hlds__ctgc__structure_sharing__analysis__V_40_40, transform_hlds__ctgc__structure_sharing__analysis__Context_18);
+#line 997 "structure_sharing.analysis.m"
+              return;
+            }
+#line 993 "structure_sharing.analysis.m"
+          }
+#line 6167 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      }
+#line 6169 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    else
+#line 1003 "structure_sharing.analysis.m"
+      {
+#line 1003 "structure_sharing.analysis.m"
+      }
+#line 6175 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 973 "structure_sharing.analysis.m"
+}
+
+#line 940 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__make_opt_int_3_p_0_1(
+#line 940 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 940 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 940 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 940 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 940 "structure_sharing.analysis.m"
+{
+#line 940 "structure_sharing.analysis.m"
+  {
+#line 940 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+
+#line 940 "structure_sharing.analysis.m"
+    {
+#line 940 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__write_pred_sharing_info_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1));
+#line 940 "structure_sharing.analysis.m"
+      return;
+    }
+#line 940 "structure_sharing.analysis.m"
+  }
+#line 940 "structure_sharing.analysis.m"
+}
+
+#line 922 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__make_opt_int_3_p_0(
+#line 922 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_4)
+#line 922 "structure_sharing.analysis.m"
+{
+#line 924 "structure_sharing.analysis.m"
+  {
+#line 924 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 924 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Globals_6;
+#line 924 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleName_7;
+#line 924 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__OptFileName_8;
+#line 924 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Verbose_9;
+#line 924 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__OptFileRes_10;
+#line 924 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__V_25_25;
+
+#line 925 "structure_sharing.analysis.m"
+    {
+#line 925 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_4, &transform_hlds__ctgc__structure_sharing__analysis__Globals_6);
+    }
+#line 926 "structure_sharing.analysis.m"
+    {
+#line 926 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_get_name_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_4, &transform_hlds__ctgc__structure_sharing__analysis__ModuleName_7);
+    }
+#line 927 "structure_sharing.analysis.m"
+    {
+#line 927 "structure_sharing.analysis.m"
+      parse_tree__file_names__module_name_to_file_name_7_p_0(transform_hlds__ctgc__structure_sharing__analysis__Globals_6, transform_hlds__ctgc__structure_sharing__analysis__ModuleName_7, (MR_String) ".opt.tmp", (MR_Integer) 1, &transform_hlds__ctgc__structure_sharing__analysis__OptFileName_8);
+    }
+#line 929 "structure_sharing.analysis.m"
+    {
+#line 929 "structure_sharing.analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__Globals_6, (MR_Integer) 45, &transform_hlds__ctgc__structure_sharing__analysis__Verbose_9);
+    }
+#line 930 "structure_sharing.analysis.m"
+    {
+#line 930 "structure_sharing.analysis.m"
+      libs__file_util__maybe_write_string_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__Verbose_9, (MR_String) "% Appending structure_sharing pragmas to ");
+    }
+#line 932 "structure_sharing.analysis.m"
+    {
+#line 932 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_25_25 = parse_tree__error_util__add_quotes_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__OptFileName_8);
+    }
+#line 932 "structure_sharing.analysis.m"
+    {
+#line 932 "structure_sharing.analysis.m"
+      libs__file_util__maybe_write_string_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__Verbose_9, transform_hlds__ctgc__structure_sharing__analysis__V_25_25);
+    }
+#line 933 "structure_sharing.analysis.m"
+    {
+#line 933 "structure_sharing.analysis.m"
+      libs__file_util__maybe_write_string_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__Verbose_9, (MR_String) "...");
+    }
+#line 934 "structure_sharing.analysis.m"
+    {
+#line 934 "structure_sharing.analysis.m"
+      libs__file_util__maybe_flush_output_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__Verbose_9);
+    }
+#line 935 "structure_sharing.analysis.m"
+    {
+#line 935 "structure_sharing.analysis.m"
+      mercury__io__open_append_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__OptFileName_8, &transform_hlds__ctgc__structure_sharing__analysis__OptFileRes_10);
+    }
+#line 944 "structure_sharing.analysis.m"
+    if (((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__OptFileRes_10)) == (MR_mktag((MR_Integer) 1))))
+#line 945 "structure_sharing.analysis.m"
+      {
+#line 945 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__IOError_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__OptFileRes_10, (MR_Integer) 0)));
+#line 945 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__IOErrorMessage_16;
+#line 945 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_33_33;
+#line 945 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_36_36;
+#line 945 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_37_37;
+#line 945 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_39_39;
+
+#line 946 "structure_sharing.analysis.m"
+        {
+#line 946 "structure_sharing.analysis.m"
+          libs__file_util__maybe_write_string_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__Verbose_9, (MR_String) " failed!\n");
+        }
+#line 947 "structure_sharing.analysis.m"
+        {
+#line 947 "structure_sharing.analysis.m"
+          mercury__io__error_message_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__IOError_15, &transform_hlds__ctgc__structure_sharing__analysis__IOErrorMessage_16);
+        }
+#line 949 "structure_sharing.analysis.m"
+        {
+#line 949 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_39_39 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 949 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_39_39, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__IOErrorMessage_16));
+#line 949 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_39_39, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 949 "structure_sharing.analysis.m"
+        }
+#line 949 "structure_sharing.analysis.m"
+        {
+#line 949 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_37_37 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 949 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_37_37, 0) = ((MR_Box) ((MR_String) "\' for output: "));
+#line 949 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_37_37, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_39_39));
+#line 949 "structure_sharing.analysis.m"
+        }
+#line 949 "structure_sharing.analysis.m"
+        {
+#line 949 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_36_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 949 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_36_36, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__OptFileName_8));
+#line 949 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_36_36, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_37_37));
+#line 949 "structure_sharing.analysis.m"
+        }
+#line 948 "structure_sharing.analysis.m"
+        {
+#line 948 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_33_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 948 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_33_33, 0) = ((MR_Box) ((MR_String) "Error opening file \140"));
+#line 948 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_33_33, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_36_36));
+#line 948 "structure_sharing.analysis.m"
+        }
+#line 948 "structure_sharing.analysis.m"
+        {
+#line 948 "structure_sharing.analysis.m"
+          mercury__io__write_strings_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__V_33_33);
+        }
+#line 950 "structure_sharing.analysis.m"
+        {
+#line 950 "structure_sharing.analysis.m"
+          mercury__io__set_exit_status_3_p_0((MR_Integer) 1);
+#line 950 "structure_sharing.analysis.m"
+          return;
+        }
+#line 945 "structure_sharing.analysis.m"
+      }
+#line 944 "structure_sharing.analysis.m"
+    else
+#line 937 "structure_sharing.analysis.m"
+      {
+#line 937 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__OptFile_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__OptFileRes_10, (MR_Integer) 0)));
+#line 937 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__OldStream_12;
+#line 937 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredIds_13;
+#line 937 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_44_44;
+#line 940 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_IO_45_45;
+#line 941 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_14_14;
+
+#line 938 "structure_sharing.analysis.m"
+        {
+#line 938 "structure_sharing.analysis.m"
+          mercury__io__set_output_stream_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__OptFile_11, &transform_hlds__ctgc__structure_sharing__analysis__OldStream_12);
+        }
+#line 939 "structure_sharing.analysis.m"
+        {
+#line 939 "structure_sharing.analysis.m"
+          hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_4, &transform_hlds__ctgc__structure_sharing__analysis__PredIds_13);
+        }
+#line 940 "structure_sharing.analysis.m"
+        {
+#line 940 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_44_44 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 940 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_44_44, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_7[6]));
+#line 940 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_44_44, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__make_opt_int_3_p_0_1));
+#line 940 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_44_44, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 940 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_44_44, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_4));
+#line 940 "structure_sharing.analysis.m"
+        }
+#line 940 "structure_sharing.analysis.m"
+        {
+#line 940 "structure_sharing.analysis.m"
+          mercury__list__foldl_4_p_2((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, transform_hlds__ctgc__structure_sharing__analysis__V_44_44, transform_hlds__ctgc__structure_sharing__analysis__PredIds_13, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_IO_45_45);
+        }
+#line 941 "structure_sharing.analysis.m"
+        {
+#line 941 "structure_sharing.analysis.m"
+          mercury__io__set_output_stream_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__OldStream_12, &transform_hlds__ctgc__structure_sharing__analysis__V_14_14);
+        }
+#line 942 "structure_sharing.analysis.m"
+        {
+#line 942 "structure_sharing.analysis.m"
+          mercury__io__close_output_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__OptFile_11);
+        }
+#line 943 "structure_sharing.analysis.m"
+        {
+#line 943 "structure_sharing.analysis.m"
+          libs__file_util__maybe_write_string_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__Verbose_9, (MR_String) " done.\n");
+#line 943 "structure_sharing.analysis.m"
+          return;
+        }
+#line 937 "structure_sharing.analysis.m"
+      }
+#line 924 "structure_sharing.analysis.m"
+  }
+#line 922 "structure_sharing.analysis.m"
+}
+
+#line 879 "structure_sharing.analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__wrapped_init_1_f_0(
+#line 879 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis___Id_3)
+#line 879 "structure_sharing.analysis.m"
+{
+#line 881 "structure_sharing.analysis.m"
+  {
+#line 881 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 881 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+
+#line 881 "structure_sharing.analysis.m"
+    {
+#line 881 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2 = transform_hlds__ctgc__structure_sharing__analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_119_114_97_112_112_101_100_95_105_110_105_116_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 881 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__HeadVar__2_2;
+#line 881 "structure_sharing.analysis.m"
+  }
+#line 879 "structure_sharing.analysis.m"
+}
+
+#line 897 "structure_sharing.analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ss_fixpoint_table_new_as_6_p_0_1(
+#line 897 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 897 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 897 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2)
+#line 897 "structure_sharing.analysis.m"
+{
+#line 897 "structure_sharing.analysis.m"
+  {
+#line 897 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 897 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+
+#line 897 "structure_sharing.analysis.m"
+    {
+#line 897 "structure_sharing.analysis.m"
+      return transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__domain__sharing_as_and_status_is_subsumed_by_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2));
+    }
+#line 897 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 897 "structure_sharing.analysis.m"
+  }
+#line 897 "structure_sharing.analysis.m"
+}
+
+#line 845 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__ss_fixpoint_table_new_as_6_p_0(
+#line 845 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_7,
+#line 845 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8,
+#line 845 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Id_9,
+#line 845 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs_10,
+#line 845 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Table_0_12,
+#line 845 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Table_13)
+#line 845 "structure_sharing.analysis.m"
+{
+#line 895 "structure_sharing.analysis.m"
+  {
+#line 895 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 895 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_14_14;
+
+#line 897 "structure_sharing.analysis.m"
+    {
+#line 897 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_14_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 897 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_7[5]));
+#line 897 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ss_fixpoint_table_new_as_6_p_0_1));
+#line 897 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 897 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_7));
+#line 897 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_14_14, 4) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8));
+#line 897 "structure_sharing.analysis.m"
+    }
+#line 896 "structure_sharing.analysis.m"
+    {
+#line 896 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__fixpoint_table__add_to_fixpoint_table_5_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0, (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, transform_hlds__ctgc__structure_sharing__analysis__V_14_14, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Id_9)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingAs_10)), transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Table_0_12, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Table_13);
+#line 896 "structure_sharing.analysis.m"
+      return;
+    }
+#line 895 "structure_sharing.analysis.m"
+  }
+#line 845 "structure_sharing.analysis.m"
+}
+
+#line 800 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__update_sharing_in_table_4_p_0(
+#line 800 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__FixpointTable_5,
+#line 800 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PPId_6,
+#line 800 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_0_9,
+#line 800 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_10)
+#line 800 "structure_sharing.analysis.m"
+{
+#line 803 "structure_sharing.analysis.m"
+  {
+#line 803 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 803 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_8;
+#line 912 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv0_SharingAs_Status_8;
+
+#line 912 "structure_sharing.analysis.m"
+    {
+#line 912 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__conv0_SharingAs_Status_8 = transform_hlds__ctgc__fixpoint_table__get_from_fixpoint_table_final_2_f_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PPId_6)), transform_hlds__ctgc__structure_sharing__analysis__FixpointTable_5);
+    }
+#line 912 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_8 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv0_SharingAs_Status_8);
+#line 805 "structure_sharing.analysis.m"
+    {
+#line 805 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__domain__sharing_as_table_set_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__PPId_6, transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_8, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_0_9, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_10);
+#line 805 "structure_sharing.analysis.m"
+      return;
+    }
+#line 803 "structure_sharing.analysis.m"
+  }
+#line 800 "structure_sharing.analysis.m"
+}
+
+#line 761 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_generic_call_8_p_0(
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_9,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_10,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__GenDetails_11,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__CallArgs_12,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Modes_13,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__GoalInfo_14,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_31,
+#line 761 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_32)
+#line 761 "structure_sharing.analysis.m"
+{
+#line 6605 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  {
+#line 6607 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 6610 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    if (((((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__GenDetails_11)) == (MR_mktag((MR_Integer) 3)))) || (((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__GenDetails_11)) == (MR_mktag((MR_Integer) 2))))))
+#line 6612 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      {
+#line 6614 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__Context_29;
+#line 6616 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__ContextString_30;
+#line 6618 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_34_34;
+#line 6620 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__V_35_35;
+#line 6622 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__V_37_37;
+
+#line 789 "structure_sharing.analysis.m"
+        {
+#line 789 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__Context_29 = hlds__hlds_goal__goal_info_get_context_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__GoalInfo_14);
+        }
+#line 790 "structure_sharing.analysis.m"
+        {
+#line 790 "structure_sharing.analysis.m"
+          parse_tree__prog_out__context_to_string_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__Context_29, &transform_hlds__ctgc__structure_sharing__analysis__ContextString_30);
+        }
+#line 792 "structure_sharing.analysis.m"
+        {
+#line 792 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_37_37 = mercury__string__f_43_43_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__ContextString_30, (MR_String) ")");
+        }
+#line 792 "structure_sharing.analysis.m"
+        {
+#line 792 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_35_35 = mercury__string__f_43_43_2_f_0((MR_String) "generic call (", transform_hlds__ctgc__structure_sharing__analysis__V_37_37);
+        }
+#line 792 "structure_sharing.analysis.m"
+        {
+#line 792 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_34_34 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 792 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(2), transform_hlds__ctgc__structure_sharing__analysis__V_34_34, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_35_35));
+#line 792 "structure_sharing.analysis.m"
+        }
+#line 791 "structure_sharing.analysis.m"
+        {
+#line 791 "structure_sharing.analysis.m"
+          *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_32 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_top_sharing_accumulate_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__V_34_34, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_31);
+        }
+#line 6658 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      }
+#line 6660 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    else
+#line 6662 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      {
+#line 6664 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__CallerVarTypes_24;
+#line 6666 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ActualTypes_25;
+
+#line 771 "structure_sharing.analysis.m"
+        {
+#line 771 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_10, &transform_hlds__ctgc__structure_sharing__analysis__CallerVarTypes_24);
+        }
+#line 772 "structure_sharing.analysis.m"
+        {
+#line 772 "structure_sharing.analysis.m"
+          parse_tree__prog_data__lookup_var_types_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__CallerVarTypes_24, transform_hlds__ctgc__structure_sharing__analysis__CallArgs_12, &transform_hlds__ctgc__structure_sharing__analysis__ActualTypes_25);
+        }
+#line 774 "structure_sharing.analysis.m"
+        {
+#line 774 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__domain__bottom_sharing_is_safe_approximation_by_args_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_9, transform_hlds__ctgc__structure_sharing__analysis__Modes_13, transform_hlds__ctgc__structure_sharing__analysis__ActualTypes_25);
+        }
+#line 6684 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 795 "structure_sharing.analysis.m"
+          *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_32 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_31;
+#line 6688 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        else
+#line 6690 "transform_hlds.ctgc.structure_sharing.analysis.c"
+          {
+#line 6692 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__Context_39;
+#line 6694 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            MR_String transform_hlds__ctgc__structure_sharing__analysis__ContextString_40;
+#line 6696 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_41_41;
+#line 6698 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            MR_String transform_hlds__ctgc__structure_sharing__analysis__V_42_42;
+#line 6700 "transform_hlds.ctgc.structure_sharing.analysis.c"
+            MR_String transform_hlds__ctgc__structure_sharing__analysis__V_44_44;
+
+#line 789 "structure_sharing.analysis.m"
+            {
+#line 789 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__Context_39 = hlds__hlds_goal__goal_info_get_context_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__GoalInfo_14);
+            }
+#line 790 "structure_sharing.analysis.m"
+            {
+#line 790 "structure_sharing.analysis.m"
+              parse_tree__prog_out__context_to_string_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__Context_39, &transform_hlds__ctgc__structure_sharing__analysis__ContextString_40);
+            }
+#line 792 "structure_sharing.analysis.m"
+            {
+#line 792 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_44_44 = mercury__string__f_43_43_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__ContextString_40, (MR_String) ")");
+            }
+#line 792 "structure_sharing.analysis.m"
+            {
+#line 792 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_42_42 = mercury__string__f_43_43_2_f_0((MR_String) "generic call (", transform_hlds__ctgc__structure_sharing__analysis__V_44_44);
+            }
+#line 792 "structure_sharing.analysis.m"
+            {
+#line 792 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_41_41 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 792 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(2), transform_hlds__ctgc__structure_sharing__analysis__V_41_41, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_42_42));
+#line 792 "structure_sharing.analysis.m"
+            }
+#line 791 "structure_sharing.analysis.m"
+            {
+#line 791 "structure_sharing.analysis.m"
+              *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_32 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_top_sharing_accumulate_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__V_41_41, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_31);
+            }
+#line 6736 "transform_hlds.ctgc.structure_sharing.analysis.c"
+          }
+#line 6738 "transform_hlds.ctgc.structure_sharing.analysis.c"
+      }
+#line 6740 "transform_hlds.ctgc.structure_sharing.analysis.c"
+  }
+#line 761 "structure_sharing.analysis.m"
+}
+
+#line 744 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__lookup_sharing_8_p_0(
+#line 744 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_9,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_10,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PPId_11,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_17,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_18,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__SharingAs_13,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__Status_14,
+#line 744 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__IsPredicted_15)
+#line 744 "structure_sharing.analysis.m"
+{
+#line 756 "structure_sharing.analysis.m"
+  {
+#line 756 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 756 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_16;
+#line 756 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_19_19;
+#line 901 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv0_SharingAs_Status_16;
+
+#line 901 "structure_sharing.analysis.m"
+    {
+#line 901 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__fixpoint_table__get_from_fixpoint_table_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PPId_11)), &transform_hlds__ctgc__structure_sharing__analysis__conv0_SharingAs_Status_16, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_17, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_19_19);
+    }
+#line 901 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 901 "structure_sharing.analysis.m"
+      {
+#line 901 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_16 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv0_SharingAs_Status_16);
+#line 901 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__succeeded = MR_TRUE;
+#line 901 "structure_sharing.analysis.m"
+      }
+#line 756 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 754 "structure_sharing.analysis.m"
+      {
+#line 754 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_18 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_19_19;
+#line 754 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__SharingAs_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_16, (MR_Integer) 0)));
+#line 754 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__Status_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_16, (MR_Integer) 1)));
+#line 755 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__IsPredicted_15 = (MR_Integer) 0;
+#line 754 "structure_sharing.analysis.m"
+      }
+#line 756 "structure_sharing.analysis.m"
+    else
+#line 757 "structure_sharing.analysis.m"
+      {
+#line 757 "structure_sharing.analysis.m"
+        {
+#line 757 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__domain__lookup_sharing_or_predict_6_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_9, transform_hlds__ctgc__structure_sharing__analysis__SharingTable_10, transform_hlds__ctgc__structure_sharing__analysis__PPId_11, transform_hlds__ctgc__structure_sharing__analysis__SharingAs_13, transform_hlds__ctgc__structure_sharing__analysis__Status_14, transform_hlds__ctgc__structure_sharing__analysis__IsPredicted_15);
+        }
+#line 757 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_18 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_17;
+#line 757 "structure_sharing.analysis.m"
+      }
+#line 756 "structure_sharing.analysis.m"
+  }
+#line 744 "structure_sharing.analysis.m"
+}
+
+#line 722 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_case_15_p_0(
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_16,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_17,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_18,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_19,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Sharing0_20,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Verbose_21,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Case_22,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_31,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_32,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_33,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_34,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_0_35,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_36,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_37,
+#line 722 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_38)
+#line 722 "structure_sharing.analysis.m"
+{
+#line 729 "structure_sharing.analysis.m"
+  {
+#line 729 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 729 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Goal_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__Case_22, (MR_Integer) 2)));
+#line 729 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__CaseSharing_30;
+#line 730 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__Case_22, (MR_Integer) 0)));
+#line 730 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__Case_22, (MR_Integer) 1)));
+
+#line 731 "structure_sharing.analysis.m"
+    {
+#line 731 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_16, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_17, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_18, transform_hlds__ctgc__structure_sharing__analysis__SharingTable_19, transform_hlds__ctgc__structure_sharing__analysis__Verbose_21, transform_hlds__ctgc__structure_sharing__analysis__Goal_29, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_31, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_32, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_33, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_34, transform_hlds__ctgc__structure_sharing__analysis__Sharing0_20, &transform_hlds__ctgc__structure_sharing__analysis__CaseSharing_30, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_37, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_38);
+    }
+#line 733 "structure_sharing.analysis.m"
+    {
+#line 733 "structure_sharing.analysis.m"
+      *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_36 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_least_upper_bound_4_f_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_16, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_18, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_0_35, transform_hlds__ctgc__structure_sharing__analysis__CaseSharing_30);
+    }
+#line 729 "structure_sharing.analysis.m"
+  }
+#line 722 "structure_sharing.analysis.m"
+}
+
+#line 703 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_disj_15_p_0(
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_16,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_17,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_18,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_19,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingBeforeDisj_20,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Verbose_21,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Goal_22,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_28,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_29,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_30,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_31,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_0_32,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_33,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_34,
+#line 703 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_35)
+#line 703 "structure_sharing.analysis.m"
+{
+#line 710 "structure_sharing.analysis.m"
+  {
+#line 710 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 710 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__GoalSharing_27;
+
+#line 711 "structure_sharing.analysis.m"
+    {
+#line 711 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_16, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_17, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_18, transform_hlds__ctgc__structure_sharing__analysis__SharingTable_19, transform_hlds__ctgc__structure_sharing__analysis__Verbose_21, transform_hlds__ctgc__structure_sharing__analysis__Goal_22, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_28, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_29, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_30, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_31, transform_hlds__ctgc__structure_sharing__analysis__SharingBeforeDisj_20, &transform_hlds__ctgc__structure_sharing__analysis__GoalSharing_27, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_34, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_35);
+    }
+#line 714 "structure_sharing.analysis.m"
+    {
+#line 714 "structure_sharing.analysis.m"
+      *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_33 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_least_upper_bound_4_f_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_16, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_18, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_0_32, transform_hlds__ctgc__structure_sharing__analysis__GoalSharing_27);
+    }
+#line 710 "structure_sharing.analysis.m"
+  }
+#line 703 "structure_sharing.analysis.m"
+}
+
+#line 678 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_with_progress_14_p_0(
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_18,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Verbose_19,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Goal_20,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_26,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_27,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_28,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_29,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_30,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_31,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_32,
+#line 678 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_33)
+#line 678 "structure_sharing.analysis.m"
+{
+#line 685 "structure_sharing.analysis.m"
+  {
+#line 685 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 692 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__Verbose_19 == (MR_Integer) 0))
+#line 693 "structure_sharing.analysis.m"
+      {
+#line 693 "structure_sharing.analysis.m"
+      }
+#line 692 "structure_sharing.analysis.m"
+    else
+#line 688 "structure_sharing.analysis.m"
+      {
+#line 689 "structure_sharing.analysis.m"
+        {
+#line 689 "structure_sharing.analysis.m"
+          mercury__io__write_char_3_p_0((MR_Char) 46);
+        }
+#line 690 "structure_sharing.analysis.m"
+        {
+#line 690 "structure_sharing.analysis.m"
+          mercury__io__flush_output_2_p_0();
+        }
+#line 688 "structure_sharing.analysis.m"
+      }
+#line 695 "structure_sharing.analysis.m"
+    {
+#line 695 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17, transform_hlds__ctgc__structure_sharing__analysis__SharingTable_18, transform_hlds__ctgc__structure_sharing__analysis__Verbose_19, transform_hlds__ctgc__structure_sharing__analysis__Goal_20, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_26, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_27, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_28, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_29, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_30, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_31, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_32, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_33);
+#line 695 "structure_sharing.analysis.m"
+      return;
+    }
+#line 685 "structure_sharing.analysis.m"
+  }
+#line 678 "structure_sharing.analysis.m"
+}
+
+#line 634 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0_3(
+#line 634 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_8,
+#line 634 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_9)
+#line 634 "structure_sharing.analysis.m"
+{
+#line 634 "structure_sharing.analysis.m"
+  {
+#line 634 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 634 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv19_STATE_VARIABLE_FixpointTable_32;
+#line 634 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv18_STATE_VARIABLE_DepProcs_34;
+#line 634 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv17_STATE_VARIABLE_Sharing_36;
+#line 634 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv16_STATE_VARIABLE_Status_38;
+
+#line 634 "structure_sharing.analysis.m"
+    {
+#line 634 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__analyse_case_15_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 7))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 8))), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv19_STATE_VARIABLE_FixpointTable_32, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4), &transform_hlds__ctgc__structure_sharing__analysis__conv18_STATE_VARIABLE_DepProcs_34, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6), &transform_hlds__ctgc__structure_sharing__analysis__conv17_STATE_VARIABLE_Sharing_36, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_8), &transform_hlds__ctgc__structure_sharing__analysis__conv16_STATE_VARIABLE_Status_38);
+    }
+#line 634 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv19_STATE_VARIABLE_FixpointTable_32));
+#line 634 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv18_STATE_VARIABLE_DepProcs_34));
+#line 634 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv17_STATE_VARIABLE_Sharing_36));
+#line 634 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_9 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv16_STATE_VARIABLE_Status_38));
+#line 634 "structure_sharing.analysis.m"
+  }
+#line 634 "structure_sharing.analysis.m"
+}
+
+#line 627 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0_2(
+#line 627 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_8,
+#line 627 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_9)
+#line 627 "structure_sharing.analysis.m"
+{
+#line 627 "structure_sharing.analysis.m"
+  {
+#line 627 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 627 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv11_STATE_VARIABLE_FixpointTable_29;
+#line 627 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv10_STATE_VARIABLE_DepProcs_31;
+#line 627 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv9_STATE_VARIABLE_Sharing_33;
+#line 627 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv8_STATE_VARIABLE_Status_35;
+
+#line 627 "structure_sharing.analysis.m"
+    {
+#line 627 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__analyse_disj_15_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 7))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 8))), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv11_STATE_VARIABLE_FixpointTable_29, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4), &transform_hlds__ctgc__structure_sharing__analysis__conv10_STATE_VARIABLE_DepProcs_31, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6), &transform_hlds__ctgc__structure_sharing__analysis__conv9_STATE_VARIABLE_Sharing_33, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_8), &transform_hlds__ctgc__structure_sharing__analysis__conv8_STATE_VARIABLE_Status_35);
+    }
+#line 627 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv11_STATE_VARIABLE_FixpointTable_29));
+#line 627 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv10_STATE_VARIABLE_DepProcs_31));
+#line 627 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv9_STATE_VARIABLE_Sharing_33));
+#line 627 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_9 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv8_STATE_VARIABLE_Status_35));
+#line 627 "structure_sharing.analysis.m"
+  }
+#line 627 "structure_sharing.analysis.m"
+}
+
+#line 569 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0_1(
+#line 569 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_8,
+#line 569 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_9)
+#line 569 "structure_sharing.analysis.m"
+{
+#line 569 "structure_sharing.analysis.m"
+  {
+#line 569 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 569 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv3_STATE_VARIABLE_FixpointTable_27;
+#line 569 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_DepProcs_29;
+#line 569 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_SharingAs_31;
+#line 569 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_Status_33;
+
+#line 569 "structure_sharing.analysis.m"
+    {
+#line 569 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_with_progress_14_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 7))), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv3_STATE_VARIABLE_FixpointTable_27, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4), &transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_DepProcs_29, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6), &transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_SharingAs_31, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_8), &transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_Status_33);
+    }
+#line 569 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv3_STATE_VARIABLE_FixpointTable_27));
+#line 569 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_DepProcs_29));
+#line 569 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_SharingAs_31));
+#line 569 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_9 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_Status_33));
+#line 569 "structure_sharing.analysis.m"
+  }
+#line 569 "structure_sharing.analysis.m"
+}
+
+#line 556 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0(
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_18,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Verbose_19,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Goal_20,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86,
+#line 556 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87)
+#line 556 "structure_sharing.analysis.m"
+{
+#line 563 "structure_sharing.analysis.m"
+  while (MR_TRUE)
+#line 563 "structure_sharing.analysis.m"
+    {
+#line 563 "structure_sharing.analysis.m"
+      /* tailcall optimized into a loop */
+#line 563 "structure_sharing.analysis.m"
+      {
+#line 563 "structure_sharing.analysis.m"
+        MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 563 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__Goal_20, (MR_Integer) 0)));
+#line 563 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__GoalInfo_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__Goal_20, (MR_Integer) 1)));
+
+#line 580 "structure_sharing.analysis.m"
+        if (((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25)) == (MR_mktag((MR_Integer) 0))))
+#line 639 "structure_sharing.analysis.m"
+          {
+#line 639 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80;
+#line 639 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82;
+#line 639 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84;
+#line 639 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86;
+#line 639 "structure_sharing.analysis.m"
+          }
+#line 580 "structure_sharing.analysis.m"
+        else
+#line 580 "structure_sharing.analysis.m"
+        if (((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25)) == (MR_mktag((MR_Integer) 2))))
+#line 581 "structure_sharing.analysis.m"
+          {
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__CalleePredId_31 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 0)));
+#line 581 "structure_sharing.analysis.m"
+            MR_Integer transform_hlds__ctgc__structure_sharing__analysis__CalleeProcId_32 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 1)));
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__CallArgs_33 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 2)));
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__CalleePPId_37;
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__CalleeSharing_38;
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__CalleeStatus_39;
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__IsPredicted_40;
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__CallerVarTypes_43;
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__ActualTypes_44;
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__CallerTypeVarSet_45;
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__CallerHeadParams_46;
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__RenamedSharing_47;
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 3)));
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 4)));
+#line 581 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 5)));
+#line 590 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredImportStatus_41;
+#line 590 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__CalleePredInfo_42;
+#line 590 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_122_122;
+
+#line 582 "structure_sharing.analysis.m"
+            {
+#line 582 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__CalleePPId_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 582 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__CalleePPId_37, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__CalleePredId_31));
+#line 582 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__CalleePPId_37, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__CalleeProcId_32));
+#line 582 "structure_sharing.analysis.m"
+            }
+#line 583 "structure_sharing.analysis.m"
+            {
+#line 583 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__lookup_sharing_8_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__SharingTable_18, transform_hlds__ctgc__structure_sharing__analysis__CalleePPId_37, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81, &transform_hlds__ctgc__structure_sharing__analysis__CalleeSharing_38, &transform_hlds__ctgc__structure_sharing__analysis__CalleeStatus_39, &transform_hlds__ctgc__structure_sharing__analysis__IsPredicted_40);
+            }
+#line 590 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__IsPredicted_40 == (MR_Integer) 0);
+#line 590 "structure_sharing.analysis.m"
+            if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 590 "structure_sharing.analysis.m"
+              {
+#line 591 "structure_sharing.analysis.m"
+                {
+#line 591 "structure_sharing.analysis.m"
+                  hlds__hlds_pred__pred_info_get_import_status_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16, &transform_hlds__ctgc__structure_sharing__analysis__PredImportStatus_41);
+                }
+#line 592 "structure_sharing.analysis.m"
+                {
+#line 592 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__V_122_122 = hlds__hlds_pred__status_defined_in_this_module_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__PredImportStatus_41);
+                }
+#line 592 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__V_122_122 == (MR_Integer) 1);
+#line 590 "structure_sharing.analysis.m"
+                if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 590 "structure_sharing.analysis.m"
+                  {
+#line 593 "structure_sharing.analysis.m"
+                    {
+#line 593 "structure_sharing.analysis.m"
+                      hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__CalleePredId_31, &transform_hlds__ctgc__structure_sharing__analysis__CalleePredInfo_42);
+                    }
+#line 594 "structure_sharing.analysis.m"
+                    {
+#line 594 "structure_sharing.analysis.m"
+                      transform_hlds__ctgc__structure_sharing__analysis__succeeded = hlds__hlds_pred__pred_info_is_imported_not_external_1_p_0(transform_hlds__ctgc__structure_sharing__analysis__CalleePredInfo_42);
+                    }
+#line 590 "structure_sharing.analysis.m"
+                    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 590 "structure_sharing.analysis.m"
+                      {
+#line 595 "structure_sharing.analysis.m"
+                        {
+#line 595 "structure_sharing.analysis.m"
+                          transform_hlds__ctgc__structure_sharing__analysis__succeeded = hlds__hlds_pred__is_unify_or_compare_pred_1_p_0(transform_hlds__ctgc__structure_sharing__analysis__CalleePredInfo_42);
+                        }
+#line 595 "structure_sharing.analysis.m"
+                        transform_hlds__ctgc__structure_sharing__analysis__succeeded = !(transform_hlds__ctgc__structure_sharing__analysis__succeeded);
+#line 590 "structure_sharing.analysis.m"
+                      }
+#line 590 "structure_sharing.analysis.m"
+                  }
+#line 590 "structure_sharing.analysis.m"
+              }
+#line 598 "structure_sharing.analysis.m"
+            if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 597 "structure_sharing.analysis.m"
+              {
+#line 597 "structure_sharing.analysis.m"
+                MR_Word base;
+#line 597 "structure_sharing.analysis.m"
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 597 "structure_sharing.analysis.m"
+                *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83 = base;
+#line 597 "structure_sharing.analysis.m"
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__CalleePPId_37));
+#line 597 "structure_sharing.analysis.m"
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82));
+#line 597 "structure_sharing.analysis.m"
+              }
+#line 598 "structure_sharing.analysis.m"
+            else
+#line 598 "structure_sharing.analysis.m"
+              *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82;
+#line 603 "structure_sharing.analysis.m"
+            {
+#line 603 "structure_sharing.analysis.m"
+              hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17, &transform_hlds__ctgc__structure_sharing__analysis__CallerVarTypes_43);
+            }
+#line 604 "structure_sharing.analysis.m"
+            {
+#line 604 "structure_sharing.analysis.m"
+              parse_tree__prog_data__lookup_var_types_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__CallerVarTypes_43, transform_hlds__ctgc__structure_sharing__analysis__CallArgs_33, &transform_hlds__ctgc__structure_sharing__analysis__ActualTypes_44);
+            }
+#line 605 "structure_sharing.analysis.m"
+            {
+#line 605 "structure_sharing.analysis.m"
+              hlds__hlds_pred__pred_info_get_typevarset_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16, &transform_hlds__ctgc__structure_sharing__analysis__CallerTypeVarSet_45);
+            }
+#line 606 "structure_sharing.analysis.m"
+            {
+#line 606 "structure_sharing.analysis.m"
+              hlds__hlds_pred__pred_info_get_univ_quant_tvars_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16, &transform_hlds__ctgc__structure_sharing__analysis__CallerHeadParams_46);
+            }
+#line 607 "structure_sharing.analysis.m"
+            {
+#line 607 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__domain__sharing_as_rename_using_module_info_8_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__CalleePPId_37, transform_hlds__ctgc__structure_sharing__analysis__CallArgs_33, transform_hlds__ctgc__structure_sharing__analysis__ActualTypes_44, transform_hlds__ctgc__structure_sharing__analysis__CallerTypeVarSet_45, transform_hlds__ctgc__structure_sharing__analysis__CallerHeadParams_46, transform_hlds__ctgc__structure_sharing__analysis__CalleeSharing_38, &transform_hlds__ctgc__structure_sharing__analysis__RenamedSharing_47);
+            }
+#line 612 "structure_sharing.analysis.m"
+            {
+#line 612 "structure_sharing.analysis.m"
+              *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_comb_4_f_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17, transform_hlds__ctgc__structure_sharing__analysis__RenamedSharing_47, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84);
+            }
+#line 614 "structure_sharing.analysis.m"
+            {
+#line 614 "structure_sharing.analysis.m"
+              *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87 = analysis__lub_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__CalleeStatus_39, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86);
+            }
+#line 581 "structure_sharing.analysis.m"
+          }
+#line 580 "structure_sharing.analysis.m"
+        else
+#line 580 "structure_sharing.analysis.m"
+        if (((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25)) == (MR_mktag((MR_Integer) 1))))
+#line 621 "structure_sharing.analysis.m"
+          {
+#line 621 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__Unification_55 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 3)));
+#line 621 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 0)));
+#line 621 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 1)));
+#line 621 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 2)));
+#line 621 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 4)));
+
+#line 622 "structure_sharing.analysis.m"
+            {
+#line 622 "structure_sharing.analysis.m"
+              *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85 = transform_hlds__ctgc__structure_sharing__domain__add_unify_sharing_5_f_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17, transform_hlds__ctgc__structure_sharing__analysis__Unification_55, transform_hlds__ctgc__structure_sharing__analysis__GoalInfo_26, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84);
+            }
+#line 621 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80;
+#line 621 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82;
+#line 621 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86;
+#line 621 "structure_sharing.analysis.m"
+          }
+#line 580 "structure_sharing.analysis.m"
+        else
+#line 580 "structure_sharing.analysis.m"
+        if (((((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 0)))) == (MR_Integer) 1))))
+#line 667 "structure_sharing.analysis.m"
+          {
+#line 667 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__Attributes_71 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 1)));
+#line 667 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__ForeignPredId_72 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 2)));
+#line 667 "structure_sharing.analysis.m"
+            MR_Integer transform_hlds__ctgc__structure_sharing__analysis__ForeignProcId_73 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 3)));
+#line 667 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__Args_74 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 4)));
+#line 667 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__ForeignPPId_78;
+#line 667 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__Context_139;
+#line 666 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis___ExtraArgs_75 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 5)));
+#line 666 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis___MaybeTraceRuntimeCond_76 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 6)));
+#line 666 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis___Impl_77 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 7)));
+
+#line 668 "structure_sharing.analysis.m"
+            {
+#line 668 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__Context_139 = hlds__hlds_goal__goal_info_get_context_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__GoalInfo_26);
+            }
+#line 669 "structure_sharing.analysis.m"
+            {
+#line 669 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__ForeignPPId_78 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 669 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__ForeignPPId_78, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ForeignPredId_72));
+#line 669 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__ForeignPPId_78, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ForeignProcId_73));
+#line 669 "structure_sharing.analysis.m"
+            }
+#line 670 "structure_sharing.analysis.m"
+            {
+#line 670 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__domain__add_foreign_proc_sharing_9_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17, transform_hlds__ctgc__structure_sharing__analysis__ForeignPPId_78, transform_hlds__ctgc__structure_sharing__analysis__Attributes_71, transform_hlds__ctgc__structure_sharing__analysis__Args_74, transform_hlds__ctgc__structure_sharing__analysis__Context_139, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85);
+            }
+#line 667 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80;
+#line 667 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82;
+#line 667 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86;
+#line 667 "structure_sharing.analysis.m"
+          }
+#line 580 "structure_sharing.analysis.m"
+        else
+#line 580 "structure_sharing.analysis.m"
+        if (((((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 0)))) == (MR_Integer) 2))))
+#line 566 "structure_sharing.analysis.m"
+          {
+#line 566 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__ConjType_27 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 1)));
+#line 566 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__Goals_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 2)));
+
+#line 572 "structure_sharing.analysis.m"
+            if ((transform_hlds__ctgc__structure_sharing__analysis__ConjType_27 == (MR_Integer) 1))
+#line 573 "structure_sharing.analysis.m"
+              {
+#line 573 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__Context_29;
+#line 573 "structure_sharing.analysis.m"
+                MR_String transform_hlds__ctgc__structure_sharing__analysis__ContextString_30;
+#line 573 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_127_127;
+#line 573 "structure_sharing.analysis.m"
+                MR_String transform_hlds__ctgc__structure_sharing__analysis__V_128_128;
+#line 573 "structure_sharing.analysis.m"
+                MR_String transform_hlds__ctgc__structure_sharing__analysis__V_130_130;
+
+#line 574 "structure_sharing.analysis.m"
+                {
+#line 574 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__Context_29 = hlds__hlds_goal__goal_info_get_context_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__GoalInfo_26);
+                }
+#line 575 "structure_sharing.analysis.m"
+                {
+#line 575 "structure_sharing.analysis.m"
+                  parse_tree__prog_out__context_to_string_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__Context_29, &transform_hlds__ctgc__structure_sharing__analysis__ContextString_30);
+                }
+#line 577 "structure_sharing.analysis.m"
+                {
+#line 577 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__V_130_130 = mercury__string__f_43_43_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__ContextString_30, (MR_String) ")");
+                }
+#line 577 "structure_sharing.analysis.m"
+                {
+#line 577 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__V_128_128 = mercury__string__f_43_43_2_f_0((MR_String) "par_conj (", transform_hlds__ctgc__structure_sharing__analysis__V_130_130);
+                }
+#line 577 "structure_sharing.analysis.m"
+                {
+#line 577 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__V_127_127 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 577 "structure_sharing.analysis.m"
+                  MR_hl_field(MR_mktag(2), transform_hlds__ctgc__structure_sharing__analysis__V_127_127, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_128_128));
+#line 577 "structure_sharing.analysis.m"
+                }
+#line 576 "structure_sharing.analysis.m"
+                {
+#line 576 "structure_sharing.analysis.m"
+                  *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_top_sharing_accumulate_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__V_127_127, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84);
+                }
+#line 573 "structure_sharing.analysis.m"
+                *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80;
+#line 573 "structure_sharing.analysis.m"
+                *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82;
+#line 573 "structure_sharing.analysis.m"
+                *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86;
+#line 573 "structure_sharing.analysis.m"
+              }
+#line 572 "structure_sharing.analysis.m"
+            else
+#line 568 "structure_sharing.analysis.m"
+              {
+#line 568 "structure_sharing.analysis.m"
+                MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_132_132;
+#line 569 "structure_sharing.analysis.m"
+                MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv7_STATE_VARIABLE_FixpointTable_81;
+#line 569 "structure_sharing.analysis.m"
+                MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv6_STATE_VARIABLE_DepProcs_83;
+#line 569 "structure_sharing.analysis.m"
+                MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv5_STATE_VARIABLE_SharingAs_85;
+#line 569 "structure_sharing.analysis.m"
+                MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_Status_87;
+
+#line 569 "structure_sharing.analysis.m"
+                {
+#line 569 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__V_132_132 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 8 * sizeof(MR_Word)), NULL, NULL);
+#line 569 "structure_sharing.analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_132_132, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_11[0]));
+#line 569 "structure_sharing.analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_132_132, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0_1));
+#line 569 "structure_sharing.analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_132_132, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+#line 569 "structure_sharing.analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_132_132, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15));
+#line 569 "structure_sharing.analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_132_132, 4) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16));
+#line 569 "structure_sharing.analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_132_132, 5) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17));
+#line 569 "structure_sharing.analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_132_132, 6) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingTable_18));
+#line 569 "structure_sharing.analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_132_132, 7) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Verbose_19));
+#line 569 "structure_sharing.analysis.m"
+                }
+#line 569 "structure_sharing.analysis.m"
+                {
+#line 569 "structure_sharing.analysis.m"
+                  mercury__list__foldl4_10_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[4], (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[4], (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_0, (MR_Word) &analysis__analysis__type_ctor_info_analysis_status_0, transform_hlds__ctgc__structure_sharing__analysis__V_132_132, transform_hlds__ctgc__structure_sharing__analysis__Goals_28, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80)), &transform_hlds__ctgc__structure_sharing__analysis__conv7_STATE_VARIABLE_FixpointTable_81, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82)), &transform_hlds__ctgc__structure_sharing__analysis__conv6_STATE_VARIABLE_DepProcs_83, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84)), &transform_hlds__ctgc__structure_sharing__analysis__conv5_STATE_VARIABLE_SharingAs_85, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86)), &transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_Status_87);
+                }
+#line 569 "structure_sharing.analysis.m"
+                *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv7_STATE_VARIABLE_FixpointTable_81);
+#line 569 "structure_sharing.analysis.m"
+                *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv6_STATE_VARIABLE_DepProcs_83);
+#line 569 "structure_sharing.analysis.m"
+                *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv5_STATE_VARIABLE_SharingAs_85);
+#line 569 "structure_sharing.analysis.m"
+                *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_Status_87);
+#line 568 "structure_sharing.analysis.m"
+              }
+#line 566 "structure_sharing.analysis.m"
+          }
+#line 580 "structure_sharing.analysis.m"
+        else
+#line 580 "structure_sharing.analysis.m"
+        if (((((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 0)))) == (MR_Integer) 3))))
+#line 625 "structure_sharing.analysis.m"
+          {
+#line 625 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_113_113;
+#line 625 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_116_116;
+#line 625 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__Goals_138 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 1)));
+#line 626 "structure_sharing.analysis.m"
+            MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv15_STATE_VARIABLE_FixpointTable_81;
+#line 626 "structure_sharing.analysis.m"
+            MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv14_STATE_VARIABLE_DepProcs_83;
+#line 626 "structure_sharing.analysis.m"
+            MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv13_STATE_VARIABLE_SharingAs_85;
+#line 626 "structure_sharing.analysis.m"
+            MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv12_STATE_VARIABLE_Status_87;
+
+#line 627 "structure_sharing.analysis.m"
+            {
+#line 627 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_113_113 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 9 * sizeof(MR_Word)), NULL, NULL);
+#line 627 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_113_113, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_12[0]));
+#line 627 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_113_113, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0_2));
+#line 627 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_113_113, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+#line 627 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_113_113, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15));
+#line 627 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_113_113, 4) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16));
+#line 627 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_113_113, 5) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17));
+#line 627 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_113_113, 6) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingTable_18));
+#line 627 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_113_113, 7) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84));
+#line 627 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_113_113, 8) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Verbose_19));
+#line 627 "structure_sharing.analysis.m"
+            }
+#line 630 "structure_sharing.analysis.m"
+            {
+#line 630 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_116_116 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_init_0_f_0();
+            }
+#line 626 "structure_sharing.analysis.m"
+            {
+#line 626 "structure_sharing.analysis.m"
+              mercury__list__foldl4_10_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[4], (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[4], (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_0, (MR_Word) &analysis__analysis__type_ctor_info_analysis_status_0, transform_hlds__ctgc__structure_sharing__analysis__V_113_113, transform_hlds__ctgc__structure_sharing__analysis__Goals_138, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80)), &transform_hlds__ctgc__structure_sharing__analysis__conv15_STATE_VARIABLE_FixpointTable_81, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82)), &transform_hlds__ctgc__structure_sharing__analysis__conv14_STATE_VARIABLE_DepProcs_83, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_116_116)), &transform_hlds__ctgc__structure_sharing__analysis__conv13_STATE_VARIABLE_SharingAs_85, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86)), &transform_hlds__ctgc__structure_sharing__analysis__conv12_STATE_VARIABLE_Status_87);
+            }
+#line 626 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv15_STATE_VARIABLE_FixpointTable_81);
+#line 626 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv14_STATE_VARIABLE_DepProcs_83);
+#line 626 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv13_STATE_VARIABLE_SharingAs_85);
+#line 626 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv12_STATE_VARIABLE_Status_87);
+#line 625 "structure_sharing.analysis.m"
+          }
+#line 580 "structure_sharing.analysis.m"
+        else
+#line 580 "structure_sharing.analysis.m"
+        if (((((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 0)))) == (MR_Integer) 0))))
+#line 617 "structure_sharing.analysis.m"
+          {
+#line 617 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__GenDetails_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 1)));
+#line 617 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__Modes_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 3)));
+#line 617 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__CallArgs_137 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 2)));
+#line 616 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis___MaybeArgRegs_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 4)));
+#line 616 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis___Detism_51 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 5)));
+
+#line 618 "structure_sharing.analysis.m"
+            {
+#line 618 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__analyse_generic_call_8_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17, transform_hlds__ctgc__structure_sharing__analysis__GenDetails_48, transform_hlds__ctgc__structure_sharing__analysis__CallArgs_137, transform_hlds__ctgc__structure_sharing__analysis__Modes_49, transform_hlds__ctgc__structure_sharing__analysis__GoalInfo_26, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85);
+            }
+#line 617 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80;
+#line 617 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82;
+#line 617 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86;
+#line 617 "structure_sharing.analysis.m"
+          }
+#line 580 "structure_sharing.analysis.m"
+        else
+#line 580 "structure_sharing.analysis.m"
+        if (((((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 0)))) == (MR_Integer) 6))))
+#line 653 "structure_sharing.analysis.m"
+          {
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__IfGoal_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 2)));
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__ThenGoal_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 3)));
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__ElseGoal_67 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 4)));
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__IfSharingAs_68;
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__ThenSharingAs_69;
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__ElseSharingAs_70;
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_92_92;
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_93_93;
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_94_94;
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_95_95;
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_96_96;
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_97_97;
+#line 653 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 1)));
+
+#line 654 "structure_sharing.analysis.m"
+            {
+#line 654 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17, transform_hlds__ctgc__structure_sharing__analysis__SharingTable_18, transform_hlds__ctgc__structure_sharing__analysis__Verbose_19, transform_hlds__ctgc__structure_sharing__analysis__IfGoal_65, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_92_92, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_93_93, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84, &transform_hlds__ctgc__structure_sharing__analysis__IfSharingAs_68, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_94_94);
+            }
+#line 657 "structure_sharing.analysis.m"
+            {
+#line 657 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17, transform_hlds__ctgc__structure_sharing__analysis__SharingTable_18, transform_hlds__ctgc__structure_sharing__analysis__Verbose_19, transform_hlds__ctgc__structure_sharing__analysis__ThenGoal_66, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_92_92, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_95_95, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_93_93, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_96_96, transform_hlds__ctgc__structure_sharing__analysis__IfSharingAs_68, &transform_hlds__ctgc__structure_sharing__analysis__ThenSharingAs_69, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_94_94, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_97_97);
+            }
+#line 660 "structure_sharing.analysis.m"
+            {
+#line 660 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17, transform_hlds__ctgc__structure_sharing__analysis__SharingTable_18, transform_hlds__ctgc__structure_sharing__analysis__Verbose_19, transform_hlds__ctgc__structure_sharing__analysis__ElseGoal_67, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_95_95, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_96_96, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84, &transform_hlds__ctgc__structure_sharing__analysis__ElseSharingAs_70, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_97_97, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87);
+            }
+#line 663 "structure_sharing.analysis.m"
+            {
+#line 663 "structure_sharing.analysis.m"
+              *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_least_upper_bound_4_f_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17, transform_hlds__ctgc__structure_sharing__analysis__ThenSharingAs_69, transform_hlds__ctgc__structure_sharing__analysis__ElseSharingAs_70);
+            }
+#line 653 "structure_sharing.analysis.m"
+          }
+#line 580 "structure_sharing.analysis.m"
+        else
+#line 580 "structure_sharing.analysis.m"
+        if (((((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 0)))) == (MR_Integer) 5))))
+#line 643 "structure_sharing.analysis.m"
+          {
+#line 643 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__Reason_61 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 1)));
+#line 643 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__SubGoal_62 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 2)));
+#line 644 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_102_102;
+#line 644 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_63_63;
+
+#line 644 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__succeeded = ((((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__Reason_61)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__Reason_61, (MR_Integer) 0)))) == (MR_Integer) 5)));
+#line 644 "structure_sharing.analysis.m"
+            if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 644 "structure_sharing.analysis.m"
+              {
+#line 644 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__Reason_61, (MR_Integer) 1)));
+#line 644 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__V_102_102 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__Reason_61, (MR_Integer) 2)));
+#line 644 "structure_sharing.analysis.m"
+                transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__V_102_102 == (MR_Integer) 1);
+#line 644 "structure_sharing.analysis.m"
+              }
+#line 647 "structure_sharing.analysis.m"
+            if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 646 "structure_sharing.analysis.m"
+              {
+#line 646 "structure_sharing.analysis.m"
+                *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86;
+#line 646 "structure_sharing.analysis.m"
+                *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84;
+#line 646 "structure_sharing.analysis.m"
+                *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82;
+#line 646 "structure_sharing.analysis.m"
+                *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80;
+#line 646 "structure_sharing.analysis.m"
+              }
+#line 647 "structure_sharing.analysis.m"
+            else
+#line 649 "structure_sharing.analysis.m"
+              {
+#line 649 "structure_sharing.analysis.m"
+                /* direct tailcall eliminated */
+#line 649 "structure_sharing.analysis.m"
+                {
+#line 649 "structure_sharing.analysis.m"
+                  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Goal__tmp_copy_20 = transform_hlds__ctgc__structure_sharing__analysis__SubGoal_62;
+
+#line 649 "structure_sharing.analysis.m"
+                  transform_hlds__ctgc__structure_sharing__analysis__Goal_20 = transform_hlds__ctgc__structure_sharing__analysis__Goal__tmp_copy_20;
+#line 649 "structure_sharing.analysis.m"
+                }
+#line 649 "structure_sharing.analysis.m"
+                continue;
+#line 649 "structure_sharing.analysis.m"
+              }
+#line 643 "structure_sharing.analysis.m"
+          }
+#line 580 "structure_sharing.analysis.m"
+        else
+#line 580 "structure_sharing.analysis.m"
+        if (((((MR_tag((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 0)))) == (MR_Integer) 7))))
+#line 673 "structure_sharing.analysis.m"
+          {
+#line 675 "structure_sharing.analysis.m"
+            {
+#line 675 "structure_sharing.analysis.m"
+              mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.ctgc.structure_sharing.analysis", (MR_String) "predicate \140transform_hlds.ctgc.structure_sharing.analysis.analyse_goal\'/14", (MR_String) "shorthand");
+#line 675 "structure_sharing.analysis.m"
+              return;
+            }
+#line 673 "structure_sharing.analysis.m"
+          }
+#line 580 "structure_sharing.analysis.m"
+        else
+#line 632 "structure_sharing.analysis.m"
+          {
+#line 632 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__Cases_59 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 3)));
+#line 632 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_107_107;
+#line 632 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_110_110;
+#line 632 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 1)));
+#line 632 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__ctgc__structure_sharing__analysis__GoalExpr_25, (MR_Integer) 2)));
+#line 633 "structure_sharing.analysis.m"
+            MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv23_STATE_VARIABLE_FixpointTable_81;
+#line 633 "structure_sharing.analysis.m"
+            MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv22_STATE_VARIABLE_DepProcs_83;
+#line 633 "structure_sharing.analysis.m"
+            MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv21_STATE_VARIABLE_SharingAs_85;
+#line 633 "structure_sharing.analysis.m"
+            MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv20_STATE_VARIABLE_Status_87;
+
+#line 634 "structure_sharing.analysis.m"
+            {
+#line 634 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_107_107 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 9 * sizeof(MR_Word)), NULL, NULL);
+#line 634 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_107_107, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_12[1]));
+#line 634 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_107_107, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0_3));
+#line 634 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_107_107, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+#line 634 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_107_107, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_15));
+#line 634 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_107_107, 4) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredInfo_16));
+#line 634 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_107_107, 5) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_17));
+#line 634 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_107_107, 6) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingTable_18));
+#line 634 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_107_107, 7) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_0_84));
+#line 634 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_107_107, 8) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Verbose_19));
+#line 634 "structure_sharing.analysis.m"
+            }
+#line 637 "structure_sharing.analysis.m"
+            {
+#line 637 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_110_110 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_init_0_f_0();
+            }
+#line 633 "structure_sharing.analysis.m"
+            {
+#line 633 "structure_sharing.analysis.m"
+              mercury__list__foldl4_10_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[4], (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[4], (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_0, (MR_Word) &analysis__analysis__type_ctor_info_analysis_status_0, transform_hlds__ctgc__structure_sharing__analysis__V_107_107, transform_hlds__ctgc__structure_sharing__analysis__Cases_59, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_80)), &transform_hlds__ctgc__structure_sharing__analysis__conv23_STATE_VARIABLE_FixpointTable_81, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_82)), &transform_hlds__ctgc__structure_sharing__analysis__conv22_STATE_VARIABLE_DepProcs_83, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_110_110)), &transform_hlds__ctgc__structure_sharing__analysis__conv21_STATE_VARIABLE_SharingAs_85, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_0_86)), &transform_hlds__ctgc__structure_sharing__analysis__conv20_STATE_VARIABLE_Status_87);
+            }
+#line 633 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_81 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv23_STATE_VARIABLE_FixpointTable_81);
+#line 633 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_83 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv22_STATE_VARIABLE_DepProcs_83);
+#line 633 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingAs_85 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv21_STATE_VARIABLE_SharingAs_85);
+#line 633 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Status_87 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv20_STATE_VARIABLE_Status_87);
+#line 632 "structure_sharing.analysis.m"
+          }
+#line 563 "structure_sharing.analysis.m"
+      }
+#line 563 "structure_sharing.analysis.m"
+      break;
+#line 563 "structure_sharing.analysis.m"
+    }
+#line 556 "structure_sharing.analysis.m"
+}
+
+#line 482 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_pred_proc_9_p_0(
+#line 482 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_10,
+#line 482 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_11,
+#line 482 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PPId_12,
+#line 482 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_33,
+#line 482 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_34,
+#line 482 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_35,
+#line 482 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_36)
+#line 482 "structure_sharing.analysis.m"
+{
+#line 487 "structure_sharing.analysis.m"
+  {
+#line 487 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 487 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Globals_16;
+#line 487 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Verbose_17;
+#line 487 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__WideningLimit_18;
+#line 487 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_19;
+#line 487 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_20;
+#line 487 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVars_21;
+#line 487 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__Run_22;
+#line 487 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__TabledAsDescr_23;
+#line 487 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Status_25;
+#line 487 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_31;
+#line 487 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__Desc_32;
+#line 487 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__V_41_41;
+#line 487 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__V_44_44;
+#line 487 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__V_45_45;
+#line 487 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_47_47;
+#line 487 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_50_50;
+#line 487 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_55_55;
+#line 487 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__V_69_69;
+#line 487 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__V_72_72;
+#line 907 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_80;
+#line 915 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv0_SharingAs_Status_80;
+
+#line 489 "structure_sharing.analysis.m"
+    {
+#line 489 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_10, &transform_hlds__ctgc__structure_sharing__analysis__Globals_16);
+    }
+#line 490 "structure_sharing.analysis.m"
+    {
+#line 490 "structure_sharing.analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__Globals_16, (MR_Integer) 46, &transform_hlds__ctgc__structure_sharing__analysis__Verbose_17);
+    }
+#line 491 "structure_sharing.analysis.m"
+    {
+#line 491 "structure_sharing.analysis.m"
+      libs__globals__lookup_int_option_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__Globals_16, (MR_Integer) 409, &transform_hlds__ctgc__structure_sharing__analysis__WideningLimit_18);
+    }
+#line 495 "structure_sharing.analysis.m"
+    {
+#line 495 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_pred_proc_info_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_10, transform_hlds__ctgc__structure_sharing__analysis__PPId_12, &transform_hlds__ctgc__structure_sharing__analysis__PredInfo_19, &transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_20);
+    }
+#line 496 "structure_sharing.analysis.m"
+    {
+#line 496 "structure_sharing.analysis.m"
+      hlds__hlds_pred__proc_info_get_headvars_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_20, &transform_hlds__ctgc__structure_sharing__analysis__HeadVars_21);
+    }
+#line 888 "structure_sharing.analysis.m"
+    {
+#line 888 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__Run_22 = transform_hlds__ctgc__fixpoint_table__which_run_1_f_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_33);
+    }
+#line 915 "structure_sharing.analysis.m"
+    {
+#line 915 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__fixpoint_table__get_from_fixpoint_table_final_semidet_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PPId_12)), transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_33, &transform_hlds__ctgc__structure_sharing__analysis__conv0_SharingAs_Status_80);
+    }
+#line 915 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 915 "structure_sharing.analysis.m"
+      {
+#line 915 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_80 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv0_SharingAs_Status_80);
+#line 915 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__succeeded = MR_TRUE;
+#line 915 "structure_sharing.analysis.m"
+      }
+#line 907 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 905 "structure_sharing.analysis.m"
+      {
+#line 905 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__As_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_80, (MR_Integer) 0)));
+#line 905 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis___Status_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_80, (MR_Integer) 1)));
+
+#line 906 "structure_sharing.analysis.m"
+        {
+#line 906 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__TabledAsDescr_23 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_short_description_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__As_81);
+        }
+#line 905 "structure_sharing.analysis.m"
+      }
+#line 907 "structure_sharing.analysis.m"
+    else
+#line 908 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__TabledAsDescr_23 = (MR_String) "-";
+#line 503 "structure_sharing.analysis.m"
+    {
+#line 503 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_45_45 = mercury__string__int_to_string_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__Run_22);
+    }
+#line 503 "structure_sharing.analysis.m"
+    {
+#line 503 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_44_44 = mercury__string__f_43_43_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__V_45_45, (MR_String) ") ");
+    }
+#line 503 "structure_sharing.analysis.m"
+    {
+#line 503 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_41_41 = mercury__string__f_43_43_2_f_0((MR_String) "% Sharing analysis (run ", transform_hlds__ctgc__structure_sharing__analysis__V_44_44);
+    }
+#line 502 "structure_sharing.analysis.m"
+    {
+#line 502 "structure_sharing.analysis.m"
+      hlds__passes_aux__write_proc_progress_message_5_p_0(transform_hlds__ctgc__structure_sharing__analysis__V_41_41, transform_hlds__ctgc__structure_sharing__analysis__PPId_12, transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_10);
+    }
+#line 510 "structure_sharing.analysis.m"
+    {
+#line 510 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_47_47 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_init_0_f_0();
+    }
+#line 512 "structure_sharing.analysis.m"
+    {
+#line 512 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__structure_sharing__domain__bottom_sharing_is_safe_approximation_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_10, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_19, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_20);
+    }
+#line 517 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 515 "structure_sharing.analysis.m"
+      {
+#line 515 "structure_sharing.analysis.m"
+        {
+#line 515 "structure_sharing.analysis.m"
+          libs__file_util__maybe_write_string_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__Verbose_17, (MR_String) "\t\t: bottom predicted");
+        }
+#line 516 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__Status_25 = (MR_Integer) 2;
+#line 515 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_55_55 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_47_47;
+#line 515 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_36 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_35;
+#line 515 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_50_50 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_33;
+#line 515 "structure_sharing.analysis.m"
+      }
+#line 517 "structure_sharing.analysis.m"
+    else
+#line 519 "structure_sharing.analysis.m"
+      {
+#line 519 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__Goal_26;
+#line 519 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__FullAsDescr_27;
+#line 519 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__ProjAsDescr_28;
+#line 519 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__WideningDone_29;
+#line 519 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__WidenAsDescr_30;
+#line 519 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_52_52;
+#line 519 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_54_54;
+#line 519 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__V_56_56;
+#line 519 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__V_59_59;
+#line 519 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__V_60_60;
+#line 519 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__V_62_62;
+#line 519 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__V_63_63;
+#line 519 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__V_65_65;
+#line 519 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__V_66_66;
+
+#line 519 "structure_sharing.analysis.m"
+        {
+#line 519 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_get_goal_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_20, &transform_hlds__ctgc__structure_sharing__analysis__Goal_26);
+        }
+#line 520 "structure_sharing.analysis.m"
+        {
+#line 520 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__analyse_goal_14_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_10, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_19, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_20, transform_hlds__ctgc__structure_sharing__analysis__SharingTable_11, transform_hlds__ctgc__structure_sharing__analysis__Verbose_17, transform_hlds__ctgc__structure_sharing__analysis__Goal_26, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_33, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_50_50, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_35, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_36, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_47_47, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_52_52, (MR_Integer) 2, &transform_hlds__ctgc__structure_sharing__analysis__Status_25);
+        }
+#line 523 "structure_sharing.analysis.m"
+        {
+#line 523 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__FullAsDescr_27 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_short_description_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_52_52);
+        }
+#line 525 "structure_sharing.analysis.m"
+        {
+#line 525 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__domain__sharing_as_project_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__HeadVars_21, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_52_52, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_54_54);
+        }
+#line 526 "structure_sharing.analysis.m"
+        {
+#line 526 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__ProjAsDescr_28 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_short_description_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_54_54);
+        }
+#line 528 "structure_sharing.analysis.m"
+        {
+#line 528 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__domain__apply_widening_6_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_10, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_20, transform_hlds__ctgc__structure_sharing__analysis__WideningLimit_18, &transform_hlds__ctgc__structure_sharing__analysis__WideningDone_29, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_54_54, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_55_55);
+        }
+#line 533 "structure_sharing.analysis.m"
+        if ((transform_hlds__ctgc__structure_sharing__analysis__WideningDone_29 == (MR_Integer) 0))
+#line 535 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__WidenAsDescr_30 = (MR_String) "-";
+#line 533 "structure_sharing.analysis.m"
+        else
+#line 532 "structure_sharing.analysis.m"
+          {
+#line 532 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__WidenAsDescr_30 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_short_description_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_55_55);
+          }
+#line 541 "structure_sharing.analysis.m"
+        {
+#line 541 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_66_66 = mercury__string__f_43_43_2_f_0((MR_String) "/", transform_hlds__ctgc__structure_sharing__analysis__WidenAsDescr_30);
+        }
+#line 541 "structure_sharing.analysis.m"
+        {
+#line 541 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_65_65 = mercury__string__f_43_43_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__ProjAsDescr_28, transform_hlds__ctgc__structure_sharing__analysis__V_66_66);
+        }
+#line 540 "structure_sharing.analysis.m"
+        {
+#line 540 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_63_63 = mercury__string__f_43_43_2_f_0((MR_String) "/", transform_hlds__ctgc__structure_sharing__analysis__V_65_65);
+        }
+#line 540 "structure_sharing.analysis.m"
+        {
+#line 540 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_62_62 = mercury__string__f_43_43_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__FullAsDescr_27, transform_hlds__ctgc__structure_sharing__analysis__V_63_63);
+        }
+#line 539 "structure_sharing.analysis.m"
+        {
+#line 539 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_60_60 = mercury__string__f_43_43_2_f_0((MR_String) "->", transform_hlds__ctgc__structure_sharing__analysis__V_62_62);
+        }
+#line 539 "structure_sharing.analysis.m"
+        {
+#line 539 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_59_59 = mercury__string__f_43_43_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__TabledAsDescr_23, transform_hlds__ctgc__structure_sharing__analysis__V_60_60);
+        }
+#line 538 "structure_sharing.analysis.m"
+        {
+#line 538 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_56_56 = mercury__string__f_43_43_2_f_0((MR_String) "\n\t\t: ", transform_hlds__ctgc__structure_sharing__analysis__V_59_59);
+        }
+#line 538 "structure_sharing.analysis.m"
+        {
+#line 538 "structure_sharing.analysis.m"
+          libs__file_util__maybe_write_string_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__Verbose_17, transform_hlds__ctgc__structure_sharing__analysis__V_56_56);
+        }
+#line 519 "structure_sharing.analysis.m"
+      }
+#line 544 "structure_sharing.analysis.m"
+    {
+#line 544 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 544 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_31, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_Sharing_55_55));
+#line 544 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_31, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Status_25));
+#line 544 "structure_sharing.analysis.m"
+    }
+#line 545 "structure_sharing.analysis.m"
+    {
+#line 545 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__ss_fixpoint_table_new_as_6_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_10, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_20, transform_hlds__ctgc__structure_sharing__analysis__PPId_12, transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_31, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_50_50, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_34);
+    }
+#line 893 "structure_sharing.analysis.m"
+    {
+#line 893 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__Desc_32 = transform_hlds__ctgc__fixpoint_table__description_1_f_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0, *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_34);
+    }
+#line 549 "structure_sharing.analysis.m"
+    {
+#line 549 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_72_72 = mercury__string__f_43_43_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__Desc_32, (MR_String) ")\n");
+    }
+#line 549 "structure_sharing.analysis.m"
+    {
+#line 549 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_69_69 = mercury__string__f_43_43_2_f_0((MR_String) "\t\t (ft = ", transform_hlds__ctgc__structure_sharing__analysis__V_72_72);
+    }
+#line 549 "structure_sharing.analysis.m"
+    {
+#line 549 "structure_sharing.analysis.m"
+      libs__file_util__maybe_write_string_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__Verbose_17, transform_hlds__ctgc__structure_sharing__analysis__V_69_69);
+#line 549 "structure_sharing.analysis.m"
+      return;
+    }
+#line 487 "structure_sharing.analysis.m"
+  }
+#line 482 "structure_sharing.analysis.m"
+}
+
+#line 463 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_until_fixpoint_9_p_0_1(
+#line 463 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6,
+#line 463 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7)
+#line 463 "structure_sharing.analysis.m"
+{
+#line 463 "structure_sharing.analysis.m"
+  {
+#line 463 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 463 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_FixpointTable_34;
+#line 463 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_DepProcs_36;
+
+#line 463 "structure_sharing.analysis.m"
+    {
+#line 463 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__analyse_pred_proc_9_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_FixpointTable_34, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4), &transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_DepProcs_36);
+    }
+#line 463 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_FixpointTable_34));
+#line 463 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_DepProcs_36));
+#line 463 "structure_sharing.analysis.m"
+  }
+#line 463 "structure_sharing.analysis.m"
+}
+
+#line 448 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_until_fixpoint_9_p_0(
+#line 448 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_10,
+#line 448 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SCC_11,
+#line 448 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingTable_12,
+#line 448 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_17,
+#line 448 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_18,
+#line 448 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_19,
+#line 448 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_20)
+#line 448 "structure_sharing.analysis.m"
+{
+#line 453 "structure_sharing.analysis.m"
+  while (MR_TRUE)
+#line 453 "structure_sharing.analysis.m"
+    {
+#line 453 "structure_sharing.analysis.m"
+      /* tailcall optimized into a loop */
+#line 453 "structure_sharing.analysis.m"
+      {
+#line 453 "structure_sharing.analysis.m"
+        MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 453 "structure_sharing.analysis.m"
+        MR_Integer transform_hlds__ctgc__structure_sharing__analysis__Run_16;
+#line 453 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_32_32;
+#line 453 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_33_33;
+#line 453 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_34_34;
+#line 463 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_FixpointTable_33_33;
+#line 463 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv3_STATE_VARIABLE_DepProcs_34_34;
+#line 463 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_IO_35_35;
+
+#line 888 "structure_sharing.analysis.m"
+        {
+#line 888 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__Run_16 = transform_hlds__ctgc__fixpoint_table__which_run_1_f_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_17);
+        }
+#line 456 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__Run_16 > (MR_Integer) 100);
+#line 459 "structure_sharing.analysis.m"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 457 "structure_sharing.analysis.m"
+          {
+#line 457 "structure_sharing.analysis.m"
+            MR_String transform_hlds__ctgc__structure_sharing__analysis__V_26_26;
+#line 457 "structure_sharing.analysis.m"
+            MR_String transform_hlds__ctgc__structure_sharing__analysis__V_28_28;
+#line 457 "structure_sharing.analysis.m"
+            MR_String transform_hlds__ctgc__structure_sharing__analysis__V_29_29;
+
+#line 458 "structure_sharing.analysis.m"
+            {
+#line 458 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_29_29 = mercury__string__from_int_1_f_0((MR_Integer) 100);
+            }
+#line 458 "structure_sharing.analysis.m"
+            {
+#line 458 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_28_28 = mercury__string__f_43_43_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__V_29_29, (MR_String) " runs");
+            }
+#line 458 "structure_sharing.analysis.m"
+            {
+#line 458 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_26_26 = mercury__string__f_43_43_2_f_0((MR_String) "fixpoint not reached after ", transform_hlds__ctgc__structure_sharing__analysis__V_28_28);
+            }
+#line 457 "structure_sharing.analysis.m"
+            {
+#line 457 "structure_sharing.analysis.m"
+              mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.ctgc.structure_sharing.analysis", (MR_String) "predicate \140transform_hlds.ctgc.structure_sharing.analysis.analyse_scc_until_fixpoint\'/9", transform_hlds__ctgc__structure_sharing__analysis__V_26_26);
+#line 457 "structure_sharing.analysis.m"
+              return;
+            }
+#line 457 "structure_sharing.analysis.m"
+          }
+#line 459 "structure_sharing.analysis.m"
+        else
+#line 460 "structure_sharing.analysis.m"
+          {
+#line 460 "structure_sharing.analysis.m"
+          }
+#line 463 "structure_sharing.analysis.m"
+        {
+#line 463 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_32_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 463 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_32_32, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_10[0]));
+#line 463 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_32_32, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_until_fixpoint_9_p_0_1));
+#line 463 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_32_32, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 463 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_32_32, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_10));
+#line 463 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_32_32, 4) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingTable_12));
+#line 463 "structure_sharing.analysis.m"
+        }
+#line 463 "structure_sharing.analysis.m"
+        {
+#line 463 "structure_sharing.analysis.m"
+          mercury__list__foldl3_8_p_2((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[4], (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[4], (MR_Word) &mercury__io__io__type_ctor_info_state_0, transform_hlds__ctgc__structure_sharing__analysis__V_32_32, transform_hlds__ctgc__structure_sharing__analysis__SCC_11, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_17)), &transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_FixpointTable_33_33, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_19)), &transform_hlds__ctgc__structure_sharing__analysis__conv3_STATE_VARIABLE_DepProcs_34_34, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_IO_35_35);
+        }
+#line 463 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_33_33 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_FixpointTable_33_33);
+#line 463 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_34_34 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv3_STATE_VARIABLE_DepProcs_34_34);
+#line 891 "structure_sharing.analysis.m"
+        {
+#line 891 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__fixpoint_table__fixpoint_reached_1_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_33_33);
+        }
+#line 467 "structure_sharing.analysis.m"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 466 "structure_sharing.analysis.m"
+          {
+#line 466 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_20 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_34_34;
+#line 466 "structure_sharing.analysis.m"
+            *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_18 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_33_33;
+#line 466 "structure_sharing.analysis.m"
+          }
+#line 467 "structure_sharing.analysis.m"
+        else
+#line 468 "structure_sharing.analysis.m"
+          {
+#line 468 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_36_36;
+
+#line 886 "structure_sharing.analysis.m"
+            {
+#line 886 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__fixpoint_table__new_run_2_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_33_33, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_36_36);
+            }
+#line 469 "structure_sharing.analysis.m"
+            /* direct tailcall eliminated */
+#line 469 "structure_sharing.analysis.m"
+            {
+#line 469 "structure_sharing.analysis.m"
+              MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0__tmp_copy_17 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_36_36;
+#line 469 "structure_sharing.analysis.m"
+              MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0__tmp_copy_19 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_34_34;
+
+#line 469 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_19 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0__tmp_copy_19;
+#line 469 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0_17 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_FixpointTable_0__tmp_copy_17;
+#line 469 "structure_sharing.analysis.m"
+            }
+#line 469 "structure_sharing.analysis.m"
+            continue;
+#line 468 "structure_sharing.analysis.m"
+          }
+#line 453 "structure_sharing.analysis.m"
+      }
+#line 453 "structure_sharing.analysis.m"
+      break;
+#line 453 "structure_sharing.analysis.m"
+    }
+#line 448 "structure_sharing.analysis.m"
+}
+
+#line 445 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0_4(
+#line 445 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 445 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 445 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 445 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 445 "structure_sharing.analysis.m"
+{
+#line 445 "structure_sharing.analysis.m"
+  {
+#line 445 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 445 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_SharingTable_10;
+
+#line 445 "structure_sharing.analysis.m"
+    {
+#line 445 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__update_sharing_in_table_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_SharingTable_10);
+    }
+#line 445 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_SharingTable_10));
+#line 445 "structure_sharing.analysis.m"
+  }
+#line 445 "structure_sharing.analysis.m"
+}
+
+#line 883 "structure_sharing.analysis.m"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0_3(
+#line 883 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 883 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1)
+#line 883 "structure_sharing.analysis.m"
+{
+#line 883 "structure_sharing.analysis.m"
+  {
+#line 883 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2;
+#line 883 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 883 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv3_HeadVar__2_2;
+
+#line 883 "structure_sharing.analysis.m"
+    {
+#line 883 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__conv3_HeadVar__2_2 = transform_hlds__ctgc__structure_sharing__analysis__wrapped_init_1_f_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1));
+    }
+#line 883 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv3_HeadVar__2_2));
+#line 883 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2;
+#line 883 "structure_sharing.analysis.m"
+  }
+#line 883 "structure_sharing.analysis.m"
+}
+
+#line 436 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0_2(
+#line 436 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 436 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 436 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 436 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 436 "structure_sharing.analysis.m"
+{
+#line 436 "structure_sharing.analysis.m"
+  {
+#line 436 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 436 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv1_HeadVar__4_39;
+
+#line 436 "structure_sharing.analysis.m"
+    {
+#line 436 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__IntroducedFrom__pred__analyse_scc__438__1_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv1_HeadVar__4_39);
+    }
+#line 436 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv1_HeadVar__4_39));
+#line 436 "structure_sharing.analysis.m"
+  }
+#line 436 "structure_sharing.analysis.m"
+}
+
+#line 431 "structure_sharing.analysis.m"
+static MR_Box MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0_1(
+#line 431 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 431 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1)
+#line 431 "structure_sharing.analysis.m"
+{
+#line 431 "structure_sharing.analysis.m"
+  {
+#line 431 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2;
+#line 431 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 431 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3;
+
+#line 431 "structure_sharing.analysis.m"
+    {
+#line 431 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3 = hlds__hlds_out__hlds_out_util__pred_proc_id_to_string_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1));
+    }
+#line 431 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_HeadVar__3_3));
+#line 431 "structure_sharing.analysis.m"
+    return transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2;
+#line 431 "structure_sharing.analysis.m"
+  }
+#line 431 "structure_sharing.analysis.m"
+}
+
+#line 421 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0(
+#line 421 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_9,
+#line 421 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SCC_10,
+#line 421 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_0_24,
+#line 421 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_25,
+#line 421 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_26,
+#line 421 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_27)
+#line 421 "structure_sharing.analysis.m"
+{
+#line 441 "structure_sharing.analysis.m"
+  {
+#line 441 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 426 "structure_sharing.analysis.m"
+    {
+#line 426 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = transform_hlds__ctgc__util__some_preds_requiring_no_analysis_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_9, transform_hlds__ctgc__structure_sharing__analysis__SCC_10);
+    }
+#line 441 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 431 "structure_sharing.analysis.m"
+      {
+#line 431 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_47_47 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 431 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcsStrings_14;
+#line 431 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__ProcsString_15;
+#line 431 "structure_sharing.analysis.m"
+        MR_String transform_hlds__ctgc__structure_sharing__analysis__Msg_16;
+#line 431 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs_17;
+#line 431 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAndStatus_18;
+#line 431 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_30_30;
+#line 431 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_33_33;
+#line 431 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_35_35;
+#line 436 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_SharingTable_25;
+
+#line 431 "structure_sharing.analysis.m"
+        {
+#line 431 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 431 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_30_30, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_4[2]));
+#line 431 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_30_30, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0_1));
+#line 431 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_30_30, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 431 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_30_30, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_9));
+#line 431 "structure_sharing.analysis.m"
+        }
+#line 431 "structure_sharing.analysis.m"
+        {
+#line 431 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__ProcsStrings_14 = mercury__list__map_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_47_47, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, transform_hlds__ctgc__structure_sharing__analysis__V_30_30, transform_hlds__ctgc__structure_sharing__analysis__SCC_10);
+        }
+#line 432 "structure_sharing.analysis.m"
+        {
+#line 432 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__ProcsString_15 = mercury__string__join_list_2_f_0((MR_String) ", ", transform_hlds__ctgc__structure_sharing__analysis__ProcsStrings_14);
+        }
+#line 433 "structure_sharing.analysis.m"
+        {
+#line 433 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__Msg_16 = mercury__string__f_43_43_2_f_0((MR_String) "SCC cannot be analysed: ", transform_hlds__ctgc__structure_sharing__analysis__ProcsString_15);
+        }
+#line 434 "structure_sharing.analysis.m"
+        {
+#line 434 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_33_33 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 434 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(2), transform_hlds__ctgc__structure_sharing__analysis__V_33_33, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Msg_16));
+#line 434 "structure_sharing.analysis.m"
+        }
+#line 434 "structure_sharing.analysis.m"
+        {
+#line 434 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__SharingAs_17 = transform_hlds__ctgc__structure_sharing__domain__sharing_as_top_sharing_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__V_33_33);
+        }
+#line 435 "structure_sharing.analysis.m"
+        {
+#line 435 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__SharingAndStatus_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 435 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingAndStatus_18, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingAs_17));
+#line 435 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingAndStatus_18, 1) = ((MR_Box) ((MR_Integer) 2));
+#line 435 "structure_sharing.analysis.m"
+        }
+#line 436 "structure_sharing.analysis.m"
+        {
+#line 436 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_35_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 436 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_35_35, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_7[3]));
+#line 436 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_35_35, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0_2));
+#line 436 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_35_35, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 436 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_35_35, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingAndStatus_18));
+#line 436 "structure_sharing.analysis.m"
+        }
+#line 436 "structure_sharing.analysis.m"
+        {
+#line 436 "structure_sharing.analysis.m"
+          mercury__list__foldl_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_47_47, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[3], transform_hlds__ctgc__structure_sharing__analysis__V_35_35, transform_hlds__ctgc__structure_sharing__analysis__SCC_10, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_0_24)), &transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_SharingTable_25);
+        }
+#line 436 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_25 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_SharingTable_25);
+#line 431 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_27 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_26;
+#line 431 "structure_sharing.analysis.m"
+      }
+#line 441 "structure_sharing.analysis.m"
+    else
+#line 442 "structure_sharing.analysis.m"
+      {
+#line 442 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__FixpointTable0_22;
+#line 442 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__FixpointTable_23;
+#line 442 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_42_42;
+#line 445 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv5_STATE_VARIABLE_SharingTable_25;
+
+#line 883 "structure_sharing.analysis.m"
+        {
+#line 883 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__FixpointTable0_22 = transform_hlds__ctgc__fixpoint_table__init_fixpoint_table_2_f_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[10], transform_hlds__ctgc__structure_sharing__analysis__SCC_10);
+        }
+#line 443 "structure_sharing.analysis.m"
+        {
+#line 443 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_until_fixpoint_9_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_9, transform_hlds__ctgc__structure_sharing__analysis__SCC_10, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_0_24, transform_hlds__ctgc__structure_sharing__analysis__FixpointTable0_22, &transform_hlds__ctgc__structure_sharing__analysis__FixpointTable_23, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_0_26, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_DepProcs_27);
+        }
+#line 445 "structure_sharing.analysis.m"
+        {
+#line 445 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_42_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 445 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_42_42, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_7[4]));
+#line 445 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_42_42, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0_4));
+#line 445 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_42_42, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 445 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_42_42, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__FixpointTable_23));
+#line 445 "structure_sharing.analysis.m"
+        }
+#line 445 "structure_sharing.analysis.m"
+        {
+#line 445 "structure_sharing.analysis.m"
+          mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[3], transform_hlds__ctgc__structure_sharing__analysis__V_42_42, transform_hlds__ctgc__structure_sharing__analysis__SCC_10, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_0_24)), &transform_hlds__ctgc__structure_sharing__analysis__conv5_STATE_VARIABLE_SharingTable_25);
+        }
+#line 445 "structure_sharing.analysis.m"
+        *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_25 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv5_STATE_VARIABLE_SharingTable_25);
+#line 442 "structure_sharing.analysis.m"
+      }
+#line 441 "structure_sharing.analysis.m"
+  }
+#line 421 "structure_sharing.analysis.m"
+}
+
+#line 409 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__save_sharing_in_module_info_4_p_0(
+#line 409 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PPId_5,
+#line 409 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_6,
+#line 409 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_14,
+#line 409 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_15)
+#line 409 "structure_sharing.analysis.m"
+{
+#line 412 "structure_sharing.analysis.m"
+  {
+#line 412 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 412 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingAs_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_6, (MR_Integer) 0)));
+#line 412 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Status_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__SharingAs_Status_6, (MR_Integer) 1)));
+#line 412 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_10;
+#line 412 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo0_11;
+#line 412 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingDomain_12;
+#line 412 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_13;
+#line 412 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_16_16;
+
+#line 414 "structure_sharing.analysis.m"
+    {
+#line 414 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_pred_proc_info_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_14, transform_hlds__ctgc__structure_sharing__analysis__PPId_5, &transform_hlds__ctgc__structure_sharing__analysis__PredInfo_10, &transform_hlds__ctgc__structure_sharing__analysis__ProcInfo0_11);
+    }
+#line 415 "structure_sharing.analysis.m"
+    {
+#line 415 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__SharingDomain_12 = transform_hlds__ctgc__structure_sharing__domain__to_structure_sharing_domain_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__SharingAs_8);
+    }
+#line 417 "structure_sharing.analysis.m"
+    {
+#line 417 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_16_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 417 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_16_16, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingDomain_12));
+#line 417 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_16_16, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Status_9));
+#line 417 "structure_sharing.analysis.m"
+    }
+#line 416 "structure_sharing.analysis.m"
+    {
+#line 416 "structure_sharing.analysis.m"
+      hlds__hlds_pred__proc_info_set_structure_sharing_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__V_16_16, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo0_11, &transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_13);
+    }
+#line 419 "structure_sharing.analysis.m"
+    {
+#line 419 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_set_pred_proc_info_5_p_0(transform_hlds__ctgc__structure_sharing__analysis__PPId_5, transform_hlds__ctgc__structure_sharing__analysis__PredInfo_10, transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_13, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_14, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_15);
+#line 419 "structure_sharing.analysis.m"
+      return;
+    }
+#line 412 "structure_sharing.analysis.m"
+  }
+#line 409 "structure_sharing.analysis.m"
+}
+
+#line 401 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0_4(
+#line 401 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 401 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 401 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 401 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 401 "structure_sharing.analysis.m"
+{
+#line 401 "structure_sharing.analysis.m"
+  {
+#line 401 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 401 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv9_STATE_VARIABLE_AnalysisInfo_15;
+
+#line 401 "structure_sharing.analysis.m"
+    {
+#line 401 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__handle_dep_procs_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv9_STATE_VARIABLE_AnalysisInfo_15);
+    }
+#line 401 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv9_STATE_VARIABLE_AnalysisInfo_15));
+#line 401 "structure_sharing.analysis.m"
+  }
+#line 401 "structure_sharing.analysis.m"
+}
+
+#line 399 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0_3(
+#line 399 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 399 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 399 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 399 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 399 "structure_sharing.analysis.m"
+{
+#line 399 "structure_sharing.analysis.m"
+  {
+#line 399 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 399 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv7_STATE_VARIABLE_AnalysisInfo_13;
+
+#line 399 "structure_sharing.analysis.m"
+    {
+#line 399 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__maybe_record_sharing_analysis_result_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv7_STATE_VARIABLE_AnalysisInfo_13);
+    }
+#line 399 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv7_STATE_VARIABLE_AnalysisInfo_13));
+#line 399 "structure_sharing.analysis.m"
+  }
+#line 399 "structure_sharing.analysis.m"
+}
+
+#line 387 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0_2(
+#line 387 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 387 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 387 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 387 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 387 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4)
+#line 387 "structure_sharing.analysis.m"
+{
+#line 387 "structure_sharing.analysis.m"
+  {
+#line 387 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 387 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv5_STATE_VARIABLE_ModuleInfo_15;
+
+#line 387 "structure_sharing.analysis.m"
+    {
+#line 387 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__save_sharing_in_module_info_4_p_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3), &transform_hlds__ctgc__structure_sharing__analysis__conv5_STATE_VARIABLE_ModuleInfo_15);
+    }
+#line 387 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv5_STATE_VARIABLE_ModuleInfo_15));
+#line 387 "structure_sharing.analysis.m"
+  }
+#line 387 "structure_sharing.analysis.m"
+}
+
+#line 379 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0_1(
+#line 379 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_6,
+#line 379 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_7)
+#line 379 "structure_sharing.analysis.m"
+{
+#line 379 "structure_sharing.analysis.m"
+  {
+#line 379 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 379 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_SharingTable_25;
+#line 379 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_DepProcs_27;
+
+#line 379 "structure_sharing.analysis.m"
+    {
+#line 379 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__analyse_scc_8_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_SharingTable_25, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4), &transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_DepProcs_27);
+    }
+#line 379 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_SharingTable_25));
+#line 379 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_DepProcs_27));
+#line 379 "structure_sharing.analysis.m"
+  }
+#line 379 "structure_sharing.analysis.m"
+}
+
+#line 368 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0(
+#line 368 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_17,
+#line 368 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_18,
+#line 368 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_0_19)
+#line 368 "structure_sharing.analysis.m"
+{
+#line 371 "structure_sharing.analysis.m"
+  {
+#line 371 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 371 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_54_54;
+#line 371 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__MaybeDepInfo_9;
+#line 371 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__DepProcs_12;
+#line 371 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Globals_13;
+#line 371 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__MakeAnalysisRegistry_14;
+#line 371 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_22_22;
+#line 371 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_27_27;
+#line 371 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_31_31;
+#line 387 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv6_STATE_VARIABLE_ModuleInfo_31_31;
+
+#line 374 "structure_sharing.analysis.m"
+    {
+#line 374 "structure_sharing.analysis.m"
+      transform_hlds__dependency_graph__module_info_ensure_dependency_info_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_17, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_22_22);
+    }
+#line 375 "structure_sharing.analysis.m"
+    {
+#line 375 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_get_maybe_dependency_info_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_22_22, &transform_hlds__ctgc__structure_sharing__analysis__MaybeDepInfo_9);
+    }
+#line 381 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__MaybeDepInfo_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 382 "structure_sharing.analysis.m"
+      {
+#line 383 "structure_sharing.analysis.m"
+        {
+#line 383 "structure_sharing.analysis.m"
+          mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.ctgc.structure_sharing.analysis", (MR_String) "predicate \140transform_hlds.ctgc.structure_sharing.analysis.sharing_analysis\'/5", (MR_String) "No dependency information");
+#line 383 "structure_sharing.analysis.m"
+          return;
+        }
+#line 382 "structure_sharing.analysis.m"
+      }
+#line 381 "structure_sharing.analysis.m"
+    else
+#line 377 "structure_sharing.analysis.m"
+      {
+#line 377 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_47_47;
+#line 377 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__DepInfo_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__MaybeDepInfo_9, (MR_Integer) 0)));
+#line 377 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__SCCs_11;
+#line 377 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_26_26;
+#line 379 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_SharingTable_27_27;
+#line 379 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv3_DepProcs_12;
+#line 379 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_IO_21;
+
+#line 378 "structure_sharing.analysis.m"
+        {
+#line 378 "structure_sharing.analysis.m"
+          hlds__hlds_module__hlds_dependency_info_get_dependency_ordering_2_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, transform_hlds__ctgc__structure_sharing__analysis__DepInfo_10, &transform_hlds__ctgc__structure_sharing__analysis__SCCs_11);
+        }
+#line 379 "structure_sharing.analysis.m"
+        {
+#line 379 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_26_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 379 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_26_26, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_9[0]));
+#line 379 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_26_26, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0_1));
+#line 379 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_26_26, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 379 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_26_26, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_22_22));
+#line 379 "structure_sharing.analysis.m"
+        }
+#line 9087 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_47_47 = (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[4];
+#line 379 "structure_sharing.analysis.m"
+        {
+#line 379 "structure_sharing.analysis.m"
+          mercury__list__foldl3_8_p_2(transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_47_47, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[3], transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_47_47, (MR_Word) &mercury__io__io__type_ctor_info_state_0, transform_hlds__ctgc__structure_sharing__analysis__V_26_26, transform_hlds__ctgc__structure_sharing__analysis__SCCs_11, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_0_19)), &transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_SharingTable_27_27, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &transform_hlds__ctgc__structure_sharing__analysis__conv3_DepProcs_12, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_IO_21);
+        }
+#line 379 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_27_27 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_SharingTable_27_27);
+#line 379 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__DepProcs_12 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv3_DepProcs_12);
+#line 377 "structure_sharing.analysis.m"
+      }
+#line 9100 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_54_54 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 387 "structure_sharing.analysis.m"
+    {
+#line 387 "structure_sharing.analysis.m"
+      mercury__map__foldl_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_54_54, (MR_Word) &transform_hlds__ctgc__structure_sharing__domain__transform_hlds__ctgc__structure_sharing__domain__type_ctor_info_sharing_as_and_status_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[9], transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_27_27, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_22_22)), &transform_hlds__ctgc__structure_sharing__analysis__conv6_STATE_VARIABLE_ModuleInfo_31_31);
+    }
+#line 387 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_31_31 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv6_STATE_VARIABLE_ModuleInfo_31_31);
+#line 391 "structure_sharing.analysis.m"
+    {
+#line 391 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_31_31, &transform_hlds__ctgc__structure_sharing__analysis__Globals_13);
+    }
+#line 392 "structure_sharing.analysis.m"
+    {
+#line 392 "structure_sharing.analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__Globals_13, (MR_Integer) 89, &transform_hlds__ctgc__structure_sharing__analysis__MakeAnalysisRegistry_14);
+    }
+#line 405 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__MakeAnalysisRegistry_14 == (MR_Integer) 0))
+#line 406 "structure_sharing.analysis.m"
+      *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_18 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_31_31;
+#line 405 "structure_sharing.analysis.m"
+    else
+#line 395 "structure_sharing.analysis.m"
+      {
+#line 395 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_61_61;
+#line 395 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredIds_16;
+#line 395 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_33_33;
+#line 395 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_34_34;
+#line 395 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_35_35;
+#line 395 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_36_36;
+#line 395 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_37_37;
+#line 399 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv8_STATE_VARIABLE_AnalysisInfo_35_35;
+#line 401 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv10_STATE_VARIABLE_AnalysisInfo_37_37;
+
+#line 397 "structure_sharing.analysis.m"
+        {
+#line 397 "structure_sharing.analysis.m"
+          hlds__hlds_module__module_info_get_analysis_info_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_31_31, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_33_33);
+        }
+#line 398 "structure_sharing.analysis.m"
+        {
+#line 398 "structure_sharing.analysis.m"
+          hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_31_31, &transform_hlds__ctgc__structure_sharing__analysis__PredIds_16);
+        }
+#line 399 "structure_sharing.analysis.m"
+        {
+#line 399 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_34_34 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 399 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_34_34, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_5[1]));
+#line 399 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_34_34, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0_3));
+#line 399 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_34_34, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 399 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_34_34, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_31_31));
+#line 399 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_34_34, 4) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_SharingTable_27_27));
+#line 399 "structure_sharing.analysis.m"
+        }
+#line 9172 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_61_61 = (MR_Word) &analysis__analysis__type_ctor_info_analysis_info_0;
+#line 399 "structure_sharing.analysis.m"
+        {
+#line 399 "structure_sharing.analysis.m"
+          mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_61_61, transform_hlds__ctgc__structure_sharing__analysis__V_34_34, transform_hlds__ctgc__structure_sharing__analysis__PredIds_16, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_33_33)), &transform_hlds__ctgc__structure_sharing__analysis__conv8_STATE_VARIABLE_AnalysisInfo_35_35);
+        }
+#line 399 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_35_35 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv8_STATE_VARIABLE_AnalysisInfo_35_35);
+#line 401 "structure_sharing.analysis.m"
+        {
+#line 401 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_36_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 401 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_36_36, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_7[2]));
+#line 401 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_36_36, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0_4));
+#line 401 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_36_36, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 401 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_36_36, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_31_31));
+#line 401 "structure_sharing.analysis.m"
+        }
+#line 401 "structure_sharing.analysis.m"
+        {
+#line 401 "structure_sharing.analysis.m"
+          mercury__list__foldl_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_54_54, transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_61_61, transform_hlds__ctgc__structure_sharing__analysis__V_36_36, transform_hlds__ctgc__structure_sharing__analysis__DepProcs_12, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_35_35)), &transform_hlds__ctgc__structure_sharing__analysis__conv10_STATE_VARIABLE_AnalysisInfo_37_37);
+        }
+#line 401 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_37_37 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv10_STATE_VARIABLE_AnalysisInfo_37_37);
+#line 403 "structure_sharing.analysis.m"
+        {
+#line 403 "structure_sharing.analysis.m"
+          hlds__hlds_module__module_info_set_analysis_info_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_AnalysisInfo_37_37, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_31_31, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_18);
+#line 403 "structure_sharing.analysis.m"
+          return;
+        }
+#line 395 "structure_sharing.analysis.m"
+      }
+#line 371 "structure_sharing.analysis.m"
+  }
+#line 368 "structure_sharing.analysis.m"
+}
+
+#line 354 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__simplify_and_detect_liveness_proc_5_p_0(
+#line 354 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredProcId_6,
+#line 354 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_0_12,
+#line 354 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_13,
+#line 354 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_14,
+#line 354 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_15)
+#line 354 "structure_sharing.analysis.m"
+{
+#line 357 "structure_sharing.analysis.m"
+  {
+#line 357 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 357 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__SimplifyTasks_9;
+#line 357 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_10;
+#line 357 "structure_sharing.analysis.m"
+    MR_Integer transform_hlds__ctgc__structure_sharing__analysis__ProcId_11;
+#line 357 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_18_18;
+
+#line 361 "structure_sharing.analysis.m"
+    {
+#line 361 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__SimplifyTasks_9 = check_hlds__simplify__simplify_tasks__list_to_simplify_tasks_1_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)));
+    }
+#line 362 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__PredId_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__PredProcId_6, (MR_Integer) 0)));
+#line 362 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__ProcId_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__PredProcId_6, (MR_Integer) 1)));
+#line 363 "structure_sharing.analysis.m"
+    {
+#line 363 "structure_sharing.analysis.m"
+      check_hlds__simplify__simplify_proc__simplify_proc_7_p_0(transform_hlds__ctgc__structure_sharing__analysis__SimplifyTasks_9, transform_hlds__ctgc__structure_sharing__analysis__PredId_10, transform_hlds__ctgc__structure_sharing__analysis__ProcId_11, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_14, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_0_12, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_18_18);
+    }
+#line 364 "structure_sharing.analysis.m"
+    {
+#line 364 "structure_sharing.analysis.m"
+      ll_backend__liveness__detect_liveness_proc_4_p_0(*transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_15, transform_hlds__ctgc__structure_sharing__analysis__PredProcId_6, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_18_18, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_13);
+#line 364 "structure_sharing.analysis.m"
+      return;
+    }
+#line 357 "structure_sharing.analysis.m"
+  }
+#line 354 "structure_sharing.analysis.m"
+}
+
+#line 306 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer_to_domain_5_p_0(
+#line 306 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__MaybePPId_6,
+#line 306 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_7,
+#line 306 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8,
+#line 306 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer_9,
+#line 306 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__Sharing_10)
+#line 306 "structure_sharing.analysis.m"
+{
+#line 313 "structure_sharing.analysis.m"
+  {
+#line 313 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+
+#line 313 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__Answer_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 314 "structure_sharing.analysis.m"
+      *transform_hlds__ctgc__structure_sharing__analysis__Sharing_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 313 "structure_sharing.analysis.m"
+    else
+#line 313 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__Answer_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)))))
+#line 316 "structure_sharing.analysis.m"
+      {
+#line 316 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TopReason_12;
+
+#line 321 "structure_sharing.analysis.m"
+        if ((transform_hlds__ctgc__structure_sharing__analysis__MaybePPId_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 322 "structure_sharing.analysis.m"
+          {
+#line 323 "structure_sharing.analysis.m"
+            {
+#line 323 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__TopReason_12 = mercury__set__init_0_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_top_feedback_0);
+            }
+#line 322 "structure_sharing.analysis.m"
+          }
+#line 321 "structure_sharing.analysis.m"
+        else
+#line 318 "structure_sharing.analysis.m"
+          {
+#line 318 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__PPId_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__MaybePPId_6, (MR_Integer) 0)));
+#line 318 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_25_25;
+#line 318 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_26_26;
+
+#line 320 "structure_sharing.analysis.m"
+            {
+#line 320 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__V_26_26 = hlds__hlds_pred__shroud_pred_proc_id_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__PPId_11);
+            }
+#line 320 "structure_sharing.analysis.m"
+            transform_hlds__ctgc__structure_sharing__analysis__V_25_25 = (MR_Word) MR_mkword(MR_mktag(1), (MR_Word) transform_hlds__ctgc__structure_sharing__analysis__V_26_26);
+#line 319 "structure_sharing.analysis.m"
+            {
+#line 319 "structure_sharing.analysis.m"
+              transform_hlds__ctgc__structure_sharing__analysis__TopReason_12 = mercury__set__make_singleton_set_1_f_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_top_feedback_0, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__V_25_25)));
+            }
+#line 318 "structure_sharing.analysis.m"
+          }
+#line 325 "structure_sharing.analysis.m"
+        {
+#line 325 "structure_sharing.analysis.m"
+          MR_Word base;
+#line 325 "structure_sharing.analysis.m"
+          base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 325 "structure_sharing.analysis.m"
+          *transform_hlds__ctgc__structure_sharing__analysis__Sharing_10 = base;
+#line 325 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__TopReason_12));
+#line 325 "structure_sharing.analysis.m"
+        }
+#line 316 "structure_sharing.analysis.m"
+      }
+#line 313 "structure_sharing.analysis.m"
+    else
+#line 328 "structure_sharing.analysis.m"
+      {
+#line 328 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_29_29;
+#line 328 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ImpHeadVars_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__Answer_9, (MR_Integer) 0)));
+#line 328 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ImpTypes_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__Answer_9, (MR_Integer) 1)));
+#line 328 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ImpSharingPairs_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__Answer_9, (MR_Integer) 2)));
+#line 328 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVars_16;
+#line 328 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__VarRenaming_17;
+#line 335 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeSubst_18;
+#line 331 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_21_21;
+
+#line 329 "structure_sharing.analysis.m"
+        {
+#line 329 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_get_headvars_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__ProcInfo_8, &transform_hlds__ctgc__structure_sharing__analysis__HeadVars_16);
+        }
+#line 9379 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_29_29 = (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[0];
+#line 330 "structure_sharing.analysis.m"
+        {
+#line 330 "structure_sharing.analysis.m"
+          mercury__map__from_corresponding_lists_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_29_29, transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_29_29, transform_hlds__ctgc__structure_sharing__analysis__ImpHeadVars_13, transform_hlds__ctgc__structure_sharing__analysis__HeadVars_16, &transform_hlds__ctgc__structure_sharing__analysis__VarRenaming_17);
+        }
+#line 331 "structure_sharing.analysis.m"
+        {
+#line 331 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_21_21 = mercury__map__init_0_f_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[1], (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0);
+        }
+#line 331 "structure_sharing.analysis.m"
+        {
+#line 331 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__succeeded = parse_tree__prog_type__type_unify_list_5_p_0(transform_hlds__ctgc__structure_sharing__analysis__ImpTypes_14, transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_7, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), transform_hlds__ctgc__structure_sharing__analysis__V_21_21, &transform_hlds__ctgc__structure_sharing__analysis__TypeSubst_18);
+        }
+#line 335 "structure_sharing.analysis.m"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 333 "structure_sharing.analysis.m"
+          {
+#line 333 "structure_sharing.analysis.m"
+            MR_Word transform_hlds__ctgc__structure_sharing__analysis__SharingPairs_19;
+
+#line 332 "structure_sharing.analysis.m"
+            {
+#line 332 "structure_sharing.analysis.m"
+              parse_tree__prog_ctgc__rename_structure_sharing_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__VarRenaming_17, transform_hlds__ctgc__structure_sharing__analysis__TypeSubst_18, transform_hlds__ctgc__structure_sharing__analysis__ImpSharingPairs_15, &transform_hlds__ctgc__structure_sharing__analysis__SharingPairs_19);
+            }
+#line 334 "structure_sharing.analysis.m"
+            {
+#line 334 "structure_sharing.analysis.m"
+              MR_Word base;
+#line 334 "structure_sharing.analysis.m"
+              base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 334 "structure_sharing.analysis.m"
+              *transform_hlds__ctgc__structure_sharing__analysis__Sharing_10 = base;
+#line 334 "structure_sharing.analysis.m"
+              MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SharingPairs_19));
+#line 334 "structure_sharing.analysis.m"
+            }
+#line 333 "structure_sharing.analysis.m"
+          }
+#line 335 "structure_sharing.analysis.m"
+        else
+#line 336 "structure_sharing.analysis.m"
+          {
+#line 336 "structure_sharing.analysis.m"
+            {
+#line 336 "structure_sharing.analysis.m"
+              mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.ctgc.structure_sharing.analysis", (MR_String) "predicate \140transform_hlds.ctgc.structure_sharing.analysis.structure_sharing_answer_to_domain\'/5", (MR_String) "type_unify_list failed");
+#line 336 "structure_sharing.analysis.m"
+              return;
+            }
+#line 336 "structure_sharing.analysis.m"
+          }
+#line 328 "structure_sharing.analysis.m"
+      }
+#line 313 "structure_sharing.analysis.m"
+  }
+#line 306 "structure_sharing.analysis.m"
+}
+
+#line 277 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__process_intermod_analysis_imported_sharing_in_proc_7_p_0(
+#line 277 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_8,
+#line 277 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__AnalysisInfo_9,
+#line 277 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_10,
+#line 277 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_11,
+#line 277 "structure_sharing.analysis.m"
+  MR_Integer transform_hlds__ctgc__structure_sharing__analysis__ProcId_12,
+#line 277 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_0_25,
+#line 277 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_26)
+#line 277 "structure_sharing.analysis.m"
+{
+#line 282 "structure_sharing.analysis.m"
+  {
+#line 282 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 282 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_36_36;
+#line 282 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_37_37;
+#line 282 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__PPId_14;
+#line 282 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleName_16;
+#line 282 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__FuncId_17;
+#line 282 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_18;
+#line 282 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__MaybeBestResult_19;
+#line 282 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_27_27;
+#line 285 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_ProcInfo_27_27;
+
+#line 283 "structure_sharing.analysis.m"
+    {
+#line 283 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__PPId_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 283 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__PPId_14, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredId_10));
+#line 283 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__PPId_14, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcId_12));
+#line 283 "structure_sharing.analysis.m"
+    }
+#line 9494 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_36_36 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0;
+#line 9496 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_37_37 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0;
+#line 285 "structure_sharing.analysis.m"
+    {
+#line 285 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_ProcInfo_27_27 = mercury__map__det_elem_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_36_36, transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_37_37, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcId_12)), transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_0_25);
+    }
+#line 285 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_27_27 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_ProcInfo_27_27);
+#line 287 "structure_sharing.analysis.m"
+    {
+#line 287 "structure_sharing.analysis.m"
+      transform_hlds__mmc_analysis__module_name_func_id_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_8, transform_hlds__ctgc__structure_sharing__analysis__PPId_14, &transform_hlds__ctgc__structure_sharing__analysis__ModuleName_16, &transform_hlds__ctgc__structure_sharing__analysis__FuncId_17);
+    }
+#line 288 "structure_sharing.analysis.m"
+    {
+#line 288 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 288 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_18, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_8));
+#line 288 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_18, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_27_27));
+#line 288 "structure_sharing.analysis.m"
+    }
+#line 290 "structure_sharing.analysis.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 289 "structure_sharing.analysis.m"
+    {
+#line 289 "structure_sharing.analysis.m"
+      analysis__lookup_best_result_6_p_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_4[0], transform_hlds__ctgc__structure_sharing__analysis__AnalysisInfo_9, transform_hlds__ctgc__structure_sharing__analysis__ModuleName_16, transform_hlds__ctgc__structure_sharing__analysis__FuncId_17, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__FuncInfo_18)), ((MR_Box) ((MR_Integer) 0)), &transform_hlds__ctgc__structure_sharing__analysis__MaybeBestResult_19);
+    }
+#line 301 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__MaybeBestResult_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 302 "structure_sharing.analysis.m"
+      *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_26 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_0_25;
+#line 301 "structure_sharing.analysis.m"
+    else
+#line 293 "structure_sharing.analysis.m"
+      {
+#line 293 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__Answer_21;
+#line 293 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ResultStatus_22;
+#line 293 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_23;
+#line 293 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__Sharing_24;
+#line 293 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__MaybeBestResult_19, (MR_Integer) 0)));
+#line 293 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_30_30;
+#line 293 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_31_31;
+#line 293 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_32_32;
+
+#line 292 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__Answer_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_29_29, (MR_Integer) 1)));
+#line 292 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__ResultStatus_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_29_29, (MR_Integer) 2)));
+#line 294 "structure_sharing.analysis.m"
+        {
+#line 294 "structure_sharing.analysis.m"
+          hlds__hlds_pred__pred_info_get_arg_types_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_11, &transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_23);
+        }
+#line 295 "structure_sharing.analysis.m"
+        {
+#line 295 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_30_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 295 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__V_30_30, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PPId_14));
+#line 295 "structure_sharing.analysis.m"
+        }
+#line 295 "structure_sharing.analysis.m"
+        {
+#line 295 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_answer_to_domain_5_p_0(transform_hlds__ctgc__structure_sharing__analysis__V_30_30, transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_23, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_27_27, transform_hlds__ctgc__structure_sharing__analysis__Answer_21, &transform_hlds__ctgc__structure_sharing__analysis__Sharing_24);
+        }
+#line 298 "structure_sharing.analysis.m"
+        {
+#line 298 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_31_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 298 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_31_31, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Sharing_24));
+#line 298 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_31_31, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ResultStatus_22));
+#line 298 "structure_sharing.analysis.m"
+        }
+#line 297 "structure_sharing.analysis.m"
+        {
+#line 297 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_set_structure_sharing_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__V_31_31, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_27_27, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_32_32);
+        }
+#line 300 "structure_sharing.analysis.m"
+        {
+#line 300 "structure_sharing.analysis.m"
+          mercury__map__det_update_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_36_36, transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_37_37, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcId_12)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_32_32)), transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_0_25, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_26);
+#line 300 "structure_sharing.analysis.m"
+          return;
+        }
+#line 293 "structure_sharing.analysis.m"
+      }
+#line 282 "structure_sharing.analysis.m"
+  }
+#line 277 "structure_sharing.analysis.m"
+}
+
+#line 271 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__process_intermod_analysis_imported_sharing_in_pred_3_p_0_1(
+#line 271 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 271 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 271 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 271 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 271 "structure_sharing.analysis.m"
+{
+#line 271 "structure_sharing.analysis.m"
+  {
+#line 271 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 271 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_ProcTable_26;
+
+#line 271 "structure_sharing.analysis.m"
+    {
+#line 271 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__process_intermod_analysis_imported_sharing_in_proc_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 6))), ((MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_ProcTable_26);
+    }
+#line 271 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_ProcTable_26));
+#line 271 "structure_sharing.analysis.m"
+  }
+#line 271 "structure_sharing.analysis.m"
+}
+
+#line 244 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__process_intermod_analysis_imported_sharing_in_pred_3_p_0(
+#line 244 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_4,
+#line 244 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_10,
+#line 244 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_11)
+#line 244 "structure_sharing.analysis.m"
+{
+#line 249 "structure_sharing.analysis.m"
+  {
+#line 249 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 249 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_17_17;
+#line 249 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_18_18;
+#line 249 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7;
+#line 249 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_12_12;
+#line 250 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv0_PredInfo0_7;
+
+#line 249 "structure_sharing.analysis.m"
+    {
+#line 249 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_get_preds_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_10, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_12_12);
+    }
+#line 9666 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_17_17 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0;
+#line 9668 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_18_18 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0;
+#line 250 "structure_sharing.analysis.m"
+    {
+#line 250 "structure_sharing.analysis.m"
+      mercury__map__lookup_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_17_17, transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_18_18, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_12_12, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredId_4)), &transform_hlds__ctgc__structure_sharing__analysis__conv0_PredInfo0_7);
+    }
+#line 250 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv0_PredInfo0_7);
+#line 251 "structure_sharing.analysis.m"
+    {
+#line 251 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = hlds__hlds_pred__pred_info_is_imported_not_external_1_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7);
+    }
+#line 257 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 252 "structure_sharing.analysis.m"
+      {
+#line 252 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__AnalysisInfo_8;
+#line 252 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_9;
+#line 252 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_13_13;
+#line 252 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcIds_26;
+#line 252 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_14_27;
+#line 252 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_28_28;
+#line 252 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_16_29;
+#line 270 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_ProcTable_16_29;
+
+#line 252 "structure_sharing.analysis.m"
+        {
+#line 252 "structure_sharing.analysis.m"
+          hlds__hlds_module__module_info_get_analysis_info_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_10, &transform_hlds__ctgc__structure_sharing__analysis__AnalysisInfo_8);
+        }
+#line 268 "structure_sharing.analysis.m"
+        {
+#line 268 "structure_sharing.analysis.m"
+          hlds__hlds_pred__pred_info_get_proc_table_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_14_27);
+        }
+#line 269 "structure_sharing.analysis.m"
+        {
+#line 269 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__ProcIds_26 = hlds__hlds_pred__pred_info_procids_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7);
+        }
+#line 271 "structure_sharing.analysis.m"
+        {
+#line 271 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 271 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_28_28, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_8[0]));
+#line 271 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_28_28, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__process_intermod_analysis_imported_sharing_in_pred_3_p_0_1));
+#line 271 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_28_28, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 271 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_28_28, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_10));
+#line 271 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_28_28, 4) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__AnalysisInfo_8));
+#line 271 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_28_28, 5) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredId_4));
+#line 271 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_28_28, 6) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7));
+#line 271 "structure_sharing.analysis.m"
+        }
+#line 270 "structure_sharing.analysis.m"
+        {
+#line 270 "structure_sharing.analysis.m"
+          mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[0], transform_hlds__ctgc__structure_sharing__analysis__V_28_28, transform_hlds__ctgc__structure_sharing__analysis__ProcIds_26, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_14_27)), &transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_ProcTable_16_29);
+        }
+#line 270 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_16_29 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_ProcTable_16_29);
+#line 274 "structure_sharing.analysis.m"
+        {
+#line 274 "structure_sharing.analysis.m"
+          hlds__hlds_pred__pred_info_set_proc_table_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_16_29, transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7, &transform_hlds__ctgc__structure_sharing__analysis__PredInfo_9);
+        }
+#line 255 "structure_sharing.analysis.m"
+        {
+#line 255 "structure_sharing.analysis.m"
+          mercury__map__det_update_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_17_17, transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_18_18, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredId_4)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredInfo_9)), transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_12_12, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_13_13);
+        }
+#line 256 "structure_sharing.analysis.m"
+        {
+#line 256 "structure_sharing.analysis.m"
+          hlds__hlds_module__module_info_set_preds_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_13_13, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_10, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_11);
+#line 256 "structure_sharing.analysis.m"
+          return;
+        }
+#line 252 "structure_sharing.analysis.m"
+      }
+#line 257 "structure_sharing.analysis.m"
+    else
+#line 258 "structure_sharing.analysis.m"
+      *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_11 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_10;
+#line 249 "structure_sharing.analysis.m"
+  }
+#line 244 "structure_sharing.analysis.m"
+}
+
+#line 193 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__process_imported_sharing_in_proc_4_p_0(
+#line 193 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_5,
+#line 193 "structure_sharing.analysis.m"
+  MR_Integer transform_hlds__ctgc__structure_sharing__analysis__ProcId_6,
+#line 193 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_0_18,
+#line 193 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_19)
+#line 193 "structure_sharing.analysis.m"
+{
+#line 198 "structure_sharing.analysis.m"
+  {
+#line 198 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 198 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_31_31 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0;
+#line 198 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_32_32 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_info_0;
+#line 198 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_20_20;
+#line 198 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_ProcInfo_20_20;
+#line 226 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ImpHeadVars_9;
+#line 226 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ImpTypes_10;
+#line 226 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ImpSharing_11;
+
+#line 198 "structure_sharing.analysis.m"
+    {
+#line 198 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_ProcInfo_20_20 = mercury__map__det_elem_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_31_31, transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_32_32, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcId_6)), transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_0_18);
+    }
+#line 198 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_20_20 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_ProcInfo_20_20);
+#line 200 "structure_sharing.analysis.m"
+    {
+#line 200 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = hlds__hlds_pred__proc_info_get_imported_structure_sharing_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_20_20, &transform_hlds__ctgc__structure_sharing__analysis__ImpHeadVars_9, &transform_hlds__ctgc__structure_sharing__analysis__ImpTypes_10, &transform_hlds__ctgc__structure_sharing__analysis__ImpSharing_11);
+    }
+#line 226 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 203 "structure_sharing.analysis.m"
+      {
+#line 203 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_33_33;
+#line 203 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVars_12;
+#line 203 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_13;
+#line 203 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__VarRenaming_14;
+#line 203 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__Sharing_17;
+#line 203 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_TypeSubst_21_21;
+#line 203 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_TypeSubst_23_23;
+#line 203 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_24_24;
+#line 203 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_25_25;
+#line 203 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_27_27;
+#line 213 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeSubstNew_16;
+
+#line 203 "structure_sharing.analysis.m"
+        {
+#line 203 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_get_headvars_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_20_20, &transform_hlds__ctgc__structure_sharing__analysis__HeadVars_12);
+        }
+#line 204 "structure_sharing.analysis.m"
+        {
+#line 204 "structure_sharing.analysis.m"
+          hlds__hlds_pred__pred_info_get_arg_types_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_5, &transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_13);
+        }
+#line 9854 "transform_hlds.ctgc.structure_sharing.analysis.c"
+        transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_33_33 = (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[0];
+#line 205 "structure_sharing.analysis.m"
+        {
+#line 205 "structure_sharing.analysis.m"
+          mercury__map__from_corresponding_lists_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_33_33, transform_hlds__ctgc__structure_sharing__analysis__TypeInfo_33_33, transform_hlds__ctgc__structure_sharing__analysis__ImpHeadVars_9, transform_hlds__ctgc__structure_sharing__analysis__HeadVars_12, &transform_hlds__ctgc__structure_sharing__analysis__VarRenaming_14);
+        }
+#line 207 "structure_sharing.analysis.m"
+        {
+#line 207 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_TypeSubst_21_21 = mercury__map__init_0_f_0((MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[1], (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0);
+        }
+#line 209 "structure_sharing.analysis.m"
+        {
+#line 209 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__succeeded = parse_tree__prog_type__type_unify_list_5_p_0(transform_hlds__ctgc__structure_sharing__analysis__ImpTypes_10, transform_hlds__ctgc__structure_sharing__analysis__HeadVarTypes_13, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_TypeSubst_21_21, &transform_hlds__ctgc__structure_sharing__analysis__TypeSubstNew_16);
+        }
+#line 213 "structure_sharing.analysis.m"
+        if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 212 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_TypeSubst_23_23 = transform_hlds__ctgc__structure_sharing__analysis__TypeSubstNew_16;
+#line 213 "structure_sharing.analysis.m"
+        else
+#line 213 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_TypeSubst_23_23 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_TypeSubst_21_21;
+#line 216 "structure_sharing.analysis.m"
+        {
+#line 216 "structure_sharing.analysis.m"
+          parse_tree__prog_ctgc__rename_structure_sharing_domain_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__VarRenaming_14, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_TypeSubst_23_23, transform_hlds__ctgc__structure_sharing__analysis__ImpSharing_11, &transform_hlds__ctgc__structure_sharing__analysis__Sharing_17);
+        }
+#line 222 "structure_sharing.analysis.m"
+        {
+#line 222 "structure_sharing.analysis.m"
+          transform_hlds__ctgc__structure_sharing__analysis__V_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 222 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_24_24, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Sharing_17));
+#line 222 "structure_sharing.analysis.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_24_24, 1) = ((MR_Box) ((MR_Integer) 2));
+#line 222 "structure_sharing.analysis.m"
+        }
+#line 221 "structure_sharing.analysis.m"
+        {
+#line 221 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_set_structure_sharing_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__V_24_24, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_20_20, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_25_25);
+        }
+#line 224 "structure_sharing.analysis.m"
+        {
+#line 224 "structure_sharing.analysis.m"
+          hlds__hlds_pred__proc_info_reset_imported_structure_sharing_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_25_25, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_27_27);
+        }
+#line 225 "structure_sharing.analysis.m"
+        {
+#line 225 "structure_sharing.analysis.m"
+          mercury__map__det_update_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_31_31, transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_32_32, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcId_6)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcInfo_27_27)), transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_0_18, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_19);
+#line 225 "structure_sharing.analysis.m"
+          return;
+        }
+#line 203 "structure_sharing.analysis.m"
+      }
+#line 226 "structure_sharing.analysis.m"
+    else
+#line 227 "structure_sharing.analysis.m"
+      *transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_19 = transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_0_18;
+#line 198 "structure_sharing.analysis.m"
+  }
+#line 193 "structure_sharing.analysis.m"
+}
+
+#line 188 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__process_imported_sharing_in_pred_3_p_0_1(
+#line 188 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 188 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 188 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 188 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 188 "structure_sharing.analysis.m"
+{
+#line 188 "structure_sharing.analysis.m"
+  {
+#line 188 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 188 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_ProcTable_19;
+
+#line 188 "structure_sharing.analysis.m"
+    {
+#line 188 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__process_imported_sharing_in_proc_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_ProcTable_19);
+    }
+#line 188 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_ProcTable_19));
+#line 188 "structure_sharing.analysis.m"
+  }
+#line 188 "structure_sharing.analysis.m"
+}
+
+#line 169 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__process_imported_sharing_in_pred_3_p_0(
+#line 169 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_4,
+#line 169 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_9,
+#line 169 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_10)
+#line 169 "structure_sharing.analysis.m"
+{
+#line 174 "structure_sharing.analysis.m"
+  {
+#line 174 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_14_14;
+#line 174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_15_15;
+#line 174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7;
+#line 174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8;
+#line 174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_11_11;
+#line 174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_12_12;
+#line 174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcIds_20;
+#line 174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_8_21;
+#line 174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_22_22;
+#line 174 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_10_23;
+#line 175 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv0_PredInfo0_7;
+#line 188 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_ProcTable_10_23;
+
+#line 174 "structure_sharing.analysis.m"
+    {
+#line 174 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_get_preds_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_9, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_11_11);
+    }
+#line 9999 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_14_14 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0;
+#line 10001 "transform_hlds.ctgc.structure_sharing.analysis.c"
+    transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_15_15 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0;
+#line 175 "structure_sharing.analysis.m"
+    {
+#line 175 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__conv0_PredInfo0_7 = mercury__map__det_elem_2_f_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_14_14, transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_15_15, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredId_4)), transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_11_11);
+    }
+#line 175 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv0_PredInfo0_7);
+#line 186 "structure_sharing.analysis.m"
+    {
+#line 186 "structure_sharing.analysis.m"
+      hlds__hlds_pred__pred_info_get_proc_table_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_8_21);
+    }
+#line 187 "structure_sharing.analysis.m"
+    {
+#line 187 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__ProcIds_20 = hlds__hlds_pred__pred_info_procids_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7);
+    }
+#line 188 "structure_sharing.analysis.m"
+    {
+#line 188 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 188 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_22_22, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_7[0]));
+#line 188 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_22_22, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__process_imported_sharing_in_pred_3_p_0_1));
+#line 188 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_22_22, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 188 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_22_22, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7));
+#line 188 "structure_sharing.analysis.m"
+    }
+#line 188 "structure_sharing.analysis.m"
+    {
+#line 188 "structure_sharing.analysis.m"
+      mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[0], transform_hlds__ctgc__structure_sharing__analysis__V_22_22, transform_hlds__ctgc__structure_sharing__analysis__ProcIds_20, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_8_21)), &transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_ProcTable_10_23);
+    }
+#line 188 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_10_23 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_ProcTable_10_23);
+#line 190 "structure_sharing.analysis.m"
+    {
+#line 190 "structure_sharing.analysis.m"
+      hlds__hlds_pred__pred_info_set_proc_table_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ProcTable_10_23, transform_hlds__ctgc__structure_sharing__analysis__PredInfo0_7, &transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8);
+    }
+#line 177 "structure_sharing.analysis.m"
+    {
+#line 177 "structure_sharing.analysis.m"
+      mercury__map__det_update_4_p_0(transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_14_14, transform_hlds__ctgc__structure_sharing__analysis__TypeCtorInfo_15_15, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredId_4)), ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8)), transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_11_11, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_12_12);
+    }
+#line 178 "structure_sharing.analysis.m"
+    {
+#line 178 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_set_preds_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_PredTable_12_12, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_9, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_10);
+#line 178 "structure_sharing.analysis.m"
+      return;
+    }
+#line 174 "structure_sharing.analysis.m"
+  }
+#line 169 "structure_sharing.analysis.m"
+}
+
+#line 969 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__write_pred_sharing_info_4_p_0_1(
+#line 969 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 969 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 969 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 969 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 969 "structure_sharing.analysis.m"
+{
+#line 969 "structure_sharing.analysis.m"
+  {
+#line 969 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+
+#line 969 "structure_sharing.analysis.m"
+    {
+#line 969 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__write_proc_sharing_info_11_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 7))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 8))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 9))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__closure, (MR_Integer) 10))), ((MR_Integer) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1));
+#line 969 "structure_sharing.analysis.m"
+      return;
+    }
+#line 969 "structure_sharing.analysis.m"
+  }
+#line 969 "structure_sharing.analysis.m"
+}
+
+#line 37 "structure_sharing.analysis.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__write_pred_sharing_info_4_p_0(
+#line 37 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_5,
+#line 37 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredId_6)
+#line 37 "structure_sharing.analysis.m"
+{
+#line 958 "structure_sharing.analysis.m"
+  {
+#line 958 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 958 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8;
+#line 958 "structure_sharing.analysis.m"
+    MR_String transform_hlds__ctgc__structure_sharing__analysis__PredName_9;
+#line 958 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcIds_10;
+#line 958 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredOrFunc_11;
+#line 958 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ModuleName_12;
+#line 958 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__ProcTable_13;
+#line 958 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Context_14;
+#line 958 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__SymName_15;
+#line 958 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__TypeVarSet_16;
+#line 958 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__V_19_19;
+#line 968 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_IO_18;
+
+#line 959 "structure_sharing.analysis.m"
+    {
+#line 959 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_5, transform_hlds__ctgc__structure_sharing__analysis__PredId_6, &transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8);
+    }
+#line 960 "structure_sharing.analysis.m"
+    {
+#line 960 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__PredName_9 = hlds__hlds_pred__pred_info_name_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8);
+    }
+#line 961 "structure_sharing.analysis.m"
+    {
+#line 961 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__ProcIds_10 = hlds__hlds_pred__pred_info_procids_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8);
+    }
+#line 962 "structure_sharing.analysis.m"
+    {
+#line 962 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__PredOrFunc_11 = hlds__hlds_pred__pred_info_is_pred_or_func_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8);
+    }
+#line 963 "structure_sharing.analysis.m"
+    {
+#line 963 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__ModuleName_12 = hlds__hlds_pred__pred_info_module_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8);
+    }
+#line 964 "structure_sharing.analysis.m"
+    {
+#line 964 "structure_sharing.analysis.m"
+      hlds__hlds_pred__pred_info_get_proc_table_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8, &transform_hlds__ctgc__structure_sharing__analysis__ProcTable_13);
+    }
+#line 965 "structure_sharing.analysis.m"
+    {
+#line 965 "structure_sharing.analysis.m"
+      hlds__hlds_pred__pred_info_get_context_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8, &transform_hlds__ctgc__structure_sharing__analysis__Context_14);
+    }
+#line 966 "structure_sharing.analysis.m"
+    {
+#line 966 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__SymName_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 966 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__SymName_15, 0) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleName_12));
+#line 966 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__ctgc__structure_sharing__analysis__SymName_15, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredName_9));
+#line 966 "structure_sharing.analysis.m"
+    }
+#line 967 "structure_sharing.analysis.m"
+    {
+#line 967 "structure_sharing.analysis.m"
+      hlds__hlds_pred__pred_info_get_typevarset_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8, &transform_hlds__ctgc__structure_sharing__analysis__TypeVarSet_16);
+    }
+#line 969 "structure_sharing.analysis.m"
+    {
+#line 969 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__V_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 11 * sizeof(MR_Word)), NULL, NULL);
+#line 969 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_19_19, 0) = ((MR_Box) (&transform_hlds__ctgc__structure_sharing__analysis_scalar_common_6[0]));
+#line 969 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_19_19, 1) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__write_pred_sharing_info_4_p_0_1));
+#line 969 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_19_19, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+#line 969 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_19_19, 3) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ModuleInfo_5));
+#line 969 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_19_19, 4) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredId_6));
+#line 969 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_19_19, 5) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredInfo_8));
+#line 969 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_19_19, 6) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__ProcTable_13));
+#line 969 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_19_19, 7) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__PredOrFunc_11));
+#line 969 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_19_19, 8) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__SymName_15));
+#line 969 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_19_19, 9) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__Context_14));
+#line 969 "structure_sharing.analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__ctgc__structure_sharing__analysis__V_19_19, 10) = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__TypeVarSet_16));
+#line 969 "structure_sharing.analysis.m"
+    }
+#line 968 "structure_sharing.analysis.m"
+    {
+#line 968 "structure_sharing.analysis.m"
+      mercury__list__foldl_4_p_2((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_proc_id_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, transform_hlds__ctgc__structure_sharing__analysis__V_19_19, transform_hlds__ctgc__structure_sharing__analysis__ProcIds_10, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_IO_18);
+    }
+#line 958 "structure_sharing.analysis.m"
+  }
+#line 37 "structure_sharing.analysis.m"
+}
+
+#line 352 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_analysis_4_p_0_3(
+#line 352 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 352 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 352 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 352 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3,
+#line 352 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4,
+#line 352 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5)
+#line 352 "structure_sharing.analysis.m"
+{
+#line 352 "structure_sharing.analysis.m"
+  {
+#line 352 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 352 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv5_STATE_VARIABLE_ProcInfo_13;
+#line 352 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_ModuleInfo_15;
+
+#line 352 "structure_sharing.analysis.m"
+    {
+#line 352 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__simplify_and_detect_liveness_proc_5_p_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv5_STATE_VARIABLE_ProcInfo_13, ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_4), &transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_ModuleInfo_15);
+    }
+#line 352 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv5_STATE_VARIABLE_ProcInfo_13));
+#line 352 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv4_STATE_VARIABLE_ModuleInfo_15));
+#line 352 "structure_sharing.analysis.m"
+  }
+#line 352 "structure_sharing.analysis.m"
+}
+
+#line 241 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_analysis_4_p_0_2(
+#line 241 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 241 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 241 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 241 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 241 "structure_sharing.analysis.m"
+{
+#line 241 "structure_sharing.analysis.m"
+  {
+#line 241 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 241 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_ModuleInfo_11;
+
+#line 241 "structure_sharing.analysis.m"
+    {
+#line 241 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__process_intermod_analysis_imported_sharing_in_pred_3_p_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_ModuleInfo_11);
+    }
+#line 241 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv2_STATE_VARIABLE_ModuleInfo_11));
+#line 241 "structure_sharing.analysis.m"
+  }
+#line 241 "structure_sharing.analysis.m"
+}
+
+#line 167 "structure_sharing.analysis.m"
+static void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_analysis_4_p_0_1(
+#line 167 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure_arg,
+#line 167 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1,
+#line 167 "structure_sharing.analysis.m"
+  MR_Box transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2,
+#line 167 "structure_sharing.analysis.m"
+  MR_Box * transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3)
+#line 167 "structure_sharing.analysis.m"
+{
+#line 167 "structure_sharing.analysis.m"
+  {
+#line 167 "structure_sharing.analysis.m"
+    MR_Box transform_hlds__ctgc__structure_sharing__analysis__closure = transform_hlds__ctgc__structure_sharing__analysis__closure_arg;
+#line 167 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_ModuleInfo_10;
+
+#line 167 "structure_sharing.analysis.m"
+    {
+#line 167 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__process_imported_sharing_in_pred_3_p_0(((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_1), ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_2), &transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_ModuleInfo_10);
+    }
+#line 167 "structure_sharing.analysis.m"
+    *transform_hlds__ctgc__structure_sharing__analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__conv0_STATE_VARIABLE_ModuleInfo_10));
+#line 167 "structure_sharing.analysis.m"
+  }
+#line 167 "structure_sharing.analysis.m"
+}
+
+#line 31 "structure_sharing.analysis.m"
+void MR_CALL 
+transform_hlds__ctgc__structure_sharing__analysis__structure_sharing_analysis_4_p_0(
+#line 31 "structure_sharing.analysis.m"
+  MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_11,
+#line 31 "structure_sharing.analysis.m"
+  MR_Word * transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_12)
+#line 31 "structure_sharing.analysis.m"
+{
+#line 118 "structure_sharing.analysis.m"
+  {
+#line 118 "structure_sharing.analysis.m"
+    MR_bool transform_hlds__ctgc__structure_sharing__analysis__succeeded;
+#line 118 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__Globals_7;
+#line 118 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__IntermodAnalysis_8;
+#line 118 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__LoadedSharingTable_9;
+#line 118 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__MakeOptInt_10;
+#line 118 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_17_17;
+#line 118 "structure_sharing.analysis.m"
+    MR_Word transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_18_18;
+
+#line 119 "structure_sharing.analysis.m"
+    {
+#line 119 "structure_sharing.analysis.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_11, &transform_hlds__ctgc__structure_sharing__analysis__Globals_7);
+    }
+#line 122 "structure_sharing.analysis.m"
+    {
+#line 122 "structure_sharing.analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__Globals_7, (MR_Integer) 333, &transform_hlds__ctgc__structure_sharing__analysis__IntermodAnalysis_8);
+    }
+#line 127 "structure_sharing.analysis.m"
+    if ((transform_hlds__ctgc__structure_sharing__analysis__IntermodAnalysis_8 == (MR_Integer) 0))
+#line 165 "structure_sharing.analysis.m"
+      {
+#line 165 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredIds_28;
+#line 167 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_ModuleInfo_17_17;
+
+#line 166 "structure_sharing.analysis.m"
+        {
+#line 166 "structure_sharing.analysis.m"
+          hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_11, &transform_hlds__ctgc__structure_sharing__analysis__PredIds_28);
+        }
+#line 167 "structure_sharing.analysis.m"
+        {
+#line 167 "structure_sharing.analysis.m"
+          mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[6], transform_hlds__ctgc__structure_sharing__analysis__PredIds_28, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_11)), &transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_ModuleInfo_17_17);
+        }
+#line 167 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_17_17 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv1_STATE_VARIABLE_ModuleInfo_17_17);
+#line 165 "structure_sharing.analysis.m"
+      }
+#line 127 "structure_sharing.analysis.m"
+    else
+#line 239 "structure_sharing.analysis.m"
+      {
+#line 239 "structure_sharing.analysis.m"
+        MR_Word transform_hlds__ctgc__structure_sharing__analysis__PredIds_39;
+#line 241 "structure_sharing.analysis.m"
+        MR_Box transform_hlds__ctgc__structure_sharing__analysis__conv3_STATE_VARIABLE_ModuleInfo_17_17;
+
+#line 240 "structure_sharing.analysis.m"
+        {
+#line 240 "structure_sharing.analysis.m"
+          hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_11, &transform_hlds__ctgc__structure_sharing__analysis__PredIds_39);
+        }
+#line 241 "structure_sharing.analysis.m"
+        {
+#line 241 "structure_sharing.analysis.m"
+          mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, (MR_Word) &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_1[7], transform_hlds__ctgc__structure_sharing__analysis__PredIds_39, ((MR_Box) (transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_0_11)), &transform_hlds__ctgc__structure_sharing__analysis__conv3_STATE_VARIABLE_ModuleInfo_17_17);
+        }
+#line 241 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_17_17 = ((MR_Word) transform_hlds__ctgc__structure_sharing__analysis__conv3_STATE_VARIABLE_ModuleInfo_17_17);
+#line 239 "structure_sharing.analysis.m"
+      }
+#line 351 "structure_sharing.analysis.m"
+    {
+#line 351 "structure_sharing.analysis.m"
+      hlds__passes_aux__process_all_nonimported_procs_3_p_0((MR_Word) MR_mkword(MR_mktag(3), &transform_hlds__ctgc__structure_sharing__analysis_scalar_common_2[8]), transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_17_17, &transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_18_18);
+    }
+#line 136 "structure_sharing.analysis.m"
+    {
+#line 136 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__LoadedSharingTable_9 = transform_hlds__ctgc__structure_sharing__domain__load_structure_sharing_table_1_f_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_18_18);
+    }
+#line 139 "structure_sharing.analysis.m"
+    {
+#line 139 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__sharing_analysis_5_p_0(transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_18_18, transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_12, transform_hlds__ctgc__structure_sharing__analysis__LoadedSharingTable_9);
+    }
+#line 143 "structure_sharing.analysis.m"
+    {
+#line 143 "structure_sharing.analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__ctgc__structure_sharing__analysis__Globals_7, (MR_Integer) 87, &transform_hlds__ctgc__structure_sharing__analysis__MakeOptInt_10);
+    }
+#line 146 "structure_sharing.analysis.m"
+    transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__MakeOptInt_10 == (MR_Integer) 1);
+#line 146 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 147 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__structure_sharing__analysis__succeeded = (transform_hlds__ctgc__structure_sharing__analysis__IntermodAnalysis_8 == (MR_Integer) 0);
+#line 150 "structure_sharing.analysis.m"
+    if (transform_hlds__ctgc__structure_sharing__analysis__succeeded)
+#line 149 "structure_sharing.analysis.m"
+      {
+#line 149 "structure_sharing.analysis.m"
+        transform_hlds__ctgc__structure_sharing__analysis__make_opt_int_3_p_0(*transform_hlds__ctgc__structure_sharing__analysis__STATE_VARIABLE_ModuleInfo_12);
+      }
+#line 150 "structure_sharing.analysis.m"
+    else
+#line 150 "structure_sharing.analysis.m"
+      {
+#line 150 "structure_sharing.analysis.m"
+      }
+#line 154 "structure_sharing.analysis.m"
+    {
+#line 154 "structure_sharing.analysis.m"
+      transform_hlds__ctgc__selector__reset_tables_2_p_0();
+#line 154 "structure_sharing.analysis.m"
+      return;
+    }
+#line 118 "structure_sharing.analysis.m"
+  }
+#line 31 "structure_sharing.analysis.m"
+}
+
+void mercury__transform_hlds__ctgc__structure_sharing__analysis__init(void)
+{
+}
+
+void mercury__transform_hlds__ctgc__structure_sharing__analysis__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_dep_procs_0);
+	MR_register_type_ctor_info(&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_should_write_for_0);
+	MR_register_type_ctor_info(&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_ss_fixpoint_table_0);
+	MR_register_type_ctor_info(&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_answer_0);
+	MR_register_type_ctor_info(&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_call_0);
+	MR_register_type_ctor_info(&transform_hlds__ctgc__structure_sharing__analysis__transform_hlds__ctgc__structure_sharing__analysis__type_ctor_info_structure_sharing_func_info_0);
+}
+
+void mercury__transform_hlds__ctgc__structure_sharing__analysis__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module transform_hlds.ctgc.structure_sharing.analysis. */

@@ -1,0 +1,17 @@
+:- module (thread.mvar).
+:- pragma termination_info((thread.mvar).init((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(((thread.mvar).impure_init) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info(((thread.mvar).init) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((thread.mvar).take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.mvar).try_take((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.mvar).put((builtin.in), (builtin.in), (builtin.di), (builtin.uo)), finite(0, [no, no, no, yes, no]), cannot_loop).
+:- pragma termination_info((thread.mvar).try_put((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), finite(0, [no, no, no, no, yes, no]), cannot_loop).
+:- pragma termination_info((thread.mvar).read((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma exceptions(predicate, ((thread.mvar).init), 3, 0, will_not_throw).
+:- pragma exceptions(function, ((thread.mvar).impure_init), 1, 0, will_not_throw).
+:- pragma exceptions(function, ((thread.mvar).init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.mvar).take), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.mvar).try_take), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.mvar).put), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.mvar).try_put), 5, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.mvar).read), 4, 0, will_not_throw).

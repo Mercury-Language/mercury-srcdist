@@ -1,0 +1,13 @@
+module(1, "version_array.m",
+	version_array,
+	{},
+	{builtin, list, pretty_printer, private_builtin},
+	{builtin, list, pretty_printer, exception, int, string, private_builtin, stream, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - version_array, "C#" - version_array, "Java" - version_array, "C" - version_array},
+	no_foreign_export,
+	no_main
+).
