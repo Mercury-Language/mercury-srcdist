@@ -1,0 +1,43 @@
+:- module ((ll_backend.llds_out).llds_out_util).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module map.
+:- import_module (backend_libs.rtti).
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.globals).
+:- import_module (libs.trace_params).
+:- import_module (ll_backend.layout).
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type decl_id
+	--->	decl_float_label(string)
+	;	decl_common_type(ll_backend.llds.type_num)
+	;	decl_code_addr(ll_backend.llds.code_addr)
+	;	decl_rtti_id(backend_libs.rtti.rtti_id)
+	;	decl_layout_id(ll_backend.layout.layout_name)
+	;	decl_tabling_id(mdbcomp.prim_data.proc_label, backend_libs.rtti.proc_tabling_struct_id)
+	;	decl_foreign_proc_struct(string)
+	;	decl_c_global_var(ll_backend.llds.c_global_var_ref)
+	;	decl_type_info_like_struct(int)
+	;	decl_typeclass_constraint_struct(int).
+:- type decl_set.
+:- type llds_out_info
+	--->	llds_out_info((((ll_backend.llds_out).llds_out_util).lout_module_name) :: mdbcomp.prim_data.module_name, (((ll_backend.llds_out).llds_out_util).lout_mangled_module_name) :: string, (((ll_backend.llds_out).llds_out_util).lout_source_file_name) :: string, (((ll_backend.llds_out).llds_out_util).lout_internal_label_to_layout) :: map.map(ll_backend.llds.label, ll_backend.layout.layout_slot_name), (((ll_backend.llds_out).llds_out_util).lout_entry_label_to_layout) :: map.map(ll_backend.llds.label, ll_backend.llds.data_id), (((ll_backend.llds_out).llds_out_util).lout_table_io_entry_map) :: map.map(hlds.hlds_pred.pred_proc_id, ll_backend.layout.layout_slot_name), (((ll_backend.llds_out).llds_out_util).lout_alloc_site_map) :: map.map(ll_backend.llds.alloc_site_id, ll_backend.layout.layout_slot_name), (((ll_backend.llds_out).llds_out_util).lout_auto_comments) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_line_numbers) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_emit_c_loops) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_generate_bytecode) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_local_thread_engine_base) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_profile_calls) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_profile_time) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_profile_memory) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_profile_deep) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_unboxed_float) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_det_stack_dword_alignment) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_static_ground_floats) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_use_macro_for_redo_fail) :: bool.bool, (((ll_backend.llds_out).llds_out_util).lout_trace_level) :: libs.trace_params.trace_level, (((ll_backend.llds_out).llds_out_util).lout_globals) :: libs.globals.globals).
+:- pred decl_set_init(ll_backend.llds_out.llds_out_util.decl_set).
+:- mode decl_set_init((builtin.out)) is det.
+:- pred decl_set_insert(ll_backend.llds_out.llds_out_util.decl_id, ll_backend.llds_out.llds_out_util.decl_set, ll_backend.llds_out.llds_out_util.decl_set).
+:- mode decl_set_insert((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred decl_set_is_member(ll_backend.llds_out.llds_out_util.decl_id, ll_backend.llds_out.llds_out_util.decl_set).
+:- mode decl_set_is_member((builtin.in), (builtin.in)) is semidet.
+:- func init_llds_out_info(mdbcomp.prim_data.module_name, string, libs.globals.globals, map.map(ll_backend.llds.label, ll_backend.layout.layout_slot_name), map.map(ll_backend.llds.label, ll_backend.llds.data_id), map.map(hlds.hlds_pred.pred_proc_id, ll_backend.layout.layout_slot_name), map.map(ll_backend.llds.alloc_site_id, ll_backend.layout.layout_slot_name)) = ll_backend.llds_out.llds_out_util.llds_out_info.
+:- pred output_indent(string, string, int, io.io, io.io).
+:- mode output_indent((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_reset_line_num(ll_backend.llds_out.llds_out_util.llds_out_info, io.io, io.io).
+:- mode output_reset_line_num((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_set_line_num(ll_backend.llds_out.llds_out_util.llds_out_info, parse_tree.prog_data.prog_context, io.io, io.io).
+:- mode output_set_line_num((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- import_module set_tree234.
+:- type decl_set == set_tree234.set_tree234(ll_backend.llds_out.llds_out_util.decl_id).

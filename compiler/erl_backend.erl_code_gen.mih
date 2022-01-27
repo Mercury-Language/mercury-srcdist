@@ -1,0 +1,60 @@
+/*
+** Automatically generated from `erl_code_gen.m'
+** by the Mercury compiler,
+** version rotd-2014-09-01
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module erl_backend.erl_code_gen. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_erl_backend__erl_code_gen
+#define MR_HEADER_GUARD_erl_backend__erl_code_gen
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ERL_BACKEND__ERL_CODE_GEN_DECL_GUARD
+#define ERL_BACKEND__ERL_CODE_GEN_DECL_GUARD
+#include "erl_backend.mih"
+
+#endif
+
+
+
+
+#line 42 "erl_code_gen.m"
+void MR_CALL 
+erl_backend__erl_code_gen__erl_code_gen_4_p_0(
+#line 42 "erl_code_gen.m"
+  MR_Word erl_backend__erl_code_gen__param_1,
+#line 42 "erl_code_gen.m"
+  MR_Word * erl_backend__erl_code_gen__param_2);
+
+void mercury__erl_backend__erl_code_gen__init(void);
+void mercury__erl_backend__erl_code_gen__init_type_tables(void);
+void mercury__erl_backend__erl_code_gen__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_erl_backend.erl_code_gen */
+
+/* :- end_interface erl_backend.erl_code_gen. */

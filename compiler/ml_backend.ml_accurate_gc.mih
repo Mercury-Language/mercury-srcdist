@@ -1,0 +1,110 @@
+/*
+** Automatically generated from `ml_accurate_gc.m'
+** by the Mercury compiler,
+** version rotd-2014-09-01
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.ml_accurate_gc. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_accurate_gc
+#define MR_HEADER_GUARD_ml_backend__ml_accurate_gc
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_ACCURATE_GC_DECL_GUARD
+#define ML_BACKEND__ML_ACCURATE_GC_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+#line 43 "ml_backend.ml_accurate_gc.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_fixup_newobj_info_0;
+
+#line 46 "ml_backend.ml_accurate_gc.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_accurate_gc__ml_backend__ml_accurate_gc__type_ctor_info_how_to_get_type_info_0;
+
+#line 71 "ml_accurate_gc.m"
+void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_statement_with_typeinfo_7_p_0(
+#line 71 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_1,
+#line 71 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_2,
+#line 71 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_3,
+#line 71 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_4,
+#line 71 "ml_accurate_gc.m"
+  MR_Word * ml_backend__ml_accurate_gc__param_5,
+#line 71 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_6,
+#line 71 "ml_accurate_gc.m"
+  MR_Word * ml_backend__ml_accurate_gc__param_7);
+
+#line 57 "ml_accurate_gc.m"
+void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_statement_poly_7_p_0(
+#line 57 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_1,
+#line 57 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_2,
+#line 57 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_3,
+#line 57 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_4,
+#line 57 "ml_accurate_gc.m"
+  MR_Word * ml_backend__ml_accurate_gc__param_5,
+#line 57 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_6,
+#line 57 "ml_accurate_gc.m"
+  MR_Word * ml_backend__ml_accurate_gc__param_7);
+
+#line 35 "ml_accurate_gc.m"
+void MR_CALL 
+ml_backend__ml_accurate_gc__ml_gen_gc_statement_6_p_0(
+#line 35 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_1,
+#line 35 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_2,
+#line 35 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_3,
+#line 35 "ml_accurate_gc.m"
+  MR_Word * ml_backend__ml_accurate_gc__param_4,
+#line 35 "ml_accurate_gc.m"
+  MR_Word ml_backend__ml_accurate_gc__param_5,
+#line 35 "ml_accurate_gc.m"
+  MR_Word * ml_backend__ml_accurate_gc__param_6);
+
+void mercury__ml_backend__ml_accurate_gc__init(void);
+void mercury__ml_backend__ml_accurate_gc__init_type_tables(void);
+void mercury__ml_backend__ml_accurate_gc__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.ml_accurate_gc */
+
+/* :- end_interface ml_backend.ml_accurate_gc. */

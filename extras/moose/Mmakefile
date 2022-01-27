@@ -1,0 +1,30 @@
+#-----------------------------------------------------------------------------#
+# Copyright (C) 2000, 2002-2003 The University of Melbourne.
+# This file may only be copied under the terms of the GNU Library General
+# Public License - see the file COPYING.LIB in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# GRADE = asm_fast.gc.debug
+# GRADE = asm_fast.gc.prof
+
+# MCFLAGS = -O6
+# MCFLAGS = --intermodule-optimization -O6
+
+INSTALL_PREFIX := $(INSTALL_PREFIX)/extras
+
+-include ../Mmake.params
+
+.PHONY: default_target
+default_target:	moose
+
+.PHONY: install
+install:
+	[ -d $(INSTALL_BINDIR) ] || mkdir -p $(INSTALL_BINDIR)
+	cp moose $(INSTALL_BINDIR)
+
+.PHONY: depend
+depend:		moose.depend
+
+.PHONY: check
+check:
+		true

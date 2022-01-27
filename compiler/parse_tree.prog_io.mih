@@ -1,0 +1,235 @@
+/*
+** Automatically generated from `prog_io.m'
+** by the Mercury compiler,
+** version rotd-2014-09-01
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module parse_tree.prog_io. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_parse_tree__prog_io
+#define MR_HEADER_GUARD_parse_tree__prog_io
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PARSE_TREE__PROG_IO_DECL_GUARD
+#define PARSE_TREE__PROG_IO_DECL_GUARD
+#include "parse_tree.mih"
+
+#endif
+
+
+
+
+#line 43 "parse_tree.prog_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io__parse_tree__prog_io__type_ctor_info_maker_2;
+
+#line 46 "parse_tree.prog_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io__parse_tree__prog_io__type_ctor_info_maybe_return_timestamp_0;
+
+#line 49 "parse_tree.prog_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io__parse_tree__prog_io__type_ctor_info_module_end_0;
+
+#line 52 "parse_tree.prog_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io__parse_tree__prog_io__type_ctor_info_module_error_0;
+
+#line 55 "parse_tree.prog_io.mih.tmp"
+extern const MR_TypeCtorInfo_Struct parse_tree__prog_io__parse_tree__prog_io__type_ctor_info_read_item_result_0;
+
+#line 68 "prog_io.m"
+void MR_CALL 
+parse_tree__prog_io____Compare____module_error_0_0(
+#line 68 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_1,
+#line 68 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_2,
+#line 68 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_3);
+
+#line 68 "prog_io.m"
+MR_bool MR_CALL 
+parse_tree__prog_io____Unify____module_error_0_0(
+#line 68 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_1,
+#line 68 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_2);
+
+#line 73 "prog_io.m"
+void MR_CALL 
+parse_tree__prog_io____Compare____maybe_return_timestamp_0_0(
+#line 73 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_1,
+#line 73 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_2,
+#line 73 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_3);
+
+#line 73 "prog_io.m"
+MR_bool MR_CALL 
+parse_tree__prog_io____Unify____maybe_return_timestamp_0_0(
+#line 73 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_1,
+#line 73 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_2);
+
+#line 156 "prog_io.m"
+void MR_CALL 
+parse_tree__prog_io__parse_decl_5_p_0(
+#line 156 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_1,
+#line 156 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_2,
+#line 156 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_3,
+#line 156 "prog_io.m"
+  MR_Integer parse_tree__prog_io__param_4,
+#line 156 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_5);
+
+#line 146 "prog_io.m"
+void MR_CALL 
+parse_tree__prog_io__parse_item_5_p_0(
+#line 146 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_1,
+#line 146 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_2,
+#line 146 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_3,
+#line 146 "prog_io.m"
+  MR_Integer parse_tree__prog_io__param_4,
+#line 146 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_5);
+
+#line 136 "prog_io.m"
+void MR_CALL 
+parse_tree__prog_io__find_module_name_5_p_0(
+#line 136 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_1,
+#line 136 "prog_io.m"
+  MR_String parse_tree__prog_io__param_2,
+#line 136 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_3);
+
+#line 130 "prog_io.m"
+void MR_CALL 
+parse_tree__prog_io__search_for_module_source_7_p_0(
+#line 130 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_1,
+#line 130 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_2,
+#line 130 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_3,
+#line 130 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_4,
+#line 130 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_5);
+
+#line 118 "prog_io.m"
+void MR_CALL 
+parse_tree__prog_io__check_module_has_expected_name_4_p_0(
+#line 118 "prog_io.m"
+  MR_String parse_tree__prog_io__param_1,
+#line 118 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_2,
+#line 118 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_3,
+#line 118 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_4);
+
+#line 109 "prog_io.m"
+void MR_CALL 
+parse_tree__prog_io__actually_read_opt_file_8_p_0(
+#line 109 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_1,
+#line 109 "prog_io.m"
+  MR_String parse_tree__prog_io__param_2,
+#line 109 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_3,
+#line 109 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_4,
+#line 109 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_5,
+#line 109 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_6);
+
+#line 98 "prog_io.m"
+void MR_CALL 
+parse_tree__prog_io__actually_read_module_if_changed_12_p_0(
+#line 98 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_1,
+#line 98 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_2,
+#line 98 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_3,
+#line 98 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_4,
+#line 98 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_5,
+#line 98 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_6,
+#line 98 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_7,
+#line 98 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_8,
+#line 98 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_9,
+#line 98 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_10,
+#line 98 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_11);
+
+#line 92 "prog_io.m"
+void MR_CALL 
+parse_tree__prog_io__actually_read_module_12_p_0(
+#line 92 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_1,
+#line 92 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_2,
+#line 92 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_3,
+#line 92 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_4,
+#line 92 "prog_io.m"
+  MR_Word parse_tree__prog_io__param_5,
+#line 92 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_6,
+#line 92 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_7,
+#line 92 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_8,
+#line 92 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_9,
+#line 92 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_10,
+#line 92 "prog_io.m"
+  MR_Word * parse_tree__prog_io__param_11);
+
+void mercury__parse_tree__prog_io__init(void);
+void mercury__parse_tree__prog_io__init_type_tables(void);
+void mercury__parse_tree__prog_io__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_parse_tree.prog_io */
+
+/* :- end_interface parse_tree.prog_io. */

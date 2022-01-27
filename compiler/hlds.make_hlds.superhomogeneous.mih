@@ -1,0 +1,222 @@
+/*
+** Automatically generated from `superhomogeneous.m'
+** by the Mercury compiler,
+** version rotd-2014-09-01
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.make_hlds.superhomogeneous. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__superhomogeneous
+#define MR_HEADER_GUARD_hlds__make_hlds__superhomogeneous
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__SUPERHOMOGENEOUS_DECL_GUARD
+#define HLDS__MAKE_HLDS__SUPERHOMOGENEOUS_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+
+#line 44 "hlds.make_hlds.superhomogeneous.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_arg_context_0;
+
+#line 47 "hlds.make_hlds.superhomogeneous.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_expansion_0;
+
+#line 50 "hlds.make_hlds.superhomogeneous.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__superhomogeneous__hlds__make_hlds__superhomogeneous__type_ctor_info_maybe_fgti_var_size_0;
+
+#line 35 "superhomogeneous.m"
+void MR_CALL 
+hlds__make_hlds__superhomogeneous____Compare____arg_context_0_0(
+#line 35 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_1,
+#line 35 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_2,
+#line 35 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_3);
+
+#line 35 "superhomogeneous.m"
+MR_bool MR_CALL 
+hlds__make_hlds__superhomogeneous____Unify____arg_context_0_0(
+#line 35 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_1,
+#line 35 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_2);
+
+#line 90 "superhomogeneous.m"
+void MR_CALL 
+hlds__make_hlds__superhomogeneous__make_fresh_arg_vars_subst_svars_8_p_0(
+#line 90 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_1,
+#line 90 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_2,
+#line 90 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_3,
+#line 90 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_4,
+#line 90 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_5,
+#line 90 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_6,
+#line 90 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_7,
+#line 90 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_8);
+
+#line 71 "superhomogeneous.m"
+void MR_CALL 
+hlds__make_hlds__superhomogeneous__unravel_unification_19_p_0(
+#line 71 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_1,
+#line 71 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_2,
+#line 71 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_3,
+#line 71 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_4,
+#line 71 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_5,
+#line 71 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_6,
+#line 71 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_7,
+#line 71 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_8,
+#line 71 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_9,
+#line 71 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_10,
+#line 71 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_11,
+#line 71 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_12,
+#line 71 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_13,
+#line 71 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_14,
+#line 71 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_15,
+#line 71 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_16,
+#line 71 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_17,
+#line 71 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_18,
+#line 71 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_19);
+
+#line 63 "superhomogeneous.m"
+void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_arg_unifications_with_contexts_18_p_0(
+#line 63 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_1,
+#line 63 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_2,
+#line 63 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_3,
+#line 63 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_4,
+#line 63 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_5,
+#line 63 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_6,
+#line 63 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_7,
+#line 63 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_8,
+#line 63 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_9,
+#line 63 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_10,
+#line 63 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_11,
+#line 63 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_12,
+#line 63 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_13,
+#line 63 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_14,
+#line 63 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_15,
+#line 63 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_16,
+#line 63 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_17,
+#line 63 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_18);
+
+#line 56 "superhomogeneous.m"
+void MR_CALL 
+hlds__make_hlds__superhomogeneous__insert_arg_unifications_18_p_0(
+#line 56 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_1,
+#line 56 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_2,
+#line 56 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_3,
+#line 56 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_4,
+#line 56 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_5,
+#line 56 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_6,
+#line 56 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_7,
+#line 56 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_8,
+#line 56 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_9,
+#line 56 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_10,
+#line 56 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_11,
+#line 56 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_12,
+#line 56 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_13,
+#line 56 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_14,
+#line 56 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_15,
+#line 56 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_16,
+#line 56 "superhomogeneous.m"
+  MR_Word hlds__make_hlds__superhomogeneous__param_17,
+#line 56 "superhomogeneous.m"
+  MR_Word * hlds__make_hlds__superhomogeneous__param_18);
+
+void mercury__hlds__make_hlds__superhomogeneous__init(void);
+void mercury__hlds__make_hlds__superhomogeneous__init_type_tables(void);
+void mercury__hlds__make_hlds__superhomogeneous__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.make_hlds.superhomogeneous */
+
+/* :- end_interface hlds.make_hlds.superhomogeneous. */

@@ -1,0 +1,463 @@
+/*
+** Automatically generated from `global_data.m'
+** by the Mercury compiler,
+** version rotd-2014-09-01
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ll_backend.global_data. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ll_backend__global_data
+#define MR_HEADER_GUARD_ll_backend__global_data
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LL_BACKEND__GLOBAL_DATA_DECL_GUARD
+#define LL_BACKEND__GLOBAL_DATA_DECL_GUARD
+#include "ll_backend.mih"
+
+#endif
+
+
+
+
+#line 43 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_cell_type_bimap_0;
+
+#line 46 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_cell_type_num_remap_0;
+
+#line 49 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_global_data_0;
+
+#line 52 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_global_data_remapping_0;
+
+#line 55 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_proc_layout_map_0;
+
+#line 58 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_proc_var_map_0;
+
+#line 61 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_scalar_cell_group_0;
+
+#line 64 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_scalar_cell_group_remap_0;
+
+#line 67 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_scalar_type_cell_map_0;
+
+#line 70 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_static_cell_info_0;
+
+#line 73 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_static_cell_remap_info_0;
+
+#line 76 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_static_cell_sub_info_0;
+
+#line 79 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_vector_cell_group_0;
+
+#line 82 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_vector_contents_0;
+
+#line 85 "ll_backend.global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ll_backend__global_data__ll_backend__global_data__type_ctor_info_vector_type_cell_map_0;
+
+#line 719 "global_data.m"
+void MR_CALL 
+ll_backend__global_data____Compare____static_cell_remap_info_0_0(
+#line 719 "global_data.m"
+  MR_Word * ll_backend__global_data__param_1,
+#line 719 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 719 "global_data.m"
+  MR_Word ll_backend__global_data__param_3);
+
+#line 719 "global_data.m"
+MR_bool MR_CALL 
+ll_backend__global_data____Unify____static_cell_remap_info_0_0(
+#line 719 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 719 "global_data.m"
+  MR_Word ll_backend__global_data__param_2);
+
+#line 340 "global_data.m"
+void MR_CALL 
+ll_backend__global_data____Compare____static_cell_info_0_0(
+#line 340 "global_data.m"
+  MR_Word * ll_backend__global_data__param_1,
+#line 340 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 340 "global_data.m"
+  MR_Word ll_backend__global_data__param_3);
+
+#line 340 "global_data.m"
+MR_bool MR_CALL 
+ll_backend__global_data____Unify____static_cell_info_0_0(
+#line 340 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 340 "global_data.m"
+  MR_Word ll_backend__global_data__param_2);
+
+#line 1019 "global_data.m"
+void MR_CALL 
+ll_backend__global_data____Compare____global_data_remapping_0_0(
+#line 1019 "global_data.m"
+  MR_Word * ll_backend__global_data__param_1,
+#line 1019 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 1019 "global_data.m"
+  MR_Word ll_backend__global_data__param_3);
+
+#line 1019 "global_data.m"
+MR_bool MR_CALL 
+ll_backend__global_data____Unify____global_data_remapping_0_0(
+#line 1019 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 1019 "global_data.m"
+  MR_Word ll_backend__global_data__param_2);
+
+#line 171 "global_data.m"
+void MR_CALL 
+ll_backend__global_data____Compare____global_data_0_0(
+#line 171 "global_data.m"
+  MR_Word * ll_backend__global_data__param_1,
+#line 171 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 171 "global_data.m"
+  MR_Word ll_backend__global_data__param_3);
+
+#line 171 "global_data.m"
+MR_bool MR_CALL 
+ll_backend__global_data____Unify____global_data_0_0(
+#line 171 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 171 "global_data.m"
+  MR_Word ll_backend__global_data__param_2);
+
+#line 148 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__remap_references_to_global_data_3_p_0(
+#line 148 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 148 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 148 "global_data.m"
+  MR_Word * ll_backend__global_data__param_3);
+
+#line 141 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__merge_global_datas_4_p_0(
+#line 141 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 141 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 141 "global_data.m"
+  MR_Word * ll_backend__global_data__param_3,
+#line 141 "global_data.m"
+  MR_Word * ll_backend__global_data__param_4);
+
+#line 129 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__bump_type_num_counter_3_p_0(
+#line 129 "global_data.m"
+  MR_Integer ll_backend__global_data__param_1,
+#line 129 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 129 "global_data.m"
+  MR_Word * ll_backend__global_data__param_3);
+
+#line 119 "global_data.m"
+MR_Word MR_CALL 
+ll_backend__global_data__rval_type_as_arg_3_f_0(
+#line 119 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 119 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 119 "global_data.m"
+  MR_Word ll_backend__global_data__param_3);
+
+#line 109 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__get_static_cells_3_p_0(
+#line 109 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 109 "global_data.m"
+  MR_Word * ll_backend__global_data__param_2,
+#line 109 "global_data.m"
+  MR_Word * ll_backend__global_data__param_3);
+
+#line 106 "global_data.m"
+MR_bool MR_CALL 
+ll_backend__global_data__search_scalar_static_cell_offset_4_p_0(
+#line 106 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 106 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 106 "global_data.m"
+  MR_Integer ll_backend__global_data__param_3,
+#line 106 "global_data.m"
+  MR_Word * ll_backend__global_data__param_4);
+
+#line 102 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__add_vector_static_cell_5_p_0(
+#line 102 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 102 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 102 "global_data.m"
+  MR_Word * ll_backend__global_data__param_3,
+#line 102 "global_data.m"
+  MR_Word ll_backend__global_data__param_4,
+#line 102 "global_data.m"
+  MR_Word * ll_backend__global_data__param_5);
+
+#line 99 "global_data.m"
+MR_bool MR_CALL 
+ll_backend__global_data__find_general_llds_types_4_p_0(
+#line 99 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 99 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 99 "global_data.m"
+  MR_Word ll_backend__global_data__param_3,
+#line 99 "global_data.m"
+  MR_Word * ll_backend__global_data__param_4);
+
+#line 95 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_get_all_alloc_sites_3_p_0(
+#line 95 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 95 "global_data.m"
+  MR_Word * ll_backend__global_data__param_2,
+#line 95 "global_data.m"
+  MR_Word * ll_backend__global_data__param_3);
+
+#line 92 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_add_new_alloc_sites_3_p_0(
+#line 92 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 92 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 92 "global_data.m"
+  MR_Word * ll_backend__global_data__param_3);
+
+#line 89 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__add_scalar_static_cell_natural_types_4_p_0(
+#line 89 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 89 "global_data.m"
+  MR_Word * ll_backend__global_data__param_2,
+#line 89 "global_data.m"
+  MR_Word ll_backend__global_data__param_3,
+#line 89 "global_data.m"
+  MR_Word * ll_backend__global_data__param_4);
+
+#line 86 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__add_scalar_static_cell_4_p_0(
+#line 86 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 86 "global_data.m"
+  MR_Word * ll_backend__global_data__param_2,
+#line 86 "global_data.m"
+  MR_Word ll_backend__global_data__param_3,
+#line 86 "global_data.m"
+  MR_Word * ll_backend__global_data__param_4);
+
+#line 83 "global_data.m"
+MR_Word MR_CALL 
+ll_backend__global_data__init_static_cell_info_3_f_0(
+#line 83 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 83 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 83 "global_data.m"
+  MR_Word ll_backend__global_data__param_3);
+
+#line 78 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_set_static_cell_info_3_p_0(
+#line 78 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 78 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 78 "global_data.m"
+  MR_Word * ll_backend__global_data__param_3);
+
+#line 75 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_get_static_cell_info_2_p_0(
+#line 75 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 75 "global_data.m"
+  MR_Word * ll_backend__global_data__param_2);
+
+#line 72 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_set_threadscope_rev_string_table_4_p_0(
+#line 72 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 72 "global_data.m"
+  MR_Integer ll_backend__global_data__param_2,
+#line 72 "global_data.m"
+  MR_Word ll_backend__global_data__param_3,
+#line 72 "global_data.m"
+  MR_Word * ll_backend__global_data__param_4);
+
+#line 69 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_get_threadscope_rev_string_table_3_p_0(
+#line 69 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 69 "global_data.m"
+  MR_Word * ll_backend__global_data__param_2,
+#line 69 "global_data.m"
+  MR_Integer * ll_backend__global_data__param_3);
+
+#line 66 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_get_threadscope_string_table_2_p_0(
+#line 66 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 66 "global_data.m"
+  MR_Word * ll_backend__global_data__param_2);
+
+#line 63 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_get_all_closure_layouts_2_p_0(
+#line 63 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 63 "global_data.m"
+  MR_Word * ll_backend__global_data__param_2);
+
+#line 60 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_get_all_proc_layouts_2_p_0(
+#line 60 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 60 "global_data.m"
+  MR_Word * ll_backend__global_data__param_2);
+
+#line 57 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_get_all_proc_vars_2_p_0(
+#line 57 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 57 "global_data.m"
+  MR_Word * ll_backend__global_data__param_2);
+
+#line 54 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_get_proc_layout_3_p_0(
+#line 54 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 54 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 54 "global_data.m"
+  MR_Word * ll_backend__global_data__param_3);
+
+#line 51 "global_data.m"
+MR_bool MR_CALL 
+ll_backend__global_data__global_data_maybe_get_proc_layout_3_p_0(
+#line 51 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 51 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 51 "global_data.m"
+  MR_Word * ll_backend__global_data__param_3);
+
+#line 48 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_add_new_closure_layouts_3_p_0(
+#line 48 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 48 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 48 "global_data.m"
+  MR_Word * ll_backend__global_data__param_3);
+
+#line 45 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_update_proc_layout_4_p_0(
+#line 45 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 45 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 45 "global_data.m"
+  MR_Word ll_backend__global_data__param_3,
+#line 45 "global_data.m"
+  MR_Word * ll_backend__global_data__param_4);
+
+#line 42 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_add_new_proc_layout_4_p_0(
+#line 42 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 42 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 42 "global_data.m"
+  MR_Word ll_backend__global_data__param_3,
+#line 42 "global_data.m"
+  MR_Word * ll_backend__global_data__param_4);
+
+#line 39 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_add_new_proc_var_4_p_0(
+#line 39 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 39 "global_data.m"
+  MR_Word ll_backend__global_data__param_2,
+#line 39 "global_data.m"
+  MR_Word ll_backend__global_data__param_3,
+#line 39 "global_data.m"
+  MR_Word * ll_backend__global_data__param_4);
+
+#line 36 "global_data.m"
+void MR_CALL 
+ll_backend__global_data__global_data_init_4_p_0(
+#line 36 "global_data.m"
+  MR_Word ll_backend__global_data__param_1,
+#line 36 "global_data.m"
+  MR_Integer ll_backend__global_data__param_2,
+#line 36 "global_data.m"
+  MR_Word ll_backend__global_data__param_3,
+#line 36 "global_data.m"
+  MR_Word * ll_backend__global_data__param_4);
+
+void mercury__ll_backend__global_data__init(void);
+void mercury__ll_backend__global_data__init_type_tables(void);
+void mercury__ll_backend__global_data__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ll_backend.global_data */
+
+/* :- end_interface ll_backend.global_data. */

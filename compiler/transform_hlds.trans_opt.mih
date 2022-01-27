@@ -1,0 +1,72 @@
+/*
+** Automatically generated from `trans_opt.m'
+** by the Mercury compiler,
+** version rotd-2014-09-01
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.trans_opt. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_transform_hlds__trans_opt
+#define MR_HEADER_GUARD_transform_hlds__trans_opt
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__TRANS_OPT_DECL_GUARD
+#define TRANSFORM_HLDS__TRANS_OPT_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+#line 78 "trans_opt.m"
+void MR_CALL 
+transform_hlds__trans_opt__grab_trans_opt_files_7_p_0(
+#line 78 "trans_opt.m"
+  MR_Word transform_hlds__trans_opt__param_1,
+#line 78 "trans_opt.m"
+  MR_Word transform_hlds__trans_opt__param_2,
+#line 78 "trans_opt.m"
+  MR_Word transform_hlds__trans_opt__param_3,
+#line 78 "trans_opt.m"
+  MR_Word * transform_hlds__trans_opt__param_4,
+#line 78 "trans_opt.m"
+  MR_Word * transform_hlds__trans_opt__param_5);
+
+#line 71 "trans_opt.m"
+void MR_CALL 
+transform_hlds__trans_opt__write_trans_opt_file_3_p_0(
+#line 71 "trans_opt.m"
+  MR_Word transform_hlds__trans_opt__param_1);
+
+void mercury__transform_hlds__trans_opt__init(void);
+void mercury__transform_hlds__trans_opt__init_type_tables(void);
+void mercury__transform_hlds__trans_opt__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_transform_hlds.trans_opt */
+
+/* :- end_interface transform_hlds.trans_opt. */

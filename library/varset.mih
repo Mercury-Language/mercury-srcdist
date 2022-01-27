@@ -1,0 +1,855 @@
+/*
+** Automatically generated from `varset.m'
+** by the Mercury compiler,
+** version rotd-2014-09-01
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module varset. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_varset
+#define MR_HEADER_GUARD_varset
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef VARSET_DECL_GUARD
+#define VARSET_DECL_GUARD
+
+#endif
+
+
+
+
+#line 42 "varset.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__varset__varset__type_ctor_info_varset_1;
+
+#line 45 "varset.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__varset__varset__type_ctor_info_varset_0;
+
+#line 290 "varset.m"
+void MR_CALL 
+mercury__varset____Compare____varset_1_0(
+#line 290 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 290 "varset.m"
+  MR_Word * mercury__varset__param_2,
+#line 290 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 290 "varset.m"
+  MR_Word mercury__varset__param_4);
+
+#line 290 "varset.m"
+MR_bool MR_CALL 
+mercury__varset____Unify____varset_1_0(
+#line 290 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 290 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 290 "varset.m"
+  MR_Word mercury__varset__param_3);
+
+#line 45 "varset.m"
+void MR_CALL 
+mercury__varset____Compare____varset_0_0(
+#line 45 "varset.m"
+  MR_Word * mercury__varset__param_1,
+#line 45 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 45 "varset.m"
+  MR_Word mercury__varset__param_3);
+
+#line 45 "varset.m"
+MR_bool MR_CALL 
+mercury__varset____Unify____varset_0_0(
+#line 45 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 45 "varset.m"
+  MR_Word mercury__varset__param_2);
+
+#line 693 "varset.m"
+void MR_CALL 
+mercury__varset__copy_var_names_4_p_0(
+#line 693 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 693 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 693 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 693 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 693 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 629 "varset.m"
+void MR_CALL 
+mercury__varset__ensure_unique_names_2_6_p_0(
+#line 629 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 629 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 629 "varset.m"
+  MR_String mercury__varset__param_3,
+#line 629 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 629 "varset.m"
+  MR_Word mercury__varset__param_5,
+#line 629 "varset.m"
+  MR_Word mercury__varset__param_6,
+#line 629 "varset.m"
+  MR_Word * mercury__varset__param_7);
+
+#line 591 "varset.m"
+void MR_CALL 
+mercury__varset__merge_subst_without_names_2_6_p_0(
+#line 591 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 591 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 591 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 591 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 591 "varset.m"
+  MR_Word * mercury__varset__param_5,
+#line 591 "varset.m"
+  MR_Word mercury__varset__param_6,
+#line 591 "varset.m"
+  MR_Word * mercury__varset__param_7);
+
+#line 558 "varset.m"
+void MR_CALL 
+mercury__varset__merge_subst_2_9_p_0(
+#line 558 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 558 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 558 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 558 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 558 "varset.m"
+  MR_Word mercury__varset__param_5,
+#line 558 "varset.m"
+  MR_Word * mercury__varset__param_6,
+#line 558 "varset.m"
+  MR_Word mercury__varset__param_7,
+#line 558 "varset.m"
+  MR_Word * mercury__varset__param_8,
+#line 558 "varset.m"
+  MR_Word mercury__varset__param_9,
+#line 558 "varset.m"
+  MR_Word * mercury__varset__param_10);
+
+#line 529 "varset.m"
+void MR_CALL 
+mercury__varset__merge_renaming_without_names_2_6_p_0(
+#line 529 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 529 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 529 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 529 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 529 "varset.m"
+  MR_Word * mercury__varset__param_5,
+#line 529 "varset.m"
+  MR_Word mercury__varset__param_6,
+#line 529 "varset.m"
+  MR_Word * mercury__varset__param_7);
+
+#line 497 "varset.m"
+void MR_CALL 
+mercury__varset__merge_renaming_2_9_p_0(
+#line 497 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 497 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 497 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 497 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 497 "varset.m"
+  MR_Word mercury__varset__param_5,
+#line 497 "varset.m"
+  MR_Word * mercury__varset__param_6,
+#line 497 "varset.m"
+  MR_Word mercury__varset__param_7,
+#line 497 "varset.m"
+  MR_Word * mercury__varset__param_8,
+#line 497 "varset.m"
+  MR_Word mercury__varset__param_9,
+#line 497 "varset.m"
+  MR_Word * mercury__varset__param_10);
+
+#line 443 "varset.m"
+void MR_CALL 
+mercury__varset__bind_vars_2_3_p_0(
+#line 443 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 443 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 443 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 443 "varset.m"
+  MR_Word * mercury__varset__param_4);
+
+#line 389 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__vars_2_3_f_0(
+#line 389 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 389 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 389 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 389 "varset.m"
+  MR_Word mercury__varset__param_4);
+
+#line 345 "varset.m"
+void MR_CALL 
+mercury__varset__new_vars_2_5_p_0(
+#line 345 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 345 "varset.m"
+  MR_Integer mercury__varset__param_2,
+#line 345 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 345 "varset.m"
+  MR_Word * mercury__varset__param_4,
+#line 345 "varset.m"
+  MR_Word mercury__varset__param_5,
+#line 345 "varset.m"
+  MR_Word * mercury__varset__param_6);
+
+#line 279 "varset.m"
+MR_Integer MR_CALL 
+mercury__varset__num_allocated_1_f_0(
+#line 279 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 279 "varset.m"
+  MR_Word mercury__varset__param_2);
+
+#line 277 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__max_var_1_f_0(
+#line 277 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 277 "varset.m"
+  MR_Word mercury__varset__param_2);
+
+#line 262 "varset.m"
+void MR_CALL 
+mercury__varset__coerce_2_p_0(
+#line 262 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 262 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 262 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 262 "varset.m"
+  MR_Word * mercury__varset__param_4);
+
+#line 261 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__coerce_1_f_0(
+#line 261 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 261 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 261 "varset.m"
+  MR_Word mercury__varset__param_3);
+
+#line 256 "varset.m"
+void MR_CALL 
+mercury__varset__squash_4_p_0(
+#line 256 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 256 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 256 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 256 "varset.m"
+  MR_Word * mercury__varset__param_4,
+#line 256 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 248 "varset.m"
+void MR_CALL 
+mercury__varset__select_3_p_0(
+#line 248 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 248 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 248 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 248 "varset.m"
+  MR_Word * mercury__varset__param_4);
+
+#line 247 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__select_2_f_0(
+#line 247 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 247 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 247 "varset.m"
+  MR_Word mercury__varset__param_3);
+
+#line 241 "varset.m"
+void MR_CALL 
+mercury__varset__ensure_unique_names_4_p_0(
+#line 241 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 241 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 241 "varset.m"
+  MR_String mercury__varset__param_3,
+#line 241 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 241 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 239 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__ensure_unique_names_3_f_0(
+#line 239 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 239 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 239 "varset.m"
+  MR_String mercury__varset__param_3,
+#line 239 "varset.m"
+  MR_Word mercury__varset__param_4);
+
+#line 230 "varset.m"
+void MR_CALL 
+mercury__varset__var_name_list_2_p_0(
+#line 230 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 230 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 230 "varset.m"
+  MR_Word * mercury__varset__param_3);
+
+#line 229 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__var_name_list_1_f_0(
+#line 229 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 229 "varset.m"
+  MR_Word mercury__varset__param_2);
+
+#line 222 "varset.m"
+void MR_CALL 
+mercury__varset__create_name_var_map_2_p_0(
+#line 222 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 222 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 222 "varset.m"
+  MR_Word * mercury__varset__param_3);
+
+#line 221 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__create_name_var_map_1_f_0(
+#line 221 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 221 "varset.m"
+  MR_Word mercury__varset__param_2);
+
+#line 212 "varset.m"
+void MR_CALL 
+mercury__varset__set_bindings_3_p_0(
+#line 212 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 212 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 212 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 212 "varset.m"
+  MR_Word * mercury__varset__param_4);
+
+#line 211 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__set_bindings_2_f_0(
+#line 211 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 211 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 211 "varset.m"
+  MR_Word mercury__varset__param_3);
+
+#line 207 "varset.m"
+void MR_CALL 
+mercury__varset__get_bindings_2_p_0(
+#line 207 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 207 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 207 "varset.m"
+  MR_Word * mercury__varset__param_3);
+
+#line 206 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__get_bindings_1_f_0(
+#line 206 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 206 "varset.m"
+  MR_Word mercury__varset__param_2);
+
+#line 201 "varset.m"
+void MR_CALL 
+mercury__varset__merge_without_names_5_p_0(
+#line 201 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 201 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 201 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 201 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 201 "varset.m"
+  MR_Word * mercury__varset__param_5,
+#line 201 "varset.m"
+  MR_Word * mercury__varset__param_6);
+
+#line 193 "varset.m"
+void MR_CALL 
+mercury__varset__merge_subst_without_names_4_p_0(
+#line 193 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 193 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 193 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 193 "varset.m"
+  MR_Word * mercury__varset__param_4,
+#line 193 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 183 "varset.m"
+void MR_CALL 
+mercury__varset__merge_renaming_without_names_4_p_0(
+#line 183 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 183 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 183 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 183 "varset.m"
+  MR_Word * mercury__varset__param_4,
+#line 183 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 175 "varset.m"
+void MR_CALL 
+mercury__varset__merge_5_p_0(
+#line 175 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 175 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 175 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 175 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 175 "varset.m"
+  MR_Word * mercury__varset__param_5,
+#line 175 "varset.m"
+  MR_Word * mercury__varset__param_6);
+
+#line 167 "varset.m"
+void MR_CALL 
+mercury__varset__merge_subst_4_p_0(
+#line 167 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 167 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 167 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 167 "varset.m"
+  MR_Word * mercury__varset__param_4,
+#line 167 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 158 "varset.m"
+void MR_CALL 
+mercury__varset__merge_renaming_4_p_0(
+#line 158 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 158 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 158 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 158 "varset.m"
+  MR_Word * mercury__varset__param_4,
+#line 158 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 149 "varset.m"
+void MR_CALL 
+mercury__varset__lookup_vars_2_p_0(
+#line 149 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 149 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 149 "varset.m"
+  MR_Word * mercury__varset__param_3);
+
+#line 148 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__lookup_vars_1_f_0(
+#line 148 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 148 "varset.m"
+  MR_Word mercury__varset__param_2);
+
+#line 144 "varset.m"
+MR_bool MR_CALL 
+mercury__varset__search_var_3_p_0(
+#line 144 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 144 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 144 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 144 "varset.m"
+  MR_Word * mercury__varset__param_4);
+
+#line 139 "varset.m"
+void MR_CALL 
+mercury__varset__bind_vars_3_p_0(
+#line 139 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 139 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 139 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 139 "varset.m"
+  MR_Word * mercury__varset__param_4);
+
+#line 138 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__bind_vars_2_f_0(
+#line 138 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 138 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 138 "varset.m"
+  MR_Word mercury__varset__param_3);
+
+#line 133 "varset.m"
+void MR_CALL 
+mercury__varset__bind_var_4_p_0(
+#line 133 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 133 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 133 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 133 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 133 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 132 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__bind_var_3_f_0(
+#line 132 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 132 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 132 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 132 "varset.m"
+  MR_Word mercury__varset__param_4);
+
+#line 127 "varset.m"
+MR_bool MR_CALL 
+mercury__varset__search_name_3_p_0(
+#line 127 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 127 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 127 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 127 "varset.m"
+  MR_String * mercury__varset__param_4);
+
+#line 121 "varset.m"
+void MR_CALL 
+mercury__varset__lookup_name_4_p_0(
+#line 121 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 121 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 121 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 121 "varset.m"
+  MR_String mercury__varset__param_4,
+#line 121 "varset.m"
+  MR_String * mercury__varset__param_5);
+
+#line 120 "varset.m"
+MR_String MR_CALL 
+mercury__varset__lookup_name_3_f_0(
+#line 120 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 120 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 120 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 120 "varset.m"
+  MR_String mercury__varset__param_4);
+
+#line 115 "varset.m"
+void MR_CALL 
+mercury__varset__lookup_name_3_p_0(
+#line 115 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 115 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 115 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 115 "varset.m"
+  MR_String * mercury__varset__param_4);
+
+#line 114 "varset.m"
+MR_String MR_CALL 
+mercury__varset__lookup_name_2_f_0(
+#line 114 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 114 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 114 "varset.m"
+  MR_Word mercury__varset__param_3);
+
+#line 108 "varset.m"
+void MR_CALL 
+mercury__varset__name_var_4_p_0(
+#line 108 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 108 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 108 "varset.m"
+  MR_String mercury__varset__param_3,
+#line 108 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 108 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 107 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__name_var_3_f_0(
+#line 107 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 107 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 107 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 107 "varset.m"
+  MR_String mercury__varset__param_4);
+
+#line 103 "varset.m"
+void MR_CALL 
+mercury__varset__vars_2_p_0(
+#line 103 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 103 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 103 "varset.m"
+  MR_Word * mercury__varset__param_3);
+
+#line 102 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__vars_1_f_0(
+#line 102 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 102 "varset.m"
+  MR_Word mercury__varset__param_2);
+
+#line 97 "varset.m"
+void MR_CALL 
+mercury__varset__delete_sorted_vars_3_p_0(
+#line 97 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 97 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 97 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 97 "varset.m"
+  MR_Word * mercury__varset__param_4);
+
+#line 96 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__delete_sorted_vars_2_f_0(
+#line 96 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 96 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 96 "varset.m"
+  MR_Word mercury__varset__param_3);
+
+#line 89 "varset.m"
+void MR_CALL 
+mercury__varset__delete_vars_3_p_0(
+#line 89 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 89 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 89 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 89 "varset.m"
+  MR_Word * mercury__varset__param_4);
+
+#line 88 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__delete_vars_2_f_0(
+#line 88 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 88 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 88 "varset.m"
+  MR_Word mercury__varset__param_3);
+
+#line 84 "varset.m"
+void MR_CALL 
+mercury__varset__delete_var_3_p_0(
+#line 84 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 84 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 84 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 84 "varset.m"
+  MR_Word * mercury__varset__param_4);
+
+#line 83 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__delete_var_2_f_0(
+#line 83 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 83 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 83 "varset.m"
+  MR_Word mercury__varset__param_3);
+
+#line 78 "varset.m"
+void MR_CALL 
+mercury__varset__new_vars_4_p_0(
+#line 78 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 78 "varset.m"
+  MR_Integer mercury__varset__param_2,
+#line 78 "varset.m"
+  MR_Word * mercury__varset__param_3,
+#line 78 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 78 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 73 "varset.m"
+void MR_CALL 
+mercury__varset__new_maybe_named_var_4_p_0(
+#line 73 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 73 "varset.m"
+  MR_Word mercury__varset__param_2,
+#line 73 "varset.m"
+  MR_Word * mercury__varset__param_3,
+#line 73 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 73 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 68 "varset.m"
+void MR_CALL 
+mercury__varset__new_uniquely_named_var_4_p_0(
+#line 68 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 68 "varset.m"
+  MR_String mercury__varset__param_2,
+#line 68 "varset.m"
+  MR_Word * mercury__varset__param_3,
+#line 68 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 68 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 62 "varset.m"
+void MR_CALL 
+mercury__varset__new_named_var_4_p_0(
+#line 62 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 62 "varset.m"
+  MR_String mercury__varset__param_2,
+#line 62 "varset.m"
+  MR_Word * mercury__varset__param_3,
+#line 62 "varset.m"
+  MR_Word mercury__varset__param_4,
+#line 62 "varset.m"
+  MR_Word * mercury__varset__param_5);
+
+#line 58 "varset.m"
+void MR_CALL 
+mercury__varset__new_var_3_p_0(
+#line 58 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 58 "varset.m"
+  MR_Word * mercury__varset__param_2,
+#line 58 "varset.m"
+  MR_Word mercury__varset__param_3,
+#line 58 "varset.m"
+  MR_Word * mercury__varset__param_4);
+
+#line 54 "varset.m"
+MR_bool MR_CALL 
+mercury__varset__is_empty_1_p_0(
+#line 54 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 54 "varset.m"
+  MR_Word mercury__varset__param_2);
+
+#line 50 "varset.m"
+void MR_CALL 
+mercury__varset__init_1_p_0(
+#line 50 "varset.m"
+  MR_Word mercury__varset__param_1,
+#line 50 "varset.m"
+  MR_Word * mercury__varset__param_2);
+
+#line 49 "varset.m"
+MR_Word MR_CALL 
+mercury__varset__init_0_f_0(
+#line 49 "varset.m"
+  MR_Word mercury__varset__param_1);
+
+void mercury__varset__init(void);
+void mercury__varset__init_type_tables(void);
+void mercury__varset__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_varset */
+
+/* :- end_interface varset. */

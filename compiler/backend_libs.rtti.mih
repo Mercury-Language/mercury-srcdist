@@ -1,0 +1,1464 @@
+/*
+** Automatically generated from `rtti.m'
+** by the Mercury compiler,
+** version rotd-2014-09-01
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module backend_libs.rtti. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_backend_libs__rtti
+#define MR_HEADER_GUARD_backend_libs__rtti
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef BACKEND_LIBS__RTTI_DECL_GUARD
+#define BACKEND_LIBS__RTTI_DECL_GUARD
+#include "backend_libs.mih"
+
+#endif
+
+
+
+
+#line 43 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_base_typeclass_info_0;
+
+#line 46 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_builtin_ctor_0;
+
+#line 49 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_call_or_answer_table_0;
+
+#line 52 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_ctor_rtti_name_0;
+
+#line 55 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_curr_or_prev_table_0;
+
+#line 58 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_arg_info_0;
+
+#line 61 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_functor_0;
+
+#line 64 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_du_rep_0;
+
+#line 67 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_enum_functor_0;
+
+#line 70 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_equality_axioms_0;
+
+#line 73 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_exist_info_0;
+
+#line 76 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_exist_typeinfo_locn_0;
+
+#line 79 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_foreign_enum_functor_0;
+
+#line 82 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_impl_ctor_0;
+
+#line 85 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_is_array_0;
+
+#line 88 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_is_stable_0;
+
+#line 91 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_maybe_reserved_functor_0;
+
+#line 94 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_notag_functor_0;
+
+#line 97 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_proc_tabling_struct_id_0;
+
+#line 100 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_ptag_map_0;
+
+#line 103 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_reserved_functor_0;
+
+#line 106 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_data_0;
+
+#line 109 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_id_0;
+
+#line 112 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_id_maybe_element_0;
+
+#line 115 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_0;
+
+#line 118 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_maybe_pseudo_type_info_or_self_0;
+
+#line 121 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_pseudo_type_info_0;
+
+#line 124 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_ctor_0;
+
+#line 127 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_rtti_type_info_0;
+
+#line 130 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_and_locn_0;
+
+#line 133 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_locn_0;
+
+#line 136 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_sectag_table_0;
+
+#line 139 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_stag_map_0;
+
+#line 142 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_constraint_0;
+
+#line 145 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_decl_0;
+
+#line 148 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_dict_0;
+
+#line 151 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_id_0;
+
+#line 154 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_instance_0;
+
+#line 157 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_method_id_0;
+
+#line 160 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_name_0;
+
+#line 163 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_rtti_name_0;
+
+#line 166 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_tc_type_0;
+
+#line 169 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_data_0;
+
+#line 172 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_details_0;
+
+#line 175 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_type_ctor_flag_0;
+
+#line 178 "backend_libs.rtti.mih.tmp"
+extern const MR_TypeCtorInfo_Struct backend_libs__rtti__backend_libs__rtti__type_ctor_info_var_arity_ctor_id_0;
+
+#line 877 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_111_100_117_108_101_95_113_117_97_108_105_102_121_95_110_97_109_101_95_111_102_95_99_116_111_114_95_114_116_116_105_95_110_97_109_101_95_95_91_49_93_95_48_1_f_0(void);
+
+#line 106 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____var_arity_ctor_id_0_0(
+#line 106 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 106 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 106 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 106 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____var_arity_ctor_id_0_0(
+#line 106 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 106 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 135 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_flag_0_0(
+#line 135 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 135 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 135 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 135 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_flag_0_0(
+#line 135 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 135 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 176 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_details_0_0(
+#line 176 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 176 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 176 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 176 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_details_0_0(
+#line 176 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 176 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 119 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____type_ctor_data_0_0(
+#line 119 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 119 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 119 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 119 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____type_ctor_data_0_0(
+#line 119 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 119 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 545 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____tc_type_0_0(
+#line 545 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 545 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 545 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 545 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_type_0_0(
+#line 545 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 545 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 661 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____tc_rtti_name_0_0(
+#line 661 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 661 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 661 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 661 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_rtti_name_0_0(
+#line 661 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 661 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 512 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____tc_name_0_0(
+#line 512 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 512 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 512 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 512 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_name_0_0(
+#line 512 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 512 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 503 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____tc_method_id_0_0(
+#line 503 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 503 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 503 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 503 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_method_id_0_0(
+#line 503 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 503 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 562 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____tc_instance_0_0(
+#line 562 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 562 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 562 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 562 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_instance_0_0(
+#line 562 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 562 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 531 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____tc_id_0_0(
+#line 531 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 531 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 531 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 531 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_id_0_0(
+#line 531 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 531 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 574 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____tc_dict_0_0(
+#line 574 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 574 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 574 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 574 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_dict_0_0(
+#line 574 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 574 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 538 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____tc_decl_0_0(
+#line 538 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 538 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 538 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 538 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_decl_0_0(
+#line 538 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 538 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 550 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____tc_constraint_0_0(
+#line 550 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 550 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 550 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 550 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____tc_constraint_0_0(
+#line 550 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 550 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 371 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____stag_map_0_0(
+#line 371 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 371 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 371 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 371 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____stag_map_0_0(
+#line 371 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 371 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 373 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____sectag_table_0_0(
+#line 373 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 373 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 373 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 373 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_table_0_0(
+#line 373 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 373 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 383 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____sectag_locn_0_0(
+#line 383 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 383 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 383 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 383 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_locn_0_0(
+#line 383 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 383 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 392 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____sectag_and_locn_0_0(
+#line 392 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 392 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 392 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 392 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____sectag_and_locn_0_0(
+#line 392 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 392 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 54 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_type_info_0_0(
+#line 54 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 54 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 54 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 54 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_type_info_0_0(
+#line 54 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 54 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 97 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_type_ctor_0_0(
+#line 97 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 97 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 97 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 97 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_type_ctor_0_0(
+#line 97 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 97 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 71 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_pseudo_type_info_0_0(
+#line 71 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 71 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 71 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 71 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_pseudo_type_info_0_0(
+#line 71 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 71 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 414 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_or_self_0_0(
+#line 414 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 414 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 414 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 414 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_or_self_0_0(
+#line 414 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 414 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 91 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_maybe_pseudo_type_info_0_0(
+#line 91 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 91 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 91 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 91 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_maybe_pseudo_type_info_0_0(
+#line 91 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 91 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 704 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_id_maybe_element_0_0(
+#line 704 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 704 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 704 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 704 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_id_maybe_element_0_0(
+#line 704 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 704 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 620 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_id_0_0(
+#line 620 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 620 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 620 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 620 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_id_0_0(
+#line 620 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 620 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 588 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____rtti_data_0_0(
+#line 588 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 588 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 588 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 588 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____rtti_data_0_0(
+#line 588 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 588 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 290 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____reserved_functor_0_0(
+#line 290 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 290 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 290 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 290 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____reserved_functor_0_0(
+#line 290 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 290 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 370 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____ptag_map_0_0(
+#line 370 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 370 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 370 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 370 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____ptag_map_0_0(
+#line 370 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 370 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 896 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____proc_tabling_struct_id_0_0(
+#line 896 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 896 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 896 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 896 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____proc_tabling_struct_id_0_0(
+#line 896 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 896 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 263 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____notag_functor_0_0(
+#line 263 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 263 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 263 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 263 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____notag_functor_0_0(
+#line 263 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 263 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 304 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____maybe_reserved_functor_0_0(
+#line 304 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 304 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 304 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 304 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____maybe_reserved_functor_0_0(
+#line 304 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 304 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 455 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____is_stable_0_0(
+#line 455 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 455 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 455 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 455 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____is_stable_0_0(
+#line 455 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 455 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 713 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____is_array_0_0(
+#line 713 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 713 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 713 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 713 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____is_array_0_0(
+#line 713 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 713 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 440 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____impl_ctor_0_0(
+#line 440 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 440 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 440 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 440 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____impl_ctor_0_0(
+#line 440 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 440 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 252 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____foreign_enum_functor_0_0(
+#line 252 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 252 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 252 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 252 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____foreign_enum_functor_0_0(
+#line 252 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 252 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 345 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____exist_typeinfo_locn_0_0(
+#line 345 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 345 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 345 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 345 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____exist_typeinfo_locn_0_0(
+#line 345 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 345 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 331 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____exist_info_0_0(
+#line 331 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 331 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 331 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 331 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____exist_info_0_0(
+#line 331 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 331 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 234 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____equality_axioms_0_0(
+#line 234 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 234 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 234 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 234 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____equality_axioms_0_0(
+#line 234 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 234 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 242 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____enum_functor_0_0(
+#line 242 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 242 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 242 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 242 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____enum_functor_0_0(
+#line 242 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 242 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 317 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____du_rep_0_0(
+#line 317 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 317 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 317 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 317 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_rep_0_0(
+#line 317 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 317 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 276 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____du_functor_0_0(
+#line 276 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 276 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 276 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 276 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_functor_0_0(
+#line 276 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 276 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 401 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____du_arg_info_0_0(
+#line 401 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 401 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 401 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 401 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____du_arg_info_0_0(
+#line 401 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 401 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 892 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____curr_or_prev_table_0_0(
+#line 892 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 892 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 892 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 892 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____curr_or_prev_table_0_0(
+#line 892 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 892 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 624 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____ctor_rtti_name_0_0(
+#line 624 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 624 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 624 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 624 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Index____ctor_rtti_name_0_0(
+#line 624 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 624 "rtti.m"
+  MR_Integer * backend_libs__rtti__param_2);
+
+#line 624 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____ctor_rtti_name_0_0(
+#line 624 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 624 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 888 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____call_or_answer_table_0_0(
+#line 888 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 888 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 888 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 888 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____call_or_answer_table_0_0(
+#line 888 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 888 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 422 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____builtin_ctor_0_0(
+#line 422 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 422 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 422 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 422 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____builtin_ctor_0_0(
+#line 422 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 422 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 467 "rtti.m"
+void MR_CALL 
+backend_libs__rtti____Compare____base_typeclass_info_0_0(
+#line 467 "rtti.m"
+  MR_Word * backend_libs__rtti__param_1,
+#line 467 "rtti.m"
+  MR_Word backend_libs__rtti__param_2,
+#line 467 "rtti.m"
+  MR_Word backend_libs__rtti__param_3);
+
+#line 467 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti____Unify____base_typeclass_info_0_0(
+#line 467 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 467 "rtti.m"
+  MR_Word backend_libs__rtti__param_2);
+
+#line 955 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__table_trie_step_to_c_3_p_0(
+#line 955 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 955 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 955 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 953 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__tabling_id_has_array_type_1_f_0(
+#line 953 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 950 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__tabling_id_java_type_3_p_0(
+#line 950 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 950 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 950 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 947 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__tabling_id_c_type_3_p_0(
+#line 947 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 947 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 947 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 939 "rtti.m"
+MR_String MR_CALL 
+backend_libs__rtti__tabling_info_id_str_1_f_0(
+#line 939 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 883 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti__rtti_id_emits_type_ctor_info_2_p_0(
+#line 883 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 883 "rtti.m"
+  MR_Word * backend_libs__rtti__param_2);
+
+#line 878 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__module_qualify_name_of_tc_rtti_name_1_f_0(
+#line 878 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 877 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__module_qualify_name_of_ctor_rtti_name_1_f_0(
+#line 877 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 876 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__module_qualify_name_of_rtti_id_1_f_0(
+#line 876 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 871 "rtti.m"
+MR_String MR_CALL 
+backend_libs__rtti__encode_tc_instance_type_1_f_0(
+#line 871 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 864 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__tc_rtti_name_csharp_type_3_p_0(
+#line 864 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 864 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 864 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 862 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__ctor_rtti_name_csharp_type_3_p_0(
+#line 862 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 862 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 862 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 861 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__rtti_id_csharp_type_3_p_0(
+#line 861 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 861 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 861 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 859 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_csharp_type_3_p_0(
+#line 859 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 859 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 859 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 854 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__tc_rtti_name_java_type_3_p_0(
+#line 854 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 854 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 854 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 852 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__ctor_rtti_name_java_type_3_p_0(
+#line 852 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 852 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 852 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 851 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__rtti_id_java_type_3_p_0(
+#line 851 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 851 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 851 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 849 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_java_type_3_p_0(
+#line 849 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 849 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 849 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 844 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__tc_rtti_name_c_type_3_p_0(
+#line 844 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 844 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 844 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 842 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__ctor_rtti_name_c_type_3_p_0(
+#line 842 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 842 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 842 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 841 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__rtti_id_c_type_3_p_0(
+#line 841 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 841 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 841 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 839 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_c_type_3_p_0(
+#line 839 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 839 "rtti.m"
+  MR_String * backend_libs__rtti__param_2,
+#line 839 "rtti.m"
+  MR_Word * backend_libs__rtti__param_3);
+
+#line 831 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__pseudo_type_info_would_incl_code_addr_1_f_0(
+#line 831 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 830 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__type_info_would_incl_code_addr_1_f_0(
+#line 830 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 825 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__tc_rtti_name_would_include_code_addr_1_f_0(
+#line 825 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 824 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__ctor_rtti_name_would_include_code_addr_1_f_0(
+#line 824 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 823 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__rtti_id_would_include_code_addr_1_f_0(
+#line 823 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 818 "rtti.m"
+MR_bool MR_CALL 
+backend_libs__rtti__res_addr_is_numeric_1_p_0(
+#line 818 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 813 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__res_addr_rep_1_f_0(
+#line 813 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 809 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__maybe_res_functor_rtti_name_1_f_0(
+#line 809 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 808 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__res_functor_rtti_name_1_f_0(
+#line 808 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 807 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__du_functor_rtti_name_1_f_0(
+#line 807 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 806 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__foreign_enum_functor_rtti_name_1_f_0(
+#line 806 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 805 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__enum_functor_rtti_name_1_f_0(
+#line 805 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 800 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__du_arg_info_width_1_f_0(
+#line 800 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 796 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__du_arg_info_type_1_f_0(
+#line 796 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 792 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__du_arg_info_name_1_f_0(
+#line 792 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 788 "rtti.m"
+MR_Integer MR_CALL 
+backend_libs__rtti__type_ctor_details_num_functors_1_f_0(
+#line 788 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 782 "rtti.m"
+MR_Integer MR_CALL 
+backend_libs__rtti__type_ctor_details_num_ptags_1_f_0(
+#line 782 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 775 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__maybe_pseudo_type_info_or_self_to_rtti_data_1_f_0(
+#line 775 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 769 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__maybe_pseudo_type_info_to_rtti_data_1_f_0(
+#line 769 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 764 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__type_info_to_rtti_data_1_f_0(
+#line 764 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 760 "rtti.m"
+MR_String MR_CALL 
+backend_libs__rtti__pseudo_type_info_to_string_1_f_0(
+#line 760 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 756 "rtti.m"
+MR_String MR_CALL 
+backend_libs__rtti__type_info_to_string_1_f_0(
+#line 756 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 752 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__type_ctor_rep_to_string_2_p_0(
+#line 752 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 752 "rtti.m"
+  MR_String * backend_libs__rtti__param_2);
+
+#line 746 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__sectag_and_locn_to_locn_string_2_p_0(
+#line 746 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 746 "rtti.m"
+  MR_String * backend_libs__rtti__param_2);
+
+#line 742 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__sectag_locn_to_string_2_p_0(
+#line 742 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 742 "rtti.m"
+  MR_String * backend_libs__rtti__param_2);
+
+#line 738 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__pred_or_func_to_string_2_p_0(
+#line 738 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 738 "rtti.m"
+  MR_String * backend_libs__rtti__param_2);
+
+#line 734 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__id_to_c_identifier_2_p_0(
+#line 734 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 734 "rtti.m"
+  MR_String * backend_libs__rtti__param_2);
+
+#line 729 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__tc_rtti_name_is_exported_1_f_0(
+#line 729 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 728 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__ctor_rtti_name_is_exported_1_f_0(
+#line 728 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 727 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__rtti_id_is_exported_1_f_0(
+#line 727 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 722 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__tc_rtti_name_has_array_type_1_f_0(
+#line 722 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 721 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__ctor_rtti_name_has_array_type_1_f_0(
+#line 721 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 720 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__rtti_id_has_array_type_1_f_0(
+#line 720 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 719 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__rtti_id_maybe_element_has_array_type_1_f_0(
+#line 719 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 702 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__var_arity_id_to_rtti_type_ctor_1_f_0(
+#line 702 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 696 "rtti.m"
+void MR_CALL 
+backend_libs__rtti__rtti_data_to_id_2_p_0(
+#line 696 "rtti.m"
+  MR_Word backend_libs__rtti__param_1,
+#line 696 "rtti.m"
+  MR_Word * backend_libs__rtti__param_2);
+
+#line 690 "rtti.m"
+MR_Word MR_CALL 
+backend_libs__rtti__tcd_get_rtti_type_ctor_1_f_0(
+#line 690 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+#line 686 "rtti.m"
+MR_Integer MR_CALL 
+backend_libs__rtti__encode_type_ctor_flags_1_f_0(
+#line 686 "rtti.m"
+  MR_Word backend_libs__rtti__param_1);
+
+void mercury__backend_libs__rtti__init(void);
+void mercury__backend_libs__rtti__init_type_tables(void);
+void mercury__backend_libs__rtti__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_backend_libs.rtti */
+
+/* :- end_interface backend_libs.rtti. */

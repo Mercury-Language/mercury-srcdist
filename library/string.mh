@@ -1,0 +1,69 @@
+/*
+** Automatically generated from `string.m'
+** by the Mercury compiler,
+** version rotd-2014-09-01
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+*/
+#ifndef STRING_MH
+#define STRING_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef STRING_DECL_GUARD
+#define STRING_DECL_GUARD
+#line 4168 "string.m"
+
+#include <ctype.h>
+#include <string.h>
+#include <stdio.h>
+
+#include "mercury_string.h"   /* for MR_allocate_aligned_string*() etc. */
+#include "mercury_tags.h" /* for MR_list_cons*() */
+
+/*
+** The following macro should expand to MR_TRUE if the C grades should 
+** implement string.format using C's sprintf function.
+** Setting it to MR_FALSE will cause string.format to use the Mercury
+** implementation of string formatting in C grades.
+*/
+#define ML_USE_SPRINTF MR_TRUE
+
+
+#line 47 "string.mh.tmp"
+#line 4836 "string.m"
+
+#ifdef MR_USE_GCC_GLOBAL_REGISTERS
+    /*
+    ** GNU C version egcs-1.1.2 crashes with `fixed or forbidden register
+    ** spilled' in grade asm_fast.gc.tr.debug if we write this inline.
+    */
+    extern void MR_set_code_unit(MR_String str, MR_Integer ind, char ch);
+#else
+    #define MR_set_code_unit(str, ind, ch) \
+        ((str)[ind] = (ch))
+#endif
+
+#line 61 "string.mh.tmp"
+
+#endif
+MR_bool ML_string_to_float(MR_String, MR_Float *);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* STRING_MH */

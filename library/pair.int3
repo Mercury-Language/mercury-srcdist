@@ -1,0 +1,6 @@
+:- module pair.
+:- interface.
+:- type pair(T).
+:- type pair(T1, T2).
+:- inst (pair(I)) == pair.pair(I, I).
+:- inst (pair(I1, I2)) == bound(-(I1, I2)).

@@ -1,0 +1,62 @@
+:- module (thread.semaphore).
+:- use_module bool, builtin, io, maybe, private_builtin, require, string.
+:- type thread.semaphore.semaphore.
+:- pragma foreign_type(il, thread.semaphore.semaphore, "class [mercury]mercury.thread.semaphore__csharp_code.mercury_code.ML_Semaphore").
+:- pragma foreign_type(c, thread.semaphore.semaphore, "struct ML_SEMAPHORE_STRUCT *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, thread.semaphore.semaphore, "java.util.concurrent.Semaphore").
+:- pragma foreign_type(csharp, thread.semaphore.semaphore, "thread__semaphore.ML_Semaphore").
+:- pragma foreign_type(erlang, thread.semaphore.semaphore, "").
+:- pragma foreign_import_module("C", (thread.semaphore)).
+:- pragma foreign_import_module("C#", (thread.semaphore)).
+:- pragma foreign_import_module("Java", (thread.semaphore)).
+:- pragma foreign_import_module("IL", (thread.semaphore)).
+:- pragma foreign_import_module("Erlang", (thread.semaphore)).
+:- pragma foreign_import_module("C", thread).
+:- pragma foreign_import_module("C#", thread).
+:- pragma foreign_import_module("Java", thread).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma exceptions(predicate, ((thread.semaphore).init), 3, 0, will_not_throw).
+:- pragma exceptions(function, ((thread.semaphore).init), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.semaphore).wait), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.semaphore).try_wait), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, ((thread.semaphore).signal), 3, 0, will_not_throw).
+:- pragma termination_info((thread.semaphore).init((builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).init((builtin.in)) = (builtin.uo), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).wait((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).try_wait((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info((thread.semaphore).signal((builtin.in), (builtin.di), (builtin.uo)), infinite, cannot_loop).

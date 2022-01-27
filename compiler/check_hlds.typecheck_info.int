@@ -1,0 +1,131 @@
+:- module (check_hlds.typecheck_info).
+:- interface.
+:- import_module bool.
+:- import_module hlds.
+:- import_module io.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.pred_table).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type args_type_assign
+	--->	args_type_assign(((check_hlds.typecheck_info).ata_caller_arg_assign) :: check_hlds.typecheck_info.type_assign, ((check_hlds.typecheck_info).ata_callee_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((check_hlds.typecheck_info).ata_callee_constraints) :: hlds.hlds_data.hlds_constraints).
+:- type args_type_assign_set == list.list(check_hlds.typecheck_info.args_type_assign).
+:- type cons_type_info
+	--->	cons_type_info(((check_hlds.typecheck_info).cti_varset) :: parse_tree.prog_data.tvarset, ((check_hlds.typecheck_info).cti_exit_tvars) :: parse_tree.prog_data.existq_tvars, ((check_hlds.typecheck_info).cti_result_type) :: parse_tree.prog_data.mer_type, ((check_hlds.typecheck_info).cti_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((check_hlds.typecheck_info).cti_constraints) :: hlds.hlds_data.hlds_constraints, ((check_hlds.typecheck_info).cti_source) :: check_hlds.typecheck_info.cons_type_info_source).
+:- type cons_type_info_source
+	--->	source_type(parse_tree.prog_data.type_ctor)
+	;	source_builtin_type(string)
+	;	source_get_field_access(parse_tree.prog_data.type_ctor)
+	;	source_set_field_access(parse_tree.prog_data.type_ctor)
+	;	source_apply(string)
+	;	source_pred(hlds.hlds_pred.pred_id).
+:- type overloaded_symbol
+	--->	overloaded_pred(parse_tree.prog_data.simple_call_id, list.list(hlds.hlds_pred.pred_id))
+	;	overloaded_func(parse_tree.prog_data.cons_id, list.list(check_hlds.typecheck_info.cons_type_info_source)).
+:- type overloaded_symbol_map == map.map(check_hlds.typecheck_info.overloaded_symbol, list.list(parse_tree.prog_data.prog_context)).
+:- type type_assign
+	--->	type_assign(((check_hlds.typecheck_info).ta_var_types) :: parse_tree.prog_data.vartypes, ((check_hlds.typecheck_info).ta_type_varset) :: parse_tree.prog_data.tvarset, ((check_hlds.typecheck_info).ta_head_type_params) :: hlds.hlds_pred.head_type_params, ((check_hlds.typecheck_info).ta_type_bindings) :: parse_tree.prog_data.tsubst, ((check_hlds.typecheck_info).ta_class_constraints) :: hlds.hlds_data.hlds_constraints, ((check_hlds.typecheck_info).ta_constraint_proofs) :: hlds.hlds_data.constraint_proof_map, ((check_hlds.typecheck_info).ta_constraint_map) :: hlds.hlds_data.constraint_map).
+:- type type_assign_set == list.list(check_hlds.typecheck_info.type_assign).
+:- type typecheck_info
+	--->	typecheck_info(((check_hlds.typecheck_info).tc_info_sub_info) :: check_hlds.typecheck_info.typecheck_sub_info, ((check_hlds.typecheck_info).tc_info_module_info) :: hlds.hlds_module.module_info, ((check_hlds.typecheck_info).tc_info_call_id) :: hlds.hlds_pred.call_id, ((check_hlds.typecheck_info).tc_info_arg_num) :: int, ((check_hlds.typecheck_info).tc_info_context) :: parse_tree.prog_data.prog_context, ((check_hlds.typecheck_info).tc_info_unify_context) :: hlds.hlds_goal.unify_context, ((check_hlds.typecheck_info).tc_info_type_assign_set) :: check_hlds.typecheck_info.type_assign_set, ((check_hlds.typecheck_info).tc_info_ambiguity_warn_limit) :: int).
+:- type typecheck_sub_info
+	--->	typecheck_sub_info(((check_hlds.typecheck_info).tc_sub_info_pred_id) :: hlds.hlds_pred.pred_id, ((check_hlds.typecheck_info).tc_sub_info_pred_import_status) :: hlds.hlds_pred.import_status, ((check_hlds.typecheck_info).tc_sub_info_pred_markers) :: hlds.hlds_pred.pred_markers, ((check_hlds.typecheck_info).tc_sub_info_is_field_access_function) :: bool.bool, ((check_hlds.typecheck_info).tc_sub_info_varset) :: parse_tree.prog_data.prog_varset, ((check_hlds.typecheck_info).tc_sub_info_non_overload_errors) :: list.list(parse_tree.error_util.error_spec), ((check_hlds.typecheck_info).tc_sub_info_overload_error) :: maybe.maybe(parse_tree.error_util.error_spec), ((check_hlds.typecheck_info).tc_sub_info_overloaded_symbols) :: check_hlds.typecheck_info.overloaded_symbol_map, ((check_hlds.typecheck_info).tc_sub_info_ambiguity_error_limit) :: int).
+:- func args_type_assign_set_to_pieces(check_hlds.typecheck_info.args_type_assign_set, maybe.maybe(int), parse_tree.prog_data.prog_varset) = list.list(parse_tree.error_util.format_component).
+:- func convert_args_type_assign_set(check_hlds.typecheck_info.args_type_assign_set) = check_hlds.typecheck_info.type_assign_set.
+:- func convert_args_type_assign_set_check_empty_args(check_hlds.typecheck_info.args_type_assign_set) = check_hlds.typecheck_info.type_assign_set.
+:- func get_callee_arg_types(check_hlds.typecheck_info.args_type_assign) = list.list(parse_tree.prog_data.mer_type).
+:- func get_callee_constraints(check_hlds.typecheck_info.args_type_assign) = hlds.hlds_data.hlds_constraints.
+:- func get_caller_arg_assign(check_hlds.typecheck_info.args_type_assign) = check_hlds.typecheck_info.type_assign.
+:- func project_cons_type_info_source(check_hlds.typecheck_info.cons_type_info) = check_hlds.typecheck_info.cons_type_info_source.
+:- pred type_assign_get_constraint_map(check_hlds.typecheck_info.type_assign, hlds.hlds_data.constraint_map).
+:- mode type_assign_get_constraint_map((builtin.in), (builtin.out)) is det.
+:- pred type_assign_get_constraint_proofs(check_hlds.typecheck_info.type_assign, hlds.hlds_data.constraint_proof_map).
+:- mode type_assign_get_constraint_proofs((builtin.in), (builtin.out)) is det.
+:- pred type_assign_get_head_type_params(check_hlds.typecheck_info.type_assign, hlds.hlds_pred.head_type_params).
+:- mode type_assign_get_head_type_params((builtin.in), (builtin.out)) is det.
+:- pred type_assign_get_type_bindings(check_hlds.typecheck_info.type_assign, parse_tree.prog_data.tsubst).
+:- mode type_assign_get_type_bindings((builtin.in), (builtin.out)) is det.
+:- pred type_assign_get_typeclass_constraints(check_hlds.typecheck_info.type_assign, hlds.hlds_data.hlds_constraints).
+:- mode type_assign_get_typeclass_constraints((builtin.in), (builtin.out)) is det.
+:- pred type_assign_get_typevarset(check_hlds.typecheck_info.type_assign, parse_tree.prog_data.tvarset).
+:- mode type_assign_get_typevarset((builtin.in), (builtin.out)) is det.
+:- pred type_assign_get_var_types(check_hlds.typecheck_info.type_assign, parse_tree.prog_data.vartypes).
+:- mode type_assign_get_var_types((builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_constraint_map(hlds.hlds_data.constraint_map, check_hlds.typecheck_info.type_assign, check_hlds.typecheck_info.type_assign).
+:- mode type_assign_set_constraint_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_constraint_proofs(hlds.hlds_data.constraint_proof_map, check_hlds.typecheck_info.type_assign, check_hlds.typecheck_info.type_assign).
+:- mode type_assign_set_constraint_proofs((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_head_type_params(hlds.hlds_pred.head_type_params, check_hlds.typecheck_info.type_assign, check_hlds.typecheck_info.type_assign).
+:- mode type_assign_set_head_type_params((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_reduce_results(parse_tree.prog_data.tsubst, parse_tree.prog_data.tvarset, hlds.hlds_data.hlds_constraints, hlds.hlds_data.constraint_proof_map, hlds.hlds_data.constraint_map, check_hlds.typecheck_info.type_assign, check_hlds.typecheck_info.type_assign).
+:- mode type_assign_set_reduce_results((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func type_assign_set_to_pieces(check_hlds.typecheck_info.type_assign_set, maybe.maybe(int), parse_tree.prog_data.prog_varset) = list.list(parse_tree.error_util.format_component).
+:- pred type_assign_set_type_bindings(parse_tree.prog_data.tsubst, check_hlds.typecheck_info.type_assign, check_hlds.typecheck_info.type_assign).
+:- mode type_assign_set_type_bindings((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_typeclass_constraints(hlds.hlds_data.hlds_constraints, check_hlds.typecheck_info.type_assign, check_hlds.typecheck_info.type_assign).
+:- mode type_assign_set_typeclass_constraints((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_typevarset(parse_tree.prog_data.tvarset, check_hlds.typecheck_info.type_assign, check_hlds.typecheck_info.type_assign).
+:- mode type_assign_set_typevarset((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_assign_set_var_types(parse_tree.prog_data.vartypes, check_hlds.typecheck_info.type_assign, check_hlds.typecheck_info.type_assign).
+:- mode type_assign_set_var_types((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_checkpoint(string, check_hlds.typecheck_info.typecheck_info, io.io, io.io).
+:- mode type_checkpoint((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred typecheck_info_add_error(parse_tree.error_util.error_spec, check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.typecheck_info).
+:- mode typecheck_info_add_error((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_add_overloaded_symbol(check_hlds.typecheck_info.overloaded_symbol, parse_tree.prog_data.prog_context, check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.typecheck_info).
+:- mode typecheck_info_add_overloaded_symbol((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_add_pred_marker(hlds.hlds_pred.marker, check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.typecheck_info).
+:- mode typecheck_info_add_pred_marker((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_all_errors(check_hlds.typecheck_info.typecheck_info, list.list(parse_tree.error_util.error_spec)).
+:- mode typecheck_info_get_all_errors((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_ambiguity_error_limit(check_hlds.typecheck_info.typecheck_info, int).
+:- mode typecheck_info_get_ambiguity_error_limit((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_ambiguity_warn_limit(check_hlds.typecheck_info.typecheck_info, int).
+:- mode typecheck_info_get_ambiguity_warn_limit((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_called_predid(check_hlds.typecheck_info.typecheck_info, hlds.hlds_pred.call_id).
+:- mode typecheck_info_get_called_predid((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_ctors(check_hlds.typecheck_info.typecheck_info, hlds.hlds_data.cons_table).
+:- mode typecheck_info_get_ctors((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_final_info(check_hlds.typecheck_info.typecheck_info, list.list(parse_tree.prog_data.tvar), parse_tree.prog_data.existq_tvars, parse_tree.prog_data.vartypes, parse_tree.prog_data.tvarset, parse_tree.prog_data.existq_tvars, parse_tree.prog_data.vartypes, parse_tree.prog_data.prog_constraints, hlds.hlds_data.constraint_proof_map, hlds.hlds_data.constraint_map, parse_tree.prog_data.tvar_renaming, parse_tree.prog_data.tvar_renaming).
+:- mode typecheck_info_get_final_info((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred typecheck_info_get_is_field_access_function(check_hlds.typecheck_info.typecheck_info, bool.bool).
+:- mode typecheck_info_get_is_field_access_function((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_module_name(check_hlds.typecheck_info.typecheck_info, mdbcomp.prim_data.module_name).
+:- mode typecheck_info_get_module_name((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_overload_error(check_hlds.typecheck_info.typecheck_info, maybe.maybe(parse_tree.error_util.error_spec)).
+:- mode typecheck_info_get_overload_error((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_overloaded_symbols(check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.overloaded_symbol_map).
+:- mode typecheck_info_get_overloaded_symbols((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_pred_import_status(check_hlds.typecheck_info.typecheck_info, hlds.hlds_pred.import_status).
+:- mode typecheck_info_get_pred_import_status((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_pred_markers(check_hlds.typecheck_info.typecheck_info, hlds.hlds_pred.pred_markers).
+:- mode typecheck_info_get_pred_markers((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_predid(check_hlds.typecheck_info.typecheck_info, hlds.hlds_pred.pred_id).
+:- mode typecheck_info_get_predid((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_preds(check_hlds.typecheck_info.typecheck_info, hlds.pred_table.predicate_table).
+:- mode typecheck_info_get_preds((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_types(check_hlds.typecheck_info.typecheck_info, hlds.hlds_data.type_table).
+:- mode typecheck_info_get_types((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_get_varset(check_hlds.typecheck_info.typecheck_info, parse_tree.prog_data.prog_varset).
+:- mode typecheck_info_get_varset((builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_init(hlds.hlds_module.module_info, hlds.hlds_pred.pred_id, bool.bool, parse_tree.prog_data.tvarset, parse_tree.prog_data.prog_varset, parse_tree.prog_data.vartypes, hlds.hlds_pred.head_type_params, hlds.hlds_data.hlds_constraints, hlds.hlds_pred.import_status, hlds.hlds_pred.pred_markers, list.list(parse_tree.error_util.error_spec), check_hlds.typecheck_info.typecheck_info).
+:- mode typecheck_info_init((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_set_called_predid(hlds.hlds_pred.call_id, check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.typecheck_info).
+:- mode typecheck_info_set_called_predid((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_set_overload_error(maybe.maybe(parse_tree.error_util.error_spec), check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.typecheck_info).
+:- mode typecheck_info_set_overload_error((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred typecheck_info_set_overloaded_symbols(check_hlds.typecheck_info.overloaded_symbol_map, check_hlds.typecheck_info.typecheck_info, check_hlds.typecheck_info.typecheck_info).
+:- mode typecheck_info_set_overloaded_symbols((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred write_args_type_assign_set(check_hlds.typecheck_info.args_type_assign_set, parse_tree.prog_data.prog_varset, io.io, io.io).
+:- mode write_args_type_assign_set((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_type_assign_set(check_hlds.typecheck_info.type_assign_set, parse_tree.prog_data.prog_varset, io.io, io.io).
+:- mode write_type_assign_set((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

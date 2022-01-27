@@ -1,0 +1,17 @@
+:- module ((hlds.make_hlds).make_hlds_warn).
+:- interface.
+:- import_module list.
+:- import_module pair.
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.quantification).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- pred check_promise_ex_decl(parse_tree.prog_data.prog_vars, parse_tree.prog_data.promise_type, parse_tree.prog_item.goal, parse_tree.prog_data.prog_context, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode check_promise_ex_decl((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred warn_overlap(list.list(hlds.quantification.quant_warning), parse_tree.prog_data.prog_varset, parse_tree.prog_data.simple_call_id, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode warn_overlap((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred warn_singletons(hlds.hlds_module.module_info, parse_tree.prog_data.simple_call_id, parse_tree.prog_data.prog_varset, hlds.hlds_goal.hlds_goal, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode warn_singletons((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred warn_singletons_in_pragma_foreign_proc(hlds.hlds_module.module_info, parse_tree.prog_data.pragma_foreign_proc_impl, libs.globals.foreign_language, list.list(maybe.maybe(pair.pair(string, parse_tree.prog_data.mer_mode))), parse_tree.prog_data.prog_context, parse_tree.prog_data.simple_call_id, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec)).
+:- mode warn_singletons_in_pragma_foreign_proc((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.

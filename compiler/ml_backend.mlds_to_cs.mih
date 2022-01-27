@@ -1,0 +1,86 @@
+/*
+** Automatically generated from `mlds_to_cs.m'
+** by the Mercury compiler,
+** version rotd-2014-09-01
+** configured for x86_64-apple-darwin13.3.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.mlds_to_cs. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_cs
+#define MR_HEADER_GUARD_ml_backend__mlds_to_cs
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_CS_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_CS_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+#line 43 "ml_backend.mlds_to_cs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_cs__ml_backend__mlds_to_cs__type_ctor_info_code_addr_map_0;
+
+#line 46 "ml_backend.mlds_to_cs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_cs__ml_backend__mlds_to_cs__type_ctor_info_csharp_out_info_0;
+
+#line 49 "ml_backend.mlds_to_cs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_cs__ml_backend__mlds_to_cs__type_ctor_info_exit_method_0;
+
+#line 52 "ml_backend.mlds_to_cs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_cs__ml_backend__mlds_to_cs__type_ctor_info_exit_methods_0;
+
+#line 55 "ml_backend.mlds_to_cs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_cs__ml_backend__mlds_to_cs__type_ctor_info_func_info_0;
+
+#line 58 "ml_backend.mlds_to_cs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_cs__ml_backend__mlds_to_cs__type_ctor_info_indent_0;
+
+#line 61 "ml_backend.mlds_to_cs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_cs__ml_backend__mlds_to_cs__type_ctor_info_output_aux_0;
+
+#line 64 "ml_backend.mlds_to_cs.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_cs__ml_backend__mlds_to_cs__type_ctor_info_output_generics_0;
+
+#line 40 "mlds_to_cs.m"
+void MR_CALL 
+ml_backend__mlds_to_cs__output_csharp_mlds_5_p_0(
+#line 40 "mlds_to_cs.m"
+  MR_Word ml_backend__mlds_to_cs__param_1,
+#line 40 "mlds_to_cs.m"
+  MR_Word ml_backend__mlds_to_cs__param_2,
+#line 40 "mlds_to_cs.m"
+  MR_Word * ml_backend__mlds_to_cs__param_3);
+
+void mercury__ml_backend__mlds_to_cs__init(void);
+void mercury__ml_backend__mlds_to_cs__init_type_tables(void);
+void mercury__ml_backend__mlds_to_cs__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.mlds_to_cs */
+
+/* :- end_interface ml_backend.mlds_to_cs. */

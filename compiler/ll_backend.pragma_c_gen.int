@@ -1,0 +1,15 @@
+:- module (ll_backend.pragma_c_gen).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_pred).
+:- import_module (ll_backend.code_info).
+:- import_module (ll_backend.llds).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- func foreign_proc_struct_name(mdbcomp.prim_data.module_name, string, int, hlds.hlds_pred.proc_id) = string.
+:- func foreign_proc_succ_ind_name = string.
+:- pred generate_foreign_proc_code(hlds.code_model.code_model, parse_tree.prog_data.pragma_foreign_proc_attributes, hlds.hlds_pred.pred_id, hlds.hlds_pred.proc_id, list.list(hlds.hlds_goal.foreign_arg), list.list(hlds.hlds_goal.foreign_arg), maybe.maybe(parse_tree.prog_data.trace_expr(parse_tree.prog_data.trace_runtime)), parse_tree.prog_data.pragma_foreign_proc_impl, hlds.hlds_goal.hlds_goal_info, ll_backend.llds.llds_code, ll_backend.code_info.code_info, ll_backend.code_info.code_info).
+:- mode generate_foreign_proc_code((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
