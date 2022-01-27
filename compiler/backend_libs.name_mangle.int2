@@ -1,0 +1,5 @@
+:- module (backend_libs.name_mangle).
+:- interface.
+:- type maybe_add_label_prefix
+    --->    do_not_add_label_prefix 
+    ;       add_label_prefix .

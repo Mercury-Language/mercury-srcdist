@@ -1,0 +1,53 @@
+// Automatically generated from `file_names.m'
+// by the Mercury compiler,
+// version rotd-2022-01-14
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef PARSE_TREE__FILE_NAMES_MH
+#define PARSE_TREE__FILE_NAMES_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef PARSE_TREE__FILE_NAMES_DECL_GUARD
+#define PARSE_TREE__FILE_NAMES_DECL_GUARD
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word parse_tree__file_names__mutable_variable_translations;
+#else
+    extern MR_Word parse_tree__file_names__mutable_variable_translations;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock parse_tree__file_names__mutable_variable_translations_lock;
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word parse_tree__file_names__mutable_variable_mkdirs;
+#else
+    extern MR_Word parse_tree__file_names__mutable_variable_mkdirs;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock parse_tree__file_names__mutable_variable_mkdirs_lock;
+#endif
+
+
+#endif
+void parse_tree__file_names__user_init_pred_120_0(void);
+void parse_tree__file_names__user_init_pred_117_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* PARSE_TREE__FILE_NAMES_MH */

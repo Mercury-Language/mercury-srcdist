@@ -1,0 +1,287 @@
+/*
+** Automatically generated from `make_goal.m'
+** by the Mercury compiler,
+** version rotd-2022-01-14
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_goal.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__make_goal
+#define MR_HEADER_GUARD_hlds__make_goal
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_GOAL_DECL_GUARD
+#define HLDS__MAKE_GOAL_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+hlds__make_goal__construct_functor_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_goal__construct_tuple_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_goal__create_atomic_complicated_unification_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+hlds__make_goal__create_pure_atomic_complicated_unification_6_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__make_goal__deconstruct_functor_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_goal__deconstruct_tuple_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_goal__make_char_const_construction_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Char param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_goal__make_char_const_construction_alloc_8_p_0(
+  MR_Char param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__make_goal__make_char_const_construction_alloc_in_proc_6_p_0(
+  MR_Char param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__make_goal__make_complicated_unify_assign_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_goal__make_complicated_unify_assigns_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+hlds__make_goal__make_const_construction_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_goal__make_const_construction_alloc_9_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7,
+  MR_Word param_8,
+  MR_Word * param_9);
+
+void MR_CALL 
+hlds__make_goal__make_const_construction_alloc_in_proc_7_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4,
+  MR_Word * param_5,
+  MR_Word param_6,
+  MR_Word * param_7);
+
+void MR_CALL 
+hlds__make_goal__make_float_const_construction_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Float param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_goal__make_float_const_construction_alloc_8_p_0(
+  MR_Float param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__make_goal__make_float_const_construction_alloc_in_proc_6_p_0(
+  MR_Float param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__make_goal__make_int_const_construction_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_goal__make_int_const_construction_alloc_8_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__make_goal__make_int_const_construction_alloc_in_proc_6_p_0(
+  MR_Integer param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+void MR_CALL 
+hlds__make_goal__make_simple_assign_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__make_goal__make_simple_test_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__make_goal__make_string_const_construction_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_String param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+hlds__make_goal__make_string_const_construction_alloc_8_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6,
+  MR_Word param_7,
+  MR_Word * param_8);
+
+void MR_CALL 
+hlds__make_goal__make_string_const_construction_alloc_in_proc_6_p_0(
+  MR_String param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word param_5,
+  MR_Word * param_6);
+
+MR_Word MR_CALL 
+hlds__make_goal__fail_goal_0_f_0(void);
+
+MR_Word MR_CALL 
+hlds__make_goal__fail_goal_expr_0_f_0(void);
+
+MR_Word MR_CALL 
+hlds__make_goal__fail_goal_info_0_f_0(void);
+
+MR_Word MR_CALL 
+hlds__make_goal__fail_goal_with_context_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__make_goal__true_goal_0_f_0(void);
+
+MR_Word MR_CALL 
+hlds__make_goal__true_goal_expr_0_f_0(void);
+
+MR_Word MR_CALL 
+hlds__make_goal__true_goal_with_context_1_f_0(
+  MR_Word param_1);
+
+void mercury__hlds__make_goal__init(void);
+void mercury__hlds__make_goal__init_type_tables(void);
+void mercury__hlds__make_goal__init_debugger(void);
+const char *mercury__hlds__make_goal__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.make_goal
+
+// :- end_interface hlds.make_goal.
