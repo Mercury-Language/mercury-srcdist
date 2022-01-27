@@ -1,0 +1,128 @@
+/*
+** Automatically generated from `hlds_out_goal.m'
+** by the Mercury compiler,
+** version DEV
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.hlds_out.hlds_out_goal. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_out__hlds_out_goal
+#define MR_HEADER_GUARD_hlds__hlds_out__hlds_out_goal
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_OUT__HLDS_OUT_GOAL_DECL_GUARD
+#define HLDS__HLDS_OUT__HLDS_OUT_GOAL_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.hlds_out.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__do_write_goal_10_p_0(
+  MR_Word hlds__hlds_out__hlds_out_goal__param_1,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_2,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_3,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_4,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_5,
+  MR_Integer hlds__hlds_out__hlds_out_goal__param_6,
+  MR_String hlds__hlds_out__hlds_out_goal__param_7,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_8);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__dump_goal_5_p_0(
+  MR_Word hlds__hlds_out__hlds_out_goal__param_1,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_2,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_3);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__project_cons_name_and_tag_3_p_0(
+  MR_Word hlds__hlds_out__hlds_out_goal__param_1,
+  MR_String * hlds__hlds_out__hlds_out_goal__param_2,
+  MR_Word * hlds__hlds_out__hlds_out_goal__param_3);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__write_goal_9_p_0(
+  MR_Word hlds__hlds_out__hlds_out_goal__param_1,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_2,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_3,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_4,
+  MR_Integer hlds__hlds_out__hlds_out_goal__param_5,
+  MR_String hlds__hlds_out__hlds_out_goal__param_6,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_7);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__write_goal_list_10_p_0(
+  MR_Word hlds__hlds_out__hlds_out_goal__param_1,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_2,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_3,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_4,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_5,
+  MR_Integer hlds__hlds_out__hlds_out_goal__param_6,
+  MR_String hlds__hlds_out__hlds_out_goal__param_7,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_8);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__write_unify_rhs_9_p_0(
+  MR_Word hlds__hlds_out__hlds_out_goal__param_1,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_2,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_3,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_4,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_5,
+  MR_Integer hlds__hlds_out__hlds_out_goal__param_6,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_7);
+
+void MR_CALL 
+hlds__hlds_out__hlds_out_goal__write_var_to_abs_locns_6_p_0(
+  MR_Word hlds__hlds_out__hlds_out_goal__param_1,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_2,
+  MR_Integer hlds__hlds_out__hlds_out_goal__param_3,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_4);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_goal__case_comment_3_f_0(
+  MR_String hlds__hlds_out__hlds_out_goal__param_1,
+  MR_String hlds__hlds_out__hlds_out_goal__param_2,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_3);
+
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_goal__unify_rhs_to_string_4_f_0(
+  MR_Word hlds__hlds_out__hlds_out_goal__param_1,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_2,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_3,
+  MR_Word hlds__hlds_out__hlds_out_goal__param_4);
+
+void mercury__hlds__hlds_out__hlds_out_goal__init(void);
+void mercury__hlds__hlds_out__hlds_out_goal__init_type_tables(void);
+void mercury__hlds__hlds_out__hlds_out_goal__init_debugger(void);
+const char *mercury__hlds__hlds_out__hlds_out_goal__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.hlds_out.hlds_out_goal */
+
+/* :- end_interface hlds.hlds_out.hlds_out_goal. */
