@@ -1,0 +1,14 @@
+:- module (ml_backend.java_util).
+:- interface.
+:- import_module backend_libs.
+:- import_module (backend_libs.builtin_ops).
+:- pred java_binary_infix_op(backend_libs.builtin_ops.binary_op, string).
+:- mode java_binary_infix_op((builtin.in), (builtin.out)) is semidet.
+:- pred java_float_compare_op(backend_libs.builtin_ops.binary_op, string).
+:- mode java_float_compare_op((builtin.in), (builtin.out)) is semidet.
+:- pred java_float_op(backend_libs.builtin_ops.binary_op, string).
+:- mode java_float_op((builtin.in), (builtin.out)) is semidet.
+:- pred java_string_compare_op(backend_libs.builtin_ops.binary_op, string).
+:- mode java_string_compare_op((builtin.in), (builtin.out)) is semidet.
+:- pred java_unary_prefix_op(backend_libs.builtin_ops.unary_op, string).
+:- mode java_unary_prefix_op((builtin.in), (builtin.out)) is det.

@@ -1,0 +1,22 @@
+:- module (parse_tree.parse_tree_out_clause).
+:- interface.
+:- import_module io.
+:- import_module mdbcomp.
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.parse_tree_out_info).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- pred mercury_output_goal(parse_tree.prog_data.prog_varset, int, parse_tree.prog_item.goal, io.io, io.io).
+:- mode mercury_output_goal((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_item_clause(parse_tree.parse_tree_out_info.merc_out_info, parse_tree.prog_item.item_clause_info, io.io, io.io).
+:- mode mercury_output_item_clause((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_trace_compiletime(parse_tree.prog_data.trace_compiletime, io.io, io.io).
+:- mode mercury_output_trace_compiletime((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_trace_expr(pred(T, io.io, io.io), parse_tree.prog_data.trace_expr(T), io.io, io.io).
+:- mode mercury_output_trace_expr(builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_trace_mutable_var(parse_tree.prog_data.prog_varset, parse_tree.prog_data.var_name_print, parse_tree.prog_data.trace_mutable_var, io.io, io.io).
+:- mode mercury_output_trace_mutable_var((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred mercury_output_trace_runtime(parse_tree.prog_data.trace_runtime, io.io, io.io).
+:- mode mercury_output_trace_runtime((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred output_instance_method_clause(mdbcomp.sym_name.sym_name, parse_tree.prog_item.item_clause_info, io.io, io.io).
+:- mode output_instance_method_clause((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

@@ -1,0 +1,231 @@
+/*
+** Automatically generated from `inst_test.m'
+** by the Mercury compiler,
+** version rotd-2015-11-30
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.inst_test. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__inst_test
+#define MR_HEADER_GUARD_check_hlds__inst_test
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__INST_TEST_DECL_GUARD
+#define CHECK_HLDS__INST_TEST_DECL_GUARD
+#include "check_hlds.mih"
+
+typedef struct {
+    MR_Word     iig_inst_addr;
+    MR_Word     iig_is_ground;
+} InstIsGroundCacheEntry;
+
+#define INST_IS_GROUND_CACHE_SIZE 1307
+
+/*
+** Every entry should be implicitly initialized to zeros. Since zero is
+** not a valid address for an inst, uninitialized entries cannot be mistaken
+** for filled-in entries.
+*/
+
+static  InstIsGroundCacheEntry
+                inst_is_ground_cache[INST_IS_GROUND_CACHE_SIZE];
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_test__check_hlds__inst_test__type_ctor_info_inst_names_0;
+
+MR_bool MR_CALL 
+check_hlds__inst_test__bound_inst_list_is_free_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__bound_inst_list_is_mostly_unique_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__bound_inst_list_is_not_fully_unique_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__bound_inst_list_is_not_partly_unique_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__bound_inst_list_is_unique_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_contains_inst_name_3_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2,
+  MR_Word check_hlds__inst_test__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_is_any_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_is_bound_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_is_bound_to_functors_3_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2,
+  MR_Word * check_hlds__inst_test__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_is_clobbered_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_is_free_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_is_ground_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_is_ground_or_any_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_is_mostly_unique_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_is_not_fully_unique_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_is_not_partly_unique_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_is_unique_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_list_is_free_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_list_is_ground_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_list_is_ground_or_any_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_list_is_ground_or_any_or_dead_3_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2,
+  MR_Word check_hlds__inst_test__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_list_is_ground_or_dead_3_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2,
+  MR_Word check_hlds__inst_test__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_list_is_mostly_unique_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_list_is_not_fully_unique_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_list_is_not_partly_unique_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_list_is_unique_2_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_results_bound_inst_list_is_ground_3_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2,
+  MR_Word check_hlds__inst_test__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_results_bound_inst_list_is_ground_mt_4_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2,
+  MR_Word check_hlds__inst_test__param_3,
+  MR_Word check_hlds__inst_test__param_4);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__inst_results_bound_inst_list_is_ground_or_any_3_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2,
+  MR_Word check_hlds__inst_test__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_test__maybe_any_to_bound_5_p_0(
+  MR_Word check_hlds__inst_test__param_1,
+  MR_Word check_hlds__inst_test__param_2,
+  MR_Word check_hlds__inst_test__param_3,
+  MR_Word check_hlds__inst_test__param_4,
+  MR_Word * check_hlds__inst_test__param_5);
+
+void mercury__check_hlds__inst_test__init(void);
+void mercury__check_hlds__inst_test__init_type_tables(void);
+void mercury__check_hlds__inst_test__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.inst_test */
+
+/* :- end_interface check_hlds.inst_test. */

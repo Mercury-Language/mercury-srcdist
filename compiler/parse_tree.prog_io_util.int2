@@ -1,0 +1,24 @@
+:- module (parse_tree.prog_io_util).
+:- interface.
+:- import_module cord.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module pair.
+:- import_module term.
+:- import_module varset.
+:- import_module (mdbcomp.prim_data).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.maybe_error).
+:- import_module (parse_tree.prog_data).
+:- type allow_constrained_inst_var
+    --->    allow_constrained_inst_var 
+    ;       no_allow_constrained_inst_var .
+:- type maybe_functor == parse_tree.prog_io_util.maybe_functor(term.generic).
+:- type maybe_functor(T) == parse_tree.maybe_error.maybe2(mdbcomp.sym_name.sym_name, list.list(term.term(T))).
+:- type maybe_pred_or_func(T) == parse_tree.maybe_error.maybe2(mdbcomp.sym_name.sym_name, pair.pair(list.list(T), maybe.maybe(T))).
+:- type parser(T) == pred(term.term, parse_tree.maybe_error.maybe1(T)).
+:- type var2pvar == map.map(term.var, parse_tree.prog_data.prog_var).
+:- type var2tvar == map.map(term.var, parse_tree.prog_data.tvar).
+:- mode (parser) == (pred((builtin.in), (builtin.out)) is det).

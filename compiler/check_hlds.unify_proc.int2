@@ -1,0 +1,19 @@
+:- module (check_hlds.unify_proc).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module queue.
+:- import_module (hlds.hlds_clauses).
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- type proc_requests.
+:- type req_queue == queue.queue(hlds.hlds_pred.pred_proc_id).
+:- type unify_proc_id
+    --->    unify_proc_id(parse_tree.prog_data.type_ctor, hlds.hlds_goal.uni_mode).

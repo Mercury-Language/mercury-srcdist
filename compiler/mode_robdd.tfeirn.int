@@ -1,0 +1,100 @@
+:- module (mode_robdd.tfeirn).
+:- interface.
+:- import_module bool.
+:- import_module check_hlds.
+:- import_module robdd.
+:- import_module term.
+:- import_module (check_hlds.mode_constraint_robdd).
+:- type tfeirn == mode_robdd.tfeirn.tfeirn(term.generic).
+:- type tfeirn(T).
+:- type tfeirn(T)
+    --->    mode_robdd(((mode_robdd.tfeirn).true_vars) :: robdd.vars(T), ((mode_robdd.tfeirn).false_vars) :: robdd.vars(T), ((mode_robdd.tfeirn).equiv_vars) :: robdd.equiv_vars(T), ((mode_robdd.tfeirn).imp_vars) :: robdd.imp_vars(T), ((mode_robdd.tfeirn).robdd) :: robdd.robdd(T), ((mode_robdd.tfeirn).normalised) :: bool.bool).
+:- inst (norm_tfeirn) == bound(mode_robdd(ground, ground, ground, ground, ground, bound(yes))).
+:- inst (tfeirn) == ground.
+:- mode (di_tfeirn) == (builtin.in).
+:- mode (ni_tfeirn) == builtin.in(((mode_robdd.tfeirn).norm_tfeirn)).
+:- mode (no_tfeirn) == builtin.out(((mode_robdd.tfeirn).norm_tfeirn)).
+:- mode (uo_tfeirn) == (builtin.out).
+:- func *(mode_robdd.tfeirn.tfeirn(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- func +(mode_robdd.tfeirn.tfeirn(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- func at_most_one_of(robdd.vars(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode at_most_one_of((builtin.in), ((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).uo_tfeirn) is det.
+:- func conj_not_vars(robdd.vars(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode conj_not_vars((builtin.in), ((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).uo_tfeirn) is det.
+:- func conj_vars(robdd.vars(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode conj_vars((builtin.in), ((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).uo_tfeirn) is det.
+:- func disj_vars(robdd.vars(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode disj_vars((builtin.in), ((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).uo_tfeirn) is det.
+:- func disj_vars_eq(robdd.vars(T), term.var(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode disj_vars_eq((builtin.in), (builtin.in), ((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).uo_tfeirn) is det.
+:- func ensure_normalised(mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode ensure_normalised(((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).no_tfeirn) is det.
+:- func eq_vars(term.var(T), term.var(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode eq_vars((builtin.in), (builtin.in), ((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).uo_tfeirn) is det.
+:- func imp_vars(term.var(T), term.var(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode imp_vars((builtin.in), (builtin.in), ((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).uo_tfeirn) is det.
+:- func io_constraint(term.var(T), term.var(T), term.var(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode io_constraint((builtin.in), (builtin.in), (builtin.in), ((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).uo_tfeirn) is det.
+:- pred known_vars(mode_robdd.tfeirn.tfeirn(T), robdd.vars(T), robdd.vars(T)).
+:- mode known_vars(((mode_robdd.tfeirn).ni_tfeirn), (builtin.out), (builtin.out)) is det.
+:- pred labelling(robdd.vars(T), mode_robdd.tfeirn.tfeirn(T), robdd.vars(T), robdd.vars(T)).
+:- mode labelling((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is nondet.
+:- pred minimal_model(robdd.vars(T), mode_robdd.tfeirn.tfeirn(T), robdd.vars(T), robdd.vars(T)).
+:- mode minimal_model((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is nondet.
+:- func neq_vars(term.var(T), term.var(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode neq_vars((builtin.in), (builtin.in), ((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).uo_tfeirn) is det.
+:- func not_both(term.var(T), term.var(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode not_both((builtin.in), (builtin.in), ((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).uo_tfeirn) is det.
+:- func not_var(term.var(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode not_var((builtin.in), builtin.in(((mode_robdd.tfeirn).tfeirn))) = builtin.out(((mode_robdd.tfeirn).tfeirn)) is det.
+:- func one = mode_robdd.tfeirn.tfeirn(T).
+:- mode one = ((mode_robdd.tfeirn).no_tfeirn) is det.
+:- func restrict(term.var(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode restrict((builtin.in), ((mode_robdd.tfeirn).ni_tfeirn)) = ((mode_robdd.tfeirn).no_tfeirn) is det.
+:- func restrict_filter((pred term.var(T)), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode restrict_filter((pred((builtin.in)) is semidet), ((mode_robdd.tfeirn).ni_tfeirn)) = ((mode_robdd.tfeirn).no_tfeirn) is det.
+:- func restrict_threshold(term.var(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode restrict_threshold((builtin.in), ((mode_robdd.tfeirn).ni_tfeirn)) = ((mode_robdd.tfeirn).no_tfeirn) is det.
+:- func robdd(mode_robdd.tfeirn.tfeirn(T)) = robdd.robdd(T).
+:- func robdd_to_mode_robdd(robdd.robdd(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- func to_robdd(mode_robdd.tfeirn.tfeirn(T)) = robdd.robdd(T).
+:- func var(term.var(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode var((builtin.in), builtin.in(((mode_robdd.tfeirn).tfeirn))) = builtin.out(((mode_robdd.tfeirn).tfeirn)) is det.
+:- pred var_entailed(mode_robdd.tfeirn.tfeirn(T), term.var(T)).
+:- mode var_entailed(((mode_robdd.tfeirn).ni_tfeirn), (builtin.in)) is semidet.
+:- func var_restrict_false(term.var(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode var_restrict_false((builtin.in), ((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).uo_tfeirn) is det.
+:- func var_restrict_true(term.var(T), mode_robdd.tfeirn.tfeirn(T)) = mode_robdd.tfeirn.tfeirn(T).
+:- mode var_restrict_true((builtin.in), ((mode_robdd.tfeirn).di_tfeirn)) = ((mode_robdd.tfeirn).uo_tfeirn) is det.
+:- func vars_disentailed(mode_robdd.tfeirn.tfeirn(T)) = robdd.vars_entailed_result(T).
+:- mode vars_disentailed(((mode_robdd.tfeirn).ni_tfeirn)) = (builtin.out) is det.
+:- func vars_entailed(mode_robdd.tfeirn.tfeirn(T)) = robdd.vars_entailed_result(T).
+:- mode vars_entailed(((mode_robdd.tfeirn).ni_tfeirn)) = (builtin.out) is det.
+:- func zero = mode_robdd.tfeirn.tfeirn(T).
+:- mode zero = ((mode_robdd.tfeirn).no_tfeirn) is det.
+:- pragma type_spec(((mode_robdd.tfeirn).(*))/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__*__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).(+))/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__+__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).at_most_one_of)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__at_most_one_of__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).conj_not_vars)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__conj_not_vars__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).conj_vars)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__conj_vars__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).disj_vars)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__disj_vars__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).disj_vars_eq)/3, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__disj_vars_eq__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).ensure_normalised)/1, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__ensure_normalised__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).eq_vars)/3, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__eq_vars__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).imp_vars)/3, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__imp_vars__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).io_constraint)/4, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__io_constraint__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).known_vars)/3, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__known_vars__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).neq_vars)/3, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__neq_vars__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).not_both)/3, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__not_both__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).not_var)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__not_var__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).one)/0, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__one__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).restrict)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__restrict__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).restrict_filter)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__restrict_filter__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).restrict_threshold)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__restrict_threshold__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).var)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__var__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).var_entailed)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__var_entailed__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).var_restrict_false)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__var_restrict_false__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).var_restrict_true)/2, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__var_restrict_true__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).vars_disentailed)/1, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__vars_disentailed__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).vars_entailed)/1, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__vars_entailed__[T = mc_type]')).
+:- pragma type_spec(((mode_robdd.tfeirn).zero)/0, (T = check_hlds.mode_constraint_robdd.mc_type), ((mode_robdd.tfeirn).'TypeSpecOf__pred_or_func__zero__[T = mc_type]')).

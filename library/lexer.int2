@@ -1,0 +1,38 @@
+:- module lexer.
+:- interface.
+:- import_module char.
+:- import_module integer.
+:- import_module io.
+:- type integer_base
+    --->    base_2 
+    ;       base_8 
+    ;       base_10 
+    ;       base_16 .
+:- type offset == int.
+:- type token
+    --->    name(string)
+    ;       variable(string)
+    ;       integer(int)
+    ;       big_integer(lexer.integer_base, integer.integer)
+    ;       float(float)
+    ;       string(string)
+    ;       implementation_defined(string)
+    ;       open 
+    ;       open_ct 
+    ;       close 
+    ;       open_list 
+    ;       close_list 
+    ;       open_curly 
+    ;       close_curly 
+    ;       ht_sep 
+    ;       comma 
+    ;       end 
+    ;       junk(char.char)
+    ;       error(string)
+    ;       io_error(io.error)
+    ;       eof 
+    ;       integer_dot(int).
+:- type token_context == int.
+:- type token_list
+    --->    token_cons(lexer.token, lexer.token_context, lexer.token_list)
+    ;       token_nil .

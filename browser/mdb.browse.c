@@ -1,0 +1,11312 @@
+/*
+** Automatically generated from `browse.m'
+** by the Mercury compiler,
+** version rotd-2015-11-30
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdb.browse. */
+/* :- implementation. */
+
+/*
+INIT mercury__mdb__browse__init
+ENDINIT
+*/
+
+#include "mdb.browse.mih"
+#include "mdb.browse.mh"
+
+
+#include "mdb.mih"
+#include "mdbcomp.mih"
+#include "mdb.browser_info.mih"
+#include "mdb.browser_term.mih"
+#include "mdb.frame.mih"
+#include "mdb.parse.mih"
+#include "mdb.sized_pretty.mih"
+#include "mdb.term_rep.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "deconstruct.mih"
+#include "enum.mih"
+#include "getopt.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "term_io.mih"
+#include "term_to_xml.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "stream.string_writer.mih"
+#include "string.format.mih"
+#include "string.parse_util.mih"
+
+
+
+
+#line 90 "mdb.browse.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdb__browse__pair__pti_pair_2__plain_mdb__parse__type_ctor_info_format_option_0__plain_getopt__type_ctor_info_option_data_0;
+
+#line 93 "mdb.browse.c"
+static const MR_PseudoTypeInfo mdb__browse__mdb__browse__field_types_deref_result_1_0[1];
+
+#line 96 "mdb.browse.c"
+static const MR_DuFunctorDesc mdb__browse__mdb__browse__du_functor_desc_deref_result_1_0;
+
+#line 99 "mdb.browse.c"
+static const MR_FA_TypeInfo_Struct1 mdb__browse__list__ti_list_1mdb__browser_info__type_ctor_info_down_dir_0;
+
+#line 102 "mdb.browse.c"
+static const MR_PseudoTypeInfo mdb__browse__mdb__browse__field_types_deref_result_1_1[2];
+
+#line 105 "mdb.browse.c"
+static const MR_DuFunctorDesc mdb__browse__mdb__browse__du_functor_desc_deref_result_1_1;
+
+#line 108 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_stag_ordered_deref_result_1_0[1];
+
+#line 111 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_stag_ordered_deref_result_1_1[1];
+
+#line 114 "mdb.browse.c"
+static const MR_DuPtagLayout mdb__browse__mdb__browse__du_ptag_ordered_deref_result_1[2];
+
+#line 117 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_name_ordered_deref_result_1[2];
+
+#line 120 "mdb.browse.c"
+static const MR_Integer mdb__browse__mdb__browse__functor_number_map_deref_result_1[2];
+
+#line 123 "mdb.browse.c"
+static const MR_EnumFunctorDesc mdb__browse__mdb__browse__enum_functor_desc_unbound_0_0;
+
+#line 126 "mdb.browse.c"
+static const MR_EnumFunctorDescPtr mdb__browse__mdb__browse__enum_value_ordered_unbound_0[1];
+
+#line 129 "mdb.browse.c"
+static const MR_EnumFunctorDescPtr mdb__browse__mdb__browse__enum_name_ordered_unbound_0[1];
+
+#line 132 "mdb.browse.c"
+static const MR_Integer mdb__browse__mdb__browse__functor_number_map_unbound_0[1];
+
+#line 135 "mdb.browse.c"
+static const MR_FA_TypeInfo_Struct1 mdb__browse__list__ti_list_1univ__type_ctor_info_univ_0;
+
+#line 138 "mdb.browse.c"
+static const MR_PseudoTypeInfo mdb__browse__mdb__browse__field_types_xml_function_wrapper_0_0[3];
+
+#line 141 "mdb.browse.c"
+static const MR_ConstString mdb__browse__mdb__browse__field_names_xml_function_wrapper_0_0[3];
+
+#line 144 "mdb.browse.c"
+static const MR_DuFunctorDesc mdb__browse__mdb__browse__du_functor_desc_xml_function_wrapper_0_0;
+
+#line 147 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_stag_ordered_xml_function_wrapper_0_0[1];
+
+#line 150 "mdb.browse.c"
+static const MR_DuPtagLayout mdb__browse__mdb__browse__du_ptag_ordered_xml_function_wrapper_0[1];
+
+#line 153 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_name_ordered_xml_function_wrapper_0[1];
+
+#line 156 "mdb.browse.c"
+static const MR_Integer mdb__browse__mdb__browse__functor_number_map_xml_function_wrapper_0[1];
+
+#line 159 "mdb.browse.c"
+static const MR_PseudoTypeInfo mdb__browse__mdb__browse__field_types_xml_predicate_wrapper_0_0[2];
+
+#line 162 "mdb.browse.c"
+static const MR_ConstString mdb__browse__mdb__browse__field_names_xml_predicate_wrapper_0_0[2];
+
+#line 165 "mdb.browse.c"
+static const MR_DuFunctorDesc mdb__browse__mdb__browse__du_functor_desc_xml_predicate_wrapper_0_0;
+
+#line 168 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_stag_ordered_xml_predicate_wrapper_0_0[1];
+
+#line 171 "mdb.browse.c"
+static const MR_DuPtagLayout mdb__browse__mdb__browse__du_ptag_ordered_xml_predicate_wrapper_0[1];
+
+#line 174 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_name_ordered_xml_predicate_wrapper_0[1];
+
+#line 177 "mdb.browse.c"
+static const MR_Integer mdb__browse__mdb__browse__functor_number_map_xml_predicate_wrapper_0[1];
+
+#line 180 "mdb.browse.c"
+static MR_bool MR_CALL 
+mdb__browse____Unify____deref_result_1_0_10001(
+#line 183 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 185 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 187 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_3);
+
+#line 190 "mdb.browse.c"
+static void MR_CALL 
+mdb__browse____Compare____deref_result_1_0_10001(
+#line 193 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 195 "mdb.browse.c"
+  MR_Box * mdb__browse__wrapper_arg_2,
+#line 197 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_3,
+#line 199 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_4);
+
+#line 202 "mdb.browse.c"
+static MR_bool MR_CALL 
+mdb__browse____Unify____unbound_0_0_10001(
+#line 205 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 207 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2);
+
+#line 210 "mdb.browse.c"
+static void MR_CALL 
+mdb__browse____Compare____unbound_0_0_10001(
+#line 213 "mdb.browse.c"
+  MR_Box * mdb__browse__wrapper_arg_1,
+#line 215 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 217 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_3);
+
+#line 220 "mdb.browse.c"
+static MR_bool MR_CALL 
+mdb__browse____Unify____xml_function_wrapper_0_0_10001(
+#line 223 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 225 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2);
+
+#line 228 "mdb.browse.c"
+static void MR_CALL 
+mdb__browse____Compare____xml_function_wrapper_0_0_10001(
+#line 231 "mdb.browse.c"
+  MR_Box * mdb__browse__wrapper_arg_1,
+#line 233 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 235 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_3);
+
+#line 238 "mdb.browse.c"
+static MR_bool MR_CALL 
+mdb__browse____Unify____xml_predicate_wrapper_0_0_10001(
+#line 241 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 243 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2);
+
+#line 246 "mdb.browse.c"
+static void MR_CALL 
+mdb__browse____Compare____xml_predicate_wrapper_0_0_10001(
+#line 249 "mdb.browse.c"
+  MR_Box * mdb__browse__wrapper_arg_1,
+#line 251 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 253 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_3);
+
+#line 754 "browse.m"
+static void MR_CALL 
+mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_118_97_108_117_101_95_114_101_112_114_101_115_101_110_116_97_116_105_111_110_95_95_91_49_93_95_48_2_p_0(
+#line 754 "browse.m"
+  MR_Box mdb__browse__HeadVar__1_1,
+#line 754 "browse.m"
+  MR_Integer * mdb__browse__HeadVar__2_2);
+
+#line 264 "browse.m"
+static void MR_CALL 
+mdb__browse____Compare____xml_predicate_wrapper_0_0(
+#line 264 "browse.m"
+  MR_Word * mdb__browse__HeadVar__1_1,
+#line 264 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2,
+#line 264 "browse.m"
+  MR_Word mdb__browse__HeadVar__3_3);
+
+#line 264 "browse.m"
+static MR_bool MR_CALL 
+mdb__browse____Unify____xml_predicate_wrapper_0_0(
+#line 264 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 264 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2);
+
+#line 270 "browse.m"
+static void MR_CALL 
+mdb__browse____Compare____xml_function_wrapper_0_0(
+#line 270 "browse.m"
+  MR_Word * mdb__browse__HeadVar__1_1,
+#line 270 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2,
+#line 270 "browse.m"
+  MR_Word mdb__browse__HeadVar__3_3);
+
+#line 270 "browse.m"
+static MR_bool MR_CALL 
+mdb__browse____Unify____xml_function_wrapper_0_0(
+#line 270 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 270 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2);
+
+#line 1393 "browse.m"
+static void MR_CALL 
+mdb__browse____Compare____deref_result_1_0(
+#line 1393 "browse.m"
+  MR_Word mdb__browse__TypeInfo_for_T_19,
+#line 1393 "browse.m"
+  MR_Word * mdb__browse__HeadVar__1_1,
+#line 1393 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2,
+#line 1393 "browse.m"
+  MR_Word mdb__browse__HeadVar__3_3);
+
+#line 1393 "browse.m"
+static MR_bool MR_CALL 
+mdb__browse____Unify____deref_result_1_0(
+#line 1393 "browse.m"
+  MR_Word mdb__browse__TypeInfo_for_T_11,
+#line 1393 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 1393 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2);
+
+#line 1817 "browse.m"
+static MR_Word MR_CALL 
+mdb__browse__qualified_functor_to_doc_1_f_0(
+#line 1817 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1);
+
+#line 1746 "browse.m"
+static void MR_CALL 
+mdb__browse__write_term_mode_debugger_5_p_0(
+#line 1746 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 1746 "browse.m"
+  MR_Word mdb__browse__MaybeModeFunc_7,
+#line 1746 "browse.m"
+  MR_Word mdb__browse__Dirs_8);
+
+#line 1732 "browse.m"
+static MR_String MR_CALL 
+mdb__browse__down_dirs_to_string_1_f_0(
+#line 1732 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1);
+
+#line 1703 "browse.m"
+static void MR_CALL 
+mdb__browse__simplify_rev_dirs_4_p_0(
+#line 1703 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 1703 "browse.m"
+  MR_Integer mdb__browse__STATE_VARIABLE_ToDelete_0_2,
+#line 1703 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_DownDirs_0_3,
+#line 1703 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_DownDirs_4);
+
+#line 1514 "browse.m"
+static void MR_CALL 
+mdb__browse__change_dir_3_p_0(
+#line 1514 "browse.m"
+  MR_Word mdb__browse__PwdDirs_4,
+#line 1514 "browse.m"
+  MR_Word mdb__browse__Path_5,
+#line 1514 "browse.m"
+  MR_Word * mdb__browse__RootRelDirs_6);
+
+#line 1507 "browse.m"
+static void MR_CALL 
+mdb__browse__set_path_3_p_0(
+#line 1507 "browse.m"
+  MR_Word mdb__browse__NewPath_4,
+#line 1507 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_Info_0_8,
+#line 1507 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_Info_9);
+
+#line 1463 "browse.m"
+static void MR_CALL 
+mdb__browse__deref_subterm_2_4_p_0(
+#line 1463 "browse.m"
+  MR_Word mdb__browse__Univ_5,
+#line 1463 "browse.m"
+  MR_Word mdb__browse__Path_6,
+#line 1463 "browse.m"
+  MR_Word mdb__browse__RevPath0_7,
+#line 1463 "browse.m"
+  MR_Word * mdb__browse__Result_8);
+
+#line 1400 "browse.m"
+static void MR_CALL 
+mdb__browse__deref_subterm_3_p_0(
+#line 1400 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_4,
+#line 1400 "browse.m"
+  MR_Word mdb__browse__Path_5,
+#line 1400 "browse.m"
+  MR_Word * mdb__browse__Result_6);
+
+#line 1380 "browse.m"
+static void MR_CALL 
+mdb__browse__unlines_2_p_0(
+#line 1380 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 1380 "browse.m"
+  MR_String * mdb__browse__HeadVar__2_2);
+
+#line 1348 "browse.m"
+static void MR_CALL 
+mdb__browse__args_to_string_verbose_list_9_p_0(
+#line 1348 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 1348 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2,
+#line 1348 "browse.m"
+  MR_Integer mdb__browse__HeadVar__3_3,
+#line 1348 "browse.m"
+  MR_Integer mdb__browse__HeadVar__4_4,
+#line 1348 "browse.m"
+  MR_Integer mdb__browse__CurSize_5,
+#line 1348 "browse.m"
+  MR_Integer * mdb__browse__NewSize_6,
+#line 1348 "browse.m"
+  MR_Integer mdb__browse__HeadVar__7_7,
+#line 1348 "browse.m"
+  MR_Integer mdb__browse__HeadVar__8_8,
+#line 1348 "browse.m"
+  MR_Word * mdb__browse__HeadVar__9_9);
+
+#line 1316 "browse.m"
+static void MR_CALL 
+mdb__browse__browser_term_to_string_verbose_2_8_p_0(
+#line 1316 "browse.m"
+  MR_Word mdb__browse__BrowserDb_9,
+#line 1316 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_10,
+#line 1316 "browse.m"
+  MR_Integer mdb__browse__MaxSize_11,
+#line 1316 "browse.m"
+  MR_Integer mdb__browse__CurSize_12,
+#line 1316 "browse.m"
+  MR_Integer * mdb__browse__NewSize_13,
+#line 1316 "browse.m"
+  MR_Integer mdb__browse__MaxDepth_14,
+#line 1316 "browse.m"
+  MR_Integer mdb__browse__CurDepth_15,
+#line 1316 "browse.m"
+  MR_Word * mdb__browse__Frame_16);
+
+#line 1233 "browse.m"
+static MR_String MR_CALL 
+mdb__browse__comma_string_list_1_f_0(
+#line 1233 "browse.m"
+  MR_Word mdb__browse__Args_3);
+
+#line 1206 "browse.m"
+static void MR_CALL 
+mdb__browse__args_to_string_list_8_p_0(
+#line 1206 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 1206 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2,
+#line 1206 "browse.m"
+  MR_Integer mdb__browse__HeadVar__3_3,
+#line 1206 "browse.m"
+  MR_Integer mdb__browse__CurSize_4,
+#line 1206 "browse.m"
+  MR_Integer * mdb__browse__NewSize_5,
+#line 1206 "browse.m"
+  MR_Integer mdb__browse__HeadVar__6_6,
+#line 1206 "browse.m"
+  MR_Integer mdb__browse__HeadVar__7_7,
+#line 1206 "browse.m"
+  MR_Word * mdb__browse__Strs_8);
+
+#line 1145 "browse.m"
+static void MR_CALL 
+mdb__browse__list_tail_to_string_list_8_p_0(
+#line 1145 "browse.m"
+  MR_Word mdb__browse__BrowserDb_9,
+#line 1145 "browse.m"
+  MR_Word mdb__browse__TailUniv_10,
+#line 1145 "browse.m"
+  MR_Integer mdb__browse__MaxSize_11,
+#line 1145 "browse.m"
+  MR_Integer mdb__browse__Size0_12,
+#line 1145 "browse.m"
+  MR_Integer * mdb__browse__Size_13,
+#line 1145 "browse.m"
+  MR_Integer mdb__browse__MaxDepth_14,
+#line 1145 "browse.m"
+  MR_Integer mdb__browse__Depth0_15,
+#line 1145 "browse.m"
+  MR_Word * mdb__browse__TailStrs_16);
+
+#line 1098 "browse.m"
+static void MR_CALL 
+mdb__browse__browser_term_to_string_3_10_p_0(
+#line 1098 "browse.m"
+  MR_Word mdb__browse__BrowserDb_11,
+#line 1098 "browse.m"
+  MR_String mdb__browse__Functor_12,
+#line 1098 "browse.m"
+  MR_Word mdb__browse__Args_13,
+#line 1098 "browse.m"
+  MR_Word mdb__browse__MaybeReturn_14,
+#line 1098 "browse.m"
+  MR_Integer mdb__browse__MaxSize_15,
+#line 1098 "browse.m"
+  MR_Integer mdb__browse__Size0_16,
+#line 1098 "browse.m"
+  MR_Integer * mdb__browse__Size_17,
+#line 1098 "browse.m"
+  MR_Integer mdb__browse__MaxDepth_18,
+#line 1098 "browse.m"
+  MR_Integer mdb__browse__Depth0_19,
+#line 1098 "browse.m"
+  MR_String * mdb__browse__Str_20);
+
+#line 1079 "browse.m"
+static void MR_CALL 
+mdb__browse__browser_term_to_string_2_8_p_0(
+#line 1079 "browse.m"
+  MR_Word mdb__browse__BrowserDb_9,
+#line 1079 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_10,
+#line 1079 "browse.m"
+  MR_Integer mdb__browse__MaxSize_11,
+#line 1079 "browse.m"
+  MR_Integer mdb__browse__CurSize_12,
+#line 1079 "browse.m"
+  MR_Integer * mdb__browse__NewSize_13,
+#line 1079 "browse.m"
+  MR_Integer mdb__browse__MaxDepth_14,
+#line 1079 "browse.m"
+  MR_Integer mdb__browse__CurDepth_15,
+#line 1079 "browse.m"
+  MR_String * mdb__browse__Str_16);
+
+#line 1046 "browse.m"
+static void MR_CALL 
+mdb__browse__report_deref_error_5_p_0(
+#line 1046 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 1046 "browse.m"
+  MR_Word mdb__browse__OKPath_7,
+#line 1046 "browse.m"
+  MR_Word mdb__browse__ErrorDir_8);
+
+#line 1036 "browse.m"
+static void MR_CALL 
+mdb__browse__write_univ_or_unbound_4_p_0(
+#line 1036 "browse.m"
+  MR_Word mdb__browse__Stream_5,
+#line 1036 "browse.m"
+  MR_Word mdb__browse__Univ_6);
+
+#line 970 "browse.m"
+static void MR_CALL 
+mdb__browse__portray_pretty_5_p_0(
+#line 970 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 970 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_7,
+#line 970 "browse.m"
+  MR_Word mdb__browse__Params_8);
+
+#line 960 "browse.m"
+static void MR_CALL 
+mdb__browse__portray_verbose_5_p_0(
+#line 960 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 960 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_7,
+#line 960 "browse.m"
+  MR_Word mdb__browse__Params_8);
+
+#line 949 "browse.m"
+static void MR_CALL 
+mdb__browse__portray_flat_5_p_0_1(
+#line 949 "browse.m"
+  MR_Box mdb__browse__closure_arg,
+#line 949 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 949 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 949 "browse.m"
+  MR_Box * mdb__browse__wrapper_arg_3);
+
+#line 910 "browse.m"
+static void MR_CALL 
+mdb__browse__portray_flat_5_p_0(
+#line 910 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 910 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_7,
+#line 910 "browse.m"
+  MR_Word mdb__browse__Params_8);
+
+#line 872 "browse.m"
+static void MR_CALL 
+mdb__browse__portray_6_p_0(
+#line 872 "browse.m"
+  MR_Word mdb__browse__Debugger_7,
+#line 872 "browse.m"
+  MR_Word mdb__browse__Caller_8,
+#line 872 "browse.m"
+  MR_Word mdb__browse__MaybeFormat_9,
+#line 872 "browse.m"
+  MR_Word mdb__browse__Info_10);
+
+#line 859 "browse.m"
+static void MR_CALL 
+mdb__browse__portray_maybe_path_7_p_0(
+#line 859 "browse.m"
+  MR_Word mdb__browse__Debugger_8,
+#line 859 "browse.m"
+  MR_Word mdb__browse__Caller_9,
+#line 859 "browse.m"
+  MR_Word mdb__browse__MaybeFormat_10,
+#line 859 "browse.m"
+  MR_Word mdb__browse__Info_11,
+#line 859 "browse.m"
+  MR_Word mdb__browse__MaybePath_12);
+
+#line 805 "browse.m"
+static void MR_CALL 
+mdb__browse__help_3_p_0(
+#line 805 "browse.m"
+  MR_Word mdb__browse__Debugger_4);
+
+#line 800 "browse.m"
+static MR_bool MR_CALL 
+mdb__browse__bool_format_option_is_true_2_p_0(
+#line 800 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 800 "browse.m"
+  MR_Word * mdb__browse__Format_3);
+
+#line 774 "browse.m"
+static MR_bool MR_CALL 
+mdb__browse__interpret_format_options_2_p_0_1(
+#line 774 "browse.m"
+  MR_Box mdb__browse__closure_arg,
+#line 774 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 774 "browse.m"
+  MR_Box * mdb__browse__wrapper_arg_2);
+
+#line 769 "browse.m"
+static void MR_CALL 
+mdb__browse__interpret_format_options_2_p_0(
+#line 769 "browse.m"
+  MR_Word mdb__browse__OptionTable_3,
+#line 769 "browse.m"
+  MR_Word * mdb__browse__MaybeMaybeFormat_4);
+
+#line 754 "browse.m"
+static void MR_CALL 
+mdb__browse__get_value_representation_2_p_0(
+#line 754 "browse.m"
+  MR_Word mdb__browse__TypeInfo_for_T_6,
+#line 754 "browse.m"
+  MR_Box mdb__browse__HeadVar__1_1,
+#line 754 "browse.m"
+  MR_Integer * mdb__browse__HeadVar__2_2);
+
+#line 723 "browse.m"
+static void MR_CALL 
+mdb__browse__do_print_memory_addr_5_p_0(
+#line 723 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 723 "browse.m"
+  MR_Word mdb__browse__Info_7,
+#line 723 "browse.m"
+  MR_Word mdb__browse__MaybePath_8);
+
+#line 693 "browse.m"
+static void MR_CALL 
+mdb__browse__do_portray_7_p_0(
+#line 693 "browse.m"
+  MR_Word mdb__browse__Debugger_8,
+#line 693 "browse.m"
+  MR_Word mdb__browse__CallerType_9,
+#line 693 "browse.m"
+  MR_Word mdb__browse__MaybeMaybeOptionTable_10,
+#line 693 "browse.m"
+  MR_Word mdb__browse__Info_11,
+#line 693 "browse.m"
+  MR_Word mdb__browse__MaybePath_12);
+
+#line 583 "browse.m"
+static void MR_CALL 
+mdb__browse__run_command_7_p_0(
+#line 583 "browse.m"
+  MR_Word mdb__browse__Debugger_8,
+#line 583 "browse.m"
+  MR_Word mdb__browse__Command_9,
+#line 583 "browse.m"
+  MR_Word * mdb__browse__Quit_10,
+#line 583 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_Info_0_29,
+#line 583 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_Info_30);
+
+#line 547 "browse.m"
+static void MR_CALL 
+mdb__browse__browse_main_loop_5_p_0(
+#line 547 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 547 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_Info_0_11,
+#line 547 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_Info_12);
+
+#line 451 "browse.m"
+static void MR_CALL 
+mdb__browse__write_indent_3_p_0(
+#line 451 "browse.m"
+  MR_Integer mdb__browse__Indent_4);
+
+#line 438 "browse.m"
+static void MR_CALL 
+mdb__browse__save_args_4_p_0(
+#line 438 "browse.m"
+  MR_Integer mdb__browse__HeadVar__1_1,
+#line 438 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2);
+
+#line 403 "browse.m"
+static MR_Box MR_CALL 
+mdb__browse__save_term_4_p_0_1(
+#line 403 "browse.m"
+  MR_Box mdb__browse__closure_arg,
+#line 403 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_1);
+
+#line 393 "browse.m"
+static void MR_CALL 
+mdb__browse__save_term_4_p_0(
+#line 393 "browse.m"
+  MR_Word mdb__browse__TypeInfo_for_T_52,
+#line 393 "browse.m"
+  MR_Integer mdb__browse__Indent_5,
+#line 393 "browse.m"
+  MR_Box mdb__browse__Term_6);
+
+#line 357 "browse.m"
+static void MR_CALL 
+mdb__browse__launch_xml_browser_5_p_0(
+#line 357 "browse.m"
+  MR_Word mdb__browse__OutStream_6,
+#line 357 "browse.m"
+  MR_Word mdb__browse__ErrStream_7,
+#line 357 "browse.m"
+  MR_String mdb__browse__CommandStr_8);
+
+#line 1033 "browse.m"
+static void MR_CALL 
+mdb__browse__browser_term_size_left_from_max_3_p_0_1(
+#line 1033 "browse.m"
+  MR_Box mdb__browse__closure_arg,
+#line 1033 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 1033 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 1033 "browse.m"
+  MR_Box * mdb__browse__wrapper_arg_3);
+
+#line 1005 "browse.m"
+static void MR_CALL 
+mdb__browse__term_size_left_from_max_3_p_0_1(
+#line 1005 "browse.m"
+  MR_Box mdb__browse__closure_arg,
+#line 1005 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 1005 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 1005 "browse.m"
+  MR_Box * mdb__browse__wrapper_arg_3);
+
+
+static /* final */ const MR_Box mdb__browse_scalar_common_1[6][3];
+
+static /* final */ const MR_Box mdb__browse_scalar_common_2[2][4];
+
+static /* final */ const MR_Box mdb__browse_scalar_common_3[4][5];
+
+static /* final */ const MR_Box mdb__browse_scalar_common_4[48][2];
+
+static /* final */ const MR_Box mdb__browse_scalar_common_5[10][1];
+
+static /* final */ const MR_Box mdb__browse_scalar_common_6[2][6];
+
+static /* final */ const MR_Integer mdb__browse_scalar_common_8[1][2];
+
+static /* final */ const MR_Box mdb__browse_scalar_common_10[1][7];
+
+
+#line 1443 "browse.m"
+/* sealed */ struct mdb__browse__vector_common_type_7_0_s {
+#line 1443 "browse.m"
+  const MR_String mdb__browse__vector_common_type_7_0__vct_7_f_0;
+#line 1443 "browse.m"
+};
+
+static /* final */ const struct mdb__browse__vector_common_type_7_0_s mdb__browse_vector_common_7[20];
+
+#line 784 "browse.m"
+/* sealed */ struct mdb__browse__vector_common_type_9_0_s {
+#line 784 "browse.m"
+  const MR_Word mdb__browse__vector_common_type_9_0__vct_9_f_0;
+#line 784 "browse.m"
+};
+
+static /* final */ const struct mdb__browse__vector_common_type_9_0_s mdb__browse_vector_common_9[4];
+
+
+
+static /* final */ const MR_Box mdb__browse_scalar_common_1[6][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__stream__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mdb__parse__mdb__parse__type_ctor_info_format_option_0)),
+    ((MR_Box) (&mercury__getopt__getopt__type_ctor_info_option_data_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__stream__arity2__mdb__browser_info__debugger__arity0__io__state__arity0__)),
+    ((MR_Box) (&mdb__browser_info__mdb__browser_info__type_ctor_info_debugger_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mdb__browse_scalar_common_6[0])),
+    ((MR_Box) (mdb__browse__term_size_left_from_max_3_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mdb__browse_scalar_common_6[0])),
+    ((MR_Box) (mdb__browse__browser_term_size_left_from_max_3_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mdb__browse_scalar_common_3[3])),
+    ((MR_Box) (mdb__browse__interpret_format_options_2_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box mdb__browse_scalar_common_2[2][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__output__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mdb__browse_scalar_common_1[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__output__arity2__mdb__browser_info__debugger__arity0__io__state__arity0__)),
+    ((MR_Box) (&mdb__browse_scalar_common_1[2])),
+    ((MR_Box) (&mdb__browser_info__mdb__browser_info__type_ctor_info_debugger_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mdb__browse_scalar_common_3[4][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__string__arity0__io__state__arity0__)),
+    ((MR_Box) (&mdb__browse_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__character__arity0__io__state__arity0__)),
+    ((MR_Box) (&mdb__browse_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_character_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__mdb__browser_info__debugger__arity0__string__arity0__io__state__arity0__)),
+    ((MR_Box) (&mdb__browse_scalar_common_2[1])),
+    ((MR_Box) (&mdb__browser_info__mdb__browser_info__type_ctor_info_debugger_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mdb__browse__pair__pti_pair_2__plain_mdb__parse__type_ctor_info_format_option_0__plain_getopt__type_ctor_info_option_data_0)),
+    ((MR_Box) (&mdb__parse__mdb__parse__type_ctor_info_format_option_0))
+  },
+};
+
+static /* final */ const MR_Box mdb__browse_scalar_common_4[48][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mdb__browser_info__mdb__browser_info__type_ctor_info_down_dir_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__univ__univ__type_ctor_info_univ_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__type_desc__type_desc__type_ctor_info_type_desc_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) ((MR_String) "\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_String) "-- Paths can be Unix-style or SICStus-style: /2/3/1 or ^2^3^1\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[3])))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) ((MR_String) "\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[4])))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) ((MR_String) "\th              -- help\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[5])))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) ((MR_String) "\t\?              -- help\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[6])))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) ((MR_String) "\t^ [path]       -- cd to the specified subterm (default is root)\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[7])))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) ((MR_String) "\t< n            -- set depth\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[8])))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) ((MR_String) "\tp              -- print\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[9])))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) ((MR_String) "SICStus Prolog style commands are:\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[10])))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) ((MR_String) "\thelp           -- show this help message\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[11])))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) ((MR_String) "\tquit           -- quit browser\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[12])))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) ((MR_String) "\tparams         -- show format and parameter values\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[13])))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) ((MR_String) "\t               -- set the named parameter value\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[14])))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) ((MR_String) "\tnum_io_actions <n>\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[15])))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) ((MR_String) "\tlines [format_param_options] <n>\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[16])))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) ((MR_String) "\twidth [format_param_options] <n>\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[17])))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) ((MR_String) "\tsize  [format_param_options] <n>\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[18])))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) ((MR_String) "\tdepth [format_param_options] <n>\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[19])))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) ((MR_String) "\t               -- set the format\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[20])))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) ((MR_String) "\tformat [format_options] <flat|raw-pretty|verbose|pretty>\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[21])))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) ((MR_String) "\t                  (default is current)\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[22])))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) ((MR_String) "\tmode [path]    -- show the mode of the specified subterm\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[23])))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) ((MR_String) "\t                  that it makes the current goal invalid\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[24])))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) ((MR_String) "\t                  for tracking, asserting for the declarative debugger\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[25])))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) ((MR_String) "\t               -- mark the specified subterm (default is current)\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[26])))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) ((MR_String) "\t[m|mark] [path]\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[27])))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) ((MR_String) "\t                  for tracking, and quit\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[28])))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) ((MR_String) "\t               -- mark the specified subterm (default is current)\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[29])))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) ((MR_String) "\t[t|track] [path]\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[30])))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) ((MR_String) "\tpwd            -- print the path to the current subterm\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[31])))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) ((MR_String) "\tcdr n path     -- repeatedly apply the cd command n times\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[32])))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) ((MR_String) "\tcd [path]      -- cd to the specified subterm (default is root)\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[33])))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) ((MR_String) "\t               -- print the raw memory address of the specified subterm\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[34])))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) ((MR_String) "\t[addr|memory_addr] [path]\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[35])))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) ((MR_String) "\t               -- print the specified subterm using the \140browse\' params\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[36])))
+  },
+  /* row 38 */
+  {
+    ((MR_Box) ((MR_String) "\t[print|p|ls] [format_options] [path]\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[37])))
+  },
+  /* row 39 */
+  {
+    ((MR_Box) ((MR_String) "Commands are:\n")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[38])))
+  },
+  /* row 40 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 41 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_5[0]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[40])))
+  },
+  /* row 42 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_5[6]))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 43 */
+  {
+    ((MR_Box) ((MR_String) "+1")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 44 */
+  {
+    ((MR_Box) ((MR_String) "]")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 45 */
+  {
+    ((MR_Box) ((MR_String) ")")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 46 */
+  {
+    ((MR_Box) ((MR_String) ", ...")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 47 */
+  {
+    ((MR_Box) ((MR_String) "-")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box mdb__browse_scalar_common_5[10][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_String) ", "))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (((MR_Integer) 0 | (((((MR_Integer) 0 << (MR_Integer) 1)) | (((((MR_Integer) 0 << (MR_Integer) 2)) | (((((MR_Integer) 0 << (MR_Integer) 3)) | (((MR_Integer) 0 << (MR_Integer) 4)))))))))))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_String) "error: inconsistent format options"))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) ((MR_String) "("))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) ((MR_String) ")"))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) ((MR_String) " = "))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) ((MR_String) ""))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) ((MR_String) "."))
+  },
+};
+
+static /* final */ const MR_Box mdb__browse_scalar_common_6[2][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__univ__univ__type_ctor_info_univ_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (&mdb__browse_scalar_common_8[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&mercury__univ__univ__type_ctor_info_univ_0))
+  },
+};
+
+static /* final */ const MR_Integer mdb__browse_scalar_common_8[1][2] = {
+  /* row 0 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 33
+  },
+};
+
+static /* final */ const MR_Box mdb__browse_scalar_common_10[1][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__univ__univ__type_ctor_info_univ_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+
+static /* final */ const struct mdb__browse__vector_common_type_7_0_s mdb__browse_vector_common_7[20] = {
+  /* row 0 */   {     (MR_String) "r" },
+  /* row 1 */   {     (MR_String) "res" },
+  /* row 2 */   {     (MR_String) "result" },
+  /* row 3 */   {     (MR_String) "ret" },
+  /* row 4 */   {     (MR_String) "return" },
+  /* row 5 */   {     (MR_String) "rv" },
+  /* row 6 */   {     (MR_String) "!." },
+  /* row 7 */   {     (MR_String) "." },
+  /* row 8 */   {     (MR_String) ".." },
+  /* row 9 */   {     (MR_String) "=.." },
+  /* row 10 */   {     (MR_String) "r" },
+  /* row 11 */   {     (MR_String) "res" },
+  /* row 12 */   {     (MR_String) "result" },
+  /* row 13 */   {     (MR_String) "ret" },
+  /* row 14 */   {     (MR_String) "return" },
+  /* row 15 */   {     (MR_String) "rv" },
+  /* row 16 */   {     (MR_String) "Input" },
+  /* row 17 */   {     (MR_String) "Output" },
+  /* row 18 */   {     (MR_String) "Unbound" },
+  /* row 19 */   {     (MR_String) "Not Applicable" },
+};
+
+static /* final */ const struct mdb__browse__vector_common_type_9_0_s mdb__browse_vector_common_9[4] = {
+  /* row 0 */   {     (MR_Integer) 0 },
+  /* row 1 */   {     (MR_Integer) 1 },
+  /* row 2 */   {     (MR_Integer) 2 },
+  /* row 3 */   {     (MR_Integer) 3 },
+};
+
+
+#include "io.mh"
+#include "mdb.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdb.browse.mh"
+#include "mdbcomp.rtti_access.mh"
+
+#line 200 "browse.m"
+void 
+ML_BROWSE_browse_browser_term(
+#line 200 "browse.m"
+  MR_Word mdb__browse__Term_9,
+#line 200 "browse.m"
+  MR_Word mdb__browse__InputStream_10,
+#line 200 "browse.m"
+  MR_Word mdb__browse__OutputStream_11,
+#line 200 "browse.m"
+  MR_Word * mdb__browse__MaybeTrack_12,
+#line 200 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_State_0_15,
+#line 200 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_State_16)
+#line 200 "browse.m"
+{
+#line 200 "browse.m"
+	mdb__browse__browse_browser_term_no_modes_8_p_0((MR_Word) mdb__browse__Term_9, (MR_Word) mdb__browse__InputStream_10, (MR_Word) mdb__browse__OutputStream_11, (MR_Word *) mdb__browse__MaybeTrack_12, (MR_Word) mdb__browse__STATE_VARIABLE_State_0_15, (MR_Word *) mdb__browse__STATE_VARIABLE_State_16);
+}
+
+#line 203 "browse.m"
+void 
+ML_BROWSE_browse_browser_term_format(
+#line 203 "browse.m"
+  MR_Word mdb__browse__Term_9,
+#line 203 "browse.m"
+  MR_Word mdb__browse__InputStream_10,
+#line 203 "browse.m"
+  MR_Word mdb__browse__OutputStream_11,
+#line 203 "browse.m"
+  MR_Word mdb__browse__Format_12,
+#line 203 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_State_0_16,
+#line 203 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_State_17)
+#line 203 "browse.m"
+{
+#line 203 "browse.m"
+	mdb__browse__browse_browser_term_format_no_modes_8_p_0((MR_Word) mdb__browse__Term_9, (MR_Word) mdb__browse__InputStream_10, (MR_Word) mdb__browse__OutputStream_11, (MR_Word) mdb__browse__Format_12, (MR_Word) mdb__browse__STATE_VARIABLE_State_0_16, (MR_Word *) mdb__browse__STATE_VARIABLE_State_17);
+}
+
+#line 206 "browse.m"
+void 
+ML_BROWSE_browse_external(
+#line 206 "browse.m"
+  MR_Word mdb__browse__TypeInfo_for_T_25,
+#line 206 "browse.m"
+  MR_Word mdb__browse__Term_8,
+#line 206 "browse.m"
+  MR_Word mdb__browse__InputStream_9,
+#line 206 "browse.m"
+  MR_Word mdb__browse__OutputStream_10,
+#line 206 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_State_0_14,
+#line 206 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_State_15)
+#line 206 "browse.m"
+{
+#line 206 "browse.m"
+	mdb__browse__browse_external_no_modes_7_p_0((MR_Word) mdb__browse__TypeInfo_for_T_25, (MR_Box) mdb__browse__Term_8, (MR_Word) mdb__browse__InputStream_9, (MR_Word) mdb__browse__OutputStream_10, (MR_Word) mdb__browse__STATE_VARIABLE_State_0_14, (MR_Word *) mdb__browse__STATE_VARIABLE_State_15);
+}
+
+#line 209 "browse.m"
+void 
+ML_BROWSE_print_browser_term(
+#line 209 "browse.m"
+  MR_Word mdb__browse__Term_7,
+#line 209 "browse.m"
+  MR_Word mdb__browse__OutputStream_8,
+#line 209 "browse.m"
+  MR_Word mdb__browse__Caller_9,
+#line 209 "browse.m"
+  MR_Word mdb__browse__State_10)
+#line 209 "browse.m"
+{
+#line 209 "browse.m"
+	mdb__browse__print_browser_term_6_p_0((MR_Word) mdb__browse__Term_7, (MR_Word) mdb__browse__OutputStream_8, (MR_Word) mdb__browse__Caller_9, (MR_Word) mdb__browse__State_10);
+}
+
+#line 211 "browse.m"
+void 
+ML_BROWSE_print_browser_term_format(
+#line 211 "browse.m"
+  MR_Word mdb__browse__Term_8,
+#line 211 "browse.m"
+  MR_Word mdb__browse__OutputStream_9,
+#line 211 "browse.m"
+  MR_Word mdb__browse__Caller_10,
+#line 211 "browse.m"
+  MR_Word mdb__browse__Format_11,
+#line 211 "browse.m"
+  MR_Word mdb__browse__State_12)
+#line 211 "browse.m"
+{
+#line 211 "browse.m"
+	mdb__browse__print_browser_term_format_7_p_0((MR_Word) mdb__browse__Term_8, (MR_Word) mdb__browse__OutputStream_9, (MR_Word) mdb__browse__Caller_10, (MR_Word) mdb__browse__Format_11, (MR_Word) mdb__browse__State_12);
+}
+
+#line 215 "browse.m"
+void 
+ML_BROWSE_save_term_to_file(
+#line 215 "browse.m"
+  MR_String mdb__browse__FileName_7,
+#line 215 "browse.m"
+  MR_String mdb__browse___Format_8,
+#line 215 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_9,
+#line 215 "browse.m"
+  MR_Word mdb__browse__OutStream_10)
+#line 215 "browse.m"
+{
+#line 215 "browse.m"
+	mdb__browse__save_term_to_file_6_p_0((MR_String) mdb__browse__FileName_7, (MR_String) mdb__browse___Format_8, (MR_Word) mdb__browse__BrowserTerm_9, (MR_Word) mdb__browse__OutStream_10);
+}
+
+#line 218 "browse.m"
+void 
+ML_BROWSE_save_term_to_file_xml(
+#line 218 "browse.m"
+  MR_String mdb__browse__FileName_6,
+#line 218 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_7,
+#line 218 "browse.m"
+  MR_Word mdb__browse__OutStream_8)
+#line 218 "browse.m"
+{
+#line 218 "browse.m"
+	mdb__browse__save_term_to_file_xml_5_p_0((MR_String) mdb__browse__FileName_6, (MR_Word) mdb__browse__BrowserTerm_7, (MR_Word) mdb__browse__OutStream_8);
+}
+
+#line 221 "browse.m"
+void 
+ML_BROWSE_browse_term_xml(
+#line 221 "browse.m"
+  MR_Word mdb__browse__Term_7,
+#line 221 "browse.m"
+  MR_Word mdb__browse__OutStream_8,
+#line 221 "browse.m"
+  MR_Word mdb__browse__ErrStream_9,
+#line 221 "browse.m"
+  MR_Word mdb__browse__State_10)
+#line 221 "browse.m"
+{
+#line 221 "browse.m"
+	mdb__browse__save_and_browse_browser_term_xml_6_p_0((MR_Word) mdb__browse__Term_7, (MR_Word) mdb__browse__OutStream_8, (MR_Word) mdb__browse__ErrStream_9, (MR_Word) mdb__browse__State_10);
+}
+
+
+#line 1425 "mdb.browse.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdb__browse__pair__pti_pair_2__plain_mdb__parse__type_ctor_info_format_option_0__plain_getopt__type_ctor_info_option_data_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &mdb__parse__mdb__parse__type_ctor_info_format_option_0,
+    (MR_PseudoTypeInfo) &mercury__getopt__getopt__type_ctor_info_option_data_0
+  }
+};
+
+#line 1434 "mdb.browse.c"
+static const MR_PseudoTypeInfo mdb__browse__mdb__browse__field_types_deref_result_1_0[1] = {
+  (MR_PseudoTypeInfo) (MR_Integer) 1
+};
+
+#line 1439 "mdb.browse.c"
+static const MR_DuFunctorDesc mdb__browse__mdb__browse__du_functor_desc_deref_result_1_0 = {
+  (MR_String) "deref_result",
+  (MR_Integer) 1,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdb__browse__mdb__browse__field_types_deref_result_1_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1454 "mdb.browse.c"
+static const MR_FA_TypeInfo_Struct1 mdb__browse__list__ti_list_1mdb__browser_info__type_ctor_info_down_dir_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mdb__browser_info__mdb__browser_info__type_ctor_info_down_dir_0
+  }
+};
+
+#line 1462 "mdb.browse.c"
+static const MR_PseudoTypeInfo mdb__browse__mdb__browse__field_types_deref_result_1_1[2] = {
+  (MR_PseudoTypeInfo) &mdb__browse__list__ti_list_1mdb__browser_info__type_ctor_info_down_dir_0,
+  (MR_PseudoTypeInfo) &mdb__browser_info__mdb__browser_info__type_ctor_info_down_dir_0
+};
+
+#line 1468 "mdb.browse.c"
+static const MR_DuFunctorDesc mdb__browse__mdb__browse__du_functor_desc_deref_result_1_1 = {
+  (MR_String) "deref_error",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mdb__browse__mdb__browse__field_types_deref_result_1_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 1483 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_stag_ordered_deref_result_1_0[1] = {
+  &mdb__browse__mdb__browse__du_functor_desc_deref_result_1_0
+};
+
+#line 1488 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_stag_ordered_deref_result_1_1[1] = {
+  &mdb__browse__mdb__browse__du_functor_desc_deref_result_1_1
+};
+
+#line 1493 "mdb.browse.c"
+static const MR_DuPtagLayout mdb__browse__mdb__browse__du_ptag_ordered_deref_result_1[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdb__browse__mdb__browse__du_stag_ordered_deref_result_1_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdb__browse__mdb__browse__du_stag_ordered_deref_result_1_1
+  }
+};
+
+#line 1507 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_name_ordered_deref_result_1[2] = {
+  &mdb__browse__mdb__browse__du_functor_desc_deref_result_1_1,
+  &mdb__browse__mdb__browse__du_functor_desc_deref_result_1_0
+};
+
+#line 1513 "mdb.browse.c"
+static const MR_Integer mdb__browse__mdb__browse__functor_number_map_deref_result_1[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+#line 1519 "mdb.browse.c"
+const MR_TypeCtorInfo_Struct mdb__browse__mdb__browse__type_ctor_info_deref_result_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdb__browse____Unify____deref_result_1_0_10001)),
+  ((MR_Box) (mdb__browse____Compare____deref_result_1_0_10001)),
+  (MR_String) "mdb.browse",
+  (MR_String) "deref_result",
+  {     mdb__browse__mdb__browse__du_name_ordered_deref_result_1 },
+  {     mdb__browse__mdb__browse__du_ptag_ordered_deref_result_1 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mdb__browse__mdb__browse__functor_number_map_deref_result_1
+};
+
+#line 1536 "mdb.browse.c"
+static const MR_EnumFunctorDesc mdb__browse__mdb__browse__enum_functor_desc_unbound_0_0 = {
+  (MR_String) "_",
+  (MR_Integer) 0
+};
+
+#line 1542 "mdb.browse.c"
+static const MR_EnumFunctorDescPtr mdb__browse__mdb__browse__enum_value_ordered_unbound_0[1] = {
+  &mdb__browse__mdb__browse__enum_functor_desc_unbound_0_0
+};
+
+#line 1547 "mdb.browse.c"
+static const MR_EnumFunctorDescPtr mdb__browse__mdb__browse__enum_name_ordered_unbound_0[1] = {
+  &mdb__browse__mdb__browse__enum_functor_desc_unbound_0_0
+};
+
+#line 1552 "mdb.browse.c"
+static const MR_Integer mdb__browse__mdb__browse__functor_number_map_unbound_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1557 "mdb.browse.c"
+const MR_TypeCtorInfo_Struct mdb__browse__mdb__browse__type_ctor_info_unbound_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DUMMY,
+  ((MR_Box) (mdb__browse____Unify____unbound_0_0_10001)),
+  ((MR_Box) (mdb__browse____Compare____unbound_0_0_10001)),
+  (MR_String) "mdb.browse",
+  (MR_String) "unbound",
+  {     mdb__browse__mdb__browse__enum_name_ordered_unbound_0 },
+  {     mdb__browse__mdb__browse__enum_value_ordered_unbound_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdb__browse__mdb__browse__functor_number_map_unbound_0
+};
+
+#line 1574 "mdb.browse.c"
+static const MR_FA_TypeInfo_Struct1 mdb__browse__list__ti_list_1univ__type_ctor_info_univ_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__univ__univ__type_ctor_info_univ_0
+  }
+};
+
+#line 1582 "mdb.browse.c"
+static const MR_PseudoTypeInfo mdb__browse__mdb__browse__field_types_xml_function_wrapper_0_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mdb__browse__list__ti_list_1univ__type_ctor_info_univ_0,
+  (MR_PseudoTypeInfo) &mercury__univ__univ__type_ctor_info_univ_0
+};
+
+#line 1589 "mdb.browse.c"
+static const MR_ConstString mdb__browse__mdb__browse__field_names_xml_function_wrapper_0_0[3] = {
+  (MR_String) "function_name",
+  (MR_String) "function_arguments",
+  (MR_String) "return_value"
+};
+
+#line 1596 "mdb.browse.c"
+static const MR_DuFunctorDesc mdb__browse__mdb__browse__du_functor_desc_xml_function_wrapper_0_0 = {
+  (MR_String) "function",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdb__browse__mdb__browse__field_types_xml_function_wrapper_0_0,
+  mdb__browse__mdb__browse__field_names_xml_function_wrapper_0_0,
+  NULL,
+  NULL
+};
+
+#line 1611 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_stag_ordered_xml_function_wrapper_0_0[1] = {
+  &mdb__browse__mdb__browse__du_functor_desc_xml_function_wrapper_0_0
+};
+
+#line 1616 "mdb.browse.c"
+static const MR_DuPtagLayout mdb__browse__mdb__browse__du_ptag_ordered_xml_function_wrapper_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdb__browse__mdb__browse__du_stag_ordered_xml_function_wrapper_0_0
+  }
+};
+
+#line 1625 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_name_ordered_xml_function_wrapper_0[1] = {
+  &mdb__browse__mdb__browse__du_functor_desc_xml_function_wrapper_0_0
+};
+
+#line 1630 "mdb.browse.c"
+static const MR_Integer mdb__browse__mdb__browse__functor_number_map_xml_function_wrapper_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1635 "mdb.browse.c"
+const MR_TypeCtorInfo_Struct mdb__browse__mdb__browse__type_ctor_info_xml_function_wrapper_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdb__browse____Unify____xml_function_wrapper_0_0_10001)),
+  ((MR_Box) (mdb__browse____Compare____xml_function_wrapper_0_0_10001)),
+  (MR_String) "mdb.browse",
+  (MR_String) "xml_function_wrapper",
+  {     mdb__browse__mdb__browse__du_name_ordered_xml_function_wrapper_0 },
+  {     mdb__browse__mdb__browse__du_ptag_ordered_xml_function_wrapper_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdb__browse__mdb__browse__functor_number_map_xml_function_wrapper_0
+};
+
+#line 1652 "mdb.browse.c"
+static const MR_PseudoTypeInfo mdb__browse__mdb__browse__field_types_xml_predicate_wrapper_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &mdb__browse__list__ti_list_1univ__type_ctor_info_univ_0
+};
+
+#line 1658 "mdb.browse.c"
+static const MR_ConstString mdb__browse__mdb__browse__field_names_xml_predicate_wrapper_0_0[2] = {
+  (MR_String) "predicate_name",
+  (MR_String) "predicate_arguments"
+};
+
+#line 1664 "mdb.browse.c"
+static const MR_DuFunctorDesc mdb__browse__mdb__browse__du_functor_desc_xml_predicate_wrapper_0_0 = {
+  (MR_String) "predicate",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdb__browse__mdb__browse__field_types_xml_predicate_wrapper_0_0,
+  mdb__browse__mdb__browse__field_names_xml_predicate_wrapper_0_0,
+  NULL,
+  NULL
+};
+
+#line 1679 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_stag_ordered_xml_predicate_wrapper_0_0[1] = {
+  &mdb__browse__mdb__browse__du_functor_desc_xml_predicate_wrapper_0_0
+};
+
+#line 1684 "mdb.browse.c"
+static const MR_DuPtagLayout mdb__browse__mdb__browse__du_ptag_ordered_xml_predicate_wrapper_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdb__browse__mdb__browse__du_stag_ordered_xml_predicate_wrapper_0_0
+  }
+};
+
+#line 1693 "mdb.browse.c"
+static const MR_DuFunctorDescPtr mdb__browse__mdb__browse__du_name_ordered_xml_predicate_wrapper_0[1] = {
+  &mdb__browse__mdb__browse__du_functor_desc_xml_predicate_wrapper_0_0
+};
+
+#line 1698 "mdb.browse.c"
+static const MR_Integer mdb__browse__mdb__browse__functor_number_map_xml_predicate_wrapper_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1703 "mdb.browse.c"
+const MR_TypeCtorInfo_Struct mdb__browse__mdb__browse__type_ctor_info_xml_predicate_wrapper_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdb__browse____Unify____xml_predicate_wrapper_0_0_10001)),
+  ((MR_Box) (mdb__browse____Compare____xml_predicate_wrapper_0_0_10001)),
+  (MR_String) "mdb.browse",
+  (MR_String) "xml_predicate_wrapper",
+  {     mdb__browse__mdb__browse__du_name_ordered_xml_predicate_wrapper_0 },
+  {     mdb__browse__mdb__browse__du_ptag_ordered_xml_predicate_wrapper_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdb__browse__mdb__browse__functor_number_map_xml_predicate_wrapper_0
+};
+
+#line 1720 "mdb.browse.c"
+static MR_bool MR_CALL 
+mdb__browse____Unify____deref_result_1_0_10001(
+#line 1723 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 1725 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 1727 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_3)
+#line 1729 "mdb.browse.c"
+{
+#line 1731 "mdb.browse.c"
+  {
+#line 1733 "mdb.browse.c"
+    MR_bool mdb__browse__succeeded;
+
+#line 1736 "mdb.browse.c"
+    {
+#line 1738 "mdb.browse.c"
+      mdb__browse__succeeded = mdb__browse____Unify____deref_result_1_0(((MR_Word) mdb__browse__wrapper_arg_1), ((MR_Word) mdb__browse__wrapper_arg_2), ((MR_Word) mdb__browse__wrapper_arg_3));
+    }
+#line 1741 "mdb.browse.c"
+    return mdb__browse__succeeded;
+#line 1743 "mdb.browse.c"
+  }
+#line 1745 "mdb.browse.c"
+}
+
+#line 1748 "mdb.browse.c"
+static void MR_CALL 
+mdb__browse____Compare____deref_result_1_0_10001(
+#line 1751 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 1753 "mdb.browse.c"
+  MR_Box * mdb__browse__wrapper_arg_2,
+#line 1755 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_3,
+#line 1757 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_4)
+#line 1759 "mdb.browse.c"
+{
+#line 1761 "mdb.browse.c"
+  {
+#line 1763 "mdb.browse.c"
+    MR_Word mdb__browse__conv0_HeadVar__1_1;
+
+#line 1766 "mdb.browse.c"
+    {
+#line 1768 "mdb.browse.c"
+      mdb__browse____Compare____deref_result_1_0(((MR_Word) mdb__browse__wrapper_arg_1), &mdb__browse__conv0_HeadVar__1_1, ((MR_Word) mdb__browse__wrapper_arg_3), ((MR_Word) mdb__browse__wrapper_arg_4));
+    }
+#line 1771 "mdb.browse.c"
+    *mdb__browse__wrapper_arg_2 = ((MR_Box) (mdb__browse__conv0_HeadVar__1_1));
+#line 1773 "mdb.browse.c"
+  }
+#line 1775 "mdb.browse.c"
+}
+
+#line 1778 "mdb.browse.c"
+static MR_bool MR_CALL 
+mdb__browse____Unify____unbound_0_0_10001(
+#line 1781 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 1783 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2)
+#line 1785 "mdb.browse.c"
+{
+#line 1787 "mdb.browse.c"
+  {
+#line 1789 "mdb.browse.c"
+    MR_bool mdb__browse__succeeded;
+
+#line 1792 "mdb.browse.c"
+    {
+#line 1794 "mdb.browse.c"
+      mdb__browse__succeeded = mdb__browse____Unify____unbound_0_0();
+    }
+#line 1797 "mdb.browse.c"
+    return mdb__browse__succeeded;
+#line 1799 "mdb.browse.c"
+  }
+#line 1801 "mdb.browse.c"
+}
+
+#line 1804 "mdb.browse.c"
+static void MR_CALL 
+mdb__browse____Compare____unbound_0_0_10001(
+#line 1807 "mdb.browse.c"
+  MR_Box * mdb__browse__wrapper_arg_1,
+#line 1809 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 1811 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_3)
+#line 1813 "mdb.browse.c"
+{
+#line 1815 "mdb.browse.c"
+  {
+#line 1817 "mdb.browse.c"
+    MR_Word mdb__browse__conv0_HeadVar__1_1;
+
+#line 1820 "mdb.browse.c"
+    {
+#line 1822 "mdb.browse.c"
+      mdb__browse____Compare____unbound_0_0(&mdb__browse__conv0_HeadVar__1_1);
+    }
+#line 1825 "mdb.browse.c"
+    *mdb__browse__wrapper_arg_1 = ((MR_Box) (mdb__browse__conv0_HeadVar__1_1));
+#line 1827 "mdb.browse.c"
+  }
+#line 1829 "mdb.browse.c"
+}
+
+#line 1832 "mdb.browse.c"
+static MR_bool MR_CALL 
+mdb__browse____Unify____xml_function_wrapper_0_0_10001(
+#line 1835 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 1837 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2)
+#line 1839 "mdb.browse.c"
+{
+#line 1841 "mdb.browse.c"
+  {
+#line 1843 "mdb.browse.c"
+    MR_bool mdb__browse__succeeded;
+
+#line 1846 "mdb.browse.c"
+    {
+#line 1848 "mdb.browse.c"
+      mdb__browse__succeeded = mdb__browse____Unify____xml_function_wrapper_0_0(((MR_Word) mdb__browse__wrapper_arg_1), ((MR_Word) mdb__browse__wrapper_arg_2));
+    }
+#line 1851 "mdb.browse.c"
+    return mdb__browse__succeeded;
+#line 1853 "mdb.browse.c"
+  }
+#line 1855 "mdb.browse.c"
+}
+
+#line 1858 "mdb.browse.c"
+static void MR_CALL 
+mdb__browse____Compare____xml_function_wrapper_0_0_10001(
+#line 1861 "mdb.browse.c"
+  MR_Box * mdb__browse__wrapper_arg_1,
+#line 1863 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 1865 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_3)
+#line 1867 "mdb.browse.c"
+{
+#line 1869 "mdb.browse.c"
+  {
+#line 1871 "mdb.browse.c"
+    MR_Word mdb__browse__conv0_HeadVar__1_1;
+
+#line 1874 "mdb.browse.c"
+    {
+#line 1876 "mdb.browse.c"
+      mdb__browse____Compare____xml_function_wrapper_0_0(&mdb__browse__conv0_HeadVar__1_1, ((MR_Word) mdb__browse__wrapper_arg_2), ((MR_Word) mdb__browse__wrapper_arg_3));
+    }
+#line 1879 "mdb.browse.c"
+    *mdb__browse__wrapper_arg_1 = ((MR_Box) (mdb__browse__conv0_HeadVar__1_1));
+#line 1881 "mdb.browse.c"
+  }
+#line 1883 "mdb.browse.c"
+}
+
+#line 1886 "mdb.browse.c"
+static MR_bool MR_CALL 
+mdb__browse____Unify____xml_predicate_wrapper_0_0_10001(
+#line 1889 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 1891 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2)
+#line 1893 "mdb.browse.c"
+{
+#line 1895 "mdb.browse.c"
+  {
+#line 1897 "mdb.browse.c"
+    MR_bool mdb__browse__succeeded;
+
+#line 1900 "mdb.browse.c"
+    {
+#line 1902 "mdb.browse.c"
+      mdb__browse__succeeded = mdb__browse____Unify____xml_predicate_wrapper_0_0(((MR_Word) mdb__browse__wrapper_arg_1), ((MR_Word) mdb__browse__wrapper_arg_2));
+    }
+#line 1905 "mdb.browse.c"
+    return mdb__browse__succeeded;
+#line 1907 "mdb.browse.c"
+  }
+#line 1909 "mdb.browse.c"
+}
+
+#line 1912 "mdb.browse.c"
+static void MR_CALL 
+mdb__browse____Compare____xml_predicate_wrapper_0_0_10001(
+#line 1915 "mdb.browse.c"
+  MR_Box * mdb__browse__wrapper_arg_1,
+#line 1917 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 1919 "mdb.browse.c"
+  MR_Box mdb__browse__wrapper_arg_3)
+#line 1921 "mdb.browse.c"
+{
+#line 1923 "mdb.browse.c"
+  {
+#line 1925 "mdb.browse.c"
+    MR_Word mdb__browse__conv0_HeadVar__1_1;
+
+#line 1928 "mdb.browse.c"
+    {
+#line 1930 "mdb.browse.c"
+      mdb__browse____Compare____xml_predicate_wrapper_0_0(&mdb__browse__conv0_HeadVar__1_1, ((MR_Word) mdb__browse__wrapper_arg_2), ((MR_Word) mdb__browse__wrapper_arg_3));
+    }
+#line 1933 "mdb.browse.c"
+    *mdb__browse__wrapper_arg_1 = ((MR_Box) (mdb__browse__conv0_HeadVar__1_1));
+#line 1935 "mdb.browse.c"
+  }
+#line 1937 "mdb.browse.c"
+}
+
+#line 167 "browse.m"
+void MR_CALL 
+mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_109_100_98_95_95_98_114_111_119_115_101_95_95_117_110_98_111_117_110_100_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 167 "browse.m"
+  MR_Word * mdb__browse__HeadVar__1_1)
+#line 167 "browse.m"
+{
+#line 167 "browse.m"
+  {
+#line 167 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 167 "browse.m"
+    *mdb__browse__HeadVar__1_1 = (MR_Integer) 0;
+#line 167 "browse.m"
+  }
+#line 167 "browse.m"
+}
+
+#line 167 "browse.m"
+MR_bool MR_CALL 
+mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_109_100_98_95_95_98_114_111_119_115_101_95_95_117_110_98_111_117_110_100_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+#line 167 "browse.m"
+{
+#line 167 "browse.m"
+  {
+#line 167 "browse.m"
+    return MR_TRUE;
+#line 167 "browse.m"
+  }
+#line 167 "browse.m"
+}
+
+#line 754 "browse.m"
+static void MR_CALL 
+mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_118_97_108_117_101_95_114_101_112_114_101_115_101_110_116_97_116_105_111_110_95_95_91_49_93_95_48_2_p_0(
+#line 754 "browse.m"
+  MR_Box mdb__browse__HeadVar__1_1,
+#line 754 "browse.m"
+  MR_Integer * mdb__browse__HeadVar__2_2)
+#line 754 "browse.m"
+{
+#line 756 "browse.m"
+  {
+#line 756 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 756 "browse.m"
+    MR_Word mdb__browse__TypeInfo_for_T_7;
+
+#line 759 "browse.m"
+{
+#define MR_PROC_LABEL mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_118_97_108_117_101_95_114_101_112_114_101_115_101_110_116_97_116_105_111_110_95_95_91_49_93_95_48_2_p_0
+
+	MR_Word Value;
+	MR_Integer Addr;
+
+	Value = (MR_Word) mdb__browse__HeadVar__1_1 ;
+		{
+#line 759 "browse.m"
+
+    Addr = (MR_Integer) Value;
+
+#line 2002 "mdb.browse.c"
+
+		;}
+#undef MR_PROC_LABEL
+	 *mdb__browse__HeadVar__2_2  = Addr;
+#line 759 "browse.m"
+}
+#line 756 "browse.m"
+  }
+#line 754 "browse.m"
+}
+
+#line 142 "browse.m"
+void MR_CALL 
+mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_97_118_101_95_116_101_114_109_95_116_111_95_102_105_108_101_95_95_91_50_93_95_48_6_p_0(
+#line 142 "browse.m"
+  MR_String mdb__browse__FileName_7,
+#line 142 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_9,
+#line 142 "browse.m"
+  MR_Word mdb__browse__OutStream_10)
+#line 142 "browse.m"
+{
+#line 230 "browse.m"
+  {
+#line 230 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 230 "browse.m"
+    MR_Word mdb__browse__FileStreamRes_12;
+
+#line 235 "browse.m"
+    {
+#line 235 "browse.m"
+      mercury__io__tell_4_p_0(mdb__browse__FileName_7, &mdb__browse__FileStreamRes_12);
+    }
+#line 258 "browse.m"
+    if ((mdb__browse__FileStreamRes_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 237 "browse.m"
+      {
+#line 242 "browse.m"
+        if (((MR_tag((MR_Word) mdb__browse__BrowserTerm_9)) == (MR_mktag((MR_Integer) 0))))
+#line 239 "browse.m"
+          {
+#line 239 "browse.m"
+            MR_Word mdb__browse__TypeInfo_12_48;
+#line 239 "browse.m"
+            MR_Word mdb__browse__Term_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__BrowserTerm_9, (MR_Integer) 0)));
+#line 239 "browse.m"
+            MR_Box mdb__browse__V_46_46;
+
+#line 391 "browse.m"
+            {
+#line 391 "browse.m"
+              mdb__browse__V_46_46 = mercury__univ__univ_value_1_f_0(&mdb__browse__TypeInfo_12_48, mdb__browse__Term_13);
+            }
+#line 391 "browse.m"
+            {
+#line 391 "browse.m"
+              mdb__browse__save_term_4_p_0(mdb__browse__TypeInfo_12_48, (MR_Integer) 0, mdb__browse__V_46_46);
+            }
+#line 241 "browse.m"
+            {
+#line 241 "browse.m"
+              mercury__io__nl_2_p_0();
+            }
+#line 239 "browse.m"
+          }
+#line 242 "browse.m"
+        else
+#line 243 "browse.m"
+          {
+#line 243 "browse.m"
+            MR_String mdb__browse__Functor_14 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_9, (MR_Integer) 0)));
+#line 243 "browse.m"
+            MR_Word mdb__browse__Args_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_9, (MR_Integer) 1)));
+#line 243 "browse.m"
+            MR_Word mdb__browse__MaybeRes_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_9, (MR_Integer) 2)));
+
+#line 244 "browse.m"
+            {
+#line 244 "browse.m"
+              mercury__io__write_string_3_p_0(mdb__browse__Functor_14);
+            }
+#line 245 "browse.m"
+            {
+#line 245 "browse.m"
+              mercury__io__write_string_3_p_0((MR_String) "(\n");
+            }
+#line 246 "browse.m"
+            {
+#line 246 "browse.m"
+              mdb__browse__save_args_4_p_0((MR_Integer) 1, mdb__browse__Args_15);
+            }
+#line 247 "browse.m"
+            {
+#line 247 "browse.m"
+              mercury__io__write_string_3_p_0((MR_String) "\n)\n");
+            }
+#line 250 "browse.m"
+            if ((mdb__browse__MaybeRes_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 249 "browse.m"
+              {
+#line 249 "browse.m"
+              }
+#line 250 "browse.m"
+            else
+#line 251 "browse.m"
+              {
+#line 251 "browse.m"
+                MR_Word mdb__browse__TypeInfo_12_56;
+#line 251 "browse.m"
+                MR_Word mdb__browse__Result_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeRes_16, (MR_Integer) 0)));
+#line 251 "browse.m"
+                MR_Box mdb__browse__V_54_54;
+
+#line 252 "browse.m"
+                {
+#line 252 "browse.m"
+                  mercury__io__write_string_3_p_0((MR_String) "=\n");
+                }
+#line 391 "browse.m"
+                {
+#line 391 "browse.m"
+                  mdb__browse__V_54_54 = mercury__univ__univ_value_1_f_0(&mdb__browse__TypeInfo_12_56, mdb__browse__Result_17);
+                }
+#line 391 "browse.m"
+                {
+#line 391 "browse.m"
+                  mdb__browse__save_term_4_p_0(mdb__browse__TypeInfo_12_56, (MR_Integer) 1, mdb__browse__V_54_54);
+                }
+#line 254 "browse.m"
+                {
+#line 254 "browse.m"
+                  mercury__io__write_string_3_p_0((MR_String) "\n");
+                }
+#line 251 "browse.m"
+              }
+#line 243 "browse.m"
+          }
+#line 257 "browse.m"
+        {
+#line 257 "browse.m"
+          mercury__io__told_2_p_0();
+        }
+#line 237 "browse.m"
+      }
+#line 258 "browse.m"
+    else
+#line 259 "browse.m"
+      {
+#line 259 "browse.m"
+        MR_Word mdb__browse__Error_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__FileStreamRes_12, (MR_Integer) 0)));
+#line 259 "browse.m"
+        MR_String mdb__browse__Msg_19;
+
+#line 260 "browse.m"
+        {
+#line 260 "browse.m"
+          mercury__io__error_message_2_p_0(mdb__browse__Error_18, &mdb__browse__Msg_19);
+        }
+#line 261 "browse.m"
+        {
+#line 261 "browse.m"
+          mercury__io__write_string_4_p_0(mdb__browse__OutStream_10, mdb__browse__Msg_19);
+        }
+#line 259 "browse.m"
+      }
+#line 230 "browse.m"
+  }
+#line 142 "browse.m"
+}
+
+#line 264 "browse.m"
+static void MR_CALL 
+mdb__browse____Compare____xml_predicate_wrapper_0_0(
+#line 264 "browse.m"
+  MR_Word * mdb__browse__HeadVar__1_1,
+#line 264 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2,
+#line 264 "browse.m"
+  MR_Word mdb__browse__HeadVar__3_3)
+#line 264 "browse.m"
+{
+#line 264 "browse.m"
+  {
+#line 264 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 264 "browse.m"
+    MR_Integer mdb__browse__CastX_9 = (MR_Integer) mdb__browse__HeadVar__2_2;
+#line 264 "browse.m"
+    MR_Integer mdb__browse__CastY_10 = (MR_Integer) mdb__browse__HeadVar__3_3;
+
+#line 264 "browse.m"
+    mdb__browse__succeeded = (mdb__browse__CastX_9 == mdb__browse__CastY_10);
+#line 264 "browse.m"
+    if (mdb__browse__succeeded)
+#line 2198 "mdb.browse.c"
+      *mdb__browse__HeadVar__1_1 = (MR_Integer) 0;
+#line 264 "browse.m"
+    else
+#line 264 "browse.m"
+      {
+#line 264 "browse.m"
+        MR_String mdb__browse__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__2_2, (MR_Integer) 0)));
+#line 264 "browse.m"
+        MR_Word mdb__browse__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__2_2, (MR_Integer) 1)));
+#line 264 "browse.m"
+        MR_String mdb__browse__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__3_3, (MR_Integer) 0)));
+#line 264 "browse.m"
+        MR_Word mdb__browse__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__3_3, (MR_Integer) 1)));
+#line 264 "browse.m"
+        MR_Word mdb__browse__V_8_8;
+
+#line 264 "browse.m"
+        {
+#line 264 "browse.m"
+          mercury__private_builtin__builtin_compare_string_3_p_0(&mdb__browse__V_8_8, mdb__browse__V_4_4, mdb__browse__V_6_6);
+        }
+#line 2220 "mdb.browse.c"
+        mdb__browse__succeeded = (mdb__browse__V_8_8 == (MR_Integer) 0);
+#line 264 "browse.m"
+        mdb__browse__succeeded = !(mdb__browse__succeeded);
+#line 264 "browse.m"
+        if (mdb__browse__succeeded)
+#line 264 "browse.m"
+          *mdb__browse__HeadVar__1_1 = mdb__browse__V_8_8;
+#line 264 "browse.m"
+        else
+#line 264 "browse.m"
+          {
+#line 264 "browse.m"
+            {
+#line 264 "browse.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &mdb__browse_scalar_common_4[1], mdb__browse__HeadVar__1_1, ((MR_Box) (mdb__browse__V_5_5)), ((MR_Box) (mdb__browse__V_7_7)));
+            }
+#line 264 "browse.m"
+          }
+#line 264 "browse.m"
+      }
+#line 264 "browse.m"
+  }
+#line 264 "browse.m"
+}
+
+#line 264 "browse.m"
+static MR_bool MR_CALL 
+mdb__browse____Unify____xml_predicate_wrapper_0_0(
+#line 264 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 264 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2)
+#line 264 "browse.m"
+{
+#line 264 "browse.m"
+  {
+#line 264 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 264 "browse.m"
+    MR_Integer mdb__browse__CastX_7 = (MR_Integer) mdb__browse__HeadVar__1_1;
+#line 264 "browse.m"
+    MR_Integer mdb__browse__CastY_8 = (MR_Integer) mdb__browse__HeadVar__2_2;
+
+#line 264 "browse.m"
+    mdb__browse__succeeded = (mdb__browse__CastX_7 == mdb__browse__CastY_8);
+#line 264 "browse.m"
+    if (mdb__browse__succeeded)
+#line 264 "browse.m"
+      mdb__browse__succeeded = MR_TRUE;
+#line 264 "browse.m"
+    else
+#line 264 "browse.m"
+      {
+#line 264 "browse.m"
+        MR_Word mdb__browse__TypeInfo_9_9;
+#line 264 "browse.m"
+        MR_String mdb__browse__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__1_1, (MR_Integer) 0)));
+#line 264 "browse.m"
+        MR_Word mdb__browse__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__1_1, (MR_Integer) 1)));
+#line 264 "browse.m"
+        MR_String mdb__browse__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__2_2, (MR_Integer) 0)));
+#line 264 "browse.m"
+        MR_Word mdb__browse__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__2_2, (MR_Integer) 1)));
+
+#line 2285 "mdb.browse.c"
+        mdb__browse__succeeded = (strcmp(mdb__browse__V_3_3, mdb__browse__V_5_5) == 0);
+#line 264 "browse.m"
+        if (mdb__browse__succeeded)
+#line 264 "browse.m"
+          {
+#line 2291 "mdb.browse.c"
+            mdb__browse__TypeInfo_9_9 = (MR_Word) &mdb__browse_scalar_common_4[1];
+#line 2293 "mdb.browse.c"
+            {
+#line 2295 "mdb.browse.c"
+              mdb__browse__succeeded = mercury__builtin__unify_2_p_0(mdb__browse__TypeInfo_9_9, ((MR_Box) (mdb__browse__V_4_4)), ((MR_Box) (mdb__browse__V_6_6)));
+            }
+#line 264 "browse.m"
+          }
+#line 264 "browse.m"
+      }
+#line 264 "browse.m"
+    return mdb__browse__succeeded;
+#line 264 "browse.m"
+  }
+#line 264 "browse.m"
+}
+
+#line 270 "browse.m"
+static void MR_CALL 
+mdb__browse____Compare____xml_function_wrapper_0_0(
+#line 270 "browse.m"
+  MR_Word * mdb__browse__HeadVar__1_1,
+#line 270 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2,
+#line 270 "browse.m"
+  MR_Word mdb__browse__HeadVar__3_3)
+#line 270 "browse.m"
+{
+#line 270 "browse.m"
+  {
+#line 270 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 270 "browse.m"
+    MR_Integer mdb__browse__CastX_12 = (MR_Integer) mdb__browse__HeadVar__2_2;
+#line 270 "browse.m"
+    MR_Integer mdb__browse__CastY_13 = (MR_Integer) mdb__browse__HeadVar__3_3;
+
+#line 270 "browse.m"
+    mdb__browse__succeeded = (mdb__browse__CastX_12 == mdb__browse__CastY_13);
+#line 270 "browse.m"
+    if (mdb__browse__succeeded)
+#line 2333 "mdb.browse.c"
+      *mdb__browse__HeadVar__1_1 = (MR_Integer) 0;
+#line 270 "browse.m"
+    else
+#line 270 "browse.m"
+      {
+#line 270 "browse.m"
+        MR_String mdb__browse__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__2_2, (MR_Integer) 0)));
+#line 270 "browse.m"
+        MR_Word mdb__browse__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__2_2, (MR_Integer) 1)));
+#line 270 "browse.m"
+        MR_Word mdb__browse__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__2_2, (MR_Integer) 2)));
+#line 270 "browse.m"
+        MR_String mdb__browse__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__3_3, (MR_Integer) 0)));
+#line 270 "browse.m"
+        MR_Word mdb__browse__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__3_3, (MR_Integer) 1)));
+#line 270 "browse.m"
+        MR_Word mdb__browse__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__3_3, (MR_Integer) 2)));
+#line 270 "browse.m"
+        MR_Word mdb__browse__V_10_10;
+
+#line 270 "browse.m"
+        {
+#line 270 "browse.m"
+          mercury__private_builtin__builtin_compare_string_3_p_0(&mdb__browse__V_10_10, mdb__browse__V_4_4, mdb__browse__V_7_7);
+        }
+#line 2359 "mdb.browse.c"
+        mdb__browse__succeeded = (mdb__browse__V_10_10 == (MR_Integer) 0);
+#line 270 "browse.m"
+        mdb__browse__succeeded = !(mdb__browse__succeeded);
+#line 270 "browse.m"
+        if (mdb__browse__succeeded)
+#line 270 "browse.m"
+          *mdb__browse__HeadVar__1_1 = mdb__browse__V_10_10;
+#line 270 "browse.m"
+        else
+#line 270 "browse.m"
+          {
+#line 270 "browse.m"
+            MR_Word mdb__browse__V_11_11;
+
+#line 270 "browse.m"
+            {
+#line 270 "browse.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &mdb__browse_scalar_common_4[1], &mdb__browse__V_11_11, ((MR_Box) (mdb__browse__V_5_5)), ((MR_Box) (mdb__browse__V_8_8)));
+            }
+#line 2379 "mdb.browse.c"
+            mdb__browse__succeeded = (mdb__browse__V_11_11 == (MR_Integer) 0);
+#line 270 "browse.m"
+            mdb__browse__succeeded = !(mdb__browse__succeeded);
+#line 270 "browse.m"
+            if (mdb__browse__succeeded)
+#line 270 "browse.m"
+              *mdb__browse__HeadVar__1_1 = mdb__browse__V_11_11;
+#line 270 "browse.m"
+            else
+#line 270 "browse.m"
+              {
+#line 270 "browse.m"
+                mercury__univ____Compare____univ_0_0(mdb__browse__HeadVar__1_1, mdb__browse__V_6_6, mdb__browse__V_9_9);
+              }
+#line 270 "browse.m"
+          }
+#line 270 "browse.m"
+      }
+#line 270 "browse.m"
+  }
+#line 270 "browse.m"
+}
+
+#line 270 "browse.m"
+static MR_bool MR_CALL 
+mdb__browse____Unify____xml_function_wrapper_0_0(
+#line 270 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 270 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2)
+#line 270 "browse.m"
+{
+#line 270 "browse.m"
+  {
+#line 270 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 270 "browse.m"
+    MR_Integer mdb__browse__CastX_9 = (MR_Integer) mdb__browse__HeadVar__1_1;
+#line 270 "browse.m"
+    MR_Integer mdb__browse__CastY_10 = (MR_Integer) mdb__browse__HeadVar__2_2;
+
+#line 270 "browse.m"
+    mdb__browse__succeeded = (mdb__browse__CastX_9 == mdb__browse__CastY_10);
+#line 270 "browse.m"
+    if (mdb__browse__succeeded)
+#line 270 "browse.m"
+      mdb__browse__succeeded = MR_TRUE;
+#line 270 "browse.m"
+    else
+#line 270 "browse.m"
+      {
+#line 270 "browse.m"
+        MR_Word mdb__browse__TypeInfo_11_11;
+#line 270 "browse.m"
+        MR_String mdb__browse__V_3_3 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__1_1, (MR_Integer) 0)));
+#line 270 "browse.m"
+        MR_Word mdb__browse__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__1_1, (MR_Integer) 1)));
+#line 270 "browse.m"
+        MR_Word mdb__browse__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__1_1, (MR_Integer) 2)));
+#line 270 "browse.m"
+        MR_String mdb__browse__V_6_6 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__2_2, (MR_Integer) 0)));
+#line 270 "browse.m"
+        MR_Word mdb__browse__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__2_2, (MR_Integer) 1)));
+#line 270 "browse.m"
+        MR_Word mdb__browse__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__2_2, (MR_Integer) 2)));
+
+#line 2446 "mdb.browse.c"
+        mdb__browse__succeeded = (strcmp(mdb__browse__V_3_3, mdb__browse__V_6_6) == 0);
+#line 270 "browse.m"
+        if (mdb__browse__succeeded)
+#line 270 "browse.m"
+          {
+#line 2452 "mdb.browse.c"
+            mdb__browse__TypeInfo_11_11 = (MR_Word) &mdb__browse_scalar_common_4[1];
+#line 2454 "mdb.browse.c"
+            {
+#line 2456 "mdb.browse.c"
+              mdb__browse__succeeded = mercury__builtin__unify_2_p_0(mdb__browse__TypeInfo_11_11, ((MR_Box) (mdb__browse__V_4_4)), ((MR_Box) (mdb__browse__V_7_7)));
+            }
+#line 270 "browse.m"
+            if (mdb__browse__succeeded)
+#line 2461 "mdb.browse.c"
+              {
+#line 2463 "mdb.browse.c"
+                mdb__browse__succeeded = mercury__univ____Unify____univ_0_0(mdb__browse__V_5_5, mdb__browse__V_8_8);
+              }
+#line 270 "browse.m"
+          }
+#line 270 "browse.m"
+      }
+#line 270 "browse.m"
+    return mdb__browse__succeeded;
+#line 270 "browse.m"
+  }
+#line 270 "browse.m"
+}
+
+#line 167 "browse.m"
+void MR_CALL 
+mdb__browse____Compare____unbound_0_0(
+#line 167 "browse.m"
+  MR_Word * mdb__browse__HeadVar__1_1)
+#line 167 "browse.m"
+{
+#line 167 "browse.m"
+  {
+#line 167 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 167 "browse.m"
+    {
+#line 167 "browse.m"
+      mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_109_100_98_95_95_98_114_111_119_115_101_95_95_117_110_98_111_117_110_100_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(mdb__browse__HeadVar__1_1);
+    }
+#line 167 "browse.m"
+  }
+#line 167 "browse.m"
+}
+
+#line 167 "browse.m"
+MR_bool MR_CALL 
+mdb__browse____Unify____unbound_0_0(void)
+#line 167 "browse.m"
+{
+#line 167 "browse.m"
+  {
+#line 167 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 167 "browse.m"
+    {
+#line 167 "browse.m"
+      mdb__browse__succeeded = mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_109_100_98_95_95_98_114_111_119_115_101_95_95_117_110_98_111_117_110_100_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+#line 167 "browse.m"
+    return mdb__browse__succeeded;
+#line 167 "browse.m"
+  }
+#line 167 "browse.m"
+}
+
+#line 1393 "browse.m"
+static void MR_CALL 
+mdb__browse____Compare____deref_result_1_0(
+#line 1393 "browse.m"
+  MR_Word mdb__browse__TypeInfo_for_T_19,
+#line 1393 "browse.m"
+  MR_Word * mdb__browse__HeadVar__1_1,
+#line 1393 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2,
+#line 1393 "browse.m"
+  MR_Word mdb__browse__HeadVar__3_3)
+#line 1393 "browse.m"
+{
+#line 1393 "browse.m"
+  {
+#line 1393 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1393 "browse.m"
+    MR_Integer mdb__browse__CastX_17 = (MR_Integer) mdb__browse__HeadVar__2_2;
+#line 1393 "browse.m"
+    MR_Integer mdb__browse__CastY_18 = (MR_Integer) mdb__browse__HeadVar__3_3;
+
+#line 1393 "browse.m"
+    mdb__browse__succeeded = (mdb__browse__CastX_17 == mdb__browse__CastY_18);
+#line 1393 "browse.m"
+    if (mdb__browse__succeeded)
+#line 2547 "mdb.browse.c"
+      *mdb__browse__HeadVar__1_1 = (MR_Integer) 0;
+#line 1393 "browse.m"
+    else
+#line 1393 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+#line 1393 "browse.m"
+      {
+#line 1393 "browse.m"
+        MR_Word mdb__browse__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__2_2, (MR_Integer) 1)));
+#line 1393 "browse.m"
+        MR_Word mdb__browse__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 1393 "browse.m"
+        if (((MR_tag((MR_Word) mdb__browse__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+#line 1393 "browse.m"
+          {
+#line 1393 "browse.m"
+            MR_Word mdb__browse__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__3_3, (MR_Integer) 0)));
+#line 1393 "browse.m"
+            MR_Word mdb__browse__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__3_3, (MR_Integer) 1)));
+#line 1393 "browse.m"
+            MR_Word mdb__browse__V_16_16;
+
+#line 1393 "browse.m"
+            {
+#line 1393 "browse.m"
+              mercury__builtin__compare_3_p_0((MR_Word) &mdb__browse_scalar_common_4[0], &mdb__browse__V_16_16, ((MR_Box) (mdb__browse__V_23_23)), ((MR_Box) (mdb__browse__V_14_14)));
+            }
+#line 2576 "mdb.browse.c"
+            mdb__browse__succeeded = (mdb__browse__V_16_16 == (MR_Integer) 0);
+#line 1393 "browse.m"
+            mdb__browse__succeeded = !(mdb__browse__succeeded);
+#line 1393 "browse.m"
+            if (mdb__browse__succeeded)
+#line 1393 "browse.m"
+              *mdb__browse__HeadVar__1_1 = mdb__browse__V_16_16;
+#line 1393 "browse.m"
+            else
+#line 1393 "browse.m"
+              {
+#line 1393 "browse.m"
+                mdb__browser_info____Compare____down_dir_0_0(mdb__browse__HeadVar__1_1, mdb__browse__V_22_22, mdb__browse__V_15_15);
+              }
+#line 1393 "browse.m"
+          }
+#line 1393 "browse.m"
+        else
+#line 2595 "mdb.browse.c"
+          *mdb__browse__HeadVar__1_1 = (MR_Integer) 2;
+#line 1393 "browse.m"
+      }
+#line 1393 "browse.m"
+    else
+#line 1393 "browse.m"
+      {
+#line 1393 "browse.m"
+        MR_Box mdb__browse__V_24_24 = (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__2_2, (MR_Integer) 0));
+
+#line 1393 "browse.m"
+        if (((MR_tag((MR_Word) mdb__browse__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+#line 2608 "mdb.browse.c"
+          *mdb__browse__HeadVar__1_1 = (MR_Integer) 1;
+#line 1393 "browse.m"
+        else
+#line 1393 "browse.m"
+          {
+#line 1393 "browse.m"
+            MR_Box mdb__browse__V_5_5 = (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__3_3, (MR_Integer) 0));
+
+#line 1393 "browse.m"
+            {
+#line 1393 "browse.m"
+              mercury__builtin__compare_3_p_0(mdb__browse__TypeInfo_for_T_19, mdb__browse__HeadVar__1_1, mdb__browse__V_24_24, mdb__browse__V_5_5);
+            }
+#line 1393 "browse.m"
+          }
+#line 1393 "browse.m"
+      }
+#line 1393 "browse.m"
+  }
+#line 1393 "browse.m"
+}
+
+#line 1393 "browse.m"
+static MR_bool MR_CALL 
+mdb__browse____Unify____deref_result_1_0(
+#line 1393 "browse.m"
+  MR_Word mdb__browse__TypeInfo_for_T_11,
+#line 1393 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 1393 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2)
+#line 1393 "browse.m"
+{
+#line 1393 "browse.m"
+  {
+#line 1393 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1393 "browse.m"
+    MR_Integer mdb__browse__CastX_9 = (MR_Integer) mdb__browse__HeadVar__1_1;
+#line 1393 "browse.m"
+    MR_Integer mdb__browse__CastY_10 = (MR_Integer) mdb__browse__HeadVar__2_2;
+
+#line 1393 "browse.m"
+    mdb__browse__succeeded = (mdb__browse__CastX_9 == mdb__browse__CastY_10);
+#line 1393 "browse.m"
+    if (mdb__browse__succeeded)
+#line 1393 "browse.m"
+      mdb__browse__succeeded = MR_TRUE;
+#line 1393 "browse.m"
+    else
+#line 1393 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+#line 1393 "browse.m"
+      {
+#line 1393 "browse.m"
+        MR_Word mdb__browse__TypeInfo_12_12;
+#line 1393 "browse.m"
+        MR_Word mdb__browse__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__1_1, (MR_Integer) 0)));
+#line 1393 "browse.m"
+        MR_Word mdb__browse__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__1_1, (MR_Integer) 1)));
+#line 1393 "browse.m"
+        MR_Word mdb__browse__V_7_7;
+#line 1393 "browse.m"
+        MR_Word mdb__browse__V_8_8;
+
+#line 1393 "browse.m"
+        mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 1393 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1393 "browse.m"
+          {
+#line 1393 "browse.m"
+            mdb__browse__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__2_2, (MR_Integer) 0)));
+#line 1393 "browse.m"
+            mdb__browse__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__2_2, (MR_Integer) 1)));
+#line 2684 "mdb.browse.c"
+            mdb__browse__TypeInfo_12_12 = (MR_Word) &mdb__browse_scalar_common_4[0];
+#line 2686 "mdb.browse.c"
+            {
+#line 2688 "mdb.browse.c"
+              mdb__browse__succeeded = mercury__builtin__unify_2_p_0(mdb__browse__TypeInfo_12_12, ((MR_Box) (mdb__browse__V_5_5)), ((MR_Box) (mdb__browse__V_7_7)));
+            }
+#line 1393 "browse.m"
+            if (mdb__browse__succeeded)
+#line 2693 "mdb.browse.c"
+              {
+#line 2695 "mdb.browse.c"
+                mdb__browse__succeeded = mdb__browser_info____Unify____down_dir_0_0(mdb__browse__V_6_6, mdb__browse__V_8_8);
+              }
+#line 1393 "browse.m"
+          }
+#line 1393 "browse.m"
+      }
+#line 1393 "browse.m"
+    else
+#line 1393 "browse.m"
+      {
+#line 1393 "browse.m"
+        MR_Box mdb__browse__V_3_3 = (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__1_1, (MR_Integer) 0));
+#line 1393 "browse.m"
+        MR_Box mdb__browse__V_4_4;
+
+#line 1393 "browse.m"
+        mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+#line 1393 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1393 "browse.m"
+          {
+#line 1393 "browse.m"
+            mdb__browse__V_4_4 = (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__2_2, (MR_Integer) 0));
+#line 2719 "mdb.browse.c"
+            {
+#line 2721 "mdb.browse.c"
+              mdb__browse__succeeded = mercury__builtin__unify_2_p_0(mdb__browse__TypeInfo_for_T_11, mdb__browse__V_3_3, mdb__browse__V_4_4);
+            }
+#line 1393 "browse.m"
+          }
+#line 1393 "browse.m"
+      }
+#line 1393 "browse.m"
+    return mdb__browse__succeeded;
+#line 1393 "browse.m"
+  }
+#line 1393 "browse.m"
+}
+
+#line 1817 "browse.m"
+static MR_Word MR_CALL 
+mdb__browse__qualified_functor_to_doc_1_f_0(
+#line 1817 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1)
+#line 1817 "browse.m"
+{
+#line 1819 "browse.m"
+  {
+#line 1819 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1819 "browse.m"
+    MR_Word mdb__browse__HeadVar__2_2;
+
+#line 1819 "browse.m"
+    if ((mdb__browse__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1819 "browse.m"
+      {
+#line 1819 "browse.m"
+        mdb__browse__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_5[8]);
+#line 1819 "browse.m"
+      }
+#line 1819 "browse.m"
+    else
+#line 1819 "browse.m"
+      {
+#line 1819 "browse.m"
+        MR_Word mdb__browse__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__1_1, (MR_Integer) 1)));
+#line 1819 "browse.m"
+        MR_String mdb__browse__V_22_22 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__1_1, (MR_Integer) 0)));
+
+#line 1819 "browse.m"
+        if ((mdb__browse__V_21_21 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1820 "browse.m"
+          {
+#line 1820 "browse.m"
+            MR_String mdb__browse__V_6_6;
+
+#line 1820 "browse.m"
+            {
+#line 1820 "browse.m"
+              mdb__browse__V_6_6 = mercury__term_io__quoted_atom_1_f_0(mdb__browse__V_22_22);
+            }
+#line 1820 "browse.m"
+            {
+#line 1820 "browse.m"
+              mdb__browse__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1820 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__2_2, 0) = ((MR_Box) (mdb__browse__V_6_6));
+#line 1820 "browse.m"
+            }
+#line 1820 "browse.m"
+          }
+#line 1819 "browse.m"
+        else
+#line 1821 "browse.m"
+          {
+#line 1821 "browse.m"
+            MR_Word mdb__browse__V_11_11;
+#line 1821 "browse.m"
+            MR_Word mdb__browse__V_12_12;
+#line 1821 "browse.m"
+            MR_String mdb__browse__V_13_13;
+#line 1821 "browse.m"
+            MR_Word mdb__browse__V_14_14;
+#line 1821 "browse.m"
+            MR_Word mdb__browse__V_17_17;
+#line 1821 "browse.m"
+            MR_Word mdb__browse__V_18_18;
+
+#line 1822 "browse.m"
+            {
+#line 1822 "browse.m"
+              mdb__browse__V_13_13 = mercury__term_io__quoted_atom_1_f_0(mdb__browse__V_22_22);
+            }
+#line 1822 "browse.m"
+            {
+#line 1822 "browse.m"
+              mdb__browse__V_12_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1822 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_12_12, 0) = ((MR_Box) (mdb__browse__V_13_13));
+#line 1822 "browse.m"
+            }
+#line 1823 "browse.m"
+            {
+#line 1823 "browse.m"
+              mdb__browse__V_18_18 = mdb__browse__qualified_functor_to_doc_1_f_0(mdb__browse__V_21_21);
+            }
+#line 1823 "browse.m"
+            {
+#line 1823 "browse.m"
+              mdb__browse__V_17_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1823 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_17_17, 0) = ((MR_Box) (mdb__browse__V_18_18));
+#line 1823 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_17_17, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1823 "browse.m"
+            }
+#line 1822 "browse.m"
+            {
+#line 1822 "browse.m"
+              mdb__browse__V_14_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1822 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_14_14, 0) = ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_5[9])));
+#line 1822 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_14_14, 1) = ((MR_Box) (mdb__browse__V_17_17));
+#line 1822 "browse.m"
+            }
+#line 1822 "browse.m"
+            {
+#line 1822 "browse.m"
+              mdb__browse__V_11_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1822 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_11_11, 0) = ((MR_Box) (mdb__browse__V_12_12));
+#line 1822 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_11_11, 1) = ((MR_Box) (mdb__browse__V_14_14));
+#line 1822 "browse.m"
+            }
+#line 1822 "browse.m"
+            {
+#line 1822 "browse.m"
+              mdb__browse__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1822 "browse.m"
+              MR_hl_field(MR_mktag(2), mdb__browse__HeadVar__2_2, 0) = ((MR_Box) (mdb__browse__V_11_11));
+#line 1822 "browse.m"
+            }
+#line 1821 "browse.m"
+          }
+#line 1819 "browse.m"
+      }
+#line 1819 "browse.m"
+    return mdb__browse__HeadVar__2_2;
+#line 1819 "browse.m"
+  }
+#line 1817 "browse.m"
+}
+
+#line 1746 "browse.m"
+static void MR_CALL 
+mdb__browse__write_term_mode_debugger_5_p_0(
+#line 1746 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 1746 "browse.m"
+  MR_Word mdb__browse__MaybeModeFunc_7,
+#line 1746 "browse.m"
+  MR_Word mdb__browse__Dirs_8)
+#line 1746 "browse.m"
+{
+#line 1751 "browse.m"
+  {
+#line 1751 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 1751 "browse.m"
+    if ((mdb__browse__MaybeModeFunc_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1756 "browse.m"
+      {
+#line 1757 "browse.m"
+        {
+#line 1757 "browse.m"
+          mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_6, (MR_String) "Mode information not available.\n");
+        }
+#line 1756 "browse.m"
+      }
+#line 1751 "browse.m"
+    else
+#line 1751 "browse.m"
+      {
+#line 1751 "browse.m"
+        MR_Word mdb__browse__ModeFunc_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeModeFunc_7, (MR_Integer) 0)));
+#line 1751 "browse.m"
+        MR_Word mdb__browse__Mode_11;
+#line 1751 "browse.m"
+        MR_String mdb__browse__ModeStr_12;
+#line 1751 "browse.m"
+        MR_String mdb__browse__V_17_17;
+#line 1752 "browse.m"
+        MR_Box MR_CALL (* mdb__browse__func_0)(MR_Box, MR_Box) = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), mdb__browse__ModeFunc_10, (MR_Integer) 1)));
+#line 1752 "browse.m"
+        MR_Box mdb__browse__conv1_Mode_11;
+
+#line 1752 "browse.m"
+        {
+#line 1752 "browse.m"
+          mdb__browse__conv1_Mode_11 = mdb__browse__func_0(((MR_Box) mdb__browse__ModeFunc_10), ((MR_Box) (mdb__browse__Dirs_8)));
+        }
+#line 1752 "browse.m"
+        mdb__browse__Mode_11 = ((MR_Word) mdb__browse__conv1_Mode_11);
+#line 1763 "browse.m"
+        mdb__browse__ModeStr_12 = ((&mdb__browse_vector_common_7[16 + mdb__browse__Mode_11]))->mdb__browse__vector_common_type_7_0__vct_7_f_0;
+#line 1754 "browse.m"
+        {
+#line 1754 "browse.m"
+          mdb__browse__V_17_17 = mercury__string__f_43_43_2_f_0(mdb__browse__ModeStr_12, (MR_String) "\n");
+        }
+#line 1754 "browse.m"
+        {
+#line 1754 "browse.m"
+          mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_6, mdb__browse__V_17_17);
+        }
+#line 1751 "browse.m"
+      }
+#line 1751 "browse.m"
+  }
+#line 1746 "browse.m"
+}
+
+#line 1732 "browse.m"
+static MR_String MR_CALL 
+mdb__browse__down_dirs_to_string_1_f_0(
+#line 1732 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1)
+#line 1732 "browse.m"
+{
+#line 1734 "browse.m"
+  {
+#line 1734 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1734 "browse.m"
+    MR_String mdb__browse__HeadVar__2_2;
+
+#line 1734 "browse.m"
+    if ((mdb__browse__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1734 "browse.m"
+      mdb__browse__HeadVar__2_2 = (MR_String) "";
+#line 1734 "browse.m"
+    else
+#line 1735 "browse.m"
+      {
+#line 1735 "browse.m"
+        MR_Word mdb__browse__Dir_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__1_1, (MR_Integer) 0)));
+#line 1735 "browse.m"
+        MR_Word mdb__browse__Dirs_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__1_1, (MR_Integer) 1)));
+
+#line 1739 "browse.m"
+        if ((mdb__browse__Dirs_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1729 "browse.m"
+          if (((MR_tag((MR_Word) mdb__browse__Dir_3)) == (MR_mktag((MR_Integer) 1))))
+#line 1730 "browse.m"
+            mdb__browse__HeadVar__2_2 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__Dir_3, (MR_Integer) 0)));
+#line 1729 "browse.m"
+          else
+#line 1729 "browse.m"
+            {
+#line 1729 "browse.m"
+              MR_Integer mdb__browse__Num_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Dir_3, (MR_Integer) 0)));
+
+#line 1729 "browse.m"
+              {
+#line 1729 "browse.m"
+                mdb__browse__HeadVar__2_2 = mercury__string__int_to_string_1_f_0(mdb__browse__Num_12);
+              }
+#line 1729 "browse.m"
+            }
+#line 1739 "browse.m"
+        else
+#line 1740 "browse.m"
+          {
+#line 1740 "browse.m"
+            MR_String mdb__browse__V_8_8;
+#line 1740 "browse.m"
+            MR_String mdb__browse__V_9_9;
+#line 1740 "browse.m"
+            MR_String mdb__browse__V_11_11;
+
+#line 1729 "browse.m"
+            if (((MR_tag((MR_Word) mdb__browse__Dir_3)) == (MR_mktag((MR_Integer) 1))))
+#line 1730 "browse.m"
+              mdb__browse__V_8_8 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__Dir_3, (MR_Integer) 0)));
+#line 1729 "browse.m"
+            else
+#line 1729 "browse.m"
+              {
+#line 1729 "browse.m"
+                MR_Integer mdb__browse__Num_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Dir_3, (MR_Integer) 0)));
+
+#line 1729 "browse.m"
+                {
+#line 1729 "browse.m"
+                  mdb__browse__V_8_8 = mercury__string__int_to_string_1_f_0(mdb__browse__Num_14);
+                }
+#line 1729 "browse.m"
+              }
+#line 1741 "browse.m"
+            {
+#line 1741 "browse.m"
+              mdb__browse__V_11_11 = mdb__browse__down_dirs_to_string_1_f_0(mdb__browse__Dirs_4);
+            }
+#line 1741 "browse.m"
+            {
+#line 1741 "browse.m"
+              mdb__browse__V_9_9 = mercury__string__f_43_43_2_f_0((MR_String) "/", mdb__browse__V_11_11);
+            }
+#line 1741 "browse.m"
+            {
+#line 1741 "browse.m"
+              mdb__browse__HeadVar__2_2 = mercury__string__f_43_43_2_f_0(mdb__browse__V_8_8, mdb__browse__V_9_9);
+            }
+#line 1740 "browse.m"
+          }
+#line 1735 "browse.m"
+      }
+#line 1734 "browse.m"
+    return mdb__browse__HeadVar__2_2;
+#line 1734 "browse.m"
+  }
+#line 1732 "browse.m"
+}
+
+#line 1703 "browse.m"
+static void MR_CALL 
+mdb__browse__simplify_rev_dirs_4_p_0(
+#line 1703 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 1703 "browse.m"
+  MR_Integer mdb__browse__STATE_VARIABLE_ToDelete_0_2,
+#line 1703 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_DownDirs_0_3,
+#line 1703 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_DownDirs_4)
+#line 1703 "browse.m"
+{
+#line 1706 "browse.m"
+  while (MR_TRUE)
+#line 1706 "browse.m"
+    {
+#line 1706 "browse.m"
+      /* tailcall optimized into a loop */
+#line 1706 "browse.m"
+      {
+#line 1706 "browse.m"
+        MR_bool mdb__browse__succeeded;
+
+#line 1706 "browse.m"
+        if ((mdb__browse__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1706 "browse.m"
+          *mdb__browse__STATE_VARIABLE_DownDirs_4 = mdb__browse__STATE_VARIABLE_DownDirs_0_3;
+#line 1706 "browse.m"
+        else
+#line 1707 "browse.m"
+          {
+#line 1707 "browse.m"
+            MR_Word mdb__browse__RevUpDownDir_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__1_1, (MR_Integer) 0)));
+#line 1707 "browse.m"
+            MR_Word mdb__browse__RevUpDownDirs_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__1_1, (MR_Integer) 1)));
+#line 1707 "browse.m"
+            MR_Word mdb__browse__STATE_VARIABLE_DownDirs_22_22;
+#line 1707 "browse.m"
+            MR_Integer mdb__browse__STATE_VARIABLE_ToDelete_23_23;
+
+#line 1711 "browse.m"
+#line 1711 "browse.m"
+            switch (MR_tag((MR_Word) mdb__browse__RevUpDownDir_9)) {
+#line 1711 "browse.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 1711 "browse.m"
+              case (MR_Integer) 0:
+#line 1709 "browse.m"
+                {
+#line 1710 "browse.m"
+                  mdb__browse__STATE_VARIABLE_ToDelete_23_23 = (mdb__browse__STATE_VARIABLE_ToDelete_0_2 + (MR_Integer) 1);
+#line 1709 "browse.m"
+                  mdb__browse__STATE_VARIABLE_DownDirs_22_22 = mdb__browse__STATE_VARIABLE_DownDirs_0_3;
+#line 1709 "browse.m"
+                }
+#line 1711 "browse.m"
+                break;
+#line 1711 "browse.m"
+              case (MR_Integer) 1:
+#line 1718 "browse.m"
+                {
+#line 1718 "browse.m"
+                  MR_Integer mdb__browse__ChildNum_13 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdb__browse__RevUpDownDir_9, (MR_Integer) 0)));
+#line 1718 "browse.m"
+                  MR_Word mdb__browse__DownDir_30;
+
+#line 1714 "browse.m"
+                  {
+#line 1714 "browse.m"
+                    mdb__browse__DownDir_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1714 "browse.m"
+                    MR_hl_field(MR_mktag(0), mdb__browse__DownDir_30, 0) = ((MR_Box) (mdb__browse__ChildNum_13));
+#line 1714 "browse.m"
+                  }
+#line 1719 "browse.m"
+                  mdb__browse__succeeded = (mdb__browse__STATE_VARIABLE_ToDelete_0_2 > (MR_Integer) 0);
+#line 1719 "browse.m"
+                  if (mdb__browse__succeeded)
+#line 1720 "browse.m"
+                    {
+#line 1720 "browse.m"
+                      mdb__browse__STATE_VARIABLE_ToDelete_23_23 = (mdb__browse__STATE_VARIABLE_ToDelete_0_2 - (MR_Integer) 1);
+#line 1720 "browse.m"
+                      mdb__browse__STATE_VARIABLE_DownDirs_22_22 = mdb__browse__STATE_VARIABLE_DownDirs_0_3;
+#line 1720 "browse.m"
+                    }
+#line 1719 "browse.m"
+                  else
+#line 1722 "browse.m"
+                    {
+#line 1722 "browse.m"
+                      {
+#line 1722 "browse.m"
+                        mdb__browse__STATE_VARIABLE_DownDirs_22_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1722 "browse.m"
+                        MR_hl_field(MR_mktag(1), mdb__browse__STATE_VARIABLE_DownDirs_22_22, 0) = ((MR_Box) (mdb__browse__DownDir_30));
+#line 1722 "browse.m"
+                        MR_hl_field(MR_mktag(1), mdb__browse__STATE_VARIABLE_DownDirs_22_22, 1) = ((MR_Box) (mdb__browse__STATE_VARIABLE_DownDirs_0_3));
+#line 1722 "browse.m"
+                      }
+#line 1722 "browse.m"
+                      mdb__browse__STATE_VARIABLE_ToDelete_23_23 = mdb__browse__STATE_VARIABLE_ToDelete_0_2;
+#line 1722 "browse.m"
+                    }
+#line 1718 "browse.m"
+                }
+#line 1711 "browse.m"
+                break;
+#line 1711 "browse.m"
+              case (MR_Integer) 2:
+#line 1718 "browse.m"
+                {
+#line 1718 "browse.m"
+                  MR_Word mdb__browse__DownDir_14;
+#line 1718 "browse.m"
+                  MR_String mdb__browse__ChildName_15 = ((MR_String) (MR_hl_field(MR_mktag(2), mdb__browse__RevUpDownDir_9, (MR_Integer) 0)));
+
+#line 1717 "browse.m"
+                  {
+#line 1717 "browse.m"
+                    mdb__browse__DownDir_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1717 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__DownDir_14, 0) = ((MR_Box) (mdb__browse__ChildName_15));
+#line 1717 "browse.m"
+                  }
+#line 1719 "browse.m"
+                  mdb__browse__succeeded = (mdb__browse__STATE_VARIABLE_ToDelete_0_2 > (MR_Integer) 0);
+#line 1719 "browse.m"
+                  if (mdb__browse__succeeded)
+#line 1720 "browse.m"
+                    {
+#line 1720 "browse.m"
+                      mdb__browse__STATE_VARIABLE_ToDelete_23_23 = (mdb__browse__STATE_VARIABLE_ToDelete_0_2 - (MR_Integer) 1);
+#line 1720 "browse.m"
+                      mdb__browse__STATE_VARIABLE_DownDirs_22_22 = mdb__browse__STATE_VARIABLE_DownDirs_0_3;
+#line 1720 "browse.m"
+                    }
+#line 1719 "browse.m"
+                  else
+#line 1722 "browse.m"
+                    {
+#line 1722 "browse.m"
+                      {
+#line 1722 "browse.m"
+                        mdb__browse__STATE_VARIABLE_DownDirs_22_22 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1722 "browse.m"
+                        MR_hl_field(MR_mktag(1), mdb__browse__STATE_VARIABLE_DownDirs_22_22, 0) = ((MR_Box) (mdb__browse__DownDir_14));
+#line 1722 "browse.m"
+                        MR_hl_field(MR_mktag(1), mdb__browse__STATE_VARIABLE_DownDirs_22_22, 1) = ((MR_Box) (mdb__browse__STATE_VARIABLE_DownDirs_0_3));
+#line 1722 "browse.m"
+                      }
+#line 1722 "browse.m"
+                      mdb__browse__STATE_VARIABLE_ToDelete_23_23 = mdb__browse__STATE_VARIABLE_ToDelete_0_2;
+#line 1722 "browse.m"
+                    }
+#line 1718 "browse.m"
+                }
+#line 1711 "browse.m"
+                break;
+#line 1711 "browse.m"
+            }
+#line 1725 "browse.m"
+            /* direct tailcall eliminated */
+#line 1725 "browse.m"
+            {
+#line 1725 "browse.m"
+              MR_Word mdb__browse__HeadVar__1__tmp_copy_1 = mdb__browse__RevUpDownDirs_10;
+#line 1725 "browse.m"
+              MR_Integer mdb__browse__STATE_VARIABLE_ToDelete_0__tmp_copy_2 = mdb__browse__STATE_VARIABLE_ToDelete_23_23;
+#line 1725 "browse.m"
+              MR_Word mdb__browse__STATE_VARIABLE_DownDirs_0__tmp_copy_3 = mdb__browse__STATE_VARIABLE_DownDirs_22_22;
+
+#line 1725 "browse.m"
+              mdb__browse__STATE_VARIABLE_DownDirs_0_3 = mdb__browse__STATE_VARIABLE_DownDirs_0__tmp_copy_3;
+#line 1725 "browse.m"
+              mdb__browse__STATE_VARIABLE_ToDelete_0_2 = mdb__browse__STATE_VARIABLE_ToDelete_0__tmp_copy_2;
+#line 1725 "browse.m"
+              mdb__browse__HeadVar__1_1 = mdb__browse__HeadVar__1__tmp_copy_1;
+#line 1725 "browse.m"
+            }
+#line 1725 "browse.m"
+            continue;
+#line 1707 "browse.m"
+          }
+#line 1706 "browse.m"
+      }
+#line 1706 "browse.m"
+      break;
+#line 1706 "browse.m"
+    }
+#line 1703 "browse.m"
+}
+
+#line 1514 "browse.m"
+static void MR_CALL 
+mdb__browse__change_dir_3_p_0(
+#line 1514 "browse.m"
+  MR_Word mdb__browse__PwdDirs_4,
+#line 1514 "browse.m"
+  MR_Word mdb__browse__Path_5,
+#line 1514 "browse.m"
+  MR_Word * mdb__browse__RootRelDirs_6)
+#line 1514 "browse.m"
+{
+#line 1516 "browse.m"
+  {
+#line 1516 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1516 "browse.m"
+    MR_Word mdb__browse__NewDirs_8;
+#line 1516 "browse.m"
+    MR_Word mdb__browse__RevDirs_14;
+
+#line 1520 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__Path_5)) == (MR_mktag((MR_Integer) 1))))
+#line 1521 "browse.m"
+      {
+#line 1521 "browse.m"
+        MR_Word mdb__browse__V_9_9;
+#line 1521 "browse.m"
+        MR_Word mdb__browse__Dirs_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Path_5, (MR_Integer) 0)));
+
+#line 1522 "browse.m"
+        {
+#line 1522 "browse.m"
+          mdb__browse__V_9_9 = mdb__browser_info__down_to_up_down_dirs_1_f_0(mdb__browse__PwdDirs_4);
+        }
+#line 1522 "browse.m"
+        {
+#line 1522 "browse.m"
+          mdb__browse__NewDirs_8 = mercury__list__f_43_43_2_f_0((MR_Word) &mdb__browser_info__mdb__browser_info__type_ctor_info_up_down_dir_0, mdb__browse__V_9_9, mdb__browse__Dirs_10);
+        }
+#line 1521 "browse.m"
+      }
+#line 1520 "browse.m"
+    else
+#line 1518 "browse.m"
+      mdb__browse__NewDirs_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Path_5, (MR_Integer) 0)));
+#line 1692 "browse.m"
+    {
+#line 1692 "browse.m"
+      mercury__list__reverse_2_p_0((MR_Word) &mdb__browser_info__mdb__browser_info__type_ctor_info_up_down_dir_0, mdb__browse__NewDirs_8, &mdb__browse__RevDirs_14);
+    }
+#line 1693 "browse.m"
+    {
+#line 1693 "browse.m"
+      mdb__browse__simplify_rev_dirs_4_p_0(mdb__browse__RevDirs_14, (MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdb__browse__RootRelDirs_6);
+    }
+#line 1516 "browse.m"
+  }
+#line 1514 "browse.m"
+}
+
+#line 1507 "browse.m"
+static void MR_CALL 
+mdb__browse__set_path_3_p_0(
+#line 1507 "browse.m"
+  MR_Word mdb__browse__NewPath_4,
+#line 1507 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_Info_0_8,
+#line 1507 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_Info_9)
+#line 1507 "browse.m"
+{
+#line 1509 "browse.m"
+  {
+#line 1509 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1509 "browse.m"
+    MR_Word mdb__browse__Dirs0_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 1)));
+#line 1509 "browse.m"
+    MR_Word mdb__browse__Dirs_7;
+#line 1509 "browse.m"
+    MR_Word mdb__browse__NewDirs_28;
+#line 1509 "browse.m"
+    MR_Word mdb__browse__RevDirs_34;
+#line 1510 "browse.m"
+    MR_Word mdb__browse__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 0)));
+#line 1510 "browse.m"
+    MR_Word mdb__browse__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 2)));
+#line 1510 "browse.m"
+    MR_Word mdb__browse__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 3)));
+#line 1510 "browse.m"
+    MR_Word mdb__browse__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 4)));
+#line 1510 "browse.m"
+    MR_Word mdb__browse__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 5)));
+#line 1510 "browse.m"
+    MR_Word mdb__browse__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 6)));
+#line 1512 "browse.m"
+    MR_Word mdb__browse__V_17_17;
+#line 1512 "browse.m"
+    MR_Word mdb__browse__V_19_19;
+#line 1512 "browse.m"
+    MR_Word mdb__browse__V_20_20;
+#line 1512 "browse.m"
+    MR_Word mdb__browse__V_21_21;
+#line 1512 "browse.m"
+    MR_Word mdb__browse__V_22_22;
+#line 1512 "browse.m"
+    MR_Word mdb__browse__V_23_23;
+#line 1512 "browse.m"
+    MR_Word mdb__browse__V_18_18;
+
+#line 1520 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__NewPath_4)) == (MR_mktag((MR_Integer) 1))))
+#line 1521 "browse.m"
+      {
+#line 1521 "browse.m"
+        MR_Word mdb__browse__V_29_29;
+#line 1521 "browse.m"
+        MR_Word mdb__browse__Dirs_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__NewPath_4, (MR_Integer) 0)));
+
+#line 1522 "browse.m"
+        {
+#line 1522 "browse.m"
+          mdb__browse__V_29_29 = mdb__browser_info__down_to_up_down_dirs_1_f_0(mdb__browse__Dirs0_6);
+        }
+#line 1522 "browse.m"
+        {
+#line 1522 "browse.m"
+          mdb__browse__NewDirs_28 = mercury__list__f_43_43_2_f_0((MR_Word) &mdb__browser_info__mdb__browser_info__type_ctor_info_up_down_dir_0, mdb__browse__V_29_29, mdb__browse__Dirs_30);
+        }
+#line 1521 "browse.m"
+      }
+#line 1520 "browse.m"
+    else
+#line 1518 "browse.m"
+      mdb__browse__NewDirs_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__NewPath_4, (MR_Integer) 0)));
+#line 1692 "browse.m"
+    {
+#line 1692 "browse.m"
+      mercury__list__reverse_2_p_0((MR_Word) &mdb__browser_info__mdb__browser_info__type_ctor_info_up_down_dir_0, mdb__browse__NewDirs_28, &mdb__browse__RevDirs_34);
+    }
+#line 1693 "browse.m"
+    {
+#line 1693 "browse.m"
+      mdb__browse__simplify_rev_dirs_4_p_0(mdb__browse__RevDirs_34, (MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &mdb__browse__Dirs_7);
+    }
+#line 1512 "browse.m"
+    mdb__browse__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 0)));
+#line 1512 "browse.m"
+    mdb__browse__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 1)));
+#line 1512 "browse.m"
+    mdb__browse__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 2)));
+#line 1512 "browse.m"
+    mdb__browse__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 3)));
+#line 1512 "browse.m"
+    mdb__browse__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 4)));
+#line 1512 "browse.m"
+    mdb__browse__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 5)));
+#line 1512 "browse.m"
+    mdb__browse__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_8, (MR_Integer) 6)));
+#line 1512 "browse.m"
+    {
+#line 1512 "browse.m"
+      MR_Word base;
+#line 1512 "browse.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 1512 "browse.m"
+      *mdb__browse__STATE_VARIABLE_Info_9 = base;
+#line 1512 "browse.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__browse__V_17_17));
+#line 1512 "browse.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdb__browse__Dirs_7));
+#line 1512 "browse.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdb__browse__V_19_19));
+#line 1512 "browse.m"
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (mdb__browse__V_20_20));
+#line 1512 "browse.m"
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (mdb__browse__V_21_21));
+#line 1512 "browse.m"
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (mdb__browse__V_22_22));
+#line 1512 "browse.m"
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (mdb__browse__V_23_23));
+#line 1512 "browse.m"
+    }
+#line 1509 "browse.m"
+  }
+#line 1507 "browse.m"
+}
+
+#line 1463 "browse.m"
+static void MR_CALL 
+mdb__browse__deref_subterm_2_4_p_0(
+#line 1463 "browse.m"
+  MR_Word mdb__browse__Univ_5,
+#line 1463 "browse.m"
+  MR_Word mdb__browse__Path_6,
+#line 1463 "browse.m"
+  MR_Word mdb__browse__RevPath0_7,
+#line 1463 "browse.m"
+  MR_Word * mdb__browse__Result_8)
+#line 1463 "browse.m"
+{
+#line 1468 "browse.m"
+  while (MR_TRUE)
+#line 1468 "browse.m"
+    {
+#line 1468 "browse.m"
+      /* tailcall optimized into a loop */
+#line 1468 "browse.m"
+      {
+#line 1468 "browse.m"
+        MR_bool mdb__browse__succeeded;
+
+#line 1468 "browse.m"
+        if ((mdb__browse__Path_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1469 "browse.m"
+          {
+#line 1469 "browse.m"
+            MR_Word base;
+#line 1469 "browse.m"
+            base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1469 "browse.m"
+            *mdb__browse__Result_8 = base;
+#line 1469 "browse.m"
+            MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__browse__Univ_5));
+#line 1469 "browse.m"
+          }
+#line 1468 "browse.m"
+        else
+#line 1471 "browse.m"
+          {
+#line 1471 "browse.m"
+            MR_Word mdb__browse__Dir_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Path_6, (MR_Integer) 0)));
+#line 1471 "browse.m"
+            MR_Word mdb__browse__Dirs_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Path_6, (MR_Integer) 1)));
+#line 1471 "browse.m"
+            MR_Word mdb__browse__MaybeValue_13;
+
+#line 1486 "browse.m"
+            if (((MR_tag((MR_Word) mdb__browse__Dir_9)) == (MR_mktag((MR_Integer) 1))))
+#line 1487 "browse.m"
+              {
+#line 1487 "browse.m"
+                MR_Word mdb__browse__TypeInfo_29_29;
+#line 1487 "browse.m"
+                MR_String mdb__browse__Name_14 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__Dir_9, (MR_Integer) 0)));
+#line 1487 "browse.m"
+                MR_Box mdb__browse__V_17_17;
+
+#line 1488 "browse.m"
+                {
+#line 1488 "browse.m"
+                  mdb__browse__V_17_17 = mercury__univ__univ_value_1_f_0(&mdb__browse__TypeInfo_29_29, mdb__browse__Univ_5);
+                }
+#line 1488 "browse.m"
+                {
+#line 1488 "browse.m"
+                  mercury__deconstruct__named_arg_cc_3_p_0(mdb__browse__TypeInfo_29_29, mdb__browse__V_17_17, mdb__browse__Name_14, &mdb__browse__MaybeValue_13);
+                }
+#line 1487 "browse.m"
+              }
+#line 1486 "browse.m"
+            else
+#line 1473 "browse.m"
+              {
+#line 1473 "browse.m"
+                MR_Integer mdb__browse__N_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Dir_9, (MR_Integer) 0)));
+#line 1475 "browse.m"
+                MR_Word mdb__browse__TypeCtor_12;
+#line 1475 "browse.m"
+                MR_Word mdb__browse__V_18_18;
+#line 1475 "browse.m"
+                MR_String mdb__browse__V_19_19;
+#line 1475 "browse.m"
+                MR_String mdb__browse__V_20_20;
+
+#line 1475 "browse.m"
+                {
+#line 1475 "browse.m"
+                  mdb__browse__V_18_18 = mercury__univ__univ_type_1_f_0(mdb__browse__Univ_5);
+                }
+#line 1475 "browse.m"
+                {
+#line 1475 "browse.m"
+                  mdb__browse__TypeCtor_12 = mercury__type_desc__type_ctor_1_f_0(mdb__browse__V_18_18);
+                }
+#line 1476 "browse.m"
+                {
+#line 1476 "browse.m"
+                  mdb__browse__V_19_19 = mercury__type_desc__type_ctor_name_1_f_0(mdb__browse__TypeCtor_12);
+                }
+#line 1476 "browse.m"
+                mdb__browse__succeeded = (strcmp(mdb__browse__V_19_19, (MR_String) "array") == 0);
+#line 1475 "browse.m"
+                if (mdb__browse__succeeded)
+#line 1475 "browse.m"
+                  {
+#line 1477 "browse.m"
+                    {
+#line 1477 "browse.m"
+                      mdb__browse__V_20_20 = mercury__type_desc__type_ctor_module_name_1_f_0(mdb__browse__TypeCtor_12);
+                    }
+#line 1477 "browse.m"
+                    mdb__browse__succeeded = (strcmp(mdb__browse__V_20_20, (MR_String) "array") == 0);
+#line 1475 "browse.m"
+                  }
+#line 1474 "browse.m"
+                if (mdb__browse__succeeded)
+#line 1480 "browse.m"
+                  {
+#line 1480 "browse.m"
+                    MR_Word mdb__browse__TypeInfo_27_27;
+#line 1480 "browse.m"
+                    MR_Box mdb__browse__V_21_21;
+
+#line 1480 "browse.m"
+                    {
+#line 1480 "browse.m"
+                      mdb__browse__V_21_21 = mercury__univ__univ_value_1_f_0(&mdb__browse__TypeInfo_27_27, mdb__browse__Univ_5);
+                    }
+#line 1480 "browse.m"
+                    {
+#line 1480 "browse.m"
+                      mercury__deconstruct__arg_cc_3_p_0(mdb__browse__TypeInfo_27_27, mdb__browse__V_21_21, mdb__browse__N_11, &mdb__browse__MaybeValue_13);
+                    }
+#line 1480 "browse.m"
+                  }
+#line 1474 "browse.m"
+                else
+#line 1484 "browse.m"
+                  {
+#line 1484 "browse.m"
+                    MR_Word mdb__browse__TypeInfo_28_28;
+#line 1484 "browse.m"
+                    MR_Box mdb__browse__V_22_22;
+#line 1484 "browse.m"
+                    MR_Integer mdb__browse__V_23_23;
+
+#line 1484 "browse.m"
+                    {
+#line 1484 "browse.m"
+                      mdb__browse__V_22_22 = mercury__univ__univ_value_1_f_0(&mdb__browse__TypeInfo_28_28, mdb__browse__Univ_5);
+                    }
+#line 1484 "browse.m"
+                    mdb__browse__V_23_23 = (mdb__browse__N_11 - (MR_Integer) 1);
+#line 1484 "browse.m"
+                    {
+#line 1484 "browse.m"
+                      mercury__deconstruct__arg_cc_3_p_0(mdb__browse__TypeInfo_28_28, mdb__browse__V_22_22, mdb__browse__V_23_23, &mdb__browse__MaybeValue_13);
+                    }
+#line 1484 "browse.m"
+                  }
+#line 1473 "browse.m"
+              }
+#line 1494 "browse.m"
+            if ((mdb__browse__MaybeValue_13 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1495 "browse.m"
+              {
+#line 1495 "browse.m"
+                MR_Word mdb__browse__V_25_25;
+
+#line 1496 "browse.m"
+                {
+#line 1496 "browse.m"
+                  mdb__browse__V_25_25 = mercury__list__reverse_1_f_0((MR_Word) &mdb__browser_info__mdb__browser_info__type_ctor_info_down_dir_0, mdb__browse__RevPath0_7);
+                }
+#line 1496 "browse.m"
+                {
+#line 1496 "browse.m"
+                  MR_Word base;
+#line 1496 "browse.m"
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1496 "browse.m"
+                  *mdb__browse__Result_8 = base;
+#line 1496 "browse.m"
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdb__browse__V_25_25));
+#line 1496 "browse.m"
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__browse__Dir_9));
+#line 1496 "browse.m"
+                }
+#line 1495 "browse.m"
+              }
+#line 1494 "browse.m"
+            else
+#line 1491 "browse.m"
+              {
+#line 1491 "browse.m"
+                MR_Word mdb__browse__TypeInfo_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeValue_13, (MR_Integer) 0)));
+#line 1491 "browse.m"
+                MR_Box mdb__browse__Value_15 = (MR_hl_field(MR_mktag(1), mdb__browse__MaybeValue_13, (MR_Integer) 1));
+#line 1491 "browse.m"
+                MR_Word mdb__browse__ArgN_16;
+#line 1491 "browse.m"
+                MR_Word mdb__browse__V_26_26;
+
+#line 1492 "browse.m"
+                {
+#line 1492 "browse.m"
+                  mdb__browse__ArgN_16 = mercury__univ__univ_1_f_0(mdb__browse__TypeInfo_30_30, mdb__browse__Value_15);
+                }
+#line 1493 "browse.m"
+                {
+#line 1493 "browse.m"
+                  mdb__browse__V_26_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1493 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_26_26, 0) = ((MR_Box) (mdb__browse__Dir_9));
+#line 1493 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_26_26, 1) = ((MR_Box) (mdb__browse__RevPath0_7));
+#line 1493 "browse.m"
+                }
+#line 1493 "browse.m"
+                /* direct tailcall eliminated */
+#line 1493 "browse.m"
+                {
+#line 1493 "browse.m"
+                  MR_Word mdb__browse__Univ__tmp_copy_5 = mdb__browse__ArgN_16;
+#line 1493 "browse.m"
+                  MR_Word mdb__browse__Path__tmp_copy_6 = mdb__browse__Dirs_10;
+#line 1493 "browse.m"
+                  MR_Word mdb__browse__RevPath0__tmp_copy_7 = mdb__browse__V_26_26;
+
+#line 1493 "browse.m"
+                  mdb__browse__RevPath0_7 = mdb__browse__RevPath0__tmp_copy_7;
+#line 1493 "browse.m"
+                  mdb__browse__Path_6 = mdb__browse__Path__tmp_copy_6;
+#line 1493 "browse.m"
+                  mdb__browse__Univ_5 = mdb__browse__Univ__tmp_copy_5;
+#line 1493 "browse.m"
+                }
+#line 1493 "browse.m"
+                continue;
+#line 1491 "browse.m"
+              }
+#line 1471 "browse.m"
+          }
+#line 1468 "browse.m"
+      }
+#line 1468 "browse.m"
+      break;
+#line 1468 "browse.m"
+    }
+#line 1463 "browse.m"
+}
+
+#line 1400 "browse.m"
+static void MR_CALL 
+mdb__browse__deref_subterm_3_p_0(
+#line 1400 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_4,
+#line 1400 "browse.m"
+  MR_Word mdb__browse__Path_5,
+#line 1400 "browse.m"
+  MR_Word * mdb__browse__Result_6)
+#line 1400 "browse.m"
+{
+#line 1405 "browse.m"
+  {
+#line 1405 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 1405 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__BrowserTerm_4)) == (MR_mktag((MR_Integer) 0))))
+#line 1405 "browse.m"
+      {
+#line 1405 "browse.m"
+        MR_Word mdb__browse__Univ_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__BrowserTerm_4, (MR_Integer) 0)));
+#line 1405 "browse.m"
+        MR_Word mdb__browse__SubResult_8;
+
+#line 1406 "browse.m"
+        {
+#line 1406 "browse.m"
+          mdb__browse__deref_subterm_2_4_p_0(mdb__browse__Univ_7, mdb__browse__Path_5, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &mdb__browse__SubResult_8);
+        }
+#line 1455 "browse.m"
+        if (((MR_tag((MR_Word) mdb__browse__SubResult_8)) == (MR_mktag((MR_Integer) 1))))
+#line 1460 "browse.m"
+          *mdb__browse__Result_6 = (MR_Word) mdb__browse__SubResult_8;
+#line 1455 "browse.m"
+        else
+#line 1455 "browse.m"
+          {
+#line 1455 "browse.m"
+            MR_Word mdb__browse__SubUniv_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__SubResult_8, (MR_Integer) 0)));
+#line 1455 "browse.m"
+            MR_Word mdb__browse__SubBrowserTerm_35;
+
+#line 1456 "browse.m"
+            {
+#line 1456 "browse.m"
+              mdb__browse__SubBrowserTerm_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1456 "browse.m"
+              MR_hl_field(MR_mktag(0), mdb__browse__SubBrowserTerm_35, 0) = ((MR_Box) (mdb__browse__SubUniv_34));
+#line 1456 "browse.m"
+            }
+#line 1457 "browse.m"
+            {
+#line 1457 "browse.m"
+              MR_Word base;
+#line 1457 "browse.m"
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1457 "browse.m"
+              *mdb__browse__Result_6 = base;
+#line 1457 "browse.m"
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__browse__SubBrowserTerm_35));
+#line 1457 "browse.m"
+            }
+#line 1455 "browse.m"
+          }
+#line 1405 "browse.m"
+      }
+#line 1405 "browse.m"
+    else
+#line 1409 "browse.m"
+      {
+#line 1409 "browse.m"
+        MR_Word mdb__browse__Args_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_4, (MR_Integer) 1)));
+#line 1409 "browse.m"
+        MR_Word mdb__browse__MaybeReturn_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_4, (MR_Integer) 2)));
+#line 1409 "browse.m"
+        MR_String mdb__browse___Functor_9 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_4, (MR_Integer) 0)));
+
+#line 1414 "browse.m"
+        if ((mdb__browse__Path_5 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1413 "browse.m"
+          {
+#line 1413 "browse.m"
+            MR_Word base;
+#line 1413 "browse.m"
+            base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1413 "browse.m"
+            *mdb__browse__Result_6 = base;
+#line 1413 "browse.m"
+            MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__browse__BrowserTerm_4));
+#line 1413 "browse.m"
+          }
+#line 1414 "browse.m"
+        else
+#line 1415 "browse.m"
+          {
+#line 1415 "browse.m"
+            MR_Word mdb__browse__Step_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Path_5, (MR_Integer) 0)));
+#line 1415 "browse.m"
+            MR_Word mdb__browse__PathTail_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Path_5, (MR_Integer) 1)));
+#line 1416 "browse.m"
+            MR_Word mdb__browse__ArgUniv_17;
+
+#line 1429 "browse.m"
+            if (((MR_tag((MR_Word) mdb__browse__Step_13)) == (MR_mktag((MR_Integer) 1))))
+#line 1430 "browse.m"
+              {
+#line 1430 "browse.m"
+                MR_String mdb__browse__Name_18 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__Step_13, (MR_Integer) 0)));
+#line 1443 "browse.m"
+                MR_Integer mdb__browse__lo_0;
+#line 1443 "browse.m"
+                MR_Integer mdb__browse__hi_1;
+#line 1443 "browse.m"
+                MR_Integer mdb__browse__mid_2;
+#line 1443 "browse.m"
+                MR_Integer mdb__browse__result_3;
+
+#line 1443 "browse.m"
+                /* binary string simple lookup switch */
+#line 1443 "browse.m"
+                mdb__browse__lo_0 = (MR_Integer) 0;
+#line 1443 "browse.m"
+                mdb__browse__hi_1 = (MR_Integer) 5;
+#line 1443 "browse.m"
+                do
+#line 1443 "browse.m"
+                  {
+#line 1443 "browse.m"
+                    mdb__browse__mid_2 = (((mdb__browse__lo_0 + mdb__browse__hi_1)) / (MR_Integer) 2);
+#line 1443 "browse.m"
+                    mdb__browse__result_3 = MR_strcmp(mdb__browse__Name_18, ((&mdb__browse_vector_common_7[10 + mdb__browse__mid_2]))->mdb__browse__vector_common_type_7_0__vct_7_f_0);
+#line 1443 "browse.m"
+                    if ((mdb__browse__result_3 == (MR_Integer) 0))
+#line 1443 "browse.m"
+                      {
+#line 1443 "browse.m"
+                        mdb__browse__succeeded = MR_TRUE;
+#line 1443 "browse.m"
+                        /* jump out of search loop */
+#line 1443 "browse.m"
+                        goto label_0;
+#line 1443 "browse.m"
+                      }
+#line 1443 "browse.m"
+                    else
+#line 1443 "browse.m"
+                    if ((mdb__browse__result_3 < (MR_Integer) 0))
+#line 1443 "browse.m"
+                      mdb__browse__hi_1 = (mdb__browse__mid_2 - (MR_Integer) 1);
+#line 1443 "browse.m"
+                    else
+#line 1443 "browse.m"
+                      mdb__browse__lo_0 = (mdb__browse__mid_2 + (MR_Integer) 1);
+#line 1443 "browse.m"
+                  }
+#line 1443 "browse.m"
+                while ((mdb__browse__lo_0 <= mdb__browse__hi_1));
+#line 1443 "browse.m"
+                mdb__browse__succeeded = MR_FALSE;
+#line 1443 "browse.m"
+              label_0:;
+#line 1430 "browse.m"
+                if (mdb__browse__succeeded)
+#line 1430 "browse.m"
+                  {
+#line 1432 "browse.m"
+                    mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__MaybeReturn_11)) == (MR_mktag((MR_Integer) 1)));
+#line 1432 "browse.m"
+                    if (mdb__browse__succeeded)
+#line 1432 "browse.m"
+                      mdb__browse__ArgUniv_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeReturn_11, (MR_Integer) 0)));
+#line 1430 "browse.m"
+                  }
+#line 1430 "browse.m"
+              }
+#line 1429 "browse.m"
+            else
+#line 1418 "browse.m"
+              {
+#line 1418 "browse.m"
+                MR_Integer mdb__browse__N_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Step_13, (MR_Integer) 0)));
+#line 1419 "browse.m"
+                MR_Word mdb__browse__ReturnValue_16;
+#line 1420 "browse.m"
+                MR_Integer mdb__browse__V_19_19;
+#line 1420 "browse.m"
+                MR_Integer mdb__browse__V_20_20;
+
+#line 1420 "browse.m"
+                {
+#line 1420 "browse.m"
+                  mdb__browse__V_19_19 = mercury__list__length_1_f_0((MR_Word) &mercury__univ__univ__type_ctor_info_univ_0, mdb__browse__Args_10);
+                }
+#line 1420 "browse.m"
+                mdb__browse__V_20_20 = (mdb__browse__N_15 - mdb__browse__V_19_19);
+#line 1420 "browse.m"
+                mdb__browse__succeeded = (mdb__browse__V_20_20 == (MR_Integer) 1);
+#line 1420 "browse.m"
+                if (mdb__browse__succeeded)
+#line 1420 "browse.m"
+                  {
+#line 1421 "browse.m"
+                    mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__MaybeReturn_11)) == (MR_mktag((MR_Integer) 1)));
+#line 1421 "browse.m"
+                    if (mdb__browse__succeeded)
+#line 1421 "browse.m"
+                      mdb__browse__ReturnValue_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeReturn_11, (MR_Integer) 0)));
+#line 1420 "browse.m"
+                  }
+#line 1419 "browse.m"
+                if (mdb__browse__succeeded)
+#line 1423 "browse.m"
+                  {
+#line 1423 "browse.m"
+                    mdb__browse__ArgUniv_17 = mdb__browse__ReturnValue_16;
+#line 1423 "browse.m"
+                    mdb__browse__succeeded = MR_TRUE;
+#line 1423 "browse.m"
+                  }
+#line 1419 "browse.m"
+                else
+#line 1427 "browse.m"
+                  {
+#line 1427 "browse.m"
+                    MR_Box mdb__browse__conv0_ArgUniv_17;
+
+#line 1427 "browse.m"
+                    {
+#line 1427 "browse.m"
+                      mdb__browse__succeeded = mercury__list__index1_3_p_0((MR_Word) &mercury__univ__univ__type_ctor_info_univ_0, mdb__browse__Args_10, mdb__browse__N_15, &mdb__browse__conv0_ArgUniv_17);
+                    }
+#line 1427 "browse.m"
+                    if (mdb__browse__succeeded)
+#line 1427 "browse.m"
+                      {
+#line 1427 "browse.m"
+                        mdb__browse__ArgUniv_17 = ((MR_Word) mdb__browse__conv0_ArgUniv_17);
+#line 1427 "browse.m"
+                        mdb__browse__succeeded = MR_TRUE;
+#line 1427 "browse.m"
+                      }
+#line 1427 "browse.m"
+                  }
+#line 1418 "browse.m"
+              }
+#line 1416 "browse.m"
+            if (mdb__browse__succeeded)
+#line 1435 "browse.m"
+              {
+#line 1435 "browse.m"
+                MR_Word mdb__browse__V_21_21;
+#line 1435 "browse.m"
+                MR_Word mdb__browse__SubResult_25;
+
+#line 1435 "browse.m"
+                {
+#line 1435 "browse.m"
+                  mdb__browse__V_21_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1435 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_21_21, 0) = ((MR_Box) (mdb__browse__Step_13));
+#line 1435 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_21_21, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1435 "browse.m"
+                }
+#line 1435 "browse.m"
+                {
+#line 1435 "browse.m"
+                  mdb__browse__deref_subterm_2_4_p_0(mdb__browse__ArgUniv_17, mdb__browse__PathTail_14, mdb__browse__V_21_21, &mdb__browse__SubResult_25);
+                }
+#line 1455 "browse.m"
+                if (((MR_tag((MR_Word) mdb__browse__SubResult_25)) == (MR_mktag((MR_Integer) 1))))
+#line 1460 "browse.m"
+                  *mdb__browse__Result_6 = (MR_Word) mdb__browse__SubResult_25;
+#line 1455 "browse.m"
+                else
+#line 1455 "browse.m"
+                  {
+#line 1455 "browse.m"
+                    MR_Word mdb__browse__SubUniv_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__SubResult_25, (MR_Integer) 0)));
+#line 1455 "browse.m"
+                    MR_Word mdb__browse__SubBrowserTerm_41;
+
+#line 1456 "browse.m"
+                    {
+#line 1456 "browse.m"
+                      mdb__browse__SubBrowserTerm_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1456 "browse.m"
+                      MR_hl_field(MR_mktag(0), mdb__browse__SubBrowserTerm_41, 0) = ((MR_Box) (mdb__browse__SubUniv_40));
+#line 1456 "browse.m"
+                    }
+#line 1457 "browse.m"
+                    {
+#line 1457 "browse.m"
+                      MR_Word base;
+#line 1457 "browse.m"
+                      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1457 "browse.m"
+                      *mdb__browse__Result_6 = base;
+#line 1457 "browse.m"
+                      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__browse__SubBrowserTerm_41));
+#line 1457 "browse.m"
+                    }
+#line 1455 "browse.m"
+                  }
+#line 1435 "browse.m"
+              }
+#line 1416 "browse.m"
+            else
+#line 1438 "browse.m"
+              {
+#line 1438 "browse.m"
+                {
+#line 1438 "browse.m"
+                  MR_Word base;
+#line 1438 "browse.m"
+                  base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1438 "browse.m"
+                  *mdb__browse__Result_6 = base;
+#line 1438 "browse.m"
+                  MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1438 "browse.m"
+                  MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__browse__Step_13));
+#line 1438 "browse.m"
+                }
+#line 1438 "browse.m"
+              }
+#line 1415 "browse.m"
+          }
+#line 1409 "browse.m"
+      }
+#line 1405 "browse.m"
+  }
+#line 1400 "browse.m"
+}
+
+#line 1380 "browse.m"
+static void MR_CALL 
+mdb__browse__unlines_2_p_0(
+#line 1380 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 1380 "browse.m"
+  MR_String * mdb__browse__HeadVar__2_2)
+#line 1380 "browse.m"
+{
+#line 1382 "browse.m"
+  {
+#line 1382 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 1382 "browse.m"
+    if ((mdb__browse__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1382 "browse.m"
+      *mdb__browse__HeadVar__2_2 = (MR_String) "";
+#line 1382 "browse.m"
+    else
+#line 1383 "browse.m"
+      {
+#line 1383 "browse.m"
+        MR_String mdb__browse__Line_3 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__1_1, (MR_Integer) 0)));
+#line 1383 "browse.m"
+        MR_Word mdb__browse__Lines_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__1_1, (MR_Integer) 1)));
+#line 1383 "browse.m"
+        MR_String mdb__browse__NLine_6;
+#line 1383 "browse.m"
+        MR_String mdb__browse__Strs_7;
+
+#line 1384 "browse.m"
+        {
+#line 1384 "browse.m"
+          mercury__string__append_3_p_2(mdb__browse__Line_3, (MR_String) "\n", &mdb__browse__NLine_6);
+        }
+#line 1385 "browse.m"
+        {
+#line 1385 "browse.m"
+          mdb__browse__unlines_2_p_0(mdb__browse__Lines_4, &mdb__browse__Strs_7);
+        }
+#line 1386 "browse.m"
+        {
+#line 1386 "browse.m"
+          mercury__string__append_3_p_2(mdb__browse__NLine_6, mdb__browse__Strs_7, mdb__browse__HeadVar__2_2);
+        }
+#line 1383 "browse.m"
+      }
+#line 1382 "browse.m"
+  }
+#line 1380 "browse.m"
+}
+
+#line 1348 "browse.m"
+static void MR_CALL 
+mdb__browse__args_to_string_verbose_list_9_p_0(
+#line 1348 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 1348 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2,
+#line 1348 "browse.m"
+  MR_Integer mdb__browse__HeadVar__3_3,
+#line 1348 "browse.m"
+  MR_Integer mdb__browse__HeadVar__4_4,
+#line 1348 "browse.m"
+  MR_Integer mdb__browse__CurSize_5,
+#line 1348 "browse.m"
+  MR_Integer * mdb__browse__NewSize_6,
+#line 1348 "browse.m"
+  MR_Integer mdb__browse__HeadVar__7_7,
+#line 1348 "browse.m"
+  MR_Integer mdb__browse__HeadVar__8_8,
+#line 1348 "browse.m"
+  MR_Word * mdb__browse__HeadVar__9_9)
+#line 1348 "browse.m"
+{
+#line 1353 "browse.m"
+  {
+#line 1353 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 1353 "browse.m"
+    if ((mdb__browse__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1353 "browse.m"
+      {
+#line 1353 "browse.m"
+        *mdb__browse__HeadVar__9_9 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1353 "browse.m"
+        *mdb__browse__NewSize_6 = mdb__browse__CurSize_5;
+#line 1353 "browse.m"
+      }
+#line 1353 "browse.m"
+    else
+#line 1353 "browse.m"
+      {
+#line 1353 "browse.m"
+        MR_Word mdb__browse__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__2_2, (MR_Integer) 1)));
+#line 1353 "browse.m"
+        MR_Word mdb__browse__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 1353 "browse.m"
+        if ((mdb__browse__V_73_73 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1356 "browse.m"
+          {
+#line 1356 "browse.m"
+            MR_Word mdb__browse__TreeFrame_26;
+#line 1356 "browse.m"
+            MR_String mdb__browse__ArgNumS_27;
+#line 1356 "browse.m"
+            MR_String mdb__browse__LastBranchS_28;
+#line 1356 "browse.m"
+            MR_Word mdb__browse__V_30_30;
+#line 1356 "browse.m"
+            MR_Word mdb__browse__V_31_31;
+#line 1356 "browse.m"
+            MR_Word mdb__browse__V_35_35;
+
+#line 1357 "browse.m"
+            {
+#line 1357 "browse.m"
+              mdb__browse__V_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1357 "browse.m"
+              MR_hl_field(MR_mktag(0), mdb__browse__V_30_30, 0) = ((MR_Box) (mdb__browse__V_74_74));
+#line 1357 "browse.m"
+            }
+#line 1357 "browse.m"
+            {
+#line 1357 "browse.m"
+              mdb__browse__browser_term_to_string_verbose_2_8_p_0(mdb__browse__HeadVar__1_1, mdb__browse__V_30_30, mdb__browse__HeadVar__4_4, mdb__browse__CurSize_5, mdb__browse__NewSize_6, mdb__browse__HeadVar__7_7, mdb__browse__HeadVar__8_8, &mdb__browse__TreeFrame_26);
+            }
+#line 1360 "browse.m"
+            {
+#line 1360 "browse.m"
+              mercury__string__int_to_string_2_p_0(mdb__browse__HeadVar__3_3, &mdb__browse__ArgNumS_27);
+            }
+#line 1361 "browse.m"
+            {
+#line 1361 "browse.m"
+              mdb__browse__V_31_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1361 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_31_31, 0) = ((MR_Box) (mdb__browse__ArgNumS_27));
+#line 1361 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_31_31, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[47])));
+#line 1361 "browse.m"
+            }
+#line 1361 "browse.m"
+            {
+#line 1361 "browse.m"
+              mercury__string__append_list_2_p_0(mdb__browse__V_31_31, &mdb__browse__LastBranchS_28);
+            }
+#line 1362 "browse.m"
+            {
+#line 1362 "browse.m"
+              mdb__browse__V_35_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1362 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_35_35, 0) = ((MR_Box) (mdb__browse__LastBranchS_28));
+#line 1362 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_35_35, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1362 "browse.m"
+            }
+#line 1362 "browse.m"
+            {
+#line 1362 "browse.m"
+              *mdb__browse__HeadVar__9_9 = mdb__frame__hglue_2_f_0(mdb__browse__V_35_35, mdb__browse__TreeFrame_26);
+            }
+#line 1356 "browse.m"
+          }
+#line 1353 "browse.m"
+        else
+#line 1364 "browse.m"
+          {
+#line 1364 "browse.m"
+            MR_Integer mdb__browse__NewSize1_48;
+#line 1364 "browse.m"
+            MR_Word mdb__browse__TreeFrame_49;
+#line 1364 "browse.m"
+            MR_Integer mdb__browse__ArgNum1_50;
+#line 1364 "browse.m"
+            MR_Word mdb__browse__RestTreesFrame_52;
+#line 1364 "browse.m"
+            MR_String mdb__browse__ArgNumS_53;
+#line 1364 "browse.m"
+            MR_String mdb__browse__BranchFrameS_54;
+#line 1364 "browse.m"
+            MR_Integer mdb__browse__Height_55;
+#line 1364 "browse.m"
+            MR_Word mdb__browse__VBranchFrame_56;
+#line 1364 "browse.m"
+            MR_Word mdb__browse__LeftFrame_57;
+#line 1364 "browse.m"
+            MR_Word mdb__browse__TopFrame_58;
+#line 1364 "browse.m"
+            MR_Word mdb__browse__V_60_60;
+#line 1364 "browse.m"
+            MR_Word mdb__browse__V_63_63;
+#line 1364 "browse.m"
+            MR_Integer mdb__browse__V_67_67;
+#line 1364 "browse.m"
+            MR_Word mdb__browse__V_70_70;
+
+#line 1365 "browse.m"
+            {
+#line 1365 "browse.m"
+              mdb__browse__V_60_60 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1365 "browse.m"
+              MR_hl_field(MR_mktag(0), mdb__browse__V_60_60, 0) = ((MR_Box) (mdb__browse__V_74_74));
+#line 1365 "browse.m"
+            }
+#line 1365 "browse.m"
+            {
+#line 1365 "browse.m"
+              mdb__browse__browser_term_to_string_verbose_2_8_p_0(mdb__browse__HeadVar__1_1, mdb__browse__V_60_60, mdb__browse__HeadVar__4_4, mdb__browse__CurSize_5, &mdb__browse__NewSize1_48, mdb__browse__HeadVar__7_7, mdb__browse__HeadVar__8_8, &mdb__browse__TreeFrame_49);
+            }
+#line 1367 "browse.m"
+            mdb__browse__ArgNum1_50 = (mdb__browse__HeadVar__3_3 + (MR_Integer) 1);
+#line 1368 "browse.m"
+            {
+#line 1368 "browse.m"
+              mdb__browse__args_to_string_verbose_list_9_p_0(mdb__browse__HeadVar__1_1, mdb__browse__V_73_73, mdb__browse__ArgNum1_50, mdb__browse__HeadVar__4_4, mdb__browse__NewSize1_48, mdb__browse__NewSize_6, mdb__browse__HeadVar__7_7, mdb__browse__HeadVar__8_8, &mdb__browse__RestTreesFrame_52);
+            }
+#line 1372 "browse.m"
+            {
+#line 1372 "browse.m"
+              mercury__string__int_to_string_2_p_0(mdb__browse__HeadVar__3_3, &mdb__browse__ArgNumS_53);
+            }
+#line 1373 "browse.m"
+            {
+#line 1373 "browse.m"
+              mdb__browse__V_63_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1373 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_63_63, 0) = ((MR_Box) (mdb__browse__ArgNumS_53));
+#line 1373 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_63_63, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[47])));
+#line 1373 "browse.m"
+            }
+#line 1373 "browse.m"
+            {
+#line 1373 "browse.m"
+              mercury__string__append_list_2_p_0(mdb__browse__V_63_63, &mdb__browse__BranchFrameS_54);
+            }
+#line 1374 "browse.m"
+            {
+#line 1374 "browse.m"
+              mdb__browse__V_67_67 = mdb__frame__vsize_1_f_0(mdb__browse__TreeFrame_49);
+            }
+#line 1374 "browse.m"
+            mdb__browse__Height_55 = (mdb__browse__V_67_67 - (MR_Integer) 1);
+#line 1375 "browse.m"
+            {
+#line 1375 "browse.m"
+              mercury__list__duplicate_3_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, mdb__browse__Height_55, ((MR_Box) ((MR_String) "|")), &mdb__browse__VBranchFrame_56);
+            }
+#line 1376 "browse.m"
+            {
+#line 1376 "browse.m"
+              mdb__browse__V_70_70 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1376 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_70_70, 0) = ((MR_Box) (mdb__browse__BranchFrameS_54));
+#line 1376 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_70_70, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1376 "browse.m"
+            }
+#line 1376 "browse.m"
+            {
+#line 1376 "browse.m"
+              mdb__browse__LeftFrame_57 = mdb__frame__vglue_2_f_0(mdb__browse__V_70_70, mdb__browse__VBranchFrame_56);
+            }
+#line 1377 "browse.m"
+            {
+#line 1377 "browse.m"
+              mdb__browse__TopFrame_58 = mdb__frame__hglue_2_f_0(mdb__browse__LeftFrame_57, mdb__browse__TreeFrame_49);
+            }
+#line 1378 "browse.m"
+            {
+#line 1378 "browse.m"
+              *mdb__browse__HeadVar__9_9 = mdb__frame__vglue_2_f_0(mdb__browse__TopFrame_58, mdb__browse__RestTreesFrame_52);
+            }
+#line 1364 "browse.m"
+          }
+#line 1353 "browse.m"
+      }
+#line 1353 "browse.m"
+  }
+#line 1348 "browse.m"
+}
+
+#line 1316 "browse.m"
+static void MR_CALL 
+mdb__browse__browser_term_to_string_verbose_2_8_p_0(
+#line 1316 "browse.m"
+  MR_Word mdb__browse__BrowserDb_9,
+#line 1316 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_10,
+#line 1316 "browse.m"
+  MR_Integer mdb__browse__MaxSize_11,
+#line 1316 "browse.m"
+  MR_Integer mdb__browse__CurSize_12,
+#line 1316 "browse.m"
+  MR_Integer * mdb__browse__NewSize_13,
+#line 1316 "browse.m"
+  MR_Integer mdb__browse__MaxDepth_14,
+#line 1316 "browse.m"
+  MR_Integer mdb__browse__CurDepth_15,
+#line 1316 "browse.m"
+  MR_Word * mdb__browse__Frame_16)
+#line 1316 "browse.m"
+{
+#line 1320 "browse.m"
+  {
+#line 1320 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1320 "browse.m"
+    MR_Word mdb__browse__MaybeFunctorArityArgs_17;
+#line 1320 "browse.m"
+    MR_Word mdb__browse__MaybeReturn_18;
+#line 1323 "browse.m"
+    MR_String mdb__browse__Functor_19;
+#line 1323 "browse.m"
+    MR_Word mdb__browse__Args0_21;
+#line 1324 "browse.m"
+    MR_Tuple mdb__browse__V_29_29;
+#line 1326 "browse.m"
+    MR_Integer mdb__browse___Arity_20;
+
+#line 1321 "browse.m"
+    {
+#line 1321 "browse.m"
+      mdb__browser_info__limited_deconstruct_browser_term_cc_5_p_0(mdb__browse__BrowserDb_9, mdb__browse__BrowserTerm_10, mdb__browse__MaxSize_11, &mdb__browse__MaybeFunctorArityArgs_17, &mdb__browse__MaybeReturn_18);
+    }
+#line 1324 "browse.m"
+    mdb__browse__succeeded = (mdb__browse__CurSize_12 < mdb__browse__MaxSize_11);
+#line 1324 "browse.m"
+    if (mdb__browse__succeeded)
+#line 1324 "browse.m"
+      {
+#line 1325 "browse.m"
+        mdb__browse__succeeded = (mdb__browse__CurDepth_15 < mdb__browse__MaxDepth_14);
+#line 1324 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1324 "browse.m"
+          {
+#line 1326 "browse.m"
+            mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__MaybeFunctorArityArgs_17)) == (MR_mktag((MR_Integer) 1)));
+#line 1326 "browse.m"
+            if (mdb__browse__succeeded)
+#line 1326 "browse.m"
+              {
+#line 1326 "browse.m"
+                mdb__browse__V_29_29 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeFunctorArityArgs_17, (MR_Integer) 0)));
+#line 1326 "browse.m"
+                mdb__browse__Functor_19 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__browse__V_29_29, (MR_Integer) 0)));
+#line 1326 "browse.m"
+                mdb__browse___Arity_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__V_29_29, (MR_Integer) 1)));
+#line 1326 "browse.m"
+                mdb__browse__Args0_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__V_29_29, (MR_Integer) 2)));
+#line 1326 "browse.m"
+                mdb__browse__succeeded = MR_TRUE;
+#line 1326 "browse.m"
+              }
+#line 1324 "browse.m"
+          }
+#line 1324 "browse.m"
+      }
+#line 1323 "browse.m"
+    if (mdb__browse__succeeded)
+#line 1335 "browse.m"
+      {
+#line 1335 "browse.m"
+        MR_Word mdb__browse__Args_23;
+#line 1335 "browse.m"
+        MR_Integer mdb__browse__CurSize1_24;
+#line 1335 "browse.m"
+        MR_Integer mdb__browse__CurDepth1_25;
+#line 1335 "browse.m"
+        MR_Word mdb__browse__ArgsFrame_27;
+#line 1335 "browse.m"
+        MR_Word mdb__browse__V_34_34;
+
+#line 1332 "browse.m"
+        if ((mdb__browse__MaybeReturn_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1334 "browse.m"
+          mdb__browse__Args_23 = mdb__browse__Args0_21;
+#line 1332 "browse.m"
+        else
+#line 1330 "browse.m"
+          {
+#line 1330 "browse.m"
+            MR_Word mdb__browse__Return_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeReturn_18, (MR_Integer) 0)));
+#line 1330 "browse.m"
+            MR_Word mdb__browse__V_30_30;
+
+#line 1331 "browse.m"
+            {
+#line 1331 "browse.m"
+              mdb__browse__V_30_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1331 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_30_30, 0) = ((MR_Box) (mdb__browse__Return_22));
+#line 1331 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_30_30, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1331 "browse.m"
+            }
+#line 1331 "browse.m"
+            {
+#line 1331 "browse.m"
+              mercury__list__append_3_p_1((MR_Word) &mercury__univ__univ__type_ctor_info_univ_0, mdb__browse__Args0_21, mdb__browse__V_30_30, &mdb__browse__Args_23);
+            }
+#line 1330 "browse.m"
+          }
+#line 1336 "browse.m"
+        mdb__browse__CurSize1_24 = (mdb__browse__CurSize_12 + (MR_Integer) 1);
+#line 1337 "browse.m"
+        mdb__browse__CurDepth1_25 = (mdb__browse__CurDepth_15 + (MR_Integer) 1);
+#line 1339 "browse.m"
+        {
+#line 1339 "browse.m"
+          mdb__browse__args_to_string_verbose_list_9_p_0(mdb__browse__BrowserDb_9, mdb__browse__Args_23, (MR_Integer) 1, mdb__browse__MaxSize_11, mdb__browse__CurSize1_24, mdb__browse__NewSize_13, mdb__browse__MaxDepth_14, mdb__browse__CurDepth1_25, &mdb__browse__ArgsFrame_27);
+        }
+#line 1341 "browse.m"
+        {
+#line 1341 "browse.m"
+          mdb__browse__V_34_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1341 "browse.m"
+          MR_hl_field(MR_mktag(1), mdb__browse__V_34_34, 0) = ((MR_Box) (mdb__browse__Functor_19));
+#line 1341 "browse.m"
+          MR_hl_field(MR_mktag(1), mdb__browse__V_34_34, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1341 "browse.m"
+        }
+#line 1341 "browse.m"
+        {
+#line 1341 "browse.m"
+          *mdb__browse__Frame_16 = mdb__frame__vglue_2_f_0(mdb__browse__V_34_34, mdb__browse__ArgsFrame_27);
+        }
+#line 1335 "browse.m"
+      }
+#line 1323 "browse.m"
+    else
+#line 1343 "browse.m"
+      {
+#line 1343 "browse.m"
+        MR_String mdb__browse__Line_28;
+#line 1343 "browse.m"
+        MR_String mdb__browse__Functor_41;
+#line 1343 "browse.m"
+        MR_Integer mdb__browse__Arity_42;
+#line 1343 "browse.m"
+        MR_Word mdb__browse__IsFunc_43;
+
+#line 1252 "browse.m"
+        {
+#line 1252 "browse.m"
+          mdb__browser_info__functor_browser_term_cc_5_p_0(mdb__browse__BrowserDb_9, mdb__browse__BrowserTerm_10, &mdb__browse__Functor_41, &mdb__browse__Arity_42, &mdb__browse__IsFunc_43);
+        }
+#line 1253 "browse.m"
+        mdb__browse__succeeded = (mdb__browse__Arity_42 == (MR_Integer) 0);
+#line 1253 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1254 "browse.m"
+          mdb__browse__Line_28 = mdb__browse__Functor_41;
+#line 1253 "browse.m"
+        else
+#line 1256 "browse.m"
+          {
+#line 1256 "browse.m"
+            MR_String mdb__browse__ArityStr_44;
+
+#line 1256 "browse.m"
+            {
+#line 1256 "browse.m"
+              mercury__string__int_to_string_2_p_0(mdb__browse__Arity_42, &mdb__browse__ArityStr_44);
+            }
+#line 1260 "browse.m"
+#line 1260 "browse.m"
+            switch (mdb__browse__IsFunc_43) {
+#line 1260 "browse.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 1260 "browse.m"
+              case (MR_Integer) 0:
+#line 1261 "browse.m"
+                {
+#line 1261 "browse.m"
+                  MR_Word mdb__browse__V_45_45;
+#line 1261 "browse.m"
+                  MR_Word mdb__browse__V_46_46;
+#line 1261 "browse.m"
+                  MR_Word mdb__browse__V_48_48;
+
+#line 1262 "browse.m"
+                  {
+#line 1262 "browse.m"
+                    mdb__browse__V_48_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_48_48, 0) = ((MR_Box) (mdb__browse__ArityStr_44));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_48_48, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1262 "browse.m"
+                  }
+#line 1262 "browse.m"
+                  {
+#line 1262 "browse.m"
+                    mdb__browse__V_46_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_46_46, 0) = ((MR_Box) ((MR_String) "/"));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_46_46, 1) = ((MR_Box) (mdb__browse__V_48_48));
+#line 1262 "browse.m"
+                  }
+#line 1262 "browse.m"
+                  {
+#line 1262 "browse.m"
+                    mdb__browse__V_45_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_45_45, 0) = ((MR_Box) (mdb__browse__Functor_41));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_45_45, 1) = ((MR_Box) (mdb__browse__V_46_46));
+#line 1262 "browse.m"
+                  }
+#line 1262 "browse.m"
+                  {
+#line 1262 "browse.m"
+                    mercury__string__append_list_2_p_0(mdb__browse__V_45_45, &mdb__browse__Line_28);
+                  }
+#line 1261 "browse.m"
+                }
+#line 1260 "browse.m"
+                break;
+#line 1260 "browse.m"
+              case (MR_Integer) 1:
+#line 1258 "browse.m"
+                {
+#line 1258 "browse.m"
+                  MR_Word mdb__browse__V_50_50;
+#line 1258 "browse.m"
+                  MR_Word mdb__browse__V_51_51;
+#line 1258 "browse.m"
+                  MR_Word mdb__browse__V_53_53;
+
+#line 1259 "browse.m"
+                  {
+#line 1259 "browse.m"
+                    mdb__browse__V_53_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_53_53, 0) = ((MR_Box) (mdb__browse__ArityStr_44));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_53_53, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[43])));
+#line 1259 "browse.m"
+                  }
+#line 1259 "browse.m"
+                  {
+#line 1259 "browse.m"
+                    mdb__browse__V_51_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_51_51, 0) = ((MR_Box) ((MR_String) "/"));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_51_51, 1) = ((MR_Box) (mdb__browse__V_53_53));
+#line 1259 "browse.m"
+                  }
+#line 1259 "browse.m"
+                  {
+#line 1259 "browse.m"
+                    mdb__browse__V_50_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_50_50, 0) = ((MR_Box) (mdb__browse__Functor_41));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_50_50, 1) = ((MR_Box) (mdb__browse__V_51_51));
+#line 1259 "browse.m"
+                  }
+#line 1259 "browse.m"
+                  {
+#line 1259 "browse.m"
+                    mercury__string__append_list_2_p_0(mdb__browse__V_50_50, &mdb__browse__Line_28);
+                  }
+#line 1258 "browse.m"
+                }
+#line 1260 "browse.m"
+                break;
+#line 1260 "browse.m"
+            }
+#line 1256 "browse.m"
+          }
+#line 1344 "browse.m"
+        {
+#line 1344 "browse.m"
+          MR_Word base;
+#line 1344 "browse.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1344 "browse.m"
+          *mdb__browse__Frame_16 = base;
+#line 1344 "browse.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdb__browse__Line_28));
+#line 1344 "browse.m"
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1344 "browse.m"
+        }
+#line 1345 "browse.m"
+        *mdb__browse__NewSize_13 = mdb__browse__CurSize_12;
+#line 1343 "browse.m"
+      }
+#line 1320 "browse.m"
+  }
+#line 1316 "browse.m"
+}
+
+#line 1233 "browse.m"
+static MR_String MR_CALL 
+mdb__browse__comma_string_list_1_f_0(
+#line 1233 "browse.m"
+  MR_Word mdb__browse__Args_3)
+#line 1233 "browse.m"
+{
+#line 1237 "browse.m"
+  {
+#line 1237 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1237 "browse.m"
+    MR_String mdb__browse__Str_4;
+
+#line 1237 "browse.m"
+    if ((mdb__browse__Args_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1237 "browse.m"
+      mdb__browse__Str_4 = (MR_String) "";
+#line 1237 "browse.m"
+    else
+#line 1237 "browse.m"
+      {
+#line 1237 "browse.m"
+        MR_Word mdb__browse__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Args_3, (MR_Integer) 1)));
+#line 1237 "browse.m"
+        MR_String mdb__browse__V_19_19 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__Args_3, (MR_Integer) 0)));
+
+#line 1237 "browse.m"
+        if ((mdb__browse__V_18_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1241 "browse.m"
+          mdb__browse__Str_4 = mdb__browse__V_19_19;
+#line 1237 "browse.m"
+        else
+#line 1243 "browse.m"
+          {
+#line 1243 "browse.m"
+            MR_String mdb__browse__Rest_9;
+#line 1243 "browse.m"
+            MR_Word mdb__browse__V_12_12;
+#line 1243 "browse.m"
+            MR_Word mdb__browse__V_13_13;
+#line 1243 "browse.m"
+            MR_Word mdb__browse__V_15_15;
+#line 1243 "browse.m"
+            MR_Word mdb__browse__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__V_18_18, (MR_Integer) 1)));
+#line 1243 "browse.m"
+            MR_String mdb__browse__V_36_36 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__V_18_18, (MR_Integer) 0)));
+
+#line 1237 "browse.m"
+            if ((mdb__browse__V_35_35 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1241 "browse.m"
+              mdb__browse__Rest_9 = mdb__browse__V_36_36;
+#line 1237 "browse.m"
+            else
+#line 1243 "browse.m"
+              {
+#line 1243 "browse.m"
+                MR_String mdb__browse__Rest_26;
+#line 1243 "browse.m"
+                MR_Word mdb__browse__V_29_29;
+#line 1243 "browse.m"
+                MR_Word mdb__browse__V_30_30;
+#line 1243 "browse.m"
+                MR_Word mdb__browse__V_32_32;
+
+#line 1244 "browse.m"
+                {
+#line 1244 "browse.m"
+                  mdb__browse__Rest_26 = mdb__browse__comma_string_list_1_f_0(mdb__browse__V_35_35);
+                }
+#line 1245 "browse.m"
+                {
+#line 1245 "browse.m"
+                  mdb__browse__V_32_32 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1245 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_32_32, 0) = ((MR_Box) (mdb__browse__Rest_26));
+#line 1245 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_32_32, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1245 "browse.m"
+                }
+#line 1245 "browse.m"
+                {
+#line 1245 "browse.m"
+                  mdb__browse__V_30_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1245 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_30_30, 0) = ((MR_Box) ((MR_String) ", "));
+#line 1245 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_30_30, 1) = ((MR_Box) (mdb__browse__V_32_32));
+#line 1245 "browse.m"
+                }
+#line 1245 "browse.m"
+                {
+#line 1245 "browse.m"
+                  mdb__browse__V_29_29 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1245 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_29_29, 0) = ((MR_Box) (mdb__browse__V_36_36));
+#line 1245 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_29_29, 1) = ((MR_Box) (mdb__browse__V_30_30));
+#line 1245 "browse.m"
+                }
+#line 1245 "browse.m"
+                {
+#line 1245 "browse.m"
+                  mercury__string__append_list_2_p_0(mdb__browse__V_29_29, &mdb__browse__Rest_9);
+                }
+#line 1243 "browse.m"
+              }
+#line 1245 "browse.m"
+            {
+#line 1245 "browse.m"
+              mdb__browse__V_15_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1245 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_15_15, 0) = ((MR_Box) (mdb__browse__Rest_9));
+#line 1245 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_15_15, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1245 "browse.m"
+            }
+#line 1245 "browse.m"
+            {
+#line 1245 "browse.m"
+              mdb__browse__V_13_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1245 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_13_13, 0) = ((MR_Box) ((MR_String) ", "));
+#line 1245 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_13_13, 1) = ((MR_Box) (mdb__browse__V_15_15));
+#line 1245 "browse.m"
+            }
+#line 1245 "browse.m"
+            {
+#line 1245 "browse.m"
+              mdb__browse__V_12_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1245 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_12_12, 0) = ((MR_Box) (mdb__browse__V_19_19));
+#line 1245 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_12_12, 1) = ((MR_Box) (mdb__browse__V_13_13));
+#line 1245 "browse.m"
+            }
+#line 1245 "browse.m"
+            {
+#line 1245 "browse.m"
+              mercury__string__append_list_2_p_0(mdb__browse__V_12_12, &mdb__browse__Str_4);
+            }
+#line 1243 "browse.m"
+          }
+#line 1237 "browse.m"
+      }
+#line 1237 "browse.m"
+    return mdb__browse__Str_4;
+#line 1237 "browse.m"
+  }
+#line 1233 "browse.m"
+}
+
+#line 1206 "browse.m"
+static void MR_CALL 
+mdb__browse__args_to_string_list_8_p_0(
+#line 1206 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 1206 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2,
+#line 1206 "browse.m"
+  MR_Integer mdb__browse__HeadVar__3_3,
+#line 1206 "browse.m"
+  MR_Integer mdb__browse__CurSize_4,
+#line 1206 "browse.m"
+  MR_Integer * mdb__browse__NewSize_5,
+#line 1206 "browse.m"
+  MR_Integer mdb__browse__HeadVar__6_6,
+#line 1206 "browse.m"
+  MR_Integer mdb__browse__HeadVar__7_7,
+#line 1206 "browse.m"
+  MR_Word * mdb__browse__Strs_8)
+#line 1206 "browse.m"
+{
+#line 1211 "browse.m"
+  {
+#line 1211 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 1211 "browse.m"
+    if ((mdb__browse__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1211 "browse.m"
+      {
+#line 1212 "browse.m"
+        *mdb__browse__Strs_8 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1210 "browse.m"
+        *mdb__browse__NewSize_5 = mdb__browse__CurSize_4;
+#line 1211 "browse.m"
+      }
+#line 1211 "browse.m"
+    else
+#line 1215 "browse.m"
+      {
+#line 1215 "browse.m"
+        MR_Word mdb__browse__Univ_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__2_2, (MR_Integer) 0)));
+#line 1215 "browse.m"
+        MR_Word mdb__browse__Univs_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__2_2, (MR_Integer) 1)));
+#line 1215 "browse.m"
+        MR_Integer mdb__browse__NewSize1_25;
+#line 1215 "browse.m"
+        MR_String mdb__browse__Str_26;
+#line 1215 "browse.m"
+        MR_Word mdb__browse__RestStrs_27;
+#line 1215 "browse.m"
+        MR_Word mdb__browse__V_28_28;
+
+#line 1216 "browse.m"
+        {
+#line 1216 "browse.m"
+          mdb__browse__V_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1216 "browse.m"
+          MR_hl_field(MR_mktag(0), mdb__browse__V_28_28, 0) = ((MR_Box) (mdb__browse__Univ_17));
+#line 1216 "browse.m"
+        }
+#line 1216 "browse.m"
+        {
+#line 1216 "browse.m"
+          mdb__browse__browser_term_to_string_2_8_p_0(mdb__browse__HeadVar__1_1, mdb__browse__V_28_28, mdb__browse__HeadVar__3_3, mdb__browse__CurSize_4, &mdb__browse__NewSize1_25, mdb__browse__HeadVar__6_6, mdb__browse__HeadVar__7_7, &mdb__browse__Str_26);
+        }
+#line 1218 "browse.m"
+        {
+#line 1218 "browse.m"
+          mdb__browse__args_to_string_list_8_p_0(mdb__browse__HeadVar__1_1, mdb__browse__Univs_18, mdb__browse__HeadVar__3_3, mdb__browse__NewSize1_25, mdb__browse__NewSize_5, mdb__browse__HeadVar__6_6, mdb__browse__HeadVar__7_7, &mdb__browse__RestStrs_27);
+        }
+#line 1220 "browse.m"
+        {
+#line 1220 "browse.m"
+          MR_Word base;
+#line 1220 "browse.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1220 "browse.m"
+          *mdb__browse__Strs_8 = base;
+#line 1220 "browse.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdb__browse__Str_26));
+#line 1220 "browse.m"
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__browse__RestStrs_27));
+#line 1220 "browse.m"
+        }
+#line 1215 "browse.m"
+      }
+#line 1211 "browse.m"
+  }
+#line 1206 "browse.m"
+}
+
+#line 1145 "browse.m"
+static void MR_CALL 
+mdb__browse__list_tail_to_string_list_8_p_0(
+#line 1145 "browse.m"
+  MR_Word mdb__browse__BrowserDb_9,
+#line 1145 "browse.m"
+  MR_Word mdb__browse__TailUniv_10,
+#line 1145 "browse.m"
+  MR_Integer mdb__browse__MaxSize_11,
+#line 1145 "browse.m"
+  MR_Integer mdb__browse__Size0_12,
+#line 1145 "browse.m"
+  MR_Integer * mdb__browse__Size_13,
+#line 1145 "browse.m"
+  MR_Integer mdb__browse__MaxDepth_14,
+#line 1145 "browse.m"
+  MR_Integer mdb__browse__Depth0_15,
+#line 1145 "browse.m"
+  MR_Word * mdb__browse__TailStrs_16)
+#line 1145 "browse.m"
+{
+#line 1150 "browse.m"
+  {
+#line 1150 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1150 "browse.m"
+    MR_Integer mdb__browse__Limit_17;
+#line 1150 "browse.m"
+    MR_Word mdb__browse__MaybeFunctorArityArgs_18;
+#line 1150 "browse.m"
+    MR_Word mdb__browse__MaybeReturn_19;
+#line 1150 "browse.m"
+    MR_Word mdb__browse__V_31_31;
+
+#line 1153 "browse.m"
+    {
+#line 1153 "browse.m"
+      mdb__browse__Limit_17 = mercury__int__max_2_f_0(mdb__browse__MaxSize_11, (MR_Integer) 2);
+    }
+#line 1154 "browse.m"
+    {
+#line 1154 "browse.m"
+      mdb__browse__V_31_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1154 "browse.m"
+      MR_hl_field(MR_mktag(0), mdb__browse__V_31_31, 0) = ((MR_Box) (mdb__browse__TailUniv_10));
+#line 1154 "browse.m"
+    }
+#line 1154 "browse.m"
+    {
+#line 1154 "browse.m"
+      mdb__browser_info__limited_deconstruct_browser_term_cc_5_p_0(mdb__browse__BrowserDb_9, mdb__browse__V_31_31, mdb__browse__Limit_17, &mdb__browse__MaybeFunctorArityArgs_18, &mdb__browse__MaybeReturn_19);
+    }
+#line 1198 "browse.m"
+    if ((mdb__browse__MaybeFunctorArityArgs_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1199 "browse.m"
+      {
+#line 1199 "browse.m"
+        MR_Word mdb__browse__V_34_34;
+#line 1199 "browse.m"
+        MR_String mdb__browse__TailCompressedStr_51;
+#line 1199 "browse.m"
+        MR_String mdb__browse__Functor_55;
+#line 1199 "browse.m"
+        MR_Integer mdb__browse__Arity_56;
+#line 1199 "browse.m"
+        MR_Word mdb__browse__IsFunc_57;
+
+#line 1200 "browse.m"
+        *mdb__browse__Size_13 = mdb__browse__Size0_12;
+#line 1252 "browse.m"
+        {
+#line 1252 "browse.m"
+          mdb__browser_info__functor_browser_term_cc_5_p_0(mdb__browse__BrowserDb_9, mdb__browse__V_31_31, &mdb__browse__Functor_55, &mdb__browse__Arity_56, &mdb__browse__IsFunc_57);
+        }
+#line 1253 "browse.m"
+        mdb__browse__succeeded = (mdb__browse__Arity_56 == (MR_Integer) 0);
+#line 1253 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1254 "browse.m"
+          mdb__browse__TailCompressedStr_51 = mdb__browse__Functor_55;
+#line 1253 "browse.m"
+        else
+#line 1256 "browse.m"
+          {
+#line 1256 "browse.m"
+            MR_String mdb__browse__ArityStr_58;
+
+#line 1256 "browse.m"
+            {
+#line 1256 "browse.m"
+              mercury__string__int_to_string_2_p_0(mdb__browse__Arity_56, &mdb__browse__ArityStr_58);
+            }
+#line 1260 "browse.m"
+#line 1260 "browse.m"
+            switch (mdb__browse__IsFunc_57) {
+#line 1260 "browse.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 1260 "browse.m"
+              case (MR_Integer) 0:
+#line 1261 "browse.m"
+                {
+#line 1261 "browse.m"
+                  MR_Word mdb__browse__V_59_59;
+#line 1261 "browse.m"
+                  MR_Word mdb__browse__V_60_60;
+#line 1261 "browse.m"
+                  MR_Word mdb__browse__V_62_62;
+
+#line 1262 "browse.m"
+                  {
+#line 1262 "browse.m"
+                    mdb__browse__V_62_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_62_62, 0) = ((MR_Box) (mdb__browse__ArityStr_58));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_62_62, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1262 "browse.m"
+                  }
+#line 1262 "browse.m"
+                  {
+#line 1262 "browse.m"
+                    mdb__browse__V_60_60 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_60_60, 0) = ((MR_Box) ((MR_String) "/"));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_60_60, 1) = ((MR_Box) (mdb__browse__V_62_62));
+#line 1262 "browse.m"
+                  }
+#line 1262 "browse.m"
+                  {
+#line 1262 "browse.m"
+                    mdb__browse__V_59_59 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_59_59, 0) = ((MR_Box) (mdb__browse__Functor_55));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_59_59, 1) = ((MR_Box) (mdb__browse__V_60_60));
+#line 1262 "browse.m"
+                  }
+#line 1262 "browse.m"
+                  {
+#line 1262 "browse.m"
+                    mercury__string__append_list_2_p_0(mdb__browse__V_59_59, &mdb__browse__TailCompressedStr_51);
+                  }
+#line 1261 "browse.m"
+                }
+#line 1260 "browse.m"
+                break;
+#line 1260 "browse.m"
+              case (MR_Integer) 1:
+#line 1258 "browse.m"
+                {
+#line 1258 "browse.m"
+                  MR_Word mdb__browse__V_64_64;
+#line 1258 "browse.m"
+                  MR_Word mdb__browse__V_65_65;
+#line 1258 "browse.m"
+                  MR_Word mdb__browse__V_67_67;
+
+#line 1259 "browse.m"
+                  {
+#line 1259 "browse.m"
+                    mdb__browse__V_67_67 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_67_67, 0) = ((MR_Box) (mdb__browse__ArityStr_58));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_67_67, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[43])));
+#line 1259 "browse.m"
+                  }
+#line 1259 "browse.m"
+                  {
+#line 1259 "browse.m"
+                    mdb__browse__V_65_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_65_65, 0) = ((MR_Box) ((MR_String) "/"));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_65_65, 1) = ((MR_Box) (mdb__browse__V_67_67));
+#line 1259 "browse.m"
+                  }
+#line 1259 "browse.m"
+                  {
+#line 1259 "browse.m"
+                    mdb__browse__V_64_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_64_64, 0) = ((MR_Box) (mdb__browse__Functor_55));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_64_64, 1) = ((MR_Box) (mdb__browse__V_65_65));
+#line 1259 "browse.m"
+                  }
+#line 1259 "browse.m"
+                  {
+#line 1259 "browse.m"
+                    mercury__string__append_list_2_p_0(mdb__browse__V_64_64, &mdb__browse__TailCompressedStr_51);
+                  }
+#line 1258 "browse.m"
+                }
+#line 1260 "browse.m"
+                break;
+#line 1260 "browse.m"
+            }
+#line 1256 "browse.m"
+          }
+#line 1203 "browse.m"
+        {
+#line 1203 "browse.m"
+          mdb__browse__V_34_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1203 "browse.m"
+          MR_hl_field(MR_mktag(1), mdb__browse__V_34_34, 0) = ((MR_Box) (mdb__browse__TailCompressedStr_51));
+#line 1203 "browse.m"
+          MR_hl_field(MR_mktag(1), mdb__browse__V_34_34, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1203 "browse.m"
+        }
+#line 1203 "browse.m"
+        {
+#line 1203 "browse.m"
+          MR_Word base;
+#line 1203 "browse.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1203 "browse.m"
+          *mdb__browse__TailStrs_16 = base;
+#line 1203 "browse.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) ((MR_String) " | "));
+#line 1203 "browse.m"
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__browse__V_34_34));
+#line 1203 "browse.m"
+        }
+#line 1199 "browse.m"
+      }
+#line 1198 "browse.m"
+    else
+#line 1157 "browse.m"
+      {
+#line 1157 "browse.m"
+        MR_String mdb__browse__Functor_20;
+#line 1157 "browse.m"
+        MR_Word mdb__browse__Args_22;
+#line 1157 "browse.m"
+        MR_Tuple mdb__browse__V_36_36 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeFunctorArityArgs_18, (MR_Integer) 0)));
+#line 1157 "browse.m"
+        MR_Integer mdb__browse___Arity_21;
+
+#line 1157 "browse.m"
+        mdb__browse__Functor_20 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__browse__V_36_36, (MR_Integer) 0)));
+#line 1157 "browse.m"
+        mdb__browse___Arity_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__V_36_36, (MR_Integer) 1)));
+#line 1157 "browse.m"
+        mdb__browse__Args_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__V_36_36, (MR_Integer) 2)));
+#line 1159 "browse.m"
+        mdb__browse__succeeded = (strcmp(mdb__browse__Functor_20, (MR_String) "[]") == 0);
+#line 1159 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1159 "browse.m"
+          {
+#line 1160 "browse.m"
+            mdb__browse__succeeded = (mdb__browse__Args_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1159 "browse.m"
+            if (mdb__browse__succeeded)
+#line 1161 "browse.m"
+              mdb__browse__succeeded = (mdb__browse__MaybeReturn_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1159 "browse.m"
+          }
+#line 1158 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1163 "browse.m"
+          {
+#line 1163 "browse.m"
+            *mdb__browse__Size_13 = mdb__browse__Size0_12;
+#line 1164 "browse.m"
+            *mdb__browse__TailStrs_16 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1163 "browse.m"
+          }
+#line 1158 "browse.m"
+        else
+#line 1165 "browse.m"
+          {
+#line 1165 "browse.m"
+            MR_Word mdb__browse__ListHead_23;
+#line 1165 "browse.m"
+            MR_Word mdb__browse__ListTail_24;
+#line 1166 "browse.m"
+            MR_Word mdb__browse__V_37_37;
+#line 1166 "browse.m"
+            MR_Word mdb__browse__V_38_38;
+
+#line 1166 "browse.m"
+            mdb__browse__succeeded = (strcmp(mdb__browse__Functor_20, (MR_String) "[|]") == 0);
+#line 1166 "browse.m"
+            if (mdb__browse__succeeded)
+#line 1166 "browse.m"
+              {
+#line 1168 "browse.m"
+                mdb__browse__succeeded = (mdb__browse__MaybeReturn_19 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1166 "browse.m"
+                if (mdb__browse__succeeded)
+#line 1166 "browse.m"
+                  {
+#line 1167 "browse.m"
+                    mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__Args_22)) == (MR_mktag((MR_Integer) 1)));
+#line 1167 "browse.m"
+                    if (mdb__browse__succeeded)
+#line 1167 "browse.m"
+                      {
+#line 1167 "browse.m"
+                        mdb__browse__ListHead_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Args_22, (MR_Integer) 0)));
+#line 1167 "browse.m"
+                        mdb__browse__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Args_22, (MR_Integer) 1)));
+#line 1167 "browse.m"
+                        mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__V_37_37)) == (MR_mktag((MR_Integer) 1)));
+#line 1167 "browse.m"
+                        if (mdb__browse__succeeded)
+#line 1167 "browse.m"
+                          {
+#line 1167 "browse.m"
+                            mdb__browse__ListTail_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__V_37_37, (MR_Integer) 0)));
+#line 1167 "browse.m"
+                            mdb__browse__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__V_37_37, (MR_Integer) 1)));
+#line 1167 "browse.m"
+                            mdb__browse__succeeded = (mdb__browse__V_38_38 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1167 "browse.m"
+                          }
+#line 1167 "browse.m"
+                      }
+#line 1166 "browse.m"
+                  }
+#line 1166 "browse.m"
+              }
+#line 1165 "browse.m"
+            if (mdb__browse__succeeded)
+#line 1170 "browse.m"
+              {
+#line 1171 "browse.m"
+                mdb__browse__succeeded = (mdb__browse__Size0_12 < mdb__browse__MaxSize_11);
+#line 1171 "browse.m"
+                if (mdb__browse__succeeded)
+#line 1172 "browse.m"
+                  mdb__browse__succeeded = (mdb__browse__Depth0_15 < mdb__browse__MaxDepth_14);
+#line 1170 "browse.m"
+                if (mdb__browse__succeeded)
+#line 1175 "browse.m"
+                  {
+#line 1175 "browse.m"
+                    MR_Integer mdb__browse__Size1_25;
+#line 1175 "browse.m"
+                    MR_String mdb__browse__HeadStr_26;
+#line 1175 "browse.m"
+                    MR_Word mdb__browse__TailStrs0_27;
+#line 1175 "browse.m"
+                    MR_Word mdb__browse__V_39_39;
+#line 1175 "browse.m"
+                    MR_Word mdb__browse__V_41_41;
+
+#line 1174 "browse.m"
+                    {
+#line 1174 "browse.m"
+                      mdb__browse__V_39_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1174 "browse.m"
+                      MR_hl_field(MR_mktag(0), mdb__browse__V_39_39, 0) = ((MR_Box) (mdb__browse__ListHead_23));
+#line 1174 "browse.m"
+                    }
+#line 1174 "browse.m"
+                    {
+#line 1174 "browse.m"
+                      mdb__browse__browser_term_to_string_2_8_p_0(mdb__browse__BrowserDb_9, mdb__browse__V_39_39, mdb__browse__MaxSize_11, mdb__browse__Size0_12, &mdb__browse__Size1_25, mdb__browse__MaxDepth_14, mdb__browse__Depth0_15, &mdb__browse__HeadStr_26);
+                    }
+#line 1176 "browse.m"
+                    {
+#line 1176 "browse.m"
+                      mdb__browse__list_tail_to_string_list_8_p_0(mdb__browse__BrowserDb_9, mdb__browse__ListTail_24, mdb__browse__MaxSize_11, mdb__browse__Size1_25, mdb__browse__Size_13, mdb__browse__MaxDepth_14, mdb__browse__Depth0_15, &mdb__browse__TailStrs0_27);
+                    }
+#line 1178 "browse.m"
+                    {
+#line 1178 "browse.m"
+                      mdb__browse__V_41_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1178 "browse.m"
+                      MR_hl_field(MR_mktag(1), mdb__browse__V_41_41, 0) = ((MR_Box) (mdb__browse__HeadStr_26));
+#line 1178 "browse.m"
+                      MR_hl_field(MR_mktag(1), mdb__browse__V_41_41, 1) = ((MR_Box) (mdb__browse__TailStrs0_27));
+#line 1178 "browse.m"
+                    }
+#line 1178 "browse.m"
+                    {
+#line 1178 "browse.m"
+                      MR_Word base;
+#line 1178 "browse.m"
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1178 "browse.m"
+                      *mdb__browse__TailStrs_16 = base;
+#line 1178 "browse.m"
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) ((MR_String) ", "));
+#line 1178 "browse.m"
+                      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__browse__V_41_41));
+#line 1178 "browse.m"
+                    }
+#line 1175 "browse.m"
+                  }
+#line 1170 "browse.m"
+                else
+#line 1180 "browse.m"
+                  {
+#line 1180 "browse.m"
+                    *mdb__browse__Size_13 = mdb__browse__Size0_12;
+#line 1181 "browse.m"
+                    *mdb__browse__TailStrs_16 = (MR_Word) MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[46]);
+#line 1180 "browse.m"
+                  }
+#line 1170 "browse.m"
+              }
+#line 1165 "browse.m"
+            else
+#line 1184 "browse.m"
+              {
+#line 1185 "browse.m"
+                mdb__browse__succeeded = (mdb__browse__Size0_12 < mdb__browse__MaxSize_11);
+#line 1185 "browse.m"
+                if (mdb__browse__succeeded)
+#line 1186 "browse.m"
+                  mdb__browse__succeeded = (mdb__browse__Depth0_15 < mdb__browse__MaxDepth_14);
+#line 1184 "browse.m"
+                if (mdb__browse__succeeded)
+#line 1189 "browse.m"
+                  {
+#line 1189 "browse.m"
+                    MR_String mdb__browse__TailStr_28;
+#line 1189 "browse.m"
+                    MR_Word mdb__browse__V_45_45;
+
+#line 1188 "browse.m"
+                    {
+#line 1188 "browse.m"
+                      mdb__browse__browser_term_to_string_3_10_p_0(mdb__browse__BrowserDb_9, mdb__browse__Functor_20, mdb__browse__Args_22, mdb__browse__MaybeReturn_19, mdb__browse__MaxSize_11, mdb__browse__Size0_12, mdb__browse__Size_13, mdb__browse__MaxDepth_14, mdb__browse__Depth0_15, &mdb__browse__TailStr_28);
+                    }
+#line 1190 "browse.m"
+                    {
+#line 1190 "browse.m"
+                      mdb__browse__V_45_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1190 "browse.m"
+                      MR_hl_field(MR_mktag(1), mdb__browse__V_45_45, 0) = ((MR_Box) (mdb__browse__TailStr_28));
+#line 1190 "browse.m"
+                      MR_hl_field(MR_mktag(1), mdb__browse__V_45_45, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1190 "browse.m"
+                    }
+#line 1190 "browse.m"
+                    {
+#line 1190 "browse.m"
+                      MR_Word base;
+#line 1190 "browse.m"
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1190 "browse.m"
+                      *mdb__browse__TailStrs_16 = base;
+#line 1190 "browse.m"
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) ((MR_String) " | "));
+#line 1190 "browse.m"
+                      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__browse__V_45_45));
+#line 1190 "browse.m"
+                    }
+#line 1189 "browse.m"
+                  }
+#line 1184 "browse.m"
+                else
+#line 1192 "browse.m"
+                  {
+#line 1192 "browse.m"
+                    MR_String mdb__browse__TailCompressedStr_29;
+#line 1192 "browse.m"
+                    MR_Word mdb__browse__V_49_49;
+#line 1192 "browse.m"
+                    MR_String mdb__browse__Functor_74;
+#line 1192 "browse.m"
+                    MR_Integer mdb__browse__Arity_75;
+#line 1192 "browse.m"
+                    MR_Word mdb__browse__IsFunc_76;
+
+#line 1192 "browse.m"
+                    *mdb__browse__Size_13 = mdb__browse__Size0_12;
+#line 1252 "browse.m"
+                    {
+#line 1252 "browse.m"
+                      mdb__browser_info__functor_browser_term_cc_5_p_0(mdb__browse__BrowserDb_9, mdb__browse__V_31_31, &mdb__browse__Functor_74, &mdb__browse__Arity_75, &mdb__browse__IsFunc_76);
+                    }
+#line 1253 "browse.m"
+                    mdb__browse__succeeded = (mdb__browse__Arity_75 == (MR_Integer) 0);
+#line 1253 "browse.m"
+                    if (mdb__browse__succeeded)
+#line 1254 "browse.m"
+                      mdb__browse__TailCompressedStr_29 = mdb__browse__Functor_74;
+#line 1253 "browse.m"
+                    else
+#line 1256 "browse.m"
+                      {
+#line 1256 "browse.m"
+                        MR_String mdb__browse__ArityStr_77;
+
+#line 1256 "browse.m"
+                        {
+#line 1256 "browse.m"
+                          mercury__string__int_to_string_2_p_0(mdb__browse__Arity_75, &mdb__browse__ArityStr_77);
+                        }
+#line 1260 "browse.m"
+#line 1260 "browse.m"
+                        switch (mdb__browse__IsFunc_76) {
+#line 1260 "browse.m"
+                          default: /*NOTREACHED*/ MR_assert(0);
+#line 1260 "browse.m"
+                          case (MR_Integer) 0:
+#line 1261 "browse.m"
+                            {
+#line 1261 "browse.m"
+                              MR_Word mdb__browse__V_78_78;
+#line 1261 "browse.m"
+                              MR_Word mdb__browse__V_79_79;
+#line 1261 "browse.m"
+                              MR_Word mdb__browse__V_81_81;
+
+#line 1262 "browse.m"
+                              {
+#line 1262 "browse.m"
+                                mdb__browse__V_81_81 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1262 "browse.m"
+                                MR_hl_field(MR_mktag(1), mdb__browse__V_81_81, 0) = ((MR_Box) (mdb__browse__ArityStr_77));
+#line 1262 "browse.m"
+                                MR_hl_field(MR_mktag(1), mdb__browse__V_81_81, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1262 "browse.m"
+                              }
+#line 1262 "browse.m"
+                              {
+#line 1262 "browse.m"
+                                mdb__browse__V_79_79 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1262 "browse.m"
+                                MR_hl_field(MR_mktag(1), mdb__browse__V_79_79, 0) = ((MR_Box) ((MR_String) "/"));
+#line 1262 "browse.m"
+                                MR_hl_field(MR_mktag(1), mdb__browse__V_79_79, 1) = ((MR_Box) (mdb__browse__V_81_81));
+#line 1262 "browse.m"
+                              }
+#line 1262 "browse.m"
+                              {
+#line 1262 "browse.m"
+                                mdb__browse__V_78_78 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1262 "browse.m"
+                                MR_hl_field(MR_mktag(1), mdb__browse__V_78_78, 0) = ((MR_Box) (mdb__browse__Functor_74));
+#line 1262 "browse.m"
+                                MR_hl_field(MR_mktag(1), mdb__browse__V_78_78, 1) = ((MR_Box) (mdb__browse__V_79_79));
+#line 1262 "browse.m"
+                              }
+#line 1262 "browse.m"
+                              {
+#line 1262 "browse.m"
+                                mercury__string__append_list_2_p_0(mdb__browse__V_78_78, &mdb__browse__TailCompressedStr_29);
+                              }
+#line 1261 "browse.m"
+                            }
+#line 1260 "browse.m"
+                            break;
+#line 1260 "browse.m"
+                          case (MR_Integer) 1:
+#line 1258 "browse.m"
+                            {
+#line 1258 "browse.m"
+                              MR_Word mdb__browse__V_83_83;
+#line 1258 "browse.m"
+                              MR_Word mdb__browse__V_84_84;
+#line 1258 "browse.m"
+                              MR_Word mdb__browse__V_86_86;
+
+#line 1259 "browse.m"
+                              {
+#line 1259 "browse.m"
+                                mdb__browse__V_86_86 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1259 "browse.m"
+                                MR_hl_field(MR_mktag(1), mdb__browse__V_86_86, 0) = ((MR_Box) (mdb__browse__ArityStr_77));
+#line 1259 "browse.m"
+                                MR_hl_field(MR_mktag(1), mdb__browse__V_86_86, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[43])));
+#line 1259 "browse.m"
+                              }
+#line 1259 "browse.m"
+                              {
+#line 1259 "browse.m"
+                                mdb__browse__V_84_84 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1259 "browse.m"
+                                MR_hl_field(MR_mktag(1), mdb__browse__V_84_84, 0) = ((MR_Box) ((MR_String) "/"));
+#line 1259 "browse.m"
+                                MR_hl_field(MR_mktag(1), mdb__browse__V_84_84, 1) = ((MR_Box) (mdb__browse__V_86_86));
+#line 1259 "browse.m"
+                              }
+#line 1259 "browse.m"
+                              {
+#line 1259 "browse.m"
+                                mdb__browse__V_83_83 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1259 "browse.m"
+                                MR_hl_field(MR_mktag(1), mdb__browse__V_83_83, 0) = ((MR_Box) (mdb__browse__Functor_74));
+#line 1259 "browse.m"
+                                MR_hl_field(MR_mktag(1), mdb__browse__V_83_83, 1) = ((MR_Box) (mdb__browse__V_84_84));
+#line 1259 "browse.m"
+                              }
+#line 1259 "browse.m"
+                              {
+#line 1259 "browse.m"
+                                mercury__string__append_list_2_p_0(mdb__browse__V_83_83, &mdb__browse__TailCompressedStr_29);
+                              }
+#line 1258 "browse.m"
+                            }
+#line 1260 "browse.m"
+                            break;
+#line 1260 "browse.m"
+                        }
+#line 1256 "browse.m"
+                      }
+#line 1195 "browse.m"
+                    {
+#line 1195 "browse.m"
+                      mdb__browse__V_49_49 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1195 "browse.m"
+                      MR_hl_field(MR_mktag(1), mdb__browse__V_49_49, 0) = ((MR_Box) (mdb__browse__TailCompressedStr_29));
+#line 1195 "browse.m"
+                      MR_hl_field(MR_mktag(1), mdb__browse__V_49_49, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1195 "browse.m"
+                    }
+#line 1195 "browse.m"
+                    {
+#line 1195 "browse.m"
+                      MR_Word base;
+#line 1195 "browse.m"
+                      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1195 "browse.m"
+                      *mdb__browse__TailStrs_16 = base;
+#line 1195 "browse.m"
+                      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) ((MR_String) " | "));
+#line 1195 "browse.m"
+                      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdb__browse__V_49_49));
+#line 1195 "browse.m"
+                    }
+#line 1192 "browse.m"
+                  }
+#line 1184 "browse.m"
+              }
+#line 1165 "browse.m"
+          }
+#line 1157 "browse.m"
+      }
+#line 1150 "browse.m"
+  }
+#line 1145 "browse.m"
+}
+
+#line 1098 "browse.m"
+static void MR_CALL 
+mdb__browse__browser_term_to_string_3_10_p_0(
+#line 1098 "browse.m"
+  MR_Word mdb__browse__BrowserDb_11,
+#line 1098 "browse.m"
+  MR_String mdb__browse__Functor_12,
+#line 1098 "browse.m"
+  MR_Word mdb__browse__Args_13,
+#line 1098 "browse.m"
+  MR_Word mdb__browse__MaybeReturn_14,
+#line 1098 "browse.m"
+  MR_Integer mdb__browse__MaxSize_15,
+#line 1098 "browse.m"
+  MR_Integer mdb__browse__Size0_16,
+#line 1098 "browse.m"
+  MR_Integer * mdb__browse__Size_17,
+#line 1098 "browse.m"
+  MR_Integer mdb__browse__MaxDepth_18,
+#line 1098 "browse.m"
+  MR_Integer mdb__browse__Depth0_19,
+#line 1098 "browse.m"
+  MR_String * mdb__browse__Str_20)
+#line 1098 "browse.m"
+{
+#line 1104 "browse.m"
+  {
+#line 1104 "browse.m"
+    MR_bool mdb__browse__succeeded = (strcmp(mdb__browse__Functor_12, (MR_String) "[|]") == 0);
+#line 1104 "browse.m"
+    MR_Word mdb__browse__ListHead_21;
+#line 1104 "browse.m"
+    MR_Word mdb__browse__ListTail_22;
+#line 1105 "browse.m"
+    MR_Word mdb__browse__V_33_33;
+#line 1105 "browse.m"
+    MR_Word mdb__browse__V_34_34;
+
+#line 1105 "browse.m"
+    if (mdb__browse__succeeded)
+#line 1105 "browse.m"
+      {
+#line 1107 "browse.m"
+        mdb__browse__succeeded = (mdb__browse__MaybeReturn_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1105 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1105 "browse.m"
+          {
+#line 1106 "browse.m"
+            mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__Args_13)) == (MR_mktag((MR_Integer) 1)));
+#line 1106 "browse.m"
+            if (mdb__browse__succeeded)
+#line 1106 "browse.m"
+              {
+#line 1106 "browse.m"
+                mdb__browse__ListHead_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Args_13, (MR_Integer) 0)));
+#line 1106 "browse.m"
+                mdb__browse__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Args_13, (MR_Integer) 1)));
+#line 1106 "browse.m"
+                mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__V_33_33)) == (MR_mktag((MR_Integer) 1)));
+#line 1106 "browse.m"
+                if (mdb__browse__succeeded)
+#line 1106 "browse.m"
+                  {
+#line 1106 "browse.m"
+                    mdb__browse__ListTail_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__V_33_33, (MR_Integer) 0)));
+#line 1106 "browse.m"
+                    mdb__browse__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__V_33_33, (MR_Integer) 1)));
+#line 1106 "browse.m"
+                    mdb__browse__succeeded = (mdb__browse__V_34_34 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1106 "browse.m"
+                  }
+#line 1106 "browse.m"
+              }
+#line 1105 "browse.m"
+          }
+#line 1105 "browse.m"
+      }
+#line 1104 "browse.m"
+    if (mdb__browse__succeeded)
+#line 1111 "browse.m"
+      {
+#line 1111 "browse.m"
+        MR_Integer mdb__browse__Size1_23 = (mdb__browse__Size0_16 + (MR_Integer) 1);
+#line 1111 "browse.m"
+        MR_Integer mdb__browse__Depth1_24 = (mdb__browse__Depth0_19 + (MR_Integer) 1);
+#line 1111 "browse.m"
+        MR_Integer mdb__browse__Size2_25;
+#line 1111 "browse.m"
+        MR_String mdb__browse__HeadStr_26;
+#line 1111 "browse.m"
+        MR_Word mdb__browse__TailStrs_27;
+#line 1111 "browse.m"
+        MR_Word mdb__browse__Strs_28;
+#line 1111 "browse.m"
+        MR_Word mdb__browse__V_37_37;
+#line 1111 "browse.m"
+        MR_Word mdb__browse__V_41_41;
+#line 1111 "browse.m"
+        MR_Word mdb__browse__V_43_43;
+
+#line 1113 "browse.m"
+        {
+#line 1113 "browse.m"
+          mdb__browse__V_37_37 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1113 "browse.m"
+          MR_hl_field(MR_mktag(0), mdb__browse__V_37_37, 0) = ((MR_Box) (mdb__browse__ListHead_21));
+#line 1113 "browse.m"
+        }
+#line 1113 "browse.m"
+        {
+#line 1113 "browse.m"
+          mdb__browse__browser_term_to_string_2_8_p_0(mdb__browse__BrowserDb_11, mdb__browse__V_37_37, mdb__browse__MaxSize_15, mdb__browse__Size1_23, &mdb__browse__Size2_25, mdb__browse__MaxDepth_18, mdb__browse__Depth1_24, &mdb__browse__HeadStr_26);
+        }
+#line 1115 "browse.m"
+        {
+#line 1115 "browse.m"
+          mdb__browse__list_tail_to_string_list_8_p_0(mdb__browse__BrowserDb_11, mdb__browse__ListTail_22, mdb__browse__MaxSize_15, mdb__browse__Size2_25, mdb__browse__Size_17, mdb__browse__MaxDepth_18, mdb__browse__Depth1_24, &mdb__browse__TailStrs_27);
+        }
+#line 1117 "browse.m"
+        {
+#line 1117 "browse.m"
+          mercury__list__append_3_p_1((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, mdb__browse__TailStrs_27, (MR_Word) MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[44]), &mdb__browse__Strs_28);
+        }
+#line 1118 "browse.m"
+        {
+#line 1118 "browse.m"
+          mdb__browse__V_43_43 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1118 "browse.m"
+          MR_hl_field(MR_mktag(1), mdb__browse__V_43_43, 0) = ((MR_Box) (mdb__browse__HeadStr_26));
+#line 1118 "browse.m"
+          MR_hl_field(MR_mktag(1), mdb__browse__V_43_43, 1) = ((MR_Box) (mdb__browse__Strs_28));
+#line 1118 "browse.m"
+        }
+#line 1118 "browse.m"
+        {
+#line 1118 "browse.m"
+          mdb__browse__V_41_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1118 "browse.m"
+          MR_hl_field(MR_mktag(1), mdb__browse__V_41_41, 0) = ((MR_Box) ((MR_String) "["));
+#line 1118 "browse.m"
+          MR_hl_field(MR_mktag(1), mdb__browse__V_41_41, 1) = ((MR_Box) (mdb__browse__V_43_43));
+#line 1118 "browse.m"
+        }
+#line 1118 "browse.m"
+        {
+#line 1118 "browse.m"
+          mercury__string__append_list_2_p_0(mdb__browse__V_41_41, mdb__browse__Str_20);
+        }
+#line 1111 "browse.m"
+      }
+#line 1104 "browse.m"
+    else
+#line 1119 "browse.m"
+      {
+#line 1120 "browse.m"
+        mdb__browse__succeeded = (strcmp(mdb__browse__Functor_12, (MR_String) "[]") == 0);
+#line 1120 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1120 "browse.m"
+          {
+#line 1121 "browse.m"
+            mdb__browse__succeeded = (mdb__browse__Args_13 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1120 "browse.m"
+            if (mdb__browse__succeeded)
+#line 1122 "browse.m"
+              mdb__browse__succeeded = (mdb__browse__MaybeReturn_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1120 "browse.m"
+          }
+#line 1119 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1124 "browse.m"
+          {
+#line 1124 "browse.m"
+            *mdb__browse__Size_17 = (mdb__browse__Size0_16 + (MR_Integer) 1);
+#line 1125 "browse.m"
+            *mdb__browse__Str_20 = (MR_String) "[]";
+#line 1124 "browse.m"
+          }
+#line 1119 "browse.m"
+        else
+#line 1127 "browse.m"
+          {
+#line 1127 "browse.m"
+            MR_Word mdb__browse__ArgStrs_29;
+#line 1127 "browse.m"
+            MR_String mdb__browse__BracketedArgsStr_30;
+#line 1127 "browse.m"
+            MR_Integer mdb__browse__Size1_57 = (mdb__browse__Size0_16 + (MR_Integer) 1);
+#line 1127 "browse.m"
+            MR_Integer mdb__browse__Depth1_58 = (mdb__browse__Depth0_19 + (MR_Integer) 1);
+#line 1127 "browse.m"
+            MR_Integer mdb__browse__Size2_59;
+
+#line 1129 "browse.m"
+            {
+#line 1129 "browse.m"
+              mdb__browse__args_to_string_list_8_p_0(mdb__browse__BrowserDb_11, mdb__browse__Args_13, mdb__browse__MaxSize_15, mdb__browse__Size1_57, &mdb__browse__Size2_59, mdb__browse__MaxDepth_18, mdb__browse__Depth1_58, &mdb__browse__ArgStrs_29);
+            }
+#line 1226 "browse.m"
+            if ((mdb__browse__ArgStrs_29 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1227 "browse.m"
+              mdb__browse__BracketedArgsStr_30 = (MR_String) "";
+#line 1226 "browse.m"
+            else
+#line 1229 "browse.m"
+              {
+#line 1229 "browse.m"
+                MR_Word mdb__browse__V_68_68;
+#line 1229 "browse.m"
+                MR_Word mdb__browse__V_70_70;
+#line 1229 "browse.m"
+                MR_String mdb__browse__V_71_71;
+
+#line 1230 "browse.m"
+                {
+#line 1230 "browse.m"
+                  mdb__browse__V_71_71 = mdb__browse__comma_string_list_1_f_0(mdb__browse__ArgStrs_29);
+                }
+#line 1230 "browse.m"
+                {
+#line 1230 "browse.m"
+                  mdb__browse__V_70_70 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1230 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_70_70, 0) = ((MR_Box) (mdb__browse__V_71_71));
+#line 1230 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_70_70, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[45])));
+#line 1230 "browse.m"
+                }
+#line 1230 "browse.m"
+                {
+#line 1230 "browse.m"
+                  mdb__browse__V_68_68 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1230 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_68_68, 0) = ((MR_Box) ((MR_String) "("));
+#line 1230 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_68_68, 1) = ((MR_Box) (mdb__browse__V_70_70));
+#line 1230 "browse.m"
+                }
+#line 1230 "browse.m"
+                {
+#line 1230 "browse.m"
+                  mercury__string__append_list_2_p_0(mdb__browse__V_68_68, &mdb__browse__BracketedArgsStr_30);
+                }
+#line 1229 "browse.m"
+              }
+#line 1138 "browse.m"
+            if ((mdb__browse__MaybeReturn_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1139 "browse.m"
+              {
+#line 1139 "browse.m"
+                MR_Word mdb__browse__V_47_47;
+#line 1139 "browse.m"
+                MR_Word mdb__browse__V_48_48;
+
+#line 1140 "browse.m"
+                *mdb__browse__Size_17 = mdb__browse__Size2_59;
+#line 1141 "browse.m"
+                {
+#line 1141 "browse.m"
+                  mdb__browse__V_48_48 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1141 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_48_48, 0) = ((MR_Box) (mdb__browse__BracketedArgsStr_30));
+#line 1141 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_48_48, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1141 "browse.m"
+                }
+#line 1141 "browse.m"
+                {
+#line 1141 "browse.m"
+                  mdb__browse__V_47_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1141 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_47_47, 0) = ((MR_Box) (mdb__browse__Functor_12));
+#line 1141 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_47_47, 1) = ((MR_Box) (mdb__browse__V_48_48));
+#line 1141 "browse.m"
+                }
+#line 1141 "browse.m"
+                {
+#line 1141 "browse.m"
+                  mercury__string__append_list_2_p_0(mdb__browse__V_47_47, mdb__browse__Str_20);
+                }
+#line 1139 "browse.m"
+              }
+#line 1138 "browse.m"
+            else
+#line 1133 "browse.m"
+              {
+#line 1133 "browse.m"
+                MR_Word mdb__browse__Return_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeReturn_14, (MR_Integer) 0)));
+#line 1133 "browse.m"
+                MR_String mdb__browse__ReturnStr_32;
+#line 1133 "browse.m"
+                MR_Word mdb__browse__V_50_50;
+#line 1133 "browse.m"
+                MR_Word mdb__browse__V_51_51;
+#line 1133 "browse.m"
+                MR_Word mdb__browse__V_52_52;
+#line 1133 "browse.m"
+                MR_Word mdb__browse__V_53_53;
+#line 1133 "browse.m"
+                MR_Word mdb__browse__V_55_55;
+
+#line 1134 "browse.m"
+                {
+#line 1134 "browse.m"
+                  mdb__browse__V_50_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1134 "browse.m"
+                  MR_hl_field(MR_mktag(0), mdb__browse__V_50_50, 0) = ((MR_Box) (mdb__browse__Return_31));
+#line 1134 "browse.m"
+                }
+#line 1134 "browse.m"
+                {
+#line 1134 "browse.m"
+                  mdb__browse__browser_term_to_string_2_8_p_0(mdb__browse__BrowserDb_11, mdb__browse__V_50_50, mdb__browse__MaxSize_15, mdb__browse__Size2_59, mdb__browse__Size_17, mdb__browse__MaxDepth_18, mdb__browse__Depth1_58, &mdb__browse__ReturnStr_32);
+                }
+#line 1136 "browse.m"
+                {
+#line 1136 "browse.m"
+                  mdb__browse__V_55_55 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1136 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_55_55, 0) = ((MR_Box) (mdb__browse__ReturnStr_32));
+#line 1136 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_55_55, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1136 "browse.m"
+                }
+#line 1136 "browse.m"
+                {
+#line 1136 "browse.m"
+                  mdb__browse__V_53_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1136 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_53_53, 0) = ((MR_Box) ((MR_String) " = "));
+#line 1136 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_53_53, 1) = ((MR_Box) (mdb__browse__V_55_55));
+#line 1136 "browse.m"
+                }
+#line 1136 "browse.m"
+                {
+#line 1136 "browse.m"
+                  mdb__browse__V_52_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1136 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_52_52, 0) = ((MR_Box) (mdb__browse__BracketedArgsStr_30));
+#line 1136 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_52_52, 1) = ((MR_Box) (mdb__browse__V_53_53));
+#line 1136 "browse.m"
+                }
+#line 1136 "browse.m"
+                {
+#line 1136 "browse.m"
+                  mdb__browse__V_51_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1136 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_51_51, 0) = ((MR_Box) (mdb__browse__Functor_12));
+#line 1136 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_51_51, 1) = ((MR_Box) (mdb__browse__V_52_52));
+#line 1136 "browse.m"
+                }
+#line 1136 "browse.m"
+                {
+#line 1136 "browse.m"
+                  mercury__string__append_list_2_p_0(mdb__browse__V_51_51, mdb__browse__Str_20);
+                }
+#line 1133 "browse.m"
+              }
+#line 1127 "browse.m"
+          }
+#line 1119 "browse.m"
+      }
+#line 1104 "browse.m"
+  }
+#line 1098 "browse.m"
+}
+
+#line 1079 "browse.m"
+static void MR_CALL 
+mdb__browse__browser_term_to_string_2_8_p_0(
+#line 1079 "browse.m"
+  MR_Word mdb__browse__BrowserDb_9,
+#line 1079 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_10,
+#line 1079 "browse.m"
+  MR_Integer mdb__browse__MaxSize_11,
+#line 1079 "browse.m"
+  MR_Integer mdb__browse__CurSize_12,
+#line 1079 "browse.m"
+  MR_Integer * mdb__browse__NewSize_13,
+#line 1079 "browse.m"
+  MR_Integer mdb__browse__MaxDepth_14,
+#line 1079 "browse.m"
+  MR_Integer mdb__browse__CurDepth_15,
+#line 1079 "browse.m"
+  MR_String * mdb__browse__Str_16)
+#line 1079 "browse.m"
+{
+#line 1083 "browse.m"
+  {
+#line 1083 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1083 "browse.m"
+    MR_Word mdb__browse__MaybeFunctorArityArgs_17;
+#line 1083 "browse.m"
+    MR_Word mdb__browse__MaybeReturn_18;
+#line 1086 "browse.m"
+    MR_String mdb__browse__Functor_19;
+#line 1086 "browse.m"
+    MR_Word mdb__browse__Args_21;
+#line 1087 "browse.m"
+    MR_Tuple mdb__browse__V_22_22;
+#line 1089 "browse.m"
+    MR_Integer mdb__browse___Arity_20;
+
+#line 1084 "browse.m"
+    {
+#line 1084 "browse.m"
+      mdb__browser_info__limited_deconstruct_browser_term_cc_5_p_0(mdb__browse__BrowserDb_9, mdb__browse__BrowserTerm_10, mdb__browse__MaxSize_11, &mdb__browse__MaybeFunctorArityArgs_17, &mdb__browse__MaybeReturn_18);
+    }
+#line 1087 "browse.m"
+    mdb__browse__succeeded = (mdb__browse__CurSize_12 < mdb__browse__MaxSize_11);
+#line 1087 "browse.m"
+    if (mdb__browse__succeeded)
+#line 1087 "browse.m"
+      {
+#line 1088 "browse.m"
+        mdb__browse__succeeded = (mdb__browse__CurDepth_15 < mdb__browse__MaxDepth_14);
+#line 1087 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1087 "browse.m"
+          {
+#line 1089 "browse.m"
+            mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__MaybeFunctorArityArgs_17)) == (MR_mktag((MR_Integer) 1)));
+#line 1089 "browse.m"
+            if (mdb__browse__succeeded)
+#line 1089 "browse.m"
+              {
+#line 1089 "browse.m"
+                mdb__browse__V_22_22 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeFunctorArityArgs_17, (MR_Integer) 0)));
+#line 1089 "browse.m"
+                mdb__browse__Functor_19 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__browse__V_22_22, (MR_Integer) 0)));
+#line 1089 "browse.m"
+                mdb__browse___Arity_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__V_22_22, (MR_Integer) 1)));
+#line 1089 "browse.m"
+                mdb__browse__Args_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__V_22_22, (MR_Integer) 2)));
+#line 1089 "browse.m"
+                mdb__browse__succeeded = MR_TRUE;
+#line 1089 "browse.m"
+              }
+#line 1087 "browse.m"
+          }
+#line 1087 "browse.m"
+      }
+#line 1086 "browse.m"
+    if (mdb__browse__succeeded)
+#line 1091 "browse.m"
+      {
+#line 1091 "browse.m"
+        mdb__browse__browser_term_to_string_3_10_p_0(mdb__browse__BrowserDb_9, mdb__browse__Functor_19, mdb__browse__Args_21, mdb__browse__MaybeReturn_18, mdb__browse__MaxSize_11, mdb__browse__CurSize_12, mdb__browse__NewSize_13, mdb__browse__MaxDepth_14, mdb__browse__CurDepth_15, mdb__browse__Str_16);
+      }
+#line 1086 "browse.m"
+    else
+#line 1094 "browse.m"
+      {
+#line 1094 "browse.m"
+        MR_String mdb__browse__Functor_26;
+#line 1094 "browse.m"
+        MR_Integer mdb__browse__Arity_27;
+#line 1094 "browse.m"
+        MR_Word mdb__browse__IsFunc_28;
+
+#line 1252 "browse.m"
+        {
+#line 1252 "browse.m"
+          mdb__browser_info__functor_browser_term_cc_5_p_0(mdb__browse__BrowserDb_9, mdb__browse__BrowserTerm_10, &mdb__browse__Functor_26, &mdb__browse__Arity_27, &mdb__browse__IsFunc_28);
+        }
+#line 1253 "browse.m"
+        mdb__browse__succeeded = (mdb__browse__Arity_27 == (MR_Integer) 0);
+#line 1253 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1254 "browse.m"
+          *mdb__browse__Str_16 = mdb__browse__Functor_26;
+#line 1253 "browse.m"
+        else
+#line 1256 "browse.m"
+          {
+#line 1256 "browse.m"
+            MR_String mdb__browse__ArityStr_29;
+
+#line 1256 "browse.m"
+            {
+#line 1256 "browse.m"
+              mercury__string__int_to_string_2_p_0(mdb__browse__Arity_27, &mdb__browse__ArityStr_29);
+            }
+#line 1260 "browse.m"
+#line 1260 "browse.m"
+            switch (mdb__browse__IsFunc_28) {
+#line 1260 "browse.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 1260 "browse.m"
+              case (MR_Integer) 0:
+#line 1261 "browse.m"
+                {
+#line 1261 "browse.m"
+                  MR_Word mdb__browse__V_30_30;
+#line 1261 "browse.m"
+                  MR_Word mdb__browse__V_31_31;
+#line 1261 "browse.m"
+                  MR_Word mdb__browse__V_33_33;
+
+#line 1262 "browse.m"
+                  {
+#line 1262 "browse.m"
+                    mdb__browse__V_33_33 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_33_33, 0) = ((MR_Box) (mdb__browse__ArityStr_29));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_33_33, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1262 "browse.m"
+                  }
+#line 1262 "browse.m"
+                  {
+#line 1262 "browse.m"
+                    mdb__browse__V_31_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_31_31, 0) = ((MR_Box) ((MR_String) "/"));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_31_31, 1) = ((MR_Box) (mdb__browse__V_33_33));
+#line 1262 "browse.m"
+                  }
+#line 1262 "browse.m"
+                  {
+#line 1262 "browse.m"
+                    mdb__browse__V_30_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_30_30, 0) = ((MR_Box) (mdb__browse__Functor_26));
+#line 1262 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_30_30, 1) = ((MR_Box) (mdb__browse__V_31_31));
+#line 1262 "browse.m"
+                  }
+#line 1262 "browse.m"
+                  {
+#line 1262 "browse.m"
+                    mercury__string__append_list_2_p_0(mdb__browse__V_30_30, mdb__browse__Str_16);
+                  }
+#line 1261 "browse.m"
+                }
+#line 1260 "browse.m"
+                break;
+#line 1260 "browse.m"
+              case (MR_Integer) 1:
+#line 1258 "browse.m"
+                {
+#line 1258 "browse.m"
+                  MR_Word mdb__browse__V_35_35;
+#line 1258 "browse.m"
+                  MR_Word mdb__browse__V_36_36;
+#line 1258 "browse.m"
+                  MR_Word mdb__browse__V_38_38;
+
+#line 1259 "browse.m"
+                  {
+#line 1259 "browse.m"
+                    mdb__browse__V_38_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_38_38, 0) = ((MR_Box) (mdb__browse__ArityStr_29));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_38_38, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[43])));
+#line 1259 "browse.m"
+                  }
+#line 1259 "browse.m"
+                  {
+#line 1259 "browse.m"
+                    mdb__browse__V_36_36 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_36_36, 0) = ((MR_Box) ((MR_String) "/"));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_36_36, 1) = ((MR_Box) (mdb__browse__V_38_38));
+#line 1259 "browse.m"
+                  }
+#line 1259 "browse.m"
+                  {
+#line 1259 "browse.m"
+                    mdb__browse__V_35_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_35_35, 0) = ((MR_Box) (mdb__browse__Functor_26));
+#line 1259 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_35_35, 1) = ((MR_Box) (mdb__browse__V_36_36));
+#line 1259 "browse.m"
+                  }
+#line 1259 "browse.m"
+                  {
+#line 1259 "browse.m"
+                    mercury__string__append_list_2_p_0(mdb__browse__V_35_35, mdb__browse__Str_16);
+                  }
+#line 1258 "browse.m"
+                }
+#line 1260 "browse.m"
+                break;
+#line 1260 "browse.m"
+            }
+#line 1256 "browse.m"
+          }
+#line 1095 "browse.m"
+        *mdb__browse__NewSize_13 = mdb__browse__CurSize_12;
+#line 1094 "browse.m"
+      }
+#line 1083 "browse.m"
+  }
+#line 1079 "browse.m"
+}
+
+#line 1046 "browse.m"
+static void MR_CALL 
+mdb__browse__report_deref_error_5_p_0(
+#line 1046 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 1046 "browse.m"
+  MR_Word mdb__browse__OKPath_7,
+#line 1046 "browse.m"
+  MR_Word mdb__browse__ErrorDir_8)
+#line 1046 "browse.m"
+{
+#line 1049 "browse.m"
+  {
+#line 1049 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1049 "browse.m"
+    MR_String mdb__browse__Msg_13;
+#line 1049 "browse.m"
+    MR_String mdb__browse__V_24_24;
+#line 1049 "browse.m"
+    MR_String mdb__browse__V_25_25;
+
+#line 1050 "browse.m"
+    {
+#line 1050 "browse.m"
+      mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_6, (MR_String) "error: ");
+    }
+#line 1055 "browse.m"
+    if ((mdb__browse__OKPath_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1056 "browse.m"
+      {
+#line 1056 "browse.m"
+      }
+#line 1055 "browse.m"
+    else
+#line 1052 "browse.m"
+      {
+#line 1052 "browse.m"
+        MR_String mdb__browse__Context_12;
+#line 1052 "browse.m"
+        MR_String mdb__browse__V_19_19;
+#line 1052 "browse.m"
+        MR_String mdb__browse__V_20_20;
+
+#line 1053 "browse.m"
+        {
+#line 1053 "browse.m"
+          mdb__browse__V_20_20 = mdb__browse__down_dirs_to_string_1_f_0(mdb__browse__OKPath_7);
+        }
+#line 1053 "browse.m"
+        {
+#line 1053 "browse.m"
+          mdb__browse__V_19_19 = mercury__string__f_43_43_2_f_0(mdb__browse__V_20_20, (MR_String) ": ");
+        }
+#line 1053 "browse.m"
+        {
+#line 1053 "browse.m"
+          mdb__browse__Context_12 = mercury__string__f_43_43_2_f_0((MR_String) "in subdir ", mdb__browse__V_19_19);
+        }
+#line 1054 "browse.m"
+        {
+#line 1054 "browse.m"
+          mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_6, mdb__browse__Context_12);
+        }
+#line 1052 "browse.m"
+      }
+#line 1729 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__ErrorDir_8)) == (MR_mktag((MR_Integer) 1))))
+#line 1730 "browse.m"
+      mdb__browse__V_25_25 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__ErrorDir_8, (MR_Integer) 0)));
+#line 1729 "browse.m"
+    else
+#line 1729 "browse.m"
+      {
+#line 1729 "browse.m"
+        MR_Integer mdb__browse__Num_28 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__ErrorDir_8, (MR_Integer) 0)));
+
+#line 1729 "browse.m"
+        {
+#line 1729 "browse.m"
+          mdb__browse__V_25_25 = mercury__string__int_to_string_1_f_0(mdb__browse__Num_28);
+        }
+#line 1729 "browse.m"
+      }
+#line 1058 "browse.m"
+    {
+#line 1058 "browse.m"
+      mdb__browse__V_24_24 = mercury__string__f_43_43_2_f_0(mdb__browse__V_25_25, (MR_String) "\n");
+    }
+#line 1058 "browse.m"
+    {
+#line 1058 "browse.m"
+      mdb__browse__Msg_13 = mercury__string__f_43_43_2_f_0((MR_String) "there is no subterm ", mdb__browse__V_24_24);
+    }
+#line 1059 "browse.m"
+    {
+#line 1059 "browse.m"
+      mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_6, mdb__browse__Msg_13);
+    }
+#line 1049 "browse.m"
+  }
+#line 1046 "browse.m"
+}
+
+#line 1036 "browse.m"
+static void MR_CALL 
+mdb__browse__write_univ_or_unbound_4_p_0(
+#line 1036 "browse.m"
+  MR_Word mdb__browse__Stream_5,
+#line 1036 "browse.m"
+  MR_Word mdb__browse__Univ_6)
+#line 1036 "browse.m"
+{
+#line 1040 "browse.m"
+  {
+#line 1040 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1040 "browse.m"
+    MR_Box mdb__browse__conv0_V_11_11;
+
+#line 1040 "browse.m"
+    {
+#line 1040 "browse.m"
+      mdb__browse__succeeded = mercury__univ__univ_to_type_2_p_0((MR_Word) &mdb__browse__mdb__browse__type_ctor_info_unbound_0, mdb__browse__Univ_6, &mdb__browse__conv0_V_11_11);
+    }
+#line 1040 "browse.m"
+    if (mdb__browse__succeeded)
+#line 1040 "browse.m"
+      mdb__browse__succeeded = MR_TRUE;
+#line 1040 "browse.m"
+    if (mdb__browse__succeeded)
+#line 1041 "browse.m"
+      {
+#line 1041 "browse.m"
+        {
+#line 1041 "browse.m"
+          mercury__io__write_char_4_p_0(mdb__browse__Stream_5, (MR_Char) 95);
+        }
+#line 1041 "browse.m"
+      }
+#line 1040 "browse.m"
+    else
+#line 1043 "browse.m"
+      {
+#line 1043 "browse.m"
+        {
+#line 1043 "browse.m"
+          mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_117_110_105_118_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_50_95_49_5_p_2((MR_Word) &mdb__browse_scalar_common_3[0], (MR_Word) &mdb__browse_scalar_common_3[1], mdb__browse__Stream_5, (MR_Integer) 2, mdb__browse__Univ_6);
+        }
+#line 1043 "browse.m"
+      }
+#line 1040 "browse.m"
+  }
+#line 1036 "browse.m"
+}
+
+#line 970 "browse.m"
+static void MR_CALL 
+mdb__browse__portray_pretty_5_p_0(
+#line 970 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 970 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_7,
+#line 970 "browse.m"
+  MR_Word mdb__browse__Params_8)
+#line 970 "browse.m"
+{
+#line 973 "browse.m"
+  {
+#line 973 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 973 "browse.m"
+    MR_Integer mdb__browse__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_8, (MR_Integer) 2)));
+#line 973 "browse.m"
+    MR_Integer mdb__browse__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_8, (MR_Integer) 0)));
+#line 973 "browse.m"
+    MR_Integer mdb__browse__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_8, (MR_Integer) 1)));
+#line 973 "browse.m"
+    MR_Integer mdb__browse__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_8, (MR_Integer) 3)));
+#line 973 "browse.m"
+    MR_Word mdb__browse__Doc_40;
+#line 973 "browse.m"
+    MR_Word mdb__browse__Formatters_44;
+#line 973 "browse.m"
+    MR_Word mdb__browse__Limit_45;
+#line 1288 "browse.m"
+    MR_Integer mdb__browse__V_47_47;
+#line 1295 "browse.m"
+    MR_Word mdb__browse__V_48_48;
+#line 1295 "browse.m"
+    MR_Box mdb__browse__conv0_STATE_VARIABLE_IO_11;
+
+#line 1282 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__BrowserTerm_7)) == (MR_mktag((MR_Integer) 0))))
+#line 1280 "browse.m"
+      {
+#line 1280 "browse.m"
+        MR_Word mdb__browse__Univ_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__BrowserTerm_7, (MR_Integer) 0)));
+
+#line 1281 "browse.m"
+        {
+#line 1281 "browse.m"
+          mdb__browse__Doc_40 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1281 "browse.m"
+          MR_hl_field(MR_mktag(3), mdb__browse__Doc_40, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+#line 1281 "browse.m"
+          MR_hl_field(MR_mktag(3), mdb__browse__Doc_40, 1) = ((MR_Box) (mdb__browse__Univ_39));
+#line 1281 "browse.m"
+        }
+#line 1280 "browse.m"
+      }
+#line 1282 "browse.m"
+    else
+#line 1283 "browse.m"
+      {
+#line 1283 "browse.m"
+        MR_String mdb__browse__Functor_41 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_7, (MR_Integer) 0)));
+#line 1283 "browse.m"
+        MR_Word mdb__browse__Args_42 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_7, (MR_Integer) 1)));
+#line 1283 "browse.m"
+        MR_Word mdb__browse__MaybeReturn_43 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_7, (MR_Integer) 2)));
+#line 1283 "browse.m"
+        MR_Word mdb__browse__Doc0_54;
+
+#line 1785 "browse.m"
+        {
+#line 1785 "browse.m"
+          MR_Integer mdb__browse__lo_0;
+#line 1785 "browse.m"
+          MR_Integer mdb__browse__hi_1;
+#line 1785 "browse.m"
+          MR_Integer mdb__browse__mid_2;
+#line 1785 "browse.m"
+          MR_Integer mdb__browse__result_3;
+
+#line 1785 "browse.m"
+          /* binary string simple lookup switch */
+#line 1785 "browse.m"
+          mdb__browse__lo_0 = (MR_Integer) 0;
+#line 1785 "browse.m"
+          mdb__browse__hi_1 = (MR_Integer) 3;
+#line 1785 "browse.m"
+          do
+#line 1785 "browse.m"
+            {
+#line 1785 "browse.m"
+              mdb__browse__mid_2 = (((mdb__browse__lo_0 + mdb__browse__hi_1)) / (MR_Integer) 2);
+#line 1785 "browse.m"
+              mdb__browse__result_3 = MR_strcmp(mdb__browse__Functor_41, ((&mdb__browse_vector_common_7[6 + mdb__browse__mid_2]))->mdb__browse__vector_common_type_7_0__vct_7_f_0);
+#line 1785 "browse.m"
+              if ((mdb__browse__result_3 == (MR_Integer) 0))
+#line 1785 "browse.m"
+                {
+#line 1785 "browse.m"
+                  mdb__browse__succeeded = MR_TRUE;
+#line 1785 "browse.m"
+                  /* jump out of search loop */
+#line 1785 "browse.m"
+                  goto label_0;
+#line 1785 "browse.m"
+                }
+#line 1785 "browse.m"
+              else
+#line 1785 "browse.m"
+              if ((mdb__browse__result_3 < (MR_Integer) 0))
+#line 1785 "browse.m"
+                mdb__browse__hi_1 = (mdb__browse__mid_2 - (MR_Integer) 1);
+#line 1785 "browse.m"
+              else
+#line 1785 "browse.m"
+                mdb__browse__lo_0 = (mdb__browse__mid_2 + (MR_Integer) 1);
+#line 1785 "browse.m"
+            }
+#line 1785 "browse.m"
+          while ((mdb__browse__lo_0 <= mdb__browse__hi_1));
+#line 1785 "browse.m"
+          mdb__browse__succeeded = MR_FALSE;
+#line 1785 "browse.m"
+        label_0:;
+#line 1785 "browse.m"
+        }
+#line 1785 "browse.m"
+        if (!(mdb__browse__succeeded))
+#line 1788 "browse.m"
+          {
+#line 1788 "browse.m"
+            {
+#line 1788 "browse.m"
+              mdb__browse__succeeded = mercury__string__contains_char_2_p_0(mdb__browse__Functor_41, (MR_Char) 46);
+            }
+#line 1788 "browse.m"
+            mdb__browse__succeeded = !(mdb__browse__succeeded);
+#line 1788 "browse.m"
+          }
+#line 1783 "browse.m"
+        if (mdb__browse__succeeded)
+#line 1791 "browse.m"
+          {
+#line 1791 "browse.m"
+            mdb__browse__Doc0_54 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+#line 1791 "browse.m"
+            MR_hl_field(MR_mktag(3), mdb__browse__Doc0_54, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 1791 "browse.m"
+            MR_hl_field(MR_mktag(3), mdb__browse__Doc0_54, 1) = ((MR_Box) (mdb__browse__Functor_41));
+#line 1791 "browse.m"
+            MR_hl_field(MR_mktag(3), mdb__browse__Doc0_54, 2) = ((MR_Box) (mdb__browse__Args_42));
+#line 1791 "browse.m"
+          }
+#line 1783 "browse.m"
+        else
+#line 1794 "browse.m"
+          {
+#line 1794 "browse.m"
+            MR_Word mdb__browse__FunctorDoc_55;
+#line 1794 "browse.m"
+            MR_Word mdb__browse__V_60_60;
+
+#line 1794 "browse.m"
+            {
+#line 1794 "browse.m"
+              mdb__browse__V_60_60 = mercury__string__split_at_char_2_f_0((MR_Char) 46, mdb__browse__Functor_41);
+            }
+#line 1794 "browse.m"
+            {
+#line 1794 "browse.m"
+              mdb__browse__FunctorDoc_55 = mdb__browse__qualified_functor_to_doc_1_f_0(mdb__browse__V_60_60);
+            }
+#line 1798 "browse.m"
+            if ((mdb__browse__Args_42 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1797 "browse.m"
+              mdb__browse__Doc0_54 = mdb__browse__FunctorDoc_55;
+#line 1798 "browse.m"
+            else
+#line 1799 "browse.m"
+              {
+#line 1799 "browse.m"
+                MR_Word mdb__browse__V_62_62;
+#line 1799 "browse.m"
+                MR_Word mdb__browse__V_63_63;
+#line 1799 "browse.m"
+                MR_Word mdb__browse__V_66_66;
+#line 1799 "browse.m"
+                MR_Word mdb__browse__V_67_67;
+#line 1799 "browse.m"
+                MR_Word mdb__browse__V_68_68;
+
+#line 1802 "browse.m"
+                {
+#line 1802 "browse.m"
+                  mdb__browse__V_68_68 = mercury__pretty_printer__group_1_f_0((MR_Word) MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[41]));
+                }
+#line 1802 "browse.m"
+                {
+#line 1802 "browse.m"
+                  mdb__browse__V_67_67 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+#line 1802 "browse.m"
+                  MR_hl_field(MR_mktag(3), mdb__browse__V_67_67, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 1802 "browse.m"
+                  MR_hl_field(MR_mktag(3), mdb__browse__V_67_67, 1) = ((MR_Box) (mdb__browse__Args_42));
+#line 1802 "browse.m"
+                  MR_hl_field(MR_mktag(3), mdb__browse__V_67_67, 2) = ((MR_Box) (mdb__browse__V_68_68));
+#line 1802 "browse.m"
+                }
+#line 1802 "browse.m"
+                {
+#line 1802 "browse.m"
+                  mdb__browse__V_66_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1802 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_66_66, 0) = ((MR_Box) (mdb__browse__V_67_67));
+#line 1802 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_66_66, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[42])));
+#line 1802 "browse.m"
+                }
+#line 1801 "browse.m"
+                {
+#line 1801 "browse.m"
+                  mdb__browse__V_63_63 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1801 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_63_63, 0) = ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_5[5])));
+#line 1801 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_63_63, 1) = ((MR_Box) (mdb__browse__V_66_66));
+#line 1801 "browse.m"
+                }
+#line 1801 "browse.m"
+                {
+#line 1801 "browse.m"
+                  mdb__browse__V_62_62 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1801 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_62_62, 0) = ((MR_Box) (mdb__browse__FunctorDoc_55));
+#line 1801 "browse.m"
+                  MR_hl_field(MR_mktag(1), mdb__browse__V_62_62, 1) = ((MR_Box) (mdb__browse__V_63_63));
+#line 1801 "browse.m"
+                }
+#line 1800 "browse.m"
+                {
+#line 1800 "browse.m"
+                  mdb__browse__Doc0_54 = mercury__pretty_printer__indent_1_f_0(mdb__browse__V_62_62);
+                }
+#line 1799 "browse.m"
+              }
+#line 1794 "browse.m"
+          }
+#line 1810 "browse.m"
+        if ((mdb__browse__MaybeReturn_43 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1809 "browse.m"
+          mdb__browse__Doc_40 = mdb__browse__Doc0_54;
+#line 1810 "browse.m"
+        else
+#line 1811 "browse.m"
+          {
+#line 1811 "browse.m"
+            MR_Word mdb__browse__Return_58 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeReturn_43, (MR_Integer) 0)));
+#line 1811 "browse.m"
+            MR_Word mdb__browse__V_79_79;
+#line 1811 "browse.m"
+            MR_Word mdb__browse__V_80_80;
+#line 1811 "browse.m"
+            MR_Word mdb__browse__V_83_83;
+#line 1811 "browse.m"
+            MR_Word mdb__browse__V_84_84;
+#line 1811 "browse.m"
+            MR_Word mdb__browse__V_85_85;
+
+#line 1812 "browse.m"
+            {
+#line 1812 "browse.m"
+              mdb__browse__V_85_85 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1812 "browse.m"
+              MR_hl_field(MR_mktag(3), mdb__browse__V_85_85, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 0));
+#line 1812 "browse.m"
+              MR_hl_field(MR_mktag(3), mdb__browse__V_85_85, 1) = ((MR_Box) (mdb__browse__Return_58));
+#line 1812 "browse.m"
+            }
+#line 1812 "browse.m"
+            {
+#line 1812 "browse.m"
+              mdb__browse__V_84_84 = mercury__pretty_printer__format_arg_1_f_0(mdb__browse__V_85_85);
+            }
+#line 1812 "browse.m"
+            {
+#line 1812 "browse.m"
+              mdb__browse__V_83_83 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1812 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_83_83, 0) = ((MR_Box) (mdb__browse__V_84_84));
+#line 1812 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_83_83, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1812 "browse.m"
+            }
+#line 1812 "browse.m"
+            {
+#line 1812 "browse.m"
+              mdb__browse__V_80_80 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1812 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_80_80, 0) = ((MR_Box) (MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_5[7])));
+#line 1812 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_80_80, 1) = ((MR_Box) (mdb__browse__V_83_83));
+#line 1812 "browse.m"
+            }
+#line 1812 "browse.m"
+            {
+#line 1812 "browse.m"
+              mdb__browse__V_79_79 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1812 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_79_79, 0) = ((MR_Box) (mdb__browse__Doc0_54));
+#line 1812 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_79_79, 1) = ((MR_Box) (mdb__browse__V_80_80));
+#line 1812 "browse.m"
+            }
+#line 1812 "browse.m"
+            {
+#line 1812 "browse.m"
+              mdb__browse__Doc_40 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1812 "browse.m"
+              MR_hl_field(MR_mktag(2), mdb__browse__Doc_40, 0) = ((MR_Box) (mdb__browse__V_79_79));
+#line 1812 "browse.m"
+            }
+#line 1811 "browse.m"
+          }
+#line 1283 "browse.m"
+      }
+#line 1286 "browse.m"
+    {
+#line 1286 "browse.m"
+      mercury__pretty_printer__get_default_formatter_map_3_p_0(&mdb__browse__Formatters_44);
+    }
+#line 1288 "browse.m"
+    mdb__browse__V_47_47 = (MR_Integer) 0;
+#line 1288 "browse.m"
+    mdb__browse__succeeded = (mdb__browse__V_17_17 > mdb__browse__V_47_47);
+#line 1288 "browse.m"
+    if (mdb__browse__succeeded)
+#line 1289 "browse.m"
+      {
+#line 1289 "browse.m"
+        mdb__browse__Limit_45 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1289 "browse.m"
+        MR_hl_field(MR_mktag(1), mdb__browse__Limit_45, 0) = ((MR_Box) (mdb__browse__V_17_17));
+#line 1289 "browse.m"
+      }
+#line 1288 "browse.m"
+    else
+#line 1291 "browse.m"
+      {
+#line 1291 "browse.m"
+        mdb__browse__Limit_45 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 1291 "browse.m"
+        MR_hl_field(MR_mktag(0), mdb__browse__Limit_45, 0) = ((MR_Box) (mdb__browse__V_18_18));
+#line 1291 "browse.m"
+      }
+#line 1295 "browse.m"
+    mdb__browse__V_48_48 = (MR_Integer) 2;
+#line 1295 "browse.m"
+    {
+#line 1295 "browse.m"
+      mercury__pretty_printer__write_doc_to_stream_9_p_1((MR_Word) &mdb__browse_scalar_common_3[2], ((MR_Box) (mdb__browse__Debugger_6)), mdb__browse__V_48_48, mdb__browse__Formatters_44, mdb__browse__V_12_12, mdb__browse__V_19_19, mdb__browse__Limit_45, mdb__browse__Doc_40, ((MR_Box) ((MR_Integer) 0)), &mdb__browse__conv0_STATE_VARIABLE_IO_11);
+    }
+#line 973 "browse.m"
+  }
+#line 970 "browse.m"
+}
+
+#line 960 "browse.m"
+static void MR_CALL 
+mdb__browse__portray_verbose_5_p_0(
+#line 960 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 960 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_7,
+#line 960 "browse.m"
+  MR_Word mdb__browse__Params_8)
+#line 960 "browse.m"
+{
+#line 963 "browse.m"
+  {
+#line 963 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 963 "browse.m"
+    MR_Word mdb__browse__StreamDb_10;
+#line 963 "browse.m"
+    MR_Word mdb__browse__BrowserDb_11;
+#line 963 "browse.m"
+    MR_String mdb__browse__Str_12;
+#line 963 "browse.m"
+    MR_Integer mdb__browse__V_16_16;
+#line 963 "browse.m"
+    MR_Integer mdb__browse__V_21_21;
+#line 963 "browse.m"
+    MR_Integer mdb__browse__V_22_22;
+#line 963 "browse.m"
+    MR_Integer mdb__browse__V_23_23;
+#line 963 "browse.m"
+    MR_Word mdb__browse__Frame_43;
+#line 963 "browse.m"
+    MR_Word mdb__browse__ClippedFrame_44;
+#line 963 "browse.m"
+    MR_Word mdb__browse__V_45_45;
+#line 1311 "browse.m"
+    MR_Integer mdb__browse___NewSize_42;
+
+#line 964 "browse.m"
+    {
+#line 964 "browse.m"
+      mercury__io__get_stream_db_3_p_0(&mdb__browse__StreamDb_10);
+    }
+#line 965 "browse.m"
+    mdb__browse__BrowserDb_11 = (MR_Word) mdb__browse__StreamDb_10;
+#line 966 "browse.m"
+    mdb__browse__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_8, (MR_Integer) 0)));
+#line 966 "browse.m"
+    mdb__browse__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_8, (MR_Integer) 1)));
+#line 966 "browse.m"
+    mdb__browse__V_22_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_8, (MR_Integer) 2)));
+#line 966 "browse.m"
+    mdb__browse__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_8, (MR_Integer) 3)));
+#line 1311 "browse.m"
+    {
+#line 1311 "browse.m"
+      mdb__browse__browser_term_to_string_verbose_2_8_p_0(mdb__browse__BrowserDb_11, mdb__browse__BrowserTerm_7, mdb__browse__V_16_16, (MR_Integer) 0, &mdb__browse___NewSize_42, mdb__browse__V_21_21, (MR_Integer) 0, &mdb__browse__Frame_43);
+    }
+#line 1313 "browse.m"
+    {
+#line 1313 "browse.m"
+      mdb__browse__V_45_45 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1313 "browse.m"
+      MR_hl_field(MR_mktag(0), mdb__browse__V_45_45, 0) = ((MR_Box) (mdb__browse__V_22_22));
+#line 1313 "browse.m"
+      MR_hl_field(MR_mktag(0), mdb__browse__V_45_45, 1) = ((MR_Box) (mdb__browse__V_23_23));
+#line 1313 "browse.m"
+    }
+#line 1313 "browse.m"
+    {
+#line 1313 "browse.m"
+      mdb__browse__ClippedFrame_44 = mdb__frame__clip_2_f_0(mdb__browse__V_45_45, mdb__browse__Frame_43);
+    }
+#line 1314 "browse.m"
+    {
+#line 1314 "browse.m"
+      mdb__browse__unlines_2_p_0(mdb__browse__ClippedFrame_44, &mdb__browse__Str_12);
+    }
+#line 968 "browse.m"
+    {
+#line 968 "browse.m"
+      mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_6, mdb__browse__Str_12);
+    }
+#line 963 "browse.m"
+  }
+#line 960 "browse.m"
+}
+
+#line 949 "browse.m"
+static void MR_CALL 
+mdb__browse__portray_flat_5_p_0_1(
+#line 949 "browse.m"
+  MR_Box mdb__browse__closure_arg,
+#line 949 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 949 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 949 "browse.m"
+  MR_Box * mdb__browse__wrapper_arg_3)
+#line 949 "browse.m"
+{
+#line 949 "browse.m"
+  {
+#line 949 "browse.m"
+    MR_Box mdb__browse__closure = mdb__browse__closure_arg;
+
+#line 949 "browse.m"
+    {
+#line 949 "browse.m"
+      mdb__browse__write_univ_or_unbound_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__closure, (MR_Integer) 3))), ((MR_Word) mdb__browse__wrapper_arg_1));
+    }
+#line 949 "browse.m"
+  }
+#line 949 "browse.m"
+}
+
+#line 910 "browse.m"
+static void MR_CALL 
+mdb__browse__portray_flat_5_p_0(
+#line 910 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 910 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_7,
+#line 910 "browse.m"
+  MR_Word mdb__browse__Params_8)
+#line 910 "browse.m"
+{
+#line 913 "browse.m"
+  {
+#line 913 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 913 "browse.m"
+    MR_Integer mdb__browse__RemainingSize_10;
+
+#line 922 "browse.m"
+    {
+#line 922 "browse.m"
+      mdb__browse__browser_term_size_left_from_max_3_p_0(mdb__browse__BrowserTerm_7, (MR_Integer) 60, &mdb__browse__RemainingSize_10);
+    }
+#line 924 "browse.m"
+    mdb__browse__succeeded = (mdb__browse__RemainingSize_10 >= (MR_Integer) 0);
+#line 924 "browse.m"
+    if (mdb__browse__succeeded)
+#line 937 "browse.m"
+      if (((MR_tag((MR_Word) mdb__browse__BrowserTerm_7)) == (MR_mktag((MR_Integer) 0))))
+#line 937 "browse.m"
+        {
+#line 937 "browse.m"
+          MR_Word mdb__browse__Univ_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__BrowserTerm_7, (MR_Integer) 0)));
+#line 937 "browse.m"
+          MR_Word mdb__browse__Stream_31;
+
+#line 938 "browse.m"
+          {
+#line 938 "browse.m"
+            mercury__io__output_stream_3_p_0(&mdb__browse__Stream_31);
+          }
+#line 939 "browse.m"
+          {
+#line 939 "browse.m"
+            mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_117_110_105_118_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_50_95_49_5_p_2((MR_Word) &mdb__browse_scalar_common_3[0], (MR_Word) &mdb__browse_scalar_common_3[1], mdb__browse__Stream_31, (MR_Integer) 2, mdb__browse__Univ_29);
+          }
+#line 937 "browse.m"
+        }
+#line 937 "browse.m"
+      else
+#line 941 "browse.m"
+        {
+#line 941 "browse.m"
+          MR_String mdb__browse__Functor_37 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_7, (MR_Integer) 0)));
+#line 941 "browse.m"
+          MR_Word mdb__browse__Args_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_7, (MR_Integer) 1)));
+#line 941 "browse.m"
+          MR_Word mdb__browse__MaybeReturn_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_7, (MR_Integer) 2)));
+#line 941 "browse.m"
+          MR_Word mdb__browse__Stream_41;
+
+#line 942 "browse.m"
+          {
+#line 942 "browse.m"
+            mercury__io__write_string_3_p_0(mdb__browse__Functor_37);
+          }
+#line 943 "browse.m"
+          {
+#line 943 "browse.m"
+            mercury__io__output_stream_3_p_0(&mdb__browse__Stream_41);
+          }
+#line 946 "browse.m"
+          if ((mdb__browse__Args_38 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 945 "browse.m"
+            {
+#line 945 "browse.m"
+            }
+#line 946 "browse.m"
+          else
+#line 947 "browse.m"
+            {
+#line 947 "browse.m"
+              MR_Word mdb__browse__V_52_52;
+
+#line 948 "browse.m"
+              {
+#line 948 "browse.m"
+                mercury__io__write_string_3_p_0((MR_String) "(");
+              }
+#line 949 "browse.m"
+              {
+#line 949 "browse.m"
+                mdb__browse__V_52_52 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 949 "browse.m"
+                MR_hl_field(MR_mktag(0), mdb__browse__V_52_52, 0) = ((MR_Box) (&mdb__browse_scalar_common_10[0]));
+#line 949 "browse.m"
+                MR_hl_field(MR_mktag(0), mdb__browse__V_52_52, 1) = ((MR_Box) (mdb__browse__portray_flat_5_p_0_1));
+#line 949 "browse.m"
+                MR_hl_field(MR_mktag(0), mdb__browse__V_52_52, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 949 "browse.m"
+                MR_hl_field(MR_mktag(0), mdb__browse__V_52_52, 3) = ((MR_Box) (mdb__browse__Stream_41));
+#line 949 "browse.m"
+              }
+#line 949 "browse.m"
+              {
+#line 949 "browse.m"
+                mercury__io__write_list_5_p_1((MR_Word) &mercury__univ__univ__type_ctor_info_univ_0, mdb__browse__Args_38, (MR_String) ", ", mdb__browse__V_52_52);
+              }
+#line 950 "browse.m"
+              {
+#line 950 "browse.m"
+                mercury__io__write_string_3_p_0((MR_String) ")");
+              }
+#line 947 "browse.m"
+            }
+#line 956 "browse.m"
+          if ((mdb__browse__MaybeReturn_39 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 957 "browse.m"
+            {
+#line 957 "browse.m"
+            }
+#line 956 "browse.m"
+          else
+#line 953 "browse.m"
+            {
+#line 953 "browse.m"
+              MR_Word mdb__browse__Return_44 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeReturn_39, (MR_Integer) 0)));
+
+#line 954 "browse.m"
+              {
+#line 954 "browse.m"
+                mercury__io__write_string_3_p_0((MR_String) " = ");
+              }
+#line 955 "browse.m"
+              {
+#line 955 "browse.m"
+                mercury__stream__string_writer__f_84_121_112_101_83_112_101_99_79_102_95_95_112_114_101_100_95_111_114_95_102_117_110_99_95_95_119_114_105_116_101_95_117_110_105_118_95_95_91_83_116_114_101_97_109_32_61_32_105_111_46_111_117_116_112_117_116_95_115_116_114_101_97_109_44_32_83_116_97_116_101_32_61_32_105_111_46_115_116_97_116_101_93_95_50_95_49_5_p_2((MR_Word) &mdb__browse_scalar_common_3[0], (MR_Word) &mdb__browse_scalar_common_3[1], mdb__browse__Stream_41, (MR_Integer) 2, mdb__browse__Return_44);
+              }
+#line 953 "browse.m"
+            }
+#line 941 "browse.m"
+        }
+#line 924 "browse.m"
+    else
+#line 927 "browse.m"
+      {
+#line 927 "browse.m"
+        MR_Word mdb__browse__StreamDb_11;
+#line 927 "browse.m"
+        MR_Word mdb__browse__BrowserDb_12;
+#line 927 "browse.m"
+        MR_String mdb__browse__Str_13;
+#line 927 "browse.m"
+        MR_Integer mdb__browse__V_20_20;
+#line 927 "browse.m"
+        MR_Integer mdb__browse__V_23_23;
+#line 929 "browse.m"
+        MR_Integer mdb__browse__V_24_24;
+#line 929 "browse.m"
+        MR_Integer mdb__browse__V_25_25;
+#line 1072 "browse.m"
+        MR_Integer mdb__browse___NewSize_75;
+
+#line 927 "browse.m"
+        {
+#line 927 "browse.m"
+          mercury__io__get_stream_db_3_p_0(&mdb__browse__StreamDb_11);
+        }
+#line 928 "browse.m"
+        mdb__browse__BrowserDb_12 = (MR_Word) mdb__browse__StreamDb_11;
+#line 929 "browse.m"
+        mdb__browse__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_8, (MR_Integer) 0)));
+#line 929 "browse.m"
+        mdb__browse__V_20_20 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_8, (MR_Integer) 1)));
+#line 929 "browse.m"
+        mdb__browse__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_8, (MR_Integer) 2)));
+#line 929 "browse.m"
+        mdb__browse__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_8, (MR_Integer) 3)));
+#line 1072 "browse.m"
+        {
+#line 1072 "browse.m"
+          mdb__browse__browser_term_to_string_2_8_p_0(mdb__browse__BrowserDb_12, mdb__browse__BrowserTerm_7, mdb__browse__V_20_20, (MR_Integer) 0, &mdb__browse___NewSize_75, mdb__browse__V_23_23, (MR_Integer) 0, &mdb__browse__Str_13);
+        }
+#line 931 "browse.m"
+        {
+#line 931 "browse.m"
+          mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_6, mdb__browse__Str_13);
+        }
+#line 927 "browse.m"
+      }
+#line 913 "browse.m"
+  }
+#line 910 "browse.m"
+}
+
+#line 872 "browse.m"
+static void MR_CALL 
+mdb__browse__portray_6_p_0(
+#line 872 "browse.m"
+  MR_Word mdb__browse__Debugger_7,
+#line 872 "browse.m"
+  MR_Word mdb__browse__Caller_8,
+#line 872 "browse.m"
+  MR_Word mdb__browse__MaybeFormat_9,
+#line 872 "browse.m"
+  MR_Word mdb__browse__Info_10)
+#line 872 "browse.m"
+{
+#line 876 "browse.m"
+  {
+#line 876 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 876 "browse.m"
+    MR_Word mdb__browse__Format_12;
+#line 876 "browse.m"
+    MR_Word mdb__browse__Params_13;
+#line 876 "browse.m"
+    MR_Word mdb__browse__SubResult_14;
+#line 876 "browse.m"
+    MR_Word mdb__browse__V_20_20;
+#line 876 "browse.m"
+    MR_Word mdb__browse__V_28_28;
+#line 879 "browse.m"
+    MR_Word mdb__browse__V_29_29;
+#line 879 "browse.m"
+    MR_Word mdb__browse__V_30_30;
+#line 879 "browse.m"
+    MR_Word mdb__browse__V_31_31;
+#line 879 "browse.m"
+    MR_Word mdb__browse__V_32_32;
+#line 879 "browse.m"
+    MR_Word mdb__browse__V_33_33;
+
+#line 877 "browse.m"
+    {
+#line 877 "browse.m"
+      mdb__browser_info__get_format_4_p_0(mdb__browse__Info_10, mdb__browse__Caller_8, mdb__browse__MaybeFormat_9, &mdb__browse__Format_12);
+    }
+#line 878 "browse.m"
+    {
+#line 878 "browse.m"
+      mdb__browser_info__get_format_params_4_p_0(mdb__browse__Info_10, mdb__browse__Caller_8, mdb__browse__Format_12, &mdb__browse__Params_13);
+    }
+#line 879 "browse.m"
+    mdb__browse__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_10, (MR_Integer) 0)));
+#line 879 "browse.m"
+    mdb__browse__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_10, (MR_Integer) 1)));
+#line 879 "browse.m"
+    mdb__browse__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_10, (MR_Integer) 2)));
+#line 879 "browse.m"
+    mdb__browse__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_10, (MR_Integer) 3)));
+#line 879 "browse.m"
+    mdb__browse__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_10, (MR_Integer) 4)));
+#line 879 "browse.m"
+    mdb__browse__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_10, (MR_Integer) 5)));
+#line 879 "browse.m"
+    mdb__browse__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_10, (MR_Integer) 6)));
+#line 879 "browse.m"
+    {
+#line 879 "browse.m"
+      mdb__browse__deref_subterm_3_p_0(mdb__browse__V_20_20, mdb__browse__V_28_28, &mdb__browse__SubResult_14);
+    }
+#line 895 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__SubResult_14)) == (MR_mktag((MR_Integer) 1))))
+#line 896 "browse.m"
+      {
+#line 896 "browse.m"
+        MR_Word mdb__browse__OKPath_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__SubResult_14, (MR_Integer) 0)));
+#line 896 "browse.m"
+        MR_Word mdb__browse__ErrorDir_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__SubResult_14, (MR_Integer) 1)));
+#line 896 "browse.m"
+        MR_String mdb__browse__Msg_49;
+#line 896 "browse.m"
+        MR_String mdb__browse__V_58_58;
+#line 896 "browse.m"
+        MR_String mdb__browse__V_59_59;
+
+#line 1050 "browse.m"
+        {
+#line 1050 "browse.m"
+          mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_7, (MR_String) "error: ");
+        }
+#line 1055 "browse.m"
+        if ((mdb__browse__OKPath_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1056 "browse.m"
+          {
+#line 1056 "browse.m"
+          }
+#line 1055 "browse.m"
+        else
+#line 1052 "browse.m"
+          {
+#line 1052 "browse.m"
+            MR_String mdb__browse__Context_48;
+#line 1052 "browse.m"
+            MR_String mdb__browse__V_53_53;
+#line 1052 "browse.m"
+            MR_String mdb__browse__V_54_54;
+
+#line 1053 "browse.m"
+            {
+#line 1053 "browse.m"
+              mdb__browse__V_54_54 = mdb__browse__down_dirs_to_string_1_f_0(mdb__browse__OKPath_16);
+            }
+#line 1053 "browse.m"
+            {
+#line 1053 "browse.m"
+              mdb__browse__V_53_53 = mercury__string__f_43_43_2_f_0(mdb__browse__V_54_54, (MR_String) ": ");
+            }
+#line 1053 "browse.m"
+            {
+#line 1053 "browse.m"
+              mdb__browse__Context_48 = mercury__string__f_43_43_2_f_0((MR_String) "in subdir ", mdb__browse__V_53_53);
+            }
+#line 1054 "browse.m"
+            {
+#line 1054 "browse.m"
+              mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_7, mdb__browse__Context_48);
+            }
+#line 1052 "browse.m"
+          }
+#line 1729 "browse.m"
+        if (((MR_tag((MR_Word) mdb__browse__ErrorDir_17)) == (MR_mktag((MR_Integer) 1))))
+#line 1730 "browse.m"
+          mdb__browse__V_59_59 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__ErrorDir_17, (MR_Integer) 0)));
+#line 1729 "browse.m"
+        else
+#line 1729 "browse.m"
+          {
+#line 1729 "browse.m"
+            MR_Integer mdb__browse__Num_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__ErrorDir_17, (MR_Integer) 0)));
+
+#line 1729 "browse.m"
+            {
+#line 1729 "browse.m"
+              mdb__browse__V_59_59 = mercury__string__int_to_string_1_f_0(mdb__browse__Num_62);
+            }
+#line 1729 "browse.m"
+          }
+#line 1058 "browse.m"
+        {
+#line 1058 "browse.m"
+          mdb__browse__V_58_58 = mercury__string__f_43_43_2_f_0(mdb__browse__V_59_59, (MR_String) "\n");
+        }
+#line 1058 "browse.m"
+        {
+#line 1058 "browse.m"
+          mdb__browse__Msg_49 = mercury__string__f_43_43_2_f_0((MR_String) "there is no subterm ", mdb__browse__V_58_58);
+        }
+#line 1059 "browse.m"
+        {
+#line 1059 "browse.m"
+          mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_7, mdb__browse__Msg_49);
+        }
+#line 896 "browse.m"
+      }
+#line 895 "browse.m"
+    else
+#line 881 "browse.m"
+      {
+#line 881 "browse.m"
+        MR_Word mdb__browse__SubUniv_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__SubResult_14, (MR_Integer) 0)));
+
+#line 885 "browse.m"
+#line 885 "browse.m"
+        switch (mdb__browse__Format_12) {
+#line 885 "browse.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 885 "browse.m"
+          case (MR_Integer) 0:
+#line 884 "browse.m"
+            {
+#line 884 "browse.m"
+              mdb__browse__portray_flat_5_p_0(mdb__browse__Debugger_7, mdb__browse__SubUniv_15, mdb__browse__Params_13);
+            }
+#line 885 "browse.m"
+            break;
+#line 885 "browse.m"
+          case (MR_Integer) 3:
+#line 893 "browse.m"
+            {
+#line 893 "browse.m"
+              mdb__browse__portray_pretty_5_p_0(mdb__browse__Debugger_7, mdb__browse__SubUniv_15, mdb__browse__Params_13);
+            }
+#line 885 "browse.m"
+            break;
+#line 885 "browse.m"
+          case (MR_Integer) 1:
+#line 980 "browse.m"
+            {
+#line 980 "browse.m"
+              MR_Word mdb__browse__StreamDb_70;
+#line 980 "browse.m"
+              MR_Word mdb__browse__BrowserDb_71;
+#line 980 "browse.m"
+              MR_String mdb__browse__Str_72;
+#line 980 "browse.m"
+              MR_Integer mdb__browse__V_74_74;
+#line 980 "browse.m"
+              MR_Integer mdb__browse__V_79_79;
+#line 983 "browse.m"
+              MR_Integer mdb__browse__V_77_77;
+#line 983 "browse.m"
+              MR_Integer mdb__browse__V_78_78;
+
+#line 981 "browse.m"
+              {
+#line 981 "browse.m"
+                mercury__io__get_stream_db_3_p_0(&mdb__browse__StreamDb_70);
+              }
+#line 982 "browse.m"
+              mdb__browse__BrowserDb_71 = (MR_Word) mdb__browse__StreamDb_70;
+#line 983 "browse.m"
+              mdb__browse__V_77_77 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_13, (MR_Integer) 0)));
+#line 983 "browse.m"
+              mdb__browse__V_78_78 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_13, (MR_Integer) 1)));
+#line 983 "browse.m"
+              mdb__browse__V_74_74 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_13, (MR_Integer) 2)));
+#line 983 "browse.m"
+              mdb__browse__V_79_79 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__Params_13, (MR_Integer) 3)));
+#line 983 "browse.m"
+              {
+#line 983 "browse.m"
+                mdb__sized_pretty__browser_term_to_string_line_5_p_0(mdb__browse__BrowserDb_71, mdb__browse__SubUniv_15, mdb__browse__V_74_74, mdb__browse__V_79_79, &mdb__browse__Str_72);
+              }
+#line 985 "browse.m"
+              {
+#line 985 "browse.m"
+                mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_7, mdb__browse__Str_72);
+              }
+#line 980 "browse.m"
+            }
+#line 885 "browse.m"
+            break;
+#line 885 "browse.m"
+          case (MR_Integer) 2:
+#line 890 "browse.m"
+            {
+#line 890 "browse.m"
+              mdb__browse__portray_verbose_5_p_0(mdb__browse__Debugger_7, mdb__browse__SubUniv_15, mdb__browse__Params_13);
+            }
+#line 885 "browse.m"
+            break;
+#line 885 "browse.m"
+        }
+#line 881 "browse.m"
+      }
+#line 900 "browse.m"
+    {
+#line 900 "browse.m"
+      mdb__browser_info__nl_debugger_3_p_0(mdb__browse__Debugger_7);
+    }
+#line 876 "browse.m"
+  }
+#line 872 "browse.m"
+}
+
+#line 859 "browse.m"
+static void MR_CALL 
+mdb__browse__portray_maybe_path_7_p_0(
+#line 859 "browse.m"
+  MR_Word mdb__browse__Debugger_8,
+#line 859 "browse.m"
+  MR_Word mdb__browse__Caller_9,
+#line 859 "browse.m"
+  MR_Word mdb__browse__MaybeFormat_10,
+#line 859 "browse.m"
+  MR_Word mdb__browse__Info_11,
+#line 859 "browse.m"
+  MR_Word mdb__browse__MaybePath_12)
+#line 859 "browse.m"
+{
+#line 865 "browse.m"
+  {
+#line 865 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 865 "browse.m"
+    if ((mdb__browse__MaybePath_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 866 "browse.m"
+      {
+#line 866 "browse.m"
+        mdb__browse__portray_6_p_0(mdb__browse__Debugger_8, mdb__browse__Caller_9, mdb__browse__MaybeFormat_10, mdb__browse__Info_11);
+      }
+#line 865 "browse.m"
+    else
+#line 868 "browse.m"
+      {
+#line 868 "browse.m"
+        MR_Word mdb__browse__Path_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybePath_12, (MR_Integer) 0)));
+#line 868 "browse.m"
+        MR_Word mdb__browse__Info_27;
+#line 868 "browse.m"
+        MR_Word mdb__browse__Dirs0_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 1)));
+#line 868 "browse.m"
+        MR_Word mdb__browse__Dirs_34;
+#line 868 "browse.m"
+        MR_Word mdb__browse__NewDirs_53;
+#line 868 "browse.m"
+        MR_Word mdb__browse__RevDirs_59;
+#line 1510 "browse.m"
+        MR_Word mdb__browse__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 0)));
+#line 1510 "browse.m"
+        MR_Word mdb__browse__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 2)));
+#line 1510 "browse.m"
+        MR_Word mdb__browse__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 3)));
+#line 1510 "browse.m"
+        MR_Word mdb__browse__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 4)));
+#line 1510 "browse.m"
+        MR_Word mdb__browse__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 5)));
+#line 1510 "browse.m"
+        MR_Word mdb__browse__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 6)));
+#line 1512 "browse.m"
+        MR_Word mdb__browse__V_42_42;
+#line 1512 "browse.m"
+        MR_Word mdb__browse__V_44_44;
+#line 1512 "browse.m"
+        MR_Word mdb__browse__V_45_45;
+#line 1512 "browse.m"
+        MR_Word mdb__browse__V_46_46;
+#line 1512 "browse.m"
+        MR_Word mdb__browse__V_47_47;
+#line 1512 "browse.m"
+        MR_Word mdb__browse__V_48_48;
+#line 1512 "browse.m"
+        MR_Word mdb__browse__V_43_43;
+
+#line 1520 "browse.m"
+        if (((MR_tag((MR_Word) mdb__browse__Path_14)) == (MR_mktag((MR_Integer) 1))))
+#line 1521 "browse.m"
+          {
+#line 1521 "browse.m"
+            MR_Word mdb__browse__V_54_54;
+#line 1521 "browse.m"
+            MR_Word mdb__browse__Dirs_55 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Path_14, (MR_Integer) 0)));
+
+#line 1522 "browse.m"
+            {
+#line 1522 "browse.m"
+              mdb__browse__V_54_54 = mdb__browser_info__down_to_up_down_dirs_1_f_0(mdb__browse__Dirs0_33);
+            }
+#line 1522 "browse.m"
+            {
+#line 1522 "browse.m"
+              mdb__browse__NewDirs_53 = mercury__list__f_43_43_2_f_0((MR_Word) &mdb__browser_info__mdb__browser_info__type_ctor_info_up_down_dir_0, mdb__browse__V_54_54, mdb__browse__Dirs_55);
+            }
+#line 1521 "browse.m"
+          }
+#line 1520 "browse.m"
+        else
+#line 1518 "browse.m"
+          mdb__browse__NewDirs_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Path_14, (MR_Integer) 0)));
+#line 1692 "browse.m"
+        {
+#line 1692 "browse.m"
+          mercury__list__reverse_2_p_0((MR_Word) &mdb__browser_info__mdb__browser_info__type_ctor_info_up_down_dir_0, mdb__browse__NewDirs_53, &mdb__browse__RevDirs_59);
+        }
+#line 1693 "browse.m"
+        {
+#line 1693 "browse.m"
+          mdb__browse__simplify_rev_dirs_4_p_0(mdb__browse__RevDirs_59, (MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &mdb__browse__Dirs_34);
+        }
+#line 1512 "browse.m"
+        mdb__browse__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 0)));
+#line 1512 "browse.m"
+        mdb__browse__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 1)));
+#line 1512 "browse.m"
+        mdb__browse__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 2)));
+#line 1512 "browse.m"
+        mdb__browse__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 3)));
+#line 1512 "browse.m"
+        mdb__browse__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 4)));
+#line 1512 "browse.m"
+        mdb__browse__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 5)));
+#line 1512 "browse.m"
+        mdb__browse__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 6)));
+#line 1512 "browse.m"
+        {
+#line 1512 "browse.m"
+          mdb__browse__Info_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 1512 "browse.m"
+          MR_hl_field(MR_mktag(0), mdb__browse__Info_27, 0) = ((MR_Box) (mdb__browse__V_42_42));
+#line 1512 "browse.m"
+          MR_hl_field(MR_mktag(0), mdb__browse__Info_27, 1) = ((MR_Box) (mdb__browse__Dirs_34));
+#line 1512 "browse.m"
+          MR_hl_field(MR_mktag(0), mdb__browse__Info_27, 2) = ((MR_Box) (mdb__browse__V_44_44));
+#line 1512 "browse.m"
+          MR_hl_field(MR_mktag(0), mdb__browse__Info_27, 3) = ((MR_Box) (mdb__browse__V_45_45));
+#line 1512 "browse.m"
+          MR_hl_field(MR_mktag(0), mdb__browse__Info_27, 4) = ((MR_Box) (mdb__browse__V_46_46));
+#line 1512 "browse.m"
+          MR_hl_field(MR_mktag(0), mdb__browse__Info_27, 5) = ((MR_Box) (mdb__browse__V_47_47));
+#line 1512 "browse.m"
+          MR_hl_field(MR_mktag(0), mdb__browse__Info_27, 6) = ((MR_Box) (mdb__browse__V_48_48));
+#line 1512 "browse.m"
+        }
+#line 908 "browse.m"
+        {
+#line 908 "browse.m"
+          mdb__browse__portray_6_p_0(mdb__browse__Debugger_8, mdb__browse__Caller_9, mdb__browse__MaybeFormat_10, mdb__browse__Info_27);
+        }
+#line 868 "browse.m"
+      }
+#line 865 "browse.m"
+  }
+#line 859 "browse.m"
+}
+
+#line 805 "browse.m"
+static void MR_CALL 
+mdb__browse__help_3_p_0(
+#line 805 "browse.m"
+  MR_Word mdb__browse__Debugger_4)
+#line 805 "browse.m"
+{
+#line 807 "browse.m"
+  {
+#line 807 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 807 "browse.m"
+    MR_String mdb__browse__HelpMessage_6;
+
+#line 808 "browse.m"
+    {
+#line 808 "browse.m"
+      mercury__string__append_list_2_p_0((MR_Word) MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_4[39]), &mdb__browse__HelpMessage_6);
+    }
+#line 852 "browse.m"
+    {
+#line 852 "browse.m"
+      mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_4, mdb__browse__HelpMessage_6);
+    }
+#line 807 "browse.m"
+  }
+#line 805 "browse.m"
+}
+
+#line 800 "browse.m"
+static MR_bool MR_CALL 
+mdb__browse__bool_format_option_is_true_2_p_0(
+#line 800 "browse.m"
+  MR_Word mdb__browse__HeadVar__1_1,
+#line 800 "browse.m"
+  MR_Word * mdb__browse__Format_3)
+#line 800 "browse.m"
+{
+#line 803 "browse.m"
+  {
+#line 803 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 803 "browse.m"
+    MR_Word mdb__browse__V_4_4;
+#line 803 "browse.m"
+    MR_Word mdb__browse__V_5_5;
+
+#line 803 "browse.m"
+    *mdb__browse__Format_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__1_1, (MR_Integer) 0)));
+#line 803 "browse.m"
+    mdb__browse__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__HeadVar__1_1, (MR_Integer) 1)));
+#line 803 "browse.m"
+    mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__V_4_4)) == (MR_mktag((MR_Integer) 1)));
+#line 803 "browse.m"
+    if (mdb__browse__succeeded)
+#line 803 "browse.m"
+      {
+#line 803 "browse.m"
+        mdb__browse__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__V_4_4, (MR_Integer) 0)));
+#line 803 "browse.m"
+        mdb__browse__succeeded = (mdb__browse__V_5_5 == (MR_Integer) 1);
+#line 803 "browse.m"
+      }
+#line 803 "browse.m"
+    return mdb__browse__succeeded;
+#line 803 "browse.m"
+  }
+#line 800 "browse.m"
+}
+
+#line 774 "browse.m"
+static MR_bool MR_CALL 
+mdb__browse__interpret_format_options_2_p_0_1(
+#line 774 "browse.m"
+  MR_Box mdb__browse__closure_arg,
+#line 774 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 774 "browse.m"
+  MR_Box * mdb__browse__wrapper_arg_2)
+#line 774 "browse.m"
+{
+#line 774 "browse.m"
+  {
+#line 774 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 774 "browse.m"
+    MR_Box mdb__browse__closure = mdb__browse__closure_arg;
+#line 774 "browse.m"
+    MR_Word mdb__browse__conv0_Format_3;
+
+#line 774 "browse.m"
+    {
+#line 774 "browse.m"
+      mdb__browse__succeeded = mdb__browse__bool_format_option_is_true_2_p_0(((MR_Word) mdb__browse__wrapper_arg_1), &mdb__browse__conv0_Format_3);
+    }
+#line 774 "browse.m"
+    if (mdb__browse__succeeded)
+#line 774 "browse.m"
+      {
+#line 774 "browse.m"
+        *mdb__browse__wrapper_arg_2 = ((MR_Box) (mdb__browse__conv0_Format_3));
+#line 774 "browse.m"
+        mdb__browse__succeeded = MR_TRUE;
+#line 774 "browse.m"
+      }
+#line 774 "browse.m"
+    return mdb__browse__succeeded;
+#line 774 "browse.m"
+  }
+#line 774 "browse.m"
+}
+
+#line 769 "browse.m"
+static void MR_CALL 
+mdb__browse__interpret_format_options_2_p_0(
+#line 769 "browse.m"
+  MR_Word mdb__browse__OptionTable_3,
+#line 769 "browse.m"
+  MR_Word * mdb__browse__MaybeMaybeFormat_4)
+#line 769 "browse.m"
+{
+#line 772 "browse.m"
+  {
+#line 772 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 772 "browse.m"
+    MR_Word mdb__browse__TypeCtorInfo_18_18 = (MR_Word) &mdb__parse__mdb__parse__type_ctor_info_format_option_0;
+#line 772 "browse.m"
+    MR_Word mdb__browse__OptionAssocList_5;
+#line 772 "browse.m"
+    MR_Word mdb__browse__TrueFormatOptions_6;
+
+#line 773 "browse.m"
+    {
+#line 773 "browse.m"
+      mercury__map__to_assoc_list_2_p_0(mdb__browse__TypeCtorInfo_18_18, (MR_Word) &mercury__getopt__getopt__type_ctor_info_option_data_0, mdb__browse__OptionTable_3, &mdb__browse__OptionAssocList_5);
+    }
+#line 774 "browse.m"
+    {
+#line 774 "browse.m"
+      mercury__list__filter_map_3_p_0((MR_Word) &mdb__browse_scalar_common_1[1], mdb__browse__TypeCtorInfo_18_18, (MR_Word) &mdb__browse_scalar_common_1[5], mdb__browse__OptionAssocList_5, &mdb__browse__TrueFormatOptions_6);
+    }
+#line 779 "browse.m"
+    if ((mdb__browse__TrueFormatOptions_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 777 "browse.m"
+      {
+#line 778 "browse.m"
+        *mdb__browse__MaybeMaybeFormat_4 = (MR_Word) &mdb__browse_scalar_common_5[3];
+#line 777 "browse.m"
+      }
+#line 779 "browse.m"
+    else
+#line 779 "browse.m"
+      {
+#line 779 "browse.m"
+        MR_Word mdb__browse__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__TrueFormatOptions_6, (MR_Integer) 1)));
+#line 779 "browse.m"
+        MR_Word mdb__browse__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__TrueFormatOptions_6, (MR_Integer) 0)));
+
+#line 779 "browse.m"
+        if ((mdb__browse__V_23_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 780 "browse.m"
+          {
+#line 780 "browse.m"
+            MR_Word mdb__browse__Format_8 = ((&mdb__browse_vector_common_9[0 + mdb__browse__V_24_24]))->mdb__browse__vector_common_type_9_0__vct_9_f_0;
+#line 780 "browse.m"
+            MR_Word mdb__browse__V_16_16;
+
+#line 794 "browse.m"
+            {
+#line 794 "browse.m"
+              mdb__browse__V_16_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 794 "browse.m"
+              MR_hl_field(MR_mktag(1), mdb__browse__V_16_16, 0) = ((MR_Box) (mdb__browse__Format_8));
+#line 794 "browse.m"
+            }
+#line 794 "browse.m"
+            {
+#line 794 "browse.m"
+              MR_Word base;
+#line 794 "browse.m"
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 794 "browse.m"
+              *mdb__browse__MaybeMaybeFormat_4 = base;
+#line 794 "browse.m"
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__browse__V_16_16));
+#line 794 "browse.m"
+            }
+#line 780 "browse.m"
+          }
+#line 779 "browse.m"
+        else
+#line 796 "browse.m"
+          {
+#line 797 "browse.m"
+            *mdb__browse__MaybeMaybeFormat_4 = (MR_Word) MR_mkword(MR_mktag(1), &mdb__browse_scalar_common_5[4]);
+#line 796 "browse.m"
+          }
+#line 779 "browse.m"
+      }
+#line 772 "browse.m"
+  }
+#line 769 "browse.m"
+}
+
+#line 754 "browse.m"
+static void MR_CALL 
+mdb__browse__get_value_representation_2_p_0(
+#line 754 "browse.m"
+  MR_Word mdb__browse__TypeInfo_for_T_6,
+#line 754 "browse.m"
+  MR_Box mdb__browse__HeadVar__1_1,
+#line 754 "browse.m"
+  MR_Integer * mdb__browse__HeadVar__2_2)
+#line 754 "browse.m"
+{
+#line 756 "browse.m"
+  {
+#line 756 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 756 "browse.m"
+    {
+#line 756 "browse.m"
+      mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_118_97_108_117_101_95_114_101_112_114_101_115_101_110_116_97_116_105_111_110_95_95_91_49_93_95_48_2_p_0(mdb__browse__HeadVar__1_1, mdb__browse__HeadVar__2_2);
+    }
+#line 756 "browse.m"
+  }
+#line 754 "browse.m"
+}
+
+#line 723 "browse.m"
+static void MR_CALL 
+mdb__browse__do_print_memory_addr_5_p_0(
+#line 723 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 723 "browse.m"
+  MR_Word mdb__browse__Info_7,
+#line 723 "browse.m"
+  MR_Word mdb__browse__MaybePath_8)
+#line 723 "browse.m"
+{
+#line 726 "browse.m"
+  {
+#line 726 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 726 "browse.m"
+    MR_Word mdb__browse__Dirs0_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_7, (MR_Integer) 1)));
+#line 726 "browse.m"
+    MR_Word mdb__browse__Dirs_11;
+#line 726 "browse.m"
+    MR_Word mdb__browse__DerefResult_13;
+#line 726 "browse.m"
+    MR_Word mdb__browse__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_7, (MR_Integer) 0)));
+#line 727 "browse.m"
+    MR_Word mdb__browse__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_7, (MR_Integer) 2)));
+#line 727 "browse.m"
+    MR_Word mdb__browse__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_7, (MR_Integer) 3)));
+#line 727 "browse.m"
+    MR_Word mdb__browse__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_7, (MR_Integer) 4)));
+#line 727 "browse.m"
+    MR_Word mdb__browse__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_7, (MR_Integer) 5)));
+#line 727 "browse.m"
+    MR_Word mdb__browse__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_7, (MR_Integer) 6)));
+
+#line 731 "browse.m"
+    if ((mdb__browse__MaybePath_8 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 730 "browse.m"
+      mdb__browse__Dirs_11 = mdb__browse__Dirs0_10;
+#line 731 "browse.m"
+    else
+#line 732 "browse.m"
+      {
+#line 732 "browse.m"
+        MR_Word mdb__browse__Path_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybePath_8, (MR_Integer) 0)));
+#line 732 "browse.m"
+        MR_Word mdb__browse__NewDirs_62;
+#line 732 "browse.m"
+        MR_Word mdb__browse__RevDirs_68;
+
+#line 1520 "browse.m"
+        if (((MR_tag((MR_Word) mdb__browse__Path_12)) == (MR_mktag((MR_Integer) 1))))
+#line 1521 "browse.m"
+          {
+#line 1521 "browse.m"
+            MR_Word mdb__browse__V_63_63;
+#line 1521 "browse.m"
+            MR_Word mdb__browse__Dirs_64 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Path_12, (MR_Integer) 0)));
+
+#line 1522 "browse.m"
+            {
+#line 1522 "browse.m"
+              mdb__browse__V_63_63 = mdb__browser_info__down_to_up_down_dirs_1_f_0(mdb__browse__Dirs0_10);
+            }
+#line 1522 "browse.m"
+            {
+#line 1522 "browse.m"
+              mdb__browse__NewDirs_62 = mercury__list__f_43_43_2_f_0((MR_Word) &mdb__browser_info__mdb__browser_info__type_ctor_info_up_down_dir_0, mdb__browse__V_63_63, mdb__browse__Dirs_64);
+            }
+#line 1521 "browse.m"
+          }
+#line 1520 "browse.m"
+        else
+#line 1518 "browse.m"
+          mdb__browse__NewDirs_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Path_12, (MR_Integer) 0)));
+#line 1692 "browse.m"
+        {
+#line 1692 "browse.m"
+          mercury__list__reverse_2_p_0((MR_Word) &mdb__browser_info__mdb__browser_info__type_ctor_info_up_down_dir_0, mdb__browse__NewDirs_62, &mdb__browse__RevDirs_68);
+        }
+#line 1693 "browse.m"
+        {
+#line 1693 "browse.m"
+          mdb__browse__simplify_rev_dirs_4_p_0(mdb__browse__RevDirs_68, (MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &mdb__browse__Dirs_11);
+        }
+#line 732 "browse.m"
+      }
+#line 735 "browse.m"
+    {
+#line 735 "browse.m"
+      mdb__browse__deref_subterm_3_p_0(mdb__browse__V_34_34, mdb__browse__Dirs_11, &mdb__browse__DerefResult_13);
+    }
+#line 748 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__DerefResult_13)) == (MR_mktag((MR_Integer) 1))))
+#line 749 "browse.m"
+      {
+#line 749 "browse.m"
+        MR_Word mdb__browse__OKPath_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__DerefResult_13, (MR_Integer) 0)));
+#line 749 "browse.m"
+        MR_Word mdb__browse__ErrorDir_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__DerefResult_13, (MR_Integer) 1)));
+#line 749 "browse.m"
+        MR_String mdb__browse__Msg_81;
+#line 749 "browse.m"
+        MR_String mdb__browse__V_90_90;
+#line 749 "browse.m"
+        MR_String mdb__browse__V_91_91;
+
+#line 1050 "browse.m"
+        {
+#line 1050 "browse.m"
+          mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_6, (MR_String) "error: ");
+        }
+#line 1055 "browse.m"
+        if ((mdb__browse__OKPath_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1056 "browse.m"
+          {
+#line 1056 "browse.m"
+          }
+#line 1055 "browse.m"
+        else
+#line 1052 "browse.m"
+          {
+#line 1052 "browse.m"
+            MR_String mdb__browse__Context_80;
+#line 1052 "browse.m"
+            MR_String mdb__browse__V_85_85;
+#line 1052 "browse.m"
+            MR_String mdb__browse__V_86_86;
+
+#line 1053 "browse.m"
+            {
+#line 1053 "browse.m"
+              mdb__browse__V_86_86 = mdb__browse__down_dirs_to_string_1_f_0(mdb__browse__OKPath_22);
+            }
+#line 1053 "browse.m"
+            {
+#line 1053 "browse.m"
+              mdb__browse__V_85_85 = mercury__string__f_43_43_2_f_0(mdb__browse__V_86_86, (MR_String) ": ");
+            }
+#line 1053 "browse.m"
+            {
+#line 1053 "browse.m"
+              mdb__browse__Context_80 = mercury__string__f_43_43_2_f_0((MR_String) "in subdir ", mdb__browse__V_85_85);
+            }
+#line 1054 "browse.m"
+            {
+#line 1054 "browse.m"
+              mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_6, mdb__browse__Context_80);
+            }
+#line 1052 "browse.m"
+          }
+#line 1729 "browse.m"
+        if (((MR_tag((MR_Word) mdb__browse__ErrorDir_23)) == (MR_mktag((MR_Integer) 1))))
+#line 1730 "browse.m"
+          mdb__browse__V_91_91 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__ErrorDir_23, (MR_Integer) 0)));
+#line 1729 "browse.m"
+        else
+#line 1729 "browse.m"
+          {
+#line 1729 "browse.m"
+            MR_Integer mdb__browse__Num_94 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__ErrorDir_23, (MR_Integer) 0)));
+
+#line 1729 "browse.m"
+            {
+#line 1729 "browse.m"
+              mdb__browse__V_91_91 = mercury__string__int_to_string_1_f_0(mdb__browse__Num_94);
+            }
+#line 1729 "browse.m"
+          }
+#line 1058 "browse.m"
+        {
+#line 1058 "browse.m"
+          mdb__browse__V_90_90 = mercury__string__f_43_43_2_f_0(mdb__browse__V_91_91, (MR_String) "\n");
+        }
+#line 1058 "browse.m"
+        {
+#line 1058 "browse.m"
+          mdb__browse__Msg_81 = mercury__string__f_43_43_2_f_0((MR_String) "there is no subterm ", mdb__browse__V_90_90);
+        }
+#line 1059 "browse.m"
+        {
+#line 1059 "browse.m"
+          mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_6, mdb__browse__Msg_81);
+        }
+#line 751 "browse.m"
+        {
+#line 751 "browse.m"
+          mdb__browser_info__nl_debugger_3_p_0(mdb__browse__Debugger_6);
+        }
+#line 749 "browse.m"
+      }
+#line 748 "browse.m"
+    else
+#line 737 "browse.m"
+      {
+#line 737 "browse.m"
+        MR_Word mdb__browse__BrowserTerm_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__DerefResult_13, (MR_Integer) 0)));
+#line 737 "browse.m"
+        MR_String mdb__browse__Str_18;
+
+#line 743 "browse.m"
+        if (((MR_tag((MR_Word) mdb__browse__BrowserTerm_14)) == (MR_mktag((MR_Integer) 0))))
+#line 739 "browse.m"
+          {
+#line 739 "browse.m"
+            MR_Word mdb__browse__Univ_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__BrowserTerm_14, (MR_Integer) 0)));
+#line 739 "browse.m"
+            MR_Box mdb__browse__Value_16;
+#line 739 "browse.m"
+            MR_Integer mdb__browse__Addr_17;
+#line 739 "browse.m"
+            MR_String mdb__browse__V_48_48;
+#line 739 "browse.m"
+            MR_String mdb__browse__V_56_56;
+#line 740 "browse.m"
+            MR_Word mdb__browse__TypeInfo_46_46;
+
+#line 740 "browse.m"
+            {
+#line 740 "browse.m"
+              mdb__browse__Value_16 = mercury__univ__univ_value_1_f_0(&mdb__browse__TypeInfo_46_46, mdb__browse__Univ_15);
+            }
+#line 741 "browse.m"
+            {
+#line 741 "browse.m"
+              mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_118_97_108_117_101_95_114_101_112_114_101_115_101_110_116_97_116_105_111_110_95_95_91_49_93_95_48_2_p_0(mdb__browse__Value_16, &mdb__browse__Addr_17);
+            }
+#line 742 "browse.m"
+            {
+#line 742 "browse.m"
+              mercury__string__format__format_unsigned_int_component_nowidth_noprec_4_p_0((MR_Word) &mdb__browse_scalar_common_5[2], (MR_Integer) 2, mdb__browse__Addr_17, &mdb__browse__V_48_48);
+            }
+#line 742 "browse.m"
+            {
+#line 742 "browse.m"
+              mdb__browse__V_56_56 = mercury__string__f_43_43_2_f_0(mdb__browse__V_48_48, (MR_String) "\n");
+            }
+#line 742 "browse.m"
+            {
+#line 742 "browse.m"
+              mdb__browse__Str_18 = mercury__string__f_43_43_2_f_0((MR_String) "addr = ", mdb__browse__V_56_56);
+            }
+#line 739 "browse.m"
+          }
+#line 743 "browse.m"
+        else
+#line 745 "browse.m"
+          mdb__browse__Str_18 = (MR_String) "synthetic terms have no addresses\n";
+#line 747 "browse.m"
+        {
+#line 747 "browse.m"
+          mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_6, mdb__browse__Str_18);
+        }
+#line 737 "browse.m"
+      }
+#line 726 "browse.m"
+  }
+#line 723 "browse.m"
+}
+
+#line 693 "browse.m"
+static void MR_CALL 
+mdb__browse__do_portray_7_p_0(
+#line 693 "browse.m"
+  MR_Word mdb__browse__Debugger_8,
+#line 693 "browse.m"
+  MR_Word mdb__browse__CallerType_9,
+#line 693 "browse.m"
+  MR_Word mdb__browse__MaybeMaybeOptionTable_10,
+#line 693 "browse.m"
+  MR_Word mdb__browse__Info_11,
+#line 693 "browse.m"
+  MR_Word mdb__browse__MaybePath_12)
+#line 693 "browse.m"
+{
+#line 700 "browse.m"
+  {
+#line 700 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 700 "browse.m"
+    if ((mdb__browse__MaybeMaybeOptionTable_10 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 700 "browse.m"
+      {
+#line 700 "browse.m"
+        MR_Word mdb__browse__V_28_28 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+#line 865 "browse.m"
+        if ((mdb__browse__MaybePath_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 866 "browse.m"
+          {
+#line 866 "browse.m"
+            mdb__browse__portray_6_p_0(mdb__browse__Debugger_8, mdb__browse__CallerType_9, mdb__browse__V_28_28, mdb__browse__Info_11);
+          }
+#line 865 "browse.m"
+        else
+#line 868 "browse.m"
+          {
+#line 868 "browse.m"
+            MR_Word mdb__browse__Path_39 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybePath_12, (MR_Integer) 0)));
+#line 868 "browse.m"
+            MR_Word mdb__browse__Info_50;
+#line 868 "browse.m"
+            MR_Word mdb__browse__Dirs0_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 1)));
+#line 868 "browse.m"
+            MR_Word mdb__browse__Dirs_57;
+#line 868 "browse.m"
+            MR_Word mdb__browse__NewDirs_76;
+#line 868 "browse.m"
+            MR_Word mdb__browse__RevDirs_82;
+#line 1510 "browse.m"
+            MR_Word mdb__browse__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 0)));
+#line 1510 "browse.m"
+            MR_Word mdb__browse__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 2)));
+#line 1510 "browse.m"
+            MR_Word mdb__browse__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 3)));
+#line 1510 "browse.m"
+            MR_Word mdb__browse__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 4)));
+#line 1510 "browse.m"
+            MR_Word mdb__browse__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 5)));
+#line 1510 "browse.m"
+            MR_Word mdb__browse__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 6)));
+#line 1512 "browse.m"
+            MR_Word mdb__browse__V_65_65;
+#line 1512 "browse.m"
+            MR_Word mdb__browse__V_67_67;
+#line 1512 "browse.m"
+            MR_Word mdb__browse__V_68_68;
+#line 1512 "browse.m"
+            MR_Word mdb__browse__V_69_69;
+#line 1512 "browse.m"
+            MR_Word mdb__browse__V_70_70;
+#line 1512 "browse.m"
+            MR_Word mdb__browse__V_71_71;
+#line 1512 "browse.m"
+            MR_Word mdb__browse__V_66_66;
+
+#line 1520 "browse.m"
+            if (((MR_tag((MR_Word) mdb__browse__Path_39)) == (MR_mktag((MR_Integer) 1))))
+#line 1521 "browse.m"
+              {
+#line 1521 "browse.m"
+                MR_Word mdb__browse__V_77_77;
+#line 1521 "browse.m"
+                MR_Word mdb__browse__Dirs_78 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Path_39, (MR_Integer) 0)));
+
+#line 1522 "browse.m"
+                {
+#line 1522 "browse.m"
+                  mdb__browse__V_77_77 = mdb__browser_info__down_to_up_down_dirs_1_f_0(mdb__browse__Dirs0_56);
+                }
+#line 1522 "browse.m"
+                {
+#line 1522 "browse.m"
+                  mdb__browse__NewDirs_76 = mercury__list__f_43_43_2_f_0((MR_Word) &mdb__browser_info__mdb__browser_info__type_ctor_info_up_down_dir_0, mdb__browse__V_77_77, mdb__browse__Dirs_78);
+                }
+#line 1521 "browse.m"
+              }
+#line 1520 "browse.m"
+            else
+#line 1518 "browse.m"
+              mdb__browse__NewDirs_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Path_39, (MR_Integer) 0)));
+#line 1692 "browse.m"
+            {
+#line 1692 "browse.m"
+              mercury__list__reverse_2_p_0((MR_Word) &mdb__browser_info__mdb__browser_info__type_ctor_info_up_down_dir_0, mdb__browse__NewDirs_76, &mdb__browse__RevDirs_82);
+            }
+#line 1693 "browse.m"
+            {
+#line 1693 "browse.m"
+              mdb__browse__simplify_rev_dirs_4_p_0(mdb__browse__RevDirs_82, (MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), &mdb__browse__Dirs_57);
+            }
+#line 1512 "browse.m"
+            mdb__browse__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 0)));
+#line 1512 "browse.m"
+            mdb__browse__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 1)));
+#line 1512 "browse.m"
+            mdb__browse__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 2)));
+#line 1512 "browse.m"
+            mdb__browse__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 3)));
+#line 1512 "browse.m"
+            mdb__browse__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 4)));
+#line 1512 "browse.m"
+            mdb__browse__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 5)));
+#line 1512 "browse.m"
+            mdb__browse__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_11, (MR_Integer) 6)));
+#line 1512 "browse.m"
+            {
+#line 1512 "browse.m"
+              mdb__browse__Info_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 1512 "browse.m"
+              MR_hl_field(MR_mktag(0), mdb__browse__Info_50, 0) = ((MR_Box) (mdb__browse__V_65_65));
+#line 1512 "browse.m"
+              MR_hl_field(MR_mktag(0), mdb__browse__Info_50, 1) = ((MR_Box) (mdb__browse__Dirs_57));
+#line 1512 "browse.m"
+              MR_hl_field(MR_mktag(0), mdb__browse__Info_50, 2) = ((MR_Box) (mdb__browse__V_67_67));
+#line 1512 "browse.m"
+              MR_hl_field(MR_mktag(0), mdb__browse__Info_50, 3) = ((MR_Box) (mdb__browse__V_68_68));
+#line 1512 "browse.m"
+              MR_hl_field(MR_mktag(0), mdb__browse__Info_50, 4) = ((MR_Box) (mdb__browse__V_69_69));
+#line 1512 "browse.m"
+              MR_hl_field(MR_mktag(0), mdb__browse__Info_50, 5) = ((MR_Box) (mdb__browse__V_70_70));
+#line 1512 "browse.m"
+              MR_hl_field(MR_mktag(0), mdb__browse__Info_50, 6) = ((MR_Box) (mdb__browse__V_71_71));
+#line 1512 "browse.m"
+            }
+#line 908 "browse.m"
+            {
+#line 908 "browse.m"
+              mdb__browse__portray_6_p_0(mdb__browse__Debugger_8, mdb__browse__CallerType_9, mdb__browse__V_28_28, mdb__browse__Info_50);
+            }
+#line 868 "browse.m"
+          }
+#line 700 "browse.m"
+      }
+#line 700 "browse.m"
+    else
+#line 703 "browse.m"
+      {
+#line 703 "browse.m"
+        MR_Word mdb__browse__MaybeOptionTable_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeMaybeOptionTable_10, (MR_Integer) 0)));
+
+#line 716 "browse.m"
+        if (((MR_tag((MR_Word) mdb__browse__MaybeOptionTable_14)) == (MR_mktag((MR_Integer) 1))))
+#line 717 "browse.m"
+          {
+#line 717 "browse.m"
+            MR_String mdb__browse__Msg_30 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeOptionTable_14, (MR_Integer) 0)));
+
+#line 718 "browse.m"
+            {
+#line 718 "browse.m"
+              mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_8, mdb__browse__Msg_30);
+            }
+#line 719 "browse.m"
+            {
+#line 719 "browse.m"
+              mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_8, (MR_String) "\n");
+            }
+#line 717 "browse.m"
+          }
+#line 716 "browse.m"
+        else
+#line 705 "browse.m"
+          {
+#line 705 "browse.m"
+            MR_Word mdb__browse__OptionTable_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__MaybeOptionTable_14, (MR_Integer) 0)));
+#line 705 "browse.m"
+            MR_Word mdb__browse__FormatResult_16;
+
+#line 706 "browse.m"
+            {
+#line 706 "browse.m"
+              mdb__browse__interpret_format_options_2_p_0(mdb__browse__OptionTable_15, &mdb__browse__FormatResult_16);
+            }
+#line 711 "browse.m"
+            if (((MR_tag((MR_Word) mdb__browse__FormatResult_16)) == (MR_mktag((MR_Integer) 1))))
+#line 712 "browse.m"
+              {
+#line 712 "browse.m"
+                MR_String mdb__browse__Msg_18 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__FormatResult_16, (MR_Integer) 0)));
+
+#line 713 "browse.m"
+                {
+#line 713 "browse.m"
+                  mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_8, mdb__browse__Msg_18);
+                }
+#line 714 "browse.m"
+                {
+#line 714 "browse.m"
+                  mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_8, (MR_String) "\n");
+                }
+#line 712 "browse.m"
+              }
+#line 711 "browse.m"
+            else
+#line 708 "browse.m"
+              {
+#line 708 "browse.m"
+                MR_Word mdb__browse__MaybeFormat_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__FormatResult_16, (MR_Integer) 0)));
+
+#line 709 "browse.m"
+                {
+#line 709 "browse.m"
+                  mdb__browse__portray_maybe_path_7_p_0(mdb__browse__Debugger_8, mdb__browse__CallerType_9, mdb__browse__MaybeFormat_17, mdb__browse__Info_11, mdb__browse__MaybePath_12);
+                }
+#line 708 "browse.m"
+              }
+#line 705 "browse.m"
+          }
+#line 703 "browse.m"
+      }
+#line 700 "browse.m"
+  }
+#line 693 "browse.m"
+}
+
+#line 583 "browse.m"
+static void MR_CALL 
+mdb__browse__run_command_7_p_0(
+#line 583 "browse.m"
+  MR_Word mdb__browse__Debugger_8,
+#line 583 "browse.m"
+  MR_Word mdb__browse__Command_9,
+#line 583 "browse.m"
+  MR_Word * mdb__browse__Quit_10,
+#line 583 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_Info_0_29,
+#line 583 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_Info_30)
+#line 583 "browse.m"
+{
+#line 586 "browse.m"
+  {
+#line 586 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 597 "browse.m"
+#line 597 "browse.m"
+    switch (MR_tag((MR_Word) mdb__browse__Command_9)) {
+#line 597 "browse.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 597 "browse.m"
+      case (MR_Integer) 0:
+#line 597 "browse.m"
+#line 597 "browse.m"
+        switch (MR_unmkbody(mdb__browse__Command_9)) {
+#line 597 "browse.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 597 "browse.m"
+          case (MR_Integer) 0:
+#line 598 "browse.m"
+            {
+#line 599 "browse.m"
+              {
+#line 599 "browse.m"
+                mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_8, (MR_String) "command not yet implemented\n");
+              }
+#line 600 "browse.m"
+              *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 598 "browse.m"
+              *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 598 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+          case (MR_Integer) 1:
+#line 602 "browse.m"
+            {
+#line 603 "browse.m"
+              {
+#line 603 "browse.m"
+                mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_8, (MR_String) "command not yet implemented\n");
+              }
+#line 604 "browse.m"
+              *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 602 "browse.m"
+              *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 602 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+          case (MR_Integer) 2:
+#line 610 "browse.m"
+            {
+#line 611 "browse.m"
+              {
+#line 611 "browse.m"
+                mdb__browse__set_path_3_p_0((MR_Word) &mdb__browse_scalar_common_5[1], mdb__browse__STATE_VARIABLE_Info_0_29, mdb__browse__STATE_VARIABLE_Info_30);
+              }
+#line 612 "browse.m"
+              *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 610 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+          case (MR_Integer) 3:
+#line 626 "browse.m"
+            {
+#line 626 "browse.m"
+              MR_Word mdb__browse__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 1)));
+#line 627 "browse.m"
+              MR_Word mdb__browse__V_103_103 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 0)));
+#line 627 "browse.m"
+              MR_Word mdb__browse__V_104_104 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 2)));
+#line 627 "browse.m"
+              MR_Word mdb__browse__V_105_105 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 3)));
+#line 627 "browse.m"
+              MR_Word mdb__browse__V_106_106 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 4)));
+#line 627 "browse.m"
+              MR_Word mdb__browse__V_107_107 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 5)));
+#line 627 "browse.m"
+              MR_Word mdb__browse__V_108_108 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 6)));
+
+#line 627 "browse.m"
+              {
+#line 627 "browse.m"
+                mdb__browser_info__write_down_path_4_p_0(mdb__browse__Debugger_8, mdb__browse__V_54_54);
+              }
+#line 628 "browse.m"
+              {
+#line 628 "browse.m"
+                mdb__browser_info__nl_debugger_3_p_0(mdb__browse__Debugger_8);
+              }
+#line 629 "browse.m"
+              *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 626 "browse.m"
+              *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 626 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+          case (MR_Integer) 4:
+#line 660 "browse.m"
+            {
+#line 660 "browse.m"
+              MR_Word mdb__browse__MaybeModeFunc_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 6)));
+#line 660 "browse.m"
+              MR_Word mdb__browse__V_154_154 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 1)));
+#line 661 "browse.m"
+              MR_Word mdb__browse__V_153_153 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 0)));
+#line 661 "browse.m"
+              MR_Word mdb__browse__V_155_155 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 2)));
+#line 661 "browse.m"
+              MR_Word mdb__browse__V_156_156 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 3)));
+#line 661 "browse.m"
+              MR_Word mdb__browse__V_157_157 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 4)));
+#line 661 "browse.m"
+              MR_Word mdb__browse__V_158_158 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 5)));
+
+#line 662 "browse.m"
+              {
+#line 662 "browse.m"
+                mdb__browse__write_term_mode_debugger_5_p_0(mdb__browse__Debugger_8, mdb__browse__MaybeModeFunc_83, mdb__browse__V_154_154);
+              }
+#line 664 "browse.m"
+              *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 660 "browse.m"
+              *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 660 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+          case (MR_Integer) 5:
+#line 670 "browse.m"
+            {
+#line 671 "browse.m"
+              {
+#line 671 "browse.m"
+                mdb__browse__help_3_p_0(mdb__browse__Debugger_8);
+              }
+#line 672 "browse.m"
+              *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 670 "browse.m"
+              *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 670 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+          case (MR_Integer) 6:
+#line 674 "browse.m"
+            {
+#line 675 "browse.m"
+              *mdb__browse__Quit_10 = (MR_Integer) 1;
+#line 674 "browse.m"
+              *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 674 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+          case (MR_Integer) 7:
+#line 677 "browse.m"
+            {
+#line 678 "browse.m"
+              *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 677 "browse.m"
+              *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 677 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+          case (MR_Integer) 8:
+#line 680 "browse.m"
+            {
+#line 681 "browse.m"
+              {
+#line 681 "browse.m"
+                mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_8, (MR_String) "Error: unknown command or syntax error.\n");
+              }
+#line 683 "browse.m"
+              {
+#line 683 "browse.m"
+                mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_8, (MR_String) "Type \"help\" for help.\n");
+              }
+#line 684 "browse.m"
+              *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 680 "browse.m"
+              *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 680 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+        }
+#line 597 "browse.m"
+        break;
+#line 597 "browse.m"
+      case (MR_Integer) 1:
+#line 594 "browse.m"
+        {
+#line 594 "browse.m"
+          MR_Word mdb__browse__PrintOption_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Command_9, (MR_Integer) 0)));
+#line 594 "browse.m"
+          MR_Word mdb__browse__MaybePath_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Command_9, (MR_Integer) 1)));
+
+#line 595 "browse.m"
+          {
+#line 595 "browse.m"
+            mdb__browse__do_portray_7_p_0(mdb__browse__Debugger_8, (MR_Integer) 1, mdb__browse__PrintOption_13, mdb__browse__STATE_VARIABLE_Info_0_29, mdb__browse__MaybePath_14);
+          }
+#line 596 "browse.m"
+          *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 594 "browse.m"
+          *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 594 "browse.m"
+        }
+#line 597 "browse.m"
+        break;
+#line 597 "browse.m"
+      case (MR_Integer) 2:
+#line 606 "browse.m"
+        {
+#line 606 "browse.m"
+          MR_Word mdb__browse__MaybePath_73 = ((MR_Word) (MR_hl_field(MR_mktag(2), mdb__browse__Command_9, (MR_Integer) 0)));
+
+#line 607 "browse.m"
+          {
+#line 607 "browse.m"
+            mdb__browse__do_print_memory_addr_5_p_0(mdb__browse__Debugger_8, mdb__browse__STATE_VARIABLE_Info_0_29, mdb__browse__MaybePath_73);
+          }
+#line 608 "browse.m"
+          *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 606 "browse.m"
+          *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 606 "browse.m"
+        }
+#line 597 "browse.m"
+        break;
+#line 597 "browse.m"
+      case (MR_Integer) 3:
+#line 597 "browse.m"
+#line 597 "browse.m"
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), mdb__browse__Command_9, (MR_Integer) 0)))) {
+#line 597 "browse.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 597 "browse.m"
+          case (MR_Integer) 0:
+#line 614 "browse.m"
+            {
+#line 614 "browse.m"
+              MR_Word mdb__browse__Path_15 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__browse__Command_9, (MR_Integer) 1)));
+#line 614 "browse.m"
+              MR_Word mdb__browse__NewPwd_16;
+#line 614 "browse.m"
+              MR_Word mdb__browse__Result_17;
+#line 614 "browse.m"
+              MR_Word mdb__browse__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 1)));
+#line 614 "browse.m"
+              MR_Word mdb__browse__V_58_58;
+#line 615 "browse.m"
+              MR_Word mdb__browse__V_84_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 0)));
+#line 615 "browse.m"
+              MR_Word mdb__browse__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 2)));
+#line 615 "browse.m"
+              MR_Word mdb__browse__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 3)));
+#line 615 "browse.m"
+              MR_Word mdb__browse__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 4)));
+#line 615 "browse.m"
+              MR_Word mdb__browse__V_88_88 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 5)));
+#line 615 "browse.m"
+              MR_Word mdb__browse__V_89_89 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 6)));
+#line 616 "browse.m"
+              MR_Word mdb__browse__V_90_90;
+#line 616 "browse.m"
+              MR_Word mdb__browse__V_91_91;
+#line 616 "browse.m"
+              MR_Word mdb__browse__V_92_92;
+#line 616 "browse.m"
+              MR_Word mdb__browse__V_93_93;
+#line 616 "browse.m"
+              MR_Word mdb__browse__V_94_94;
+#line 616 "browse.m"
+              MR_Word mdb__browse__V_95_95;
+
+#line 615 "browse.m"
+              {
+#line 615 "browse.m"
+                mdb__browse__change_dir_3_p_0(mdb__browse__V_57_57, mdb__browse__Path_15, &mdb__browse__NewPwd_16);
+              }
+#line 616 "browse.m"
+              mdb__browse__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 0)));
+#line 616 "browse.m"
+              mdb__browse__V_90_90 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 1)));
+#line 616 "browse.m"
+              mdb__browse__V_91_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 2)));
+#line 616 "browse.m"
+              mdb__browse__V_92_92 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 3)));
+#line 616 "browse.m"
+              mdb__browse__V_93_93 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 4)));
+#line 616 "browse.m"
+              mdb__browse__V_94_94 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 5)));
+#line 616 "browse.m"
+              mdb__browse__V_95_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 6)));
+#line 616 "browse.m"
+              {
+#line 616 "browse.m"
+                mdb__browse__deref_subterm_3_p_0(mdb__browse__V_58_58, mdb__browse__NewPwd_16, &mdb__browse__Result_17);
+              }
+#line 620 "browse.m"
+              if (((MR_tag((MR_Word) mdb__browse__Result_17)) == (MR_mktag((MR_Integer) 1))))
+#line 621 "browse.m"
+                {
+#line 621 "browse.m"
+                  MR_Word mdb__browse__OKPath_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Result_17, (MR_Integer) 0)));
+#line 621 "browse.m"
+                  MR_Word mdb__browse__ErrorDir_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Result_17, (MR_Integer) 1)));
+
+#line 622 "browse.m"
+                  {
+#line 622 "browse.m"
+                    mdb__browse__report_deref_error_5_p_0(mdb__browse__Debugger_8, mdb__browse__OKPath_19, mdb__browse__ErrorDir_20);
+                  }
+#line 621 "browse.m"
+                  *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 621 "browse.m"
+                }
+#line 620 "browse.m"
+              else
+#line 618 "browse.m"
+                {
+#line 619 "browse.m"
+                  MR_Word mdb__browse__V_96_96 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 0)));
+#line 619 "browse.m"
+                  MR_Word mdb__browse__V_98_98 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 2)));
+#line 619 "browse.m"
+                  MR_Word mdb__browse__V_99_99 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 3)));
+#line 619 "browse.m"
+                  MR_Word mdb__browse__V_100_100 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 4)));
+#line 619 "browse.m"
+                  MR_Word mdb__browse__V_101_101 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 5)));
+#line 619 "browse.m"
+                  MR_Word mdb__browse__V_102_102 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 6)));
+#line 619 "browse.m"
+                  MR_Word mdb__browse__V_97_97 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 1)));
+
+#line 619 "browse.m"
+                  {
+#line 619 "browse.m"
+                    MR_Word base;
+#line 619 "browse.m"
+                    base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 619 "browse.m"
+                    *mdb__browse__STATE_VARIABLE_Info_30 = base;
+#line 619 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__browse__V_96_96));
+#line 619 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdb__browse__NewPwd_16));
+#line 619 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdb__browse__V_98_98));
+#line 619 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (mdb__browse__V_99_99));
+#line 619 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (mdb__browse__V_100_100));
+#line 619 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (mdb__browse__V_101_101));
+#line 619 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (mdb__browse__V_102_102));
+#line 619 "browse.m"
+                  }
+#line 618 "browse.m"
+                }
+#line 624 "browse.m"
+              *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 614 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+          case (MR_Integer) 1:
+#line 631 "browse.m"
+            {
+#line 631 "browse.m"
+              MR_Word mdb__browse__HowTrack_21 = ((((MR_Word) (MR_hl_field(MR_mktag(3), mdb__browse__Command_9, (MR_Integer) 1)))) & (MR_Integer) 1);
+#line 631 "browse.m"
+              MR_Word mdb__browse__ShouldAssertInvalid_22 = ((((((MR_Word) (MR_hl_field(MR_mktag(3), mdb__browse__Command_9, (MR_Integer) 1)))) >> (MR_Integer) 1)) & (MR_Integer) 1);
+#line 631 "browse.m"
+              MR_Word mdb__browse__MaybePath_78 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__browse__Command_9, (MR_Integer) 2)));
+#line 631 "browse.m"
+              MR_Word mdb__browse__V_165_165 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 6)));
+#line 631 "browse.m"
+              MR_Word mdb__browse__V_167_167 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 4)));
+#line 631 "browse.m"
+              MR_Word mdb__browse__V_168_168 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 3)));
+#line 631 "browse.m"
+              MR_Word mdb__browse__V_169_169 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 2)));
+#line 631 "browse.m"
+              MR_Word mdb__browse__V_170_170 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 1)));
+#line 631 "browse.m"
+              MR_Word mdb__browse__V_171_171 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 0)));
+#line 634 "browse.m"
+              MR_Word mdb__browse__V_166_166 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 5)));
+
+#line 647 "browse.m"
+              if ((mdb__browse__MaybePath_78 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 648 "browse.m"
+                {
+#line 648 "browse.m"
+                  MR_Word mdb__browse__V_46_46;
+
+#line 650 "browse.m"
+                  {
+#line 650 "browse.m"
+                    mdb__browse__V_46_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 650 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_46_46, 0) = ((MR_Box) ((mdb__browse__HowTrack_21 | ((mdb__browse__ShouldAssertInvalid_22 << (MR_Integer) 1)))));
+#line 650 "browse.m"
+                    MR_hl_field(MR_mktag(1), mdb__browse__V_46_46, 1) = ((MR_Box) (mdb__browse__V_170_170));
+#line 650 "browse.m"
+                  }
+#line 649 "browse.m"
+                  {
+#line 649 "browse.m"
+                    MR_Word base;
+#line 649 "browse.m"
+                    base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 649 "browse.m"
+                    *mdb__browse__STATE_VARIABLE_Info_30 = base;
+#line 649 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__browse__V_171_171));
+#line 649 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdb__browse__V_170_170));
+#line 649 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdb__browse__V_169_169));
+#line 649 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (mdb__browse__V_168_168));
+#line 649 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (mdb__browse__V_167_167));
+#line 649 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (mdb__browse__V_46_46));
+#line 649 "browse.m"
+                    MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (mdb__browse__V_165_165));
+#line 649 "browse.m"
+                  }
+#line 651 "browse.m"
+                  *mdb__browse__Quit_10 = (MR_Integer) 1;
+#line 648 "browse.m"
+                }
+#line 647 "browse.m"
+              else
+#line 633 "browse.m"
+                {
+#line 633 "browse.m"
+                  MR_Word mdb__browse__SubResult_23;
+#line 633 "browse.m"
+                  MR_Word mdb__browse__V_49_49;
+#line 633 "browse.m"
+                  MR_Word mdb__browse__Path_74 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybePath_78, (MR_Integer) 0)));
+#line 633 "browse.m"
+                  MR_Word mdb__browse__NewPwd_75;
+#line 635 "browse.m"
+                  MR_Word mdb__browse__V_115_115;
+#line 635 "browse.m"
+                  MR_Word mdb__browse__V_116_116;
+#line 635 "browse.m"
+                  MR_Word mdb__browse__V_117_117;
+#line 635 "browse.m"
+                  MR_Word mdb__browse__V_118_118;
+#line 635 "browse.m"
+                  MR_Word mdb__browse__V_119_119;
+#line 635 "browse.m"
+                  MR_Word mdb__browse__V_120_120;
+
+#line 634 "browse.m"
+                  {
+#line 634 "browse.m"
+                    mdb__browse__change_dir_3_p_0(mdb__browse__V_170_170, mdb__browse__Path_74, &mdb__browse__NewPwd_75);
+                  }
+#line 635 "browse.m"
+                  mdb__browse__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 0)));
+#line 635 "browse.m"
+                  mdb__browse__V_115_115 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 1)));
+#line 635 "browse.m"
+                  mdb__browse__V_116_116 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 2)));
+#line 635 "browse.m"
+                  mdb__browse__V_117_117 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 3)));
+#line 635 "browse.m"
+                  mdb__browse__V_118_118 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 4)));
+#line 635 "browse.m"
+                  mdb__browse__V_119_119 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 5)));
+#line 635 "browse.m"
+                  mdb__browse__V_120_120 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 6)));
+#line 635 "browse.m"
+                  {
+#line 635 "browse.m"
+                    mdb__browse__deref_subterm_3_p_0(mdb__browse__V_49_49, mdb__browse__NewPwd_75, &mdb__browse__SubResult_23);
+                  }
+#line 641 "browse.m"
+                  if (((MR_tag((MR_Word) mdb__browse__SubResult_23)) == (MR_mktag((MR_Integer) 1))))
+#line 642 "browse.m"
+                    {
+#line 643 "browse.m"
+                      {
+#line 643 "browse.m"
+                        mdb__browser_info__write_string_debugger_4_p_0(mdb__browse__Debugger_8, (MR_String) "error: cannot track subterm\n");
+                      }
+#line 645 "browse.m"
+                      *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 642 "browse.m"
+                      *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 642 "browse.m"
+                    }
+#line 641 "browse.m"
+                  else
+#line 637 "browse.m"
+                    {
+#line 637 "browse.m"
+                      MR_Word mdb__browse__V_53_53;
+#line 638 "browse.m"
+                      MR_Word mdb__browse__V_121_121;
+#line 638 "browse.m"
+                      MR_Word mdb__browse__V_122_122;
+#line 638 "browse.m"
+                      MR_Word mdb__browse__V_123_123;
+#line 638 "browse.m"
+                      MR_Word mdb__browse__V_124_124;
+#line 638 "browse.m"
+                      MR_Word mdb__browse__V_125_125;
+#line 638 "browse.m"
+                      MR_Word mdb__browse__V_127_127;
+#line 638 "browse.m"
+                      MR_Word mdb__browse__V_126_126;
+
+#line 639 "browse.m"
+                      {
+#line 639 "browse.m"
+                        mdb__browse__V_53_53 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 639 "browse.m"
+                        MR_hl_field(MR_mktag(1), mdb__browse__V_53_53, 0) = ((MR_Box) ((mdb__browse__HowTrack_21 | ((mdb__browse__ShouldAssertInvalid_22 << (MR_Integer) 1)))));
+#line 639 "browse.m"
+                        MR_hl_field(MR_mktag(1), mdb__browse__V_53_53, 1) = ((MR_Box) (mdb__browse__NewPwd_75));
+#line 639 "browse.m"
+                      }
+#line 638 "browse.m"
+                      mdb__browse__V_121_121 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 0)));
+#line 638 "browse.m"
+                      mdb__browse__V_122_122 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 1)));
+#line 638 "browse.m"
+                      mdb__browse__V_123_123 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 2)));
+#line 638 "browse.m"
+                      mdb__browse__V_124_124 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 3)));
+#line 638 "browse.m"
+                      mdb__browse__V_125_125 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 4)));
+#line 638 "browse.m"
+                      mdb__browse__V_126_126 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 5)));
+#line 638 "browse.m"
+                      mdb__browse__V_127_127 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 6)));
+#line 638 "browse.m"
+                      {
+#line 638 "browse.m"
+                        MR_Word base;
+#line 638 "browse.m"
+                        base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 638 "browse.m"
+                        *mdb__browse__STATE_VARIABLE_Info_30 = base;
+#line 638 "browse.m"
+                        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdb__browse__V_121_121));
+#line 638 "browse.m"
+                        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdb__browse__V_122_122));
+#line 638 "browse.m"
+                        MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdb__browse__V_123_123));
+#line 638 "browse.m"
+                        MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (mdb__browse__V_124_124));
+#line 638 "browse.m"
+                        MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (mdb__browse__V_125_125));
+#line 638 "browse.m"
+                        MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (mdb__browse__V_53_53));
+#line 638 "browse.m"
+                        MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (mdb__browse__V_127_127));
+#line 638 "browse.m"
+                      }
+#line 640 "browse.m"
+                      *mdb__browse__Quit_10 = (MR_Integer) 1;
+#line 637 "browse.m"
+                    }
+#line 633 "browse.m"
+                }
+#line 631 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+          case (MR_Integer) 2:
+#line 654 "browse.m"
+            {
+#line 654 "browse.m"
+              MR_Word mdb__browse__MaybeModeFunc_27;
+#line 654 "browse.m"
+              MR_Word mdb__browse__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 1)));
+#line 654 "browse.m"
+              MR_Word mdb__browse__Path_81 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__browse__Command_9, (MR_Integer) 1)));
+#line 654 "browse.m"
+              MR_Word mdb__browse__NewPwd_82;
+#line 655 "browse.m"
+              MR_Word mdb__browse__V_141_141 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 0)));
+#line 655 "browse.m"
+              MR_Word mdb__browse__V_142_142 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 2)));
+#line 655 "browse.m"
+              MR_Word mdb__browse__V_143_143 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 3)));
+#line 655 "browse.m"
+              MR_Word mdb__browse__V_144_144 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 4)));
+#line 655 "browse.m"
+              MR_Word mdb__browse__V_145_145 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 5)));
+#line 655 "browse.m"
+              MR_Word mdb__browse__V_146_146 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 6)));
+#line 656 "browse.m"
+              MR_Word mdb__browse__V_147_147;
+#line 656 "browse.m"
+              MR_Word mdb__browse__V_148_148;
+#line 656 "browse.m"
+              MR_Word mdb__browse__V_149_149;
+#line 656 "browse.m"
+              MR_Word mdb__browse__V_150_150;
+#line 656 "browse.m"
+              MR_Word mdb__browse__V_151_151;
+#line 656 "browse.m"
+              MR_Word mdb__browse__V_152_152;
+
+#line 655 "browse.m"
+              {
+#line 655 "browse.m"
+                mdb__browse__change_dir_3_p_0(mdb__browse__V_43_43, mdb__browse__Path_81, &mdb__browse__NewPwd_82);
+              }
+#line 656 "browse.m"
+              mdb__browse__V_147_147 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 0)));
+#line 656 "browse.m"
+              mdb__browse__V_148_148 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 1)));
+#line 656 "browse.m"
+              mdb__browse__V_149_149 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 2)));
+#line 656 "browse.m"
+              mdb__browse__V_150_150 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 3)));
+#line 656 "browse.m"
+              mdb__browse__V_151_151 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 4)));
+#line 656 "browse.m"
+              mdb__browse__V_152_152 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 5)));
+#line 656 "browse.m"
+              mdb__browse__MaybeModeFunc_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__STATE_VARIABLE_Info_0_29, (MR_Integer) 6)));
+#line 657 "browse.m"
+              {
+#line 657 "browse.m"
+                mdb__browse__write_term_mode_debugger_5_p_0(mdb__browse__Debugger_8, mdb__browse__MaybeModeFunc_27, mdb__browse__NewPwd_82);
+              }
+#line 658 "browse.m"
+              *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 654 "browse.m"
+              *mdb__browse__STATE_VARIABLE_Info_30 = mdb__browse__STATE_VARIABLE_Info_0_29;
+#line 654 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+          case (MR_Integer) 3:
+#line 666 "browse.m"
+            {
+#line 666 "browse.m"
+              MR_Word mdb__browse__ParamCmd_28 = ((MR_Word) (MR_hl_field(MR_mktag(3), mdb__browse__Command_9, (MR_Integer) 1)));
+
+#line 667 "browse.m"
+              {
+#line 667 "browse.m"
+                mdb__browser_info__run_param_command_7_p_0(mdb__browse__Debugger_8, mdb__browse__ParamCmd_28, (MR_Integer) 1, mdb__browse__STATE_VARIABLE_Info_0_29, mdb__browse__STATE_VARIABLE_Info_30);
+              }
+#line 668 "browse.m"
+              *mdb__browse__Quit_10 = (MR_Integer) 0;
+#line 666 "browse.m"
+            }
+#line 597 "browse.m"
+            break;
+#line 597 "browse.m"
+        }
+#line 597 "browse.m"
+        break;
+#line 597 "browse.m"
+    }
+#line 689 "browse.m"
+#line 689 "browse.m"
+    switch (mdb__browse__Debugger_8) {
+#line 689 "browse.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 689 "browse.m"
+      case (MR_Integer) 1:
+#line 687 "browse.m"
+        {
+#line 688 "browse.m"
+          {
+#line 688 "browse.m"
+            mdb__browser_info__send_term_to_socket_3_p_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)));
+          }
+#line 687 "browse.m"
+        }
+#line 689 "browse.m"
+        break;
+#line 689 "browse.m"
+      case (MR_Integer) 0:
+#line 690 "browse.m"
+        {
+#line 690 "browse.m"
+        }
+#line 689 "browse.m"
+        break;
+#line 689 "browse.m"
+    }
+#line 586 "browse.m"
+  }
+#line 583 "browse.m"
+}
+
+#line 547 "browse.m"
+static void MR_CALL 
+mdb__browse__browse_main_loop_5_p_0(
+#line 547 "browse.m"
+  MR_Word mdb__browse__Debugger_6,
+#line 547 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_Info_0_11,
+#line 547 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_Info_12)
+#line 547 "browse.m"
+{
+#line 550 "browse.m"
+  while (MR_TRUE)
+#line 550 "browse.m"
+    {
+#line 550 "browse.m"
+      /* tailcall optimized into a loop */
+#line 550 "browse.m"
+      {
+#line 550 "browse.m"
+        MR_bool mdb__browse__succeeded;
+#line 550 "browse.m"
+        MR_Word mdb__browse__Command_9;
+#line 550 "browse.m"
+        MR_Word mdb__browse__Quit_10;
+#line 550 "browse.m"
+        MR_Word mdb__browse__STATE_VARIABLE_Info_18_18;
+
+#line 554 "browse.m"
+#line 554 "browse.m"
+        switch (mdb__browse__Debugger_6) {
+#line 554 "browse.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 554 "browse.m"
+          case (MR_Integer) 1:
+#line 556 "browse.m"
+            {
+#line 556 "browse.m"
+              mdb__parse__read_command_external_3_p_0(&mdb__browse__Command_9);
+            }
+#line 554 "browse.m"
+            break;
+#line 554 "browse.m"
+          case (MR_Integer) 0:
+#line 552 "browse.m"
+            {
+#line 553 "browse.m"
+              {
+#line 553 "browse.m"
+                mdb__parse__read_command_4_p_0((MR_String) "browser> ", &mdb__browse__Command_9);
+              }
+#line 552 "browse.m"
+            }
+#line 554 "browse.m"
+            break;
+#line 554 "browse.m"
+        }
+#line 558 "browse.m"
+        {
+#line 558 "browse.m"
+          mdb__browse__run_command_7_p_0(mdb__browse__Debugger_6, mdb__browse__Command_9, &mdb__browse__Quit_10, mdb__browse__STATE_VARIABLE_Info_0_11, &mdb__browse__STATE_VARIABLE_Info_18_18);
+        }
+#line 568 "browse.m"
+#line 568 "browse.m"
+        switch (mdb__browse__Quit_10) {
+#line 568 "browse.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 568 "browse.m"
+          case (MR_Integer) 0:
+#line 570 "browse.m"
+            {
+#line 570 "browse.m"
+              /* direct tailcall eliminated */
+#line 570 "browse.m"
+              {
+#line 570 "browse.m"
+                MR_Word mdb__browse__STATE_VARIABLE_Info_0__tmp_copy_11 = mdb__browse__STATE_VARIABLE_Info_18_18;
+
+#line 570 "browse.m"
+                mdb__browse__STATE_VARIABLE_Info_0_11 = mdb__browse__STATE_VARIABLE_Info_0__tmp_copy_11;
+#line 570 "browse.m"
+              }
+#line 570 "browse.m"
+              continue;
+#line 570 "browse.m"
+            }
+#line 568 "browse.m"
+            break;
+#line 568 "browse.m"
+          case (MR_Integer) 1:
+#line 560 "browse.m"
+            {
+#line 565 "browse.m"
+#line 565 "browse.m"
+              switch (mdb__browse__Debugger_6) {
+#line 565 "browse.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 565 "browse.m"
+                case (MR_Integer) 1:
+#line 563 "browse.m"
+                  {
+#line 564 "browse.m"
+                    {
+#line 564 "browse.m"
+                      mdb__browser_info__send_term_to_socket_3_p_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2)));
+                    }
+#line 563 "browse.m"
+                  }
+#line 565 "browse.m"
+                  break;
+#line 565 "browse.m"
+                case (MR_Integer) 0:
+#line 566 "browse.m"
+                  {
+#line 566 "browse.m"
+                  }
+#line 565 "browse.m"
+                  break;
+#line 565 "browse.m"
+              }
+#line 560 "browse.m"
+              *mdb__browse__STATE_VARIABLE_Info_12 = mdb__browse__STATE_VARIABLE_Info_18_18;
+#line 560 "browse.m"
+            }
+#line 568 "browse.m"
+            break;
+#line 568 "browse.m"
+        }
+#line 550 "browse.m"
+      }
+#line 550 "browse.m"
+      break;
+#line 550 "browse.m"
+    }
+#line 547 "browse.m"
+}
+
+#line 451 "browse.m"
+static void MR_CALL 
+mdb__browse__write_indent_3_p_0(
+#line 451 "browse.m"
+  MR_Integer mdb__browse__Indent_4)
+#line 451 "browse.m"
+{
+#line 454 "browse.m"
+  while (MR_TRUE)
+#line 454 "browse.m"
+    {
+#line 454 "browse.m"
+      /* tailcall optimized into a loop */
+#line 454 "browse.m"
+      {
+#line 454 "browse.m"
+        MR_bool mdb__browse__succeeded = (mdb__browse__Indent_4 <= (MR_Integer) 0);
+
+#line 454 "browse.m"
+        if (mdb__browse__succeeded)
+#line 454 "browse.m"
+          {
+#line 454 "browse.m"
+          }
+#line 454 "browse.m"
+        else
+#line 457 "browse.m"
+          {
+#line 457 "browse.m"
+            MR_Integer mdb__browse__V_11_11;
+
+#line 457 "browse.m"
+            {
+#line 457 "browse.m"
+              mercury__io__write_char_3_p_0((MR_Char) 32);
+            }
+#line 458 "browse.m"
+            mdb__browse__V_11_11 = (mdb__browse__Indent_4 - (MR_Integer) 1);
+#line 458 "browse.m"
+            /* direct tailcall eliminated */
+#line 458 "browse.m"
+            {
+#line 458 "browse.m"
+              MR_Integer mdb__browse__Indent__tmp_copy_4 = mdb__browse__V_11_11;
+
+#line 458 "browse.m"
+              mdb__browse__Indent_4 = mdb__browse__Indent__tmp_copy_4;
+#line 458 "browse.m"
+            }
+#line 458 "browse.m"
+            continue;
+#line 457 "browse.m"
+          }
+#line 454 "browse.m"
+      }
+#line 454 "browse.m"
+      break;
+#line 454 "browse.m"
+    }
+#line 451 "browse.m"
+}
+
+#line 438 "browse.m"
+static void MR_CALL 
+mdb__browse__save_args_4_p_0(
+#line 438 "browse.m"
+  MR_Integer mdb__browse__HeadVar__1_1,
+#line 438 "browse.m"
+  MR_Word mdb__browse__HeadVar__2_2)
+#line 438 "browse.m"
+{
+#line 440 "browse.m"
+  while (MR_TRUE)
+#line 440 "browse.m"
+    {
+#line 440 "browse.m"
+      /* tailcall optimized into a loop */
+#line 440 "browse.m"
+      {
+#line 440 "browse.m"
+        MR_bool mdb__browse__succeeded;
+
+#line 440 "browse.m"
+        if ((mdb__browse__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 440 "browse.m"
+          {
+#line 440 "browse.m"
+          }
+#line 440 "browse.m"
+        else
+#line 441 "browse.m"
+          {
+#line 441 "browse.m"
+            MR_Word mdb__browse__TypeInfo_12_28;
+#line 441 "browse.m"
+            MR_Word mdb__browse__Univ_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__2_2, (MR_Integer) 0)));
+#line 441 "browse.m"
+            MR_Word mdb__browse__Univs_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__HeadVar__2_2, (MR_Integer) 1)));
+#line 441 "browse.m"
+            MR_Box mdb__browse__V_26_26;
+
+#line 391 "browse.m"
+            {
+#line 391 "browse.m"
+              mdb__browse__V_26_26 = mercury__univ__univ_value_1_f_0(&mdb__browse__TypeInfo_12_28, mdb__browse__Univ_10);
+            }
+#line 391 "browse.m"
+            {
+#line 391 "browse.m"
+              mdb__browse__save_term_4_p_0(mdb__browse__TypeInfo_12_28, mdb__browse__HeadVar__1_1, mdb__browse__V_26_26);
+            }
+#line 445 "browse.m"
+            if ((mdb__browse__Univs_11 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 444 "browse.m"
+              {
+#line 444 "browse.m"
+              }
+#line 445 "browse.m"
+            else
+#line 446 "browse.m"
+              {
+#line 446 "browse.m"
+                MR_Word mdb__browse__TypeInfo_12_52;
+#line 446 "browse.m"
+                MR_Word mdb__browse__Univ_34;
+#line 446 "browse.m"
+                MR_Word mdb__browse__Univs_35;
+#line 446 "browse.m"
+                MR_Box mdb__browse__V_50_50;
+
+#line 447 "browse.m"
+                {
+#line 447 "browse.m"
+                  mercury__io__write_string_3_p_0((MR_String) ",\n");
+                }
+#line 441 "browse.m"
+                mdb__browse__Univ_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Univs_11, (MR_Integer) 0)));
+#line 441 "browse.m"
+                mdb__browse__Univs_35 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Univs_11, (MR_Integer) 1)));
+#line 391 "browse.m"
+                {
+#line 391 "browse.m"
+                  mdb__browse__V_50_50 = mercury__univ__univ_value_1_f_0(&mdb__browse__TypeInfo_12_52, mdb__browse__Univ_34);
+                }
+#line 391 "browse.m"
+                {
+#line 391 "browse.m"
+                  mdb__browse__save_term_4_p_0(mdb__browse__TypeInfo_12_52, mdb__browse__HeadVar__1_1, mdb__browse__V_50_50);
+                }
+#line 445 "browse.m"
+                if ((mdb__browse__Univs_35 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 444 "browse.m"
+                  {
+#line 444 "browse.m"
+                  }
+#line 445 "browse.m"
+                else
+#line 446 "browse.m"
+                  {
+#line 447 "browse.m"
+                    {
+#line 447 "browse.m"
+                      mercury__io__write_string_3_p_0((MR_String) ",\n");
+                    }
+#line 448 "browse.m"
+                    /* direct tailcall eliminated */
+#line 448 "browse.m"
+                    {
+#line 448 "browse.m"
+                      MR_Word mdb__browse__HeadVar__2__tmp_copy_2 = mdb__browse__Univs_35;
+
+#line 448 "browse.m"
+                      mdb__browse__HeadVar__2_2 = mdb__browse__HeadVar__2__tmp_copy_2;
+#line 448 "browse.m"
+                    }
+#line 448 "browse.m"
+                    continue;
+#line 446 "browse.m"
+                  }
+#line 446 "browse.m"
+              }
+#line 441 "browse.m"
+          }
+#line 440 "browse.m"
+      }
+#line 440 "browse.m"
+      break;
+#line 440 "browse.m"
+    }
+#line 438 "browse.m"
+}
+
+#line 403 "browse.m"
+static MR_Box MR_CALL 
+mdb__browse__save_term_4_p_0_1(
+#line 403 "browse.m"
+  MR_Box mdb__browse__closure_arg,
+#line 403 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_1)
+#line 403 "browse.m"
+{
+#line 403 "browse.m"
+  {
+#line 403 "browse.m"
+    MR_Box mdb__browse__wrapper_arg_2;
+#line 403 "browse.m"
+    MR_Box mdb__browse__closure = mdb__browse__closure_arg;
+#line 403 "browse.m"
+    MR_Word mdb__browse__conv1_HeadVar__2_2;
+
+#line 403 "browse.m"
+    {
+#line 403 "browse.m"
+      mdb__browse__conv1_HeadVar__2_2 = mercury__univ__univ_1_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__closure, (MR_Integer) 3))), mdb__browse__wrapper_arg_1);
+    }
+#line 403 "browse.m"
+    mdb__browse__wrapper_arg_2 = ((MR_Box) (mdb__browse__conv1_HeadVar__2_2));
+#line 403 "browse.m"
+    return mdb__browse__wrapper_arg_2;
+#line 403 "browse.m"
+  }
+#line 403 "browse.m"
+}
+
+#line 393 "browse.m"
+static void MR_CALL 
+mdb__browse__save_term_4_p_0(
+#line 393 "browse.m"
+  MR_Word mdb__browse__TypeInfo_for_T_52,
+#line 393 "browse.m"
+  MR_Integer mdb__browse__Indent_5,
+#line 393 "browse.m"
+  MR_Box mdb__browse__Term_6)
+#line 393 "browse.m"
+{
+#line 396 "browse.m"
+  {
+#line 396 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 396 "browse.m"
+    MR_Word mdb__browse__TypeInfo_53_53;
+#line 396 "browse.m"
+    MR_Word mdb__browse__List_8;
+#line 432 "browse.m"
+    MR_Word mdb__browse__TypeCtorInfo_15_65;
+#line 432 "browse.m"
+    MR_Word mdb__browse__TypeInfo_16_66;
+#line 432 "browse.m"
+    MR_Word mdb__browse__TypeInfo_19_69;
+#line 432 "browse.m"
+    MR_Word mdb__browse__ArgTypeDesc_57;
+#line 432 "browse.m"
+    MR_Word mdb__browse__V_60_60;
+#line 432 "browse.m"
+    MR_Word mdb__browse__V_62_62;
+#line 432 "browse.m"
+    MR_Word mdb__browse__V_68_68;
+#line 434 "browse.m"
+    MR_Box mdb__browse__V_67_67;
+#line 435 "browse.m"
+    MR_Box mdb__browse__V_63_63;
+#line 436 "browse.m"
+    MR_Box mdb__browse__conv0_List_8;
+
+#line 434 "browse.m"
+    {
+#line 434 "browse.m"
+      mdb__browse__V_62_62 = mercury__type_desc__type_of_1_f_0(mdb__browse__TypeInfo_for_T_52);
+    }
+#line 434 "browse.m"
+    {
+#line 434 "browse.m"
+      mdb__browse__V_60_60 = mercury__type_desc__type_args_1_f_0(mdb__browse__V_62_62);
+    }
+#line 434 "browse.m"
+    mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__V_60_60)) == (MR_mktag((MR_Integer) 1)));
+#line 434 "browse.m"
+    if (mdb__browse__succeeded)
+#line 434 "browse.m"
+      {
+#line 434 "browse.m"
+        mdb__browse__ArgTypeDesc_57 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__V_60_60, (MR_Integer) 0)));
+#line 434 "browse.m"
+        mdb__browse__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__V_60_60, (MR_Integer) 1)));
+#line 9244 "mdb.browse.c"
+        mdb__browse__TypeInfo_19_69 = (MR_Word) &mdb__browse_scalar_common_4[2];
+#line 434 "browse.m"
+        {
+#line 434 "browse.m"
+          mdb__browse__succeeded = mercury__builtin__unify_2_p_0(mdb__browse__TypeInfo_19_69, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), ((MR_Box) (mdb__browse__V_68_68)));
+        }
+#line 432 "browse.m"
+        if (mdb__browse__succeeded)
+#line 432 "browse.m"
+          {
+#line 435 "browse.m"
+            {
+#line 435 "browse.m"
+              mercury__type_desc__has_type_2_p_0(&mdb__browse__TypeInfo_53_53, mdb__browse__ArgTypeDesc_57);
+            }
+#line 9260 "mdb.browse.c"
+            mdb__browse__TypeCtorInfo_15_65 = (MR_Word) &mercury__list__list__type_ctor_info_list_1;
+#line 9262 "mdb.browse.c"
+            {
+#line 9264 "mdb.browse.c"
+              mdb__browse__TypeInfo_16_66 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 9266 "mdb.browse.c"
+              MR_hl_field(MR_mktag(0), mdb__browse__TypeInfo_16_66, 0) = ((MR_Box) (mdb__browse__TypeCtorInfo_15_65));
+#line 9268 "mdb.browse.c"
+              MR_hl_field(MR_mktag(0), mdb__browse__TypeInfo_16_66, 1) = ((MR_Box) (mdb__browse__TypeInfo_53_53));
+#line 9270 "mdb.browse.c"
+            }
+#line 436 "browse.m"
+            {
+#line 436 "browse.m"
+              mdb__browse__succeeded = mercury__builtin__dynamic_cast_2_p_0(mdb__browse__TypeInfo_for_T_52, mdb__browse__TypeInfo_16_66, mdb__browse__Term_6, &mdb__browse__conv0_List_8);
+            }
+#line 436 "browse.m"
+            if (mdb__browse__succeeded)
+#line 436 "browse.m"
+              {
+#line 436 "browse.m"
+                mdb__browse__List_8 = ((MR_Word) mdb__browse__conv0_List_8);
+#line 436 "browse.m"
+                mdb__browse__succeeded = MR_TRUE;
+#line 436 "browse.m"
+              }
+#line 432 "browse.m"
+          }
+#line 434 "browse.m"
+      }
+#line 396 "browse.m"
+    if (mdb__browse__succeeded)
+#line 401 "browse.m"
+      if ((mdb__browse__List_8 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 398 "browse.m"
+        {
+#line 399 "browse.m"
+          {
+#line 399 "browse.m"
+            mdb__browse__write_indent_3_p_0(mdb__browse__Indent_5);
+          }
+#line 400 "browse.m"
+          {
+#line 400 "browse.m"
+            mercury__io__write_string_3_p_0((MR_String) "[]");
+          }
+#line 398 "browse.m"
+        }
+#line 401 "browse.m"
+      else
+#line 402 "browse.m"
+        {
+#line 402 "browse.m"
+          MR_Word mdb__browse__MakeUniv_11;
+#line 402 "browse.m"
+          MR_Word mdb__browse__Univs_14;
+#line 402 "browse.m"
+          MR_Integer mdb__browse__V_27_27;
+
+#line 403 "browse.m"
+          {
+#line 403 "browse.m"
+            mdb__browse__MakeUniv_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 403 "browse.m"
+            MR_hl_field(MR_mktag(0), mdb__browse__MakeUniv_11, 0) = ((MR_Box) (&mdb__browse_scalar_common_6[1]));
+#line 403 "browse.m"
+            MR_hl_field(MR_mktag(0), mdb__browse__MakeUniv_11, 1) = ((MR_Box) (mdb__browse__save_term_4_p_0_1));
+#line 403 "browse.m"
+            MR_hl_field(MR_mktag(0), mdb__browse__MakeUniv_11, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 403 "browse.m"
+            MR_hl_field(MR_mktag(0), mdb__browse__MakeUniv_11, 3) = ((MR_Box) (mdb__browse__TypeInfo_53_53));
+#line 403 "browse.m"
+          }
+#line 406 "browse.m"
+          {
+#line 406 "browse.m"
+            mdb__browse__Univs_14 = mercury__list__map_2_f_0(mdb__browse__TypeInfo_53_53, (MR_Word) &mercury__univ__univ__type_ctor_info_univ_0, mdb__browse__MakeUniv_11, mdb__browse__List_8);
+          }
+#line 407 "browse.m"
+          {
+#line 407 "browse.m"
+            mdb__browse__write_indent_3_p_0(mdb__browse__Indent_5);
+          }
+#line 408 "browse.m"
+          {
+#line 408 "browse.m"
+            mercury__io__write_string_3_p_0((MR_String) "[\n");
+          }
+#line 409 "browse.m"
+          mdb__browse__V_27_27 = (mdb__browse__Indent_5 + (MR_Integer) 1);
+#line 409 "browse.m"
+          {
+#line 409 "browse.m"
+            mdb__browse__save_args_4_p_0(mdb__browse__V_27_27, mdb__browse__Univs_14);
+          }
+#line 410 "browse.m"
+          {
+#line 410 "browse.m"
+            mercury__io__write_string_3_p_0((MR_String) "\n");
+          }
+#line 411 "browse.m"
+          {
+#line 411 "browse.m"
+            mdb__browse__write_indent_3_p_0(mdb__browse__Indent_5);
+          }
+#line 412 "browse.m"
+          {
+#line 412 "browse.m"
+            mercury__io__write_string_3_p_0((MR_String) "]");
+          }
+#line 402 "browse.m"
+        }
+#line 396 "browse.m"
+    else
+#line 415 "browse.m"
+      {
+#line 415 "browse.m"
+        MR_String mdb__browse__Functor_15;
+#line 415 "browse.m"
+        MR_Word mdb__browse__Args_17;
+#line 415 "browse.m"
+        MR_Integer mdb__browse___Arity_16;
+
+#line 415 "browse.m"
+        {
+#line 415 "browse.m"
+          mercury__deconstruct__deconstruct_5_p_2(mdb__browse__TypeInfo_for_T_52, mdb__browse__Term_6, (MR_Integer) 2, &mdb__browse__Functor_15, &mdb__browse___Arity_16, &mdb__browse__Args_17);
+        }
+#line 416 "browse.m"
+        {
+#line 416 "browse.m"
+          mdb__browse__write_indent_3_p_0(mdb__browse__Indent_5);
+        }
+#line 417 "browse.m"
+        {
+#line 417 "browse.m"
+          mercury__io__write_string_3_p_0(mdb__browse__Functor_15);
+        }
+#line 420 "browse.m"
+        if ((mdb__browse__Args_17 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 419 "browse.m"
+          {
+#line 419 "browse.m"
+          }
+#line 420 "browse.m"
+        else
+#line 421 "browse.m"
+          {
+#line 421 "browse.m"
+            MR_Word mdb__browse__TypeInfo_12_93;
+#line 421 "browse.m"
+            MR_Integer mdb__browse__V_43_43;
+#line 421 "browse.m"
+            MR_Word mdb__browse__Univ_75;
+#line 421 "browse.m"
+            MR_Word mdb__browse__Univs_76;
+#line 421 "browse.m"
+            MR_Box mdb__browse__V_91_91;
+
+#line 422 "browse.m"
+            {
+#line 422 "browse.m"
+              mercury__io__write_string_3_p_0((MR_String) "(\n");
+            }
+#line 423 "browse.m"
+            mdb__browse__V_43_43 = (mdb__browse__Indent_5 + (MR_Integer) 1);
+#line 441 "browse.m"
+            mdb__browse__Univ_75 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Args_17, (MR_Integer) 0)));
+#line 441 "browse.m"
+            mdb__browse__Univs_76 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Args_17, (MR_Integer) 1)));
+#line 391 "browse.m"
+            {
+#line 391 "browse.m"
+              mdb__browse__V_91_91 = mercury__univ__univ_value_1_f_0(&mdb__browse__TypeInfo_12_93, mdb__browse__Univ_75);
+            }
+#line 391 "browse.m"
+            {
+#line 391 "browse.m"
+              mdb__browse__save_term_4_p_0(mdb__browse__TypeInfo_12_93, mdb__browse__V_43_43, mdb__browse__V_91_91);
+            }
+#line 445 "browse.m"
+            if ((mdb__browse__Univs_76 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 444 "browse.m"
+              {
+#line 444 "browse.m"
+              }
+#line 445 "browse.m"
+            else
+#line 446 "browse.m"
+              {
+#line 447 "browse.m"
+                {
+#line 447 "browse.m"
+                  mercury__io__write_string_3_p_0((MR_String) ",\n");
+                }
+#line 448 "browse.m"
+                {
+#line 448 "browse.m"
+                  mdb__browse__save_args_4_p_0(mdb__browse__V_43_43, mdb__browse__Univs_76);
+                }
+#line 446 "browse.m"
+              }
+#line 424 "browse.m"
+            {
+#line 424 "browse.m"
+              mercury__io__write_string_3_p_0((MR_String) "\n");
+            }
+#line 425 "browse.m"
+            {
+#line 425 "browse.m"
+              mdb__browse__write_indent_3_p_0(mdb__browse__Indent_5);
+            }
+#line 426 "browse.m"
+            {
+#line 426 "browse.m"
+              mercury__io__write_string_3_p_0((MR_String) ")");
+            }
+#line 421 "browse.m"
+          }
+#line 415 "browse.m"
+      }
+#line 396 "browse.m"
+  }
+#line 393 "browse.m"
+}
+
+#line 357 "browse.m"
+static void MR_CALL 
+mdb__browse__launch_xml_browser_5_p_0(
+#line 357 "browse.m"
+  MR_Word mdb__browse__OutStream_6,
+#line 357 "browse.m"
+  MR_Word mdb__browse__ErrStream_7,
+#line 357 "browse.m"
+  MR_String mdb__browse__CommandStr_8)
+#line 357 "browse.m"
+{
+#line 360 "browse.m"
+  {
+#line 360 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 360 "browse.m"
+    MR_Word mdb__browse__Result_10;
+
+#line 361 "browse.m"
+    {
+#line 361 "browse.m"
+      mercury__io__write_string_4_p_0(mdb__browse__OutStream_6, (MR_String) "Launching XML browser (this may take some time) ...\n");
+    }
+#line 365 "browse.m"
+    {
+#line 365 "browse.m"
+      mercury__io__flush_output_3_p_0(mdb__browse__OutStream_6);
+    }
+#line 366 "browse.m"
+    {
+#line 366 "browse.m"
+      mercury__io__call_system_return_signal_4_p_0(mdb__browse__CommandStr_8, &mdb__browse__Result_10);
+    }
+#line 382 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__Result_10)) == (MR_mktag((MR_Integer) 1))))
+#line 383 "browse.m"
+      {
+#line 383 "browse.m"
+        MR_Word mdb__browse__Error_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Result_10, (MR_Integer) 0)));
+#line 383 "browse.m"
+        MR_String mdb__browse__V_23_23;
+#line 383 "browse.m"
+        MR_String mdb__browse__V_26_26;
+#line 383 "browse.m"
+        MR_String mdb__browse__V_27_27;
+
+#line 385 "browse.m"
+        {
+#line 385 "browse.m"
+          mdb__browse__V_27_27 = mercury__string__string_1_f_0((MR_Word) &mercury__io__io__type_ctor_info_error_0, ((MR_Box) (mdb__browse__Error_14)));
+        }
+#line 385 "browse.m"
+        {
+#line 385 "browse.m"
+          mdb__browse__V_26_26 = mercury__string__f_43_43_2_f_0(mdb__browse__V_27_27, (MR_String) ".\n");
+        }
+#line 385 "browse.m"
+        {
+#line 385 "browse.m"
+          mdb__browse__V_23_23 = mercury__string__f_43_43_2_f_0((MR_String) "mdb: Error launching browser: ", mdb__browse__V_26_26);
+        }
+#line 384 "browse.m"
+        {
+#line 384 "browse.m"
+          mercury__io__write_string_4_p_0(mdb__browse__ErrStream_7, mdb__browse__V_23_23);
+        }
+#line 383 "browse.m"
+      }
+#line 382 "browse.m"
+    else
+#line 368 "browse.m"
+      {
+#line 368 "browse.m"
+        MR_Word mdb__browse__ExitStatus_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Result_10, (MR_Integer) 0)));
+
+#line 378 "browse.m"
+        if (((MR_tag((MR_Word) mdb__browse__ExitStatus_11)) == (MR_mktag((MR_Integer) 0))))
+#line 370 "browse.m"
+          {
+#line 370 "browse.m"
+            MR_Integer mdb__browse__ExitCode_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__ExitStatus_11, (MR_Integer) 0)));
+
+#line 371 "browse.m"
+            mdb__browse__succeeded = (mdb__browse__ExitCode_12 == (MR_Integer) 0);
+#line 371 "browse.m"
+            if (mdb__browse__succeeded)
+#line 371 "browse.m"
+              {
+#line 371 "browse.m"
+              }
+#line 371 "browse.m"
+            else
+#line 374 "browse.m"
+              {
+#line 374 "browse.m"
+                MR_String mdb__browse__V_31_31;
+#line 374 "browse.m"
+                MR_String mdb__browse__V_34_34;
+
+#line 375 "browse.m"
+                {
+#line 375 "browse.m"
+                  mdb__browse__V_34_34 = mercury__string__f_43_43_2_f_0(mdb__browse__CommandStr_8, (MR_String) "\' terminated with a non-zero exit code.\n");
+                }
+#line 375 "browse.m"
+                {
+#line 375 "browse.m"
+                  mdb__browse__V_31_31 = mercury__string__f_43_43_2_f_0((MR_String) "mdb: The command \140", mdb__browse__V_34_34);
+                }
+#line 374 "browse.m"
+                {
+#line 374 "browse.m"
+                  mercury__io__write_string_4_p_0(mdb__browse__ErrStream_7, mdb__browse__V_31_31);
+                }
+#line 374 "browse.m"
+              }
+#line 370 "browse.m"
+          }
+#line 378 "browse.m"
+        else
+#line 379 "browse.m"
+          {
+#line 380 "browse.m"
+            {
+#line 380 "browse.m"
+              mercury__io__write_string_4_p_0(mdb__browse__ErrStream_7, (MR_String) "mdb: The browser was killed.\n");
+            }
+#line 379 "browse.m"
+          }
+#line 368 "browse.m"
+      }
+#line 360 "browse.m"
+  }
+#line 357 "browse.m"
+}
+
+#line 163 "browse.m"
+MR_bool MR_CALL 
+mdb__browse__string_is_return_value_alias_1_p_0(
+#line 163 "browse.m"
+  MR_String mdb__browse__HeadVar__1_1)
+#line 163 "browse.m"
+{
+#line 1443 "browse.m"
+  {
+#line 1443 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1443 "browse.m"
+    MR_Integer mdb__browse__lo_0;
+#line 1443 "browse.m"
+    MR_Integer mdb__browse__hi_1;
+#line 1443 "browse.m"
+    MR_Integer mdb__browse__mid_2;
+#line 1443 "browse.m"
+    MR_Integer mdb__browse__result_3;
+
+#line 1443 "browse.m"
+    /* binary string simple lookup switch */
+#line 1443 "browse.m"
+    mdb__browse__lo_0 = (MR_Integer) 0;
+#line 1443 "browse.m"
+    mdb__browse__hi_1 = (MR_Integer) 5;
+#line 1443 "browse.m"
+    do
+#line 1443 "browse.m"
+      {
+#line 1443 "browse.m"
+        mdb__browse__mid_2 = (((mdb__browse__lo_0 + mdb__browse__hi_1)) / (MR_Integer) 2);
+#line 1443 "browse.m"
+        mdb__browse__result_3 = MR_strcmp(mdb__browse__HeadVar__1_1, ((&mdb__browse_vector_common_7[0 + mdb__browse__mid_2]))->mdb__browse__vector_common_type_7_0__vct_7_f_0);
+#line 1443 "browse.m"
+        if ((mdb__browse__result_3 == (MR_Integer) 0))
+#line 1443 "browse.m"
+          {
+#line 1443 "browse.m"
+            mdb__browse__succeeded = MR_TRUE;
+#line 1443 "browse.m"
+            /* jump out of search loop */
+#line 1443 "browse.m"
+            goto label_0;
+#line 1443 "browse.m"
+          }
+#line 1443 "browse.m"
+        else
+#line 1443 "browse.m"
+        if ((mdb__browse__result_3 < (MR_Integer) 0))
+#line 1443 "browse.m"
+          mdb__browse__hi_1 = (mdb__browse__mid_2 - (MR_Integer) 1);
+#line 1443 "browse.m"
+        else
+#line 1443 "browse.m"
+          mdb__browse__lo_0 = (mdb__browse__mid_2 + (MR_Integer) 1);
+#line 1443 "browse.m"
+      }
+#line 1443 "browse.m"
+    while ((mdb__browse__lo_0 <= mdb__browse__hi_1));
+#line 1443 "browse.m"
+    mdb__browse__succeeded = MR_FALSE;
+#line 1443 "browse.m"
+  label_0:;
+#line 1443 "browse.m"
+    return mdb__browse__succeeded;
+#line 1443 "browse.m"
+  }
+#line 163 "browse.m"
+}
+
+#line 158 "browse.m"
+void MR_CALL 
+mdb__browse__simplify_dirs_2_p_0(
+#line 158 "browse.m"
+  MR_Word mdb__browse__Dirs_3,
+#line 158 "browse.m"
+  MR_Word * mdb__browse__SimpleDirs_4)
+#line 158 "browse.m"
+{
+#line 1691 "browse.m"
+  {
+#line 1691 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 1691 "browse.m"
+    MR_Word mdb__browse__RevDirs_5;
+
+#line 1692 "browse.m"
+    {
+#line 1692 "browse.m"
+      mercury__list__reverse_2_p_0((MR_Word) &mdb__browser_info__mdb__browser_info__type_ctor_info_up_down_dir_0, mdb__browse__Dirs_3, &mdb__browse__RevDirs_5);
+    }
+#line 1693 "browse.m"
+    {
+#line 1693 "browse.m"
+      mdb__browse__simplify_rev_dirs_4_p_0(mdb__browse__RevDirs_5, (MR_Integer) 0, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdb__browse__SimpleDirs_4);
+    }
+#line 1691 "browse.m"
+  }
+#line 158 "browse.m"
+}
+
+#line 150 "browse.m"
+void MR_CALL 
+mdb__browse__save_term_to_file_xml_5_p_0(
+#line 150 "browse.m"
+  MR_String mdb__browse__FileName_6,
+#line 150 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_7,
+#line 150 "browse.m"
+  MR_Word mdb__browse__OutStream_8)
+#line 150 "browse.m"
+{
+#line 277 "browse.m"
+  {
+#line 277 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 277 "browse.m"
+    MR_Word mdb__browse__Result_10;
+
+#line 292 "browse.m"
+    {
+#line 292 "browse.m"
+      mercury__io__open_output_4_p_0(mdb__browse__FileName_6, &mdb__browse__Result_10);
+    }
+#line 315 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__Result_10)) == (MR_mktag((MR_Integer) 1))))
+#line 316 "browse.m"
+      {
+#line 316 "browse.m"
+      }
+#line 315 "browse.m"
+    else
+#line 294 "browse.m"
+      {
+#line 294 "browse.m"
+        MR_Word mdb__browse__OutputStream_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Result_10, (MR_Integer) 0)));
+
+#line 300 "browse.m"
+        if (((MR_tag((MR_Word) mdb__browse__BrowserTerm_7)) == (MR_mktag((MR_Integer) 0))))
+#line 296 "browse.m"
+          {
+#line 296 "browse.m"
+            MR_Word mdb__browse__TypeInfo_39_52;
+#line 296 "browse.m"
+            MR_Word mdb__browse__Univ_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__BrowserTerm_7, (MR_Integer) 0)));
+#line 296 "browse.m"
+            MR_Box mdb__browse__Term_27;
+#line 298 "browse.m"
+            MR_Word mdb__browse__V_28_28;
+#line 298 "browse.m"
+            MR_Box mdb__browse__conv0_STATE_VARIABLE_IO_37_50;
+
+#line 297 "browse.m"
+            {
+#line 297 "browse.m"
+              mdb__browse__Term_27 = mercury__univ__univ_value_1_f_0(&mdb__browse__TypeInfo_39_52, mdb__browse__Univ_26);
+            }
+#line 298 "browse.m"
+            {
+#line 298 "browse.m"
+              mercury__term_to_xml__write_xml_doc_general_cc_8_p_0(mdb__browse__TypeInfo_39_52, (MR_Word) &mdb__browse_scalar_common_3[0], ((MR_Box) (mdb__browse__OutputStream_25)), mdb__browse__Term_27, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)), &mdb__browse__V_28_28, ((MR_Box) ((MR_Integer) 0)), &mdb__browse__conv0_STATE_VARIABLE_IO_37_50);
+            }
+#line 296 "browse.m"
+          }
+#line 300 "browse.m"
+        else
+#line 301 "browse.m"
+          {
+#line 301 "browse.m"
+            MR_String mdb__browse__Functor_29 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_7, (MR_Integer) 0)));
+#line 301 "browse.m"
+            MR_Word mdb__browse__Args_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_7, (MR_Integer) 1)));
+#line 301 "browse.m"
+            MR_Word mdb__browse__MaybeRes_31 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_7, (MR_Integer) 2)));
+
+#line 307 "browse.m"
+            if ((mdb__browse__MaybeRes_31 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 303 "browse.m"
+              {
+#line 303 "browse.m"
+                MR_Word mdb__browse__PredicateTerm_32;
+#line 305 "browse.m"
+                MR_Word mdb__browse__V_33_33;
+#line 305 "browse.m"
+                MR_Box mdb__browse__conv1_STATE_VARIABLE_IO_37_50;
+
+#line 304 "browse.m"
+                {
+#line 304 "browse.m"
+                  mdb__browse__PredicateTerm_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 304 "browse.m"
+                  MR_hl_field(MR_mktag(0), mdb__browse__PredicateTerm_32, 0) = ((MR_Box) (mdb__browse__Functor_29));
+#line 304 "browse.m"
+                  MR_hl_field(MR_mktag(0), mdb__browse__PredicateTerm_32, 1) = ((MR_Box) (mdb__browse__Args_30));
+#line 304 "browse.m"
+                }
+#line 305 "browse.m"
+                {
+#line 305 "browse.m"
+                  mercury__term_to_xml__write_xml_doc_general_cc_8_p_0((MR_Word) &mdb__browse__mdb__browse__type_ctor_info_xml_predicate_wrapper_0, (MR_Word) &mdb__browse_scalar_common_3[0], ((MR_Box) (mdb__browse__OutputStream_25)), ((MR_Box) (mdb__browse__PredicateTerm_32)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)), &mdb__browse__V_33_33, ((MR_Box) ((MR_Integer) 0)), &mdb__browse__conv1_STATE_VARIABLE_IO_37_50);
+                }
+#line 303 "browse.m"
+              }
+#line 307 "browse.m"
+            else
+#line 308 "browse.m"
+              {
+#line 308 "browse.m"
+                MR_Word mdb__browse__Result_34 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeRes_31, (MR_Integer) 0)));
+#line 308 "browse.m"
+                MR_Word mdb__browse__FunctionTerm_35;
+#line 310 "browse.m"
+                MR_Word mdb__browse__V_36_36;
+#line 310 "browse.m"
+                MR_Box mdb__browse__conv2_STATE_VARIABLE_IO_37_50;
+
+#line 309 "browse.m"
+                {
+#line 309 "browse.m"
+                  mdb__browse__FunctionTerm_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 309 "browse.m"
+                  MR_hl_field(MR_mktag(0), mdb__browse__FunctionTerm_35, 0) = ((MR_Box) (mdb__browse__Functor_29));
+#line 309 "browse.m"
+                  MR_hl_field(MR_mktag(0), mdb__browse__FunctionTerm_35, 1) = ((MR_Box) (mdb__browse__Args_30));
+#line 309 "browse.m"
+                  MR_hl_field(MR_mktag(0), mdb__browse__FunctionTerm_35, 2) = ((MR_Box) (mdb__browse__Result_34));
+#line 309 "browse.m"
+                }
+#line 310 "browse.m"
+                {
+#line 310 "browse.m"
+                  mercury__term_to_xml__write_xml_doc_general_cc_8_p_0((MR_Word) &mdb__browse__mdb__browse__type_ctor_info_xml_function_wrapper_0, (MR_Word) &mdb__browse_scalar_common_3[0], ((MR_Box) (mdb__browse__OutputStream_25)), ((MR_Box) (mdb__browse__FunctionTerm_35)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)), &mdb__browse__V_36_36, ((MR_Box) ((MR_Integer) 0)), &mdb__browse__conv2_STATE_VARIABLE_IO_37_50);
+                }
+#line 308 "browse.m"
+              }
+#line 301 "browse.m"
+          }
+#line 314 "browse.m"
+        {
+#line 314 "browse.m"
+          mercury__io__close_output_3_p_0(mdb__browse__OutputStream_25);
+        }
+#line 294 "browse.m"
+      }
+#line 281 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__Result_10)) == (MR_mktag((MR_Integer) 1))))
+#line 282 "browse.m"
+      {
+#line 282 "browse.m"
+        MR_Word mdb__browse__Error_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Result_10, (MR_Integer) 0)));
+#line 282 "browse.m"
+        MR_String mdb__browse__Msg_13;
+
+#line 283 "browse.m"
+        {
+#line 283 "browse.m"
+          mercury__io__error_message_2_p_0(mdb__browse__Error_12, &mdb__browse__Msg_13);
+        }
+#line 284 "browse.m"
+        {
+#line 284 "browse.m"
+          mercury__io__write_string_4_p_0(mdb__browse__OutStream_8, mdb__browse__Msg_13);
+        }
+#line 285 "browse.m"
+        {
+#line 285 "browse.m"
+          mercury__io__nl_2_p_0();
+        }
+#line 282 "browse.m"
+      }
+#line 281 "browse.m"
+    else
+#line 280 "browse.m"
+      {
+#line 280 "browse.m"
+      }
+#line 277 "browse.m"
+  }
+#line 150 "browse.m"
+}
+
+#line 142 "browse.m"
+void MR_CALL 
+mdb__browse__save_term_to_file_6_p_0(
+#line 142 "browse.m"
+  MR_String mdb__browse__FileName_7,
+#line 142 "browse.m"
+  MR_String mdb__browse___Format_8,
+#line 142 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_9,
+#line 142 "browse.m"
+  MR_Word mdb__browse__OutStream_10)
+#line 142 "browse.m"
+{
+#line 230 "browse.m"
+  {
+#line 230 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 230 "browse.m"
+    {
+#line 230 "browse.m"
+      mdb__browse__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_97_118_101_95_116_101_114_109_95_116_111_95_102_105_108_101_95_95_91_50_93_95_48_6_p_0(mdb__browse__FileName_7, mdb__browse__BrowserTerm_9, mdb__browse__OutStream_10);
+    }
+#line 230 "browse.m"
+  }
+#line 142 "browse.m"
+}
+
+#line 1033 "browse.m"
+static void MR_CALL 
+mdb__browse__browser_term_size_left_from_max_3_p_0_1(
+#line 1033 "browse.m"
+  MR_Box mdb__browse__closure_arg,
+#line 1033 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 1033 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 1033 "browse.m"
+  MR_Box * mdb__browse__wrapper_arg_3)
+#line 1033 "browse.m"
+{
+#line 1033 "browse.m"
+  {
+#line 1033 "browse.m"
+    MR_Box mdb__browse__closure = mdb__browse__closure_arg;
+#line 1033 "browse.m"
+    MR_Integer mdb__browse__conv0_RemainingSize_6;
+
+#line 1033 "browse.m"
+    {
+#line 1033 "browse.m"
+      mdb__browse__term_size_left_from_max_3_p_0(((MR_Word) mdb__browse__wrapper_arg_1), ((MR_Integer) mdb__browse__wrapper_arg_2), &mdb__browse__conv0_RemainingSize_6);
+    }
+#line 1033 "browse.m"
+    *mdb__browse__wrapper_arg_3 = ((MR_Box) (mdb__browse__conv0_RemainingSize_6));
+#line 1033 "browse.m"
+  }
+#line 1033 "browse.m"
+}
+
+#line 129 "browse.m"
+void MR_CALL 
+mdb__browse__browser_term_size_left_from_max_3_p_0(
+#line 129 "browse.m"
+  MR_Word mdb__browse__BrowserTerm_4,
+#line 129 "browse.m"
+  MR_Integer mdb__browse__MaxSize_5,
+#line 129 "browse.m"
+  MR_Integer * mdb__browse__RemainingSize_6)
+#line 129 "browse.m"
+{
+#line 1017 "browse.m"
+  {
+#line 1017 "browse.m"
+    MR_bool mdb__browse__succeeded;
+
+#line 1017 "browse.m"
+    if (((MR_tag((MR_Word) mdb__browse__BrowserTerm_4)) == (MR_mktag((MR_Integer) 0))))
+#line 1017 "browse.m"
+      {
+#line 1017 "browse.m"
+        MR_Word mdb__browse__Univ_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__BrowserTerm_4, (MR_Integer) 0)));
+
+#line 1018 "browse.m"
+        {
+#line 1018 "browse.m"
+          mdb__browse__term_size_left_from_max_3_p_0(mdb__browse__Univ_7, mdb__browse__MaxSize_5, mdb__browse__RemainingSize_6);
+        }
+#line 1017 "browse.m"
+      }
+#line 1017 "browse.m"
+    else
+#line 1020 "browse.m"
+      {
+#line 1020 "browse.m"
+        MR_Word mdb__browse__TypeCtorInfo_23_23;
+#line 1020 "browse.m"
+        MR_String mdb__browse__Functor_8 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_4, (MR_Integer) 0)));
+#line 1020 "browse.m"
+        MR_Word mdb__browse__Args_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_4, (MR_Integer) 1)));
+#line 1020 "browse.m"
+        MR_Word mdb__browse__MaybeReturn_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__BrowserTerm_4, (MR_Integer) 2)));
+#line 1020 "browse.m"
+        MR_Integer mdb__browse__FunctorSize_11;
+#line 1020 "browse.m"
+        MR_Integer mdb__browse__Arity_12;
+#line 1020 "browse.m"
+        MR_Integer mdb__browse__PrincipalSize_14;
+#line 1020 "browse.m"
+        MR_Integer mdb__browse__MaxArgsSize_15;
+#line 1033 "browse.m"
+        MR_Box mdb__browse__conv1_RemainingSize_6;
+
+#line 1021 "browse.m"
+        {
+#line 1021 "browse.m"
+          mercury__string__length_2_p_0(mdb__browse__Functor_8, &mdb__browse__FunctorSize_11);
+        }
+#line 10023 "mdb.browse.c"
+        mdb__browse__TypeCtorInfo_23_23 = (MR_Word) &mercury__univ__univ__type_ctor_info_univ_0;
+#line 1022 "browse.m"
+        {
+#line 1022 "browse.m"
+          mercury__list__length_2_p_0(mdb__browse__TypeCtorInfo_23_23, mdb__browse__Args_9, &mdb__browse__Arity_12);
+        }
+#line 1027 "browse.m"
+        if ((mdb__browse__MaybeReturn_10 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1028 "browse.m"
+          {
+#line 1028 "browse.m"
+            MR_Integer mdb__browse__V_16_16 = (mdb__browse__Arity_12 * (MR_Integer) 2);
+
+#line 1030 "browse.m"
+            mdb__browse__PrincipalSize_14 = (mdb__browse__FunctorSize_11 + mdb__browse__V_16_16);
+#line 1028 "browse.m"
+          }
+#line 1027 "browse.m"
+        else
+#line 1024 "browse.m"
+          {
+#line 1024 "browse.m"
+            MR_Integer mdb__browse__V_18_18;
+#line 1024 "browse.m"
+            MR_Integer mdb__browse__V_19_19 = (mdb__browse__Arity_12 * (MR_Integer) 2);
+
+#line 1026 "browse.m"
+            mdb__browse__V_18_18 = (mdb__browse__FunctorSize_11 + mdb__browse__V_19_19);
+#line 1026 "browse.m"
+            mdb__browse__PrincipalSize_14 = (mdb__browse__V_18_18 + (MR_Integer) 3);
+#line 1024 "browse.m"
+          }
+#line 1032 "browse.m"
+        mdb__browse__MaxArgsSize_15 = (mdb__browse__MaxSize_5 - mdb__browse__PrincipalSize_14);
+#line 1033 "browse.m"
+        {
+#line 1033 "browse.m"
+          mercury__list__foldl_4_p_9(mdb__browse__TypeCtorInfo_23_23, (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &mdb__browse_scalar_common_1[4], mdb__browse__Args_9, ((MR_Box) (mdb__browse__MaxArgsSize_15)), &mdb__browse__conv1_RemainingSize_6);
+        }
+#line 1033 "browse.m"
+        *mdb__browse__RemainingSize_6 = ((MR_Integer) mdb__browse__conv1_RemainingSize_6);
+#line 1020 "browse.m"
+      }
+#line 1017 "browse.m"
+  }
+#line 129 "browse.m"
+}
+
+#line 1005 "browse.m"
+static void MR_CALL 
+mdb__browse__term_size_left_from_max_3_p_0_1(
+#line 1005 "browse.m"
+  MR_Box mdb__browse__closure_arg,
+#line 1005 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_1,
+#line 1005 "browse.m"
+  MR_Box mdb__browse__wrapper_arg_2,
+#line 1005 "browse.m"
+  MR_Box * mdb__browse__wrapper_arg_3)
+#line 1005 "browse.m"
+{
+#line 1005 "browse.m"
+  {
+#line 1005 "browse.m"
+    MR_Box mdb__browse__closure = mdb__browse__closure_arg;
+#line 1005 "browse.m"
+    MR_Integer mdb__browse__conv0_RemainingSize_6;
+
+#line 1005 "browse.m"
+    {
+#line 1005 "browse.m"
+      mdb__browse__term_size_left_from_max_3_p_0(((MR_Word) mdb__browse__wrapper_arg_1), ((MR_Integer) mdb__browse__wrapper_arg_2), &mdb__browse__conv0_RemainingSize_6);
+    }
+#line 1005 "browse.m"
+    *mdb__browse__wrapper_arg_3 = ((MR_Box) (mdb__browse__conv0_RemainingSize_6));
+#line 1005 "browse.m"
+  }
+#line 1005 "browse.m"
+}
+
+#line 128 "browse.m"
+void MR_CALL 
+mdb__browse__term_size_left_from_max_3_p_0(
+#line 128 "browse.m"
+  MR_Word mdb__browse__Univ_4,
+#line 128 "browse.m"
+  MR_Integer mdb__browse__MaxSize_5,
+#line 128 "browse.m"
+  MR_Integer * mdb__browse__RemainingSize_6)
+#line 128 "browse.m"
+{
+#line 994 "browse.m"
+  {
+#line 994 "browse.m"
+    MR_bool mdb__browse__succeeded = (mdb__browse__MaxSize_5 < (MR_Integer) 0);
+
+#line 994 "browse.m"
+    if (mdb__browse__succeeded)
+#line 995 "browse.m"
+      *mdb__browse__RemainingSize_6 = mdb__browse__MaxSize_5;
+#line 994 "browse.m"
+    else
+#line 998 "browse.m"
+      {
+#line 998 "browse.m"
+        MR_Word mdb__browse__TypeInfo_20_20;
+#line 998 "browse.m"
+        MR_Word mdb__browse__MaybeFunctorArityArgs_7;
+#line 998 "browse.m"
+        MR_Box mdb__browse__V_15_15;
+
+#line 997 "browse.m"
+        {
+#line 997 "browse.m"
+          mdb__browse__V_15_15 = mercury__univ__univ_value_1_f_0(&mdb__browse__TypeInfo_20_20, mdb__browse__Univ_4);
+        }
+#line 997 "browse.m"
+        {
+#line 997 "browse.m"
+          mercury__deconstruct__limited_deconstruct_cc_3_p_0(mdb__browse__TypeInfo_20_20, mdb__browse__V_15_15, mdb__browse__MaxSize_5, &mdb__browse__MaybeFunctorArityArgs_7);
+        }
+#line 1007 "browse.m"
+        if ((mdb__browse__MaybeFunctorArityArgs_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1009 "browse.m"
+          *mdb__browse__RemainingSize_6 = (MR_Integer) -1;
+#line 1007 "browse.m"
+        else
+#line 1000 "browse.m"
+          {
+#line 1000 "browse.m"
+            MR_String mdb__browse__Functor_8;
+#line 1000 "browse.m"
+            MR_Integer mdb__browse__Arity_9;
+#line 1000 "browse.m"
+            MR_Word mdb__browse__Args_10;
+#line 1000 "browse.m"
+            MR_Integer mdb__browse__FunctorSize_11;
+#line 1000 "browse.m"
+            MR_Integer mdb__browse__PrincipalSize_12;
+#line 1000 "browse.m"
+            MR_Integer mdb__browse__MaxArgsSize_13;
+#line 1000 "browse.m"
+            MR_Tuple mdb__browse__V_16_16 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeFunctorArityArgs_7, (MR_Integer) 0)));
+#line 1000 "browse.m"
+            MR_Integer mdb__browse__V_17_17;
+#line 1005 "browse.m"
+            MR_Box mdb__browse__conv1_RemainingSize_6;
+
+#line 1000 "browse.m"
+            mdb__browse__Functor_8 = ((MR_String) (MR_hl_field(MR_mktag(0), mdb__browse__V_16_16, (MR_Integer) 0)));
+#line 1000 "browse.m"
+            mdb__browse__Arity_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdb__browse__V_16_16, (MR_Integer) 1)));
+#line 1000 "browse.m"
+            mdb__browse__Args_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__V_16_16, (MR_Integer) 2)));
+#line 1001 "browse.m"
+            {
+#line 1001 "browse.m"
+              mercury__string__length_2_p_0(mdb__browse__Functor_8, &mdb__browse__FunctorSize_11);
+            }
+#line 1003 "browse.m"
+            mdb__browse__V_17_17 = (mdb__browse__Arity_9 * (MR_Integer) 2);
+#line 1003 "browse.m"
+            mdb__browse__PrincipalSize_12 = (mdb__browse__FunctorSize_11 + mdb__browse__V_17_17);
+#line 1004 "browse.m"
+            mdb__browse__MaxArgsSize_13 = (mdb__browse__MaxSize_5 - mdb__browse__PrincipalSize_12);
+#line 1005 "browse.m"
+            {
+#line 1005 "browse.m"
+              mercury__list__foldl_4_p_9((MR_Word) &mercury__univ__univ__type_ctor_info_univ_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &mdb__browse_scalar_common_1[3], mdb__browse__Args_10, ((MR_Box) (mdb__browse__MaxArgsSize_13)), &mdb__browse__conv1_RemainingSize_6);
+            }
+#line 1005 "browse.m"
+            *mdb__browse__RemainingSize_6 = ((MR_Integer) mdb__browse__conv1_RemainingSize_6);
+#line 1000 "browse.m"
+          }
+#line 998 "browse.m"
+      }
+#line 994 "browse.m"
+  }
+#line 128 "browse.m"
+}
+
+#line 109 "browse.m"
+void MR_CALL 
+mdb__browse__print_browser_term_format_7_p_0(
+#line 109 "browse.m"
+  MR_Word mdb__browse__Term_8,
+#line 109 "browse.m"
+  MR_Word mdb__browse__OutputStream_9,
+#line 109 "browse.m"
+  MR_Word mdb__browse__Caller_10,
+#line 109 "browse.m"
+  MR_Word mdb__browse__Format_11,
+#line 109 "browse.m"
+  MR_Word mdb__browse__State_12)
+#line 109 "browse.m"
+{
+#line 469 "browse.m"
+  {
+#line 469 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 469 "browse.m"
+    MR_Word mdb__browse__V_16_16;
+#line 469 "browse.m"
+    MR_Word mdb__browse__Info_26;
+#line 469 "browse.m"
+    MR_Word mdb__browse__OldStream_27;
+#line 469 "browse.m"
+    MR_Word mdb__browse__Format_28;
+#line 485 "browse.m"
+    MR_Word mdb__browse__V_29_29;
+#line 493 "browse.m"
+    MR_Word mdb__browse__V_30_30;
+
+#line 470 "browse.m"
+    {
+#line 470 "browse.m"
+      mdb__browse__V_16_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 470 "browse.m"
+      MR_hl_field(MR_mktag(1), mdb__browse__V_16_16, 0) = ((MR_Box) (mdb__browse__Format_11));
+#line 470 "browse.m"
+    }
+#line 477 "browse.m"
+    {
+#line 477 "browse.m"
+      mdb__browse__Info_26 = mdb__browser_info__init_5_f_0(mdb__browse__Term_8, mdb__browse__Caller_10, mdb__browse__V_16_16, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdb__browse__State_12);
+    }
+#line 478 "browse.m"
+    {
+#line 478 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OutputStream_9, &mdb__browse__OldStream_27);
+    }
+#line 479 "browse.m"
+    {
+#line 479 "browse.m"
+      mdb__browser_info__get_format_4_p_0(mdb__browse__Info_26, mdb__browse__Caller_10, mdb__browse__V_16_16, &mdb__browse__Format_28);
+    }
+#line 485 "browse.m"
+    mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__Term_8)) == (MR_mktag((MR_Integer) 0)));
+#line 485 "browse.m"
+    if (mdb__browse__succeeded)
+#line 485 "browse.m"
+      {
+#line 485 "browse.m"
+        mdb__browse__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Term_8, (MR_Integer) 0)));
+#line 486 "browse.m"
+        mdb__browse__succeeded = (mdb__browse__Format_28 == (MR_Integer) 0);
+#line 486 "browse.m"
+        mdb__browse__succeeded = !(mdb__browse__succeeded);
+#line 485 "browse.m"
+      }
+#line 484 "browse.m"
+    if (mdb__browse__succeeded)
+#line 488 "browse.m"
+      {
+#line 488 "browse.m"
+        mercury__io__nl_2_p_0();
+      }
+#line 484 "browse.m"
+    else
+#line 484 "browse.m"
+      {
+#line 484 "browse.m"
+      }
+#line 492 "browse.m"
+    {
+#line 492 "browse.m"
+      mdb__browse__portray_6_p_0((MR_Integer) 0, mdb__browse__Caller_10, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdb__browse__Info_26);
+    }
+#line 493 "browse.m"
+    {
+#line 493 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OldStream_27, &mdb__browse__V_30_30);
+    }
+#line 469 "browse.m"
+  }
+#line 109 "browse.m"
+}
+
+#line 103 "browse.m"
+void MR_CALL 
+mdb__browse__print_browser_term_6_p_0(
+#line 103 "browse.m"
+  MR_Word mdb__browse__Term_7,
+#line 103 "browse.m"
+  MR_Word mdb__browse__OutputStream_8,
+#line 103 "browse.m"
+  MR_Word mdb__browse__Caller_9,
+#line 103 "browse.m"
+  MR_Word mdb__browse__State_10)
+#line 103 "browse.m"
+{
+#line 466 "browse.m"
+  {
+#line 466 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 466 "browse.m"
+    MR_Word mdb__browse__V_14_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 466 "browse.m"
+    MR_Word mdb__browse__Info_24;
+#line 466 "browse.m"
+    MR_Word mdb__browse__OldStream_25;
+#line 466 "browse.m"
+    MR_Word mdb__browse__Format_26;
+#line 485 "browse.m"
+    MR_Word mdb__browse__V_27_27;
+#line 493 "browse.m"
+    MR_Word mdb__browse__V_28_28;
+
+#line 477 "browse.m"
+    {
+#line 477 "browse.m"
+      mdb__browse__Info_24 = mdb__browser_info__init_5_f_0(mdb__browse__Term_7, mdb__browse__Caller_9, mdb__browse__V_14_14, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdb__browse__State_10);
+    }
+#line 478 "browse.m"
+    {
+#line 478 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OutputStream_8, &mdb__browse__OldStream_25);
+    }
+#line 479 "browse.m"
+    {
+#line 479 "browse.m"
+      mdb__browser_info__get_format_4_p_0(mdb__browse__Info_24, mdb__browse__Caller_9, mdb__browse__V_14_14, &mdb__browse__Format_26);
+    }
+#line 485 "browse.m"
+    mdb__browse__succeeded = ((MR_tag((MR_Word) mdb__browse__Term_7)) == (MR_mktag((MR_Integer) 0)));
+#line 485 "browse.m"
+    if (mdb__browse__succeeded)
+#line 485 "browse.m"
+      {
+#line 485 "browse.m"
+        mdb__browse__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Term_7, (MR_Integer) 0)));
+#line 486 "browse.m"
+        mdb__browse__succeeded = (mdb__browse__Format_26 == (MR_Integer) 0);
+#line 486 "browse.m"
+        mdb__browse__succeeded = !(mdb__browse__succeeded);
+#line 485 "browse.m"
+      }
+#line 484 "browse.m"
+    if (mdb__browse__succeeded)
+#line 488 "browse.m"
+      {
+#line 488 "browse.m"
+        mercury__io__nl_2_p_0();
+      }
+#line 484 "browse.m"
+    else
+#line 484 "browse.m"
+      {
+#line 484 "browse.m"
+      }
+#line 492 "browse.m"
+    {
+#line 492 "browse.m"
+      mdb__browse__portray_6_p_0((MR_Integer) 0, mdb__browse__Caller_9, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdb__browse__Info_24);
+    }
+#line 493 "browse.m"
+    {
+#line 493 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OldStream_25, &mdb__browse__V_28_28);
+    }
+#line 466 "browse.m"
+  }
+#line 103 "browse.m"
+}
+
+#line 94 "browse.m"
+void MR_CALL 
+mdb__browse__browse_external_8_p_0(
+#line 94 "browse.m"
+  MR_Word mdb__browse__TypeInfo_for_T_26,
+#line 94 "browse.m"
+  MR_Box mdb__browse__Term_9,
+#line 94 "browse.m"
+  MR_Word mdb__browse__InputStream_10,
+#line 94 "browse.m"
+  MR_Word mdb__browse__OutputStream_11,
+#line 94 "browse.m"
+  MR_Word mdb__browse__MaybeModeFunc_12,
+#line 94 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_State_0_16,
+#line 94 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_State_17)
+#line 94 "browse.m"
+{
+#line 524 "browse.m"
+  {
+#line 524 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 524 "browse.m"
+    MR_Word mdb__browse__V_21_21;
+#line 524 "browse.m"
+    MR_Word mdb__browse__V_25_25;
+#line 524 "browse.m"
+    MR_Word mdb__browse__Info0_40;
+#line 524 "browse.m"
+    MR_Word mdb__browse__OldInputStream_41;
+#line 524 "browse.m"
+    MR_Word mdb__browse__OldOutputStream_42;
+#line 524 "browse.m"
+    MR_Word mdb__browse__Info_43;
+#line 542 "browse.m"
+    MR_Word mdb__browse__V_44_44;
+#line 543 "browse.m"
+    MR_Word mdb__browse__V_45_45;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_15_15;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_53_53;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_54_54;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_55_55;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_56_56;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_58_58;
+
+#line 525 "browse.m"
+    {
+#line 525 "browse.m"
+      mdb__browse__V_25_25 = mercury__univ__univ_1_f_0(mdb__browse__TypeInfo_for_T_26, mdb__browse__Term_9);
+    }
+#line 525 "browse.m"
+    {
+#line 525 "browse.m"
+      mdb__browse__V_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 525 "browse.m"
+      MR_hl_field(MR_mktag(0), mdb__browse__V_21_21, 0) = ((MR_Box) (mdb__browse__V_25_25));
+#line 525 "browse.m"
+    }
+#line 536 "browse.m"
+    {
+#line 536 "browse.m"
+      mdb__browse__Info0_40 = mdb__browser_info__init_5_f_0(mdb__browse__V_21_21, (MR_Integer) 1, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdb__browse__MaybeModeFunc_12, mdb__browse__STATE_VARIABLE_State_0_16);
+    }
+#line 538 "browse.m"
+    {
+#line 538 "browse.m"
+      mercury__io__set_input_stream_4_p_0(mdb__browse__InputStream_10, &mdb__browse__OldInputStream_41);
+    }
+#line 539 "browse.m"
+    {
+#line 539 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OutputStream_11, &mdb__browse__OldOutputStream_42);
+    }
+#line 541 "browse.m"
+    {
+#line 541 "browse.m"
+      mdb__browse__browse_main_loop_5_p_0((MR_Integer) 1, mdb__browse__Info0_40, &mdb__browse__Info_43);
+    }
+#line 542 "browse.m"
+    {
+#line 542 "browse.m"
+      mercury__io__set_input_stream_4_p_0(mdb__browse__OldInputStream_41, &mdb__browse__V_44_44);
+    }
+#line 543 "browse.m"
+    {
+#line 543 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OldOutputStream_42, &mdb__browse__V_45_45);
+    }
+#line 544 "browse.m"
+    mdb__browse__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_43, (MR_Integer) 0)));
+#line 544 "browse.m"
+    mdb__browse__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_43, (MR_Integer) 1)));
+#line 544 "browse.m"
+    mdb__browse__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_43, (MR_Integer) 2)));
+#line 544 "browse.m"
+    mdb__browse__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_43, (MR_Integer) 3)));
+#line 544 "browse.m"
+    *mdb__browse__STATE_VARIABLE_State_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_43, (MR_Integer) 4)));
+#line 544 "browse.m"
+    mdb__browse__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_43, (MR_Integer) 5)));
+#line 544 "browse.m"
+    mdb__browse__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_43, (MR_Integer) 6)));
+#line 524 "browse.m"
+  }
+#line 94 "browse.m"
+}
+
+#line 86 "browse.m"
+void MR_CALL 
+mdb__browse__browse_external_no_modes_7_p_0(
+#line 86 "browse.m"
+  MR_Word mdb__browse__TypeInfo_for_T_25,
+#line 86 "browse.m"
+  MR_Box mdb__browse__Term_8,
+#line 86 "browse.m"
+  MR_Word mdb__browse__InputStream_9,
+#line 86 "browse.m"
+  MR_Word mdb__browse__OutputStream_10,
+#line 86 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_State_0_14,
+#line 86 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_State_15)
+#line 86 "browse.m"
+{
+#line 520 "browse.m"
+  {
+#line 520 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 520 "browse.m"
+    MR_Word mdb__browse__V_19_19;
+#line 520 "browse.m"
+    MR_Word mdb__browse__V_24_24;
+#line 520 "browse.m"
+    MR_Word mdb__browse__Info0_39;
+#line 520 "browse.m"
+    MR_Word mdb__browse__OldInputStream_40;
+#line 520 "browse.m"
+    MR_Word mdb__browse__OldOutputStream_41;
+#line 520 "browse.m"
+    MR_Word mdb__browse__Info_42;
+#line 542 "browse.m"
+    MR_Word mdb__browse__V_43_43;
+#line 543 "browse.m"
+    MR_Word mdb__browse__V_44_44;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_13_13;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_52_52;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_53_53;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_54_54;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_55_55;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_57_57;
+
+#line 521 "browse.m"
+    {
+#line 521 "browse.m"
+      mdb__browse__V_24_24 = mercury__univ__univ_1_f_0(mdb__browse__TypeInfo_for_T_25, mdb__browse__Term_8);
+    }
+#line 521 "browse.m"
+    {
+#line 521 "browse.m"
+      mdb__browse__V_19_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 521 "browse.m"
+      MR_hl_field(MR_mktag(0), mdb__browse__V_19_19, 0) = ((MR_Box) (mdb__browse__V_24_24));
+#line 521 "browse.m"
+    }
+#line 536 "browse.m"
+    {
+#line 536 "browse.m"
+      mdb__browse__Info0_39 = mdb__browser_info__init_5_f_0(mdb__browse__V_19_19, (MR_Integer) 1, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdb__browse__STATE_VARIABLE_State_0_14);
+    }
+#line 538 "browse.m"
+    {
+#line 538 "browse.m"
+      mercury__io__set_input_stream_4_p_0(mdb__browse__InputStream_9, &mdb__browse__OldInputStream_40);
+    }
+#line 539 "browse.m"
+    {
+#line 539 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OutputStream_10, &mdb__browse__OldOutputStream_41);
+    }
+#line 541 "browse.m"
+    {
+#line 541 "browse.m"
+      mdb__browse__browse_main_loop_5_p_0((MR_Integer) 1, mdb__browse__Info0_39, &mdb__browse__Info_42);
+    }
+#line 542 "browse.m"
+    {
+#line 542 "browse.m"
+      mercury__io__set_input_stream_4_p_0(mdb__browse__OldInputStream_40, &mdb__browse__V_43_43);
+    }
+#line 543 "browse.m"
+    {
+#line 543 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OldOutputStream_41, &mdb__browse__V_44_44);
+    }
+#line 544 "browse.m"
+    mdb__browse__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 0)));
+#line 544 "browse.m"
+    mdb__browse__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 1)));
+#line 544 "browse.m"
+    mdb__browse__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 2)));
+#line 544 "browse.m"
+    mdb__browse__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 3)));
+#line 544 "browse.m"
+    *mdb__browse__STATE_VARIABLE_State_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 4)));
+#line 544 "browse.m"
+    mdb__browse__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 5)));
+#line 544 "browse.m"
+    mdb__browse__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 6)));
+#line 520 "browse.m"
+  }
+#line 86 "browse.m"
+}
+
+#line 75 "browse.m"
+void MR_CALL 
+mdb__browse__browse_browser_term_format_9_p_0(
+#line 75 "browse.m"
+  MR_Word mdb__browse__Term_10,
+#line 75 "browse.m"
+  MR_Word mdb__browse__InputStream_11,
+#line 75 "browse.m"
+  MR_Word mdb__browse__OutputStream_12,
+#line 75 "browse.m"
+  MR_Word mdb__browse__Format_13,
+#line 75 "browse.m"
+  MR_Word mdb__browse__MaybeModeFunc_14,
+#line 75 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_State_0_18,
+#line 75 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_State_19)
+#line 75 "browse.m"
+{
+#line 516 "browse.m"
+  {
+#line 516 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 516 "browse.m"
+    MR_Word mdb__browse__V_23_23;
+#line 516 "browse.m"
+    MR_Word mdb__browse__Info0_39;
+#line 516 "browse.m"
+    MR_Word mdb__browse__OldInputStream_40;
+#line 516 "browse.m"
+    MR_Word mdb__browse__OldOutputStream_41;
+#line 516 "browse.m"
+    MR_Word mdb__browse__Info_42;
+#line 542 "browse.m"
+    MR_Word mdb__browse__V_43_43;
+#line 543 "browse.m"
+    MR_Word mdb__browse__V_44_44;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_17_17;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_52_52;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_53_53;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_54_54;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_55_55;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_57_57;
+
+#line 518 "browse.m"
+    {
+#line 518 "browse.m"
+      mdb__browse__V_23_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 518 "browse.m"
+      MR_hl_field(MR_mktag(1), mdb__browse__V_23_23, 0) = ((MR_Box) (mdb__browse__Format_13));
+#line 518 "browse.m"
+    }
+#line 536 "browse.m"
+    {
+#line 536 "browse.m"
+      mdb__browse__Info0_39 = mdb__browser_info__init_5_f_0(mdb__browse__Term_10, (MR_Integer) 1, mdb__browse__V_23_23, mdb__browse__MaybeModeFunc_14, mdb__browse__STATE_VARIABLE_State_0_18);
+    }
+#line 538 "browse.m"
+    {
+#line 538 "browse.m"
+      mercury__io__set_input_stream_4_p_0(mdb__browse__InputStream_11, &mdb__browse__OldInputStream_40);
+    }
+#line 539 "browse.m"
+    {
+#line 539 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OutputStream_12, &mdb__browse__OldOutputStream_41);
+    }
+#line 541 "browse.m"
+    {
+#line 541 "browse.m"
+      mdb__browse__browse_main_loop_5_p_0((MR_Integer) 0, mdb__browse__Info0_39, &mdb__browse__Info_42);
+    }
+#line 542 "browse.m"
+    {
+#line 542 "browse.m"
+      mercury__io__set_input_stream_4_p_0(mdb__browse__OldInputStream_40, &mdb__browse__V_43_43);
+    }
+#line 543 "browse.m"
+    {
+#line 543 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OldOutputStream_41, &mdb__browse__V_44_44);
+    }
+#line 544 "browse.m"
+    mdb__browse__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 0)));
+#line 544 "browse.m"
+    mdb__browse__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 1)));
+#line 544 "browse.m"
+    mdb__browse__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 2)));
+#line 544 "browse.m"
+    mdb__browse__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 3)));
+#line 544 "browse.m"
+    *mdb__browse__STATE_VARIABLE_State_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 4)));
+#line 544 "browse.m"
+    mdb__browse__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 5)));
+#line 544 "browse.m"
+    mdb__browse__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_42, (MR_Integer) 6)));
+#line 516 "browse.m"
+  }
+#line 75 "browse.m"
+}
+
+#line 68 "browse.m"
+void MR_CALL 
+mdb__browse__browse_browser_term_format_no_modes_8_p_0(
+#line 68 "browse.m"
+  MR_Word mdb__browse__Term_9,
+#line 68 "browse.m"
+  MR_Word mdb__browse__InputStream_10,
+#line 68 "browse.m"
+  MR_Word mdb__browse__OutputStream_11,
+#line 68 "browse.m"
+  MR_Word mdb__browse__Format_12,
+#line 68 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_State_0_16,
+#line 68 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_State_17)
+#line 68 "browse.m"
+{
+#line 511 "browse.m"
+  {
+#line 511 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 511 "browse.m"
+    MR_Word mdb__browse__V_21_21;
+#line 511 "browse.m"
+    MR_Word mdb__browse__Info0_38;
+#line 511 "browse.m"
+    MR_Word mdb__browse__OldInputStream_39;
+#line 511 "browse.m"
+    MR_Word mdb__browse__OldOutputStream_40;
+#line 511 "browse.m"
+    MR_Word mdb__browse__Info_41;
+#line 542 "browse.m"
+    MR_Word mdb__browse__V_42_42;
+#line 543 "browse.m"
+    MR_Word mdb__browse__V_43_43;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_15_15;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_51_51;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_52_52;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_53_53;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_54_54;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_56_56;
+
+#line 513 "browse.m"
+    {
+#line 513 "browse.m"
+      mdb__browse__V_21_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 513 "browse.m"
+      MR_hl_field(MR_mktag(1), mdb__browse__V_21_21, 0) = ((MR_Box) (mdb__browse__Format_12));
+#line 513 "browse.m"
+    }
+#line 536 "browse.m"
+    {
+#line 536 "browse.m"
+      mdb__browse__Info0_38 = mdb__browser_info__init_5_f_0(mdb__browse__Term_9, (MR_Integer) 1, mdb__browse__V_21_21, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdb__browse__STATE_VARIABLE_State_0_16);
+    }
+#line 538 "browse.m"
+    {
+#line 538 "browse.m"
+      mercury__io__set_input_stream_4_p_0(mdb__browse__InputStream_10, &mdb__browse__OldInputStream_39);
+    }
+#line 539 "browse.m"
+    {
+#line 539 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OutputStream_11, &mdb__browse__OldOutputStream_40);
+    }
+#line 541 "browse.m"
+    {
+#line 541 "browse.m"
+      mdb__browse__browse_main_loop_5_p_0((MR_Integer) 0, mdb__browse__Info0_38, &mdb__browse__Info_41);
+    }
+#line 542 "browse.m"
+    {
+#line 542 "browse.m"
+      mercury__io__set_input_stream_4_p_0(mdb__browse__OldInputStream_39, &mdb__browse__V_42_42);
+    }
+#line 543 "browse.m"
+    {
+#line 543 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OldOutputStream_40, &mdb__browse__V_43_43);
+    }
+#line 544 "browse.m"
+    mdb__browse__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 0)));
+#line 544 "browse.m"
+    mdb__browse__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 1)));
+#line 544 "browse.m"
+    mdb__browse__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 2)));
+#line 544 "browse.m"
+    mdb__browse__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 3)));
+#line 544 "browse.m"
+    *mdb__browse__STATE_VARIABLE_State_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 4)));
+#line 544 "browse.m"
+    mdb__browse__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 5)));
+#line 544 "browse.m"
+    mdb__browse__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 6)));
+#line 511 "browse.m"
+  }
+#line 68 "browse.m"
+}
+
+#line 60 "browse.m"
+void MR_CALL 
+mdb__browse__save_and_browse_browser_term_xml_6_p_0(
+#line 60 "browse.m"
+  MR_Word mdb__browse__Term_7,
+#line 60 "browse.m"
+  MR_Word mdb__browse__OutStream_8,
+#line 60 "browse.m"
+  MR_Word mdb__browse__ErrStream_9,
+#line 60 "browse.m"
+  MR_Word mdb__browse__State_10)
+#line 60 "browse.m"
+{
+#line 319 "browse.m"
+  {
+#line 319 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 319 "browse.m"
+    MR_Word mdb__browse__MaybeXMLBrowserCmd_12;
+#line 319 "browse.m"
+    MR_Word mdb__browse__MaybeTmpFileName_13;
+
+#line 320 "browse.m"
+    {
+#line 320 "browse.m"
+      mdb__browse__MaybeXMLBrowserCmd_12 = mdb__browser_info__xml_browser_cmd_1_f_0(mdb__browse__State_10);
+    }
+#line 321 "browse.m"
+    {
+#line 321 "browse.m"
+      mdb__browse__MaybeTmpFileName_13 = mdb__browser_info__xml_tmp_filename_1_f_0(mdb__browse__State_10);
+    }
+#line 338 "browse.m"
+    if ((mdb__browse__MaybeXMLBrowserCmd_12 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 338 "browse.m"
+      if ((mdb__browse__MaybeTmpFileName_13 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 349 "browse.m"
+        {
+#line 351 "browse.m"
+          {
+#line 351 "browse.m"
+            mercury__io__write_string_4_p_0(mdb__browse__ErrStream_9, (MR_String) "mdb: You need to issue a \"set xml_browser_cmd \'<command>\'\" command\nand a \"set xml_tmp_filename \'<filename>\'\" command first.\n");
+          }
+#line 349 "browse.m"
+        }
+#line 338 "browse.m"
+      else
+#line 344 "browse.m"
+        {
+#line 346 "browse.m"
+          {
+#line 346 "browse.m"
+            mercury__io__write_string_4_p_0(mdb__browse__ErrStream_9, (MR_String) "mdb: You need to issue a \"set xml_browser_cmd \'<command>\'\" command first.\n");
+          }
+#line 344 "browse.m"
+        }
+#line 338 "browse.m"
+    else
+#line 338 "browse.m"
+      {
+#line 338 "browse.m"
+        MR_String mdb__browse__V_49_49 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeXMLBrowserCmd_12, (MR_Integer) 0)));
+
+#line 338 "browse.m"
+        if ((mdb__browse__MaybeTmpFileName_13 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 339 "browse.m"
+          {
+#line 341 "browse.m"
+            {
+#line 341 "browse.m"
+              mercury__io__write_string_4_p_0(mdb__browse__ErrStream_9, (MR_String) "mdb: You need to issue a \"set xml_tmp_filename \'<filename>\'\" command first.\n");
+            }
+#line 339 "browse.m"
+          }
+#line 338 "browse.m"
+        else
+#line 323 "browse.m"
+          {
+#line 323 "browse.m"
+            MR_String mdb__browse__TmpFileName_15 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeTmpFileName_13, (MR_Integer) 0)));
+#line 323 "browse.m"
+            MR_Word mdb__browse__SaveResult_16;
+
+#line 325 "browse.m"
+            {
+#line 325 "browse.m"
+              mercury__io__write_string_4_p_0(mdb__browse__OutStream_8, (MR_String) "Saving term to XML file...\n");
+            }
+#line 292 "browse.m"
+            {
+#line 292 "browse.m"
+              mercury__io__open_output_4_p_0(mdb__browse__TmpFileName_15, &mdb__browse__SaveResult_16);
+            }
+#line 315 "browse.m"
+            if (((MR_tag((MR_Word) mdb__browse__SaveResult_16)) == (MR_mktag((MR_Integer) 1))))
+#line 316 "browse.m"
+              {
+#line 316 "browse.m"
+              }
+#line 315 "browse.m"
+            else
+#line 294 "browse.m"
+              {
+#line 294 "browse.m"
+                MR_Word mdb__browse__OutputStream_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__SaveResult_16, (MR_Integer) 0)));
+
+#line 300 "browse.m"
+                if (((MR_tag((MR_Word) mdb__browse__Term_7)) == (MR_mktag((MR_Integer) 0))))
+#line 296 "browse.m"
+                  {
+#line 296 "browse.m"
+                    MR_Word mdb__browse__TypeInfo_39_83;
+#line 296 "browse.m"
+                    MR_Word mdb__browse__Univ_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Term_7, (MR_Integer) 0)));
+#line 296 "browse.m"
+                    MR_Box mdb__browse__Term_58;
+#line 298 "browse.m"
+                    MR_Word mdb__browse__V_59_59;
+#line 298 "browse.m"
+                    MR_Box mdb__browse__conv0_STATE_VARIABLE_IO_37_81;
+
+#line 297 "browse.m"
+                    {
+#line 297 "browse.m"
+                      mdb__browse__Term_58 = mercury__univ__univ_value_1_f_0(&mdb__browse__TypeInfo_39_83, mdb__browse__Univ_57);
+                    }
+#line 298 "browse.m"
+                    {
+#line 298 "browse.m"
+                      mercury__term_to_xml__write_xml_doc_general_cc_8_p_0(mdb__browse__TypeInfo_39_83, (MR_Word) &mdb__browse_scalar_common_3[0], ((MR_Box) (mdb__browse__OutputStream_56)), mdb__browse__Term_58, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)), &mdb__browse__V_59_59, ((MR_Box) ((MR_Integer) 0)), &mdb__browse__conv0_STATE_VARIABLE_IO_37_81);
+                    }
+#line 296 "browse.m"
+                  }
+#line 300 "browse.m"
+                else
+#line 301 "browse.m"
+                  {
+#line 301 "browse.m"
+                    MR_String mdb__browse__Functor_60 = ((MR_String) (MR_hl_field(MR_mktag(1), mdb__browse__Term_7, (MR_Integer) 0)));
+#line 301 "browse.m"
+                    MR_Word mdb__browse__Args_61 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Term_7, (MR_Integer) 1)));
+#line 301 "browse.m"
+                    MR_Word mdb__browse__MaybeRes_62 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__Term_7, (MR_Integer) 2)));
+
+#line 307 "browse.m"
+                    if ((mdb__browse__MaybeRes_62 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 303 "browse.m"
+                      {
+#line 303 "browse.m"
+                        MR_Word mdb__browse__PredicateTerm_63;
+#line 305 "browse.m"
+                        MR_Word mdb__browse__V_64_64;
+#line 305 "browse.m"
+                        MR_Box mdb__browse__conv1_STATE_VARIABLE_IO_37_81;
+
+#line 304 "browse.m"
+                        {
+#line 304 "browse.m"
+                          mdb__browse__PredicateTerm_63 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 304 "browse.m"
+                          MR_hl_field(MR_mktag(0), mdb__browse__PredicateTerm_63, 0) = ((MR_Box) (mdb__browse__Functor_60));
+#line 304 "browse.m"
+                          MR_hl_field(MR_mktag(0), mdb__browse__PredicateTerm_63, 1) = ((MR_Box) (mdb__browse__Args_61));
+#line 304 "browse.m"
+                        }
+#line 305 "browse.m"
+                        {
+#line 305 "browse.m"
+                          mercury__term_to_xml__write_xml_doc_general_cc_8_p_0((MR_Word) &mdb__browse__mdb__browse__type_ctor_info_xml_predicate_wrapper_0, (MR_Word) &mdb__browse_scalar_common_3[0], ((MR_Box) (mdb__browse__OutputStream_56)), ((MR_Box) (mdb__browse__PredicateTerm_63)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)), &mdb__browse__V_64_64, ((MR_Box) ((MR_Integer) 0)), &mdb__browse__conv1_STATE_VARIABLE_IO_37_81);
+                        }
+#line 303 "browse.m"
+                      }
+#line 307 "browse.m"
+                    else
+#line 308 "browse.m"
+                      {
+#line 308 "browse.m"
+                        MR_Word mdb__browse__Result_65 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__MaybeRes_62, (MR_Integer) 0)));
+#line 308 "browse.m"
+                        MR_Word mdb__browse__FunctionTerm_66;
+#line 310 "browse.m"
+                        MR_Word mdb__browse__V_67_67;
+#line 310 "browse.m"
+                        MR_Box mdb__browse__conv2_STATE_VARIABLE_IO_37_81;
+
+#line 309 "browse.m"
+                        {
+#line 309 "browse.m"
+                          mdb__browse__FunctionTerm_66 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 309 "browse.m"
+                          MR_hl_field(MR_mktag(0), mdb__browse__FunctionTerm_66, 0) = ((MR_Box) (mdb__browse__Functor_60));
+#line 309 "browse.m"
+                          MR_hl_field(MR_mktag(0), mdb__browse__FunctionTerm_66, 1) = ((MR_Box) (mdb__browse__Args_61));
+#line 309 "browse.m"
+                          MR_hl_field(MR_mktag(0), mdb__browse__FunctionTerm_66, 2) = ((MR_Box) (mdb__browse__Result_65));
+#line 309 "browse.m"
+                        }
+#line 310 "browse.m"
+                        {
+#line 310 "browse.m"
+                          mercury__term_to_xml__write_xml_doc_general_cc_8_p_0((MR_Word) &mdb__browse__mdb__browse__type_ctor_info_xml_function_wrapper_0, (MR_Word) &mdb__browse_scalar_common_3[0], ((MR_Box) (mdb__browse__OutputStream_56)), ((MR_Box) (mdb__browse__FunctionTerm_66)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 1)), &mdb__browse__V_67_67, ((MR_Box) ((MR_Integer) 0)), &mdb__browse__conv2_STATE_VARIABLE_IO_37_81);
+                        }
+#line 308 "browse.m"
+                      }
+#line 301 "browse.m"
+                  }
+#line 314 "browse.m"
+                {
+#line 314 "browse.m"
+                  mercury__io__close_output_3_p_0(mdb__browse__OutputStream_56);
+                }
+#line 294 "browse.m"
+              }
+#line 330 "browse.m"
+            if (((MR_tag((MR_Word) mdb__browse__SaveResult_16)) == (MR_mktag((MR_Integer) 1))))
+#line 331 "browse.m"
+              {
+#line 331 "browse.m"
+                MR_Word mdb__browse__Error_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdb__browse__SaveResult_16, (MR_Integer) 0)));
+#line 331 "browse.m"
+                MR_String mdb__browse__Msg_19;
+#line 331 "browse.m"
+                MR_String mdb__browse__V_41_41;
+#line 331 "browse.m"
+                MR_String mdb__browse__V_44_44;
+
+#line 332 "browse.m"
+                {
+#line 332 "browse.m"
+                  mercury__io__error_message_2_p_0(mdb__browse__Error_18, &mdb__browse__Msg_19);
+                }
+#line 334 "browse.m"
+                {
+#line 334 "browse.m"
+                  mdb__browse__V_44_44 = mercury__string__f_43_43_2_f_0(mdb__browse__TmpFileName_15, (MR_String) "\': ");
+                }
+#line 334 "browse.m"
+                {
+#line 334 "browse.m"
+                  mdb__browse__V_41_41 = mercury__string__f_43_43_2_f_0((MR_String) "Error opening file \140", mdb__browse__V_44_44);
+                }
+#line 333 "browse.m"
+                {
+#line 333 "browse.m"
+                  mercury__io__write_string_4_p_0(mdb__browse__ErrStream_9, mdb__browse__V_41_41);
+                }
+#line 335 "browse.m"
+                {
+#line 335 "browse.m"
+                  mercury__io__write_string_4_p_0(mdb__browse__ErrStream_9, mdb__browse__Msg_19);
+                }
+#line 336 "browse.m"
+                {
+#line 336 "browse.m"
+                  mercury__io__nl_2_p_0();
+                }
+#line 331 "browse.m"
+              }
+#line 330 "browse.m"
+            else
+#line 329 "browse.m"
+              {
+#line 329 "browse.m"
+                mdb__browse__launch_xml_browser_5_p_0(mdb__browse__OutStream_8, mdb__browse__ErrStream_9, mdb__browse__V_49_49);
+              }
+#line 323 "browse.m"
+          }
+#line 338 "browse.m"
+      }
+#line 319 "browse.m"
+  }
+#line 60 "browse.m"
+}
+
+#line 51 "browse.m"
+void MR_CALL 
+mdb__browse__browse_browser_term_9_p_0(
+#line 51 "browse.m"
+  MR_Word mdb__browse__Term_10,
+#line 51 "browse.m"
+  MR_Word mdb__browse__InputStream_11,
+#line 51 "browse.m"
+  MR_Word mdb__browse__OutputStream_12,
+#line 51 "browse.m"
+  MR_Word mdb__browse__MaybeModeFunc_13,
+#line 51 "browse.m"
+  MR_Word * mdb__browse__MaybeTrack_14,
+#line 51 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_State_0_17,
+#line 51 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_State_18)
+#line 51 "browse.m"
+{
+#line 506 "browse.m"
+  {
+#line 506 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 506 "browse.m"
+    MR_Word mdb__browse__Info0_38;
+#line 506 "browse.m"
+    MR_Word mdb__browse__OldInputStream_39;
+#line 506 "browse.m"
+    MR_Word mdb__browse__OldOutputStream_40;
+#line 506 "browse.m"
+    MR_Word mdb__browse__Info_41;
+#line 542 "browse.m"
+    MR_Word mdb__browse__V_42_42;
+#line 543 "browse.m"
+    MR_Word mdb__browse__V_43_43;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_51_51;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_52_52;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_53_53;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_54_54;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_56_56;
+
+#line 536 "browse.m"
+    {
+#line 536 "browse.m"
+      mdb__browse__Info0_38 = mdb__browser_info__init_5_f_0(mdb__browse__Term_10, (MR_Integer) 1, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdb__browse__MaybeModeFunc_13, mdb__browse__STATE_VARIABLE_State_0_17);
+    }
+#line 538 "browse.m"
+    {
+#line 538 "browse.m"
+      mercury__io__set_input_stream_4_p_0(mdb__browse__InputStream_11, &mdb__browse__OldInputStream_39);
+    }
+#line 539 "browse.m"
+    {
+#line 539 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OutputStream_12, &mdb__browse__OldOutputStream_40);
+    }
+#line 541 "browse.m"
+    {
+#line 541 "browse.m"
+      mdb__browse__browse_main_loop_5_p_0((MR_Integer) 0, mdb__browse__Info0_38, &mdb__browse__Info_41);
+    }
+#line 542 "browse.m"
+    {
+#line 542 "browse.m"
+      mercury__io__set_input_stream_4_p_0(mdb__browse__OldInputStream_39, &mdb__browse__V_42_42);
+    }
+#line 543 "browse.m"
+    {
+#line 543 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OldOutputStream_40, &mdb__browse__V_43_43);
+    }
+#line 544 "browse.m"
+    mdb__browse__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 0)));
+#line 544 "browse.m"
+    mdb__browse__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 1)));
+#line 544 "browse.m"
+    mdb__browse__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 2)));
+#line 544 "browse.m"
+    mdb__browse__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 3)));
+#line 544 "browse.m"
+    *mdb__browse__STATE_VARIABLE_State_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 4)));
+#line 544 "browse.m"
+    *mdb__browse__MaybeTrack_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 5)));
+#line 544 "browse.m"
+    mdb__browse__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_41, (MR_Integer) 6)));
+#line 506 "browse.m"
+  }
+#line 51 "browse.m"
+}
+
+#line 42 "browse.m"
+void MR_CALL 
+mdb__browse__browse_browser_term_no_modes_8_p_0(
+#line 42 "browse.m"
+  MR_Word mdb__browse__Term_9,
+#line 42 "browse.m"
+  MR_Word mdb__browse__InputStream_10,
+#line 42 "browse.m"
+  MR_Word mdb__browse__OutputStream_11,
+#line 42 "browse.m"
+  MR_Word * mdb__browse__MaybeTrack_12,
+#line 42 "browse.m"
+  MR_Word mdb__browse__STATE_VARIABLE_State_0_15,
+#line 42 "browse.m"
+  MR_Word * mdb__browse__STATE_VARIABLE_State_16)
+#line 42 "browse.m"
+{
+#line 501 "browse.m"
+  {
+#line 501 "browse.m"
+    MR_bool mdb__browse__succeeded;
+#line 501 "browse.m"
+    MR_Word mdb__browse__Info0_37;
+#line 501 "browse.m"
+    MR_Word mdb__browse__OldInputStream_38;
+#line 501 "browse.m"
+    MR_Word mdb__browse__OldOutputStream_39;
+#line 501 "browse.m"
+    MR_Word mdb__browse__Info_40;
+#line 542 "browse.m"
+    MR_Word mdb__browse__V_41_41;
+#line 543 "browse.m"
+    MR_Word mdb__browse__V_42_42;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_50_50;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_51_51;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_52_52;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_53_53;
+#line 544 "browse.m"
+    MR_Word mdb__browse__V_55_55;
+
+#line 536 "browse.m"
+    {
+#line 536 "browse.m"
+      mdb__browse__Info0_37 = mdb__browser_info__init_5_f_0(mdb__browse__Term_9, (MR_Integer) 1, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdb__browse__STATE_VARIABLE_State_0_15);
+    }
+#line 538 "browse.m"
+    {
+#line 538 "browse.m"
+      mercury__io__set_input_stream_4_p_0(mdb__browse__InputStream_10, &mdb__browse__OldInputStream_38);
+    }
+#line 539 "browse.m"
+    {
+#line 539 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OutputStream_11, &mdb__browse__OldOutputStream_39);
+    }
+#line 541 "browse.m"
+    {
+#line 541 "browse.m"
+      mdb__browse__browse_main_loop_5_p_0((MR_Integer) 0, mdb__browse__Info0_37, &mdb__browse__Info_40);
+    }
+#line 542 "browse.m"
+    {
+#line 542 "browse.m"
+      mercury__io__set_input_stream_4_p_0(mdb__browse__OldInputStream_38, &mdb__browse__V_41_41);
+    }
+#line 543 "browse.m"
+    {
+#line 543 "browse.m"
+      mercury__io__set_output_stream_4_p_0(mdb__browse__OldOutputStream_39, &mdb__browse__V_42_42);
+    }
+#line 544 "browse.m"
+    mdb__browse__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_40, (MR_Integer) 0)));
+#line 544 "browse.m"
+    mdb__browse__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_40, (MR_Integer) 1)));
+#line 544 "browse.m"
+    mdb__browse__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_40, (MR_Integer) 2)));
+#line 544 "browse.m"
+    mdb__browse__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_40, (MR_Integer) 3)));
+#line 544 "browse.m"
+    *mdb__browse__STATE_VARIABLE_State_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_40, (MR_Integer) 4)));
+#line 544 "browse.m"
+    *mdb__browse__MaybeTrack_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_40, (MR_Integer) 5)));
+#line 544 "browse.m"
+    mdb__browse__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdb__browse__Info_40, (MR_Integer) 6)));
+#line 501 "browse.m"
+  }
+#line 42 "browse.m"
+}
+
+void mercury__mdb__browse__init(void)
+{
+}
+
+void mercury__mdb__browse__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&mdb__browse__mdb__browse__type_ctor_info_deref_result_1);
+	MR_register_type_ctor_info(&mdb__browse__mdb__browse__type_ctor_info_unbound_0);
+	MR_register_type_ctor_info(&mdb__browse__mdb__browse__type_ctor_info_xml_function_wrapper_0);
+	MR_register_type_ctor_info(&mdb__browse__mdb__browse__type_ctor_info_xml_predicate_wrapper_0);
+}
+
+void mercury__mdb__browse__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module mdb.browse. */

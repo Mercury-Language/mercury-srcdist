@@ -1,0 +1,100 @@
+/*
+** Automatically generated from `simplify_proc.m'
+** by the Mercury compiler,
+** version rotd-2015-11-30
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.simplify.simplify_proc. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__simplify__simplify_proc
+#define MR_HEADER_GUARD_check_hlds__simplify__simplify_proc
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__SIMPLIFY__SIMPLIFY_PROC_DECL_GUARD
+#define CHECK_HLDS__SIMPLIFY__SIMPLIFY_PROC_DECL_GUARD
+#include "check_hlds.mih"
+#include "check_hlds.simplify.mih"
+
+#endif
+
+
+
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_proc__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_105_109_112_108_105_102_121_95_109_97_121_95_105_110_116_114_111_100_117_99_101_95_99_97_108_108_115_95_95_91_51_93_95_48_3_p_0(
+  MR_String check_hlds__simplify__simplify_proc__param_1,
+  MR_String check_hlds__simplify__simplify_proc__param_2);
+
+void MR_CALL 
+check_hlds__simplify__simplify_proc__simplify_goal_update_vars_in_proc_11_p_0(
+  MR_Word check_hlds__simplify__simplify_proc__param_1,
+  MR_Word check_hlds__simplify__simplify_proc__param_2,
+  MR_Word * check_hlds__simplify__simplify_proc__param_3,
+  MR_Word check_hlds__simplify__simplify_proc__param_4,
+  MR_Integer check_hlds__simplify__simplify_proc__param_5,
+  MR_Word check_hlds__simplify__simplify_proc__param_6,
+  MR_Word * check_hlds__simplify__simplify_proc__param_7,
+  MR_Word check_hlds__simplify__simplify_proc__param_8,
+  MR_Word check_hlds__simplify__simplify_proc__param_9,
+  MR_Word * check_hlds__simplify__simplify_proc__param_10,
+  MR_Integer * check_hlds__simplify__simplify_proc__param_11);
+
+MR_bool MR_CALL 
+check_hlds__simplify__simplify_proc__simplify_may_introduce_calls_3_p_0(
+  MR_String check_hlds__simplify__simplify_proc__param_1,
+  MR_String check_hlds__simplify__simplify_proc__param_2,
+  MR_Integer check_hlds__simplify__simplify_proc__param_3);
+
+void MR_CALL 
+check_hlds__simplify__simplify_proc__simplify_pred_procs_9_p_0(
+  MR_Word check_hlds__simplify__simplify_proc__param_1,
+  MR_Word check_hlds__simplify__simplify_proc__param_2,
+  MR_Word check_hlds__simplify__simplify_proc__param_3,
+  MR_Word check_hlds__simplify__simplify_proc__param_4,
+  MR_Word * check_hlds__simplify__simplify_proc__param_5,
+  MR_Word check_hlds__simplify__simplify_proc__param_6,
+  MR_Word * check_hlds__simplify__simplify_proc__param_7,
+  MR_Word check_hlds__simplify__simplify_proc__param_8,
+  MR_Word * check_hlds__simplify__simplify_proc__param_9);
+
+void MR_CALL 
+check_hlds__simplify__simplify_proc__simplify_proc_7_p_0(
+  MR_Word check_hlds__simplify__simplify_proc__param_1,
+  MR_Word check_hlds__simplify__simplify_proc__param_2,
+  MR_Integer check_hlds__simplify__simplify_proc__param_3,
+  MR_Word check_hlds__simplify__simplify_proc__param_4,
+  MR_Word * check_hlds__simplify__simplify_proc__param_5,
+  MR_Word check_hlds__simplify__simplify_proc__param_6,
+  MR_Word * check_hlds__simplify__simplify_proc__param_7);
+
+void mercury__check_hlds__simplify__simplify_proc__init(void);
+void mercury__check_hlds__simplify__simplify_proc__init_type_tables(void);
+void mercury__check_hlds__simplify__simplify_proc__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.simplify.simplify_proc */
+
+/* :- end_interface check_hlds.simplify.simplify_proc. */

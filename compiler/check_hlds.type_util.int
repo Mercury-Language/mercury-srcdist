@@ -1,0 +1,137 @@
+:- module (check_hlds.type_util).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module parse_tree.
+:- import_module set.
+:- import_module (hlds.hlds_data).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.vartypes).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_type).
+:- import_module (parse_tree.set_of_var).
+:- type is_dummy_type
+    --->    is_dummy_type 
+    ;       is_not_dummy_type .
+:- pred apply_rec_subst_to_constraint(parse_tree.prog_data.tsubst, hlds.hlds_data.hlds_constraint, hlds.hlds_data.hlds_constraint).
+:- mode apply_rec_subst_to_constraint((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_rec_subst_to_constraint_list(parse_tree.prog_data.tsubst, list.list(hlds.hlds_data.hlds_constraint), list.list(hlds.hlds_data.hlds_constraint)).
+:- mode apply_rec_subst_to_constraint_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_rec_subst_to_constraint_map(parse_tree.prog_data.tsubst, hlds.hlds_data.constraint_map, hlds.hlds_data.constraint_map).
+:- mode apply_rec_subst_to_constraint_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_rec_subst_to_constraint_proof_map(parse_tree.prog_data.tsubst, hlds.hlds_data.constraint_proof_map, hlds.hlds_data.constraint_proof_map).
+:- mode apply_rec_subst_to_constraint_proof_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_rec_subst_to_constraints(parse_tree.prog_data.tsubst, hlds.hlds_data.hlds_constraints, hlds.hlds_data.hlds_constraints).
+:- mode apply_rec_subst_to_constraints((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_subst_to_constraint(parse_tree.prog_data.tsubst, hlds.hlds_data.hlds_constraint, hlds.hlds_data.hlds_constraint).
+:- mode apply_subst_to_constraint((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_subst_to_constraint_list(parse_tree.prog_data.tsubst, list.list(hlds.hlds_data.hlds_constraint), list.list(hlds.hlds_data.hlds_constraint)).
+:- mode apply_subst_to_constraint_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_subst_to_constraint_map(parse_tree.prog_data.tsubst, hlds.hlds_data.constraint_map, hlds.hlds_data.constraint_map).
+:- mode apply_subst_to_constraint_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_subst_to_constraint_proof_map(parse_tree.prog_data.tsubst, hlds.hlds_data.constraint_proof_map, hlds.hlds_data.constraint_proof_map).
+:- mode apply_subst_to_constraint_proof_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_subst_to_constraints(parse_tree.prog_data.tsubst, hlds.hlds_data.hlds_constraints, hlds.hlds_data.hlds_constraints).
+:- mode apply_subst_to_constraints((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_variable_renaming_to_constraint(parse_tree.prog_data.tvar_renaming, hlds.hlds_data.hlds_constraint, hlds.hlds_data.hlds_constraint).
+:- mode apply_variable_renaming_to_constraint((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_variable_renaming_to_constraint_list(parse_tree.prog_data.tvar_renaming, list.list(hlds.hlds_data.hlds_constraint), list.list(hlds.hlds_data.hlds_constraint)).
+:- mode apply_variable_renaming_to_constraint_list((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_variable_renaming_to_constraint_map(parse_tree.prog_data.tvar_renaming, hlds.hlds_data.constraint_map, hlds.hlds_data.constraint_map).
+:- mode apply_variable_renaming_to_constraint_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_variable_renaming_to_constraint_proof_map(parse_tree.prog_data.tvar_renaming, hlds.hlds_data.constraint_proof_map, hlds.hlds_data.constraint_proof_map).
+:- mode apply_variable_renaming_to_constraint_proof_map((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred apply_variable_renaming_to_constraints(parse_tree.prog_data.tvar_renaming, hlds.hlds_data.hlds_constraints, hlds.hlds_data.hlds_constraints).
+:- mode apply_variable_renaming_to_constraints((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func check_dummy_type(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type) = check_hlds.type_util.is_dummy_type.
+:- func classify_type(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type) = parse_tree.prog_type.type_ctor_category.
+:- func classify_type_ctor(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor) = parse_tree.prog_type.type_ctor_category.
+:- func classify_type_defn_body(hlds.hlds_data.hlds_type_body) = parse_tree.prog_type.type_ctor_category.
+:- func cons_id_adjusted_arity(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.cons_id) = int.
+:- pred cons_id_arg_types(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.mer_type)).
+:- mode cons_id_arg_types((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is nondet.
+:- pred cons_id_is_existq_cons(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.cons_id).
+:- mode cons_id_is_existq_cons((builtin.in), (builtin.in), (builtin.in)) is semidet.
+:- pred get_cons_defn(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor, parse_tree.prog_data.cons_id, hlds.hlds_data.hlds_cons_defn).
+:- mode get_cons_defn((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred get_cons_defn_det(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor, parse_tree.prog_data.cons_id, hlds.hlds_data.hlds_cons_defn).
+:- mode get_cons_defn_det((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_cons_id_arg_types(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.mer_type)).
+:- mode get_cons_id_arg_types((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_cons_id_non_existential_arg_types(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.cons_id, list.list(parse_tree.prog_data.mer_type)).
+:- mode get_cons_id_non_existential_arg_types((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred get_existq_cons_defn(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.cons_id, parse_tree.prog_type.ctor_defn).
+:- mode get_existq_cons_defn((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred is_region_var(hlds.vartypes.vartypes, parse_tree.prog_data.prog_var).
+:- mode is_region_var((builtin.in), (builtin.in)) is semidet.
+:- pred maybe_get_cons_id_arg_types(hlds.hlds_module.module_info, maybe.maybe(parse_tree.prog_data.mer_type), parse_tree.prog_data.cons_id, parse_tree.prog_data.arity, list.list(maybe.maybe(parse_tree.prog_data.mer_type))).
+:- mode maybe_get_cons_id_arg_types((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred maybe_get_higher_order_arg_types(maybe.maybe(parse_tree.prog_data.mer_type), parse_tree.prog_data.arity, list.list(maybe.maybe(parse_tree.prog_data.mer_type))).
+:- mode maybe_get_higher_order_arg_types((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func put_typeinfo_vars_first(list.list(parse_tree.prog_data.prog_var), hlds.vartypes.vartypes) = list.list(parse_tree.prog_data.prog_var).
+:- func remove_typeinfo_vars(hlds.vartypes.vartypes, list.list(parse_tree.prog_data.prog_var)) = list.list(parse_tree.prog_data.prog_var).
+:- func remove_typeinfo_vars_from_set(hlds.vartypes.vartypes, set.set(parse_tree.prog_data.prog_var)) = set.set(parse_tree.prog_data.prog_var).
+:- func remove_typeinfo_vars_from_set_of_var(hlds.vartypes.vartypes, parse_tree.set_of_var.set_of_progvar) = parse_tree.set_of_var.set_of_progvar.
+:- pred switch_type_num_functors(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, int).
+:- mode switch_type_num_functors((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred type_body_has_solver_type_details(hlds.hlds_module.module_info, hlds.hlds_data.hlds_type_body, parse_tree.prog_data.solver_type_details).
+:- mode type_body_has_solver_type_details((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred type_body_has_user_defined_equality_pred(hlds.hlds_module.module_info, hlds.hlds_data.hlds_type_body, parse_tree.prog_data.unify_compare).
+:- mode type_body_has_user_defined_equality_pred((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred type_body_is_solver_type(hlds.hlds_module.module_info, hlds.hlds_data.hlds_type_body).
+:- mode type_body_is_solver_type((builtin.in), (builtin.in)) is semidet.
+:- pred type_body_is_solver_type_from_type_table(hlds.hlds_data.type_table, hlds.hlds_data.hlds_type_body).
+:- mode type_body_is_solver_type_from_type_table((builtin.in), (builtin.in)) is semidet.
+:- pred type_constructors(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, list.list(parse_tree.prog_data.constructor)).
+:- mode type_constructors((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func type_ctor_arity(parse_tree.prog_data.type_ctor) = parse_tree.prog_data.arity.
+:- pred type_ctor_has_hand_defined_rtti(parse_tree.prog_data.type_ctor, hlds.hlds_data.hlds_type_body).
+:- mode type_ctor_has_hand_defined_rtti((builtin.in), (builtin.in)) is semidet.
+:- pred type_ctor_is_atomic(hlds.hlds_module.module_info, parse_tree.prog_data.type_ctor).
+:- mode type_ctor_is_atomic((builtin.in), (builtin.in)) is semidet.
+:- func type_ctor_module(parse_tree.prog_data.type_ctor) = mdbcomp.sym_name.module_name.
+:- pred type_ctor_module_name_arity(parse_tree.prog_data.type_ctor, mdbcomp.sym_name.module_name, string, parse_tree.prog_data.arity).
+:- mode type_ctor_module_name_arity((builtin.in), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- func type_ctor_name(parse_tree.prog_data.type_ctor) = string.
+:- pred type_definitely_has_no_user_defined_equality_pred(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode type_definitely_has_no_user_defined_equality_pred((builtin.in), (builtin.in)) is semidet.
+:- pred type_has_solver_type_details(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.solver_type_details).
+:- mode type_has_solver_type_details((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred type_has_user_defined_equality_pred(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, parse_tree.prog_data.unify_compare).
+:- mode type_has_user_defined_equality_pred((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred type_is_atomic(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode type_is_atomic((builtin.in), (builtin.in)) is semidet.
+:- pred type_is_existq_type(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode type_is_existq_type((builtin.in), (builtin.in)) is semidet.
+:- pred type_is_float_eqv(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode type_is_float_eqv((builtin.in), (builtin.in)) is semidet.
+:- pred type_is_no_tag_type(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode type_is_no_tag_type((builtin.in), (builtin.in)) is semidet.
+:- pred type_is_no_tag_type(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, mdbcomp.sym_name.sym_name, parse_tree.prog_data.mer_type).
+:- mode type_is_no_tag_type((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is semidet.
+:- pred type_is_or_may_contain_solver_type(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode type_is_or_may_contain_solver_type((builtin.in), (builtin.in)) is semidet.
+:- pred type_is_solver_type(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode type_is_solver_type((builtin.in), (builtin.in)) is semidet.
+:- pred type_is_solver_type_from_type_table(hlds.hlds_data.type_table, parse_tree.prog_data.mer_type).
+:- mode type_is_solver_type_from_type_table((builtin.in), (builtin.in)) is semidet.
+:- pred type_is_solver_type_with_auto_init(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type).
+:- mode type_is_solver_type_with_auto_init((builtin.in), (builtin.in)) is semidet.
+:- func type_may_use_atomic_alloc(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type) = hlds.hlds_data.may_use_atomic_alloc.
+:- pred type_not_stored_in_region(parse_tree.prog_data.mer_type, hlds.hlds_module.module_info).
+:- mode type_not_stored_in_region((builtin.in), (builtin.in)) is semidet.
+:- pred type_to_type_defn(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, hlds.hlds_data.hlds_type_defn).
+:- mode type_to_type_defn((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred type_to_type_defn_body(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, hlds.hlds_data.hlds_type_body).
+:- mode type_to_type_defn_body((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred type_to_type_defn_body_from_type_table(hlds.hlds_data.type_table, parse_tree.prog_data.mer_type, hlds.hlds_data.hlds_type_body).
+:- mode type_to_type_defn_body_from_type_table((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred type_to_type_defn_from_type_table(hlds.hlds_data.type_table, parse_tree.prog_data.mer_type, hlds.hlds_data.hlds_type_defn).
+:- mode type_to_type_defn_from_type_table((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred update_type_may_use_atomic_alloc(hlds.hlds_module.module_info, parse_tree.prog_data.mer_type, hlds.hlds_data.may_use_atomic_alloc, hlds.hlds_data.may_use_atomic_alloc).
+:- mode update_type_may_use_atomic_alloc((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred var_is_or_may_contain_solver_type(hlds.hlds_module.module_info, hlds.vartypes.vartypes, parse_tree.prog_data.prog_var).
+:- mode var_is_or_may_contain_solver_type((builtin.in), (builtin.in), (builtin.in)) is semidet.

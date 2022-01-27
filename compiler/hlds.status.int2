@@ -1,0 +1,58 @@
+:- module (hlds.status).
+:- interface.
+:- import_module bool.
+:- import_module parse_tree.
+:- import_module (parse_tree.prog_item).
+:- type inst_status
+    --->    inst_status(hlds.status.old_import_status, hlds.status.new_instmode_status).
+:- type instance_status
+    --->    instance_status(hlds.status.old_import_status).
+:- type instmode_export
+    --->    instmode_export_nowhere 
+    ;       instmode_export_only_submodules 
+    ;       instmode_export_anywhere .
+:- type instmode_import
+    --->    instmode_import_plain(hlds.status.instmode_import_plain_locn)
+    ;       instmode_import_abstract 
+    ;       instmode_import_opt .
+:- type instmode_import_plain_locn
+    --->    instmode_import_plain_imp 
+    ;       instmode_import_plain_int 
+    ;       instmode_import_plain_ancestors_priv_int_file .
+:- type item_export
+    --->    item_export_nowhere 
+    ;       item_export_only_submodules 
+    ;       item_export_anywhere .
+:- type item_import
+    --->    item_import_int_concrete(parse_tree.prog_item.import_locn)
+    ;       item_import_int_abstract 
+    ;       item_import_opt_int .
+:- type item_mercury_status
+    --->    item_defined_in_this_module(hlds.status.item_export)
+    ;       item_defined_in_other_module(hlds.status.item_import).
+:- type maybe_opt_imported
+    --->    is_not_opt_imported 
+    ;       is_opt_imported .
+:- type mode_status
+    --->    mode_status(hlds.status.old_import_status, hlds.status.new_instmode_status).
+:- type new_instmode_status
+    --->    instmode_defined_in_this_module(hlds.status.instmode_export)
+    ;       instmode_defined_in_other_module(hlds.status.instmode_import).
+:- type old_import_status
+    --->    status_external(hlds.status.old_import_status)
+    ;       status_imported(parse_tree.prog_item.import_locn)
+    ;       status_opt_imported 
+    ;       status_abstract_imported 
+    ;       status_pseudo_imported 
+    ;       status_exported 
+    ;       status_opt_exported 
+    ;       status_abstract_exported 
+    ;       status_pseudo_exported 
+    ;       status_exported_to_submodules 
+    ;       status_local .
+:- type pred_status
+    --->    pred_status(hlds.status.old_import_status).
+:- type type_status
+    --->    type_status(hlds.status.old_import_status).
+:- type typeclass_status
+    --->    typeclass_status(hlds.status.old_import_status).
