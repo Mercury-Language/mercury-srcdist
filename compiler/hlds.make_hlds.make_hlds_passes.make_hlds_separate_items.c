@@ -1,0 +1,6466 @@
+/*
+** Automatically generated from `make_hlds_separate_items.m'
+** by the Mercury compiler,
+** version rotd-2021-08-14
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.make_hlds.make_hlds_passes.make_hlds_separate_items.
+// :- implementation.
+
+/*
+INIT mercury__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__init
+ENDINIT
+*/
+
+#include "hlds.make_hlds.make_hlds_passes.make_hlds_separate_items.mih"
+
+
+#include "analysis.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "edit_seq.mih"
+#include "enum.mih"
+#include "getopt.mih"
+#include "hlds.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "multi_map.mih"
+#include "one_or_more.mih"
+#include "one_or_more_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "transform_hlds.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.proc_requests.mih"
+#include "hlds.add_pred.mih"
+#include "hlds.add_special_pred.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.default_func_mode.mih"
+#include "hlds.goal_mode.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_class.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_cons.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_dependency_graph.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_inst_mode.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_promise.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.make_hlds.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.quantification.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.dependency_graph.mih"
+#include "libs.globals.mih"
+#include "libs.op_mode.mih"
+#include "libs.optimization_options.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.builtin_modules.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.convert_parse_tree.mih"
+#include "parse_tree.equiv_type.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.file_names.mih"
+#include "parse_tree.get_dependencies.mih"
+#include "parse_tree.item_util.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_data_used_modules.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_item_stats.mih"
+#include "parse_tree.prog_mode.mih"
+#include "parse_tree.prog_out.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.prog_type.mih"
+#include "parse_tree.prog_util.mih"
+#include "parse_tree.set_of_var.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_util.mih"
+#include "hlds.make_hlds.add_class.mih"
+#include "hlds.make_hlds.add_clause.mih"
+#include "hlds.make_hlds.add_foreign_proc.mih"
+#include "hlds.make_hlds.add_mode.mih"
+#include "hlds.make_hlds.add_mutable_aux_preds.mih"
+#include "hlds.make_hlds.add_pragma.mih"
+#include "hlds.make_hlds.add_solver.mih"
+#include "hlds.make_hlds.add_type.mih"
+#include "hlds.make_hlds.make_hlds_passes.mih"
+#include "hlds.make_hlds.make_hlds_warn.mih"
+#include "hlds.make_hlds.qual_info.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__pair__pti_pair_2__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__tree234__pti_tree234_2__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0;
+
+static const MR_FA_TypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__pti_cord_1__plain_pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__pti_list_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_c_java_csharp_1__pseudo_list__pti_list_1__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__pti_list_1__plain_parse_tree__prog_item__type_ctor_info_item_avail_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_type_spec_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_decl_pragma_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_termination_info_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_termination2_info_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_structure_sharing_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_structure_reuse_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_foreign_proc_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_impl_pragma_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_unused_args_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_generated_pragma_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_exceptions_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_trailing_info_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_mm_tabling_info_0;
+
+static const MR_VA_PseudoTypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____vpti_tuple_2__plain_hlds__status__type_ctor_info_item_mercury_status_0__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__pti_cord_1__pseudo___vpti_tuple_2__plain_hlds__status__type_ctor_info_item_mercury_status_0__pseudo_1;
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__pti_list_1__pseudo___vpti_tuple_2__plain_hlds__status__type_ctor_info_item_mercury_status_0__pseudo_1;
+
+static const MR_FA_TypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0;
+
+static const MR_PseudoTypeInfo hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__field_types_int_type_ctor_repns_0_0[2];
+
+static const MR_DuArgLocn hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__field_locns_int_type_ctor_repns_0_0[2];
+
+static const MR_DuFunctorDesc hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_functor_desc_int_type_ctor_repns_0_0;
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_stag_ordered_int_type_ctor_repns_0_0[1];
+
+static const MR_DuPtagLayout hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_ptag_ordered_int_type_ctor_repns_0[1];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_name_ordered_int_type_ctor_repns_0[1];
+
+static const MR_Integer hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__functor_number_map_int_type_ctor_repns_0[1];
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_avail_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_avail_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1parse_tree__prog_item__type_ctor_info_item_fim_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_defn_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_defn_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_defn_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_typeclass_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_typeclass_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_instance_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_instance_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_clause_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_clause_info_0;
+
+static const MR_VA_TypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____vti_tuple_2hlds__status__type_ctor_info_item_mercury_status_0parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1__vti_tuple_2hlds__status__type_ctor_info_item_mercury_status_0parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1parse_tree__prog_item__type_ctor_info_item_foreign_export_enum_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_decl_pragma_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_decl_pragma_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_decl_pragma_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_impl_pragma_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_impl_pragma_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_impl_pragma_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_generated_pragma_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_generated_pragma_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_promise_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_promise_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_initialise_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_initialise_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_finalise_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_finalise_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_mutable_info_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_mutable_info_0;
+
+static const MR_FA_TypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0;
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__ti_list_1pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0;
+
+static const MR_PseudoTypeInfo hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__field_types_item_accumulator_0_0[22];
+
+static const MR_ConstString hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__field_names_item_accumulator_0_0[22];
+
+static const MR_DuFunctorDesc hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_functor_desc_item_accumulator_0_0;
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_stag_ordered_item_accumulator_0_0[1];
+
+static const MR_DuPtagLayout hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_ptag_ordered_item_accumulator_0[1];
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_name_ordered_item_accumulator_0[1];
+
+static const MR_Integer hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__functor_number_map_item_accumulator_0[1];
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__IntroducedFrom__pred__acc_parse_tree_int3__905__1_2_p_0(
+  MR_Word ImpAvails_35,
+  MR_Word HeadVar__2_57);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__IntroducedFrom__pred__acc_parse_tree_int2__788__1_2_p_0(
+  MR_Word ImpAvails_44,
+  MR_Word HeadVar__2_76);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____module_int_type_ctor_repns_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____module_int_type_ctor_repns_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____item_accumulator_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____item_accumulator_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____int_type_ctor_repns_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____int_type_ctor_repns_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_cord_1_0(
+  MR_Word TypeInfo_for_T_6,
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_cord_1_0(
+  MR_Word TypeInfo_for_T_5,
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_cjcs_map_to_list_3_p_0(
+  MR_Word TypeInfo_for_V_14,
+  MR_Word CJCsE_4,
+  MR_Word STATE_VARIABLE_RevList_0_9,
+  MR_Word * STATE_VARIABLE_RevList_10);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_mm_tabling_pragma_1_f_0(
+  MR_Word X_3);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_trailing_pragma_1_f_0(
+  MR_Word X_3);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_exceptions_pragma_1_f_0(
+  MR_Word X_3);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_unused_args_pragma_1_f_0(
+  MR_Word X_3);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_foreign_proc_1_f_0(
+  MR_Word X_3);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_struct_reuse_pragma_1_f_0(
+  MR_Word X_3);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_struct_sharing_pragma_1_f_0(
+  MR_Word X_3);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_termination2_pragma_1_f_0(
+  MR_Word X_3);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_termination_pragma_1_f_0(
+  MR_Word X_3);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_type_spec_pragma_1_f_0(
+  MR_Word X_3);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_7(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_6(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_5(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0(
+  MR_Word ParseTreeTransOpt_4,
+  MR_Word STATE_VARIABLE_Acc_0_22,
+  MR_Word * STATE_VARIABLE_Acc_23);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_11(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_10(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_9(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_8(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_7(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_6(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_5(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0(
+  MR_Word ParseTreePlainOpt_4,
+  MR_Word STATE_VARIABLE_Acc_0_77,
+  MR_Word * STATE_VARIABLE_Acc_78);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_pred_marker_pragmas_5_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_DeclPragmas_0_2,
+  MR_Word * STATE_VARIABLE_DeclPragmas_3,
+  MR_Word STATE_VARIABLE_ImplPragmas_0_4,
+  MR_Word * STATE_VARIABLE_ImplPragmas_5);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_type_repn_spec_3_p_0(
+  MR_Word TypeRepnSpec_4,
+  MR_Word STATE_VARIABLE_Acc_0_11,
+  MR_Word * STATE_VARIABLE_Acc_12);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_int_for_opt_spec_3_p_0(
+  MR_Word IntForOptSpec_4,
+  MR_Word STATE_VARIABLE_Acc_0_12,
+  MR_Word * STATE_VARIABLE_Acc_13);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_indirect_int_spec_3_p_0(
+  MR_Word IndirectIntSpec_4,
+  MR_Word STATE_VARIABLE_Acc_0_10,
+  MR_Word * STATE_VARIABLE_Acc_11);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0_1(
+  MR_Box closure_arg);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0(
+  MR_Word ParseTreeInt2_5,
+  MR_Word ReadWhy2_6,
+  MR_Word STATE_VARIABLE_Acc_0_70,
+  MR_Word * STATE_VARIABLE_Acc_71);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_direct_int_spec_3_p_0(
+  MR_Word DirectIntSpec_4,
+  MR_Word STATE_VARIABLE_Acc_0_10,
+  MR_Word * STATE_VARIABLE_Acc_11);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int3_4_p_0_1(
+  MR_Box closure_arg);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int3_4_p_0(
+  MR_Word ParseTreeInt3_5,
+  MR_Word ReadWhy3_6,
+  MR_Word STATE_VARIABLE_Acc_0_51,
+  MR_Word * STATE_VARIABLE_Acc_52);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int1_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int1_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int1_4_p_0(
+  MR_Word ParseTreeInt1_5,
+  MR_Word ReadWhy1_6,
+  MR_Word STATE_VARIABLE_Acc_0_90,
+  MR_Word * STATE_VARIABLE_Acc_91);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ancestor_int_spec_3_p_0(
+  MR_Word AncestorIntSpec_4,
+  MR_Word STATE_VARIABLE_Acc_0_8,
+  MR_Word * STATE_VARIABLE_Acc_9);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int0_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int0_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int0_4_p_0(
+  MR_Word ParseTreeInt0_5,
+  MR_Word ReadWhy0_6,
+  MR_Word STATE_VARIABLE_Acc_0_106,
+  MR_Word * STATE_VARIABLE_Acc_107);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cjcs_map_to_list_1_f_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cjcs_map_to_list_1_f_0(
+  MR_Word TypeInfo_for__K_8,
+  MR_Word TypeInfo_for_V_9,
+  MR_Word Map_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_type_defns_abs_mer_for_7_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_Abs_0_2,
+  MR_Word * STATE_VARIABLE_Abs_3,
+  MR_Word STATE_VARIABLE_Mer_0_4,
+  MR_Word * STATE_VARIABLE_Mer_5,
+  MR_Word STATE_VARIABLE_For_0_6,
+  MR_Word * STATE_VARIABLE_For_7);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_type_repn_map_3_p_0(
+  MR_Word IntTypeRepns_4,
+  MR_Word STATE_VARIABLE_Cord_0_9,
+  MR_Word * STATE_VARIABLE_Cord_10);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_int_type_repn_map_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_ModuleMap_0_14,
+  MR_Word * STATE_VARIABLE_ModuleMap_15);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_9(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_8(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_7(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_6(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_5(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_module_src_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_module_src_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_module_src_3_p_0(
+  MR_Word ParseTreeModuleSrc_4,
+  MR_Word STATE_VARIABLE_Acc_0_111,
+  MR_Word * STATE_VARIABLE_Acc_112);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_tuple_list_4_p_0(
+  MR_Word TypeInfo_for_T_18,
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word STATE_VARIABLE_ImsItems_0_3,
+  MR_Word * STATE_VARIABLE_ImsItems_4);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0(
+  MR_Word TypeInfo_for_T_14,
+  MR_Word ItemMercuryStatus_5,
+  MR_Word Items_6,
+  MR_Word STATE_VARIABLE_ImsCord_0_11,
+  MR_Word * STATE_VARIABLE_ImsCord_12);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0(
+  MR_Word TypeInfo_for_T_14,
+  MR_Word SectionInfo_5,
+  MR_Word Items_6,
+  MR_Word STATE_VARIABLE_SecCord_0_11,
+  MR_Word * STATE_VARIABLE_SecCord_12);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_avails_4_p_0(
+  MR_Word ItemMercuryStatus_5,
+  MR_Word Avails_6,
+  MR_Word STATE_VARIABLE_AccAvails_0_11,
+  MR_Word * STATE_VARIABLE_AccAvails_12);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_cord_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_cord_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box wrapper_arg_4);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_item_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_item_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box wrapper_arg_4);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_list_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_list_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box wrapper_arg_4);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____int_type_ctor_repns_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____int_type_ctor_repns_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____item_accumulator_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____item_accumulator_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____module_int_type_ctor_repns_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____module_int_type_ctor_repns_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[56][2];
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_2[1][4];
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[39][3];
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[6][1];
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[12][5];
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_6[9][6];
+
+static /* final */ const MR_Integer hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_8[1][2];
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_9[1][7];
+
+
+/* sealed */ struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_7_0_s {
+  const MR_Integer hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_7_0__vct_7_f_0;
+};
+
+static /* final */ const struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_7_0_s hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_vector_common_7[8];
+
+/* sealed */ struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_10_0_s {
+  const MR_Word hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_10_0__vct_10_f_0;
+  const MR_Word hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_10_0__vct_10_f_1;
+};
+
+static /* final */ const struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_10_0_s hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_vector_common_10[9];
+
+/* sealed */ struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_11_0_s {
+  const MR_Word hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_11_0__vct_11_f_0;
+  const MR_Word hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_11_0__vct_11_f_1;
+};
+
+static /* final */ const struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_11_0_s hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_vector_common_11[4];
+
+
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[56][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_avail_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_defn_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_sec_sub_list_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_sec_sub_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_sec_sub_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_clause_info_0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_decl_pragma_0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_impl_pragma_0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[12]))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_generated_pragma_0))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_promise_info_0))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_initialise_info_0))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_finalise_info_0))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_sec_sub_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mutable_info_0))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_repn_info_general_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[2]))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_avail_0))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_type_spec_0))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_termination_info_0))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_termination2_info_0))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_structure_sharing_0))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_structure_reuse_0))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_proc_0))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_unused_args_0))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_exceptions_0))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_trailing_info_0))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_mm_tabling_info_0))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[0]))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[2]))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[3]))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[4]))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[5]))
+  },
+  /* row 38 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[6]))
+  },
+  /* row 39 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[7]))
+  },
+  /* row 40 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[8]))
+  },
+  /* row 41 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[9]))
+  },
+  /* row 42 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_2[0]))
+  },
+  /* row 43 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_export_enum_info_0))
+  },
+  /* row 44 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[11]))
+  },
+  /* row 45 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[13]))
+  },
+  /* row 46 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]))
+  },
+  /* row 47 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[15]))
+  },
+  /* row 48 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[16]))
+  },
+  /* row 49 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[17]))
+  },
+  /* row 50 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[18]))
+  },
+  /* row 51 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[0]))
+  },
+  /* row 52 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[0])),
+    (MR_Box) ((MR_Unsigned) 1U)
+  },
+  /* row 53 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[1])),
+    (MR_Box) ((MR_Unsigned) 1U)
+  },
+  /* row 54 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[2])),
+    (MR_Box) ((MR_Unsigned) 1U)
+  },
+  /* row 55 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(1), &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[5]))),
+    (MR_Box) ((MR_Unsigned) 0U)
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_2[1][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__status__hlds__status__type_ctor_info_item_mercury_status_0)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[39][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[19]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[19]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[0])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_module_src_3_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[0])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_module_src_3_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_6[0])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_6[1])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_6[2])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_3)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_6[3])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_4)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_6[4])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_5)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_6[5])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_6)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_6[6])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_7)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_6[7])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_8)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_6[8])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_9)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[0])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int0_4_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[0])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int0_4_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[0])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int1_4_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[0])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int1_4_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[0])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[0])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0_3)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[0])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[2])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[3])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_3)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[4])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_4)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[5])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_5)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[6])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_6)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[7])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_7)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[8])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_8)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[9])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_9)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[10])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_10)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[11])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_11)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[3])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_1)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[4])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_2)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[5])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_3)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[6])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_4)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[9])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_5)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[10])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_6)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 38 */
+  {
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[11])),
+    ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_7)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[6][1] = {
+  /* row 0 */
+  {
+    (MR_Box) ((MR_Unsigned) 2U)
+  },
+  /* row 1 */
+  {
+    (MR_Box) ((MR_Unsigned) 0U)
+  },
+  /* row 2 */
+  {
+    (MR_Box) ((MR_Unsigned) 1U)
+  },
+  /* row 3 */
+  {
+    (MR_Box) ((MR_Unsigned) 3U)
+  },
+  /* row 4 */
+  {
+    (MR_Box) ((MR_Unsigned) 4U)
+  },
+  /* row 5 */
+  {
+    ((MR_Box) ((MR_Unsigned) 4U))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[12][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__pti_list_1__plain_parse_tree__prog_item__type_ctor_info_item_avail_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__pti_list_1__plain_parse_tree__prog_item__type_ctor_info_item_avail_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_type_spec_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_decl_pragma_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_termination_info_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_decl_pragma_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_termination2_info_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_decl_pragma_0))
+  },
+  /* row 5 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_structure_sharing_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_decl_pragma_0))
+  },
+  /* row 6 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_structure_reuse_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_decl_pragma_0))
+  },
+  /* row 7 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_foreign_proc_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_impl_pragma_0))
+  },
+  /* row 8 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_unused_args_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_generated_pragma_0))
+  },
+  /* row 9 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_exceptions_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_generated_pragma_0))
+  },
+  /* row 10 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_trailing_info_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_generated_pragma_0))
+  },
+  /* row 11 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_mm_tabling_info_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_generated_pragma_0))
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_6[9][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_ancestor_int_spec_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_direct_int_spec_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_indirect_int_spec_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_parse_tree_plain_opt_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_parse_tree_trans_opt_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0))
+  },
+  /* row 5 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_int_for_opt_spec_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0))
+  },
+  /* row 6 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_type_repn_spec_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0))
+  },
+  /* row 7 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__pair__pti_pair_2__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__tree234__pti_tree234_2__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__tree234__pti_tree234_2__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0))
+  },
+  /* row 8 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__pti_cord_1__plain_pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__pti_cord_1__plain_pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0))
+  },
+};
+
+static /* final */ const MR_Integer hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_8[1][2] = {
+  /* row 0 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 33
+  },
+};
+
+static /* final */ const MR_Box hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_9[1][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_8[0])),
+    ((MR_Box) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_c_java_csharp_1__pseudo_list__pti_list_1__pseudo_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__pti_list_1__pseudo_1)),
+    ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__pti_list_1__pseudo_1))
+  },
+};
+
+
+static /* final */ const struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_7_0_s hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_vector_common_7[8] = {
+  /* row 0 */   {     (MR_Integer) 0 },
+  /* row 1 */   {     (MR_Integer) 3 },
+  /* row 2 */   {     (MR_Integer) 2 },
+  /* row 3 */   {     (MR_Integer) 1 },
+  /* row 4 */   {     (MR_Integer) 0 },
+  /* row 5 */   {     (MR_Integer) 3 },
+  /* row 6 */   {     (MR_Integer) 2 },
+  /* row 7 */   {     (MR_Integer) 1 },
+};
+
+static /* final */ const struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_10_0_s hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_vector_common_10[9] = {
+  /* row 0 */
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 1
+  },
+  /* row 1 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 1
+  },
+  /* row 2 */
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 1
+  },
+  /* row 3 */
+  {
+    (MR_Integer) 2,
+    (MR_Integer) 0
+  },
+  /* row 4 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0
+  },
+  /* row 5 */
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  /* row 6 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 1
+  },
+  /* row 7 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0
+  },
+  /* row 8 */
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+};
+
+static /* final */ const struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_11_0_s hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_vector_common_11[4] = {
+  /* row 0 */
+  {
+    (MR_Word) (MR_mkword(MR_mktag(1), &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[2])),
+    (MR_Word) ((MR_Unsigned) 0U)
+  },
+  /* row 1 */
+  {
+    (MR_Word) (MR_mkword(MR_mktag(1), &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[1])),
+    (MR_Word) ((MR_Unsigned) 0U)
+  },
+  /* row 2 */
+  {
+    (MR_Word) ((MR_Unsigned) 0U),
+    (MR_Word) ((MR_Unsigned) 0U)
+  },
+  /* row 3 */
+  {
+    (MR_Word) ((MR_Unsigned) 4U),
+    (MR_Word) ((MR_Unsigned) 4U)
+  },
+};
+
+
+#include "array.mh"
+#include "bitmap.mh"
+#include "builtin.mh"
+#include "int.mh"
+#include "io.mh"
+#include "mdbcomp.mh"
+#include "private_builtin.mh"
+#include "string.mh"
+#include "time.mh"
+#include "libs.globals.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__pair__pti_pair_2__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0),
+    (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__tree234__pti_tree234_2__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0__plain_hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0),
+    (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_repn_info_general_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__pti_cord_1__plain_pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__pair__ti_pair_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__pti_list_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) ((MR_Integer) 1)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_c_java_csharp_1__pseudo_list__pti_list_1__pseudo_1 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_c_java_csharp_1,
+  {
+    (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__pti_list_1__pseudo_1)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__pti_list_1__plain_parse_tree__prog_item__type_ctor_info_item_avail_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_avail_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_type_spec_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_type_spec_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_decl_pragma_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_decl_pragma_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_termination_info_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_termination_info_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_termination2_info_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_termination2_info_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_structure_sharing_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_structure_sharing_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_structure_reuse_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_structure_reuse_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_foreign_proc_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_foreign_proc_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_impl_pragma_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_impl_pragma_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_unused_args_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_unused_args_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_generated_pragma_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_generated_pragma_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_exceptions_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_exceptions_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_trailing_info_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_trailing_info_0)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__pti_item_pragma_info_1__plain_parse_tree__prog_item__type_ctor_info_pragma_info_mm_tabling_info_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_PseudoTypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_pragma_info_mm_tabling_info_0)
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____vpti_tuple_2__plain_hlds__status__type_ctor_info_item_mercury_status_0__pseudo_1 = {
+  &mercury__builtin__builtin__type_ctor_info_tuple_0,
+  (MR_Integer) 2,
+  {
+    (MR_PseudoTypeInfo) (&hlds__status__hlds__status__type_ctor_info_item_mercury_status_0),
+    (MR_PseudoTypeInfo) ((MR_Integer) 1)
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__pti_cord_1__pseudo___vpti_tuple_2__plain_hlds__status__type_ctor_info_item_mercury_status_0__pseudo_1 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____vpti_tuple_2__plain_hlds__status__type_ctor_info_item_mercury_status_0__pseudo_1)
+  }
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_ims_tuple_cord_1 = {
+  (MR_Integer) 1,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_cord_1_0_10001)),
+  ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_cord_1_0_10001)),
+  (MR_String) "hlds.make_hlds.make_hlds_passes.make_hlds_separate_items",
+  (MR_String) "ims_tuple_cord",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__pti_cord_1__pseudo___vpti_tuple_2__plain_hlds__status__type_ctor_info_item_mercury_status_0__pseudo_1) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_ims_tuple_item_1 = {
+  (MR_Integer) 1,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_item_1_0_10001)),
+  ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_item_1_0_10001)),
+  (MR_String) "hlds.make_hlds.make_hlds_passes.make_hlds_separate_items",
+  (MR_String) "ims_tuple_item",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____vpti_tuple_2__plain_hlds__status__type_ctor_info_item_mercury_status_0__pseudo_1) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__pti_list_1__pseudo___vpti_tuple_2__plain_hlds__status__type_ctor_info_item_mercury_status_0__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____vpti_tuple_2__plain_hlds__status__type_ctor_info_item_mercury_status_0__pseudo_1)
+  }
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_ims_tuple_list_1 = {
+  (MR_Integer) 1,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_list_1_0_10001)),
+  ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_list_1_0_10001)),
+  (MR_String) "hlds.make_hlds.make_hlds_passes.make_hlds_separate_items",
+  (MR_String) "ims_tuple_list",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__pti_list_1__pseudo___vpti_tuple_2__plain_hlds__status__type_ctor_info_item_mercury_status_0__pseudo_1) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static const MR_FA_TypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0),
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0)
+  }
+};
+
+static const MR_PseudoTypeInfo hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__field_types_int_type_ctor_repns_0_0[2] = {
+  (MR_PseudoTypeInfo) (&parse_tree__file_kind__parse_tree__file_kind__type_ctor_info_int_file_kind_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__tree234__ti_tree234_2parse_tree__prog_data__type_ctor_info_type_ctor_0parse_tree__prog_item__ti_item_type_repn_info_general_1parse_tree__prog_item__type_ctor_info_type_ctor_repn_info_0)
+};
+
+static const MR_DuArgLocn hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__field_locns_int_type_ctor_repns_0_0[2] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  }
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_functor_desc_int_type_ctor_repns_0_0 = {
+  (MR_String) "int_type_ctor_repns",
+  INT16_C(2),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__field_types_int_type_ctor_repns_0_0,
+  NULL,
+  hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__field_locns_int_type_ctor_repns_0_0,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_stag_ordered_int_type_ctor_repns_0_0[1] = {
+  &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_functor_desc_int_type_ctor_repns_0_0
+};
+
+static const MR_DuPtagLayout hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_ptag_ordered_int_type_ctor_repns_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_stag_ordered_int_type_ctor_repns_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_name_ordered_int_type_ctor_repns_0[1] = {
+  &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_functor_desc_int_type_ctor_repns_0_0
+};
+
+static const MR_Integer hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__functor_number_map_int_type_ctor_repns_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____int_type_ctor_repns_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____int_type_ctor_repns_0_0_10001)),
+  (MR_String) "hlds.make_hlds.make_hlds_passes.make_hlds_separate_items",
+  (MR_String) "int_type_ctor_repns",
+  {     hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_name_ordered_int_type_ctor_repns_0 },
+  {     hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_ptag_ordered_int_type_ctor_repns_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__functor_number_map_int_type_ctor_repns_0,
+
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_avail_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_avail_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_avail_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_avail_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1parse_tree__prog_item__type_ctor_info_item_fim_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_defn_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_type_defn_info_general_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_defn_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_defn_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_sec_sub_list_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_defn_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_defn_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_defn_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_typeclass_info_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_sec_sub_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_typeclass_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_typeclass_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_instance_info_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_instance_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_instance_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_sec_sub_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_clause_info_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_clause_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_clause_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_clause_info_0)
+  }
+};
+
+static const MR_VA_TypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____vti_tuple_2hlds__status__type_ctor_info_item_mercury_status_0parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0 = {
+  &mercury__builtin__builtin__type_ctor_info_tuple_0,
+  (MR_Integer) 2,
+  {
+    (MR_TypeInfo) (&hlds__status__hlds__status__type_ctor_info_item_mercury_status_0),
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1__vti_tuple_2hlds__status__type_ctor_info_item_mercury_status_0parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____vti_tuple_2hlds__status__type_ctor_info_item_mercury_status_0parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1parse_tree__prog_item__type_ctor_info_item_foreign_export_enum_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_export_enum_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_decl_pragma_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_decl_pragma_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_decl_pragma_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_decl_pragma_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_decl_pragma_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_decl_pragma_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_impl_pragma_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_impl_pragma_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_impl_pragma_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_impl_pragma_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_impl_pragma_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_impl_pragma_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_generated_pragma_0 = {
+  &parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pragma_info_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_generated_pragma_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_generated_pragma_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_generated_pragma_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_promise_info_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_promise_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_promise_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_promise_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_initialise_info_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_initialise_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_initialise_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_initialise_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_finalise_info_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_finalise_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_finalise_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_finalise_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_mutable_info_0 = {
+  &hlds__make_hlds__hlds__make_hlds__type_ctor_info_sec_sub_list_1,
+  {
+    (MR_TypeInfo) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mutable_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_mutable_info_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_mutable_info_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0),
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0)
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__ti_list_1pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0)
+  }
+};
+
+static const MR_PseudoTypeInfo hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__field_types_item_accumulator_0_0[22] = {
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_avail_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1parse_tree__prog_item__type_ctor_info_item_fim_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_defn_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_defn_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__ti_item_type_defn_info_general_1parse_tree__prog_data__type_ctor_info_type_defn_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_typeclass_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_instance_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_clause_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1__vti_tuple_2hlds__status__type_ctor_info_item_mercury_status_0parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1parse_tree__prog_item__type_ctor_info_item_foreign_export_enum_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_decl_pragma_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_impl_pragma_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1parse_tree__prog_item__ti_item_pragma_info_1parse_tree__prog_item__type_ctor_info_generated_pragma_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_promise_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_initialise_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_ims_sub_list_1parse_tree__prog_item__type_ctor_info_item_finalise_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cord__ti_cord_1hlds__make_hlds__ti_sec_sub_list_1parse_tree__prog_item__type_ctor_info_item_mutable_info_0),
+  (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__ti_list_1pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0)
+};
+
+static const MR_ConstString hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__field_names_item_accumulator_0_0[22] = {
+  (MR_String) "ia_avails",
+  (MR_String) "ia_fims",
+  (MR_String) "ia_type_defns_abs",
+  (MR_String) "ia_type_defns_mer",
+  (MR_String) "ia_type_defns_for",
+  (MR_String) "ia_inst_defns",
+  (MR_String) "ia_mode_defns",
+  (MR_String) "ia_typeclasses",
+  (MR_String) "ia_instances",
+  (MR_String) "ia_pred_decls",
+  (MR_String) "ia_mode_decls",
+  (MR_String) "ia_clauses",
+  (MR_String) "ia_foreign_enums",
+  (MR_String) "ia_fees",
+  (MR_String) "ia_decl_pragmas",
+  (MR_String) "ia_impl_pragmas",
+  (MR_String) "ia_gen_pragmas",
+  (MR_String) "ia_promises",
+  (MR_String) "ia_initialises",
+  (MR_String) "ia_finalises",
+  (MR_String) "ia_mutables",
+  (MR_String) "ia_type_repns"
+};
+
+static const MR_DuFunctorDesc hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_functor_desc_item_accumulator_0_0 = {
+  (MR_String) "item_accumulator",
+  INT16_C(22),
+  UINT16_C(0),
+  MR_SECTAG_NONE,
+  UINT8_C(0),
+  (MR_Integer) -1,
+  INT32_C(0),
+  hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__field_types_item_accumulator_0_0,
+  hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__field_names_item_accumulator_0_0,
+  NULL,
+  NULL,
+  MR_FUNCTOR_SUBTYPE_NONE,
+  UINT8_C(0)
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_stag_ordered_item_accumulator_0_0[1] = {
+  &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_functor_desc_item_accumulator_0_0
+};
+
+static const MR_DuPtagLayout hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_ptag_ordered_item_accumulator_0[1] = {
+  {
+    UINT32_C(1),
+    MR_SECTAG_NONE,
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_stag_ordered_item_accumulator_0_0,
+    INT8_C(-1),
+    UINT8_C(0),
+    UINT8_C(1)
+  }
+};
+
+static const MR_DuFunctorDescPtr hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_name_ordered_item_accumulator_0[1] = {
+  &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_functor_desc_item_accumulator_0_0
+};
+
+static const MR_Integer hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__functor_number_map_item_accumulator_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(1),
+  MR_TYPECTOR_REP_DU,
+  ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____item_accumulator_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____item_accumulator_0_0_10001)),
+  (MR_String) "hlds.make_hlds.make_hlds_passes.make_hlds_separate_items",
+  (MR_String) "item_accumulator",
+  {     hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_name_ordered_item_accumulator_0 },
+  {     hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__du_ptag_ordered_item_accumulator_0 },
+  (MR_Integer) 1,
+  UINT16_C(12),
+  hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__functor_number_map_item_accumulator_0,
+
+};
+
+const MR_TypeCtorInfo_Struct hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_module_int_type_ctor_repns_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____module_int_type_ctor_repns_0_0_10001)),
+  ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____module_int_type_ctor_repns_0_0_10001)),
+  (MR_String) "hlds.make_hlds.make_hlds_passes.make_hlds_separate_items",
+  (MR_String) "module_int_type_ctor_repns",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__list__ti_list_1pair__ti_pair_2mdbcomp__sym_name__type_ctor_info_sym_name_0hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0) },
+  (MR_Integer) -1,
+  UINT16_C(0),
+  NULL,
+
+};
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__IntroducedFrom__pred__acc_parse_tree_int3__905__1_2_p_0(
+  MR_Word ImpAvails_35,
+  MR_Word HeadVar__2_57)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[21]), ((MR_Box) (ImpAvails_35)), ((MR_Box) (HeadVar__2_57)));
+    return succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__IntroducedFrom__pred__acc_parse_tree_int2__788__1_2_p_0(
+  MR_Word ImpAvails_44,
+  MR_Word HeadVar__2_76)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[21]), ((MR_Box) (ImpAvails_44)), ((MR_Box) (HeadVar__2_76)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____module_int_type_ctor_repns_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+    MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+    mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[51]), HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____module_int_type_ctor_repns_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+    MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+    succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[51]), ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____item_accumulator_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_69 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_70 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_69 == CastY_70);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))));
+      MR_Word ArgY1_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0))));
+      MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+      MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1))));
+      MR_Word ArgX3_10 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2))));
+      MR_Word ArgY3_11 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 2))));
+      MR_Word ArgX4_13 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3))));
+      MR_Word ArgY4_14 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 3))));
+      MR_Word ArgX5_16 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 4))));
+      MR_Word ArgY5_17 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 4))));
+      MR_Word ArgX6_19 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 5))));
+      MR_Word ArgY6_20 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 5))));
+      MR_Word ArgX7_22 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 6))));
+      MR_Word ArgY7_23 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 6))));
+      MR_Word ArgX8_25 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 7))));
+      MR_Word ArgY8_26 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 7))));
+      MR_Word ArgX9_28 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 8))));
+      MR_Word ArgY9_29 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 8))));
+      MR_Word ArgX10_31 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 9))));
+      MR_Word ArgY10_32 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 9))));
+      MR_Word ArgX11_34 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 10))));
+      MR_Word ArgY11_35 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 10))));
+      MR_Word ArgX12_37 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 11))));
+      MR_Word ArgY12_38 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 11))));
+      MR_Word ArgX13_40 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 12))));
+      MR_Word ArgY13_41 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 12))));
+      MR_Word ArgX14_43 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 13))));
+      MR_Word ArgY14_44 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 13))));
+      MR_Word ArgX15_46 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 14))));
+      MR_Word ArgY15_47 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 14))));
+      MR_Word ArgX16_49 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 15))));
+      MR_Word ArgY16_50 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 15))));
+      MR_Word ArgX17_52 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 16))));
+      MR_Word ArgY17_53 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 16))));
+      MR_Word ArgX18_55 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 17))));
+      MR_Word ArgY18_56 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 17))));
+      MR_Word ArgX19_58 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 18))));
+      MR_Word ArgY19_59 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 18))));
+      MR_Word ArgX20_61 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 19))));
+      MR_Word ArgY20_62 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 19))));
+      MR_Word ArgX21_64 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 20))));
+      MR_Word ArgY21_65 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 20))));
+      MR_Word ArgX22_67 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 21))));
+      MR_Word ArgY22_68 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 21))));
+      MR_Word SubResult1_6;
+
+      mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[32]), &SubResult1_6, ((MR_Box) (ArgX1_4)), ((MR_Box) (ArgY1_5)));
+      succeeded = (SubResult1_6 != (MR_Integer) 0);
+      if (succeeded)
+        *HeadVar__1_1 = SubResult1_6;
+      else
+      {
+        MR_Word SubResult2_9;
+
+        mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[33]), &SubResult2_9, ((MR_Box) (ArgX2_7)), ((MR_Box) (ArgY2_8)));
+        succeeded = (SubResult2_9 != (MR_Integer) 0);
+        if (succeeded)
+          *HeadVar__1_1 = SubResult2_9;
+        else
+        {
+          MR_Word SubResult3_12;
+
+          mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[34]), &SubResult3_12, ((MR_Box) (ArgX3_10)), ((MR_Box) (ArgY3_11)));
+          succeeded = (SubResult3_12 != (MR_Integer) 0);
+          if (succeeded)
+            *HeadVar__1_1 = SubResult3_12;
+          else
+          {
+            MR_Word SubResult4_15;
+
+            mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[34]), &SubResult4_15, ((MR_Box) (ArgX4_13)), ((MR_Box) (ArgY4_14)));
+            succeeded = (SubResult4_15 != (MR_Integer) 0);
+            if (succeeded)
+              *HeadVar__1_1 = SubResult4_15;
+            else
+            {
+              MR_Word SubResult5_18;
+
+              mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[34]), &SubResult5_18, ((MR_Box) (ArgX5_16)), ((MR_Box) (ArgY5_17)));
+              succeeded = (SubResult5_18 != (MR_Integer) 0);
+              if (succeeded)
+                *HeadVar__1_1 = SubResult5_18;
+              else
+              {
+                MR_Word SubResult6_21;
+
+                mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[35]), &SubResult6_21, ((MR_Box) (ArgX6_19)), ((MR_Box) (ArgY6_20)));
+                succeeded = (SubResult6_21 != (MR_Integer) 0);
+                if (succeeded)
+                  *HeadVar__1_1 = SubResult6_21;
+                else
+                {
+                  MR_Word SubResult7_24;
+
+                  mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[36]), &SubResult7_24, ((MR_Box) (ArgX7_22)), ((MR_Box) (ArgY7_23)));
+                  succeeded = (SubResult7_24 != (MR_Integer) 0);
+                  if (succeeded)
+                    *HeadVar__1_1 = SubResult7_24;
+                  else
+                  {
+                    MR_Word SubResult8_27;
+
+                    mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[37]), &SubResult8_27, ((MR_Box) (ArgX8_25)), ((MR_Box) (ArgY8_26)));
+                    succeeded = (SubResult8_27 != (MR_Integer) 0);
+                    if (succeeded)
+                      *HeadVar__1_1 = SubResult8_27;
+                    else
+                    {
+                      MR_Word SubResult9_30;
+
+                      mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[38]), &SubResult9_30, ((MR_Box) (ArgX9_28)), ((MR_Box) (ArgY9_29)));
+                      succeeded = (SubResult9_30 != (MR_Integer) 0);
+                      if (succeeded)
+                        *HeadVar__1_1 = SubResult9_30;
+                      else
+                      {
+                        MR_Word SubResult10_33;
+
+                        mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[39]), &SubResult10_33, ((MR_Box) (ArgX10_31)), ((MR_Box) (ArgY10_32)));
+                        succeeded = (SubResult10_33 != (MR_Integer) 0);
+                        if (succeeded)
+                          *HeadVar__1_1 = SubResult10_33;
+                        else
+                        {
+                          MR_Word SubResult11_36;
+
+                          mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[40]), &SubResult11_36, ((MR_Box) (ArgX11_34)), ((MR_Box) (ArgY11_35)));
+                          succeeded = (SubResult11_36 != (MR_Integer) 0);
+                          if (succeeded)
+                            *HeadVar__1_1 = SubResult11_36;
+                          else
+                          {
+                            MR_Word SubResult12_39;
+
+                            mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[41]), &SubResult12_39, ((MR_Box) (ArgX12_37)), ((MR_Box) (ArgY12_38)));
+                            succeeded = (SubResult12_39 != (MR_Integer) 0);
+                            if (succeeded)
+                              *HeadVar__1_1 = SubResult12_39;
+                            else
+                            {
+                              MR_Word SubResult13_42;
+
+                              mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[42]), &SubResult13_42, ((MR_Box) (ArgX13_40)), ((MR_Box) (ArgY13_41)));
+                              succeeded = (SubResult13_42 != (MR_Integer) 0);
+                              if (succeeded)
+                                *HeadVar__1_1 = SubResult13_42;
+                              else
+                              {
+                                MR_Word SubResult14_45;
+
+                                mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[43]), &SubResult14_45, ((MR_Box) (ArgX14_43)), ((MR_Box) (ArgY14_44)));
+                                succeeded = (SubResult14_45 != (MR_Integer) 0);
+                                if (succeeded)
+                                  *HeadVar__1_1 = SubResult14_45;
+                                else
+                                {
+                                  MR_Word SubResult15_48;
+
+                                  mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[44]), &SubResult15_48, ((MR_Box) (ArgX15_46)), ((MR_Box) (ArgY15_47)));
+                                  succeeded = (SubResult15_48 != (MR_Integer) 0);
+                                  if (succeeded)
+                                    *HeadVar__1_1 = SubResult15_48;
+                                  else
+                                  {
+                                    MR_Word SubResult16_51;
+
+                                    mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[45]), &SubResult16_51, ((MR_Box) (ArgX16_49)), ((MR_Box) (ArgY16_50)));
+                                    succeeded = (SubResult16_51 != (MR_Integer) 0);
+                                    if (succeeded)
+                                      *HeadVar__1_1 = SubResult16_51;
+                                    else
+                                    {
+                                      MR_Word SubResult17_54;
+
+                                      mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[46]), &SubResult17_54, ((MR_Box) (ArgX17_52)), ((MR_Box) (ArgY17_53)));
+                                      succeeded = (SubResult17_54 != (MR_Integer) 0);
+                                      if (succeeded)
+                                        *HeadVar__1_1 = SubResult17_54;
+                                      else
+                                      {
+                                        MR_Word SubResult18_57;
+
+                                        mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[47]), &SubResult18_57, ((MR_Box) (ArgX18_55)), ((MR_Box) (ArgY18_56)));
+                                        succeeded = (SubResult18_57 != (MR_Integer) 0);
+                                        if (succeeded)
+                                          *HeadVar__1_1 = SubResult18_57;
+                                        else
+                                        {
+                                          MR_Word SubResult19_60;
+
+                                          mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[48]), &SubResult19_60, ((MR_Box) (ArgX19_58)), ((MR_Box) (ArgY19_59)));
+                                          succeeded = (SubResult19_60 != (MR_Integer) 0);
+                                          if (succeeded)
+                                            *HeadVar__1_1 = SubResult19_60;
+                                          else
+                                          {
+                                            MR_Word SubResult20_63;
+
+                                            mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[49]), &SubResult20_63, ((MR_Box) (ArgX20_61)), ((MR_Box) (ArgY20_62)));
+                                            succeeded = (SubResult20_63 != (MR_Integer) 0);
+                                            if (succeeded)
+                                              *HeadVar__1_1 = SubResult20_63;
+                                            else
+                                            {
+                                              MR_Word SubResult21_66;
+
+                                              mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[50]), &SubResult21_66, ((MR_Box) (ArgX21_64)), ((MR_Box) (ArgY21_65)));
+                                              succeeded = (SubResult21_66 != (MR_Integer) 0);
+                                              if (succeeded)
+                                                *HeadVar__1_1 = SubResult21_66;
+                                              else
+                                                mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[51]), HeadVar__1_1, ((MR_Box) (ArgX22_67)), ((MR_Box) (ArgY22_68)));
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____item_accumulator_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_47 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_48 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_47 == CastY_48);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_50_50;
+      MR_Word TypeInfo_51_51;
+      MR_Word TypeInfo_52_52;
+      MR_Word TypeInfo_53_53;
+      MR_Word TypeInfo_54_54;
+      MR_Word TypeInfo_55_55;
+      MR_Word TypeInfo_56_56;
+      MR_Word TypeInfo_57_57;
+      MR_Word TypeInfo_58_58;
+      MR_Word TypeInfo_59_59;
+      MR_Word TypeInfo_60_60;
+      MR_Word TypeInfo_61_61;
+      MR_Word TypeInfo_62_62;
+      MR_Word TypeInfo_63_63;
+      MR_Word TypeInfo_64_64;
+      MR_Word TypeInfo_65_65;
+      MR_Word TypeInfo_66_66;
+      MR_Word TypeInfo_67_67;
+      MR_Word TypeInfo_68_68;
+      MR_Word TypeInfo_69_69;
+      MR_Word TypeInfo_70_70;
+      MR_Word ArgX1_3 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))));
+      MR_Word ArgY1_4 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))));
+      MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+      MR_Word ArgX3_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 2))));
+      MR_Word ArgY3_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 2))));
+      MR_Word ArgX4_9 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 3))));
+      MR_Word ArgY4_10 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 3))));
+      MR_Word ArgX5_11 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 4))));
+      MR_Word ArgY5_12 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 4))));
+      MR_Word ArgX6_13 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 5))));
+      MR_Word ArgY6_14 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 5))));
+      MR_Word ArgX7_15 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 6))));
+      MR_Word ArgY7_16 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 6))));
+      MR_Word ArgX8_17 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 7))));
+      MR_Word ArgY8_18 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 7))));
+      MR_Word ArgX9_19 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 8))));
+      MR_Word ArgY9_20 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 8))));
+      MR_Word ArgX10_21 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 9))));
+      MR_Word ArgY10_22 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 9))));
+      MR_Word ArgX11_23 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 10))));
+      MR_Word ArgY11_24 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 10))));
+      MR_Word ArgX12_25 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 11))));
+      MR_Word ArgY12_26 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 11))));
+      MR_Word ArgX13_27 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 12))));
+      MR_Word ArgY13_28 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 12))));
+      MR_Word ArgX14_29 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 13))));
+      MR_Word ArgY14_30 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 13))));
+      MR_Word ArgX15_31 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 14))));
+      MR_Word ArgY15_32 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 14))));
+      MR_Word ArgX16_33 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 15))));
+      MR_Word ArgY16_34 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 15))));
+      MR_Word ArgX17_35 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 16))));
+      MR_Word ArgY17_36 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 16))));
+      MR_Word ArgX18_37 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 17))));
+      MR_Word ArgY18_38 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 17))));
+      MR_Word ArgX19_39 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 18))));
+      MR_Word ArgY19_40 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 18))));
+      MR_Word ArgX20_41 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 19))));
+      MR_Word ArgY20_42 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 19))));
+      MR_Word ArgX21_43 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 20))));
+      MR_Word ArgY21_44 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 20))));
+      MR_Word ArgX22_45 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 21))));
+      MR_Word ArgY22_46 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 21))));
+
+      succeeded = mercury__builtin__unify_2_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[32]), ((MR_Box) (ArgX1_3)), ((MR_Box) (ArgY1_4)));
+      if (succeeded)
+      {
+        TypeInfo_50_50 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[33]);
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_50_50, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+        if (succeeded)
+        {
+          TypeInfo_51_51 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[34]);
+          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_51_51, ((MR_Box) (ArgX3_7)), ((MR_Box) (ArgY3_8)));
+          if (succeeded)
+          {
+            TypeInfo_52_52 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[34]);
+            succeeded = mercury__builtin__unify_2_p_0(TypeInfo_52_52, ((MR_Box) (ArgX4_9)), ((MR_Box) (ArgY4_10)));
+            if (succeeded)
+            {
+              TypeInfo_53_53 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[34]);
+              succeeded = mercury__builtin__unify_2_p_0(TypeInfo_53_53, ((MR_Box) (ArgX5_11)), ((MR_Box) (ArgY5_12)));
+              if (succeeded)
+              {
+                TypeInfo_54_54 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[35]);
+                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_54_54, ((MR_Box) (ArgX6_13)), ((MR_Box) (ArgY6_14)));
+                if (succeeded)
+                {
+                  TypeInfo_55_55 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[36]);
+                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_55_55, ((MR_Box) (ArgX7_15)), ((MR_Box) (ArgY7_16)));
+                  if (succeeded)
+                  {
+                    TypeInfo_56_56 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[37]);
+                    succeeded = mercury__builtin__unify_2_p_0(TypeInfo_56_56, ((MR_Box) (ArgX8_17)), ((MR_Box) (ArgY8_18)));
+                    if (succeeded)
+                    {
+                      TypeInfo_57_57 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[38]);
+                      succeeded = mercury__builtin__unify_2_p_0(TypeInfo_57_57, ((MR_Box) (ArgX9_19)), ((MR_Box) (ArgY9_20)));
+                      if (succeeded)
+                      {
+                        TypeInfo_58_58 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[39]);
+                        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_58_58, ((MR_Box) (ArgX10_21)), ((MR_Box) (ArgY10_22)));
+                        if (succeeded)
+                        {
+                          TypeInfo_59_59 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[40]);
+                          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_59_59, ((MR_Box) (ArgX11_23)), ((MR_Box) (ArgY11_24)));
+                          if (succeeded)
+                          {
+                            TypeInfo_60_60 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[41]);
+                            succeeded = mercury__builtin__unify_2_p_0(TypeInfo_60_60, ((MR_Box) (ArgX12_25)), ((MR_Box) (ArgY12_26)));
+                            if (succeeded)
+                            {
+                              TypeInfo_61_61 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[42]);
+                              succeeded = mercury__builtin__unify_2_p_0(TypeInfo_61_61, ((MR_Box) (ArgX13_27)), ((MR_Box) (ArgY13_28)));
+                              if (succeeded)
+                              {
+                                TypeInfo_62_62 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[43]);
+                                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_62_62, ((MR_Box) (ArgX14_29)), ((MR_Box) (ArgY14_30)));
+                                if (succeeded)
+                                {
+                                  TypeInfo_63_63 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[44]);
+                                  succeeded = mercury__builtin__unify_2_p_0(TypeInfo_63_63, ((MR_Box) (ArgX15_31)), ((MR_Box) (ArgY15_32)));
+                                  if (succeeded)
+                                  {
+                                    TypeInfo_64_64 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[45]);
+                                    succeeded = mercury__builtin__unify_2_p_0(TypeInfo_64_64, ((MR_Box) (ArgX16_33)), ((MR_Box) (ArgY16_34)));
+                                    if (succeeded)
+                                    {
+                                      TypeInfo_65_65 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[46]);
+                                      succeeded = mercury__builtin__unify_2_p_0(TypeInfo_65_65, ((MR_Box) (ArgX17_35)), ((MR_Box) (ArgY17_36)));
+                                      if (succeeded)
+                                      {
+                                        TypeInfo_66_66 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[47]);
+                                        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_66_66, ((MR_Box) (ArgX18_37)), ((MR_Box) (ArgY18_38)));
+                                        if (succeeded)
+                                        {
+                                          TypeInfo_67_67 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[48]);
+                                          succeeded = mercury__builtin__unify_2_p_0(TypeInfo_67_67, ((MR_Box) (ArgX19_39)), ((MR_Box) (ArgY19_40)));
+                                          if (succeeded)
+                                          {
+                                            TypeInfo_68_68 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[49]);
+                                            succeeded = mercury__builtin__unify_2_p_0(TypeInfo_68_68, ((MR_Box) (ArgX20_41)), ((MR_Box) (ArgY20_42)));
+                                            if (succeeded)
+                                            {
+                                              TypeInfo_69_69 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[50]);
+                                              succeeded = mercury__builtin__unify_2_p_0(TypeInfo_69_69, ((MR_Box) (ArgX21_43)), ((MR_Box) (ArgY21_44)));
+                                              if (succeeded)
+                                              {
+                                                TypeInfo_70_70 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[51]);
+                                                succeeded = mercury__builtin__unify_2_p_0(TypeInfo_70_70, ((MR_Box) (ArgX22_45)), ((MR_Box) (ArgY22_46)));
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____int_type_ctor_repns_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_9 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer CastY_10 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (CastX_9 == CastY_10);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 0;
+    else
+    {
+      MR_Word ArgX1_4 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+      MR_Word ArgY1_5 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 0))) & (MR_Integer) 3);
+      MR_Word ArgX2_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+      MR_Word ArgY2_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__3_3, (MR_Integer) 1))));
+      MR_Word SubResult1_6;
+      MR_Integer Var_13 = (MR_Integer) (ArgX1_4);
+      MR_Integer Var_14 = (MR_Integer) (ArgY1_5);
+
+      succeeded = (Var_13 < Var_14);
+      if (succeeded)
+      {
+        SubResult1_6 = (MR_Integer) 1;
+        succeeded = MR_TRUE;
+      }
+      else
+      {
+        succeeded = (Var_13 > Var_14);
+        if (succeeded)
+        {
+          SubResult1_6 = (MR_Integer) 2;
+          succeeded = MR_TRUE;
+        }
+        else
+        {
+          succeeded = MR_TRUE;
+          succeeded = !(succeeded);
+          if (succeeded)
+          {
+            SubResult1_6 = (MR_Integer) 0;
+            succeeded = MR_TRUE;
+          }
+        }
+      }
+      if (succeeded)
+        *HeadVar__1_1 = SubResult1_6;
+      else
+        mercury__builtin__compare_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[3]), HeadVar__1_1, ((MR_Box) (ArgX2_7)), ((MR_Box) (ArgY2_8)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____int_type_ctor_repns_0_0(
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer CastX_7 = (MR_Integer) (HeadVar__1_1);
+    MR_Integer CastY_8 = (MR_Integer) (HeadVar__2_2);
+
+    succeeded = (CastX_7 == CastY_8);
+    if (succeeded)
+      succeeded = MR_TRUE;
+    else
+    {
+      MR_Word TypeInfo_9_9;
+      MR_Word ArgX1_3 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))) & (MR_Integer) 3);
+      MR_Word ArgY1_4 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 0))) & (MR_Integer) 3);
+      MR_Word ArgX2_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))));
+      MR_Word ArgY2_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__2_2, (MR_Integer) 1))));
+
+      succeeded = (ArgX1_3 == ArgY1_4);
+      if (succeeded)
+      {
+        TypeInfo_9_9 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[3]);
+        succeeded = mercury__builtin__unify_2_p_0(TypeInfo_9_9, ((MR_Box) (ArgX2_5)), ((MR_Box) (ArgY2_6)));
+      }
+    }
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_list_1_0(
+  MR_Word TypeInfo_for_T_6,
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Word TypeInfo_10_10;
+    MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+    MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+    {
+      TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), TypeInfo_10_10, 0) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0));
+      MR_hl_field(MR_mktag(0), TypeInfo_10_10, 1) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), TypeInfo_10_10, 2) = ((MR_Box) (&hlds__status__hlds__status__type_ctor_info_item_mercury_status_0));
+      MR_hl_field(MR_mktag(0), TypeInfo_10_10, 3) = ((MR_Box) (TypeInfo_for_T_6));
+    }
+    mercury__list____Compare____list_1_0(TypeInfo_10_10, HeadVar__1_1, (MR_Word) (Cast_HeadVar1_4), (MR_Word) (Cast_HeadVar2_5));
+  }
+}
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_list_1_0(
+  MR_Word TypeInfo_for_T_5,
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Word TypeInfo_9_9;
+    MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+    MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+    {
+      TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), TypeInfo_9_9, 0) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0));
+      MR_hl_field(MR_mktag(0), TypeInfo_9_9, 1) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), TypeInfo_9_9, 2) = ((MR_Box) (&hlds__status__hlds__status__type_ctor_info_item_mercury_status_0));
+      MR_hl_field(MR_mktag(0), TypeInfo_9_9, 3) = ((MR_Box) (TypeInfo_for_T_5));
+    }
+    succeeded = mercury__list____Unify____list_1_0(TypeInfo_9_9, (MR_Word) (Cast_HeadVar1_3), (MR_Word) (Cast_HeadVar2_4));
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_item_1_0(
+  MR_Word TypeInfo_for_T_6,
+  MR_Word * HeadVar__1_1,
+  MR_Tuple HeadVar__2_2,
+  MR_Tuple HeadVar__3_3)
+{
+  {
+    MR_Word TypeInfo_10_10;
+    MR_Tuple Cast_HeadVar1_4 = HeadVar__2_2;
+    MR_Tuple Cast_HeadVar2_5 = HeadVar__3_3;
+
+    {
+      TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), TypeInfo_10_10, 0) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0));
+      MR_hl_field(MR_mktag(0), TypeInfo_10_10, 1) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), TypeInfo_10_10, 2) = ((MR_Box) (&hlds__status__hlds__status__type_ctor_info_item_mercury_status_0));
+      MR_hl_field(MR_mktag(0), TypeInfo_10_10, 3) = ((MR_Box) (TypeInfo_for_T_6));
+    }
+    mercury__builtin__compare_3_p_0(TypeInfo_10_10, HeadVar__1_1, ((MR_Box) (Cast_HeadVar1_4)), ((MR_Box) (Cast_HeadVar2_5)));
+  }
+}
+
+MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_item_1_0(
+  MR_Word TypeInfo_for_T_5,
+  MR_Tuple HeadVar__1_1,
+  MR_Tuple HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Word TypeInfo_9_9;
+    MR_Tuple Cast_HeadVar1_3 = HeadVar__1_1;
+    MR_Tuple Cast_HeadVar2_4 = HeadVar__2_2;
+
+    {
+      TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), TypeInfo_9_9, 0) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0));
+      MR_hl_field(MR_mktag(0), TypeInfo_9_9, 1) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), TypeInfo_9_9, 2) = ((MR_Box) (&hlds__status__hlds__status__type_ctor_info_item_mercury_status_0));
+      MR_hl_field(MR_mktag(0), TypeInfo_9_9, 3) = ((MR_Box) (TypeInfo_for_T_5));
+    }
+    succeeded = mercury__builtin__unify_2_p_0(TypeInfo_9_9, ((MR_Box) (Cast_HeadVar1_3)), ((MR_Box) (Cast_HeadVar2_4)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_cord_1_0(
+  MR_Word TypeInfo_for_T_6,
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_Word TypeInfo_10_10;
+    MR_Word Cast_HeadVar1_4 = HeadVar__2_2;
+    MR_Word Cast_HeadVar2_5 = HeadVar__3_3;
+
+    {
+      TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), TypeInfo_10_10, 0) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0));
+      MR_hl_field(MR_mktag(0), TypeInfo_10_10, 1) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), TypeInfo_10_10, 2) = ((MR_Box) (&hlds__status__hlds__status__type_ctor_info_item_mercury_status_0));
+      MR_hl_field(MR_mktag(0), TypeInfo_10_10, 3) = ((MR_Box) (TypeInfo_for_T_6));
+    }
+    mercury__cord____Compare____cord_1_0(TypeInfo_10_10, HeadVar__1_1, (MR_Word) (Cast_HeadVar1_4), (MR_Word) (Cast_HeadVar2_5));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_cord_1_0(
+  MR_Word TypeInfo_for_T_5,
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded;
+    MR_Word TypeInfo_9_9;
+    MR_Word Cast_HeadVar1_3 = HeadVar__1_1;
+    MR_Word Cast_HeadVar2_4 = HeadVar__2_2;
+
+    {
+      TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), TypeInfo_9_9, 0) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0));
+      MR_hl_field(MR_mktag(0), TypeInfo_9_9, 1) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), TypeInfo_9_9, 2) = ((MR_Box) (&hlds__status__hlds__status__type_ctor_info_item_mercury_status_0));
+      MR_hl_field(MR_mktag(0), TypeInfo_9_9, 3) = ((MR_Box) (TypeInfo_for_T_5));
+    }
+    succeeded = mercury__cord____Unify____cord_1_0(TypeInfo_9_9, (MR_Word) (Cast_HeadVar1_3), (MR_Word) (Cast_HeadVar2_4));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_cjcs_map_to_list_3_p_0(
+  MR_Word TypeInfo_for_V_14,
+  MR_Word CJCsE_4,
+  MR_Word STATE_VARIABLE_RevList_0_9,
+  MR_Word * STATE_VARIABLE_RevList_10)
+{
+  {
+    MR_Word Cs_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), CJCsE_4, (MR_Integer) 0))));
+    MR_Word Javas_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), CJCsE_4, (MR_Integer) 1))));
+    MR_Word Csharps_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), CJCsE_4, (MR_Integer) 2))));
+    MR_Word Var_12;
+    MR_Word Var_13;
+
+    Var_13 = mercury__list__f_43_43_2_f_0(TypeInfo_for_V_14, Csharps_8, STATE_VARIABLE_RevList_0_9);
+    Var_12 = mercury__list__f_43_43_2_f_0(TypeInfo_for_V_14, Javas_7, Var_13);
+    *STATE_VARIABLE_RevList_10 = mercury__list__f_43_43_2_f_0(TypeInfo_for_V_14, Cs_6, Var_12);
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_mm_tabling_pragma_1_f_0(
+  MR_Word X_3)
+{
+  {
+    MR_Word Item_4;
+    MR_Word Info_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 0))));
+    MR_Word Context_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 1))));
+    MR_Word SeqNum_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 2))));
+    MR_Word Var_8 = (MR_Word) (MR_mkword(MR_mktag(3), (MR_Word) (Info_5)));
+
+    {
+      Item_4 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Item_4, 0) = ((MR_Box) (Var_8));
+      MR_hl_field(MR_mktag(0), Item_4, 1) = ((MR_Box) (Context_6));
+      MR_hl_field(MR_mktag(0), Item_4, 2) = ((MR_Box) (SeqNum_7));
+    }
+    return Item_4;
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_trailing_pragma_1_f_0(
+  MR_Word X_3)
+{
+  {
+    MR_Word Item_4;
+    MR_Word Info_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 0))));
+    MR_Word Context_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 1))));
+    MR_Word SeqNum_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 2))));
+    MR_Word Var_8 = (MR_Word) (MR_mkword(MR_mktag(2), (MR_Word) (Info_5)));
+
+    {
+      Item_4 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Item_4, 0) = ((MR_Box) (Var_8));
+      MR_hl_field(MR_mktag(0), Item_4, 1) = ((MR_Box) (Context_6));
+      MR_hl_field(MR_mktag(0), Item_4, 2) = ((MR_Box) (SeqNum_7));
+    }
+    return Item_4;
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_exceptions_pragma_1_f_0(
+  MR_Word X_3)
+{
+  {
+    MR_Word Item_4;
+    MR_Word Info_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 0))));
+    MR_Word Context_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 1))));
+    MR_Word SeqNum_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 2))));
+    MR_Word Var_8 = (MR_Word) (MR_mkword(MR_mktag(1), (MR_Word) (Info_5)));
+
+    {
+      Item_4 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Item_4, 0) = ((MR_Box) (Var_8));
+      MR_hl_field(MR_mktag(0), Item_4, 1) = ((MR_Box) (Context_6));
+      MR_hl_field(MR_mktag(0), Item_4, 2) = ((MR_Box) (SeqNum_7));
+    }
+    return Item_4;
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_unused_args_pragma_1_f_0(
+  MR_Word X_3)
+{
+  {
+    MR_Word Item_4;
+    MR_Word Info_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 0))));
+    MR_Word Context_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 1))));
+    MR_Word SeqNum_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 2))));
+    MR_Word Var_8 = (MR_Word) ((MR_Word) (Info_5));
+
+    {
+      Item_4 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Item_4, 0) = ((MR_Box) (Var_8));
+      MR_hl_field(MR_mktag(0), Item_4, 1) = ((MR_Box) (Context_6));
+      MR_hl_field(MR_mktag(0), Item_4, 2) = ((MR_Box) (SeqNum_7));
+    }
+    return Item_4;
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_foreign_proc_1_f_0(
+  MR_Word X_3)
+{
+  {
+    MR_Word Item_4;
+    MR_Word Info_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 0))));
+    MR_Word Context_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 1))));
+    MR_Word SeqNum_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 2))));
+    MR_Word Var_8 = (MR_Word) (MR_mkword(MR_mktag(2), (MR_Word) (Info_5)));
+
+    {
+      Item_4 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Item_4, 0) = ((MR_Box) (Var_8));
+      MR_hl_field(MR_mktag(0), Item_4, 1) = ((MR_Box) (Context_6));
+      MR_hl_field(MR_mktag(0), Item_4, 2) = ((MR_Box) (SeqNum_7));
+    }
+    return Item_4;
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_struct_reuse_pragma_1_f_0(
+  MR_Word X_3)
+{
+  {
+    MR_Word Item_4;
+    MR_Word Info_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 0))));
+    MR_Word Context_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 1))));
+    MR_Word SeqNum_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 2))));
+    MR_Word Var_8;
+
+    {
+      Var_8 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_8, 0) = ((MR_Box) ((MR_Unsigned) 7U));
+      MR_hl_field(MR_mktag(3), Var_8, 1) = ((MR_Box) (Info_5));
+    }
+    {
+      Item_4 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Item_4, 0) = ((MR_Box) (Var_8));
+      MR_hl_field(MR_mktag(0), Item_4, 1) = ((MR_Box) (Context_6));
+      MR_hl_field(MR_mktag(0), Item_4, 2) = ((MR_Box) (SeqNum_7));
+    }
+    return Item_4;
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_struct_sharing_pragma_1_f_0(
+  MR_Word X_3)
+{
+  {
+    MR_Word Item_4;
+    MR_Word Info_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 0))));
+    MR_Word Context_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 1))));
+    MR_Word SeqNum_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 2))));
+    MR_Word Var_8;
+
+    {
+      Var_8 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_8, 0) = ((MR_Box) ((MR_Unsigned) 6U));
+      MR_hl_field(MR_mktag(3), Var_8, 1) = ((MR_Box) (Info_5));
+    }
+    {
+      Item_4 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Item_4, 0) = ((MR_Box) (Var_8));
+      MR_hl_field(MR_mktag(0), Item_4, 1) = ((MR_Box) (Context_6));
+      MR_hl_field(MR_mktag(0), Item_4, 2) = ((MR_Box) (SeqNum_7));
+    }
+    return Item_4;
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_termination2_pragma_1_f_0(
+  MR_Word X_3)
+{
+  {
+    MR_Word Item_4;
+    MR_Word Info_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 0))));
+    MR_Word Context_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 1))));
+    MR_Word SeqNum_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 2))));
+    MR_Word Var_8;
+
+    {
+      Var_8 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_8, 0) = ((MR_Box) ((MR_Unsigned) 5U));
+      MR_hl_field(MR_mktag(3), Var_8, 1) = ((MR_Box) (Info_5));
+    }
+    {
+      Item_4 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Item_4, 0) = ((MR_Box) (Var_8));
+      MR_hl_field(MR_mktag(0), Item_4, 1) = ((MR_Box) (Context_6));
+      MR_hl_field(MR_mktag(0), Item_4, 2) = ((MR_Box) (SeqNum_7));
+    }
+    return Item_4;
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_termination_pragma_1_f_0(
+  MR_Word X_3)
+{
+  {
+    MR_Word Item_4;
+    MR_Word Info_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 0))));
+    MR_Word Context_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 1))));
+    MR_Word SeqNum_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 2))));
+    MR_Word Var_8;
+
+    {
+      Var_8 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(3), Var_8, 0) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(MR_mktag(3), Var_8, 1) = ((MR_Box) (Info_5));
+    }
+    {
+      Item_4 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Item_4, 0) = ((MR_Box) (Var_8));
+      MR_hl_field(MR_mktag(0), Item_4, 1) = ((MR_Box) (Context_6));
+      MR_hl_field(MR_mktag(0), Item_4, 2) = ((MR_Box) (SeqNum_7));
+    }
+    return Item_4;
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_type_spec_pragma_1_f_0(
+  MR_Word X_3)
+{
+  {
+    MR_Word Item_4;
+    MR_Word Info_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 0))));
+    MR_Word Context_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 1))));
+    MR_Word SeqNum_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), X_3, (MR_Integer) 2))));
+    MR_Word Var_8 = (MR_Word) (MR_mkword(MR_mktag(2), (MR_Word) (Info_5)));
+
+    {
+      Item_4 = (MR_Word) MR_new_object(MR_Word, (3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Item_4, 0) = ((MR_Box) (Var_8));
+      MR_hl_field(MR_mktag(0), Item_4, 1) = ((MR_Box) (Context_6));
+      MR_hl_field(MR_mktag(0), Item_4, 2) = ((MR_Box) (SeqNum_7));
+    }
+    return Item_4;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_7(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv6_Item_4;
+
+    conv6_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_mm_tabling_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv6_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_6(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv5_Item_4;
+
+    conv5_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_trailing_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv5_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_5(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv4_Item_4;
+
+    conv4_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_exceptions_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv4_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv3_Item_4;
+
+    conv3_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_struct_reuse_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv3_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv2_Item_4;
+
+    conv2_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_struct_sharing_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv2_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv1_Item_4;
+
+    conv1_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_termination2_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv1_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv0_Item_4;
+
+    conv0_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_termination_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv0_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0(
+  MR_Word ParseTreeTransOpt_4,
+  MR_Word STATE_VARIABLE_Acc_0_22,
+  MR_Word * STATE_VARIABLE_Acc_23)
+{
+  {
+    MR_Word TermInfos_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeTransOpt_4, (MR_Integer) 2))));
+    MR_Word Term2Infos_9 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeTransOpt_4, (MR_Integer) 3))));
+    MR_Word Exceptions_10 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeTransOpt_4, (MR_Integer) 4))));
+    MR_Word Trailings_11 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeTransOpt_4, (MR_Integer) 5))));
+    MR_Word MMTablings_12 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeTransOpt_4, (MR_Integer) 6))));
+    MR_Word Sharings_13 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeTransOpt_4, (MR_Integer) 7))));
+    MR_Word Reuses_14 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeTransOpt_4, (MR_Integer) 8))));
+    MR_Word AccDeclPragmas0_16 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 14))));
+    MR_Word AccGenPragmas0_17 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 16))));
+    MR_Word OptDeclPragmas_18;
+    MR_Word AccDeclPragmas_19;
+    MR_Word OptGenPragmas_20;
+    MR_Word AccGenPragmas_21;
+    MR_Word Var_25;
+    MR_Word Var_27;
+    MR_Word Var_28;
+    MR_Word Var_30;
+    MR_Word Var_31;
+    MR_Word Var_33;
+    MR_Word Var_35;
+    MR_Word Var_37;
+    MR_Word Var_38;
+    MR_Word Var_40;
+    MR_Word Var_42;
+    MR_Word Var_87;
+    MR_Word Var_88;
+    MR_Word Var_89;
+    MR_Word Var_90;
+    MR_Word Var_91;
+    MR_Word Var_92;
+    MR_Word Var_93;
+    MR_Word Var_94;
+    MR_Word Var_95;
+    MR_Word Var_96;
+    MR_Word Var_97;
+    MR_Word Var_98;
+    MR_Word Var_99;
+    MR_Word Var_100;
+    MR_Word Var_102;
+    MR_Word Var_104;
+    MR_Word Var_105;
+    MR_Word Var_106;
+    MR_Word Var_107;
+    MR_Word Var_108;
+
+    Var_25 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[23]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[32]), TermInfos_8);
+    Var_28 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[24]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[33]), Term2Infos_9);
+    Var_31 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[25]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[34]), Sharings_13);
+    Var_33 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[26]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[35]), Reuses_14);
+    Var_30 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), Var_31, Var_33);
+    Var_27 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), Var_28, Var_30);
+    OptDeclPragmas_18 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), Var_25, Var_27);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), (MR_Word) (MR_mkword(MR_mktag(1), &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[5])), OptDeclPragmas_18, AccDeclPragmas0_16, &AccDeclPragmas_19);
+    Var_35 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[29]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[36]), Exceptions_10);
+    Var_38 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[30]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[37]), Trailings_11);
+    Var_40 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[31]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[38]), MMTablings_12);
+    Var_37 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), Var_38, Var_40);
+    OptGenPragmas_20 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), Var_35, Var_37);
+    Var_42 = mercury__cord__from_list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), OptGenPragmas_20);
+    AccGenPragmas_21 = mercury__cord__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), AccGenPragmas0_17, Var_42);
+    Var_87 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 0))));
+    Var_88 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 1))));
+    Var_89 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 2))));
+    Var_90 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 3))));
+    Var_91 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 4))));
+    Var_92 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 5))));
+    Var_93 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 6))));
+    Var_94 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 7))));
+    Var_95 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 8))));
+    Var_96 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 9))));
+    Var_97 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 10))));
+    Var_98 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 11))));
+    Var_99 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 12))));
+    Var_100 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 13))));
+    Var_102 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 15))));
+    Var_104 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 17))));
+    Var_105 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 18))));
+    Var_106 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 19))));
+    Var_107 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 20))));
+    Var_108 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_22, (MR_Integer) 21))));
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (22 * sizeof(MR_Word)), NULL, NULL);
+      *STATE_VARIABLE_Acc_23 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (Var_87));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (Var_88));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (Var_89));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (Var_90));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (Var_91));
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (Var_92));
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (Var_93));
+      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (Var_94));
+      MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (Var_95));
+      MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (Var_96));
+      MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (Var_97));
+      MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (Var_98));
+      MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (Var_99));
+      MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (Var_100));
+      MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (AccDeclPragmas_19));
+      MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (Var_102));
+      MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (AccGenPragmas_21));
+      MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (Var_104));
+      MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (Var_105));
+      MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (Var_106));
+      MR_hl_field(MR_mktag(0), base, 20) = ((MR_Box) (Var_107));
+      MR_hl_field(MR_mktag(0), base, 21) = ((MR_Box) (Var_108));
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_11(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv10_Item_4;
+
+    conv10_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_mm_tabling_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv10_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_10(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv9_Item_4;
+
+    conv9_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_trailing_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv9_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_9(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv8_Item_4;
+
+    conv8_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_exceptions_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv8_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_8(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv7_Item_4;
+
+    conv7_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_unused_args_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv7_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_7(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv6_Item_4;
+
+    conv6_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_foreign_proc_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv6_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_6(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv5_Item_4;
+
+    conv5_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_struct_reuse_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv5_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_5(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv4_Item_4;
+
+    conv4_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_struct_sharing_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv4_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv3_Item_4;
+
+    conv3_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_termination2_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv3_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv2_Item_4;
+
+    conv2_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_termination_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv2_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv1_Item_4;
+
+    conv1_Item_4 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__wrap_type_spec_pragma_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv1_Item_4));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv0_HeadVar__2_2;
+
+    conv0_HeadVar__2_2 = parse_tree__item_util__fim_spec_to_item_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0(
+  MR_Word ParseTreePlainOpt_4,
+  MR_Word STATE_VARIABLE_Acc_0_77,
+  MR_Word * STATE_VARIABLE_Acc_78)
+{
+  {
+    MR_Word ItemMercuryStatus_6 = (MR_Word) (MR_mkword(MR_mktag(1), &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[5]));
+    MR_Word UseMap_10 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 2))));
+    MR_Word FIMSpecs_11 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 3))));
+    MR_Word TypeDefns_12 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 4))));
+    MR_Word ForeignEnums_13 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 5))));
+    MR_Word InstDefns_14 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 6))));
+    MR_Word ModeDefns_15 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 7))));
+    MR_Word TypeClasses_16 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 8))));
+    MR_Word Instances_17 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 9))));
+    MR_Word PredDecls_18 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 10))));
+    MR_Word ModeDecls_19 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 11))));
+    MR_Word Clauses_20 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 12))));
+    MR_Word ForeignProcs_21 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 13))));
+    MR_Word Promises_22 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 14))));
+    MR_Word MarkerPragmas_23 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 15))));
+    MR_Word TypeSpecs_24 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 16))));
+    MR_Word UnusedArgs_25 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 17))));
+    MR_Word TermInfos_26 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 18))));
+    MR_Word Term2Infos_27 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 19))));
+    MR_Word Exceptions_28 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 20))));
+    MR_Word Trailings_29 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 21))));
+    MR_Word MMTablings_30 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 22))));
+    MR_Word Sharings_31 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 23))));
+    MR_Word Reuses_32 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreePlainOpt_4, (MR_Integer) 24))));
+    MR_Word AccAvails0_33 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 0))));
+    MR_Word AccFIMs0_34 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 1))));
+    MR_Word AccTypeDefnsAbs0_35 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 2))));
+    MR_Word AccTypeDefnsMer0_36 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 3))));
+    MR_Word AccTypeDefnsFor0_37 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 4))));
+    MR_Word AccInstDefns0_38 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 5))));
+    MR_Word AccModeDefns0_39 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 6))));
+    MR_Word AccTypeClasses0_40 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 7))));
+    MR_Word AccInstances0_41 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 8))));
+    MR_Word AccPredDecls0_42 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 9))));
+    MR_Word AccModeDecls0_43 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 10))));
+    MR_Word AccClauses0_44 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 11))));
+    MR_Word AccForeignEnums0_45 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 12))));
+    MR_Word AccDeclPragmas0_46 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 14))));
+    MR_Word AccImplPragmas0_47 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 15))));
+    MR_Word AccGenPragmas0_48 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 16))));
+    MR_Word AccPromises0_49 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 17))));
+    MR_Word OptAvails_50;
+    MR_Word AccAvails_51;
+    MR_Word OptFIMs_52;
+    MR_Word AccFIMs_53;
+    MR_Word TypeDefnsAbs_54;
+    MR_Word TypeDefnsMer_55;
+    MR_Word TypeDefnsFor_56;
+    MR_Word AccTypeDefnsAbs_57;
+    MR_Word AccTypeDefnsMer_58;
+    MR_Word AccTypeDefnsFor_59;
+    MR_Word AccInstDefns_60;
+    MR_Word AccModeDefns_61;
+    MR_Word AccTypeClasses_62;
+    MR_Word AccInstances_63;
+    MR_Word AccPredDecls_64;
+    MR_Word AccModeDecls_65;
+    MR_Word AccClauses_66;
+    MR_Word AccForeignEnums_67;
+    MR_Word DeclMarkerPragmas_68;
+    MR_Word ImplMarkerPragmas_69;
+    MR_Word OptDeclPragmas_70;
+    MR_Word AccDeclPragmas_71;
+    MR_Word OptImplPragmas_72;
+    MR_Word AccImplPragmas_73;
+    MR_Word OptGenPragmas_74;
+    MR_Word AccGenPragmas_75;
+    MR_Word AccPromises_76;
+    MR_Word Var_82;
+    MR_Word Var_83;
+    MR_Word Var_89;
+    MR_Word Var_91;
+    MR_Word Var_92;
+    MR_Word Var_94;
+    MR_Word Var_95;
+    MR_Word Var_97;
+    MR_Word Var_98;
+    MR_Word Var_100;
+    MR_Word Var_101;
+    MR_Word Var_103;
+    MR_Word Var_105;
+    MR_Word Var_107;
+    MR_Word Var_108;
+    MR_Word Var_110;
+    MR_Word Var_111;
+    MR_Word Var_113;
+    MR_Word Var_115;
+    MR_Word Var_503;
+    MR_Word Var_508;
+    MR_Word Var_509;
+    MR_Word Var_510;
+    MR_Word Var_511;
+
+    OptAvails_50 = parse_tree__item_util__use_map_to_item_avails_1_f_0(UseMap_10);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_avails_4_p_0(ItemMercuryStatus_6, OptAvails_50, AccAvails0_33, &AccAvails_51);
+    Var_82 = mercury__set__to_sorted_list_1_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), FIMSpecs_11);
+    OptFIMs_52 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[21]), Var_82);
+    Var_83 = mercury__cord__from_list_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), OptFIMs_52);
+    AccFIMs_53 = mercury__cord__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), AccFIMs0_34, Var_83);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_type_defns_abs_mer_for_7_p_0(TypeDefns_12, (MR_Word) ((MR_Unsigned) 0U), &TypeDefnsAbs_54, (MR_Word) ((MR_Unsigned) 0U), &TypeDefnsMer_55, (MR_Word) ((MR_Unsigned) 0U), &TypeDefnsFor_56);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[55]), TypeDefnsAbs_54, AccTypeDefnsAbs0_35, &AccTypeDefnsAbs_57);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[55]), TypeDefnsMer_55, AccTypeDefnsMer0_36, &AccTypeDefnsMer_58);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[55]), TypeDefnsFor_56, AccTypeDefnsFor0_37, &AccTypeDefnsFor_59);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0), ItemMercuryStatus_6, InstDefns_14, AccInstDefns0_38, &AccInstDefns_60);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0), ItemMercuryStatus_6, ModeDefns_15, AccModeDefns0_39, &AccModeDefns_61);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[55]), TypeClasses_16, AccTypeClasses0_40, &AccTypeClasses_62);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0), ItemMercuryStatus_6, Instances_17, AccInstances0_41, &AccInstances_63);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[55]), PredDecls_18, AccPredDecls0_42, &AccPredDecls_64);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0), ItemMercuryStatus_6, ModeDecls_19, AccModeDecls0_43, &AccModeDecls_65);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_clause_info_0), ItemMercuryStatus_6, Clauses_20, AccClauses0_44, &AccClauses_66);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_tuple_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), ItemMercuryStatus_6, ForeignEnums_13, AccForeignEnums0_45, &AccForeignEnums_67);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_pred_marker_pragmas_5_p_0(MarkerPragmas_23, (MR_Word) ((MR_Unsigned) 0U), &DeclMarkerPragmas_68, (MR_Word) ((MR_Unsigned) 0U), &ImplMarkerPragmas_69);
+    Var_89 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[22]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[22]), TypeSpecs_24);
+    Var_92 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[23]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[23]), TermInfos_26);
+    Var_95 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[24]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[24]), Term2Infos_27);
+    Var_98 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[25]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[25]), Sharings_31);
+    Var_101 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[26]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[26]), Reuses_32);
+    Var_100 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), Var_101, DeclMarkerPragmas_68);
+    Var_97 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), Var_98, Var_100);
+    Var_94 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), Var_95, Var_97);
+    Var_91 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), Var_92, Var_94);
+    OptDeclPragmas_70 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), Var_89, Var_91);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), ItemMercuryStatus_6, OptDeclPragmas_70, AccDeclPragmas0_46, &AccDeclPragmas_71);
+    Var_103 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[27]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[12]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[27]), ForeignProcs_21);
+    OptImplPragmas_72 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[12]), Var_103, ImplMarkerPragmas_69);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[12]), ItemMercuryStatus_6, OptImplPragmas_72, AccImplPragmas0_47, &AccImplPragmas_73);
+    Var_105 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[28]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[28]), UnusedArgs_25);
+    Var_108 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[29]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[29]), Exceptions_28);
+    Var_111 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[30]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[30]), Trailings_29);
+    Var_113 = mercury__list__map_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[31]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[31]), MMTablings_30);
+    Var_110 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), Var_111, Var_113);
+    Var_107 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), Var_108, Var_110);
+    OptGenPragmas_74 = mercury__list__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), Var_105, Var_107);
+    Var_115 = mercury__cord__from_list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), OptGenPragmas_74);
+    AccGenPragmas_75 = mercury__cord__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), AccGenPragmas0_48, Var_115);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_promise_info_0), ItemMercuryStatus_6, Promises_22, AccPromises0_49, &AccPromises_76);
+    Var_503 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 13))));
+    Var_508 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 18))));
+    Var_509 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 19))));
+    Var_510 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 20))));
+    Var_511 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_77, (MR_Integer) 21))));
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (22 * sizeof(MR_Word)), NULL, NULL);
+      *STATE_VARIABLE_Acc_78 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (AccAvails_51));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (AccFIMs_53));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (AccTypeDefnsAbs_57));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (AccTypeDefnsMer_58));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (AccTypeDefnsFor_59));
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (AccInstDefns_60));
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (AccModeDefns_61));
+      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (AccTypeClasses_62));
+      MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (AccInstances_63));
+      MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (AccPredDecls_64));
+      MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (AccModeDecls_65));
+      MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (AccClauses_66));
+      MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (AccForeignEnums_67));
+      MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (Var_503));
+      MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (AccDeclPragmas_71));
+      MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (AccImplPragmas_73));
+      MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (AccGenPragmas_75));
+      MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (AccPromises_76));
+      MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (Var_508));
+      MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (Var_509));
+      MR_hl_field(MR_mktag(0), base, 20) = ((MR_Box) (Var_510));
+      MR_hl_field(MR_mktag(0), base, 21) = ((MR_Box) (Var_511));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_pred_marker_pragmas_5_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_DeclPragmas_0_2,
+  MR_Word * STATE_VARIABLE_DeclPragmas_3,
+  MR_Word STATE_VARIABLE_ImplPragmas_0_4,
+  MR_Word * STATE_VARIABLE_ImplPragmas_5)
+{
+  if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *STATE_VARIABLE_ImplPragmas_5 = STATE_VARIABLE_ImplPragmas_0_4;
+    *STATE_VARIABLE_DeclPragmas_3 = STATE_VARIABLE_DeclPragmas_0_2;
+  }
+  else
+  {
+    MR_Word ItemMarker_12 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word ItemMarkers_13 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word Item_16;
+    MR_Word STATE_VARIABLE_DeclPragmas_23_23;
+    MR_Word STATE_VARIABLE_ImplPragmas_24_24;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_pred_marker_pragmas_5_p_0(ItemMarkers_13, STATE_VARIABLE_DeclPragmas_0_2, &STATE_VARIABLE_DeclPragmas_23_23, STATE_VARIABLE_ImplPragmas_0_4, &STATE_VARIABLE_ImplPragmas_24_24);
+    Item_16 = parse_tree__item_util__wrap_marker_pragma_item_1_f_0(ItemMarker_12);
+    if (((((MR_tag((MR_Word) Item_16)) == (MR_Integer) 3)) && ((((MR_Integer) ((MR_hl_field(MR_mktag(3), Item_16, (MR_Integer) 0)))) == (MR_Integer) 11))))
+    {
+      MR_Word DeclPragma_17 = ((MR_Word) ((MR_hl_field(MR_mktag(3), Item_16, (MR_Integer) 1))));
+
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        *STATE_VARIABLE_DeclPragmas_3 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (DeclPragma_17));
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_DeclPragmas_23_23));
+      }
+      *STATE_VARIABLE_ImplPragmas_5 = STATE_VARIABLE_ImplPragmas_24_24;
+    }
+    else
+    {
+      MR_Word ImplPragma_18 = ((MR_Word) ((MR_hl_field(MR_mktag(3), Item_16, (MR_Integer) 1))));
+
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        *STATE_VARIABLE_ImplPragmas_5 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (ImplPragma_18));
+        MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_ImplPragmas_24_24));
+      }
+      *STATE_VARIABLE_DeclPragmas_3 = STATE_VARIABLE_DeclPragmas_23_23;
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_type_repn_spec_3_p_0(
+  MR_Word TypeRepnSpec_4,
+  MR_Word STATE_VARIABLE_Acc_0_11,
+  MR_Word * STATE_VARIABLE_Acc_12)
+{
+  {
+    MR_Word ParseTreeInt1_6 = (MR_Word) (TypeRepnSpec_4);
+    MR_Word ModuleName_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_6, (MR_Integer) 0))));
+    MR_Word IntTypeRepnMap_8 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_6, (MR_Integer) 20))));
+    MR_Word AccTypeRepns0_9 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 21))));
+    MR_Word AccTypeRepns_10;
+    MR_Word Var_13;
+    MR_Word Var_14;
+    MR_Word Var_63 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 0))));
+    MR_Word Var_64 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 1))));
+    MR_Word Var_65 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 2))));
+    MR_Word Var_66 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 3))));
+    MR_Word Var_67 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 4))));
+    MR_Word Var_68 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 5))));
+    MR_Word Var_69 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 6))));
+    MR_Word Var_70 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 7))));
+    MR_Word Var_71 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 8))));
+    MR_Word Var_72 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 9))));
+    MR_Word Var_73 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 10))));
+    MR_Word Var_74 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 11))));
+    MR_Word Var_75 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 12))));
+    MR_Word Var_76 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 13))));
+    MR_Word Var_77 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 14))));
+    MR_Word Var_78 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 15))));
+    MR_Word Var_79 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 16))));
+    MR_Word Var_80 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 17))));
+    MR_Word Var_81 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 18))));
+    MR_Word Var_82 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 19))));
+    MR_Word Var_83 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_11, (MR_Integer) 20))));
+
+    {
+      Var_14 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_14, 0) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), Var_14, 1) = ((MR_Box) (IntTypeRepnMap_8));
+    }
+    {
+      Var_13 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_13, 0) = ((MR_Box) (ModuleName_7));
+      MR_hl_field(MR_mktag(0), Var_13, 1) = ((MR_Box) (Var_14));
+    }
+    {
+      AccTypeRepns_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), AccTypeRepns_10, 0) = ((MR_Box) (Var_13));
+      MR_hl_field(MR_mktag(1), AccTypeRepns_10, 1) = ((MR_Box) (AccTypeRepns0_9));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (22 * sizeof(MR_Word)), NULL, NULL);
+      *STATE_VARIABLE_Acc_12 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (Var_63));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (Var_64));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (Var_65));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (Var_66));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (Var_67));
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (Var_68));
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (Var_69));
+      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (Var_70));
+      MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (Var_71));
+      MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (Var_72));
+      MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (Var_73));
+      MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (Var_74));
+      MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (Var_75));
+      MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (Var_76));
+      MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (Var_77));
+      MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (Var_78));
+      MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (Var_79));
+      MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (Var_80));
+      MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (Var_81));
+      MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (Var_82));
+      MR_hl_field(MR_mktag(0), base, 20) = ((MR_Box) (Var_83));
+      MR_hl_field(MR_mktag(0), base, 21) = ((MR_Box) (AccTypeRepns_10));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_int_for_opt_spec_3_p_0(
+  MR_Word IntForOptSpec_4,
+  MR_Word STATE_VARIABLE_Acc_0_12,
+  MR_Word * STATE_VARIABLE_Acc_13)
+{
+  switch (MR_tag((MR_Word) IntForOptSpec_4)) {
+    default: /*NOTREACHED*/ MR_assert(0);
+    case (MR_Integer) 0:
+      {
+        MR_Word ParseTreeInt0_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntForOptSpec_4, (MR_Integer) 0))));
+        MR_Word ReadWhy0_7 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), IntForOptSpec_4, (MR_Integer) 1))) & (MR_Integer) 1);
+
+        hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int0_4_p_0(ParseTreeInt0_6, ReadWhy0_7, STATE_VARIABLE_Acc_0_12, STATE_VARIABLE_Acc_13);
+      }
+      break;
+    case (MR_Integer) 1:
+      {
+        MR_Word ParseTreeInt1_8 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IntForOptSpec_4, (MR_Integer) 0))));
+        MR_Word ReadWhy1_9 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), IntForOptSpec_4, (MR_Integer) 1))) & (MR_Integer) 7);
+
+        hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int1_4_p_0(ParseTreeInt1_8, ReadWhy1_9, STATE_VARIABLE_Acc_0_12, STATE_VARIABLE_Acc_13);
+      }
+      break;
+    case (MR_Integer) 2:
+      {
+        MR_Word ParseTreeInt2_10 = ((MR_Word) ((MR_hl_field(MR_mktag(2), IntForOptSpec_4, (MR_Integer) 0))));
+        MR_Word ReadWhy2_11 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(2), IntForOptSpec_4, (MR_Integer) 1))) & (MR_Integer) 3);
+
+        hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0(ParseTreeInt2_10, ReadWhy2_11, STATE_VARIABLE_Acc_0_12, STATE_VARIABLE_Acc_13);
+      }
+      break;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_indirect_int_spec_3_p_0(
+  MR_Word IndirectIntSpec_4,
+  MR_Word STATE_VARIABLE_Acc_0_10,
+  MR_Word * STATE_VARIABLE_Acc_11)
+{
+  if (((MR_tag((MR_Word) IndirectIntSpec_4)) == (MR_Integer) 0))
+  {
+    MR_Word ParseTreeInt2_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IndirectIntSpec_4, (MR_Integer) 0))));
+    MR_Word ReadWhy2_7 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), IndirectIntSpec_4, (MR_Integer) 1))) & (MR_Integer) 3);
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0(ParseTreeInt2_6, ReadWhy2_7, STATE_VARIABLE_Acc_0_10, STATE_VARIABLE_Acc_11);
+  }
+  else
+  {
+    MR_Word ParseTreeInt3_8 = ((MR_Word) ((MR_hl_field(MR_mktag(1), IndirectIntSpec_4, (MR_Integer) 0))));
+    MR_Word ReadWhy3_9 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), IndirectIntSpec_4, (MR_Integer) 1))) & (MR_Integer) 15);
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int3_4_p_0(ParseTreeInt3_8, ReadWhy3_9, STATE_VARIABLE_Acc_0_10, STATE_VARIABLE_Acc_11);
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv1_HeadVar__2_2;
+
+    conv1_HeadVar__2_2 = parse_tree__item_util__fim_spec_to_item_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv1_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv0_HeadVar__2_2;
+
+    conv0_HeadVar__2_2 = parse_tree__item_util__fim_spec_to_item_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0_1(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__IntroducedFrom__pred__acc_parse_tree_int2__788__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0(
+  MR_Word ParseTreeInt2_5,
+  MR_Word ReadWhy2_6,
+  MR_Word STATE_VARIABLE_Acc_0_70,
+  MR_Word * STATE_VARIABLE_Acc_71)
+{
+  {
+    MR_bool succeeded;
+    MR_Word IntItemImport_9 = ((&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_vector_common_11[0 + ReadWhy2_6]))->hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_11_0__vct_11_f_0;
+    MR_Word ImpItemImport_10 = ((&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_vector_common_11[0 + ReadWhy2_6]))->hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_11_0__vct_11_f_1;
+    MR_Word IntItemMercuryStatus_11;
+    MR_Word ImpItemMercuryStatus_12;
+    MR_Word IntSectionInfo_15;
+    MR_Word ImpSectionInfo_16;
+    MR_Word ModuleName_17;
+    MR_Word ImportUseMap_23;
+    MR_Word IntFIMSpecs_24;
+    MR_Word ImpFIMSpecs_25;
+    MR_Word IntTypeDefnMap_26;
+    MR_Word IntInstDefnMap_27;
+    MR_Word IntModeDefnMap_28;
+    MR_Word IntTypeClasses_29;
+    MR_Word IntInstances_30;
+    MR_Word IntTypeRepnMap_31;
+    MR_Word ImpTypeDefnMap_32;
+    MR_Word AccAvails0_33;
+    MR_Word AccFIMs0_34;
+    MR_Word AccTypeDefnsAbs0_35;
+    MR_Word AccTypeDefnsMer0_36;
+    MR_Word AccTypeDefnsFor0_37;
+    MR_Word AccInstDefns0_38;
+    MR_Word AccModeDefns0_39;
+    MR_Word AccTypeClasses0_40;
+    MR_Word AccInstances0_41;
+    MR_Word AccTypeRepns0_42;
+    MR_Word IntAvails_43;
+    MR_Word ImpAvails_44;
+    MR_Word AccAvails_45;
+    MR_Word IntFIMs_46;
+    MR_Word ImpFIMs_47;
+    MR_Word AccFIMs_48;
+    MR_Word IntTypeDefns_49;
+    MR_Word ImpTypeDefns_50;
+    MR_Word IntTypeDefnsAbs_51;
+    MR_Word IntTypeDefnsMer_52;
+    MR_Word IntTypeDefnsFor_53;
+    MR_Word ImpTypeDefnsAbs_54;
+    MR_Word ImpTypeDefnsMer_55;
+    MR_Word ImpTypeDefnsFor_56;
+    MR_Word AccTypeDefnsAbs1_57;
+    MR_Word AccTypeDefnsAbs_58;
+    MR_Word AccTypeDefnsMer1_59;
+    MR_Word AccTypeDefnsMer_60;
+    MR_Word AccTypeDefnsFor1_61;
+    MR_Word AccTypeDefnsFor_62;
+    MR_Word InstDefns_63;
+    MR_Word AccInstDefns_64;
+    MR_Word ModeDefns_65;
+    MR_Word AccModeDefns_66;
+    MR_Word AccTypeClasses_67;
+    MR_Word AccInstances_68;
+    MR_Word AccTypeRepns_69;
+    MR_Word Var_73;
+    MR_Word Var_78;
+    MR_Word Var_80;
+    MR_Word Var_81;
+    MR_Word Var_82;
+    MR_Word Var_83;
+    MR_Word Var_90;
+    MR_Word Var_91;
+    MR_Word Var_322;
+    MR_Word Var_323;
+    MR_Word Var_324;
+    MR_Word Var_325;
+    MR_Word Var_326;
+    MR_Word Var_327;
+    MR_Word Var_328;
+    MR_Word Var_329;
+    MR_Word Var_330;
+    MR_Word Var_331;
+    MR_Word Var_332;
+    MR_Word Var_333;
+
+    {
+      IntItemMercuryStatus_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), IntItemMercuryStatus_11, 0) = ((MR_Box) (IntItemImport_9));
+    }
+    {
+      ImpItemMercuryStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ImpItemMercuryStatus_12, 0) = ((MR_Box) (ImpItemImport_10));
+    }
+    {
+      IntSectionInfo_15 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), IntSectionInfo_15, 0) = ((MR_Box) (IntItemMercuryStatus_11));
+      MR_hl_field(MR_mktag(0), IntSectionInfo_15, 1) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 0));
+    }
+    {
+      ImpSectionInfo_16 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ImpSectionInfo_16, 0) = ((MR_Box) (ImpItemMercuryStatus_12));
+      MR_hl_field(MR_mktag(0), ImpSectionInfo_16, 1) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 0));
+    }
+    ModuleName_17 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_5, (MR_Integer) 0))));
+    ImportUseMap_23 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_5, (MR_Integer) 6))));
+    IntFIMSpecs_24 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_5, (MR_Integer) 7))));
+    ImpFIMSpecs_25 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_5, (MR_Integer) 8))));
+    IntTypeDefnMap_26 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_5, (MR_Integer) 9))));
+    IntInstDefnMap_27 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_5, (MR_Integer) 10))));
+    IntModeDefnMap_28 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_5, (MR_Integer) 11))));
+    IntTypeClasses_29 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_5, (MR_Integer) 12))));
+    IntInstances_30 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_5, (MR_Integer) 13))));
+    IntTypeRepnMap_31 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_5, (MR_Integer) 14))));
+    ImpTypeDefnMap_32 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_5, (MR_Integer) 15))));
+    AccAvails0_33 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 0))));
+    AccFIMs0_34 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 1))));
+    AccTypeDefnsAbs0_35 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 2))));
+    AccTypeDefnsMer0_36 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 3))));
+    AccTypeDefnsFor0_37 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 4))));
+    AccInstDefns0_38 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 5))));
+    AccModeDefns0_39 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 6))));
+    AccTypeClasses0_40 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 7))));
+    AccInstances0_41 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 8))));
+    AccTypeRepns0_42 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 21))));
+    parse_tree__item_util__import_and_or_use_map_to_item_avails_4_p_0((MR_Integer) 1, ImportUseMap_23, &IntAvails_43, &ImpAvails_44);
+    {
+      Var_73 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_73, 0) = ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[1]));
+      MR_hl_field(MR_mktag(0), Var_73, 1) = ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int2_4_p_0_1));
+      MR_hl_field(MR_mktag(0), Var_73, 2) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), Var_73, 3) = ((MR_Box) (ImpAvails_44));
+      MR_hl_field(MR_mktag(0), Var_73, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    mercury__require__expect_3_p_0(Var_73, (MR_String) "predicate \140hlds.make_hlds.make_hlds_passes.make_hlds_separate_items.acc_parse_tree_int2\'/4", (MR_String) "ImpAvails != []");
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_avails_4_p_0(IntItemMercuryStatus_11, IntAvails_43, AccAvails0_33, &AccAvails_45);
+    Var_78 = mercury__set__to_sorted_list_1_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), IntFIMSpecs_24);
+    IntFIMs_46 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[19]), Var_78);
+    Var_80 = mercury__set__to_sorted_list_1_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), ImpFIMSpecs_25);
+    ImpFIMs_47 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[20]), Var_80);
+    Var_82 = mercury__cord__from_list_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), IntFIMs_46);
+    Var_83 = mercury__cord__from_list_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), ImpFIMs_47);
+    Var_81 = mercury__cord__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), Var_82, Var_83);
+    AccFIMs_48 = mercury__cord__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), AccFIMs0_34, Var_81);
+    IntTypeDefns_49 = parse_tree__convert_parse_tree__type_ctor_defn_map_to_type_defns_1_f_0(IntTypeDefnMap_26);
+    ImpTypeDefns_50 = parse_tree__convert_parse_tree__type_ctor_defn_map_to_type_defns_1_f_0(ImpTypeDefnMap_32);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_type_defns_abs_mer_for_7_p_0(IntTypeDefns_49, (MR_Word) ((MR_Unsigned) 0U), &IntTypeDefnsAbs_51, (MR_Word) ((MR_Unsigned) 0U), &IntTypeDefnsMer_52, (MR_Word) ((MR_Unsigned) 0U), &IntTypeDefnsFor_53);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_type_defns_abs_mer_for_7_p_0(ImpTypeDefns_50, (MR_Word) ((MR_Unsigned) 0U), &ImpTypeDefnsAbs_54, (MR_Word) ((MR_Unsigned) 0U), &ImpTypeDefnsMer_55, (MR_Word) ((MR_Unsigned) 0U), &ImpTypeDefnsFor_56);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), IntSectionInfo_15, IntTypeDefnsAbs_51, AccTypeDefnsAbs0_35, &AccTypeDefnsAbs1_57);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), ImpSectionInfo_16, ImpTypeDefnsAbs_54, AccTypeDefnsAbs1_57, &AccTypeDefnsAbs_58);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), IntSectionInfo_15, IntTypeDefnsMer_52, AccTypeDefnsMer0_36, &AccTypeDefnsMer1_59);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), ImpSectionInfo_16, ImpTypeDefnsMer_55, AccTypeDefnsMer1_59, &AccTypeDefnsMer_60);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), IntSectionInfo_15, IntTypeDefnsFor_53, AccTypeDefnsFor0_37, &AccTypeDefnsFor1_61);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), ImpSectionInfo_16, ImpTypeDefnsFor_56, AccTypeDefnsFor1_61, &AccTypeDefnsFor_62);
+    InstDefns_63 = parse_tree__convert_parse_tree__inst_ctor_defn_map_to_inst_defns_1_f_0(IntInstDefnMap_27);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0), IntItemMercuryStatus_11, InstDefns_63, AccInstDefns0_38, &AccInstDefns_64);
+    ModeDefns_65 = parse_tree__convert_parse_tree__mode_ctor_defn_map_to_mode_defns_1_f_0(IntModeDefnMap_28);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0), IntItemMercuryStatus_11, ModeDefns_65, AccModeDefns0_39, &AccModeDefns_66);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0), IntSectionInfo_15, IntTypeClasses_29, AccTypeClasses0_40, &AccTypeClasses_67);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0), IntItemMercuryStatus_11, IntInstances_30, AccInstances0_41, &AccInstances_68);
+    {
+      Var_91 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_91, 0) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), Var_91, 1) = ((MR_Box) (IntTypeRepnMap_31));
+    }
+    {
+      Var_90 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_90, 0) = ((MR_Box) (ModuleName_17));
+      MR_hl_field(MR_mktag(0), Var_90, 1) = ((MR_Box) (Var_91));
+    }
+    {
+      AccTypeRepns_69 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), AccTypeRepns_69, 0) = ((MR_Box) (Var_90));
+      MR_hl_field(MR_mktag(1), AccTypeRepns_69, 1) = ((MR_Box) (AccTypeRepns0_42));
+    }
+    Var_322 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 9))));
+    Var_323 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 10))));
+    Var_324 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 11))));
+    Var_325 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 12))));
+    Var_326 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 13))));
+    Var_327 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 14))));
+    Var_328 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 15))));
+    Var_329 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 16))));
+    Var_330 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 17))));
+    Var_331 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 18))));
+    Var_332 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 19))));
+    Var_333 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_70, (MR_Integer) 20))));
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (22 * sizeof(MR_Word)), NULL, NULL);
+      *STATE_VARIABLE_Acc_71 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (AccAvails_45));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (AccFIMs_48));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (AccTypeDefnsAbs_58));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (AccTypeDefnsMer_60));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (AccTypeDefnsFor_62));
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (AccInstDefns_64));
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (AccModeDefns_66));
+      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (AccTypeClasses_67));
+      MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (AccInstances_68));
+      MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (Var_322));
+      MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (Var_323));
+      MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (Var_324));
+      MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (Var_325));
+      MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (Var_326));
+      MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (Var_327));
+      MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (Var_328));
+      MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (Var_329));
+      MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (Var_330));
+      MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (Var_331));
+      MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (Var_332));
+      MR_hl_field(MR_mktag(0), base, 20) = ((MR_Box) (Var_333));
+      MR_hl_field(MR_mktag(0), base, 21) = ((MR_Box) (AccTypeRepns_69));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_direct_int_spec_3_p_0(
+  MR_Word DirectIntSpec_4,
+  MR_Word STATE_VARIABLE_Acc_0_10,
+  MR_Word * STATE_VARIABLE_Acc_11)
+{
+  if (((MR_tag((MR_Word) DirectIntSpec_4)) == (MR_Integer) 0))
+  {
+    MR_Word ParseTreeInt1_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), DirectIntSpec_4, (MR_Integer) 0))));
+    MR_Word ReadWhy1_7 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), DirectIntSpec_4, (MR_Integer) 1))) & (MR_Integer) 7);
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int1_4_p_0(ParseTreeInt1_6, ReadWhy1_7, STATE_VARIABLE_Acc_0_10, STATE_VARIABLE_Acc_11);
+  }
+  else
+  {
+    MR_Word ParseTreeInt3_8 = ((MR_Word) ((MR_hl_field(MR_mktag(1), DirectIntSpec_4, (MR_Integer) 0))));
+    MR_Word ReadWhy3_9 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(1), DirectIntSpec_4, (MR_Integer) 1))) & (MR_Integer) 15);
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int3_4_p_0(ParseTreeInt3_8, ReadWhy3_9, STATE_VARIABLE_Acc_0_10, STATE_VARIABLE_Acc_11);
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int3_4_p_0_1(
+  MR_Box closure_arg)
+{
+  {
+    MR_bool succeeded;
+    MR_Box closure = closure_arg;
+
+    succeeded = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__IntroducedFrom__pred__acc_parse_tree_int3__905__1_2_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 4)))));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int3_4_p_0(
+  MR_Word ParseTreeInt3_5,
+  MR_Word ReadWhy3_6,
+  MR_Word STATE_VARIABLE_Acc_0_51,
+  MR_Word * STATE_VARIABLE_Acc_52)
+{
+  {
+    MR_bool succeeded;
+    MR_Word IntImportLocn_8 = ((&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_vector_common_10[0 + ReadWhy3_6]))->hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_10_0__vct_10_f_0;
+    MR_Word IntNeedQual_9 = ((&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_vector_common_10[0 + ReadWhy3_6]))->hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_10_0__vct_10_f_1;
+    MR_Word IntItemImport_10;
+    MR_Word IntItemMercuryStatus_11;
+    MR_Word IntSectionInfo_12;
+    MR_Word ModuleName_13;
+    MR_Word ImportUseMap_18;
+    MR_Word IntTypeDefnMap_19;
+    MR_Word IntInstDefnMap_20;
+    MR_Word IntModeDefnMap_21;
+    MR_Word IntTypeClasses_22;
+    MR_Word IntInstances_23;
+    MR_Word IntTypeRepnMap_24;
+    MR_Word AccAvails0_25;
+    MR_Word AccTypeDefnsAbs0_26;
+    MR_Word AccTypeDefnsMer0_27;
+    MR_Word AccTypeDefnsFor0_28;
+    MR_Word AccInstDefns0_29;
+    MR_Word AccModeDefns0_30;
+    MR_Word AccTypeClasses0_31;
+    MR_Word AccInstances0_32;
+    MR_Word AccTypeRepns0_33;
+    MR_Word IntAvails_34;
+    MR_Word ImpAvails_35;
+    MR_Word AccAvails_36;
+    MR_Word TypeDefns_37;
+    MR_Word TypeDefnsAbs_38;
+    MR_Word TypeDefnsMer_39;
+    MR_Word TypeDefnsFor_40;
+    MR_Word AccTypeDefnsAbs_41;
+    MR_Word AccTypeDefnsMer_42;
+    MR_Word AccTypeDefnsFor_43;
+    MR_Word InstDefns_44;
+    MR_Word AccInstDefns_45;
+    MR_Word ModeDefns_46;
+    MR_Word AccModeDefns_47;
+    MR_Word AccTypeClasses_48;
+    MR_Word AccInstances_49;
+    MR_Word AccTypeRepns_50;
+    MR_Word Var_54;
+    MR_Word Var_61;
+    MR_Word Var_62;
+    MR_Word Var_263;
+    MR_Word Var_271;
+    MR_Word Var_272;
+    MR_Word Var_273;
+    MR_Word Var_274;
+    MR_Word Var_275;
+    MR_Word Var_276;
+    MR_Word Var_277;
+    MR_Word Var_278;
+    MR_Word Var_279;
+    MR_Word Var_280;
+    MR_Word Var_281;
+    MR_Word Var_282;
+
+    {
+      IntItemImport_10 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), IntItemImport_10, 0) = (MR_Box) ((MR_Unsigned) (IntImportLocn_8));
+    }
+    {
+      IntItemMercuryStatus_11 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), IntItemMercuryStatus_11, 0) = ((MR_Box) (IntItemImport_10));
+    }
+    {
+      IntSectionInfo_12 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), IntSectionInfo_12, 0) = ((MR_Box) (IntItemMercuryStatus_11));
+      MR_hl_field(MR_mktag(0), IntSectionInfo_12, 1) = (MR_Box) ((MR_Unsigned) (IntNeedQual_9));
+    }
+    ModuleName_13 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt3_5, (MR_Integer) 0))));
+    ImportUseMap_18 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt3_5, (MR_Integer) 5))));
+    IntTypeDefnMap_19 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt3_5, (MR_Integer) 6))));
+    IntInstDefnMap_20 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt3_5, (MR_Integer) 7))));
+    IntModeDefnMap_21 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt3_5, (MR_Integer) 8))));
+    IntTypeClasses_22 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt3_5, (MR_Integer) 9))));
+    IntInstances_23 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt3_5, (MR_Integer) 10))));
+    IntTypeRepnMap_24 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt3_5, (MR_Integer) 11))));
+    AccAvails0_25 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 0))));
+    AccTypeDefnsAbs0_26 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 2))));
+    AccTypeDefnsMer0_27 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 3))));
+    AccTypeDefnsFor0_28 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 4))));
+    AccInstDefns0_29 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 5))));
+    AccModeDefns0_30 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 6))));
+    AccTypeClasses0_31 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 7))));
+    AccInstances0_32 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 8))));
+    AccTypeRepns0_33 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 21))));
+    parse_tree__item_util__import_and_or_use_map_to_item_avails_4_p_0((MR_Integer) 1, ImportUseMap_18, &IntAvails_34, &ImpAvails_35);
+    {
+      Var_54 = (MR_Word) MR_new_object(MR_Word, (5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_54, 0) = ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_5[1]));
+      MR_hl_field(MR_mktag(0), Var_54, 1) = ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int3_4_p_0_1));
+      MR_hl_field(MR_mktag(0), Var_54, 2) = ((MR_Box) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), Var_54, 3) = ((MR_Box) (ImpAvails_35));
+      MR_hl_field(MR_mktag(0), Var_54, 4) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    mercury__require__expect_3_p_0(Var_54, (MR_String) "predicate \140hlds.make_hlds.make_hlds_passes.make_hlds_separate_items.acc_parse_tree_int3\'/4", (MR_String) "ImpAvails != []");
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_avails_4_p_0(IntItemMercuryStatus_11, IntAvails_34, AccAvails0_25, &AccAvails_36);
+    TypeDefns_37 = parse_tree__convert_parse_tree__type_ctor_defn_map_to_type_defns_1_f_0(IntTypeDefnMap_19);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_type_defns_abs_mer_for_7_p_0(TypeDefns_37, (MR_Word) ((MR_Unsigned) 0U), &TypeDefnsAbs_38, (MR_Word) ((MR_Unsigned) 0U), &TypeDefnsMer_39, (MR_Word) ((MR_Unsigned) 0U), &TypeDefnsFor_40);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), IntSectionInfo_12, TypeDefnsAbs_38, AccTypeDefnsAbs0_26, &AccTypeDefnsAbs_41);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), IntSectionInfo_12, TypeDefnsMer_39, AccTypeDefnsMer0_27, &AccTypeDefnsMer_42);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), IntSectionInfo_12, TypeDefnsFor_40, AccTypeDefnsFor0_28, &AccTypeDefnsFor_43);
+    InstDefns_44 = parse_tree__convert_parse_tree__inst_ctor_defn_map_to_inst_defns_1_f_0(IntInstDefnMap_20);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0), IntItemMercuryStatus_11, InstDefns_44, AccInstDefns0_29, &AccInstDefns_45);
+    ModeDefns_46 = parse_tree__convert_parse_tree__mode_ctor_defn_map_to_mode_defns_1_f_0(IntModeDefnMap_21);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0), IntItemMercuryStatus_11, ModeDefns_46, AccModeDefns0_30, &AccModeDefns_47);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0), IntSectionInfo_12, IntTypeClasses_22, AccTypeClasses0_31, &AccTypeClasses_48);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0), IntItemMercuryStatus_11, IntInstances_23, AccInstances0_32, &AccInstances_49);
+    {
+      Var_62 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_62, 0) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 3));
+      MR_hl_field(MR_mktag(0), Var_62, 1) = ((MR_Box) (IntTypeRepnMap_24));
+    }
+    {
+      Var_61 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_61, 0) = ((MR_Box) (ModuleName_13));
+      MR_hl_field(MR_mktag(0), Var_61, 1) = ((MR_Box) (Var_62));
+    }
+    {
+      AccTypeRepns_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), AccTypeRepns_50, 0) = ((MR_Box) (Var_61));
+      MR_hl_field(MR_mktag(1), AccTypeRepns_50, 1) = ((MR_Box) (AccTypeRepns0_33));
+    }
+    Var_263 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 1))));
+    Var_271 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 9))));
+    Var_272 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 10))));
+    Var_273 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 11))));
+    Var_274 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 12))));
+    Var_275 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 13))));
+    Var_276 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 14))));
+    Var_277 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 15))));
+    Var_278 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 16))));
+    Var_279 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 17))));
+    Var_280 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 18))));
+    Var_281 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 19))));
+    Var_282 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_51, (MR_Integer) 20))));
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (22 * sizeof(MR_Word)), NULL, NULL);
+      *STATE_VARIABLE_Acc_52 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (AccAvails_36));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (Var_263));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (AccTypeDefnsAbs_41));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (AccTypeDefnsMer_42));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (AccTypeDefnsFor_43));
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (AccInstDefns_45));
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (AccModeDefns_47));
+      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (AccTypeClasses_48));
+      MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (AccInstances_49));
+      MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (Var_271));
+      MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (Var_272));
+      MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (Var_273));
+      MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (Var_274));
+      MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (Var_275));
+      MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (Var_276));
+      MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (Var_277));
+      MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (Var_278));
+      MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (Var_279));
+      MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (Var_280));
+      MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (Var_281));
+      MR_hl_field(MR_mktag(0), base, 20) = ((MR_Box) (Var_282));
+      MR_hl_field(MR_mktag(0), base, 21) = ((MR_Box) (AccTypeRepns_50));
+    }
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int1_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv1_HeadVar__2_2;
+
+    conv1_HeadVar__2_2 = parse_tree__item_util__fim_spec_to_item_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv1_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int1_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv0_HeadVar__2_2;
+
+    conv0_HeadVar__2_2 = parse_tree__item_util__fim_spec_to_item_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int1_4_p_0(
+  MR_Word ParseTreeInt1_5,
+  MR_Word ReadWhy1_6,
+  MR_Word STATE_VARIABLE_Acc_0_90,
+  MR_Word * STATE_VARIABLE_Acc_91)
+{
+  {
+    MR_Word IntNeedQual_9;
+    MR_Word IntItemImport_10;
+    MR_Word ImpItemImport_11;
+    MR_Word ImpNeedQual_12;
+    MR_Word IntItemMercuryStatus_13;
+    MR_Word ImpItemMercuryStatus_14;
+    MR_Word IntSectionInfo_15;
+    MR_Word ImpSectionInfo_16;
+    MR_Word ModuleName_17;
+    MR_Word ImportUseMap_25;
+    MR_Word IntFIMSpecs_26;
+    MR_Word ImpFIMSpecs_27;
+    MR_Word IntTypeDefnMap_28;
+    MR_Word IntInstDefnMap_29;
+    MR_Word IntModeDefnMap_30;
+    MR_Word IntTypeClasses_31;
+    MR_Word IntInstances_32;
+    MR_Word IntPredDecls_33;
+    MR_Word IntModeDecls_34;
+    MR_Word IntDeclPragmas_35;
+    MR_Word IntPromises_36;
+    MR_Word IntTypeRepnMap_37;
+    MR_Word ImpTypeDefnMap_38;
+    MR_Word ImpForeignEnumMap_39;
+    MR_Word ImpTypeClasses_40;
+    MR_Word AccAvails0_41;
+    MR_Word AccFIMs0_42;
+    MR_Word AccTypeDefnsAbs0_43;
+    MR_Word AccTypeDefnsMer0_44;
+    MR_Word AccTypeDefnsFor0_45;
+    MR_Word AccInstDefns0_46;
+    MR_Word AccModeDefns0_47;
+    MR_Word AccTypeClasses0_48;
+    MR_Word AccInstances0_49;
+    MR_Word AccPredDecls0_50;
+    MR_Word AccModeDecls0_51;
+    MR_Word AccForeignEnums0_52;
+    MR_Word AccDeclPragmas0_53;
+    MR_Word AccPromises0_54;
+    MR_Word AccTypeRepns0_55;
+    MR_Word IntAvails_56;
+    MR_Word ImpAvails_57;
+    MR_Word AccAvails1_58;
+    MR_Word AccAvails_59;
+    MR_Word IntFIMs_60;
+    MR_Word ImpFIMs_61;
+    MR_Word AccFIMs_62;
+    MR_Word IntTypeDefns_63;
+    MR_Word ImpTypeDefns_64;
+    MR_Word IntTypeDefnsAbs_65;
+    MR_Word IntTypeDefnsMer_66;
+    MR_Word IntTypeDefnsFor_67;
+    MR_Word ImpTypeDefnsAbs_68;
+    MR_Word ImpTypeDefnsMer_69;
+    MR_Word ImpTypeDefnsFor_70;
+    MR_Word AccTypeDefnsAbs1_71;
+    MR_Word AccTypeDefnsAbs_72;
+    MR_Word AccTypeDefnsMer1_73;
+    MR_Word AccTypeDefnsMer_74;
+    MR_Word AccTypeDefnsFor1_75;
+    MR_Word AccTypeDefnsFor_76;
+    MR_Word InstDefns_77;
+    MR_Word AccInstDefns_78;
+    MR_Word ModeDefns_79;
+    MR_Word AccModeDefns_80;
+    MR_Word AccTypeClasses1_81;
+    MR_Word AccTypeClasses_82;
+    MR_Word AccInstances_83;
+    MR_Word AccPredDecls_84;
+    MR_Word AccModeDecls_85;
+    MR_Word AccForeignEnums_86;
+    MR_Word AccDeclPragmas_87;
+    MR_Word AccPromises_88;
+    MR_Word AccTypeRepns_89;
+    MR_Word Var_96;
+    MR_Word Var_98;
+    MR_Word Var_99;
+    MR_Word Var_100;
+    MR_Word Var_101;
+    MR_Word Var_108;
+    MR_Word Var_109;
+    MR_Word Var_110;
+    MR_Word Var_453;
+    MR_Word Var_455;
+    MR_Word Var_457;
+    MR_Word Var_458;
+    MR_Word Var_460;
+    MR_Word Var_461;
+    MR_Word Var_462;
+
+    switch (ReadWhy1_6) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 2:
+        {
+          IntNeedQual_9 = (MR_Integer) 1;
+          IntItemImport_10 = (MR_Word) (MR_mkword(MR_mktag(1), &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[1]));
+          ImpItemImport_11 = (MR_Word) ((MR_Unsigned) 0U);
+          ImpNeedQual_12 = (MR_Integer) 0;
+        }
+        break;
+      case (MR_Integer) 3:
+        {
+          IntNeedQual_9 = (MR_Integer) 0;
+          IntItemImport_10 = (MR_Word) (MR_mkword(MR_mktag(1), &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[1]));
+          ImpItemImport_11 = (MR_Word) ((MR_Unsigned) 0U);
+          ImpNeedQual_12 = (MR_Integer) 0;
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          IntNeedQual_9 = (MR_Integer) 1;
+          IntItemImport_10 = (MR_Word) (MR_mkword(MR_mktag(1), &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[2]));
+          ImpItemImport_11 = (MR_Word) ((MR_Unsigned) 0U);
+          ImpNeedQual_12 = (MR_Integer) 0;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          IntNeedQual_9 = (MR_Integer) 0;
+          IntItemImport_10 = (MR_Word) (MR_mkword(MR_mktag(1), &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[2]));
+          ImpItemImport_11 = (MR_Word) ((MR_Unsigned) 0U);
+          ImpNeedQual_12 = (MR_Integer) 0;
+        }
+        break;
+      case (MR_Integer) 4:
+        {
+          IntNeedQual_9 = (MR_Integer) 1;
+          IntItemImport_10 = (MR_Word) (MR_mkword(MR_mktag(1), &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[2]));
+          ImpItemImport_11 = (MR_Word) ((MR_Unsigned) 0U);
+          ImpNeedQual_12 = (MR_Integer) 0;
+        }
+        break;
+      case (MR_Integer) 5:
+        {
+          IntItemImport_10 = (MR_Word) ((MR_Unsigned) 4U);
+          ImpItemImport_11 = (MR_Word) ((MR_Unsigned) 4U);
+          IntNeedQual_9 = (MR_Integer) 0;
+          ImpNeedQual_12 = (MR_Integer) 0;
+        }
+        break;
+      case (MR_Integer) 6:
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140hlds.make_hlds.make_hlds_passes.make_hlds_separate_items.acc_parse_tree_int1\'/4", (MR_String) "rwi1_type_repn");
+          return;
+        }
+        break;
+    }
+    {
+      IntItemMercuryStatus_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), IntItemMercuryStatus_13, 0) = ((MR_Box) (IntItemImport_10));
+    }
+    {
+      ImpItemMercuryStatus_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ImpItemMercuryStatus_14, 0) = ((MR_Box) (ImpItemImport_11));
+    }
+    {
+      IntSectionInfo_15 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), IntSectionInfo_15, 0) = ((MR_Box) (IntItemMercuryStatus_13));
+      MR_hl_field(MR_mktag(0), IntSectionInfo_15, 1) = (MR_Box) ((MR_Unsigned) (IntNeedQual_9));
+    }
+    {
+      ImpSectionInfo_16 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ImpSectionInfo_16, 0) = ((MR_Box) (ImpItemMercuryStatus_14));
+      MR_hl_field(MR_mktag(0), ImpSectionInfo_16, 1) = (MR_Box) ((MR_Unsigned) (ImpNeedQual_12));
+    }
+    ModuleName_17 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 0))));
+    ImportUseMap_25 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 8))));
+    IntFIMSpecs_26 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 9))));
+    ImpFIMSpecs_27 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 10))));
+    IntTypeDefnMap_28 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 11))));
+    IntInstDefnMap_29 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 12))));
+    IntModeDefnMap_30 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 13))));
+    IntTypeClasses_31 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 14))));
+    IntInstances_32 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 15))));
+    IntPredDecls_33 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 16))));
+    IntModeDecls_34 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 17))));
+    IntDeclPragmas_35 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 18))));
+    IntPromises_36 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 19))));
+    IntTypeRepnMap_37 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 20))));
+    ImpTypeDefnMap_38 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 21))));
+    ImpForeignEnumMap_39 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 22))));
+    ImpTypeClasses_40 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_5, (MR_Integer) 23))));
+    AccAvails0_41 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 0))));
+    AccFIMs0_42 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 1))));
+    AccTypeDefnsAbs0_43 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 2))));
+    AccTypeDefnsMer0_44 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 3))));
+    AccTypeDefnsFor0_45 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 4))));
+    AccInstDefns0_46 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 5))));
+    AccModeDefns0_47 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 6))));
+    AccTypeClasses0_48 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 7))));
+    AccInstances0_49 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 8))));
+    AccPredDecls0_50 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 9))));
+    AccModeDecls0_51 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 10))));
+    AccForeignEnums0_52 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 12))));
+    AccDeclPragmas0_53 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 14))));
+    AccPromises0_54 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 17))));
+    AccTypeRepns0_55 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 21))));
+    parse_tree__item_util__import_and_or_use_map_to_item_avails_4_p_0((MR_Integer) 1, ImportUseMap_25, &IntAvails_56, &ImpAvails_57);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_avails_4_p_0(IntItemMercuryStatus_13, IntAvails_56, AccAvails0_41, &AccAvails1_58);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_avails_4_p_0(ImpItemMercuryStatus_14, ImpAvails_57, AccAvails1_58, &AccAvails_59);
+    Var_96 = mercury__set__to_sorted_list_1_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), IntFIMSpecs_26);
+    IntFIMs_60 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[17]), Var_96);
+    Var_98 = mercury__set__to_sorted_list_1_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), ImpFIMSpecs_27);
+    ImpFIMs_61 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[18]), Var_98);
+    Var_100 = mercury__cord__from_list_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), IntFIMs_60);
+    Var_101 = mercury__cord__from_list_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), ImpFIMs_61);
+    Var_99 = mercury__cord__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), Var_100, Var_101);
+    AccFIMs_62 = mercury__cord__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), AccFIMs0_42, Var_99);
+    IntTypeDefns_63 = parse_tree__convert_parse_tree__type_ctor_defn_map_to_type_defns_1_f_0(IntTypeDefnMap_28);
+    ImpTypeDefns_64 = parse_tree__convert_parse_tree__type_ctor_defn_map_to_type_defns_1_f_0(ImpTypeDefnMap_38);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_type_defns_abs_mer_for_7_p_0(IntTypeDefns_63, (MR_Word) ((MR_Unsigned) 0U), &IntTypeDefnsAbs_65, (MR_Word) ((MR_Unsigned) 0U), &IntTypeDefnsMer_66, (MR_Word) ((MR_Unsigned) 0U), &IntTypeDefnsFor_67);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_type_defns_abs_mer_for_7_p_0(ImpTypeDefns_64, (MR_Word) ((MR_Unsigned) 0U), &ImpTypeDefnsAbs_68, (MR_Word) ((MR_Unsigned) 0U), &ImpTypeDefnsMer_69, (MR_Word) ((MR_Unsigned) 0U), &ImpTypeDefnsFor_70);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), IntSectionInfo_15, IntTypeDefnsAbs_65, AccTypeDefnsAbs0_43, &AccTypeDefnsAbs1_71);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), ImpSectionInfo_16, ImpTypeDefnsAbs_68, AccTypeDefnsAbs1_71, &AccTypeDefnsAbs_72);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), IntSectionInfo_15, IntTypeDefnsMer_66, AccTypeDefnsMer0_44, &AccTypeDefnsMer1_73);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), ImpSectionInfo_16, ImpTypeDefnsMer_69, AccTypeDefnsMer1_73, &AccTypeDefnsMer_74);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), IntSectionInfo_15, IntTypeDefnsFor_67, AccTypeDefnsFor0_45, &AccTypeDefnsFor1_75);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), ImpSectionInfo_16, ImpTypeDefnsFor_70, AccTypeDefnsFor1_75, &AccTypeDefnsFor_76);
+    InstDefns_77 = parse_tree__convert_parse_tree__inst_ctor_defn_map_to_inst_defns_1_f_0(IntInstDefnMap_29);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0), IntItemMercuryStatus_13, InstDefns_77, AccInstDefns0_46, &AccInstDefns_78);
+    ModeDefns_79 = parse_tree__convert_parse_tree__mode_ctor_defn_map_to_mode_defns_1_f_0(IntModeDefnMap_30);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0), IntItemMercuryStatus_13, ModeDefns_79, AccModeDefns0_47, &AccModeDefns_80);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0), IntSectionInfo_15, IntTypeClasses_31, AccTypeClasses0_48, &AccTypeClasses1_81);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0), ImpSectionInfo_16, ImpTypeClasses_40, AccTypeClasses1_81, &AccTypeClasses_82);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0), IntItemMercuryStatus_13, IntInstances_32, AccInstances0_49, &AccInstances_83);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0), IntSectionInfo_15, IntPredDecls_33, AccPredDecls0_50, &AccPredDecls_84);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0), IntItemMercuryStatus_13, IntModeDecls_34, AccModeDecls0_51, &AccModeDecls_85);
+    Var_108 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cjcs_map_to_list_1_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), ImpForeignEnumMap_39);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_tuple_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), ImpItemMercuryStatus_14, Var_108, AccForeignEnums0_52, &AccForeignEnums_86);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), IntItemMercuryStatus_13, IntDeclPragmas_35, AccDeclPragmas0_53, &AccDeclPragmas_87);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_promise_info_0), IntItemMercuryStatus_13, IntPromises_36, AccPromises0_54, &AccPromises_88);
+    {
+      Var_110 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_110, 0) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), Var_110, 1) = ((MR_Box) (IntTypeRepnMap_37));
+    }
+    {
+      Var_109 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_109, 0) = ((MR_Box) (ModuleName_17));
+      MR_hl_field(MR_mktag(0), Var_109, 1) = ((MR_Box) (Var_110));
+    }
+    {
+      AccTypeRepns_89 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), AccTypeRepns_89, 0) = ((MR_Box) (Var_109));
+      MR_hl_field(MR_mktag(1), AccTypeRepns_89, 1) = ((MR_Box) (AccTypeRepns0_55));
+    }
+    Var_453 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 11))));
+    Var_455 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 13))));
+    Var_457 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 15))));
+    Var_458 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 16))));
+    Var_460 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 18))));
+    Var_461 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 19))));
+    Var_462 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_90, (MR_Integer) 20))));
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (22 * sizeof(MR_Word)), NULL, NULL);
+      *STATE_VARIABLE_Acc_91 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (AccAvails_59));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (AccFIMs_62));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (AccTypeDefnsAbs_72));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (AccTypeDefnsMer_74));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (AccTypeDefnsFor_76));
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (AccInstDefns_78));
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (AccModeDefns_80));
+      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (AccTypeClasses_82));
+      MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (AccInstances_83));
+      MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (AccPredDecls_84));
+      MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (AccModeDecls_85));
+      MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (Var_453));
+      MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (AccForeignEnums_86));
+      MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (Var_455));
+      MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (AccDeclPragmas_87));
+      MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (Var_457));
+      MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (Var_458));
+      MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (AccPromises_88));
+      MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (Var_460));
+      MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (Var_461));
+      MR_hl_field(MR_mktag(0), base, 20) = ((MR_Box) (Var_462));
+      MR_hl_field(MR_mktag(0), base, 21) = ((MR_Box) (AccTypeRepns_89));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ancestor_int_spec_3_p_0(
+  MR_Word AncestorIntSpec_4,
+  MR_Word STATE_VARIABLE_Acc_0_8,
+  MR_Word * STATE_VARIABLE_Acc_9)
+{
+  {
+    MR_Word ParseTreeInt0_6 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AncestorIntSpec_4, (MR_Integer) 0))));
+    MR_Word ReadWhy0_7 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), AncestorIntSpec_4, (MR_Integer) 1))) & (MR_Integer) 1);
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int0_4_p_0(ParseTreeInt0_6, ReadWhy0_7, STATE_VARIABLE_Acc_0_8, STATE_VARIABLE_Acc_9);
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int0_4_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv1_HeadVar__2_2;
+
+    conv1_HeadVar__2_2 = parse_tree__item_util__fim_spec_to_item_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv1_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int0_4_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv0_HeadVar__2_2;
+
+    conv0_HeadVar__2_2 = parse_tree__item_util__fim_spec_to_item_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_int0_4_p_0(
+  MR_Word ParseTreeInt0_5,
+  MR_Word ReadWhy0_6,
+  MR_Word STATE_VARIABLE_Acc_0_106,
+  MR_Word * STATE_VARIABLE_Acc_107)
+{
+  {
+    MR_Word IntItemImport_10;
+    MR_Word ImpItemImport_11;
+    MR_Word IntNeedQual_12;
+    MR_Word ImpNeedQual_13;
+    MR_Word IntItemMercuryStatus_14;
+    MR_Word ImpItemMercuryStatus_15;
+    MR_Word IntSectionInfo_16;
+    MR_Word ImpSectionInfo_17;
+    MR_Word ImportUseMap_28;
+    MR_Word IntFIMSpecs_29;
+    MR_Word ImpFIMSpecs_30;
+    MR_Word IntTypeDefnMap_31;
+    MR_Word IntInstDefnMap_32;
+    MR_Word IntModeDefnMap_33;
+    MR_Word IntTypeClasses_34;
+    MR_Word IntInstances_35;
+    MR_Word IntPredDecls_36;
+    MR_Word IntModeDecls_37;
+    MR_Word IntDeclPragmas_38;
+    MR_Word IntPromises_39;
+    MR_Word ImpTypeDefnMap_40;
+    MR_Word ImpInstDefnMap_41;
+    MR_Word ImpModeDefnMap_42;
+    MR_Word ImpTypeClasses_43;
+    MR_Word ImpInstances_44;
+    MR_Word ImpPredDecls_45;
+    MR_Word ImpModeDecls_46;
+    MR_Word ImpForeignEnumMap_47;
+    MR_Word ImpDeclPragmas_48;
+    MR_Word ImpPromises_49;
+    MR_Word AccAvails0_50;
+    MR_Word AccFIMs0_51;
+    MR_Word AccTypeDefnsAbs0_52;
+    MR_Word AccTypeDefnsMer0_53;
+    MR_Word AccTypeDefnsFor0_54;
+    MR_Word AccInstDefns0_55;
+    MR_Word AccModeDefns0_56;
+    MR_Word AccTypeClasses0_57;
+    MR_Word AccInstances0_58;
+    MR_Word AccPredDecls0_59;
+    MR_Word AccModeDecls0_60;
+    MR_Word AccForeignEnums0_61;
+    MR_Word AccDeclPragmas0_62;
+    MR_Word AccPromises0_63;
+    MR_Word IntAvails_64;
+    MR_Word ImpAvails_65;
+    MR_Word AccAvails1_66;
+    MR_Word AccAvails_67;
+    MR_Word IntFIMs_68;
+    MR_Word ImpFIMs_69;
+    MR_Word AccFIMs_70;
+    MR_Word IntTypeDefns_71;
+    MR_Word ImpTypeDefns_72;
+    MR_Word IntTypeDefnsAbs_73;
+    MR_Word IntTypeDefnsMer_74;
+    MR_Word IntTypeDefnsFor_75;
+    MR_Word ImpTypeDefnsAbs_76;
+    MR_Word ImpTypeDefnsMer_77;
+    MR_Word ImpTypeDefnsFor_78;
+    MR_Word AccTypeDefnsAbs1_79;
+    MR_Word AccTypeDefnsAbs_80;
+    MR_Word AccTypeDefnsMer1_81;
+    MR_Word AccTypeDefnsMer_82;
+    MR_Word AccTypeDefnsFor1_83;
+    MR_Word AccTypeDefnsFor_84;
+    MR_Word IntInstDefns_85;
+    MR_Word ImpInstDefns_86;
+    MR_Word AccInstDefns1_87;
+    MR_Word AccInstDefns_88;
+    MR_Word IntModeDefns_89;
+    MR_Word ImpModeDefns_90;
+    MR_Word AccModeDefns1_91;
+    MR_Word AccModeDefns_92;
+    MR_Word AccTypeClasses1_93;
+    MR_Word AccTypeClasses_94;
+    MR_Word AccInstances1_95;
+    MR_Word AccInstances_96;
+    MR_Word AccPredDecls1_97;
+    MR_Word AccPredDecls_98;
+    MR_Word AccModeDecls1_99;
+    MR_Word AccModeDecls_100;
+    MR_Word AccForeignEnums_101;
+    MR_Word AccDeclPragmas1_102;
+    MR_Word AccDeclPragmas_103;
+    MR_Word AccPromises1_104;
+    MR_Word AccPromises_105;
+    MR_Word Var_110;
+    MR_Word Var_112;
+    MR_Word Var_113;
+    MR_Word Var_114;
+    MR_Word Var_115;
+    MR_Word Var_122;
+    MR_Word Var_442;
+    MR_Word Var_444;
+    MR_Word Var_446;
+    MR_Word Var_447;
+    MR_Word Var_449;
+    MR_Word Var_450;
+    MR_Word Var_451;
+    MR_Word Var_452;
+
+    switch (ReadWhy0_6) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 1:
+        {
+          IntItemImport_10 = (MR_Word) ((MR_Unsigned) 4U);
+          ImpItemImport_11 = (MR_Word) ((MR_Unsigned) 4U);
+          IntNeedQual_12 = (MR_Integer) 0;
+          ImpNeedQual_13 = (MR_Integer) 0;
+        }
+        break;
+      case (MR_Integer) 0:
+        {
+          IntItemImport_10 = (MR_Word) (MR_mkword(MR_mktag(1), &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[3]));
+          ImpItemImport_11 = (MR_Word) (MR_mkword(MR_mktag(1), &hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[4]));
+          IntNeedQual_12 = (MR_Integer) 1;
+          ImpNeedQual_13 = (MR_Integer) 1;
+        }
+        break;
+    }
+    {
+      IntItemMercuryStatus_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), IntItemMercuryStatus_14, 0) = ((MR_Box) (IntItemImport_10));
+    }
+    {
+      ImpItemMercuryStatus_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), ImpItemMercuryStatus_15, 0) = ((MR_Box) (ImpItemImport_11));
+    }
+    {
+      IntSectionInfo_16 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), IntSectionInfo_16, 0) = ((MR_Box) (IntItemMercuryStatus_14));
+      MR_hl_field(MR_mktag(0), IntSectionInfo_16, 1) = (MR_Box) ((MR_Unsigned) (IntNeedQual_12));
+    }
+    {
+      ImpSectionInfo_17 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ImpSectionInfo_17, 0) = ((MR_Box) (ImpItemMercuryStatus_15));
+      MR_hl_field(MR_mktag(0), ImpSectionInfo_17, 1) = (MR_Box) ((MR_Unsigned) (ImpNeedQual_13));
+    }
+    ImportUseMap_28 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 10))));
+    IntFIMSpecs_29 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 11))));
+    ImpFIMSpecs_30 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 12))));
+    IntTypeDefnMap_31 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 13))));
+    IntInstDefnMap_32 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 14))));
+    IntModeDefnMap_33 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 15))));
+    IntTypeClasses_34 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 16))));
+    IntInstances_35 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 17))));
+    IntPredDecls_36 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 18))));
+    IntModeDecls_37 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 19))));
+    IntDeclPragmas_38 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 20))));
+    IntPromises_39 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 21))));
+    ImpTypeDefnMap_40 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 22))));
+    ImpInstDefnMap_41 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 23))));
+    ImpModeDefnMap_42 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 24))));
+    ImpTypeClasses_43 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 25))));
+    ImpInstances_44 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 26))));
+    ImpPredDecls_45 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 27))));
+    ImpModeDecls_46 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 28))));
+    ImpForeignEnumMap_47 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 29))));
+    ImpDeclPragmas_48 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 30))));
+    ImpPromises_49 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_5, (MR_Integer) 31))));
+    AccAvails0_50 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 0))));
+    AccFIMs0_51 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 1))));
+    AccTypeDefnsAbs0_52 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 2))));
+    AccTypeDefnsMer0_53 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 3))));
+    AccTypeDefnsFor0_54 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 4))));
+    AccInstDefns0_55 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 5))));
+    AccModeDefns0_56 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 6))));
+    AccTypeClasses0_57 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 7))));
+    AccInstances0_58 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 8))));
+    AccPredDecls0_59 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 9))));
+    AccModeDecls0_60 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 10))));
+    AccForeignEnums0_61 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 12))));
+    AccDeclPragmas0_62 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 14))));
+    AccPromises0_63 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 17))));
+    parse_tree__item_util__import_and_or_use_map_to_item_avails_4_p_0((MR_Integer) 1, ImportUseMap_28, &IntAvails_64, &ImpAvails_65);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_avails_4_p_0(IntItemMercuryStatus_14, IntAvails_64, AccAvails0_50, &AccAvails1_66);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_avails_4_p_0(ImpItemMercuryStatus_15, ImpAvails_65, AccAvails1_66, &AccAvails_67);
+    Var_110 = mercury__set__to_sorted_list_1_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), IntFIMSpecs_29);
+    IntFIMs_68 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[15]), Var_110);
+    Var_112 = mercury__set__to_sorted_list_1_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), ImpFIMSpecs_30);
+    ImpFIMs_69 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[16]), Var_112);
+    Var_114 = mercury__cord__from_list_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), IntFIMs_68);
+    Var_115 = mercury__cord__from_list_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), ImpFIMs_69);
+    Var_113 = mercury__cord__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), Var_114, Var_115);
+    AccFIMs_70 = mercury__cord__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), AccFIMs0_51, Var_113);
+    IntTypeDefns_71 = parse_tree__convert_parse_tree__type_ctor_defn_map_to_type_defns_1_f_0(IntTypeDefnMap_31);
+    ImpTypeDefns_72 = parse_tree__convert_parse_tree__type_ctor_defn_map_to_type_defns_1_f_0(ImpTypeDefnMap_40);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_type_defns_abs_mer_for_7_p_0(IntTypeDefns_71, (MR_Word) ((MR_Unsigned) 0U), &IntTypeDefnsAbs_73, (MR_Word) ((MR_Unsigned) 0U), &IntTypeDefnsMer_74, (MR_Word) ((MR_Unsigned) 0U), &IntTypeDefnsFor_75);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_type_defns_abs_mer_for_7_p_0(ImpTypeDefns_72, (MR_Word) ((MR_Unsigned) 0U), &ImpTypeDefnsAbs_76, (MR_Word) ((MR_Unsigned) 0U), &ImpTypeDefnsMer_77, (MR_Word) ((MR_Unsigned) 0U), &ImpTypeDefnsFor_78);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), IntSectionInfo_16, IntTypeDefnsAbs_73, AccTypeDefnsAbs0_52, &AccTypeDefnsAbs1_79);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), ImpSectionInfo_17, ImpTypeDefnsAbs_76, AccTypeDefnsAbs1_79, &AccTypeDefnsAbs_80);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), IntSectionInfo_16, IntTypeDefnsMer_74, AccTypeDefnsMer0_53, &AccTypeDefnsMer1_81);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), ImpSectionInfo_17, ImpTypeDefnsMer_77, AccTypeDefnsMer1_81, &AccTypeDefnsMer_82);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), IntSectionInfo_16, IntTypeDefnsFor_75, AccTypeDefnsFor0_54, &AccTypeDefnsFor1_83);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), ImpSectionInfo_17, ImpTypeDefnsFor_78, AccTypeDefnsFor1_83, &AccTypeDefnsFor_84);
+    IntInstDefns_85 = parse_tree__convert_parse_tree__inst_ctor_defn_map_to_inst_defns_1_f_0(IntInstDefnMap_32);
+    ImpInstDefns_86 = parse_tree__convert_parse_tree__inst_ctor_defn_map_to_inst_defns_1_f_0(ImpInstDefnMap_41);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0), IntItemMercuryStatus_14, IntInstDefns_85, AccInstDefns0_55, &AccInstDefns1_87);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0), ImpItemMercuryStatus_15, ImpInstDefns_86, AccInstDefns1_87, &AccInstDefns_88);
+    IntModeDefns_89 = parse_tree__convert_parse_tree__mode_ctor_defn_map_to_mode_defns_1_f_0(IntModeDefnMap_33);
+    ImpModeDefns_90 = parse_tree__convert_parse_tree__mode_ctor_defn_map_to_mode_defns_1_f_0(ImpModeDefnMap_42);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0), IntItemMercuryStatus_14, IntModeDefns_89, AccModeDefns0_56, &AccModeDefns1_91);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0), ImpItemMercuryStatus_15, ImpModeDefns_90, AccModeDefns1_91, &AccModeDefns_92);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0), IntSectionInfo_16, IntTypeClasses_34, AccTypeClasses0_57, &AccTypeClasses1_93);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0), ImpSectionInfo_17, ImpTypeClasses_43, AccTypeClasses1_93, &AccTypeClasses_94);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0), IntItemMercuryStatus_14, IntInstances_35, AccInstances0_58, &AccInstances1_95);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0), ImpItemMercuryStatus_15, ImpInstances_44, AccInstances1_95, &AccInstances_96);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0), IntSectionInfo_16, IntPredDecls_36, AccPredDecls0_59, &AccPredDecls1_97);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0), ImpSectionInfo_17, ImpPredDecls_45, AccPredDecls1_97, &AccPredDecls_98);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0), IntItemMercuryStatus_14, IntModeDecls_37, AccModeDecls0_60, &AccModeDecls1_99);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0), ImpItemMercuryStatus_15, ImpModeDecls_46, AccModeDecls1_99, &AccModeDecls_100);
+    Var_122 = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cjcs_map_to_list_1_f_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), ImpForeignEnumMap_47);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_tuple_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), ImpItemMercuryStatus_15, Var_122, AccForeignEnums0_61, &AccForeignEnums_101);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), IntItemMercuryStatus_14, IntDeclPragmas_38, AccDeclPragmas0_62, &AccDeclPragmas1_102);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), ImpItemMercuryStatus_15, ImpDeclPragmas_48, AccDeclPragmas1_102, &AccDeclPragmas_103);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_promise_info_0), IntItemMercuryStatus_14, IntPromises_39, AccPromises0_63, &AccPromises1_104);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_promise_info_0), ImpItemMercuryStatus_15, ImpPromises_49, AccPromises1_104, &AccPromises_105);
+    Var_442 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 11))));
+    Var_444 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 13))));
+    Var_446 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 15))));
+    Var_447 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 16))));
+    Var_449 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 18))));
+    Var_450 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 19))));
+    Var_451 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 20))));
+    Var_452 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_106, (MR_Integer) 21))));
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (22 * sizeof(MR_Word)), NULL, NULL);
+      *STATE_VARIABLE_Acc_107 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (AccAvails_67));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (AccFIMs_70));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (AccTypeDefnsAbs_80));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (AccTypeDefnsMer_82));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (AccTypeDefnsFor_84));
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (AccInstDefns_88));
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (AccModeDefns_92));
+      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (AccTypeClasses_94));
+      MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (AccInstances_96));
+      MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (AccPredDecls_98));
+      MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (AccModeDecls_100));
+      MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (Var_442));
+      MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (AccForeignEnums_101));
+      MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (Var_444));
+      MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (AccDeclPragmas_103));
+      MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (Var_446));
+      MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (Var_447));
+      MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (AccPromises_105));
+      MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (Var_449));
+      MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (Var_450));
+      MR_hl_field(MR_mktag(0), base, 20) = ((MR_Box) (Var_451));
+      MR_hl_field(MR_mktag(0), base, 21) = ((MR_Box) (Var_452));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cjcs_map_to_list_1_f_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv0_STATE_VARIABLE_RevList_10;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_cjcs_map_to_list_3_p_0(((MR_Word) ((MR_hl_field(MR_mktag(0), closure, (MR_Integer) 3)))), ((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_RevList_10);
+    *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_RevList_10));
+  }
+}
+
+static MR_Word MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cjcs_map_to_list_1_f_0(
+  MR_Word TypeInfo_for__K_8,
+  MR_Word TypeInfo_for_V_9,
+  MR_Word Map_3)
+{
+  {
+    MR_Word List_4;
+    MR_Word TypeInfo_14_14;
+    MR_Word TypeInfo_16_16;
+    MR_Word RevList_6;
+    MR_Word Var_7;
+    MR_Box conv1_RevList_6;
+
+    {
+      Var_7 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_7, 0) = ((MR_Box) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_9[0]));
+      MR_hl_field(MR_mktag(0), Var_7, 1) = ((MR_Box) (hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__cjcs_map_to_list_1_f_0_1));
+      MR_hl_field(MR_mktag(0), Var_7, 2) = ((MR_Box) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), Var_7, 3) = ((MR_Box) (TypeInfo_for_V_9));
+    }
+    {
+      TypeInfo_14_14 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), TypeInfo_14_14, 0) = ((MR_Box) (&mercury__list__list__type_ctor_info_list_1));
+      MR_hl_field(MR_mktag(0), TypeInfo_14_14, 1) = ((MR_Box) (TypeInfo_for_V_9));
+    }
+    {
+      TypeInfo_16_16 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), TypeInfo_16_16, 0) = ((MR_Box) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_c_java_csharp_1));
+      MR_hl_field(MR_mktag(0), TypeInfo_16_16, 1) = ((MR_Box) (TypeInfo_14_14));
+    }
+    mercury__map__foldl_values_4_p_0(TypeInfo_16_16, TypeInfo_14_14, TypeInfo_for__K_8, (MR_Word) (Var_7), Map_3, ((MR_Box) ((MR_Unsigned) 0U)), &conv1_RevList_6);
+    RevList_6 = ((MR_Word) (conv1_RevList_6));
+    mercury__list__reverse_2_p_0(TypeInfo_for_V_9, RevList_6, &List_4);
+    return List_4;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_type_defns_abs_mer_for_7_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_Abs_0_2,
+  MR_Word * STATE_VARIABLE_Abs_3,
+  MR_Word STATE_VARIABLE_Mer_0_4,
+  MR_Word * STATE_VARIABLE_Mer_5,
+  MR_Word STATE_VARIABLE_For_0_6,
+  MR_Word * STATE_VARIABLE_For_7)
+{
+  if ((HeadVar__1_1 == (MR_Word) ((MR_Unsigned) 0U)))
+  {
+    *STATE_VARIABLE_For_7 = STATE_VARIABLE_For_0_6;
+    *STATE_VARIABLE_Mer_5 = STATE_VARIABLE_Mer_0_4;
+    *STATE_VARIABLE_Abs_3 = STATE_VARIABLE_Abs_0_2;
+  }
+  else
+  {
+    MR_Word Item_17 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word Items_18 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word TypeDefn_24;
+    MR_Word STATE_VARIABLE_Abs_39_39;
+    MR_Word STATE_VARIABLE_Mer_40_40;
+    MR_Word STATE_VARIABLE_For_41_41;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_type_defns_abs_mer_for_7_p_0(Items_18, STATE_VARIABLE_Abs_0_2, &STATE_VARIABLE_Abs_39_39, STATE_VARIABLE_Mer_0_4, &STATE_VARIABLE_Mer_40_40, STATE_VARIABLE_For_0_6, &STATE_VARIABLE_For_41_41);
+    TypeDefn_24 = ((MR_Word) ((MR_hl_field(MR_mktag(0), Item_17, (MR_Integer) 2))));
+    switch (MR_tag((MR_Word) TypeDefn_24)) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+      case (MR_Integer) 1:
+        {
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            *STATE_VARIABLE_Mer_5 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Item_17));
+            MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Mer_40_40));
+          }
+          *STATE_VARIABLE_Abs_3 = STATE_VARIABLE_Abs_39_39;
+          *STATE_VARIABLE_For_7 = STATE_VARIABLE_For_41_41;
+        }
+        break;
+      case (MR_Integer) 2:
+        {
+          {
+            MR_Word base;
+            base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+            *STATE_VARIABLE_Mer_5 = base;
+            MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Item_17));
+            MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Mer_40_40));
+          }
+          *STATE_VARIABLE_Abs_3 = STATE_VARIABLE_Abs_39_39;
+          *STATE_VARIABLE_For_7 = STATE_VARIABLE_For_41_41;
+        }
+        break;
+      case (MR_Integer) 3:
+        switch (((MR_Integer) ((MR_hl_field(MR_mktag(3), TypeDefn_24, (MR_Integer) 0))))) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            {
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                *STATE_VARIABLE_Abs_3 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Item_17));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_Abs_39_39));
+              }
+              *STATE_VARIABLE_Mer_5 = STATE_VARIABLE_Mer_40_40;
+              *STATE_VARIABLE_For_7 = STATE_VARIABLE_For_41_41;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              {
+                MR_Word base;
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+                *STATE_VARIABLE_For_7 = base;
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (Item_17));
+                MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (STATE_VARIABLE_For_41_41));
+              }
+              *STATE_VARIABLE_Abs_3 = STATE_VARIABLE_Abs_39_39;
+              *STATE_VARIABLE_Mer_5 = STATE_VARIABLE_Mer_40_40;
+            }
+            break;
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_type_repn_map_3_p_0(
+  MR_Word IntTypeRepns_4,
+  MR_Word STATE_VARIABLE_Cord_0_9,
+  MR_Word * STATE_VARIABLE_Cord_10)
+{
+  {
+    MR_Word TypeCtorRepnMap_7 = ((MR_Word) ((MR_hl_field(MR_mktag(0), IntTypeRepns_4, (MR_Integer) 1))));
+    MR_Word TypeCtorRepnPairs_8;
+    MR_Word Var_12;
+
+    mercury__map__to_sorted_assoc_list_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[19]), TypeCtorRepnMap_7, &TypeCtorRepnPairs_8);
+    Var_12 = mercury__cord__from_list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[2]), TypeCtorRepnPairs_8);
+    *STATE_VARIABLE_Cord_10 = mercury__cord__f_43_43_2_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[2]), STATE_VARIABLE_Cord_0_9, Var_12);
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_int_type_repn_map_3_p_0(
+  MR_Word HeadVar__1_1,
+  MR_Word STATE_VARIABLE_ModuleMap_0_14,
+  MR_Word * STATE_VARIABLE_ModuleMap_15)
+{
+  {
+    MR_bool succeeded;
+    MR_Word ModuleName_4 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 0))));
+    MR_Word IntTypeRepns_5 = ((MR_Word) ((MR_hl_field(MR_mktag(0), HeadVar__1_1, (MR_Integer) 1))));
+    MR_Word IntFileKind_7 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), IntTypeRepns_5, (MR_Integer) 0))) & (MR_Integer) 3);
+    MR_Word OldIntTypeRepns_9;
+    MR_Box conv0_OldIntTypeRepns_9;
+
+    succeeded = mercury__map__search_3_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0), STATE_VARIABLE_ModuleMap_0_14, ((MR_Box) (ModuleName_4)), &conv0_OldIntTypeRepns_9);
+    if (succeeded)
+    {
+      OldIntTypeRepns_9 = ((MR_Word) (conv0_OldIntTypeRepns_9));
+      succeeded = MR_TRUE;
+    }
+    if (succeeded)
+    {
+      MR_Word OldIntFileKind_10 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), OldIntTypeRepns_9, (MR_Integer) 0))) & (MR_Integer) 3);
+      MR_Integer Content_12 = ((&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_vector_common_7[0 + IntFileKind_7]))->hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_7_0__vct_7_f_0;
+      MR_Integer OldContent_13 = ((&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_vector_common_7[4 + OldIntFileKind_10]))->hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__vector_common_type_7_0__vct_7_f_0;
+
+      succeeded = (Content_12 > OldContent_13);
+      if (succeeded)
+        mercury__map__det_update_4_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0), ((MR_Box) (ModuleName_4)), ((MR_Box) (IntTypeRepns_5)), STATE_VARIABLE_ModuleMap_0_14, STATE_VARIABLE_ModuleMap_15);
+      else
+        *STATE_VARIABLE_ModuleMap_15 = STATE_VARIABLE_ModuleMap_0_14;
+    }
+    else
+      mercury__map__det_insert_4_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0), ((MR_Box) (ModuleName_4)), ((MR_Box) (IntTypeRepns_5)), STATE_VARIABLE_ModuleMap_0_14, STATE_VARIABLE_ModuleMap_15);
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_9(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv16_STATE_VARIABLE_Cord_10;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_type_repn_map_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv16_STATE_VARIABLE_Cord_10);
+    *wrapper_arg_3 = ((MR_Box) (conv16_STATE_VARIABLE_Cord_10));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_8(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv14_STATE_VARIABLE_ModuleMap_15;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_int_type_repn_map_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv14_STATE_VARIABLE_ModuleMap_15);
+    *wrapper_arg_3 = ((MR_Box) (conv14_STATE_VARIABLE_ModuleMap_15));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_7(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv12_STATE_VARIABLE_Acc_12;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_type_repn_spec_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv12_STATE_VARIABLE_Acc_12);
+    *wrapper_arg_3 = ((MR_Box) (conv12_STATE_VARIABLE_Acc_12));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_6(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv10_STATE_VARIABLE_Acc_13;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_int_for_opt_spec_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv10_STATE_VARIABLE_Acc_13);
+    *wrapper_arg_3 = ((MR_Box) (conv10_STATE_VARIABLE_Acc_13));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_5(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv8_STATE_VARIABLE_Acc_23;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_trans_opt_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv8_STATE_VARIABLE_Acc_23);
+    *wrapper_arg_3 = ((MR_Box) (conv8_STATE_VARIABLE_Acc_23));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_4(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv6_STATE_VARIABLE_Acc_78;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_plain_opt_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv6_STATE_VARIABLE_Acc_78);
+    *wrapper_arg_3 = ((MR_Box) (conv6_STATE_VARIABLE_Acc_78));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_3(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv4_STATE_VARIABLE_Acc_11;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_indirect_int_spec_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv4_STATE_VARIABLE_Acc_11);
+    *wrapper_arg_3 = ((MR_Box) (conv4_STATE_VARIABLE_Acc_11));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv2_STATE_VARIABLE_Acc_11;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_direct_int_spec_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv2_STATE_VARIABLE_Acc_11);
+    *wrapper_arg_3 = ((MR_Box) (conv2_STATE_VARIABLE_Acc_11));
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box * wrapper_arg_3)
+{
+  {
+    MR_Box closure = closure_arg;
+    MR_Word conv0_STATE_VARIABLE_Acc_9;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ancestor_int_spec_3_p_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), &conv0_STATE_VARIABLE_Acc_9);
+    *wrapper_arg_3 = ((MR_Box) (conv0_STATE_VARIABLE_Acc_9));
+  }
+}
+
+void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__separate_items_in_aug_comp_unit_24_p_0(
+  MR_Word AugCompUnit_25,
+  MR_Word * Avails_26,
+  MR_Word * FIMs_27,
+  MR_Word * TypeDefnsAbstract_28,
+  MR_Word * TypeDefnsMercury_29,
+  MR_Word * TypeDefnsForeign_30,
+  MR_Word * InstDefns_31,
+  MR_Word * ModeDefns_32,
+  MR_Word * PredDecls_33,
+  MR_Word * ModeDecls_34,
+  MR_Word * Promises_35,
+  MR_Word * Typeclasses_36,
+  MR_Word * Instances_37,
+  MR_Word * Initialises_38,
+  MR_Word * Finalises_39,
+  MR_Word * Mutables_40,
+  MR_Word * TypeRepnMap_41,
+  MR_Word * ForeignEnums_42,
+  MR_Word * ForeignExportEnums_43,
+  MR_Word * PragmasDecl_44,
+  MR_Word * PragmasImpl_45,
+  MR_Word * PragmasGen_46,
+  MR_Word * Clauses_47,
+  MR_Word * IntBadPreds_48)
+{
+  {
+    MR_Word ParseTreeModuleSrc_50 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AugCompUnit_25, (MR_Integer) 1))));
+    MR_Word AncestorIntSpecs_51 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AugCompUnit_25, (MR_Integer) 2))));
+    MR_Word DirectIntSpecs_52 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AugCompUnit_25, (MR_Integer) 3))));
+    MR_Word IndirectIntSpecs_53 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AugCompUnit_25, (MR_Integer) 4))));
+    MR_Word PlainOpts_54 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AugCompUnit_25, (MR_Integer) 5))));
+    MR_Word TransOpts_55 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AugCompUnit_25, (MR_Integer) 6))));
+    MR_Word IntForOptSpecs_56 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AugCompUnit_25, (MR_Integer) 7))));
+    MR_Word TypeRepnSpecs_57 = ((MR_Word) ((MR_hl_field(MR_mktag(0), AugCompUnit_25, (MR_Integer) 8))));
+    MR_Word AvailsCord_59;
+    MR_Word FIMsCord_60;
+    MR_Word TypeDefnsAbstractCord_61;
+    MR_Word TypeDefnsMercuryCord_62;
+    MR_Word TypeDefnsForeignCord_63;
+    MR_Word InstDefnsCord_64;
+    MR_Word ModeDefnsCord_65;
+    MR_Word TypeclassesCord_66;
+    MR_Word InstancesCord_67;
+    MR_Word PredDeclsCord_68;
+    MR_Word ModeDeclsCord_69;
+    MR_Word ClausesCord_70;
+    MR_Word ForeignEnumsCord_71;
+    MR_Word ForeignExportEnumsCord_72;
+    MR_Word PragmasDeclCord_73;
+    MR_Word PragmasImplCord_74;
+    MR_Word PragmasGenCord_75;
+    MR_Word PromisesCord_76;
+    MR_Word InitialisesCord_77;
+    MR_Word FinalisesCord_78;
+    MR_Word MutablesCord_79;
+    MR_Word ModuleIntTypeRepns_80;
+    MR_Word ModuleIntTypeRepnMap_81;
+    MR_Word TypeCtorRepnsCord_82;
+    MR_Word STATE_VARIABLE_Acc_83_83;
+    MR_Word Var_84;
+    MR_Word Var_85;
+    MR_Word Var_86;
+    MR_Word Var_87;
+    MR_Word Var_88;
+    MR_Word Var_89;
+    MR_Word Var_90;
+    MR_Word Var_91;
+    MR_Word Var_92;
+    MR_Word Var_93;
+    MR_Word Var_94;
+    MR_Word Var_95;
+    MR_Word Var_96;
+    MR_Word Var_97;
+    MR_Word Var_98;
+    MR_Word Var_99;
+    MR_Word Var_100;
+    MR_Word Var_101;
+    MR_Word Var_102;
+    MR_Word Var_103;
+    MR_Word Var_104;
+    MR_Word STATE_VARIABLE_Acc_106_106;
+    MR_Word STATE_VARIABLE_Acc_108_108;
+    MR_Word STATE_VARIABLE_Acc_110_110;
+    MR_Word STATE_VARIABLE_Acc_112_112;
+    MR_Word STATE_VARIABLE_Acc_114_114;
+    MR_Word STATE_VARIABLE_Acc_116_116;
+    MR_Word STATE_VARIABLE_Acc_118_118;
+    MR_Word STATE_VARIABLE_Acc_120_120;
+    MR_Word Var_122;
+    MR_Word Var_124;
+    MR_Word Var_125;
+    MR_Box conv1_STATE_VARIABLE_Acc_108_108;
+    MR_Box conv3_STATE_VARIABLE_Acc_110_110;
+    MR_Box conv5_STATE_VARIABLE_Acc_112_112;
+    MR_Box conv7_STATE_VARIABLE_Acc_114_114;
+    MR_Box conv9_STATE_VARIABLE_Acc_116_116;
+    MR_Box conv11_STATE_VARIABLE_Acc_118_118;
+    MR_Box conv13_STATE_VARIABLE_Acc_120_120;
+    MR_Box conv15_ModuleIntTypeRepnMap_81;
+    MR_Box conv17_TypeCtorRepnsCord_82;
+
+    Var_84 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[0]));
+    Var_85 = mercury__cord__init_0_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0));
+    Var_86 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[2]));
+    Var_87 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[2]));
+    Var_88 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[2]));
+    Var_89 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[3]));
+    Var_90 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[4]));
+    Var_91 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[5]));
+    Var_92 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[6]));
+    Var_93 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[7]));
+    Var_94 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[8]));
+    Var_95 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[9]));
+    Var_96 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_2[0]));
+    Var_97 = mercury__cord__init_0_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_export_enum_info_0));
+    Var_98 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[11]));
+    Var_99 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[13]));
+    Var_100 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]));
+    Var_101 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[15]));
+    Var_102 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[16]));
+    Var_103 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[17]));
+    Var_104 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[18]));
+    {
+      STATE_VARIABLE_Acc_83_83 = (MR_Word) MR_new_object(MR_Word, (22 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 0) = ((MR_Box) (Var_84));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 1) = ((MR_Box) (Var_85));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 2) = ((MR_Box) (Var_86));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 3) = ((MR_Box) (Var_87));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 4) = ((MR_Box) (Var_88));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 5) = ((MR_Box) (Var_89));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 6) = ((MR_Box) (Var_90));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 7) = ((MR_Box) (Var_91));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 8) = ((MR_Box) (Var_92));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 9) = ((MR_Box) (Var_93));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 10) = ((MR_Box) (Var_94));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 11) = ((MR_Box) (Var_95));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 12) = ((MR_Box) (Var_96));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 13) = ((MR_Box) (Var_97));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 14) = ((MR_Box) (Var_98));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 15) = ((MR_Box) (Var_99));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 16) = ((MR_Box) (Var_100));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 17) = ((MR_Box) (Var_101));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 18) = ((MR_Box) (Var_102));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 19) = ((MR_Box) (Var_103));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 20) = ((MR_Box) (Var_104));
+      MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_83_83, 21) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_module_src_3_p_0(ParseTreeModuleSrc_50, STATE_VARIABLE_Acc_83_83, &STATE_VARIABLE_Acc_106_106);
+    mercury__map__foldl_values_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_ancestor_int_spec_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0), (MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[6]), AncestorIntSpecs_51, ((MR_Box) (STATE_VARIABLE_Acc_106_106)), &conv1_STATE_VARIABLE_Acc_108_108);
+    STATE_VARIABLE_Acc_108_108 = ((MR_Word) (conv1_STATE_VARIABLE_Acc_108_108));
+    mercury__map__foldl_values_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_direct_int_spec_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0), (MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[7]), DirectIntSpecs_52, ((MR_Box) (STATE_VARIABLE_Acc_108_108)), &conv3_STATE_VARIABLE_Acc_110_110);
+    STATE_VARIABLE_Acc_110_110 = ((MR_Word) (conv3_STATE_VARIABLE_Acc_110_110));
+    mercury__map__foldl_values_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_indirect_int_spec_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0), (MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[8]), IndirectIntSpecs_53, ((MR_Box) (STATE_VARIABLE_Acc_110_110)), &conv5_STATE_VARIABLE_Acc_112_112);
+    STATE_VARIABLE_Acc_112_112 = ((MR_Word) (conv5_STATE_VARIABLE_Acc_112_112));
+    mercury__map__foldl_values_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_parse_tree_plain_opt_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0), (MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[9]), PlainOpts_54, ((MR_Box) (STATE_VARIABLE_Acc_112_112)), &conv7_STATE_VARIABLE_Acc_114_114);
+    STATE_VARIABLE_Acc_114_114 = ((MR_Word) (conv7_STATE_VARIABLE_Acc_114_114));
+    mercury__map__foldl_values_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_parse_tree_trans_opt_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0), (MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[10]), TransOpts_55, ((MR_Box) (STATE_VARIABLE_Acc_114_114)), &conv9_STATE_VARIABLE_Acc_116_116);
+    STATE_VARIABLE_Acc_116_116 = ((MR_Word) (conv9_STATE_VARIABLE_Acc_116_116));
+    mercury__map__foldl_values_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_int_for_opt_spec_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0), (MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[11]), IntForOptSpecs_56, ((MR_Box) (STATE_VARIABLE_Acc_116_116)), &conv11_STATE_VARIABLE_Acc_118_118);
+    STATE_VARIABLE_Acc_118_118 = ((MR_Word) (conv11_STATE_VARIABLE_Acc_118_118));
+    mercury__map__foldl_values_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_type_repn_spec_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0), (MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[12]), TypeRepnSpecs_57, ((MR_Box) (STATE_VARIABLE_Acc_118_118)), &conv13_STATE_VARIABLE_Acc_120_120);
+    STATE_VARIABLE_Acc_120_120 = ((MR_Word) (conv13_STATE_VARIABLE_Acc_120_120));
+    AvailsCord_59 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 0))));
+    FIMsCord_60 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 1))));
+    TypeDefnsAbstractCord_61 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 2))));
+    TypeDefnsMercuryCord_62 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 3))));
+    TypeDefnsForeignCord_63 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 4))));
+    InstDefnsCord_64 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 5))));
+    ModeDefnsCord_65 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 6))));
+    TypeclassesCord_66 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 7))));
+    InstancesCord_67 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 8))));
+    PredDeclsCord_68 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 9))));
+    ModeDeclsCord_69 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 10))));
+    ClausesCord_70 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 11))));
+    ForeignEnumsCord_71 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 12))));
+    ForeignExportEnumsCord_72 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 13))));
+    PragmasDeclCord_73 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 14))));
+    PragmasImplCord_74 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 15))));
+    PragmasGenCord_75 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 16))));
+    PromisesCord_76 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 17))));
+    InitialisesCord_77 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 18))));
+    FinalisesCord_78 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 19))));
+    MutablesCord_79 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 20))));
+    ModuleIntTypeRepns_80 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_120_120, (MR_Integer) 21))));
+    *Avails_26 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[0]), AvailsCord_59);
+    *FIMs_27 = mercury__cord__list_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), FIMsCord_60);
+    *TypeDefnsAbstract_28 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[2]), TypeDefnsAbstractCord_61);
+    *TypeDefnsMercury_29 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[2]), TypeDefnsMercuryCord_62);
+    *TypeDefnsForeign_30 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[2]), TypeDefnsForeignCord_63);
+    *InstDefns_31 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[3]), InstDefnsCord_64);
+    *ModeDefns_32 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[4]), ModeDefnsCord_65);
+    *Typeclasses_36 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[5]), TypeclassesCord_66);
+    *Instances_37 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[6]), InstancesCord_67);
+    *PredDecls_33 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[7]), PredDeclsCord_68);
+    *ModeDecls_34 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[8]), ModeDeclsCord_69);
+    *Clauses_47 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[9]), ClausesCord_70);
+    *ForeignEnums_42 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_2[0]), ForeignEnumsCord_71);
+    *ForeignExportEnums_43 = mercury__cord__list_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_export_enum_info_0), ForeignExportEnumsCord_72);
+    *PragmasDecl_44 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[11]), PragmasDeclCord_73);
+    *PragmasImpl_45 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[13]), PragmasImplCord_74);
+    *PragmasGen_46 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[14]), PragmasGenCord_75);
+    *Promises_35 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[15]), PromisesCord_76);
+    *Initialises_38 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[16]), InitialisesCord_77);
+    *Finalises_39 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[17]), FinalisesCord_78);
+    *Mutables_40 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[18]), MutablesCord_79);
+    Var_122 = mercury__map__init_0_f_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0));
+    mercury__list__foldl_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[0]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[1]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[13]), ModuleIntTypeRepns_80, ((MR_Box) (Var_122)), &conv15_ModuleIntTypeRepnMap_81);
+    ModuleIntTypeRepnMap_81 = ((MR_Word) (conv15_ModuleIntTypeRepnMap_81));
+    Var_124 = mercury__cord__init_0_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[2]));
+    mercury__map__foldl_values_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[20]), (MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[14]), ModuleIntTypeRepnMap_81, ((MR_Box) (Var_124)), &conv17_TypeCtorRepnsCord_82);
+    TypeCtorRepnsCord_82 = ((MR_Word) (conv17_TypeCtorRepnsCord_82));
+    Var_125 = mercury__cord__list_1_f_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[2]), TypeCtorRepnsCord_82);
+    mercury__map__from_sorted_assoc_list_2_p_0((MR_Word) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_type_ctor_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[19]), Var_125, TypeRepnMap_41);
+    *IntBadPreds_48 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_50, (MR_Integer) 24))));
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_module_src_3_p_0_2(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv1_HeadVar__2_2;
+
+    conv1_HeadVar__2_2 = parse_tree__item_util__fim_spec_to_item_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv1_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+static MR_Box MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_module_src_3_p_0_1(
+  MR_Box closure_arg,
+  MR_Box wrapper_arg_1)
+{
+  {
+    MR_Box wrapper_arg_2;
+    MR_Box closure = closure_arg;
+    MR_Word conv0_HeadVar__2_2;
+
+    conv0_HeadVar__2_2 = parse_tree__item_util__fim_spec_to_item_1_f_0(((MR_Word) (wrapper_arg_1)));
+    wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__2_2));
+    return wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_parse_tree_module_src_3_p_0(
+  MR_Word ParseTreeModuleSrc_4,
+  MR_Word STATE_VARIABLE_Acc_0_111,
+  MR_Word * STATE_VARIABLE_Acc_112)
+{
+  {
+    MR_bool succeeded;
+    MR_Word InclMap_10 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 4))));
+    MR_Word ImportUseMap_15 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 9))));
+    MR_Word IntFIMSpecMap_16 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 10))));
+    MR_Word ImpFIMSpecMap_17 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 11))));
+    MR_Word IntTypeDefnsAbs_19 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 13))));
+    MR_Word IntTypeDefnsMer_20 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 14))));
+    MR_Word IntTypeDefnsFor_21 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 15))));
+    MR_Word IntInstDefns_22 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 16))));
+    MR_Word IntModeDefns_23 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 17))));
+    MR_Word IntTypeClasses_24 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 18))));
+    MR_Word IntInstances_25 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 19))));
+    MR_Word IntPredDecls_26 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 20))));
+    MR_Word IntModeDecls_27 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 21))));
+    MR_Word IntDeclPragmas_28 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 22))));
+    MR_Word IntPromises_29 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 23))));
+    MR_Word SubTypeDefnsAbs_31 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 25))));
+    MR_Word SubTypeDefnsMer_32 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 26))));
+    MR_Word SubTypeDefnsFor_33 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 27))));
+    MR_Word SubInstDefns_34 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 28))));
+    MR_Word SubModeDefns_35 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 29))));
+    MR_Word SubTypeClasses_36 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 30))));
+    MR_Word SubInstances_37 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 31))));
+    MR_Word SubPredDecls_38 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 32))));
+    MR_Word SubModeDecls_39 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 33))));
+    MR_Word ImpClauses_40 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 34))));
+    MR_Word SubForeignEnums_41 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 35))));
+    MR_Word ImpForeignExportEnums_42 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 36))));
+    MR_Word SubDeclPragmas_43 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 37))));
+    MR_Word ImpImplPragmas_44 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 38))));
+    MR_Word SubPromises_45 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 39))));
+    MR_Word ImpInitialises_46 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 40))));
+    MR_Word ImpFinalises_47 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 41))));
+    MR_Word SubMutables_48 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_4, (MR_Integer) 42))));
+    MR_Word SubItemMercuryStatus_53;
+    MR_Word SubSectionInfo_54;
+    MR_Word AccAvails0_55;
+    MR_Word AccFIMs0_56;
+    MR_Word AccTypeDefnsAbs0_57;
+    MR_Word AccTypeDefnsMer0_58;
+    MR_Word AccTypeDefnsFor0_59;
+    MR_Word AccInstDefns0_60;
+    MR_Word AccModeDefns0_61;
+    MR_Word AccTypeClasses0_62;
+    MR_Word AccInstances0_63;
+    MR_Word AccPredDecls0_64;
+    MR_Word AccModeDecls0_65;
+    MR_Word AccClauses0_66;
+    MR_Word AccForeignEnums0_67;
+    MR_Word AccForeignExportEnums0_68;
+    MR_Word AccDeclPragmas0_69;
+    MR_Word AccImplPragmas0_70;
+    MR_Word AccPromises0_71;
+    MR_Word AccInitialises0_72;
+    MR_Word AccFinalises0_73;
+    MR_Word AccMutables0_74;
+    MR_Word IntAvails_75;
+    MR_Word ImpAvails_76;
+    MR_Word AccAvails1_77;
+    MR_Word AccAvails_78;
+    MR_Word IntFIMs_79;
+    MR_Word ImpFIMs_80;
+    MR_Word AccFIMs_81;
+    MR_Word AccTypeDefnsAbs1_82;
+    MR_Word AccTypeDefnsAbs_83;
+    MR_Word AccTypeDefnsMer1_84;
+    MR_Word AccTypeDefnsMer_85;
+    MR_Word AccTypeDefnsFor1_86;
+    MR_Word AccTypeDefnsFor_87;
+    MR_Word AccInstDefns1_88;
+    MR_Word AccInstDefns_89;
+    MR_Word AccModeDefns1_90;
+    MR_Word AccModeDefns_91;
+    MR_Word AccTypeClasses1_92;
+    MR_Word AccTypeClasses_93;
+    MR_Word AccInstances1_94;
+    MR_Word AccInstances_95;
+    MR_Word AccPredDecls1_96;
+    MR_Word AccPredDecls_97;
+    MR_Word AccModeDecls1_98;
+    MR_Word AccModeDecls_99;
+    MR_Word AccClauses_100;
+    MR_Word AccForeignEnums_101;
+    MR_Word AccForeignExportEnums_102;
+    MR_Word AccDeclPragmas1_103;
+    MR_Word AccDeclPragmas_104;
+    MR_Word AccImplPragmas_105;
+    MR_Word AccPromises1_106;
+    MR_Word AccPromises_107;
+    MR_Word AccInitialises_108;
+    MR_Word AccFinalises_109;
+    MR_Word AccMutables_110;
+    MR_Word Var_121;
+    MR_Word Var_123;
+    MR_Word Var_124;
+    MR_Word Var_125;
+    MR_Word Var_126;
+    MR_Word Var_127;
+    MR_Word Var_584;
+    MR_Word Var_589;
+
+    succeeded = mercury__map__is_empty_1_p_0((MR_Word) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_include_module_info_0), InclMap_10);
+    if (succeeded)
+    {
+      SubItemMercuryStatus_53 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[1]);
+      SubSectionInfo_54 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[53]);
+    }
+    else
+    {
+      SubItemMercuryStatus_53 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[2]);
+      SubSectionInfo_54 = (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[54]);
+    }
+    AccAvails0_55 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 0))));
+    AccFIMs0_56 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 1))));
+    AccTypeDefnsAbs0_57 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 2))));
+    AccTypeDefnsMer0_58 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 3))));
+    AccTypeDefnsFor0_59 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 4))));
+    AccInstDefns0_60 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 5))));
+    AccModeDefns0_61 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 6))));
+    AccTypeClasses0_62 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 7))));
+    AccInstances0_63 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 8))));
+    AccPredDecls0_64 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 9))));
+    AccModeDecls0_65 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 10))));
+    AccClauses0_66 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 11))));
+    AccForeignEnums0_67 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 12))));
+    AccForeignExportEnums0_68 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 13))));
+    AccDeclPragmas0_69 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 14))));
+    AccImplPragmas0_70 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 15))));
+    AccPromises0_71 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 17))));
+    AccInitialises0_72 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 18))));
+    AccFinalises0_73 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 19))));
+    AccMutables0_74 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 20))));
+    parse_tree__item_util__import_and_or_use_map_to_item_avails_4_p_0((MR_Integer) 1, ImportUseMap_15, &IntAvails_75, &ImpAvails_76);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_avails_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[0]), IntAvails_75, AccAvails0_55, &AccAvails1_77);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_avails_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[1]), ImpAvails_76, AccAvails1_77, &AccAvails_78);
+    Var_121 = mercury__map__keys_1_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), (MR_Word) (&mercury__term__term__type_ctor_info_context_0), IntFIMSpecMap_16);
+    IntFIMs_79 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[4]), Var_121);
+    Var_123 = mercury__map__keys_1_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), (MR_Word) (&mercury__term__term__type_ctor_info_context_0), ImpFIMSpecMap_17);
+    ImpFIMs_80 = mercury__list__map_2_f_0((MR_Word) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_fim_spec_0), (MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_3[5]), Var_123);
+    Var_125 = mercury__cord__from_list_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), IntFIMs_79);
+    Var_126 = mercury__cord__from_list_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), ImpFIMs_80);
+    Var_124 = mercury__cord__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), Var_125, Var_126);
+    AccFIMs_81 = mercury__cord__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_fim_0), AccFIMs0_56, Var_124);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[52]), IntTypeDefnsAbs_19, AccTypeDefnsAbs0_57, &AccTypeDefnsAbs1_82);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), SubSectionInfo_54, SubTypeDefnsAbs_31, AccTypeDefnsAbs1_82, &AccTypeDefnsAbs_83);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[52]), IntTypeDefnsMer_20, AccTypeDefnsMer0_58, &AccTypeDefnsMer1_84);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), SubSectionInfo_54, SubTypeDefnsMer_32, AccTypeDefnsMer1_84, &AccTypeDefnsMer_85);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[52]), IntTypeDefnsFor_21, AccTypeDefnsFor0_59, &AccTypeDefnsFor1_86);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[1]), SubSectionInfo_54, SubTypeDefnsFor_33, AccTypeDefnsFor1_86, &AccTypeDefnsFor_87);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[0]), IntInstDefns_22, AccInstDefns0_60, &AccInstDefns1_88);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_inst_defn_info_0), SubItemMercuryStatus_53, SubInstDefns_34, AccInstDefns1_88, &AccInstDefns_89);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[0]), IntModeDefns_23, AccModeDefns0_61, &AccModeDefns1_90);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_defn_info_0), SubItemMercuryStatus_53, SubModeDefns_35, AccModeDefns1_90, &AccModeDefns_91);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[52]), IntTypeClasses_24, AccTypeClasses0_62, &AccTypeClasses1_92);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_typeclass_info_0), SubSectionInfo_54, SubTypeClasses_36, AccTypeClasses1_92, &AccTypeClasses_93);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[0]), IntInstances_25, AccInstances0_63, &AccInstances1_94);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_instance_info_0), SubItemMercuryStatus_53, SubInstances_37, AccInstances1_94, &AccInstances_95);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[52]), IntPredDecls_26, AccPredDecls0_64, &AccPredDecls1_96);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_pred_decl_info_0), SubSectionInfo_54, SubPredDecls_38, AccPredDecls1_96, &AccPredDecls_97);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[0]), IntModeDecls_27, AccModeDecls0_65, &AccModeDecls1_98);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mode_decl_info_0), SubItemMercuryStatus_53, SubModeDecls_39, AccModeDecls1_98, &AccModeDecls_99);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_clause_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[1]), ImpClauses_40, AccClauses0_66, &AccClauses_100);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_tuple_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_enum_info_0), SubItemMercuryStatus_53, SubForeignEnums_41, AccForeignEnums0_67, &AccForeignEnums_101);
+    Var_127 = mercury__cord__from_list_1_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_export_enum_info_0), ImpForeignExportEnums_42);
+    AccForeignExportEnums_102 = mercury__cord__f_43_43_2_f_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_foreign_export_enum_info_0), AccForeignExportEnums0_68, Var_127);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[0]), IntDeclPragmas_28, AccDeclPragmas0_69, &AccDeclPragmas1_103);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[10]), SubItemMercuryStatus_53, SubDeclPragmas_43, AccDeclPragmas1_103, &AccDeclPragmas_104);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[12]), SubItemMercuryStatus_53, ImpImplPragmas_44, AccImplPragmas0_70, &AccImplPragmas_105);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_promise_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[0]), IntPromises_29, AccPromises0_71, &AccPromises1_106);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_promise_info_0), SubItemMercuryStatus_53, SubPromises_45, AccPromises1_106, &AccPromises_107);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_initialise_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[1]), ImpInitialises_46, AccInitialises0_72, &AccInitialises_108);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_finalise_info_0), (MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_4[1]), ImpFinalises_47, AccFinalises0_73, &AccFinalises_109);
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0((MR_Word) (&parse_tree__prog_item__parse_tree__prog_item__type_ctor_info_item_mutable_info_0), SubSectionInfo_54, SubMutables_48, AccMutables0_74, &AccMutables_110);
+    Var_584 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 16))));
+    Var_589 = ((MR_Word) ((MR_hl_field(MR_mktag(0), STATE_VARIABLE_Acc_0_111, (MR_Integer) 21))));
+    {
+      MR_Word base;
+      base = (MR_Word) MR_new_object(MR_Word, (22 * sizeof(MR_Word)), NULL, NULL);
+      *STATE_VARIABLE_Acc_112 = base;
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (AccAvails_78));
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (AccFIMs_81));
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (AccTypeDefnsAbs_83));
+      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (AccTypeDefnsMer_85));
+      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (AccTypeDefnsFor_87));
+      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (AccInstDefns_89));
+      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (AccModeDefns_91));
+      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (AccTypeClasses_93));
+      MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (AccInstances_95));
+      MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (AccPredDecls_97));
+      MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (AccModeDecls_99));
+      MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (AccClauses_100));
+      MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (AccForeignEnums_101));
+      MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (AccForeignExportEnums_102));
+      MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (AccDeclPragmas_104));
+      MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (AccImplPragmas_105));
+      MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (Var_584));
+      MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (AccPromises_107));
+      MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (AccInitialises_108));
+      MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (AccFinalises_109));
+      MR_hl_field(MR_mktag(0), base, 20) = ((MR_Box) (AccMutables_110));
+      MR_hl_field(MR_mktag(0), base, 21) = ((MR_Box) (Var_589));
+    }
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_tuple_list_4_p_0(
+  MR_Word TypeInfo_for_T_18,
+  MR_Word HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word STATE_VARIABLE_ImsItems_0_3,
+  MR_Word * STATE_VARIABLE_ImsItems_4)
+{
+  while (MR_TRUE)
+  {
+    // setup for model_det tailcalls optimized into a loop
+    ;
+    if ((HeadVar__2_2 == (MR_Word) ((MR_Unsigned) 0U)))
+      *STATE_VARIABLE_ImsItems_4 = STATE_VARIABLE_ImsItems_0_3;
+    else
+    {
+      MR_Word TypeInfo_22_22;
+      MR_Box Item_10 = (MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 0));
+      MR_Word Items_11 = ((MR_Word) ((MR_hl_field(MR_mktag(1), HeadVar__2_2, (MR_Integer) 1))));
+      MR_Tuple Var_15;
+      MR_Word STATE_VARIABLE_ImsItems_16_16;
+      MR_Word conv0_STATE_VARIABLE_ImsItems_16_16;
+      MR_Word next_value_of_HeadVar__2_2;
+      MR_Word next_value_of_STATE_VARIABLE_ImsItems_0_3;
+
+      {
+        Var_15 = (MR_Tuple) MR_new_object(MR_Tuple, (2 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), Var_15, 0) = ((MR_Box) (HeadVar__1_1));
+        MR_hl_field(MR_mktag(0), Var_15, 1) = Item_10;
+      }
+      {
+        TypeInfo_22_22 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), TypeInfo_22_22, 0) = ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0));
+        MR_hl_field(MR_mktag(0), TypeInfo_22_22, 1) = ((MR_Box) ((MR_Integer) 2));
+        MR_hl_field(MR_mktag(0), TypeInfo_22_22, 2) = ((MR_Box) (&hlds__status__hlds__status__type_ctor_info_item_mercury_status_0));
+        MR_hl_field(MR_mktag(0), TypeInfo_22_22, 3) = ((MR_Box) (TypeInfo_for_T_18));
+      }
+      mercury__cord__snoc_3_p_0(TypeInfo_22_22, ((MR_Box) (Var_15)), (MR_Word) (STATE_VARIABLE_ImsItems_0_3), &conv0_STATE_VARIABLE_ImsItems_16_16);
+      STATE_VARIABLE_ImsItems_16_16 = (MR_Word) (conv0_STATE_VARIABLE_ImsItems_16_16);
+      // direct tailcall eliminated
+      ;
+      next_value_of_HeadVar__2_2 = Items_11;
+      next_value_of_STATE_VARIABLE_ImsItems_0_3 = STATE_VARIABLE_ImsItems_16_16;
+      HeadVar__2_2 = next_value_of_HeadVar__2_2;
+      STATE_VARIABLE_ImsItems_0_3 = next_value_of_STATE_VARIABLE_ImsItems_0_3;
+      continue;
+    }
+    break;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_list_4_p_0(
+  MR_Word TypeInfo_for_T_14,
+  MR_Word ItemMercuryStatus_5,
+  MR_Word Items_6,
+  MR_Word STATE_VARIABLE_ImsCord_0_11,
+  MR_Word * STATE_VARIABLE_ImsCord_12)
+{
+  if ((Items_6 == (MR_Word) ((MR_Unsigned) 0U)))
+    *STATE_VARIABLE_ImsCord_12 = STATE_VARIABLE_ImsCord_0_11;
+  else
+  {
+    MR_Word TypeInfo_16_16;
+    MR_Word ImsSubList_10;
+    MR_Word conv0_STATE_VARIABLE_ImsCord_12;
+
+    {
+      ImsSubList_10 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ImsSubList_10, 0) = ((MR_Box) (ItemMercuryStatus_5));
+      MR_hl_field(MR_mktag(0), ImsSubList_10, 1) = ((MR_Box) (Items_6));
+    }
+    {
+      TypeInfo_16_16 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), TypeInfo_16_16, 0) = ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_ims_sub_list_1));
+      MR_hl_field(MR_mktag(0), TypeInfo_16_16, 1) = ((MR_Box) (TypeInfo_for_T_14));
+    }
+    mercury__cord__snoc_3_p_0(TypeInfo_16_16, ((MR_Box) (ImsSubList_10)), (MR_Word) (STATE_VARIABLE_ImsCord_0_11), &conv0_STATE_VARIABLE_ImsCord_12);
+    *STATE_VARIABLE_ImsCord_12 = (MR_Word) (conv0_STATE_VARIABLE_ImsCord_12);
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_sec_list_4_p_0(
+  MR_Word TypeInfo_for_T_14,
+  MR_Word SectionInfo_5,
+  MR_Word Items_6,
+  MR_Word STATE_VARIABLE_SecCord_0_11,
+  MR_Word * STATE_VARIABLE_SecCord_12)
+{
+  if ((Items_6 == (MR_Word) ((MR_Unsigned) 0U)))
+    *STATE_VARIABLE_SecCord_12 = STATE_VARIABLE_SecCord_0_11;
+  else
+  {
+    MR_Word TypeInfo_16_16;
+    MR_Word SecSubList_10;
+    MR_Word conv0_STATE_VARIABLE_SecCord_12;
+
+    {
+      SecSubList_10 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), SecSubList_10, 0) = ((MR_Box) (SectionInfo_5));
+      MR_hl_field(MR_mktag(0), SecSubList_10, 1) = ((MR_Box) (Items_6));
+    }
+    {
+      TypeInfo_16_16 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), TypeInfo_16_16, 0) = ((MR_Box) (&hlds__make_hlds__hlds__make_hlds__type_ctor_info_sec_sub_list_1));
+      MR_hl_field(MR_mktag(0), TypeInfo_16_16, 1) = ((MR_Box) (TypeInfo_for_T_14));
+    }
+    mercury__cord__snoc_3_p_0(TypeInfo_16_16, ((MR_Box) (SecSubList_10)), (MR_Word) (STATE_VARIABLE_SecCord_0_11), &conv0_STATE_VARIABLE_SecCord_12);
+    *STATE_VARIABLE_SecCord_12 = (MR_Word) (conv0_STATE_VARIABLE_SecCord_12);
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__acc_ims_avails_4_p_0(
+  MR_Word ItemMercuryStatus_5,
+  MR_Word Avails_6,
+  MR_Word STATE_VARIABLE_AccAvails_0_11,
+  MR_Word * STATE_VARIABLE_AccAvails_12)
+{
+  if ((Avails_6 == (MR_Word) ((MR_Unsigned) 0U)))
+    *STATE_VARIABLE_AccAvails_12 = STATE_VARIABLE_AccAvails_0_11;
+  else
+  {
+    MR_Word ImsSubList_10;
+
+    {
+      ImsSubList_10 = (MR_Word) MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ImsSubList_10, 0) = ((MR_Box) (ItemMercuryStatus_5));
+      MR_hl_field(MR_mktag(0), ImsSubList_10, 1) = ((MR_Box) (Avails_6));
+    }
+    mercury__cord__snoc_3_p_0((MR_Word) (&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items_scalar_common_1[0]), ((MR_Box) (ImsSubList_10)), STATE_VARIABLE_AccAvails_0_11, STATE_VARIABLE_AccAvails_12);
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_cord_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_cord_1_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_cord_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box wrapper_arg_4)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_cord_1_0(((MR_Word) (wrapper_arg_1)), &conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_3)), ((MR_Word) (wrapper_arg_4)));
+    *wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_item_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_item_1_0(((MR_Word) (wrapper_arg_1)), ((MR_Tuple) (wrapper_arg_2)), ((MR_Tuple) (wrapper_arg_3)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_item_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box wrapper_arg_4)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_item_1_0(((MR_Word) (wrapper_arg_1)), &conv0_HeadVar__1_1, ((MR_Tuple) (wrapper_arg_3)), ((MR_Tuple) (wrapper_arg_4)));
+    *wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_list_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____ims_tuple_list_1_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_list_1_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box * wrapper_arg_2,
+  MR_Box wrapper_arg_3,
+  MR_Box wrapper_arg_4)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____ims_tuple_list_1_0(((MR_Word) (wrapper_arg_1)), &conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_3)), ((MR_Word) (wrapper_arg_4)));
+    *wrapper_arg_2 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____int_type_ctor_repns_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____int_type_ctor_repns_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____int_type_ctor_repns_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____int_type_ctor_repns_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____item_accumulator_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____item_accumulator_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____item_accumulator_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____item_accumulator_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____module_int_type_ctor_repns_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Unify____module_int_type_ctor_repns_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____module_int_type_ctor_repns_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    hlds__make_hlds__make_hlds_passes__make_hlds_separate_items____Compare____module_int_type_ctor_repns_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__init(void)
+{
+}
+
+void mercury__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_ims_tuple_cord_1);
+	MR_register_type_ctor_info(&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_ims_tuple_item_1);
+	MR_register_type_ctor_info(&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_ims_tuple_list_1);
+	MR_register_type_ctor_info(&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_int_type_ctor_repns_0);
+	MR_register_type_ctor_info(&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_item_accumulator_0);
+	MR_register_type_ctor_info(&hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__type_ctor_info_module_int_type_ctor_repns_0);
+}
+
+void mercury__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__hlds__make_hlds__make_hlds_passes__make_hlds_separate_items__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module hlds.make_hlds.make_hlds_passes.make_hlds_separate_items.

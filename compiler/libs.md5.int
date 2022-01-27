@@ -1,0 +1,4 @@
+:- module (libs.md5).
+:- interface.
+:- pragma foreign_import_module("C", (libs.md5)).
+:- func md5sum(string) = string.

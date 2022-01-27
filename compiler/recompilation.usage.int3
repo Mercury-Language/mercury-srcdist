@@ -1,0 +1,24 @@
+:- module (recompilation.usage).
+:- interface.
+:- type resolved_functor.
+:- type resolved_functor_map.
+:- type resolved_functor_set.
+:- type resolved_item_list(T).
+:- type resolved_item_map(T).
+:- type resolved_item_set(T).
+:- type resolved_pred_or_func_map.
+:- type resolved_pred_or_func_set.
+:- type resolved_used_items.
+:- type_representation(imported_item_set, is_eqv_to(set(pair(string, arity)))).
+:- type_representation(imported_items, is_eqv_to(map(module_name, module_imported_items))).
+:- type_representation(module_imported_items, is_eqv_to(item_id_set(imported_item_set))).
+:- type_representation(record_resolved_item(V_1), is_eqv_to(pred(module_qualifier, sym_name, arity, bool, recompilation.usage.resolved_item_map(V_1), recompilation.usage.resolved_item_map(V_1), recompilation_usage_info, recompilation_usage_info))).
+:- type_representation(resolved_functor_map, is_eqv_to(recompilation.usage.resolved_item_map(set(recompilation.usage.resolved_functor)))).
+:- type_representation(resolved_functor_set, is_eqv_to(recompilation.usage.resolved_item_set(set(recompilation.usage.resolved_functor)))).
+:- type_representation(resolved_item_list(V_1), is_eqv_to(assoc_list(arity, recompilation.usage.resolved_item_map(V_1)))).
+:- type_representation(resolved_item_map(V_1), is_eqv_to(map(module_qualifier, V_1))).
+:- type_representation(resolved_item_set(V_1), is_eqv_to(map(string, recompilation.usage.resolved_item_list(V_1)))).
+:- type_representation(resolved_pred_or_func_map, is_eqv_to(recompilation.usage.resolved_item_map(set(pair(pred_id, module_name))))).
+:- type_representation(resolved_pred_or_func_set, is_eqv_to(recompilation.usage.resolved_item_set(set(pair(pred_id, module_name))))).
+:- type_representation(resolved_used_items, is_eqv_to(item_id_set(simple_item_set, recompilation.usage.resolved_pred_or_func_set, recompilation.usage.resolved_functor_set))).
+:- type_representation(write_resolved_item(V_1), is_eqv_to(pred(pair(module_qualifier, V_1), io.text_output_stream, io, io))).

@@ -1,0 +1,6 @@
+:- module (mdbcomp.shared_utilities).
+:- interface.
+:- use_module io.
+:- pragma foreign_import_module("C", (mdbcomp.shared_utilities)).
+:- pred unlimit_stack(io.io, io.io).
+:- mode unlimit_stack((builtin.di), (builtin.uo)) is det.

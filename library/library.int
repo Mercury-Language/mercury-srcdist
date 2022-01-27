@@ -1,0 +1,9 @@
+:- module library.
+:- interface.
+:- pragma foreign_import_module("C", library).
+:- pragma foreign_import_module("C#", library).
+:- pragma foreign_import_module("Java", library).
+:- pred mercury_std_library_module(string).
+:- mode mercury_std_library_module((builtin.in)) is semidet.
+:- pred version(string, string).
+:- mode version((builtin.out), (builtin.out)) is det.

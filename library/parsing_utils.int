@@ -1,0 +1,101 @@
+:- module parsing_utils.
+:- interface.
+:- use_module char.
+:- use_module list.
+:- use_module maybe.
+:- use_module unit.
+:- pragma foreign_import_module("C", parsing_utils).
+:- pragma foreign_import_module("C#", parsing_utils).
+:- pragma foreign_import_module("Java", parsing_utils).
+:- type line_numbers.
+:- type parse_result(T)
+    --->    ok(T)
+    ;       error((parsing_utils.error_message) :: maybe.maybe(string), (parsing_utils.error_line) :: int, (parsing_utils.error_col) :: int).
+:- type parser(T) == pred(parsing_utils.src, T, parsing_utils.ps, parsing_utils.ps).
+:- type parser_with_state(T, S) == pred(parsing_utils.src, T, S, S, parsing_utils.ps, parsing_utils.ps).
+:- type ps.
+:- type skip_whitespace_pred == parsing_utils.parser(unit.unit).
+:- type src.
+:- inst (parser) == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet).
+:- inst (parser_with_state) == (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet).
+:- pred brackets(string, string, parsing_utils.parser(T), parsing_utils.src, T, parsing_utils.ps, parsing_utils.ps).
+:- mode brackets((builtin.in), (builtin.in), builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred brackets(string, string, parsing_utils.parser_with_state(T, S), parsing_utils.src, T, S, S, parsing_utils.ps, parsing_utils.ps).
+:- mode brackets((builtin.in), (builtin.in), builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred char_in_class(string, parsing_utils.src, char.char, parsing_utils.ps, parsing_utils.ps).
+:- mode char_in_class((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred comma_separated_list(parsing_utils.parser(T), parsing_utils.src, list.list(T), parsing_utils.ps, parsing_utils.ps).
+:- mode comma_separated_list(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred comma_separated_list(parsing_utils.parser_with_state(T, S), parsing_utils.src, list.list(T), S, S, parsing_utils.ps, parsing_utils.ps).
+:- mode comma_separated_list(builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred current_offset(parsing_utils.src, int, parsing_utils.ps, parsing_utils.ps).
+:- mode current_offset((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred eof(parsing_utils.src, unit.unit, parsing_utils.ps, parsing_utils.ps).
+:- mode eof((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred fail_with_message(string, parsing_utils.src, T, parsing_utils.ps, parsing_utils.ps).
+:- mode fail_with_message((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred fail_with_message(string, int, parsing_utils.src, T, parsing_utils.ps, parsing_utils.ps).
+:- mode fail_with_message((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred float_literal(parsing_utils.src, float, parsing_utils.ps, parsing_utils.ps).
+:- mode float_literal((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred float_literal_as_string(parsing_utils.src, string, parsing_utils.ps, parsing_utils.ps).
+:- mode float_literal_as_string((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred get_skip_whitespace_pred(parsing_utils.src, parsing_utils.skip_whitespace_pred).
+:- mode get_skip_whitespace_pred((builtin.in), builtin.out((parsing_utils.parser))) is det.
+:- pred identifier(string, string, parsing_utils.src, string, parsing_utils.ps, parsing_utils.ps).
+:- mode identifier((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred ikeyword(string, string, parsing_utils.src, unit.unit, parsing_utils.ps, parsing_utils.ps).
+:- mode ikeyword((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred input_string(parsing_utils.src, string, int).
+:- mode input_string((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred input_substring(parsing_utils.src, int, int, string).
+:- mode input_substring((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred int_literal(parsing_utils.src, int, parsing_utils.ps, parsing_utils.ps).
+:- mode int_literal((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred int_literal_as_string(parsing_utils.src, string, parsing_utils.ps, parsing_utils.ps).
+:- mode int_literal_as_string((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred keyword(string, string, parsing_utils.src, unit.unit, parsing_utils.ps, parsing_utils.ps).
+:- mode keyword((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred new_src_and_ps(string, parsing_utils.src, parsing_utils.ps).
+:- mode new_src_and_ps((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred new_src_and_ps(string, parsing_utils.skip_whitespace_pred, parsing_utils.src, parsing_utils.ps).
+:- mode new_src_and_ps((builtin.in), builtin.in((parsing_utils.parser)), (builtin.out), (builtin.out)) is det.
+:- pred next_char(parsing_utils.src, char.char, parsing_utils.ps, parsing_utils.ps).
+:- mode next_char((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred next_char_no_progress(parsing_utils.src, char.char, parsing_utils.ps, parsing_utils.ps).
+:- mode next_char_no_progress((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred offset_to_line_number_and_position(parsing_utils.line_numbers, int, int, int).
+:- mode offset_to_line_number_and_position((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred one_or_more(parsing_utils.parser(T), parsing_utils.src, list.list(T), parsing_utils.ps, parsing_utils.ps).
+:- mode one_or_more(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred one_or_more(parsing_utils.parser_with_state(T, S), parsing_utils.src, list.list(T), S, S, parsing_utils.ps, parsing_utils.ps).
+:- mode one_or_more(builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred optional(parsing_utils.parser(T), parsing_utils.src, maybe.maybe(T), parsing_utils.ps, parsing_utils.ps).
+:- mode optional(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred optional(parsing_utils.parser_with_state(T, S), parsing_utils.src, maybe.maybe(T), S, S, parsing_utils.ps, parsing_utils.ps).
+:- mode optional(builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred parse(string, parsing_utils.parser(T), parsing_utils.parse_result(T)).
+:- mode parse((builtin.in), builtin.in((parsing_utils.parser)), (builtin.out)) is cc_multi.
+:- pred parse(string, parsing_utils.skip_whitespace_pred, parsing_utils.parser(T), parsing_utils.parse_result(T)).
+:- mode parse((builtin.in), builtin.in((parsing_utils.parser)), builtin.in((parsing_utils.parser)), (builtin.out)) is cc_multi.
+:- pred punct(string, parsing_utils.src, unit.unit, parsing_utils.ps, parsing_utils.ps).
+:- mode punct((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred separated_list(string, parsing_utils.parser(T), parsing_utils.src, list.list(T), parsing_utils.ps, parsing_utils.ps).
+:- mode separated_list((builtin.in), builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred separated_list(string, parsing_utils.parser_with_state(T, S), parsing_utils.src, list.list(T), S, S, parsing_utils.ps, parsing_utils.ps).
+:- mode separated_list((builtin.in), builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred skip_to_eol(parsing_utils.src, unit.unit, parsing_utils.ps, parsing_utils.ps).
+:- mode skip_to_eol((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- func src_to_line_numbers(parsing_utils.src) = parsing_utils.line_numbers.
+:- pred string_literal(char.char, parsing_utils.src, string, parsing_utils.ps, parsing_utils.ps).
+:- mode string_literal((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred whitespace(parsing_utils.src, unit.unit, parsing_utils.ps, parsing_utils.ps).
+:- mode whitespace((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred zero_or_more(parsing_utils.parser(T), parsing_utils.src, list.list(T), parsing_utils.ps, parsing_utils.ps).
+:- mode zero_or_more(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred zero_or_more(parsing_utils.parser_with_state(T, S), parsing_utils.src, list.list(T), S, S, parsing_utils.ps, parsing_utils.ps).
+:- mode zero_or_more(builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- implementation.
+:- use_module array.
+:- type line_numbers == array.array(int).
+:- type ps == int.

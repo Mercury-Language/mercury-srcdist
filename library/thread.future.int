@@ -1,0 +1,15 @@
+:- module (thread.future).
+:- interface.
+:- pragma foreign_import_module("C", (thread.future)).
+:- pragma foreign_import_module("C#", (thread.future)).
+:- pragma foreign_import_module("Java", (thread.future)).
+:- type future(T).
+:- type future_io(T).
+:- func future(((func) = T)) = thread.future.future(T).
+:- pred init(thread.future.future_io(T), io.io, io.io).
+:- mode init((builtin.uo), (builtin.di), (builtin.uo)) is det.
+:- pred signal(thread.future.future_io(T), T, io.io, io.io).
+:- mode signal((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- func wait(thread.future.future(T)) = T.
+:- pred wait(thread.future.future_io(T), T, io.io, io.io).
+:- mode wait((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

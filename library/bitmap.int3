@@ -1,0 +1,25 @@
+:- module bitmap.
+:- interface.
+:- type bit_index.
+:- type bitmap.
+:- type bitmap_error.
+:- type byte.
+:- type byte_index.
+:- type num_bits.
+:- type num_bytes.
+:- type slice.
+:- type word.
+:- abstract_inst((bitmap)).
+:- abstract_inst((uniq_bitmap)).
+:- abstract_mode((bitmap_di)).
+:- abstract_mode((bitmap_ui)).
+:- abstract_mode((bitmap_uo)).
+:- type_representation(bit_index, is_eqv_to(int)).
+:- type_representation(bit_index_in_byte, is_eqv_to(int)).
+:- type_representation(bitmap_error, du_repn(notag("bitmap_error", string,  no_c_j_cs))).
+:- type_representation(byte, is_eqv_to(int)).
+:- type_representation(byte_index, is_eqv_to(int)).
+:- type_representation(num_bits, is_eqv_to(int)).
+:- type_representation(num_bytes, is_eqv_to(int)).
+:- type_representation(slice, is_word_aligned_ptr).
+:- type_representation(word, is_eqv_to(int)).

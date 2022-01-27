@@ -1,0 +1,45 @@
+:- module math.
+:- interface.
+:- pragma foreign_import_module("C", math).
+:- pragma foreign_import_module("C#", math).
+:- pragma foreign_import_module("Java", math).
+:- type quadratic_roots
+    --->    no_roots 
+    ;       one_root(float)
+    ;       two_roots(float, float).
+:- func acos(float) = float.
+:- func asin(float) = float.
+:- func atan(float) = float.
+:- func atan2(float, float) = float.
+:- func ceiling(float) = float.
+:- func cos(float) = float.
+:- func cosh(float) = float.
+:- func e = float.
+:- func exp(float) = float.
+:- func floor(float) = float.
+:- func fma(float, float, float) = float.
+:- pred have_fma is semidet.
+:- func ln(float) = float.
+:- func log(float, float) = float.
+:- func log10(float) = float.
+:- func log2(float) = float.
+:- func pi = float.
+:- func pow(float, float) = float.
+:- func round(float) = float.
+:- func sin(float) = float.
+:- func sinh(float) = float.
+:- func solve_quadratic(float, float, float) = math.quadratic_roots.
+:- func sqrt(float) = float.
+:- func tan(float) = float.
+:- func tanh(float) = float.
+:- func truncate(float) = float.
+:- func unchecked_acos(float) = float.
+:- func unchecked_asin(float) = float.
+:- func unchecked_ln(float) = float.
+:- func unchecked_log(float, float) = float.
+:- func unchecked_log10(float) = float.
+:- func unchecked_log2(float) = float.
+:- func unchecked_pow(float, float) = float.
+:- func unchecked_sqrt(float) = float.
+:- implementation.
+:- pragma foreign_import_module("C", float).

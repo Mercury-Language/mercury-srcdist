@@ -1,0 +1,7 @@
+:- module (transform_hlds.equiv_type_hlds).
+:- interface.
+:- use_module hlds.
+:- use_module (hlds.hlds_module).
+:- pragma foreign_import_module("C", (transform_hlds.equiv_type_hlds)).
+:- pred replace_in_hlds(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode replace_in_hlds((builtin.in), (builtin.out)) is det.

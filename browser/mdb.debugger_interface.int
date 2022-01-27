@@ -1,0 +1,4 @@
+:- module (mdb.debugger_interface).
+:- interface.
+:- pragma foreign_import_module("C", (mdb.debugger_interface)).
+:- pred dummy_pred_to_avoid_warning_about_nothing_exported is det.

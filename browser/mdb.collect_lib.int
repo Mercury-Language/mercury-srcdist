@@ -1,0 +1,4 @@
+:- module (mdb.collect_lib).
+:- interface.
+:- pragma foreign_import_module("C", (mdb.collect_lib)).
+:- pred dummy_pred_to_avoid_warning_about_nothing_exported is det.

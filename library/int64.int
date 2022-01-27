@@ -1,0 +1,90 @@
+:- module int64.
+:- interface.
+:- use_module pretty_printer.
+:- pragma foreign_import_module("C", int64).
+:- pragma foreign_import_module("C#", int64).
+:- pragma foreign_import_module("Java", int64).
+:- func *(int64, int64) = int64.
+:- mode *((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func +(int64) = int64.
+:- mode +((builtin.in)) = (builtin.uo) is det.
+:- func +(int64, int64) = int64.
+:- mode +((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- mode +((builtin.uo), (builtin.in)) = (builtin.in) is det.
+:- mode +((builtin.in), (builtin.uo)) = (builtin.in) is det.
+:- func -(int64) = int64.
+:- mode -((builtin.in)) = (builtin.uo) is det.
+:- func -(int64, int64) = int64.
+:- mode -((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- mode -((builtin.uo), (builtin.in)) = (builtin.in) is det.
+:- mode -((builtin.in), (builtin.uo)) = (builtin.in) is det.
+:- func /(int64, int64) = int64.
+:- mode /((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func //(int64, int64) = int64.
+:- mode //((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func /\(int64, int64) = int64.
+:- mode /\((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred <(int64, int64).
+:- mode <((builtin.in), (builtin.in)) is semidet.
+:- func <<(int64, int) = int64.
+:- mode <<((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred =<(int64, int64).
+:- mode =<((builtin.in), (builtin.in)) is semidet.
+:- pred >(int64, int64).
+:- mode >((builtin.in), (builtin.in)) is semidet.
+:- pred >=(int64, int64).
+:- mode >=((builtin.in), (builtin.in)) is semidet.
+:- func >>(int64, int) = int64.
+:- mode >>((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func \(int64) = int64.
+:- mode \((builtin.in)) = (builtin.uo) is det.
+:- func \/(int64, int64) = int64.
+:- mode \/((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func abs(int64) = int64.
+:- func cast_from_int(int) = int64.
+:- func cast_from_uint64(uint64) = int64.
+:- func cast_to_int(int64) = int.
+:- func det_to_int(int64) = int.
+:- func div(int64, int64) = int64.
+:- mode div((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- pred even(int64).
+:- mode even((builtin.in)) is semidet.
+:- func from_bytes_be(uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8) = int64.
+:- func from_bytes_le(uint8, uint8, uint8, uint8, uint8, uint8, uint8, uint8) = int64.
+:- func from_int(int) = int64.
+:- func int64_to_doc(int64) = pretty_printer.doc.
+:- func max(int64, int64) = int64.
+:- func max_int64 = int64.
+:- func min(int64, int64) = int64.
+:- func min_int64 = int64.
+:- func minus(int64, int64) = int64.
+:- func mod(int64, int64) = int64.
+:- mode mod((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func nabs(int64) = int64.
+:- func num_leading_zeros(int64) = int.
+:- func num_ones(int64) = int.
+:- func num_trailing_zeros(int64) = int.
+:- func num_zeros(int64) = int.
+:- pred odd(int64).
+:- mode odd((builtin.in)) is semidet.
+:- func plus(int64, int64) = int64.
+:- func rem(int64, int64) = int64.
+:- mode rem((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func reverse_bits(int64) = int64.
+:- func reverse_bytes(int64) = int64.
+:- func times(int64, int64) = int64.
+:- pred to_int(int64, int).
+:- mode to_int((builtin.in), (builtin.out)) is semidet.
+:- func unchecked_abs(int64) = int64.
+:- func unchecked_left_shift(int64, int) = int64.
+:- mode unchecked_left_shift((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func unchecked_quotient(int64, int64) = int64.
+:- mode unchecked_quotient((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func unchecked_rem(int64, int64) = int64.
+:- mode unchecked_rem((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func unchecked_right_shift(int64, int) = int64.
+:- mode unchecked_right_shift((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func xor(int64, int64) = int64.
+:- mode xor((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- mode xor((builtin.in), (builtin.uo)) = (builtin.in) is det.
+:- mode xor((builtin.uo), (builtin.in)) = (builtin.in) is det.

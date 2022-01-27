@@ -1,0 +1,23 @@
+:- module univ.
+:- interface.
+:- use_module type_desc.
+:- pragma foreign_import_module("C", univ).
+:- pragma foreign_import_module("C#", univ).
+:- pragma foreign_import_module("Java", univ).
+:- type univ.
+:- pred det_univ_to_type(univ.univ, T).
+:- mode det_univ_to_type((builtin.in), (builtin.out)) is det.
+:- pred type_to_univ(T, univ.univ).
+:- mode type_to_univ((builtin.di), (builtin.uo)) is det.
+:- mode type_to_univ((builtin.in), (builtin.out)) is det.
+:- mode type_to_univ((builtin.out), (builtin.in)) is semidet.
+:- func univ(T) = univ.univ.
+:- mode univ((builtin.in)) = (builtin.out) is det.
+:- mode univ((builtin.di)) = (builtin.uo) is det.
+:- mode univ((builtin.out)) = (builtin.in) is semidet.
+:- pred univ_to_type(univ.univ, T).
+:- mode univ_to_type((builtin.in), (builtin.out)) is semidet.
+:- mode univ_to_type((builtin.out), (builtin.in)) is det.
+:- mode univ_to_type((builtin.uo), (builtin.di)) is det.
+:- func univ_type(univ.univ) = type_desc.type_desc.
+:- some [T] (func univ_value(univ.univ) = T).

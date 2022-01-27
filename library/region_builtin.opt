@@ -1,0 +1,47 @@
+:- module region_builtin.
+:- use_module builtin.
+:- use_module io.
+:- use_module private_builtin.
+
+:- type region.
+:- pragma foreign_type(c, region, "MR_RegionHeader *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, region, "java.lang.Object").
+:- pragma foreign_type(csharp, region, "object").
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", builtin).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", private_builtin).
+:- pragma foreign_import_module("C", region_builtin).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", builtin).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", private_builtin).
+:- pragma foreign_import_module("C#", region_builtin).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", builtin).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", private_builtin).
+:- pragma foreign_import_module("Java", region_builtin).
+
+:- pragma foreign_proc("C", region_builtin.print_rbmm_profiling_info(_IO0 :: (builtin.di), _IO :: (builtin.uo)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+#ifdef MR_USE_REGIONS
+    MR_region_print_profiling_info();
+#else
+    printf(
+        \"There is no rbmm profiling info to print in a non-rbmm grade.\\n\");
+#endif
+").
+
+:- pragma termination_info(region_builtin.create_region((builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(region_builtin.print_rbmm_profiling_info((builtin.di), (builtin.uo)), infinite, cannot_loop).
+:- pragma termination_info(region_builtin.remove_region((builtin.in)), finite(0, [no]), cannot_loop).
+
+:- pragma exceptions(predicate, (region_builtin.create_region), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (region_builtin.print_rbmm_profiling_info), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (region_builtin.remove_region), 1, 0, will_not_throw).

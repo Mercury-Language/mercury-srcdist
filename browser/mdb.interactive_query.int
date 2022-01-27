@@ -1,0 +1,16 @@
+:- module (mdb.interactive_query).
+:- interface.
+:- use_module io.
+:- use_module list.
+:- use_module univ.
+:- pragma foreign_import_module("C", (mdb.interactive_query)).
+:- type imports == list.list(string).
+:- type options_string == string.
+:- type query_type
+    --->    normal_query 
+    ;       cc_query 
+    ;       io_query .
+:- pred query(mdb.interactive_query.query_type, mdb.interactive_query.imports, mdb.interactive_query.options_string, list.list(string), list.list(univ.univ), io.input_stream, io.output_stream, io.io, io.io).
+:- mode query((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred query_external(mdb.interactive_query.query_type, mdb.interactive_query.imports, mdb.interactive_query.options_string, list.list(string), list.list(univ.univ), io.input_stream, io.output_stream, io.io, io.io).
+:- mode query_external((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.

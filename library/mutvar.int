@@ -1,0 +1,22 @@
+:- module mutvar.
+:- interface.
+:- pragma foreign_import_module("C", mutvar).
+:- pragma foreign_import_module("C#", mutvar).
+:- pragma foreign_import_module("Java", mutvar).
+:- type mutvar(T).
+:- impure pred clear_mutvar(mutvar.mutvar(T)).
+:- mode clear_mutvar((builtin.in)) is det.
+:- impure pred get_mutvar(mutvar.mutvar(T), T).
+:- mode get_mutvar((builtin.in), (builtin.uo)) is det.
+:- impure pred new_mutvar(T, mutvar.mutvar(T)).
+:- mode new_mutvar((builtin.in), (builtin.out)) is det.
+:- mode new_mutvar((builtin.di), (builtin.uo)) is det.
+:- impure pred new_mutvar0(mutvar.mutvar(T)).
+:- mode new_mutvar0((builtin.uo)) is det.
+:- impure pred set_mutvar(mutvar.mutvar(T), T).
+:- mode set_mutvar((builtin.in), (builtin.in)) is det.
+:- implementation.
+:- type mutvar(T)
+    --->    mutvar(private_builtin.ref(T)).
+:- pragma foreign_type(java, mutvar(T), "mutvar.Mutvar").
+:- pragma foreign_type(csharp, mutvar(T), "object[]").

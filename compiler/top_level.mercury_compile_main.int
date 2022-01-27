@@ -1,0 +1,11 @@
+:- module (top_level.mercury_compile_main).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module list.
+:- use_module (libs.globals).
+:- pragma foreign_import_module("C", (top_level.mercury_compile_main)).
+:- pred main_for_make(libs.globals.globals, list.list(string), io.io, io.io).
+:- mode main_for_make((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred real_main(io.io, io.io).
+:- mode real_main((builtin.di), (builtin.uo)) is det.

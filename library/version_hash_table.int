@@ -1,0 +1,73 @@
+:- module version_hash_table.
+:- interface.
+:- use_module assoc_list.
+:- use_module char.
+:- pragma foreign_import_module("C", version_hash_table).
+:- pragma foreign_import_module("C#", version_hash_table).
+:- pragma foreign_import_module("Java", version_hash_table).
+:- type hash_pred(K) == pred(K, int).
+:- type version_hash_table(K, V).
+:- inst (hash_pred) == (pred((builtin.in), (builtin.out)) is det).
+:- pred char_hash(char.char, int).
+:- mode char_hash((builtin.in), (builtin.out)) is det.
+:- func copy(version_hash_table.version_hash_table(K, V)) = version_hash_table.version_hash_table(K, V).
+:- pred delete(K, version_hash_table.version_hash_table(K, V), version_hash_table.version_hash_table(K, V)).
+:- mode delete((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func delete(version_hash_table.version_hash_table(K, V), K) = version_hash_table.version_hash_table(K, V).
+:- pred det_insert(K, V, version_hash_table.version_hash_table(K, V), version_hash_table.version_hash_table(K, V)).
+:- mode det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_insert(version_hash_table.version_hash_table(K, V), K, V) = version_hash_table.version_hash_table(K, V).
+:- pred det_update(K, V, version_hash_table.version_hash_table(K, V), version_hash_table.version_hash_table(K, V)).
+:- mode det_update((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func det_update(version_hash_table.version_hash_table(K, V), K, V) = version_hash_table.version_hash_table(K, V).
+:- func elem(K, version_hash_table.version_hash_table(K, V)) = V.
+:- func 'elem :='(K, version_hash_table.version_hash_table(K, V), V) = version_hash_table.version_hash_table(K, V).
+:- pred equal(version_hash_table.version_hash_table(K, V), version_hash_table.version_hash_table(K, V)).
+:- mode equal((builtin.in), (builtin.in)) is semidet.
+:- pred float_hash(float, int).
+:- mode float_hash((builtin.in), (builtin.out)) is det.
+:- pred fold(pred(K, V, T, T), version_hash_table.version_hash_table(K, V), T, T).
+:- mode fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet)), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode fold(builtin.in((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet)), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- func fold((func(K, V, T) = T), version_hash_table.version_hash_table(K, V), T) = T.
+:- func from_assoc_list(version_hash_table.hash_pred(K), assoc_list.assoc_list(K, V)) = version_hash_table.version_hash_table(K, V).
+:- mode from_assoc_list(builtin.in((version_hash_table.hash_pred)), (builtin.in)) = (builtin.out) is det.
+:- func from_assoc_list(version_hash_table.hash_pred(K), int, float, assoc_list.assoc_list(K, V)) = version_hash_table.version_hash_table(K, V).
+:- mode from_assoc_list(builtin.in((version_hash_table.hash_pred)), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred generic_hash(T, int).
+:- mode generic_hash((builtin.in), (builtin.out)) is det.
+:- func init(version_hash_table.hash_pred(K), int, float) = version_hash_table.version_hash_table(K, V).
+:- mode init(builtin.in((version_hash_table.hash_pred)), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func init_default(version_hash_table.hash_pred(K)) = version_hash_table.version_hash_table(K, V).
+:- mode init_default(builtin.in((version_hash_table.hash_pred))) = (builtin.out) is det.
+:- pred int_hash(int, int).
+:- mode int_hash((builtin.in), (builtin.out)) is det.
+:- func lookup(version_hash_table.version_hash_table(K, V), K) = V.
+:- func num_buckets(version_hash_table.version_hash_table(K, V)) = int.
+:- func num_occupants(version_hash_table.version_hash_table(K, V)) = int.
+:- pred search(version_hash_table.version_hash_table(K, V), K, V).
+:- mode search((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- func search(version_hash_table.version_hash_table(K, V), K) = V is semidet.
+:- pred set(K, V, version_hash_table.version_hash_table(K, V), version_hash_table.version_hash_table(K, V)).
+:- mode set((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func set(version_hash_table.version_hash_table(K, V), K, V) = version_hash_table.version_hash_table(K, V).
+:- pred string_hash(string, int).
+:- mode string_hash((builtin.in), (builtin.out)) is det.
+:- func to_assoc_list(version_hash_table.version_hash_table(K, V)) = assoc_list.assoc_list(K, V).
+:- pred uint_hash(uint, int).
+:- mode uint_hash((builtin.in), (builtin.out)) is det.
+:- func unsafe_init(version_hash_table.hash_pred(K), int, float) = version_hash_table.version_hash_table(K, V).
+:- mode unsafe_init(builtin.in((version_hash_table.hash_pred)), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func unsafe_init_default(version_hash_table.hash_pred(K)) = version_hash_table.version_hash_table(K, V).
+:- mode unsafe_init_default(builtin.in((version_hash_table.hash_pred))) = (builtin.out) is det.
+:- pragma obsolete(pred((version_hash_table.char_hash)/2), [(char.hash)/2]).
+:- pragma obsolete(pred((version_hash_table.float_hash)/2), [(float.hash)/2]).
+:- pragma obsolete(pred((version_hash_table.generic_hash)/2), []).
+:- pragma obsolete(pred((version_hash_table.int_hash)/2), [(int.hash)/2]).
+:- pragma obsolete(pred((version_hash_table.string_hash)/2), [(string.hash)/2]).
+:- pragma obsolete(pred((version_hash_table.uint_hash)/2), [(uint.hash)/2]).
+:- pragma terminates(pred((version_hash_table.equal)/2)).
