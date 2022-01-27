@@ -1,0 +1,526 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+# Copyright (C) 1998-2011 The University of Melbourne.
+# This file may only be copied under the terms of the GNU General
+# Public License - see the file COPYING in the Mercury distribution.
+#-----------------------------------------------------------------------------#
+
+# This is the Mmakefile for the Mercury runtime library
+
+MAIN_TARGET = all
+
+#-----------------------------------------------------------------------------#
+
+# All the headers in $(HDRS) should be syntactically well-formed
+# header files, unlike the headers in $(BODY_HDRS).
+# All the headers in $(HDRS) must also be in C (not C++).
+
+# Note that $(LIB_GLOBALS_H) cannot be part of $(HDRS), since it depends on
+# lib$(RT_LIB_NAME)$(DLL_DEF_LIB).$A, and $(OBJ): $(HDRS) would create a
+# circular dependency. For similar but different reasons,
+# $(LIB_DLL_H) also cannot be part of $(HDRS).
+
+# Please keep this list in alphabetical order.
+HDRS = \
+	mercury.h				\
+	mercury_accurate_gc.h			\
+	mercury_agc_debug.h			\
+	mercury_array_macros.h			\
+	mercury_atomic_ops.h			\
+	mercury_backjump.h			\
+	mercury_bitmap.h			\
+	mercury_builtin_types.h			\
+	mercury_builtin_types_proc_layouts.h	\
+	mercury_calls.h				\
+	mercury_complexity.h			\
+	mercury_conf.h				\
+	mercury_conf_param.h			\
+	mercury_construct.h			\
+	mercury_context.h			\
+	mercury_debug.h				\
+	mercury_deconstruct.h			\
+	mercury_deconstruct_macros.h		\
+	mercury_deep_copy.h			\
+	mercury_deep_profiling.h		\
+	mercury_deep_profiling_hand.h		\
+	mercury_dlist.h				\
+	mercury_dummy.h				\
+	mercury_dword.h				\
+	mercury_engine.h			\
+	mercury_expanding_array.h		\
+	mercury_file.h				\
+	mercury_float.h				\
+	mercury_getopt.h			\
+	mercury_goto.h				\
+	mercury_grade.h				\
+	mercury_hash_table.h			\
+	mercury_heap.h				\
+	mercury_heap_profile.h			\
+	mercury_hgc.h				\
+	mercury_hlc_types.h			\
+	mercury_ho_call.h			\
+	mercury_int.h				\
+	mercury_imp.h				\
+	mercury_init.h				\
+	mercury_label.h				\
+	mercury_layout_util.h			\
+	mercury_library_types.h			\
+	mercury_memory.h			\
+	mercury_memory_handlers.h		\
+	mercury_memory_zones.h			\
+	mercury_minimal_model.h			\
+	mercury_misc.h				\
+	mercury_mm_own_stacks.h			\
+	mercury_overflow.h			\
+	mercury_par_builtin.h			\
+	mercury_proc_id.h			\
+	mercury_prof.h				\
+	mercury_prof_mem.h			\
+	mercury_prof_time.h			\
+	mercury_profiling_builtin.h		\
+	mercury_reg_workarounds.h		\
+	mercury_region.h			\
+	mercury_regs.h				\
+	mercury_report_stats.h			\
+	mercury_runtime_util.h			\
+	mercury_signal.h			\
+	mercury_stack_layout.h			\
+	mercury_stack_trace.h			\
+	mercury_stacks.h			\
+	mercury_std.h				\
+	mercury_stm.h				\
+	mercury_string.h			\
+	mercury_tabling.h			\
+	mercury_tabling_macros.h		\
+	mercury_tags.h				\
+	mercury_term_size.h			\
+	mercury_thread.h			\
+	mercury_threadscope.h			\
+	mercury_timing.h			\
+	mercury_trace_base.h			\
+	mercury_trace_term.h			\
+	mercury_trail.h				\
+	mercury_type_desc.h			\
+	mercury_type_info.h			\
+	mercury_type_tables.h			\
+	mercury_typeclass_info.h		\
+	mercury_types.h				\
+	mercury_univ.h				\
+	mercury_windows.h			\
+	mercury_wrapper.h			\
+	mercury_wsdeque.h
+
+# The headers in $(BODY_HDRS) contain code schemes included multiple times
+# in one or more source files. Their dependencies must be explicitly listed.
+# They do not have to be syntactically well-formed.
+
+BODY_HDRS = \
+	mercury_deep_call_port_body.h		\
+	mercury_deep_copy_body.h		\
+	mercury_deep_leave_port_body.h		\
+	mercury_deep_rec_depth_actions.h	\
+	mercury_deep_rec_depth_body.h		\
+	mercury_deep_redo_port_body.h		\
+	mercury_exception_catch_body.h		\
+	mercury_hand_compare_body.h		\
+	mercury_hand_unify_body.h		\
+	mercury_hash_lookup_or_add_body.h	\
+	mercury_make_type_info_body.h		\
+	mercury_ml_arg_body.h			\
+	mercury_ml_deconstruct_body.h		\
+	mercury_ml_expand_body.h		\
+	mercury_ml_functor_body.h		\
+	mercury_table_int_fix_index_body.h	\
+	mercury_table_int_start_index_body.h	\
+	mercury_table_typeinfo_body.h		\
+	mercury_table_type_body.h		\
+	mercury_tabling_preds.h			\
+	mercury_tabling_stats_defs.h		\
+	mercury_tabling_stats_nodefs.h		\
+	mercury_tabling_stats_undefs.h		\
+	mercury_unify_compare_body.h
+
+MACHHDRS = \
+	machdeps/aarch64_regs.h			\
+	machdeps/arm_regs.h			\
+	machdeps/i386_regs.h			\
+	machdeps/ia64_regs.h			\
+	machdeps/mips_regs.h			\
+	machdeps/no_regs.h			\
+	machdeps/pa_regs.h			\
+	machdeps/rs6000_regs.h			\
+	machdeps/sparc_regs.h			\
+	machdeps/x86_64_regs.h
+
+# Please keep this list in alphabetical order.
+CFILES = \
+	mercury.c				\
+	mercury_accurate_gc.c			\
+	mercury_agc_debug.c			\
+	mercury_atomic_ops.c			\
+	mercury_backjump.c			\
+	mercury_bitmap.c			\
+	mercury_builtin_types.c			\
+	mercury_construct.c			\
+	mercury_context.c			\
+	mercury_debug.c				\
+	mercury_deconstruct.c			\
+	mercury_deep_copy.c			\
+	mercury_deep_profiling.c		\
+	mercury_dlist.c				\
+	mercury_dummy.c				\
+	mercury_engine.c			\
+	mercury_file.c				\
+	mercury_float.c				\
+	mercury_getopt.c			\
+	mercury_getopt_long.c			\
+	mercury_grade.c				\
+	mercury_hash_table.c			\
+	mercury_heap_profile.c			\
+	mercury_hgc.c				\
+	mercury_ho_call.c			\
+	mercury_int.c				\
+	mercury_label.c				\
+	mercury_layout_util.c			\
+	mercury_memory.c			\
+	mercury_memory_handlers.c		\
+	mercury_memory_zones.c			\
+	mercury_minimal_model.c			\
+	mercury_misc.c				\
+	mercury_mm_own_stacks.c			\
+	mercury_overflow.c			\
+	mercury_par_builtin.c			\
+	mercury_prof.c				\
+	mercury_prof_mem.c			\
+	mercury_prof_time.c			\
+	mercury_profiling_builtin.c		\
+	mercury_reg_workarounds.c		\
+	mercury_region.c			\
+	mercury_regs.c				\
+	mercury_report_stats.c			\
+	mercury_runtime_util.c			\
+	mercury_signal.c			\
+	mercury_stack_layout.c			\
+	mercury_stack_trace.c			\
+	mercury_stacks.c			\
+	mercury_stm.c				\
+	mercury_string.c			\
+	mercury_tabling.c			\
+	mercury_term_size.c			\
+	mercury_thread.c			\
+	mercury_threadscope.c			\
+	mercury_timing.c			\
+	mercury_trace_base.c			\
+	mercury_trace_term.c			\
+	mercury_trail.c				\
+	mercury_type_desc.c			\
+	mercury_type_info.c			\
+	mercury_type_tables.c			\
+	mercury_wrapper.c			\
+	mercury_wsdeque.c
+
+#-----------------------------------------------------------------------------#
+
+CHECK_HDRS  = $(HDRS)
+CHECK_MHDRS =
+CHECK_OBJS  = $(CFILES:.c=.$O)
+ALLOW_LIB_PREFIX=no
+ALLOW_BROWSER_PREFIX=no
+ALLOW_MDBCOMP_PREFIX=no
+ALLOW_SSDB_PREFIX=no
+
+MERCURY_DIR=..
+LINK_BOEHM_GC_ONLY=yes
+include $(MERCURY_DIR)/Mmake.common
+-include Mmake.runtime.params
+
+# Avoid trying to make this file with `mmc --make' if it doesn't exist.
+Mmake.runtime.params: ;
+
+#-----------------------------------------------------------------------------#
+
+CFLAGS	+= $(DLL_CFLAGS)
+
+# We intentionally compile with C level debugging enabled so that problems
+# in the runtime can be debugged without having to recompile it. The cost
+# of doing this is negligible. The runtime can be compiled without
+# debugging enabled by removing the `--c-debug' flag below.
+MGNUCFLAGS	+= --c-debug --no-ansi
+
+#-----------------------------------------------------------------------------#
+
+OBJS		= $(CFILES:.c=.$O)
+PIC_OBJS	= $(CFILES:.c=.$(EXT_FOR_PIC_OBJECTS))
+
+LD_LIBFLAGS	= -L$(BOEHM_GC_DIR) -L/usr/local/lib
+LDLIBS		= $(SHARED_GC_LIBS) $(MATH_LIB)
+
+THREADLIBS	= \
+		` case "$(GRADE)" in					\
+			*.hlc.par*) echo $(THREAD_LIBS) ;;		\
+			*.par*) echo "$(THREAD_LIBS) $(HWLOC_LIBS)" ;;	\
+		esac							\
+		`
+
+CFLAGS += $(HWLOC_CFLAGS)
+
+$(HDR_CHECK_OBJS):	mercury_conf.h
+
+#-----------------------------------------------------------------------------#
+
+# Stuff for Windows DLLs.
+# This needs to come after the include of Mmake.common, which defines USE_DLLS.
+
+ifeq ($(USE_DLLS),yes)
+
+DLL_CFLAGS	= -Dlib$(RT_LIB_NAME)_DEFINE_DLL
+
+# the following header files are created automatically by Makefile.DLLs
+LIB_DLL_H     = lib$(RT_LIB_NAME)_dll.h
+LIB_GLOBALS_H = lib$(RT_LIB_NAME)_globals.h
+
+include $(MERCURY_DIR)/Makefile.DLLs
+
+else
+
+DLL_CFLAGS =
+LIB_DLL_H =
+LIB_GLOBALS_H =
+DLL_DEF_LIB =
+
+endif
+
+#-----------------------------------------------------------------------------#
+
+$(OBJS) $(PIC_OBJS): $(HDRS) $(MACHHDRS) $(LIB_DLL_H)
+
+mercury_builtin_types.$(O):	mercury_hand_unify_compare_body.h
+mercury_builtin_types.(O):	mercury_hand_unify_body.h mercury_hand_compare_body.h
+mercury_deconstruct.$(O):	mercury_ml_expand_body.h
+mercury_deep_copy.$(O):		mercury_deep_copy_body.h
+mercury_type_info.$(O):		mercury_make_type_info_body.h
+mercury_ho_call.$(O):		mercury_unify_compare_body.h
+
+mercury_builtin_types.$(EXT_FOR_PIC_OBJECTS):	mercury_hand_unify_compare_body.h
+mercury_builtin_types.(EXT_FOR_PIC_OBJECTS):	mercury_hand_unify_body.h mercury_hand_compare_body.h
+mercury_deconstruct.$(EXT_FOR_PIC_OBJECTS):	mercury_ml_expand_body.h
+mercury_deep_copy.$(EXT_FOR_PIC_OBJECTS):	mercury_deep_copy_body.h
+mercury_type_info.$(EXT_FOR_PIC_OBJECTS):	mercury_make_type_info_body.h
+mercury_ho_call.$(EXT_FOR_PIC_OBJECTS):		mercury_unify_compare_body.h
+
+# These files depend on several of the files in $(BODY_HDRS), and it is
+# easier to depend on them all than to specifically list only the ones
+# that mercury_tabling.c actually includes.
+mercury_tabling.$(O):				$(BODY_HDRS)
+mercury_tabling.$(EXT_FOR_PIC_OBJECTS):		$(BODY_HDRS)
+
+# ../tools/make_port_code makes both the .c and the .h file of the
+# mercury_profiling_builtin module.
+mercury_profiling_builtin.c:	mercury_profiling_builtin.h
+mercury_profiling_builtin.h:	mercury_deep_call_port_body.h \
+				mercury_deep_redo_port_body.h \
+				mercury_deep_leave_port_body.h \
+				../tools/make_port_code
+	../tools/make_port_code
+
+mercury_ho_call.$(O):				mercury_ho_call_codes.i
+mercury_ho_call.$(O):				mercury_method_call_codes.i
+mercury_ho_call.$(EXT_FOR_PIC_OBJECTS):		mercury_ho_call_codes.i
+mercury_ho_call.$(EXT_FOR_PIC_OBJECTS):		mercury_method_call_codes.i
+
+# ../tools/make_spec_ho_call generates mercury_ho_call_declares.i
+# and mercury_ho_call_inits.i as side-effects.
+# These seems to be no decent way to express that, and have it work correctly
+# with parallel make.
+mercury_ho_call_codes.i: ../tools/make_spec_ho_call
+	../tools/make_spec_ho_call > mercury_ho_call_codes.i
+
+# ../tools/make_spec_method_call generates mercury_method_call_declares.i
+# and mercury_method_call_inits.i as side-effects.
+# These seems to be no decent way to express that, and have it work correctly
+# with parallel make.
+mercury_method_call_codes.i: ../tools/make_spec_method_call
+	../tools/make_spec_method_call > mercury_method_call_codes.i
+
+#-----------------------------------------------------------------------------#
+
+.PHONY: all
+all:	runtime $(TAGS_FILE_EXISTS)
+
+ifneq "$(filter csharp% java%,$(GRADE))" ""
+#
+# For these grades, there's nothing to do.
+
+.PHONY: runtime
+runtime:
+	@echo "No Mercury runtime needed for GRADE=$(GRADE)"
+
+else
+
+.PHONY: runtime
+runtime: lib$(RT_LIB_NAME).$A lib$(RT_LIB_NAME).$(EXT_FOR_SHARED_LIB)
+runtime: $(RT_LIB_NAME).init
+runtime: $(LIB_DLL_H) $(LIB_GLOBALS_H)
+
+lib$(RT_LIB_NAME)$(DLL_DEF_LIB).$A: $(OBJS)
+	rm -f lib$(RT_LIB_NAME)$(DLL_DEF_LIB).$A
+	$(AR) $(ALL_ARFLAGS) \
+		$(AR_LIBFILE_OPT)lib$(RT_LIB_NAME)$(DLL_DEF_LIB).$A $(OBJS)
+	$(RANLIB) $(RANLIBFLAGS) lib$(RT_LIB_NAME)$(DLL_DEF_LIB).$A
+
+lib$(RT_LIB_NAME).so: $(PIC_OBJS)
+	$(LINK_SHARED_OBJ) $(ERROR_UNDEFINED) $(LDFLAGS_FOR_SANITIZERS)	\
+		-o lib$(RT_LIB_NAME).so $(PIC_OBJS)			\
+		$(SHLIB_RPATH_OPT)$(FINAL_INSTALL_MERC_GC_LIB_DIR)	\
+		$(ALL_LD_LIBFLAGS) $(LDLIBS) $(THREADLIBS)		\
+		$(SHARED_LIBS)
+
+# For Darwin we should pass the -install_name option.
+lib$(RT_LIB_NAME).dylib: $(PIC_OBJS)
+	$(LINK_SHARED_OBJ) $(ERROR_UNDEFINED) $(LDFLAGS_FOR_SANITIZERS) \
+		-o lib$(RT_LIB_NAME).dylib $(PIC_OBJS)			\
+		-install_name						\
+			$(FINAL_INSTALL_MERC_LIB_DIR)/lib$(RT_LIB_NAME).dylib \
+		$(ALL_LD_LIBFLAGS) $(LDLIBS) $(THREADLIBS)		\
+		$(SHARED_LIBS)
+
+endif
+
+$(RT_LIB_NAME).init: $(CFILES)
+	cat `vpath_find $(CFILES)` | grep '^INIT ' > $(RT_LIB_NAME).init
+
+mercury_conf.h.date: $(MERCURY_DIR)/config.status mercury_conf.h.in
+	if test -f mercury_conf.h ; then \
+		mv mercury_conf.h mercury_conf.h.was ; fi
+	$(MERCURY_DIR)/config.status --header=mercury_conf.h
+	@mv mercury_conf.h mercury_conf.h.tmp
+	@sed -e '/Generated by configure/s:mercury_conf:runtime/mercury_conf:' \
+		< mercury_conf.h.tmp > mercury_conf.h
+	# Check to ensure there were no misspelt autoconf variable names.
+	if grep -n '[^$$]@' mercury_conf.h; then false; else true; fi
+	# Check if we need to update the file, and if yes, do so.
+	if test -f mercury_conf.h.was -a -f mercury_conf.h.date && \
+		cmp mercury_conf.h.was mercury_conf.h > /dev/null ; \
+		then mv mercury_conf.h.was mercury_conf.h ; \
+	fi
+	# Update the datestamp to show that mercury_conf.h is now current,
+	# even if its modification date is old.
+	echo datestamp > mercury_conf.h.date ;
+	@-rm -f mercury_conf.h.tmp mercury_conf.h.was
+
+mercury_conf.h: mercury_conf.h.date
+	@true
+
+.PHONY: cs
+cs:	$(CFILES)
+
+.PHONY: tags
+tags:	$(CFILES) $(HDRS) $(BODY_HDRS) $(LIB_DLL_H)
+	-ctags $(CFILES) $(HDRS) $(BODY_HDRS) $(LIB_DLL_H)
+
+# We ignore the exit status because we expect to get lots of messages
+# saying "Duplicate entry", due to the fact that many .h and .c files
+# have two or more definitions of the same macro or function. Even though
+# #ifs and #elses guarantee that the C compiler sees exactly one,
+# ctags sees them all.
+.PHONY: tags_file_exists
+tags_file_exists:
+	-@if test ! -f tags; then \
+		echo making tags; \
+		ctags $(CFILES) $(HDRS) $(BODY_HDRS) $(LIB_DLL_H); \
+	fi
+
+#-----------------------------------------------------------------------------#
+
+# installation rules
+
+.PHONY: install
+install: install_headers install_lib
+
+.PHONY: install_dirs
+install_dirs:
+	-[ -d $(INSTALL_INC_DIR)/machdeps ] || \
+		mkdir -p $(INSTALL_INC_DIR)/machdeps
+	-[ -d $(INSTALL_MODULE_DIR) ] || mkdir -p $(INSTALL_MODULE_DIR)
+	-[ -d $(INSTALL_GRADE_MODULE_DIR) ] || \
+		mkdir -p $(INSTALL_GRADE_MODULE_DIR)
+	-[ -d $(INSTALL_MERC_LIB_DIR) ] || mkdir -p $(INSTALL_MERC_LIB_DIR)
+	-[ -d $(INSTALL_CONF_DIR) ] || mkdir -p $(INSTALL_CONF_DIR)
+	-[ -d $(INSTALL_RECONF_DIR)/runtime ] || \
+		mkdir -p $(INSTALL_RECONF_DIR)/runtime
+
+ifneq "$(filter csharp% java%,$(GRADE))" ""
+
+# For non-C grades, the only thing that needs to be done is install the runtime
+# headers (see the comment above the install_headers target for the rationale).
+# The Java version of the Mercury runtime is in ../java/runtime not this
+# directory and it is built and installed by ../library/Mmakefile.
+# The C# version of the Mercury runtime *is* in this directory (in
+# mercury_dotnet.cs.in), but it is included directly in the standard library
+# assembly (mer_std.dll) by ../library/Mmakefile.
+
+.PHONY: install_init
+install_init:
+
+.PHONY: install_lib
+install_lib:
+
+else
+
+.PHONY: install_init
+install_init: $(RT_LIB_NAME).init install_dirs
+	cp `vpath_find $(RT_LIB_NAME).init` $(INSTALL_GRADE_MODULE_DIR)
+
+.PHONY: install_lib
+install_lib: lib$(RT_LIB_NAME).$A lib$(RT_LIB_NAME).$(EXT_FOR_SHARED_LIB) \
+		install_dirs install_init
+	cp `vpath_find lib$(RT_LIB_NAME).$A \
+		lib$(RT_LIB_NAME).$(EXT_FOR_SHARED_LIB)` \
+		$(INSTALL_MERC_LIB_DIR)
+	$(RANLIB) $(RANLIBFLAGS) $(INSTALL_MERC_LIB_DIR)/lib$(RT_LIB_NAME).$A
+
+endif
+
+# NOTE: we install the header files for the C version of the Mercury runtime
+# even in non-C grades. The reason for this is that they are *not* installed
+# by the install_lib target used by the install_grades target in ../Mmakefile.
+# If we don't install them as part of the main install target then they won't
+# ever be installed and installations with non-C grade Mercury compilers that
+# also install the library in C grades will be broken.
+
+# mercury_conf.h needs to be in a separate directory so it can be overridden by
+# a different configuration.
+.PHONY: install_headers
+install_headers: $(HDRS) $(BODY_HDRS) $(MACHHDRS) \
+		$(LIB_DLL_H) $(LIB_GLOBALS_H) install_dirs
+	cp `vpath_find $(HDRS) $(BODY_HDRS) $(LIB_DLL_H) $(LIB_GLOBALS_H)` \
+		$(INSTALL_INC_DIR)
+	rm -f $(INSTALL_INC_DIR)/mercury_conf.h
+	cp `vpath_find mercury_conf.h` $(INSTALL_CONF_DIR)
+	-chmod u+w $(INSTALL_CONF_DIR)/mercury_conf.h
+	cp `vpath_find mercury_conf.h.in` $(INSTALL_RECONF_DIR)/runtime
+	cp `vpath_find $(MACHHDRS)` $(INSTALL_INC_DIR)/machdeps
+
+#-----------------------------------------------------------------------------#
+
+mercury_dotnet.cs: mercury_dotnet.cs.in
+	CONFIG_FILES=$@ CONFIG_HEADERS= $(MERCURY_DIR)/config.status
+	# check to ensure there were no misspelt autoconf variable names
+	if grep -n '[^$$]@.*@' $@; then false; else true; fi
+
+#-----------------------------------------------------------------------------#
+
+clean_local: clean_o clean_check
+
+.PHONY: clean_o
+clean_o:
+	rm -f $(OBJS) $(PIC_OBJS)
+
+.PHONY: realclean_local
+realclean_local:
+	rm -f lib$(RT_LIB_NAME).$A lib$(RT_LIB_NAME).so $(RT_LIB_NAME).init
+	rm -f mercury_conf.h mercury_conf.h.date mercury_dotnet.cs
+	rm -f mercury_profiling_builtin.c mercury_profiling_builtin.h
+
+#-----------------------------------------------------------------------------#
