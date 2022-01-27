@@ -1,0 +1,34 @@
+/*
+** Automatically generated from `io_combinator.m'
+** by the Mercury compiler,
+** version 14.01.2-beta-2015-02-18, configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+*/
+#ifndef IO_COMBINATOR_MH
+#define IO_COMBINATOR_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef IO_COMBINATOR_DECL_GUARD
+#define IO_COMBINATOR_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* IO_COMBINATOR_MH */

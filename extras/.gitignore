@@ -1,0 +1,14 @@
+tags
+Mercury
+Mercury/**
+*.mh
+*.init
+*.err
+*.jar
+*.exe
+*.bat
+*.dll
+*.lib
+lib*.dylib
+lib*.so
+lib*.a

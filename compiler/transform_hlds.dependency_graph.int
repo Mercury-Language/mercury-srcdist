@@ -1,0 +1,29 @@
+:- module (transform_hlds.dependency_graph).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- type include_imported
+	--->	include_imported 
+	;	do_not_include_imported .
+:- pred build_pred_dependency_graph(hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_id), transform_hlds.dependency_graph.include_imported, hlds.hlds_module.dependency_info(hlds.hlds_pred.pred_id)).
+:- mode build_pred_dependency_graph((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred build_proc_dependency_graph(hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_id), transform_hlds.dependency_graph.include_imported, hlds.hlds_module.dependency_info(hlds.hlds_pred.pred_proc_id)).
+:- mode build_proc_dependency_graph((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred get_scc_entry_points(list.list(hlds.hlds_pred.pred_proc_id), hlds.hlds_module.dependency_ordering, hlds.hlds_module.module_info, list.list(hlds.hlds_pred.pred_proc_id)).
+:- mode get_scc_entry_points((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred module_info_ensure_dependency_info(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode module_info_ensure_dependency_info((builtin.in), (builtin.out)) is det.
+:- pred module_info_rebuild_dependency_info(hlds.hlds_module.module_info, hlds.hlds_module.module_info, hlds.hlds_module.dependency_info(hlds.hlds_pred.pred_proc_id)).
+:- mode module_info_rebuild_dependency_info((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred write_dependency_graph(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_dependency_graph((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_graph(hlds.hlds_module.dependency_info, pred(hlds.hlds_pred.pred_proc_id, io.io, io.io), pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id, io.io, io.io), io.io, io.io).
+:- mode write_graph((builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- pred write_graph_nodes(list.list(hlds.hlds_pred.pred_proc_id), hlds.hlds_module.dependency_graph, pred(hlds.hlds_pred.pred_proc_id, io.io, io.io), pred(hlds.hlds_pred.pred_proc_id, hlds.hlds_pred.pred_proc_id, io.io, io.io), io.io, io.io).
+:- mode write_graph_nodes((builtin.in), (builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- pred write_prof_dependency_graph(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_prof_dependency_graph((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- typeclass dependency_node(T).

@@ -1,0 +1,9 @@
+:- module (check_hlds.build_mode_constraints).
+:- interface.
+:- type args.
+:- type mc_prog_var.
+:- type mc_rep_var.
+:- type mc_var_info.
+:- type mc_var_map.
+:- type mode_constraints.
+:- type nonlocals.

@@ -1,0 +1,7 @@
+:- module counter.
+:- pragma termination_info(counter.init((builtin.in), (builtin.out)), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(counter.init((builtin.in)) = (builtin.out), finite(1, [yes, no]), cannot_loop).
+:- pragma termination_info(counter.allocate((builtin.out), (builtin.in), (builtin.out)), finite(0, [no, yes, no]), cannot_loop).
+:- pragma exceptions(predicate, (counter.init), 2, 0, will_not_throw).
+:- pragma exceptions(function, (counter.init), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (counter.allocate), 3, 0, will_not_throw).

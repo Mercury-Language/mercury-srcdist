@@ -1,0 +1,473 @@
+/*
+** Automatically generated from `ml_global_data.m'
+** by the Mercury compiler,
+** version 14.01.2-beta-2015-02-18, configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.ml_global_data. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__ml_global_data
+#define MR_HEADER_GUARD_ml_backend__ml_global_data
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ML_GLOBAL_DATA_DECL_GUARD
+#define ML_BACKEND__ML_GLOBAL_DATA_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+#line 42 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_have_unboxed_floats_0;
+
+#line 45 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_ml_alloc_id_map_0;
+
+#line 48 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_ml_alloc_site_data_0;
+
+#line 51 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_ml_global_data_0;
+
+#line 54 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_ml_rtti_rval_type_map_0;
+
+#line 57 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_ml_rval_and_type_0;
+
+#line 60 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_ml_scalar_cell_group_0;
+
+#line 63 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_ml_scalar_cell_map_0;
+
+#line 66 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_ml_scalar_cell_type_0;
+
+#line 69 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_ml_scalar_cell_type_map_0;
+
+#line 72 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_ml_vector_cell_group_0;
+
+#line 75 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_ml_vector_cell_map_0;
+
+#line 78 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_ml_vector_cell_type_map_0;
+
+#line 81 "ml_backend.ml_global_data.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__ml_global_data__ml_backend__ml_global_data__type_ctor_info_use_common_cells_0;
+
+#line 40 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data____Compare____use_common_cells_0_0(
+#line 40 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_1,
+#line 40 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 40 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3);
+
+#line 40 "ml_global_data.m"
+MR_bool MR_CALL 
+ml_backend__ml_global_data____Unify____use_common_cells_0_0(
+#line 40 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 40 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2);
+
+#line 62 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data____Compare____ml_vector_cell_map_0_0(
+#line 62 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_1,
+#line 62 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 62 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3);
+
+#line 62 "ml_global_data.m"
+MR_bool MR_CALL 
+ml_backend__ml_global_data____Unify____ml_vector_cell_map_0_0(
+#line 62 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 62 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2);
+
+#line 65 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data____Compare____ml_vector_cell_group_0_0(
+#line 65 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_1,
+#line 65 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 65 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3);
+
+#line 65 "ml_global_data.m"
+MR_bool MR_CALL 
+ml_backend__ml_global_data____Unify____ml_vector_cell_group_0_0(
+#line 65 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 65 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2);
+
+#line 48 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data____Compare____ml_scalar_cell_map_0_0(
+#line 48 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_1,
+#line 48 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 48 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3);
+
+#line 48 "ml_global_data.m"
+MR_bool MR_CALL 
+ml_backend__ml_global_data____Unify____ml_scalar_cell_map_0_0(
+#line 48 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 48 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2);
+
+#line 51 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data____Compare____ml_scalar_cell_group_0_0(
+#line 51 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_1,
+#line 51 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 51 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3);
+
+#line 51 "ml_global_data.m"
+MR_bool MR_CALL 
+ml_backend__ml_global_data____Unify____ml_scalar_cell_group_0_0(
+#line 51 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 51 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2);
+
+#line 131 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data____Compare____ml_rval_and_type_0_0(
+#line 131 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_1,
+#line 131 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 131 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3);
+
+#line 131 "ml_global_data.m"
+MR_bool MR_CALL 
+ml_backend__ml_global_data____Unify____ml_rval_and_type_0_0(
+#line 131 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 131 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2);
+
+#line 130 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data____Compare____ml_rtti_rval_type_map_0_0(
+#line 130 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_1,
+#line 130 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 130 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3);
+
+#line 130 "ml_global_data.m"
+MR_bool MR_CALL 
+ml_backend__ml_global_data____Unify____ml_rtti_rval_type_map_0_0(
+#line 130 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 130 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2);
+
+#line 238 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data____Compare____ml_global_data_0_0(
+#line 238 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_1,
+#line 238 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 238 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3);
+
+#line 238 "ml_global_data.m"
+MR_bool MR_CALL 
+ml_backend__ml_global_data____Unify____ml_global_data_0_0(
+#line 238 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 238 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2);
+
+#line 75 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data____Compare____ml_alloc_site_data_0_0(
+#line 75 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_1,
+#line 75 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 75 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3);
+
+#line 75 "ml_global_data.m"
+MR_bool MR_CALL 
+ml_backend__ml_global_data____Unify____ml_alloc_site_data_0_0(
+#line 75 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 75 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2);
+
+#line 44 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data____Compare____have_unboxed_floats_0_0(
+#line 44 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_1,
+#line 44 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 44 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3);
+
+#line 44 "ml_global_data.m"
+MR_bool MR_CALL 
+ml_backend__ml_global_data____Unify____have_unboxed_floats_0_0(
+#line 44 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 44 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2);
+
+#line 204 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_gen_alloc_site_7_p_0(
+#line 204 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 204 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 204 "ml_global_data.m"
+  MR_Integer ml_backend__ml_global_data__param_3,
+#line 204 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_4,
+#line 204 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_5,
+#line 204 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_6,
+#line 204 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_7);
+
+#line 198 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_gen_static_vector_defn_6_p_0(
+#line 198 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 198 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 198 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3,
+#line 198 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_4,
+#line 198 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_5,
+#line 198 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_6);
+
+#line 190 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_gen_static_vector_type_9_p_0(
+#line 190 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 190 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 190 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3,
+#line 190 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_4,
+#line 190 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_5,
+#line 190 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_6,
+#line 190 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_7,
+#line 190 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_8,
+#line 190 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_9);
+
+#line 180 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_gen_static_scalar_const_addr_8_p_0(
+#line 180 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 180 "ml_global_data.m"
+  MR_String ml_backend__ml_global_data__param_2,
+#line 180 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3,
+#line 180 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_4,
+#line 180 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_5,
+#line 180 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_6,
+#line 180 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_7,
+#line 180 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_8);
+
+#line 172 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_gen_static_scalar_const_value_8_p_0(
+#line 172 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 172 "ml_global_data.m"
+  MR_String ml_backend__ml_global_data__param_2,
+#line 172 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3,
+#line 172 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_4,
+#line 172 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_5,
+#line 172 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_6,
+#line 172 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_7,
+#line 172 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_8);
+
+#line 165 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_global_data_add_maybe_nonflat_defns_3_p_0(
+#line 165 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 165 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 165 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_3);
+
+#line 163 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_global_data_add_flat_rtti_defns_3_p_0(
+#line 163 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 163 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 163 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_3);
+
+#line 161 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_global_data_add_flat_rtti_defn_3_p_0(
+#line 161 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 161 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 161 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_3);
+
+#line 153 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_global_data_add_pdup_rtti_id_4_p_0(
+#line 153 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 153 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 153 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_3,
+#line 153 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_4);
+
+#line 147 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_global_data_set_rev_maybe_nonflat_defns_3_p_0(
+#line 147 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 147 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2,
+#line 147 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_3);
+
+#line 140 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_global_data_get_pdup_rval_type_map_2_p_0(
+#line 140 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 140 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_2);
+
+#line 110 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_global_data_get_all_global_defns_5_p_0(
+#line 110 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 110 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_2,
+#line 110 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_3,
+#line 110 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_4,
+#line 110 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_5);
+
+#line 99 "ml_global_data.m"
+void MR_CALL 
+ml_backend__ml_global_data__ml_global_data_get_global_defns_6_p_0(
+#line 99 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 99 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_2,
+#line 99 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_3,
+#line 99 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_4,
+#line 99 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_5,
+#line 99 "ml_global_data.m"
+  MR_Word * ml_backend__ml_global_data__param_6);
+
+#line 89 "ml_global_data.m"
+MR_Word MR_CALL 
+ml_backend__ml_global_data__ml_global_data_have_unboxed_floats_1_f_0(
+#line 89 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1);
+
+#line 86 "ml_global_data.m"
+MR_Word MR_CALL 
+ml_backend__ml_global_data__ml_global_data_init_2_f_0(
+#line 86 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_1,
+#line 86 "ml_global_data.m"
+  MR_Word ml_backend__ml_global_data__param_2);
+
+void mercury__ml_backend__ml_global_data__init(void);
+void mercury__ml_backend__ml_global_data__init_type_tables(void);
+void mercury__ml_backend__ml_global_data__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.ml_global_data */
+
+/* :- end_interface ml_backend.ml_global_data. */

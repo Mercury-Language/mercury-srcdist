@@ -1,0 +1,1412 @@
+/*
+** Automatically generated from `exception.m'
+** by the Mercury compiler,
+** version 14.01.2-beta-2015-02-18, configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module exception. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_exception
+#define MR_HEADER_GUARD_exception
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef EXCEPTION_DECL_GUARD
+#define EXCEPTION_DECL_GUARD
+#line 899 "exception.m"
+
+/* protect against multiple inclusion */
+#ifndef ML_HLC_EXCEPTION_GUARD
+#define ML_HLC_EXCEPTION_GUARD
+
+  #ifdef MR_HIGHLEVEL_CODE
+
+  #ifdef MR_USE_GCC_NESTED_FUNCTIONS
+    #define MR_CONT_PARAMS      MR_NestedCont cont
+    #define MR_CONT_PARAM_TYPES MR_NestedCont
+    #define MR_CONT_ARGS        cont
+  #else
+    #define MR_CONT_PARAMS      MR_Cont cont, void *cont_env
+    #define MR_CONT_PARAM_TYPES MR_Cont, void *
+    #define MR_CONT_ARGS        cont, cont_env
+  #endif
+
+    /* det */
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_0(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    /* semidet */
+    MR_bool MR_CALL
+    mercury__exception__builtin_catch_3_p_1(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    /* cc_multi */
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_2(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    /* cc_nondet */
+    MR_bool MR_CALL
+    mercury__exception__builtin_catch_3_p_3(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output);
+
+    /* multi */
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_4(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output,
+        MR_CONT_PARAMS);
+
+    /* nondet */
+    void MR_CALL
+    mercury__exception__builtin_catch_3_p_5(MR_Mercury_Type_Info type_info,
+        MR_Pred pred, MR_Pred handler_pred, MR_Box *output,
+        MR_CONT_PARAMS);
+
+    /* det ==> model_det */
+    #define mercury__exception__builtin_catch_3_p_0         mercury__exception__builtin_catch_model_det
+
+    /* semidet ==> model_semi */
+    #define mercury__exception__builtin_catch_3_p_1         mercury__exception__builtin_catch_model_semi
+
+    /* cc_multi ==> model_det */
+    #define mercury__exception__builtin_catch_3_p_2         mercury__exception__builtin_catch_model_det
+
+    /* cc_nondet ==> model_semi */
+    #define mercury__exception__builtin_catch_3_p_3         mercury__exception__builtin_catch_model_semi
+
+    /* multi ==> model_non */
+    #define mercury__exception__builtin_catch_3_p_4         mercury__exception__builtin_catch_model_non
+
+    /* nondet ==> model_non */
+    #define mercury__exception__builtin_catch_3_p_5         mercury__exception__builtin_catch_model_non
+
+    void MR_CALL mercury__exception__builtin_throw_1_p_0(MR_Univ exception);
+
+    void MR_CALL mercury__exception__builtin_catch_model_det(
+        MR_Mercury_Type_Info type_info, MR_Pred pred,
+        MR_Pred handler_pred, MR_Box *output);
+    MR_bool MR_CALL mercury__exception__builtin_catch_model_semi(
+        MR_Mercury_Type_Info type_info, MR_Pred pred,
+        MR_Pred handler_pred, MR_Box *output);
+    void MR_CALL mercury__exception__builtin_catch_model_non(
+        MR_Mercury_Type_Info type_info, MR_Pred pred,
+        MR_Pred handler_pred, MR_Box *output,
+        MR_CONT_PARAMS);
+
+  #endif /* MR_HIGHLEVEL_CODE */
+
+#endif /* ML_HLC_EXCEPTION_GUARD */
+
+#line 1805 "exception.m"
+
+#ifndef MR_HIGHLEVEL_CODE
+    #include <assert.h>
+    #include <stdio.h>
+    #include "mercury_deep_copy.h"
+    #include "mercury_trace_base.h"
+    #include "mercury_stack_trace.h"
+    #include "mercury_layout_util.h"
+    #include "mercury_deep_profiling_hand.h"
+
+    MR_DECLARE_TYPE_CTOR_INFO_STRUCT(mercury_data_univ__type_ctor_info_univ_0);
+#endif
+
+#endif
+
+
+
+
+#line 139 "exception.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__exception__exception__type_ctor_info_exception_result_1;
+
+#line 142 "exception.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__exception__exception__type_ctor_info_exp_determinism_0;
+
+#line 145 "exception.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__exception__exception__type_ctor_info_handler_1;
+
+#line 148 "exception.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__exception__exception__type_ctor_info_near_stack_limits_0;
+
+#line 151 "exception.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__exception__exception__type_ctor_info_software_error_0;
+
+#line 204 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 204 "exception.m"
+  MR_Word * mercury__exception__param_1);
+
+#line 204 "exception.m"
+MR_bool MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_120_99_101_112_116_105_111_110_95_95_110_101_97_114_95_115_116_97_99_107_95_108_105_109_105_116_115_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 780 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_99_99_95_109_117_108_116_105_95_95_91_50_93_95_48_5_p_0(
+#line 780 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 780 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 780 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 780 "exception.m"
+  MR_Box mercury__exception__param_4,
+#line 780 "exception.m"
+  MR_Box * mercury__exception__param_5);
+
+#line 767 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_109_95_100_101_116_95_95_91_50_93_95_48_5_p_0(
+#line 767 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 767 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 767 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 767 "exception.m"
+  MR_Box mercury__exception__param_4,
+#line 767 "exception.m"
+  MR_Box * mercury__exception__param_5);
+
+#line 337 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_49_2_p_1(
+#line 337 "exception.m"
+  MR_Word * mercury__exception__param_1);
+
+#line 335 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0(
+#line 335 "exception.m"
+  MR_Word * mercury__exception__param_1);
+
+#line 331 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_53_2_p_5(
+#line 331 "exception.m"
+  MR_Word * mercury__exception__param_1);
+
+#line 329 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_52_2_p_4(
+#line 329 "exception.m"
+  MR_Word * mercury__exception__param_1);
+
+#line 327 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_51_2_p_3(
+#line 327 "exception.m"
+  MR_Word * mercury__exception__param_1);
+
+#line 325 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_50_2_p_2(
+#line 325 "exception.m"
+  MR_Word * mercury__exception__param_1);
+
+#line 323 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_49_2_p_1(
+#line 323 "exception.m"
+  MR_Word * mercury__exception__param_1);
+
+#line 321 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_116_95_100_101_116_101_114_109_105_110_105_115_109_95_95_91_49_44_32_50_93_95_48_2_p_0(
+#line 321 "exception.m"
+  MR_Word * mercury__exception__param_1);
+
+#line 307 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_51_4_p_3(
+#line 307 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 307 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 307 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 307 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 305 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_50_4_p_2(
+#line 305 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 305 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 305 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 305 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 303 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_49_4_p_1(
+#line 303 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 303 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 303 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 303 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 301 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_97_108_108_95_100_101_116_95_95_91_50_93_95_48_4_p_0(
+#line 301 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 301 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 301 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 301 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 297 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_49_5_p_1(
+#line 297 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 297 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 297 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 297 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 295 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_115_116_111_114_101_95_100_101_116_95_95_91_51_93_95_48_5_p_0(
+#line 295 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 295 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 295 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 295 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 290 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_49_5_p_1(
+#line 290 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 290 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 290 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 288 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_105_111_95_100_101_116_95_95_91_50_93_95_48_5_p_0(
+#line 288 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 288 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 288 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 283 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_51_3_p_3(
+#line 283 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 283 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 283 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 281 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_50_3_p_2(
+#line 281 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 281 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 281 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 279 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_49_3_p_1(
+#line 279 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 279 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 279 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 277 "exception.m"
+void MR_CALL 
+mercury__exception__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_114_121_95_100_101_116_95_95_91_50_93_95_48_3_p_0(
+#line 277 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 277 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 277 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 37 "exception.m"
+void MR_CALL 
+mercury__exception____Compare____software_error_0_0(
+#line 37 "exception.m"
+  MR_Word * mercury__exception__param_1,
+#line 37 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 37 "exception.m"
+  MR_Word mercury__exception__param_3);
+
+#line 37 "exception.m"
+MR_bool MR_CALL 
+mercury__exception____Unify____software_error_0_0(
+#line 37 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 37 "exception.m"
+  MR_Word mercury__exception__param_2);
+
+#line 204 "exception.m"
+void MR_CALL 
+mercury__exception____Compare____near_stack_limits_0_0(
+#line 204 "exception.m"
+  MR_Word * mercury__exception__param_1);
+
+#line 204 "exception.m"
+MR_bool MR_CALL 
+mercury__exception____Unify____near_stack_limits_0_0(void);
+
+#line 823 "exception.m"
+void MR_CALL 
+mercury__exception____Compare____handler_1_0(
+#line 823 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 823 "exception.m"
+  MR_Word * mercury__exception__param_2,
+#line 823 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 823 "exception.m"
+  MR_Word mercury__exception__param_4);
+
+#line 823 "exception.m"
+MR_bool MR_CALL 
+mercury__exception____Unify____handler_1_0(
+#line 823 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 823 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 823 "exception.m"
+  MR_Word mercury__exception__param_3);
+
+#line 310 "exception.m"
+void MR_CALL 
+mercury__exception____Compare____exp_determinism_0_0(
+#line 310 "exception.m"
+  MR_Word * mercury__exception__param_1,
+#line 310 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 310 "exception.m"
+  MR_Word mercury__exception__param_3);
+
+#line 310 "exception.m"
+MR_bool MR_CALL 
+mercury__exception____Unify____exp_determinism_0_0(
+#line 310 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 310 "exception.m"
+  MR_Word mercury__exception__param_2);
+
+#line 48 "exception.m"
+void MR_CALL 
+mercury__exception____Compare____exception_result_1_0(
+#line 48 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 48 "exception.m"
+  MR_Word * mercury__exception__param_2,
+#line 48 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 48 "exception.m"
+  MR_Word mercury__exception__param_4);
+
+#line 48 "exception.m"
+MR_bool MR_CALL 
+mercury__exception____Unify____exception_result_1_0(
+#line 48 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 48 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 48 "exception.m"
+  MR_Word mercury__exception__param_3);
+
+#line 881 "exception.m"
+void MR_CALL 
+mercury__exception__builtin_catch_3_p_5(
+#line 881 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 881 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 881 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 881 "exception.m"
+  MR_Box * mercury__exception__param_4,
+#line 881 "exception.m"
+  MR_Cont mercury__exception__param_5,
+#line 881 "exception.m"
+  void * mercury__exception__param_6);
+
+#line 880 "exception.m"
+void MR_CALL 
+mercury__exception__builtin_catch_3_p_4(
+#line 880 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 880 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 880 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 880 "exception.m"
+  MR_Box * mercury__exception__param_4,
+#line 880 "exception.m"
+  MR_Cont mercury__exception__param_5,
+#line 880 "exception.m"
+  void * mercury__exception__param_6);
+
+#line 879 "exception.m"
+MR_bool MR_CALL 
+mercury__exception__builtin_catch_3_p_3(
+#line 879 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 879 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 879 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 879 "exception.m"
+  MR_Box * mercury__exception__param_4);
+
+#line 878 "exception.m"
+void MR_CALL 
+mercury__exception__builtin_catch_3_p_2(
+#line 878 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 878 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 878 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 878 "exception.m"
+  MR_Box * mercury__exception__param_4);
+
+#line 877 "exception.m"
+MR_bool MR_CALL 
+mercury__exception__builtin_catch_3_p_1(
+#line 877 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 877 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 877 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 877 "exception.m"
+  MR_Box * mercury__exception__param_4);
+
+#line 876 "exception.m"
+void MR_CALL 
+mercury__exception__builtin_catch_3_p_0(
+#line 876 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 876 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 876 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 876 "exception.m"
+  MR_Box * mercury__exception__param_4);
+
+#line 840 "exception.m"
+void MR_CALL 
+mercury__exception__catch_impl_3_p_5(
+#line 840 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 840 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 840 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 840 "exception.m"
+  MR_Box * mercury__exception__param_4,
+#line 840 "exception.m"
+  MR_Cont mercury__exception__param_5,
+#line 840 "exception.m"
+  void * mercury__exception__param_6);
+
+#line 839 "exception.m"
+void MR_CALL 
+mercury__exception__catch_impl_3_p_4(
+#line 839 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 839 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 839 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 839 "exception.m"
+  MR_Box * mercury__exception__param_4,
+#line 839 "exception.m"
+  MR_Cont mercury__exception__param_5,
+#line 839 "exception.m"
+  void * mercury__exception__param_6);
+
+#line 838 "exception.m"
+MR_bool MR_CALL 
+mercury__exception__catch_impl_3_p_3(
+#line 838 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 838 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 838 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 838 "exception.m"
+  MR_Box * mercury__exception__param_4);
+
+#line 837 "exception.m"
+void MR_CALL 
+mercury__exception__catch_impl_3_p_2(
+#line 837 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 837 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 837 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 837 "exception.m"
+  MR_Box * mercury__exception__param_4);
+
+#line 836 "exception.m"
+MR_bool MR_CALL 
+mercury__exception__catch_impl_3_p_1(
+#line 836 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 836 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 836 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 836 "exception.m"
+  MR_Box * mercury__exception__param_4);
+
+#line 835 "exception.m"
+void MR_CALL 
+mercury__exception__catch_impl_3_p_0(
+#line 835 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 835 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 835 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 835 "exception.m"
+  MR_Box * mercury__exception__param_4);
+
+#line 791 "exception.m"
+void MR_CALL 
+mercury__exception__handle_stm_result_4_p_0(
+#line 791 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 791 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 791 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 791 "exception.m"
+  MR_Box mercury__exception__param_4,
+#line 791 "exception.m"
+  MR_Box * mercury__exception__param_5);
+
+#line 780 "exception.m"
+void MR_CALL 
+mercury__exception__try_stm_cc_multi_5_p_0(
+#line 780 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 780 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 780 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 780 "exception.m"
+  MR_Word * mercury__exception__param_4,
+#line 780 "exception.m"
+  MR_Box mercury__exception__param_5,
+#line 780 "exception.m"
+  MR_Box * mercury__exception__param_6);
+
+#line 767 "exception.m"
+void MR_CALL 
+mercury__exception__try_stm_det_5_p_0(
+#line 767 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 767 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 767 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 767 "exception.m"
+  MR_Word * mercury__exception__param_4,
+#line 767 "exception.m"
+  MR_Box mercury__exception__param_5,
+#line 767 "exception.m"
+  MR_Box * mercury__exception__param_6);
+
+#line 726 "exception.m"
+void MR_CALL 
+mercury__exception__wrap_exception_2_p_0(
+#line 726 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 726 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 726 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 645 "exception.m"
+void MR_CALL 
+mercury__exception__handle_store_result_4_p_0(
+#line 645 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 645 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 645 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 645 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 500 "exception.m"
+void MR_CALL 
+mercury__exception__wrap_success_or_failure_2_p_3(
+#line 500 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 500 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 500 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 499 "exception.m"
+void MR_CALL 
+mercury__exception__wrap_success_or_failure_2_p_2(
+#line 499 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 499 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 499 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 496 "exception.m"
+void MR_CALL 
+mercury__exception__wrap_success_or_failure_2_p_1(
+#line 496 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 496 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 496 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 495 "exception.m"
+void MR_CALL 
+mercury__exception__wrap_success_or_failure_2_p_0(
+#line 495 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 495 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 495 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 490 "exception.m"
+MR_bool MR_CALL 
+mercury__exception__wrap_success_2_p_5(
+#line 490 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 490 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 490 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 489 "exception.m"
+void MR_CALL 
+mercury__exception__wrap_success_2_p_4(
+#line 489 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 489 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 489 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 488 "exception.m"
+void MR_CALL 
+mercury__exception__wrap_success_2_p_3(
+#line 488 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 488 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 488 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 488 "exception.m"
+  MR_Cont mercury__exception__param_4,
+#line 488 "exception.m"
+  void * mercury__exception__param_5);
+
+#line 487 "exception.m"
+void MR_CALL 
+mercury__exception__wrap_success_2_p_2(
+#line 487 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 487 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 487 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 487 "exception.m"
+  MR_Cont mercury__exception__param_4,
+#line 487 "exception.m"
+  void * mercury__exception__param_5);
+
+#line 486 "exception.m"
+MR_bool MR_CALL 
+mercury__exception__wrap_success_2_p_1(
+#line 486 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 486 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 486 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 485 "exception.m"
+void MR_CALL 
+mercury__exception__wrap_success_2_p_0(
+#line 485 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 485 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 485 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 438 "exception.m"
+void MR_CALL 
+mercury__exception__finally_2_6_p_1(
+#line 438 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 438 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 438 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 438 "exception.m"
+  MR_Box * mercury__exception__param_4,
+#line 438 "exception.m"
+  MR_Word * mercury__exception__param_5);
+
+#line 436 "exception.m"
+void MR_CALL 
+mercury__exception__finally_2_6_p_0(
+#line 436 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 436 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 436 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 436 "exception.m"
+  MR_Box * mercury__exception__param_4,
+#line 436 "exception.m"
+  MR_Word * mercury__exception__param_5);
+
+#line 337 "exception.m"
+void MR_CALL 
+mercury__exception__get_determinism_2_2_p_1(
+#line 337 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 337 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 337 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 337 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 335 "exception.m"
+void MR_CALL 
+mercury__exception__get_determinism_2_2_p_0(
+#line 335 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 335 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 335 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 335 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 331 "exception.m"
+void MR_CALL 
+mercury__exception__get_determinism_2_p_5(
+#line 331 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 331 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 331 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 329 "exception.m"
+void MR_CALL 
+mercury__exception__get_determinism_2_p_4(
+#line 329 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 329 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 329 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 327 "exception.m"
+void MR_CALL 
+mercury__exception__get_determinism_2_p_3(
+#line 327 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 327 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 327 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 325 "exception.m"
+void MR_CALL 
+mercury__exception__get_determinism_2_p_2(
+#line 325 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 325 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 325 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 323 "exception.m"
+void MR_CALL 
+mercury__exception__get_determinism_2_p_1(
+#line 323 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 323 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 323 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 321 "exception.m"
+void MR_CALL 
+mercury__exception__get_determinism_2_p_0(
+#line 321 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 321 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 321 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 307 "exception.m"
+void MR_CALL 
+mercury__exception__try_all_det_4_p_3(
+#line 307 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 307 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 307 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 307 "exception.m"
+  MR_Word * mercury__exception__param_4,
+#line 307 "exception.m"
+  MR_Word * mercury__exception__param_5);
+
+#line 305 "exception.m"
+void MR_CALL 
+mercury__exception__try_all_det_4_p_2(
+#line 305 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 305 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 305 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 305 "exception.m"
+  MR_Word * mercury__exception__param_4,
+#line 305 "exception.m"
+  MR_Word * mercury__exception__param_5);
+
+#line 303 "exception.m"
+void MR_CALL 
+mercury__exception__try_all_det_4_p_1(
+#line 303 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 303 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 303 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 303 "exception.m"
+  MR_Word * mercury__exception__param_4,
+#line 303 "exception.m"
+  MR_Word * mercury__exception__param_5);
+
+#line 301 "exception.m"
+void MR_CALL 
+mercury__exception__try_all_det_4_p_0(
+#line 301 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 301 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 301 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 301 "exception.m"
+  MR_Word * mercury__exception__param_4,
+#line 301 "exception.m"
+  MR_Word * mercury__exception__param_5);
+
+#line 297 "exception.m"
+void MR_CALL 
+mercury__exception__try_store_det_5_p_1(
+#line 297 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 297 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 297 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 297 "exception.m"
+  MR_Word mercury__exception__param_4,
+#line 297 "exception.m"
+  MR_Word * mercury__exception__param_5);
+
+#line 295 "exception.m"
+void MR_CALL 
+mercury__exception__try_store_det_5_p_0(
+#line 295 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 295 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 295 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 295 "exception.m"
+  MR_Word mercury__exception__param_4,
+#line 295 "exception.m"
+  MR_Word * mercury__exception__param_5);
+
+#line 290 "exception.m"
+void MR_CALL 
+mercury__exception__try_io_det_5_p_1(
+#line 290 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 290 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 290 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 290 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 288 "exception.m"
+void MR_CALL 
+mercury__exception__try_io_det_5_p_0(
+#line 288 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 288 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 288 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 288 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 283 "exception.m"
+void MR_CALL 
+mercury__exception__try_det_3_p_3(
+#line 283 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 283 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 283 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 283 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 281 "exception.m"
+void MR_CALL 
+mercury__exception__try_det_3_p_2(
+#line 281 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 281 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 281 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 281 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 279 "exception.m"
+void MR_CALL 
+mercury__exception__try_det_3_p_1(
+#line 279 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 279 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 279 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 279 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 277 "exception.m"
+void MR_CALL 
+mercury__exception__try_det_3_p_0(
+#line 277 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 277 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 277 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 277 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 264 "exception.m"
+MR_Box MR_CALL 
+mercury__exception__exc_univ_value_1_f_0(
+#line 264 "exception.m"
+  MR_Word * mercury__exception__param_1,
+#line 264 "exception.m"
+  MR_Word mercury__exception__param_2);
+
+#line 262 "exception.m"
+void MR_CALL 
+mercury__exception__exc_univ_to_type_2_p_2(
+#line 262 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 262 "exception.m"
+  MR_Word * mercury__exception__param_2,
+#line 262 "exception.m"
+  MR_Box mercury__exception__param_3);
+
+#line 261 "exception.m"
+void MR_CALL 
+mercury__exception__exc_univ_to_type_2_p_1(
+#line 261 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 261 "exception.m"
+  MR_Word * mercury__exception__param_2,
+#line 261 "exception.m"
+  MR_Box mercury__exception__param_3);
+
+#line 260 "exception.m"
+MR_bool MR_CALL 
+mercury__exception__exc_univ_to_type_2_p_0(
+#line 260 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 260 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 260 "exception.m"
+  MR_Box * mercury__exception__param_3);
+
+#line 254 "exception.m"
+void MR_CALL 
+mercury__exception__unreachable_0_p_0(void);
+
+#line 248 "exception.m"
+void MR_CALL 
+mercury__exception__magic_exception_result_1_p_0(
+#line 248 "exception.m"
+  MR_Word * mercury__exception__param_1);
+
+#line 240 "exception.m"
+void MR_CALL 
+mercury__exception__unsafe_try_stm_4_p_1(
+#line 240 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 240 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 240 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 240 "exception.m"
+  MR_Box mercury__exception__param_4,
+#line 240 "exception.m"
+  MR_Box * mercury__exception__param_5);
+
+#line 238 "exception.m"
+void MR_CALL 
+mercury__exception__unsafe_try_stm_4_p_0(
+#line 238 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 238 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 238 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 238 "exception.m"
+  MR_Box mercury__exception__param_4,
+#line 238 "exception.m"
+  MR_Box * mercury__exception__param_5);
+
+#line 226 "exception.m"
+void MR_CALL 
+mercury__exception__try_stm_4_p_1(
+#line 226 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 226 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 226 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 226 "exception.m"
+  MR_Box mercury__exception__param_4,
+#line 226 "exception.m"
+  MR_Box * mercury__exception__param_5);
+
+#line 224 "exception.m"
+void MR_CALL 
+mercury__exception__try_stm_4_p_0(
+#line 224 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 224 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 224 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 224 "exception.m"
+  MR_Box mercury__exception__param_4,
+#line 224 "exception.m"
+  MR_Box * mercury__exception__param_5);
+
+#line 207 "exception.m"
+void MR_CALL 
+mercury__exception__throw_if_near_stack_limits_0_p_0(void);
+
+#line 190 "exception.m"
+void MR_CALL 
+mercury__exception__finally_6_p_1(
+#line 190 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 190 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 190 "exception.m"
+  MR_Box * mercury__exception__param_3,
+#line 190 "exception.m"
+  MR_Word mercury__exception__param_4,
+#line 190 "exception.m"
+  MR_Word * mercury__exception__param_5);
+
+#line 188 "exception.m"
+void MR_CALL 
+mercury__exception__finally_6_p_0(
+#line 188 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 188 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 188 "exception.m"
+  MR_Box * mercury__exception__param_3,
+#line 188 "exception.m"
+  MR_Word mercury__exception__param_4,
+#line 188 "exception.m"
+  MR_Word * mercury__exception__param_5);
+
+#line 175 "exception.m"
+MR_Box MR_CALL 
+mercury__exception__rethrow_1_f_0(
+#line 175 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 175 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 175 "exception.m"
+  MR_Word mercury__exception__param_3);
+
+#line 172 "exception.m"
+void MR_CALL 
+mercury__exception__rethrow_1_p_0(
+#line 172 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 172 "exception.m"
+  MR_Word mercury__exception__param_2);
+
+#line 164 "exception.m"
+void MR_CALL 
+mercury__exception__incremental_try_all_4_p_1(
+#line 164 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 164 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 164 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 164 "exception.m"
+  MR_Word mercury__exception__param_4,
+#line 164 "exception.m"
+  MR_Box mercury__exception__param_5,
+#line 164 "exception.m"
+  MR_Box * mercury__exception__param_6);
+
+#line 162 "exception.m"
+void MR_CALL 
+mercury__exception__incremental_try_all_4_p_0(
+#line 162 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 162 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 162 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 162 "exception.m"
+  MR_Word mercury__exception__param_4,
+#line 162 "exception.m"
+  MR_Box mercury__exception__param_5,
+#line 162 "exception.m"
+  MR_Box * mercury__exception__param_6);
+
+#line 136 "exception.m"
+void MR_CALL 
+mercury__exception__try_all_3_p_3(
+#line 136 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 136 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 136 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 136 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 135 "exception.m"
+void MR_CALL 
+mercury__exception__try_all_3_p_2(
+#line 135 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 135 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 135 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 135 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 133 "exception.m"
+void MR_CALL 
+mercury__exception__try_all_3_p_1(
+#line 133 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 133 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 133 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 133 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 131 "exception.m"
+void MR_CALL 
+mercury__exception__try_all_3_p_0(
+#line 131 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 131 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 131 "exception.m"
+  MR_Word * mercury__exception__param_3,
+#line 131 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 109 "exception.m"
+void MR_CALL 
+mercury__exception__try_store_4_p_1(
+#line 109 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 109 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 109 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 109 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 107 "exception.m"
+void MR_CALL 
+mercury__exception__try_store_4_p_0(
+#line 107 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 107 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 107 "exception.m"
+  MR_Word mercury__exception__param_3,
+#line 107 "exception.m"
+  MR_Word * mercury__exception__param_4);
+
+#line 98 "exception.m"
+void MR_CALL 
+mercury__exception__try_io_4_p_1(
+#line 98 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 98 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 98 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 96 "exception.m"
+void MR_CALL 
+mercury__exception__try_io_4_p_0(
+#line 96 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 96 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 96 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 77 "exception.m"
+void MR_CALL 
+mercury__exception__try_2_p_3(
+#line 77 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 77 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 77 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 76 "exception.m"
+void MR_CALL 
+mercury__exception__try_2_p_2(
+#line 76 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 76 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 76 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 75 "exception.m"
+void MR_CALL 
+mercury__exception__try_2_p_1(
+#line 75 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 75 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 75 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 74 "exception.m"
+void MR_CALL 
+mercury__exception__try_2_p_0(
+#line 74 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 74 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 74 "exception.m"
+  MR_Word * mercury__exception__param_3);
+
+#line 44 "exception.m"
+void MR_CALL 
+mercury__exception__throw_1_p_0(
+#line 44 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 44 "exception.m"
+  MR_Box mercury__exception__param_2);
+
+#line 43 "exception.m"
+MR_Box MR_CALL 
+mercury__exception__throw_1_f_0(
+#line 43 "exception.m"
+  MR_Word mercury__exception__param_1,
+#line 43 "exception.m"
+  MR_Word mercury__exception__param_2,
+#line 43 "exception.m"
+  MR_Box mercury__exception__param_3);
+
+void mercury__exception__init(void);
+void mercury__exception__init_type_tables(void);
+void mercury__exception__init_debugger(void);
+void mercury__exception__required_init(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_exception */
+
+/* :- end_interface exception. */

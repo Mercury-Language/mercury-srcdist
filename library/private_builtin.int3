@@ -1,0 +1,16 @@
+:- module private_builtin.
+:- interface.
+:- type base_typeclass_info.
+:- type float_box.
+:- type sample_type_info.
+:- type sample_typeclass_info.
+:- type type_ctor_info.
+:- type type_info.
+:- type typeclass_info.
+:- interface.
+:- type heap_pointer.
+:- type ticket.
+:- type ticket_counter.
+:- type mutvar(T).
+:- type ref(T).
+:- type store_at_ref_type(T).

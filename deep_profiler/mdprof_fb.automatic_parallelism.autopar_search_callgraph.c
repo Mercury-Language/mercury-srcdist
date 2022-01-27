@@ -1,0 +1,5944 @@
+/*
+** Automatically generated from `autopar_search_callgraph.m'
+** by the Mercury compiler,
+** version 14.01.2-beta-2015-02-18, configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdprof_fb.automatic_parallelism.autopar_search_callgraph. */
+/* :- implementation. */
+
+/*
+INIT mercury__mdprof_fb__automatic_parallelism__autopar_search_callgraph__init
+ENDINIT
+*/
+
+#include "mdprof_fb.automatic_parallelism.autopar_search_callgraph.mih"
+
+
+#include "analysis_utils.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "coverage.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "exception.mih"
+#include "exclude.mih"
+#include "float.mih"
+#include "int.mih"
+#include "io.mih"
+#include "lazy.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "mdprof_fb.mih"
+#include "measurement_units.mih"
+#include "measurements.mih"
+#include "message.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "profile.mih"
+#include "program_representation_utils.mih"
+#include "query.mih"
+#include "random.mih"
+#include "read_profile.mih"
+#include "recursion_patterns.mih"
+#include "report.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "sparse_bitset.mih"
+#include "stm_builtin.mih"
+#include "store.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "var_use_analysis.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "mdprof_fb.automatic_parallelism.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+#include "mdprof_fb.automatic_parallelism.autopar_annotate.mih"
+#include "mdprof_fb.automatic_parallelism.autopar_costs.mih"
+#include "mdprof_fb.automatic_parallelism.autopar_search_goals.mih"
+#include "mdprof_fb.automatic_parallelism.autopar_types.mih"
+
+
+
+
+#line 102 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+#line 105 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+#line 108 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__pti_goal_rep_1__plain_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+#line 111 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__pti_goal_rep_1__plain_mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 114 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunction_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+#line 117 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 120 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_VA_PseudoTypeInfo_Struct3 mdprof_fb__automatic_parallelism__autopar_search_callgraph____vpti_pred_3__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunction_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 123 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunctions_proc_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+#line 126 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunctions_proc_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0;
+
+#line 129 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+#line 132 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__program_representation__type_ctor_info_string_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+#line 135 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__cord__pti_cord_1__plain_message__type_ctor_info_message_0;
+
+#line 138 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_VA_PseudoTypeInfo_Struct3 mdprof_fb__automatic_parallelism__autopar_search_callgraph____vpti_pred_3__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+#line 141 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__cord__pti_cord_1__plain_mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0;
+
+#line 144 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__pair__pti_pair_2__plain_profile__type_ctor_info_call_site_static_ptr_0__plain_profile__type_ctor_info_call_site_array_slot_0;
+
+#line 147 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_1;
+
+#line 150 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_measurements__type_ctor_info_cs_cost_csq_0;
+
+#line 153 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__ti_tree234_2mdbcomp__program_representation__type_ctor_info_string_proc_label_0mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0;
+
+#line 156 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__cord__ti_cord_1message__type_ctor_info_message_0;
+
+#line 159 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_VA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph____vpti_tuple_2__plain_tree234__ti_tree234_2mdbcomp__program_representation__type_ctor_info_string_proc_label_0mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_cord__ti_cord_1message__type_ctor_info_message_0;
+
+#line 162 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0;
+
+#line 165 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_VA_TypeInfo_Struct3 mdprof_fb__automatic_parallelism__autopar_search_callgraph____vti_tuple_3builtin__type_ctor_info_int_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0;
+
+#line 168 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain___vti_tuple_3builtin__type_ctor_info_int_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0;
+
+#line 171 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_VA_PseudoTypeInfo_Struct3 mdprof_fb__automatic_parallelism__autopar_search_callgraph____vpti_tuple_3__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_int_0__plain_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0;
+
+#line 174 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__list__pti_list_1__plain_mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0;
+
+#line 177 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__analysis_utils__ti_cost_and_callees_1analysis_utils__type_ctor_info_callee_0;
+
+#line 180 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_analysis_utils__ti_cost_and_callees_1analysis_utils__type_ctor_info_callee_0;
+
+#line 183 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_coverage__type_ctor_info_coverage_point_0;
+
+#line 186 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_PseudoTypeInfo mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__field_types_candidate_child_clique_0_0[5];
+
+#line 189 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_ConstString mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__field_names_candidate_child_clique_0_0[5];
+
+#line 192 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_DuFunctorDesc mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_functor_desc_candidate_child_clique_0_0;
+
+#line 195 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_DuFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_stag_ordered_candidate_child_clique_0_0[1];
+
+#line 198 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_DuPtagLayout mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_ptag_ordered_candidate_child_clique_0[1];
+
+#line 201 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_DuFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_name_ordered_candidate_child_clique_0[1];
+
+#line 204 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__functor_number_map_candidate_child_clique_0[1];
+
+#line 207 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph____Unify____candidate_child_clique_0_0_10001(
+#line 210 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 212 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2);
+
+#line 215 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph____Compare____candidate_child_clique_0_0_10001(
+#line 218 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 220 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 222 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+#line 410 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique_proc__410__1_6_p_0(
+#line 410 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8,
+#line 410 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9,
+#line 410 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_10,
+#line 410 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_12,
+#line 410 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCallSiteCostMap_17,
+#line 410 "autopar_search_callgraph.m"
+  MR_Tuple * mdprof_fb__automatic_parallelism__autopar_search_callgraph__OutputTuple_63);
+
+#line 343 "autopar_search_callgraph.m"
+static MR_Integer MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__func__update_parallelism_available_conj__343__1_3_f_0(
+#line 343 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_for_T_118,
+#line 343 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_30,
+#line 343 "autopar_search_callgraph.m"
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_31);
+
+#line 328 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__update_parallelism_available__328__1_3_p_0(
+#line 328 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_21,
+#line 328 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_22,
+#line 328 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_23);
+
+#line 178 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__178__2_4_p_0(
+#line 178 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_53,
+#line 178 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_110,
+#line 178 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_111,
+#line 178 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_112);
+
+#line 164 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__164__2_4_p_0(
+#line 164 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_46,
+#line 164 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_91,
+#line 164 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_92,
+#line 164 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_93);
+
+#line 182 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__182__1_3_p_0(
+#line 182 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_119,
+#line 182 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_120,
+#line 182 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_121);
+
+#line 178 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__178__1_3_p_0(
+#line 178 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_115,
+#line 178 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_116,
+#line 178 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_117);
+
+#line 164 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__164__1_3_p_0(
+#line 164 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_96,
+#line 164 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_97,
+#line 164 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_98);
+
+#line 101 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions__101__1_3_p_0(
+#line 101 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_20,
+#line 101 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_52,
+#line 101 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_53);
+
+#line 186 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph____Compare____candidate_child_clique_0_0(
+#line 186 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1,
+#line 186 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2,
+#line 186 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_3);
+
+#line 186 "autopar_search_callgraph.m"
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph____Unify____candidate_child_clique_0_0(
+#line 186 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1,
+#line 186 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2);
+
+#line 559 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_proc_7_p_0_2(
+#line 559 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 559 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 559 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 559 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3,
+#line 559 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_4,
+#line 559 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_5);
+
+#line 545 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_proc_7_p_0_1(
+#line 545 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 545 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 545 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 545 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+#line 505 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_proc_7_p_0(
+#line 505 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8,
+#line 505 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9,
+#line 505 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_10,
+#line 505 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_11,
+#line 505 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCallSiteCostMap_12,
+#line 505 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13,
+#line 505 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_68);
+
+#line 488 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__extract_from_push_map_4_p_0(
+#line 488 "autopar_search_callgraph.m"
+  MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__GoalPathStr_5,
+#line 488 "autopar_search_callgraph.m"
+  MR_Tuple mdprof_fb__automatic_parallelism__autopar_search_callgraph__Triple_6,
+#line 488 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Pushes_0_12,
+#line 488 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Pushes_13);
+
+#line 459 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__insert_into_push_map_3_p_0(
+#line 459 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoal_4,
+#line 459 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Map_0_16,
+#line 459 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Map_17);
+
+#line 457 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_pushes_for_proc_2_p_0_2(
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_4);
+
+#line 456 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_pushes_for_proc_2_p_0_1(
+#line 456 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 456 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 456 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 456 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+#line 451 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_pushes_for_proc_2_p_0(
+#line 451 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1,
+#line 451 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2);
+
+#line 457 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_candidate_par_conjs_proc_3_p_0_2(
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_4);
+
+#line 456 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_candidate_par_conjs_proc_3_p_0_1(
+#line 456 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 456 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 456 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 456 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+#line 434 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_candidate_par_conjs_proc_3_p_0(
+#line 434 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_for_T_19,
+#line 434 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__A_4,
+#line 434 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__B_5,
+#line 434 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Result_6);
+
+#line 483 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_proc_7_p_0_1(
+#line 486 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 488 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1);
+
+#line 381 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_proc_7_p_0(
+#line 381 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8,
+#line 381 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9,
+#line 381 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_10,
+#line 381 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_11,
+#line 381 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_12,
+#line 381 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13,
+#line 381 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_14);
+
+#line 343 "autopar_search_callgraph.m"
+static MR_Box MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__update_parallelism_available_conj_3_p_0_1(
+#line 343 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 343 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 343 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2);
+
+#line 333 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__update_parallelism_available_conj_3_p_0(
+#line 333 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_for_T_118,
+#line 333 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4,
+#line 333 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23,
+#line 333 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_24);
+
+#line 313 "autopar_search_callgraph.m"
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__exceeded_parallelism_2_p_0(
+#line 313 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3,
+#line 313 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildClique_4);
+
+#line 328 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_callee_7_p_0_1(
+#line 328 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 328 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 328 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 328 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+#line 259 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_callee_7_p_0(
+#line 259 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8,
+#line 259 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9,
+#line 259 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_10,
+#line 259 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliqueCandidates_11,
+#line 259 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19,
+#line 259 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13,
+#line 259 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_14);
+
+#line 234 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__call_site_dynamic_callees_6_p_0(
+#line 234 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7,
+#line 234 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_8,
+#line 234 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_9,
+#line 234 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevGoalPath_10,
+#line 234 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSDPtr_11,
+#line 234 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliques_12);
+
+#line 227 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__pd_slot_callees_5_p_0_1(
+#line 227 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 227 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 227 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2);
+
+#line 213 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__pd_slot_callees_5_p_0(
+#line 213 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_6,
+#line 213 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_7,
+#line 213 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_8,
+#line 213 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_4,
+#line 213 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliques_11);
+
+#line 209 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__proc_dynamic_callees_4_p_0_1(
+#line 209 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 209 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 209 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2);
+
+#line 200 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__proc_dynamic_callees_4_p_0(
+#line 200 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_5,
+#line 200 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_6,
+#line 200 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_7,
+#line 200 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliques_8);
+
+#line 178 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_8(
+#line 178 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 178 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 178 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 178 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+#line 173 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_7(
+#line 173 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 173 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 173 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 173 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+#line 170 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_6(
+#line 170 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 170 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 170 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2);
+
+#line 164 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_5(
+#line 164 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 164 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 164 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 164 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+#line 182 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_4(
+#line 182 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 182 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 182 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 182 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+#line 178 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_3(
+#line 178 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 178 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 178 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 178 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+#line 164 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_2(
+#line 164 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 164 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 164 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 164 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+#line 160 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_1(
+#line 160 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 160 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 160 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 160 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+#line 124 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0(
+#line 124 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_7,
+#line 124 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8,
+#line 124 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ParentParallelism_9,
+#line 124 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_10,
+#line 124 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_11,
+#line 124 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_12);
+
+#line 101 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_5_p_0_2(
+#line 101 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 101 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 101 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2);
+
+#line 102 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_5_p_0_1(
+#line 102 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 102 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 102 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 102 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3);
+
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[10][2];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[15][3];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_3[1][5];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_4[4][4];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_5[5][6];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_6[2][10];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_7[5][7];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_8[2][8];
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_9[2][9];
+
+static /* final */ const MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_10[1][2];
+
+
+
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[10][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_1)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[0]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_1)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[2]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&message__message__type_ctor_info_message_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__cord__cord__type_ctor_info_cord_1)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[0]))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&analysis_utils__analysis_utils__type_ctor_info_cost_and_callees_1)),
+    ((MR_Box) (&analysis_utils__analysis_utils__type_ctor_info_callee_0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[15][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1]))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&profile__profile__type_ctor_info_call_site_static_ptr_0)),
+    ((MR_Box) (&profile__profile__type_ctor_info_call_site_array_slot_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_3[0]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[9]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0)),
+    ((MR_Box) (&coverage__coverage__type_ctor_info_coverage_point_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_5[0])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_5_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_5[2])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_5[2])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_5[2])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_5[3])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_callee_7_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_5[4])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_candidate_par_conjs_proc_3_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_7[3])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_candidate_par_conjs_proc_3_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_5[4])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_pushes_for_proc_2_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_7[3])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_pushes_for_proc_2_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_8[1])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_proc_7_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_3[1][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0)),
+    ((MR_Box) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[7]))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_4[4][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0)),
+    ((MR_Box) ((MR_Integer) 2)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[0])),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[4]))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_5[1])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_5_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[5]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_7[0])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_5)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[6]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_7[0])),
+    ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_8)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[7]))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_5[5][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__pti_goal_rep_1__plain_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__pti_goal_rep_1__plain_mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph____vpti_pred_3__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunction_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunctions_proc_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunctions_proc_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunctions_proc_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunctions_proc_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunctions_proc_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain___vti_tuple_3builtin__type_ctor_info_int_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain___vti_tuple_3builtin__type_ctor_info_int_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_6[2][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_params_0)),
+    ((MR_Box) (&profile__profile__type_ctor_info_deep_0)),
+    ((MR_Box) (&report__report__type_ctor_info_recursion_type_0)),
+    ((MR_Box) (&profile__profile__type_ctor_info_clique_ptr_0)),
+    ((MR_Box) (&profile__profile__type_ctor_info_proc_dynamic_ptr_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__program_representation__type_ctor_info_string_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__cord__pti_cord_1__plain_message__type_ctor_info_message_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_params_0)),
+    ((MR_Box) (&profile__profile__type_ctor_info_deep_0)),
+    ((MR_Box) (&profile__profile__type_ctor_info_clique_ptr_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__program_representation__type_ctor_info_string_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__program_representation__type_ctor_info_string_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__cord__pti_cord_1__plain_message__type_ctor_info_message_0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_7[5][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph____vpti_pred_3__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__program_representation__type_ctor_info_string_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__program_representation__type_ctor_info_string_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__program_representation__type_ctor_info_string_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&profile__profile__type_ctor_info_deep_0)),
+    ((MR_Box) (&measurements__measurements__type_ctor_info_parallelism_amount_0)),
+    ((MR_Box) (&profile__profile__type_ctor_info_proc_dynamic_ptr_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__cord__pti_cord_1__plain_mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_10[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph____vpti_tuple_3__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_int_0__plain_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__list__pti_list_1__plain_mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__list__pti_list_1__plain_mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&profile__profile__type_ctor_info_deep_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__pair__pti_pair_2__plain_profile__type_ctor_info_call_site_static_ptr_0__plain_profile__type_ctor_info_call_site_array_slot_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_analysis_utils__ti_cost_and_callees_1analysis_utils__type_ctor_info_callee_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_analysis_utils__ti_cost_and_callees_1analysis_utils__type_ctor_info_callee_0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_8[2][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&profile__profile__type_ctor_info_deep_0)),
+    ((MR_Box) (&measurements__measurements__type_ctor_info_parallelism_amount_0)),
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__pair__pti_pair_2__plain_profile__type_ctor_info_call_site_static_ptr_0__plain_profile__type_ctor_info_call_site_array_slot_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__cord__pti_cord_1__plain_mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&coverage__coverage__type_ctor_info_coverage_point_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_coverage__type_ctor_info_coverage_point_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_coverage__type_ctor_info_coverage_point_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_coverage__type_ctor_info_coverage_point_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_coverage__type_ctor_info_coverage_point_0))
+  },
+};
+
+static /* final */ const MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_9[2][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&profile__profile__type_ctor_info_deep_0)),
+    ((MR_Box) (&measurements__measurements__type_ctor_info_parallelism_amount_0)),
+    ((MR_Box) (&mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0)),
+    ((MR_Box) (&mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0)),
+    ((MR_Box) (&profile__profile__type_ctor_info_call_site_dynamic_ptr_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__cord__pti_cord_1__plain_mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_params_0)),
+    ((MR_Box) (&profile__profile__type_ctor_info_deep_0)),
+    ((MR_Box) (&report__report__type_ctor_info_recursion_type_0)),
+    ((MR_Box) (&profile__profile__type_ctor_info_proc_dynamic_ptr_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_measurements__type_ctor_info_cs_cost_csq_0)),
+    ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph____vpti_tuple_2__plain_tree234__ti_tree234_2mdbcomp__program_representation__type_ctor_info_string_proc_label_0mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_cord__ti_cord_1message__type_ctor_info_message_0))
+  },
+};
+
+static /* final */ const MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_10[1][2] = {
+  /* row 0 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 33
+  },
+};
+
+
+
+#include "profile.mh"
+#include "profile.mh"
+#include "array.mh"
+#include "array.mh"
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "read_profile.mh"
+#include "read_profile.mh"
+#include "mdbcomp.program_representation.mh"
+#include "mdbcomp.program_representation.mh"
+#include "stm_builtin.mh"
+#include "stm_builtin.mh"
+#include "store.mh"
+#include "store.mh"
+#include "bitmap.mh"
+#include "bitmap.mh"
+#include "time.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+#line 1192 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+  &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1,
+  {
+    (MR_TypeInfo) &mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+  }
+};
+
+#line 1200 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunction_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1,
+  {
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+  }
+};
+
+#line 1208 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__pti_goal_rep_1__plain_mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+  &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1,
+  {
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+  }
+};
+
+#line 1216 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__pti_goal_rep_1__plain_mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1224 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunction_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1,
+  {
+    (MR_TypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+  }
+};
+
+#line 1232 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_goal_rep_1,
+  {
+    (MR_TypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1240 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_VA_PseudoTypeInfo_Struct3 mdprof_fb__automatic_parallelism__autopar_search_callgraph____vpti_pred_3__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunction_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 3,
+  {
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunction_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0,
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0,
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1251 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunctions_proc_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_1,
+  {
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+  }
+};
+
+#line 1259 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_candidate_par_conjunctions_proc_1__plain_mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_1,
+  {
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__ti_goal_rep_1mdbcomp__feedback__automatic_parallelism__type_ctor_info_pard_goal_annotation_0
+  }
+};
+
+#line 1267 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunctions_proc_1,
+  {
+    (MR_TypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+  }
+};
+
+#line 1275 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__program_representation__type_ctor_info_string_proc_label_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0,
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+  }
+};
+
+#line 1284 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__cord__pti_cord_1__plain_message__type_ctor_info_message_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_PseudoTypeInfo) &message__message__type_ctor_info_message_0
+  }
+};
+
+#line 1292 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_VA_PseudoTypeInfo_Struct3 mdprof_fb__automatic_parallelism__autopar_search_callgraph____vpti_pred_3__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 3,
+  {
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0,
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0,
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+  }
+};
+
+#line 1303 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__cord__pti_cord_1__plain_mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0
+  }
+};
+
+#line 1311 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__pair__pti_pair_2__plain_profile__type_ctor_info_call_site_static_ptr_0__plain_profile__type_ctor_info_call_site_array_slot_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_call_site_static_ptr_0,
+    (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_call_site_array_slot_0
+  }
+};
+
+#line 1320 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__pti_seq_conj_1__pseudo_1 = {
+  &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 1328 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_measurements__type_ctor_info_cs_cost_csq_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0,
+    (MR_PseudoTypeInfo) &measurements__measurements__type_ctor_info_cs_cost_csq_0
+  }
+};
+
+#line 1337 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__ti_tree234_2mdbcomp__program_representation__type_ctor_info_string_proc_label_0mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0,
+    (MR_TypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0
+  }
+};
+
+#line 1346 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__cord__ti_cord_1message__type_ctor_info_message_0 = {
+  &mercury__cord__cord__type_ctor_info_cord_1,
+  {
+    (MR_TypeInfo) &message__message__type_ctor_info_message_0
+  }
+};
+
+#line 1354 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_VA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph____vpti_tuple_2__plain_tree234__ti_tree234_2mdbcomp__program_representation__type_ctor_info_string_proc_label_0mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0__plain_cord__ti_cord_1message__type_ctor_info_message_0 = {
+  &mercury__builtin__builtin__type_ctor_info_tuple_0,
+  (MR_Integer) 2,
+  {
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__ti_tree234_2mdbcomp__program_representation__type_ctor_info_string_proc_label_0mdbcomp__feedback__automatic_parallelism__ti_candidate_par_conjunctions_proc_1mdbcomp__program_representation__ti_goal_rep_1mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_pard_goal_detail_annotation_0,
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__cord__ti_cord_1message__type_ctor_info_message_0
+  }
+};
+
+#line 1364 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1372 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_VA_TypeInfo_Struct3 mdprof_fb__automatic_parallelism__autopar_search_callgraph____vti_tuple_3builtin__type_ctor_info_int_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0 = {
+  &mercury__builtin__builtin__type_ctor_info_tuple_0,
+  (MR_Integer) 3,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_TypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1383 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain___vti_tuple_3builtin__type_ctor_info_int_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph____vti_tuple_3builtin__type_ctor_info_int_0builtin__type_ctor_info_int_0set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1392 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_VA_PseudoTypeInfo_Struct3 mdprof_fb__automatic_parallelism__autopar_search_callgraph____vpti_tuple_3__plain_builtin__type_ctor_info_int_0__plain_builtin__type_ctor_info_int_0__plain_set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0 = {
+  &mercury__builtin__builtin__type_ctor_info_tuple_0,
+  (MR_Integer) 3,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__set_ordlist__ti_set_ordlist_1builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1403 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__list__pti_list_1__plain_mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0
+  }
+};
+
+#line 1411 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_TypeInfo_Struct1 mdprof_fb__automatic_parallelism__autopar_search_callgraph__analysis_utils__ti_cost_and_callees_1analysis_utils__type_ctor_info_callee_0 = {
+  &analysis_utils__analysis_utils__type_ctor_info_cost_and_callees_1,
+  {
+    (MR_TypeInfo) &analysis_utils__analysis_utils__type_ctor_info_callee_0
+  }
+};
+
+#line 1419 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_analysis_utils__ti_cost_and_callees_1analysis_utils__type_ctor_info_callee_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0,
+    (MR_PseudoTypeInfo) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__analysis_utils__ti_cost_and_callees_1analysis_utils__type_ctor_info_callee_0
+  }
+};
+
+#line 1428 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_FA_PseudoTypeInfo_Struct2 mdprof_fb__automatic_parallelism__autopar_search_callgraph__tree234__pti_tree234_2__plain_mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0__plain_coverage__type_ctor_info_coverage_point_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0,
+    (MR_PseudoTypeInfo) &coverage__coverage__type_ctor_info_coverage_point_0
+  }
+};
+
+#line 1437 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_PseudoTypeInfo mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__field_types_candidate_child_clique_0_0[5] = {
+  (MR_PseudoTypeInfo) &profile__profile__type_ctor_info_clique_ptr_0,
+  (MR_PseudoTypeInfo) &measurements__measurements__type_ctor_info_cs_cost_csq_0,
+  (MR_PseudoTypeInfo) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0,
+  (MR_PseudoTypeInfo) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0,
+  (MR_PseudoTypeInfo) &measurements__measurements__type_ctor_info_parallelism_amount_0
+};
+
+#line 1446 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_ConstString mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__field_names_candidate_child_clique_0_0[5] = {
+  (MR_String) "ccc_clique",
+  (MR_String) "ccc_cs_cost",
+  (MR_String) "ccc_proc",
+  (MR_String) "ccc_goal_path",
+  (MR_String) "ccc_parallelism"
+};
+
+#line 1455 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_DuFunctorDesc mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_functor_desc_candidate_child_clique_0_0 = {
+  (MR_String) "candidate_child_clique",
+  (MR_Integer) 5,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__field_types_candidate_child_clique_0_0,
+  mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__field_names_candidate_child_clique_0_0,
+  NULL,
+  NULL
+};
+
+#line 1470 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_DuFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_stag_ordered_candidate_child_clique_0_0[1] = {
+  &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_functor_desc_candidate_child_clique_0_0
+};
+
+#line 1475 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_DuPtagLayout mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_ptag_ordered_candidate_child_clique_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_stag_ordered_candidate_child_clique_0_0
+  }
+};
+
+#line 1484 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_DuFunctorDescPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_name_ordered_candidate_child_clique_0[1] = {
+  &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_functor_desc_candidate_child_clique_0_0
+};
+
+#line 1489 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static const MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__functor_number_map_candidate_child_clique_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1494 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+const MR_TypeCtorInfo_Struct mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph____Unify____candidate_child_clique_0_0_10001)),
+  ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph____Compare____candidate_child_clique_0_0_10001)),
+  (MR_String) "mdprof_fb.automatic_parallelism.autopar_search_callgraph",
+  (MR_String) "candidate_child_clique",
+  {
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_name_ordered_candidate_child_clique_0
+  },
+  {
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__du_ptag_ordered_candidate_child_clique_0
+  },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__functor_number_map_candidate_child_clique_0
+};
+
+#line 1515 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph____Unify____candidate_child_clique_0_0_10001(
+#line 1518 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 1520 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2)
+#line 1522 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+{
+#line 1524 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  {
+#line 1526 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+
+#line 1529 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    {
+#line 1531 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = mdprof_fb__automatic_parallelism__autopar_search_callgraph____Unify____candidate_child_clique_0_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2));
+    }
+#line 1534 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    return mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 1536 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  }
+#line 1538 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+}
+
+#line 1541 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph____Compare____candidate_child_clique_0_0_10001(
+#line 1544 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 1546 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 1548 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 1550 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+{
+#line 1552 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  {
+#line 1554 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_HeadVar__1_1;
+
+#line 1557 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    {
+#line 1559 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph____Compare____candidate_child_clique_0_0(&mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_HeadVar__1_1, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3));
+    }
+#line 1562 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_HeadVar__1_1));
+#line 1564 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  }
+#line 1566 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+}
+
+#line 410 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique_proc__410__1_6_p_0(
+#line 410 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8,
+#line 410 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9,
+#line 410 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_10,
+#line 410 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_12,
+#line 410 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCallSiteCostMap_17,
+#line 410 "autopar_search_callgraph.m"
+  MR_Tuple * mdprof_fb__automatic_parallelism__autopar_search_callgraph__OutputTuple_63)
+#line 410 "autopar_search_callgraph.m"
+{
+#line 410 "autopar_search_callgraph.m"
+  {
+#line 410 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 410 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidatesPrime_65;
+#line 410 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcMessagesPrime_66;
+
+#line 410 "autopar_search_callgraph.m"
+    {
+#line 410 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_proc_7_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_12, mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_10, mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCallSiteCostMap_17, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidatesPrime_65, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcMessagesPrime_66);
+    }
+#line 1600 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    {
+#line 1602 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_Tuple base;
+#line 1604 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      base = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1606 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      *mdprof_fb__automatic_parallelism__autopar_search_callgraph__OutputTuple_63 = base;
+#line 1608 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidatesPrime_65));
+#line 1610 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcMessagesPrime_66));
+#line 1612 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    }
+#line 410 "autopar_search_callgraph.m"
+  }
+#line 410 "autopar_search_callgraph.m"
+}
+
+#line 343 "autopar_search_callgraph.m"
+static MR_Integer MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__func__update_parallelism_available_conj__343__1_3_f_0(
+#line 343 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_for_T_118,
+#line 343 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_30,
+#line 343 "autopar_search_callgraph.m"
+  MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_31)
+#line 343 "autopar_search_callgraph.m"
+{
+#line 343 "autopar_search_callgraph.m"
+  {
+#line 343 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 343 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_32;
+#line 343 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_33_33;
+#line 343 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjsI_42 = (MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_30;
+
+#line 343 "autopar_search_callgraph.m"
+    {
+#line 343 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_33_33 = mercury__list__length_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_for_T_118, mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjsI_42);
+    }
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_32 = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_31 + mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_33_33);
+#line 343 "autopar_search_callgraph.m"
+    return mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_32;
+#line 343 "autopar_search_callgraph.m"
+  }
+#line 343 "autopar_search_callgraph.m"
+}
+
+#line 328 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__update_parallelism_available__328__1_3_p_0(
+#line 328 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_21,
+#line 328 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_22,
+#line 328 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_23)
+#line 328 "autopar_search_callgraph.m"
+{
+#line 328 "autopar_search_callgraph.m"
+  {
+#line 328 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+
+#line 328 "autopar_search_callgraph.m"
+    {
+#line 328 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__update_parallelism_available_conj_3_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[0], mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_21, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_22, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_23);
+#line 328 "autopar_search_callgraph.m"
+      return;
+    }
+#line 328 "autopar_search_callgraph.m"
+  }
+#line 328 "autopar_search_callgraph.m"
+}
+
+#line 178 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__178__2_4_p_0(
+#line 178 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_53,
+#line 178 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_110,
+#line 178 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_111,
+#line 178 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_112)
+#line 178 "autopar_search_callgraph.m"
+{
+#line 178 "autopar_search_callgraph.m"
+  {
+#line 178 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+
+#line 178 "autopar_search_callgraph.m"
+    {
+#line 178 "autopar_search_callgraph.m"
+      mercury__map__union_4_p_1((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1], (MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_53, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_110, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_111, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_112);
+#line 178 "autopar_search_callgraph.m"
+      return;
+    }
+#line 178 "autopar_search_callgraph.m"
+  }
+#line 178 "autopar_search_callgraph.m"
+}
+
+#line 164 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__164__2_4_p_0(
+#line 164 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_46,
+#line 164 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_91,
+#line 164 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_92,
+#line 164 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_93)
+#line 164 "autopar_search_callgraph.m"
+{
+#line 164 "autopar_search_callgraph.m"
+  {
+#line 164 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+
+#line 164 "autopar_search_callgraph.m"
+    {
+#line 164 "autopar_search_callgraph.m"
+      mercury__map__union_4_p_1((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1], (MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_46, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_91, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_92, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_93);
+#line 164 "autopar_search_callgraph.m"
+      return;
+    }
+#line 164 "autopar_search_callgraph.m"
+  }
+#line 164 "autopar_search_callgraph.m"
+}
+
+#line 182 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__182__1_3_p_0(
+#line 182 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_119,
+#line 182 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_120,
+#line 182 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_121)
+#line 182 "autopar_search_callgraph.m"
+{
+#line 182 "autopar_search_callgraph.m"
+  {
+#line 182 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+
+#line 182 "autopar_search_callgraph.m"
+    {
+#line 182 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_candidate_par_conjs_proc_3_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[0], mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_119, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_120, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_121);
+#line 182 "autopar_search_callgraph.m"
+      return;
+    }
+#line 182 "autopar_search_callgraph.m"
+  }
+#line 182 "autopar_search_callgraph.m"
+}
+
+#line 178 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__178__1_3_p_0(
+#line 178 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_115,
+#line 178 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_116,
+#line 178 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_117)
+#line 178 "autopar_search_callgraph.m"
+{
+#line 178 "autopar_search_callgraph.m"
+  {
+#line 178 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+
+#line 178 "autopar_search_callgraph.m"
+    {
+#line 178 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_candidate_par_conjs_proc_3_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[0], mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_115, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_116, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_117);
+#line 178 "autopar_search_callgraph.m"
+      return;
+    }
+#line 178 "autopar_search_callgraph.m"
+  }
+#line 178 "autopar_search_callgraph.m"
+}
+
+#line 164 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__164__1_3_p_0(
+#line 164 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_96,
+#line 164 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_97,
+#line 164 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_98)
+#line 164 "autopar_search_callgraph.m"
+{
+#line 164 "autopar_search_callgraph.m"
+  {
+#line 164 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+
+#line 164 "autopar_search_callgraph.m"
+    {
+#line 164 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_candidate_par_conjs_proc_3_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[0], mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_96, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_97, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_98);
+#line 164 "autopar_search_callgraph.m"
+      return;
+    }
+#line 164 "autopar_search_callgraph.m"
+  }
+#line 164 "autopar_search_callgraph.m"
+}
+
+#line 101 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions__101__1_3_p_0(
+#line 101 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_20,
+#line 101 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_52,
+#line 101 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_53)
+#line 101 "autopar_search_callgraph.m"
+{
+#line 101 "autopar_search_callgraph.m"
+  {
+#line 101 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+
+#line 101 "autopar_search_callgraph.m"
+    {
+#line 101 "autopar_search_callgraph.m"
+      mdbcomp__feedback__automatic_parallelism__convert_candidate_par_conjunctions_proc_3_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[0], (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[2], mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_20, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_52, mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_53);
+#line 101 "autopar_search_callgraph.m"
+      return;
+    }
+#line 101 "autopar_search_callgraph.m"
+  }
+#line 101 "autopar_search_callgraph.m"
+}
+
+#line 186 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph____Compare____candidate_child_clique_0_0(
+#line 186 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1,
+#line 186 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2,
+#line 186 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_3)
+#line 186 "autopar_search_callgraph.m"
+{
+#line 186 "autopar_search_callgraph.m"
+  {
+#line 186 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 186 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__CastX_18 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2;
+#line 186 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__CastY_19 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_3;
+
+#line 186 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CastX_18 == mdprof_fb__automatic_parallelism__autopar_search_callgraph__CastY_19);
+#line 186 "autopar_search_callgraph.m"
+    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 1879 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      *mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1 = (MR_Integer) 0;
+#line 186 "autopar_search_callgraph.m"
+    else
+#line 186 "autopar_search_callgraph.m"
+      {
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2, (MR_Integer) 0)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2, (MR_Integer) 1)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2, (MR_Integer) 2)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2, (MR_Integer) 3)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2, (MR_Integer) 4)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_3, (MR_Integer) 0)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_3, (MR_Integer) 1)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_3, (MR_Integer) 2)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_3, (MR_Integer) 3)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__3_3, (MR_Integer) 4)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_14_14;
+#line 186 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_25_25 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_4_4;
+#line 186 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_26_26 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_9_9;
+
+#line 186 "autopar_search_callgraph.m"
+        {
+#line 186 "autopar_search_callgraph.m"
+          mercury__private_builtin__builtin_compare_int_3_p_0(&mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_14_14, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_25_25, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_26_26);
+        }
+#line 1917 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_14_14 == (MR_Integer) 0);
+#line 186 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = !(mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded);
+#line 186 "autopar_search_callgraph.m"
+        if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 186 "autopar_search_callgraph.m"
+          *mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1 = mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_14_14;
+#line 186 "autopar_search_callgraph.m"
+        else
+#line 186 "autopar_search_callgraph.m"
+          {
+#line 186 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15;
+
+#line 186 "autopar_search_callgraph.m"
+            {
+#line 186 "autopar_search_callgraph.m"
+              measurements____Compare____cs_cost_csq_0_0(&mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_5_5, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_10_10);
+            }
+#line 1937 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+            mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15 == (MR_Integer) 0);
+#line 186 "autopar_search_callgraph.m"
+            mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = !(mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded);
+#line 186 "autopar_search_callgraph.m"
+            if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 186 "autopar_search_callgraph.m"
+              *mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1 = mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15;
+#line 186 "autopar_search_callgraph.m"
+            else
+#line 186 "autopar_search_callgraph.m"
+              {
+#line 186 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_16_16;
+
+#line 186 "autopar_search_callgraph.m"
+                {
+#line 186 "autopar_search_callgraph.m"
+                  mdbcomp__program_representation____Compare____string_proc_label_0_0(&mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_16_16, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_6_6, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_11_11);
+                }
+#line 1957 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_16_16 == (MR_Integer) 0);
+#line 186 "autopar_search_callgraph.m"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = !(mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded);
+#line 186 "autopar_search_callgraph.m"
+                if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 186 "autopar_search_callgraph.m"
+                  *mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1 = mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_16_16;
+#line 186 "autopar_search_callgraph.m"
+                else
+#line 186 "autopar_search_callgraph.m"
+                  {
+#line 186 "autopar_search_callgraph.m"
+                    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_17_17;
+
+#line 186 "autopar_search_callgraph.m"
+                    {
+#line 186 "autopar_search_callgraph.m"
+                      mdbcomp__goal_path____Compare____reverse_goal_path_0_0(&mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_17_17, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_7_7, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_12_12);
+                    }
+#line 1977 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                    mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_17_17 == (MR_Integer) 0);
+#line 186 "autopar_search_callgraph.m"
+                    mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = !(mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded);
+#line 186 "autopar_search_callgraph.m"
+                    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 186 "autopar_search_callgraph.m"
+                      *mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1 = mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_17_17;
+#line 186 "autopar_search_callgraph.m"
+                    else
+#line 186 "autopar_search_callgraph.m"
+                      {
+#line 186 "autopar_search_callgraph.m"
+                        measurements____Compare____parallelism_amount_0_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_8_8, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_13_13);
+#line 186 "autopar_search_callgraph.m"
+                        return;
+                      }
+#line 186 "autopar_search_callgraph.m"
+                  }
+#line 186 "autopar_search_callgraph.m"
+              }
+#line 186 "autopar_search_callgraph.m"
+          }
+#line 186 "autopar_search_callgraph.m"
+      }
+#line 186 "autopar_search_callgraph.m"
+  }
+#line 186 "autopar_search_callgraph.m"
+}
+
+#line 186 "autopar_search_callgraph.m"
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph____Unify____candidate_child_clique_0_0(
+#line 186 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1,
+#line 186 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2)
+#line 186 "autopar_search_callgraph.m"
+{
+#line 186 "autopar_search_callgraph.m"
+  {
+#line 186 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 186 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__CastX_13 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1;
+#line 186 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__CastY_14 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2;
+
+#line 186 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CastX_13 == mdprof_fb__automatic_parallelism__autopar_search_callgraph__CastY_14);
+#line 186 "autopar_search_callgraph.m"
+    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 186 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = MR_TRUE;
+#line 186 "autopar_search_callgraph.m"
+    else
+#line 186 "autopar_search_callgraph.m"
+      {
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1, (MR_Integer) 0)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1, (MR_Integer) 1)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1, (MR_Integer) 2)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1, (MR_Integer) 3)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1, (MR_Integer) 4)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2, (MR_Integer) 0)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2, (MR_Integer) 1)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2, (MR_Integer) 2)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2, (MR_Integer) 3)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2, (MR_Integer) 4)));
+#line 186 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_20_20 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_3_3;
+#line 186 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_21_21 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_8_8;
+
+#line 2060 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_20_20 == mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_21_21);
+#line 186 "autopar_search_callgraph.m"
+        if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 186 "autopar_search_callgraph.m"
+          {
+#line 2066 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+            {
+#line 2068 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = measurements____Unify____cs_cost_csq_0_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_4_4, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_9_9);
+            }
+#line 186 "autopar_search_callgraph.m"
+            if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 186 "autopar_search_callgraph.m"
+              {
+#line 2075 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                {
+#line 2077 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                  mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = mdbcomp__program_representation____Unify____string_proc_label_0_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_5_5, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_10_10);
+                }
+#line 186 "autopar_search_callgraph.m"
+                if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 186 "autopar_search_callgraph.m"
+                  {
+#line 2084 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                    {
+#line 2086 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                      mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = mdbcomp__goal_path____Unify____reverse_goal_path_0_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_6_6, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_11_11);
+                    }
+#line 186 "autopar_search_callgraph.m"
+                    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 2091 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                      {
+#line 2093 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                        return mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = measurements____Unify____parallelism_amount_0_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_7_7, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_12_12);
+                      }
+#line 186 "autopar_search_callgraph.m"
+                  }
+#line 186 "autopar_search_callgraph.m"
+              }
+#line 186 "autopar_search_callgraph.m"
+          }
+#line 186 "autopar_search_callgraph.m"
+      }
+#line 186 "autopar_search_callgraph.m"
+    return mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 186 "autopar_search_callgraph.m"
+  }
+#line 186 "autopar_search_callgraph.m"
+}
+
+#line 559 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_proc_7_p_0_2(
+#line 559 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 559 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 559 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 559 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3,
+#line 559 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_4,
+#line 559 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_5)
+#line 559 "autopar_search_callgraph.m"
+{
+#line 559 "autopar_search_callgraph.m"
+  {
+#line 559 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 559 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv3_HeadVar__3_3;
+#line 559 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_HeadVar__5_5;
+
+#line 559 "autopar_search_callgraph.m"
+    {
+#line 559 "autopar_search_callgraph.m"
+      coverage__add_coverage_point_to_map_5_p_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv3_HeadVar__3_3, ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_4), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_HeadVar__5_5);
+    }
+#line 559 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv3_HeadVar__3_3));
+#line 559 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_5 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_HeadVar__5_5));
+#line 559 "autopar_search_callgraph.m"
+  }
+#line 559 "autopar_search_callgraph.m"
+}
+
+#line 545 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_proc_7_p_0_1(
+#line 545 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 545 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 545 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 545 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 545 "autopar_search_callgraph.m"
+{
+#line 545 "autopar_search_callgraph.m"
+  {
+#line 545 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 545 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_HeadVar__4_4;
+
+#line 545 "autopar_search_callgraph.m"
+    {
+#line 545 "autopar_search_callgraph.m"
+      analysis_utils__build_dynamic_call_site_cost_and_callee_map_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 3))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_HeadVar__4_4);
+    }
+#line 545 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_HeadVar__4_4));
+#line 545 "autopar_search_callgraph.m"
+  }
+#line 545 "autopar_search_callgraph.m"
+}
+
+#line 505 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_proc_7_p_0(
+#line 505 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8,
+#line 505 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9,
+#line 505 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_10,
+#line 505 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_11,
+#line 505 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCallSiteCostMap_12,
+#line 505 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13,
+#line 505 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_68)
+#line 505 "autopar_search_callgraph.m"
+{
+#line 511 "autopar_search_callgraph.m"
+  {
+#line 511 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 511 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_130_130 = (MR_Word) &message__message__type_ctor_info_message_0;
+#line 511 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_15;
+#line 511 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16;
+#line 511 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17;
+#line 511 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__ModuleName_19;
+#line 511 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_69_69;
+#line 511 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_70_70;
+#line 516 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_93_93;
+#line 516 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_94_94;
+#line 517 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_95_95;
+#line 517 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_96_96;
+#line 517 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_97_97;
+#line 517 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_98_98;
+#line 517 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_99_99;
+#line 517 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_100_100;
+#line 517 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_101_101;
+#line 517 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_102_102;
+#line 517 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_103_103;
+#line 517 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_104_104;
+#line 517 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_105_105;
+
+#line 512 "autopar_search_callgraph.m"
+    {
+#line 512 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_69_69 = mercury__cord__empty_0_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_130_130);
+    }
+#line 515 "autopar_search_callgraph.m"
+    {
+#line 515 "autopar_search_callgraph.m"
+      profile__deep_lookup_proc_dynamics_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_10, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_15);
+    }
+#line 516 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_15, (MR_Integer) 0)));
+#line 516 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_93_93 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_15, (MR_Integer) 1)));
+#line 516 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_94_94 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_15, (MR_Integer) 2)));
+#line 516 "autopar_search_callgraph.m"
+    {
+#line 516 "autopar_search_callgraph.m"
+      profile__deep_lookup_proc_statics_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_70_70, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16);
+    }
+#line 517 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 0)));
+#line 517 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_95_95 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 1)));
+#line 517 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_96_96 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 2)));
+#line 517 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_97_97 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 3)));
+#line 517 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_98_98 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 4)));
+#line 517 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_99_99 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 5)));
+#line 517 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_100_100 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 6)));
+#line 517 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_101_101 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 7)));
+#line 517 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_102_102 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 8)));
+#line 517 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_103_103 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 9)));
+#line 517 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_104_104 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 10)));
+#line 517 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_105_105 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 11)));
+#line 519 "autopar_search_callgraph.m"
+    if (((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17)) == (MR_mktag((MR_Integer) 0))))
+#line 518 "autopar_search_callgraph.m"
+      {
+#line 518 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, (MR_Integer) 0)));
+#line 518 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_20_20;
+#line 518 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_21_21;
+#line 518 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_22_22;
+#line 518 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23;
+
+#line 518 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__ModuleName_19 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, (MR_Integer) 1)));
+#line 518 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_20_20 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, (MR_Integer) 2)));
+#line 518 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_21_21 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, (MR_Integer) 3)));
+#line 518 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_22_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, (MR_Integer) 4)));
+#line 518 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, (MR_Integer) 5)));
+#line 518 "autopar_search_callgraph.m"
+      }
+#line 519 "autopar_search_callgraph.m"
+    else
+#line 519 "autopar_search_callgraph.m"
+      {
+#line 519 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_24_24 = ((MR_String) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, (MR_Integer) 0)));
+#line 519 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_25_25;
+#line 519 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_26_26;
+#line 519 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_27_27;
+#line 519 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_28_28;
+
+#line 519 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__ModuleName_19 = ((MR_String) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, (MR_Integer) 1)));
+#line 519 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_25_25 = ((MR_String) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, (MR_Integer) 2)));
+#line 519 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_26_26 = ((MR_String) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, (MR_Integer) 3)));
+#line 519 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_27_27 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, (MR_Integer) 4)));
+#line 519 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_28_28 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, (MR_Integer) 5)));
+#line 519 "autopar_search_callgraph.m"
+      }
+#line 524 "autopar_search_callgraph.m"
+    if ((strcmp(mdprof_fb__automatic_parallelism__autopar_search_callgraph__ModuleName_19, (MR_String) "exception") == 0))
+#line 524 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = MR_TRUE;
+#line 524 "autopar_search_callgraph.m"
+    else
+#line 524 "autopar_search_callgraph.m"
+      if ((strcmp(mdprof_fb__automatic_parallelism__autopar_search_callgraph__ModuleName_19, (MR_String) "Mercury runtime") == 0))
+#line 523 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = MR_TRUE;
+#line 524 "autopar_search_callgraph.m"
+      else
+#line 524 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = MR_FALSE;
+#line 530 "autopar_search_callgraph.m"
+    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 529 "autopar_search_callgraph.m"
+      {
+#line 529 "autopar_search_callgraph.m"
+        {
+#line 529 "autopar_search_callgraph.m"
+          *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13 = mercury__map__init_0_f_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1]);
+        }
+#line 529 "autopar_search_callgraph.m"
+        *mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_68 = mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_69_69;
+#line 529 "autopar_search_callgraph.m"
+      }
+#line 530 "autopar_search_callgraph.m"
+    else
+#line 531 "autopar_search_callgraph.m"
+      {
+#line 531 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_29;
+#line 531 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PSPtr_30;
+#line 531 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeProcRep_31;
+#line 532 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_106_106;
+#line 532 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_107_107;
+
+#line 531 "autopar_search_callgraph.m"
+        {
+#line 531 "autopar_search_callgraph.m"
+          profile__deep_lookup_clique_index_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_10, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_29);
+        }
+#line 532 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__PSPtr_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_15, (MR_Integer) 0)));
+#line 532 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_106_106 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_15, (MR_Integer) 1)));
+#line 532 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_107_107 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_15, (MR_Integer) 2)));
+#line 533 "autopar_search_callgraph.m"
+        {
+#line 533 "autopar_search_callgraph.m"
+          analysis_utils__deep_get_maybe_procrep_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PSPtr_30, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeProcRep_31);
+        }
+#line 611 "autopar_search_callgraph.m"
+        if (((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeProcRep_31)) == (MR_mktag((MR_Integer) 1))))
+#line 612 "autopar_search_callgraph.m"
+          {
+#line 612 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_71_71;
+
+#line 613 "autopar_search_callgraph.m"
+            {
+#line 613 "autopar_search_callgraph.m"
+              *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13 = mercury__map__init_0_f_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1]);
+            }
+#line 614 "autopar_search_callgraph.m"
+            {
+#line 614 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_71_71 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 614 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_71_71, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17));
+#line 614 "autopar_search_callgraph.m"
+            }
+#line 614 "autopar_search_callgraph.m"
+            {
+#line 614 "autopar_search_callgraph.m"
+              message__append_message_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_71_71, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3)), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_69_69, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_68);
+#line 614 "autopar_search_callgraph.m"
+              return;
+            }
+#line 612 "autopar_search_callgraph.m"
+          }
+#line 611 "autopar_search_callgraph.m"
+        else
+#line 535 "autopar_search_callgraph.m"
+          {
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_133_133 = (MR_Word) &mercury__unit__unit__type_ctor_info_unit_0;
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_137_137;
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcRep_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeProcRep_31, (MR_Integer) 0)));
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcDefnRep_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcRep_32, (MR_Integer) 1)));
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Goal0_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcDefnRep_33, (MR_Integer) 1)));
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__VarNameTable_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcDefnRep_33, (MR_Integer) 2)));
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__LastGoalId_36;
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ContainingGoalMap_37;
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Goal_38;
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Slots_39;
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CallSitesMap_40;
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Own_41;
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeCoveragePointsArray_42;
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_74_74;
+#line 535 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_75_75;
+#line 536 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_108_108 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcRep_32, (MR_Integer) 0)));
+#line 537 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_109_109 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcDefnRep_33, (MR_Integer) 0)));
+#line 537 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_111_111 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcDefnRep_33, (MR_Integer) 3)));
+#line 537 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_112_112 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcDefnRep_33, (MR_Integer) 4)));
+#line 545 "autopar_search_callgraph.m"
+            MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_CallSitesMap_40;
+#line 552 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_117_117;
+#line 552 "autopar_search_callgraph.m"
+            MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_118_118;
+
+#line 541 "autopar_search_callgraph.m"
+            {
+#line 541 "autopar_search_callgraph.m"
+              program_representation_utils__label_goals_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_133_133, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__LastGoalId_36, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__ContainingGoalMap_37, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Goal0_34, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__Goal_38);
+            }
+#line 544 "autopar_search_callgraph.m"
+            {
+#line 544 "autopar_search_callgraph.m"
+              analysis_utils__proc_dynamic_paired_call_site_slots_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_10, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__Slots_39);
+            }
+#line 545 "autopar_search_callgraph.m"
+            {
+#line 545 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_74_74 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 545 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_74_74, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_7[4]));
+#line 545 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_74_74, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_proc_7_p_0_1));
+#line 545 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_74_74, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 545 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_74_74, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9));
+#line 545 "autopar_search_callgraph.m"
+            }
+#line 2506 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+            mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_137_137 = (MR_Word) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0;
+#line 545 "autopar_search_callgraph.m"
+            {
+#line 545 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_75_75 = mercury__map__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_137_137, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[9]);
+            }
+#line 545 "autopar_search_callgraph.m"
+            {
+#line 545 "autopar_search_callgraph.m"
+              mercury__list__foldl_4_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[1], (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[3], mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_74_74, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Slots_39, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_75_75)), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_CallSitesMap_40);
+            }
+#line 545 "autopar_search_callgraph.m"
+            mdprof_fb__automatic_parallelism__autopar_search_callgraph__CallSitesMap_40 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_CallSitesMap_40);
+#line 549 "autopar_search_callgraph.m"
+            {
+#line 549 "autopar_search_callgraph.m"
+              profile__deep_lookup_pd_own_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_10, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__Own_41);
+            }
+#line 552 "autopar_search_callgraph.m"
+            mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_117_117 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_15, (MR_Integer) 0)));
+#line 552 "autopar_search_callgraph.m"
+            mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_118_118 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_15, (MR_Integer) 1)));
+#line 552 "autopar_search_callgraph.m"
+            mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeCoveragePointsArray_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_15, (MR_Integer) 2)));
+#line 605 "autopar_search_callgraph.m"
+            if ((mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeCoveragePointsArray_42 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 606 "autopar_search_callgraph.m"
+              {
+#line 606 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_76_76;
+
+#line 607 "autopar_search_callgraph.m"
+                {
+#line 607 "autopar_search_callgraph.m"
+                  *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13 = mercury__map__init_0_f_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1]);
+                }
+#line 608 "autopar_search_callgraph.m"
+                {
+#line 608 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_76_76 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 608 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_76_76, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17));
+#line 608 "autopar_search_callgraph.m"
+                }
+#line 608 "autopar_search_callgraph.m"
+                {
+#line 608 "autopar_search_callgraph.m"
+                  message__append_message_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_76_76, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 5)), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_69_69, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_68);
+#line 608 "autopar_search_callgraph.m"
+                  return;
+                }
+#line 606 "autopar_search_callgraph.m"
+              }
+#line 605 "autopar_search_callgraph.m"
+            else
+#line 554 "autopar_search_callgraph.m"
+              {
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_146_146;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_147_147;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_150_150;
+#line 554 "autopar_search_callgraph.m"
+                MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__CoveragePointsArray_43 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeCoveragePointsArray_42, (MR_Integer) 0)));
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CoveragePoints_44;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__SolnsCoveragePointMap_45;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__BranchCoveragePointMap_46;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CoverageArray_47;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__SeenDuplicateInstantiation_48;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__InstMapArray_52;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProgRep_53;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PardGoal_55;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidatesCord0_57;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushesCord_58;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__MessagesA_60;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates0_61;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Pushes_62;
+#line 554 "autopar_search_callgraph.m"
+                MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_79_79 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 9)));
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_81_81;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_82_82;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_83_83;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_84_84;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_86_86;
+#line 554 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_88_88;
+#line 557 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_119_119 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 0)));
+#line 557 "autopar_search_callgraph.m"
+                MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_120_120 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 1)));
+#line 557 "autopar_search_callgraph.m"
+                MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_121_121 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 2)));
+#line 557 "autopar_search_callgraph.m"
+                MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_122_122 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 3)));
+#line 557 "autopar_search_callgraph.m"
+                MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_123_123 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 4)));
+#line 557 "autopar_search_callgraph.m"
+                MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_124_124 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 5)));
+#line 557 "autopar_search_callgraph.m"
+                MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_125_125 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 6)));
+#line 557 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_126_126 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 7)));
+#line 557 "autopar_search_callgraph.m"
+                MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_127_127 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 8)));
+#line 557 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_128_128 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 10)));
+#line 557 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_129_129 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_16, (MR_Integer) 11)));
+#line 559 "autopar_search_callgraph.m"
+                MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv5_SolnsCoveragePointMap_45;
+#line 559 "autopar_search_callgraph.m"
+                MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv4_BranchCoveragePointMap_46;
+#line 568 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph___ConsumedVars_49;
+#line 568 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph___BoundVars_50;
+#line 568 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph___FinalInstMap_51;
+#line 579 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_56_56;
+#line 579 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph___Singles_59;
+
+#line 557 "autopar_search_callgraph.m"
+                {
+#line 557 "autopar_search_callgraph.m"
+                  coverage__coverage_point_arrays_to_list_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_79_79, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CoveragePointsArray_43, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__CoveragePoints_44);
+                }
+#line 2656 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_146_146 = (MR_Word) &coverage__coverage__type_ctor_info_coverage_point_0;
+#line 559 "autopar_search_callgraph.m"
+                {
+#line 559 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_81_81 = mercury__map__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_137_137, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_146_146);
+                }
+#line 559 "autopar_search_callgraph.m"
+                {
+#line 559 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_82_82 = mercury__map__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_137_137, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_146_146);
+                }
+#line 2668 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_147_147 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[4];
+#line 559 "autopar_search_callgraph.m"
+                {
+#line 559 "autopar_search_callgraph.m"
+                  mercury__list__foldl2_6_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_146_146, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_147_147, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_147_147, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[14], mdprof_fb__automatic_parallelism__autopar_search_callgraph__CoveragePoints_44, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_81_81)), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv5_SolnsCoveragePointMap_45, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_82_82)), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv4_BranchCoveragePointMap_46);
+                }
+#line 559 "autopar_search_callgraph.m"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__SolnsCoveragePointMap_45 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv5_SolnsCoveragePointMap_45);
+#line 559 "autopar_search_callgraph.m"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__BranchCoveragePointMap_46 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv4_BranchCoveragePointMap_46);
+#line 562 "autopar_search_callgraph.m"
+                {
+#line 562 "autopar_search_callgraph.m"
+                  coverage__goal_annotate_with_coverage_9_p_0((MR_Word) &analysis_utils__analysis_utils__type_ctor_info_callee_0, mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Goal_38, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Own_41, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CallSitesMap_40, mdprof_fb__automatic_parallelism__autopar_search_callgraph__SolnsCoveragePointMap_45, mdprof_fb__automatic_parallelism__autopar_search_callgraph__BranchCoveragePointMap_46, mdprof_fb__automatic_parallelism__autopar_search_callgraph__ContainingGoalMap_37, mdprof_fb__automatic_parallelism__autopar_search_callgraph__LastGoalId_36, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__CoverageArray_47);
+                }
+#line 568 "autopar_search_callgraph.m"
+                {
+#line 568 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_83_83 = program_representation_utils__initial_inst_map_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_133_133, mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcDefnRep_33);
+                }
+#line 568 "autopar_search_callgraph.m"
+                {
+#line 568 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_84_84 = mdbcomp__goal_path__create_goal_id_array_1_f_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_types__mdprof_fb__automatic_parallelism__autopar_types__type_ctor_info_inst_map_info_0, mdprof_fb__automatic_parallelism__autopar_search_callgraph__LastGoalId_36);
+                }
+#line 568 "autopar_search_callgraph.m"
+                {
+#line 568 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_annotate__goal_annotate_with_instmap_8_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Goal_38, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__SeenDuplicateInstantiation_48, &mdprof_fb__automatic_parallelism__autopar_search_callgraph___ConsumedVars_49, &mdprof_fb__automatic_parallelism__autopar_search_callgraph___BoundVars_50, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_83_83, &mdprof_fb__automatic_parallelism__autopar_search_callgraph___FinalInstMap_51, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_84_84, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__InstMapArray_52);
+                }
+#line 573 "autopar_search_callgraph.m"
+                {
+#line 573 "autopar_search_callgraph.m"
+                  profile__deep_get_progrep_det_2_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProgRep_53);
+                }
+#line 574 "autopar_search_callgraph.m"
+                {
+#line 574 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 12 * sizeof(MR_Word)), NULL, NULL);
+#line 574 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9));
+#line 574 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProgRep_53));
+#line 574 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8));
+#line 574 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_29));
+#line 574 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CallSitesMap_40));
+#line 574 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, 5) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCallSiteCostMap_12));
+#line 574 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, 6) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ContainingGoalMap_37));
+#line 574 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, 7) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CoverageArray_47));
+#line 574 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, 8) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__InstMapArray_52));
+#line 574 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, 9) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_11));
+#line 574 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, 10) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__VarNameTable_35));
+#line 574 "autopar_search_callgraph.m"
+                  MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, 11) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17));
+#line 574 "autopar_search_callgraph.m"
+                }
+#line 578 "autopar_search_callgraph.m"
+                {
+#line 578 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_search_goals__goal_to_pard_goal_6_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Goal_38, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__PardGoal_55, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_69_69, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_86_86);
+                }
+#line 579 "autopar_search_callgraph.m"
+                {
+#line 579 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_search_goals__goal_get_conjunctions_worth_parallelising_8_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Info_54, (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PardGoal_55, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_56_56, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidatesCord0_57, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushesCord_58, &mdprof_fb__automatic_parallelism__autopar_search_callgraph___Singles_59, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__MessagesA_60);
+                }
+#line 2744 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_150_150 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[6];
+#line 582 "autopar_search_callgraph.m"
+                {
+#line 582 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates0_61 = mercury__cord__list_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_150_150, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidatesCord0_57);
+                }
+#line 583 "autopar_search_callgraph.m"
+                {
+#line 583 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_search_callgraph__Pushes_62 = mercury__cord__list_1_f_0((MR_Word) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushesCord_58);
+                }
+#line 584 "autopar_search_callgraph.m"
+                {
+#line 584 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_88_88 = mercury__cord__f_43_43_2_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_130_130, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_86_86, mdprof_fb__automatic_parallelism__autopar_search_callgraph__MessagesA_60);
+                }
+#line 598 "autopar_search_callgraph.m"
+                if ((mdprof_fb__automatic_parallelism__autopar_search_callgraph__SeenDuplicateInstantiation_48 == (MR_Integer) 1))
+#line 587 "autopar_search_callgraph.m"
+                  {
+#line 591 "autopar_search_callgraph.m"
+                    if ((mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates0_61 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 589 "autopar_search_callgraph.m"
+                      {
+#line 590 "autopar_search_callgraph.m"
+                        {
+#line 590 "autopar_search_callgraph.m"
+                          *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13 = mercury__map__init_0_f_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1]);
+                        }
+#line 589 "autopar_search_callgraph.m"
+                      }
+#line 591 "autopar_search_callgraph.m"
+                    else
+#line 592 "autopar_search_callgraph.m"
+                      {
+#line 592 "autopar_search_callgraph.m"
+                        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__MergedPushes_65;
+#line 592 "autopar_search_callgraph.m"
+                        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateProc_66;
+
+#line 593 "autopar_search_callgraph.m"
+                        {
+#line 593 "autopar_search_callgraph.m"
+                          mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_pushes_for_proc_2_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Pushes_62, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__MergedPushes_65);
+                        }
+#line 594 "autopar_search_callgraph.m"
+                        {
+#line 594 "autopar_search_callgraph.m"
+                          mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateProc_66 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 594 "autopar_search_callgraph.m"
+                          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateProc_66, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__VarNameTable_35));
+#line 594 "autopar_search_callgraph.m"
+                          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateProc_66, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__MergedPushes_65));
+#line 594 "autopar_search_callgraph.m"
+                          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateProc_66, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates0_61));
+#line 594 "autopar_search_callgraph.m"
+                        }
+#line 596 "autopar_search_callgraph.m"
+                        {
+#line 596 "autopar_search_callgraph.m"
+                          *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13 = mercury__map__singleton_2_f_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1], ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17)), ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateProc_66)));
+                        }
+#line 592 "autopar_search_callgraph.m"
+                      }
+#line 596 "autopar_search_callgraph.m"
+                    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_68 = mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_88_88;
+#line 587 "autopar_search_callgraph.m"
+                  }
+#line 598 "autopar_search_callgraph.m"
+                else
+#line 599 "autopar_search_callgraph.m"
+                  {
+#line 599 "autopar_search_callgraph.m"
+                    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_89_89;
+#line 599 "autopar_search_callgraph.m"
+                    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_90_90;
+#line 599 "autopar_search_callgraph.m"
+                    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_92_92;
+
+#line 600 "autopar_search_callgraph.m"
+                    {
+#line 600 "autopar_search_callgraph.m"
+                      *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13 = mercury__map__init_0_f_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1]);
+                    }
+#line 601 "autopar_search_callgraph.m"
+                    {
+#line 601 "autopar_search_callgraph.m"
+                      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_89_89 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 601 "autopar_search_callgraph.m"
+                      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_89_89, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_17));
+#line 601 "autopar_search_callgraph.m"
+                    }
+#line 602 "autopar_search_callgraph.m"
+                    {
+#line 602 "autopar_search_callgraph.m"
+                      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_92_92 = mercury__list__length_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_150_150, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates0_61);
+                    }
+#line 601 "autopar_search_callgraph.m"
+                    {
+#line 601 "autopar_search_callgraph.m"
+                      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_90_90 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 601 "autopar_search_callgraph.m"
+                      MR_hl_field(MR_mktag(3), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_90_90, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 601 "autopar_search_callgraph.m"
+                      MR_hl_field(MR_mktag(3), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_90_90, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_92_92));
+#line 601 "autopar_search_callgraph.m"
+                    }
+#line 601 "autopar_search_callgraph.m"
+                    {
+#line 601 "autopar_search_callgraph.m"
+                      message__append_message_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_89_89, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_90_90, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_88_88, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_68);
+#line 601 "autopar_search_callgraph.m"
+                      return;
+                    }
+#line 599 "autopar_search_callgraph.m"
+                  }
+#line 554 "autopar_search_callgraph.m"
+              }
+#line 535 "autopar_search_callgraph.m"
+          }
+#line 531 "autopar_search_callgraph.m"
+      }
+#line 511 "autopar_search_callgraph.m"
+  }
+#line 505 "autopar_search_callgraph.m"
+}
+
+#line 488 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__extract_from_push_map_4_p_0(
+#line 488 "autopar_search_callgraph.m"
+  MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__GoalPathStr_5,
+#line 488 "autopar_search_callgraph.m"
+  MR_Tuple mdprof_fb__automatic_parallelism__autopar_search_callgraph__Triple_6,
+#line 488 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Pushes_0_12,
+#line 488 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Pushes_13)
+#line 488 "autopar_search_callgraph.m"
+{
+#line 492 "autopar_search_callgraph.m"
+  {
+#line 492 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 492 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__Lo_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Triple_6, (MR_Integer) 0)));
+#line 492 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__Hi_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Triple_6, (MR_Integer) 1)));
+#line 492 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TargetGoalPathStrSet_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Triple_6, (MR_Integer) 2)));
+#line 492 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Push_11;
+#line 492 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_14_14;
+
+#line 494 "autopar_search_callgraph.m"
+    {
+#line 494 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_14_14 = mercury__set__to_sorted_list_1_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TargetGoalPathStrSet_10);
+    }
+#line 494 "autopar_search_callgraph.m"
+    {
+#line 494 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__Push_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 494 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Push_11, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__GoalPathStr_5));
+#line 494 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Push_11, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Lo_8));
+#line 494 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Push_11, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Hi_9));
+#line 494 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Push_11, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_14_14));
+#line 494 "autopar_search_callgraph.m"
+    }
+#line 496 "autopar_search_callgraph.m"
+    {
+#line 496 "autopar_search_callgraph.m"
+      MR_Word base;
+#line 496 "autopar_search_callgraph.m"
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 496 "autopar_search_callgraph.m"
+      *mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Pushes_13 = base;
+#line 496 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Push_11));
+#line 496 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Pushes_0_12));
+#line 496 "autopar_search_callgraph.m"
+    }
+#line 492 "autopar_search_callgraph.m"
+  }
+#line 488 "autopar_search_callgraph.m"
+}
+
+#line 459 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__insert_into_push_map_3_p_0(
+#line 459 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoal_4,
+#line 459 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Map_0_16,
+#line 459 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Map_17)
+#line 459 "autopar_search_callgraph.m"
+{
+#line 463 "autopar_search_callgraph.m"
+  {
+#line 463 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 463 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__GoalPathStr_6 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoal_4, (MR_Integer) 0)));
+#line 463 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__Lo_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoal_4, (MR_Integer) 1)));
+#line 463 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__Hi_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoal_4, (MR_Integer) 2)));
+#line 463 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TargetGoalPathStrs_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoal_4, (MR_Integer) 3)));
+#line 483 "autopar_search_callgraph.m"
+    MR_Tuple mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldTriple_10;
+#line 465 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_OldTriple_10;
+
+#line 465 "autopar_search_callgraph.m"
+    {
+#line 465 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = mercury__map__search_3_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_3[0], mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Map_0_16, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__GoalPathStr_6)), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_OldTriple_10);
+    }
+#line 465 "autopar_search_callgraph.m"
+    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 465 "autopar_search_callgraph.m"
+      {
+#line 465 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldTriple_10 = ((MR_Tuple) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_OldTriple_10);
+#line 465 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = MR_TRUE;
+#line 465 "autopar_search_callgraph.m"
+      }
+#line 483 "autopar_search_callgraph.m"
+    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 466 "autopar_search_callgraph.m"
+      {
+#line 466 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldLo_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldTriple_10, (MR_Integer) 0)));
+#line 466 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldHi_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldTriple_10, (MR_Integer) 1)));
+#line 466 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldTargetGoalPathStrSet_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldTriple_10, (MR_Integer) 2)));
+
+#line 468 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Lo_7 == mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldLo_11);
+#line 468 "autopar_search_callgraph.m"
+        if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 469 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Hi_8 == mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldHi_12);
+#line 475 "autopar_search_callgraph.m"
+        if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 472 "autopar_search_callgraph.m"
+          {
+#line 472 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_24_24 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 472 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTargetGoalPathStrSet_14;
+#line 472 "autopar_search_callgraph.m"
+            MR_Tuple mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTriple_15;
+
+#line 471 "autopar_search_callgraph.m"
+            {
+#line 471 "autopar_search_callgraph.m"
+              mercury__set__insert_list_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_24_24, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TargetGoalPathStrs_9, mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldTargetGoalPathStrSet_13, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTargetGoalPathStrSet_14);
+            }
+#line 473 "autopar_search_callgraph.m"
+            {
+#line 473 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTriple_15 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 473 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTriple_15, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldLo_11));
+#line 473 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTriple_15, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__OldHi_12));
+#line 473 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTriple_15, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTargetGoalPathStrSet_14));
+#line 473 "autopar_search_callgraph.m"
+            }
+#line 474 "autopar_search_callgraph.m"
+            {
+#line 474 "autopar_search_callgraph.m"
+              mercury__map__det_update_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_24_24, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_3[0], ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__GoalPathStr_6)), ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTriple_15)), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Map_0_16, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Map_17);
+#line 474 "autopar_search_callgraph.m"
+              return;
+            }
+#line 472 "autopar_search_callgraph.m"
+          }
+#line 475 "autopar_search_callgraph.m"
+        else
+#line 474 "autopar_search_callgraph.m"
+          *mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Map_17 = mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Map_0_16;
+#line 466 "autopar_search_callgraph.m"
+      }
+#line 483 "autopar_search_callgraph.m"
+    else
+#line 484 "autopar_search_callgraph.m"
+      {
+#line 484 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_26_26 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 484 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_19_19;
+#line 484 "autopar_search_callgraph.m"
+        MR_Tuple mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTriple_21;
+
+#line 484 "autopar_search_callgraph.m"
+        {
+#line 484 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_19_19 = mercury__set__list_to_set_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_26_26, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TargetGoalPathStrs_9);
+        }
+#line 484 "autopar_search_callgraph.m"
+        {
+#line 484 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTriple_21 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 484 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTriple_21, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Lo_7));
+#line 484 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTriple_21, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Hi_8));
+#line 484 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTriple_21, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_19_19));
+#line 484 "autopar_search_callgraph.m"
+        }
+#line 485 "autopar_search_callgraph.m"
+        {
+#line 485 "autopar_search_callgraph.m"
+          mercury__map__det_insert_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_26_26, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_3[0], ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__GoalPathStr_6)), ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__NewTriple_21)), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Map_0_16, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Map_17);
+#line 485 "autopar_search_callgraph.m"
+          return;
+        }
+#line 484 "autopar_search_callgraph.m"
+      }
+#line 463 "autopar_search_callgraph.m"
+  }
+#line 459 "autopar_search_callgraph.m"
+}
+
+#line 457 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_pushes_for_proc_2_p_0_2(
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_4)
+#line 457 "autopar_search_callgraph.m"
+{
+#line 457 "autopar_search_callgraph.m"
+  {
+#line 457 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 457 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_STATE_VARIABLE_Pushes_13;
+
+#line 457 "autopar_search_callgraph.m"
+    {
+#line 457 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__extract_from_push_map_4_p_0(((MR_String) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Tuple) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_STATE_VARIABLE_Pushes_13);
+    }
+#line 457 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_4 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_STATE_VARIABLE_Pushes_13));
+#line 457 "autopar_search_callgraph.m"
+  }
+#line 457 "autopar_search_callgraph.m"
+}
+
+#line 456 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_pushes_for_proc_2_p_0_1(
+#line 456 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 456 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 456 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 456 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 456 "autopar_search_callgraph.m"
+{
+#line 456 "autopar_search_callgraph.m"
+  {
+#line 456 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 456 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_STATE_VARIABLE_Map_17;
+
+#line 456 "autopar_search_callgraph.m"
+    {
+#line 456 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__insert_into_push_map_3_p_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_STATE_VARIABLE_Map_17);
+    }
+#line 456 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_STATE_VARIABLE_Map_17));
+#line 456 "autopar_search_callgraph.m"
+  }
+#line 456 "autopar_search_callgraph.m"
+}
+
+#line 451 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_pushes_for_proc_2_p_0(
+#line 451 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1,
+#line 451 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2)
+#line 451 "autopar_search_callgraph.m"
+{
+#line 454 "autopar_search_callgraph.m"
+  {
+#line 454 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+
+#line 454 "autopar_search_callgraph.m"
+    if ((mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 454 "autopar_search_callgraph.m"
+      *mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 454 "autopar_search_callgraph.m"
+    else
+#line 455 "autopar_search_callgraph.m"
+      {
+#line 455 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_15_15 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 455 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_16_16 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_3[0];
+#line 455 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushMap_7;
+#line 455 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_9_9;
+#line 456 "autopar_search_callgraph.m"
+        MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_PushMap_7;
+#line 457 "autopar_search_callgraph.m"
+        MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv3_HeadVar__2_2;
+
+#line 456 "autopar_search_callgraph.m"
+        {
+#line 456 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_9_9 = mercury__map__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_15_15, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_16_16);
+        }
+#line 456 "autopar_search_callgraph.m"
+        {
+#line 456 "autopar_search_callgraph.m"
+          mercury__list__foldl_4_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[2], (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[12], mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__1_1, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_9_9)), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_PushMap_7);
+        }
+#line 456 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushMap_7 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_PushMap_7);
+#line 457 "autopar_search_callgraph.m"
+        {
+#line 457 "autopar_search_callgraph.m"
+          mercury__map__foldl_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_15_15, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_16_16, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[8], (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[13], mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushMap_7, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv3_HeadVar__2_2);
+        }
+#line 457 "autopar_search_callgraph.m"
+        *mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__2_2 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv3_HeadVar__2_2);
+#line 455 "autopar_search_callgraph.m"
+      }
+#line 454 "autopar_search_callgraph.m"
+  }
+#line 451 "autopar_search_callgraph.m"
+}
+
+#line 457 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_candidate_par_conjs_proc_3_p_0_2(
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3,
+#line 457 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_4)
+#line 457 "autopar_search_callgraph.m"
+{
+#line 457 "autopar_search_callgraph.m"
+  {
+#line 457 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 457 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv3_STATE_VARIABLE_Pushes_13;
+
+#line 457 "autopar_search_callgraph.m"
+    {
+#line 457 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__extract_from_push_map_4_p_0(((MR_String) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Tuple) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv3_STATE_VARIABLE_Pushes_13);
+    }
+#line 457 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_4 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv3_STATE_VARIABLE_Pushes_13));
+#line 457 "autopar_search_callgraph.m"
+  }
+#line 457 "autopar_search_callgraph.m"
+}
+
+#line 456 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_candidate_par_conjs_proc_3_p_0_1(
+#line 456 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 456 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 456 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 456 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 456 "autopar_search_callgraph.m"
+{
+#line 456 "autopar_search_callgraph.m"
+  {
+#line 456 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 456 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_STATE_VARIABLE_Map_17;
+
+#line 456 "autopar_search_callgraph.m"
+    {
+#line 456 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__insert_into_push_map_3_p_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_STATE_VARIABLE_Map_17);
+    }
+#line 456 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_STATE_VARIABLE_Map_17));
+#line 456 "autopar_search_callgraph.m"
+  }
+#line 456 "autopar_search_callgraph.m"
+}
+
+#line 434 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__merge_candidate_par_conjs_proc_3_p_0(
+#line 434 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_for_T_19,
+#line 434 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__A_4,
+#line 434 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__B_5,
+#line 434 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Result_6)
+#line 434 "autopar_search_callgraph.m"
+{
+#line 439 "autopar_search_callgraph.m"
+  {
+#line 439 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 439 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_21_21;
+#line 439 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__VarNameTableA_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__A_4, (MR_Integer) 0)));
+#line 439 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoalsA_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__A_4, (MR_Integer) 1)));
+#line 439 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CPCsA_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__A_4, (MR_Integer) 2)));
+#line 439 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__VarNameTableB_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__B_5, (MR_Integer) 0)));
+#line 439 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoalsB_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__B_5, (MR_Integer) 1)));
+#line 439 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CPCsB_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__B_5, (MR_Integer) 2)));
+#line 439 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CPCs_13;
+#line 439 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoals_14;
+#line 439 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15;
+#line 442 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_CPCs_13;
+
+#line 3316 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    {
+#line 3318 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 3320 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_21_21, 0) = ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_candidate_par_conjunction_1));
+#line 3322 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_21_21, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_for_T_19));
+#line 3324 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    }
+#line 442 "autopar_search_callgraph.m"
+    {
+#line 442 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_CPCs_13 = mercury__list__f_43_43_2_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_21_21, (MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__CPCsA_9, (MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__CPCsB_12);
+    }
+#line 442 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__CPCs_13 = (MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_CPCs_13;
+#line 443 "autopar_search_callgraph.m"
+    {
+#line 443 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15 = mercury__list__f_43_43_2_f_0((MR_Word) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoalsA_8, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoalsB_11);
+    }
+#line 454 "autopar_search_callgraph.m"
+    if ((mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 454 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoals_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 454 "autopar_search_callgraph.m"
+    else
+#line 455 "autopar_search_callgraph.m"
+      {
+#line 455 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_15_36 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 455 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_16_37 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_3[0];
+#line 455 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushMap_28;
+#line 455 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_30_30;
+#line 456 "autopar_search_callgraph.m"
+        MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_PushMap_28;
+#line 457 "autopar_search_callgraph.m"
+        MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv4_PushGoals_14;
+
+#line 456 "autopar_search_callgraph.m"
+        {
+#line 456 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_30_30 = mercury__map__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_15_36, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_16_37);
+        }
+#line 456 "autopar_search_callgraph.m"
+        {
+#line 456 "autopar_search_callgraph.m"
+          mercury__list__foldl_4_p_0((MR_Word) &mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_push_goal_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[2], (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[10], mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_30_30)), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_PushMap_28);
+        }
+#line 456 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushMap_28 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_PushMap_28);
+#line 457 "autopar_search_callgraph.m"
+        {
+#line 457 "autopar_search_callgraph.m"
+          mercury__map__foldl_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_15_36, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_16_37, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[8], (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[11], mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushMap_28, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv4_PushGoals_14);
+        }
+#line 457 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoals_14 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv4_PushGoals_14);
+#line 455 "autopar_search_callgraph.m"
+      }
+#line 444 "autopar_search_callgraph.m"
+    {
+#line 444 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_var_name_table_0, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__VarNameTableA_7)), ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__VarNameTableB_10)));
+    }
+#line 447 "autopar_search_callgraph.m"
+    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 445 "autopar_search_callgraph.m"
+      {
+#line 445 "autopar_search_callgraph.m"
+        MR_Word base;
+#line 445 "autopar_search_callgraph.m"
+        base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 445 "autopar_search_callgraph.m"
+        *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Result_6 = base;
+#line 445 "autopar_search_callgraph.m"
+        MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__VarNameTableA_7));
+#line 445 "autopar_search_callgraph.m"
+        MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__PushGoals_14));
+#line 445 "autopar_search_callgraph.m"
+        MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CPCs_13));
+#line 445 "autopar_search_callgraph.m"
+      }
+#line 447 "autopar_search_callgraph.m"
+    else
+#line 448 "autopar_search_callgraph.m"
+      {
+#line 448 "autopar_search_callgraph.m"
+        {
+#line 448 "autopar_search_callgraph.m"
+          mercury__require__unexpected_3_p_0((MR_String) "mdprof_fb.automatic_parallelism.autopar_search_callgraph", (MR_String) "predicate \140mdprof_fb.automatic_parallelism.autopar_search_callgraph.merge_candidate_par_conjs_proc\'/3", (MR_String) "var tables do not match");
+#line 448 "autopar_search_callgraph.m"
+          return;
+        }
+#line 448 "autopar_search_callgraph.m"
+      }
+#line 439 "autopar_search_callgraph.m"
+  }
+#line 434 "autopar_search_callgraph.m"
+}
+
+#line 3421 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_proc_7_p_0_1(
+#line 3424 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 3426 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1)
+#line 3428 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+{
+#line 3430 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  {
+#line 3432 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 3434 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    MR_Tuple mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_OutputTuple_63;
+
+#line 3437 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    {
+#line 3439 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique_proc__410__1_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 7))), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_OutputTuple_63);
+    }
+#line 3442 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_OutputTuple_63));
+#line 3444 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  }
+#line 3446 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+}
+
+#line 381 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_proc_7_p_0(
+#line 381 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8,
+#line 381 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9,
+#line 381 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_10,
+#line 381 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_11,
+#line 381 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_12,
+#line 381 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13,
+#line 381 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_14)
+#line 381 "autopar_search_callgraph.m"
+{
+#line 390 "autopar_search_callgraph.m"
+  {
+#line 390 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 390 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_59_59 = (MR_Word) &message__message__type_ctor_info_message_0;
+#line 390 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeDepth_15;
+#line 390 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeRecursiveCallSiteCostMap_16;
+#line 390 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCallSiteCostMap_17;
+#line 390 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcMessages_19;
+#line 390 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_28_28;
+#line 390 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_31_31;
+#line 3486 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryResult_32;
+#line 3488 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryLambda_64;
+
+#line 390 "autopar_search_callgraph.m"
+    {
+#line 390 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_28_28 = mercury__cord__empty_0_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_59_59);
+    }
+#line 393 "autopar_search_callgraph.m"
+    {
+#line 393 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_costs__recursion_type_get_interesting_parallelisation_depth_2_p_1(mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_10, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeDepth_15);
+    }
+#line 395 "autopar_search_callgraph.m"
+    {
+#line 395 "autopar_search_callgraph.m"
+      analysis_utils__build_recursive_call_site_cost_map_6_p_1(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_11, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_12, mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_10, mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeDepth_15, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeRecursiveCallSiteCostMap_16);
+    }
+#line 399 "autopar_search_callgraph.m"
+    if (((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeRecursiveCallSiteCostMap_16)) == (MR_mktag((MR_Integer) 1))))
+#line 400 "autopar_search_callgraph.m"
+      {
+#line 400 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__Error_18 = ((MR_String) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeRecursiveCallSiteCostMap_16, (MR_Integer) 0)));
+#line 400 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_29_29;
+#line 400 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_30_30;
+
+#line 401 "autopar_search_callgraph.m"
+        {
+#line 401 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_29_29 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 401 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(2), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_29_29, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_11));
+#line 401 "autopar_search_callgraph.m"
+        }
+#line 401 "autopar_search_callgraph.m"
+        {
+#line 401 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_30_30 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 401 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(3), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_30_30, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+#line 401 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(3), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_30_30, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Error_18));
+#line 401 "autopar_search_callgraph.m"
+        }
+#line 401 "autopar_search_callgraph.m"
+        {
+#line 401 "autopar_search_callgraph.m"
+          message__append_message_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_29_29, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_30_30, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_28_28, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_31_31);
+        }
+#line 404 "autopar_search_callgraph.m"
+        {
+#line 404 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCallSiteCostMap_17 = mercury__map__init_0_f_0((MR_Word) &mdbcomp__goal_path__mdbcomp__goal_path__type_ctor_info_reverse_goal_path_0, (MR_Word) &measurements__measurements__type_ctor_info_cs_cost_csq_0);
+        }
+#line 400 "autopar_search_callgraph.m"
+      }
+#line 399 "autopar_search_callgraph.m"
+    else
+#line 398 "autopar_search_callgraph.m"
+      {
+#line 398 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCallSiteCostMap_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeRecursiveCallSiteCostMap_16, (MR_Integer) 0)));
+#line 398 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_31_31 = mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_28_28;
+#line 398 "autopar_search_callgraph.m"
+      }
+#line 3557 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    {
+#line 3559 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryLambda_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 8 * sizeof(MR_Word)), NULL, NULL);
+#line 3561 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryLambda_64, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_9[1]));
+#line 3563 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryLambda_64, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_proc_7_p_0_1));
+#line 3565 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryLambda_64, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+#line 3567 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryLambda_64, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8));
+#line 3569 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryLambda_64, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9));
+#line 3571 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryLambda_64, 5) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_10));
+#line 3573 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryLambda_64, 6) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_12));
+#line 3575 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryLambda_64, 7) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCallSiteCostMap_17));
+#line 3577 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    }
+#line 410 "autopar_search_callgraph.m"
+    {
+#line 410 "autopar_search_callgraph.m"
+      mercury__exception__try_2_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_4[0], mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryLambda_64, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryResult_32);
+    }
+#line 3584 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    if (((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryResult_32)) == (MR_mktag((MR_Integer) 2))))
+#line 418 "autopar_search_callgraph.m"
+      {
+#line 418 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_62_62;
+#line 418 "autopar_search_callgraph.m"
+        MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__Exp_22;
+#line 418 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(2), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryResult_32, (MR_Integer) 0)));
+#line 419 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDId_24;
+#line 419 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_25;
+#line 419 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26;
+#line 419 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcName_27;
+#line 419 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_35_35;
+#line 419 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_36_36;
+#line 419 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_71_71;
+#line 419 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_73_73;
+#line 419 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_74_74;
+#line 419 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_75_75;
+#line 419 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_77_77;
+#line 422 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_46_46;
+#line 422 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_47_47;
+#line 423 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_48_48;
+#line 423 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49;
+#line 423 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_50_50;
+#line 423 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_51_51;
+#line 423 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_52_52;
+#line 423 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_53_53;
+#line 423 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_54_54;
+#line 423 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_55_55;
+#line 423 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_56_56;
+#line 423 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_57_57;
+#line 423 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_58_58;
+
+#line 427 "autopar_search_callgraph.m"
+        {
+#line 427 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__Exp_22 = mercury__exception__exc_univ_value_1_f_0(&mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_62_62, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_33_33);
+        }
+#line 420 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDId_24 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_12;
+#line 421 "autopar_search_callgraph.m"
+        {
+#line 421 "autopar_search_callgraph.m"
+          profile__deep_lookup_proc_dynamics_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_12, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_25);
+        }
+#line 422 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_25, (MR_Integer) 0)));
+#line 422 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_46_46 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_25, (MR_Integer) 1)));
+#line 422 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_25, (MR_Integer) 2)));
+#line 422 "autopar_search_callgraph.m"
+        {
+#line 422 "autopar_search_callgraph.m"
+          profile__deep_lookup_proc_statics_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_35_35, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26);
+        }
+#line 423 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26, (MR_Integer) 0)));
+#line 423 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26, (MR_Integer) 1)));
+#line 423 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_50_50 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26, (MR_Integer) 2)));
+#line 423 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcName_27 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26, (MR_Integer) 3)));
+#line 423 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_51_51 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26, (MR_Integer) 4)));
+#line 423 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_52_52 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26, (MR_Integer) 5)));
+#line 423 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_53_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26, (MR_Integer) 6)));
+#line 423 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26, (MR_Integer) 7)));
+#line 423 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_55_55 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26, (MR_Integer) 8)));
+#line 423 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_56_56 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26, (MR_Integer) 9)));
+#line 423 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26, (MR_Integer) 10)));
+#line 423 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_26, (MR_Integer) 11)));
+#line 424 "autopar_search_callgraph.m"
+        {
+#line 424 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_36_36 = mercury__io__stderr_stream_0_f_0();
+        }
+#line 3695 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        {
+#line 3697 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_71_71 = mercury__string__f_43_43_2_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcName_27, (MR_String) ")\n");
+        }
+#line 3700 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        {
+#line 3702 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_73_73 = mercury__string__f_43_43_2_f_0((MR_String) " (", mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_71_71);
+        }
+#line 3705 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        {
+#line 3707 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_74_74 = mercury__string__int_to_string_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDId_24);
+        }
+#line 3710 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        {
+#line 3712 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_75_75 = mercury__string__f_43_43_2_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_74_74, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_73_73);
+        }
+#line 3715 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        {
+#line 3717 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_77_77 = mercury__string__f_43_43_2_f_0((MR_String) "Exception while analyising proc dynamic ", mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_75_75);
+        }
+#line 3720 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        {
+#line 3722 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+          mercury__io__write_string_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_36_36, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_77_77);
+        }
+#line 428 "autopar_search_callgraph.m"
+        {
+#line 428 "autopar_search_callgraph.m"
+          mercury__exception__throw_1_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_62_62, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Exp_22);
+#line 428 "autopar_search_callgraph.m"
+          return;
+        }
+#line 418 "autopar_search_callgraph.m"
+      }
+#line 3734 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    else
+#line 3736 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      {
+#line 3738 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        MR_Tuple mdprof_fb__automatic_parallelism__autopar_search_callgraph__OutputTuple_69 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TryResult_32, (MR_Integer) 0)));
+
+#line 3741 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__OutputTuple_69, (MR_Integer) 0)));
+#line 3743 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcMessages_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__OutputTuple_69, (MR_Integer) 1)));
+#line 3745 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      }
+#line 430 "autopar_search_callgraph.m"
+    {
+#line 430 "autopar_search_callgraph.m"
+      *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_14 = mercury__cord__f_43_43_2_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_59_59, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Messages_31_31, mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcMessages_19);
+    }
+#line 390 "autopar_search_callgraph.m"
+  }
+#line 381 "autopar_search_callgraph.m"
+}
+
+#line 343 "autopar_search_callgraph.m"
+static MR_Box MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__update_parallelism_available_conj_3_p_0_1(
+#line 343 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 343 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 343 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2)
+#line 343 "autopar_search_callgraph.m"
+{
+#line 343 "autopar_search_callgraph.m"
+  {
+#line 343 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3;
+#line 343 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 343 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_HeadVar__4_32;
+
+#line 343 "autopar_search_callgraph.m"
+    {
+#line 343 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_HeadVar__4_32 = mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__func__update_parallelism_available_conj__343__1_3_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 3))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2));
+    }
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_HeadVar__4_32));
+#line 343 "autopar_search_callgraph.m"
+    return mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3;
+#line 343 "autopar_search_callgraph.m"
+  }
+#line 343 "autopar_search_callgraph.m"
+}
+
+#line 333 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__update_parallelism_available_conj_3_p_0(
+#line 333 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_for_T_118,
+#line 333 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4,
+#line 333 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23,
+#line 333 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_24)
+#line 333 "autopar_search_callgraph.m"
+{
+#line 336 "autopar_search_callgraph.m"
+  {
+#line 336 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 336 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_120_120;
+#line 336 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevGoalPath_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 3)));
+#line 336 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevConjGoalPath_7;
+#line 336 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__FirstConjunct_8;
+#line 336 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__Length_9;
+#line 336 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_25_25 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 0)));
+#line 336 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_26_26;
+#line 336 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_27_27;
+#line 336 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_29_29;
+#line 336 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_34_34;
+#line 336 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_60_60;
+#line 337 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 0)));
+#line 337 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 1)));
+#line 337 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 2)));
+#line 337 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 4)));
+#line 338 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 1)));
+#line 338 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 2)));
+#line 338 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 3)));
+#line 338 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 4)));
+#line 338 "autopar_search_callgraph.m"
+    MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_52_52 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 5)));
+#line 338 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 6)));
+#line 338 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 7)));
+#line 338 "autopar_search_callgraph.m"
+    MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_55_55 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 8)));
+#line 338 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 9)));
+#line 341 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_57_57;
+#line 341 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_58_58;
+#line 341 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_59_59;
+#line 341 "autopar_search_callgraph.m"
+    MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_61_61;
+#line 341 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_62_62;
+#line 341 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_63_63;
+#line 341 "autopar_search_callgraph.m"
+    MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_64_64;
+#line 341 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_65_65;
+#line 343 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_75_75;
+#line 343 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_76_76;
+#line 343 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_77_77;
+#line 343 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_78_78;
+#line 343 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_79_79;
+#line 343 "autopar_search_callgraph.m"
+    MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_80_80;
+#line 343 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_81_81;
+#line 343 "autopar_search_callgraph.m"
+    MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_82_82;
+#line 343 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_83_83;
+#line 343 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_Length_9;
+#line 346 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevRelativePath_12;
+#line 346 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RelativePath_13;
+#line 346 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Step_14;
+#line 346 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjNum_16;
+#line 346 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_36_36;
+#line 350 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15;
+
+#line 338 "autopar_search_callgraph.m"
+    {
+#line 338 "autopar_search_callgraph.m"
+      mdbcomp__goal_path__rev_goal_path_from_string_det_2_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_25_25, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevConjGoalPath_7);
+    }
+#line 341 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_57_57 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 0)));
+#line 341 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 1)));
+#line 341 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_26_26 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 2)));
+#line 341 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 3)));
+#line 341 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 4)));
+#line 341 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_61_61 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 5)));
+#line 341 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 6)));
+#line 341 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 7)));
+#line 341 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_64_64 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 8)));
+#line 341 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 9)));
+#line 341 "autopar_search_callgraph.m"
+    {
+#line 341 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_27_27 = mercury__list__length_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_for_T_118, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_60_60);
+    }
+#line 341 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__FirstConjunct_8 = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_26_26 + mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_27_27);
+#line 3937 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    {
+#line 3939 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_120_120 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 3941 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_120_120, 0) = ((MR_Box) (&mdbcomp__feedback__automatic_parallelism__mdbcomp__feedback__automatic_parallelism__type_ctor_info_seq_conj_1));
+#line 3943 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_120_120, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_for_T_118));
+#line 3945 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    }
+#line 343 "autopar_search_callgraph.m"
+    {
+#line 343 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_29_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 343 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_29_29, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_7[2]));
+#line 343 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_29_29, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__update_parallelism_available_conj_3_p_0_1));
+#line 343 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_29_29, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 343 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_29_29, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_for_T_118));
+#line 343 "autopar_search_callgraph.m"
+    }
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_75_75 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 0)));
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 1)));
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_77_77 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 2)));
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 3)));
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 4)));
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_80_80 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 5)));
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 6)));
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 7)));
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_82_82 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 8)));
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 9)));
+#line 343 "autopar_search_callgraph.m"
+    {
+#line 343 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_Length_9 = mercury__list__foldl_3_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_120_120, (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_29_29, (MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_34_34, ((MR_Box) ((MR_Integer) 0)));
+    }
+#line 343 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__Length_9 = ((MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_Length_9);
+#line 346 "autopar_search_callgraph.m"
+    {
+#line 346 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = mdbcomp__goal_path____Unify____reverse_goal_path_0_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevGoalPath_6, mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevConjGoalPath_7);
+    }
+#line 346 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = !(mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded);
+#line 346 "autopar_search_callgraph.m"
+    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 346 "autopar_search_callgraph.m"
+      {
+#line 347 "autopar_search_callgraph.m"
+        {
+#line 347 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = mdbcomp__goal_path__rev_goal_path_inside_relative_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevConjGoalPath_7, mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevGoalPath_6, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevRelativePath_12);
+        }
+#line 346 "autopar_search_callgraph.m"
+        if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 346 "autopar_search_callgraph.m"
+          {
+#line 349 "autopar_search_callgraph.m"
+            {
+#line 349 "autopar_search_callgraph.m"
+              mdbcomp__goal_path__rgp_to_fgp_2_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevRelativePath_12, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__RelativePath_13);
+            }
+#line 350 "autopar_search_callgraph.m"
+            mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = ((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__RelativePath_13)) == (MR_mktag((MR_Integer) 1)));
+#line 350 "autopar_search_callgraph.m"
+            if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 350 "autopar_search_callgraph.m"
+              {
+#line 350 "autopar_search_callgraph.m"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__Step_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__RelativePath_13, (MR_Integer) 0)));
+#line 350 "autopar_search_callgraph.m"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__RelativePath_13, (MR_Integer) 1)));
+#line 351 "autopar_search_callgraph.m"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = ((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__Step_14)) == (MR_mktag((MR_Integer) 1)));
+#line 351 "autopar_search_callgraph.m"
+                if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 351 "autopar_search_callgraph.m"
+                  {
+#line 351 "autopar_search_callgraph.m"
+                    mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjNum_16 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Step_14, (MR_Integer) 0)));
+#line 352 "autopar_search_callgraph.m"
+                    mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjNum_16 > mdprof_fb__automatic_parallelism__autopar_search_callgraph__FirstConjunct_8);
+#line 346 "autopar_search_callgraph.m"
+                    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 346 "autopar_search_callgraph.m"
+                      {
+#line 353 "autopar_search_callgraph.m"
+                        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_36_36 = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__FirstConjunct_8 + mdprof_fb__automatic_parallelism__autopar_search_callgraph__Length_9);
+#line 353 "autopar_search_callgraph.m"
+                        mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjNum_16 <= mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_36_36);
+#line 346 "autopar_search_callgraph.m"
+                      }
+#line 351 "autopar_search_callgraph.m"
+                  }
+#line 350 "autopar_search_callgraph.m"
+              }
+#line 346 "autopar_search_callgraph.m"
+          }
+#line 346 "autopar_search_callgraph.m"
+      }
+#line 369 "autopar_search_callgraph.m"
+    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 360 "autopar_search_callgraph.m"
+      {
+#line 360 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Metrics_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 9)));
+#line 360 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__CPUTime_18;
+#line 360 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__DeadTime_19;
+#line 360 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__Efficiency_20;
+#line 360 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism0_21;
+#line 360 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_22;
+#line 360 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_37_37;
+#line 360 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_39_39;
+#line 360 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_40_40;
+#line 360 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_100_100;
+#line 360 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_84_84 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 0)));
+#line 360 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 1)));
+#line 360 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_86_86 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 2)));
+#line 360 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 3)));
+#line 360 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_88_88 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 4)));
+#line 360 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_89_89 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 5)));
+#line 360 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_90_90 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 6)));
+#line 360 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_91_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 7)));
+#line 360 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_92_92 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conj_4, (MR_Integer) 8)));
+#line 362 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_93_93;
+#line 362 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_94_94;
+#line 362 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_95_95;
+#line 362 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_96_96;
+#line 362 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_97_97;
+#line 362 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_98_98;
+#line 362 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_99_99;
+#line 365 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_109_109;
+#line 365 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_110_110;
+#line 365 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_111_111;
+#line 365 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_112_112;
+#line 368 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_113_113;
+#line 368 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_114_114;
+#line 368 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_115_115;
+#line 368 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_116_116;
+#line 368 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_117_117;
+
+#line 361 "autopar_search_callgraph.m"
+        {
+#line 361 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__CPUTime_18 = mdbcomp__feedback__automatic_parallelism__parallel_exec_metrics_get_cpu_time_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Metrics_17);
+        }
+#line 362 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_93_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Metrics_17, (MR_Integer) 0)));
+#line 362 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_94_94 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Metrics_17, (MR_Integer) 1)));
+#line 362 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_95_95 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Metrics_17, (MR_Integer) 2)));
+#line 362 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_96_96 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Metrics_17, (MR_Integer) 3)));
+#line 362 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_97_97 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Metrics_17, (MR_Integer) 4)));
+#line 362 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_98_98 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Metrics_17, (MR_Integer) 5)));
+#line 362 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_99_99 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Metrics_17, (MR_Integer) 6)));
+#line 362 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_37_37 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Metrics_17, (MR_Integer) 7)));
+#line 362 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_100_100 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Metrics_17, (MR_Integer) 8)));
+#line 362 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__DeadTime_19 = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_37_37 + mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_100_100);
+#line 364 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_39_39 = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CPUTime_18 + mdprof_fb__automatic_parallelism__autopar_search_callgraph__DeadTime_19);
+#line 364 "autopar_search_callgraph.m"
+        {
+#line 364 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__Efficiency_20 = mercury__float__f_slash_2_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__CPUTime_18, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_39_39);
+        }
+#line 365 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_109_109 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 0)));
+#line 365 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_110_110 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 1)));
+#line 365 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_111_111 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 2)));
+#line 365 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_112_112 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 3)));
+#line 365 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism0_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 4)));
+#line 366 "autopar_search_callgraph.m"
+        {
+#line 366 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_40_40 = measurement_units__probable_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Efficiency_20);
+        }
+#line 366 "autopar_search_callgraph.m"
+        {
+#line 366 "autopar_search_callgraph.m"
+          measurements__sub_computation_parallelism_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism0_21, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_40_40, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_22);
+        }
+#line 368 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_113_113 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 0)));
+#line 368 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_114_114 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 1)));
+#line 368 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_115_115 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 2)));
+#line 368 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_116_116 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 3)));
+#line 368 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_117_117 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23, (MR_Integer) 4)));
+#line 368 "autopar_search_callgraph.m"
+        {
+#line 368 "autopar_search_callgraph.m"
+          MR_Word base;
+#line 368 "autopar_search_callgraph.m"
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 368 "autopar_search_callgraph.m"
+          *mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_24 = base;
+#line 368 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_113_113));
+#line 368 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_114_114));
+#line 368 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_115_115));
+#line 368 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_116_116));
+#line 368 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_22));
+#line 368 "autopar_search_callgraph.m"
+        }
+#line 360 "autopar_search_callgraph.m"
+      }
+#line 369 "autopar_search_callgraph.m"
+    else
+#line 368 "autopar_search_callgraph.m"
+      *mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_24 = mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildClique_0_23;
+#line 336 "autopar_search_callgraph.m"
+  }
+#line 333 "autopar_search_callgraph.m"
+}
+
+#line 313 "autopar_search_callgraph.m"
+static MR_bool MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__exceeded_parallelism_2_p_0(
+#line 313 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3,
+#line 313 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildClique_4)
+#line 313 "autopar_search_callgraph.m"
+{
+#line 316 "autopar_search_callgraph.m"
+  {
+#line 316 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 316 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildClique_4, (MR_Integer) 4)));
+#line 316 "autopar_search_callgraph.m"
+    MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__DesiredParallelism_6 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 0)));
+#line 317 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildClique_4, (MR_Integer) 0)));
+#line 317 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildClique_4, (MR_Integer) 1)));
+#line 317 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildClique_4, (MR_Integer) 2)));
+#line 317 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildClique_4, (MR_Integer) 3)));
+#line 318 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 1)));
+#line 318 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 2)));
+#line 318 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 3)));
+#line 318 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 4)));
+#line 318 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 5)));
+#line 318 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_16_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 6)));
+#line 318 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 7)));
+#line 318 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 8)));
+#line 318 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 9)));
+#line 318 "autopar_search_callgraph.m"
+    MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_20_20 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 10)));
+#line 318 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 11)));
+#line 318 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_3, (MR_Integer) 12)));
+
+#line 319 "autopar_search_callgraph.m"
+    {
+#line 319 "autopar_search_callgraph.m"
+      return mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = measurements__exceeded_desired_parallelism_2_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__DesiredParallelism_6, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_5);
+    }
+#line 316 "autopar_search_callgraph.m"
+    return mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 316 "autopar_search_callgraph.m"
+  }
+#line 313 "autopar_search_callgraph.m"
+}
+
+#line 328 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_callee_7_p_0_1(
+#line 328 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 328 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 328 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 328 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 328 "autopar_search_callgraph.m"
+{
+#line 328 "autopar_search_callgraph.m"
+  {
+#line 328 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 328 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_HeadVar__3_23;
+
+#line 328 "autopar_search_callgraph.m"
+    {
+#line 328 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__update_parallelism_available__328__1_3_p_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_HeadVar__3_23);
+    }
+#line 328 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_HeadVar__3_23));
+#line 328 "autopar_search_callgraph.m"
+  }
+#line 328 "autopar_search_callgraph.m"
+}
+
+#line 259 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_callee_7_p_0(
+#line 259 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8,
+#line 259 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9,
+#line 259 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_10,
+#line 259 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliqueCandidates_11,
+#line 259 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19,
+#line 259 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13,
+#line 259 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_14)
+#line 259 "autopar_search_callgraph.m"
+{
+#line 4332 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  {
+#line 4334 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 311 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19, (MR_Integer) 0)));
+#line 311 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_44_44 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_10;
+#line 311 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_45_45 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_42_42;
+#line 311 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19, (MR_Integer) 1)));
+#line 311 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19, (MR_Integer) 2)));
+#line 311 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19, (MR_Integer) 3)));
+#line 311 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19, (MR_Integer) 4)));
+
+#line 311 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_44_44 == mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_45_45);
+#line 311 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = !(mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded);
+#line 4355 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 4357 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      {
+#line 4359 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19, (MR_Integer) 2)));
+#line 303 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__Threshold_48 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 8)));
+#line 303 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Cost_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19, (MR_Integer) 1)));
+#line 303 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_50_50;
+#line 303 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_51_51;
+#line 304 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_52_52 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 0)));
+#line 304 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 1)));
+#line 304 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_54_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 2)));
+#line 304 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_55_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 3)));
+#line 304 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_56_56 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 4)));
+#line 304 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_57_57 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 5)));
+#line 304 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_58_58 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 6)));
+#line 304 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_59_59 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 7)));
+#line 304 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_60_60 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 9)));
+#line 304 "autopar_search_callgraph.m"
+        MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_61_61 = MR_unbox_float((MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 10)));
+#line 304 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 11)));
+#line 304 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, (MR_Integer) 12)));
+#line 305 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19, (MR_Integer) 0)));
+#line 305 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19, (MR_Integer) 3)));
+#line 305 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19, (MR_Integer) 4)));
+
+#line 306 "autopar_search_callgraph.m"
+        {
+#line 306 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_50_50 = measurements__cs_cost_get_percall_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Cost_49);
+        }
+#line 306 "autopar_search_callgraph.m"
+        {
+#line 306 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_51_51 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Threshold_48);
+        }
+#line 306 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_50_50 >= mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_51_51);
+#line 4412 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 4414 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+          {
+#line 4416 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_20_20;
+#line 329 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcConjs_73;
+#line 326 "autopar_search_callgraph.m"
+            MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_ProcConjs_73;
+
+#line 326 "autopar_search_callgraph.m"
+            {
+#line 326 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = mercury__map__search_3_p_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1], mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliqueCandidates_11, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_65_65)), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_ProcConjs_73);
+            }
+#line 326 "autopar_search_callgraph.m"
+            if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 326 "autopar_search_callgraph.m"
+              {
+#line 326 "autopar_search_callgraph.m"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcConjs_73 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_ProcConjs_73);
+#line 326 "autopar_search_callgraph.m"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = MR_TRUE;
+#line 326 "autopar_search_callgraph.m"
+              }
+#line 329 "autopar_search_callgraph.m"
+            if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 327 "autopar_search_callgraph.m"
+              {
+#line 327 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conjs_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcConjs_73, (MR_Integer) 2)));
+#line 327 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcConjs_73, (MR_Integer) 0)));
+#line 327 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcConjs_73, (MR_Integer) 1)));
+#line 328 "autopar_search_callgraph.m"
+                MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_STATE_VARIABLE_Callee_20_20;
+
+#line 328 "autopar_search_callgraph.m"
+                {
+#line 328 "autopar_search_callgraph.m"
+                  mercury__list__foldl_4_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[6], (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[9], mdprof_fb__automatic_parallelism__autopar_search_callgraph__Conjs_74, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19)), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_STATE_VARIABLE_Callee_20_20);
+                }
+#line 328 "autopar_search_callgraph.m"
+                mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_20_20 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_STATE_VARIABLE_Callee_20_20);
+#line 327 "autopar_search_callgraph.m"
+              }
+#line 329 "autopar_search_callgraph.m"
+            else
+#line 328 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_20_20 = mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_0_19;
+#line 270 "autopar_search_callgraph.m"
+            {
+#line 270 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = mdprof_fb__automatic_parallelism__autopar_search_callgraph__exceeded_parallelism_2_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_20_20);
+            }
+#line 270 "autopar_search_callgraph.m"
+            mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = !(mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded);
+#line 4471 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+            if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 4473 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+              {
+#line 4475 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_20_20, (MR_Integer) 4)));
+#line 4477 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliquePtr_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_20_20, (MR_Integer) 0)));
+#line 290 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_20_20, (MR_Integer) 1)));
+#line 290 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_20_20, (MR_Integer) 2)));
+#line 290 "autopar_search_callgraph.m"
+                MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Callee_20_20, (MR_Integer) 3)));
+
+#line 292 "autopar_search_callgraph.m"
+                {
+#line 292 "autopar_search_callgraph.m"
+                  mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_8, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_9, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_17, mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliquePtr_18, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_14);
+#line 292 "autopar_search_callgraph.m"
+                  return;
+                }
+#line 4493 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+              }
+#line 4495 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+            else
+#line 4497 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+              {
+#line 296 "autopar_search_callgraph.m"
+                {
+#line 296 "autopar_search_callgraph.m"
+                  *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13 = mercury__map__init_0_f_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1]);
+                }
+#line 297 "autopar_search_callgraph.m"
+                {
+#line 297 "autopar_search_callgraph.m"
+                  *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_14 = mercury__cord__empty_0_f_0((MR_Word) &message__message__type_ctor_info_message_0);
+                }
+#line 4509 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+              }
+#line 4511 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+          }
+#line 4513 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        else
+#line 4515 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+          {
+#line 296 "autopar_search_callgraph.m"
+            {
+#line 296 "autopar_search_callgraph.m"
+              *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13 = mercury__map__init_0_f_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1]);
+            }
+#line 297 "autopar_search_callgraph.m"
+            {
+#line 297 "autopar_search_callgraph.m"
+              *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_14 = mercury__cord__empty_0_f_0((MR_Word) &message__message__type_ctor_info_message_0);
+            }
+#line 4527 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+          }
+#line 4529 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      }
+#line 4531 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    else
+#line 4533 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      {
+#line 296 "autopar_search_callgraph.m"
+        {
+#line 296 "autopar_search_callgraph.m"
+          *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_13 = mercury__map__init_0_f_0((MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1]);
+        }
+#line 297 "autopar_search_callgraph.m"
+        {
+#line 297 "autopar_search_callgraph.m"
+          *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_14 = mercury__cord__empty_0_f_0((MR_Word) &message__message__type_ctor_info_message_0);
+        }
+#line 4545 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+      }
+#line 4547 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+  }
+#line 259 "autopar_search_callgraph.m"
+}
+
+#line 234 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__call_site_dynamic_callees_6_p_0(
+#line 234 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7,
+#line 234 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_8,
+#line 234 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_9,
+#line 234 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevGoalPath_10,
+#line 234 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSDPtr_11,
+#line 234 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliques_12)
+#line 234 "autopar_search_callgraph.m"
+{
+#line 255 "autopar_search_callgraph.m"
+  {
+#line 255 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+
+#line 240 "autopar_search_callgraph.m"
+    {
+#line 240 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = profile__valid_call_site_dynamic_ptr_2_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSDPtr_11);
+    }
+#line 255 "autopar_search_callgraph.m"
+    if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 241 "autopar_search_callgraph.m"
+      {
+#line 241 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeClique_13;
+
+#line 241 "autopar_search_callgraph.m"
+        {
+#line 241 "autopar_search_callgraph.m"
+          profile__deep_lookup_clique_maybe_child_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSDPtr_11, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeClique_13);
+        }
+#line 251 "autopar_search_callgraph.m"
+        if ((mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeClique_13 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 252 "autopar_search_callgraph.m"
+          {
+#line 253 "autopar_search_callgraph.m"
+            {
+#line 253 "autopar_search_callgraph.m"
+              *mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliques_12 = mercury__cord__empty_0_f_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0);
+            }
+#line 252 "autopar_search_callgraph.m"
+          }
+#line 251 "autopar_search_callgraph.m"
+        else
+#line 243 "autopar_search_callgraph.m"
+          {
+#line 243 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeClique_13, (MR_Integer) 0)));
+#line 243 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Own_15;
+#line 243 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Desc_16;
+#line 243 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Cost_17;
+#line 243 "autopar_search_callgraph.m"
+            MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18;
+#line 243 "autopar_search_callgraph.m"
+            MR_Float mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_19_19;
+#line 243 "autopar_search_callgraph.m"
+            MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_20_20;
+#line 243 "autopar_search_callgraph.m"
+            MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_21_21;
+#line 243 "autopar_search_callgraph.m"
+            MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_22_22;
+#line 243 "autopar_search_callgraph.m"
+            MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23;
+
+#line 244 "autopar_search_callgraph.m"
+            {
+#line 244 "autopar_search_callgraph.m"
+              profile__deep_lookup_csd_own_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSDPtr_11, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__Own_15);
+            }
+#line 245 "autopar_search_callgraph.m"
+            {
+#line 245 "autopar_search_callgraph.m"
+              profile__deep_lookup_csd_desc_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSDPtr_11, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__Desc_16);
+            }
+#line 246 "autopar_search_callgraph.m"
+            {
+#line 246 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18 = measurements__calls_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Own_15);
+            }
+#line 247 "autopar_search_callgraph.m"
+            {
+#line 247 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_21_21 = measurements__callseqs_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Own_15);
+            }
+#line 247 "autopar_search_callgraph.m"
+            {
+#line 247 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_22_22 = measurements__inherit_callseqs_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Desc_16);
+            }
+#line 247 "autopar_search_callgraph.m"
+            mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_20_20 = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_21_21 + mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_22_22);
+#line 246 "autopar_search_callgraph.m"
+            {
+#line 246 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_19_19 = mercury__float__float_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_20_20);
+            }
+#line 246 "autopar_search_callgraph.m"
+            {
+#line 246 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__Cost_17 = measurements__build_cs_cost_csq_2_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_19_19);
+            }
+#line 248 "autopar_search_callgraph.m"
+            {
+#line 248 "autopar_search_callgraph.m"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 248 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_14));
+#line 248 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Cost_17));
+#line 248 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23, 2) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_9));
+#line 248 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevGoalPath_10));
+#line 248 "autopar_search_callgraph.m"
+              MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_8));
+#line 248 "autopar_search_callgraph.m"
+            }
+#line 248 "autopar_search_callgraph.m"
+            {
+#line 248 "autopar_search_callgraph.m"
+              *mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliques_12 = mercury__cord__singleton_1_f_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23)));
+            }
+#line 243 "autopar_search_callgraph.m"
+          }
+#line 241 "autopar_search_callgraph.m"
+      }
+#line 255 "autopar_search_callgraph.m"
+    else
+#line 256 "autopar_search_callgraph.m"
+      {
+#line 256 "autopar_search_callgraph.m"
+        {
+#line 256 "autopar_search_callgraph.m"
+          *mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliques_12 = mercury__cord__empty_0_f_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0);
+        }
+#line 256 "autopar_search_callgraph.m"
+      }
+#line 255 "autopar_search_callgraph.m"
+  }
+#line 234 "autopar_search_callgraph.m"
+}
+
+#line 227 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__pd_slot_callees_5_p_0_1(
+#line 227 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 227 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 227 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2)
+#line 227 "autopar_search_callgraph.m"
+{
+#line 227 "autopar_search_callgraph.m"
+  {
+#line 227 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 227 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_ChildCliques_12;
+
+#line 227 "autopar_search_callgraph.m"
+    {
+#line 227 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__call_site_dynamic_callees_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 6))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_ChildCliques_12);
+    }
+#line 227 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_ChildCliques_12));
+#line 227 "autopar_search_callgraph.m"
+  }
+#line 227 "autopar_search_callgraph.m"
+}
+
+#line 213 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__pd_slot_callees_5_p_0(
+#line 213 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_6,
+#line 213 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_7,
+#line 213 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_8,
+#line 213 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_4,
+#line 213 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliques_11)
+#line 213 "autopar_search_callgraph.m"
+{
+#line 218 "autopar_search_callgraph.m"
+  {
+#line 218 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 218 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSSPtr_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_4, (MR_Integer) 0)));
+#line 218 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Slot_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__HeadVar__4_4, (MR_Integer) 1)));
+#line 218 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSS_12;
+#line 218 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevGoalPath_13;
+#line 220 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_20_20;
+#line 220 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_21_21;
+#line 220 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_22_22;
+#line 220 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23;
+
+#line 219 "autopar_search_callgraph.m"
+    {
+#line 219 "autopar_search_callgraph.m"
+      profile__deep_lookup_call_site_statics_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_6, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSSPtr_9, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSS_12);
+    }
+#line 220 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSS_12, (MR_Integer) 0)));
+#line 220 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_21_21 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSS_12, (MR_Integer) 1)));
+#line 220 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSS_12, (MR_Integer) 2)));
+#line 220 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSS_12, (MR_Integer) 3)));
+#line 220 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevGoalPath_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSS_12, (MR_Integer) 4)));
+#line 225 "autopar_search_callgraph.m"
+    if (((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__Slot_10)) == (MR_mktag((MR_Integer) 1))))
+#line 226 "autopar_search_callgraph.m"
+      {
+#line 226 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_26_26;
+#line 226 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSDPtrs_16 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Slot_10, (MR_Integer) 1)));
+#line 226 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliqueCords_17;
+#line 226 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18;
+#line 226 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_19_19;
+#line 226 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Slot_10, (MR_Integer) 0)));
+
+#line 227 "autopar_search_callgraph.m"
+        {
+#line 227 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 227 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_9[0]));
+#line 227 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__pd_slot_callees_5_p_0_1));
+#line 227 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 227 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_6));
+#line 227 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_7));
+#line 227 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18, 5) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_8));
+#line 227 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18, 6) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevGoalPath_13));
+#line 227 "autopar_search_callgraph.m"
+        }
+#line 4823 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_26_26 = (MR_Word) &profile__profile__type_ctor_info_call_site_dynamic_ptr_0;
+#line 227 "autopar_search_callgraph.m"
+        {
+#line 227 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_19_19 = mercury__array__to_list_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_26_26, (MR_ArrayPtr) mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSDPtrs_16);
+        }
+#line 227 "autopar_search_callgraph.m"
+        {
+#line 227 "autopar_search_callgraph.m"
+          mercury__list__map_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_26_26, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[5], mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_19_19, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliqueCords_17);
+        }
+#line 231 "autopar_search_callgraph.m"
+        {
+#line 231 "autopar_search_callgraph.m"
+          *mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliques_11 = mercury__cord__cord_list_to_cord_1_f_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0, mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliqueCords_17);
+        }
+#line 226 "autopar_search_callgraph.m"
+      }
+#line 225 "autopar_search_callgraph.m"
+    else
+#line 222 "autopar_search_callgraph.m"
+      {
+#line 222 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSDPtr_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Slot_10, (MR_Integer) 0)));
+
+#line 223 "autopar_search_callgraph.m"
+        {
+#line 223 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__call_site_dynamic_callees_6_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_6, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_7, mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_8, mdprof_fb__automatic_parallelism__autopar_search_callgraph__RevGoalPath_13, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSDPtr_14, mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliques_11);
+#line 223 "autopar_search_callgraph.m"
+          return;
+        }
+#line 222 "autopar_search_callgraph.m"
+      }
+#line 218 "autopar_search_callgraph.m"
+  }
+#line 213 "autopar_search_callgraph.m"
+}
+
+#line 209 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__proc_dynamic_callees_4_p_0_1(
+#line 209 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 209 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 209 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2)
+#line 209 "autopar_search_callgraph.m"
+{
+#line 209 "autopar_search_callgraph.m"
+  {
+#line 209 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 209 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_ChildCliques_11;
+
+#line 209 "autopar_search_callgraph.m"
+    {
+#line 209 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__pd_slot_callees_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 5))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_ChildCliques_11);
+    }
+#line 209 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_ChildCliques_11));
+#line 209 "autopar_search_callgraph.m"
+  }
+#line 209 "autopar_search_callgraph.m"
+}
+
+#line 200 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__proc_dynamic_callees_4_p_0(
+#line 200 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_5,
+#line 200 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_6,
+#line 200 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_7,
+#line 200 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliques_8)
+#line 200 "autopar_search_callgraph.m"
+{
+#line 203 "autopar_search_callgraph.m"
+  {
+#line 203 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 203 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_9;
+#line 203 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PSPtr_10;
+#line 203 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11;
+#line 203 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_12;
+#line 203 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Slots_13;
+#line 203 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliqueCords_14;
+#line 203 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15;
+#line 205 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_16_16;
+#line 205 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_17_17;
+#line 207 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18;
+#line 207 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_19_19;
+#line 207 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_20_20;
+#line 207 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_21_21;
+#line 207 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_22_22;
+#line 207 "autopar_search_callgraph.m"
+    MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23;
+#line 207 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_24_24;
+#line 207 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_25_25;
+#line 207 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_26_26;
+#line 207 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_27_27;
+#line 207 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_28_28;
+
+#line 204 "autopar_search_callgraph.m"
+    {
+#line 204 "autopar_search_callgraph.m"
+      profile__deep_lookup_proc_dynamics_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_5, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_7, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_9);
+    }
+#line 205 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__PSPtr_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_9, (MR_Integer) 0)));
+#line 205 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_16_16 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_9, (MR_Integer) 1)));
+#line 205 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PD_9, (MR_Integer) 2)));
+#line 206 "autopar_search_callgraph.m"
+    {
+#line 206 "autopar_search_callgraph.m"
+      profile__deep_lookup_proc_statics_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_5, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PSPtr_10, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11);
+    }
+#line 207 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11, (MR_Integer) 0)));
+#line 207 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11, (MR_Integer) 1)));
+#line 207 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_19_19 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11, (MR_Integer) 2)));
+#line 207 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_20_20 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11, (MR_Integer) 3)));
+#line 207 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_21_21 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11, (MR_Integer) 4)));
+#line 207 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_22_22 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11, (MR_Integer) 5)));
+#line 207 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11, (MR_Integer) 6)));
+#line 207 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11, (MR_Integer) 7)));
+#line 207 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_25_25 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11, (MR_Integer) 8)));
+#line 207 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_26_26 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11, (MR_Integer) 9)));
+#line 207 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11, (MR_Integer) 10)));
+#line 207 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PS_11, (MR_Integer) 11)));
+#line 208 "autopar_search_callgraph.m"
+    {
+#line 208 "autopar_search_callgraph.m"
+      analysis_utils__proc_dynamic_paired_call_site_slots_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_5, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtr_7, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__Slots_13);
+    }
+#line 209 "autopar_search_callgraph.m"
+    {
+#line 209 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 209 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_8[0]));
+#line 209 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__proc_dynamic_callees_4_p_0_1));
+#line 209 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 209 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_5));
+#line 209 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Parallelism_6));
+#line 209 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15, 5) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ProcLabel_12));
+#line 209 "autopar_search_callgraph.m"
+    }
+#line 209 "autopar_search_callgraph.m"
+    {
+#line 209 "autopar_search_callgraph.m"
+      mercury__list__map_3_p_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[1], (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[5], mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_15_15, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Slots_13, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliqueCords_14);
+    }
+#line 211 "autopar_search_callgraph.m"
+    {
+#line 211 "autopar_search_callgraph.m"
+      *mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliques_8 = mercury__cord__cord_list_to_cord_1_f_0((MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0, mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliqueCords_14);
+    }
+#line 203 "autopar_search_callgraph.m"
+  }
+#line 200 "autopar_search_callgraph.m"
+}
+
+#line 178 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_8(
+#line 178 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 178 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 178 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 178 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 178 "autopar_search_callgraph.m"
+{
+#line 178 "autopar_search_callgraph.m"
+  {
+#line 178 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 178 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv10_HeadVar__4_112;
+
+#line 178 "autopar_search_callgraph.m"
+    {
+#line 178 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__178__2_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 3))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv10_HeadVar__4_112);
+    }
+#line 178 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv10_HeadVar__4_112));
+#line 178 "autopar_search_callgraph.m"
+  }
+#line 178 "autopar_search_callgraph.m"
+}
+
+#line 173 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_7(
+#line 173 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 173 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 173 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 173 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 173 "autopar_search_callgraph.m"
+{
+#line 173 "autopar_search_callgraph.m"
+  {
+#line 173 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 173 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv9_Candidates_13;
+#line 173 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv8_Messages_14;
+
+#line 173 "autopar_search_callgraph.m"
+    {
+#line 173 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_callee_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 6))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv9_Candidates_13, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv8_Messages_14);
+    }
+#line 173 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv9_Candidates_13));
+#line 173 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv8_Messages_14));
+#line 173 "autopar_search_callgraph.m"
+  }
+#line 173 "autopar_search_callgraph.m"
+}
+
+#line 170 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_6(
+#line 170 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 170 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 170 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2)
+#line 170 "autopar_search_callgraph.m"
+{
+#line 170 "autopar_search_callgraph.m"
+  {
+#line 170 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 170 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv7_ChildCliques_8;
+
+#line 170 "autopar_search_callgraph.m"
+    {
+#line 170 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__proc_dynamic_callees_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 4))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv7_ChildCliques_8);
+    }
+#line 170 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv7_ChildCliques_8));
+#line 170 "autopar_search_callgraph.m"
+  }
+#line 170 "autopar_search_callgraph.m"
+}
+
+#line 164 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_5(
+#line 164 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 164 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 164 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 164 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 164 "autopar_search_callgraph.m"
+{
+#line 164 "autopar_search_callgraph.m"
+  {
+#line 164 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 164 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv5_HeadVar__4_93;
+
+#line 164 "autopar_search_callgraph.m"
+    {
+#line 164 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__164__2_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 3))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv5_HeadVar__4_93);
+    }
+#line 164 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv5_HeadVar__4_93));
+#line 164 "autopar_search_callgraph.m"
+  }
+#line 164 "autopar_search_callgraph.m"
+}
+
+#line 182 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_4(
+#line 182 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 182 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 182 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 182 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 182 "autopar_search_callgraph.m"
+{
+#line 182 "autopar_search_callgraph.m"
+  {
+#line 182 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 182 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv4_HeadVar__3_121;
+
+#line 182 "autopar_search_callgraph.m"
+    {
+#line 182 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__182__1_3_p_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv4_HeadVar__3_121);
+    }
+#line 182 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv4_HeadVar__3_121));
+#line 182 "autopar_search_callgraph.m"
+  }
+#line 182 "autopar_search_callgraph.m"
+}
+
+#line 178 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_3(
+#line 178 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 178 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 178 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 178 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 178 "autopar_search_callgraph.m"
+{
+#line 178 "autopar_search_callgraph.m"
+  {
+#line 178 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 178 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv3_HeadVar__3_117;
+
+#line 178 "autopar_search_callgraph.m"
+    {
+#line 178 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__178__1_3_p_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv3_HeadVar__3_117);
+    }
+#line 178 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv3_HeadVar__3_117));
+#line 178 "autopar_search_callgraph.m"
+  }
+#line 178 "autopar_search_callgraph.m"
+}
+
+#line 164 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_2(
+#line 164 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 164 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 164 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 164 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 164 "autopar_search_callgraph.m"
+{
+#line 164 "autopar_search_callgraph.m"
+  {
+#line 164 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 164 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_HeadVar__3_98;
+
+#line 164 "autopar_search_callgraph.m"
+    {
+#line 164 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions_clique__164__1_3_p_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_HeadVar__3_98);
+    }
+#line 164 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv2_HeadVar__3_98));
+#line 164 "autopar_search_callgraph.m"
+  }
+#line 164 "autopar_search_callgraph.m"
+}
+
+#line 160 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_1(
+#line 160 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 160 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 160 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 160 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 160 "autopar_search_callgraph.m"
+{
+#line 160 "autopar_search_callgraph.m"
+  {
+#line 160 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 160 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_Candidates_13;
+#line 160 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_Messages_14;
+
+#line 160 "autopar_search_callgraph.m"
+    {
+#line 160 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_proc_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 6))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_Candidates_13, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_Messages_14);
+    }
+#line 160 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_Candidates_13));
+#line 160 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_Messages_14));
+#line 160 "autopar_search_callgraph.m"
+  }
+#line 160 "autopar_search_callgraph.m"
+}
+
+#line 124 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0(
+#line 124 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_7,
+#line 124 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8,
+#line 124 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ParentParallelism_9,
+#line 124 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_10,
+#line 124 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_11,
+#line 124 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_12)
+#line 124 "autopar_search_callgraph.m"
+{
+#line 130 "autopar_search_callgraph.m"
+  {
+#line 130 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_88_88;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_89_89;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_90_90;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_100_100;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_101_101;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_102_102;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_106_106;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeFirstPDPtr_13;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__OtherPDPtrs_14;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtrs_16;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeRecursiveCostsReport_20;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_22;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateLists_24;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__MessageCords_25;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliqueCandidates_26;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliqueMessages_27;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliquess_29;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSCandidateLists_30;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSMessageCords_31;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSCandidates_32;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSMessages_33;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_43_43;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_45_45;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_47_47;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildCliques_48_48;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_50_50;
+#line 130 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_52_52;
+#line 164 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv6_CliqueCandidates_26;
+#line 178 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv11_CSCandidates_32;
+
+#line 131 "autopar_search_callgraph.m"
+    {
+#line 131 "autopar_search_callgraph.m"
+      analysis_utils__find_clique_first_and_other_procs_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_10, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeFirstPDPtr_13, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__OtherPDPtrs_14);
+    }
+#line 136 "autopar_search_callgraph.m"
+    if ((mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeFirstPDPtr_13 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 137 "autopar_search_callgraph.m"
+      {
+#line 137 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RootCliquePtr_17;
+#line 137 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 4)));
+#line 138 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 0)));
+#line 138 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_56_56 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 1)));
+#line 138 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_57_57 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 2)));
+#line 138 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_58_58 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 3)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_59_59 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 5)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_60_60 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 6)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_61_61 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 7)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_62_62 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 8)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_63_63 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 9)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_64_64 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 10)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_65_65 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 11)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_66_66 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 12)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_67_67 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 13)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_68_68 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 14)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_69_69 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 15)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_70_70 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 16)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_71_71 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 17)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_72_72 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 18)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_73_73 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 19)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_74_74 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 20)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_75_75 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 21)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_76_76 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 22)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_77_77 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 23)));
+#line 138 "autopar_search_callgraph.m"
+        MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_78_78 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 24)));
+#line 138 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 25)));
+#line 138 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 26)));
+#line 138 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 27)));
+#line 138 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, (MR_Integer) 28)));
+#line 139 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_128_128;
+#line 139 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_129_129;
+
+#line 138 "autopar_search_callgraph.m"
+        {
+#line 138 "autopar_search_callgraph.m"
+          profile__deep_lookup_clique_index_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_34_34, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__RootCliquePtr_17);
+        }
+#line 139 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_128_128 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_10;
+#line 139 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_129_129 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__RootCliquePtr_17;
+#line 139 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded = (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_128_128 == mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_129_129);
+#line 142 "autopar_search_callgraph.m"
+        if (mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded)
+#line 141 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtrs_16 = mdprof_fb__automatic_parallelism__autopar_search_callgraph__OtherPDPtrs_14;
+#line 142 "autopar_search_callgraph.m"
+        else
+#line 143 "autopar_search_callgraph.m"
+          {
+#line 143 "autopar_search_callgraph.m"
+            MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliqueNum_18 = (MR_Integer) mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_10;
+#line 143 "autopar_search_callgraph.m"
+            MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__Msg_19;
+#line 143 "autopar_search_callgraph.m"
+            MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_124_124;
+#line 143 "autopar_search_callgraph.m"
+            MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_125_125;
+
+#line 5475 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+            {
+#line 5477 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_124_124 = mercury__string__int_to_string_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliqueNum_18);
+            }
+#line 5480 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+            {
+#line 5482 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_125_125 = mercury__string__f_43_43_2_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_124_124, (MR_String) " has no entry proc");
+            }
+#line 5485 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+            {
+#line 5487 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+              mdprof_fb__automatic_parallelism__autopar_search_callgraph__Msg_19 = mercury__string__f_43_43_2_f_0((MR_String) "Clique ", mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_125_125);
+            }
+#line 145 "autopar_search_callgraph.m"
+            {
+#line 145 "autopar_search_callgraph.m"
+              mercury__require__unexpected_3_p_0((MR_String) "mdprof_fb.automatic_parallelism.autopar_search_callgraph", (MR_String) "predicate \140mdprof_fb.automatic_parallelism.autopar_search_callgraph.candidate_parallel_conjunctions_clique\'/6", mdprof_fb__automatic_parallelism__autopar_search_callgraph__Msg_19);
+#line 145 "autopar_search_callgraph.m"
+              return;
+            }
+#line 143 "autopar_search_callgraph.m"
+          }
+#line 137 "autopar_search_callgraph.m"
+      }
+#line 136 "autopar_search_callgraph.m"
+    else
+#line 134 "autopar_search_callgraph.m"
+      {
+#line 134 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__FirstPDPtr_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeFirstPDPtr_13, (MR_Integer) 0)));
+
+#line 135 "autopar_search_callgraph.m"
+        {
+#line 135 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtrs_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 135 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtrs_16, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__FirstPDPtr_15));
+#line 135 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtrs_16, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__OtherPDPtrs_14));
+#line 135 "autopar_search_callgraph.m"
+        }
+#line 134 "autopar_search_callgraph.m"
+      }
+#line 149 "autopar_search_callgraph.m"
+    {
+#line 149 "autopar_search_callgraph.m"
+      recursion_patterns__create_clique_recursion_costs_report_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_10, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeRecursiveCostsReport_20);
+    }
+#line 154 "autopar_search_callgraph.m"
+    if (((MR_tag((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeRecursiveCostsReport_20)) == (MR_mktag((MR_Integer) 1))))
+#line 155 "autopar_search_callgraph.m"
+      {
+#line 155 "autopar_search_callgraph.m"
+        MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__ErrorB_23 = ((MR_String) (MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeRecursiveCostsReport_20, (MR_Integer) 0)));
+#line 155 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_41_41;
+
+#line 156 "autopar_search_callgraph.m"
+        {
+#line 156 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_41_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 156 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_41_41, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ErrorB_23));
+#line 156 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_41_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 156 "autopar_search_callgraph.m"
+        }
+#line 156 "autopar_search_callgraph.m"
+        {
+#line 156 "autopar_search_callgraph.m"
+          mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_22 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 156 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(3), mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_22, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 156 "autopar_search_callgraph.m"
+          MR_hl_field(MR_mktag(3), mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_22, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_41_41));
+#line 156 "autopar_search_callgraph.m"
+        }
+#line 155 "autopar_search_callgraph.m"
+      }
+#line 154 "autopar_search_callgraph.m"
+    else
+#line 152 "autopar_search_callgraph.m"
+      {
+#line 152 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCostsReport_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__MaybeRecursiveCostsReport_20, (MR_Integer) 0)));
+#line 153 "autopar_search_callgraph.m"
+        MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCostsReport_21, (MR_Integer) 0)));
+#line 153 "autopar_search_callgraph.m"
+        MR_Integer mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_84_84;
+
+#line 153 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCostsReport_21, (MR_Integer) 1)));
+#line 153 "autopar_search_callgraph.m"
+        mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_84_84 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursiveCostsReport_21, (MR_Integer) 2)));
+#line 152 "autopar_search_callgraph.m"
+      }
+#line 160 "autopar_search_callgraph.m"
+    {
+#line 160 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_43_43 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 160 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_43_43, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_6[0]));
+#line 160 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_43_43, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_1));
+#line 160 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_43_43, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 160 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_43_43, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_7));
+#line 160 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_43_43, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8));
+#line 160 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_43_43, 5) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__RecursionType_22));
+#line 160 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_43_43, 6) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_10));
+#line 160 "autopar_search_callgraph.m"
+    }
+#line 5593 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_88_88 = (MR_Word) &profile__profile__type_ctor_info_proc_dynamic_ptr_0;
+#line 5595 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_89_89 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[0];
+#line 5597 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_90_90 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[4];
+#line 160 "autopar_search_callgraph.m"
+    {
+#line 160 "autopar_search_callgraph.m"
+      mercury__list__map2_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_88_88, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_89_89, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_90_90, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_43_43, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtrs_16, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateLists_24, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__MessageCords_25);
+    }
+#line 5604 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_100_100 = (MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0;
+#line 5606 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_101_101 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1];
+#line 164 "autopar_search_callgraph.m"
+    {
+#line 164 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_45_45 = mercury__map__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_100_100, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_101_101);
+    }
+#line 5613 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_102_102 = (MR_Word) &message__message__type_ctor_info_message_0;
+#line 166 "autopar_search_callgraph.m"
+    {
+#line 166 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliqueMessages_27 = mercury__cord__cord_list_to_cord_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_102_102, mdprof_fb__automatic_parallelism__autopar_search_callgraph__MessageCords_25);
+    }
+#line 178 "autopar_search_callgraph.m"
+    {
+#line 178 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_52_52 = mercury__map__init_0_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_100_100, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_101_101);
+    }
+#line 164 "autopar_search_callgraph.m"
+    {
+#line 164 "autopar_search_callgraph.m"
+      mercury__list__foldl_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_89_89, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_89_89, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_4[2], mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateLists_24, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_45_45)), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv6_CliqueCandidates_26);
+    }
+#line 164 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliqueCandidates_26 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv6_CliqueCandidates_26);
+#line 170 "autopar_search_callgraph.m"
+    {
+#line 170 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_47_47 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 170 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_47_47, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_7[1]));
+#line 170 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_47_47, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_6));
+#line 170 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_47_47, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 170 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_47_47, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8));
+#line 170 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_47_47, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ParentParallelism_9));
+#line 170 "autopar_search_callgraph.m"
+    }
+#line 170 "autopar_search_callgraph.m"
+    {
+#line 170 "autopar_search_callgraph.m"
+      mercury__list__map_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_88_88, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[5], mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_47_47, mdprof_fb__automatic_parallelism__autopar_search_callgraph__PDPtrs_16, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliquess_29);
+    }
+#line 5653 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_106_106 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0;
+#line 172 "autopar_search_callgraph.m"
+    {
+#line 172 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildCliques_48_48 = mercury__cord__cord_list_to_cord_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_106_106, mdprof_fb__automatic_parallelism__autopar_search_callgraph__ChildCliquess_29);
+    }
+#line 173 "autopar_search_callgraph.m"
+    {
+#line 173 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 173 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49, 0) = ((MR_Box) (&mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_6[1]));
+#line 173 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0_7));
+#line 173 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 173 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49, 3) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Opts_7));
+#line 173 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49, 4) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_8));
+#line 173 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49, 5) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliquePtr_10));
+#line 173 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49, 6) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliqueCandidates_26));
+#line 173 "autopar_search_callgraph.m"
+    }
+#line 173 "autopar_search_callgraph.m"
+    {
+#line 173 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_50_50 = mercury__cord__list_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_106_106, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_ChildCliques_48_48);
+    }
+#line 173 "autopar_search_callgraph.m"
+    {
+#line 173 "autopar_search_callgraph.m"
+      mercury__list__map2_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_106_106, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_89_89, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_90_90, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_50_50, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSCandidateLists_30, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSMessageCords_31);
+    }
+#line 178 "autopar_search_callgraph.m"
+    {
+#line 178 "autopar_search_callgraph.m"
+      mercury__list__foldl_4_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_89_89, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_89_89, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_4[3], mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSCandidateLists_30, ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_52_52)), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv11_CSCandidates_32);
+    }
+#line 178 "autopar_search_callgraph.m"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSCandidates_32 = ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv11_CSCandidates_32);
+#line 180 "autopar_search_callgraph.m"
+    {
+#line 180 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSMessages_33 = mercury__cord__cord_list_to_cord_1_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_102_102, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSMessageCords_31);
+    }
+#line 182 "autopar_search_callgraph.m"
+    {
+#line 182 "autopar_search_callgraph.m"
+      mercury__map__union_4_p_1(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_101_101, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_100_100, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_2[8], mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliqueCandidates_26, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSCandidates_32, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Candidates_11);
+    }
+#line 184 "autopar_search_callgraph.m"
+    {
+#line 184 "autopar_search_callgraph.m"
+      *mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_12 = mercury__cord__f_43_43_2_f_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_102_102, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CliqueMessages_27, mdprof_fb__automatic_parallelism__autopar_search_callgraph__CSMessages_33);
+    }
+#line 130 "autopar_search_callgraph.m"
+  }
+#line 124 "autopar_search_callgraph.m"
+}
+
+#line 101 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_5_p_0_2(
+#line 101 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 101 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 101 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2)
+#line 101 "autopar_search_callgraph.m"
+{
+#line 101 "autopar_search_callgraph.m"
+  {
+#line 101 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 101 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_HeadVar__3_53;
+
+#line 101 "autopar_search_callgraph.m"
+    {
+#line 101 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__IntroducedFrom__pred__candidate_parallel_conjunctions__101__1_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure, (MR_Integer) 3))), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_HeadVar__3_53);
+    }
+#line 101 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv1_HeadVar__3_53));
+#line 101 "autopar_search_callgraph.m"
+  }
+#line 101 "autopar_search_callgraph.m"
+}
+
+#line 102 "autopar_search_callgraph.m"
+static void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_5_p_0_1(
+#line 102 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg,
+#line 102 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1,
+#line 102 "autopar_search_callgraph.m"
+  MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2,
+#line 102 "autopar_search_callgraph.m"
+  MR_Box * mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3)
+#line 102 "autopar_search_callgraph.m"
+{
+#line 102 "autopar_search_callgraph.m"
+  {
+#line 102 "autopar_search_callgraph.m"
+    MR_Box mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure = mdprof_fb__automatic_parallelism__autopar_search_callgraph__closure_arg;
+#line 102 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_HeadVar__3_3;
+
+#line 102 "autopar_search_callgraph.m"
+    {
+#line 102 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_types__pard_goal_detail_to_pard_goal_3_p_0(((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_1), ((MR_Word) mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_2), &mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_HeadVar__3_3);
+    }
+#line 102 "autopar_search_callgraph.m"
+    *mdprof_fb__automatic_parallelism__autopar_search_callgraph__wrapper_arg_3 = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__conv0_HeadVar__3_3));
+#line 102 "autopar_search_callgraph.m"
+  }
+#line 102 "autopar_search_callgraph.m"
+}
+
+#line 34 "autopar_search_callgraph.m"
+void MR_CALL 
+mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_5_p_0(
+#line 34 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Params_6,
+#line 34 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7,
+#line 34 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_8,
+#line 34 "autopar_search_callgraph.m"
+  MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Feedback_0_16,
+#line 34 "autopar_search_callgraph.m"
+  MR_Word * mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Feedback_17)
+#line 34 "autopar_search_callgraph.m"
+{
+#line 89 "autopar_search_callgraph.m"
+  {
+#line 89 "autopar_search_callgraph.m"
+    MR_bool mdprof_fb__automatic_parallelism__autopar_search_callgraph__succeeded;
+#line 89 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_50_50;
+#line 89 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_51_51;
+#line 89 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RootCliquePtr_10;
+#line 89 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__RootParallelism_11;
+#line 89 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjunctionsMap_12;
+#line 89 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjunctionsAssocList0_13;
+#line 89 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjunctionsAssocList_14;
+#line 89 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateParallelConjunctions_15;
+#line 89 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 4)));
+#line 92 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 0)));
+#line 92 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_23_23 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 1)));
+#line 92 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_24_24 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 2)));
+#line 92 "autopar_search_callgraph.m"
+    MR_String mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_25_25 = ((MR_String) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 3)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_26_26 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 5)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_27_27 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 6)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_28_28 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 7)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_29_29 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 8)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_30_30 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 9)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_31_31 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 10)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_32_32 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 11)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_33_33 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 12)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_34_34 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 13)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_35_35 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 14)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_36_36 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 15)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_37_37 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 16)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_38_38 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 17)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_39_39 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 18)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_40_40 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 19)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_41_41 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 20)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_42_42 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 21)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_43_43 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 22)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_44_44 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 23)));
+#line 92 "autopar_search_callgraph.m"
+    MR_ArrayPtr mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_45_45 = ((MR_ArrayPtr) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 24)));
+#line 92 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 25)));
+#line 92 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 26)));
+#line 92 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 27)));
+#line 92 "autopar_search_callgraph.m"
+    MR_Word mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, (MR_Integer) 28)));
+
+#line 92 "autopar_search_callgraph.m"
+    {
+#line 92 "autopar_search_callgraph.m"
+      profile__deep_lookup_clique_index_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, mdprof_fb__automatic_parallelism__autopar_search_callgraph__V_18_18, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__RootCliquePtr_10);
+    }
+#line 96 "autopar_search_callgraph.m"
+    {
+#line 96 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__RootParallelism_11 = measurements__no_parallelism_0_f_0();
+    }
+#line 97 "autopar_search_callgraph.m"
+    {
+#line 97 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__candidate_parallel_conjunctions_clique_6_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__Params_6, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Deep_7, mdprof_fb__automatic_parallelism__autopar_search_callgraph__RootParallelism_11, mdprof_fb__automatic_parallelism__autopar_search_callgraph__RootCliquePtr_10, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjunctionsMap_12, mdprof_fb__automatic_parallelism__autopar_search_callgraph__Messages_8);
+    }
+#line 5888 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_50_50 = (MR_Word) &mdbcomp__program_representation__mdbcomp__program_representation__type_ctor_info_string_proc_label_0;
+#line 5890 "mdprof_fb.automatic_parallelism.autopar_search_callgraph.c"
+    mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_51_51 = (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[1];
+#line 100 "autopar_search_callgraph.m"
+    {
+#line 100 "autopar_search_callgraph.m"
+      mercury__map__to_assoc_list_2_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_50_50, mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_51_51, mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjunctionsMap_12, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjunctionsAssocList0_13);
+    }
+#line 101 "autopar_search_callgraph.m"
+    {
+#line 101 "autopar_search_callgraph.m"
+      mercury__assoc_list__map_values_only_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeInfo_51_51, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_1[3], mdprof_fb__automatic_parallelism__autopar_search_callgraph__TypeCtorInfo_50_50, (MR_Word) &mdprof_fb__automatic_parallelism__autopar_search_callgraph_scalar_common_4[1], mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjunctionsAssocList0_13, &mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjunctionsAssocList_14);
+    }
+#line 104 "autopar_search_callgraph.m"
+    {
+#line 104 "autopar_search_callgraph.m"
+      mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateParallelConjunctions_15 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 104 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateParallelConjunctions_15, 0) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__Params_6));
+#line 104 "autopar_search_callgraph.m"
+      MR_hl_field(MR_mktag(1), mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateParallelConjunctions_15, 1) = ((MR_Box) (mdprof_fb__automatic_parallelism__autopar_search_callgraph__ConjunctionsAssocList_14));
+#line 104 "autopar_search_callgraph.m"
+    }
+#line 107 "autopar_search_callgraph.m"
+    {
+#line 107 "autopar_search_callgraph.m"
+      mdbcomp__feedback__put_feedback_data_3_p_0(mdprof_fb__automatic_parallelism__autopar_search_callgraph__CandidateParallelConjunctions_15, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Feedback_0_16, mdprof_fb__automatic_parallelism__autopar_search_callgraph__STATE_VARIABLE_Feedback_17);
+#line 107 "autopar_search_callgraph.m"
+      return;
+    }
+#line 89 "autopar_search_callgraph.m"
+  }
+#line 34 "autopar_search_callgraph.m"
+}
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_search_callgraph__init(void)
+{
+}
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_search_callgraph__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&mdprof_fb__automatic_parallelism__autopar_search_callgraph__mdprof_fb__automatic_parallelism__autopar_search_callgraph__type_ctor_info_candidate_child_clique_0);
+}
+
+void mercury__mdprof_fb__automatic_parallelism__autopar_search_callgraph__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module mdprof_fb.automatic_parallelism.autopar_search_callgraph. */

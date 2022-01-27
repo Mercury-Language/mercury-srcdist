@@ -1,0 +1,412 @@
+/*
+** Automatically generated from `passes_aux.m'
+** by the Mercury compiler,
+** version 14.01.2-beta-2015-02-18, configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.passes_aux. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__passes_aux
+#define MR_HEADER_GUARD_hlds__passes_aux
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__PASSES_AUX_DECL_GUARD
+#define HLDS__PASSES_AUX_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "hlds.passes_aux.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_dump_info_0;
+
+#line 45 "hlds.passes_aux.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_module_cookie_task_0;
+
+#line 48 "hlds.passes_aux.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_module_pred_cookie_task_0;
+
+#line 51 "hlds.passes_aux.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_module_pred_task_0;
+
+#line 54 "hlds.passes_aux.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_module_task_0;
+
+#line 57 "hlds.passes_aux.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_pred_error_task_0;
+
+#line 60 "hlds.passes_aux.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_proc_ids_pred_task_0;
+
+#line 63 "hlds.passes_aux.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_proc_ids_task_0;
+
+#line 66 "hlds.passes_aux.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_proc_task_0;
+
+#line 69 "hlds.passes_aux.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_update_pred_task_0;
+
+#line 72 "hlds.passes_aux.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__passes_aux__hlds__passes_aux__type_ctor_info_update_proc_task_0;
+
+#line 118 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux____Compare____update_proc_task_0_0(
+#line 118 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_1,
+#line 118 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 118 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 118 "passes_aux.m"
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____update_proc_task_0_0(
+#line 118 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 118 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2);
+
+#line 39 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux____Compare____update_pred_task_0_0(
+#line 39 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_1,
+#line 39 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 39 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 39 "passes_aux.m"
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____update_pred_task_0_0(
+#line 39 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 39 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2);
+
+#line 77 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux____Compare____proc_task_0_0(
+#line 77 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_1,
+#line 77 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 77 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 77 "passes_aux.m"
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____proc_task_0_0(
+#line 77 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 77 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2);
+
+#line 82 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux____Compare____proc_ids_task_0_0(
+#line 82 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_1,
+#line 82 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 82 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 82 "passes_aux.m"
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____proc_ids_task_0_0(
+#line 82 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 82 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2);
+
+#line 87 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux____Compare____proc_ids_pred_task_0_0(
+#line 87 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_1,
+#line 87 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 87 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 87 "passes_aux.m"
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____proc_ids_pred_task_0_0(
+#line 87 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 87 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2);
+
+#line 33 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux____Compare____pred_error_task_0_0(
+#line 33 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_1,
+#line 33 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 33 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 33 "passes_aux.m"
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____pred_error_task_0_0(
+#line 33 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 33 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2);
+
+#line 92 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux____Compare____module_task_0_0(
+#line 92 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_1,
+#line 92 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 92 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 92 "passes_aux.m"
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____module_task_0_0(
+#line 92 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 92 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2);
+
+#line 98 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux____Compare____module_pred_task_0_0(
+#line 98 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_1,
+#line 98 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 98 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 98 "passes_aux.m"
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____module_pred_task_0_0(
+#line 98 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 98 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2);
+
+#line 110 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux____Compare____module_pred_cookie_task_0_0(
+#line 110 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_1,
+#line 110 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 110 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 110 "passes_aux.m"
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____module_pred_cookie_task_0_0(
+#line 110 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 110 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2);
+
+#line 104 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux____Compare____module_cookie_task_0_0(
+#line 104 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_1,
+#line 104 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 104 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 104 "passes_aux.m"
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____module_cookie_task_0_0(
+#line 104 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 104 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2);
+
+#line 190 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux____Compare____dump_info_0_0(
+#line 190 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_1,
+#line 190 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 190 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 190 "passes_aux.m"
+MR_bool MR_CALL 
+hlds__passes_aux____Unify____dump_info_0_0(
+#line 190 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 190 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2);
+
+#line 199 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux__maybe_dump_hlds_7_p_0(
+#line 199 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 199 "passes_aux.m"
+  MR_Integer hlds__passes_aux__param_2,
+#line 199 "passes_aux.m"
+  MR_String hlds__passes_aux__param_3,
+#line 199 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_4,
+#line 199 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_5);
+
+#line 187 "passes_aux.m"
+MR_bool MR_CALL 
+hlds__passes_aux__should_dump_stage_4_p_0(
+#line 187 "passes_aux.m"
+  MR_Integer hlds__passes_aux__param_1,
+#line 187 "passes_aux.m"
+  MR_String hlds__passes_aux__param_2,
+#line 187 "passes_aux.m"
+  MR_String hlds__passes_aux__param_3,
+#line 187 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_4);
+
+#line 180 "passes_aux.m"
+MR_String MR_CALL 
+hlds__passes_aux__stage_num_str_1_f_0(
+#line 180 "passes_aux.m"
+  MR_Integer hlds__passes_aux__param_1);
+
+#line 175 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux__report_pred_name_mode_5_p_0(
+#line 175 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 175 "passes_aux.m"
+  MR_String hlds__passes_aux__param_2,
+#line 175 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 165 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux__report_pred_proc_id_7_p_0(
+#line 165 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 165 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 165 "passes_aux.m"
+  MR_Integer hlds__passes_aux__param_3,
+#line 165 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_4,
+#line 165 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_5);
+
+#line 159 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux__maybe_report_sizes_3_p_0(
+#line 159 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1);
+
+#line 156 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux__write_proc_progress_message_6_p_0(
+#line 156 "passes_aux.m"
+  MR_String hlds__passes_aux__param_1,
+#line 156 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 156 "passes_aux.m"
+  MR_Integer hlds__passes_aux__param_3,
+#line 156 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_4);
+
+#line 153 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux__write_proc_progress_message_5_p_0(
+#line 153 "passes_aux.m"
+  MR_String hlds__passes_aux__param_1,
+#line 153 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 153 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 150 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux__write_pred_progress_message_5_p_0(
+#line 150 "passes_aux.m"
+  MR_String hlds__passes_aux__param_1,
+#line 150 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 150 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3);
+
+#line 143 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux__process_all_nonimported_procs_update_4_p_0(
+#line 143 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 143 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_2,
+#line 143 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_3,
+#line 143 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_4);
+
+#line 140 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux__process_all_nonimported_procs_3_p_0(
+#line 140 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 140 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 140 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_3);
+
+#line 47 "passes_aux.m"
+void MR_CALL 
+hlds__passes_aux__process_all_nonimported_preds_errors_7_p_0(
+#line 47 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_1,
+#line 47 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_2,
+#line 47 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_3,
+#line 47 "passes_aux.m"
+  MR_Word hlds__passes_aux__param_4,
+#line 47 "passes_aux.m"
+  MR_Word * hlds__passes_aux__param_5);
+
+void mercury__hlds__passes_aux__init(void);
+void mercury__hlds__passes_aux__init_type_tables(void);
+void mercury__hlds__passes_aux__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.passes_aux */
+
+/* :- end_interface hlds.passes_aux. */

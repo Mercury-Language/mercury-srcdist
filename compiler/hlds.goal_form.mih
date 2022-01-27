@@ -1,0 +1,270 @@
+/*
+** Automatically generated from `goal_form.m'
+** by the Mercury compiler,
+** version 14.01.2-beta-2015-02-18, configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.goal_form. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__goal_form
+#define MR_HEADER_GUARD_hlds__goal_form
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__GOAL_FORM_DECL_GUARD
+#define HLDS__GOAL_FORM_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "hlds.goal_form.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__goal_form__hlds__goal_form__type_ctor_info_goal_loop_or_throw_status_0;
+
+#line 45 "hlds.goal_form.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__goal_form__hlds__goal_form__type_ctor_info_goal_loop_status_0;
+
+#line 48 "hlds.goal_form.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__goal_form__hlds__goal_form__type_ctor_info_goal_throw_status_0;
+
+#line 52 "goal_form.m"
+void MR_CALL 
+hlds__goal_form____Compare____goal_throw_status_0_0(
+#line 52 "goal_form.m"
+  MR_Word * hlds__goal_form__param_1,
+#line 52 "goal_form.m"
+  MR_Word hlds__goal_form__param_2,
+#line 52 "goal_form.m"
+  MR_Word hlds__goal_form__param_3);
+
+#line 52 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form____Unify____goal_throw_status_0_0(
+#line 52 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 52 "goal_form.m"
+  MR_Word hlds__goal_form__param_2);
+
+#line 46 "goal_form.m"
+void MR_CALL 
+hlds__goal_form____Compare____goal_loop_status_0_0(
+#line 46 "goal_form.m"
+  MR_Word * hlds__goal_form__param_1,
+#line 46 "goal_form.m"
+  MR_Word hlds__goal_form__param_2,
+#line 46 "goal_form.m"
+  MR_Word hlds__goal_form__param_3);
+
+#line 46 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form____Unify____goal_loop_status_0_0(
+#line 46 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 46 "goal_form.m"
+  MR_Word hlds__goal_form__param_2);
+
+#line 58 "goal_form.m"
+void MR_CALL 
+hlds__goal_form____Compare____goal_loop_or_throw_status_0_0(
+#line 58 "goal_form.m"
+  MR_Word * hlds__goal_form__param_1,
+#line 58 "goal_form.m"
+  MR_Word hlds__goal_form__param_2,
+#line 58 "goal_form.m"
+  MR_Word hlds__goal_form__param_3);
+
+#line 58 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form____Unify____goal_loop_or_throw_status_0_0(
+#line 58 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 58 "goal_form.m"
+  MR_Word hlds__goal_form__param_2);
+
+#line 179 "goal_form.m"
+MR_Word MR_CALL 
+hlds__goal_form__goal_may_modify_trail_1_f_0(
+#line 179 "goal_form.m"
+  MR_Word hlds__goal_form__param_1);
+
+#line 175 "goal_form.m"
+MR_Word MR_CALL 
+hlds__goal_form__goal_cannot_modify_trail_1_f_0(
+#line 175 "goal_form.m"
+  MR_Word hlds__goal_form__param_1);
+
+#line 165 "goal_form.m"
+void MR_CALL 
+hlds__goal_form__count_recursive_calls_5_p_0(
+#line 165 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 165 "goal_form.m"
+  MR_Word hlds__goal_form__param_2,
+#line 165 "goal_form.m"
+  MR_Integer hlds__goal_form__param_3,
+#line 165 "goal_form.m"
+  MR_Integer * hlds__goal_form__param_4,
+#line 165 "goal_form.m"
+  MR_Integer * hlds__goal_form__param_5);
+
+#line 158 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__cannot_fail_before_stack_flush_1_p_0(
+#line 158 "goal_form.m"
+  MR_Word hlds__goal_form__param_1);
+
+#line 151 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__cannot_stack_flush_1_p_0(
+#line 151 "goal_form.m"
+  MR_Word hlds__goal_form__param_1);
+
+#line 142 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__goal_list_may_allocate_heap_1_p_0(
+#line 142 "goal_form.m"
+  MR_Word hlds__goal_form__param_1);
+
+#line 141 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__goal_may_allocate_heap_1_p_0(
+#line 141 "goal_form.m"
+  MR_Word hlds__goal_form__param_1);
+
+#line 132 "goal_form.m"
+MR_Word MR_CALL 
+hlds__goal_form__goal_is_flat_1_f_0(
+#line 132 "goal_form.m"
+  MR_Word hlds__goal_form__param_1);
+
+#line 127 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__goal_can_loop_or_throw_1_p_0(
+#line 127 "goal_form.m"
+  MR_Word hlds__goal_form__param_1);
+
+#line 123 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__goal_cannot_loop_or_throw_1_p_0(
+#line 123 "goal_form.m"
+  MR_Word hlds__goal_form__param_1);
+
+#line 116 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__goal_can_loop_or_throw_2_p_0(
+#line 116 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 116 "goal_form.m"
+  MR_Word hlds__goal_form__param_2);
+
+#line 112 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__goal_cannot_loop_or_throw_2_p_0(
+#line 112 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 112 "goal_form.m"
+  MR_Word hlds__goal_form__param_2);
+
+#line 108 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__goal_can_throw_2_p_0(
+#line 108 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 108 "goal_form.m"
+  MR_Word hlds__goal_form__param_2);
+
+#line 104 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__goal_cannot_throw_2_p_0(
+#line 104 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 104 "goal_form.m"
+  MR_Word hlds__goal_form__param_2);
+
+#line 100 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__goal_can_loop_2_p_0(
+#line 100 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 100 "goal_form.m"
+  MR_Word hlds__goal_form__param_2);
+
+#line 96 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__goal_cannot_loop_2_p_0(
+#line 96 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 96 "goal_form.m"
+  MR_Word hlds__goal_form__param_2);
+
+#line 84 "goal_form.m"
+void MR_CALL 
+hlds__goal_form__goal_can_loop_or_throw_4_p_0(
+#line 84 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 84 "goal_form.m"
+  MR_Word * hlds__goal_form__param_2,
+#line 84 "goal_form.m"
+  MR_Word hlds__goal_form__param_3,
+#line 84 "goal_form.m"
+  MR_Word * hlds__goal_form__param_4);
+
+#line 78 "goal_form.m"
+void MR_CALL 
+hlds__goal_form__goal_can_throw_4_p_0(
+#line 78 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 78 "goal_form.m"
+  MR_Word * hlds__goal_form__param_2,
+#line 78 "goal_form.m"
+  MR_Word hlds__goal_form__param_3,
+#line 78 "goal_form.m"
+  MR_Word * hlds__goal_form__param_4);
+
+#line 39 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__all_disjuncts_are_conj_of_unify_2_p_0(
+#line 39 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 39 "goal_form.m"
+  MR_Word hlds__goal_form__param_2);
+
+#line 35 "goal_form.m"
+MR_bool MR_CALL 
+hlds__goal_form__goal_is_conj_of_unify_2_p_0(
+#line 35 "goal_form.m"
+  MR_Word hlds__goal_form__param_1,
+#line 35 "goal_form.m"
+  MR_Word hlds__goal_form__param_2);
+
+void mercury__hlds__goal_form__init(void);
+void mercury__hlds__goal_form__init_type_tables(void);
+void mercury__hlds__goal_form__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.goal_form */
+
+/* :- end_interface hlds.goal_form. */

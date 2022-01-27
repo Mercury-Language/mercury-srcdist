@@ -1,0 +1,127 @@
+/*
+** Automatically generated from `sized_pretty.m'
+** by the Mercury compiler,
+** version 14.01.2-beta-2015-02-18, configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module mdb.sized_pretty. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_mdb__sized_pretty
+#define MR_HEADER_GUARD_mdb__sized_pretty
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef MDB__SIZED_PRETTY_DECL_GUARD
+#define MDB__SIZED_PRETTY_DECL_GUARD
+#include "mdb.mih"
+
+#endif
+
+
+
+
+#line 42 "mdb.sized_pretty.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__sized_pretty__mdb__sized_pretty__type_ctor_info_char_count_0;
+
+#line 45 "mdb.sized_pretty.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__sized_pretty__mdb__sized_pretty__type_ctor_info_functor_count_0;
+
+#line 48 "mdb.sized_pretty.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__sized_pretty__mdb__sized_pretty__type_ctor_info_maybe_deconstructed_1;
+
+#line 51 "mdb.sized_pretty.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__sized_pretty__mdb__sized_pretty__type_ctor_info_measure_params_0;
+
+#line 54 "mdb.sized_pretty.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__sized_pretty__mdb__sized_pretty__type_ctor_info_no_measure_params_0;
+
+#line 57 "mdb.sized_pretty.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__sized_pretty__mdb__sized_pretty__type_ctor_info_size_annotated_args_1;
+
+#line 60 "mdb.sized_pretty.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__sized_pretty__mdb__sized_pretty__type_ctor_info_size_annotated_term_1;
+
+#line 63 "mdb.sized_pretty.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mdb__sized_pretty__mdb__sized_pretty__type_ctor_info_size_count_0;
+
+#line 66 "mdb.sized_pretty.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_mdb__sized_pretty__measure_with_params__arity2__mdb__sized_pretty__size_count__arity0__mdb__sized_pretty__measure_params__arity0__[9];
+
+#line 69 "mdb.sized_pretty.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_mdb__sized_pretty__measure_with_params__arity2__mdb__sized_pretty__char_count__arity0__mdb__sized_pretty__no_measure_params__arity0__[9];
+
+#line 72 "mdb.sized_pretty.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_mdb__sized_pretty__measure_with_params__arity2__mdb__sized_pretty__functor_count__arity0__mdb__sized_pretty__no_measure_params__arity0__[9];
+
+#line 75 "mdb.sized_pretty.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_mdb__sized_pretty__measure__arity1__mdb__sized_pretty__size_count__arity0__[8];
+
+#line 78 "mdb.sized_pretty.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_mdb__sized_pretty__measure__arity1__mdb__sized_pretty__char_count__arity0__[8];
+
+#line 81 "mdb.sized_pretty.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_mdb__sized_pretty__measure__arity1__mdb__sized_pretty__functor_count__arity0__[8];
+
+#line 84 "mdb.sized_pretty.mih.tmp"
+extern const MR_TypeClassDeclStruct mdb__sized_pretty__mdb__sized_pretty__type_class_decl_measure_with_params_2;
+
+#line 87 "mdb.sized_pretty.mih.tmp"
+extern const MR_TypeClassDeclStruct mdb__sized_pretty__mdb__sized_pretty__type_class_decl_measure_1;
+
+#line 183 "sized_pretty.m"
+void MR_CALL 
+mdb__sized_pretty__browser_term_to_string_line_5_p_0(
+#line 183 "sized_pretty.m"
+  MR_Word mdb__sized_pretty__param_1,
+#line 183 "sized_pretty.m"
+  MR_Word mdb__sized_pretty__param_2,
+#line 183 "sized_pretty.m"
+  MR_Integer mdb__sized_pretty__param_3,
+#line 183 "sized_pretty.m"
+  MR_Integer mdb__sized_pretty__param_4,
+#line 183 "sized_pretty.m"
+  MR_String * mdb__sized_pretty__param_5);
+
+#line 178 "sized_pretty.m"
+void MR_CALL 
+mdb__sized_pretty__univ_to_string_line_5_p_0(
+#line 178 "sized_pretty.m"
+  MR_Word mdb__sized_pretty__param_1,
+#line 178 "sized_pretty.m"
+  MR_Word mdb__sized_pretty__param_2,
+#line 178 "sized_pretty.m"
+  MR_Integer mdb__sized_pretty__param_3,
+#line 178 "sized_pretty.m"
+  MR_Integer mdb__sized_pretty__param_4,
+#line 178 "sized_pretty.m"
+  MR_String * mdb__sized_pretty__param_5);
+
+void mercury__mdb__sized_pretty__init(void);
+void mercury__mdb__sized_pretty__init_type_tables(void);
+void mercury__mdb__sized_pretty__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_mdb.sized_pretty */
+
+/* :- end_interface mdb.sized_pretty. */

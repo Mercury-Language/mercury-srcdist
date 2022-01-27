@@ -1,0 +1,8 @@
+:- module (backend_libs.base_typeclass_info).
+:- interface.
+:- import_module hlds.
+:- import_module list.
+:- import_module (backend_libs.rtti).
+:- import_module (hlds.hlds_module).
+:- pred generate_base_typeclass_info_rtti(hlds.hlds_module.module_info, list.list(backend_libs.rtti.rtti_data)).
+:- mode generate_base_typeclass_info_rtti((builtin.in), (builtin.out)) is det.

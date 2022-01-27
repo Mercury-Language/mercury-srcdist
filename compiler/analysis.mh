@@ -1,0 +1,46 @@
+/*
+** Automatically generated from `analysis.m'
+** by the Mercury compiler,
+** version 14.01.2-beta-2015-02-18, configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+*/
+#ifndef ANALYSIS_MH
+#define ANALYSIS_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef ANALYSIS_DECL_GUARD
+#define ANALYSIS_DECL_GUARD
+#line 1381 "analysis.m"
+#ifdef MR_HIGHLEVEL_CODE
+    extern MR_Word analysis__mutable_variable_debug_analysis;
+#else
+    extern MR_Word analysis__mutable_variable_debug_analysis;
+#endif
+#ifdef MR_THREAD_SAFE
+    extern MercuryLock analysis__mutable_variable_debug_analysis_lock;
+#endif
+
+#line 38 "analysis.mh.tmp"
+
+#endif
+void analysis__user_init_pred_0(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* ANALYSIS_MH */

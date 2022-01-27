@@ -1,0 +1,9 @@
+:- module (transform_hlds.term_constr_main).
+:- interface.
+:- type constr_arg_size_info.
+:- type constr_termination_info.
+:- type intermod_status
+	where	type_is_abstract_enum(1).
+:- type term_reason
+	where	type_is_abstract_enum(3).
+:- type termination2_info.

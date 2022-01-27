@@ -1,0 +1,60 @@
+/*
+** Automatically generated from `call_graph.m'
+** by the Mercury compiler,
+** version 14.01.2-beta-2015-02-18, configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module call_graph. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_call_graph
+#define MR_HEADER_GUARD_call_graph
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CALL_GRAPH_DECL_GUARD
+#define CALL_GRAPH_DECL_GUARD
+
+#endif
+
+
+
+
+#line 28 "call_graph.m"
+void MR_CALL 
+call_graph__build_call_graph_5_p_0(
+#line 28 "call_graph.m"
+  MR_Word call_graph__param_1,
+#line 28 "call_graph.m"
+  MR_Word call_graph__param_2,
+#line 28 "call_graph.m"
+  MR_Word * call_graph__param_3);
+
+void mercury__call_graph__init(void);
+void mercury__call_graph__init_type_tables(void);
+void mercury__call_graph__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_call_graph */
+
+/* :- end_interface call_graph. */

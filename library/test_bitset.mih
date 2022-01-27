@@ -1,0 +1,666 @@
+/*
+** Automatically generated from `test_bitset.m'
+** by the Mercury compiler,
+** version 14.01.2-beta-2015-02-18, configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module test_bitset. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_test_bitset
+#define MR_HEADER_GUARD_test_bitset
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TEST_BITSET_DECL_GUARD
+#define TEST_BITSET_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "test_bitset.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__test_bitset__test_bitset__type_ctor_info_bitset_error_1;
+
+#line 44 "test_bitset.mih.tmp"
+extern const MR_TypeCtorInfo_Struct mercury__test_bitset__test_bitset__type_ctor_info_test_bitset_1;
+
+#line 159 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset____Compare____test_bitset_1_0(
+#line 159 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 159 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_2,
+#line 159 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 159 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_4);
+
+#line 159 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset____Unify____test_bitset_1_0(
+#line 159 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 159 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 159 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3);
+
+#line 24 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset____Compare____bitset_error_1_0(
+#line 24 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 24 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_2,
+#line 24 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 24 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_4);
+
+#line 24 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset____Unify____bitset_error_1_0(
+#line 24 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 24 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 24 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3);
+
+#line 584 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__check1_4_p_0(
+#line 584 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 584 "test_bitset.m"
+  MR_String mercury__test_bitset__param_2,
+#line 584 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 584 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_4,
+#line 584 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_5);
+
+#line 571 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__check0_3_p_0(
+#line 571 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 571 "test_bitset.m"
+  MR_String mercury__test_bitset__param_2,
+#line 571 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 571 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4);
+
+#line 139 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__filter_4_p_0(
+#line 139 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 139 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 139 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 139 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4,
+#line 139 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_5);
+
+#line 137 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__filter_2_f_0(
+#line 137 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 137 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 137 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3);
+
+#line 134 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__all_true_2_p_0(
+#line 134 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 134 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 134 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3);
+
+#line 129 "test_bitset.m"
+MR_Box MR_CALL 
+mercury__test_bitset__foldl_3_f_0(
+#line 129 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 129 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 129 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 129 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_4,
+#line 129 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_5);
+
+#line 126 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__foldl_4_p_1(
+#line 126 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 126 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 126 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 126 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_4,
+#line 126 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_5,
+#line 126 "test_bitset.m"
+  MR_Box * mercury__test_bitset__param_6);
+
+#line 125 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__foldl_4_p_0(
+#line 125 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 125 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 125 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 125 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_4,
+#line 125 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_5,
+#line 125 "test_bitset.m"
+  MR_Box * mercury__test_bitset__param_6);
+
+#line 118 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__divide_by_set_4_p_0(
+#line 118 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 118 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 118 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 118 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4,
+#line 118 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_5);
+
+#line 115 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__divide_4_p_0(
+#line 115 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 115 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 115 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 115 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4,
+#line 115 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_5);
+
+#line 112 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__difference_3_p_0(
+#line 112 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 112 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 112 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 112 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4);
+
+#line 110 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__intersect_list_2_p_0(
+#line 110 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 110 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 110 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_3);
+
+#line 108 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__intersect_3_p_0(
+#line 108 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 108 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 108 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 108 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4);
+
+#line 106 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__union_list_2_p_0(
+#line 106 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 106 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 106 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_3);
+
+#line 104 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__union_3_p_0(
+#line 104 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 104 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 104 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 104 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4);
+
+#line 102 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__difference_2_f_0(
+#line 102 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 102 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 102 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3);
+
+#line 101 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__intersect_list_1_f_0(
+#line 101 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 101 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2);
+
+#line 100 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__intersect_2_f_0(
+#line 100 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 100 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 100 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3);
+
+#line 99 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__union_list_1_f_0(
+#line 99 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 99 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2);
+
+#line 98 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__union_2_f_0(
+#line 98 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 98 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 98 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3);
+
+#line 92 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__remove_least_3_p_0(
+#line 92 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 92 "test_bitset.m"
+  MR_Box * mercury__test_bitset__param_2,
+#line 92 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 92 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4);
+
+#line 90 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__remove_list_3_p_0(
+#line 90 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 90 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 90 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 90 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4);
+
+#line 88 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__remove_3_p_0(
+#line 88 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 88 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_2,
+#line 88 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 88 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4);
+
+#line 86 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__delete_list_3_p_0(
+#line 86 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 86 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 86 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 86 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4);
+
+#line 84 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__delete_3_p_0(
+#line 84 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 84 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_2,
+#line 84 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 84 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4);
+
+#line 82 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__insert_list_3_p_0(
+#line 82 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 82 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 82 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 82 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4);
+
+#line 80 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__insert_new_3_p_0(
+#line 80 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 80 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_2,
+#line 80 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 80 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4);
+
+#line 78 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__insert_3_p_0(
+#line 78 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 78 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_2,
+#line 78 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 78 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_4);
+
+#line 73 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__to_set_1_f_0(
+#line 73 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 73 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2);
+
+#line 72 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__from_set_1_f_0(
+#line 72 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 72 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2);
+
+#line 71 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__bitset_to_set_1_f_0(
+#line 71 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 71 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2);
+
+#line 70 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__set_to_bitset_1_f_0(
+#line 70 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 70 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2);
+
+#line 68 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__to_sorted_list_2_p_0(
+#line 68 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 68 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 68 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_3);
+
+#line 67 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__sorted_list_to_set_2_p_0(
+#line 67 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 67 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 67 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_3);
+
+#line 66 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__list_to_set_2_p_0(
+#line 66 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 66 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 66 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_3);
+
+#line 64 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__to_sorted_list_1_f_0(
+#line 64 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 64 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2);
+
+#line 63 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__sorted_list_to_set_1_f_0(
+#line 63 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 63 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2);
+
+#line 62 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__list_to_set_1_f_0(
+#line 62 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 62 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2);
+
+#line 57 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__superset_2_p_0(
+#line 57 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 57 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 57 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3);
+
+#line 56 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__subset_2_p_0(
+#line 56 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 56 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 56 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3);
+
+#line 54 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__equal_2_p_0(
+#line 54 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 54 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 54 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3);
+
+#line 52 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__member_2_p_1(
+#line 52 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 52 "test_bitset.m"
+  MR_Box * mercury__test_bitset__param_2,
+#line 52 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3,
+#line 52 "test_bitset.m"
+  MR_Cont mercury__test_bitset__param_4,
+#line 52 "test_bitset.m"
+  void * mercury__test_bitset__param_5);
+
+#line 51 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__member_2_p_0(
+#line 51 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 51 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_2,
+#line 51 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_3);
+
+#line 49 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__contains_2_p_0(
+#line 49 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 49 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 49 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_3);
+
+#line 47 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__is_singleton_2_p_0(
+#line 47 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 47 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2,
+#line 47 "test_bitset.m"
+  MR_Box * mercury__test_bitset__param_3);
+
+#line 46 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__is_non_empty_1_p_0(
+#line 46 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 46 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2);
+
+#line 45 "test_bitset.m"
+MR_bool MR_CALL 
+mercury__test_bitset__is_empty_1_p_0(
+#line 45 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 45 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2);
+
+#line 40 "test_bitset.m"
+MR_Integer MR_CALL 
+mercury__test_bitset__count_1_f_0(
+#line 40 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 40 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_2);
+
+#line 38 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__make_singleton_set_2_p_0(
+#line 38 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 38 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_2,
+#line 38 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_3);
+
+#line 37 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__singleton_set_2_p_0(
+#line 37 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 37 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_2,
+#line 37 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_3);
+
+#line 36 "test_bitset.m"
+void MR_CALL 
+mercury__test_bitset__init_1_p_0(
+#line 36 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 36 "test_bitset.m"
+  MR_Word * mercury__test_bitset__param_2);
+
+#line 34 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__make_singleton_set_1_f_0(
+#line 34 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 34 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_2);
+
+#line 33 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__singleton_set_1_f_0(
+#line 33 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1,
+#line 33 "test_bitset.m"
+  MR_Box mercury__test_bitset__param_2);
+
+#line 32 "test_bitset.m"
+MR_Word MR_CALL 
+mercury__test_bitset__init_0_f_0(
+#line 32 "test_bitset.m"
+  MR_Word mercury__test_bitset__param_1);
+
+void mercury__test_bitset__init(void);
+void mercury__test_bitset__init_type_tables(void);
+void mercury__test_bitset__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_test_bitset */
+
+/* :- end_interface test_bitset. */

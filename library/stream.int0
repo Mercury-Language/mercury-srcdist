@@ -1,0 +1,98 @@
+:- module stream.
+:- interface.
+:- import_module bool.
+:- import_module char.
+:- import_module list.
+:- include_module (stream.string_writer).
+:- type name == string.
+:- type whence
+	--->	set 
+	;	cur 
+	;	end .
+:- type res(Error)
+	--->	ok 
+	;	error(Error).
+:- type result(Error)
+	--->	ok 
+	;	eof 
+	;	error(Error).
+:- type maybe_partial_res(T, Error)
+	--->	ok(T)
+	;	error(T, Error).
+:- type res(T, Error)
+	--->	ok(T)
+	;	error(Error).
+:- type result(T, Error)
+	--->	ok(T)
+	;	eof 
+	;	error(Error).
+:- mode (bulk_get_di) == (builtin.in).
+:- mode (bulk_get_uo) == (builtin.out).
+:- typeclass error(Error) where [
+	func error_message(Error) = string
+].
+:- typeclass stream(Stream, State) <= ((Stream -> State)) where [
+	pred name(Stream, stream.name, State, State),
+	mode name((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det
+].
+:- typeclass duplex(Stream, State) <= (stream.input(Stream, State), stream.output(Stream, State)) where [
+
+].
+:- typeclass reader(Stream, Unit, State, Error) <= ((Stream, Unit -> Error), stream.input(Stream, State), stream.error(Error)) where [
+	pred get(Stream, stream.result(Unit, Error), State, State),
+	mode get((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det
+].
+:- typeclass bulk_reader(Stream, Index, Store, State, Error) <= ((Stream, Index, Store -> Error), stream.input(Stream, State), stream.error(Error)) where [
+	pred bulk_get(Stream, Index, int, Store, Store, int, stream.res(Error), State, State),
+	mode bulk_get((builtin.in), (builtin.in), (builtin.in), (stream.bulk_get_di), (stream.bulk_get_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det
+].
+:- typeclass writer(Stream, Unit, State) <= (stream.output(Stream, State)) where [
+	pred put(Stream, Unit, State, State),
+	mode put((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det
+].
+:- typeclass unbounded_putback(Stream, Unit, State, Error) <= (stream.putback(Stream, Unit, State, Error)) where [
+
+].
+:- typeclass putback(Stream, Unit, State, Error) <= (stream.reader(Stream, Unit, State, Error)) where [
+	pred unget(Stream, Unit, State, State),
+	mode unget((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det
+].
+:- typeclass input(Stream, State) <= (stream.stream(Stream, State)) where [
+
+].
+:- typeclass line_oriented(Stream, State) <= (stream.stream(Stream, State)) where [
+	pred get_line(Stream, int, State, State),
+	mode get_line((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det,
+	pred set_line(Stream, int, State, State),
+	mode set_line((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det
+].
+:- typeclass output(Stream, State) <= (stream.stream(Stream, State)) where [
+	pred flush(Stream, State, State),
+	mode flush((builtin.in), (builtin.di), (builtin.uo)) is det
+].
+:- typeclass seekable(Stream, State) <= (stream.stream(Stream, State)) where [
+	pred seek(Stream, stream.whence, int, State, State),
+	mode seek((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det
+].
+:- pred ignore_whitespace(Stream, stream.result(Error), State, State) <= (stream.putback(Stream, char.char, State, Error)).
+:- mode ignore_whitespace((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred input_stream_fold(Stream, pred(Unit, T, T), T, stream.maybe_partial_res(T, Error), State, State) <= (stream.reader(Stream, Unit, State, Error)).
+:- mode input_stream_fold((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode input_stream_fold((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred input_stream_fold2_state(Stream, pred(Unit, T, T, State, State), T, stream.maybe_partial_res(T, Error), State, State) <= (stream.reader(Stream, Unit, State, Error)).
+:- mode input_stream_fold2_state((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode input_stream_fold2_state((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred input_stream_fold2_state_maybe_stop(Stream, pred(Unit, bool.bool, T, T, State, State), T, stream.maybe_partial_res(T, Error), State, State) <= (stream.reader(Stream, Unit, State, Error)).
+:- mode input_stream_fold2_state_maybe_stop((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode input_stream_fold2_state_maybe_stop((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred input_stream_fold_state(Stream, pred(Unit, State, State), stream.res(Error), State, State) <= (stream.reader(Stream, Unit, State, Error)).
+:- mode input_stream_fold_state((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode input_stream_fold_state((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred put_list(Stream, pred(Stream, T, State, State), pred(Stream, State, State), list.list(T), State, State) <= (stream.output(Stream, State)).
+:- mode put_list((builtin.in), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode put_list((builtin.in), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode put_list((builtin.in), (pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- implementation.
+:- import_module bool.
+:- import_module char.
+:- import_module list.
