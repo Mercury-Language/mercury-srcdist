@@ -1,0 +1,823 @@
+/*
+** Automatically generated from `pd_info.m'
+** by the Mercury compiler,
+** version DEV, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.pd_info. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_transform_hlds__pd_info
+#define MR_HEADER_GUARD_transform_hlds__pd_info
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef TRANSFORM_HLDS__PD_INFO_DECL_GUARD
+#define TRANSFORM_HLDS__PD_INFO_DECL_GUARD
+#include "transform_hlds.mih"
+
+#endif
+
+
+
+
+#line 42 "transform_hlds.pd_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__pd_info__transform_hlds__pd_info__type_ctor_info_branch_info_map_1;
+
+#line 45 "transform_hlds.pd_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__pd_info__transform_hlds__pd_info__type_ctor_info_goal_version_index_0;
+
+#line 48 "transform_hlds.pd_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__pd_info__transform_hlds__pd_info__type_ctor_info_maybe_version_0;
+
+#line 51 "transform_hlds.pd_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__pd_info__transform_hlds__pd_info__type_ctor_info_pd_arg_info_0;
+
+#line 54 "transform_hlds.pd_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__pd_info__transform_hlds__pd_info__type_ctor_info_pd_branch_info_1;
+
+#line 57 "transform_hlds.pd_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__pd_info__transform_hlds__pd_info__type_ctor_info_pd_info_0;
+
+#line 60 "transform_hlds.pd_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__pd_info__transform_hlds__pd_info__type_ctor_info_pd_proc_arg_info_0;
+
+#line 63 "transform_hlds.pd_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__pd_info__transform_hlds__pd_info__type_ctor_info_unfold_info_0;
+
+#line 66 "transform_hlds.pd_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__pd_info__transform_hlds__pd_info__type_ctor_info_useless_versions_0;
+
+#line 69 "transform_hlds.pd_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__pd_info__transform_hlds__pd_info__type_ctor_info_version_index_0;
+
+#line 72 "transform_hlds.pd_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__pd_info__transform_hlds__pd_info__type_ctor_info_version_info_0;
+
+#line 75 "transform_hlds.pd_info.mih.tmp"
+extern const MR_TypeCtorInfo_Struct transform_hlds__pd_info__transform_hlds__pd_info__type_ctor_info_version_is_exact_0;
+
+#line 437 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info____Compare____version_is_exact_0_0(
+#line 437 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_1,
+#line 437 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 437 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3);
+
+#line 437 "pd_info.m"
+MR_bool MR_CALL 
+transform_hlds__pd_info____Unify____version_is_exact_0_0(
+#line 437 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 437 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2);
+
+#line 441 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info____Compare____version_info_0_0(
+#line 441 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_1,
+#line 441 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 441 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3);
+
+#line 441 "pd_info.m"
+MR_bool MR_CALL 
+transform_hlds__pd_info____Unify____version_info_0_0(
+#line 441 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 441 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2);
+
+#line 60 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info____Compare____version_index_0_0(
+#line 60 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_1,
+#line 60 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 60 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3);
+
+#line 60 "pd_info.m"
+MR_bool MR_CALL 
+transform_hlds__pd_info____Unify____version_index_0_0(
+#line 60 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 60 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2);
+
+#line 56 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info____Compare____useless_versions_0_0(
+#line 56 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_1,
+#line 56 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 56 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3);
+
+#line 56 "pd_info.m"
+MR_bool MR_CALL 
+transform_hlds__pd_info____Unify____useless_versions_0_0(
+#line 56 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 56 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2);
+
+#line 224 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info____Compare____unfold_info_0_0(
+#line 224 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_1,
+#line 224 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 224 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3);
+
+#line 224 "pd_info.m"
+MR_bool MR_CALL 
+transform_hlds__pd_info____Unify____unfold_info_0_0(
+#line 224 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 224 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2);
+
+#line 259 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info____Compare____pd_proc_arg_info_0_0(
+#line 259 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_1,
+#line 259 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 259 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3);
+
+#line 259 "pd_info.m"
+MR_bool MR_CALL 
+transform_hlds__pd_info____Unify____pd_proc_arg_info_0_0(
+#line 259 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 259 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2);
+
+#line 36 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info____Compare____pd_info_0_0(
+#line 36 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_1,
+#line 36 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 36 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3);
+
+#line 36 "pd_info.m"
+MR_bool MR_CALL 
+transform_hlds__pd_info____Unify____pd_info_0_0(
+#line 36 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 36 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2);
+
+#line 261 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info____Compare____pd_branch_info_1_0(
+#line 261 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 261 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2,
+#line 261 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3,
+#line 261 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_4);
+
+#line 261 "pd_info.m"
+MR_bool MR_CALL 
+transform_hlds__pd_info____Unify____pd_branch_info_1_0(
+#line 261 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 261 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 261 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3);
+
+#line 257 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info____Compare____pd_arg_info_0_0(
+#line 257 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_1,
+#line 257 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 257 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3);
+
+#line 257 "pd_info.m"
+MR_bool MR_CALL 
+transform_hlds__pd_info____Unify____pd_arg_info_0_0(
+#line 257 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 257 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2);
+
+#line 423 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info____Compare____maybe_version_0_0(
+#line 423 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_1,
+#line 423 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 423 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3);
+
+#line 423 "pd_info.m"
+MR_bool MR_CALL 
+transform_hlds__pd_info____Unify____maybe_version_0_0(
+#line 423 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 423 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2);
+
+#line 54 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info____Compare____goal_version_index_0_0(
+#line 54 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_1,
+#line 54 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 54 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3);
+
+#line 54 "pd_info.m"
+MR_bool MR_CALL 
+transform_hlds__pd_info____Unify____goal_version_index_0_0(
+#line 54 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 54 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2);
+
+#line 275 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info____Compare____branch_info_map_1_0(
+#line 275 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 275 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2,
+#line 275 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3,
+#line 275 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_4);
+
+#line 275 "pd_info.m"
+MR_bool MR_CALL 
+transform_hlds__pd_info____Unify____branch_info_map_1_0(
+#line 275 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 275 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 275 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3);
+
+#line 419 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__remove_version_3_p_0(
+#line 419 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 419 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 419 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 413 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__invalidate_version_3_p_0(
+#line 413 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 413 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 413 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 408 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__register_version_4_p_0(
+#line 408 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 408 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 408 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3,
+#line 408 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_4);
+
+#line 403 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__define_new_pred_6_p_0(
+#line 403 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 403 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 403 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3,
+#line 403 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_4,
+#line 403 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_5,
+#line 403 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_6);
+
+#line 397 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__search_version_3_p_0(
+#line 397 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 397 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 397 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 310 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_incr_size_delta_3_p_0(
+#line 310 "pd_info.m"
+  MR_Integer transform_hlds__pd_info__param_1,
+#line 310 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 310 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 308 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_incr_cost_delta_3_p_0(
+#line 308 "pd_info.m"
+  MR_Integer transform_hlds__pd_info__param_1,
+#line 308 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 308 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 306 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_rerun_det_3_p_0(
+#line 306 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 306 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 306 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 304 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_size_delta_3_p_0(
+#line 304 "pd_info.m"
+  MR_Integer transform_hlds__pd_info__param_1,
+#line 304 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 304 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 302 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_changed_3_p_0(
+#line 302 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 302 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 302 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 300 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_pred_proc_id_3_p_0(
+#line 300 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 300 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 300 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 298 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_parents_3_p_0(
+#line 298 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 298 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 298 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 296 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_pred_info_3_p_0(
+#line 296 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 296 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 296 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 294 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_local_term_info_3_p_0(
+#line 294 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 294 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 294 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 292 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_cost_delta_3_p_0(
+#line 292 "pd_info.m"
+  MR_Integer transform_hlds__pd_info__param_1,
+#line 292 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 292 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 290 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_instmap_3_p_0(
+#line 290 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 290 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 290 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 288 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_proc_info_3_p_0(
+#line 288 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 288 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 288 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 286 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_rerun_det_2_p_0(
+#line 286 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 286 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 285 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_size_delta_2_p_0(
+#line 285 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 285 "pd_info.m"
+  MR_Integer * transform_hlds__pd_info__param_2);
+
+#line 284 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_changed_2_p_0(
+#line 284 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 284 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 283 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_pred_proc_id_2_p_0(
+#line 283 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 283 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 282 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_parents_2_p_0(
+#line 282 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 282 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 281 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_pred_info_2_p_0(
+#line 281 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 281 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 280 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_local_term_info_2_p_0(
+#line 280 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 280 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 279 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_cost_delta_2_p_0(
+#line 279 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 279 "pd_info.m"
+  MR_Integer * transform_hlds__pd_info__param_2);
+
+#line 278 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_instmap_2_p_0(
+#line 278 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 278 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 277 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_proc_info_2_p_0(
+#line 277 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 277 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 112 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_unset_unfold_info_2_p_0(
+#line 112 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 112 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 109 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_bind_var_to_functors_5_p_0(
+#line 109 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 109 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 109 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3,
+#line 109 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_4,
+#line 109 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_5);
+
+#line 107 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_update_goal_3_p_0(
+#line 107 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 107 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 107 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 104 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_useless_versions_3_p_0(
+#line 104 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 104 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 104 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 102 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_created_versions_3_p_0(
+#line 102 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 102 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 102 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 100 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_depth_3_p_0(
+#line 100 "pd_info.m"
+  MR_Integer transform_hlds__pd_info__param_1,
+#line 100 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 100 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 98 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_parent_versions_3_p_0(
+#line 98 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 98 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 98 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 96 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_global_term_info_3_p_0(
+#line 96 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 96 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 96 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 94 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_counter_3_p_0(
+#line 94 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 94 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 94 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 92 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_proc_arg_info_3_p_0(
+#line 92 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 92 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 92 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 90 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_versions_3_p_0(
+#line 90 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 90 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 90 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 88 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_goal_version_index_3_p_0(
+#line 88 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 88 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 88 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 86 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_unfold_info_3_p_0(
+#line 86 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 86 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 86 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 84 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_set_module_info_3_p_0(
+#line 84 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 84 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 84 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+#line 81 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_useless_versions_2_p_0(
+#line 81 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 81 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 79 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_created_versions_2_p_0(
+#line 79 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 79 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 78 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_depth_2_p_0(
+#line 78 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 78 "pd_info.m"
+  MR_Integer * transform_hlds__pd_info__param_2);
+
+#line 76 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_parent_versions_2_p_0(
+#line 76 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 76 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 74 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_global_term_info_2_p_0(
+#line 74 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 74 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 73 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_counter_2_p_0(
+#line 73 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 73 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 72 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_proc_arg_info_2_p_0(
+#line 72 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 72 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 71 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_versions_2_p_0(
+#line 71 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 71 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 69 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_goal_version_index_2_p_0(
+#line 69 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 69 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 68 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_unfold_info_2_p_0(
+#line 68 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 68 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 67 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_get_module_info_2_p_0(
+#line 67 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 67 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_2);
+
+#line 64 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_init_unfold_info_5_p_0(
+#line 64 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 64 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 64 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_3,
+#line 64 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_4,
+#line 64 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_5);
+
+#line 62 "pd_info.m"
+void MR_CALL 
+transform_hlds__pd_info__pd_info_init_3_p_0(
+#line 62 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_1,
+#line 62 "pd_info.m"
+  MR_Word transform_hlds__pd_info__param_2,
+#line 62 "pd_info.m"
+  MR_Word * transform_hlds__pd_info__param_3);
+
+void mercury__transform_hlds__pd_info__init(void);
+void mercury__transform_hlds__pd_info__init_type_tables(void);
+void mercury__transform_hlds__pd_info__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_transform_hlds.pd_info */
+
+/* :- end_interface transform_hlds.pd_info. */

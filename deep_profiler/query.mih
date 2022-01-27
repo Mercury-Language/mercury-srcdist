@@ -1,0 +1,751 @@
+/*
+** Automatically generated from `query.m'
+** by the Mercury compiler,
+** version DEV, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module query. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_query
+#define MR_HEADER_GUARD_query
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef QUERY_DECL_GUARD
+#define QUERY_DECL_GUARD
+
+#endif
+
+
+
+
+#line 41 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_alloc_fields_0;
+
+#line 44 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_box_tables_0;
+
+#line 47 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_caller_groups_0;
+
+#line 50 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_callseqs_fields_0;
+
+#line 53 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_cmd_0;
+
+#line 56 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_colour_column_groups_0;
+
+#line 59 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_contour_exclusion_0;
+
+#line 62 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_cost_kind_0;
+
+#line 65 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_deep_query_0;
+
+#line 68 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_descendants_meaningful_0;
+
+#line 71 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_developer_mode_0;
+
+#line 74 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_display_limit_0;
+
+#line 77 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_fields_0;
+
+#line 80 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_inactive_items_0;
+
+#line 83 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_inactive_status_0;
+
+#line 86 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_include_descendants_0;
+
+#line 89 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_measurement_scope_0;
+
+#line 92 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_memory_fields_0;
+
+#line 95 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_module_qual_0;
+
+#line 98 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_order_criteria_0;
+
+#line 101 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_port_fields_0;
+
+#line 104 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_preferences_0;
+
+#line 107 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_preferences_indication_0;
+
+#line 110 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_resp_0;
+
+#line 113 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_summarize_ho_call_sites_0;
+
+#line 116 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_time_fields_0;
+
+#line 119 "query.mih.tmp"
+extern const MR_TypeCtorInfo_Struct query__query__type_ctor_info_time_format_0;
+
+#line 309 "query.m"
+void MR_CALL 
+query____Compare____time_format_0_0(
+#line 309 "query.m"
+  MR_Word * query__param_1,
+#line 309 "query.m"
+  MR_Word query__param_2,
+#line 309 "query.m"
+  MR_Word query__param_3);
+
+#line 309 "query.m"
+MR_bool MR_CALL 
+query____Unify____time_format_0_0(
+#line 309 "query.m"
+  MR_Word query__param_1,
+#line 309 "query.m"
+  MR_Word query__param_2);
+
+#line 248 "query.m"
+void MR_CALL 
+query____Compare____time_fields_0_0(
+#line 248 "query.m"
+  MR_Word * query__param_1,
+#line 248 "query.m"
+  MR_Word query__param_2,
+#line 248 "query.m"
+  MR_Word query__param_3);
+
+#line 248 "query.m"
+MR_bool MR_CALL 
+query____Unify____time_fields_0_0(
+#line 248 "query.m"
+  MR_Word query__param_1,
+#line 248 "query.m"
+  MR_Word query__param_2);
+
+#line 288 "query.m"
+void MR_CALL 
+query____Compare____summarize_ho_call_sites_0_0(
+#line 288 "query.m"
+  MR_Word * query__param_1,
+#line 288 "query.m"
+  MR_Word query__param_2,
+#line 288 "query.m"
+  MR_Word query__param_3);
+
+#line 288 "query.m"
+MR_bool MR_CALL 
+query____Unify____summarize_ho_call_sites_0_0(
+#line 288 "query.m"
+  MR_Word query__param_1,
+#line 288 "query.m"
+  MR_Word query__param_2);
+
+#line 72 "query.m"
+void MR_CALL 
+query____Compare____resp_0_0(
+#line 72 "query.m"
+  MR_Word * query__param_1,
+#line 72 "query.m"
+  MR_Word query__param_2,
+#line 72 "query.m"
+  MR_Word query__param_3);
+
+#line 72 "query.m"
+MR_bool MR_CALL 
+query____Unify____resp_0_0(
+#line 72 "query.m"
+  MR_Word query__param_1,
+#line 72 "query.m"
+  MR_Word query__param_2);
+
+#line 239 "query.m"
+void MR_CALL 
+query____Compare____preferences_indication_0_0(
+#line 239 "query.m"
+  MR_Word * query__param_1,
+#line 239 "query.m"
+  MR_Word query__param_2,
+#line 239 "query.m"
+  MR_Word query__param_3);
+
+#line 239 "query.m"
+MR_bool MR_CALL 
+query____Unify____preferences_indication_0_0(
+#line 239 "query.m"
+  MR_Word query__param_1,
+#line 239 "query.m"
+  MR_Word query__param_2);
+
+#line 191 "query.m"
+void MR_CALL 
+query____Compare____preferences_0_0(
+#line 191 "query.m"
+  MR_Word * query__param_1,
+#line 191 "query.m"
+  MR_Word query__param_2,
+#line 191 "query.m"
+  MR_Word query__param_3);
+
+#line 191 "query.m"
+MR_bool MR_CALL 
+query____Unify____preferences_0_0(
+#line 191 "query.m"
+  MR_Word query__param_1,
+#line 191 "query.m"
+  MR_Word query__param_2);
+
+#line 244 "query.m"
+void MR_CALL 
+query____Compare____port_fields_0_0(
+#line 244 "query.m"
+  MR_Word * query__param_1,
+#line 244 "query.m"
+  MR_Word query__param_2,
+#line 244 "query.m"
+  MR_Word query__param_3);
+
+#line 244 "query.m"
+MR_bool MR_CALL 
+query____Unify____port_fields_0_0(
+#line 244 "query.m"
+  MR_Word query__param_1,
+#line 244 "query.m"
+  MR_Word query__param_2);
+
+#line 292 "query.m"
+void MR_CALL 
+query____Compare____order_criteria_0_0(
+#line 292 "query.m"
+  MR_Word * query__param_1,
+#line 292 "query.m"
+  MR_Word query__param_2,
+#line 292 "query.m"
+  MR_Word query__param_3);
+
+#line 292 "query.m"
+MR_bool MR_CALL 
+query____Unify____order_criteria_0_0(
+#line 292 "query.m"
+  MR_Word query__param_1,
+#line 292 "query.m"
+  MR_Word query__param_2);
+
+#line 314 "query.m"
+void MR_CALL 
+query____Compare____module_qual_0_0(
+#line 314 "query.m"
+  MR_Word * query__param_1,
+#line 314 "query.m"
+  MR_Word query__param_2,
+#line 314 "query.m"
+  MR_Word query__param_3);
+
+#line 314 "query.m"
+MR_bool MR_CALL 
+query____Unify____module_qual_0_0(
+#line 314 "query.m"
+  MR_Word query__param_1,
+#line 314 "query.m"
+  MR_Word query__param_2);
+
+#line 266 "query.m"
+void MR_CALL 
+query____Compare____memory_fields_0_0(
+#line 266 "query.m"
+  MR_Word * query__param_1,
+#line 266 "query.m"
+  MR_Word query__param_2,
+#line 266 "query.m"
+  MR_Word query__param_3);
+
+#line 266 "query.m"
+MR_bool MR_CALL 
+query____Unify____memory_fields_0_0(
+#line 266 "query.m"
+  MR_Word query__param_1,
+#line 266 "query.m"
+  MR_Word query__param_2);
+
+#line 301 "query.m"
+void MR_CALL 
+query____Compare____measurement_scope_0_0(
+#line 301 "query.m"
+  MR_Word * query__param_1,
+#line 301 "query.m"
+  MR_Word query__param_2,
+#line 301 "query.m"
+  MR_Word query__param_3);
+
+#line 301 "query.m"
+MR_bool MR_CALL 
+query____Unify____measurement_scope_0_0(
+#line 301 "query.m"
+  MR_Word query__param_1,
+#line 301 "query.m"
+  MR_Word query__param_2);
+
+#line 170 "query.m"
+void MR_CALL 
+query____Compare____include_descendants_0_0(
+#line 170 "query.m"
+  MR_Word * query__param_1,
+#line 170 "query.m"
+  MR_Word query__param_2,
+#line 170 "query.m"
+  MR_Word query__param_3);
+
+#line 170 "query.m"
+MR_bool MR_CALL 
+query____Unify____include_descendants_0_0(
+#line 170 "query.m"
+  MR_Word query__param_1,
+#line 170 "query.m"
+  MR_Word query__param_2);
+
+#line 319 "query.m"
+void MR_CALL 
+query____Compare____inactive_status_0_0(
+#line 319 "query.m"
+  MR_Word * query__param_1,
+#line 319 "query.m"
+  MR_Word query__param_2,
+#line 319 "query.m"
+  MR_Word query__param_3);
+
+#line 319 "query.m"
+MR_bool MR_CALL 
+query____Unify____inactive_status_0_0(
+#line 319 "query.m"
+  MR_Word query__param_1,
+#line 319 "query.m"
+  MR_Word query__param_2);
+
+#line 323 "query.m"
+void MR_CALL 
+query____Compare____inactive_items_0_0(
+#line 323 "query.m"
+  MR_Word * query__param_1,
+#line 323 "query.m"
+  MR_Word query__param_2,
+#line 323 "query.m"
+  MR_Word query__param_3);
+
+#line 323 "query.m"
+MR_bool MR_CALL 
+query____Unify____inactive_items_0_0(
+#line 323 "query.m"
+  MR_Word query__param_1,
+#line 323 "query.m"
+  MR_Word query__param_2);
+
+#line 271 "query.m"
+void MR_CALL 
+query____Compare____fields_0_0(
+#line 271 "query.m"
+  MR_Word * query__param_1,
+#line 271 "query.m"
+  MR_Word query__param_2,
+#line 271 "query.m"
+  MR_Word query__param_3);
+
+#line 271 "query.m"
+MR_bool MR_CALL 
+query____Unify____fields_0_0(
+#line 271 "query.m"
+  MR_Word query__param_1,
+#line 271 "query.m"
+  MR_Word query__param_2);
+
+#line 178 "query.m"
+void MR_CALL 
+query____Compare____display_limit_0_0(
+#line 178 "query.m"
+  MR_Word * query__param_1,
+#line 178 "query.m"
+  MR_Word query__param_2,
+#line 178 "query.m"
+  MR_Word query__param_3);
+
+#line 178 "query.m"
+MR_bool MR_CALL 
+query____Unify____display_limit_0_0(
+#line 178 "query.m"
+  MR_Word query__param_1,
+#line 178 "query.m"
+  MR_Word query__param_2);
+
+#line 330 "query.m"
+void MR_CALL 
+query____Compare____developer_mode_0_0(
+#line 330 "query.m"
+  MR_Word * query__param_1,
+#line 330 "query.m"
+  MR_Word query__param_2,
+#line 330 "query.m"
+  MR_Word query__param_3);
+
+#line 330 "query.m"
+MR_bool MR_CALL 
+query____Unify____developer_mode_0_0(
+#line 330 "query.m"
+  MR_Word query__param_1,
+#line 330 "query.m"
+  MR_Word query__param_2);
+
+#line 174 "query.m"
+void MR_CALL 
+query____Compare____descendants_meaningful_0_0(
+#line 174 "query.m"
+  MR_Word * query__param_1,
+#line 174 "query.m"
+  MR_Word query__param_2,
+#line 174 "query.m"
+  MR_Word query__param_3);
+
+#line 174 "query.m"
+MR_bool MR_CALL 
+query____Unify____descendants_meaningful_0_0(
+#line 174 "query.m"
+  MR_Word query__param_1,
+#line 174 "query.m"
+  MR_Word query__param_2);
+
+#line 49 "query.m"
+void MR_CALL 
+query____Compare____deep_query_0_0(
+#line 49 "query.m"
+  MR_Word * query__param_1,
+#line 49 "query.m"
+  MR_Word query__param_2,
+#line 49 "query.m"
+  MR_Word query__param_3);
+
+#line 49 "query.m"
+MR_bool MR_CALL 
+query____Unify____deep_query_0_0(
+#line 49 "query.m"
+  MR_Word query__param_1,
+#line 49 "query.m"
+  MR_Word query__param_2);
+
+#line 162 "query.m"
+void MR_CALL 
+query____Compare____cost_kind_0_0(
+#line 162 "query.m"
+  MR_Word * query__param_1,
+#line 162 "query.m"
+  MR_Word query__param_2,
+#line 162 "query.m"
+  MR_Word query__param_3);
+
+#line 162 "query.m"
+MR_bool MR_CALL 
+query____Unify____cost_kind_0_0(
+#line 162 "query.m"
+  MR_Word query__param_1,
+#line 162 "query.m"
+  MR_Word query__param_2);
+
+#line 305 "query.m"
+void MR_CALL 
+query____Compare____contour_exclusion_0_0(
+#line 305 "query.m"
+  MR_Word * query__param_1,
+#line 305 "query.m"
+  MR_Word query__param_2,
+#line 305 "query.m"
+  MR_Word query__param_3);
+
+#line 305 "query.m"
+MR_bool MR_CALL 
+query____Unify____contour_exclusion_0_0(
+#line 305 "query.m"
+  MR_Word query__param_1,
+#line 305 "query.m"
+  MR_Word query__param_2);
+
+#line 284 "query.m"
+void MR_CALL 
+query____Compare____colour_column_groups_0_0(
+#line 284 "query.m"
+  MR_Word * query__param_1,
+#line 284 "query.m"
+  MR_Word query__param_2,
+#line 284 "query.m"
+  MR_Word query__param_3);
+
+#line 284 "query.m"
+MR_bool MR_CALL 
+query____Unify____colour_column_groups_0_0(
+#line 284 "query.m"
+  MR_Word query__param_1,
+#line 284 "query.m"
+  MR_Word query__param_2);
+
+#line 75 "query.m"
+void MR_CALL 
+query____Compare____cmd_0_0(
+#line 75 "query.m"
+  MR_Word * query__param_1,
+#line 75 "query.m"
+  MR_Word query__param_2,
+#line 75 "query.m"
+  MR_Word query__param_3);
+
+#line 75 "query.m"
+void MR_CALL 
+query____Index____cmd_0_0(
+#line 75 "query.m"
+  MR_Word query__param_1,
+#line 75 "query.m"
+  MR_Integer * query__param_2);
+
+#line 75 "query.m"
+MR_bool MR_CALL 
+query____Unify____cmd_0_0(
+#line 75 "query.m"
+  MR_Word query__param_1,
+#line 75 "query.m"
+  MR_Word query__param_2);
+
+#line 256 "query.m"
+void MR_CALL 
+query____Compare____callseqs_fields_0_0(
+#line 256 "query.m"
+  MR_Word * query__param_1,
+#line 256 "query.m"
+  MR_Word query__param_2,
+#line 256 "query.m"
+  MR_Word query__param_3);
+
+#line 256 "query.m"
+MR_bool MR_CALL 
+query____Unify____callseqs_fields_0_0(
+#line 256 "query.m"
+  MR_Word query__param_1,
+#line 256 "query.m"
+  MR_Word query__param_2);
+
+#line 156 "query.m"
+void MR_CALL 
+query____Compare____caller_groups_0_0(
+#line 156 "query.m"
+  MR_Word * query__param_1,
+#line 156 "query.m"
+  MR_Word query__param_2,
+#line 156 "query.m"
+  MR_Word query__param_3);
+
+#line 156 "query.m"
+MR_bool MR_CALL 
+query____Unify____caller_groups_0_0(
+#line 156 "query.m"
+  MR_Word query__param_1,
+#line 156 "query.m"
+  MR_Word query__param_2);
+
+#line 280 "query.m"
+void MR_CALL 
+query____Compare____box_tables_0_0(
+#line 280 "query.m"
+  MR_Word * query__param_1,
+#line 280 "query.m"
+  MR_Word query__param_2,
+#line 280 "query.m"
+  MR_Word query__param_3);
+
+#line 280 "query.m"
+MR_bool MR_CALL 
+query____Unify____box_tables_0_0(
+#line 280 "query.m"
+  MR_Word query__param_1,
+#line 280 "query.m"
+  MR_Word query__param_2);
+
+#line 261 "query.m"
+void MR_CALL 
+query____Compare____alloc_fields_0_0(
+#line 261 "query.m"
+  MR_Word * query__param_1,
+#line 261 "query.m"
+  MR_Word query__param_2,
+#line 261 "query.m"
+  MR_Word query__param_3);
+
+#line 261 "query.m"
+MR_bool MR_CALL 
+query____Unify____alloc_fields_0_0(
+#line 261 "query.m"
+  MR_Word query__param_1,
+#line 261 "query.m"
+  MR_Word query__param_2);
+
+#line 361 "query.m"
+MR_Word MR_CALL 
+query__default_developer_mode_0_f_0(void);
+
+#line 360 "query.m"
+MR_Word MR_CALL 
+query__default_inactive_items_0_f_0(void);
+
+#line 359 "query.m"
+MR_Word MR_CALL 
+query__default_module_qual_0_f_0(void);
+
+#line 358 "query.m"
+MR_Word MR_CALL 
+query__default_time_format_0_f_0(void);
+
+#line 357 "query.m"
+MR_Word MR_CALL 
+query__default_contour_exclusion_0_f_0(void);
+
+#line 356 "query.m"
+MR_Word MR_CALL 
+query__default_scope_0_f_0(void);
+
+#line 355 "query.m"
+MR_Word MR_CALL 
+query__default_incl_desc_0_f_0(void);
+
+#line 354 "query.m"
+MR_Word MR_CALL 
+query__default_cost_kind_0_f_0(void);
+
+#line 353 "query.m"
+MR_Word MR_CALL 
+query__default_order_criteria_0_f_0(void);
+
+#line 352 "query.m"
+MR_Word MR_CALL 
+query__default_summarize_ho_call_sites_0_f_0(void);
+
+#line 351 "query.m"
+MR_Integer MR_CALL 
+query__default_proc_statics_per_rec_type_limit_0_f_0(void);
+
+#line 350 "query.m"
+MR_Word MR_CALL 
+query__default_ancestor_limit_0_f_0(void);
+
+#line 349 "query.m"
+MR_Word MR_CALL 
+query__default_colour_column_groups_0_f_0(void);
+
+#line 348 "query.m"
+MR_Word MR_CALL 
+query__default_box_tables_0_f_0(void);
+
+#line 347 "query.m"
+MR_Word MR_CALL 
+query__all_fields_0_f_0(void);
+
+#line 346 "query.m"
+MR_Word MR_CALL 
+query__default_fields_1_f_0(
+#line 346 "query.m"
+  MR_Word query__param_1);
+
+#line 344 "query.m"
+MR_Word MR_CALL 
+query__default_preferences_1_f_0(
+#line 344 "query.m"
+  MR_Word query__param_1);
+
+#line 342 "query.m"
+MR_Word MR_CALL 
+query__solidify_preference_2_f_0(
+#line 342 "query.m"
+  MR_Word query__param_1,
+#line 342 "query.m"
+  MR_Word query__param_2);
+
+#line 340 "query.m"
+MR_Word MR_CALL 
+query__default_command_0_f_0(void);
+
+#line 338 "query.m"
+MR_Word MR_CALL 
+query__should_display_times_1_f_0(
+#line 338 "query.m"
+  MR_Word query__param_1);
+
+#line 68 "query.m"
+MR_Word MR_CALL 
+query__string_to_maybe_pref_1_f_0(
+#line 68 "query.m"
+  MR_String query__param_1);
+
+#line 66 "query.m"
+MR_Word MR_CALL 
+query__string_to_maybe_cmd_1_f_0(
+#line 66 "query.m"
+  MR_String query__param_1);
+
+#line 64 "query.m"
+MR_Word MR_CALL 
+query__string_to_maybe_query_1_f_0(
+#line 64 "query.m"
+  MR_String query__param_1);
+
+#line 62 "query.m"
+MR_String MR_CALL 
+query__query_to_string_1_f_0(
+#line 62 "query.m"
+  MR_Word query__param_1);
+
+#line 39 "query.m"
+void MR_CALL 
+query__try_exec_6_p_0(
+#line 39 "query.m"
+  MR_Word query__param_1,
+#line 39 "query.m"
+  MR_Word query__param_2,
+#line 39 "query.m"
+  MR_Word query__param_3,
+#line 39 "query.m"
+  MR_String * query__param_4);
+
+void mercury__query__init(void);
+void mercury__query__init_type_tables(void);
+void mercury__query__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_query */
+
+/* :- end_interface query. */

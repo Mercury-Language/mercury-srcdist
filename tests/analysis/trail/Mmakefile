@@ -1,0 +1,24 @@
+#-----------------------------------------------------------------------------#
+
+THIS_DIR = analysis/trail
+
+# Delete options which are incompatible with --intermodule-analysis.
+# These are currently set for nightly tests. 
+override EXTRA_MCFLAGS := $(patsubst --intermodule-opt%,,$(EXTRA_MCFLAGS))
+override EXTRA_MCFLAGS := $(patsubst --transitive-%,,$(EXTRA_MCFLAGS))
+
+#-----------------------------------------------------------------------------#
+
+SUBDIRS=
+TESTS=trail_m1-nodepend
+TESTS_DIR=../..
+include $(TESTS_DIR)/Mmake.common
+
+trail_m1.runtest:
+	MC=$(MC) ./trail_runtest.sh
+
+realclean_local:
+	$(RM) trail_m1.m
+	$(RM) -r Mercury
+
+#-----------------------------------------------------------------------------#

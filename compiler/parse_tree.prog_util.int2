@@ -1,0 +1,18 @@
+:- module (parse_tree.prog_util).
+:- interface.
+:- import_module list.
+:- import_module maybe.
+:- import_module term.
+:- import_module varset.
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- type maybe_modes == maybe.maybe(list.list(parse_tree.prog_data.mer_mode)).
+:- type new_pred_id
+	--->	newpred_counter(int, int)
+	;	newpred_type_subst(parse_tree.prog_data.tvarset, parse_tree.prog_data.type_subst)
+	;	newpred_unused_args(list.list(int))
+	;	newpred_parallel_args(list.list(int))
+	;	newpred_parallel_loop_control 
+	;	newpred_structure_reuse(int, list.list(int))
+	;	newpred_distance_granularity(int).

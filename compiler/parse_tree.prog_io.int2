@@ -1,0 +1,21 @@
+:- module (parse_tree.prog_io).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module term.
+:- import_module varset.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (libs.timestamp).
+:- import_module (mdbcomp.prim_data).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_io_util).
+:- import_module (parse_tree.prog_item).
+:- type maybe_return_timestamp
+	--->	do_return_timestamp 
+	;	do_not_return_timestamp .
+:- type module_error
+	--->	no_module_errors 
+	;	some_module_errors 
+	;	fatal_module_errors .

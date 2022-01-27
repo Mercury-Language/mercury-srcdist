@@ -1,0 +1,527 @@
+/*
+** Automatically generated from `hlds_out_util.m'
+** by the Mercury compiler,
+** version DEV, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.hlds_out.hlds_out_util. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__hlds_out__hlds_out_util
+#define MR_HEADER_GUARD_hlds__hlds_out__hlds_out_util
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__HLDS_OUT__HLDS_OUT_UTIL_DECL_GUARD
+#define HLDS__HLDS_OUT__HLDS_OUT_UTIL_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.hlds_out.mih"
+
+#endif
+
+
+
+
+#line 43 "hlds.hlds_out.hlds_out_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_out__hlds_out_util__hlds__hlds_out__hlds_out_util__type_ctor_info_hlds_out_info_0;
+
+#line 46 "hlds.hlds_out.hlds_out_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_out__hlds_out_util__hlds__hlds_out__hlds_out_util__type_ctor_info_is_first_0;
+
+#line 49 "hlds.hlds_out.hlds_out_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_out__hlds_out_util__hlds__hlds_out__hlds_out_util__type_ctor_info_is_last_0;
+
+#line 52 "hlds.hlds_out.hlds_out_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_out__hlds_out_util__hlds__hlds_out__hlds_out_util__type_ctor_info_maybe_qualify_cons_id_0;
+
+#line 55 "hlds.hlds_out.hlds_out_util.mih.tmp"
+extern const MR_TypeCtorInfo_Struct hlds__hlds_out__hlds_out_util__hlds__hlds_out__hlds_out_util__type_ctor_info_output_lang_0;
+
+#line 59 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util____Compare____output_lang_0_0(
+#line 59 "hlds_out_util.m"
+  MR_Word * hlds__hlds_out__hlds_out_util__param_1,
+#line 59 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 59 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3);
+
+#line 59 "hlds_out_util.m"
+MR_bool MR_CALL 
+hlds__hlds_out__hlds_out_util____Unify____output_lang_0_0(
+#line 59 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 59 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2);
+
+#line 164 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util____Compare____maybe_qualify_cons_id_0_0(
+#line 164 "hlds_out_util.m"
+  MR_Word * hlds__hlds_out__hlds_out_util__param_1,
+#line 164 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 164 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3);
+
+#line 164 "hlds_out_util.m"
+MR_bool MR_CALL 
+hlds__hlds_out__hlds_out_util____Unify____maybe_qualify_cons_id_0_0(
+#line 164 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 164 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2);
+
+#line 53 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util____Compare____is_last_0_0(
+#line 53 "hlds_out_util.m"
+  MR_Word * hlds__hlds_out__hlds_out_util__param_1,
+#line 53 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 53 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3);
+
+#line 53 "hlds_out_util.m"
+MR_bool MR_CALL 
+hlds__hlds_out__hlds_out_util____Unify____is_last_0_0(
+#line 53 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 53 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2);
+
+#line 49 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util____Compare____is_first_0_0(
+#line 49 "hlds_out_util.m"
+  MR_Word * hlds__hlds_out__hlds_out_util__param_1,
+#line 49 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 49 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3);
+
+#line 49 "hlds_out_util.m"
+MR_bool MR_CALL 
+hlds__hlds_out__hlds_out_util____Unify____is_first_0_0(
+#line 49 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 49 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2);
+
+#line 36 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util____Compare____hlds_out_info_0_0(
+#line 36 "hlds_out_util.m"
+  MR_Word * hlds__hlds_out__hlds_out_util__param_1,
+#line 36 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 36 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3);
+
+#line 36 "hlds_out_util.m"
+MR_bool MR_CALL 
+hlds__hlds_out__hlds_out_util____Unify____hlds_out_info_0_0(
+#line 36 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 36 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2);
+
+#line 206 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_indent_3_p_0(
+#line 206 "hlds_out_util.m"
+  MR_Integer hlds__hlds_out__hlds_out_util__param_1);
+
+#line 200 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_intlist_3_p_0(
+#line 200 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1);
+
+#line 193 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__var_mode_to_string_4_f_0(
+#line 193 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 193 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 193 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 193 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4);
+
+#line 191 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_var_mode_6_p_0(
+#line 191 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 191 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 191 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 191 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4);
+
+#line 188 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__var_modes_to_string_5_f_0(
+#line 188 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 188 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 188 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 188 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4,
+#line 188 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_5);
+
+#line 186 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_var_modes_7_p_0(
+#line 186 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 186 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 186 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 186 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4,
+#line 186 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_5);
+
+#line 176 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_constraint_proofs_6_p_0(
+#line 176 "hlds_out_util.m"
+  MR_Integer hlds__hlds_out__hlds_out_util__param_1,
+#line 176 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 176 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 176 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4);
+
+#line 171 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__cons_id_and_vars_or_arity_to_string_4_f_0(
+#line 171 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 171 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 171 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 171 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4);
+
+#line 168 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_cons_id_and_vars_or_arity_6_p_0(
+#line 168 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 168 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 168 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 168 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4);
+
+#line 162 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__cons_id_and_arity_to_string_1_f_0(
+#line 162 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1);
+
+#line 161 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_cons_id_and_arity_3_p_0(
+#line 161 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1);
+
+#line 158 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__functor_cons_id_to_string_5_f_0(
+#line 158 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 158 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 158 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 158 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4,
+#line 158 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_5);
+
+#line 156 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_functor_cons_id_7_p_0(
+#line 156 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 156 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 156 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 156 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4,
+#line 156 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_5);
+
+#line 149 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__qualified_functor_with_term_args_to_string_5_f_0(
+#line 149 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 149 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 149 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 149 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4,
+#line 149 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_5);
+
+#line 147 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_qualified_functor_with_term_args_7_p_0(
+#line 147 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 147 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 147 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 147 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4,
+#line 147 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_5);
+
+#line 144 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__qualified_functor_to_string_5_f_0(
+#line 144 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 144 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 144 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 144 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4,
+#line 144 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_5);
+
+#line 142 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_qualified_functor_7_p_0(
+#line 142 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 142 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 142 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 142 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4,
+#line 142 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_5);
+
+#line 139 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__functor_to_string_maybe_needs_quotes_5_f_0(
+#line 139 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 139 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 139 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 139 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4,
+#line 139 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_5);
+
+#line 137 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_functor_maybe_needs_quotes_7_p_0(
+#line 137 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 137 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 137 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 137 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4,
+#line 137 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_5);
+
+#line 135 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__functor_to_string_4_f_0(
+#line 135 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 135 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 135 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 135 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4);
+
+#line 133 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_functor_6_p_0(
+#line 133 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 133 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 133 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 133 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4);
+
+#line 125 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__call_arg_id_to_string_3_f_0(
+#line 125 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 125 "hlds_out_util.m"
+  MR_Integer hlds__hlds_out__hlds_out_util__param_2,
+#line 125 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3);
+
+#line 118 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__cast_type_to_string_1_f_0(
+#line 118 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1);
+
+#line 116 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__call_id_to_string_1_f_0(
+#line 116 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1);
+
+#line 110 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__unify_context_first_to_pieces_5_p_0(
+#line 110 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 110 "hlds_out_util.m"
+  MR_Word * hlds__hlds_out__hlds_out_util__param_2,
+#line 110 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_3,
+#line 110 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_4,
+#line 110 "hlds_out_util.m"
+  MR_Word * hlds__hlds_out__hlds_out_util__param_5);
+
+#line 97 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__unify_context_to_pieces_3_p_0(
+#line 97 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 97 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 97 "hlds_out_util.m"
+  MR_Word * hlds__hlds_out__hlds_out_util__param_3);
+
+#line 88 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__pred_proc_id_pair_to_string_3_f_0(
+#line 88 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 88 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 88 "hlds_out_util.m"
+  MR_Integer hlds__hlds_out__hlds_out_util__param_3);
+
+#line 86 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_pred_proc_id_pair_5_p_0(
+#line 86 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 86 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2,
+#line 86 "hlds_out_util.m"
+  MR_Integer hlds__hlds_out__hlds_out_util__param_3);
+
+#line 84 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__pred_proc_id_to_string_2_f_0(
+#line 84 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 84 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2);
+
+#line 82 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_pred_proc_id_4_p_0(
+#line 82 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 82 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2);
+
+#line 80 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__pred_id_to_string_2_f_0(
+#line 80 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 80 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2);
+
+#line 79 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_pred_id_4_p_0(
+#line 79 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1,
+#line 79 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_2);
+
+#line 68 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_class_id_3_p_0(
+#line 68 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1);
+
+#line 66 "hlds_out_util.m"
+MR_String MR_CALL 
+hlds__hlds_out__hlds_out_util__type_ctor_to_string_1_f_0(
+#line 66 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1);
+
+#line 65 "hlds_out_util.m"
+void MR_CALL 
+hlds__hlds_out__hlds_out_util__write_type_ctor_3_p_0(
+#line 65 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1);
+
+#line 45 "hlds_out_util.m"
+MR_Word MR_CALL 
+hlds__hlds_out__hlds_out_util__init_hlds_out_info_1_f_0(
+#line 45 "hlds_out_util.m"
+  MR_Word hlds__hlds_out__hlds_out_util__param_1);
+
+void mercury__hlds__hlds_out__hlds_out_util__init(void);
+void mercury__hlds__hlds_out__hlds_out_util__init_type_tables(void);
+void mercury__hlds__hlds_out__hlds_out_util__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.hlds_out.hlds_out_util */
+
+/* :- end_interface hlds.hlds_out.hlds_out_util. */

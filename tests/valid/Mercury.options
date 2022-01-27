@@ -1,0 +1,161 @@
+# some regression tests only failed with particular options enabled
+# (please keep these lists sorted)
+
+# When compiling using the installed libraries, setting GRADEFLAGS may
+# may cause mgnuc to look for the `.mih' files for a non-installed grade.
+# test_mercury runs the tests using the installed libraries, so GRADEFLAGS
+# won't be set, but test_mercury runs the tests in at least one `.tr' grade
+# on all machines, so it isn't a problem.
+GRADEFLAGS-complex_failure	= $(GRADEFLAGS_TRAIL)
+GRADEFLAGS-semi_fail_in_non_ite	= $(GRADEFLAGS_TRAIL)
+
+# The `agc*' tests currently aren't run in grades for which `.mih'
+# files are created, and no header files are generated in `il' grades,
+# so it's OK to set GRADEFLAGS for these tests.
+GRADEFLAGS-agc_graph		= --gc accurate
+GRADEFLAGS-agc_ho_pred		= --gc accurate
+GRADEFLAGS-agc_ite		= --gc accurate
+GRADEFLAGS-agc_unbound_typevars	= --gc accurate
+GRADEFLAGS-agc_unbound_typevars2 = --gc accurate
+GRADEFLAGS-agc_unused_in	= --gc accurate
+GRADEFLAGS-csharp_hello		=  --grade il
+GRADEFLAGS-foreign_type_spec	=  --grade il
+GRADEFLAGS-foreign_type_spec.foreign_type = --grade il
+
+# The bug that this test looks for exists only in MLDS grades without any gc.
+GRADEFLAGS-bug109		= --grade hlc
+
+# The following test cases check for bugs that can only occur in the
+# presence of automatic solver type intialisation.
+MCFLAGS-fz_conf                 = --solver-type-auto-init
+MCFLAGS-solver_type_bug_2       = --solver-type-auto-init
+MCFLAGS-solver_type_mutable_bug = --solver-type-auto-init
+
+MCFLAGS-ambig_confuse1		= --type-check-constraints
+MCFLAGS-ambig_confuse2		= --type-check-constraints
+MCFLAGS-ambig_confuse3		= --type-check-constraints
+MCFLAGS-ambig_functor		= --type-check-constraints
+MCFLAGS-ambig_high_level	= --type-check-constraints
+MCFLAGS-ambig_pred		= --type-check-constraints
+MCFLAGS-ambig_types		= --type-check-constraints
+MCFLAGS-ambig_stress_test	= --type-check-constraints
+MCFLAGS-builtin_false		= --intermodule-optimization
+MCFLAGS-bug51			= -O3
+MCFLAGS-bug85			= -O0 --deforestation
+MCFLAGS-bug100                  = --halt-at-warn
+MCFLAGS-bug128                  = -O5 --loop-invariants
+MCFLAGS-bug134                  = --no-static-ground-terms --no-optimize-dead-procs
+MCFLAGS-bug142                  = --optimise-higher-order --inline-single-use
+MCFLAGS-bug159                  = -w
+MCFLAGS-bug180                  = --profile-optimized --allow-stubs --no-warn-stubs
+MCFLAGS-bug271                  = --allow-stubs --no-warn-stubs
+MCFLAGS-bug300                  = --optimize-constructor-last-call
+MCFLAGS-compl_unify_bug		= -O3
+MCFLAGS-constraint_prop_bug	= -O0 --common-struct --local-constraint-propagation
+MCFLAGS-csharp_hello		= --no-intermodule-optimization
+MCFLAGS-deforest_bug		= -O3
+MCFLAGS-deforest_loop		= -O3 --intermodule-optimization
+MCFLAGS-deforest_rerun_det	= -O3 --check-termination
+MCFLAGS-double_vn		= -O4
+MCFLAGS-equiv_solns_ia		= --inlining --local-constraint-propagation
+MCFLAGS-exists_cast_bug		= --trace rep -O0 --optimize-saved-vars-const
+MCFLAGS-explicit_quant		= --halt-at-warn
+MCFLAGS-func_class		= --no-warn-nothing-exported
+MCFLAGS-foreign_underscore_var	= --halt-at-warn
+MCFLAGS-foreign_type_spec       = --no-intermodule-optimization
+MCFLAGS-foreign_type_spec.foreign_type = --no-intermodule-optimization
+MCFLAGS-fzn_debug_abort		= --trace rep
+MCFLAGS-higher_order4		= -O3
+MCFLAGS-higher_order_implied_mode = -O-1
+MCFLAGS-ho_and_type_spec_bug = -O4
+MCFLAGS-ho_and_type_spec_bug2 = -O3 --no-inlining
+MCFLAGS-impure_detism           = -O5 --deep-profiling --no-intermodule-optimization
+MCFLAGS-inhibit_warn_test       = --inhibit-warnings --halt-at-warn
+MCFLAGS-instmap_generic_failure	= --local-constraint-propagation
+MCFLAGS-intermod_bug_nested	= --intermodule-optimization
+MCFLAGS-intermod_bug_nested.parser	= --intermodule-optimization
+MCFLAGS-intermod_dcg_bug2	= --intermodule-optimization
+MCFLAGS-intermod_dcg_bug	= --intermodule-optimization
+MCFLAGS-intermod_impure2	= --intermodule-optimization
+MCFLAGS-intermod_impure		= --intermodule-optimization
+MCFLAGS-intermod_lambda2	= --intermodule-optimization
+MCFLAGS-intermod_lambda		= --intermodule-optimization
+MCFLAGS-intermod_nested2	= --intermodule-optimization
+MCFLAGS-intermod_nested		= --intermodule-optimization
+MCFLAGS-intermod_nested_module2	= --intermodule-optimization
+MCFLAGS-intermod_nested_module_bug2 = --intermodule-optimization
+MCFLAGS-intermod_nested_module_bug = --intermodule-optimization
+MCFLAGS-intermod_nested_module	= --intermodule-optimization
+MCFLAGS-intermod_nested_uniq2	= --intermodule-optimization
+MCFLAGS-intermod_nested_uniq	= --intermodule-optimization
+MCFLAGS-intermod_pragma_import2	= --intermodule-optimization
+MCFLAGS-intermod_pragma_import	= --intermodule-optimization
+MCFLAGS-intermod_quote2		= --intermodule-optimization
+MCFLAGS-intermod_quote		= --intermodule-optimization
+MCFLAGS-intermod_record2	= --intermodule-optimization
+MCFLAGS-intermod_record		= --intermodule-optimization
+MCFLAGS-intermod_test2		= --intermodule-optimization
+MCFLAGS-intermod_test		= --intermodule-optimization
+MCFLAGS-intermod_typeclass2	= --intermodule-optimization
+MCFLAGS-intermod_typeclass	= --intermodule-optimization
+MCFLAGS-intermod_typeclass_exist = --intermodule-optimization
+MCFLAGS-intermod_type_spec_2	= --intermodule-optimization
+MCFLAGS-intermod_type_spec	= --intermodule-optimization
+MCFLAGS-intermod_ua_type_spec	= --intermod-unused-args
+MCFLAGS-intermod_user_equality2	= --intermodule-optimization
+MCFLAGS-intermod_user_equality	= --intermodule-optimization
+MCFLAGS-intermod_user_equality_nested2	= --intermodule-optimization
+MCFLAGS-intermod_user_equality_nested	= --intermodule-optimization
+MCFLAGS-intermod_user_sharing	= --intermodule-optimization
+MCFLAGS-intermod_user_sharing_2	= --intermodule-optimization
+MCFLAGS-lambda_inference	= --infer-all
+MCFLAGS-liveness_ite		= --no-intermodule-optimization --grade none --trace shallow
+MCFLAGS-livevals_seq		= -O5 --opt-space
+MCFLAGS-livevars_shallow	= --no-intermodule-optimization --grade none --trace shallow
+MCFLAGS-livevars_shallow2	= --no-intermodule-optimization --grade none --trace shallow
+MCFLAGS-lco_term		= --optimize-constructor-last-call
+MCFLAGS-loop_inv_bug		= --common-struct --loop-invariants
+MCFLAGS-mark_static_bug		= --lookup-switch-size 1
+MCFLAGS-mc_bag			= --prop-mode-constraints
+MCFLAGS-mc_extra_nonlocals	= --prop-mode-constraints
+MCFLAGS-mc_graph		= --prop-mode-constraints
+MCFLAGS-mc_hhf_nonlocals_bug	= --prop-mode-constraints
+MCFLAGS-mc_implied_modes	= --prop-mode-constraints
+MCFLAGS-middle_rec_labels	= --middle-rec
+MCFLAGS-mostly_uniq_mode_inf	= --infer-all
+MCFLAGS-mpj6			= --infer-all
+MCFLAGS-neg_erroneous		= -O3
+MCFLAGS-no_warn_obsolete	= --no-warn-obsolete
+MCFLAGS-no_warn_unresolved_poly = --no-warn-unresolved-polymorphism
+MCFLAGS-opt_det_warn            = --intermodule-optimization --halt-at-warn
+MCFLAGS-opt_det_warn2		= --intermodule-optimization --halt-at-warn --no-warn-inferred-erroneous
+MCFLAGS-par_dupelim		= --optimize-dups
+MCFLAGS-par_saved_const		= -O3 --optimize-saved-vars-const
+MCFLAGS-pred_with_no_modes	= --infer-all
+MCFLAGS-quantifier_warning	= --halt-at-warn
+MCFLAGS-reuse_static		= --ctgc --deforestation
+MCFLAGS-reuse_static2		= --structure-reuse --loop-invariants
+MCFLAGS-sharing_exist		= --ctgc --structure-sharing-widening 1
+MCFLAGS-sharing_loop		= --ctgc --structure-sharing-widening 8
+MCFLAGS-sharing_loop2		= --ctgc --structure-sharing-widening 10
+MCFLAGS-sharing_loop3		= --ctgc --structure-sharing-widening 10
+MCFLAGS-simplify_bug2		= -O3
+MCFLAGS-simplify_bug		= -O-1
+MCFLAGS-solver_type_bug		= --halt-at-warn
+MCFLAGS-solv			= --halt-at-warn
+MCFLAGS-spurious_purity_warning	= --halt-at-warn
+MCFLAGS-stack_opt_simplify	= --optimize-saved-vars
+MCFLAGS-table_no_attr           = --structure-sharing
+MCFLAGS-tci_spec_varmap         = --deforestation --type-specialisation
+MCFLAGS-time_yaowl		= --allow-stubs
+MCFLAGS-tuple_eqv               = --smart-recompilation
+MCFLAGS-two_way_unif		= -O-1
+MCFLAGS-typeclass_det_warning	= --halt-at-warn
+MCFLAGS-type_inf_ambig_test	= --infer-all
+MCFLAGS-unify_typeinfo_bug	= -O3 --no-special-preds
+MCFLAGS-uniq_mode_inf_bug	= --infer-all
+MCFLAGS-untuple_bug		= -O0 --untuple --trace rep --trace-optimized
+MCFLAGS-vn_float		= -O5
+MCFLAGS-zero_arity		= --infer-modes
+MGNUCFLAGS-reg_bug		= --no-ansi
+MCFLAGS-reg_bug			= --no-ansi-c

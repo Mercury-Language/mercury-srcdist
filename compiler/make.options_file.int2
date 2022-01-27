@@ -1,0 +1,15 @@
+:- module (make.options_file).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (mdbcomp.prim_data).
+:- type options_variables.
+:- implementation.
+:- import_module char.
+:- import_module map.
+:- type found_options_file_error
+	--->	found_options_file_error .
+:- type options_variable == string.
+:- type options_variable_value.
+:- type options_variables == map.map(make.options_file.options_variable, make.options_file.options_variable_value).

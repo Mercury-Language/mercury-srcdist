@@ -1,0 +1,1940 @@
+/*
+** Automatically generated from `int.m'
+** by the Mercury compiler,
+** version DEV, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module int. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_int
+#define MR_HEADER_GUARD_int
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef INT_DECL_GUARD
+#define INT_DECL_GUARD
+#line 710 "int.m"
+
+    #include <limits.h>
+
+    #define ML_BITS_PER_INT     (sizeof(MR_Integer) * CHAR_BIT)
+
+#endif
+
+
+
+
+#line 46 "int.mih.tmp"
+extern const MR_BaseTypeclassInfo base_typeclass_info_enum__enum__arity1__int__arity0__[7];
+
+#line 480 "int.m"
+MR_bool MR_CALL 
+mercury__int__ClassMethod_for_enum__enum____int__arity0______enum__from_int_1_1_f_0(
+#line 480 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 480 "int.m"
+  MR_Integer * mercury__int__param_2);
+
+#line 479 "int.m"
+MR_Integer MR_CALL 
+mercury__int__ClassMethod_for_enum__enum____int__arity0______enum__to_int_1_1_f_0(
+#line 479 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 528 "int.m"
+MR_bool MR_CALL 
+mercury__int__int_domain_checks_0_p_0(void);
+
+#line 465 "int.m"
+MR_Integer MR_CALL 
+mercury__int__rem_bits_per_int_1_f_0(
+#line 465 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 458 "int.m"
+MR_Integer MR_CALL 
+mercury__int__times_bits_per_int_1_f_0(
+#line 458 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 454 "int.m"
+MR_Integer MR_CALL 
+mercury__int__quot_bits_per_int_1_f_0(
+#line 454 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 447 "int.m"
+MR_Integer MR_CALL 
+mercury__int__floor_to_multiple_of_bits_per_int_1_f_0(
+#line 447 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 415 "int.m"
+MR_Word MR_CALL 
+mercury__int__int_to_doc_1_f_0(
+#line 415 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 411 "int.m"
+void MR_CALL 
+mercury__int__nondet_int_in_range_3_p_0(
+#line 411 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 411 "int.m"
+  MR_Integer mercury__int__param_2,
+#line 411 "int.m"
+  MR_Integer * mercury__int__param_3,
+#line 411 "int.m"
+  MR_Cont mercury__int__param_4,
+#line 411 "int.m"
+  void * mercury__int__param_5);
+
+#line 404 "int.m"
+void MR_CALL 
+mercury__int__fold_down3_9_p_9(
+#line 404 "int.m"
+  MR_Word mercury__int__param_1,
+#line 404 "int.m"
+  MR_Word mercury__int__param_2,
+#line 404 "int.m"
+  MR_Word mercury__int__param_3,
+#line 404 "int.m"
+  MR_Word mercury__int__param_4,
+#line 404 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 404 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 404 "int.m"
+  MR_Box mercury__int__param_7,
+#line 404 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 404 "int.m"
+  MR_Box mercury__int__param_9,
+#line 404 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 404 "int.m"
+  MR_Box mercury__int__param_11,
+#line 404 "int.m"
+  MR_Box * mercury__int__param_12,
+#line 404 "int.m"
+  MR_Cont mercury__int__param_13,
+#line 404 "int.m"
+  void * mercury__int__param_14);
+
+#line 402 "int.m"
+void MR_CALL 
+mercury__int__fold_down3_9_p_8(
+#line 402 "int.m"
+  MR_Word mercury__int__param_1,
+#line 402 "int.m"
+  MR_Word mercury__int__param_2,
+#line 402 "int.m"
+  MR_Word mercury__int__param_3,
+#line 402 "int.m"
+  MR_Word mercury__int__param_4,
+#line 402 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 402 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 402 "int.m"
+  MR_Box mercury__int__param_7,
+#line 402 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 402 "int.m"
+  MR_Box mercury__int__param_9,
+#line 402 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 402 "int.m"
+  MR_Box mercury__int__param_11,
+#line 402 "int.m"
+  MR_Box * mercury__int__param_12,
+#line 402 "int.m"
+  MR_Cont mercury__int__param_13,
+#line 402 "int.m"
+  void * mercury__int__param_14);
+
+#line 400 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_down3_9_p_7(
+#line 400 "int.m"
+  MR_Word mercury__int__param_1,
+#line 400 "int.m"
+  MR_Word mercury__int__param_2,
+#line 400 "int.m"
+  MR_Word mercury__int__param_3,
+#line 400 "int.m"
+  MR_Word mercury__int__param_4,
+#line 400 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 400 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 400 "int.m"
+  MR_Box mercury__int__param_7,
+#line 400 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 400 "int.m"
+  MR_Box mercury__int__param_9,
+#line 400 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 400 "int.m"
+  MR_Box mercury__int__param_11,
+#line 400 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 398 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_down3_9_p_6(
+#line 398 "int.m"
+  MR_Word mercury__int__param_1,
+#line 398 "int.m"
+  MR_Word mercury__int__param_2,
+#line 398 "int.m"
+  MR_Word mercury__int__param_3,
+#line 398 "int.m"
+  MR_Word mercury__int__param_4,
+#line 398 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 398 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 398 "int.m"
+  MR_Box mercury__int__param_7,
+#line 398 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 398 "int.m"
+  MR_Box mercury__int__param_9,
+#line 398 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 398 "int.m"
+  MR_Box mercury__int__param_11,
+#line 398 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 396 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_down3_9_p_5(
+#line 396 "int.m"
+  MR_Word mercury__int__param_1,
+#line 396 "int.m"
+  MR_Word mercury__int__param_2,
+#line 396 "int.m"
+  MR_Word mercury__int__param_3,
+#line 396 "int.m"
+  MR_Word mercury__int__param_4,
+#line 396 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 396 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 396 "int.m"
+  MR_Box mercury__int__param_7,
+#line 396 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 396 "int.m"
+  MR_Box mercury__int__param_9,
+#line 396 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 396 "int.m"
+  MR_Box mercury__int__param_11,
+#line 396 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 394 "int.m"
+void MR_CALL 
+mercury__int__fold_down3_9_p_4(
+#line 394 "int.m"
+  MR_Word mercury__int__param_1,
+#line 394 "int.m"
+  MR_Word mercury__int__param_2,
+#line 394 "int.m"
+  MR_Word mercury__int__param_3,
+#line 394 "int.m"
+  MR_Word mercury__int__param_4,
+#line 394 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 394 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 394 "int.m"
+  MR_Box mercury__int__param_7,
+#line 394 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 394 "int.m"
+  MR_Box mercury__int__param_9,
+#line 394 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 394 "int.m"
+  MR_Box mercury__int__param_11,
+#line 394 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 392 "int.m"
+void MR_CALL 
+mercury__int__fold_down3_9_p_3(
+#line 392 "int.m"
+  MR_Word mercury__int__param_1,
+#line 392 "int.m"
+  MR_Word mercury__int__param_2,
+#line 392 "int.m"
+  MR_Word mercury__int__param_3,
+#line 392 "int.m"
+  MR_Word mercury__int__param_4,
+#line 392 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 392 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 392 "int.m"
+  MR_Box mercury__int__param_7,
+#line 392 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 392 "int.m"
+  MR_Box mercury__int__param_9,
+#line 392 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 392 "int.m"
+  MR_Box mercury__int__param_11,
+#line 392 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 390 "int.m"
+void MR_CALL 
+mercury__int__fold_down3_9_p_2(
+#line 390 "int.m"
+  MR_Word mercury__int__param_1,
+#line 390 "int.m"
+  MR_Word mercury__int__param_2,
+#line 390 "int.m"
+  MR_Word mercury__int__param_3,
+#line 390 "int.m"
+  MR_Word mercury__int__param_4,
+#line 390 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 390 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 390 "int.m"
+  MR_Box mercury__int__param_7,
+#line 390 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 390 "int.m"
+  MR_Box mercury__int__param_9,
+#line 390 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 390 "int.m"
+  MR_Box mercury__int__param_11,
+#line 390 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 388 "int.m"
+void MR_CALL 
+mercury__int__fold_down3_9_p_1(
+#line 388 "int.m"
+  MR_Word mercury__int__param_1,
+#line 388 "int.m"
+  MR_Word mercury__int__param_2,
+#line 388 "int.m"
+  MR_Word mercury__int__param_3,
+#line 388 "int.m"
+  MR_Word mercury__int__param_4,
+#line 388 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 388 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 388 "int.m"
+  MR_Box mercury__int__param_7,
+#line 388 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 388 "int.m"
+  MR_Box mercury__int__param_9,
+#line 388 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 388 "int.m"
+  MR_Box mercury__int__param_11,
+#line 388 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 386 "int.m"
+void MR_CALL 
+mercury__int__fold_down3_9_p_0(
+#line 386 "int.m"
+  MR_Word mercury__int__param_1,
+#line 386 "int.m"
+  MR_Word mercury__int__param_2,
+#line 386 "int.m"
+  MR_Word mercury__int__param_3,
+#line 386 "int.m"
+  MR_Word mercury__int__param_4,
+#line 386 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 386 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 386 "int.m"
+  MR_Box mercury__int__param_7,
+#line 386 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 386 "int.m"
+  MR_Box mercury__int__param_9,
+#line 386 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 386 "int.m"
+  MR_Box mercury__int__param_11,
+#line 386 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 377 "int.m"
+void MR_CALL 
+mercury__int__fold_up3_9_p_9(
+#line 377 "int.m"
+  MR_Word mercury__int__param_1,
+#line 377 "int.m"
+  MR_Word mercury__int__param_2,
+#line 377 "int.m"
+  MR_Word mercury__int__param_3,
+#line 377 "int.m"
+  MR_Word mercury__int__param_4,
+#line 377 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 377 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 377 "int.m"
+  MR_Box mercury__int__param_7,
+#line 377 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 377 "int.m"
+  MR_Box mercury__int__param_9,
+#line 377 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 377 "int.m"
+  MR_Box mercury__int__param_11,
+#line 377 "int.m"
+  MR_Box * mercury__int__param_12,
+#line 377 "int.m"
+  MR_Cont mercury__int__param_13,
+#line 377 "int.m"
+  void * mercury__int__param_14);
+
+#line 375 "int.m"
+void MR_CALL 
+mercury__int__fold_up3_9_p_8(
+#line 375 "int.m"
+  MR_Word mercury__int__param_1,
+#line 375 "int.m"
+  MR_Word mercury__int__param_2,
+#line 375 "int.m"
+  MR_Word mercury__int__param_3,
+#line 375 "int.m"
+  MR_Word mercury__int__param_4,
+#line 375 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 375 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 375 "int.m"
+  MR_Box mercury__int__param_7,
+#line 375 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 375 "int.m"
+  MR_Box mercury__int__param_9,
+#line 375 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 375 "int.m"
+  MR_Box mercury__int__param_11,
+#line 375 "int.m"
+  MR_Box * mercury__int__param_12,
+#line 375 "int.m"
+  MR_Cont mercury__int__param_13,
+#line 375 "int.m"
+  void * mercury__int__param_14);
+
+#line 373 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_up3_9_p_7(
+#line 373 "int.m"
+  MR_Word mercury__int__param_1,
+#line 373 "int.m"
+  MR_Word mercury__int__param_2,
+#line 373 "int.m"
+  MR_Word mercury__int__param_3,
+#line 373 "int.m"
+  MR_Word mercury__int__param_4,
+#line 373 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 373 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 373 "int.m"
+  MR_Box mercury__int__param_7,
+#line 373 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 373 "int.m"
+  MR_Box mercury__int__param_9,
+#line 373 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 373 "int.m"
+  MR_Box mercury__int__param_11,
+#line 373 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 371 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_up3_9_p_6(
+#line 371 "int.m"
+  MR_Word mercury__int__param_1,
+#line 371 "int.m"
+  MR_Word mercury__int__param_2,
+#line 371 "int.m"
+  MR_Word mercury__int__param_3,
+#line 371 "int.m"
+  MR_Word mercury__int__param_4,
+#line 371 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 371 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 371 "int.m"
+  MR_Box mercury__int__param_7,
+#line 371 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 371 "int.m"
+  MR_Box mercury__int__param_9,
+#line 371 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 371 "int.m"
+  MR_Box mercury__int__param_11,
+#line 371 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 369 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_up3_9_p_5(
+#line 369 "int.m"
+  MR_Word mercury__int__param_1,
+#line 369 "int.m"
+  MR_Word mercury__int__param_2,
+#line 369 "int.m"
+  MR_Word mercury__int__param_3,
+#line 369 "int.m"
+  MR_Word mercury__int__param_4,
+#line 369 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 369 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 369 "int.m"
+  MR_Box mercury__int__param_7,
+#line 369 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 369 "int.m"
+  MR_Box mercury__int__param_9,
+#line 369 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 369 "int.m"
+  MR_Box mercury__int__param_11,
+#line 369 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 367 "int.m"
+void MR_CALL 
+mercury__int__fold_up3_9_p_4(
+#line 367 "int.m"
+  MR_Word mercury__int__param_1,
+#line 367 "int.m"
+  MR_Word mercury__int__param_2,
+#line 367 "int.m"
+  MR_Word mercury__int__param_3,
+#line 367 "int.m"
+  MR_Word mercury__int__param_4,
+#line 367 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 367 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 367 "int.m"
+  MR_Box mercury__int__param_7,
+#line 367 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 367 "int.m"
+  MR_Box mercury__int__param_9,
+#line 367 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 367 "int.m"
+  MR_Box mercury__int__param_11,
+#line 367 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 365 "int.m"
+void MR_CALL 
+mercury__int__fold_up3_9_p_3(
+#line 365 "int.m"
+  MR_Word mercury__int__param_1,
+#line 365 "int.m"
+  MR_Word mercury__int__param_2,
+#line 365 "int.m"
+  MR_Word mercury__int__param_3,
+#line 365 "int.m"
+  MR_Word mercury__int__param_4,
+#line 365 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 365 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 365 "int.m"
+  MR_Box mercury__int__param_7,
+#line 365 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 365 "int.m"
+  MR_Box mercury__int__param_9,
+#line 365 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 365 "int.m"
+  MR_Box mercury__int__param_11,
+#line 365 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 363 "int.m"
+void MR_CALL 
+mercury__int__fold_up3_9_p_2(
+#line 363 "int.m"
+  MR_Word mercury__int__param_1,
+#line 363 "int.m"
+  MR_Word mercury__int__param_2,
+#line 363 "int.m"
+  MR_Word mercury__int__param_3,
+#line 363 "int.m"
+  MR_Word mercury__int__param_4,
+#line 363 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 363 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 363 "int.m"
+  MR_Box mercury__int__param_7,
+#line 363 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 363 "int.m"
+  MR_Box mercury__int__param_9,
+#line 363 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 363 "int.m"
+  MR_Box mercury__int__param_11,
+#line 363 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 361 "int.m"
+void MR_CALL 
+mercury__int__fold_up3_9_p_1(
+#line 361 "int.m"
+  MR_Word mercury__int__param_1,
+#line 361 "int.m"
+  MR_Word mercury__int__param_2,
+#line 361 "int.m"
+  MR_Word mercury__int__param_3,
+#line 361 "int.m"
+  MR_Word mercury__int__param_4,
+#line 361 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 361 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 361 "int.m"
+  MR_Box mercury__int__param_7,
+#line 361 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 361 "int.m"
+  MR_Box mercury__int__param_9,
+#line 361 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 361 "int.m"
+  MR_Box mercury__int__param_11,
+#line 361 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 359 "int.m"
+void MR_CALL 
+mercury__int__fold_up3_9_p_0(
+#line 359 "int.m"
+  MR_Word mercury__int__param_1,
+#line 359 "int.m"
+  MR_Word mercury__int__param_2,
+#line 359 "int.m"
+  MR_Word mercury__int__param_3,
+#line 359 "int.m"
+  MR_Word mercury__int__param_4,
+#line 359 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 359 "int.m"
+  MR_Integer mercury__int__param_6,
+#line 359 "int.m"
+  MR_Box mercury__int__param_7,
+#line 359 "int.m"
+  MR_Box * mercury__int__param_8,
+#line 359 "int.m"
+  MR_Box mercury__int__param_9,
+#line 359 "int.m"
+  MR_Box * mercury__int__param_10,
+#line 359 "int.m"
+  MR_Box mercury__int__param_11,
+#line 359 "int.m"
+  MR_Box * mercury__int__param_12);
+
+#line 350 "int.m"
+void MR_CALL 
+mercury__int__fold_down2_7_p_8(
+#line 350 "int.m"
+  MR_Word mercury__int__param_1,
+#line 350 "int.m"
+  MR_Word mercury__int__param_2,
+#line 350 "int.m"
+  MR_Word mercury__int__param_3,
+#line 350 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 350 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 350 "int.m"
+  MR_Box mercury__int__param_6,
+#line 350 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 350 "int.m"
+  MR_Box mercury__int__param_8,
+#line 350 "int.m"
+  MR_Box * mercury__int__param_9,
+#line 350 "int.m"
+  MR_Cont mercury__int__param_10,
+#line 350 "int.m"
+  void * mercury__int__param_11);
+
+#line 348 "int.m"
+void MR_CALL 
+mercury__int__fold_down2_7_p_7(
+#line 348 "int.m"
+  MR_Word mercury__int__param_1,
+#line 348 "int.m"
+  MR_Word mercury__int__param_2,
+#line 348 "int.m"
+  MR_Word mercury__int__param_3,
+#line 348 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 348 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 348 "int.m"
+  MR_Box mercury__int__param_6,
+#line 348 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 348 "int.m"
+  MR_Box mercury__int__param_8,
+#line 348 "int.m"
+  MR_Box * mercury__int__param_9,
+#line 348 "int.m"
+  MR_Cont mercury__int__param_10,
+#line 348 "int.m"
+  void * mercury__int__param_11);
+
+#line 346 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_down2_7_p_6(
+#line 346 "int.m"
+  MR_Word mercury__int__param_1,
+#line 346 "int.m"
+  MR_Word mercury__int__param_2,
+#line 346 "int.m"
+  MR_Word mercury__int__param_3,
+#line 346 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 346 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 346 "int.m"
+  MR_Box mercury__int__param_6,
+#line 346 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 346 "int.m"
+  MR_Box mercury__int__param_8,
+#line 346 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 344 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_down2_7_p_5(
+#line 344 "int.m"
+  MR_Word mercury__int__param_1,
+#line 344 "int.m"
+  MR_Word mercury__int__param_2,
+#line 344 "int.m"
+  MR_Word mercury__int__param_3,
+#line 344 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 344 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 344 "int.m"
+  MR_Box mercury__int__param_6,
+#line 344 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 344 "int.m"
+  MR_Box mercury__int__param_8,
+#line 344 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 342 "int.m"
+void MR_CALL 
+mercury__int__fold_down2_7_p_4(
+#line 342 "int.m"
+  MR_Word mercury__int__param_1,
+#line 342 "int.m"
+  MR_Word mercury__int__param_2,
+#line 342 "int.m"
+  MR_Word mercury__int__param_3,
+#line 342 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 342 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 342 "int.m"
+  MR_Box mercury__int__param_6,
+#line 342 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 342 "int.m"
+  MR_Box mercury__int__param_8,
+#line 342 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 340 "int.m"
+void MR_CALL 
+mercury__int__fold_down2_7_p_3(
+#line 340 "int.m"
+  MR_Word mercury__int__param_1,
+#line 340 "int.m"
+  MR_Word mercury__int__param_2,
+#line 340 "int.m"
+  MR_Word mercury__int__param_3,
+#line 340 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 340 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 340 "int.m"
+  MR_Box mercury__int__param_6,
+#line 340 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 340 "int.m"
+  MR_Box mercury__int__param_8,
+#line 340 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 338 "int.m"
+void MR_CALL 
+mercury__int__fold_down2_7_p_2(
+#line 338 "int.m"
+  MR_Word mercury__int__param_1,
+#line 338 "int.m"
+  MR_Word mercury__int__param_2,
+#line 338 "int.m"
+  MR_Word mercury__int__param_3,
+#line 338 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 338 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 338 "int.m"
+  MR_Box mercury__int__param_6,
+#line 338 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 338 "int.m"
+  MR_Box mercury__int__param_8,
+#line 338 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 336 "int.m"
+void MR_CALL 
+mercury__int__fold_down2_7_p_1(
+#line 336 "int.m"
+  MR_Word mercury__int__param_1,
+#line 336 "int.m"
+  MR_Word mercury__int__param_2,
+#line 336 "int.m"
+  MR_Word mercury__int__param_3,
+#line 336 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 336 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 336 "int.m"
+  MR_Box mercury__int__param_6,
+#line 336 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 336 "int.m"
+  MR_Box mercury__int__param_8,
+#line 336 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 334 "int.m"
+void MR_CALL 
+mercury__int__fold_down2_7_p_0(
+#line 334 "int.m"
+  MR_Word mercury__int__param_1,
+#line 334 "int.m"
+  MR_Word mercury__int__param_2,
+#line 334 "int.m"
+  MR_Word mercury__int__param_3,
+#line 334 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 334 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 334 "int.m"
+  MR_Box mercury__int__param_6,
+#line 334 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 334 "int.m"
+  MR_Box mercury__int__param_8,
+#line 334 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 325 "int.m"
+void MR_CALL 
+mercury__int__fold_up2_7_p_9(
+#line 325 "int.m"
+  MR_Word mercury__int__param_1,
+#line 325 "int.m"
+  MR_Word mercury__int__param_2,
+#line 325 "int.m"
+  MR_Word mercury__int__param_3,
+#line 325 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 325 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 325 "int.m"
+  MR_Box mercury__int__param_6,
+#line 325 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 325 "int.m"
+  MR_Box mercury__int__param_8,
+#line 325 "int.m"
+  MR_Box * mercury__int__param_9,
+#line 325 "int.m"
+  MR_Cont mercury__int__param_10,
+#line 325 "int.m"
+  void * mercury__int__param_11);
+
+#line 323 "int.m"
+void MR_CALL 
+mercury__int__fold_up2_7_p_8(
+#line 323 "int.m"
+  MR_Word mercury__int__param_1,
+#line 323 "int.m"
+  MR_Word mercury__int__param_2,
+#line 323 "int.m"
+  MR_Word mercury__int__param_3,
+#line 323 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 323 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 323 "int.m"
+  MR_Box mercury__int__param_6,
+#line 323 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 323 "int.m"
+  MR_Box mercury__int__param_8,
+#line 323 "int.m"
+  MR_Box * mercury__int__param_9,
+#line 323 "int.m"
+  MR_Cont mercury__int__param_10,
+#line 323 "int.m"
+  void * mercury__int__param_11);
+
+#line 321 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_up2_7_p_7(
+#line 321 "int.m"
+  MR_Word mercury__int__param_1,
+#line 321 "int.m"
+  MR_Word mercury__int__param_2,
+#line 321 "int.m"
+  MR_Word mercury__int__param_3,
+#line 321 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 321 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 321 "int.m"
+  MR_Box mercury__int__param_6,
+#line 321 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 321 "int.m"
+  MR_Box mercury__int__param_8,
+#line 321 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 319 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_up2_7_p_6(
+#line 319 "int.m"
+  MR_Word mercury__int__param_1,
+#line 319 "int.m"
+  MR_Word mercury__int__param_2,
+#line 319 "int.m"
+  MR_Word mercury__int__param_3,
+#line 319 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 319 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 319 "int.m"
+  MR_Box mercury__int__param_6,
+#line 319 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 319 "int.m"
+  MR_Box mercury__int__param_8,
+#line 319 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 317 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_up2_7_p_5(
+#line 317 "int.m"
+  MR_Word mercury__int__param_1,
+#line 317 "int.m"
+  MR_Word mercury__int__param_2,
+#line 317 "int.m"
+  MR_Word mercury__int__param_3,
+#line 317 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 317 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 317 "int.m"
+  MR_Box mercury__int__param_6,
+#line 317 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 317 "int.m"
+  MR_Box mercury__int__param_8,
+#line 317 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 315 "int.m"
+void MR_CALL 
+mercury__int__fold_up2_7_p_4(
+#line 315 "int.m"
+  MR_Word mercury__int__param_1,
+#line 315 "int.m"
+  MR_Word mercury__int__param_2,
+#line 315 "int.m"
+  MR_Word mercury__int__param_3,
+#line 315 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 315 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 315 "int.m"
+  MR_Box mercury__int__param_6,
+#line 315 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 315 "int.m"
+  MR_Box mercury__int__param_8,
+#line 315 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 313 "int.m"
+void MR_CALL 
+mercury__int__fold_up2_7_p_3(
+#line 313 "int.m"
+  MR_Word mercury__int__param_1,
+#line 313 "int.m"
+  MR_Word mercury__int__param_2,
+#line 313 "int.m"
+  MR_Word mercury__int__param_3,
+#line 313 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 313 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 313 "int.m"
+  MR_Box mercury__int__param_6,
+#line 313 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 313 "int.m"
+  MR_Box mercury__int__param_8,
+#line 313 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 311 "int.m"
+void MR_CALL 
+mercury__int__fold_up2_7_p_2(
+#line 311 "int.m"
+  MR_Word mercury__int__param_1,
+#line 311 "int.m"
+  MR_Word mercury__int__param_2,
+#line 311 "int.m"
+  MR_Word mercury__int__param_3,
+#line 311 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 311 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 311 "int.m"
+  MR_Box mercury__int__param_6,
+#line 311 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 311 "int.m"
+  MR_Box mercury__int__param_8,
+#line 311 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 309 "int.m"
+void MR_CALL 
+mercury__int__fold_up2_7_p_1(
+#line 309 "int.m"
+  MR_Word mercury__int__param_1,
+#line 309 "int.m"
+  MR_Word mercury__int__param_2,
+#line 309 "int.m"
+  MR_Word mercury__int__param_3,
+#line 309 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 309 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 309 "int.m"
+  MR_Box mercury__int__param_6,
+#line 309 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 309 "int.m"
+  MR_Box mercury__int__param_8,
+#line 309 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 307 "int.m"
+void MR_CALL 
+mercury__int__fold_up2_7_p_0(
+#line 307 "int.m"
+  MR_Word mercury__int__param_1,
+#line 307 "int.m"
+  MR_Word mercury__int__param_2,
+#line 307 "int.m"
+  MR_Word mercury__int__param_3,
+#line 307 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 307 "int.m"
+  MR_Integer mercury__int__param_5,
+#line 307 "int.m"
+  MR_Box mercury__int__param_6,
+#line 307 "int.m"
+  MR_Box * mercury__int__param_7,
+#line 307 "int.m"
+  MR_Box mercury__int__param_8,
+#line 307 "int.m"
+  MR_Box * mercury__int__param_9);
+
+#line 299 "int.m"
+MR_Box MR_CALL 
+mercury__int__fold_down_4_f_0(
+#line 299 "int.m"
+  MR_Word mercury__int__param_1,
+#line 299 "int.m"
+  MR_Word mercury__int__param_2,
+#line 299 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 299 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 299 "int.m"
+  MR_Box mercury__int__param_5);
+
+#line 292 "int.m"
+void MR_CALL 
+mercury__int__fold_down_5_p_10(
+#line 292 "int.m"
+  MR_Word mercury__int__param_1,
+#line 292 "int.m"
+  MR_Word mercury__int__param_2,
+#line 292 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 292 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 292 "int.m"
+  MR_Box mercury__int__param_5,
+#line 292 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 290 "int.m"
+void MR_CALL 
+mercury__int__fold_down_5_p_9(
+#line 290 "int.m"
+  MR_Word mercury__int__param_1,
+#line 290 "int.m"
+  MR_Word mercury__int__param_2,
+#line 290 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 290 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 290 "int.m"
+  MR_Box mercury__int__param_5,
+#line 290 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 288 "int.m"
+void MR_CALL 
+mercury__int__fold_down_5_p_8(
+#line 288 "int.m"
+  MR_Word mercury__int__param_1,
+#line 288 "int.m"
+  MR_Word mercury__int__param_2,
+#line 288 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 288 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 288 "int.m"
+  MR_Box mercury__int__param_5,
+#line 288 "int.m"
+  MR_Box * mercury__int__param_6,
+#line 288 "int.m"
+  MR_Cont mercury__int__param_7,
+#line 288 "int.m"
+  void * mercury__int__param_8);
+
+#line 286 "int.m"
+void MR_CALL 
+mercury__int__fold_down_5_p_7(
+#line 286 "int.m"
+  MR_Word mercury__int__param_1,
+#line 286 "int.m"
+  MR_Word mercury__int__param_2,
+#line 286 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 286 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 286 "int.m"
+  MR_Box mercury__int__param_5,
+#line 286 "int.m"
+  MR_Box * mercury__int__param_6,
+#line 286 "int.m"
+  MR_Cont mercury__int__param_7,
+#line 286 "int.m"
+  void * mercury__int__param_8);
+
+#line 284 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_down_5_p_6(
+#line 284 "int.m"
+  MR_Word mercury__int__param_1,
+#line 284 "int.m"
+  MR_Word mercury__int__param_2,
+#line 284 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 284 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 284 "int.m"
+  MR_Box mercury__int__param_5,
+#line 284 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 282 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_down_5_p_5(
+#line 282 "int.m"
+  MR_Word mercury__int__param_1,
+#line 282 "int.m"
+  MR_Word mercury__int__param_2,
+#line 282 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 282 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 282 "int.m"
+  MR_Box mercury__int__param_5,
+#line 282 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 280 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_down_5_p_4(
+#line 280 "int.m"
+  MR_Word mercury__int__param_1,
+#line 280 "int.m"
+  MR_Word mercury__int__param_2,
+#line 280 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 280 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 280 "int.m"
+  MR_Box mercury__int__param_5,
+#line 280 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 278 "int.m"
+void MR_CALL 
+mercury__int__fold_down_5_p_3(
+#line 278 "int.m"
+  MR_Word mercury__int__param_1,
+#line 278 "int.m"
+  MR_Word mercury__int__param_2,
+#line 278 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 278 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 278 "int.m"
+  MR_Box mercury__int__param_5,
+#line 278 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 277 "int.m"
+void MR_CALL 
+mercury__int__fold_down_5_p_2(
+#line 277 "int.m"
+  MR_Word mercury__int__param_1,
+#line 277 "int.m"
+  MR_Word mercury__int__param_2,
+#line 277 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 277 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 277 "int.m"
+  MR_Box mercury__int__param_5,
+#line 277 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 276 "int.m"
+void MR_CALL 
+mercury__int__fold_down_5_p_1(
+#line 276 "int.m"
+  MR_Word mercury__int__param_1,
+#line 276 "int.m"
+  MR_Word mercury__int__param_2,
+#line 276 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 276 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 276 "int.m"
+  MR_Box mercury__int__param_5,
+#line 276 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 275 "int.m"
+void MR_CALL 
+mercury__int__fold_down_5_p_0(
+#line 275 "int.m"
+  MR_Word mercury__int__param_1,
+#line 275 "int.m"
+  MR_Word mercury__int__param_2,
+#line 275 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 275 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 275 "int.m"
+  MR_Box mercury__int__param_5,
+#line 275 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 268 "int.m"
+MR_Box MR_CALL 
+mercury__int__fold_up_4_f_0(
+#line 268 "int.m"
+  MR_Word mercury__int__param_1,
+#line 268 "int.m"
+  MR_Word mercury__int__param_2,
+#line 268 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 268 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 268 "int.m"
+  MR_Box mercury__int__param_5);
+
+#line 261 "int.m"
+void MR_CALL 
+mercury__int__fold_up_5_p_10(
+#line 261 "int.m"
+  MR_Word mercury__int__param_1,
+#line 261 "int.m"
+  MR_Word mercury__int__param_2,
+#line 261 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 261 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 261 "int.m"
+  MR_Box mercury__int__param_5,
+#line 261 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 259 "int.m"
+void MR_CALL 
+mercury__int__fold_up_5_p_9(
+#line 259 "int.m"
+  MR_Word mercury__int__param_1,
+#line 259 "int.m"
+  MR_Word mercury__int__param_2,
+#line 259 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 259 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 259 "int.m"
+  MR_Box mercury__int__param_5,
+#line 259 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 257 "int.m"
+void MR_CALL 
+mercury__int__fold_up_5_p_8(
+#line 257 "int.m"
+  MR_Word mercury__int__param_1,
+#line 257 "int.m"
+  MR_Word mercury__int__param_2,
+#line 257 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 257 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 257 "int.m"
+  MR_Box mercury__int__param_5,
+#line 257 "int.m"
+  MR_Box * mercury__int__param_6,
+#line 257 "int.m"
+  MR_Cont mercury__int__param_7,
+#line 257 "int.m"
+  void * mercury__int__param_8);
+
+#line 255 "int.m"
+void MR_CALL 
+mercury__int__fold_up_5_p_7(
+#line 255 "int.m"
+  MR_Word mercury__int__param_1,
+#line 255 "int.m"
+  MR_Word mercury__int__param_2,
+#line 255 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 255 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 255 "int.m"
+  MR_Box mercury__int__param_5,
+#line 255 "int.m"
+  MR_Box * mercury__int__param_6,
+#line 255 "int.m"
+  MR_Cont mercury__int__param_7,
+#line 255 "int.m"
+  void * mercury__int__param_8);
+
+#line 253 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_up_5_p_6(
+#line 253 "int.m"
+  MR_Word mercury__int__param_1,
+#line 253 "int.m"
+  MR_Word mercury__int__param_2,
+#line 253 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 253 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 253 "int.m"
+  MR_Box mercury__int__param_5,
+#line 253 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 251 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_up_5_p_5(
+#line 251 "int.m"
+  MR_Word mercury__int__param_1,
+#line 251 "int.m"
+  MR_Word mercury__int__param_2,
+#line 251 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 251 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 251 "int.m"
+  MR_Box mercury__int__param_5,
+#line 251 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 249 "int.m"
+MR_bool MR_CALL 
+mercury__int__fold_up_5_p_4(
+#line 249 "int.m"
+  MR_Word mercury__int__param_1,
+#line 249 "int.m"
+  MR_Word mercury__int__param_2,
+#line 249 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 249 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 249 "int.m"
+  MR_Box mercury__int__param_5,
+#line 249 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 247 "int.m"
+void MR_CALL 
+mercury__int__fold_up_5_p_3(
+#line 247 "int.m"
+  MR_Word mercury__int__param_1,
+#line 247 "int.m"
+  MR_Word mercury__int__param_2,
+#line 247 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 247 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 247 "int.m"
+  MR_Box mercury__int__param_5,
+#line 247 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 246 "int.m"
+void MR_CALL 
+mercury__int__fold_up_5_p_2(
+#line 246 "int.m"
+  MR_Word mercury__int__param_1,
+#line 246 "int.m"
+  MR_Word mercury__int__param_2,
+#line 246 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 246 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 246 "int.m"
+  MR_Box mercury__int__param_5,
+#line 246 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 245 "int.m"
+void MR_CALL 
+mercury__int__fold_up_5_p_1(
+#line 245 "int.m"
+  MR_Word mercury__int__param_1,
+#line 245 "int.m"
+  MR_Word mercury__int__param_2,
+#line 245 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 245 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 245 "int.m"
+  MR_Box mercury__int__param_5,
+#line 245 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 244 "int.m"
+void MR_CALL 
+mercury__int__fold_up_5_p_0(
+#line 244 "int.m"
+  MR_Word mercury__int__param_1,
+#line 244 "int.m"
+  MR_Word mercury__int__param_2,
+#line 244 "int.m"
+  MR_Integer mercury__int__param_3,
+#line 244 "int.m"
+  MR_Integer mercury__int__param_4,
+#line 244 "int.m"
+  MR_Box mercury__int__param_5,
+#line 244 "int.m"
+  MR_Box * mercury__int__param_6);
+
+#line 237 "int.m"
+void MR_CALL 
+mercury__int__bits_per_int_1_p_0(
+#line 237 "int.m"
+  MR_Integer * mercury__int__param_1);
+
+#line 236 "int.m"
+MR_Integer MR_CALL 
+mercury__int__bits_per_int_0_f_0(void);
+
+#line 232 "int.m"
+void MR_CALL 
+mercury__int__min_int_1_p_0(
+#line 232 "int.m"
+  MR_Integer * mercury__int__param_1);
+
+#line 231 "int.m"
+MR_Integer MR_CALL 
+mercury__int__min_int_0_f_0(void);
+
+#line 227 "int.m"
+void MR_CALL 
+mercury__int__max_int_1_p_0(
+#line 227 "int.m"
+  MR_Integer * mercury__int__param_1);
+
+#line 226 "int.m"
+MR_Integer MR_CALL 
+mercury__int__max_int_0_f_0(void);
+
+#line 222 "int.m"
+void MR_CALL 
+mercury__int__is_2_p_1(
+#line 222 "int.m"
+  MR_Word mercury__int__param_1,
+#line 222 "int.m"
+  MR_Box * mercury__int__param_2,
+#line 222 "int.m"
+  MR_Box mercury__int__param_3);
+
+#line 221 "int.m"
+void MR_CALL 
+mercury__int__is_2_p_0(
+#line 221 "int.m"
+  MR_Word mercury__int__param_1,
+#line 221 "int.m"
+  MR_Box * mercury__int__param_2,
+#line 221 "int.m"
+  MR_Box mercury__int__param_3);
+
+#line 216 "int.m"
+MR_Integer MR_CALL 
+mercury__int__f_minus_1_f_0(
+#line 216 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 212 "int.m"
+MR_Integer MR_CALL 
+mercury__int__f_plus_1_f_0(
+#line 212 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 208 "int.m"
+MR_Integer MR_CALL 
+mercury__int__f_92_1_f_0(
+#line 208 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 204 "int.m"
+void MR_CALL 
+mercury__int__xor_2_f_2(
+#line 204 "int.m"
+  MR_Integer * mercury__int__param_1,
+#line 204 "int.m"
+  MR_Integer mercury__int__param_2,
+#line 204 "int.m"
+  MR_Integer mercury__int__param_3);
+
+#line 203 "int.m"
+void MR_CALL 
+mercury__int__xor_2_f_1(
+#line 203 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 203 "int.m"
+  MR_Integer * mercury__int__param_2,
+#line 203 "int.m"
+  MR_Integer mercury__int__param_3);
+
+#line 202 "int.m"
+MR_Integer MR_CALL 
+mercury__int__xor_2_f_0(
+#line 202 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 202 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 197 "int.m"
+MR_Integer MR_CALL 
+mercury__int__f_92_47_2_f_0(
+#line 197 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 197 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 193 "int.m"
+MR_Integer MR_CALL 
+mercury__int__f_47_92_2_f_0(
+#line 193 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 193 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 189 "int.m"
+MR_bool MR_CALL 
+mercury__int__odd_1_p_0(
+#line 189 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 185 "int.m"
+MR_bool MR_CALL 
+mercury__int__even_1_p_0(
+#line 185 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 181 "int.m"
+MR_Integer MR_CALL 
+mercury__int__unchecked_right_shift_2_f_0(
+#line 181 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 181 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 174 "int.m"
+MR_Integer MR_CALL 
+mercury__int__f_62_62_2_f_0(
+#line 174 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 174 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 167 "int.m"
+MR_Integer MR_CALL 
+mercury__int__unchecked_left_shift_2_f_0(
+#line 167 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 167 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 160 "int.m"
+MR_Integer MR_CALL 
+mercury__int__f_60_60_2_f_0(
+#line 160 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 160 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 153 "int.m"
+MR_Integer MR_CALL 
+mercury__int__unchecked_rem_2_f_0(
+#line 153 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 153 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 148 "int.m"
+MR_Integer MR_CALL 
+mercury__int__rem_2_f_0(
+#line 148 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 148 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 137 "int.m"
+MR_Integer MR_CALL 
+mercury__int__mod_2_f_0(
+#line 137 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 137 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 132 "int.m"
+MR_Integer MR_CALL 
+mercury__int__unchecked_quotient_2_f_0(
+#line 132 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 132 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 127 "int.m"
+MR_Integer MR_CALL 
+mercury__int__f_slash_2_f_0(
+#line 127 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 127 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 122 "int.m"
+MR_Integer MR_CALL 
+mercury__int__f_47_47_2_f_0(
+#line 122 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 122 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 111 "int.m"
+MR_Integer MR_CALL 
+mercury__int__div_2_f_0(
+#line 111 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 111 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 102 "int.m"
+MR_Integer MR_CALL 
+mercury__int__minus_2_f_0(
+#line 102 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 102 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 100 "int.m"
+void MR_CALL 
+mercury__int__f_minus_2_f_2(
+#line 100 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 100 "int.m"
+  MR_Integer * mercury__int__param_2,
+#line 100 "int.m"
+  MR_Integer mercury__int__param_3);
+
+#line 99 "int.m"
+void MR_CALL 
+mercury__int__f_minus_2_f_1(
+#line 99 "int.m"
+  MR_Integer * mercury__int__param_1,
+#line 99 "int.m"
+  MR_Integer mercury__int__param_2,
+#line 99 "int.m"
+  MR_Integer mercury__int__param_3);
+
+#line 98 "int.m"
+MR_Integer MR_CALL 
+mercury__int__f_minus_2_f_0(
+#line 98 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 98 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 93 "int.m"
+MR_Integer MR_CALL 
+mercury__int__times_2_f_0(
+#line 93 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 93 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 92 "int.m"
+MR_Integer MR_CALL 
+mercury__int__f_times_2_f_0(
+#line 92 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 92 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 88 "int.m"
+MR_Integer MR_CALL 
+mercury__int__plus_2_f_0(
+#line 88 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 88 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 86 "int.m"
+void MR_CALL 
+mercury__int__f_plus_2_f_2(
+#line 86 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 86 "int.m"
+  MR_Integer * mercury__int__param_2,
+#line 86 "int.m"
+  MR_Integer mercury__int__param_3);
+
+#line 85 "int.m"
+void MR_CALL 
+mercury__int__f_plus_2_f_1(
+#line 85 "int.m"
+  MR_Integer * mercury__int__param_1,
+#line 85 "int.m"
+  MR_Integer mercury__int__param_2,
+#line 85 "int.m"
+  MR_Integer mercury__int__param_3);
+
+#line 84 "int.m"
+MR_Integer MR_CALL 
+mercury__int__f_plus_2_f_0(
+#line 84 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 84 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 79 "int.m"
+void MR_CALL 
+mercury__int__log2_2_p_0(
+#line 79 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 79 "int.m"
+  MR_Integer * mercury__int__param_2);
+
+#line 78 "int.m"
+MR_Integer MR_CALL 
+mercury__int__log2_1_f_0(
+#line 78 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 71 "int.m"
+void MR_CALL 
+mercury__int__pow_3_p_0(
+#line 71 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 71 "int.m"
+  MR_Integer mercury__int__param_2,
+#line 71 "int.m"
+  MR_Integer * mercury__int__param_3);
+
+#line 70 "int.m"
+MR_Integer MR_CALL 
+mercury__int__pow_2_f_0(
+#line 70 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 70 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 64 "int.m"
+void MR_CALL 
+mercury__int__min_3_p_0(
+#line 64 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 64 "int.m"
+  MR_Integer mercury__int__param_2,
+#line 64 "int.m"
+  MR_Integer * mercury__int__param_3);
+
+#line 63 "int.m"
+MR_Integer MR_CALL 
+mercury__int__min_2_f_0(
+#line 63 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 63 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 59 "int.m"
+void MR_CALL 
+mercury__int__max_3_p_0(
+#line 59 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 59 "int.m"
+  MR_Integer mercury__int__param_2,
+#line 59 "int.m"
+  MR_Integer * mercury__int__param_3);
+
+#line 58 "int.m"
+MR_Integer MR_CALL 
+mercury__int__max_2_f_0(
+#line 58 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 58 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 54 "int.m"
+void MR_CALL 
+mercury__int__abs_2_p_0(
+#line 54 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 54 "int.m"
+  MR_Integer * mercury__int__param_2);
+
+#line 53 "int.m"
+MR_Integer MR_CALL 
+mercury__int__abs_1_f_0(
+#line 53 "int.m"
+  MR_Integer mercury__int__param_1);
+
+#line 49 "int.m"
+MR_bool MR_CALL 
+mercury__int__f_greater_or_equal_2_p_0(
+#line 49 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 49 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 45 "int.m"
+MR_bool MR_CALL 
+mercury__int__f_less_or_equal_2_p_0(
+#line 45 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 45 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 41 "int.m"
+MR_bool MR_CALL 
+mercury__int__f_greater_than_2_p_0(
+#line 41 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 41 "int.m"
+  MR_Integer mercury__int__param_2);
+
+#line 37 "int.m"
+MR_bool MR_CALL 
+mercury__int__f_less_than_2_p_0(
+#line 37 "int.m"
+  MR_Integer mercury__int__param_1,
+#line 37 "int.m"
+  MR_Integer mercury__int__param_2);
+
+void mercury__int__init(void);
+void mercury__int__init_type_tables(void);
+void mercury__int__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_int */
+
+/* :- end_interface int. */

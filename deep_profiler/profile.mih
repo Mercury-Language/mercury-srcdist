@@ -1,0 +1,1676 @@
+/*
+** Automatically generated from `profile.m'
+** by the Mercury compiler,
+** version DEV, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module profile. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_profile
+#define MR_HEADER_GUARD_profile
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef PROFILE_DECL_GUARD
+#define PROFILE_DECL_GUARD
+#line 542 "profile.m"
+#include "mercury_deep_profiling.h"
+#endif
+
+
+
+
+#line 42 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_array_slot_0;
+
+#line 45 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_callees_0;
+
+#line 48 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_caller_0;
+
+#line 51 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_dynamic_0;
+
+#line 54 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_dynamic_ptr_0;
+
+#line 57 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_dynamics_0;
+
+#line 60 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_kind_0;
+
+#line 63 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_kind_and_callee_1;
+
+#line 66 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_kind_and_callee_0;
+
+#line 69 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_kind_and_info_1;
+
+#line 72 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_static_0;
+
+#line 75 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_static_map_0;
+
+#line 78 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_static_ptr_0;
+
+#line 81 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_call_site_statics_0;
+
+#line 84 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_canonical_flag_0;
+
+#line 87 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_clique_ptr_0;
+
+#line 90 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_compensation_table_0;
+
+#line 93 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_coverage_data_type_0;
+
+#line 96 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_deep_0;
+
+#line 99 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_deep_compression_flag_0;
+
+#line 102 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_deep_flags_0;
+
+#line 105 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_initial_deep_0;
+
+#line 108 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_is_zeroed_0;
+
+#line 111 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_module_data_0;
+
+#line 114 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_proc_dynamic_0;
+
+#line 117 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_proc_dynamic_ptr_0;
+
+#line 120 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_proc_dynamics_0;
+
+#line 123 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_proc_static_0;
+
+#line 126 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_proc_static_ptr_0;
+
+#line 129 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_proc_statics_0;
+
+#line 132 "profile.mih.tmp"
+extern const MR_TypeCtorInfo_Struct profile__profile__type_ctor_info_profile_stats_0;
+
+#line 40 "profile.m"
+void MR_CALL 
+profile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_112_114_111_102_105_108_101_95_95_100_101_101_112_95_99_111_109_112_114_101_115_115_105_111_110_95_102_108_97_103_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 40 "profile.m"
+  MR_Word * profile__param_1);
+
+#line 40 "profile.m"
+MR_bool MR_CALL 
+profile__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_112_114_111_102_105_108_101_95_95_100_101_101_112_95_99_111_109_112_114_101_115_115_105_111_110_95_102_108_97_103_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void);
+
+#line 55 "profile.m"
+void MR_CALL 
+profile____Compare____profile_stats_0_0(
+#line 55 "profile.m"
+  MR_Word * profile__param_1,
+#line 55 "profile.m"
+  MR_Word profile__param_2,
+#line 55 "profile.m"
+  MR_Word profile__param_3);
+
+#line 55 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____profile_stats_0_0(
+#line 55 "profile.m"
+  MR_Word profile__param_1,
+#line 55 "profile.m"
+  MR_Word profile__param_2);
+
+#line 171 "profile.m"
+void MR_CALL 
+profile____Compare____proc_statics_0_0(
+#line 171 "profile.m"
+  MR_Word * profile__param_1,
+#line 171 "profile.m"
+  MR_ArrayPtr profile__param_2,
+#line 171 "profile.m"
+  MR_ArrayPtr profile__param_3);
+
+#line 171 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____proc_statics_0_0(
+#line 171 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 171 "profile.m"
+  MR_ArrayPtr profile__param_2);
+
+#line 179 "profile.m"
+void MR_CALL 
+profile____Compare____proc_static_ptr_0_0(
+#line 179 "profile.m"
+  MR_Word * profile__param_1,
+#line 179 "profile.m"
+  MR_Word profile__param_2,
+#line 179 "profile.m"
+  MR_Word profile__param_3);
+
+#line 179 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____proc_static_ptr_0_0(
+#line 179 "profile.m"
+  MR_Word profile__param_1,
+#line 179 "profile.m"
+  MR_Word profile__param_2);
+
+#line 205 "profile.m"
+void MR_CALL 
+profile____Compare____proc_static_0_0(
+#line 205 "profile.m"
+  MR_Word * profile__param_1,
+#line 205 "profile.m"
+  MR_Word profile__param_2,
+#line 205 "profile.m"
+  MR_Word profile__param_3);
+
+#line 205 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____proc_static_0_0(
+#line 205 "profile.m"
+  MR_Word profile__param_1,
+#line 205 "profile.m"
+  MR_Word profile__param_2);
+
+#line 170 "profile.m"
+void MR_CALL 
+profile____Compare____proc_dynamics_0_0(
+#line 170 "profile.m"
+  MR_Word * profile__param_1,
+#line 170 "profile.m"
+  MR_ArrayPtr profile__param_2,
+#line 170 "profile.m"
+  MR_ArrayPtr profile__param_3);
+
+#line 170 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____proc_dynamics_0_0(
+#line 170 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 170 "profile.m"
+  MR_ArrayPtr profile__param_2);
+
+#line 176 "profile.m"
+void MR_CALL 
+profile____Compare____proc_dynamic_ptr_0_0(
+#line 176 "profile.m"
+  MR_Word * profile__param_1,
+#line 176 "profile.m"
+  MR_Word profile__param_2,
+#line 176 "profile.m"
+  MR_Word profile__param_3);
+
+#line 176 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____proc_dynamic_ptr_0_0(
+#line 176 "profile.m"
+  MR_Word profile__param_1,
+#line 176 "profile.m"
+  MR_Word profile__param_2);
+
+#line 193 "profile.m"
+void MR_CALL 
+profile____Compare____proc_dynamic_0_0(
+#line 193 "profile.m"
+  MR_Word * profile__param_1,
+#line 193 "profile.m"
+  MR_Word profile__param_2,
+#line 193 "profile.m"
+  MR_Word profile__param_3);
+
+#line 193 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____proc_dynamic_0_0(
+#line 193 "profile.m"
+  MR_Word profile__param_1,
+#line 193 "profile.m"
+  MR_Word profile__param_2);
+
+#line 158 "profile.m"
+void MR_CALL 
+profile____Compare____module_data_0_0(
+#line 158 "profile.m"
+  MR_Word * profile__param_1,
+#line 158 "profile.m"
+  MR_Word profile__param_2,
+#line 158 "profile.m"
+  MR_Word profile__param_3);
+
+#line 158 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____module_data_0_0(
+#line 158 "profile.m"
+  MR_Word profile__param_1,
+#line 158 "profile.m"
+  MR_Word profile__param_2);
+
+#line 261 "profile.m"
+void MR_CALL 
+profile____Compare____is_zeroed_0_0(
+#line 261 "profile.m"
+  MR_Word * profile__param_1,
+#line 261 "profile.m"
+  MR_Word profile__param_2,
+#line 261 "profile.m"
+  MR_Word profile__param_3);
+
+#line 261 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____is_zeroed_0_0(
+#line 261 "profile.m"
+  MR_Word profile__param_1,
+#line 261 "profile.m"
+  MR_Word profile__param_2);
+
+#line 69 "profile.m"
+void MR_CALL 
+profile____Compare____initial_deep_0_0(
+#line 69 "profile.m"
+  MR_Word * profile__param_1,
+#line 69 "profile.m"
+  MR_Word profile__param_2,
+#line 69 "profile.m"
+  MR_Word profile__param_3);
+
+#line 69 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____initial_deep_0_0(
+#line 69 "profile.m"
+  MR_Word profile__param_1,
+#line 69 "profile.m"
+  MR_Word profile__param_2);
+
+#line 47 "profile.m"
+void MR_CALL 
+profile____Compare____deep_flags_0_0(
+#line 47 "profile.m"
+  MR_Word * profile__param_1,
+#line 47 "profile.m"
+  MR_Word profile__param_2,
+#line 47 "profile.m"
+  MR_Word profile__param_3);
+
+#line 47 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____deep_flags_0_0(
+#line 47 "profile.m"
+  MR_Word profile__param_1,
+#line 47 "profile.m"
+  MR_Word profile__param_2);
+
+#line 40 "profile.m"
+void MR_CALL 
+profile____Compare____deep_compression_flag_0_0(
+#line 40 "profile.m"
+  MR_Word * profile__param_1);
+
+#line 40 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____deep_compression_flag_0_0(void);
+
+#line 82 "profile.m"
+void MR_CALL 
+profile____Compare____deep_0_0(
+#line 82 "profile.m"
+  MR_Word * profile__param_1,
+#line 82 "profile.m"
+  MR_Word profile__param_2,
+#line 82 "profile.m"
+  MR_Word profile__param_3);
+
+#line 82 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____deep_0_0(
+#line 82 "profile.m"
+  MR_Word profile__param_1,
+#line 82 "profile.m"
+  MR_Word profile__param_2);
+
+#line 307 "profile.m"
+void MR_CALL 
+profile____Compare____coverage_data_type_0_0(
+#line 307 "profile.m"
+  MR_Word * profile__param_1,
+#line 307 "profile.m"
+  MR_Word profile__param_2,
+#line 307 "profile.m"
+  MR_Word profile__param_3);
+
+#line 307 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____coverage_data_type_0_0(
+#line 307 "profile.m"
+  MR_Word profile__param_1,
+#line 307 "profile.m"
+  MR_Word profile__param_2);
+
+#line 156 "profile.m"
+void MR_CALL 
+profile____Compare____compensation_table_0_0(
+#line 156 "profile.m"
+  MR_Word * profile__param_1,
+#line 156 "profile.m"
+  MR_Word profile__param_2,
+#line 156 "profile.m"
+  MR_Word profile__param_3);
+
+#line 156 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____compensation_table_0_0(
+#line 156 "profile.m"
+  MR_Word profile__param_1,
+#line 156 "profile.m"
+  MR_Word profile__param_2);
+
+#line 188 "profile.m"
+void MR_CALL 
+profile____Compare____clique_ptr_0_0(
+#line 188 "profile.m"
+  MR_Word * profile__param_1,
+#line 188 "profile.m"
+  MR_Word profile__param_2,
+#line 188 "profile.m"
+  MR_Word profile__param_3);
+
+#line 188 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____clique_ptr_0_0(
+#line 188 "profile.m"
+  MR_Word profile__param_1,
+#line 188 "profile.m"
+  MR_Word profile__param_2);
+
+#line 43 "profile.m"
+void MR_CALL 
+profile____Compare____canonical_flag_0_0(
+#line 43 "profile.m"
+  MR_Word * profile__param_1,
+#line 43 "profile.m"
+  MR_Word profile__param_2,
+#line 43 "profile.m"
+  MR_Word profile__param_3);
+
+#line 43 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____canonical_flag_0_0(
+#line 43 "profile.m"
+  MR_Word profile__param_1,
+#line 43 "profile.m"
+  MR_Word profile__param_2);
+
+#line 173 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_statics_0_0(
+#line 173 "profile.m"
+  MR_Word * profile__param_1,
+#line 173 "profile.m"
+  MR_ArrayPtr profile__param_2,
+#line 173 "profile.m"
+  MR_ArrayPtr profile__param_3);
+
+#line 173 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_statics_0_0(
+#line 173 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 173 "profile.m"
+  MR_ArrayPtr profile__param_2);
+
+#line 185 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_static_ptr_0_0(
+#line 185 "profile.m"
+  MR_Word * profile__param_1,
+#line 185 "profile.m"
+  MR_Word profile__param_2,
+#line 185 "profile.m"
+  MR_Word profile__param_3);
+
+#line 185 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_static_ptr_0_0(
+#line 185 "profile.m"
+  MR_Word profile__param_1,
+#line 185 "profile.m"
+  MR_Word profile__param_2);
+
+#line 174 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_static_map_0_0(
+#line 174 "profile.m"
+  MR_Word * profile__param_1,
+#line 174 "profile.m"
+  MR_ArrayPtr profile__param_2,
+#line 174 "profile.m"
+  MR_ArrayPtr profile__param_3);
+
+#line 174 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_static_map_0_0(
+#line 174 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 174 "profile.m"
+  MR_ArrayPtr profile__param_2);
+
+#line 244 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_static_0_0(
+#line 244 "profile.m"
+  MR_Word * profile__param_1,
+#line 244 "profile.m"
+  MR_Word profile__param_2,
+#line 244 "profile.m"
+  MR_Word profile__param_3);
+
+#line 244 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_static_0_0(
+#line 244 "profile.m"
+  MR_Word profile__param_1,
+#line 244 "profile.m"
+  MR_Word profile__param_2);
+
+#line 288 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_kind_and_info_1_0(
+#line 288 "profile.m"
+  MR_Word profile__param_1,
+#line 288 "profile.m"
+  MR_Word * profile__param_2,
+#line 288 "profile.m"
+  MR_Word profile__param_3,
+#line 288 "profile.m"
+  MR_Word profile__param_4);
+
+#line 288 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_kind_and_info_1_0(
+#line 288 "profile.m"
+  MR_Word profile__param_1,
+#line 288 "profile.m"
+  MR_Word profile__param_2,
+#line 288 "profile.m"
+  MR_Word profile__param_3);
+
+#line 275 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_kind_and_callee_1_0(
+#line 275 "profile.m"
+  MR_Word profile__param_1,
+#line 275 "profile.m"
+  MR_Word * profile__param_2,
+#line 275 "profile.m"
+  MR_Word profile__param_3,
+#line 275 "profile.m"
+  MR_Word profile__param_4);
+
+#line 275 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_kind_and_callee_1_0(
+#line 275 "profile.m"
+  MR_Word profile__param_1,
+#line 275 "profile.m"
+  MR_Word profile__param_2,
+#line 275 "profile.m"
+  MR_Word profile__param_3);
+
+#line 272 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_kind_and_callee_0_0(
+#line 272 "profile.m"
+  MR_Word * profile__param_1,
+#line 272 "profile.m"
+  MR_Word profile__param_2,
+#line 272 "profile.m"
+  MR_Word profile__param_3);
+
+#line 272 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_kind_and_callee_0_0(
+#line 272 "profile.m"
+  MR_Word profile__param_1,
+#line 272 "profile.m"
+  MR_Word profile__param_2);
+
+#line 265 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_kind_0_0(
+#line 265 "profile.m"
+  MR_Word * profile__param_1,
+#line 265 "profile.m"
+  MR_Word profile__param_2,
+#line 265 "profile.m"
+  MR_Word profile__param_3);
+
+#line 265 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_kind_0_0(
+#line 265 "profile.m"
+  MR_Word profile__param_1,
+#line 265 "profile.m"
+  MR_Word profile__param_2);
+
+#line 172 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_dynamics_0_0(
+#line 172 "profile.m"
+  MR_Word * profile__param_1,
+#line 172 "profile.m"
+  MR_ArrayPtr profile__param_2,
+#line 172 "profile.m"
+  MR_ArrayPtr profile__param_3);
+
+#line 172 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_dynamics_0_0(
+#line 172 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 172 "profile.m"
+  MR_ArrayPtr profile__param_2);
+
+#line 182 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_dynamic_ptr_0_0(
+#line 182 "profile.m"
+  MR_Word * profile__param_1,
+#line 182 "profile.m"
+  MR_Word profile__param_2,
+#line 182 "profile.m"
+  MR_Word profile__param_3);
+
+#line 182 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_dynamic_ptr_0_0(
+#line 182 "profile.m"
+  MR_Word profile__param_1,
+#line 182 "profile.m"
+  MR_Word profile__param_2);
+
+#line 237 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_dynamic_0_0(
+#line 237 "profile.m"
+  MR_Word * profile__param_1,
+#line 237 "profile.m"
+  MR_Word profile__param_2,
+#line 237 "profile.m"
+  MR_Word profile__param_3);
+
+#line 237 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_dynamic_0_0(
+#line 237 "profile.m"
+  MR_Word profile__param_1,
+#line 237 "profile.m"
+  MR_Word profile__param_2);
+
+#line 300 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_caller_0_0(
+#line 300 "profile.m"
+  MR_Word * profile__param_1,
+#line 300 "profile.m"
+  MR_Word profile__param_2,
+#line 300 "profile.m"
+  MR_Word profile__param_3);
+
+#line 300 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_caller_0_0(
+#line 300 "profile.m"
+  MR_Word profile__param_1,
+#line 300 "profile.m"
+  MR_Word profile__param_2);
+
+#line 295 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_callees_0_0(
+#line 295 "profile.m"
+  MR_Word * profile__param_1,
+#line 295 "profile.m"
+  MR_Word profile__param_2,
+#line 295 "profile.m"
+  MR_Word profile__param_3);
+
+#line 295 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_callees_0_0(
+#line 295 "profile.m"
+  MR_Word profile__param_1,
+#line 295 "profile.m"
+  MR_Word profile__param_2);
+
+#line 257 "profile.m"
+void MR_CALL 
+profile____Compare____call_site_array_slot_0_0(
+#line 257 "profile.m"
+  MR_Word * profile__param_1,
+#line 257 "profile.m"
+  MR_Word profile__param_2,
+#line 257 "profile.m"
+  MR_Word profile__param_3);
+
+#line 257 "profile.m"
+MR_bool MR_CALL 
+profile____Unify____call_site_array_slot_0_0(
+#line 257 "profile.m"
+  MR_Word profile__param_1,
+#line 257 "profile.m"
+  MR_Word profile__param_2);
+
+#line 526 "profile.m"
+void MR_CALL 
+profile__deep_get_maybe_progrep_2_p_0(
+#line 526 "profile.m"
+  MR_Word profile__param_1,
+#line 526 "profile.m"
+  MR_Word * profile__param_2);
+
+#line 524 "profile.m"
+void MR_CALL 
+profile__deep_get_progrep_det_2_p_0(
+#line 524 "profile.m"
+  MR_Word profile__param_1,
+#line 524 "profile.m"
+  MR_Word * profile__param_2);
+
+#line 518 "profile.m"
+MR_Word MR_CALL 
+profile__root_own_info_1_f_0(
+#line 518 "profile.m"
+  MR_Word profile__param_1);
+
+#line 517 "profile.m"
+MR_Word MR_CALL 
+profile__root_desc_info_1_f_0(
+#line 517 "profile.m"
+  MR_Word profile__param_1);
+
+#line 516 "profile.m"
+MR_Word MR_CALL 
+profile__root_total_info_1_f_0(
+#line 516 "profile.m"
+  MR_Word profile__param_1);
+
+#line 514 "profile.m"
+MR_Word MR_CALL 
+profile__wrap_proc_static_ptr_1_f_0(
+#line 514 "profile.m"
+  MR_Integer profile__param_1);
+
+#line 511 "profile.m"
+void MR_CALL 
+profile__deep_extract_csdptr_callee_3_p_0(
+#line 511 "profile.m"
+  MR_Word profile__param_1,
+#line 511 "profile.m"
+  MR_Word profile__param_2,
+#line 511 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 509 "profile.m"
+void MR_CALL 
+profile__deep_extract_csdptr_caller_3_p_0(
+#line 509 "profile.m"
+  MR_Word profile__param_1,
+#line 509 "profile.m"
+  MR_Word profile__param_2,
+#line 509 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 506 "profile.m"
+void MR_CALL 
+profile__extract_init_root_2_p_0(
+#line 506 "profile.m"
+  MR_Word profile__param_1,
+#line 506 "profile.m"
+  MR_Word * profile__param_2);
+
+#line 504 "profile.m"
+void MR_CALL 
+profile__extract_init_proc_statics_2_p_0(
+#line 504 "profile.m"
+  MR_Word profile__param_1,
+#line 504 "profile.m"
+  MR_ArrayPtr * profile__param_2);
+
+#line 502 "profile.m"
+void MR_CALL 
+profile__extract_init_proc_dynamics_2_p_0(
+#line 502 "profile.m"
+  MR_Word profile__param_1,
+#line 502 "profile.m"
+  MR_ArrayPtr * profile__param_2);
+
+#line 500 "profile.m"
+void MR_CALL 
+profile__extract_init_call_site_statics_2_p_0(
+#line 500 "profile.m"
+  MR_Word profile__param_1,
+#line 500 "profile.m"
+  MR_ArrayPtr * profile__param_2);
+
+#line 498 "profile.m"
+void MR_CALL 
+profile__extract_init_call_site_dynamics_2_p_0(
+#line 498 "profile.m"
+  MR_Word profile__param_1,
+#line 498 "profile.m"
+  MR_ArrayPtr * profile__param_2);
+
+#line 497 "profile.m"
+void MR_CALL 
+profile__extract_max_pd_2_p_0(
+#line 497 "profile.m"
+  MR_Word profile__param_1,
+#line 497 "profile.m"
+  MR_Integer * profile__param_2);
+
+#line 496 "profile.m"
+void MR_CALL 
+profile__extract_max_csd_2_p_0(
+#line 496 "profile.m"
+  MR_Word profile__param_1,
+#line 496 "profile.m"
+  MR_Integer * profile__param_2);
+
+#line 495 "profile.m"
+void MR_CALL 
+profile__extract_max_ps_2_p_0(
+#line 495 "profile.m"
+  MR_Word profile__param_1,
+#line 495 "profile.m"
+  MR_Integer * profile__param_2);
+
+#line 494 "profile.m"
+void MR_CALL 
+profile__extract_max_css_2_p_0(
+#line 494 "profile.m"
+  MR_Word profile__param_1,
+#line 494 "profile.m"
+  MR_Integer * profile__param_2);
+
+#line 493 "profile.m"
+void MR_CALL 
+profile__extract_num_callseqs_2_p_0(
+#line 493 "profile.m"
+  MR_Word profile__param_1,
+#line 493 "profile.m"
+  MR_Integer * profile__param_2);
+
+#line 492 "profile.m"
+void MR_CALL 
+profile__extract_user_quanta_2_p_0(
+#line 492 "profile.m"
+  MR_Word profile__param_1,
+#line 492 "profile.m"
+  MR_Integer * profile__param_2);
+
+#line 491 "profile.m"
+void MR_CALL 
+profile__extract_instrument_quanta_2_p_0(
+#line 491 "profile.m"
+  MR_Word profile__param_1,
+#line 491 "profile.m"
+  MR_Integer * profile__param_2);
+
+#line 490 "profile.m"
+void MR_CALL 
+profile__extract_ticks_per_sec_2_p_0(
+#line 490 "profile.m"
+  MR_Word profile__param_1,
+#line 490 "profile.m"
+  MR_Integer * profile__param_2);
+
+#line 488 "profile.m"
+void MR_CALL 
+profile__extract_csdptr_callee_3_p_0(
+#line 488 "profile.m"
+  MR_Word profile__param_1,
+#line 488 "profile.m"
+  MR_Word profile__param_2,
+#line 488 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 486 "profile.m"
+void MR_CALL 
+profile__extract_csdptr_caller_3_p_0(
+#line 486 "profile.m"
+  MR_Word profile__param_1,
+#line 486 "profile.m"
+  MR_Word profile__param_2,
+#line 486 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 484 "profile.m"
+void MR_CALL 
+profile__extract_csd_callee_2_p_0(
+#line 484 "profile.m"
+  MR_Word profile__param_1,
+#line 484 "profile.m"
+  MR_Word * profile__param_2);
+
+#line 482 "profile.m"
+void MR_CALL 
+profile__extract_csd_caller_2_p_0(
+#line 482 "profile.m"
+  MR_Word profile__param_1,
+#line 482 "profile.m"
+  MR_Word * profile__param_2);
+
+#line 480 "profile.m"
+void MR_CALL 
+profile__extract_pd_sites_2_p_0(
+#line 480 "profile.m"
+  MR_Word profile__param_1,
+#line 480 "profile.m"
+  MR_ArrayPtr * profile__param_2);
+
+#line 477 "profile.m"
+void MR_CALL 
+profile__deep_update_csd_comp_table_4_p_0(
+#line 477 "profile.m"
+  MR_Word profile__param_1,
+#line 477 "profile.m"
+  MR_Word profile__param_2,
+#line 477 "profile.m"
+  MR_Word profile__param_3,
+#line 477 "profile.m"
+  MR_Word * profile__param_4);
+
+#line 475 "profile.m"
+void MR_CALL 
+profile__deep_update_pd_comp_table_4_p_0(
+#line 475 "profile.m"
+  MR_Word profile__param_1,
+#line 475 "profile.m"
+  MR_Word profile__param_2,
+#line 475 "profile.m"
+  MR_Word profile__param_3,
+#line 475 "profile.m"
+  MR_Word * profile__param_4);
+
+#line 473 "profile.m"
+void MR_CALL 
+profile__deep_update_pd_own_4_p_0(
+#line 473 "profile.m"
+  MR_Word profile__param_1,
+#line 473 "profile.m"
+  MR_Word profile__param_2,
+#line 473 "profile.m"
+  MR_Word profile__param_3,
+#line 473 "profile.m"
+  MR_Word * profile__param_4);
+
+#line 471 "profile.m"
+void MR_CALL 
+profile__deep_update_pd_desc_4_p_0(
+#line 471 "profile.m"
+  MR_Word profile__param_1,
+#line 471 "profile.m"
+  MR_Word profile__param_2,
+#line 471 "profile.m"
+  MR_Word profile__param_3,
+#line 471 "profile.m"
+  MR_Word * profile__param_4);
+
+#line 469 "profile.m"
+void MR_CALL 
+profile__deep_update_csd_desc_4_p_0(
+#line 469 "profile.m"
+  MR_Word profile__param_1,
+#line 469 "profile.m"
+  MR_Word profile__param_2,
+#line 469 "profile.m"
+  MR_Word profile__param_3,
+#line 469 "profile.m"
+  MR_Word * profile__param_4);
+
+#line 465 "profile.m"
+void MR_CALL 
+profile__update_ps_coverage_4_p_0(
+#line 465 "profile.m"
+  MR_Word profile__param_1,
+#line 465 "profile.m"
+  MR_Word profile__param_2,
+#line 465 "profile.m"
+  MR_ArrayPtr profile__param_3,
+#line 465 "profile.m"
+  MR_ArrayPtr * profile__param_4);
+
+#line 462 "profile.m"
+void MR_CALL 
+profile__update_css_desc_4_p_0(
+#line 462 "profile.m"
+  MR_Word profile__param_1,
+#line 462 "profile.m"
+  MR_Word profile__param_2,
+#line 462 "profile.m"
+  MR_ArrayPtr profile__param_3,
+#line 462 "profile.m"
+  MR_ArrayPtr * profile__param_4);
+
+#line 460 "profile.m"
+void MR_CALL 
+profile__update_css_own_4_p_0(
+#line 460 "profile.m"
+  MR_Word profile__param_1,
+#line 460 "profile.m"
+  MR_Word profile__param_2,
+#line 460 "profile.m"
+  MR_ArrayPtr profile__param_3,
+#line 460 "profile.m"
+  MR_ArrayPtr * profile__param_4);
+
+#line 457 "profile.m"
+void MR_CALL 
+profile__update_ps_desc_4_p_0(
+#line 457 "profile.m"
+  MR_Word profile__param_1,
+#line 457 "profile.m"
+  MR_Word profile__param_2,
+#line 457 "profile.m"
+  MR_ArrayPtr profile__param_3,
+#line 457 "profile.m"
+  MR_ArrayPtr * profile__param_4);
+
+#line 455 "profile.m"
+void MR_CALL 
+profile__update_ps_own_4_p_0(
+#line 455 "profile.m"
+  MR_Word profile__param_1,
+#line 455 "profile.m"
+  MR_Word profile__param_2,
+#line 455 "profile.m"
+  MR_ArrayPtr profile__param_3,
+#line 455 "profile.m"
+  MR_ArrayPtr * profile__param_4);
+
+#line 452 "profile.m"
+void MR_CALL 
+profile__update_call_site_static_map_4_p_0(
+#line 452 "profile.m"
+  MR_Word profile__param_1,
+#line 452 "profile.m"
+  MR_Word profile__param_2,
+#line 452 "profile.m"
+  MR_ArrayPtr profile__param_3,
+#line 452 "profile.m"
+  MR_ArrayPtr * profile__param_4);
+
+#line 448 "profile.m"
+void MR_CALL 
+profile__update_proc_callers_4_p_0(
+#line 448 "profile.m"
+  MR_Word profile__param_1,
+#line 448 "profile.m"
+  MR_Word profile__param_2,
+#line 448 "profile.m"
+  MR_ArrayPtr profile__param_3,
+#line 448 "profile.m"
+  MR_ArrayPtr * profile__param_4);
+
+#line 446 "profile.m"
+void MR_CALL 
+profile__update_proc_statics_4_p_0(
+#line 446 "profile.m"
+  MR_Word profile__param_1,
+#line 446 "profile.m"
+  MR_Word profile__param_2,
+#line 446 "profile.m"
+  MR_ArrayPtr profile__param_3,
+#line 446 "profile.m"
+  MR_ArrayPtr * profile__param_4);
+
+#line 444 "profile.m"
+void MR_CALL 
+profile__update_proc_dynamics_4_p_0(
+#line 444 "profile.m"
+  MR_Word profile__param_1,
+#line 444 "profile.m"
+  MR_Word profile__param_2,
+#line 444 "profile.m"
+  MR_ArrayPtr profile__param_3,
+#line 444 "profile.m"
+  MR_ArrayPtr * profile__param_4);
+
+#line 441 "profile.m"
+void MR_CALL 
+profile__update_call_site_statics_4_p_0(
+#line 441 "profile.m"
+  MR_Word profile__param_1,
+#line 441 "profile.m"
+  MR_Word profile__param_2,
+#line 441 "profile.m"
+  MR_ArrayPtr profile__param_3,
+#line 441 "profile.m"
+  MR_ArrayPtr * profile__param_4);
+
+#line 438 "profile.m"
+void MR_CALL 
+profile__update_call_site_dynamics_4_p_0(
+#line 438 "profile.m"
+  MR_Word profile__param_1,
+#line 438 "profile.m"
+  MR_Word profile__param_2,
+#line 438 "profile.m"
+  MR_ArrayPtr profile__param_3,
+#line 438 "profile.m"
+  MR_ArrayPtr * profile__param_4);
+
+#line 435 "profile.m"
+void MR_CALL 
+profile__deep_lookup_ps_coverage_3_p_0(
+#line 435 "profile.m"
+  MR_Word profile__param_1,
+#line 435 "profile.m"
+  MR_Word profile__param_2,
+#line 435 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 433 "profile.m"
+void MR_CALL 
+profile__deep_lookup_css_desc_3_p_0(
+#line 433 "profile.m"
+  MR_Word profile__param_1,
+#line 433 "profile.m"
+  MR_Word profile__param_2,
+#line 433 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 431 "profile.m"
+void MR_CALL 
+profile__deep_lookup_css_own_3_p_0(
+#line 431 "profile.m"
+  MR_Word profile__param_1,
+#line 431 "profile.m"
+  MR_Word profile__param_2,
+#line 431 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 429 "profile.m"
+void MR_CALL 
+profile__deep_lookup_ps_desc_3_p_0(
+#line 429 "profile.m"
+  MR_Word profile__param_1,
+#line 429 "profile.m"
+  MR_Word profile__param_2,
+#line 429 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 427 "profile.m"
+void MR_CALL 
+profile__deep_lookup_ps_own_3_p_0(
+#line 427 "profile.m"
+  MR_Word profile__param_1,
+#line 427 "profile.m"
+  MR_Word profile__param_2,
+#line 427 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 425 "profile.m"
+void MR_CALL 
+profile__deep_lookup_csd_desc_3_p_0(
+#line 425 "profile.m"
+  MR_Word profile__param_1,
+#line 425 "profile.m"
+  MR_Word profile__param_2,
+#line 425 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 423 "profile.m"
+void MR_CALL 
+profile__deep_lookup_csd_own_3_p_0(
+#line 423 "profile.m"
+  MR_Word profile__param_1,
+#line 423 "profile.m"
+  MR_Word profile__param_2,
+#line 423 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 421 "profile.m"
+void MR_CALL 
+profile__deep_lookup_pd_desc_3_p_0(
+#line 421 "profile.m"
+  MR_Word profile__param_1,
+#line 421 "profile.m"
+  MR_Word profile__param_2,
+#line 421 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 419 "profile.m"
+void MR_CALL 
+profile__deep_lookup_pd_own_3_p_0(
+#line 419 "profile.m"
+  MR_Word profile__param_1,
+#line 419 "profile.m"
+  MR_Word profile__param_2,
+#line 419 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 416 "profile.m"
+void MR_CALL 
+profile__deep_lookup_csd_comp_table_3_p_0(
+#line 416 "profile.m"
+  MR_Word profile__param_1,
+#line 416 "profile.m"
+  MR_Word profile__param_2,
+#line 416 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 414 "profile.m"
+void MR_CALL 
+profile__deep_lookup_pd_comp_table_3_p_0(
+#line 414 "profile.m"
+  MR_Word profile__param_1,
+#line 414 "profile.m"
+  MR_Word profile__param_2,
+#line 414 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 412 "profile.m"
+void MR_CALL 
+profile__deep_lookup_proc_dynamic_sites_3_p_0(
+#line 412 "profile.m"
+  MR_Word profile__param_1,
+#line 412 "profile.m"
+  MR_Word profile__param_2,
+#line 412 "profile.m"
+  MR_ArrayPtr * profile__param_3);
+
+#line 410 "profile.m"
+void MR_CALL 
+profile__deep_lookup_call_site_calls_3_p_0(
+#line 410 "profile.m"
+  MR_Word profile__param_1,
+#line 410 "profile.m"
+  MR_Word profile__param_2,
+#line 410 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 408 "profile.m"
+void MR_CALL 
+profile__deep_lookup_call_site_static_map_3_p_0(
+#line 408 "profile.m"
+  MR_Word profile__param_1,
+#line 408 "profile.m"
+  MR_Word profile__param_2,
+#line 408 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 406 "profile.m"
+void MR_CALL 
+profile__deep_lookup_proc_callers_3_p_0(
+#line 406 "profile.m"
+  MR_Word profile__param_1,
+#line 406 "profile.m"
+  MR_Word profile__param_2,
+#line 406 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 404 "profile.m"
+void MR_CALL 
+profile__deep_lookup_clique_maybe_child_3_p_0(
+#line 404 "profile.m"
+  MR_Word profile__param_1,
+#line 404 "profile.m"
+  MR_Word profile__param_2,
+#line 404 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 402 "profile.m"
+void MR_CALL 
+profile__deep_lookup_clique_parents_3_p_0(
+#line 402 "profile.m"
+  MR_Word profile__param_1,
+#line 402 "profile.m"
+  MR_Word profile__param_2,
+#line 402 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 400 "profile.m"
+void MR_CALL 
+profile__deep_lookup_clique_members_3_p_0(
+#line 400 "profile.m"
+  MR_Word profile__param_1,
+#line 400 "profile.m"
+  MR_Word profile__param_2,
+#line 400 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 398 "profile.m"
+void MR_CALL 
+profile__deep_lookup_clique_index_3_p_0(
+#line 398 "profile.m"
+  MR_Word profile__param_1,
+#line 398 "profile.m"
+  MR_Word profile__param_2,
+#line 398 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 396 "profile.m"
+void MR_CALL 
+profile__deep_lookup_proc_statics_3_p_0(
+#line 396 "profile.m"
+  MR_Word profile__param_1,
+#line 396 "profile.m"
+  MR_Word profile__param_2,
+#line 396 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 394 "profile.m"
+void MR_CALL 
+profile__deep_lookup_proc_dynamics_3_p_0(
+#line 394 "profile.m"
+  MR_Word profile__param_1,
+#line 394 "profile.m"
+  MR_Word profile__param_2,
+#line 394 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 392 "profile.m"
+void MR_CALL 
+profile__deep_lookup_call_site_statics_3_p_0(
+#line 392 "profile.m"
+  MR_Word profile__param_1,
+#line 392 "profile.m"
+  MR_Word profile__param_2,
+#line 392 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 390 "profile.m"
+void MR_CALL 
+profile__deep_lookup_call_site_dynamics_3_p_0(
+#line 390 "profile.m"
+  MR_Word profile__param_1,
+#line 390 "profile.m"
+  MR_Word profile__param_2,
+#line 390 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 387 "profile.m"
+void MR_CALL 
+profile__lookup_ps_coverage_3_p_0(
+#line 387 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 387 "profile.m"
+  MR_Word profile__param_2,
+#line 387 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 385 "profile.m"
+void MR_CALL 
+profile__lookup_csd_comp_table_3_p_0(
+#line 385 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 385 "profile.m"
+  MR_Word profile__param_2,
+#line 385 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 383 "profile.m"
+void MR_CALL 
+profile__lookup_pd_comp_table_3_p_0(
+#line 383 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 383 "profile.m"
+  MR_Word profile__param_2,
+#line 383 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 381 "profile.m"
+void MR_CALL 
+profile__lookup_css_desc_3_p_0(
+#line 381 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 381 "profile.m"
+  MR_Word profile__param_2,
+#line 381 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 379 "profile.m"
+void MR_CALL 
+profile__lookup_css_own_3_p_0(
+#line 379 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 379 "profile.m"
+  MR_Word profile__param_2,
+#line 379 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 377 "profile.m"
+void MR_CALL 
+profile__lookup_ps_desc_3_p_0(
+#line 377 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 377 "profile.m"
+  MR_Word profile__param_2,
+#line 377 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 375 "profile.m"
+void MR_CALL 
+profile__lookup_ps_own_3_p_0(
+#line 375 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 375 "profile.m"
+  MR_Word profile__param_2,
+#line 375 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 373 "profile.m"
+void MR_CALL 
+profile__lookup_csd_desc_3_p_0(
+#line 373 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 373 "profile.m"
+  MR_Word profile__param_2,
+#line 373 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 371 "profile.m"
+void MR_CALL 
+profile__lookup_csd_own_3_p_0(
+#line 371 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 371 "profile.m"
+  MR_Word profile__param_2,
+#line 371 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 369 "profile.m"
+void MR_CALL 
+profile__lookup_pd_desc_3_p_0(
+#line 369 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 369 "profile.m"
+  MR_Word profile__param_2,
+#line 369 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 367 "profile.m"
+void MR_CALL 
+profile__lookup_pd_own_3_p_0(
+#line 367 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 367 "profile.m"
+  MR_Word profile__param_2,
+#line 367 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 364 "profile.m"
+void MR_CALL 
+profile__lookup_call_site_calls_3_p_0(
+#line 364 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 364 "profile.m"
+  MR_Word profile__param_2,
+#line 364 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 362 "profile.m"
+void MR_CALL 
+profile__lookup_call_site_static_map_3_p_0(
+#line 362 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 362 "profile.m"
+  MR_Word profile__param_2,
+#line 362 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 360 "profile.m"
+void MR_CALL 
+profile__lookup_proc_callers_3_p_0(
+#line 360 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 360 "profile.m"
+  MR_Word profile__param_2,
+#line 360 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 358 "profile.m"
+void MR_CALL 
+profile__lookup_clique_maybe_child_3_p_0(
+#line 358 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 358 "profile.m"
+  MR_Word profile__param_2,
+#line 358 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 356 "profile.m"
+void MR_CALL 
+profile__lookup_clique_parents_3_p_0(
+#line 356 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 356 "profile.m"
+  MR_Word profile__param_2,
+#line 356 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 354 "profile.m"
+void MR_CALL 
+profile__lookup_clique_members_3_p_0(
+#line 354 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 354 "profile.m"
+  MR_Word profile__param_2,
+#line 354 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 352 "profile.m"
+void MR_CALL 
+profile__lookup_clique_index_3_p_0(
+#line 352 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 352 "profile.m"
+  MR_Word profile__param_2,
+#line 352 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 350 "profile.m"
+void MR_CALL 
+profile__lookup_proc_statics_3_p_0(
+#line 350 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 350 "profile.m"
+  MR_Word profile__param_2,
+#line 350 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 348 "profile.m"
+void MR_CALL 
+profile__lookup_proc_dynamics_3_p_0(
+#line 348 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 348 "profile.m"
+  MR_Word profile__param_2,
+#line 348 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 346 "profile.m"
+void MR_CALL 
+profile__lookup_call_site_statics_3_p_0(
+#line 346 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 346 "profile.m"
+  MR_Word profile__param_2,
+#line 346 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 344 "profile.m"
+void MR_CALL 
+profile__lookup_call_site_dynamics_3_p_0(
+#line 344 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 344 "profile.m"
+  MR_Word profile__param_2,
+#line 344 "profile.m"
+  MR_Word * profile__param_3);
+
+#line 341 "profile.m"
+MR_bool MR_CALL 
+profile__valid_call_site_static_ptr_raw_2_p_0(
+#line 341 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 341 "profile.m"
+  MR_Word profile__param_2);
+
+#line 339 "profile.m"
+MR_bool MR_CALL 
+profile__valid_call_site_dynamic_ptr_raw_2_p_0(
+#line 339 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 339 "profile.m"
+  MR_Word profile__param_2);
+
+#line 337 "profile.m"
+MR_bool MR_CALL 
+profile__valid_proc_static_ptr_raw_2_p_0(
+#line 337 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 337 "profile.m"
+  MR_Word profile__param_2);
+
+#line 335 "profile.m"
+MR_bool MR_CALL 
+profile__valid_proc_dynamic_ptr_raw_2_p_0(
+#line 335 "profile.m"
+  MR_ArrayPtr profile__param_1,
+#line 335 "profile.m"
+  MR_Word profile__param_2);
+
+#line 332 "profile.m"
+MR_bool MR_CALL 
+profile__valid_call_site_static_ptr_2_p_0(
+#line 332 "profile.m"
+  MR_Word profile__param_1,
+#line 332 "profile.m"
+  MR_Word profile__param_2);
+
+#line 330 "profile.m"
+MR_bool MR_CALL 
+profile__valid_call_site_dynamic_ptr_2_p_0(
+#line 330 "profile.m"
+  MR_Word profile__param_1,
+#line 330 "profile.m"
+  MR_Word profile__param_2);
+
+#line 329 "profile.m"
+MR_bool MR_CALL 
+profile__valid_proc_static_ptr_2_p_0(
+#line 329 "profile.m"
+  MR_Word profile__param_1,
+#line 329 "profile.m"
+  MR_Word profile__param_2);
+
+#line 328 "profile.m"
+MR_bool MR_CALL 
+profile__valid_proc_dynamic_ptr_2_p_0(
+#line 328 "profile.m"
+  MR_Word profile__param_1,
+#line 328 "profile.m"
+  MR_Word profile__param_2);
+
+#line 327 "profile.m"
+MR_bool MR_CALL 
+profile__valid_clique_ptr_2_p_0(
+#line 327 "profile.m"
+  MR_Word profile__param_1,
+#line 327 "profile.m"
+  MR_Word profile__param_2);
+
+#line 325 "profile.m"
+MR_Word MR_CALL 
+profile__dummy_clique_ptr_0_f_0(void);
+
+#line 324 "profile.m"
+MR_Word MR_CALL 
+profile__dummy_call_site_static_ptr_0_f_0(void);
+
+#line 323 "profile.m"
+MR_Word MR_CALL 
+profile__dummy_call_site_dynamic_ptr_0_f_0(void);
+
+#line 322 "profile.m"
+MR_Word MR_CALL 
+profile__dummy_proc_static_ptr_0_f_0(void);
+
+#line 321 "profile.m"
+MR_Word MR_CALL 
+profile__dummy_proc_dynamic_ptr_0_f_0(void);
+
+#line 319 "profile.m"
+MR_Word MR_CALL 
+profile__main_parent_proc_id_0_f_0(void);
+
+#line 318 "profile.m"
+MR_Word MR_CALL 
+profile__dummy_proc_id_0_f_0(void);
+
+#line 316 "profile.m"
+MR_String MR_CALL 
+profile__decl_module_1_f_0(
+#line 316 "profile.m"
+  MR_Word profile__param_1);
+
+#line 312 "profile.m"
+MR_bool MR_CALL 
+profile__is_call_site_kind_2_p_0(
+#line 312 "profile.m"
+  MR_Integer profile__param_1,
+#line 312 "profile.m"
+  MR_Word * profile__param_2);
+
+void mercury__profile__init(void);
+void mercury__profile__init_type_tables(void);
+void mercury__profile__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_profile */
+
+/* :- end_interface profile. */

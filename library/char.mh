@@ -1,0 +1,37 @@
+/*
+** Automatically generated from `char.m'
+** by the Mercury compiler,
+** version DEV, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+*/
+#ifndef CHAR_MH
+#define CHAR_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef CHAR_DECL_GUARD
+#define CHAR_DECL_GUARD
+#line 638 "char.m"
+#include <limits.h>
+#line 30 "char.mh.tmp"
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* CHAR_MH */

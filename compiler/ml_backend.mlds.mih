@@ -1,0 +1,2194 @@
+/*
+** Automatically generated from `mlds.m'
+** by the Mercury compiler,
+** version DEV, configured for x86_64-apple-darwin13.1.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.mlds. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds
+#define MR_HEADER_GUARD_ml_backend__mlds
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_DECL_GUARD
+#define ML_BACKEND__MLDS_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+#line 42 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_abstractness_0;
+
+#line 45 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_access_0;
+
+#line 48 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_constness_0;
+
+#line 51 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_ctor_name_0;
+
+#line 54 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_foreign_import_name_0;
+
+#line 57 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_global_var_ref_0;
+
+#line 60 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_initializer_array_size_0;
+
+#line 63 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mercury_mlds_import_type_0;
+
+#line 66 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mercury_module_name_0;
+
+#line 69 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_ml_call_kind_0;
+
+#line 72 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_ml_scalar_common_type_num_0;
+
+#line 75 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_ml_vector_common_type_num_0;
+
+#line 78 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_0;
+
+#line 81 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_alloc_id_0;
+
+#line 84 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_arg_types_0;
+
+#line 87 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_argument_0;
+
+#line 90 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_arguments_0;
+
+#line 93 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_atomic_statement_0;
+
+#line 96 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_attribute_0;
+
+#line 99 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_case_match_cond_0;
+
+#line 102 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_class_0;
+
+#line 105 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_class_defn_0;
+
+#line 108 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_class_id_0;
+
+#line 111 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_class_kind_0;
+
+#line 114 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_class_name_0;
+
+#line 117 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_code_addr_0;
+
+#line 120 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_context_0;
+
+#line 123 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_ctor_id_0;
+
+#line 126 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_0;
+
+#line 129 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_addr_0;
+
+#line 132 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_data_name_0;
+
+#line 135 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_decl_flags_0;
+
+#line 138 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_defn_0;
+
+#line 141 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_entity_defn_0;
+
+#line 144 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_entity_name_0;
+
+#line 147 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_exception_handler_0;
+
+#line 150 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_exported_enum_0;
+
+#line 153 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_exported_enum_constant_0;
+
+#line 156 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_exported_enums_0;
+
+#line 159 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_field_id_0;
+
+#line 162 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_field_name_0;
+
+#line 165 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_foreign_code_0;
+
+#line 168 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_fully_qualified_name_1;
+
+#line 171 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_func_params_0;
+
+#line 174 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_func_sequence_num_0;
+
+#line 177 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_func_signature_0;
+
+#line 180 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_function_body_0;
+
+#line 183 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_gc_statement_0;
+
+#line 186 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_goto_target_0;
+
+#line 189 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_import_0;
+
+#line 192 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_imports_0;
+
+#line 195 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_initializer_0;
+
+#line 198 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_interface_id_0;
+
+#line 201 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_label_0;
+
+#line 204 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_lval_0;
+
+#line 207 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_module_name_0;
+
+#line 210 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_package_name_0;
+
+#line 213 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_pragma_export_0;
+
+#line 216 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_pred_label_0;
+
+#line 219 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_proc_label_0;
+
+#line 222 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_qual_kind_0;
+
+#line 225 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_qualified_ctor_id_0;
+
+#line 228 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_qualified_entity_name_0;
+
+#line 231 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_qualified_pred_label_0;
+
+#line 234 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_qualified_proc_label_0;
+
+#line 237 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_reset_trail_reason_0;
+
+#line 240 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_return_types_0;
+
+#line 243 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_0;
+
+#line 246 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_rval_const_0;
+
+#line 249 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_scalar_common_0;
+
+#line 252 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_stmt_0;
+
+#line 255 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_case_0;
+
+#line 258 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_default_0;
+
+#line 261 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_switch_range_0;
+
+#line 264 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_tag_0;
+
+#line 267 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_target_lang_0;
+
+#line 270 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_type_0;
+
+#line 273 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_unary_op_0;
+
+#line 276 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_var_0;
+
+#line 279 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_var_name_0;
+
+#line 282 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_mlds_vector_common_0;
+
+#line 285 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_outline_arg_0;
+
+#line 288 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_overridability_0;
+
+#line 291 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_per_instance_0;
+
+#line 294 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_statement_0;
+
+#line 297 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_target_code_attribute_0;
+
+#line 300 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_target_code_attributes_0;
+
+#line 303 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_target_code_component_0;
+
+#line 306 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_trail_op_0;
+
+#line 309 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_virtuality_0;
+
+#line 312 "ml_backend.mlds.mih.tmp"
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds__ml_backend__mlds__type_ctor_info_while_loop_kind_0;
+
+#line 1009 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____while_loop_kind_0_0(
+#line 1009 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1009 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1009 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1009 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____while_loop_kind_0_0(
+#line 1009 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1009 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 907 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____virtuality_0_0(
+#line 907 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 907 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 907 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 907 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____virtuality_0_0(
+#line 907 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 907 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1484 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____trail_op_0_0(
+#line 1484 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1484 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1484 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1484 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____trail_op_0_0(
+#line 1484 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1484 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1433 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____target_code_component_0_0(
+#line 1433 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1433 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1433 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1433 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____target_code_component_0_0(
+#line 1433 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1433 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1460 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____target_code_attributes_0_0(
+#line 1460 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1460 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1460 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1460 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____target_code_attributes_0_0(
+#line 1460 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1460 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1462 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____target_code_attribute_0_0(
+#line 1462 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1462 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1462 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1462 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____target_code_attribute_0_0(
+#line 1462 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1462 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1003 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____statement_0_0(
+#line 1003 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1003 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1003 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1003 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____statement_0_0(
+#line 1003 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1003 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 897 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____per_instance_0_0(
+#line 897 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 897 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 897 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 897 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____per_instance_0_0(
+#line 897 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 897 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 911 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____overridability_0_0(
+#line 911 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 911 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 911 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 911 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____overridability_0_0(
+#line 911 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 911 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1406 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____outline_arg_0_0(
+#line 1406 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1406 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1406 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1406 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____outline_arg_0_0(
+#line 1406 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1406 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1609 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_vector_common_0_0(
+#line 1609 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1609 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1609 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1609 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_vector_common_0_0(
+#line 1609 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1609 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1522 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_var_name_0_0(
+#line 1522 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1522 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1522 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1522 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_var_name_0_0(
+#line 1522 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1522 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1521 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_var_0_0(
+#line 1521 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1521 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1521 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1521 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_var_0_0(
+#line 1521 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1521 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1664 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_unary_op_0_0(
+#line 1664 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1664 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1664 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1664 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_unary_op_0_0(
+#line 1664 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1664 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 719 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_type_0_0(
+#line 719 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 719 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 719 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 719 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Index____mlds_type_0_0(
+#line 719 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 719 "mlds.m"
+  MR_Integer * ml_backend__mlds__param_2);
+
+#line 719 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_type_0_0(
+#line 719 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 719 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1423 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_target_lang_0_0(
+#line 1423 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1423 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1423 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1423 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_target_lang_0_0(
+#line 1423 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1423 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1775 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_tag_0_0(
+#line 1775 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1775 "mlds.m"
+  MR_Integer ml_backend__mlds__param_2,
+#line 1775 "mlds.m"
+  MR_Integer ml_backend__mlds__param_3);
+
+#line 1775 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_tag_0_0(
+#line 1775 "mlds.m"
+  MR_Integer ml_backend__mlds__param_1,
+#line 1775 "mlds.m"
+  MR_Integer ml_backend__mlds__param_2);
+
+#line 1156 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_switch_range_0_0(
+#line 1156 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1156 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1156 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1156 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_switch_range_0_0(
+#line 1156 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1156 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1189 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_switch_default_0_0(
+#line 1189 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1189 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1189 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1189 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_switch_default_0_0(
+#line 1189 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1189 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1165 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_switch_case_0_0(
+#line 1165 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1165 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1165 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1165 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_switch_case_0_0(
+#line 1165 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1165 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1013 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_stmt_0_0(
+#line 1013 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1013 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1013 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1013 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_stmt_0_0(
+#line 1013 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1013 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1604 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_scalar_common_0_0(
+#line 1604 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1604 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1604 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1604 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_scalar_common_0_0(
+#line 1604 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1604 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1680 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_rval_const_0_0(
+#line 1680 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1680 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1680 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1680 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_rval_const_0_0(
+#line 1680 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1680 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1617 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_rval_0_0(
+#line 1617 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1617 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1617 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1617 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_rval_0_0(
+#line 1617 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1617 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 654 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_return_types_0_0(
+#line 654 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 654 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 654 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 654 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_return_types_0_0(
+#line 654 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 654 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1779 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_reset_trail_reason_0_0(
+#line 1779 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1779 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1779 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1779 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_reset_trail_reason_0_0(
+#line 1779 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1779 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1788 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_qualified_proc_label_0_0(
+#line 1788 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1788 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1788 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1788 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_qualified_proc_label_0_0(
+#line 1788 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1788 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1794 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_qualified_pred_label_0_0(
+#line 1794 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1794 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1794 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1794 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_qualified_pred_label_0_0(
+#line 1794 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1794 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 514 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_qualified_entity_name_0_0(
+#line 514 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 514 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 514 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 514 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_qualified_entity_name_0_0(
+#line 514 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 514 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1479 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_qualified_ctor_id_0_0(
+#line 1479 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1479 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1479 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1479 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_qualified_ctor_id_0_0(
+#line 1479 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1479 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 524 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_qual_kind_0_0(
+#line 524 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 524 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 524 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 524 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_qual_kind_0_0(
+#line 524 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 524 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1791 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_proc_label_0_0(
+#line 1791 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1791 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1791 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1791 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_proc_label_0_0(
+#line 1791 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1791 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1807 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_pred_label_0_0(
+#line 1807 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1807 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1807 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1807 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_pred_label_0_0(
+#line 1807 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1807 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 966 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_pragma_export_0_0(
+#line 966 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 966 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 966 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 966 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_pragma_export_0_0(
+#line 966 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 966 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 430 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_package_name_0_0(
+#line 430 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 430 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 430 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 430 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_package_name_0_0(
+#line 430 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 430 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 2051 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_module_name_0_0(
+#line 2051 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 2051 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 2051 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 2051 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_module_name_0_0(
+#line 2051 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 2051 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1530 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_lval_0_0(
+#line 1530 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1530 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1530 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1530 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_lval_0_0(
+#line 1530 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1530 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1206 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_label_0_0(
+#line 1206 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1206 "mlds.m"
+  MR_String ml_backend__mlds__param_2,
+#line 1206 "mlds.m"
+  MR_String ml_backend__mlds__param_3);
+
+#line 1206 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_label_0_0(
+#line 1206 "mlds.m"
+  MR_String ml_backend__mlds__param_1,
+#line 1206 "mlds.m"
+  MR_String ml_backend__mlds__param_2);
+
+#line 867 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_interface_id_0_0(
+#line 867 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 867 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 867 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 867 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_interface_id_0_0(
+#line 867 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 867 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 625 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_initializer_0_0(
+#line 625 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 625 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 625 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 625 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_initializer_0_0(
+#line 625 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 625 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 391 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_imports_0_0(
+#line 391 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 391 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 391 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 391 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_imports_0_0(
+#line 391 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 391 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 409 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_import_0_0(
+#line 409 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 409 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 409 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 409 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_import_0_0(
+#line 409 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 409 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1208 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_goto_target_0_0(
+#line 1208 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1208 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1208 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1208 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_goto_target_0_0(
+#line 1208 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1208 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 606 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_gc_statement_0_0(
+#line 606 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 606 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 606 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 606 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_gc_statement_0_0(
+#line 606 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 606 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 616 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_function_body_0_0(
+#line 616 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 616 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 616 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 616 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_function_body_0_0(
+#line 616 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 616 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 662 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_func_signature_0_0(
+#line 662 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 662 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 662 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 662 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_func_signature_0_0(
+#line 662 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 662 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 555 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_func_sequence_num_0_0(
+#line 555 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 555 "mlds.m"
+  MR_Integer ml_backend__mlds__param_2,
+#line 555 "mlds.m"
+  MR_Integer ml_backend__mlds__param_3);
+
+#line 555 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_func_sequence_num_0_0(
+#line 555 "mlds.m"
+  MR_Integer ml_backend__mlds__param_1,
+#line 555 "mlds.m"
+  MR_Integer ml_backend__mlds__param_2);
+
+#line 638 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_func_params_0_0(
+#line 638 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 638 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 638 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 638 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_func_params_0_0(
+#line 638 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 638 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 517 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_fully_qualified_name_1_0(
+#line 517 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 517 "mlds.m"
+  MR_Word * ml_backend__mlds__param_2,
+#line 517 "mlds.m"
+  MR_Word ml_backend__mlds__param_3,
+#line 517 "mlds.m"
+  MR_Word ml_backend__mlds__param_4);
+
+#line 517 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_fully_qualified_name_1_0(
+#line 517 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 517 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 517 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 956 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_foreign_code_0_0(
+#line 956 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 956 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 956 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 956 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_foreign_code_0_0(
+#line 956 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 956 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1517 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_field_name_0_0(
+#line 1517 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1517 "mlds.m"
+  MR_String ml_backend__mlds__param_2,
+#line 1517 "mlds.m"
+  MR_String ml_backend__mlds__param_3);
+
+#line 1517 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_field_name_0_0(
+#line 1517 "mlds.m"
+  MR_String ml_backend__mlds__param_1,
+#line 1517 "mlds.m"
+  MR_String ml_backend__mlds__param_2);
+
+#line 1497 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_field_id_0_0(
+#line 1497 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1497 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1497 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1497 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_field_id_0_0(
+#line 1497 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1497 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1833 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_exported_enums_0_0(
+#line 1833 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1833 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1833 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1833 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_exported_enums_0_0(
+#line 1833 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1833 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1844 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_exported_enum_constant_0_0(
+#line 1844 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1844 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1844 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1844 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_exported_enum_constant_0_0(
+#line 1844 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1844 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1835 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_exported_enum_0_0(
+#line 1835 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1835 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1835 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1835 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_exported_enum_0_0(
+#line 1835 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1835 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1255 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_exception_handler_0_0(
+#line 1255 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1255 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1255 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1255 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_exception_handler_0_0(
+#line 1255 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1255 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 528 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_entity_name_0_0(
+#line 528 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 528 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 528 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 528 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_entity_name_0_0(
+#line 528 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 528 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 567 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_entity_defn_0_0(
+#line 567 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 567 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 567 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 567 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_entity_defn_0_0(
+#line 567 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 567 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 489 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_defn_0_0(
+#line 489 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 489 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 489 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 489 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_defn_0_0(
+#line 489 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 489 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 2122 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_decl_flags_0_0(
+#line 2122 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 2122 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 2122 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 2122 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_decl_flags_0_0(
+#line 2122 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 2122 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1732 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_data_name_0_0(
+#line 1732 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1732 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1732 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1732 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_data_name_0_0(
+#line 1732 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1732 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1724 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_data_addr_0_0(
+#line 1724 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1724 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1724 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1724 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_data_addr_0_0(
+#line 1724 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1724 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1730 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_data_0_0(
+#line 1730 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1730 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1730 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1730 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_data_0_0(
+#line 1730 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1730 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1478 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_ctor_id_0_0(
+#line 1478 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1478 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1478 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1478 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_ctor_id_0_0(
+#line 1478 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1478 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1876 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_context_0_0(
+#line 1876 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1876 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1876 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1876 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_context_0_0(
+#line 1876 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1876 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1713 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_code_addr_0_0(
+#line 1713 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1713 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1713 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1713 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_code_addr_0_0(
+#line 1713 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1713 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 688 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_class_name_0_0(
+#line 688 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 688 "mlds.m"
+  MR_String ml_backend__mlds__param_2,
+#line 688 "mlds.m"
+  MR_String ml_backend__mlds__param_3);
+
+#line 688 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_class_name_0_0(
+#line 688 "mlds.m"
+  MR_String ml_backend__mlds__param_1,
+#line 688 "mlds.m"
+  MR_String ml_backend__mlds__param_2);
+
+#line 670 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_class_kind_0_0(
+#line 670 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 670 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 670 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 670 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_class_kind_0_0(
+#line 670 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 670 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 866 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_class_id_0_0(
+#line 866 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 866 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 866 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 866 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_class_id_0_0(
+#line 866 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 866 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 696 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_class_defn_0_0(
+#line 696 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 696 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 696 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 696 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_class_defn_0_0(
+#line 696 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 696 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 689 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_class_0_0(
+#line 689 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 689 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 689 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 689 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_class_0_0(
+#line 689 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 689 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1176 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_case_match_cond_0_0(
+#line 1176 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1176 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1176 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1176 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_case_match_cond_0_0(
+#line 1176 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1176 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 981 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_attribute_0_0(
+#line 981 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 981 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 981 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 981 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_attribute_0_0(
+#line 981 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 981 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1272 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_atomic_statement_0_0(
+#line 1272 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1272 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1272 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1272 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_atomic_statement_0_0(
+#line 1272 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1272 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 644 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_arguments_0_0(
+#line 644 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 644 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 644 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 644 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_arguments_0_0(
+#line 644 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 644 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 645 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_argument_0_0(
+#line 645 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 645 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 645 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 645 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_argument_0_0(
+#line 645 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 645 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 653 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_arg_types_0_0(
+#line 653 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 653 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 653 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 653 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_arg_types_0_0(
+#line 653 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 653 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1472 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_alloc_id_0_0(
+#line 1472 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1472 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1472 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1472 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_alloc_id_0_0(
+#line 1472 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1472 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 361 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mlds_0_0(
+#line 361 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 361 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 361 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 361 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mlds_0_0(
+#line 361 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 361 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1601 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____ml_vector_common_type_num_0_0(
+#line 1601 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1601 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1601 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1601 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____ml_vector_common_type_num_0_0(
+#line 1601 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1601 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1599 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____ml_scalar_common_type_num_0_0(
+#line 1599 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1599 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1599 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1599 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____ml_scalar_common_type_num_0_0(
+#line 1599 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1599 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1240 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____ml_call_kind_0_0(
+#line 1240 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1240 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1240 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1240 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____ml_call_kind_0_0(
+#line 1240 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1240 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 355 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mercury_module_name_0_0(
+#line 355 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 355 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 355 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 355 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mercury_module_name_0_0(
+#line 355 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 355 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 401 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____mercury_mlds_import_type_0_0(
+#line 401 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 401 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 401 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 401 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____mercury_mlds_import_type_0_0(
+#line 401 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 401 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 631 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____initializer_array_size_0_0(
+#line 631 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 631 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 631 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 631 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____initializer_array_size_0_0(
+#line 631 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 631 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1591 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____global_var_ref_0_0(
+#line 1591 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1591 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1591 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1591 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____global_var_ref_0_0(
+#line 1591 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1591 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 418 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____foreign_import_name_0_0(
+#line 418 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 418 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 418 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 418 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____foreign_import_name_0_0(
+#line 418 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 418 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1477 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____ctor_name_0_0(
+#line 1477 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 1477 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 1477 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 1477 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____ctor_name_0_0(
+#line 1477 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 1477 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 916 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____constness_0_0(
+#line 916 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 916 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 916 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 916 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____constness_0_0(
+#line 916 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 916 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 876 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____access_0_0(
+#line 876 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 876 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 876 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 876 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____access_0_0(
+#line 876 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 876 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 920 "mlds.m"
+void MR_CALL 
+ml_backend__mlds____Compare____abstractness_0_0(
+#line 920 "mlds.m"
+  MR_Word * ml_backend__mlds__param_1,
+#line 920 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 920 "mlds.m"
+  MR_Word ml_backend__mlds__param_3);
+
+#line 920 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds____Unify____abstractness_0_0(
+#line 920 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 920 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 1829 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_std_tabling_proc_label_1_f_0(
+#line 1829 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 996 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_get_prog_context_1_f_0(
+#line 996 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 994 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_make_context_1_f_0(
+#line 994 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 944 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__ml_static_const_decl_flags_0_f_0(void);
+
+#line 938 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__init_decl_flags_6_f_0(
+#line 938 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 938 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 938 "mlds.m"
+  MR_Word ml_backend__mlds__param_3,
+#line 938 "mlds.m"
+  MR_Word ml_backend__mlds__param_4,
+#line 938 "mlds.m"
+  MR_Word ml_backend__mlds__param_5,
+#line 938 "mlds.m"
+  MR_Word ml_backend__mlds__param_6);
+
+#line 936 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__set_abstractness_2_f_0(
+#line 936 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 936 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 935 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__set_constness_2_f_0(
+#line 935 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 935 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 934 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__set_overridability_2_f_0(
+#line 934 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 934 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 933 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__set_virtuality_2_f_0(
+#line 933 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 933 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 932 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__set_per_instance_2_f_0(
+#line 932 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 932 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 931 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__set_access_2_f_0(
+#line 931 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 931 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 929 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__abstractness_1_f_0(
+#line 929 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 928 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__constness_1_f_0(
+#line 928 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 927 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__overridability_1_f_0(
+#line 927 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 926 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__virtuality_1_f_0(
+#line 926 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 925 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__per_instance_1_f_0(
+#line 925 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 924 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__access_1_f_0(
+#line 924 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 863 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mercury_type_to_mlds_type_2_f_0(
+#line 863 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 863 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 668 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_get_func_signature_1_f_0(
+#line 668 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 656 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_get_arg_types_1_f_0(
+#line 656 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 636 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__get_initializer_array_size_1_f_0(
+#line 636 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 487 "mlds.m"
+MR_String MR_CALL 
+ml_backend__mlds__wrapper_class_name_0_f_0(void);
+
+#line 480 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_append_name_2_f_0(
+#line 480 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 480 "mlds.m"
+  MR_String ml_backend__mlds__param_2);
+
+#line 475 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_append_wrapper_class_1_f_0(
+#line 475 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 469 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_append_class_qualifier_5_f_0(
+#line 469 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 469 "mlds.m"
+  MR_Word ml_backend__mlds__param_2,
+#line 469 "mlds.m"
+  MR_Word ml_backend__mlds__param_3,
+#line 469 "mlds.m"
+  MR_String ml_backend__mlds__param_4,
+#line 469 "mlds.m"
+  MR_Integer ml_backend__mlds__param_5);
+
+#line 460 "mlds.m"
+MR_bool MR_CALL 
+ml_backend__mlds__is_std_lib_module_2_p_0(
+#line 460 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 460 "mlds.m"
+  MR_Word * ml_backend__mlds__param_2);
+
+#line 455 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_module_name_to_package_name_1_f_0(
+#line 455 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 450 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_module_name_to_sym_name_1_f_0(
+#line 450 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 443 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mercury_module_and_package_name_to_mlds_2_f_0(
+#line 443 "mlds.m"
+  MR_Word ml_backend__mlds__param_1,
+#line 443 "mlds.m"
+  MR_Word ml_backend__mlds__param_2);
+
+#line 435 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mercury_module_name_to_mlds_1_f_0(
+#line 435 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+#line 389 "mlds.m"
+MR_Word MR_CALL 
+ml_backend__mlds__mlds_get_module_name_1_f_0(
+#line 389 "mlds.m"
+  MR_Word ml_backend__mlds__param_1);
+
+void mercury__ml_backend__mlds__init(void);
+void mercury__ml_backend__mlds__init_type_tables(void);
+void mercury__ml_backend__mlds__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.mlds */
+
+/* :- end_interface ml_backend.mlds. */
