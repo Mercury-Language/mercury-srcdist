@@ -1,0 +1,13 @@
+module(1, "parsing_utils.m",
+	parsing_utils,
+	{},
+	{builtin, char, list, maybe, unit, private_builtin},
+	{builtin, array, char, int, list, maybe, mutvar, string, unit, private_builtin},
+	{},
+	{},
+	{},
+	{"C"},
+	{"C" - parsing_utils, "C#" - parsing_utils, "Java" - parsing_utils, "Erlang" - parsing_utils, "C" - parsing_utils},
+	no_foreign_export,
+	no_main
+).

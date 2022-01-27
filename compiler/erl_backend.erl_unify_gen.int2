@@ -1,0 +1,9 @@
+:- module (erl_backend.erl_unify_gen).
+:- interface.
+:- import_module maybe.
+:- import_module (erl_backend.elds).
+:- import_module (erl_backend.erl_code_util).
+:- import_module (hlds.code_model).
+:- import_module (hlds.hlds_goal).
+:- import_module (parse_tree.prog_data).
+:- inst (termable_cons_id) == bound(char_const(ground) ; cons(ground, ground, ground) ; float_const(ground) ; int_const(ground) ; string_const(ground) ; tuple_cons(ground)).

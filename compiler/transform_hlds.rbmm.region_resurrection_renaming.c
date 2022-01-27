@@ -1,0 +1,7178 @@
+/*
+** Automatically generated from `rbmm.region_resurrection_renaming.m'
+** by the Mercury compiler,
+** version rotd-2015-08-10
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.rbmm.region_resurrection_renaming. */
+/* :- implementation. */
+
+/*
+INIT mercury__transform_hlds__rbmm__region_resurrection_renaming__init
+ENDINIT
+*/
+
+#include "transform_hlds.rbmm.region_resurrection_renaming.mih"
+
+
+#include "analysis.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "counter.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "hlds.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "transform_hlds.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.vartypes.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.set_of_var.mih"
+#include "parse_tree.status.mih"
+#include "transform_hlds.rbmm.mih"
+#include "transform_hlds.smm_common.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+#include "transform_hlds.rbmm.add_rbmm_goal_infos.mih"
+#include "transform_hlds.rbmm.condition_renaming.mih"
+#include "transform_hlds.rbmm.execution_path.mih"
+#include "transform_hlds.rbmm.interproc_region_lifetime.mih"
+#include "transform_hlds.rbmm.live_region_analysis.mih"
+#include "transform_hlds.rbmm.live_variable_analysis.mih"
+#include "transform_hlds.rbmm.points_to_analysis.mih"
+#include "transform_hlds.rbmm.points_to_graph.mih"
+#include "transform_hlds.rbmm.points_to_info.mih"
+#include "transform_hlds.rbmm.region_arguments.mih"
+#include "transform_hlds.rbmm.region_instruction.mih"
+#include "transform_hlds.rbmm.region_liveness_info.mih"
+#include "transform_hlds.rbmm.region_transformation.mih"
+
+
+
+
+#line 154 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+#line 157 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+#line 160 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+#line 163 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+#line 166 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+#line 169 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+#line 172 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+#line 175 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+#line 178 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+#line 181 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+#line 184 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+#line 187 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+#line 190 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0;
+
+#line 193 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0;
+
+#line 196 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0;
+
+#line 199 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1builtin__type_ctor_info_string_0;
+
+#line 202 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0;
+
+#line 205 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0;
+
+#line 208 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0;
+
+#line 211 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0;
+
+#line 214 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0;
+
+#line 217 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0;
+
+#line 220 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0;
+
+#line 223 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+#line 226 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+#line 229 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__pair__pti_pair_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+
+#line 232 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+#line 235 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_builtin__type_ctor_info_string_0;
+
+#line 238 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_transform_hlds__smm_common__type_ctor_info_program_point_0;
+
+#line 241 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__smm_common__type_ctor_info_program_point_0;
+
+#line 244 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0;
+
+#line 247 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_list__ti_list_1builtin__type_ctor_info_string_0;
+
+#line 250 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1transform_hlds__smm_common__type_ctor_info_program_point_0;
+
+#line 253 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_list__ti_list_1transform_hlds__smm_common__type_ctor_info_program_point_0;
+
+#line 256 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0;
+
+#line 259 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+
+#line 262 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0;
+
+#line 265 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0;
+
+#line 268 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____exec_path_region_set_table_0_0_10001(
+#line 271 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 273 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2);
+
+#line 276 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____exec_path_region_set_table_0_0_10001(
+#line 279 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 281 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 283 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 286 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____join_point_region_name_table_0_0_10001(
+#line 289 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 291 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2);
+
+#line 294 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____join_point_region_name_table_0_0_10001(
+#line 297 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 299 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 301 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 304 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____proc_resurrection_path_table_0_0_10001(
+#line 307 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 309 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2);
+
+#line 312 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____proc_resurrection_path_table_0_0_10001(
+#line 315 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 317 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 319 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 322 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_0_0_10001(
+#line 325 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 327 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2);
+
+#line 330 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_0_0_10001(
+#line 333 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 335 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 337 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 340 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_annotation_proc_0_0_10001(
+#line 343 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 345 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2);
+
+#line 348 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_annotation_proc_0_0_10001(
+#line 351 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 353 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 355 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 358 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_annotation_table_0_0_10001(
+#line 361 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 363 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2);
+
+#line 366 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_annotation_table_0_0_10001(
+#line 369 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 371 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 373 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 376 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_proc_0_0_10001(
+#line 379 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 381 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2);
+
+#line 384 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_proc_0_0_10001(
+#line 387 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 389 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 391 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 394 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_table_0_0_10001(
+#line 397 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 399 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2);
+
+#line 402 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_table_0_0_10001(
+#line 405 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 407 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 409 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 451 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_114_101_103_105_111_110_95_114_101_115_117_114_114_101_99_116_105_111_110_95_114_101_110_97_109_105_110_103_95_112_114_111_99_95_95_91_50_93_95_48_7_p_0_1(
+#line 451 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 451 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 451 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 451 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 451 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4);
+
+#line 439 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_114_101_103_105_111_110_95_114_101_115_117_114_114_101_99_116_105_111_110_95_114_101_110_97_109_105_110_103_95_112_114_111_99_95_95_91_50_93_95_48_7_p_0(
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_8,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_10,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_11,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathsContainResurrection_12,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameTable_0_19,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameTable_20);
+
+#line 418 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_106_111_105_110_95_112_111_105_110_116_115_95_105_110_95_112_97_116_104_95_95_91_51_93_95_48_5_p_0(
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPointsInPath_6,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPoint_7,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_10,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_11);
+
+#line 298 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_106_111_105_110_95_112_111_105_110_116_115_95_112_114_111_99_95_95_91_51_93_95_48_5_p_0_2(
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_6,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_7,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_8,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_9);
+
+#line 293 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_106_111_105_110_95_112_111_105_110_116_115_95_112_114_111_99_95_95_91_51_93_95_48_5_p_0_1(
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 286 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_106_111_105_110_95_112_111_105_110_116_115_95_112_114_111_99_95_95_91_51_93_95_48_5_p_0(
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_6,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_7,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointTable_0_20,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointTable_21);
+
+#line 549 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__IntroducedFrom__pred__collect_renaming_and_annotation_proc__549__1_3_p_0(
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_47,
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_48,
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_49);
+
+#line 382 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__IntroducedFrom__pred__collect_paths_containing_join_points_proc__382__1_3_p_0(
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_25,
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_26,
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_27);
+
+#line 293 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__IntroducedFrom__pred__collect_join_points_proc__293__1_3_p_0(
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_24,
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_25,
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_26);
+
+#line 714 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__add_annotation_at_last_prog_point_6_p_0(
+#line 714 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_7,
+#line 714 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_8,
+#line 714 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Renaming_9,
+#line 714 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Region_10,
+#line 714 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_16,
+#line 714 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_17);
+
+#line 685 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__add_annotation_and_renaming_at_join_point_9_p_0(
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_10,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_11,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_String transform_hlds__rbmm__region_resurrection_renaming__JoinPointName_12,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevRenaming_13,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Region_14,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_22,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_23,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Renaming_0_24,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Renaming_25);
+
+#line 671 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_exec_path_2_13_p_0_2(
+#line 671 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 671 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 671 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 671 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 656 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_exec_path_2_13_p_0_1(
+#line 656 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 656 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 656 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 656 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 656 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4,
+#line 656 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5);
+
+#line 597 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_exec_path_2_13_p_0(
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_1,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_2,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_3,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_4,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BornR_5,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_6,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_7,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_8,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__9_9,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_10,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_11,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0_12,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_13);
+
+#line 569 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_exec_path_12_p_0(
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_1,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_2,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_3,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_4,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BornR_5,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_6,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_7,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__8_8,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_9,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_10,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0_11,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_12);
+
+#line 555 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_proc_13_p_0_2(
+#line 555 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 555 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 555 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 555 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 555 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4,
+#line 555 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5);
+
+#line 549 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_proc_13_p_0_1(
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 526 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_proc_13_p_0(
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_14,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointTable_15,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeTable_16,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterTable_17,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BornRTable_18,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_19,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectionPathTable_20,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_21,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_22,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationTable_0_41,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationTable_42,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingTable_0_43,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingTable_44);
+
+#line 488 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__record_renaming_prog_point_6_p_0(
+#line 488 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_7,
+#line 488 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_8,
+#line 488 "rbmm.region_resurrection_renaming.m"
+  MR_Integer transform_hlds__rbmm__region_resurrection_renaming__RenamingCounter_9,
+#line 488 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Region_10,
+#line 488 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_0_16,
+#line 488 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_17);
+
+#line 484 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_prog_point_8_p_0_1(
+#line 484 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 484 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 484 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 484 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 467 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_prog_point_8_p_0(
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_9,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_10,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_11,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__4_4,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingCounter_0_19,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingCounter_20,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_0_21,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_22);
+
+#line 463 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_exec_path_6_p_0_1(
+#line 463 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 463 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 463 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 463 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 463 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4,
+#line 463 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5);
+
+#line 456 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_exec_path_6_p_0(
+#line 456 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_7,
+#line 456 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_8,
+#line 456 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPath_9,
+#line 456 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_10,
+#line 456 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_0_13,
+#line 456 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_14);
+
+#line 439 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_proc_7_p_0(
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_8,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming___LocalRTable_9,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_10,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_11,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathsContainResurrection_12,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameTable_0_19,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameTable_20);
+
+#line 418 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__find_join_points_in_path_5_p_0(
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPointsInPath_6,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPoint_7,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_String transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_8,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_10,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_11);
+
+#line 405 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__path_containing_join_point_6_p_0_1(
+#line 405 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 405 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 405 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 405 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 405 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4);
+
+#line 397 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__path_containing_join_point_6_p_0(
+#line 397 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_7,
+#line 397 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_8,
+#line 397 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsProc_9,
+#line 397 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__NonResurPath_10,
+#line 397 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_16,
+#line 397 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_17);
+
+#line 390 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_proc_6_p_0_2(
+#line 390 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 390 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 390 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 390 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 382 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_proc_6_p_0_1(
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 373 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_proc_6_p_0(
+#line 373 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_7,
+#line 373 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointTable_8,
+#line 373 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_9,
+#line 373 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc_10,
+#line 373 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_21,
+#line 373 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_22);
+
+#line 353 "rbmm.region_resurrection_renaming.m"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__is_join_point_2_3_p_0(
+#line 353 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_4,
+#line 353 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_5,
+#line 353 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3);
+
+#line 343 "rbmm.region_resurrection_renaming.m"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__is_join_point_3_p_0(
+#line 343 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_4,
+#line 343 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_5,
+#line 343 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3);
+
+#line 302 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_join_points_path_10_p_0(
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Paths_11,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Path_12,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_0_24,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_25,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_0_26,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_27,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_28,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_29,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_0_30,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_31);
+
+#line 286 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_join_points_proc_5_p_0(
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_6,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_7,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_8,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointTable_0_20,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointTable_21);
+
+#line 233 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_prog_point_12_p_0(
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_13,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_14,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_15,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeProc_16,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterProc_17,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__6_6,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_CreatedCandidates_0_31,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_CreatedCandidates_32,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RemovedCandidates_0_33,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RemovedCandidates_34,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionsInExecPath_0_35,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionsInExecPath_36);
+
+#line 221 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_exec_path_8_p_0_1(
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_6,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_7);
+
+#line 213 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_exec_path_8_p_0(
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_9,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_10,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_11,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeProc_12,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterProc_13,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPath_14,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionProc_0_19,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionProc_20);
+
+#line 201 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_proc_12_p_0_1(
+#line 201 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 201 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 201 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 201 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3);
+
+#line 181 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_proc_12_p_0(
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeTable_13,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterTable_14,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BornRTable_15,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__DeadRTable_16,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LocalRTable_17,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_18,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeTable_19,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterTable_20,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_21,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPaths_22,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_33,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_34);
+
+#line 521 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_10_p_0_1(
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4,
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5,
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_6);
+
+#line 435 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_5_p_0_1(
+#line 435 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 435 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 435 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 435 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 435 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4);
+
+#line 369 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_4_p_0_1(
+#line 369 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 369 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 369 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 369 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 369 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4);
+
+#line 283 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_join_points_3_p_0_1(
+#line 283 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 283 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 283 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 283 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 283 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4);
+
+#line 176 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_10_p_0_1(
+#line 176 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 176 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 176 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 176 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 176 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4);
+
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[14][3];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[8][2];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_3[3][15];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_4[2][8];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_5[5][9];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_6[1][10];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_7[1][16];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_8[2][11];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_9[2][6];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_10[1][12];
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_11[1][13];
+
+
+
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[14][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[0])),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[1]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[1]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[3]))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[3]))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[5]))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[6]))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[4]))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[8]))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[1]))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_9[0])),
+    ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_proc_6_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_9[0])),
+    ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_proc_13_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_9[1])),
+    ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_106_111_105_110_95_112_111_105_110_116_115_95_112_114_111_99_95_95_91_51_93_95_48_5_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[8][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[0]))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[0]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[5]))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_3[3][15] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 12)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 12)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__pair__pti_pair_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 12)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_4[2][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__smm_common__type_ctor_info_program_point_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_5[5][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_list__ti_list_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_6[1][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_7[1][16] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 13)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_8[2][11] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__pair__pti_pair_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&mercury__counter__counter__type_ctor_info_counter_0)),
+    ((MR_Box) (&mercury__counter__counter__type_ctor_info_counter_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_9[2][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_list__ti_list_1transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_list__ti_list_1transform_hlds__smm_common__type_ctor_info_program_point_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_10[1][12] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 9)),
+    ((MR_Box) (&transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rpt_graph_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_list__ti_list_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_list__ti_list_1builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_list__ti_list_1builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__rbmm__region_resurrection_renaming_scalar_common_11[1][13] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 10)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_list__ti_list_1transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__counter__counter__type_ctor_info_counter_0)),
+    ((MR_Box) (&mercury__counter__counter__type_ctor_info_counter_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__smm_common__type_ctor_info_program_point_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_builtin__type_ctor_info_string_0))
+  },
+};
+
+
+
+#include "io.mh"
+#include "io.mh"
+#include "time.mh"
+#include "string.mh"
+#include "mdbcomp.rtti_access.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+#line 1575 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+#line 1583 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_TypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+#line 1592 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+#line 1601 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+#line 1610 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_TypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+#line 1619 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+#line 1627 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+#line 1635 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0,
+    (MR_TypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+#line 1644 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+#line 1653 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+#line 1661 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+#line 1670 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+#line 1679 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1688 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1697 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0
+  }
+};
+
+#line 1706 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1714 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+    (MR_TypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1723 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_TypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1732 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1741 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1750 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0
+  }
+};
+
+#line 1758 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_TypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0
+  }
+};
+
+#line 1767 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0
+  }
+};
+
+#line 1776 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+#line 1785 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+#line 1793 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__pair__pti_pair_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_hlds__hlds_goal__type_ctor_info_hlds_goal_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_PseudoTypeInfo) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0
+  }
+};
+
+#line 1802 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+#line 1810 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1819 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_transform_hlds__smm_common__type_ctor_info_program_point_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0
+  }
+};
+
+#line 1827 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__set_ordlist__pti_set_ordlist_1__plain_transform_hlds__smm_common__type_ctor_info_program_point_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0
+  }
+};
+
+#line 1835 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_transform_hlds__smm_common__type_ctor_info_program_point_0__plain_list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0
+  }
+};
+
+#line 1844 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__pti_tree234_2__plain_builtin__type_ctor_info_string_0__plain_list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1853 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1transform_hlds__smm_common__type_ctor_info_program_point_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0
+  }
+};
+
+#line 1861 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__rbmm__region_resurrection_renaming__list__pti_list_1__plain_list__ti_list_1transform_hlds__smm_common__type_ctor_info_program_point_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__list__ti_list_1transform_hlds__smm_common__type_ctor_info_program_point_0
+  }
+};
+
+#line 1869 "transform_hlds.rbmm.region_resurrection_renaming.c"
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_exec_path_region_set_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Unify____exec_path_region_set_table_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Compare____exec_path_region_set_table_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_resurrection_renaming",
+  (MR_String) "exec_path_region_set_table",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1886 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_TypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0
+  }
+};
+
+#line 1895 "transform_hlds.rbmm.region_resurrection_renaming.c"
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_join_point_region_name_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Unify____join_point_region_name_table_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Compare____join_point_region_name_table_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_resurrection_renaming",
+  (MR_String) "join_point_region_name_table",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0builtin__type_ctor_info_string_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1912 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_TypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0
+  }
+};
+
+#line 1921 "transform_hlds.rbmm.region_resurrection_renaming.c"
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_proc_resurrection_path_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Unify____proc_resurrection_path_table_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Compare____proc_resurrection_path_table_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_resurrection_renaming",
+  (MR_String) "proc_resurrection_path_table",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2list__ti_list_1pair__ti_pair_2transform_hlds__smm_common__type_ctor_info_program_point_0hlds__hlds_goal__type_ctor_info_hlds_goal_0set_ordlist__ti_set_ordlist_1transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1938 "transform_hlds.rbmm.region_resurrection_renaming.c"
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_resurrection_renaming",
+  (MR_String) "rbmm_renaming",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1955 "transform_hlds.rbmm.region_resurrection_renaming.c"
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_annotation_proc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_annotation_proc_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_annotation_proc_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_resurrection_renaming",
+  (MR_String) "rbmm_renaming_annotation_proc",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1972 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_TypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0
+  }
+};
+
+#line 1981 "transform_hlds.rbmm.region_resurrection_renaming.c"
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_annotation_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_annotation_table_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_annotation_table_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_resurrection_renaming",
+  (MR_String) "rbmm_renaming_annotation_table",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0list__ti_list_1transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1998 "transform_hlds.rbmm.region_resurrection_renaming.c"
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_proc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_proc_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_proc_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_resurrection_renaming",
+  (MR_String) "rbmm_renaming_proc",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2015 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static const MR_FA_TypeInfo_Struct2 transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_TypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0
+  }
+};
+
+#line 2024 "transform_hlds.rbmm.region_resurrection_renaming.c"
+const MR_TypeCtorInfo_Struct transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_table_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_table_0_0_10001)),
+  ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_table_0_0_10001)),
+  (MR_String) "transform_hlds.rbmm.region_resurrection_renaming",
+  (MR_String) "rbmm_renaming_table",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__rbmm__region_resurrection_renaming__tree234__ti_tree234_2hlds__hlds_pred__type_ctor_info_pred_proc_id_0tree234__ti_tree234_2transform_hlds__smm_common__type_ctor_info_program_point_0tree234__ti_tree234_2builtin__type_ctor_info_string_0list__ti_list_1builtin__type_ctor_info_string_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2041 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____exec_path_region_set_table_0_0_10001(
+#line 2044 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2046 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2)
+#line 2048 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2050 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2052 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 2055 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2057 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = transform_hlds__rbmm__region_resurrection_renaming____Unify____exec_path_region_set_table_0_0(((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2));
+    }
+#line 2060 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 2062 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2064 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2067 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____exec_path_region_set_table_0_0_10001(
+#line 2070 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2072 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 2074 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 2076 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2078 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2080 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1;
+
+#line 2083 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2085 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming____Compare____exec_path_region_set_table_0_0(&transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3));
+    }
+#line 2088 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1));
+#line 2090 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2092 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2095 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____join_point_region_name_table_0_0_10001(
+#line 2098 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2100 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2)
+#line 2102 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2104 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2106 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 2109 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2111 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = transform_hlds__rbmm__region_resurrection_renaming____Unify____join_point_region_name_table_0_0(((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2));
+    }
+#line 2114 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 2116 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2118 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2121 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____join_point_region_name_table_0_0_10001(
+#line 2124 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2126 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 2128 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 2130 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2132 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2134 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1;
+
+#line 2137 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2139 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming____Compare____join_point_region_name_table_0_0(&transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3));
+    }
+#line 2142 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1));
+#line 2144 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2146 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2149 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____proc_resurrection_path_table_0_0_10001(
+#line 2152 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2154 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2)
+#line 2156 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2158 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2160 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 2163 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2165 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = transform_hlds__rbmm__region_resurrection_renaming____Unify____proc_resurrection_path_table_0_0(((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2));
+    }
+#line 2168 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 2170 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2172 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2175 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____proc_resurrection_path_table_0_0_10001(
+#line 2178 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2180 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 2182 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 2184 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2186 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2188 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1;
+
+#line 2191 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2193 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming____Compare____proc_resurrection_path_table_0_0(&transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3));
+    }
+#line 2196 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1));
+#line 2198 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2200 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2203 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_0_0_10001(
+#line 2206 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2208 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2)
+#line 2210 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2212 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2214 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 2217 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2219 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_0_0(((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2));
+    }
+#line 2222 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 2224 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2226 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2229 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_0_0_10001(
+#line 2232 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2234 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 2236 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 2238 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2240 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2242 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1;
+
+#line 2245 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2247 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_0_0(&transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3));
+    }
+#line 2250 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1));
+#line 2252 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2254 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2257 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_annotation_proc_0_0_10001(
+#line 2260 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2262 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2)
+#line 2264 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2266 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2268 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 2271 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2273 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_annotation_proc_0_0(((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2));
+    }
+#line 2276 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 2278 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2280 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2283 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_annotation_proc_0_0_10001(
+#line 2286 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2288 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 2290 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 2292 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2294 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2296 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1;
+
+#line 2299 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2301 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_annotation_proc_0_0(&transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3));
+    }
+#line 2304 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1));
+#line 2306 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2308 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2311 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_annotation_table_0_0_10001(
+#line 2314 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2316 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2)
+#line 2318 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2320 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2322 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 2325 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2327 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_annotation_table_0_0(((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2));
+    }
+#line 2330 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 2332 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2334 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2337 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_annotation_table_0_0_10001(
+#line 2340 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2342 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 2344 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 2346 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2348 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2350 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1;
+
+#line 2353 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2355 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_annotation_table_0_0(&transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3));
+    }
+#line 2358 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1));
+#line 2360 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2362 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2365 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_proc_0_0_10001(
+#line 2368 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2370 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2)
+#line 2372 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2374 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2376 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 2379 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2381 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_proc_0_0(((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2));
+    }
+#line 2384 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 2386 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2388 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2391 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_proc_0_0_10001(
+#line 2394 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2396 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 2398 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 2400 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2402 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2404 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1;
+
+#line 2407 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2409 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_proc_0_0(&transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3));
+    }
+#line 2412 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1));
+#line 2414 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2416 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2419 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_table_0_0_10001(
+#line 2422 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2424 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2)
+#line 2426 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2428 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2430 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 2433 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2435 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_table_0_0(((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2));
+    }
+#line 2438 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 2440 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2442 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 2445 "transform_hlds.rbmm.region_resurrection_renaming.c"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_table_0_0_10001(
+#line 2448 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 2450 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 2452 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 2454 "transform_hlds.rbmm.region_resurrection_renaming.c"
+{
+#line 2456 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  {
+#line 2458 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1;
+
+#line 2461 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    {
+#line 2463 "transform_hlds.rbmm.region_resurrection_renaming.c"
+      transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_table_0_0(&transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3));
+    }
+#line 2466 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_HeadVar__1_1));
+#line 2468 "transform_hlds.rbmm.region_resurrection_renaming.c"
+  }
+#line 2470 "transform_hlds.rbmm.region_resurrection_renaming.c"
+}
+
+#line 451 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_114_101_103_105_111_110_95_114_101_115_117_114_114_101_99_116_105_111_110_95_114_101_110_97_109_105_110_103_95_112_114_111_99_95_95_91_50_93_95_48_7_p_0_1(
+#line 451 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 451 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 451 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 451 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 451 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4)
+#line 451 "rbmm.region_resurrection_renaming.m"
+{
+#line 451 "rbmm.region_resurrection_renaming.m"
+  {
+#line 451 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 451 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv2_STATE_VARIABLE_ResurrectionRenameProc_14;
+
+#line 451 "rbmm.region_resurrection_renaming.m"
+    {
+#line 451 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_exec_path_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3), &transform_hlds__rbmm__region_resurrection_renaming__conv2_STATE_VARIABLE_ResurrectionRenameProc_14);
+    }
+#line 451 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv2_STATE_VARIABLE_ResurrectionRenameProc_14));
+#line 451 "rbmm.region_resurrection_renaming.m"
+  }
+#line 451 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 439 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_114_101_103_105_111_110_95_114_101_115_117_114_114_101_99_116_105_111_110_95_114_101_110_97_109_105_110_103_95_112_114_111_99_95_95_91_50_93_95_48_7_p_0(
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_8,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_10,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_11,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathsContainResurrection_12,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameTable_0_19,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameTable_20)
+#line 439 "rbmm.region_resurrection_renaming.m"
+{
+#line 446 "rbmm.region_resurrection_renaming.m"
+  {
+#line 446 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 446 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_24_24 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 446 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35;
+#line 446 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_14;
+#line 446 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__RptaInfo_15;
+#line 446 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_16;
+#line 446 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_18;
+#line 446 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_21_21;
+#line 446 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_22_22;
+#line 447 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_BecomeLiveProc_14;
+#line 448 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv1_RptaInfo_15;
+#line 449 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_17_17;
+#line 450 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv3_ResurrectionRenameProc_18;
+
+#line 447 "rbmm.region_resurrection_renaming.m"
+    {
+#line 447 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_24_24, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[10], transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_8, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_11)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_BecomeLiveProc_14);
+    }
+#line 447 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_14 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0_BecomeLiveProc_14);
+#line 448 "rbmm.region_resurrection_renaming.m"
+    {
+#line 448 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_24_24, (MR_Word) &transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0, transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_10, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_11)), &transform_hlds__rbmm__region_resurrection_renaming__conv1_RptaInfo_15);
+    }
+#line 448 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__RptaInfo_15 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv1_RptaInfo_15);
+#line 449 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__Graph_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__RptaInfo_15, (MR_Integer) 0)));
+#line 449 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__RptaInfo_15, (MR_Integer) 1)));
+#line 451 "rbmm.region_resurrection_renaming.m"
+    {
+#line 451 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 451 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_5[4]));
+#line 451 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_114_101_103_105_111_110_95_114_101_115_117_114_114_101_99_116_105_111_110_95_114_101_110_97_109_105_110_103_95_112_114_111_99_95_95_91_50_93_95_48_7_p_0_1));
+#line 451 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 451 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Graph_16));
+#line 451 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_14));
+#line 451 "rbmm.region_resurrection_renaming.m"
+    }
+#line 453 "rbmm.region_resurrection_renaming.m"
+    {
+#line 453 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_22_22 = mercury__map__init_0_f_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[5]);
+    }
+#line 2592 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[6];
+#line 450 "rbmm.region_resurrection_renaming.m"
+    {
+#line 450 "rbmm.region_resurrection_renaming.m"
+      mercury__map__foldl_4_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[0], (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[1], transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35, transform_hlds__rbmm__region_resurrection_renaming__V_21_21, transform_hlds__rbmm__region_resurrection_renaming__PathsContainResurrection_12, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_22_22)), &transform_hlds__rbmm__region_resurrection_renaming__conv3_ResurrectionRenameProc_18);
+    }
+#line 450 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_18 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv3_ResurrectionRenameProc_18);
+#line 454 "rbmm.region_resurrection_renaming.m"
+    {
+#line 454 "rbmm.region_resurrection_renaming.m"
+      mercury__map__set_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_24_24, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_11)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_18)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameTable_0_19, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameTable_20);
+#line 454 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 446 "rbmm.region_resurrection_renaming.m"
+  }
+#line 439 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 418 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_106_111_105_110_95_112_111_105_110_116_115_95_105_110_95_112_97_116_104_95_95_91_51_93_95_48_5_p_0(
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPointsInPath_6,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPoint_7,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_10,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_11)
+#line 418 "rbmm.region_resurrection_renaming.m"
+{
+#line 425 "rbmm.region_resurrection_renaming.m"
+  {
+#line 425 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 423 "rbmm.region_resurrection_renaming.m"
+    {
+#line 423 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__list__member_2_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__JoinPoint_7)), transform_hlds__rbmm__region_resurrection_renaming__ProgPointsInPath_6);
+    }
+#line 425 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 424 "rbmm.region_resurrection_renaming.m"
+      {
+#line 424 "rbmm.region_resurrection_renaming.m"
+        {
+#line 424 "rbmm.region_resurrection_renaming.m"
+          mercury__set__insert_3_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__JoinPoint_7)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_10, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_11);
+#line 424 "rbmm.region_resurrection_renaming.m"
+          return;
+        }
+#line 424 "rbmm.region_resurrection_renaming.m"
+      }
+#line 425 "rbmm.region_resurrection_renaming.m"
+    else
+#line 425 "rbmm.region_resurrection_renaming.m"
+      *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_11 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_10;
+#line 425 "rbmm.region_resurrection_renaming.m"
+  }
+#line 418 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 298 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_106_111_105_110_95_112_111_105_110_116_115_95_112_114_111_99_95_95_91_51_93_95_48_5_p_0_2(
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_6,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_7,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_8,
+#line 298 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_9)
+#line 298 "rbmm.region_resurrection_renaming.m"
+{
+#line 298 "rbmm.region_resurrection_renaming.m"
+  {
+#line 298 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 298 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv6_STATE_VARIABLE_JP2Name_25;
+#line 298 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv5_STATE_VARIABLE_Counter_27;
+#line 298 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv4_STATE_VARIABLE_JoinPoints_29;
+#line 298 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv3_STATE_VARIABLE_JoinPointProc_31;
+
+#line 298 "rbmm.region_resurrection_renaming.m"
+    {
+#line 298 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__collect_join_points_path_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), &transform_hlds__rbmm__region_resurrection_renaming__conv6_STATE_VARIABLE_JP2Name_25, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4), &transform_hlds__rbmm__region_resurrection_renaming__conv5_STATE_VARIABLE_Counter_27, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_6), &transform_hlds__rbmm__region_resurrection_renaming__conv4_STATE_VARIABLE_JoinPoints_29, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_8), &transform_hlds__rbmm__region_resurrection_renaming__conv3_STATE_VARIABLE_JoinPointProc_31);
+    }
+#line 298 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv6_STATE_VARIABLE_JP2Name_25));
+#line 298 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv5_STATE_VARIABLE_Counter_27));
+#line 298 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_7 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv4_STATE_VARIABLE_JoinPoints_29));
+#line 298 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_9 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv3_STATE_VARIABLE_JoinPointProc_31));
+#line 298 "rbmm.region_resurrection_renaming.m"
+  }
+#line 298 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 293 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_106_111_105_110_95_112_111_105_110_116_115_95_112_114_111_99_95_95_91_51_93_95_48_5_p_0_1(
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 293 "rbmm.region_resurrection_renaming.m"
+{
+#line 293 "rbmm.region_resurrection_renaming.m"
+  {
+#line 293 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 293 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv1_HeadVar__3_26;
+
+#line 293 "rbmm.region_resurrection_renaming.m"
+    {
+#line 293 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__IntroducedFrom__pred__collect_join_points_proc__293__1_3_p_0(((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), &transform_hlds__rbmm__region_resurrection_renaming__conv1_HeadVar__3_26);
+    }
+#line 293 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv1_HeadVar__3_26));
+#line 293 "rbmm.region_resurrection_renaming.m"
+  }
+#line 293 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 286 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_106_111_105_110_95_112_111_105_110_116_115_95_112_114_111_99_95_95_91_51_93_95_48_5_p_0(
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_6,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_7,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointTable_0_20,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointTable_21)
+#line 286 "rbmm.region_resurrection_renaming.m"
+{
+#line 291 "rbmm.region_resurrection_renaming.m"
+  {
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_37_37 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_52_52;
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_53_53;
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_55_55;
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPaths_10;
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Paths_15;
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_19;
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_27_27;
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_28_28;
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_29_29;
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_30_30;
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_31_31;
+#line 292 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_ExecPaths_10;
+#line 293 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv2_Paths_15;
+#line 298 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_16_16;
+#line 298 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_17_17;
+#line 298 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming___JoinPoints_18;
+#line 298 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv10_V_16_16;
+#line 298 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv9_V_17_17;
+#line 298 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv8__JoinPoints_18;
+#line 298 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv7_JoinPointProc_19;
+
+#line 292 "rbmm.region_resurrection_renaming.m"
+    {
+#line 292 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_37_37, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[2], transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_6, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_7)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_ExecPaths_10);
+    }
+#line 292 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__ExecPaths_10 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0_ExecPaths_10);
+#line 293 "rbmm.region_resurrection_renaming.m"
+    {
+#line 293 "rbmm.region_resurrection_renaming.m"
+      mercury__list__foldr_4_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[0], (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[6], (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[13], transform_hlds__rbmm__region_resurrection_renaming__ExecPaths_10, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &transform_hlds__rbmm__region_resurrection_renaming__conv2_Paths_15);
+    }
+#line 293 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__Paths_15 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv2_Paths_15);
+#line 298 "rbmm.region_resurrection_renaming.m"
+    {
+#line 298 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 298 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_27_27, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_11[0]));
+#line 298 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_27_27, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_106_111_105_110_95_112_111_105_110_116_115_95_112_114_111_99_95_95_91_51_93_95_48_5_p_0_2));
+#line 298 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_27_27, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 298 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_27_27, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Paths_15));
+#line 298 "rbmm.region_resurrection_renaming.m"
+    }
+#line 2834 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_52_52 = (MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0;
+#line 2836 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_53_53 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 298 "rbmm.region_resurrection_renaming.m"
+    {
+#line 298 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_28_28 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_52_52, transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_53_53);
+    }
+#line 299 "rbmm.region_resurrection_renaming.m"
+    {
+#line 299 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_29_29 = mercury__counter__init_1_f_0((MR_Integer) 0);
+    }
+#line 299 "rbmm.region_resurrection_renaming.m"
+    {
+#line 299 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_30_30 = mercury__set__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_52_52);
+    }
+#line 299 "rbmm.region_resurrection_renaming.m"
+    {
+#line 299 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_31_31 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_52_52, transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_53_53);
+    }
+#line 2858 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_55_55 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[3];
+#line 298 "rbmm.region_resurrection_renaming.m"
+    {
+#line 298 "rbmm.region_resurrection_renaming.m"
+      mercury__list__foldl4_10_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[5], transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_55_55, (MR_Word) &mercury__counter__counter__type_ctor_info_counter_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[7], transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_55_55, transform_hlds__rbmm__region_resurrection_renaming__V_27_27, transform_hlds__rbmm__region_resurrection_renaming__Paths_15, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_28_28)), &transform_hlds__rbmm__region_resurrection_renaming__conv10_V_16_16, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_29_29)), &transform_hlds__rbmm__region_resurrection_renaming__conv9_V_17_17, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_30_30)), &transform_hlds__rbmm__region_resurrection_renaming__conv8__JoinPoints_18, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_31_31)), &transform_hlds__rbmm__region_resurrection_renaming__conv7_JoinPointProc_19);
+    }
+#line 298 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__V_16_16 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv10_V_16_16);
+#line 298 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__V_17_17 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv9_V_17_17);
+#line 298 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming___JoinPoints_18 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv8__JoinPoints_18);
+#line 298 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_19 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv7_JoinPointProc_19);
+#line 300 "rbmm.region_resurrection_renaming.m"
+    {
+#line 300 "rbmm.region_resurrection_renaming.m"
+      mercury__map__set_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_37_37, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_55_55, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_7)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_19)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointTable_0_20, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointTable_21);
+#line 300 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 291 "rbmm.region_resurrection_renaming.m"
+  }
+#line 286 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 549 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__IntroducedFrom__pred__collect_renaming_and_annotation_proc__549__1_3_p_0(
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_47,
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_48,
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_49)
+#line 549 "rbmm.region_resurrection_renaming.m"
+{
+#line 549 "rbmm.region_resurrection_renaming.m"
+  {
+#line 549 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 551 "rbmm.region_resurrection_renaming.m"
+    {
+#line 551 "rbmm.region_resurrection_renaming.m"
+      mercury__set__union_3_p_0((MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0, transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_48, transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_47, transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_49);
+#line 551 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 549 "rbmm.region_resurrection_renaming.m"
+  }
+#line 549 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 382 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__IntroducedFrom__pred__collect_paths_containing_join_points_proc__382__1_3_p_0(
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_25,
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_26,
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_27)
+#line 382 "rbmm.region_resurrection_renaming.m"
+{
+#line 382 "rbmm.region_resurrection_renaming.m"
+  {
+#line 382 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 384 "rbmm.region_resurrection_renaming.m"
+    {
+#line 384 "rbmm.region_resurrection_renaming.m"
+      mercury__set__union_3_p_0((MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0, transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_26, transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_25, transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_27);
+#line 384 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 382 "rbmm.region_resurrection_renaming.m"
+  }
+#line 382 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 293 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__IntroducedFrom__pred__collect_join_points_proc__293__1_3_p_0(
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_24,
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_25,
+#line 293 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_26)
+#line 293 "rbmm.region_resurrection_renaming.m"
+{
+#line 293 "rbmm.region_resurrection_renaming.m"
+  {
+#line 293 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 293 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__P_14;
+
+#line 295 "rbmm.region_resurrection_renaming.m"
+    {
+#line 295 "rbmm.region_resurrection_renaming.m"
+      mercury__assoc_list__keys_2_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_24, &transform_hlds__rbmm__region_resurrection_renaming__P_14);
+    }
+#line 296 "rbmm.region_resurrection_renaming.m"
+    {
+#line 296 "rbmm.region_resurrection_renaming.m"
+      MR_Word base;
+#line 296 "rbmm.region_resurrection_renaming.m"
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 296 "rbmm.region_resurrection_renaming.m"
+      *transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_26 = base;
+#line 296 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__P_14));
+#line 296 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_25));
+#line 296 "rbmm.region_resurrection_renaming.m"
+    }
+#line 293 "rbmm.region_resurrection_renaming.m"
+  }
+#line 293 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 38 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_table_0_0(
+#line 38 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 38 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2,
+#line 38 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3)
+#line 38 "rbmm.region_resurrection_renaming.m"
+{
+#line 38 "rbmm.region_resurrection_renaming.m"
+  {
+#line 38 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 38 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+#line 38 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3;
+
+#line 38 "rbmm.region_resurrection_renaming.m"
+    {
+#line 38 "rbmm.region_resurrection_renaming.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[7], transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5)));
+#line 38 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 38 "rbmm.region_resurrection_renaming.m"
+  }
+#line 38 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 38 "rbmm.region_resurrection_renaming.m"
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_table_0_0(
+#line 38 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 38 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2)
+#line 38 "rbmm.region_resurrection_renaming.m"
+{
+#line 38 "rbmm.region_resurrection_renaming.m"
+  {
+#line 38 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 38 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1;
+#line 38 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+
+#line 38 "rbmm.region_resurrection_renaming.m"
+    {
+#line 38 "rbmm.region_resurrection_renaming.m"
+      return transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[7], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4)));
+    }
+#line 38 "rbmm.region_resurrection_renaming.m"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 38 "rbmm.region_resurrection_renaming.m"
+  }
+#line 38 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 41 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_proc_0_0(
+#line 41 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 41 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2,
+#line 41 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3)
+#line 41 "rbmm.region_resurrection_renaming.m"
+{
+#line 41 "rbmm.region_resurrection_renaming.m"
+  {
+#line 41 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 41 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+#line 41 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3;
+
+#line 41 "rbmm.region_resurrection_renaming.m"
+    {
+#line 41 "rbmm.region_resurrection_renaming.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[6], transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5)));
+#line 41 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 41 "rbmm.region_resurrection_renaming.m"
+  }
+#line 41 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 41 "rbmm.region_resurrection_renaming.m"
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_proc_0_0(
+#line 41 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 41 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2)
+#line 41 "rbmm.region_resurrection_renaming.m"
+{
+#line 41 "rbmm.region_resurrection_renaming.m"
+  {
+#line 41 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 41 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1;
+#line 41 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+
+#line 41 "rbmm.region_resurrection_renaming.m"
+    {
+#line 41 "rbmm.region_resurrection_renaming.m"
+      return transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[6], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4)));
+    }
+#line 41 "rbmm.region_resurrection_renaming.m"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 41 "rbmm.region_resurrection_renaming.m"
+  }
+#line 41 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 54 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_annotation_table_0_0(
+#line 54 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 54 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2,
+#line 54 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3)
+#line 54 "rbmm.region_resurrection_renaming.m"
+{
+#line 54 "rbmm.region_resurrection_renaming.m"
+  {
+#line 54 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 54 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+#line 54 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3;
+
+#line 54 "rbmm.region_resurrection_renaming.m"
+    {
+#line 54 "rbmm.region_resurrection_renaming.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[9], transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5)));
+#line 54 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 54 "rbmm.region_resurrection_renaming.m"
+  }
+#line 54 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 54 "rbmm.region_resurrection_renaming.m"
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_annotation_table_0_0(
+#line 54 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 54 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2)
+#line 54 "rbmm.region_resurrection_renaming.m"
+{
+#line 54 "rbmm.region_resurrection_renaming.m"
+  {
+#line 54 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 54 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1;
+#line 54 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+
+#line 54 "rbmm.region_resurrection_renaming.m"
+    {
+#line 54 "rbmm.region_resurrection_renaming.m"
+      return transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[9], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4)));
+    }
+#line 54 "rbmm.region_resurrection_renaming.m"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 54 "rbmm.region_resurrection_renaming.m"
+  }
+#line 54 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 57 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_annotation_proc_0_0(
+#line 57 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 57 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2,
+#line 57 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3)
+#line 57 "rbmm.region_resurrection_renaming.m"
+{
+#line 57 "rbmm.region_resurrection_renaming.m"
+  {
+#line 57 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 57 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+#line 57 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3;
+
+#line 57 "rbmm.region_resurrection_renaming.m"
+    {
+#line 57 "rbmm.region_resurrection_renaming.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[8], transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5)));
+#line 57 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 57 "rbmm.region_resurrection_renaming.m"
+  }
+#line 57 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 57 "rbmm.region_resurrection_renaming.m"
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_annotation_proc_0_0(
+#line 57 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 57 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2)
+#line 57 "rbmm.region_resurrection_renaming.m"
+{
+#line 57 "rbmm.region_resurrection_renaming.m"
+  {
+#line 57 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 57 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1;
+#line 57 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+
+#line 57 "rbmm.region_resurrection_renaming.m"
+    {
+#line 57 "rbmm.region_resurrection_renaming.m"
+      return transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[8], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4)));
+    }
+#line 57 "rbmm.region_resurrection_renaming.m"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 57 "rbmm.region_resurrection_renaming.m"
+  }
+#line 57 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 52 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____rbmm_renaming_0_0(
+#line 52 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 52 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2,
+#line 52 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3)
+#line 52 "rbmm.region_resurrection_renaming.m"
+{
+#line 52 "rbmm.region_resurrection_renaming.m"
+  {
+#line 52 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 52 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+#line 52 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3;
+
+#line 52 "rbmm.region_resurrection_renaming.m"
+    {
+#line 52 "rbmm.region_resurrection_renaming.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[5], transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5)));
+#line 52 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 52 "rbmm.region_resurrection_renaming.m"
+  }
+#line 52 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 52 "rbmm.region_resurrection_renaming.m"
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____rbmm_renaming_0_0(
+#line 52 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 52 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2)
+#line 52 "rbmm.region_resurrection_renaming.m"
+{
+#line 52 "rbmm.region_resurrection_renaming.m"
+  {
+#line 52 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 52 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1;
+#line 52 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+
+#line 52 "rbmm.region_resurrection_renaming.m"
+    {
+#line 52 "rbmm.region_resurrection_renaming.m"
+      return transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[5], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4)));
+    }
+#line 52 "rbmm.region_resurrection_renaming.m"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 52 "rbmm.region_resurrection_renaming.m"
+  }
+#line 52 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 60 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____proc_resurrection_path_table_0_0(
+#line 60 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 60 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2,
+#line 60 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3)
+#line 60 "rbmm.region_resurrection_renaming.m"
+{
+#line 60 "rbmm.region_resurrection_renaming.m"
+  {
+#line 60 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 60 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+#line 60 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3;
+
+#line 60 "rbmm.region_resurrection_renaming.m"
+    {
+#line 60 "rbmm.region_resurrection_renaming.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[2], transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5)));
+#line 60 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 60 "rbmm.region_resurrection_renaming.m"
+  }
+#line 60 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 60 "rbmm.region_resurrection_renaming.m"
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____proc_resurrection_path_table_0_0(
+#line 60 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 60 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2)
+#line 60 "rbmm.region_resurrection_renaming.m"
+{
+#line 60 "rbmm.region_resurrection_renaming.m"
+  {
+#line 60 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 60 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1;
+#line 60 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+
+#line 60 "rbmm.region_resurrection_renaming.m"
+    {
+#line 60 "rbmm.region_resurrection_renaming.m"
+      return transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[2], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4)));
+    }
+#line 60 "rbmm.region_resurrection_renaming.m"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 60 "rbmm.region_resurrection_renaming.m"
+  }
+#line 60 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 65 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____join_point_region_name_table_0_0(
+#line 65 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 65 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2,
+#line 65 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3)
+#line 65 "rbmm.region_resurrection_renaming.m"
+{
+#line 65 "rbmm.region_resurrection_renaming.m"
+  {
+#line 65 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 65 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+#line 65 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3;
+
+#line 65 "rbmm.region_resurrection_renaming.m"
+    {
+#line 65 "rbmm.region_resurrection_renaming.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[4], transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5)));
+#line 65 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 65 "rbmm.region_resurrection_renaming.m"
+  }
+#line 65 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 65 "rbmm.region_resurrection_renaming.m"
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____join_point_region_name_table_0_0(
+#line 65 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 65 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2)
+#line 65 "rbmm.region_resurrection_renaming.m"
+{
+#line 65 "rbmm.region_resurrection_renaming.m"
+  {
+#line 65 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 65 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1;
+#line 65 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+
+#line 65 "rbmm.region_resurrection_renaming.m"
+    {
+#line 65 "rbmm.region_resurrection_renaming.m"
+      return transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[4], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4)));
+    }
+#line 65 "rbmm.region_resurrection_renaming.m"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 65 "rbmm.region_resurrection_renaming.m"
+  }
+#line 65 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 63 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Compare____exec_path_region_set_table_0_0(
+#line 63 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 63 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2,
+#line 63 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3)
+#line 63 "rbmm.region_resurrection_renaming.m"
+{
+#line 63 "rbmm.region_resurrection_renaming.m"
+  {
+#line 63 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 63 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+#line 63 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3;
+
+#line 63 "rbmm.region_resurrection_renaming.m"
+    {
+#line 63 "rbmm.region_resurrection_renaming.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[1], transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_5)));
+#line 63 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 63 "rbmm.region_resurrection_renaming.m"
+  }
+#line 63 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 63 "rbmm.region_resurrection_renaming.m"
+MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming____Unify____exec_path_region_set_table_0_0(
+#line 63 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1,
+#line 63 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2)
+#line 63 "rbmm.region_resurrection_renaming.m"
+{
+#line 63 "rbmm.region_resurrection_renaming.m"
+  {
+#line 63 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 63 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__1_1;
+#line 63 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__2_2;
+
+#line 63 "rbmm.region_resurrection_renaming.m"
+    {
+#line 63 "rbmm.region_resurrection_renaming.m"
+      return transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[1], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Cast_HeadVar2_4)));
+    }
+#line 63 "rbmm.region_resurrection_renaming.m"
+    return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 63 "rbmm.region_resurrection_renaming.m"
+  }
+#line 63 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 714 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__add_annotation_at_last_prog_point_6_p_0(
+#line 714 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_7,
+#line 714 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_8,
+#line 714 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Renaming_9,
+#line 714 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Region_10,
+#line 714 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_16,
+#line 714 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_17)
+#line 714 "rbmm.region_resurrection_renaming.m"
+{
+#line 719 "rbmm.region_resurrection_renaming.m"
+  {
+#line 719 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 719 "rbmm.region_resurrection_renaming.m"
+    MR_String transform_hlds__rbmm__region_resurrection_renaming__RegionName_12;
+#line 729 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__CurrentNameList_13;
+#line 725 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_CurrentNameList_13;
+
+#line 720 "rbmm.region_resurrection_renaming.m"
+    {
+#line 720 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__RegionName_12 = transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_f_0(transform_hlds__rbmm__region_resurrection_renaming__Graph_8, transform_hlds__rbmm__region_resurrection_renaming__Region_10);
+    }
+#line 725 "rbmm.region_resurrection_renaming.m"
+    {
+#line 725 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__map__search_3_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[3], transform_hlds__rbmm__region_resurrection_renaming__Renaming_9, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__RegionName_12)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_CurrentNameList_13);
+    }
+#line 725 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 725 "rbmm.region_resurrection_renaming.m"
+      {
+#line 725 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__CurrentNameList_13 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0_CurrentNameList_13);
+#line 725 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__succeeded = MR_TRUE;
+#line 725 "rbmm.region_resurrection_renaming.m"
+      }
+#line 729 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 726 "rbmm.region_resurrection_renaming.m"
+      {
+#line 726 "rbmm.region_resurrection_renaming.m"
+        MR_String transform_hlds__rbmm__region_resurrection_renaming__CurrentName_14;
+#line 726 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__Annotation_15;
+#line 726 "rbmm.region_resurrection_renaming.m"
+        MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv1_CurrentName_14;
+
+#line 726 "rbmm.region_resurrection_renaming.m"
+        {
+#line 726 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__conv1_CurrentName_14 = mercury__list__det_last_1_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, transform_hlds__rbmm__region_resurrection_renaming__CurrentNameList_13);
+        }
+#line 726 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__CurrentName_14 = ((MR_String) transform_hlds__rbmm__region_resurrection_renaming__conv1_CurrentName_14);
+#line 747 "rbmm.region_resurrection_renaming.m"
+        {
+#line 747 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__Annotation_15 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 747 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_resurrection_renaming__Annotation_15, 0) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__CurrentName_14));
+#line 747 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_resurrection_renaming__Annotation_15, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__RegionName_12));
+#line 747 "rbmm.region_resurrection_renaming.m"
+        }
+#line 728 "rbmm.region_resurrection_renaming.m"
+        {
+#line 728 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__record_annotation_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_7, transform_hlds__rbmm__region_resurrection_renaming__Annotation_15, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_16, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_17);
+#line 728 "rbmm.region_resurrection_renaming.m"
+          return;
+        }
+#line 726 "rbmm.region_resurrection_renaming.m"
+      }
+#line 729 "rbmm.region_resurrection_renaming.m"
+    else
+#line 729 "rbmm.region_resurrection_renaming.m"
+      *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_17 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_16;
+#line 719 "rbmm.region_resurrection_renaming.m"
+  }
+#line 714 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 685 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__add_annotation_and_renaming_at_join_point_9_p_0(
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_10,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_11,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_String transform_hlds__rbmm__region_resurrection_renaming__JoinPointName_12,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevRenaming_13,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Region_14,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_22,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_23,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Renaming_0_24,
+#line 685 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Renaming_25)
+#line 685 "rbmm.region_resurrection_renaming.m"
+{
+#line 691 "rbmm.region_resurrection_renaming.m"
+  {
+#line 691 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 691 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_32_32;
+#line 691 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_33_33;
+#line 691 "rbmm.region_resurrection_renaming.m"
+    MR_String transform_hlds__rbmm__region_resurrection_renaming__RegionName_17;
+#line 691 "rbmm.region_resurrection_renaming.m"
+    MR_String transform_hlds__rbmm__region_resurrection_renaming__NewName_18;
+#line 691 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_26_26;
+#line 709 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__RenamedNames_19;
+#line 705 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_RenamedNames_19;
+
+#line 692 "rbmm.region_resurrection_renaming.m"
+    {
+#line 692 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__RegionName_17 = transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_f_0(transform_hlds__rbmm__region_resurrection_renaming__Graph_11, transform_hlds__rbmm__region_resurrection_renaming__Region_14);
+    }
+#line 693 "rbmm.region_resurrection_renaming.m"
+    {
+#line 693 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__NewName_18 = mercury__string__f_43_43_2_f_0(transform_hlds__rbmm__region_resurrection_renaming__RegionName_17, transform_hlds__rbmm__region_resurrection_renaming__JoinPointName_12);
+    }
+#line 696 "rbmm.region_resurrection_renaming.m"
+    {
+#line 696 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_26_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 696 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__V_26_26, 0) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__NewName_18));
+#line 696 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__V_26_26, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 696 "rbmm.region_resurrection_renaming.m"
+    }
+#line 3635 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_32_32 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 3637 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_33_33 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[3];
+#line 696 "rbmm.region_resurrection_renaming.m"
+    {
+#line 696 "rbmm.region_resurrection_renaming.m"
+      mercury__map__det_insert_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_32_32, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_33_33, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__RegionName_17)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_26_26)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Renaming_0_24, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Renaming_25);
+    }
+#line 705 "rbmm.region_resurrection_renaming.m"
+    {
+#line 705 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__map__search_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_32_32, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_33_33, transform_hlds__rbmm__region_resurrection_renaming__PrevRenaming_13, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__RegionName_17)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_RenamedNames_19);
+    }
+#line 705 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 705 "rbmm.region_resurrection_renaming.m"
+      {
+#line 705 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__RenamedNames_19 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0_RenamedNames_19);
+#line 705 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__succeeded = MR_TRUE;
+#line 705 "rbmm.region_resurrection_renaming.m"
+      }
+#line 709 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 706 "rbmm.region_resurrection_renaming.m"
+      {
+#line 706 "rbmm.region_resurrection_renaming.m"
+        MR_String transform_hlds__rbmm__region_resurrection_renaming__CurrentName_20;
+#line 706 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__Annotation_21;
+#line 706 "rbmm.region_resurrection_renaming.m"
+        MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv1_CurrentName_20;
+
+#line 706 "rbmm.region_resurrection_renaming.m"
+        {
+#line 706 "rbmm.region_resurrection_renaming.m"
+          mercury__list__det_last_2_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_32_32, transform_hlds__rbmm__region_resurrection_renaming__RenamedNames_19, &transform_hlds__rbmm__region_resurrection_renaming__conv1_CurrentName_20);
+        }
+#line 706 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__CurrentName_20 = ((MR_String) transform_hlds__rbmm__region_resurrection_renaming__conv1_CurrentName_20);
+#line 747 "rbmm.region_resurrection_renaming.m"
+        {
+#line 747 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__Annotation_21 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 747 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_resurrection_renaming__Annotation_21, 0) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__CurrentName_20));
+#line 747 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_resurrection_renaming__Annotation_21, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__NewName_18));
+#line 747 "rbmm.region_resurrection_renaming.m"
+        }
+#line 708 "rbmm.region_resurrection_renaming.m"
+        {
+#line 708 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__record_annotation_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_10, transform_hlds__rbmm__region_resurrection_renaming__Annotation_21, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_22, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_23);
+#line 708 "rbmm.region_resurrection_renaming.m"
+          return;
+        }
+#line 706 "rbmm.region_resurrection_renaming.m"
+      }
+#line 709 "rbmm.region_resurrection_renaming.m"
+    else
+#line 710 "rbmm.region_resurrection_renaming.m"
+      {
+#line 710 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__Annotation_31;
+
+#line 747 "rbmm.region_resurrection_renaming.m"
+        {
+#line 747 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__Annotation_31 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 747 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_resurrection_renaming__Annotation_31, 0) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__RegionName_17));
+#line 747 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(2), transform_hlds__rbmm__region_resurrection_renaming__Annotation_31, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__NewName_18));
+#line 747 "rbmm.region_resurrection_renaming.m"
+        }
+#line 711 "rbmm.region_resurrection_renaming.m"
+        {
+#line 711 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__record_annotation_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_10, transform_hlds__rbmm__region_resurrection_renaming__Annotation_31, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_22, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_23);
+#line 711 "rbmm.region_resurrection_renaming.m"
+          return;
+        }
+#line 710 "rbmm.region_resurrection_renaming.m"
+      }
+#line 691 "rbmm.region_resurrection_renaming.m"
+  }
+#line 685 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 671 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_exec_path_2_13_p_0_2(
+#line 671 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 671 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 671 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 671 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 671 "rbmm.region_resurrection_renaming.m"
+{
+#line 671 "rbmm.region_resurrection_renaming.m"
+  {
+#line 671 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 671 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv10_STATE_VARIABLE_AnnotationProc_17;
+
+#line 671 "rbmm.region_resurrection_renaming.m"
+    {
+#line 671 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__add_annotation_at_last_prog_point_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 5))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), &transform_hlds__rbmm__region_resurrection_renaming__conv10_STATE_VARIABLE_AnnotationProc_17);
+    }
+#line 671 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv10_STATE_VARIABLE_AnnotationProc_17));
+#line 671 "rbmm.region_resurrection_renaming.m"
+  }
+#line 671 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 656 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_exec_path_2_13_p_0_1(
+#line 656 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 656 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 656 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 656 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 656 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4,
+#line 656 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5)
+#line 656 "rbmm.region_resurrection_renaming.m"
+{
+#line 656 "rbmm.region_resurrection_renaming.m"
+  {
+#line 656 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 656 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv6_STATE_VARIABLE_AnnotationProc_23;
+#line 656 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv5_STATE_VARIABLE_Renaming_25;
+
+#line 656 "rbmm.region_resurrection_renaming.m"
+    {
+#line 656 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__add_annotation_and_renaming_at_join_point_9_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 6))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), &transform_hlds__rbmm__region_resurrection_renaming__conv6_STATE_VARIABLE_AnnotationProc_23, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4), &transform_hlds__rbmm__region_resurrection_renaming__conv5_STATE_VARIABLE_Renaming_25);
+    }
+#line 656 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv6_STATE_VARIABLE_AnnotationProc_23));
+#line 656 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv5_STATE_VARIABLE_Renaming_25));
+#line 656 "rbmm.region_resurrection_renaming.m"
+  }
+#line 656 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 597 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_exec_path_2_13_p_0(
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_1,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_2,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_3,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_4,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BornR_5,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_6,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_7,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_8,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__9_9,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_10,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_11,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0_12,
+#line 597 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_13)
+#line 597 "rbmm.region_resurrection_renaming.m"
+{
+#line 605 "rbmm.region_resurrection_renaming.m"
+  while (MR_TRUE)
+#line 605 "rbmm.region_resurrection_renaming.m"
+    {
+#line 605 "rbmm.region_resurrection_renaming.m"
+      /* tailcall optimized into a loop */
+#line 605 "rbmm.region_resurrection_renaming.m"
+      {
+#line 605 "rbmm.region_resurrection_renaming.m"
+        MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 605 "rbmm.region_resurrection_renaming.m"
+        if ((transform_hlds__rbmm__region_resurrection_renaming__HeadVar__9_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 605 "rbmm.region_resurrection_renaming.m"
+          {
+#line 606 "rbmm.region_resurrection_renaming.m"
+            *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_13 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0_12;
+#line 606 "rbmm.region_resurrection_renaming.m"
+            *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_11 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_10;
+#line 605 "rbmm.region_resurrection_renaming.m"
+          }
+#line 605 "rbmm.region_resurrection_renaming.m"
+        else
+#line 612 "rbmm.region_resurrection_renaming.m"
+          {
+#line 612 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_69_69;
+#line 612 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_70_70;
+#line 612 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36;
+#line 612 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_Goals_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__HeadVar__9_9, (MR_Integer) 1)));
+#line 612 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevRenaming_41;
+#line 612 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__HeadVar__9_9, (MR_Integer) 0)));
+#line 612 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_59_59;
+#line 612 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_62_62;
+#line 612 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_64_64;
+#line 611 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_37_37;
+#line 632 "rbmm.region_resurrection_renaming.m"
+            MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_PrevRenaming_41;
+#line 640 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurRenaming_42;
+#line 633 "rbmm.region_resurrection_renaming.m"
+            MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv1_ResurRenaming_42;
+#line 662 "rbmm.region_resurrection_renaming.m"
+            MR_String transform_hlds__rbmm__region_resurrection_renaming__JoinPointName_44;
+#line 645 "rbmm.region_resurrection_renaming.m"
+            MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv2_JoinPointName_44;
+
+#line 611 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_58_58, (MR_Integer) 0)));
+#line 611 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_58_58, (MR_Integer) 1)));
+#line 3890 "transform_hlds.rbmm.region_resurrection_renaming.c"
+            transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_69_69 = (MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0;
+#line 3892 "transform_hlds.rbmm.region_resurrection_renaming.c"
+            transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_70_70 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[5];
+#line 632 "rbmm.region_resurrection_renaming.m"
+            {
+#line 632 "rbmm.region_resurrection_renaming.m"
+              mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_69_69, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_70_70, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0_12, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_8)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_PrevRenaming_41);
+            }
+#line 632 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__PrevRenaming_41 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0_PrevRenaming_41);
+#line 633 "rbmm.region_resurrection_renaming.m"
+            {
+#line 633 "rbmm.region_resurrection_renaming.m"
+              transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__map__search_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_69_69, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_70_70, transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_1, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36)), &transform_hlds__rbmm__region_resurrection_renaming__conv1_ResurRenaming_42);
+            }
+#line 633 "rbmm.region_resurrection_renaming.m"
+            if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 633 "rbmm.region_resurrection_renaming.m"
+              {
+#line 633 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__ResurRenaming_42 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv1_ResurRenaming_42);
+#line 633 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__succeeded = MR_TRUE;
+#line 633 "rbmm.region_resurrection_renaming.m"
+              }
+#line 640 "rbmm.region_resurrection_renaming.m"
+            if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 638 "rbmm.region_resurrection_renaming.m"
+              {
+#line 638 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_71_71 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 638 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__Renaming0_43;
+
+#line 638 "rbmm.region_resurrection_renaming.m"
+                {
+#line 638 "rbmm.region_resurrection_renaming.m"
+                  mercury__multi_map__merge_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_71_71, transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_71_71, transform_hlds__rbmm__region_resurrection_renaming__PrevRenaming_41, transform_hlds__rbmm__region_resurrection_renaming__ResurRenaming_42, &transform_hlds__rbmm__region_resurrection_renaming__Renaming0_43);
+                }
+#line 639 "rbmm.region_resurrection_renaming.m"
+                {
+#line 639 "rbmm.region_resurrection_renaming.m"
+                  mercury__map__set_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_69_69, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_70_70, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Renaming0_43)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0_12, &transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_59_59);
+                }
+#line 638 "rbmm.region_resurrection_renaming.m"
+              }
+#line 640 "rbmm.region_resurrection_renaming.m"
+            else
+#line 643 "rbmm.region_resurrection_renaming.m"
+              {
+#line 643 "rbmm.region_resurrection_renaming.m"
+                mercury__map__set_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_69_69, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_70_70, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PrevRenaming_41)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0_12, &transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_59_59);
+              }
+#line 645 "rbmm.region_resurrection_renaming.m"
+            {
+#line 645 "rbmm.region_resurrection_renaming.m"
+              transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__map__search_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_69_69, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_2, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36)), &transform_hlds__rbmm__region_resurrection_renaming__conv2_JoinPointName_44);
+            }
+#line 645 "rbmm.region_resurrection_renaming.m"
+            if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 645 "rbmm.region_resurrection_renaming.m"
+              {
+#line 645 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__JoinPointName_44 = ((MR_String) transform_hlds__rbmm__region_resurrection_renaming__conv2_JoinPointName_44);
+#line 645 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__succeeded = MR_TRUE;
+#line 645 "rbmm.region_resurrection_renaming.m"
+              }
+#line 662 "rbmm.region_resurrection_renaming.m"
+            if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 648 "rbmm.region_resurrection_renaming.m"
+              {
+#line 648 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_73_73 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[1];
+#line 648 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_74_74;
+#line 648 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProgPoint_45;
+#line 648 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterPrevProgPoint_46;
+#line 648 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__NotYetDeadRegions_47;
+#line 648 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedAndLiveRegions_48;
+#line 648 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__Renaming_49;
+#line 648 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_61_61;
+#line 648 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_63_63;
+#line 648 "rbmm.region_resurrection_renaming.m"
+                MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv3_LRBeforeProgPoint_45;
+#line 649 "rbmm.region_resurrection_renaming.m"
+                MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv4_LRAfterPrevProgPoint_46;
+#line 655 "rbmm.region_resurrection_renaming.m"
+                MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv8_STATE_VARIABLE_AnnotationProc_62_62;
+#line 655 "rbmm.region_resurrection_renaming.m"
+                MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv7_Renaming_49;
+
+#line 648 "rbmm.region_resurrection_renaming.m"
+                {
+#line 648 "rbmm.region_resurrection_renaming.m"
+                  mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_69_69, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_73_73, transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_3, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36)), &transform_hlds__rbmm__region_resurrection_renaming__conv3_LRBeforeProgPoint_45);
+                }
+#line 648 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProgPoint_45 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv3_LRBeforeProgPoint_45);
+#line 649 "rbmm.region_resurrection_renaming.m"
+                {
+#line 649 "rbmm.region_resurrection_renaming.m"
+                  mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_69_69, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_73_73, transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_4, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_8)), &transform_hlds__rbmm__region_resurrection_renaming__conv4_LRAfterPrevProgPoint_46);
+                }
+#line 649 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__LRAfterPrevProgPoint_46 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv4_LRAfterPrevProgPoint_46);
+#line 4004 "transform_hlds.rbmm.region_resurrection_renaming.c"
+                transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_74_74 = (MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+#line 652 "rbmm.region_resurrection_renaming.m"
+                {
+#line 652 "rbmm.region_resurrection_renaming.m"
+                  mercury__set__union_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_74_74, transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProgPoint_45, transform_hlds__rbmm__region_resurrection_renaming__LRAfterPrevProgPoint_46, &transform_hlds__rbmm__region_resurrection_renaming__NotYetDeadRegions_47);
+                }
+#line 653 "rbmm.region_resurrection_renaming.m"
+                {
+#line 653 "rbmm.region_resurrection_renaming.m"
+                  mercury__set__intersect_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_74_74, transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_7, transform_hlds__rbmm__region_resurrection_renaming__NotYetDeadRegions_47, &transform_hlds__rbmm__region_resurrection_renaming__ResurrectedAndLiveRegions_48);
+                }
+#line 656 "rbmm.region_resurrection_renaming.m"
+                {
+#line 656 "rbmm.region_resurrection_renaming.m"
+                  transform_hlds__rbmm__region_resurrection_renaming__V_61_61 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 7 * sizeof(MR_Word)), NULL, NULL);
+#line 656 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_61_61, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_10[0]));
+#line 656 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_61_61, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_exec_path_2_13_p_0_1));
+#line 656 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_61_61, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 656 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_61_61, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_8));
+#line 656 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_61_61, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Graph_6));
+#line 656 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_61_61, 5) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__JoinPointName_44));
+#line 656 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_61_61, 6) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PrevRenaming_41));
+#line 656 "rbmm.region_resurrection_renaming.m"
+                }
+#line 658 "rbmm.region_resurrection_renaming.m"
+                {
+#line 658 "rbmm.region_resurrection_renaming.m"
+                  transform_hlds__rbmm__region_resurrection_renaming__V_63_63 = mercury__map__init_0_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[3]);
+                }
+#line 655 "rbmm.region_resurrection_renaming.m"
+                {
+#line 655 "rbmm.region_resurrection_renaming.m"
+                  mercury__set__fold2_6_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_74_74, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[8], transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_70_70, transform_hlds__rbmm__region_resurrection_renaming__V_61_61, transform_hlds__rbmm__region_resurrection_renaming__ResurrectedAndLiveRegions_48, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_10)), &transform_hlds__rbmm__region_resurrection_renaming__conv8_STATE_VARIABLE_AnnotationProc_62_62, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_63_63)), &transform_hlds__rbmm__region_resurrection_renaming__conv7_Renaming_49);
+                }
+#line 655 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_62_62 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv8_STATE_VARIABLE_AnnotationProc_62_62);
+#line 655 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__Renaming_49 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv7_Renaming_49);
+#line 661 "rbmm.region_resurrection_renaming.m"
+                {
+#line 661 "rbmm.region_resurrection_renaming.m"
+                  mercury__map__set_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_69_69, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_70_70, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Renaming_49)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_59_59, &transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_64_64);
+                }
+#line 648 "rbmm.region_resurrection_renaming.m"
+              }
+#line 662 "rbmm.region_resurrection_renaming.m"
+            else
+#line 663 "rbmm.region_resurrection_renaming.m"
+              {
+#line 663 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_64_64 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_59_59;
+#line 663 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_62_62 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_10;
+#line 663 "rbmm.region_resurrection_renaming.m"
+              }
+#line 674 "rbmm.region_resurrection_renaming.m"
+            if ((transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_Goals_38 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 667 "rbmm.region_resurrection_renaming.m"
+              {
+#line 667 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_83_83 = (MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+#line 667 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedAndBornRegions_50;
+#line 667 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__LastRenaming_51;
+#line 667 "rbmm.region_resurrection_renaming.m"
+                MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_67_67;
+#line 670 "rbmm.region_resurrection_renaming.m"
+                MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv9_LastRenaming_51;
+#line 671 "rbmm.region_resurrection_renaming.m"
+                MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv11_STATE_VARIABLE_AnnotationProc_11;
+
+#line 669 "rbmm.region_resurrection_renaming.m"
+                {
+#line 669 "rbmm.region_resurrection_renaming.m"
+                  mercury__set__intersect_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_83_83, transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_7, transform_hlds__rbmm__region_resurrection_renaming__BornR_5, &transform_hlds__rbmm__region_resurrection_renaming__ResurrectedAndBornRegions_50);
+                }
+#line 670 "rbmm.region_resurrection_renaming.m"
+                {
+#line 670 "rbmm.region_resurrection_renaming.m"
+                  mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_69_69, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_70_70, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_64_64, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36)), &transform_hlds__rbmm__region_resurrection_renaming__conv9_LastRenaming_51);
+                }
+#line 670 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__LastRenaming_51 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv9_LastRenaming_51);
+#line 671 "rbmm.region_resurrection_renaming.m"
+                {
+#line 671 "rbmm.region_resurrection_renaming.m"
+                  transform_hlds__rbmm__region_resurrection_renaming__V_67_67 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 671 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_67_67, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_5[3]));
+#line 671 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_67_67, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_exec_path_2_13_p_0_2));
+#line 671 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_67_67, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 671 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_67_67, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36));
+#line 671 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_67_67, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Graph_6));
+#line 671 "rbmm.region_resurrection_renaming.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_67_67, 5) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LastRenaming_51));
+#line 671 "rbmm.region_resurrection_renaming.m"
+                }
+#line 671 "rbmm.region_resurrection_renaming.m"
+                {
+#line 671 "rbmm.region_resurrection_renaming.m"
+                  mercury__set__fold_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_83_83, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[8], transform_hlds__rbmm__region_resurrection_renaming__V_67_67, transform_hlds__rbmm__region_resurrection_renaming__ResurrectedAndBornRegions_50, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_62_62)), &transform_hlds__rbmm__region_resurrection_renaming__conv11_STATE_VARIABLE_AnnotationProc_11);
+                }
+#line 671 "rbmm.region_resurrection_renaming.m"
+                *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_11 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv11_STATE_VARIABLE_AnnotationProc_11);
+#line 667 "rbmm.region_resurrection_renaming.m"
+                *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_13 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_64_64;
+#line 667 "rbmm.region_resurrection_renaming.m"
+              }
+#line 674 "rbmm.region_resurrection_renaming.m"
+            else
+#line 676 "rbmm.region_resurrection_renaming.m"
+              {
+#line 676 "rbmm.region_resurrection_renaming.m"
+                /* direct tailcall eliminated */
+#line 676 "rbmm.region_resurrection_renaming.m"
+                {
+#line 676 "rbmm.region_resurrection_renaming.m"
+                  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint__tmp_copy_8 = transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36;
+#line 676 "rbmm.region_resurrection_renaming.m"
+                  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__9__tmp_copy_9 = transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_Goals_38;
+#line 676 "rbmm.region_resurrection_renaming.m"
+                  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0__tmp_copy_10 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_62_62;
+#line 676 "rbmm.region_resurrection_renaming.m"
+                  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0__tmp_copy_12 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_64_64;
+
+#line 676 "rbmm.region_resurrection_renaming.m"
+                  transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0_12 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0__tmp_copy_12;
+#line 676 "rbmm.region_resurrection_renaming.m"
+                  transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_10 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0__tmp_copy_10;
+#line 676 "rbmm.region_resurrection_renaming.m"
+                  transform_hlds__rbmm__region_resurrection_renaming__HeadVar__9_9 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__9__tmp_copy_9;
+#line 676 "rbmm.region_resurrection_renaming.m"
+                  transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_8 = transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint__tmp_copy_8;
+#line 676 "rbmm.region_resurrection_renaming.m"
+                }
+#line 676 "rbmm.region_resurrection_renaming.m"
+                continue;
+#line 676 "rbmm.region_resurrection_renaming.m"
+              }
+#line 612 "rbmm.region_resurrection_renaming.m"
+          }
+#line 605 "rbmm.region_resurrection_renaming.m"
+      }
+#line 605 "rbmm.region_resurrection_renaming.m"
+      break;
+#line 605 "rbmm.region_resurrection_renaming.m"
+    }
+#line 597 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 569 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_exec_path_12_p_0(
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_1,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_2,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_3,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_4,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BornR_5,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_6,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_7,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__8_8,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_9,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_10,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0_11,
+#line 569 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_12)
+#line 569 "rbmm.region_resurrection_renaming.m"
+{
+#line 577 "rbmm.region_resurrection_renaming.m"
+  {
+#line 577 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 577 "rbmm.region_resurrection_renaming.m"
+    if ((transform_hlds__rbmm__region_resurrection_renaming__HeadVar__8_8 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 577 "rbmm.region_resurrection_renaming.m"
+      {
+#line 578 "rbmm.region_resurrection_renaming.m"
+        {
+#line 578 "rbmm.region_resurrection_renaming.m"
+          mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.rbmm.region_resurrection_renaming", (MR_String) "predicate \140transform_hlds.rbmm.region_resurrection_renaming.collect_renaming_and_annotation_exec_path\'/12", (MR_String) "empty execution path");
+#line 578 "rbmm.region_resurrection_renaming.m"
+          return;
+        }
+#line 577 "rbmm.region_resurrection_renaming.m"
+      }
+#line 577 "rbmm.region_resurrection_renaming.m"
+    else
+#line 582 "rbmm.region_resurrection_renaming.m"
+      {
+#line 582 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36;
+#line 582 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_Goals_38 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__HeadVar__8_8, (MR_Integer) 1)));
+#line 582 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__HeadVar__8_8, (MR_Integer) 0)));
+#line 582 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_47_47;
+#line 581 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_37_37;
+#line 589 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurRename_41;
+#line 587 "rbmm.region_resurrection_renaming.m"
+        MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_ResurRename_41;
+
+#line 581 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_46_46, (MR_Integer) 0)));
+#line 581 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_46_46, (MR_Integer) 1)));
+#line 587 "rbmm.region_resurrection_renaming.m"
+        {
+#line 587 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__map__search_3_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[5], transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_1, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_ResurRename_41);
+        }
+#line 587 "rbmm.region_resurrection_renaming.m"
+        if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 587 "rbmm.region_resurrection_renaming.m"
+          {
+#line 587 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__ResurRename_41 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0_ResurRename_41);
+#line 587 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__succeeded = MR_TRUE;
+#line 587 "rbmm.region_resurrection_renaming.m"
+          }
+#line 589 "rbmm.region_resurrection_renaming.m"
+        if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 588 "rbmm.region_resurrection_renaming.m"
+          {
+#line 588 "rbmm.region_resurrection_renaming.m"
+            {
+#line 588 "rbmm.region_resurrection_renaming.m"
+              mercury__map__set_4_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[5], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ResurRename_41)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0_11, &transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_47_47);
+            }
+#line 588 "rbmm.region_resurrection_renaming.m"
+          }
+#line 589 "rbmm.region_resurrection_renaming.m"
+        else
+#line 590 "rbmm.region_resurrection_renaming.m"
+          {
+#line 590 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_48_48;
+
+#line 590 "rbmm.region_resurrection_renaming.m"
+            {
+#line 590 "rbmm.region_resurrection_renaming.m"
+              transform_hlds__rbmm__region_resurrection_renaming__V_48_48 = mercury__map__init_0_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[3]);
+            }
+#line 590 "rbmm.region_resurrection_renaming.m"
+            {
+#line 590 "rbmm.region_resurrection_renaming.m"
+              mercury__map__set_4_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[5], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_48_48)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_0_11, &transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_47_47);
+            }
+#line 590 "rbmm.region_resurrection_renaming.m"
+          }
+#line 592 "rbmm.region_resurrection_renaming.m"
+        {
+#line 592 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_exec_path_2_13_p_0(transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_1, transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_2, transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_3, transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_4, transform_hlds__rbmm__region_resurrection_renaming__BornR_5, transform_hlds__rbmm__region_resurrection_renaming__Graph_6, transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_7, transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_36, transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_Goals_38, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_9, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_10, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_47_47, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingProc_12);
+#line 592 "rbmm.region_resurrection_renaming.m"
+          return;
+        }
+#line 582 "rbmm.region_resurrection_renaming.m"
+      }
+#line 577 "rbmm.region_resurrection_renaming.m"
+  }
+#line 569 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 555 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_proc_13_p_0_2(
+#line 555 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 555 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 555 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 555 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 555 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4,
+#line 555 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5)
+#line 555 "rbmm.region_resurrection_renaming.m"
+{
+#line 555 "rbmm.region_resurrection_renaming.m"
+  {
+#line 555 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 555 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv10_STATE_VARIABLE_AnnotationProc_10;
+#line 555 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv9_STATE_VARIABLE_RenamingProc_12;
+
+#line 555 "rbmm.region_resurrection_renaming.m"
+    {
+#line 555 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_exec_path_12_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 7))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 8))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 9))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), &transform_hlds__rbmm__region_resurrection_renaming__conv10_STATE_VARIABLE_AnnotationProc_10, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4), &transform_hlds__rbmm__region_resurrection_renaming__conv9_STATE_VARIABLE_RenamingProc_12);
+    }
+#line 555 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv10_STATE_VARIABLE_AnnotationProc_10));
+#line 555 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv9_STATE_VARIABLE_RenamingProc_12));
+#line 555 "rbmm.region_resurrection_renaming.m"
+  }
+#line 555 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 549 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_proc_13_p_0_1(
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 549 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 549 "rbmm.region_resurrection_renaming.m"
+{
+#line 549 "rbmm.region_resurrection_renaming.m"
+  {
+#line 549 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 549 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv6_HeadVar__3_49;
+
+#line 549 "rbmm.region_resurrection_renaming.m"
+    {
+#line 549 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__IntroducedFrom__pred__collect_renaming_and_annotation_proc__549__1_3_p_0(((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), &transform_hlds__rbmm__region_resurrection_renaming__conv6_HeadVar__3_49);
+    }
+#line 549 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv6_HeadVar__3_49));
+#line 549 "rbmm.region_resurrection_renaming.m"
+  }
+#line 549 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 526 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_proc_13_p_0(
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_14,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointTable_15,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeTable_16,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterTable_17,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BornRTable_18,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_19,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectionPathTable_20,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_21,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_22,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationTable_0_41,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationTable_42,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingTable_0_43,
+#line 526 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingTable_44)
+#line 526 "rbmm.region_resurrection_renaming.m"
+{
+#line 537 "rbmm.region_resurrection_renaming.m"
+  {
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_58_58 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_60_60;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_61_61;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_64_64;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_73_73;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_76_76;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_77_77;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_25;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_26;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_27;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__BornR_28;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__RptaInfo_29;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_30;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathsContainResurrection_32;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsInPaths_33;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsProc_37;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPaths_38;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__AnnotationProc_39;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__RenamingProc_40;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_46_46;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_50_50;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_51_51;
+#line 537 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_52_52;
+#line 538 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_JoinPointProc_25;
+#line 539 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv1_LRBeforeProc_26;
+#line 540 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv2_LRAfterProc_27;
+#line 541 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv3_BornR_28;
+#line 542 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv4_RptaInfo_29;
+#line 543 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_31_31;
+#line 547 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv5_PathsContainResurrection_32;
+#line 549 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv7_ResurrectedRegionsProc_37;
+#line 554 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv8_ExecPaths_38;
+#line 555 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv12_AnnotationProc_39;
+#line 555 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv11_RenamingProc_40;
+
+#line 538 "rbmm.region_resurrection_renaming.m"
+    {
+#line 538 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_58_58, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[3], transform_hlds__rbmm__region_resurrection_renaming__JoinPointTable_15, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_JoinPointProc_25);
+    }
+#line 538 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_25 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0_JoinPointProc_25);
+#line 4479 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_60_60 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[10];
+#line 539 "rbmm.region_resurrection_renaming.m"
+    {
+#line 539 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_58_58, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_60_60, transform_hlds__rbmm__region_resurrection_renaming__LRBeforeTable_16, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv1_LRBeforeProc_26);
+    }
+#line 539 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_26 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv1_LRBeforeProc_26);
+#line 540 "rbmm.region_resurrection_renaming.m"
+    {
+#line 540 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_58_58, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_60_60, transform_hlds__rbmm__region_resurrection_renaming__LRAfterTable_17, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv2_LRAfterProc_27);
+    }
+#line 540 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_27 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv2_LRAfterProc_27);
+#line 4495 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_61_61 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[1];
+#line 541 "rbmm.region_resurrection_renaming.m"
+    {
+#line 541 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_58_58, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_61_61, transform_hlds__rbmm__region_resurrection_renaming__BornRTable_18, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv3_BornR_28);
+    }
+#line 541 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__BornR_28 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv3_BornR_28);
+#line 542 "rbmm.region_resurrection_renaming.m"
+    {
+#line 542 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_58_58, (MR_Word) &transform_hlds__rbmm__points_to_info__transform_hlds__rbmm__points_to_info__type_ctor_info_rpta_info_0, transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_19, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv4_RptaInfo_29);
+    }
+#line 542 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__RptaInfo_29 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv4_RptaInfo_29);
+#line 543 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__Graph_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__RptaInfo_29, (MR_Integer) 0)));
+#line 543 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__RptaInfo_29, (MR_Integer) 1)));
+#line 547 "rbmm.region_resurrection_renaming.m"
+    {
+#line 547 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_58_58, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[1], transform_hlds__rbmm__region_resurrection_renaming__ResurrectionPathTable_20, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv5_PathsContainResurrection_32);
+    }
+#line 547 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__PathsContainResurrection_32 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv5_PathsContainResurrection_32);
+#line 4522 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_64_64 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[0];
+#line 548 "rbmm.region_resurrection_renaming.m"
+    {
+#line 548 "rbmm.region_resurrection_renaming.m"
+      mercury__map__values_2_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_64_64, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_61_61, transform_hlds__rbmm__region_resurrection_renaming__PathsContainResurrection_32, &transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsInPaths_33);
+    }
+#line 553 "rbmm.region_resurrection_renaming.m"
+    {
+#line 553 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_46_46 = mercury__set__init_0_f_0((MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0);
+    }
+#line 549 "rbmm.region_resurrection_renaming.m"
+    {
+#line 549 "rbmm.region_resurrection_renaming.m"
+      mercury__list__foldl_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_61_61, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_61_61, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[12], transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsInPaths_33, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_46_46)), &transform_hlds__rbmm__region_resurrection_renaming__conv7_ResurrectedRegionsProc_37);
+    }
+#line 549 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsProc_37 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv7_ResurrectedRegionsProc_37);
+#line 554 "rbmm.region_resurrection_renaming.m"
+    {
+#line 554 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_58_58, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[2], transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_14, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv8_ExecPaths_38);
+    }
+#line 554 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__ExecPaths_38 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv8_ExecPaths_38);
+#line 555 "rbmm.region_resurrection_renaming.m"
+    {
+#line 555 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_50_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 10 * sizeof(MR_Word)), NULL, NULL);
+#line 555 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_50_50, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_3[2]));
+#line 555 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_50_50, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_proc_13_p_0_2));
+#line 555 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_50_50, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+#line 555 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_50_50, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameProc_22));
+#line 555 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_50_50, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_25));
+#line 555 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_50_50, 5) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_26));
+#line 555 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_50_50, 6) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_27));
+#line 555 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_50_50, 7) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BornR_28));
+#line 555 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_50_50, 8) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Graph_30));
+#line 555 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_50_50, 9) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsProc_37));
+#line 555 "rbmm.region_resurrection_renaming.m"
+    }
+#line 4574 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_73_73 = (MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0;
+#line 558 "rbmm.region_resurrection_renaming.m"
+    {
+#line 558 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_51_51 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_73_73, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[4]);
+    }
+#line 558 "rbmm.region_resurrection_renaming.m"
+    {
+#line 558 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_52_52 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_73_73, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[5]);
+    }
+#line 4586 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_76_76 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[8];
+#line 4588 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_77_77 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[6];
+#line 555 "rbmm.region_resurrection_renaming.m"
+    {
+#line 555 "rbmm.region_resurrection_renaming.m"
+      mercury__list__foldl2_6_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_64_64, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_76_76, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_77_77, transform_hlds__rbmm__region_resurrection_renaming__V_50_50, transform_hlds__rbmm__region_resurrection_renaming__ExecPaths_38, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_51_51)), &transform_hlds__rbmm__region_resurrection_renaming__conv12_AnnotationProc_39, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_52_52)), &transform_hlds__rbmm__region_resurrection_renaming__conv11_RenamingProc_40);
+    }
+#line 555 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__AnnotationProc_39 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv12_AnnotationProc_39);
+#line 555 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__RenamingProc_40 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv11_RenamingProc_40);
+#line 559 "rbmm.region_resurrection_renaming.m"
+    {
+#line 559 "rbmm.region_resurrection_renaming.m"
+      mercury__map__set_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_58_58, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_76_76, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__AnnotationProc_39)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationTable_0_41, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationTable_42);
+    }
+#line 560 "rbmm.region_resurrection_renaming.m"
+    {
+#line 560 "rbmm.region_resurrection_renaming.m"
+      mercury__map__set_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_58_58, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_77_77, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__RenamingProc_40)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingTable_0_43, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingTable_44);
+#line 560 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 537 "rbmm.region_resurrection_renaming.m"
+  }
+#line 526 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 488 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__record_renaming_prog_point_6_p_0(
+#line 488 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_7,
+#line 488 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_8,
+#line 488 "rbmm.region_resurrection_renaming.m"
+  MR_Integer transform_hlds__rbmm__region_resurrection_renaming__RenamingCounter_9,
+#line 488 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Region_10,
+#line 488 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_0_16,
+#line 488 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_17)
+#line 488 "rbmm.region_resurrection_renaming.m"
+{
+#line 492 "rbmm.region_resurrection_renaming.m"
+  {
+#line 492 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 492 "rbmm.region_resurrection_renaming.m"
+    MR_String transform_hlds__rbmm__region_resurrection_renaming__RegionName_12;
+#line 492 "rbmm.region_resurrection_renaming.m"
+    MR_String transform_hlds__rbmm__region_resurrection_renaming__Renamed_13;
+#line 492 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__RenamingProgPoint_15;
+#line 492 "rbmm.region_resurrection_renaming.m"
+    MR_String transform_hlds__rbmm__region_resurrection_renaming__V_18_18;
+#line 492 "rbmm.region_resurrection_renaming.m"
+    MR_String transform_hlds__rbmm__region_resurrection_renaming__V_20_20;
+#line 499 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__RenamingProgPoint0_14;
+#line 497 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_RenamingProgPoint0_14;
+
+#line 493 "rbmm.region_resurrection_renaming.m"
+    {
+#line 493 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__RegionName_12 = transform_hlds__rbmm__points_to_graph__rptg_lookup_region_name_2_f_0(transform_hlds__rbmm__region_resurrection_renaming__Graph_7, transform_hlds__rbmm__region_resurrection_renaming__Region_10);
+    }
+#line 495 "rbmm.region_resurrection_renaming.m"
+    {
+#line 495 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_20_20 = mercury__string__int_to_string_1_f_0(transform_hlds__rbmm__region_resurrection_renaming__RenamingCounter_9);
+    }
+#line 495 "rbmm.region_resurrection_renaming.m"
+    {
+#line 495 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_18_18 = mercury__string__f_43_43_2_f_0((MR_String) "_Resur_", transform_hlds__rbmm__region_resurrection_renaming__V_20_20);
+    }
+#line 494 "rbmm.region_resurrection_renaming.m"
+    {
+#line 494 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__Renamed_13 = mercury__string__f_43_43_2_f_0(transform_hlds__rbmm__region_resurrection_renaming__RegionName_12, transform_hlds__rbmm__region_resurrection_renaming__V_18_18);
+    }
+#line 497 "rbmm.region_resurrection_renaming.m"
+    {
+#line 497 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__map__search_3_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[5], transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_0_16, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_8)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_RenamingProgPoint0_14);
+    }
+#line 497 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 497 "rbmm.region_resurrection_renaming.m"
+      {
+#line 497 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__RenamingProgPoint0_14 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0_RenamingProgPoint0_14);
+#line 497 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__succeeded = MR_TRUE;
+#line 497 "rbmm.region_resurrection_renaming.m"
+      }
+#line 499 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 498 "rbmm.region_resurrection_renaming.m"
+      {
+#line 498 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_21_21;
+
+#line 498 "rbmm.region_resurrection_renaming.m"
+        {
+#line 498 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__V_21_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 498 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 0) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Renamed_13));
+#line 498 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 498 "rbmm.region_resurrection_renaming.m"
+        }
+#line 498 "rbmm.region_resurrection_renaming.m"
+        {
+#line 498 "rbmm.region_resurrection_renaming.m"
+          mercury__map__set_4_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[3], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__RegionName_12)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_21_21)), transform_hlds__rbmm__region_resurrection_renaming__RenamingProgPoint0_14, &transform_hlds__rbmm__region_resurrection_renaming__RenamingProgPoint_15);
+        }
+#line 498 "rbmm.region_resurrection_renaming.m"
+      }
+#line 499 "rbmm.region_resurrection_renaming.m"
+    else
+#line 500 "rbmm.region_resurrection_renaming.m"
+      {
+#line 500 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_23_23;
+
+#line 500 "rbmm.region_resurrection_renaming.m"
+        {
+#line 500 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__V_23_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 500 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__V_23_23, 0) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Renamed_13));
+#line 500 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__V_23_23, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 500 "rbmm.region_resurrection_renaming.m"
+        }
+#line 500 "rbmm.region_resurrection_renaming.m"
+        {
+#line 500 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__RenamingProgPoint_15 = mercury__map__singleton_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[3], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__RegionName_12)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_23_23)));
+        }
+#line 500 "rbmm.region_resurrection_renaming.m"
+      }
+#line 502 "rbmm.region_resurrection_renaming.m"
+    {
+#line 502 "rbmm.region_resurrection_renaming.m"
+      mercury__map__set_4_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[5], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_8)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__RenamingProgPoint_15)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_0_16, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_17);
+#line 502 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 492 "rbmm.region_resurrection_renaming.m"
+  }
+#line 488 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 484 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_prog_point_8_p_0_1(
+#line 484 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 484 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 484 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 484 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 484 "rbmm.region_resurrection_renaming.m"
+{
+#line 484 "rbmm.region_resurrection_renaming.m"
+  {
+#line 484 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 484 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_ResurrectionRenameProc_17;
+
+#line 484 "rbmm.region_resurrection_renaming.m"
+    {
+#line 484 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__record_renaming_prog_point_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 5))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), &transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_ResurrectionRenameProc_17);
+    }
+#line 484 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_ResurrectionRenameProc_17));
+#line 484 "rbmm.region_resurrection_renaming.m"
+  }
+#line 484 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 467 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_prog_point_8_p_0(
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_9,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_10,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_11,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__4_4,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingCounter_0_19,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingCounter_20,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_0_21,
+#line 467 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_22)
+#line 467 "rbmm.region_resurrection_renaming.m"
+{
+#line 474 "rbmm.region_resurrection_renaming.m"
+  {
+#line 474 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 474 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_28_28;
+#line 474 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__HeadVar__4_4, (MR_Integer) 0)));
+#line 474 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProgPoint_16;
+#line 474 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ToBeRenamedRegions_17;
+#line 473 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__HeadVar__4_4, (MR_Integer) 1)));
+#line 475 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_BecomeLiveProgPoint_16;
+
+#line 475 "rbmm.region_resurrection_renaming.m"
+    {
+#line 475 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[1], transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_10, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_12)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_BecomeLiveProgPoint_16);
+    }
+#line 475 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProgPoint_16 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0_BecomeLiveProgPoint_16);
+#line 4824 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_28_28 = (MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+#line 476 "rbmm.region_resurrection_renaming.m"
+    {
+#line 476 "rbmm.region_resurrection_renaming.m"
+      mercury__set__intersect_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_28_28, transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_11, transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProgPoint_16, &transform_hlds__rbmm__region_resurrection_renaming__ToBeRenamedRegions_17);
+    }
+#line 479 "rbmm.region_resurrection_renaming.m"
+    {
+#line 479 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__set__is_empty_1_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_28_28, transform_hlds__rbmm__region_resurrection_renaming__ToBeRenamedRegions_17);
+    }
+#line 481 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 480 "rbmm.region_resurrection_renaming.m"
+      {
+#line 480 "rbmm.region_resurrection_renaming.m"
+        *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_22 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_0_21;
+#line 480 "rbmm.region_resurrection_renaming.m"
+        *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingCounter_20 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingCounter_0_19;
+#line 480 "rbmm.region_resurrection_renaming.m"
+      }
+#line 481 "rbmm.region_resurrection_renaming.m"
+    else
+#line 482 "rbmm.region_resurrection_renaming.m"
+      {
+#line 482 "rbmm.region_resurrection_renaming.m"
+        MR_Integer transform_hlds__rbmm__region_resurrection_renaming__N_18;
+#line 482 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_24_24;
+#line 483 "rbmm.region_resurrection_renaming.m"
+        MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv2_STATE_VARIABLE_ResurrectionRenameProc_22;
+
+#line 482 "rbmm.region_resurrection_renaming.m"
+        {
+#line 482 "rbmm.region_resurrection_renaming.m"
+          mercury__counter__allocate_3_p_0(&transform_hlds__rbmm__region_resurrection_renaming__N_18, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingCounter_0_19, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RenamingCounter_20);
+        }
+#line 484 "rbmm.region_resurrection_renaming.m"
+        {
+#line 484 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__V_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 484 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_24_24, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_5[2]));
+#line 484 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_24_24, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_prog_point_8_p_0_1));
+#line 484 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_24_24, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 484 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_24_24, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Graph_9));
+#line 484 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_24_24, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_12));
+#line 484 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_24_24, 5) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__N_18));
+#line 484 "rbmm.region_resurrection_renaming.m"
+        }
+#line 483 "rbmm.region_resurrection_renaming.m"
+        {
+#line 483 "rbmm.region_resurrection_renaming.m"
+          mercury__set__fold_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_28_28, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[6], transform_hlds__rbmm__region_resurrection_renaming__V_24_24, transform_hlds__rbmm__region_resurrection_renaming__ToBeRenamedRegions_17, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_0_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv2_STATE_VARIABLE_ResurrectionRenameProc_22);
+        }
+#line 483 "rbmm.region_resurrection_renaming.m"
+        *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_22 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv2_STATE_VARIABLE_ResurrectionRenameProc_22);
+#line 482 "rbmm.region_resurrection_renaming.m"
+      }
+#line 474 "rbmm.region_resurrection_renaming.m"
+  }
+#line 467 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 463 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_exec_path_6_p_0_1(
+#line 463 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 463 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 463 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 463 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 463 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4,
+#line 463 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5)
+#line 463 "rbmm.region_resurrection_renaming.m"
+{
+#line 463 "rbmm.region_resurrection_renaming.m"
+  {
+#line 463 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 463 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_RenamingCounter_20;
+#line 463 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_ResurrectionRenameProc_22;
+
+#line 463 "rbmm.region_resurrection_renaming.m"
+    {
+#line 463 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_prog_point_8_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 5))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), &transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_RenamingCounter_20, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4), &transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_ResurrectionRenameProc_22);
+    }
+#line 463 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_RenamingCounter_20));
+#line 463 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_ResurrectionRenameProc_22));
+#line 463 "rbmm.region_resurrection_renaming.m"
+  }
+#line 463 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 456 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_exec_path_6_p_0(
+#line 456 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Graph_7,
+#line 456 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_8,
+#line 456 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPath_9,
+#line 456 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_10,
+#line 456 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_0_13,
+#line 456 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_14)
+#line 456 "rbmm.region_resurrection_renaming.m"
+{
+#line 461 "rbmm.region_resurrection_renaming.m"
+  {
+#line 461 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 461 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_15_15;
+#line 461 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_16_16;
+#line 462 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_12_12;
+#line 462 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv3_V_12_12;
+#line 462 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv2_STATE_VARIABLE_ResurrectionRenameProc_14;
+
+#line 463 "rbmm.region_resurrection_renaming.m"
+    {
+#line 463 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 463 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_15_15, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_8[1]));
+#line 463 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_15_15, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_exec_path_6_p_0_1));
+#line 463 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_15_15, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 463 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_15_15, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Graph_7));
+#line 463 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_15_15, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_8));
+#line 463 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_15_15, 5) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegions_10));
+#line 463 "rbmm.region_resurrection_renaming.m"
+    }
+#line 465 "rbmm.region_resurrection_renaming.m"
+    {
+#line 465 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_16_16 = mercury__counter__init_1_f_0((MR_Integer) 0);
+    }
+#line 462 "rbmm.region_resurrection_renaming.m"
+    {
+#line 462 "rbmm.region_resurrection_renaming.m"
+      mercury__list__foldl2_6_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[0], (MR_Word) &mercury__counter__counter__type_ctor_info_counter_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[6], transform_hlds__rbmm__region_resurrection_renaming__V_15_15, transform_hlds__rbmm__region_resurrection_renaming__ExecPath_9, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_16_16)), &transform_hlds__rbmm__region_resurrection_renaming__conv3_V_12_12, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_0_13)), &transform_hlds__rbmm__region_resurrection_renaming__conv2_STATE_VARIABLE_ResurrectionRenameProc_14);
+    }
+#line 462 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__V_12_12 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv3_V_12_12);
+#line 462 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameProc_14 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv2_STATE_VARIABLE_ResurrectionRenameProc_14);
+#line 461 "rbmm.region_resurrection_renaming.m"
+  }
+#line 456 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 439 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_proc_7_p_0(
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_8,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming___LocalRTable_9,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_10,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_11,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathsContainResurrection_12,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameTable_0_19,
+#line 439 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameTable_20)
+#line 439 "rbmm.region_resurrection_renaming.m"
+{
+#line 446 "rbmm.region_resurrection_renaming.m"
+  {
+#line 446 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 446 "rbmm.region_resurrection_renaming.m"
+    {
+#line 446 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_114_101_103_105_111_110_95_114_101_115_117_114_114_101_99_116_105_111_110_95_114_101_110_97_109_105_110_103_95_112_114_111_99_95_95_91_50_93_95_48_7_p_0(transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_8, transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_10, transform_hlds__rbmm__region_resurrection_renaming__PPId_11, transform_hlds__rbmm__region_resurrection_renaming__PathsContainResurrection_12, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameTable_0_19, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectionRenameTable_20);
+#line 446 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 446 "rbmm.region_resurrection_renaming.m"
+  }
+#line 439 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 418 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__find_join_points_in_path_5_p_0(
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPointsInPath_6,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPoint_7,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_String transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_8,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_10,
+#line 418 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_11)
+#line 418 "rbmm.region_resurrection_renaming.m"
+{
+#line 425 "rbmm.region_resurrection_renaming.m"
+  {
+#line 425 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 425 "rbmm.region_resurrection_renaming.m"
+    {
+#line 425 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_102_105_110_100_95_106_111_105_110_95_112_111_105_110_116_115_95_105_110_95_112_97_116_104_95_95_91_51_93_95_48_5_p_0(transform_hlds__rbmm__region_resurrection_renaming__ProgPointsInPath_6, transform_hlds__rbmm__region_resurrection_renaming__JoinPoint_7, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_10, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_11);
+#line 425 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 425 "rbmm.region_resurrection_renaming.m"
+  }
+#line 418 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 405 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__path_containing_join_point_6_p_0_1(
+#line 405 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 405 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 405 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 405 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 405 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4)
+#line 405 "rbmm.region_resurrection_renaming.m"
+{
+#line 405 "rbmm.region_resurrection_renaming.m"
+  {
+#line 405 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 405 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_JoinPoints_11;
+
+#line 405 "rbmm.region_resurrection_renaming.m"
+    {
+#line 405 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__find_join_points_in_path_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_String) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3), &transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_JoinPoints_11);
+    }
+#line 405 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_JoinPoints_11));
+#line 405 "rbmm.region_resurrection_renaming.m"
+  }
+#line 405 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 397 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__path_containing_join_point_6_p_0(
+#line 397 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_7,
+#line 397 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_8,
+#line 397 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsProc_9,
+#line 397 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__NonResurPath_10,
+#line 397 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_16,
+#line 397 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_17)
+#line 397 "rbmm.region_resurrection_renaming.m"
+{
+#line 403 "rbmm.region_resurrection_renaming.m"
+  {
+#line 403 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 403 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_21_21 = (MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0;
+#line 403 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPointsInPath_12;
+#line 403 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointsInThisPath_13;
+#line 403 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_18_18;
+#line 403 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_19_19;
+#line 405 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv1_JoinPointsInThisPath_13;
+
+#line 404 "rbmm.region_resurrection_renaming.m"
+    {
+#line 404 "rbmm.region_resurrection_renaming.m"
+      mercury__assoc_list__keys_2_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_21_21, (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, transform_hlds__rbmm__region_resurrection_renaming__NonResurPath_10, &transform_hlds__rbmm__region_resurrection_renaming__ProgPointsInPath_12);
+    }
+#line 405 "rbmm.region_resurrection_renaming.m"
+    {
+#line 405 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 405 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_18_18, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_4[1]));
+#line 405 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_18_18, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__path_containing_join_point_6_p_0_1));
+#line 405 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_18_18, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 405 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_18_18, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPointsInPath_12));
+#line 405 "rbmm.region_resurrection_renaming.m"
+    }
+#line 406 "rbmm.region_resurrection_renaming.m"
+    {
+#line 406 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_19_19 = mercury__set__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_21_21);
+    }
+#line 405 "rbmm.region_resurrection_renaming.m"
+    {
+#line 405 "rbmm.region_resurrection_renaming.m"
+      mercury__map__foldl_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_21_21, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[7], transform_hlds__rbmm__region_resurrection_renaming__V_18_18, transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_7, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_19_19)), &transform_hlds__rbmm__region_resurrection_renaming__conv1_JoinPointsInThisPath_13);
+    }
+#line 405 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__JoinPointsInThisPath_13 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv1_JoinPointsInThisPath_13);
+#line 407 "rbmm.region_resurrection_renaming.m"
+    {
+#line 407 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__set__is_empty_1_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_21_21, transform_hlds__rbmm__region_resurrection_renaming__JoinPointsInThisPath_13);
+    }
+#line 409 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 409 "rbmm.region_resurrection_renaming.m"
+      *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_17 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_16;
+#line 409 "rbmm.region_resurrection_renaming.m"
+    else
+#line 411 "rbmm.region_resurrection_renaming.m"
+      {
+#line 411 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_29_29 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 411 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_30_30 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[1];
+#line 411 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc0_14;
+#line 411 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc_15;
+#line 410 "rbmm.region_resurrection_renaming.m"
+        MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv2_PathContainsResurrectionProc0_14;
+
+#line 410 "rbmm.region_resurrection_renaming.m"
+        {
+#line 410 "rbmm.region_resurrection_renaming.m"
+          mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_29_29, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_30_30, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_16, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_8)), &transform_hlds__rbmm__region_resurrection_renaming__conv2_PathContainsResurrectionProc0_14);
+        }
+#line 410 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc0_14 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv2_PathContainsResurrectionProc0_14);
+#line 412 "rbmm.region_resurrection_renaming.m"
+        {
+#line 412 "rbmm.region_resurrection_renaming.m"
+          mercury__map__det_insert_4_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[0], (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[1], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__NonResurPath_10)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsProc_9)), transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc0_14, &transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc_15);
+        }
+#line 414 "rbmm.region_resurrection_renaming.m"
+        {
+#line 414 "rbmm.region_resurrection_renaming.m"
+          mercury__map__set_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_29_29, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_30_30, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_8)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc_15)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_16, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_17);
+#line 414 "rbmm.region_resurrection_renaming.m"
+          return;
+        }
+#line 411 "rbmm.region_resurrection_renaming.m"
+      }
+#line 403 "rbmm.region_resurrection_renaming.m"
+  }
+#line 397 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 390 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_proc_6_p_0_2(
+#line 390 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 390 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 390 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 390 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 390 "rbmm.region_resurrection_renaming.m"
+{
+#line 390 "rbmm.region_resurrection_renaming.m"
+  {
+#line 390 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 390 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv4_STATE_VARIABLE_PathContainsResurrectionTable_17;
+
+#line 390 "rbmm.region_resurrection_renaming.m"
+    {
+#line 390 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__path_containing_join_point_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 5))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), &transform_hlds__rbmm__region_resurrection_renaming__conv4_STATE_VARIABLE_PathContainsResurrectionTable_17);
+    }
+#line 390 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv4_STATE_VARIABLE_PathContainsResurrectionTable_17));
+#line 390 "rbmm.region_resurrection_renaming.m"
+  }
+#line 390 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 382 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_proc_6_p_0_1(
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 382 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 382 "rbmm.region_resurrection_renaming.m"
+{
+#line 382 "rbmm.region_resurrection_renaming.m"
+  {
+#line 382 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 382 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv1_HeadVar__3_27;
+
+#line 382 "rbmm.region_resurrection_renaming.m"
+    {
+#line 382 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__IntroducedFrom__pred__collect_paths_containing_join_points_proc__382__1_3_p_0(((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), &transform_hlds__rbmm__region_resurrection_renaming__conv1_HeadVar__3_27);
+    }
+#line 382 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv1_HeadVar__3_27));
+#line 382 "rbmm.region_resurrection_renaming.m"
+  }
+#line 382 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 373 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_proc_6_p_0(
+#line 373 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_7,
+#line 373 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointTable_8,
+#line 373 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_9,
+#line 373 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc_10,
+#line 373 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_21,
+#line 373 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_22)
+#line 373 "rbmm.region_resurrection_renaming.m"
+{
+#line 379 "rbmm.region_resurrection_renaming.m"
+  {
+#line 379 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 379 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_33_33 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 379 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35;
+#line 379 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_36_36;
+#line 379 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPaths_12;
+#line 379 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsInPaths_13;
+#line 379 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsProc_17;
+#line 379 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathsContainResurrection_18;
+#line 379 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__NonResurPaths_19;
+#line 379 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_24_24;
+#line 380 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_ExecPaths_12;
+#line 382 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv2_ResurrectedRegionsProc_17;
+#line 393 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_20;
+#line 389 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv3_JoinPointProc_20;
+
+#line 380 "rbmm.region_resurrection_renaming.m"
+    {
+#line 380 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_33_33, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[2], transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_7, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_9)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_ExecPaths_12);
+    }
+#line 380 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__ExecPaths_12 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0_ExecPaths_12);
+#line 5339 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[0];
+#line 5341 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_36_36 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[1];
+#line 381 "rbmm.region_resurrection_renaming.m"
+    {
+#line 381 "rbmm.region_resurrection_renaming.m"
+      mercury__map__values_2_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_36_36, transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc_10, &transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsInPaths_13);
+    }
+#line 386 "rbmm.region_resurrection_renaming.m"
+    {
+#line 386 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_24_24 = mercury__set__init_0_f_0((MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0);
+    }
+#line 382 "rbmm.region_resurrection_renaming.m"
+    {
+#line 382 "rbmm.region_resurrection_renaming.m"
+      mercury__list__foldl_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_36_36, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_36_36, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[11], transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsInPaths_13, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_24_24)), &transform_hlds__rbmm__region_resurrection_renaming__conv2_ResurrectedRegionsProc_17);
+    }
+#line 382 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsProc_17 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv2_ResurrectedRegionsProc_17);
+#line 387 "rbmm.region_resurrection_renaming.m"
+    {
+#line 387 "rbmm.region_resurrection_renaming.m"
+      mercury__map__keys_2_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_36_36, transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc_10, &transform_hlds__rbmm__region_resurrection_renaming__PathsContainResurrection_18);
+    }
+#line 388 "rbmm.region_resurrection_renaming.m"
+    {
+#line 388 "rbmm.region_resurrection_renaming.m"
+      mercury__list__delete_elems_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35, transform_hlds__rbmm__region_resurrection_renaming__ExecPaths_12, transform_hlds__rbmm__region_resurrection_renaming__PathsContainResurrection_18, &transform_hlds__rbmm__region_resurrection_renaming__NonResurPaths_19);
+    }
+#line 389 "rbmm.region_resurrection_renaming.m"
+    {
+#line 389 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__map__search_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_33_33, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[3], transform_hlds__rbmm__region_resurrection_renaming__JoinPointTable_8, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_9)), &transform_hlds__rbmm__region_resurrection_renaming__conv3_JoinPointProc_20);
+    }
+#line 389 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 389 "rbmm.region_resurrection_renaming.m"
+      {
+#line 389 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_20 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv3_JoinPointProc_20);
+#line 389 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__succeeded = MR_TRUE;
+#line 389 "rbmm.region_resurrection_renaming.m"
+      }
+#line 393 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 390 "rbmm.region_resurrection_renaming.m"
+      {
+#line 390 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_28_28;
+#line 390 "rbmm.region_resurrection_renaming.m"
+        MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv5_STATE_VARIABLE_PathContainsResurrectionTable_22;
+
+#line 390 "rbmm.region_resurrection_renaming.m"
+        {
+#line 390 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__V_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 390 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_28_28, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_5[1]));
+#line 390 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_28_28, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_proc_6_p_0_2));
+#line 390 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_28_28, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 390 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_28_28, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__JoinPointProc_20));
+#line 390 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_28_28, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_9));
+#line 390 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_28_28, 5) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsProc_17));
+#line 390 "rbmm.region_resurrection_renaming.m"
+        }
+#line 390 "rbmm.region_resurrection_renaming.m"
+        {
+#line 390 "rbmm.region_resurrection_renaming.m"
+          mercury__list__foldl_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[2], transform_hlds__rbmm__region_resurrection_renaming__V_28_28, transform_hlds__rbmm__region_resurrection_renaming__NonResurPaths_19, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv5_STATE_VARIABLE_PathContainsResurrectionTable_22);
+        }
+#line 390 "rbmm.region_resurrection_renaming.m"
+        *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_22 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv5_STATE_VARIABLE_PathContainsResurrectionTable_22);
+#line 390 "rbmm.region_resurrection_renaming.m"
+      }
+#line 393 "rbmm.region_resurrection_renaming.m"
+    else
+#line 393 "rbmm.region_resurrection_renaming.m"
+      *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_22 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_21;
+#line 379 "rbmm.region_resurrection_renaming.m"
+  }
+#line 373 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 353 "rbmm.region_resurrection_renaming.m"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__is_join_point_2_3_p_0(
+#line 353 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_4,
+#line 353 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_5,
+#line 353 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3)
+#line 353 "rbmm.region_resurrection_renaming.m"
+{
+#line 356 "rbmm.region_resurrection_renaming.m"
+  while (MR_TRUE)
+#line 356 "rbmm.region_resurrection_renaming.m"
+    {
+#line 356 "rbmm.region_resurrection_renaming.m"
+      /* tailcall optimized into a loop */
+#line 356 "rbmm.region_resurrection_renaming.m"
+      {
+#line 356 "rbmm.region_resurrection_renaming.m"
+        MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded = ((MR_tag((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+#line 356 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__P1_6;
+#line 356 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__P2_7;
+#line 356 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_9_9;
+#line 356 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__Ps_8;
+
+#line 356 "rbmm.region_resurrection_renaming.m"
+        if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 356 "rbmm.region_resurrection_renaming.m"
+          {
+#line 356 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__P1_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3, (MR_Integer) 0)));
+#line 356 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3, (MR_Integer) 1)));
+#line 356 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__succeeded = ((MR_tag((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__V_9_9)) == (MR_mktag((MR_Integer) 1)));
+#line 356 "rbmm.region_resurrection_renaming.m"
+            if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 356 "rbmm.region_resurrection_renaming.m"
+              {
+#line 356 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__P2_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__V_9_9, (MR_Integer) 0)));
+#line 356 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__Ps_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__V_9_9, (MR_Integer) 1)));
+#line 357 "rbmm.region_resurrection_renaming.m"
+                {
+#line 357 "rbmm.region_resurrection_renaming.m"
+                  transform_hlds__rbmm__region_resurrection_renaming__succeeded = transform_hlds__smm_common____Unify____program_point_0_0(transform_hlds__rbmm__region_resurrection_renaming__P2_7, transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_4);
+                }
+#line 359 "rbmm.region_resurrection_renaming.m"
+                if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 358 "rbmm.region_resurrection_renaming.m"
+                  {
+#line 358 "rbmm.region_resurrection_renaming.m"
+                    {
+#line 358 "rbmm.region_resurrection_renaming.m"
+                      transform_hlds__rbmm__region_resurrection_renaming__succeeded = transform_hlds__smm_common____Unify____program_point_0_0(transform_hlds__rbmm__region_resurrection_renaming__P1_6, transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_5);
+                    }
+#line 358 "rbmm.region_resurrection_renaming.m"
+                    transform_hlds__rbmm__region_resurrection_renaming__succeeded = !(transform_hlds__rbmm__region_resurrection_renaming__succeeded);
+#line 358 "rbmm.region_resurrection_renaming.m"
+                  }
+#line 359 "rbmm.region_resurrection_renaming.m"
+                else
+#line 360 "rbmm.region_resurrection_renaming.m"
+                  {
+#line 360 "rbmm.region_resurrection_renaming.m"
+                    /* direct tailcall eliminated */
+#line 360 "rbmm.region_resurrection_renaming.m"
+                    {
+#line 360 "rbmm.region_resurrection_renaming.m"
+                      MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3__tmp_copy_3 = transform_hlds__rbmm__region_resurrection_renaming__V_9_9;
+
+#line 360 "rbmm.region_resurrection_renaming.m"
+                      transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3__tmp_copy_3;
+#line 360 "rbmm.region_resurrection_renaming.m"
+                    }
+#line 360 "rbmm.region_resurrection_renaming.m"
+                    continue;
+#line 360 "rbmm.region_resurrection_renaming.m"
+                  }
+#line 356 "rbmm.region_resurrection_renaming.m"
+              }
+#line 356 "rbmm.region_resurrection_renaming.m"
+          }
+#line 356 "rbmm.region_resurrection_renaming.m"
+        return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 356 "rbmm.region_resurrection_renaming.m"
+      }
+#line 356 "rbmm.region_resurrection_renaming.m"
+      break;
+#line 356 "rbmm.region_resurrection_renaming.m"
+    }
+#line 353 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 343 "rbmm.region_resurrection_renaming.m"
+static MR_bool MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__is_join_point_3_p_0(
+#line 343 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_4,
+#line 343 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_5,
+#line 343 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3)
+#line 343 "rbmm.region_resurrection_renaming.m"
+{
+#line 346 "rbmm.region_resurrection_renaming.m"
+  while (MR_TRUE)
+#line 346 "rbmm.region_resurrection_renaming.m"
+    {
+#line 346 "rbmm.region_resurrection_renaming.m"
+      /* tailcall optimized into a loop */
+#line 346 "rbmm.region_resurrection_renaming.m"
+      {
+#line 346 "rbmm.region_resurrection_renaming.m"
+        MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded = ((MR_tag((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+#line 346 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__Path_6;
+#line 346 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__Paths_7;
+
+#line 346 "rbmm.region_resurrection_renaming.m"
+        if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 346 "rbmm.region_resurrection_renaming.m"
+          {
+#line 346 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__Path_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3, (MR_Integer) 0)));
+#line 346 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__Paths_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3, (MR_Integer) 1)));
+#line 347 "rbmm.region_resurrection_renaming.m"
+            {
+#line 347 "rbmm.region_resurrection_renaming.m"
+              transform_hlds__rbmm__region_resurrection_renaming__succeeded = transform_hlds__rbmm__region_resurrection_renaming__is_join_point_2_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_4, transform_hlds__rbmm__region_resurrection_renaming__PrevProgPoint_5, transform_hlds__rbmm__region_resurrection_renaming__Path_6);
+            }
+#line 349 "rbmm.region_resurrection_renaming.m"
+            if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 348 "rbmm.region_resurrection_renaming.m"
+              transform_hlds__rbmm__region_resurrection_renaming__succeeded = MR_TRUE;
+#line 349 "rbmm.region_resurrection_renaming.m"
+            else
+#line 350 "rbmm.region_resurrection_renaming.m"
+              {
+#line 350 "rbmm.region_resurrection_renaming.m"
+                /* direct tailcall eliminated */
+#line 350 "rbmm.region_resurrection_renaming.m"
+                {
+#line 350 "rbmm.region_resurrection_renaming.m"
+                  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3__tmp_copy_3 = transform_hlds__rbmm__region_resurrection_renaming__Paths_7;
+
+#line 350 "rbmm.region_resurrection_renaming.m"
+                  transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_3 = transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3__tmp_copy_3;
+#line 350 "rbmm.region_resurrection_renaming.m"
+                }
+#line 350 "rbmm.region_resurrection_renaming.m"
+                continue;
+#line 350 "rbmm.region_resurrection_renaming.m"
+              }
+#line 346 "rbmm.region_resurrection_renaming.m"
+          }
+#line 346 "rbmm.region_resurrection_renaming.m"
+        return transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 346 "rbmm.region_resurrection_renaming.m"
+      }
+#line 346 "rbmm.region_resurrection_renaming.m"
+      break;
+#line 346 "rbmm.region_resurrection_renaming.m"
+    }
+#line 343 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 302 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_join_points_path_10_p_0(
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Paths_11,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Path_12,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_0_24,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_25,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_0_26,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_27,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_28,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_29,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_0_30,
+#line 302 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_31)
+#line 302 "rbmm.region_resurrection_renaming.m"
+{
+#line 310 "rbmm.region_resurrection_renaming.m"
+  while (MR_TRUE)
+#line 310 "rbmm.region_resurrection_renaming.m"
+    {
+#line 310 "rbmm.region_resurrection_renaming.m"
+      /* tailcall optimized into a loop */
+#line 310 "rbmm.region_resurrection_renaming.m"
+      {
+#line 310 "rbmm.region_resurrection_renaming.m"
+        MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 310 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__TheOtherPaths_17;
+#line 335 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__PrevPoint_18;
+#line 335 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_19;
+#line 335 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_32_32;
+#line 314 "rbmm.region_resurrection_renaming.m"
+        MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoints_20;
+
+#line 311 "rbmm.region_resurrection_renaming.m"
+        {
+#line 311 "rbmm.region_resurrection_renaming.m"
+          mercury__list__delete_all_3_p_1((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[5], transform_hlds__rbmm__region_resurrection_renaming__Paths_11, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Path_12)), &transform_hlds__rbmm__region_resurrection_renaming__TheOtherPaths_17);
+        }
+#line 314 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__succeeded = ((MR_tag((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__Path_12)) == (MR_mktag((MR_Integer) 1)));
+#line 314 "rbmm.region_resurrection_renaming.m"
+        if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 314 "rbmm.region_resurrection_renaming.m"
+          {
+#line 314 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__PrevPoint_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__Path_12, (MR_Integer) 0)));
+#line 314 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__Path_12, (MR_Integer) 1)));
+#line 314 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__succeeded = ((MR_tag((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__V_32_32)) == (MR_mktag((MR_Integer) 1)));
+#line 314 "rbmm.region_resurrection_renaming.m"
+            if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 314 "rbmm.region_resurrection_renaming.m"
+              {
+#line 314 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__V_32_32, (MR_Integer) 0)));
+#line 314 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__ProgPoints_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__V_32_32, (MR_Integer) 1)));
+#line 314 "rbmm.region_resurrection_renaming.m"
+              }
+#line 314 "rbmm.region_resurrection_renaming.m"
+          }
+#line 335 "rbmm.region_resurrection_renaming.m"
+        if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 332 "rbmm.region_resurrection_renaming.m"
+          {
+#line 332 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_33_33;
+#line 332 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_36_36;
+#line 332 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_37_37;
+#line 332 "rbmm.region_resurrection_renaming.m"
+            MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_38_38;
+
+#line 315 "rbmm.region_resurrection_renaming.m"
+            {
+#line 315 "rbmm.region_resurrection_renaming.m"
+              transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__set__member_2_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_19)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_28);
+            }
+#line 317 "rbmm.region_resurrection_renaming.m"
+            if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 316 "rbmm.region_resurrection_renaming.m"
+              {
+#line 316 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_37_37 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_0_30;
+#line 316 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_38_38 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_28;
+#line 316 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_33_33 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_0_26;
+#line 316 "rbmm.region_resurrection_renaming.m"
+                transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_36_36 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_0_24;
+#line 316 "rbmm.region_resurrection_renaming.m"
+              }
+#line 317 "rbmm.region_resurrection_renaming.m"
+            else
+#line 329 "rbmm.region_resurrection_renaming.m"
+              {
+#line 318 "rbmm.region_resurrection_renaming.m"
+                {
+#line 318 "rbmm.region_resurrection_renaming.m"
+                  transform_hlds__rbmm__region_resurrection_renaming__succeeded = transform_hlds__rbmm__region_resurrection_renaming__is_join_point_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_19, transform_hlds__rbmm__region_resurrection_renaming__PrevPoint_18, transform_hlds__rbmm__region_resurrection_renaming__TheOtherPaths_17);
+                }
+#line 329 "rbmm.region_resurrection_renaming.m"
+                if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 326 "rbmm.region_resurrection_renaming.m"
+                  {
+#line 326 "rbmm.region_resurrection_renaming.m"
+                    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_50_50;
+#line 326 "rbmm.region_resurrection_renaming.m"
+                    MR_String transform_hlds__rbmm__region_resurrection_renaming__JPName_22;
+#line 322 "rbmm.region_resurrection_renaming.m"
+                    MR_String transform_hlds__rbmm__region_resurrection_renaming__JPName0_21;
+#line 320 "rbmm.region_resurrection_renaming.m"
+                    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_JPName0_21;
+
+#line 320 "rbmm.region_resurrection_renaming.m"
+                    {
+#line 320 "rbmm.region_resurrection_renaming.m"
+                      transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__map__search_3_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_0_24, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PrevPoint_18)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_JPName0_21);
+                    }
+#line 320 "rbmm.region_resurrection_renaming.m"
+                    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 320 "rbmm.region_resurrection_renaming.m"
+                      {
+#line 320 "rbmm.region_resurrection_renaming.m"
+                        transform_hlds__rbmm__region_resurrection_renaming__JPName0_21 = ((MR_String) transform_hlds__rbmm__region_resurrection_renaming__conv0_JPName0_21);
+#line 320 "rbmm.region_resurrection_renaming.m"
+                        transform_hlds__rbmm__region_resurrection_renaming__succeeded = MR_TRUE;
+#line 320 "rbmm.region_resurrection_renaming.m"
+                      }
+#line 322 "rbmm.region_resurrection_renaming.m"
+                    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 321 "rbmm.region_resurrection_renaming.m"
+                      {
+#line 321 "rbmm.region_resurrection_renaming.m"
+                        transform_hlds__rbmm__region_resurrection_renaming__JPName_22 = transform_hlds__rbmm__region_resurrection_renaming__JPName0_21;
+#line 321 "rbmm.region_resurrection_renaming.m"
+                        transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_33_33 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_0_26;
+#line 321 "rbmm.region_resurrection_renaming.m"
+                        transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_36_36 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_0_24;
+#line 321 "rbmm.region_resurrection_renaming.m"
+                      }
+#line 322 "rbmm.region_resurrection_renaming.m"
+                    else
+#line 323 "rbmm.region_resurrection_renaming.m"
+                      {
+#line 323 "rbmm.region_resurrection_renaming.m"
+                        MR_Integer transform_hlds__rbmm__region_resurrection_renaming__N_23;
+#line 323 "rbmm.region_resurrection_renaming.m"
+                        MR_String transform_hlds__rbmm__region_resurrection_renaming__V_35_35;
+
+#line 323 "rbmm.region_resurrection_renaming.m"
+                        {
+#line 323 "rbmm.region_resurrection_renaming.m"
+                          mercury__counter__allocate_3_p_0(&transform_hlds__rbmm__region_resurrection_renaming__N_23, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_0_26, &transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_33_33);
+                        }
+#line 324 "rbmm.region_resurrection_renaming.m"
+                        {
+#line 324 "rbmm.region_resurrection_renaming.m"
+                          transform_hlds__rbmm__region_resurrection_renaming__V_35_35 = mercury__string__int_to_string_1_f_0(transform_hlds__rbmm__region_resurrection_renaming__N_23);
+                        }
+#line 324 "rbmm.region_resurrection_renaming.m"
+                        {
+#line 324 "rbmm.region_resurrection_renaming.m"
+                          transform_hlds__rbmm__region_resurrection_renaming__JPName_22 = mercury__string__f_43_43_2_f_0((MR_String) "_jp_", transform_hlds__rbmm__region_resurrection_renaming__V_35_35);
+                        }
+#line 325 "rbmm.region_resurrection_renaming.m"
+                        {
+#line 325 "rbmm.region_resurrection_renaming.m"
+                          mercury__map__set_4_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PrevPoint_18)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__JPName_22)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_0_24, &transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_36_36);
+                        }
+#line 323 "rbmm.region_resurrection_renaming.m"
+                      }
+#line 5792 "transform_hlds.rbmm.region_resurrection_renaming.c"
+                    transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_50_50 = (MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0;
+#line 327 "rbmm.region_resurrection_renaming.m"
+                    {
+#line 327 "rbmm.region_resurrection_renaming.m"
+                      mercury__map__set_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_50_50, (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_19)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__JPName_22)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_0_30, &transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_37_37);
+                    }
+#line 328 "rbmm.region_resurrection_renaming.m"
+                    {
+#line 328 "rbmm.region_resurrection_renaming.m"
+                      mercury__set__insert_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_50_50, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_19)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_28, &transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_38_38);
+                    }
+#line 326 "rbmm.region_resurrection_renaming.m"
+                  }
+#line 329 "rbmm.region_resurrection_renaming.m"
+                else
+#line 330 "rbmm.region_resurrection_renaming.m"
+                  {
+#line 330 "rbmm.region_resurrection_renaming.m"
+                    transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_37_37 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_0_30;
+#line 330 "rbmm.region_resurrection_renaming.m"
+                    transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_38_38 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_28;
+#line 330 "rbmm.region_resurrection_renaming.m"
+                    transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_33_33 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_0_26;
+#line 330 "rbmm.region_resurrection_renaming.m"
+                    transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_36_36 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_0_24;
+#line 330 "rbmm.region_resurrection_renaming.m"
+                  }
+#line 329 "rbmm.region_resurrection_renaming.m"
+              }
+#line 333 "rbmm.region_resurrection_renaming.m"
+            /* direct tailcall eliminated */
+#line 333 "rbmm.region_resurrection_renaming.m"
+            {
+#line 333 "rbmm.region_resurrection_renaming.m"
+              MR_Word transform_hlds__rbmm__region_resurrection_renaming__Path__tmp_copy_12 = transform_hlds__rbmm__region_resurrection_renaming__V_32_32;
+#line 333 "rbmm.region_resurrection_renaming.m"
+              MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_0__tmp_copy_24 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_36_36;
+#line 333 "rbmm.region_resurrection_renaming.m"
+              MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_0__tmp_copy_26 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_33_33;
+#line 333 "rbmm.region_resurrection_renaming.m"
+              MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0__tmp_copy_28 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_38_38;
+#line 333 "rbmm.region_resurrection_renaming.m"
+              MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_0__tmp_copy_30 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_37_37;
+
+#line 333 "rbmm.region_resurrection_renaming.m"
+              transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_0_30 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_0__tmp_copy_30;
+#line 333 "rbmm.region_resurrection_renaming.m"
+              transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_28 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0__tmp_copy_28;
+#line 333 "rbmm.region_resurrection_renaming.m"
+              transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_0_26 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_0__tmp_copy_26;
+#line 333 "rbmm.region_resurrection_renaming.m"
+              transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_0_24 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_0__tmp_copy_24;
+#line 333 "rbmm.region_resurrection_renaming.m"
+              transform_hlds__rbmm__region_resurrection_renaming__Path_12 = transform_hlds__rbmm__region_resurrection_renaming__Path__tmp_copy_12;
+#line 333 "rbmm.region_resurrection_renaming.m"
+            }
+#line 333 "rbmm.region_resurrection_renaming.m"
+            continue;
+#line 332 "rbmm.region_resurrection_renaming.m"
+          }
+#line 335 "rbmm.region_resurrection_renaming.m"
+        else
+#line 336 "rbmm.region_resurrection_renaming.m"
+          {
+#line 336 "rbmm.region_resurrection_renaming.m"
+            *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_31 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointProc_0_30;
+#line 336 "rbmm.region_resurrection_renaming.m"
+            *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_29 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPoints_0_28;
+#line 336 "rbmm.region_resurrection_renaming.m"
+            *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_27 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_Counter_0_26;
+#line 336 "rbmm.region_resurrection_renaming.m"
+            *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_25 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JP2Name_0_24;
+#line 336 "rbmm.region_resurrection_renaming.m"
+          }
+#line 310 "rbmm.region_resurrection_renaming.m"
+      }
+#line 310 "rbmm.region_resurrection_renaming.m"
+      break;
+#line 310 "rbmm.region_resurrection_renaming.m"
+    }
+#line 302 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 286 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_join_points_proc_5_p_0(
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_6,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_7,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__3_8,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointTable_0_20,
+#line 286 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointTable_21)
+#line 286 "rbmm.region_resurrection_renaming.m"
+{
+#line 291 "rbmm.region_resurrection_renaming.m"
+  {
+#line 291 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 291 "rbmm.region_resurrection_renaming.m"
+    {
+#line 291 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_108_108_101_99_116_95_106_111_105_110_95_112_111_105_110_116_115_95_112_114_111_99_95_95_91_51_93_95_48_5_p_0(transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_6, transform_hlds__rbmm__region_resurrection_renaming__PPId_7, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointTable_0_20, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_JoinPointTable_21);
+#line 291 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 291 "rbmm.region_resurrection_renaming.m"
+  }
+#line 286 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 233 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_prog_point_12_p_0(
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_13,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_14,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_15,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeProc_16,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterProc_17,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__HeadVar__6_6,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_CreatedCandidates_0_31,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_CreatedCandidates_32,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RemovedCandidates_0_33,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RemovedCandidates_34,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionsInExecPath_0_35,
+#line 233 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionsInExecPath_36)
+#line 233 "rbmm.region_resurrection_renaming.m"
+{
+#line 242 "rbmm.region_resurrection_renaming.m"
+  {
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_43_43 = (MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0;
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_44_44 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[1];
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_45_45;
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__HeadVar__6_6, (MR_Integer) 0)));
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProgPoint_25;
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeProgPoint_26;
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterProgPoint_27;
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAtProgPoint_28;
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__CreatedResurrectedRegions_29;
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__RemovedResurrectedRegions_30;
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionsInExecPath_37_37;
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_39_39;
+#line 242 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_41_41;
+#line 241 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__HeadVar__6_6, (MR_Integer) 1)));
+#line 243 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming___LRBeforeProgPoint_23;
+#line 243 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0__LRBeforeProgPoint_23;
+#line 244 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming___LRAfterProgPoint_24;
+#line 244 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv1__LRAfterProgPoint_24;
+#line 245 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv2_BecomeLiveProgPoint_25;
+#line 246 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv3_BecomeDeadBeforeProgPoint_26;
+#line 247 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv4_BecomeDeadAfterProgPoint_27;
+
+#line 243 "rbmm.region_resurrection_renaming.m"
+    {
+#line 243 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_43_43, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_44_44, transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_13, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_18)), &transform_hlds__rbmm__region_resurrection_renaming__conv0__LRBeforeProgPoint_23);
+    }
+#line 243 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming___LRBeforeProgPoint_23 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0__LRBeforeProgPoint_23);
+#line 244 "rbmm.region_resurrection_renaming.m"
+    {
+#line 244 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_43_43, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_44_44, transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_14, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_18)), &transform_hlds__rbmm__region_resurrection_renaming__conv1__LRAfterProgPoint_24);
+    }
+#line 244 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming___LRAfterProgPoint_24 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv1__LRAfterProgPoint_24);
+#line 245 "rbmm.region_resurrection_renaming.m"
+    {
+#line 245 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_43_43, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_44_44, transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_15, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_18)), &transform_hlds__rbmm__region_resurrection_renaming__conv2_BecomeLiveProgPoint_25);
+    }
+#line 245 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProgPoint_25 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv2_BecomeLiveProgPoint_25);
+#line 246 "rbmm.region_resurrection_renaming.m"
+    {
+#line 246 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_43_43, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_44_44, transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeProc_16, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_18)), &transform_hlds__rbmm__region_resurrection_renaming__conv3_BecomeDeadBeforeProgPoint_26);
+    }
+#line 246 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeProgPoint_26 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv3_BecomeDeadBeforeProgPoint_26);
+#line 247 "rbmm.region_resurrection_renaming.m"
+    {
+#line 247 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_43_43, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_44_44, transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterProc_17, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_18)), &transform_hlds__rbmm__region_resurrection_renaming__conv4_BecomeDeadAfterProgPoint_27);
+    }
+#line 247 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterProgPoint_27 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv4_BecomeDeadAfterProgPoint_27);
+#line 6019 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_45_45 = (MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+#line 248 "rbmm.region_resurrection_renaming.m"
+    {
+#line 248 "rbmm.region_resurrection_renaming.m"
+      mercury__set__union_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_45_45, transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterProgPoint_27, transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeProgPoint_26, &transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAtProgPoint_28);
+    }
+#line 254 "rbmm.region_resurrection_renaming.m"
+    {
+#line 254 "rbmm.region_resurrection_renaming.m"
+      mercury__set__intersect_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_45_45, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_CreatedCandidates_0_31, transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProgPoint_25, &transform_hlds__rbmm__region_resurrection_renaming__CreatedResurrectedRegions_29);
+    }
+#line 256 "rbmm.region_resurrection_renaming.m"
+    {
+#line 256 "rbmm.region_resurrection_renaming.m"
+      mercury__set__union_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_45_45, transform_hlds__rbmm__region_resurrection_renaming__CreatedResurrectedRegions_29, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionsInExecPath_0_35, &transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionsInExecPath_37_37);
+    }
+#line 258 "rbmm.region_resurrection_renaming.m"
+    {
+#line 258 "rbmm.region_resurrection_renaming.m"
+      mercury__set__intersect_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_45_45, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RemovedCandidates_0_33, transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAtProgPoint_28, &transform_hlds__rbmm__region_resurrection_renaming__RemovedResurrectedRegions_30);
+    }
+#line 260 "rbmm.region_resurrection_renaming.m"
+    {
+#line 260 "rbmm.region_resurrection_renaming.m"
+      mercury__set__union_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_45_45, transform_hlds__rbmm__region_resurrection_renaming__RemovedResurrectedRegions_30, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionsInExecPath_37_37, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionsInExecPath_36);
+    }
+#line 264 "rbmm.region_resurrection_renaming.m"
+    {
+#line 264 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_39_39 = mercury__set__union_2_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_45_45, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_CreatedCandidates_0_31, transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProgPoint_25);
+    }
+#line 264 "rbmm.region_resurrection_renaming.m"
+    {
+#line 264 "rbmm.region_resurrection_renaming.m"
+      mercury__set__difference_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_45_45, transform_hlds__rbmm__region_resurrection_renaming__V_39_39, *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionsInExecPath_36, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_CreatedCandidates_32);
+    }
+#line 267 "rbmm.region_resurrection_renaming.m"
+    {
+#line 267 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_41_41 = mercury__set__union_2_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_45_45, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RemovedCandidates_0_33, transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAtProgPoint_28);
+    }
+#line 267 "rbmm.region_resurrection_renaming.m"
+    {
+#line 267 "rbmm.region_resurrection_renaming.m"
+      mercury__set__difference_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_45_45, transform_hlds__rbmm__region_resurrection_renaming__V_41_41, *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionsInExecPath_36, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_RemovedCandidates_34);
+#line 267 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 242 "rbmm.region_resurrection_renaming.m"
+  }
+#line 233 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 221 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_exec_path_8_p_0_1(
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_6,
+#line 221 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_7)
+#line 221 "rbmm.region_resurrection_renaming.m"
+{
+#line 221 "rbmm.region_resurrection_renaming.m"
+  {
+#line 221 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 221 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv2_STATE_VARIABLE_CreatedCandidates_32;
+#line 221 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_RemovedCandidates_34;
+#line 221 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_ResurrectedRegionsInExecPath_36;
+
+#line 221 "rbmm.region_resurrection_renaming.m"
+    {
+#line 221 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_prog_point_12_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 7))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), &transform_hlds__rbmm__region_resurrection_renaming__conv2_STATE_VARIABLE_CreatedCandidates_32, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4), &transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_RemovedCandidates_34, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_6), &transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_ResurrectedRegionsInExecPath_36);
+    }
+#line 221 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv2_STATE_VARIABLE_CreatedCandidates_32));
+#line 221 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_RemovedCandidates_34));
+#line 221 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_7 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_ResurrectedRegionsInExecPath_36));
+#line 221 "rbmm.region_resurrection_renaming.m"
+  }
+#line 221 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 213 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_exec_path_8_p_0(
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_9,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_10,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_11,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeProc_12,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterProc_13,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPath_14,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionProc_0_19,
+#line 213 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionProc_20)
+#line 213 "rbmm.region_resurrection_renaming.m"
+{
+#line 220 "rbmm.region_resurrection_renaming.m"
+  {
+#line 220 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 220 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_33_33;
+#line 220 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35;
+#line 220 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsInExecPath_18;
+#line 220 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_21_21;
+#line 220 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_22_22;
+#line 220 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_23_23;
+#line 220 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_24_24;
+#line 221 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_16_16;
+#line 221 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_17_17;
+#line 221 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv5_V_16_16;
+#line 221 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv4_V_17_17;
+#line 221 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv3_ResurrectedRegionsInExecPath_18;
+
+#line 221 "rbmm.region_resurrection_renaming.m"
+    {
+#line 221 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 8 * sizeof(MR_Word)), NULL, NULL);
+#line 221 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_3[1]));
+#line 221 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_exec_path_8_p_0_1));
+#line 221 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+#line 221 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_9));
+#line 221 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_10));
+#line 221 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 5) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_11));
+#line 221 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 6) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeProc_12));
+#line 221 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 7) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterProc_13));
+#line 221 "rbmm.region_resurrection_renaming.m"
+    }
+#line 6193 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_33_33 = (MR_Word) &transform_hlds__rbmm__points_to_graph__transform_hlds__rbmm__points_to_graph__type_ctor_info_rptg_node_0;
+#line 224 "rbmm.region_resurrection_renaming.m"
+    {
+#line 224 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_22_22 = mercury__set__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_33_33);
+    }
+#line 224 "rbmm.region_resurrection_renaming.m"
+    {
+#line 224 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_23_23 = mercury__set__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_33_33);
+    }
+#line 224 "rbmm.region_resurrection_renaming.m"
+    {
+#line 224 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_24_24 = mercury__set__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_33_33);
+    }
+#line 6210 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[1];
+#line 221 "rbmm.region_resurrection_renaming.m"
+    {
+#line 221 "rbmm.region_resurrection_renaming.m"
+      mercury__list__foldl3_8_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[0], transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35, transform_hlds__rbmm__region_resurrection_renaming__V_21_21, transform_hlds__rbmm__region_resurrection_renaming__ExecPath_14, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_22_22)), &transform_hlds__rbmm__region_resurrection_renaming__conv5_V_16_16, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_23_23)), &transform_hlds__rbmm__region_resurrection_renaming__conv4_V_17_17, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_24_24)), &transform_hlds__rbmm__region_resurrection_renaming__conv3_ResurrectedRegionsInExecPath_18);
+    }
+#line 221 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__V_16_16 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv5_V_16_16);
+#line 221 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__V_17_17 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv4_V_17_17);
+#line 221 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsInExecPath_18 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv3_ResurrectedRegionsInExecPath_18);
+#line 226 "rbmm.region_resurrection_renaming.m"
+    {
+#line 226 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__set__is_empty_1_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_33_33, transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsInExecPath_18);
+    }
+#line 228 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 228 "rbmm.region_resurrection_renaming.m"
+      *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionProc_20 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionProc_0_19;
+#line 228 "rbmm.region_resurrection_renaming.m"
+    else
+#line 229 "rbmm.region_resurrection_renaming.m"
+      {
+#line 229 "rbmm.region_resurrection_renaming.m"
+        {
+#line 229 "rbmm.region_resurrection_renaming.m"
+          mercury__map__set_4_p_0((MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[0], transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_35_35, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ExecPath_14)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ResurrectedRegionsInExecPath_18)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionProc_0_19, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_ResurrectedRegionProc_20);
+#line 229 "rbmm.region_resurrection_renaming.m"
+          return;
+        }
+#line 229 "rbmm.region_resurrection_renaming.m"
+      }
+#line 220 "rbmm.region_resurrection_renaming.m"
+  }
+#line 213 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 201 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_proc_12_p_0_1(
+#line 201 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 201 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 201 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 201 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3)
+#line 201 "rbmm.region_resurrection_renaming.m"
+{
+#line 201 "rbmm.region_resurrection_renaming.m"
+  {
+#line 201 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 201 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv8_STATE_VARIABLE_ResurrectedRegionProc_20;
+
+#line 201 "rbmm.region_resurrection_renaming.m"
+    {
+#line 201 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_exec_path_8_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 7))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), &transform_hlds__rbmm__region_resurrection_renaming__conv8_STATE_VARIABLE_ResurrectedRegionProc_20);
+    }
+#line 201 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv8_STATE_VARIABLE_ResurrectedRegionProc_20));
+#line 201 "rbmm.region_resurrection_renaming.m"
+  }
+#line 201 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 181 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_proc_12_p_0(
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeTable_13,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterTable_14,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BornRTable_15,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__DeadRTable_16,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LocalRTable_17,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_18,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeTable_19,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterTable_20,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PPId_21,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPaths_22,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_33,
+#line 181 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_34)
+#line 181 "rbmm.region_resurrection_renaming.m"
+{
+#line 192 "rbmm.region_resurrection_renaming.m"
+  {
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_39_39 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_40_40 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[10];
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_41_41;
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_45_45;
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_46_46;
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_24;
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_25;
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_29;
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeProc_30;
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterProc_31;
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc_32;
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_35_35;
+#line 192 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_36_36;
+#line 193 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_LRBeforeProc_24;
+#line 194 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv1_LRAfterProc_25;
+#line 195 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming___BornR_26;
+#line 195 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv2__BornR_26;
+#line 196 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming___DeadR_27;
+#line 196 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv3__DeadR_27;
+#line 197 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming___LocalR_28;
+#line 197 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv4__LocalR_28;
+#line 198 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv5_BecomeLiveProc_29;
+#line 199 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv6_BecomeDeadBeforeProc_30;
+#line 200 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv7_BecomeDeadAfterProc_31;
+#line 201 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv9_PathContainsResurrectionProc_32;
+#line 206 "rbmm.region_resurrection_renaming.m"
+    MR_Integer transform_hlds__rbmm__region_resurrection_renaming__V_37_37;
+
+#line 193 "rbmm.region_resurrection_renaming.m"
+    {
+#line 193 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_39_39, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_40_40, transform_hlds__rbmm__region_resurrection_renaming__LRBeforeTable_13, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_LRBeforeProc_24);
+    }
+#line 193 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_24 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0_LRBeforeProc_24);
+#line 194 "rbmm.region_resurrection_renaming.m"
+    {
+#line 194 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_39_39, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_40_40, transform_hlds__rbmm__region_resurrection_renaming__LRAfterTable_14, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv1_LRAfterProc_25);
+    }
+#line 194 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_25 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv1_LRAfterProc_25);
+#line 6382 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_41_41 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[1];
+#line 195 "rbmm.region_resurrection_renaming.m"
+    {
+#line 195 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_39_39, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_41_41, transform_hlds__rbmm__region_resurrection_renaming__BornRTable_15, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv2__BornR_26);
+    }
+#line 195 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming___BornR_26 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv2__BornR_26);
+#line 196 "rbmm.region_resurrection_renaming.m"
+    {
+#line 196 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_39_39, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_41_41, transform_hlds__rbmm__region_resurrection_renaming__DeadRTable_16, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv3__DeadR_27);
+    }
+#line 196 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming___DeadR_27 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv3__DeadR_27);
+#line 197 "rbmm.region_resurrection_renaming.m"
+    {
+#line 197 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_39_39, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_41_41, transform_hlds__rbmm__region_resurrection_renaming__LocalRTable_17, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv4__LocalR_28);
+    }
+#line 197 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming___LocalR_28 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv4__LocalR_28);
+#line 198 "rbmm.region_resurrection_renaming.m"
+    {
+#line 198 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_39_39, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_40_40, transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_18, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv5_BecomeLiveProc_29);
+    }
+#line 198 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_29 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv5_BecomeLiveProc_29);
+#line 199 "rbmm.region_resurrection_renaming.m"
+    {
+#line 199 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_39_39, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_40_40, transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeTable_19, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv6_BecomeDeadBeforeProc_30);
+    }
+#line 199 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeProc_30 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv6_BecomeDeadBeforeProc_30);
+#line 200 "rbmm.region_resurrection_renaming.m"
+    {
+#line 200 "rbmm.region_resurrection_renaming.m"
+      mercury__map__lookup_3_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_39_39, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_40_40, transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterTable_20, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), &transform_hlds__rbmm__region_resurrection_renaming__conv7_BecomeDeadAfterProc_31);
+    }
+#line 200 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterProc_31 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv7_BecomeDeadAfterProc_31);
+#line 201 "rbmm.region_resurrection_renaming.m"
+    {
+#line 201 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_35_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 8 * sizeof(MR_Word)), NULL, NULL);
+#line 201 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_35_35, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_8[0]));
+#line 201 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_35_35, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_proc_12_p_0_1));
+#line 201 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_35_35, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+#line 201 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_35_35, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LRBeforeProc_24));
+#line 201 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_35_35, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LRAfterProc_25));
+#line 201 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_35_35, 5) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveProc_29));
+#line 201 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_35_35, 6) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeProc_30));
+#line 201 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_35_35, 7) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterProc_31));
+#line 201 "rbmm.region_resurrection_renaming.m"
+    }
+#line 6448 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_45_45 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[0];
+#line 203 "rbmm.region_resurrection_renaming.m"
+    {
+#line 203 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_36_36 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_45_45, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_41_41);
+    }
+#line 6455 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_46_46 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[1];
+#line 201 "rbmm.region_resurrection_renaming.m"
+    {
+#line 201 "rbmm.region_resurrection_renaming.m"
+      mercury__list__foldl_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_45_45, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_46_46, transform_hlds__rbmm__region_resurrection_renaming__V_35_35, transform_hlds__rbmm__region_resurrection_renaming__ExecPaths_22, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_36_36)), &transform_hlds__rbmm__region_resurrection_renaming__conv9_PathContainsResurrectionProc_32);
+    }
+#line 201 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc_32 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv9_PathContainsResurrectionProc_32);
+#line 206 "rbmm.region_resurrection_renaming.m"
+    {
+#line 206 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_37_37 = mercury__map__count_1_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_45_45, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_41_41, transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc_32);
+    }
+#line 206 "rbmm.region_resurrection_renaming.m"
+    transform_hlds__rbmm__region_resurrection_renaming__succeeded = (transform_hlds__rbmm__region_resurrection_renaming__V_37_37 == (MR_Integer) 0);
+#line 208 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 208 "rbmm.region_resurrection_renaming.m"
+      *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_34 = transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_33;
+#line 208 "rbmm.region_resurrection_renaming.m"
+    else
+#line 209 "rbmm.region_resurrection_renaming.m"
+      {
+#line 209 "rbmm.region_resurrection_renaming.m"
+        mercury__map__set_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_39_39, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_46_46, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PPId_21)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionProc_32)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_33, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_34);
+#line 209 "rbmm.region_resurrection_renaming.m"
+        return;
+      }
+#line 192 "rbmm.region_resurrection_renaming.m"
+  }
+#line 181 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 145 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__make_renaming_instruction_3_p_0(
+#line 145 "rbmm.region_resurrection_renaming.m"
+  MR_String transform_hlds__rbmm__region_resurrection_renaming__OldRegionName_4,
+#line 145 "rbmm.region_resurrection_renaming.m"
+  MR_String transform_hlds__rbmm__region_resurrection_renaming__NewRegionName_5,
+#line 145 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__RenameInstruction_6)
+#line 145 "rbmm.region_resurrection_renaming.m"
+{
+#line 747 "rbmm.region_resurrection_renaming.m"
+  {
+#line 747 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+
+#line 747 "rbmm.region_resurrection_renaming.m"
+    {
+#line 747 "rbmm.region_resurrection_renaming.m"
+      MR_Word base;
+#line 747 "rbmm.region_resurrection_renaming.m"
+      base = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 747 "rbmm.region_resurrection_renaming.m"
+      *transform_hlds__rbmm__region_resurrection_renaming__RenameInstruction_6 = base;
+#line 747 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(2), base, 0) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__OldRegionName_4));
+#line 747 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(2), base, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__NewRegionName_5));
+#line 747 "rbmm.region_resurrection_renaming.m"
+    }
+#line 747 "rbmm.region_resurrection_renaming.m"
+  }
+#line 145 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 139 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__record_annotation_4_p_0(
+#line 139 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_5,
+#line 139 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__Annotation_6,
+#line 139 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_10,
+#line 139 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_11)
+#line 139 "rbmm.region_resurrection_renaming.m"
+{
+#line 733 "rbmm.region_resurrection_renaming.m"
+  {
+#line 733 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 733 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Annotations_9;
+#line 740 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__Annotations0_8;
+#line 734 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv0_Annotations0_8;
+
+#line 734 "rbmm.region_resurrection_renaming.m"
+    {
+#line 734 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__map__search_3_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[4], transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_10, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_5)), &transform_hlds__rbmm__region_resurrection_renaming__conv0_Annotations0_8);
+    }
+#line 734 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 734 "rbmm.region_resurrection_renaming.m"
+      {
+#line 734 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__Annotations0_8 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv0_Annotations0_8);
+#line 734 "rbmm.region_resurrection_renaming.m"
+        transform_hlds__rbmm__region_resurrection_renaming__succeeded = MR_TRUE;
+#line 734 "rbmm.region_resurrection_renaming.m"
+      }
+#line 740 "rbmm.region_resurrection_renaming.m"
+    if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 737 "rbmm.region_resurrection_renaming.m"
+      {
+#line 735 "rbmm.region_resurrection_renaming.m"
+        {
+#line 735 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__succeeded = mercury__list__member_2_p_0((MR_Word) &transform_hlds__rbmm__region_instruction__transform_hlds__rbmm__region_instruction__type_ctor_info_region_instr_0, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Annotation_6)), transform_hlds__rbmm__region_resurrection_renaming__Annotations0_8);
+        }
+#line 737 "rbmm.region_resurrection_renaming.m"
+        if (transform_hlds__rbmm__region_resurrection_renaming__succeeded)
+#line 736 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__Annotations_9 = transform_hlds__rbmm__region_resurrection_renaming__Annotations0_8;
+#line 737 "rbmm.region_resurrection_renaming.m"
+        else
+#line 738 "rbmm.region_resurrection_renaming.m"
+          {
+#line 738 "rbmm.region_resurrection_renaming.m"
+            transform_hlds__rbmm__region_resurrection_renaming__Annotations_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 738 "rbmm.region_resurrection_renaming.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__Annotations_9, 0) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Annotation_6));
+#line 738 "rbmm.region_resurrection_renaming.m"
+            MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__Annotations_9, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Annotations0_8));
+#line 738 "rbmm.region_resurrection_renaming.m"
+          }
+#line 737 "rbmm.region_resurrection_renaming.m"
+      }
+#line 740 "rbmm.region_resurrection_renaming.m"
+    else
+#line 742 "rbmm.region_resurrection_renaming.m"
+      {
+#line 742 "rbmm.region_resurrection_renaming.m"
+        {
+#line 742 "rbmm.region_resurrection_renaming.m"
+          transform_hlds__rbmm__region_resurrection_renaming__Annotations_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 742 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__Annotations_9, 0) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Annotation_6));
+#line 742 "rbmm.region_resurrection_renaming.m"
+          MR_hl_field(MR_mktag(1), transform_hlds__rbmm__region_resurrection_renaming__Annotations_9, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 742 "rbmm.region_resurrection_renaming.m"
+        }
+#line 742 "rbmm.region_resurrection_renaming.m"
+      }
+#line 744 "rbmm.region_resurrection_renaming.m"
+    {
+#line 744 "rbmm.region_resurrection_renaming.m"
+      mercury__map__set_4_p_0((MR_Word) &transform_hlds__smm_common__transform_hlds__smm_common__type_ctor_info_program_point_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[4], ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ProgPoint_5)), ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__Annotations_9)), transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_0_10, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_AnnotationProc_11);
+#line 744 "rbmm.region_resurrection_renaming.m"
+      return;
+    }
+#line 733 "rbmm.region_resurrection_renaming.m"
+  }
+#line 139 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 521 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_10_p_0_1(
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4,
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5,
+#line 521 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_6)
+#line 521 "rbmm.region_resurrection_renaming.m"
+{
+#line 521 "rbmm.region_resurrection_renaming.m"
+  {
+#line 521 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 521 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_AnnotationTable_42;
+#line 521 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_RenamingTable_44;
+
+#line 521 "rbmm.region_resurrection_renaming.m"
+    {
+#line 521 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_proc_13_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 7))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 8))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 9))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3), &transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_AnnotationTable_42, ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_5), &transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_RenamingTable_44);
+    }
+#line 521 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_AnnotationTable_42));
+#line 521 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_6 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_RenamingTable_44));
+#line 521 "rbmm.region_resurrection_renaming.m"
+  }
+#line 521 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 130 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_10_p_0(
+#line 130 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameTable_11,
+#line 130 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointTable_12,
+#line 130 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeTable_13,
+#line 130 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterTable_14,
+#line 130 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BornRTable_15,
+#line 130 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_16,
+#line 130 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ResurrectionPathTable_17,
+#line 130 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_18,
+#line 130 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__AnnotationTable_19,
+#line 130 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__RenamingTable_20)
+#line 130 "rbmm.region_resurrection_renaming.m"
+{
+#line 520 "rbmm.region_resurrection_renaming.m"
+  {
+#line 520 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 520 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_30_30;
+#line 520 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_32_32;
+#line 520 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_21_21;
+#line 520 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_22_22;
+#line 520 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_23_23;
+#line 521 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv3_AnnotationTable_19;
+#line 521 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv2_RenamingTable_20;
+
+#line 521 "rbmm.region_resurrection_renaming.m"
+    {
+#line 521 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 10 * sizeof(MR_Word)), NULL, NULL);
+#line 521 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_7[0]));
+#line 521 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__collect_renaming_and_annotation_10_p_0_1));
+#line 521 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 7));
+#line 521 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_18));
+#line 521 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__JoinPointTable_12));
+#line 521 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 5) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LRBeforeTable_13));
+#line 521 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 6) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LRAfterTable_14));
+#line 521 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 7) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BornRTable_15));
+#line 521 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 8) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_16));
+#line 521 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 9) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ResurrectionPathTable_17));
+#line 521 "rbmm.region_resurrection_renaming.m"
+    }
+#line 6730 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_30_30 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 524 "rbmm.region_resurrection_renaming.m"
+    {
+#line 524 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_22_22 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_30_30, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[8]);
+    }
+#line 6737 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_32_32 = (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[6];
+#line 524 "rbmm.region_resurrection_renaming.m"
+    {
+#line 524 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_23_23 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_30_30, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_32_32);
+    }
+#line 521 "rbmm.region_resurrection_renaming.m"
+    {
+#line 521 "rbmm.region_resurrection_renaming.m"
+      mercury__map__foldl2_6_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_30_30, transform_hlds__rbmm__region_resurrection_renaming__TypeInfo_32_32, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[9], (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[7], transform_hlds__rbmm__region_resurrection_renaming__V_21_21, transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameTable_11, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_22_22)), &transform_hlds__rbmm__region_resurrection_renaming__conv3_AnnotationTable_19, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_23_23)), &transform_hlds__rbmm__region_resurrection_renaming__conv2_RenamingTable_20);
+    }
+#line 521 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__AnnotationTable_19 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv3_AnnotationTable_19);
+#line 521 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__RenamingTable_20 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv2_RenamingTable_20);
+#line 520 "rbmm.region_resurrection_renaming.m"
+  }
+#line 130 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 435 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_5_p_0_1(
+#line 435 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 435 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 435 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 435 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 435 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4)
+#line 435 "rbmm.region_resurrection_renaming.m"
+{
+#line 435 "rbmm.region_resurrection_renaming.m"
+  {
+#line 435 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 435 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_ResurrectionRenameTable_20;
+
+#line 435 "rbmm.region_resurrection_renaming.m"
+    {
+#line 435 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_proc_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 5))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3), &transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_ResurrectionRenameTable_20);
+    }
+#line 435 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_ResurrectionRenameTable_20));
+#line 435 "rbmm.region_resurrection_renaming.m"
+  }
+#line 435 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 121 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_5_p_0(
+#line 121 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_6,
+#line 121 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LocalRTable_7,
+#line 121 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_8,
+#line 121 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionTable_9,
+#line 121 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameTable_10)
+#line 121 "rbmm.region_resurrection_renaming.m"
+{
+#line 434 "rbmm.region_resurrection_renaming.m"
+  {
+#line 434 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 434 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_17_17;
+#line 434 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_11_11;
+#line 434 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_12_12;
+#line 435 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv1_ResurrectionRenameTable_10;
+
+#line 435 "rbmm.region_resurrection_renaming.m"
+    {
+#line 435 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_11_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 435 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_11_11, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_6[0]));
+#line 435 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_11_11, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__collect_region_resurrection_renaming_5_p_0_1));
+#line 435 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_11_11, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 435 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_11_11, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_6));
+#line 435 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_11_11, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LocalRTable_7));
+#line 435 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_11_11, 5) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__RptaInfoTable_8));
+#line 435 "rbmm.region_resurrection_renaming.m"
+    }
+#line 6838 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_17_17 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 437 "rbmm.region_resurrection_renaming.m"
+    {
+#line 437 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_12_12 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_17_17, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[6]);
+    }
+#line 435 "rbmm.region_resurrection_renaming.m"
+    {
+#line 435 "rbmm.region_resurrection_renaming.m"
+      mercury__map__foldl_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_17_17, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[1], (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[7], transform_hlds__rbmm__region_resurrection_renaming__V_11_11, transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionTable_9, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_12_12)), &transform_hlds__rbmm__region_resurrection_renaming__conv1_ResurrectionRenameTable_10);
+    }
+#line 435 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__ResurrectionRenameTable_10 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv1_ResurrectionRenameTable_10);
+#line 434 "rbmm.region_resurrection_renaming.m"
+  }
+#line 121 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 369 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_4_p_0_1(
+#line 369 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 369 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 369 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 369 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 369 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4)
+#line 369 "rbmm.region_resurrection_renaming.m"
+{
+#line 369 "rbmm.region_resurrection_renaming.m"
+  {
+#line 369 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 369 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_PathContainsResurrectionTable_22;
+
+#line 369 "rbmm.region_resurrection_renaming.m"
+    {
+#line 369 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_proc_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3), &transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_PathContainsResurrectionTable_22);
+    }
+#line 369 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_PathContainsResurrectionTable_22));
+#line 369 "rbmm.region_resurrection_renaming.m"
+  }
+#line 369 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 109 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_4_p_0(
+#line 109 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_5,
+#line 109 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__JoinPointTable_6,
+#line 109 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_8,
+#line 109 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_9)
+#line 109 "rbmm.region_resurrection_renaming.m"
+{
+#line 367 "rbmm.region_resurrection_renaming.m"
+  {
+#line 367 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 367 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_10_10;
+#line 368 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_PathContainsResurrectionTable_9;
+
+#line 369 "rbmm.region_resurrection_renaming.m"
+    {
+#line 369 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 369 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_10_10, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_5[0]));
+#line 369 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_10_10, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__collect_paths_containing_join_points_4_p_0_1));
+#line 369 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_10_10, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 369 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_10_10, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_5));
+#line 369 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_10_10, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__JoinPointTable_6));
+#line 369 "rbmm.region_resurrection_renaming.m"
+    }
+#line 368 "rbmm.region_resurrection_renaming.m"
+    {
+#line 368 "rbmm.region_resurrection_renaming.m"
+      mercury__map__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[1], (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[2], transform_hlds__rbmm__region_resurrection_renaming__V_10_10, transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_8, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_0_8)), &transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_PathContainsResurrectionTable_9);
+    }
+#line 368 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__STATE_VARIABLE_PathContainsResurrectionTable_9 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv1_STATE_VARIABLE_PathContainsResurrectionTable_9);
+#line 367 "rbmm.region_resurrection_renaming.m"
+  }
+#line 109 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 283 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_join_points_3_p_0_1(
+#line 283 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 283 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 283 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 283 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 283 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4)
+#line 283 "rbmm.region_resurrection_renaming.m"
+{
+#line 283 "rbmm.region_resurrection_renaming.m"
+  {
+#line 283 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 283 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_JoinPointTable_21;
+
+#line 283 "rbmm.region_resurrection_renaming.m"
+    {
+#line 283 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__collect_join_points_proc_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3), &transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_JoinPointTable_21);
+    }
+#line 283 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_JoinPointTable_21));
+#line 283 "rbmm.region_resurrection_renaming.m"
+  }
+#line 283 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 93 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__collect_join_points_3_p_0(
+#line 93 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionTable_4,
+#line 93 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_5,
+#line 93 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__JoinPointTable_6)
+#line 93 "rbmm.region_resurrection_renaming.m"
+{
+#line 282 "rbmm.region_resurrection_renaming.m"
+  {
+#line 282 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 282 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_13_13;
+#line 282 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_7_7;
+#line 282 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_8_8;
+#line 283 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv1_JoinPointTable_6;
+
+#line 283 "rbmm.region_resurrection_renaming.m"
+    {
+#line 283 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 283 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_7_7, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_4[0]));
+#line 283 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_7_7, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__collect_join_points_3_p_0_1));
+#line 283 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_7_7, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 283 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_7_7, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_5));
+#line 283 "rbmm.region_resurrection_renaming.m"
+    }
+#line 7013 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_13_13 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 284 "rbmm.region_resurrection_renaming.m"
+    {
+#line 284 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_8_8 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_13_13, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[3]);
+    }
+#line 283 "rbmm.region_resurrection_renaming.m"
+    {
+#line 283 "rbmm.region_resurrection_renaming.m"
+      mercury__map__foldl_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_13_13, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[1], (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[4], transform_hlds__rbmm__region_resurrection_renaming__V_7_7, transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionTable_4, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_8_8)), &transform_hlds__rbmm__region_resurrection_renaming__conv1_JoinPointTable_6);
+    }
+#line 283 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__JoinPointTable_6 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv1_JoinPointTable_6);
+#line 282 "rbmm.region_resurrection_renaming.m"
+  }
+#line 93 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 176 "rbmm.region_resurrection_renaming.m"
+static void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_10_p_0_1(
+#line 176 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure_arg,
+#line 176 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1,
+#line 176 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2,
+#line 176 "rbmm.region_resurrection_renaming.m"
+  MR_Box transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3,
+#line 176 "rbmm.region_resurrection_renaming.m"
+  MR_Box * transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4)
+#line 176 "rbmm.region_resurrection_renaming.m"
+{
+#line 176 "rbmm.region_resurrection_renaming.m"
+  {
+#line 176 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__closure = transform_hlds__rbmm__region_resurrection_renaming__closure_arg;
+#line 176 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_PathContainsResurrectionTable_34;
+
+#line 176 "rbmm.region_resurrection_renaming.m"
+    {
+#line 176 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_proc_12_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 7))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 8))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 9))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__closure, (MR_Integer) 10))), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_1), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_2), ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_3), &transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_PathContainsResurrectionTable_34);
+    }
+#line 176 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__wrapper_arg_4 = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__conv0_STATE_VARIABLE_PathContainsResurrectionTable_34));
+#line 176 "rbmm.region_resurrection_renaming.m"
+  }
+#line 176 "rbmm.region_resurrection_renaming.m"
+}
+
+#line 75 "rbmm.region_resurrection_renaming.m"
+void MR_CALL 
+transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_10_p_0(
+#line 75 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_11,
+#line 75 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRBeforeTable_12,
+#line 75 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LRAfterTable_13,
+#line 75 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BornRTable_14,
+#line 75 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__DeadRTable_15,
+#line 75 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__LocalRTable_16,
+#line 75 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_17,
+#line 75 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeTable_18,
+#line 75 "rbmm.region_resurrection_renaming.m"
+  MR_Word transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterTable_19,
+#line 75 "rbmm.region_resurrection_renaming.m"
+  MR_Word * transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionTable_20)
+#line 75 "rbmm.region_resurrection_renaming.m"
+{
+#line 175 "rbmm.region_resurrection_renaming.m"
+  {
+#line 175 "rbmm.region_resurrection_renaming.m"
+    MR_bool transform_hlds__rbmm__region_resurrection_renaming__succeeded;
+#line 175 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_27_27;
+#line 175 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_21_21;
+#line 175 "rbmm.region_resurrection_renaming.m"
+    MR_Word transform_hlds__rbmm__region_resurrection_renaming__V_22_22;
+#line 176 "rbmm.region_resurrection_renaming.m"
+    MR_Box transform_hlds__rbmm__region_resurrection_renaming__conv1_PathContainsResurrectionTable_20;
+
+#line 176 "rbmm.region_resurrection_renaming.m"
+    {
+#line 176 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 11 * sizeof(MR_Word)), NULL, NULL);
+#line 176 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 0) = ((MR_Box) (&transform_hlds__rbmm__region_resurrection_renaming_scalar_common_3[0]));
+#line 176 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 1) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__compute_resurrection_paths_10_p_0_1));
+#line 176 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 8));
+#line 176 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 3) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LRBeforeTable_12));
+#line 176 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 4) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LRAfterTable_13));
+#line 176 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 5) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BornRTable_14));
+#line 176 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 6) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__DeadRTable_15));
+#line 176 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 7) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__LocalRTable_16));
+#line 176 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 8) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BecomeLiveTable_17));
+#line 176 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 9) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadBeforeTable_18));
+#line 176 "rbmm.region_resurrection_renaming.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__rbmm__region_resurrection_renaming__V_21_21, 10) = ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__BecomeDeadAfterTable_19));
+#line 176 "rbmm.region_resurrection_renaming.m"
+    }
+#line 7132 "transform_hlds.rbmm.region_resurrection_renaming.c"
+    transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_27_27 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 179 "rbmm.region_resurrection_renaming.m"
+    {
+#line 179 "rbmm.region_resurrection_renaming.m"
+      transform_hlds__rbmm__region_resurrection_renaming__V_22_22 = mercury__map__init_0_f_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_27_27, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[1]);
+    }
+#line 176 "rbmm.region_resurrection_renaming.m"
+    {
+#line 176 "rbmm.region_resurrection_renaming.m"
+      mercury__map__foldl_4_p_0(transform_hlds__rbmm__region_resurrection_renaming__TypeCtorInfo_27_27, (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_2[2], (MR_Word) &transform_hlds__rbmm__region_resurrection_renaming_scalar_common_1[2], transform_hlds__rbmm__region_resurrection_renaming__V_21_21, transform_hlds__rbmm__region_resurrection_renaming__ExecPathTable_11, ((MR_Box) (transform_hlds__rbmm__region_resurrection_renaming__V_22_22)), &transform_hlds__rbmm__region_resurrection_renaming__conv1_PathContainsResurrectionTable_20);
+    }
+#line 176 "rbmm.region_resurrection_renaming.m"
+    *transform_hlds__rbmm__region_resurrection_renaming__PathContainsResurrectionTable_20 = ((MR_Word) transform_hlds__rbmm__region_resurrection_renaming__conv1_PathContainsResurrectionTable_20);
+#line 175 "rbmm.region_resurrection_renaming.m"
+  }
+#line 75 "rbmm.region_resurrection_renaming.m"
+}
+
+void mercury__transform_hlds__rbmm__region_resurrection_renaming__init(void)
+{
+}
+
+void mercury__transform_hlds__rbmm__region_resurrection_renaming__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_exec_path_region_set_table_0);
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_join_point_region_name_table_0);
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_proc_resurrection_path_table_0);
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_0);
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_annotation_proc_0);
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_annotation_table_0);
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_proc_0);
+	MR_register_type_ctor_info(&transform_hlds__rbmm__region_resurrection_renaming__transform_hlds__rbmm__region_resurrection_renaming__type_ctor_info_rbmm_renaming_table_0);
+}
+
+void mercury__transform_hlds__rbmm__region_resurrection_renaming__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module transform_hlds.rbmm.region_resurrection_renaming. */

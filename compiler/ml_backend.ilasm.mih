@@ -1,0 +1,401 @@
+/*
+** Automatically generated from `ilasm.m'
+** by the Mercury compiler,
+** version rotd-2015-08-10
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.ilasm. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__ilasm
+#define MR_HEADER_GUARD_ml_backend__ilasm
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__ILASM_DECL_GUARD
+#define ML_BACKEND__ILASM_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_assembly_decl_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_byte_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_class_member_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_classattr_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_custom_decl_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_custom_type_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_data_body_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_data_item_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_extends_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_field_init_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_field_initializer_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_fieldattr_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_float32_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_float64_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_il_decl_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_ilasm_info_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_ilasm_out_info_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_implattr_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_implements_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_int16_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_int32_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_int64_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_int8_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_methattr_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_method_body_decl_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_method_defn_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_methodhead_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_qstring_or_bytes_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__ilasm__ml_backend__ilasm__type_ctor_info_ref_or_value_0;
+
+void MR_CALL 
+ml_backend__ilasm__ilasm_output_4_p_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____assembly_decl_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____byte_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____class_member_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____classattr_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____custom_decl_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____custom_type_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____data_body_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____data_item_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____extends_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____field_init_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____field_initializer_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____fieldattr_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____float32_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____float64_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____il_decl_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____implattr_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____implements_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____int16_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____int32_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____int64_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____int8_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____methattr_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____method_body_decl_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____method_defn_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____methodhead_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+void MR_CALL 
+ml_backend__ilasm____Compare____qstring_or_bytes_0_0(
+  MR_Word * ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2,
+  MR_Word ml_backend__ilasm__param_3);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____assembly_decl_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____byte_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____class_member_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____classattr_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____custom_decl_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____custom_type_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____data_body_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____data_item_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____extends_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____field_init_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____field_initializer_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____fieldattr_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____float32_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____float64_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____il_decl_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____implattr_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____implements_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____int16_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____int32_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____int64_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____int8_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____methattr_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____method_body_decl_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____method_defn_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____methodhead_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+MR_bool MR_CALL 
+ml_backend__ilasm____Unify____qstring_or_bytes_0_0(
+  MR_Word ml_backend__ilasm__param_1,
+  MR_Word ml_backend__ilasm__param_2);
+
+void mercury__ml_backend__ilasm__init(void);
+void mercury__ml_backend__ilasm__init_type_tables(void);
+void mercury__ml_backend__ilasm__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.ilasm */
+
+/* :- end_interface ml_backend.ilasm. */

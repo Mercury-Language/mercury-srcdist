@@ -1,0 +1,378 @@
+/*
+** Automatically generated from `add_pragma.m'
+** by the Mercury compiler,
+** version rotd-2015-08-10
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module hlds.make_hlds.add_pragma. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_hlds__make_hlds__add_pragma
+#define MR_HEADER_GUARD_hlds__make_hlds__add_pragma
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__MAKE_HLDS__ADD_PRAGMA_DECL_GUARD
+#define HLDS__MAKE_HLDS__ADD_PRAGMA_DECL_GUARD
+#include "hlds.mih"
+#include "hlds.make_hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__make_hlds__add_pragma__hlds__make_hlds__add_pragma__type_ctor_info_add_marker_pred_info_0;
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_100_100_95_112_114_97_103_109_97_95_101_120_99_101_112_116_105_111_110_115_95_95_91_50_93_95_48_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word * hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word * hlds__make_hlds__add_pragma__param_5);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_100_100_95_112_114_97_103_109_97_95_109_109_95_116_97_98_108_105_110_103_95_105_110_102_111_95_95_91_50_93_95_48_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word * hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word * hlds__make_hlds__add_pragma__param_5);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_100_100_95_112_114_97_103_109_97_95_116_114_97_105_108_105_110_103_95_105_110_102_111_95_95_91_50_93_95_48_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word * hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word * hlds__make_hlds__add_pragma__param_5);
+
+MR_bool MR_CALL 
+hlds__make_hlds__add_pragma__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_114_107_101_114_95_109_117_115_116_95_98_101_95_101_120_112_111_114_116_101_100_95_95_91_49_93_95_48_1_p_0(void);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_fact_table_proc_13_p_0(
+  MR_Integer hlds__make_hlds__add_pragma__param_1,
+  MR_Integer hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Integer hlds__make_hlds__add_pragma__param_6,
+  MR_Word hlds__make_hlds__add_pragma__param_7,
+  MR_Word hlds__make_hlds__add_pragma__param_8,
+  MR_Word hlds__make_hlds__add_pragma__param_9,
+  MR_Word hlds__make_hlds__add_pragma__param_10,
+  MR_Word * hlds__make_hlds__add_pragma__param_11,
+  MR_Word hlds__make_hlds__add_pragma__param_12,
+  MR_Word * hlds__make_hlds__add_pragma__param_13);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_fact_table_procedures_13_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Integer hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Integer hlds__make_hlds__add_pragma__param_6,
+  MR_Word hlds__make_hlds__add_pragma__param_7,
+  MR_Word hlds__make_hlds__add_pragma__param_8,
+  MR_Word hlds__make_hlds__add_pragma__param_9,
+  MR_Word hlds__make_hlds__add_pragma__param_10,
+  MR_Word * hlds__make_hlds__add_pragma__param_11,
+  MR_Word hlds__make_hlds__add_pragma__param_12,
+  MR_Word * hlds__make_hlds__add_pragma__param_13);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_marker_pred_info_3_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word * hlds__make_hlds__add_pragma__param_3);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pass_2_pragma_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pass_3_pragma_8_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6,
+  MR_Word hlds__make_hlds__add_pragma__param_7,
+  MR_Word * hlds__make_hlds__add_pragma__param_8);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pragma_exceptions_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pragma_fact_table_7_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word * hlds__make_hlds__add_pragma__param_5,
+  MR_Word hlds__make_hlds__add_pragma__param_6,
+  MR_Word * hlds__make_hlds__add_pragma__param_7);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pragma_mm_tabling_info_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pragma_oisu_7_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word * hlds__make_hlds__add_pragma__param_5,
+  MR_Word hlds__make_hlds__add_pragma__param_6,
+  MR_Word * hlds__make_hlds__add_pragma__param_7);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pragma_reserve_tag_7_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word * hlds__make_hlds__add_pragma__param_5,
+  MR_Word hlds__make_hlds__add_pragma__param_6,
+  MR_Word * hlds__make_hlds__add_pragma__param_7);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pragma_structure_reuse_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pragma_structure_sharing_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pragma_termination2_info_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pragma_termination_info_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pragma_trailing_info_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pragma_unused_args_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__add_pred_marker_11_p_0(
+  MR_String hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Integer hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word hlds__make_hlds__add_pragma__param_6,
+  MR_Word hlds__make_hlds__add_pragma__param_7,
+  MR_Word hlds__make_hlds__add_pragma__param_8,
+  MR_Word * hlds__make_hlds__add_pragma__param_9,
+  MR_Word hlds__make_hlds__add_pragma__param_10,
+  MR_Word * hlds__make_hlds__add_pragma__param_11);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__check_required_feature_5_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word * hlds__make_hlds__add_pragma__param_5);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__check_required_feature_set_7_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word * hlds__make_hlds__add_pragma__param_5,
+  MR_Word hlds__make_hlds__add_pragma__param_6,
+  MR_Word * hlds__make_hlds__add_pragma__param_7);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__do_add_pred_marker_12_p_0(
+  MR_String hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Integer hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word hlds__make_hlds__add_pragma__param_6,
+  MR_Word hlds__make_hlds__add_pragma__param_7,
+  MR_Word hlds__make_hlds__add_pragma__param_8,
+  MR_Word * hlds__make_hlds__add_pragma__param_9,
+  MR_Word * hlds__make_hlds__add_pragma__param_10,
+  MR_Word hlds__make_hlds__add_pragma__param_11,
+  MR_Word * hlds__make_hlds__add_pragma__param_12);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__fact_table_pragma_vars_4_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__find_unique_pred_for_oisu_10_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_String hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6,
+  MR_Integer hlds__make_hlds__add_pragma__param_7,
+  MR_Integer * hlds__make_hlds__add_pragma__param_8,
+  MR_Word hlds__make_hlds__add_pragma__param_9,
+  MR_Word * hlds__make_hlds__add_pragma__param_10);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__get_matching_pred_ids_4_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Integer hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__lookup_pred_orig_arity_3_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word * hlds__make_hlds__add_pragma__param_3);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__mark_pred_as_external_3_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word * hlds__make_hlds__add_pragma__param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__add_pragma__marker_must_be_exported_1_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__pragma_add_marker_7_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6,
+  MR_Word * hlds__make_hlds__add_pragma__param_7);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__pragma_check_markers_4_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_Word * hlds__make_hlds__add_pragma__param_4);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__pragma_conflict_error_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Integer hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_String hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma__pragma_status_error_6_p_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Integer hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3,
+  MR_String hlds__make_hlds__add_pragma__param_4,
+  MR_Word hlds__make_hlds__add_pragma__param_5,
+  MR_Word * hlds__make_hlds__add_pragma__param_6);
+
+void MR_CALL 
+hlds__make_hlds__add_pragma____Compare____add_marker_pred_info_0_0(
+  MR_Word * hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2,
+  MR_Word hlds__make_hlds__add_pragma__param_3);
+
+MR_bool MR_CALL 
+hlds__make_hlds__add_pragma____Unify____add_marker_pred_info_0_0(
+  MR_Word hlds__make_hlds__add_pragma__param_1,
+  MR_Word hlds__make_hlds__add_pragma__param_2);
+
+void mercury__hlds__make_hlds__add_pragma__init(void);
+void mercury__hlds__make_hlds__add_pragma__init_type_tables(void);
+void mercury__hlds__make_hlds__add_pragma__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_hlds.make_hlds.add_pragma */
+
+/* :- end_interface hlds.make_hlds.add_pragma. */

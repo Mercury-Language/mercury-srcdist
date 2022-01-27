@@ -1,0 +1,13 @@
+module(1, "stream.string_writer.m",
+	(stream.string_writer),
+	{stream},
+	{builtin, char, deconstruct, io, list, ops, string, univ, private_builtin},
+	{builtin, array, bitmap, calendar, char, deconstruct, int, integer, io, list, ops, require, rtti_implementation, string, term_io, type_desc, univ, version_array, private_builtin, stream, (string.format), (string.parse_util)},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

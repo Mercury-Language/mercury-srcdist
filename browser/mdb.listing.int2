@@ -1,0 +1,15 @@
+:- module (mdb.listing).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- type c_file_ptr.
+:- type file_name == string.
+:- type line_no == int.
+:- type path_name == string.
+:- type search_path.
+:- implementation.
+:- pragma foreign_type(c, c_file_ptr, "FILE *", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, c_file_ptr, "java.lang.Object").
+:- pragma foreign_type(csharp, c_file_ptr, "object").
+:- pragma foreign_type(erlang, c_file_ptr, "").
+:- type search_path == list.list(mdb.listing.path_name).

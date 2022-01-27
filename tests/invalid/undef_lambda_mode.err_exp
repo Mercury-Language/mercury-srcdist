@@ -1,0 +1,2 @@
+undef_lambda_mode.m:014: In mode declaration for lambda expression:
+undef_lambda_mode.m:014:   error: undefined mode `junk'/0.

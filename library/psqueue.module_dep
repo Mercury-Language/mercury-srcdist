@@ -1,0 +1,13 @@
+module(1, "psqueue.m",
+	psqueue,
+	{},
+	{builtin, assoc_list, private_builtin},
+	{builtin, assoc_list, cord, int, list, maybe, pair, require, string, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

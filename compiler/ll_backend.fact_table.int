@@ -1,0 +1,12 @@
+:- module (ll_backend.fact_table).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- pred fact_table_compile_facts(mdbcomp.sym_name.sym_name, parse_tree.prog_data.arity, string, hlds.hlds_pred.pred_info, hlds.hlds_pred.pred_info, parse_tree.prog_data.prog_context, hlds.hlds_module.module_info, string, hlds.hlds_pred.proc_id, io.io, io.io).
+:- mode fact_table_compile_facts((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred fact_table_generate_c_code(mdbcomp.sym_name.sym_name, list.list(parse_tree.prog_data.pragma_var), hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_id, hlds.hlds_pred.proc_info, list.list(parse_tree.prog_data.mer_type), hlds.hlds_module.module_info, string, string, io.io, io.io).
+:- mode fact_table_generate_c_code((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.

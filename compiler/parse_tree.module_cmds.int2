@@ -1,0 +1,19 @@
+:- module (parse_tree.module_cmds).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module maybe.
+:- import_module (libs.file_util).
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- type command_verbosity
+    --->    cmd_verbose 
+    ;       cmd_verbose_commands .
+:- type quote_char
+    --->    forward 
+    ;       double .
+:- type update_interface_result
+    --->    interface_new_or_changed 
+    ;       interface_unchanged 
+    ;       interface_error .

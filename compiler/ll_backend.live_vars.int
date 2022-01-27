@@ -1,0 +1,29 @@
+:- module (ll_backend.live_vars).
+:- interface.
+:- import_module array.
+:- import_module bool.
+:- import_module list.
+:- import_module (check_hlds.type_util).
+:- import_module (hlds.hlds_goal).
+:- import_module (hlds.hlds_llds).
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (hlds.vartypes).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.set_of_var).
+:- type alloc_data
+    --->    alloc_data(((ll_backend.live_vars).ad_module_info) :: hlds.hlds_module.module_info, ((ll_backend.live_vars).ad_proc_info) :: hlds.hlds_pred.proc_info, ((ll_backend.live_vars).ad_pred_proc_id) :: hlds.hlds_pred.pred_proc_id, ((ll_backend.live_vars).ad_typeinfo_liveness) :: bool.bool, ((ll_backend.live_vars).ad_opt_no_return_calls) :: bool.bool, ((ll_backend.live_vars).ad_dummy_var_array) :: array.array(check_hlds.type_util.is_dummy_type)).
+:- typeclass stack_alloc_info(T) where [
+	pred at_call_site(hlds.hlds_llds.need_across_call, ll_backend.live_vars.alloc_data, T, T),
+	mode at_call_site((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det,
+	pred at_resume_site(hlds.hlds_llds.need_in_resume, ll_backend.live_vars.alloc_data, T, T),
+	mode at_resume_site((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det,
+	pred at_par_conj(hlds.hlds_llds.need_in_par_conj, ll_backend.live_vars.alloc_data, T, T),
+	mode at_par_conj((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det,
+	pred at_recursive_call_for_loop_control(hlds.hlds_llds.need_for_loop_control, ll_backend.live_vars.alloc_data, T, T),
+	mode at_recursive_call_for_loop_control((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det
+].
+:- pred build_dummy_type_array(hlds.hlds_module.module_info, hlds.vartypes.vartypes, array.array(check_hlds.type_util.is_dummy_type), list.list(parse_tree.prog_data.prog_var)).
+:- mode build_dummy_type_array((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred build_live_sets_in_goal_no_par_stack(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal, parse_tree.set_of_var.set_of_progvar, ll_backend.live_vars.alloc_data, T, T, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar, parse_tree.set_of_var.set_of_progvar) <= ((ll_backend.live_vars).stack_alloc_info(T)).
+:- mode build_live_sets_in_goal_no_par_stack((builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.

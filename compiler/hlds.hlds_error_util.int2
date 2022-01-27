@@ -1,0 +1,15 @@
+:- module (hlds.hlds_error_util).
+:- interface.
+:- import_module assoc_list.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module pair.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (libs.globals).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- type should_module_qualify
+    --->    should_module_qualify 
+    ;       should_not_module_qualify .

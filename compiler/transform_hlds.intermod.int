@@ -1,0 +1,21 @@
+:- module (transform_hlds.intermod).
+:- interface.
+:- import_module bool.
+:- import_module io.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (libs.globals).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.module_imports).
+:- import_module (parse_tree.prog_io_error).
+:- type opt_file_type
+    --->    opt_file 
+    ;       trans_opt_file .
+:- pred adjust_pred_import_status(hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode adjust_pred_import_status((builtin.in), (builtin.out)) is det.
+:- pred grab_opt_files(libs.globals.globals, parse_tree.module_imports.module_and_imports, parse_tree.module_imports.module_and_imports, bool.bool, io.io, io.io).
+:- mode grab_opt_files((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred update_error_status(libs.globals.globals, transform_hlds.intermod.opt_file_type, string, list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec), list.list(parse_tree.error_util.error_spec), parse_tree.prog_io_error.read_module_errors, bool.bool, bool.bool).
+:- mode update_error_status((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred write_opt_file(hlds.hlds_module.module_info, hlds.hlds_module.module_info, io.io, io.io).
+:- mode write_opt_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

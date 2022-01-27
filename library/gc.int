@@ -1,0 +1,6 @@
+:- module gc.
+:- interface.
+:- import_module io.
+:- pred garbage_collect(io.state, io.state).
+:- mode garbage_collect((builtin.di), (builtin.uo)) is det.
+:- impure pred garbage_collect is det.

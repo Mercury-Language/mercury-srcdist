@@ -1,0 +1,262 @@
+:- module array.
+:- interface.
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- import_module list.
+:- import_module maybe.
+:- import_module pretty_printer.
+:- import_module random.
+:- type array(T).
+:- type index_out_of_bounds
+    --->    index_out_of_bounds(string).
+:- inst (array) == array.array(ground).
+:- inst (array(I)) == ground.
+:- inst (mostly_uniq_array) == array.mostly_uniq_array(ground).
+:- inst (mostly_uniq_array(I)) == array.array(I).
+:- inst (uniq_array) == array.uniq_array(ground).
+:- inst (uniq_array(I)) == array.array(I).
+:- mode (array_di) == builtin.di((array.uniq_array)).
+:- mode (array_mdi) == builtin.mdi((array.mostly_uniq_array)).
+:- mode (array_mui) == builtin.in((array.mostly_uniq_array)).
+:- mode (array_muo) == builtin.out((array.mostly_uniq_array)).
+:- mode (array_ui) == builtin.in((array.uniq_array)).
+:- mode (array_uo) == builtin.out((array.uniq_array)).
+:- pragma obsolete((array.bsearch)/3).
+:- pragma obsolete((array.bsearch)/4).
+:- pred all_false((pred T), array.array(T)).
+:- mode all_false(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) is semidet.
+:- pred all_true((pred T), array.array(T)).
+:- mode all_true(builtin.in((pred((builtin.in)) is semidet)), (builtin.in)) is semidet.
+:- func append(array.array(T), array.array(T)) = array.array(T).
+:- mode append((builtin.in), (builtin.in)) = (array.array_uo) is det.
+:- pred approx_binary_search(array.array(T), T, int).
+:- mode approx_binary_search((array.array_ui), (builtin.in), (builtin.out)) is semidet.
+:- pred approx_binary_search(builtin.comparison_func(T), array.array(T), T, int).
+:- mode approx_binary_search((builtin.in), (array.array_ui), (builtin.in), (builtin.out)) is semidet.
+:- func array(list.list(T)) = array.array(T).
+:- mode array((builtin.in)) = (array.array_uo) is det.
+:- func array_compare(array.array(T), array.array(T)) = builtin.comparison_result.
+:- mode array_compare((builtin.in), (builtin.in)) = (builtin.uo) is det.
+:- func array_to_doc(array.array(T)) = pretty_printer.doc.
+:- mode array_to_doc((array.array_ui)) = (builtin.out) is det.
+:- pred binary_search(array.array(T), T, int).
+:- mode binary_search((array.array_ui), (builtin.in), (builtin.out)) is semidet.
+:- pred binary_search(builtin.comparison_func(T), array.array(T), T, int).
+:- mode binary_search((builtin.in), (array.array_ui), (builtin.in), (builtin.out)) is semidet.
+:- pred bounds(array.array(_T), int, int).
+:- mode bounds((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred bsearch(array.array(T), T, builtin.comparison_pred(T), maybe.maybe(int)).
+:- mode bsearch((builtin.in), (builtin.in), builtin.in((builtin.comparison_pred)), (builtin.out)) is det.
+:- func bsearch(array.array(T), T, builtin.comparison_func(T)) = maybe.maybe(int).
+:- mode bsearch((builtin.in), (builtin.in), builtin.in((builtin.comparison_func))) = (builtin.out) is det.
+:- pred copy(array.array(T), array.array(T)).
+:- mode copy((builtin.in), (array.array_uo)) is det.
+:- func copy(array.array(T)) = array.array(T).
+:- mode copy((builtin.in)) = (array.array_uo) is det.
+:- some [T2] (pred dynamic_cast_to_array(T1, array.array(T2))).
+:- mode dynamic_cast_to_array((builtin.in), (builtin.out)) is semidet.
+:- func elem(int, array.array(T)) = T.
+:- mode elem((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func 'elem :='(int, array.array(T), T) = array.array(T).
+:- mode 'elem :='((builtin.in), (array.array_di), (builtin.in)) = (array.array_uo) is det.
+:- pred fetch_items(array.array(T), int, int, list.list(T)).
+:- mode fetch_items((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func fetch_items(array.array(T), int, int) = list.list(T).
+:- mode fetch_items((builtin.in), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func foldl((func(T1, T2) = T2), array.array(T1), T2) = T2.
+:- mode foldl((func((builtin.in), (builtin.in)) = (builtin.out) is det), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- mode foldl((func((builtin.in), (builtin.di)) = (builtin.uo) is det), (builtin.in), (builtin.di)) = (builtin.uo) is det.
+:- pred foldl(pred(T1, T2, T2), array.array(T1), T2, T2).
+:- mode foldl((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldl((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldl((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- pred foldl2(pred(T1, T2, T2, T3, T3), array.array(T1), T2, T2, T3, T3).
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred foldl3(pred(T1, T2, T2, T3, T3, T4, T4), array.array(T1), T2, T2, T3, T3, T4, T4).
+:- mode foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred foldl4(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5), array.array(T1), T2, T2, T3, T3, T4, T4, T5, T5).
+:- mode foldl4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred foldl5(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5, T6, T6), array.array(T1), T2, T2, T3, T3, T4, T4, T5, T5, T6, T6).
+:- mode foldl5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldl5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldl5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldl5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldl5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldl5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- func foldr((func(T1, T2) = T2), array.array(T1), T2) = T2.
+:- mode foldr((func((builtin.in), (builtin.in)) = (builtin.out) is det), (builtin.in), (builtin.in)) = (builtin.out) is det.
+:- mode foldr((func((builtin.in), (builtin.di)) = (builtin.uo) is det), (builtin.in), (builtin.di)) = (builtin.uo) is det.
+:- pred foldr(pred(T1, T2, T2), array.array(T1), T2, T2).
+:- mode foldr((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- mode foldr((pred((builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldr((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode foldr((pred((builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr((pred((builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldr((pred((builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)) is semidet.
+:- pred foldr2(pred(T1, T2, T2, T3, T3), array.array(T1), T2, T2, T3, T3).
+:- mode foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldr2((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred foldr3(pred(T1, T2, T2, T3, T3, T4, T4), array.array(T1), T2, T2, T3, T3, T4, T4).
+:- mode foldr3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldr3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldr3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldr3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldr3((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred foldr4(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5), array.array(T1), T2, T2, T3, T3, T4, T4, T5, T5).
+:- mode foldr4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldr4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldr4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldr4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldr4((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- pred foldr5(pred(T1, T2, T2, T3, T3, T4, T4, T5, T5, T6, T6), array.array(T1), T2, T2, T3, T3, T4, T4, T5, T5, T6, T6).
+:- mode foldr5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- mode foldr5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det.
+:- mode foldr5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode foldr5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- mode foldr5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode foldr5((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet.
+:- func from_list(list.list(T)) = array.array(T).
+:- mode from_list((builtin.in)) = (array.array_uo) is det.
+:- pred from_list(list.list(T), array.array(T)).
+:- mode from_list((builtin.in), (array.array_uo)) is det.
+:- func from_reverse_list(list.list(T)) = array.array(T).
+:- mode from_reverse_list((builtin.in)) = (array.array_uo) is det.
+:- func generate(int, ((func int) = T)) = array.array(T).
+:- mode generate((builtin.in), (builtin.in)) = (array.array_uo) is det.
+:- pred generate_foldl(int, pred(int, T, A, A), array.array(T), A, A).
+:- mode generate_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (array.array_uo), (builtin.in), (builtin.out)) is det.
+:- mode generate_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (array.array_uo), (builtin.mdi), (builtin.muo)) is det.
+:- mode generate_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (array.array_uo), (builtin.di), (builtin.uo)) is det.
+:- mode generate_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (array.array_uo), (builtin.in), (builtin.out)) is semidet.
+:- mode generate_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet)), (array.array_uo), (builtin.mdi), (builtin.muo)) is semidet.
+:- mode generate_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet)), (array.array_uo), (builtin.di), (builtin.uo)) is semidet.
+:- func greatest_index(array.array(T)) = int.
+:- mode greatest_index((builtin.in)) = (builtin.out) is det.
+:- pred in_bounds(array.array(_T), int).
+:- mode in_bounds((builtin.in), (builtin.in)) is semidet.
+:- pred init(int, T, array.array(T)).
+:- mode init((builtin.in), (builtin.in), (array.array_uo)) is det.
+:- func init(int, T) = array.array(T).
+:- mode init((builtin.in), (builtin.in)) = (array.array_uo) is det.
+:- pred is_empty(array.array(_T)).
+:- mode is_empty((builtin.in)) is semidet.
+:- func least_index(array.array(T)) = int.
+:- mode least_index((builtin.in)) = (builtin.out) is det.
+:- pred lookup(array.array(T), int, T).
+:- mode lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func lookup(array.array(T), int) = T.
+:- mode lookup((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- pred make_empty_array(array.array(T)).
+:- mode make_empty_array((array.array_uo)) is det.
+:- func make_empty_array = array.array(T).
+:- mode make_empty_array = (array.array_uo) is det.
+:- pred map(pred(T1, T2), array.array(T1), array.array(T2)).
+:- mode map((pred((builtin.in), (builtin.out)) is det), (array.array_di), (array.array_uo)) is det.
+:- func map(((func T1) = T2), array.array(T1)) = array.array(T2).
+:- mode map((func((builtin.in)) = (builtin.out) is det), (array.array_di)) = (array.array_uo) is det.
+:- pred map_corresponding_foldl(pred(T1, T2, T3, T4, T4), array.array(T1), array.array(T2), array.array(T3), T4, T4).
+:- mode map_corresponding_foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (array.array_uo), (builtin.in), (builtin.out)) is det.
+:- mode map_corresponding_foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (builtin.in), (array.array_uo), (builtin.mdi), (builtin.muo)) is det.
+:- mode map_corresponding_foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.in), (array.array_uo), (builtin.di), (builtin.uo)) is det.
+:- mode map_corresponding_foldl(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (builtin.in), (array.array_uo), (builtin.in), (builtin.out)) is semidet.
+:- pred map_foldl(pred(T1, T2, T3, T3), array.array(T1), array.array(T2), T3, T3).
+:- mode map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det)), (builtin.in), (array.array_uo), (builtin.in), (builtin.out)) is det.
+:- mode map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det)), (builtin.in), (array.array_uo), (builtin.mdi), (builtin.muo)) is det.
+:- mode map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (array.array_uo), (builtin.di), (builtin.uo)) is det.
+:- mode map_foldl(builtin.in((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet)), (builtin.in), (array.array_uo), (builtin.in), (builtin.out)) is semidet.
+:- pred max(array.array(_T), int).
+:- mode max((builtin.in), (builtin.out)) is det.
+:- func max(array.array(_T)) = int.
+:- mode max((builtin.in)) = (builtin.out) is det.
+:- pred member(array.array(T), T).
+:- mode member((builtin.in), (builtin.out)) is nondet.
+:- pred min(array.array(_T), int).
+:- mode min((builtin.in), (builtin.out)) is det.
+:- func min(array.array(_T)) = int.
+:- mode min((builtin.in)) = (builtin.out) is det.
+:- pred random_permutation(array.array(T), array.array(T), random.supply, random.supply).
+:- mode random_permutation((array.array_di), (array.array_uo), (builtin.mdi), (builtin.muo)) is det.
+:- pred resize(int, T, array.array(T), array.array(T)).
+:- mode resize((builtin.in), (builtin.in), (array.array_di), (array.array_uo)) is det.
+:- func resize(array.array(T), int, T) = array.array(T).
+:- mode resize((array.array_di), (builtin.in), (builtin.in)) = (array.array_uo) is det.
+:- pred semidet_lookup(array.array(T), int, T).
+:- mode semidet_lookup((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred semidet_set(int, T, array.array(T), array.array(T)).
+:- mode semidet_set((builtin.in), (builtin.in), (array.array_di), (array.array_uo)) is semidet.
+:- pred semidet_slow_set(int, T, array.array(T), array.array(T)).
+:- mode semidet_slow_set((builtin.in), (builtin.in), (builtin.in), (array.array_uo)) is semidet.
+:- pred set(int, T, array.array(T), array.array(T)).
+:- mode set((builtin.in), (builtin.in), (array.array_di), (array.array_uo)) is det.
+:- func set(array.array(T), int, T) = array.array(T).
+:- mode set((array.array_di), (builtin.in), (builtin.in)) = (array.array_uo) is det.
+:- pred shrink(int, array.array(T), array.array(T)).
+:- mode shrink((builtin.in), (array.array_di), (array.array_uo)) is det.
+:- func shrink(array.array(T), int) = array.array(T).
+:- mode shrink((array.array_di), (builtin.in)) = (array.array_uo) is det.
+:- pred size(array.array(_T), int).
+:- mode size((builtin.in), (builtin.out)) is det.
+:- func size(array.array(_T)) = int.
+:- mode size((builtin.in)) = (builtin.out) is det.
+:- pred slow_set(int, T, array.array(T), array.array(T)).
+:- mode slow_set((builtin.in), (builtin.in), (builtin.in), (array.array_uo)) is det.
+:- func slow_set(array.array(T), int, T) = array.array(T).
+:- mode slow_set((builtin.in), (builtin.in), (builtin.in)) = (array.array_uo) is det.
+:- func sort(array.array(T)) = array.array(T).
+:- mode sort((array.array_di)) = (array.array_uo) is det.
+:- pred sort_fix_2014 is det.
+:- pred to_list(array.array(T), list.list(T)).
+:- mode to_list((builtin.in), (builtin.out)) is det.
+:- func to_list(array.array(T)) = list.list(T).
+:- mode to_list((builtin.in)) = (builtin.out) is det.
+:- func unsafe_elem(int, array.array(T)) = T.
+:- mode unsafe_elem((builtin.in), (builtin.in)) = (builtin.out) is det.
+:- func 'unsafe_elem :='(int, array.array(T), T) = array.array(T).
+:- mode 'unsafe_elem :='((builtin.in), (array.array_di), (builtin.in)) = (array.array_uo) is det.
+:- pred unsafe_lookup(array.array(T), int, T).
+:- mode unsafe_lookup((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred unsafe_set(int, T, array.array(T), array.array(T)).
+:- mode unsafe_set((builtin.in), (builtin.in), (array.array_di), (array.array_uo)) is det.
+:- implementation.
+:- pragma foreign_type(il, array(T), "class [mscorlib]System.Array")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(c, array(T), "MR_ArrayPtr")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(java, array(T), "/* Array */ java.lang.Object")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(csharp, array(T), "System.Array")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(erlang, array(T), "")
+	where	type_is_abstract_noncanonical.

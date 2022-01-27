@@ -1,0 +1,10 @@
+:- module map.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module maybe.
+:- import_module set.
+:- import_module term.
+:- import_module tree234.
+:- type map(K, V) == tree234.tree234(K, V).
+:- type map(_K, _V).

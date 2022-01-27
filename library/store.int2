@@ -1,0 +1,34 @@
+:- module store.
+:- interface.
+:- import_module io.
+:- type generic_mutvar(T, S).
+:- type generic_ref(T, S).
+:- type io_mutvar(T) == store.generic_mutvar(T, io.io).
+:- type io_ref(T, S) == store.generic_ref(T, io.io).
+:- type store(S).
+:- type store_mutvar(T, S) == store.generic_mutvar(T, store.store(S)).
+:- type store_ref(T, S) == store.generic_ref(T, store.store(S)).
+:- typeclass store(T).
+:- instance (store.store(io.io)).
+:- instance (store.store(store.store(S))).
+:- implementation.
+:- type generic_mutvar(T, S)
+    --->    mutvar(private_builtin.ref(T)).
+:- pragma foreign_type(java, generic_mutvar(T, S), "mutvar.Mutvar").
+:- pragma foreign_type(csharp, generic_mutvar(T, S), "object[]").
+:- pragma foreign_type(erlang, generic_mutvar(T, S), "").
+:- type generic_ref(T, S)
+    --->    ref(private_builtin.ref(T)).
+:- pragma foreign_type(java, generic_ref(T, S), "store.Ref").
+:- pragma foreign_type(csharp, generic_ref(T, S), "store.Ref").
+:- type store(S).
+:- pragma foreign_type(il, store(S), "valuetype [mscorlib]System.Int32", [can_pass_as_mercury_type])
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(c, store(S), "MR_Word", [can_pass_as_mercury_type])
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(java, store(S), "int", [can_pass_as_mercury_type])
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(csharp, store(S), "int", [can_pass_as_mercury_type])
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(erlang, store(S), "", [can_pass_as_mercury_type])
+	where	type_is_abstract_noncanonical.
