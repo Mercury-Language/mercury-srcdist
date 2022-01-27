@@ -1,0 +1,27 @@
+:- module term.
+:- interface.
+:- import_module enum.
+:- import_module list.
+:- import_module map.
+:- type const
+	--->	atom(string)
+	;	integer(int)
+	;	string(string)
+	;	float(float)
+	;	implementation_defined(string).
+:- type context
+	--->	context(string, int).
+:- type generic
+	--->	generic .
+:- type renaming == term.renaming(term.generic).
+:- type renaming(T) == map.map(term.var(T), term.var(T)).
+:- type substitution == term.substitution(term.generic).
+:- type substitution(T) == map.map(term.var(T), term.term(T)).
+:- type term == term.term(term.generic).
+:- type term(T)
+	--->	functor(term.const, list.list(term.term(T)), term.context)
+	;	variable(term.var(T), term.context).
+:- type var == term.var(term.generic).
+:- type var(T).
+:- type var_supply(T).
+:- instance (enum.enum(term.var(V_1))).

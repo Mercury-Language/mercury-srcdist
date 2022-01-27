@@ -1,0 +1,565 @@
+:- module io.
+:- interface.
+:- import_module bitmap.
+:- import_module bool.
+:- import_module char.
+:- import_module deconstruct.
+:- import_module list.
+:- import_module map.
+:- import_module maybe.
+:- import_module ops.
+:- import_module stream.
+:- import_module string.
+:- import_module time.
+:- import_module univ.
+:- type access_type
+	--->	read 
+	;	write 
+	;	execute .
+:- type binary_input_stream.
+:- type binary_output_stream.
+:- type error.
+:- type file_id.
+:- type file_type
+	--->	regular_file 
+	;	directory 
+	;	symbolic_link 
+	;	named_pipe 
+	;	socket 
+	;	character_device 
+	;	block_device 
+	;	message_queue 
+	;	semaphore 
+	;	shared_memory 
+	;	unknown .
+:- type input_stream.
+:- type io == io.state.
+:- type maybe_partial_res(T)
+	--->	ok(T)
+	;	error(T, io.error).
+:- type maybe_stream_info
+	--->	stream((io.maybe_stream_id) :: int, (io.maybe_stream_mode) :: io.stream_mode, (io.maybe_stream_content) :: io.stream_content, (io.maybe_stream_source) :: io.stream_source)
+	;	unknown_stream .
+:- type output_stream.
+:- type poly_type == string.poly_type.
+:- type posn
+	--->	posn(int, int, int).
+:- type read_result(T)
+	--->	ok(T)
+	;	eof 
+	;	error(string, int).
+:- type res
+	--->	ok 
+	;	error(io.error).
+:- type res(T)
+	--->	ok(T)
+	;	error(io.error).
+:- type result
+	--->	ok 
+	;	eof 
+	;	error(io.error).
+:- type result(T)
+	--->	ok(T)
+	;	eof 
+	;	error(io.error).
+:- type state.
+:- type stream_content
+	--->	text 
+	;	binary 
+	;	preopen .
+:- type stream_db == map.map(io.stream_id, io.stream_info).
+:- type stream_id.
+:- type stream_info
+	--->	stream((io.stream_id) :: int, (io.stream_mode) :: io.stream_mode, (io.stream_content) :: io.stream_content, (io.stream_source) :: io.stream_source).
+:- type stream_mode
+	--->	input 
+	;	output 
+	;	append .
+:- type stream_source
+	--->	file(string)
+	;	stdin 
+	;	stdout 
+	;	stderr .
+:- type system_error.
+:- pragma foreign_type(il, system_error, "class [mscorlib]System.Exception").
+:- pragma foreign_type(c, system_error, "MR_Integer").
+:- pragma foreign_type(java, system_error, "java.lang.Exception").
+:- pragma foreign_type(csharp, system_error, "System.Exception").
+:- pragma foreign_type(erlang, system_error, "").
+:- type system_result
+	--->	exited(int)
+	;	signalled(int).
+:- type text_input_stream == io.input_stream.
+:- type text_output_stream == io.output_stream.
+:- type whence
+	--->	set 
+	;	cur 
+	;	end .
+:- inst (maybe_partial_res(T)) == bound(error(T, ground) ; ok(T)).
+:- instance (stream.bulk_reader(io.binary_input_stream, int, bitmap.bitmap, io.io, io.error)).
+:- instance (stream.error(io.error)).
+:- instance (stream.input(io.binary_input_stream, io.io)).
+:- instance (stream.input(io.text_input_stream, io.io)).
+:- instance (stream.line_oriented(io.text_input_stream, io.io)).
+:- instance (stream.line_oriented(io.text_output_stream, io.io)).
+:- instance (stream.output(io.binary_output_stream, io.io)).
+:- instance (stream.output(io.text_output_stream, io.io)).
+:- instance (stream.putback(io.binary_input_stream, int, io.io, io.error)).
+:- instance (stream.putback(io.text_input_stream, char.char, io.io, io.error)).
+:- instance (stream.reader(io.binary_input_stream, int, io.io, io.error)).
+:- instance (stream.reader(io.text_input_stream, char.char, io.io, io.error)).
+:- instance (stream.reader(io.text_input_stream, string.line, io.io, io.error)).
+:- instance (stream.reader(io.text_input_stream, string.text_file, io.io, io.error)).
+:- instance (stream.seekable(io.binary_input_stream, io.io)).
+:- instance (stream.seekable(io.binary_output_stream, io.io)).
+:- instance (stream.stream(io.binary_input_stream, io.io)).
+:- instance (stream.stream(io.binary_output_stream, io.io)).
+:- instance (stream.stream(io.text_input_stream, io.io)).
+:- instance (stream.stream(io.text_output_stream, io.io)).
+:- instance (stream.writer(io.binary_output_stream, bitmap.byte, io.io)).
+:- instance (stream.writer(io.binary_output_stream, bitmap.slice, io.io)).
+:- instance (stream.writer(io.text_output_stream, char.char, io.io)).
+:- instance (stream.writer(io.text_output_stream, univ.univ, io.io)).
+:- instance (stream.writer(io.text_output_stream, int, io.io)).
+:- instance (stream.writer(io.text_output_stream, float, io.io)).
+:- instance (stream.writer(io.text_output_stream, string, io.io)).
+:- pred binary_input_stream(io.binary_input_stream, io.io, io.io).
+:- mode binary_input_stream((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred binary_input_stream_foldl(pred(int, T, T), T, io.maybe_partial_res(T), io.io, io.io).
+:- mode binary_input_stream_foldl((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred binary_input_stream_foldl(io.binary_input_stream, pred(int, T, T), T, io.maybe_partial_res(T), io.io, io.io).
+:- mode binary_input_stream_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred binary_input_stream_foldl2_io(pred(int, T, T, io.io, io.io), T, io.maybe_partial_res(T), io.io, io.io).
+:- mode binary_input_stream_foldl2_io(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl2_io(builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred binary_input_stream_foldl2_io(io.binary_input_stream, pred(int, T, T, io.io, io.io), T, io.maybe_partial_res(T), io.io, io.io).
+:- mode binary_input_stream_foldl2_io((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl2_io((builtin.in), (pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred binary_input_stream_foldl2_io_maybe_stop(pred(int, bool.bool, T, T, io.io, io.io), T, io.maybe_partial_res(T), io.io, io.io).
+:- mode binary_input_stream_foldl2_io_maybe_stop((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl2_io_maybe_stop((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred binary_input_stream_foldl2_io_maybe_stop(io.binary_input_stream, pred(int, bool.bool, T, T, io.io, io.io), T, io.maybe_partial_res(T), io.io, io.io).
+:- mode binary_input_stream_foldl2_io_maybe_stop((builtin.in), (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl2_io_maybe_stop((builtin.in), (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred binary_input_stream_foldl_io(pred(int, io.io, io.io), io.res, io.io, io.io).
+:- mode binary_input_stream_foldl_io((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl_io((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred binary_input_stream_foldl_io(io.binary_input_stream, pred(int, io.io, io.io), io.res, io.io, io.io).
+:- mode binary_input_stream_foldl_io((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode binary_input_stream_foldl_io((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- func binary_input_stream_info(io.stream_db, io.binary_input_stream) = io.maybe_stream_info.
+:- pred binary_input_stream_name(string, io.io, io.io).
+:- mode binary_input_stream_name((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred binary_input_stream_name(io.binary_input_stream, string, io.io, io.io).
+:- mode binary_input_stream_name((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred binary_input_stream_offset(io.binary_input_stream, int, io.io, io.io).
+:- mode binary_input_stream_offset((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred binary_output_stream(io.binary_output_stream, io.io, io.io).
+:- mode binary_output_stream((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func binary_output_stream_info(io.stream_db, io.binary_output_stream) = io.maybe_stream_info.
+:- pred binary_output_stream_name(string, io.io, io.io).
+:- mode binary_output_stream_name((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred binary_output_stream_name(io.binary_output_stream, string, io.io, io.io).
+:- mode binary_output_stream_name((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred binary_output_stream_offset(io.binary_output_stream, int, io.io, io.io).
+:- mode binary_output_stream_offset((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred call_system(string, io.res(int), io.io, io.io).
+:- mode call_system((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred call_system_return_signal(string, io.res(io.system_result), io.io, io.io).
+:- mode call_system_return_signal((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred check_file_accessibility(string, list.list(io.access_type), io.res, io.io, io.io).
+:- mode check_file_accessibility((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred close_binary_input(io.binary_input_stream, io.io, io.io).
+:- mode close_binary_input((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred close_binary_output(io.binary_output_stream, io.io, io.io).
+:- mode close_binary_output((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred close_input(io.text_input_stream, io.io, io.io).
+:- mode close_input((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred close_output(io.text_output_stream, io.io, io.io).
+:- mode close_output((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred command_line_arguments(list.list(string), io.io, io.io).
+:- mode command_line_arguments((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func error_message(io.error) = string.
+:- pred error_message(io.error, string).
+:- mode error_message((builtin.in), (builtin.out)) is det.
+:- pred file_id(string, io.res(io.file_id), io.io, io.io).
+:- mode file_id((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred file_modification_time(string, io.res(time.time_t), io.io, io.io).
+:- mode file_modification_time((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred file_type(bool.bool, string, io.res(io.file_type), io.io, io.io).
+:- mode file_type((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred finalize_state(io.io, io.io).
+:- mode finalize_state((builtin.di), (builtin.uo)) is det.
+:- pred flush_binary_output(io.io, io.io).
+:- mode flush_binary_output((builtin.di), (builtin.uo)) is det.
+:- pred flush_binary_output(io.binary_output_stream, io.io, io.io).
+:- mode flush_binary_output((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred flush_output(io.io, io.io).
+:- mode flush_output((builtin.di), (builtin.uo)) is det.
+:- pred flush_output(io.text_output_stream, io.io, io.io).
+:- mode flush_output((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format(string, list.list(io.poly_type), io.io, io.io).
+:- mode format((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred format(io.text_output_stream, string, list.list(io.poly_type), io.io, io.io).
+:- mode format((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred get_environment_var(string, maybe.maybe(string), io.io, io.io).
+:- mode get_environment_var((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_exit_status(int, io.io, io.io).
+:- mode get_exit_status((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_globals(univ.univ, io.io, io.io).
+:- mode get_globals((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func get_io_stream_info(io.stream_db, T) = io.maybe_stream_info is semidet.
+:- pred get_line_number(int, io.io, io.io).
+:- mode get_line_number((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_line_number(io.text_input_stream, int, io.io, io.io).
+:- mode get_line_number((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_op_table(ops.table, io.io, io.io).
+:- mode get_op_table((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_output_line_number(int, io.io, io.io).
+:- mode get_output_line_number((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_output_line_number(io.text_output_stream, int, io.io, io.io).
+:- mode get_output_line_number((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred get_stream_db(io.stream_db, io.io, io.io).
+:- mode get_stream_db((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- impure pred get_stream_db_with_locking(io.stream_db).
+:- mode get_stream_db_with_locking((builtin.out)) is det.
+:- func handle_system_command_exit_status(int) = io.res(io.system_result).
+:- pred have_cygwin is semidet.
+:- pred have_dotnet is semidet.
+:- pred have_file_ids is semidet.
+:- pred have_symlinks is semidet.
+:- pred have_win32 is semidet.
+:- pred ignore_whitespace(io.result, io.io, io.io).
+:- mode ignore_whitespace((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred ignore_whitespace(io.text_input_stream, io.result, io.io, io.io).
+:- mode ignore_whitespace((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred init_state(io.io, io.io).
+:- mode init_state((builtin.di), (builtin.uo)) is det.
+:- pred input_stream(io.text_input_stream, io.io, io.io).
+:- mode input_stream((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred input_stream_foldl(pred(char.char, T, T), T, io.maybe_partial_res(T), io.io, io.io).
+:- mode input_stream_foldl((pred((builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode input_stream_foldl((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred input_stream_foldl(io.text_input_stream, pred(char.char, T, T), T, io.maybe_partial_res(T), io.io, io.io).
+:- mode input_stream_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode input_stream_foldl((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred input_stream_foldl2_io(pred(char.char, T, T, io.io, io.io), T, io.maybe_partial_res(T), io.io, io.io).
+:- mode input_stream_foldl2_io((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode input_stream_foldl2_io((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred input_stream_foldl2_io(io.text_input_stream, pred(char.char, T, T, io.io, io.io), T, io.maybe_partial_res(T), io.io, io.io).
+:- mode input_stream_foldl2_io((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode input_stream_foldl2_io((builtin.in), builtin.in((pred((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred input_stream_foldl2_io_maybe_stop(pred(char.char, bool.bool, T, T, io.io, io.io), T, io.maybe_partial_res(T), io.io, io.io).
+:- mode input_stream_foldl2_io_maybe_stop((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode input_stream_foldl2_io_maybe_stop((pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred input_stream_foldl2_io_maybe_stop(io.text_input_stream, pred(char.char, bool.bool, T, T, io.io, io.io), T, io.maybe_partial_res(T), io.io, io.io).
+:- mode input_stream_foldl2_io_maybe_stop((builtin.in), (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode input_stream_foldl2_io_maybe_stop((builtin.in), (pred((builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred input_stream_foldl_io(pred(char.char, io.io, io.io), io.res, io.io, io.io).
+:- mode input_stream_foldl_io((pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode input_stream_foldl_io((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred input_stream_foldl_io(io.text_input_stream, pred(char.char, io.io, io.io), io.res, io.io, io.io).
+:- mode input_stream_foldl_io((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is det)), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- mode input_stream_foldl_io((builtin.in), builtin.in((pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi)), (builtin.out), (builtin.di), (builtin.uo)) is cc_multi.
+:- func input_stream_info(io.stream_db, io.text_input_stream) = io.maybe_stream_info.
+:- pred input_stream_name(string, io.io, io.io).
+:- mode input_stream_name((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred input_stream_name(io.text_input_stream, string, io.io, io.io).
+:- mode input_stream_name((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_err_msg(io.system_error, string, string, io.io, io.io).
+:- mode make_err_msg((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func make_io_error(string) = io.error.
+:- pred make_maybe_win32_err_msg(io.system_error, string, string, io.io, io.io).
+:- mode make_maybe_win32_err_msg((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_symlink(string, string, io.res, io.io, io.io).
+:- mode make_symlink((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_temp(string, io.io, io.io).
+:- mode make_temp((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_temp(string, string, string, io.io, io.io).
+:- mode make_temp((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred make_win32_err_msg(io.system_error, string, string, io.io, io.io).
+:- mode make_win32_err_msg((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred nl(io.io, io.io).
+:- mode nl((builtin.di), (builtin.uo)) is det.
+:- pred nl(io.text_output_stream, io.io, io.io).
+:- mode nl((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred open_append(string, io.res(io.text_output_stream), io.io, io.io).
+:- mode open_append((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred open_binary_append(string, io.res(io.binary_output_stream), io.io, io.io).
+:- mode open_binary_append((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred open_binary_input(string, io.res(io.binary_input_stream), io.io, io.io).
+:- mode open_binary_input((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred open_binary_output(string, io.res(io.binary_output_stream), io.io, io.io).
+:- mode open_binary_output((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred open_input(string, io.res(io.text_input_stream), io.io, io.io).
+:- mode open_input((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred open_output(string, io.res(io.text_output_stream), io.io, io.io).
+:- mode open_output((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_stream(io.text_output_stream, io.io, io.io).
+:- mode output_stream((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func output_stream_info(io.stream_db, io.text_output_stream) = io.maybe_stream_info.
+:- pred output_stream_name(string, io.io, io.io).
+:- mode output_stream_name((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred output_stream_name(io.text_output_stream, string, io.io, io.io).
+:- mode output_stream_name((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred print(T, io.io, io.io).
+:- mode print((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print(io.text_output_stream, T, io.io, io.io).
+:- mode print((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print(io.text_output_stream, deconstruct.noncanon_handling, T, io.io, io.io).
+:- mode print((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode print((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode print((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode print((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred print_cc(T, io.io, io.io).
+:- mode print_cc((builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred print_line(T, io.io, io.io).
+:- mode print_line((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print_line(io.text_output_stream, T, io.io, io.io).
+:- mode print_line((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred print_line(io.text_output_stream, deconstruct.noncanon_handling, T, io.io, io.io).
+:- mode print_line((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode print_line((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode print_line((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode print_line((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred print_line_cc(T, io.io, io.io).
+:- mode print_line_cc((builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred progname(string, string, io.io, io.io).
+:- mode progname((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred progname_base(string, string, io.io, io.io).
+:- mode progname_base((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred putback_byte(int, io.io, io.io).
+:- mode putback_byte((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred putback_byte(io.binary_input_stream, int, io.io, io.io).
+:- mode putback_byte((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred putback_char(char.char, io.io, io.io).
+:- mode putback_char((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred putback_char(io.text_input_stream, char.char, io.io, io.io).
+:- mode putback_char((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred read(io.read_result(T), io.io, io.io).
+:- mode read((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read(io.text_input_stream, io.read_result(T), io.io, io.io).
+:- mode read((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_binary(io.result(T), io.io, io.io).
+:- mode read_binary((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_binary(io.binary_input_stream, io.result(T), io.io, io.io).
+:- mode read_binary((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_binary_file(io.result(list.list(int)), io.io, io.io).
+:- mode read_binary_file((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_binary_file(io.binary_input_stream, io.result(list.list(int)), io.io, io.io).
+:- mode read_binary_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_binary_file_as_bitmap(io.res(bitmap.bitmap), io.io, io.io).
+:- mode read_binary_file_as_bitmap((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_binary_file_as_bitmap(io.binary_input_stream, io.res(bitmap.bitmap), io.io, io.io).
+:- mode read_binary_file_as_bitmap((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_bitmap(bitmap.bitmap, bitmap.bitmap, int, io.res, io.io, io.io).
+:- mode read_bitmap((bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_bitmap(io.binary_input_stream, bitmap.bitmap, bitmap.bitmap, int, io.res, io.io, io.io).
+:- mode read_bitmap((builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_bitmap(bitmap.byte_index, bitmap.num_bytes, bitmap.bitmap, bitmap.bitmap, bitmap.num_bytes, io.res, io.io, io.io).
+:- mode read_bitmap((builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_bitmap(io.binary_input_stream, bitmap.byte_index, bitmap.num_bytes, bitmap.bitmap, bitmap.bitmap, bitmap.num_bytes, io.res, io.io, io.io).
+:- mode read_bitmap((builtin.in), (builtin.in), (builtin.in), (bitmap.bitmap_di), (bitmap.bitmap_uo), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_byte(io.result(int), io.io, io.io).
+:- mode read_byte((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_byte(io.binary_input_stream, io.result(int), io.io, io.io).
+:- mode read_byte((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_char(io.result(char.char), io.io, io.io).
+:- mode read_char((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_char(io.text_input_stream, io.result(char.char), io.io, io.io).
+:- mode read_char((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_char_unboxed(io.text_input_stream, io.result, char.char, io.io, io.io).
+:- mode read_char_unboxed((builtin.in), (builtin.out), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_file(io.maybe_partial_res(list.list(char.char)), io.io, io.io).
+:- mode read_file((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_file(io.text_input_stream, io.maybe_partial_res(list.list(char.char)), io.io, io.io).
+:- mode read_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_file_as_string(io.maybe_partial_res(string), io.io, io.io).
+:- mode read_file_as_string((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_file_as_string(io.text_input_stream, io.maybe_partial_res(string), io.io, io.io).
+:- mode read_file_as_string((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_from_string(string, string, int, io.read_result(T), io.posn, io.posn).
+:- mode read_from_string((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det.
+:- pred read_line(io.result(list.list(char.char)), io.io, io.io).
+:- mode read_line((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_line(io.text_input_stream, io.result(list.list(char.char)), io.io, io.io).
+:- mode read_line((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_line_as_string(io.result(string), io.io, io.io).
+:- mode read_line_as_string((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_line_as_string(io.text_input_stream, io.result(string), io.io, io.io).
+:- mode read_line_as_string((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_symlink(string, io.res(string), io.io, io.io).
+:- mode read_symlink((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_word(io.result(list.list(char.char)), io.io, io.io).
+:- mode read_word((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred read_word(io.text_input_stream, io.result(list.list(char.char)), io.io, io.io).
+:- mode read_word((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred remove_file(string, io.res, io.io, io.io).
+:- mode remove_file((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred remove_file_recursively(string, io.res, io.io, io.io).
+:- mode remove_file_recursively((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred rename_file(string, string, io.res, io.io, io.io).
+:- mode rename_file((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred report_stats(io.io, io.io).
+:- mode report_stats((builtin.di), (builtin.uo)) is det.
+:- pred report_stats(string, io.io, io.io).
+:- mode report_stats((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred see(string, io.res, io.io, io.io).
+:- mode see((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred see_binary(string, io.res, io.io, io.io).
+:- mode see_binary((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred seek_binary_input(io.binary_input_stream, io.whence, int, io.io, io.io).
+:- mode seek_binary_input((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred seek_binary_output(io.binary_output_stream, io.whence, int, io.io, io.io).
+:- mode seek_binary_output((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred seen(io.io, io.io).
+:- mode seen((builtin.di), (builtin.uo)) is det.
+:- pred seen_binary(io.io, io.io).
+:- mode seen_binary((builtin.di), (builtin.uo)) is det.
+:- pred set_binary_input_stream(io.binary_input_stream, io.binary_input_stream, io.io, io.io).
+:- mode set_binary_input_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred set_binary_output_stream(io.binary_output_stream, io.binary_output_stream, io.io, io.io).
+:- mode set_binary_output_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred set_environment_var(string, string, io.io, io.io).
+:- mode set_environment_var((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_exit_status(int, io.io, io.io).
+:- mode set_exit_status((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_globals(univ.univ, io.io, io.io).
+:- mode set_globals((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_input_stream(io.text_input_stream, io.text_input_stream, io.io, io.io).
+:- mode set_input_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred set_line_number(int, io.io, io.io).
+:- mode set_line_number((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_line_number(io.text_input_stream, int, io.io, io.io).
+:- mode set_line_number((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_op_table(ops.table, io.io, io.io).
+:- mode set_op_table((builtin.di), (builtin.di), (builtin.uo)) is det.
+:- pred set_output_line_number(int, io.io, io.io).
+:- mode set_output_line_number((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_output_line_number(io.text_output_stream, int, io.io, io.io).
+:- mode set_output_line_number((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred set_output_stream(io.text_output_stream, io.text_output_stream, io.io, io.io).
+:- mode set_output_stream((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func stderr_stream = io.text_output_stream.
+:- pred stderr_stream(io.text_output_stream, io.io, io.io).
+:- mode stderr_stream((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred stdin_binary_stream(io.binary_input_stream, io.io, io.io).
+:- mode stdin_binary_stream((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func stdin_stream = io.text_input_stream.
+:- pred stdin_stream(io.text_input_stream, io.io, io.io).
+:- mode stdin_stream((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred stdout_binary_stream(io.binary_output_stream, io.io, io.io).
+:- mode stdout_binary_stream((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func stdout_stream = io.text_output_stream.
+:- pred stdout_stream(io.text_output_stream, io.io, io.io).
+:- mode stdout_stream((builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred tell(string, io.res, io.io, io.io).
+:- mode tell((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred tell_binary(string, io.res, io.io, io.io).
+:- mode tell_binary((builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred told(io.io, io.io).
+:- mode told((builtin.di), (builtin.uo)) is det.
+:- pred told_binary(io.io, io.io).
+:- mode told_binary((builtin.di), (builtin.uo)) is det.
+:- semipure pred unsafe_get_io_state(io.io).
+:- mode unsafe_get_io_state((builtin.uo)) is det.
+:- impure pred unsafe_set_io_state(io.io).
+:- mode unsafe_set_io_state((builtin.di)) is det.
+:- pred update_globals(pred(univ.univ, univ.univ), io.io, io.io).
+:- mode update_globals(builtin.in((pred((builtin.in), (builtin.out)) is det)), (builtin.di), (builtin.uo)) is det.
+:- pred write(T, io.io, io.io).
+:- mode write((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write(io.text_output_stream, T, io.io, io.io).
+:- mode write((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write(io.text_output_stream, deconstruct.noncanon_handling, T, io.io, io.io).
+:- mode write((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode write((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode write((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode write((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred write_binary(T, io.io, io.io).
+:- mode write_binary((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_binary(io.binary_output_stream, T, io.io, io.io).
+:- mode write_binary((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_bitmap(bitmap.bitmap, io.io, io.io).
+:- mode write_bitmap((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_bitmap(bitmap.bitmap, int, int, io.io, io.io).
+:- mode write_bitmap((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_bitmap(io.binary_output_stream, bitmap.bitmap, io.io, io.io).
+:- mode write_bitmap((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_bitmap(io.binary_output_stream, bitmap.bitmap, int, int, io.io, io.io).
+:- mode write_bitmap((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_byte(int, io.io, io.io).
+:- mode write_byte((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_byte(io.binary_output_stream, int, io.io, io.io).
+:- mode write_byte((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_cc(T, io.io, io.io).
+:- mode write_cc((builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred write_char(char.char, io.io, io.io).
+:- mode write_char((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_char(io.text_output_stream, char.char, io.io, io.io).
+:- mode write_char((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_float(float, io.io, io.io).
+:- mode write_float((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_float(io.text_output_stream, float, io.io, io.io).
+:- mode write_float((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_int(int, io.io, io.io).
+:- mode write_int((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_int(io.text_output_stream, int, io.io, io.io).
+:- mode write_int((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_line(T, io.io, io.io).
+:- mode write_line((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_line(io.text_output_stream, T, io.io, io.io).
+:- mode write_line((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_line(io.text_output_stream, deconstruct.noncanon_handling, T, io.io, io.io).
+:- mode write_line((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode write_line((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- mode write_line((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- mode write_line((builtin.in), (builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred write_line_cc(T, io.io, io.io).
+:- mode write_line_cc((builtin.in), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred write_list(list.list(T), string, pred(T, io.io, io.io), io.io, io.io).
+:- mode write_list((builtin.in), (builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- mode write_list((builtin.in), (builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred write_list(io.text_output_stream, list.list(T), string, pred(T, io.io, io.io), io.io, io.io).
+:- mode write_list((builtin.in), (builtin.in), (builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.di), (builtin.uo)) is det.
+:- mode write_list((builtin.in), (builtin.in), (builtin.in), (pred((builtin.in), (builtin.di), (builtin.uo)) is cc_multi), (builtin.di), (builtin.uo)) is cc_multi.
+:- pred write_many(list.list(io.poly_type), io.io, io.io).
+:- mode write_many((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_many(io.text_output_stream, list.list(io.poly_type), io.io, io.io).
+:- mode write_many((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_string(string, io.io, io.io).
+:- mode write_string((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_string(io.text_output_stream, string, io.io, io.io).
+:- mode write_string((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_strings(list.list(string), io.io, io.io).
+:- mode write_strings((builtin.in), (builtin.di), (builtin.uo)) is det.
+:- pred write_strings(io.text_output_stream, list.list(string), io.io, io.io).
+:- mode write_strings((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.
+:- implementation.
+:- type file_id
+	--->	file_id .
+:- pragma foreign_type(c, file_id, "ML_File_Id")
+	where	type_is_abstract_noncanonical.
+:- pragma foreign_type(erlang, file_id, "")
+	where	type_is_abstract_noncanonical.
+:- type state.
+:- pragma foreign_type(il, state, "valuetype [mscorlib]System.Int32", [can_pass_as_mercury_type]).
+:- pragma foreign_type(c, state, "MR_Word", [can_pass_as_mercury_type]).
+:- pragma foreign_type(java, state, "java.lang.Object", [can_pass_as_mercury_type]).
+:- pragma foreign_type(csharp, state, "int", [can_pass_as_mercury_type]).
+:- pragma foreign_type(erlang, state, "", [can_pass_as_mercury_type]).
+:- type stream_id == int.
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", string).

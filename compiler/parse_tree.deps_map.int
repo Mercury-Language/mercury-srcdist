@@ -1,0 +1,23 @@
+:- module (parse_tree.deps_map).
+:- interface.
+:- import_module io.
+:- import_module map.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.file_names).
+:- import_module (parse_tree.module_imports).
+:- type deps
+	--->	deps(parse_tree.deps_map.have_processed, parse_tree.module_imports.module_and_imports).
+:- type deps_map == map.map(mdbcomp.sym_name.module_name, parse_tree.deps_map.deps).
+:- type have_processed
+	--->	not_yet_processed 
+	;	already_processed .
+:- type submodule_kind
+	--->	toplevel 
+	;	nested_submodule 
+	;	separate_submodule .
+:- pred generate_deps_map(libs.globals.globals, mdbcomp.sym_name.module_name, parse_tree.file_names.maybe_search, parse_tree.deps_map.deps_map, parse_tree.deps_map.deps_map, io.io, io.io).
+:- mode generate_deps_map((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- func get_submodule_kind(mdbcomp.sym_name.module_name, parse_tree.deps_map.deps_map) = parse_tree.deps_map.submodule_kind.
+:- pred insert_into_deps_map(parse_tree.module_imports.module_and_imports, parse_tree.deps_map.deps_map, parse_tree.deps_map.deps_map).
+:- mode insert_into_deps_map((builtin.in), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,11 @@
+:- module (recompilation.usage).
+:- interface.
+:- type resolved_functor.
+:- type resolved_functor_map.
+:- type resolved_functor_set.
+:- type resolved_item_list(T).
+:- type resolved_item_map(T).
+:- type resolved_item_set(T).
+:- type resolved_pred_or_func_map.
+:- type resolved_pred_or_func_set.
+:- type resolved_used_items.

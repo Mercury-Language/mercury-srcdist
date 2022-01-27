@@ -1,0 +1,7 @@
+:- module multi_map.
+:- interface.
+:- import_module assoc_list.
+:- import_module list.
+:- import_module map.
+:- import_module set.
+:- type multi_map(Key, Data) == map.map(Key, list.list(Data)).

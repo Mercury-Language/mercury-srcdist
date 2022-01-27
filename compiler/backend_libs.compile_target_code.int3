@@ -1,0 +1,6 @@
+:- module (backend_libs.compile_target_code).
+:- interface.
+:- type linked_target_type
+	where	type_is_abstract_enum(4).
+:- type pic
+	where	type_is_abstract_enum(2).

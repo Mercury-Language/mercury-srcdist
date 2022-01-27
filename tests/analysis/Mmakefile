@@ -1,0 +1,34 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab
+#-----------------------------------------------------------------------------#
+
+THIS_DIR = analysis
+
+# Delete options which are incompatible with --intermodule-analysis.
+# These are currently set for nightly tests.
+override EXTRA_MCFLAGS := $(patsubst --intermodule-opt%,,$(EXTRA_MCFLAGS))
+override EXTRA_MCFLAGS := $(patsubst --transitive-%,,$(EXTRA_MCFLAGS))
+
+#-----------------------------------------------------------------------------#
+
+SUBDIRS = \
+	ctgc \
+	excp \
+	ext \
+	sharing \
+	table \
+	trail \
+	unused_args
+
+# These tests only work if the workspace was compiled with `--use-subdirs'.
+ifneq ($(origin WORKSPACE),undefined)
+    ifeq ($(shell [ -d $(WORKSPACE)/library/Mercury ] || echo cannot_run),cannot_run)
+    	SUBDIRS =
+    endif
+endif
+
+TESTS=
+TESTS_DIR=..
+include $(TESTS_DIR)/Mmake.common
+
+#-----------------------------------------------------------------------------#

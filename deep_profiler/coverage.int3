@@ -1,0 +1,4 @@
+:- module coverage.
+:- interface.
+:- type coverage_info.
+:- type coverage_point.
