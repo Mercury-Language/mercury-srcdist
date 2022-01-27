@@ -1,0 +1,300 @@
+:- module (hlds.hlds_goal).
+:- interface.
+:- use_module assoc_list.
+:- use_module bool.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module parse_tree.
+:- use_module set.
+:- use_module term.
+:- use_module (hlds.goal_mode).
+:- use_module (hlds.hlds_data).
+:- use_module (hlds.hlds_llds).
+:- use_module (hlds.hlds_pred).
+:- use_module (hlds.instmap).
+:- use_module (mdbcomp.goal_path).
+:- use_module (mdbcomp.prim_data).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_data).
+:- use_module (parse_tree.prog_data_foreign).
+:- use_module (parse_tree.prog_data_pragma).
+:- use_module (parse_tree.prog_rename).
+:- use_module (parse_tree.set_of_var).
+:- type atomic_goal_type
+    --->    unknown_atomic_goal_type 
+    ;       top_level_atomic_goal 
+    ;       nested_atomic_goal .
+:- type atomic_interface_vars
+    --->    atomic_interface_vars(((hlds.hlds_goal).atomic_initial) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).atomic_final) :: parse_tree.prog_data.prog_var).
+:- type builtin_state
+    --->    inline_builtin 
+    ;       not_builtin .
+:- type call_unify_context
+    --->    call_unify_context(parse_tree.prog_data.prog_var, hlds.hlds_goal.unify_rhs, hlds.hlds_goal.unify_context).
+:- type can_cgc
+    --->    can_cgc 
+    ;       cannot_cgc .
+:- type case
+    --->    case(((hlds.hlds_goal).case_first_functor) :: parse_tree.prog_data.cons_id, ((hlds.hlds_goal).case_later_functors) :: list.list(parse_tree.prog_data.cons_id), ((hlds.hlds_goal).case_goal) :: hlds.hlds_goal.hlds_goal).
+:- type case_id
+    --->    case_id(int).
+:- type cast_kind
+    --->    unsafe_type_cast 
+    ;       unsafe_type_inst_cast 
+    ;       equiv_type_cast 
+    ;       exists_cast .
+:- type catch_part
+    --->    catch_part(((hlds.hlds_goal).catch_expr) :: hlds.hlds_goal.hlds_goal_expr, ((hlds.hlds_goal).catch_goal) :: hlds.hlds_goal.hlds_goal).
+:- type cell_is_unique
+    --->    cell_is_unique 
+    ;       cell_is_shared .
+:- type cell_to_reuse
+    --->    cell_to_reuse(parse_tree.prog_data.prog_var, list.list(parse_tree.prog_data.cons_id), list.list(hlds.hlds_goal.needs_update)).
+:- type conj_type
+    --->    plain_conj 
+    ;       parallel_conj .
+:- type construct_sub_info
+    --->    construct_sub_info(((hlds.hlds_goal).take_address_args) :: maybe.maybe(list.list(int)), ((hlds.hlds_goal).term_size_slot) :: maybe.maybe(hlds.hlds_goal.term_size_value))
+    ;       no_construct_sub_info .
+:- type contains_trace_goal
+    --->    contains_trace_goal 
+    ;       contains_no_trace_goal .
+:- type ctgc_goal_info
+    --->    ctgc_goal_info(((hlds.hlds_goal).ctgc_lfu) :: parse_tree.set_of_var.set_of_progvar, ((hlds.hlds_goal).ctgc_lbu) :: parse_tree.set_of_var.set_of_progvar, ((hlds.hlds_goal).ctgc_reuse) :: hlds.hlds_goal.reuse_description).
+:- type dp_coverage_goal_info
+    --->    dp_coverage_goal_info(hlds.hlds_goal.goal_trivial, hlds.hlds_goal.port_counts_give_coverage_after).
+:- type dp_goal_info
+    --->    dp_goal_info(hlds.hlds_goal.goal_is_mdprof_inst, maybe.maybe(hlds.hlds_goal.dp_coverage_goal_info)).
+:- type force_pruning
+    --->    force_pruning 
+    ;       dont_force_pruning .
+:- type foreign_arg
+    --->    foreign_arg(((hlds.hlds_goal).arg_var) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).arg_name_mode) :: maybe.maybe(parse_tree.prog_data_foreign.foreign_arg_name_mode), ((hlds.hlds_goal).arg_type) :: parse_tree.prog_data.mer_type, ((hlds.hlds_goal).arg_box_policy) :: parse_tree.prog_data_foreign.box_policy).
+:- type from_ground_term_kind
+    --->    from_ground_term_initial 
+    ;       from_ground_term_construct 
+    ;       from_ground_term_deconstruct 
+    ;       from_ground_term_other .
+:- type generic_call
+    --->    higher_order(((hlds.hlds_goal).ho_call_var) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).ho_call_purity) :: parse_tree.prog_data.purity, ((hlds.hlds_goal).ho_call_kind) :: mdbcomp.prim_data.pred_or_func, ((hlds.hlds_goal).ho_call_arity) :: parse_tree.prog_data.arity)
+    ;       class_method(((hlds.hlds_goal).method_tci) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).method_num) :: int, ((hlds.hlds_goal).method_class_id) :: parse_tree.prog_data.class_id, ((hlds.hlds_goal).method_name) :: parse_tree.prog_data.pf_sym_name_arity)
+    ;       event_call(((hlds.hlds_goal).event_name) :: string)
+    ;       cast(((hlds.hlds_goal).cast_kind) :: hlds.hlds_goal.cast_kind).
+:- type goal_feature
+    --->    feature_constraint 
+    ;       feature_from_head 
+    ;       feature_not_impure_for_determinism 
+    ;       feature_stack_opt 
+    ;       feature_tuple_opt 
+    ;       feature_call_table_gen 
+    ;       feature_preserve_backtrack_into 
+    ;       feature_save_deep_excp_vars 
+    ;       feature_hide_debug_event 
+    ;       feature_deep_self_tail_rec_call 
+    ;       feature_debug_self_tail_rec_call 
+    ;       feature_self_or_mutual_tail_rec_call 
+    ;       feature_obvious_nontail_rec_call 
+    ;       feature_keep_constant_binding 
+    ;       feature_dont_warn_singleton 
+    ;       feature_state_var_copy 
+    ;       feature_duplicated_for_switch 
+    ;       feature_mode_check_clauses_goal 
+    ;       feature_will_not_modify_trail 
+    ;       feature_will_not_call_mm_tabled 
+    ;       feature_contains_trace 
+    ;       feature_pretest_equality 
+    ;       feature_pretest_equality_condition 
+    ;       feature_lambda_undetermined_mode 
+    ;       feature_contains_stm_inner_outer 
+    ;       feature_do_not_tailcall 
+    ;       feature_do_not_warn_implicit_stream 
+    ;       feature_lifted_by_cse 
+    ;       feature_lambda_from_try .
+:- type goal_is_mdprof_inst
+    --->    goal_is_mdprof_inst 
+    ;       goal_is_not_mdprof_inst .
+:- type goal_trivial
+    --->    goal_is_trivial 
+    ;       goal_is_nontrivial .
+:- type hlds_goal
+    --->    hlds_goal(((hlds.hlds_goal).hg_expr) :: hlds.hlds_goal.hlds_goal_expr, ((hlds.hlds_goal).hg_info) :: hlds.hlds_goal.hlds_goal_info).
+:- type hlds_goal_code_gen_info
+    --->    no_code_gen_info 
+    ;       llds_code_gen_info(((hlds.hlds_goal).llds_code_gen) :: hlds.hlds_llds.llds_code_gen_details).
+:- type hlds_goal_expr
+    --->    unify(((hlds.hlds_goal).unify_lhs) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).unify_rhs) :: hlds.hlds_goal.unify_rhs, ((hlds.hlds_goal).unify_mode) :: hlds.hlds_goal.unify_mode, ((hlds.hlds_goal).unify_kind) :: hlds.hlds_goal.unification, ((hlds.hlds_goal).unify_context) :: hlds.hlds_goal.unify_context)
+    ;       plain_call(((hlds.hlds_goal).call_pred_id) :: hlds.hlds_pred.pred_id, ((hlds.hlds_goal).call_proc_id) :: hlds.hlds_pred.proc_id, ((hlds.hlds_goal).call_args) :: list.list(parse_tree.prog_data.prog_var), ((hlds.hlds_goal).call_builtin) :: hlds.hlds_goal.builtin_state, ((hlds.hlds_goal).call_unify_context) :: maybe.maybe(hlds.hlds_goal.call_unify_context), ((hlds.hlds_goal).call_sym_name) :: mdbcomp.sym_name.sym_name)
+    ;       generic_call(((hlds.hlds_goal).gcall_details) :: hlds.hlds_goal.generic_call, ((hlds.hlds_goal).gcall_args) :: list.list(parse_tree.prog_data.prog_var), ((hlds.hlds_goal).gcall_modes) :: list.list(parse_tree.prog_data.mer_mode), ((hlds.hlds_goal).gcall_reg_types) :: parse_tree.prog_data.arg_reg_type_info, ((hlds.hlds_goal).gcall_detism) :: parse_tree.prog_data.determinism)
+    ;       call_foreign_proc(((hlds.hlds_goal).foreign_attr) :: parse_tree.prog_data_foreign.pragma_foreign_proc_attributes, ((hlds.hlds_goal).foreign_pred_id) :: hlds.hlds_pred.pred_id, ((hlds.hlds_goal).foreign_proc_id) :: hlds.hlds_pred.proc_id, ((hlds.hlds_goal).foreign_args) :: list.list(hlds.hlds_goal.foreign_arg), ((hlds.hlds_goal).foreign_extra_args) :: list.list(hlds.hlds_goal.foreign_arg), ((hlds.hlds_goal).foreign_trace_cond) :: maybe.maybe(parse_tree.prog_data.trace_expr(parse_tree.prog_data.trace_runtime)), ((hlds.hlds_goal).foreign_impl) :: parse_tree.prog_data_foreign.pragma_foreign_proc_impl)
+    ;       conj(hlds.hlds_goal.conj_type, list.list(hlds.hlds_goal.hlds_goal))
+    ;       disj(list.list(hlds.hlds_goal.hlds_goal))
+    ;       switch(((hlds.hlds_goal).switch_var) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).switch_canfail) :: parse_tree.prog_data.can_fail, ((hlds.hlds_goal).switch_cases) :: list.list(hlds.hlds_goal.case))
+    ;       negation(hlds.hlds_goal.hlds_goal)
+    ;       scope(((hlds.hlds_goal).scope_reason) :: hlds.hlds_goal.scope_reason, ((hlds.hlds_goal).scope_goal) :: hlds.hlds_goal.hlds_goal)
+    ;       if_then_else(((hlds.hlds_goal).ite_exist_vars) :: list.list(parse_tree.prog_data.prog_var), ((hlds.hlds_goal).ite_cond) :: hlds.hlds_goal.hlds_goal, ((hlds.hlds_goal).ite_then) :: hlds.hlds_goal.hlds_goal, ((hlds.hlds_goal).ite_else) :: hlds.hlds_goal.hlds_goal)
+    ;       shorthand(hlds.hlds_goal.shorthand_goal_expr).
+:- type hlds_goal_info.
+:- type hlds_goals == list.list(hlds.hlds_goal.hlds_goal).
+:- type ho_values == map.map(parse_tree.prog_data.prog_var, set.set(hlds.hlds_pred.pred_proc_id)).
+:- type how_to_construct
+    --->    construct_statically 
+    ;       construct_dynamically 
+    ;       construct_in_region(parse_tree.prog_data.prog_var)
+    ;       reuse_cell(hlds.hlds_goal.cell_to_reuse).
+:- type incremental_rename_map == map.map(mdbcomp.goal_path.goal_id, assoc_list.assoc_list(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var)).
+:- type is_conditional
+    --->    conditional_reuse 
+    ;       unconditional_reuse .
+:- type is_exist_constr
+    --->    is_not_exist_constr 
+    ;       is_exist_constr .
+:- type is_first_disjunct
+    --->    is_first_disjunct 
+    ;       is_not_first_disjunct .
+:- type lc_use_parent_stack
+    --->    lc_use_parent_stack_frame 
+    ;       lc_create_frame_on_child_stack .
+:- type missed_message == string.
+:- type mode_constr_goal_info
+    --->    mode_constr_goal_info(((hlds.hlds_goal).mci_occurring_vars) :: parse_tree.set_of_var.set_of_progvar, ((hlds.hlds_goal).mci_producing_vars) :: parse_tree.set_of_var.set_of_progvar, ((hlds.hlds_goal).mci_consuming_vars) :: parse_tree.set_of_var.set_of_progvar, ((hlds.hlds_goal).mci_make_visible_vars) :: parse_tree.set_of_var.set_of_progvar, ((hlds.hlds_goal).mci_need_visible_vars) :: parse_tree.set_of_var.set_of_progvar).
+:- type needs_update
+    --->    needs_update 
+    ;       does_not_need_update .
+:- type port_counts_give_coverage_after
+    --->    port_counts_give_coverage_after 
+    ;       no_port_counts_give_coverage_after .
+:- type promise_solutions_kind
+    --->    equivalent_solutions 
+    ;       equivalent_solution_sets 
+    ;       equivalent_solution_sets_arbitrary .
+:- type rbmm_goal_info
+    --->    rbmm_goal_info(((hlds.hlds_goal).created_regions) :: set.set(parse_tree.prog_data.prog_var), ((hlds.hlds_goal).removed_regions) :: set.set(parse_tree.prog_data.prog_var), ((hlds.hlds_goal).carried_regions) :: set.set(parse_tree.prog_data.prog_var), ((hlds.hlds_goal).allocated_into_regions) :: set.set(parse_tree.prog_data.prog_var), ((hlds.hlds_goal).used_regions) :: set.set(parse_tree.prog_data.prog_var)).
+:- type removable
+    --->    removable 
+    ;       not_removable .
+:- type reuse_description
+    --->    no_reuse_info 
+    ;       no_possible_reuse 
+    ;       missed_reuse(list.list(hlds.hlds_goal.missed_message))
+    ;       potential_reuse(hlds.hlds_goal.short_reuse_description)
+    ;       reuse(hlds.hlds_goal.short_reuse_description).
+:- type scope_reason
+    --->    exist_quant(list.list(parse_tree.prog_data.prog_var))
+    ;       disable_warnings(parse_tree.prog_data.goal_warning, list.list(parse_tree.prog_data.goal_warning))
+    ;       promise_solutions(list.list(parse_tree.prog_data.prog_var), hlds.hlds_goal.promise_solutions_kind)
+    ;       promise_purity(parse_tree.prog_data.purity)
+    ;       require_detism(parse_tree.prog_data.determinism)
+    ;       require_complete_switch(parse_tree.prog_data.prog_var)
+    ;       require_switch_arms_detism(parse_tree.prog_data.prog_var, parse_tree.prog_data.determinism)
+    ;       commit(hlds.hlds_goal.force_pruning)
+    ;       barrier(hlds.hlds_goal.removable)
+    ;       from_ground_term(parse_tree.prog_data.prog_var, hlds.hlds_goal.from_ground_term_kind)
+    ;       trace_goal(((hlds.hlds_goal).trace_compiletime) :: maybe.maybe(parse_tree.prog_data.trace_expr(parse_tree.prog_data.trace_compiletime)), ((hlds.hlds_goal).trace_runtime) :: maybe.maybe(parse_tree.prog_data.trace_expr(parse_tree.prog_data.trace_runtime)), ((hlds.hlds_goal).trace_maybe_io) :: maybe.maybe(string), ((hlds.hlds_goal).trace_mutable_vars) :: list.list(hlds.hlds_goal.trace_mutable_var_hlds), ((hlds.hlds_goal).trace_quant_vars) :: list.list(parse_tree.prog_data.prog_var))
+    ;       loop_control(((hlds.hlds_goal).lc_lc_var) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).lc_lcs_var) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).lc_use_parent_stack) :: hlds.hlds_goal.lc_use_parent_stack).
+:- type short_reuse_description
+    --->    cell_died 
+    ;       cell_reused(parse_tree.prog_data_pragma.dead_var, hlds.hlds_goal.is_conditional, list.list(parse_tree.prog_data.cons_id), list.list(hlds.hlds_goal.needs_update))
+    ;       reuse_call(hlds.hlds_goal.is_conditional, list.list(int)).
+:- type shorthand_goal_expr
+    --->    bi_implication(hlds.hlds_goal.hlds_goal, hlds.hlds_goal.hlds_goal)
+    ;       atomic_goal(((hlds.hlds_goal).atomic_goal_type) :: hlds.hlds_goal.atomic_goal_type, ((hlds.hlds_goal).atomic_outer) :: hlds.hlds_goal.atomic_interface_vars, ((hlds.hlds_goal).atomic_inner) :: hlds.hlds_goal.atomic_interface_vars, ((hlds.hlds_goal).atomic_output_vars) :: maybe.maybe(list.list(parse_tree.prog_data.prog_var)), ((hlds.hlds_goal).atomic_main_goal) :: hlds.hlds_goal.hlds_goal, ((hlds.hlds_goal).orelse_alternatives) :: list.list(hlds.hlds_goal.hlds_goal), ((hlds.hlds_goal).orelse_inners) :: list.list(hlds.hlds_goal.atomic_interface_vars))
+    ;       try_goal(((hlds.hlds_goal).try_maybe_io) :: maybe.maybe(hlds.hlds_goal.try_io_state_vars), ((hlds.hlds_goal).try_result_var) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).try_goal) :: hlds.hlds_goal.hlds_goal).
+:- type tagged_case
+    --->    tagged_case(((hlds.hlds_goal).tagged_case_first_functor) :: hlds.hlds_data.tagged_cons_id, ((hlds.hlds_goal).tagged_case_later_functors) :: list.list(hlds.hlds_data.tagged_cons_id), ((hlds.hlds_goal).tagged_case_id) :: hlds.hlds_goal.case_id, ((hlds.hlds_goal).tagged_case_goal) :: hlds.hlds_goal.hlds_goal).
+:- type term_size_value
+    --->    known_size(int)
+    ;       dynamic_size(parse_tree.prog_data.prog_var).
+:- type trace_mutable_var_hlds
+    --->    trace_mutable_var_hlds(((hlds.hlds_goal).tmvh_mutable_name) :: string, ((hlds.hlds_goal).tmvh_state_var_name) :: string).
+:- type try_io_state_vars
+    --->    try_io_state_vars(((hlds.hlds_goal).try_io_initial) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).try_io_final) :: parse_tree.prog_data.prog_var).
+:- type unification
+    --->    construct(((hlds.hlds_goal).construct_cell_var) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).construct_cons_id) :: parse_tree.prog_data.cons_id, ((hlds.hlds_goal).construct_args) :: list.list(parse_tree.prog_data.prog_var), ((hlds.hlds_goal).construct_arg_modes) :: list.list(hlds.hlds_goal.unify_mode), ((hlds.hlds_goal).construct_how) :: hlds.hlds_goal.how_to_construct, ((hlds.hlds_goal).construct_is_unique) :: hlds.hlds_goal.cell_is_unique, ((hlds.hlds_goal).construct_sub_info) :: hlds.hlds_goal.construct_sub_info)
+    ;       deconstruct(((hlds.hlds_goal).deconstruct_cell_var) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).deconstruct_cons_id) :: parse_tree.prog_data.cons_id, ((hlds.hlds_goal).deconstruct_args) :: list.list(parse_tree.prog_data.prog_var), ((hlds.hlds_goal).deconstruct_arg_modes) :: list.list(hlds.hlds_goal.unify_mode), ((hlds.hlds_goal).deconstruct_can_fail) :: parse_tree.prog_data.can_fail, ((hlds.hlds_goal).deconstruct_can_cgc) :: hlds.hlds_goal.can_cgc)
+    ;       assign(((hlds.hlds_goal).assign_to_var) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).assign_from_var) :: parse_tree.prog_data.prog_var)
+    ;       simple_test(((hlds.hlds_goal).test_var1) :: parse_tree.prog_data.prog_var, ((hlds.hlds_goal).test_var2) :: parse_tree.prog_data.prog_var)
+    ;       complicated_unify(((hlds.hlds_goal).compl_unify_mode) :: hlds.hlds_goal.unify_mode, ((hlds.hlds_goal).compl_unify_can_fail) :: parse_tree.prog_data.can_fail, ((hlds.hlds_goal).compl_unify_typeinfos) :: list.list(parse_tree.prog_data.prog_var)).
+:- type unify_context
+    --->    unify_context(hlds.hlds_goal.unify_main_context, hlds.hlds_goal.unify_sub_contexts).
+:- type unify_main_context
+    --->    umc_explicit 
+    ;       umc_head(int)
+    ;       umc_head_result 
+    ;       umc_call(hlds.hlds_pred.call_id, int)
+    ;       umc_implicit(string).
+:- type unify_mode
+    --->    unify_modes_li_lf_ri_rf(parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst, parse_tree.prog_data.mer_inst).
+:- type unify_rhs
+    --->    rhs_var(parse_tree.prog_data.prog_var)
+    ;       rhs_functor(((hlds.hlds_goal).rhs_cons_id) :: parse_tree.prog_data.cons_id, ((hlds.hlds_goal).rhs_is_exist_constr) :: hlds.hlds_goal.is_exist_constr, ((hlds.hlds_goal).rhs_args) :: list.list(parse_tree.prog_data.prog_var))
+    ;       rhs_lambda_goal(((hlds.hlds_goal).rhs_purity) :: parse_tree.prog_data.purity, ((hlds.hlds_goal).rhs_groundness) :: parse_tree.prog_data.ho_groundness, ((hlds.hlds_goal).rhs_p_or_f) :: mdbcomp.prim_data.pred_or_func, ((hlds.hlds_goal).rhs_eval_method) :: parse_tree.prog_data.lambda_eval_method, ((hlds.hlds_goal).rhs_nonlocals) :: list.list(parse_tree.prog_data.prog_var), ((hlds.hlds_goal).rhs_lambda_quant_vars) :: list.list(parse_tree.prog_data.prog_var), ((hlds.hlds_goal).rhs_lambda_modes) :: list.list(parse_tree.prog_data.mer_mode), ((hlds.hlds_goal).rhs_detism) :: parse_tree.prog_data.determinism, ((hlds.hlds_goal).rhs_lambda_goal) :: hlds.hlds_goal.hlds_goal).
+:- type unify_sub_context
+    --->    unify_sub_context(parse_tree.prog_data.cons_id, int).
+:- type unify_sub_contexts == list.list(hlds.hlds_goal.unify_sub_context).
+:- inst (goal_expr_conj) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(conj(ground, ground)).
+:- inst (goal_expr_disj) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(disj(ground)).
+:- inst (goal_expr_foreign_proc) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(call_foreign_proc(ground, ground, ground, ground, ground, ground, ground)).
+:- inst (goal_expr_generic_call) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(generic_call(ground, ground, ground, ground, ground)).
+:- inst (goal_expr_ite) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(if_then_else(ground, ground, ground, ground)).
+:- inst (goal_expr_neg) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(negation(ground)).
+:- inst (goal_expr_parallel_conj) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(conj(bound(parallel_conj), ground)).
+:- inst (goal_expr_plain_call) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(plain_call(ground, ground, ground, ground, ground, ground)).
+:- inst (goal_expr_plain_conj) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(conj(bound(plain_conj), ground)).
+:- inst (goal_expr_scope) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(scope(ground, ground)).
+:- inst (goal_expr_shorthand) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(shorthand(ground)).
+:- inst (goal_expr_switch) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(switch(ground, ground, ground)).
+:- inst (goal_expr_unify) for (hlds.hlds_goal).hlds_goal_expr/0 == bound(unify(ground, ground, ground, ground, ground)).
+:- inst (goal_plain_call) for (hlds.hlds_goal).hlds_goal/0 == bound(hlds_goal(((hlds.hlds_goal).goal_expr_plain_call), ground)).
+:- inst (rhs_lambda_goal) for (hlds.hlds_goal).unify_rhs/0 == bound(rhs_lambda_goal(ground, ground, ground, ground, ground, ground, ground, ground, ground)).
+:- inst (unification_assign) for (hlds.hlds_goal).unification/0 == bound(assign(ground, ground)).
+:- inst (unification_complicated_unify) for (hlds.hlds_goal).unification/0 == bound(complicated_unify(ground, ground, ground)).
+:- inst (unification_construct) for (hlds.hlds_goal).unification/0 == bound(construct(ground, ground, ground, ground, ground, ground, ground)).
+:- inst (unification_deconstruct) for (hlds.hlds_goal).unification/0 == bound(deconstruct(ground, ground, ground, ground, ground, ground)).
+:- inst (unification_simple_test) for (hlds.hlds_goal).unification/0 == bound(simple_test(ground, ground)).
+:- type_representation(atomic_goal_type, du_repn(enum("unknown_atomic_goal_type", "top_level_atomic_goal", ["nested_atomic_goal"],  no_c_j_cs_e))).
+:- type_representation(atomic_interface_vars, is_word_aligned_ptr).
+:- type_representation(builtin_state, du_repn(enum("inline_builtin", "not_builtin", [],  no_c_j_cs_e))).
+:- type_representation(call_unify_context, is_word_aligned_ptr).
+:- type_representation(can_cgc, du_repn(enum("can_cgc", "cannot_cgc", [],  no_c_j_cs_e))).
+:- type_representation(case, is_word_aligned_ptr).
+:- type_representation(case_id, du_repn(notag("case_id", int,  no_c_j_cs_e))).
+:- type_representation(cast_kind, du_repn(enum("unsafe_type_cast", "unsafe_type_inst_cast", ["equiv_type_cast", "exists_cast"],  no_c_j_cs_e))).
+:- type_representation(catch_part, is_word_aligned_ptr).
+:- type_representation(cell_is_unique, du_repn(enum("cell_is_unique", "cell_is_shared", [],  no_c_j_cs_e))).
+:- type_representation(cell_to_reuse, is_word_aligned_ptr).
+:- type_representation(conj_type, du_repn(enum("plain_conj", "parallel_conj", [],  no_c_j_cs_e))).
+:- type_representation(contains_trace_goal, du_repn(enum("contains_trace_goal", "contains_no_trace_goal", [],  no_c_j_cs_e))).
+:- type_representation(ctgc_goal_info, is_word_aligned_ptr).
+:- type_representation(dp_coverage_goal_info, is_word_aligned_ptr).
+:- type_representation(dp_goal_info, is_word_aligned_ptr).
+:- type_representation(force_pruning, du_repn(enum("force_pruning", "dont_force_pruning", [],  no_c_j_cs_e))).
+:- type_representation(foreign_arg, is_word_aligned_ptr).
+:- type_representation(from_ground_term_kind, du_repn(enum("from_ground_term_initial", "from_ground_term_construct", ["from_ground_term_deconstruct", "from_ground_term_other"],  no_c_j_cs_e))).
+:- type_representation(goal_feature, du_repn(enum("feature_constraint", "feature_from_head", ["feature_not_impure_for_determinism", "feature_stack_opt", "feature_tuple_opt", "feature_call_table_gen", "feature_preserve_backtrack_into", "feature_save_deep_excp_vars", "feature_hide_debug_event", "feature_deep_self_tail_rec_call", "feature_debug_self_tail_rec_call", "feature_self_or_mutual_tail_rec_call", "feature_obvious_nontail_rec_call", "feature_keep_constant_binding", "feature_dont_warn_singleton", "feature_state_var_copy", "feature_duplicated_for_switch", "feature_mode_check_clauses_goal", "feature_will_not_modify_trail", "feature_will_not_call_mm_tabled", "feature_contains_trace", "feature_pretest_equality", "feature_pretest_equality_condition", "feature_lambda_undetermined_mode", "feature_contains_stm_inner_outer", "feature_do_not_tailcall", "feature_do_not_warn_implicit_stream", "feature_lifted_by_cse", "feature_lambda_from_try"],  no_c_j_cs_e))).
+:- type_representation(goal_is_mdprof_inst, du_repn(enum("goal_is_mdprof_inst", "goal_is_not_mdprof_inst", [],  no_c_j_cs_e))).
+:- type_representation(goal_trivial, du_repn(enum("goal_is_trivial", "goal_is_nontrivial", [],  no_c_j_cs_e))).
+:- type_representation(hlds_goal, is_word_aligned_ptr).
+:- type_representation(hlds_goal_info, is_word_aligned_ptr).
+:- type_representation(hlds_goals, is_eqv_to(list.list(hlds.hlds_goal.hlds_goal))).
+:- type_representation(ho_values, is_eqv_to(map.map(parse_tree.prog_data.prog_var, set.set(hlds.hlds_pred.pred_proc_id)))).
+:- type_representation(incremental_rename_map, is_eqv_to(map.map(mdbcomp.goal_path.goal_id, assoc_list.assoc_list(parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var)))).
+:- type_representation(is_conditional, du_repn(enum("conditional_reuse", "unconditional_reuse", [],  no_c_j_cs_e))).
+:- type_representation(is_exist_constr, du_repn(enum("is_not_exist_constr", "is_exist_constr", [],  no_c_j_cs_e))).
+:- type_representation(is_first_disjunct, du_repn(enum("is_first_disjunct", "is_not_first_disjunct", [],  no_c_j_cs_e))).
+:- type_representation(lc_use_parent_stack, du_repn(enum("lc_use_parent_stack_frame", "lc_create_frame_on_child_stack", [],  no_c_j_cs_e))).
+:- type_representation(missed_message, is_eqv_to(string)).
+:- type_representation(mode_constr_goal_info, is_word_aligned_ptr).
+:- type_representation(needs_update, du_repn(enum("needs_update", "does_not_need_update", [],  no_c_j_cs_e))).
+:- type_representation(port_counts_give_coverage_after, du_repn(enum("port_counts_give_coverage_after", "no_port_counts_give_coverage_after", [],  no_c_j_cs_e))).
+:- type_representation(promise_solutions_kind, du_repn(enum("equivalent_solutions", "equivalent_solution_sets", ["equivalent_solution_sets_arbitrary"],  no_c_j_cs_e))).
+:- type_representation(rbmm_goal_info, is_word_aligned_ptr).
+:- type_representation(removable, du_repn(enum("removable", "not_removable", [],  no_c_j_cs_e))).
+:- type_representation(tagged_case, is_word_aligned_ptr).
+:- type_representation(trace_mutable_var_hlds, is_word_aligned_ptr).
+:- type_representation(try_io_state_vars, is_word_aligned_ptr).
+:- type_representation(unify_context, is_word_aligned_ptr).
+:- type_representation(unify_mode, is_word_aligned_ptr).
+:- type_representation(unify_sub_context, is_word_aligned_ptr).
+:- type_representation(unify_sub_contexts, is_eqv_to(list.list(hlds.hlds_goal.unify_sub_context))).

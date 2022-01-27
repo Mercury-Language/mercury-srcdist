@@ -1,0 +1,5 @@
+:- module top_procs.
+:- interface.
+:- type line_group(FL, LL).
+:- type_representation(compare_line_groups_func(V_1, V_2), is_eqv_to((func(top_procs.line_group(V_1, V_2), top_procs.line_group(V_1, V_2)) = comparison_result))).
+:- type_representation(compare_proc_statics, is_eqv_to((func(deep, int, int) = comparison_result))).
