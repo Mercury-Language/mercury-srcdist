@@ -1,0 +1,13 @@
+module(1, "tree_bitset.m",
+	tree_bitset,
+	{},
+	{builtin, enum, list, term, private_builtin, set},
+	{builtin, enum, list, term, bool, int, list, maybe, pair, require, private_builtin, set},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

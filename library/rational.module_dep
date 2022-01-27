@@ -1,0 +1,13 @@
+module(1, "rational.m",
+	rational,
+	{},
+	{builtin, integer, private_builtin},
+	{builtin, integer, require, private_builtin},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).

@@ -1,0 +1,387 @@
+:- module bimap.
+:- use_module assoc_list, builtin, list, map, maybe, pair, private_builtin, require.
+:- type bimap(K, V)
+	--->	bimap(tree234.tree234(K, V), tree234.tree234(V, K)).
+:- pred bimap.overlay_2(list.list(pair.pair(K_1, V_2)), bimap.bimap(K_1, V_2), bimap.bimap(K_1, V_2)).
+:- mode bimap.overlay_2((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred bimap.map_keys_2(pred(V_1, K_2, L_3), list.list(pair.pair(K_2, V_1)), list.list(pair.pair(L_3, V_1)), list.list(pair.pair(L_3, V_1))).
+:- mode bimap.map_keys_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred bimap.map_keys_func_2((func(V_1, K_2) = L_3), list.list(pair.pair(K_2, V_1)), list.list(pair.pair(L_3, V_1)), list.list(pair.pair(L_3, V_1))).
+:- mode bimap.map_keys_func_2(builtin.in((func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred bimap.map_values_2(pred(K_1, V_2, W_3), list.list(pair.pair(K_1, V_2)), list.list(pair.pair(K_1, W_3)), list.list(pair.pair(K_1, W_3))).
+:- mode bimap.map_values_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred bimap.map_values_func_2((func(K_1, V_2) = W_3), list.list(pair.pair(K_1, V_2)), list.list(pair.pair(K_1, W_3)), list.list(pair.pair(K_1, W_3))).
+:- mode bimap.map_values_func_2(builtin.in((func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.out)) is det.
+bimap.init = BM_2 :-
+    bimap.init(BM_2).
+bimap.init(B_2) :-
+    map.init(Forward_3),
+    map.init(Reverse_4),
+    B_2 = bimap.bimap(Forward_3, Reverse_4) : bimap.bimap(K_1, V_2).
+bimap.singleton(K_4, V_5) = B_6 :-
+    Forward_7 = map.singleton(K_4, V_5),
+    Reverse_8 = map.singleton(V_5, K_4),
+    B_6 = bimap.bimap(Forward_7, Reverse_8) : bimap.bimap(K_1, V_2).
+bimap.is_empty(bimap.bimap(Forward_2, V_3)) :-
+    map.is_empty(Forward_2).
+bimap.equal(BMA_3, BMB_4) :-
+    BMA_3 = bimap.bimap(ForwardA_5, _ReverseA_6) : bimap.bimap(K_1, V_2),
+    BMB_4 = bimap.bimap(ForwardB_7, _ReverseB_8) : bimap.bimap(K_1, V_2),
+    map.equal(ForwardA_5, ForwardB_7).
+bimap.search(bimap.bimap(Forward_4, Reverse_5), K_6, V_7) :-
+    map.search(Forward_4, K_6, V_7),
+    map.search(Reverse_5, V_7, K_6).
+bimap.forward_search(BM_4, K_5) = V_6 :-
+    bimap.forward_search(BM_4, K_5, V_6).
+bimap.forward_search(bimap.bimap(Forward_4, V_5), K_6, V_7) :-
+    map.search(Forward_4, K_6, V_7).
+bimap.reverse_search(BM_4, V_5) = K_6 :-
+    bimap.reverse_search(BM_4, K_6, V_5).
+bimap.reverse_search(bimap.bimap(V_4, Reverse_5), K_6, V_7) :-
+    map.search(Reverse_5, V_7, K_6).
+bimap.lookup(BM_4, K_5) = V_6 :-
+    bimap.lookup(BM_4, K_5, V_6).
+bimap.lookup(bimap.bimap(Forward_4, V_5), K_6, V_7) :-
+    map.lookup(Forward_4, K_6, V_7).
+bimap.reverse_lookup(BM_4, V_5) = K_6 :-
+    bimap.reverse_lookup(BM_4, K_6, V_5).
+bimap.reverse_lookup(bimap.bimap(V_4, Reverse_5), K_6, V_7) :-
+    map.lookup(Reverse_5, V_7, K_6).
+bimap.ordinates(BM_3) = Ks_4 :-
+    bimap.ordinates(BM_3, Ks_4).
+bimap.ordinates(bimap.bimap(Forward_3, V_4), Os_5) :-
+    map.keys(Forward_3, Os_5).
+bimap.coordinates(BM_3) = Vs_4 :-
+    bimap.coordinates(BM_3, Vs_4).
+bimap.coordinates(bimap.bimap(V_3, Reverse_4), Cs_5) :-
+    map.keys(Reverse_4, Cs_5).
+bimap.contains_key(bimap.bimap(Forward_3, V_4), K_5) :-
+    map.contains(Forward_3, K_5).
+bimap.contains_value(bimap.bimap(V_3, Reverse_4), V_5) :-
+    map.contains(Reverse_4, V_5).
+bimap.insert(STATE_VARIABLE_BM_0_8, K_6, V_7) = STATE_VARIABLE_BM_9 :-
+    bimap.insert(K_6, V_7, STATE_VARIABLE_BM_0_8, STATE_VARIABLE_BM_9).
+bimap.insert(K_5, V_6, bimap.bimap(STATE_VARIABLE_Forward_0_9, STATE_VARIABLE_Reverse_0_10), bimap.bimap(STATE_VARIABLE_Forward_11, STATE_VARIABLE_Reverse_12)) :-
+    map.insert(K_5, V_6, STATE_VARIABLE_Forward_0_9, STATE_VARIABLE_Forward_11),
+    map.insert(V_6, K_5, STATE_VARIABLE_Reverse_0_10, STATE_VARIABLE_Reverse_12).
+bimap.det_insert(STATE_VARIABLE_BM_0_8, K_6, V_7) = STATE_VARIABLE_BM_9 :-
+    bimap.det_insert(K_6, V_7, STATE_VARIABLE_BM_0_8, STATE_VARIABLE_BM_9).
+bimap.det_insert(K_5, V_6, STATE_VARIABLE_Bimap_0_12, STATE_VARIABLE_Bimap_13) :-
+    STATE_VARIABLE_Bimap_0_12 = bimap.bimap(Forward0_8, Reverse0_9) : bimap.bimap(K_1, V_2),
+    map.det_insert(K_5, V_6, Forward0_8, Forward_10),
+    map.det_insert(V_6, K_5, Reverse0_9, Reverse_11),
+    STATE_VARIABLE_Bimap_13 = bimap.bimap(Forward_10, Reverse_11) : bimap.bimap(K_1, V_2).
+bimap.set(STATE_VARIABLE_BM_0_8, K_6, V_7) = STATE_VARIABLE_BM_9 :-
+    bimap.set(K_6, V_7, STATE_VARIABLE_BM_0_8, STATE_VARIABLE_BM_9).
+bimap.insert_from_assoc_list(List_4, BM0_5) = BM_6 :-
+    bimap.insert_from_assoc_list(List_4, BM0_5, BM_6).
+bimap.det_insert_from_assoc_list(KVs_4, STATE_VARIABLE_BM_0_6) = STATE_VARIABLE_BM_7 :-
+    bimap.det_insert_from_assoc_list(KVs_4, STATE_VARIABLE_BM_0_6, STATE_VARIABLE_BM_7).
+bimap.det_insert_from_corresponding_lists(Ks_5, Vs_6, STATE_VARIABLE_BM_0_8) = STATE_VARIABLE_BM_9 :-
+    bimap.det_insert_from_corresponding_lists(Ks_5, Vs_6, STATE_VARIABLE_BM_0_8, STATE_VARIABLE_BM_9).
+bimap.set_from_assoc_list(KVs_4, BM0_5) = BM_6 :-
+    bimap.set_from_assoc_list(KVs_4, BM0_5, BM_6).
+bimap.set_from_corresponding_lists(Ks_5, Vs_6, BM0_7) = BM_8 :-
+    bimap.set_from_corresponding_lists(Ks_5, Vs_6, BM0_7, BM_8).
+bimap.delete_key(STATE_VARIABLE_BM_0_6, K_5) = STATE_VARIABLE_BM_7 :-
+    bimap.delete_key(K_5, STATE_VARIABLE_BM_0_6, STATE_VARIABLE_BM_7).
+bimap.delete_value(STATE_VARIABLE_BM_0_6, V_5) = STATE_VARIABLE_BM_7 :-
+    bimap.delete_value(V_5, STATE_VARIABLE_BM_0_6, STATE_VARIABLE_BM_7).
+bimap.delete_keys(BM0_4, Ks_5) = BM_6 :-
+    bimap.delete_keys(Ks_5, BM0_4, BM_6).
+bimap.delete_values(BM0_4, Vs_5) = BM_6 :-
+    bimap.delete_values(Vs_5, BM0_4, BM_6).
+bimap.overlay(BMA_4, BMB_5) = BM_6 :-
+    bimap.overlay(BMA_4, BMB_5, BM_6).
+bimap.overlay(BMA_4, BMB_5, BM_6) :-
+    bimap.to_assoc_list(BMB_5, KVBs_7),
+    bimap.overlay_2(KVBs_7, BMA_4, BM_6).
+bimap.count(BM_3) = Count_4 :-
+    BM_3 = bimap.bimap(Forward_5, V_6) : bimap.bimap(K_1, V_2),
+    Count_4 = map.count(Forward_5).
+bimap.to_assoc_list(BM_3) = AL_4 :-
+    bimap.to_assoc_list(BM_3, AL_4).
+bimap.to_assoc_list(bimap.bimap(Forward_3, V_4), L_5) :-
+    map.to_assoc_list(Forward_3, L_5).
+bimap.from_assoc_list(AL_3) = BM_4 :-
+    bimap.from_assoc_list(AL_3, BM_4).
+bimap.from_assoc_list(L_3, Bimap_4) :-
+    V_5 = bimap.init,
+    bimap.insert_from_assoc_list(L_3, V_5, Bimap_4).
+bimap.det_from_assoc_list(L_3) = Bimap_4 :-
+    bimap.det_from_assoc_list(L_3, Bimap_4).
+bimap.det_from_assoc_list(L_3, Bimap_4) :-
+    V_5 = bimap.init,
+    bimap.det_insert_from_assoc_list(L_3, V_5, Bimap_4).
+bimap.from_corresponding_lists(Ks_4, Vs_5) = BM_6 :-
+    bimap.from_corresponding_lists(Ks_4, Vs_5, BM_6).
+bimap.from_corresponding_lists(Ks_4, Vs_5, BM_6) :-
+    assoc_list.from_corresponding_lists(Ks_4, Vs_5, L_7),
+    bimap.from_assoc_list(L_7, BM_6).
+bimap.det_from_corresponding_lists(Ks_4, Vs_5) = BM_6 :-
+    bimap.det_from_corresponding_lists(Ks_4, Vs_5, BM_6).
+bimap.det_from_corresponding_lists(Ks_4, Vs_5, BM_6) :-
+    assoc_list.from_corresponding_lists(Ks_4, Vs_5, L_7),
+    bimap.det_from_assoc_list(L_7, BM_6).
+bimap.apply_forward_map_to_list(BM_4, Ks_5) = Vs_6 :-
+    bimap.apply_forward_map_to_list(BM_4, Ks_5, Vs_6).
+bimap.apply_forward_map_to_list(bimap.bimap(Forward_4, V_5), Ks_6, Vs_7) :-
+    map.apply_to_list(Ks_6, Forward_4, Vs_7).
+bimap.apply_reverse_map_to_list(BM_4, Vs_5) = Ks_6 :-
+    bimap.apply_reverse_map_to_list(BM_4, Vs_5, Ks_6).
+bimap.apply_reverse_map_to_list(bimap.bimap(V_4, Reverse_5), Vs_6, Ks_7) :-
+    map.apply_to_list(Vs_6, Reverse_5, Ks_7).
+bimap.map_keys(KeyMap_4, BM0_5) = BM_6 :-
+    bimap.to_assoc_list(BM0_5, L0_7),
+    V_9 = list.[] : list.list(pair.pair(L_3, V_1)),
+    bimap.map_keys_func_2(KeyMap_4, L0_7, V_9, L_8),
+    bimap.det_from_assoc_list(L_8, BM_6).
+bimap.map_keys(KeyMap_4, BM0_5, BM_6) :-
+    bimap.to_assoc_list(BM0_5, L0_7),
+    V_9 = list.[] : list.list(pair.pair(L_3, V_1)),
+    bimap.map_keys_2(KeyMap_4, L0_7, V_9, L_8),
+    bimap.det_from_assoc_list(L_8, BM_6).
+bimap.map_values(ValueMap_4, BM0_5) = BM_6 :-
+    bimap.to_assoc_list(BM0_5, L0_7),
+    V_9 = list.[] : list.list(pair.pair(K_1, W_3)),
+    bimap.map_values_func_2(ValueMap_4, L0_7, V_9, L_8),
+    bimap.det_from_assoc_list(L_8, BM_6).
+bimap.map_values(ValueMap_4, BM0_5, BM_6) :-
+    bimap.to_assoc_list(BM0_5, L0_7),
+    V_9 = list.[] : list.list(pair.pair(K_1, W_3)),
+    bimap.map_values_2(ValueMap_4, L0_7, V_9, L_8),
+    bimap.det_from_assoc_list(L_8, BM_6).
+bimap.foldl(Func_5, bimap.bimap(Forward_6, V_7), List0_8) = HeadVar__4_4 :-
+    HeadVar__4_4 = map.foldl(Func_5, Forward_6, List0_8).
+bimap.foldl(Pred_5, bimap.bimap(Forward_6, V_7), STATE_VARIABLE_List_0_9, STATE_VARIABLE_List_10) :-
+    map.foldl(Pred_5, Forward_6, STATE_VARIABLE_List_0_9, STATE_VARIABLE_List_10).
+bimap.foldl2(Pred_7, bimap.bimap(Forward_8, V_9), STATE_VARIABLE_A_0_12, STATE_VARIABLE_A_13, STATE_VARIABLE_B_0_14, STATE_VARIABLE_B_15) :-
+    map.foldl2(Pred_7, Forward_8, STATE_VARIABLE_A_0_12, STATE_VARIABLE_A_13, STATE_VARIABLE_B_0_14, STATE_VARIABLE_B_15).
+bimap.foldl3(Pred_9, bimap.bimap(Forward_10, V_11), STATE_VARIABLE_A_0_15, STATE_VARIABLE_A_16, STATE_VARIABLE_B_0_17, STATE_VARIABLE_B_18, STATE_VARIABLE_C_0_19, STATE_VARIABLE_C_20) :-
+    map.foldl3(Pred_9, Forward_10, STATE_VARIABLE_A_0_15, STATE_VARIABLE_A_16, STATE_VARIABLE_B_0_17, STATE_VARIABLE_B_18, STATE_VARIABLE_C_0_19, STATE_VARIABLE_C_20).
+bimap.forward_map(bimap.bimap(Forward_3, V_4)) = Forward_3.
+bimap.reverse_map(bimap.bimap(V_3, Reverse_4)) = Reverse_4.
+bimap.map_keys_2(_KeyMap_5, list.[], STATE_VARIABLE_List_0_7, STATE_VARIABLE_List_8) :-
+    STATE_VARIABLE_List_8 = STATE_VARIABLE_List_0_7.
+bimap.map_keys_2(KeyMap_9, list.[V_17 | Tail0_12], STATE_VARIABLE_List_0_15, STATE_VARIABLE_List_16) :-
+    V_17 = pair.(Key0_10 - Value_11) : pair.pair(K_2, V_1),
+    call(KeyMap_9, Value_11, Key0_10, Key_14),
+    STATE_VARIABLE_List_18_18 = list.[V_19 | STATE_VARIABLE_List_0_15] : list.list(pair.pair(L_3, V_1)),
+    V_19 = pair.(Key_14 - Value_11) : pair.pair(L_3, V_1),
+    bimap.map_keys_2(KeyMap_9, Tail0_12, STATE_VARIABLE_List_18_18, STATE_VARIABLE_List_16).
+bimap.map_keys_func_2(_KeyMap_5, list.[], STATE_VARIABLE_List_0_7, STATE_VARIABLE_List_8) :-
+    STATE_VARIABLE_List_8 = STATE_VARIABLE_List_0_7.
+bimap.map_keys_func_2(KeyMap_9, list.[V_17 | Tail0_12], STATE_VARIABLE_List_0_15, STATE_VARIABLE_List_16) :-
+    V_17 = pair.(Key0_10 - Value_11) : pair.pair(K_2, V_1),
+    Key_14 = apply(KeyMap_9, Value_11, Key0_10),
+    STATE_VARIABLE_List_18_18 = list.[V_19 | STATE_VARIABLE_List_0_15] : list.list(pair.pair(L_3, V_1)),
+    V_19 = pair.(Key_14 - Value_11) : pair.pair(L_3, V_1),
+    bimap.map_keys_func_2(KeyMap_9, Tail0_12, STATE_VARIABLE_List_18_18, STATE_VARIABLE_List_16).
+bimap.map_values_2(_ValueMap_5, list.[], STATE_VARIABLE_List_0_7, STATE_VARIABLE_List_8) :-
+    STATE_VARIABLE_List_8 = STATE_VARIABLE_List_0_7.
+bimap.map_values_2(ValueMap_9, list.[V_17 | Tail0_12], STATE_VARIABLE_List_0_15, STATE_VARIABLE_List_16) :-
+    V_17 = pair.(Key_10 - Value0_11) : pair.pair(K_1, V_2),
+    call(ValueMap_9, Key_10, Value0_11, Value_14),
+    STATE_VARIABLE_List_18_18 = list.[V_19 | STATE_VARIABLE_List_0_15] : list.list(pair.pair(K_1, W_3)),
+    V_19 = pair.(Key_10 - Value_14) : pair.pair(K_1, W_3),
+    bimap.map_values_2(ValueMap_9, Tail0_12, STATE_VARIABLE_List_18_18, STATE_VARIABLE_List_16).
+bimap.map_values_func_2(_ValueMap_5, list.[], STATE_VARIABLE_List_0_7, STATE_VARIABLE_List_8) :-
+    STATE_VARIABLE_List_8 = STATE_VARIABLE_List_0_7.
+bimap.map_values_func_2(ValueMap_9, list.[V_17 | Tail0_12], STATE_VARIABLE_List_0_15, STATE_VARIABLE_List_16) :-
+    V_17 = pair.(Key_10 - Value0_11) : pair.pair(K_1, V_2),
+    Value_14 = apply(ValueMap_9, Key_10, Value0_11),
+    STATE_VARIABLE_List_18_18 = list.[V_19 | STATE_VARIABLE_List_0_15] : list.list(pair.pair(K_1, W_3)),
+    V_19 = pair.(Key_10 - Value_14) : pair.pair(K_1, W_3),
+    bimap.map_values_func_2(ValueMap_9, Tail0_12, STATE_VARIABLE_List_18_18, STATE_VARIABLE_List_16).
+:- pragma exceptions(function, (bimap.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.init), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.singleton), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.is_empty), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.equal), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.search), 3, 1, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.forward_search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.forward_search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.reverse_search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.reverse_search), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.reverse_lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.reverse_lookup), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.ordinates), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.ordinates), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.coordinates), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.coordinates), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.contains_key), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.contains_value), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.det_insert), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.search_insert), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.set), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.det_insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.det_insert_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.det_insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.det_insert_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.set_from_assoc_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.set_from_corresponding_lists), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.delete_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.delete_key), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.delete_value), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.delete_value), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.delete_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.delete_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.delete_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.delete_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.overlay), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.overlay), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.count), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.to_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.to_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.det_from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.det_from_assoc_list), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.det_from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.det_from_corresponding_lists), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.apply_forward_map_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.apply_forward_map_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.apply_reverse_map_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.apply_reverse_map_to_list), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.map_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.map_keys), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.map_values), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl), 4, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl), 4, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl), 4, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl), 4, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl2), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl2), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl2), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl2), 6, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl2), 6, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl2), 6, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl3), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl3), 8, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl3), 8, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl3), 8, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl3), 8, 4, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl3), 8, 5, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl3), 8, 6, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.foldl3), 8, 7, may_throw(user_exception)).
+:- pragma exceptions(function, (bimap.forward_map), 2, 0, will_not_throw).
+:- pragma exceptions(function, (bimap.reverse_map), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (bimap.overlay_2), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.map_keys_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.map_keys_func_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.map_values_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (bimap.map_values_func_2), 4, 0, may_throw(user_exception)).
+:- pragma termination_info((bimap.init) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.init((builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.singleton((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.is_empty((builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(bimap.equal((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(bimap.search((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.search((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(bimap.forward_search((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.forward_search((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.reverse_search((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.reverse_search((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(bimap.lookup((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.lookup((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.reverse_lookup((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.reverse_lookup((builtin.in), (builtin.out), (builtin.in)), infinite, can_loop).
+:- pragma termination_info(bimap.ordinates((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.ordinates((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.coordinates((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.coordinates((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.contains_key((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(bimap.contains_value((builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(bimap.insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.det_insert((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.det_insert((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.search_insert((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.set((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.set((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.insert_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.det_insert_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.det_insert_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.det_insert_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.set_from_assoc_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.set_from_assoc_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.set_from_corresponding_lists((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.delete_key((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.delete_key((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.delete_value((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.delete_value((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.delete_keys((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.delete_keys((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.delete_values((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.delete_values((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.overlay((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.overlay((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.count((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.to_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.to_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.from_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.from_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.det_from_assoc_list((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.det_from_assoc_list((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.from_corresponding_lists((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.det_from_corresponding_lists((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.det_from_corresponding_lists((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.apply_forward_map_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.apply_forward_map_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.apply_reverse_map_to_list((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.apply_reverse_map_to_list((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.map_keys((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.map_keys(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.map_values((builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.map_values(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(bimap.foldl((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl((pred((builtin.in), (builtin.in), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl2((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl2((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl3((pred((builtin.in), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)) is det), (builtin.in), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.mdi), (builtin.muo)), infinite, can_loop).
+:- pragma termination_info(bimap.foldl3((pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is semidet), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(bimap.forward_map((builtin.in)) = (builtin.out), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(bimap.reverse_map((builtin.in)) = (builtin.out), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(bimap.overlay_2((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.map_keys_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.map_keys_func_2(builtin.in((func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.map_values_2(builtin.in((pred((builtin.in), (builtin.in), (builtin.out)) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(bimap.map_values_func_2(builtin.in((func((builtin.in), (builtin.in)) = (builtin.out) is det)), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).

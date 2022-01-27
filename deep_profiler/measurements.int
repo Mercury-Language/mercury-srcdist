@@ -1,0 +1,107 @@
+:- module measurements.
+:- interface.
+:- import_module array.
+:- import_module list.
+:- import_module maybe.
+:- import_module mdbcomp.
+:- import_module measurement_units.
+:- import_module (mdbcomp.feedback).
+:- import_module ((mdbcomp.feedback).automatic_parallelism).
+:- type cs_cost_csq.
+:- type goal_cost_csq.
+:- type inherit_prof_info.
+:- type is_active
+	--->	is_active 
+	;	is_not_active .
+:- type own_prof_info.
+:- type parallel_exec_metrics_incomplete.
+:- type parallelism_amount.
+:- type proc_cost_csq.
+:- type recursion_depth.
+:- type static_coverage_info.
+:- pred add_coverage_arrays(array.array(int), measurements.static_coverage_info, measurements.static_coverage_info).
+:- mode add_coverage_arrays((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func add_goal_costs_branch(int, measurements.goal_cost_csq, measurements.goal_cost_csq) = measurements.goal_cost_csq.
+:- func add_goal_costs_seq(measurements.goal_cost_csq, measurements.goal_cost_csq) = measurements.goal_cost_csq.
+:- func add_inherit_to_inherit(measurements.inherit_prof_info, measurements.inherit_prof_info) = measurements.inherit_prof_info.
+:- func add_inherit_to_own(measurements.inherit_prof_info, measurements.own_prof_info) = measurements.own_prof_info.
+:- func add_own_to_inherit(measurements.own_prof_info, measurements.inherit_prof_info) = measurements.inherit_prof_info.
+:- func add_own_to_own(measurements.own_prof_info, measurements.own_prof_info) = measurements.own_prof_info.
+:- func allocs(measurements.own_prof_info) = int.
+:- pred array_to_static_coverage(array.array(int), measurements.static_coverage_info).
+:- mode array_to_static_coverage((builtin.in), (builtin.out)) is det.
+:- func atomic_goal_cost(int) = measurements.goal_cost_csq.
+:- func build_cs_cost_csq(int, float) = measurements.cs_cost_csq.
+:- func build_cs_cost_csq_percall(float, float) = measurements.cs_cost_csq.
+:- func build_proc_cost_csq(int, int, int) = measurements.proc_cost_csq.
+:- func call_goal_cost(int, float) = measurements.goal_cost_csq.
+:- func call_goal_cost(measurements.cs_cost_csq) = measurements.goal_cost_csq.
+:- func calls(measurements.own_prof_info) = int.
+:- func callseqs(measurements.own_prof_info) = int.
+:- func compress_profile(int, int, int, int, int, int, int, int) = measurements.own_prof_info.
+:- func compress_profile(measurements.own_prof_info) = measurements.own_prof_info.
+:- func compute_is_active(measurements.own_prof_info) = measurements.is_active.
+:- func cs_cost_get_calls(measurements.cs_cost_csq) = float.
+:- func cs_cost_get_percall(measurements.cs_cost_csq) = float.
+:- func cs_cost_get_total(measurements.cs_cost_csq) = float.
+:- func cs_cost_per_proc_call(measurements.cs_cost_csq, measurements.proc_cost_csq) = measurements.cs_cost_csq.
+:- pred cs_cost_to_proc_cost(measurements.cs_cost_csq, int, measurements.proc_cost_csq).
+:- mode cs_cost_to_proc_cost((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func dead_goal_cost = measurements.goal_cost_csq.
+:- pred decompress_profile(measurements.own_prof_info, int, int, int, int, int, int, int, int, int).
+:- mode decompress_profile((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred exceeded_desired_parallelism(float, measurements.parallelism_amount).
+:- mode exceeded_desired_parallelism((builtin.in), (builtin.in)) is semidet.
+:- func excps(measurements.own_prof_info) = int.
+:- func exits(measurements.own_prof_info) = int.
+:- func fails(measurements.own_prof_info) = int.
+:- func finalise_parallel_exec_metrics(measurements.parallel_exec_metrics_incomplete) = mdbcomp.feedback.automatic_parallelism.parallel_exec_metrics.
+:- func goal_cost_change_calls(measurements.goal_cost_csq, int) = measurements.goal_cost_csq.
+:- func goal_cost_get_calls(measurements.goal_cost_csq) = int.
+:- func goal_cost_get_percall(measurements.goal_cost_csq) = float.
+:- func goal_cost_get_total(measurements.goal_cost_csq) = float.
+:- func inherit_allocs(measurements.inherit_prof_info) = int.
+:- func inherit_callseqs(measurements.inherit_prof_info) = int.
+:- func inherit_quanta(measurements.inherit_prof_info) = int.
+:- func inherit_words(measurements.inherit_prof_info) = int.
+:- func init_empty_parallel_exec_metrics(float, float, int, float, float, float, float) = measurements.parallel_exec_metrics_incomplete.
+:- func init_parallel_exec_metrics_incomplete(measurements.parallel_exec_metrics_incomplete, float, float, float, float, float) = measurements.parallel_exec_metrics_incomplete.
+:- pred is_zero_inherit_prof_info(measurements.inherit_prof_info).
+:- mode is_zero_inherit_prof_info((builtin.in)) is semidet.
+:- pred is_zero_own_prof_info(measurements.own_prof_info).
+:- mode is_zero_own_prof_info((builtin.in)) is semidet.
+:- func no_parallelism = measurements.parallelism_amount.
+:- func own_to_string(measurements.own_prof_info) = string.
+:- func parallel_exec_metrics_get_num_calls(measurements.parallel_exec_metrics_incomplete) = int.
+:- func proc_cost_get_calls_nonrec(measurements.proc_cost_csq) = int.
+:- func proc_cost_get_calls_rec(measurements.proc_cost_csq) = int.
+:- func proc_cost_get_calls_total(measurements.proc_cost_csq) = int.
+:- func proc_cost_get_total(measurements.proc_cost_csq) = float.
+:- func quanta(measurements.own_prof_info) = int.
+:- pred recursion_depth_descend(measurements.recursion_depth, measurements.recursion_depth).
+:- mode recursion_depth_descend((builtin.in), (builtin.out)) is det.
+:- func recursion_depth_from_float(float) = measurements.recursion_depth.
+:- pred recursion_depth_is_base_case(measurements.recursion_depth).
+:- mode recursion_depth_is_base_case((builtin.in)) is semidet.
+:- func recursion_depth_to_float(measurements.recursion_depth) = float.
+:- func recursion_depth_to_int(measurements.recursion_depth) = int.
+:- func redos(measurements.own_prof_info) = int.
+:- func some_parallelism(float) = measurements.parallelism_amount.
+:- func static_coverage_maybe_get_coverage_points(measurements.static_coverage_info) = maybe.maybe(array.array(int)).
+:- pred sub_computation_parallelism(measurements.parallelism_amount, measurement_units.probability, measurements.parallelism_amount, measurements.parallelism_amount).
+:- mode sub_computation_parallelism((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred sub_computation_parallelism(measurements.parallelism_amount, measurement_units.probability, measurements.parallelism_amount).
+:- mode sub_computation_parallelism((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func subtract_inherit_from_inherit(measurements.inherit_prof_info, measurements.inherit_prof_info) = measurements.inherit_prof_info.
+:- func subtract_own_from_inherit(measurements.own_prof_info, measurements.inherit_prof_info) = measurements.inherit_prof_info.
+:- func sum_inherit_infos(list.list(measurements.inherit_prof_info)) = measurements.inherit_prof_info.
+:- func sum_own_infos(list.list(measurements.own_prof_info)) = measurements.own_prof_info.
+:- pred weighted_average(list.list(float), list.list(float), float).
+:- mode weighted_average((builtin.in), (builtin.in), (builtin.out)) is det.
+:- func words(measurements.own_prof_info) = int.
+:- func zero_cs_cost = measurements.cs_cost_csq.
+:- func zero_inherit_prof_info = measurements.inherit_prof_info.
+:- func zero_own_prof_info = measurements.own_prof_info.
+:- func zero_static_coverage = measurements.static_coverage_info.
+:- implementation.
+:- type static_coverage_info == maybe.maybe(array.array(int)).

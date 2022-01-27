@@ -1,0 +1,200 @@
+:- module time.
+:- use_module builtin, exception, int, io, list, maybe, private_builtin, require, stream, string, (string.format), (string.parse_util).
+:- type time_t_rep
+	--->	time_t_rep(builtin.c_pointer).
+:- pragma foreign_type(il, time_t_rep, "valuetype [mscorlib]System.DateTime")
+	where	comparison is (time.compare_time_t_reps).
+:- pragma foreign_type(c, time_t_rep, "time_t")
+	where	comparison is (time.compare_time_t_reps).
+:- pragma foreign_type(java, time_t_rep, "java.util.Date")
+	where	comparison is (time.compare_time_t_reps).
+:- pragma foreign_type(csharp, time_t_rep, "System.DateTime")
+	where	comparison is (time.compare_time_t_reps).
+:- pragma foreign_type(erlang, time_t_rep, "")
+	where	comparison is (time.compare_time_t_reps).
+:- type time_t
+	--->	time_t(time.time_t_rep).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", time).
+:- pragma foreign_import_module("Java", time).
+:- pragma foreign_import_module("IL", time).
+:- pragma foreign_import_module("Erlang", time).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("IL", bitmap).
+:- pragma foreign_import_module("Erlang", bitmap).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", stm_builtin).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("IL", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("C", store).
+:- pragma foreign_import_module("C#", store).
+:- pragma foreign_import_module("Java", store).
+:- pragma foreign_import_module("IL", store).
+:- pragma foreign_import_module("Erlang", store).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("Erlang", array).
+:- pred time.compare_time_t_reps(builtin.comparison_result, time.time_t_rep, time.time_t_rep).
+:- mode time.compare_time_t_reps((builtin.uo), (builtin.in), (builtin.in)) is det.
+:- pred time.c_difftime(time.time_t_rep, time.time_t_rep, float).
+:- mode time.c_difftime((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred time.c_localtime(time.time_t_rep, int, int, int, int, int, int, int, int, int).
+:- mode time.c_localtime((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred time.c_gmtime(time.time_t_rep, int, int, int, int, int, int, int, int, int).
+:- mode time.c_gmtime((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- func time.int_to_maybe_dst(int) = maybe.maybe(time.dst).
+:- mode time.int_to_maybe_dst((builtin.in)) = (builtin.out) is det.
+:- pred time.c_mktime(int, int, int, int, int, int, int, int, int, time.time_t_rep).
+:- mode time.c_mktime((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- func time.maybe_dst_to_int(maybe.maybe(time.dst)) = int.
+:- mode time.maybe_dst_to_int((builtin.in)) = (builtin.out) is det.
+:- pragma foreign_proc("C", time.clocks_per_sec = (Ret :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    Ret = (MR_Integer) CLOCKS_PER_SEC;
+").
+time.difftime(time.time_t(T1_4), time.time_t(T0_5)) = Diff_6 :-
+    time.c_difftime(T1_4, T0_5, Diff_6).
+time.localtime(time.time_t(Time_3)) = TM_4 :-
+    time.c_localtime(Time_3, Yr_5, Mnt_6, MD_7, Hrs_8, Min_9, Sec_10, YD_11, WD_12, N_13),
+    TM_4 = time.tm(Yr_5, Mnt_6, MD_7, Hrs_8, Min_9, Sec_10, YD_11, WD_12, V_14) : time.tm,
+    V_14 = time.int_to_maybe_dst(N_13).
+time.gmtime(time.time_t(Time_3)) = TM_4 :-
+    time.c_gmtime(Time_3, Yr_5, Mnt_6, MD_7, Hrs_8, Min_9, Sec_10, YD_11, WD_12, N_13),
+    TM_4 = time.tm(Yr_5, Mnt_6, MD_7, Hrs_8, Min_9, Sec_10, YD_11, WD_12, V_14) : time.tm,
+    V_14 = time.int_to_maybe_dst(N_13).
+time.mktime(TM_3) = time.time_t(Time_4) :-
+    TM_3 = time.tm(Yr_5, Mnt_6, MD_7, Hrs_8, Min_9, Sec_10, YD_11, WD_12, DST_13) : time.tm,
+    V_14 = time.maybe_dst_to_int(DST_13),
+    time.c_mktime(Yr_5, Mnt_6, MD_7, Hrs_8, Min_9, Sec_10, YD_11, WD_12, V_14, Time_4).
+time.ctime(Time_3) = HeadVar__2_2 :-
+    HeadVar__2_2 = time.asctime(V_4),
+    V_4 = time.localtime(Time_3).
+:- pragma foreign_proc("C", time.c_difftime(T1 :: (builtin.in), T0 :: (builtin.in), Diff :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    Diff = (MR_Float) difftime(T1, T0);
+").
+:- pragma foreign_proc("C", time.c_localtime(Time :: (builtin.in), Yr :: (builtin.out), Mnt :: (builtin.out), MD :: (builtin.out), Hrs :: (builtin.out), Min :: (builtin.out), Sec :: (builtin.out), YD :: (builtin.out), WD :: (builtin.out), N :: (builtin.out)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    struct tm   *p;
+    time_t      t;
+
+    t = Time;
+
+    p = localtime(&t);
+
+    /* XXX do we need to handle the case where p == NULL here? */
+
+    Sec = (MR_Integer) p->tm_sec;
+    Min = (MR_Integer) p->tm_min;
+    Hrs = (MR_Integer) p->tm_hour;
+    Mnt = (MR_Integer) p->tm_mon;
+    Yr = (MR_Integer) p->tm_year;
+    WD = (MR_Integer) p->tm_wday;
+    MD = (MR_Integer) p->tm_mday;
+    YD = (MR_Integer) p->tm_yday;
+    N = (MR_Integer) p->tm_isdst;
+").
+:- pragma foreign_proc("C", time.c_gmtime(Time :: (builtin.in), Yr :: (builtin.out), Mnt :: (builtin.out), MD :: (builtin.out), Hrs :: (builtin.out), Min :: (builtin.out), Sec :: (builtin.out), YD :: (builtin.out), WD :: (builtin.out), N :: (builtin.out)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "{
+    struct tm   *p;
+    time_t      t;
+
+    t = Time;
+
+    p = gmtime(&t);
+
+    /* XXX do we need to handle the case where p == NULL here? */
+
+    Sec = (MR_Integer) p->tm_sec;
+    Min = (MR_Integer) p->tm_min;
+    Hrs = (MR_Integer) p->tm_hour;
+    Mnt = (MR_Integer) p->tm_mon;
+    Yr = (MR_Integer) p->tm_year;
+    WD = (MR_Integer) p->tm_wday;
+    MD = (MR_Integer) p->tm_mday;
+    YD = (MR_Integer) p->tm_yday;
+    N = (MR_Integer) p->tm_isdst;
+}").
+:- pragma foreign_proc("C", time.c_mktime(Yr :: (builtin.in), Mnt :: (builtin.in), MD :: (builtin.in), Hrs :: (builtin.in), Min :: (builtin.in), Sec :: (builtin.in), YD :: (builtin.in), WD :: (builtin.in), N :: (builtin.in), Time :: (builtin.out)), [will_not_call_mercury, not_thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "{
+    struct tm t;
+
+    t.tm_sec = (int) Sec;
+    t.tm_min = (int) Min;
+    t.tm_hour = (int) Hrs;
+    t.tm_mon = (int) Mnt;
+    t.tm_year = (int) Yr;
+    t.tm_wday = (int) WD;
+    t.tm_mday = (int) MD;
+    t.tm_yday = (int) YD;
+    t.tm_isdst = (int) N;
+
+    Time = mktime(&t);
+}").
+time.construct_time_t(T_3) = time.time_t(T_3).
+:- pragma exceptions(predicate, (time.clock), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (time.clocks_per_sec), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.time), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (time.times), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (time.clk_tck), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (time.difftime), 3, 0, will_not_throw).
+:- pragma exceptions(function, (time.localtime), 2, 0, will_not_throw).
+:- pragma exceptions(function, (time.gmtime), 2, 0, will_not_throw).
+:- pragma exceptions(function, (time.mktime), 2, 0, will_not_throw).
+:- pragma exceptions(function, (time.asctime), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (time.ctime), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (time.compare_time_t_reps), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.c_difftime), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.c_localtime), 10, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.c_gmtime), 10, 0, will_not_throw).
+:- pragma exceptions(function, (time.int_to_maybe_dst), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (time.c_mktime), 10, 0, will_not_throw).
+:- pragma exceptions(function, (time.maybe_dst_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, (time.construct_time_t), 2, 0, will_not_throw).
+:- pragma termination_info(time.clock((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((time.clocks_per_sec) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(time.time((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(time.times((builtin.out), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info((time.clk_tck) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(time.difftime((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(time.localtime((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(time.gmtime((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(time.mktime((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(time.asctime((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(time.ctime((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(time.compare_time_t_reps((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no]), cannot_loop).
+:- pragma termination_info(time.c_difftime((builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(time.c_localtime((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(time.c_gmtime((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(time.int_to_maybe_dst((builtin.in)) = (builtin.out), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(time.c_mktime((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(time.maybe_dst_to_int((builtin.in)) = (builtin.out), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(time.construct_time_t((builtin.in)) = (builtin.out), finite(1, [yes, no]), cannot_loop).

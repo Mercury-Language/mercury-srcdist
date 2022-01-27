@@ -1,0 +1,7 @@
+:- module (libs.timestamp).
+:- interface.
+:- import_module time.
+:- type maybe_return_timestamp
+	--->	do_return_timestamp 
+	;	do_not_return_timestamp .
+:- type timestamp.

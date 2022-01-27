@@ -1,0 +1,65 @@
+/*
+** Automatically generated from `mlds_to_managed.m'
+** by the Mercury compiler,
+** version rotd-2015-06-22
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.mlds_to_managed. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_managed
+#define MR_HEADER_GUARD_ml_backend__mlds_to_managed
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_MANAGED_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_MANAGED_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+void MR_CALL 
+ml_backend__mlds_to_managed__output_csharp_code_4_p_0(
+  MR_Word ml_backend__mlds_to_managed__param_1,
+  MR_Word ml_backend__mlds_to_managed__param_2);
+
+void MR_CALL 
+ml_backend__mlds_to_managed__output_src_end_3_p_0(
+  MR_Word ml_backend__mlds_to_managed__param_1);
+
+void MR_CALL 
+ml_backend__mlds_to_managed__output_src_start_3_p_0(
+  MR_Word ml_backend__mlds_to_managed__param_1);
+
+void mercury__ml_backend__mlds_to_managed__init(void);
+void mercury__ml_backend__mlds_to_managed__init_type_tables(void);
+void mercury__ml_backend__mlds_to_managed__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.mlds_to_managed */
+
+/* :- end_interface ml_backend.mlds_to_managed. */

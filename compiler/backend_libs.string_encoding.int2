@@ -1,0 +1,8 @@
+:- module (backend_libs.string_encoding).
+:- interface.
+:- import_module libs.
+:- import_module list.
+:- import_module (libs.globals).
+:- type string_encoding
+	--->	utf8 
+	;	utf16 .

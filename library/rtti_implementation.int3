@@ -1,0 +1,5 @@
+:- module rtti_implementation.
+:- interface.
+:- type pseudo_type_info.
+:- type type_ctor_info.
+:- type type_info.

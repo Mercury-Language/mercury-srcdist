@@ -1,0 +1,14 @@
+:- module (parse_tree.prog_io_dcg).
+:- interface.
+:- import_module list.
+:- import_module term.
+:- import_module varset.
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.error_util).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_io_util).
+:- import_module (parse_tree.prog_item).
+:- pred parse_dcg_clause(mdbcomp.sym_name.module_name, varset.varset, term.term, term.term, parse_tree.prog_data.prog_context, int, parse_tree.prog_io_util.maybe1(parse_tree.prog_item.item)).
+:- mode parse_dcg_clause((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred parse_dcg_pred_goal(term.term, list.list(parse_tree.error_util.format_component), parse_tree.prog_io_util.maybe1(parse_tree.prog_item.goal), parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_var, parse_tree.prog_data.prog_varset, parse_tree.prog_data.prog_varset).
+:- mode parse_dcg_pred_goal((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.in), (builtin.out)) is det.

@@ -1,0 +1,360 @@
+/*
+** Automatically generated from `inst_match.m'
+** by the Mercury compiler,
+** version rotd-2015-06-22
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module check_hlds.inst_match. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_check_hlds__inst_match
+#define MR_HEADER_GUARD_check_hlds__inst_match
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__INST_MATCH_DECL_GUARD
+#define CHECK_HLDS__INST_MATCH_DECL_GUARD
+#include "check_hlds.mih"
+
+typedef struct {
+    MR_Word     iig_inst_addr;
+    MR_Word     iig_is_ground;
+} InstIsGroundCacheEntry;
+
+#define INST_IS_GROUND_CACHE_SIZE 1307
+
+/*
+** Every entry should be implicitly initialized to zeros. Since zero is
+** not a valid address for an inst, uninitialized entries cannot be mistaken
+** for filled-in entries.
+*/
+
+static  InstIsGroundCacheEntry
+                inst_is_ground_cache[INST_IS_GROUND_CACHE_SIZE];
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_match__check_hlds__inst_match__type_ctor_info_calculate_sub_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_match__check_hlds__inst_match__type_ctor_info_expansions_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_match__check_hlds__inst_match__type_ctor_info_ground_matches_bound_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_match__check_hlds__inst_match__type_ctor_info_inst_match_info_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_match__check_hlds__inst_match__type_ctor_info_inst_match_inputs_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_match__check_hlds__inst_match__type_ctor_info_inst_matches_pred_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_match__check_hlds__inst_match__type_ctor_info_inst_names_0;
+
+extern const MR_TypeCtorInfo_Struct check_hlds__inst_match__check_hlds__inst_match__type_ctor_info_uniqueness_comparison_0;
+
+void MR_CALL 
+check_hlds__inst_match__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_111_100_101_95_108_105_115_116_95_99_111_110_116_97_105_110_115_95_105_110_115_116_95_118_97_114_95_95_91_50_93_95_48_3_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word * check_hlds__inst_match__param_2,
+  MR_Cont check_hlds__inst_match__param_3,
+  void * check_hlds__inst_match__param_4);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__bound_inst_list_is_free_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__bound_inst_list_is_mostly_unique_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__bound_inst_list_is_not_fully_unique_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__bound_inst_list_is_not_partly_unique_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__bound_inst_list_is_unique_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_contains_inst_name_3_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3);
+
+void MR_CALL 
+check_hlds__inst_match__inst_expand_3_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word * check_hlds__inst_match__param_3);
+
+void MR_CALL 
+check_hlds__inst_match__inst_expand_and_remove_constrained_inst_vars_3_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word * check_hlds__inst_match__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_is_any_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_is_at_least_as_instantiated_4_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3,
+  MR_Word check_hlds__inst_match__param_4);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_is_bound_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_is_bound_to_functors_3_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word * check_hlds__inst_match__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_is_clobbered_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_is_free_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_is_ground_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_is_ground_or_any_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_is_mostly_unique_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_is_not_fully_unique_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_is_not_partly_unique_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_is_unique_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_list_is_free_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_list_is_ground_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_list_is_ground_or_any_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_list_is_ground_or_any_or_dead_3_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_list_is_ground_or_dead_3_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_list_is_mostly_unique_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_list_is_not_fully_unique_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_list_is_not_partly_unique_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_list_is_unique_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_matches_binding_4_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3,
+  MR_Word check_hlds__inst_match__param_4);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_matches_binding_allow_any_any_4_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3,
+  MR_Word check_hlds__inst_match__param_4);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_matches_final_3_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_matches_final_gmb_5_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3,
+  MR_Word check_hlds__inst_match__param_4,
+  MR_Word check_hlds__inst_match__param_5);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_matches_final_typed_4_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3,
+  MR_Word check_hlds__inst_match__param_4);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_matches_initial_4_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3,
+  MR_Word check_hlds__inst_match__param_4);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_matches_initial_no_implied_modes_4_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3,
+  MR_Word check_hlds__inst_match__param_4);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_matches_initial_no_implied_modes_sub_7_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3,
+  MR_Word check_hlds__inst_match__param_4,
+  MR_Word * check_hlds__inst_match__param_5,
+  MR_Word check_hlds__inst_match__param_6,
+  MR_Word * check_hlds__inst_match__param_7);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_matches_initial_sub_7_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3,
+  MR_Word check_hlds__inst_match__param_4,
+  MR_Word * check_hlds__inst_match__param_5,
+  MR_Word check_hlds__inst_match__param_6,
+  MR_Word * check_hlds__inst_match__param_7);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_results_bound_inst_list_is_ground_3_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__inst_results_bound_inst_list_is_ground_or_any_3_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3);
+
+void MR_CALL 
+check_hlds__inst_match__mode_list_contains_inst_var_3_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word * check_hlds__inst_match__param_3,
+  MR_Cont check_hlds__inst_match__param_4,
+  void * check_hlds__inst_match__param_5);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__pred_inst_matches_3_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__unique_matches_final_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+MR_bool MR_CALL 
+check_hlds__inst_match__unique_matches_initial_2_p_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+void MR_CALL 
+check_hlds__inst_match____Compare____ground_matches_bound_0_0(
+  MR_Word * check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2,
+  MR_Word check_hlds__inst_match__param_3);
+
+MR_bool MR_CALL 
+check_hlds__inst_match____Unify____ground_matches_bound_0_0(
+  MR_Word check_hlds__inst_match__param_1,
+  MR_Word check_hlds__inst_match__param_2);
+
+void mercury__check_hlds__inst_match__init(void);
+void mercury__check_hlds__inst_match__init_type_tables(void);
+void mercury__check_hlds__inst_match__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_check_hlds.inst_match */
+
+/* :- end_interface check_hlds.inst_match. */
