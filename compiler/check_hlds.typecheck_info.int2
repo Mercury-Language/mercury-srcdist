@@ -1,0 +1,27 @@
+:- module (check_hlds.typecheck_info).
+:- interface.
+:- use_module list.
+:- use_module map.
+:- use_module (parse_tree.prog_data).
+:- type cons_type_info
+    --->    cons_type_info(((check_hlds.typecheck_info).cti_varset) :: parse_tree.prog_data.tvarset, ((check_hlds.typecheck_info).cti_exit_tvars) :: parse_tree.prog_data.existq_tvars, ((check_hlds.typecheck_info).cti_result_type) :: parse_tree.prog_data.mer_type, ((check_hlds.typecheck_info).cti_arg_types) :: list.list(parse_tree.prog_data.mer_type), ((check_hlds.typecheck_info).cti_constraints) :: hlds.hlds_class.hlds_constraints, ((check_hlds.typecheck_info).cti_source) :: check_hlds.typecheck_info.cons_type_info_source).
+:- type cons_type_info_source
+    --->    source_type(parse_tree.prog_data.type_ctor)
+    ;       source_builtin_type(string)
+    ;       source_get_field_access(parse_tree.prog_data.type_ctor)
+    ;       source_set_field_access(parse_tree.prog_data.type_ctor)
+    ;       source_apply(string)
+    ;       source_pred(hlds.hlds_pred.pred_id).
+:- type maybe_rhs_lambda
+    --->    has_no_rhs_lambda 
+    ;       has_rhs_lambda .
+:- type overloaded_symbol
+    --->    overloaded_pred(parse_tree.prog_data.sym_name_arity, list.list(hlds.hlds_pred.pred_id))
+    ;       overloaded_func(parse_tree.prog_data.cons_id, list.list(check_hlds.typecheck_info.cons_type_info_source)).
+:- type overloaded_symbol_map == map.map(check_hlds.typecheck_info.overloaded_symbol, list.list(parse_tree.prog_data.prog_context)).
+:- type type_error_clause_context
+    --->    type_error_clause_context(((check_hlds.typecheck_info).tecc_module_info) :: hlds.hlds_module.module_info, ((check_hlds.typecheck_info).tecc_pred_id) :: hlds.hlds_pred.pred_id, ((check_hlds.typecheck_info).tecc_pred_markers) :: hlds.hlds_pred.pred_markers, ((check_hlds.typecheck_info).tecc_clause_num) :: int, ((check_hlds.typecheck_info).tecc_clause_context) :: parse_tree.prog_data.prog_context, ((check_hlds.typecheck_info).tecc_varset) :: parse_tree.prog_data.prog_varset).
+:- type typecheck_debug_info
+    --->    no_typecheck_debug 
+    ;       typecheck_debug(((check_hlds.typecheck_info).td_detailed_statistics) :: bool.bool).
+:- type typecheck_info.

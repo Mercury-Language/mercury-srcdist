@@ -1,0 +1,107 @@
+/*
+** Automatically generated from `mode_test.m'
+** by the Mercury compiler,
+** version rotd-2022-01-03
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module check_hlds.mode_test.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_check_hlds__mode_test
+#define MR_HEADER_GUARD_check_hlds__mode_test
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef CHECK_HLDS__MODE_TEST_DECL_GUARD
+#define CHECK_HLDS__MODE_TEST_DECL_GUARD
+#include "check_hlds.mih"
+
+#endif
+
+
+
+
+MR_bool MR_CALL 
+check_hlds__mode_test__init_final_insts_is_fully_output_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__mode_test__init_final_insts_is_output_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__mode_test__init_final_insts_is_unused_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+check_hlds__mode_test__init_inst_is_fully_input_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_test__init_inst_is_input_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_test__mode_is_fully_input_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_test__mode_is_fully_output_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_test__mode_is_input_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_test__mode_is_output_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+check_hlds__mode_test__mode_is_unused_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__check_hlds__mode_test__init(void);
+void mercury__check_hlds__mode_test__init_type_tables(void);
+void mercury__check_hlds__mode_test__init_debugger(void);
+const char *mercury__check_hlds__mode_test__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_check_hlds.mode_test
+
+// :- end_interface check_hlds.mode_test.

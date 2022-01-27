@@ -1,0 +1,3 @@
+:- module (make.program_target).
+:- interface.
+:- type_representation(build0(V_1), is_eqv_to(pred(maybe_succeeded, V_1, V_1, io, io))).

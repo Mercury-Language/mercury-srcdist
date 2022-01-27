@@ -1,0 +1,16 @@
+:- module getopt.
+:- interface.
+:- type maybe_option_table(OptionType).
+:- type maybe_option_table_se(OptionType).
+:- type option_data.
+:- type option_error(OptionType).
+:- type option_error_reason.
+:- type option_ops(OptionType).
+:- type option_ops_track(OptionType).
+:- type option_ops_userdata(OptionType, UserDataType).
+:- type option_table(OptionType).
+:- type special_data.
+:- abstract_inst((option_ops)).
+:- abstract_inst((option_ops_track)).
+:- abstract_inst((option_ops_userdata)).
+:- type_representation(option_table(V_1), is_eqv_to(map(V_1, getopt.option_data))).

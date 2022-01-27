@@ -1,0 +1,33 @@
+// Automatically generated from `robdd.m'
+// by the Mercury compiler,
+// version rotd-2022-01-03
+// configured for x86_64-pc-linux-gnu.
+// Do not edit.
+#ifndef ROBDD_MH
+#define ROBDD_MH
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef MR_HIGHLEVEL_CODE
+#include "mercury.h"
+#else
+  #ifndef MERCURY_HDR_EXCLUDE_IMP_H
+  #include "mercury_imp.h"
+  #endif
+#endif
+#ifdef MR_DEEP_PROFILING
+#include "mercury_deep_profiling.h"
+#endif
+
+#ifndef ROBDD_DECL_GUARD
+#define ROBDD_DECL_GUARD
+
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* ROBDD_MH */
