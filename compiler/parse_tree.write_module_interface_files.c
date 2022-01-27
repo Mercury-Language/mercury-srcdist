@@ -1,0 +1,1283 @@
+/*
+** Automatically generated from `write_module_interface_files.m'
+** by the Mercury compiler,
+** version rotd-2021-07-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module parse_tree.write_module_interface_files.
+// :- implementation.
+
+/*
+INIT mercury__parse_tree__write_module_interface_files__init
+ENDINIT
+*/
+
+#include "parse_tree.write_module_interface_files.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "edit_seq.mih"
+#include "enum.mih"
+#include "getopt.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "one_or_more.mih"
+#include "one_or_more_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "libs.file_util.mih"
+#include "libs.globals.mih"
+#include "libs.op_mode.mih"
+#include "libs.optimization_options.mih"
+#include "libs.options.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.sym_name.mih"
+#include "parse_tree.comp_unit_interface.mih"
+#include "parse_tree.convert_parse_tree.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.file_names.mih"
+#include "parse_tree.grab_modules.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_cmds.mih"
+#include "parse_tree.module_imports.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.parse_error.mih"
+#include "parse_tree.parse_tree_out.mih"
+#include "parse_tree.parse_tree_out_info.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_event.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.read_modules.mih"
+#include "parse_tree.set_of_var.mih"
+#include "recompilation.version.mih"
+
+
+
+
+static const MR_EnumFunctorDesc parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_functor_desc_maybe_generate_version_numbers_0_0;
+
+static const MR_EnumFunctorDesc parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_functor_desc_maybe_generate_version_numbers_0_1;
+
+static const MR_EnumFunctorDescPtr parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_ordinal_ordered_maybe_generate_version_numbers_0[2];
+
+static const MR_EnumFunctorDescPtr parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_name_ordered_maybe_generate_version_numbers_0[2];
+
+static const MR_Integer parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__functor_number_map_maybe_generate_version_numbers_0[2];
+
+static void MR_CALL 
+parse_tree__write_module_interface_files____Compare____maybe_generate_version_numbers_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3);
+
+static MR_bool MR_CALL 
+parse_tree__write_module_interface_files____Unify____maybe_generate_version_numbers_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2);
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__actually_write_interface_file2_6_p_0(
+  MR_Word Globals_7,
+  MR_Word ParseTreeInt2_8,
+  MR_String ExtraSuffix_9,
+  MR_Word MaybeTimestamp_10);
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__maybe_read_old_int_and_compare_for_smart_recomp__ho1_7_p_0(
+  MR_Word NoLineNumGlobals_8,
+  MR_Word ParseTreeIntN_9,
+  MR_Word MaybeTimestamp_11,
+  MR_Word * MaybeVersionNumbers_12);
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__actually_write_interface_file1_6_p_0(
+  MR_Word Globals_7,
+  MR_Word ParseTreeInt1_8,
+  MR_String ExtraSuffix_9,
+  MR_Word MaybeTimestamp_10);
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__maybe_read_old_int_and_compare_for_smart_recomp__ho2_7_p_0(
+  MR_Word NoLineNumGlobals_8,
+  MR_Word ParseTreeIntN_9,
+  MR_Word MaybeTimestamp_11,
+  MR_Word * MaybeVersionNumbers_12);
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__actually_write_interface_file0_6_p_0(
+  MR_Word Globals_7,
+  MR_Word ParseTreeInt0_8,
+  MR_String ExtraSuffix_9,
+  MR_Word MaybeTimestamp_10);
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__maybe_read_old_int_and_compare_for_smart_recomp__ho3_7_p_0(
+  MR_Word NoLineNumGlobals_8,
+  MR_Word ParseTreeIntN_9,
+  MR_Word MaybeTimestamp_11,
+  MR_Word * MaybeVersionNumbers_12);
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__disable_all_line_numbers_2_p_0(
+  MR_Word Globals_3,
+  MR_Word * NoLineNumGlobals_4);
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__construct_int_file_name_8_p_0(
+  MR_Word Globals_9,
+  MR_Word ModuleName_10,
+  MR_Word IntFileKind_11,
+  MR_String ExtraSuffix_12,
+  MR_String * OutputFileName_13,
+  MR_String * TmpOutputFileName_14);
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_99_116_117_97_108_108_121_95_119_114_105_116_101_95_105_110_116_101_114_102_97_99_101_95_102_105_108_101_51_95_95_91_52_93_95_48_6_p_0(
+  MR_Word Globals_7,
+  MR_Word ParseTreeInt3_8,
+  MR_String ExtraSuffix_9);
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__report_file_not_written_8_p_0(
+  MR_Word Globals_9,
+  MR_Word Specs_10,
+  MR_Word MaybePrefixMsg_11,
+  MR_Word ModuleName_12,
+  MR_Word OtherExtA_13,
+  MR_Word MaybeOtherExtB_14);
+
+static MR_bool MR_CALL 
+parse_tree__write_module_interface_files____Unify____maybe_generate_version_numbers_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2);
+
+static void MR_CALL 
+parse_tree__write_module_interface_files____Compare____maybe_generate_version_numbers_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3);
+
+
+static /* final */ const MR_Box parse_tree__write_module_interface_files_scalar_common_1[5][1];
+
+static /* final */ const MR_Box parse_tree__write_module_interface_files_scalar_common_2[4][2];
+
+
+
+
+static /* final */ const MR_Box parse_tree__write_module_interface_files_scalar_common_1[5][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_String) "Error reading interface files.\n"))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (((MR_Box) ((MR_String) ".int2"))))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_String) "Error reading .int3 files.\n"))
+  },
+  /* row 3 */
+  {
+    (MR_Box) ((MR_Unsigned) 0U)
+  },
+  /* row 4 */
+  {
+    (MR_Box) ((MR_Unsigned) 1U)
+  },
+};
+
+static /* final */ const MR_Box parse_tree__write_module_interface_files_scalar_common_2[4][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Unsigned) 4U)),
+    ((MR_Box) ((MR_Unsigned) 0U))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "not written."))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__write_module_interface_files_scalar_common_2[1]))),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_2[0])))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (MR_Word) ((MR_Unsigned) 5U)),
+    ((MR_Box) ((MR_String) "and"))
+  },
+};
+
+
+
+#include "array.mh"
+#include "bitmap.mh"
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+
+
+
+static const MR_EnumFunctorDesc parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_functor_desc_maybe_generate_version_numbers_0_0 = {
+  (MR_String) "do_not_generate_version_numbers",
+  INT32_C(0)
+};
+
+static const MR_EnumFunctorDesc parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_functor_desc_maybe_generate_version_numbers_0_1 = {
+  (MR_String) "generate_version_numbers",
+  INT32_C(1)
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_ordinal_ordered_maybe_generate_version_numbers_0[2] = {
+  &parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_functor_desc_maybe_generate_version_numbers_0_0,
+  &parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_functor_desc_maybe_generate_version_numbers_0_1
+};
+
+static const MR_EnumFunctorDescPtr parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_name_ordered_maybe_generate_version_numbers_0[2] = {
+  &parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_functor_desc_maybe_generate_version_numbers_0_0,
+  &parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_functor_desc_maybe_generate_version_numbers_0_1
+};
+
+static const MR_Integer parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__functor_number_map_maybe_generate_version_numbers_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+const MR_TypeCtorInfo_Struct parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__type_ctor_info_maybe_generate_version_numbers_0 = {
+  (MR_Integer) 0,
+  UINT8_C(18),
+  INT8_C(-1),
+  MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (parse_tree__write_module_interface_files____Unify____maybe_generate_version_numbers_0_0_10001)),
+  ((MR_Box) (parse_tree__write_module_interface_files____Compare____maybe_generate_version_numbers_0_0_10001)),
+  (MR_String) "parse_tree.write_module_interface_files",
+  (MR_String) "maybe_generate_version_numbers",
+  {     parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_name_ordered_maybe_generate_version_numbers_0 },
+  {     parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__enum_ordinal_ordered_maybe_generate_version_numbers_0 },
+  (MR_Integer) 2,
+  UINT16_C(12),
+  parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__functor_number_map_maybe_generate_version_numbers_0,
+
+};
+
+static void MR_CALL 
+parse_tree__write_module_interface_files____Compare____maybe_generate_version_numbers_0_0(
+  MR_Word * HeadVar__1_1,
+  MR_Word HeadVar__2_2,
+  MR_Word HeadVar__3_3)
+{
+  {
+    MR_bool succeeded;
+    MR_Integer Cast_HeadVar1_4 = (MR_Integer) (HeadVar__2_2);
+    MR_Integer Cast_HeadVar2_5 = (MR_Integer) (HeadVar__3_3);
+
+    succeeded = (Cast_HeadVar1_4 < Cast_HeadVar2_5);
+    if (succeeded)
+      *HeadVar__1_1 = (MR_Integer) 1;
+    else
+    {
+      succeeded = (Cast_HeadVar1_4 > Cast_HeadVar2_5);
+      if (succeeded)
+        *HeadVar__1_1 = (MR_Integer) 2;
+      else
+        *HeadVar__1_1 = (MR_Integer) 0;
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__write_module_interface_files____Unify____maybe_generate_version_numbers_0_0(
+  MR_Word HeadVar__2_1,
+  MR_Word HeadVar__2_2)
+{
+  {
+    MR_bool succeeded = (HeadVar__2_1 == HeadVar__2_2);
+
+    return succeeded;
+  }
+}
+
+void MR_CALL 
+parse_tree__write_module_interface_files__write_interface_file_int1_int2_9_p_0(
+  MR_Word Globals_10,
+  MR_String SourceFileName_11,
+  MR_Word SourceFileModuleName_12,
+  MR_Word MaybeTimestamp_13,
+  MR_Word ParseTreeModuleSrc0_14,
+  MR_Word STATE_VARIABLE_HaveReadModuleMaps_0_42,
+  MR_Word * STATE_VARIABLE_HaveReadModuleMaps_43)
+{
+  {
+    MR_bool succeeded;
+    MR_Word ModuleName_17 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc0_14, (MR_Integer) 0))));
+    MR_Word IntParseTreeModuleSrc_18;
+    MR_Word ModuleAndImports_19;
+    MR_Word AugCompUnit1_20;
+    MR_Word GetSpecs_21;
+    MR_Word GetErrors_22;
+    MR_Word GetSpecsEffectivelyErrors_23;
+    MR_Word TypeCtorInfo_122_122;
+
+    parse_tree__comp_unit_interface__generate_pre_grab_pre_qual_interface_for_int1_int2_2_p_0(ParseTreeModuleSrc0_14, &IntParseTreeModuleSrc_18);
+    parse_tree__grab_modules__grab_unqual_imported_modules_make_int_9_p_0(Globals_10, SourceFileName_11, SourceFileModuleName_12, IntParseTreeModuleSrc_18, &ModuleAndImports_19, STATE_VARIABLE_HaveReadModuleMaps_0_42, STATE_VARIABLE_HaveReadModuleMaps_43);
+    parse_tree__module_imports__module_and_imports_get_aug_comp_unit_4_p_0(ModuleAndImports_19, &AugCompUnit1_20, &GetSpecs_21, &GetErrors_22);
+    GetSpecsEffectivelyErrors_23 = parse_tree__error_util__contains_errors_or_warnings_treated_as_errors_2_f_0(Globals_10, GetSpecs_21);
+    succeeded = (GetSpecsEffectivelyErrors_23 == (MR_Integer) 0);
+    if (succeeded)
+    {
+      TypeCtorInfo_122_122 = (MR_Word) (&parse_tree__parse_error__parse_tree__parse_error__type_ctor_info_read_module_error_0);
+      succeeded = mercury__set__is_empty_1_p_0(TypeCtorInfo_122_122, GetErrors_22);
+    }
+    if (succeeded)
+    {
+      MR_Word AugCompUnit_24;
+      MR_Word QualSpecs_31;
+      MR_Word EffectiveGetQualSpecs_32;
+      MR_Word Var_48;
+      MR_Word Var_51;
+      MR_Word Var_25;
+      MR_Word Var_26;
+      MR_Word Var_27;
+      MR_Word Var_28;
+      MR_Word Var_29;
+      MR_Word Var_30;
+
+      Var_48 = mercury__map__init_0_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&parse_tree__prog_data_event__parse_tree__prog_data_event__type_ctor_info_event_spec_0));
+      parse_tree__module_qual__module_qualify_aug_comp_unit_13_p_0(Globals_10, AugCompUnit1_20, &AugCompUnit_24, Var_48, &Var_25, (MR_String) "", &Var_26, &Var_27, &Var_28, &Var_29, &Var_30, (MR_Word) ((MR_Unsigned) 0U), &QualSpecs_31);
+      Var_51 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0), GetSpecs_21, QualSpecs_31);
+      parse_tree__error_util__filter_interface_generation_specs_5_p_0(Globals_10, Var_51, &EffectiveGetQualSpecs_32);
+      if ((EffectiveGetQualSpecs_32 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        MR_Word ParseTreeInt1_33;
+        MR_Word ParseTreeInt2_34;
+        MR_Word GenerateSpecs_35;
+        MR_Word Specs_36;
+        MR_Word ErrorStream_37;
+        MR_Word ProgressStream_38;
+        MR_Word Var_61;
+
+        parse_tree__comp_unit_interface__generate_interfaces_int1_int2_6_p_0(Globals_10, AugCompUnit_24, &ParseTreeInt1_33, &ParseTreeInt2_34, (MR_Word) ((MR_Unsigned) 0U), &GenerateSpecs_35);
+        Var_61 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0), EffectiveGetQualSpecs_32, GenerateSpecs_35);
+        parse_tree__error_util__filter_interface_generation_specs_5_p_0(Globals_10, Var_61, &Specs_36);
+        libs__globals__get_error_output_stream_5_p_0(Globals_10, ModuleName_17, &ErrorStream_37);
+        parse_tree__error_util__write_error_specs_ignore_5_p_0(ErrorStream_37, Globals_10, Specs_36);
+        parse_tree__write_module_interface_files__actually_write_interface_file1_6_p_0(Globals_10, ParseTreeInt1_33, (MR_String) "", MaybeTimestamp_13);
+        parse_tree__write_module_interface_files__actually_write_interface_file2_6_p_0(Globals_10, ParseTreeInt2_34, (MR_String) "", MaybeTimestamp_13);
+        libs__globals__get_progress_output_stream_5_p_0(Globals_10, ModuleName_17, &ProgressStream_38);
+        parse_tree__module_cmds__touch_interface_datestamp_7_p_0(Globals_10, ProgressStream_38, ErrorStream_37, ModuleName_17, (MR_Word) (((MR_Box) ((MR_String) ".date"))));
+      }
+      else
+        parse_tree__write_module_interface_files__report_file_not_written_8_p_0(Globals_10, EffectiveGetQualSpecs_32, (MR_Word) ((MR_Unsigned) 0U), ModuleName_17, (MR_Word) (((MR_Box) ((MR_String) ".int"))), (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_1[1])));
+    }
+    else
+      parse_tree__write_module_interface_files__report_file_not_written_8_p_0(Globals_10, GetSpecs_21, (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_1[2])), ModuleName_17, (MR_Word) (((MR_Box) ((MR_String) ".int"))), (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_1[1])));
+  }
+}
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__actually_write_interface_file2_6_p_0(
+  MR_Word Globals_7,
+  MR_Word ParseTreeInt2_8,
+  MR_String ExtraSuffix_9,
+  MR_Word MaybeTimestamp_10)
+{
+  {
+    MR_Word ModuleName_12 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 0))));
+    MR_String OutputFileName_13;
+    MR_String TmpOutputFileName_14;
+    MR_Word NoLineNumGlobals_15;
+    MR_Word MaybeVersionNumbers_16;
+    MR_Word ParseTreeInt2V_17;
+    MR_Word OtherExt_70;
+    MR_String OutputFileName0_71;
+    MR_Word Var_74;
+    MR_Word NoLineNumGlobals0_79;
+    MR_String _ExtStr_69;
+    MR_Word Var_41;
+    MR_Word Var_42;
+    MR_Word Var_44;
+    MR_Word Var_45;
+    MR_Word Var_46;
+    MR_Word Var_47;
+    MR_Word Var_48;
+    MR_Word Var_49;
+    MR_Word Var_50;
+    MR_Word Var_51;
+    MR_Word Var_52;
+    MR_Word Var_53;
+    MR_Word Var_54;
+    MR_Word Var_55;
+    MR_Word Var_56;
+
+    parse_tree__file_kind__int_file_kind_to_extension_3_p_0((MR_Integer) 2, &_ExtStr_69, &OtherExt_70);
+    {
+      Var_74 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_74, 0) = ((MR_Box) (OtherExt_70));
+    }
+    parse_tree__file_names__module_name_to_file_name_8_p_0(Globals_7, (MR_String) "predicate \140parse_tree.write_module_interface_files.construct_int_file_name\'/8", (MR_Integer) 0, Var_74, ModuleName_12, &OutputFileName0_71);
+    OutputFileName_13 = mercury__string__f_43_43_2_f_0(OutputFileName0_71, ExtraSuffix_9);
+    TmpOutputFileName_14 = mercury__string__f_43_43_2_f_0(OutputFileName_13, (MR_String) ".tmp");
+    libs__globals__set_option_4_p_0((MR_Integer) 162, (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_1[3])), Globals_7, &NoLineNumGlobals0_79);
+    libs__globals__set_option_4_p_0((MR_Integer) 163, (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_1[3])), NoLineNumGlobals0_79, &NoLineNumGlobals_15);
+    parse_tree__write_module_interface_files__maybe_read_old_int_and_compare_for_smart_recomp__ho1_7_p_0(NoLineNumGlobals_15, ParseTreeInt2_8, MaybeTimestamp_10, &MaybeVersionNumbers_16);
+    Var_41 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 0))));
+    Var_42 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 1))));
+    Var_44 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 3))));
+    Var_45 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 4))));
+    Var_46 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 5))));
+    Var_47 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 6))));
+    Var_48 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 7))));
+    Var_49 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 8))));
+    Var_50 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 9))));
+    Var_51 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 10))));
+    Var_52 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 11))));
+    Var_53 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 12))));
+    Var_54 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 13))));
+    Var_55 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 14))));
+    Var_56 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt2_8, (MR_Integer) 15))));
+    {
+      ParseTreeInt2V_17 = (MR_Word) MR_new_object(MR_Word, (16 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 0) = ((MR_Box) (Var_41));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 1) = ((MR_Box) (Var_42));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 2) = ((MR_Box) (MaybeVersionNumbers_16));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 3) = ((MR_Box) (Var_44));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 4) = ((MR_Box) (Var_45));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 5) = ((MR_Box) (Var_46));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 6) = ((MR_Box) (Var_47));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 7) = ((MR_Box) (Var_48));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 8) = ((MR_Box) (Var_49));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 9) = ((MR_Box) (Var_50));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 10) = ((MR_Box) (Var_51));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 11) = ((MR_Box) (Var_52));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 12) = ((MR_Box) (Var_53));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 13) = ((MR_Box) (Var_54));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 14) = ((MR_Box) (Var_55));
+      MR_hl_field(MR_mktag(0), ParseTreeInt2V_17, 15) = ((MR_Box) (Var_56));
+    }
+    parse_tree__parse_tree_out__output_parse_tree_int2_5_p_0(NoLineNumGlobals_15, TmpOutputFileName_14, ParseTreeInt2V_17);
+    parse_tree__module_cmds__update_interface_5_p_0(Globals_7, ModuleName_12, OutputFileName_13);
+  }
+}
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__maybe_read_old_int_and_compare_for_smart_recomp__ho1_7_p_0(
+  MR_Word NoLineNumGlobals_8,
+  MR_Word ParseTreeIntN_9,
+  MR_Word MaybeTimestamp_11,
+  MR_Word * MaybeVersionNumbers_12)
+{
+  {
+    MR_bool succeeded;
+    MR_Word GenerateVersionNumbers_64;
+    MR_Word DisableVersionNumbers_65;
+
+    libs__globals__lookup_bool_option_3_p_0(NoLineNumGlobals_8, (MR_Integer) 142, &GenerateVersionNumbers_64);
+    libs__globals__io_get_disable_generate_item_version_numbers_3_p_0(&DisableVersionNumbers_65);
+    succeeded = (GenerateVersionNumbers_64 == (MR_Integer) 1);
+    if (succeeded)
+      succeeded = (DisableVersionNumbers_65 == (MR_Integer) 0);
+    if (succeeded)
+    {
+      MR_Word ParseTreeInt_15;
+      MR_Word ModuleName_16;
+      MR_Word IntFileKind_17;
+      MR_Word Timestamp_18;
+      MR_Word OldParseTreeInt_21;
+      MR_Word OldErrors_23;
+      MR_Word MaybeOldParseTreeInt_24;
+      MR_Word VersionNumbers_25;
+      MR_String _OldIntFileName_19;
+      MR_Word _OldTimestamp_20;
+      MR_Word _OldSpecs_22;
+
+      ParseTreeInt_15 = parse_tree__convert_parse_tree__convert_parse_tree_int2_to_int_1_f_0(ParseTreeIntN_9);
+      ModuleName_16 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt_15, (MR_Integer) 0))));
+      IntFileKind_17 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), ParseTreeInt_15, (MR_Integer) 1))) & (MR_Integer) 3);
+      if ((MaybeTimestamp_11 == (MR_Word) ((MR_Unsigned) 0U)))
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140parse_tree.write_module_interface_files.insist_on_timestamp\'/2", (MR_String) "timestamp not read with \140--smart-recompilation\'");
+          return;
+        }
+      else
+        Timestamp_18 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTimestamp_11, (MR_Integer) 0))));
+      parse_tree__read_modules__read_module_int_14_p_0(NoLineNumGlobals_8, (MR_String) "Reading old interface for module", (MR_Integer) 0, (MR_Integer) 0, ModuleName_16, IntFileKind_17, &_OldIntFileName_19, (MR_Word) (&parse_tree__write_module_interface_files_scalar_common_1[4]), &_OldTimestamp_20, &OldParseTreeInt_21, &_OldSpecs_22, &OldErrors_23);
+      succeeded = mercury__set__is_empty_1_p_0((MR_Word) (&parse_tree__parse_error__parse_tree__parse_error__type_ctor_info_read_module_error_0), OldErrors_23);
+      if (succeeded)
+        {
+          MaybeOldParseTreeInt_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), MaybeOldParseTreeInt_24, 0) = ((MR_Box) (OldParseTreeInt_21));
+        }
+      else
+        MaybeOldParseTreeInt_24 = (MR_Word) ((MR_Unsigned) 0U);
+      recompilation__version__compute_version_numbers_4_p_0(Timestamp_18, ParseTreeInt_15, MaybeOldParseTreeInt_24, &VersionNumbers_25);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *MaybeVersionNumbers_12 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (VersionNumbers_25));
+      }
+    }
+    else
+      *MaybeVersionNumbers_12 = (MR_Word) ((MR_Unsigned) 0U);
+  }
+}
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__actually_write_interface_file1_6_p_0(
+  MR_Word Globals_7,
+  MR_Word ParseTreeInt1_8,
+  MR_String ExtraSuffix_9,
+  MR_Word MaybeTimestamp_10)
+{
+  {
+    MR_Word ModuleName_12 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 0))));
+    MR_String OutputFileName_13;
+    MR_String TmpOutputFileName_14;
+    MR_Word NoLineNumGlobals_15;
+    MR_Word MaybeVersionNumbers_16;
+    MR_Word ParseTreeInt1V_17;
+    MR_Word OtherExt_86;
+    MR_String OutputFileName0_87;
+    MR_Word Var_90;
+    MR_String _ExtStr_85;
+    MR_Word Var_49;
+    MR_Word Var_50;
+    MR_Word Var_52;
+    MR_Word Var_53;
+    MR_Word Var_54;
+    MR_Word Var_55;
+    MR_Word Var_56;
+    MR_Word Var_57;
+    MR_Word Var_58;
+    MR_Word Var_59;
+    MR_Word Var_60;
+    MR_Word Var_61;
+    MR_Word Var_62;
+    MR_Word Var_63;
+    MR_Word Var_64;
+    MR_Word Var_65;
+    MR_Word Var_66;
+    MR_Word Var_67;
+    MR_Word Var_68;
+    MR_Word Var_69;
+    MR_Word Var_70;
+    MR_Word Var_71;
+    MR_Word Var_72;
+
+    parse_tree__file_kind__int_file_kind_to_extension_3_p_0((MR_Integer) 1, &_ExtStr_85, &OtherExt_86);
+    {
+      Var_90 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_90, 0) = ((MR_Box) (OtherExt_86));
+    }
+    parse_tree__file_names__module_name_to_file_name_8_p_0(Globals_7, (MR_String) "predicate \140parse_tree.write_module_interface_files.construct_int_file_name\'/8", (MR_Integer) 0, Var_90, ModuleName_12, &OutputFileName0_87);
+    OutputFileName_13 = mercury__string__f_43_43_2_f_0(OutputFileName0_87, ExtraSuffix_9);
+    TmpOutputFileName_14 = mercury__string__f_43_43_2_f_0(OutputFileName_13, (MR_String) ".tmp");
+    parse_tree__write_module_interface_files__disable_all_line_numbers_2_p_0(Globals_7, &NoLineNumGlobals_15);
+    parse_tree__write_module_interface_files__maybe_read_old_int_and_compare_for_smart_recomp__ho2_7_p_0(NoLineNumGlobals_15, ParseTreeInt1_8, MaybeTimestamp_10, &MaybeVersionNumbers_16);
+    Var_49 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 0))));
+    Var_50 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 1))));
+    Var_52 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 3))));
+    Var_53 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 4))));
+    Var_54 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 5))));
+    Var_55 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 6))));
+    Var_56 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 7))));
+    Var_57 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 8))));
+    Var_58 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 9))));
+    Var_59 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 10))));
+    Var_60 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 11))));
+    Var_61 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 12))));
+    Var_62 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 13))));
+    Var_63 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 14))));
+    Var_64 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 15))));
+    Var_65 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 16))));
+    Var_66 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 17))));
+    Var_67 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 18))));
+    Var_68 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 19))));
+    Var_69 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 20))));
+    Var_70 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 21))));
+    Var_71 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 22))));
+    Var_72 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt1_8, (MR_Integer) 23))));
+    {
+      ParseTreeInt1V_17 = (MR_Word) MR_new_object(MR_Word, (24 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 0) = ((MR_Box) (Var_49));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 1) = ((MR_Box) (Var_50));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 2) = ((MR_Box) (MaybeVersionNumbers_16));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 3) = ((MR_Box) (Var_52));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 4) = ((MR_Box) (Var_53));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 5) = ((MR_Box) (Var_54));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 6) = ((MR_Box) (Var_55));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 7) = ((MR_Box) (Var_56));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 8) = ((MR_Box) (Var_57));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 9) = ((MR_Box) (Var_58));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 10) = ((MR_Box) (Var_59));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 11) = ((MR_Box) (Var_60));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 12) = ((MR_Box) (Var_61));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 13) = ((MR_Box) (Var_62));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 14) = ((MR_Box) (Var_63));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 15) = ((MR_Box) (Var_64));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 16) = ((MR_Box) (Var_65));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 17) = ((MR_Box) (Var_66));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 18) = ((MR_Box) (Var_67));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 19) = ((MR_Box) (Var_68));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 20) = ((MR_Box) (Var_69));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 21) = ((MR_Box) (Var_70));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 22) = ((MR_Box) (Var_71));
+      MR_hl_field(MR_mktag(0), ParseTreeInt1V_17, 23) = ((MR_Box) (Var_72));
+    }
+    parse_tree__parse_tree_out__output_parse_tree_int1_5_p_0(NoLineNumGlobals_15, TmpOutputFileName_14, ParseTreeInt1V_17);
+    parse_tree__module_cmds__update_interface_5_p_0(Globals_7, ModuleName_12, OutputFileName_13);
+  }
+}
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__maybe_read_old_int_and_compare_for_smart_recomp__ho2_7_p_0(
+  MR_Word NoLineNumGlobals_8,
+  MR_Word ParseTreeIntN_9,
+  MR_Word MaybeTimestamp_11,
+  MR_Word * MaybeVersionNumbers_12)
+{
+  {
+    MR_bool succeeded;
+    MR_Word GenerateVersionNumbers_64;
+    MR_Word DisableVersionNumbers_65;
+
+    libs__globals__lookup_bool_option_3_p_0(NoLineNumGlobals_8, (MR_Integer) 142, &GenerateVersionNumbers_64);
+    libs__globals__io_get_disable_generate_item_version_numbers_3_p_0(&DisableVersionNumbers_65);
+    succeeded = (GenerateVersionNumbers_64 == (MR_Integer) 1);
+    if (succeeded)
+      succeeded = (DisableVersionNumbers_65 == (MR_Integer) 0);
+    if (succeeded)
+    {
+      MR_Word ParseTreeInt_15;
+      MR_Word ModuleName_16;
+      MR_Word IntFileKind_17;
+      MR_Word Timestamp_18;
+      MR_Word OldParseTreeInt_21;
+      MR_Word OldErrors_23;
+      MR_Word MaybeOldParseTreeInt_24;
+      MR_Word VersionNumbers_25;
+      MR_String _OldIntFileName_19;
+      MR_Word _OldTimestamp_20;
+      MR_Word _OldSpecs_22;
+
+      ParseTreeInt_15 = parse_tree__convert_parse_tree__convert_parse_tree_int1_to_int_1_f_0(ParseTreeIntN_9);
+      ModuleName_16 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt_15, (MR_Integer) 0))));
+      IntFileKind_17 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), ParseTreeInt_15, (MR_Integer) 1))) & (MR_Integer) 3);
+      if ((MaybeTimestamp_11 == (MR_Word) ((MR_Unsigned) 0U)))
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140parse_tree.write_module_interface_files.insist_on_timestamp\'/2", (MR_String) "timestamp not read with \140--smart-recompilation\'");
+          return;
+        }
+      else
+        Timestamp_18 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTimestamp_11, (MR_Integer) 0))));
+      parse_tree__read_modules__read_module_int_14_p_0(NoLineNumGlobals_8, (MR_String) "Reading old interface for module", (MR_Integer) 0, (MR_Integer) 0, ModuleName_16, IntFileKind_17, &_OldIntFileName_19, (MR_Word) (&parse_tree__write_module_interface_files_scalar_common_1[4]), &_OldTimestamp_20, &OldParseTreeInt_21, &_OldSpecs_22, &OldErrors_23);
+      succeeded = mercury__set__is_empty_1_p_0((MR_Word) (&parse_tree__parse_error__parse_tree__parse_error__type_ctor_info_read_module_error_0), OldErrors_23);
+      if (succeeded)
+        {
+          MaybeOldParseTreeInt_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), MaybeOldParseTreeInt_24, 0) = ((MR_Box) (OldParseTreeInt_21));
+        }
+      else
+        MaybeOldParseTreeInt_24 = (MR_Word) ((MR_Unsigned) 0U);
+      recompilation__version__compute_version_numbers_4_p_0(Timestamp_18, ParseTreeInt_15, MaybeOldParseTreeInt_24, &VersionNumbers_25);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *MaybeVersionNumbers_12 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (VersionNumbers_25));
+      }
+    }
+    else
+      *MaybeVersionNumbers_12 = (MR_Word) ((MR_Unsigned) 0U);
+  }
+}
+
+void MR_CALL 
+parse_tree__write_module_interface_files__write_private_interface_file_int0_9_p_0(
+  MR_Word Globals_10,
+  MR_String SourceFileName_11,
+  MR_Word SourceFileModuleName_12,
+  MR_Word MaybeTimestamp_13,
+  MR_Word ParseTreeModuleSrc0_14,
+  MR_Word STATE_VARIABLE_HaveReadModuleMaps_0_40,
+  MR_Word * STATE_VARIABLE_HaveReadModuleMaps_41)
+{
+  {
+    MR_bool succeeded;
+    MR_Word ModuleName_17 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc0_14, (MR_Integer) 0))));
+    MR_Word ModuleAndImports_18;
+    MR_Word AugCompUnit1_19;
+    MR_Word GetSpecs_20;
+    MR_Word GetErrors_21;
+    MR_Word GetSpecsEffectivelyErrors_22;
+    MR_Word TypeCtorInfo_114_114;
+
+    parse_tree__grab_modules__grab_unqual_imported_modules_make_int_9_p_0(Globals_10, SourceFileName_11, SourceFileModuleName_12, ParseTreeModuleSrc0_14, &ModuleAndImports_18, STATE_VARIABLE_HaveReadModuleMaps_0_40, STATE_VARIABLE_HaveReadModuleMaps_41);
+    parse_tree__module_imports__module_and_imports_get_aug_comp_unit_4_p_0(ModuleAndImports_18, &AugCompUnit1_19, &GetSpecs_20, &GetErrors_21);
+    GetSpecsEffectivelyErrors_22 = parse_tree__error_util__contains_errors_or_warnings_treated_as_errors_2_f_0(Globals_10, GetSpecs_20);
+    succeeded = (GetSpecsEffectivelyErrors_22 == (MR_Integer) 0);
+    if (succeeded)
+    {
+      TypeCtorInfo_114_114 = (MR_Word) (&parse_tree__parse_error__parse_tree__parse_error__type_ctor_info_read_module_error_0);
+      succeeded = mercury__set__is_empty_1_p_0(TypeCtorInfo_114_114, GetErrors_21);
+    }
+    if (succeeded)
+    {
+      MR_Word AugCompUnit_23;
+      MR_Word QualSpecs_30;
+      MR_Word EffectiveGetQualSpecs_31;
+      MR_Word Var_46;
+      MR_Word Var_49;
+      MR_Word _EventSpecMap_24;
+      MR_Word Var_25;
+      MR_Word Var_26;
+      MR_Word Var_27;
+      MR_Word Var_28;
+      MR_Word Var_29;
+
+      Var_46 = mercury__map__init_0_f_0((MR_Word) (&mercury__builtin__builtin__type_ctor_info_string_0), (MR_Word) (&parse_tree__prog_data_event__parse_tree__prog_data_event__type_ctor_info_event_spec_0));
+      parse_tree__module_qual__module_qualify_aug_comp_unit_13_p_0(Globals_10, AugCompUnit1_19, &AugCompUnit_23, Var_46, &_EventSpecMap_24, (MR_String) "", &Var_25, &Var_26, &Var_27, &Var_28, &Var_29, (MR_Word) ((MR_Unsigned) 0U), &QualSpecs_30);
+      Var_49 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0), GetSpecs_20, QualSpecs_30);
+      parse_tree__error_util__filter_interface_generation_specs_5_p_0(Globals_10, Var_49, &EffectiveGetQualSpecs_31);
+      if ((EffectiveGetQualSpecs_31 == (MR_Word) ((MR_Unsigned) 0U)))
+      {
+        MR_Word ParseTreeInt0_32;
+        MR_Word GenerateSpecs_33;
+        MR_Word Specs_34;
+        MR_Word ErrorStream_35;
+        MR_Word ProgressStream_36;
+        MR_Word Var_57;
+
+        parse_tree__comp_unit_interface__generate_private_interface_int0_4_p_0(AugCompUnit_23, &ParseTreeInt0_32, (MR_Word) ((MR_Unsigned) 0U), &GenerateSpecs_33);
+        Var_57 = mercury__list__f_43_43_2_f_0((MR_Word) (&parse_tree__error_util__parse_tree__error_util__type_ctor_info_error_spec_0), EffectiveGetQualSpecs_31, GenerateSpecs_33);
+        parse_tree__error_util__filter_interface_generation_specs_5_p_0(Globals_10, Var_57, &Specs_34);
+        libs__globals__get_error_output_stream_5_p_0(Globals_10, ModuleName_17, &ErrorStream_35);
+        parse_tree__error_util__write_error_specs_ignore_5_p_0(ErrorStream_35, Globals_10, Specs_34);
+        parse_tree__write_module_interface_files__actually_write_interface_file0_6_p_0(Globals_10, ParseTreeInt0_32, (MR_String) "", MaybeTimestamp_13);
+        libs__globals__get_progress_output_stream_5_p_0(Globals_10, ModuleName_17, &ProgressStream_36);
+        parse_tree__module_cmds__touch_interface_datestamp_7_p_0(Globals_10, ProgressStream_36, ErrorStream_35, ModuleName_17, (MR_Word) (((MR_Box) ((MR_String) ".date0"))));
+      }
+      else
+        parse_tree__write_module_interface_files__report_file_not_written_8_p_0(Globals_10, EffectiveGetQualSpecs_31, (MR_Word) ((MR_Unsigned) 0U), ModuleName_17, (MR_Word) (((MR_Box) ((MR_String) ".int0"))), (MR_Word) ((MR_Unsigned) 0U));
+    }
+    else
+      parse_tree__write_module_interface_files__report_file_not_written_8_p_0(Globals_10, GetSpecs_20, (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_1[0])), ModuleName_17, (MR_Word) (((MR_Box) ((MR_String) ".int0"))), (MR_Word) ((MR_Unsigned) 0U));
+  }
+}
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__actually_write_interface_file0_6_p_0(
+  MR_Word Globals_7,
+  MR_Word ParseTreeInt0_8,
+  MR_String ExtraSuffix_9,
+  MR_Word MaybeTimestamp_10)
+{
+  {
+    MR_Word ModuleName_12 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 0))));
+    MR_String OutputFileName_13;
+    MR_String TmpOutputFileName_14;
+    MR_Word NoLineNumGlobals_15;
+    MR_Word MaybeVersionNumbers_16;
+    MR_Word ParseTreeInt0V_17;
+    MR_Word Var_57;
+    MR_Word Var_58;
+    MR_Word Var_60;
+    MR_Word Var_61;
+    MR_Word Var_62;
+    MR_Word Var_63;
+    MR_Word Var_64;
+    MR_Word Var_65;
+    MR_Word Var_66;
+    MR_Word Var_67;
+    MR_Word Var_68;
+    MR_Word Var_69;
+    MR_Word Var_70;
+    MR_Word Var_71;
+    MR_Word Var_72;
+    MR_Word Var_73;
+    MR_Word Var_74;
+    MR_Word Var_75;
+    MR_Word Var_76;
+    MR_Word Var_77;
+    MR_Word Var_78;
+    MR_Word Var_79;
+    MR_Word Var_80;
+    MR_Word Var_81;
+    MR_Word Var_82;
+    MR_Word Var_83;
+    MR_Word Var_84;
+    MR_Word Var_85;
+    MR_Word Var_86;
+    MR_Word Var_87;
+    MR_Word Var_88;
+
+    parse_tree__write_module_interface_files__construct_int_file_name_8_p_0(Globals_7, ModuleName_12, (MR_Integer) 0, ExtraSuffix_9, &OutputFileName_13, &TmpOutputFileName_14);
+    parse_tree__write_module_interface_files__disable_all_line_numbers_2_p_0(Globals_7, &NoLineNumGlobals_15);
+    parse_tree__write_module_interface_files__maybe_read_old_int_and_compare_for_smart_recomp__ho3_7_p_0(NoLineNumGlobals_15, ParseTreeInt0_8, MaybeTimestamp_10, &MaybeVersionNumbers_16);
+    Var_57 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 0))));
+    Var_58 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 1))));
+    Var_60 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 3))));
+    Var_61 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 4))));
+    Var_62 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 5))));
+    Var_63 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 6))));
+    Var_64 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 7))));
+    Var_65 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 8))));
+    Var_66 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 9))));
+    Var_67 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 10))));
+    Var_68 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 11))));
+    Var_69 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 12))));
+    Var_70 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 13))));
+    Var_71 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 14))));
+    Var_72 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 15))));
+    Var_73 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 16))));
+    Var_74 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 17))));
+    Var_75 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 18))));
+    Var_76 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 19))));
+    Var_77 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 20))));
+    Var_78 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 21))));
+    Var_79 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 22))));
+    Var_80 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 23))));
+    Var_81 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 24))));
+    Var_82 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 25))));
+    Var_83 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 26))));
+    Var_84 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 27))));
+    Var_85 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 28))));
+    Var_86 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 29))));
+    Var_87 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 30))));
+    Var_88 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt0_8, (MR_Integer) 31))));
+    {
+      ParseTreeInt0V_17 = (MR_Word) MR_new_object(MR_Word, (32 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 0) = ((MR_Box) (Var_57));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 1) = ((MR_Box) (Var_58));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 2) = ((MR_Box) (MaybeVersionNumbers_16));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 3) = ((MR_Box) (Var_60));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 4) = ((MR_Box) (Var_61));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 5) = ((MR_Box) (Var_62));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 6) = ((MR_Box) (Var_63));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 7) = ((MR_Box) (Var_64));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 8) = ((MR_Box) (Var_65));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 9) = ((MR_Box) (Var_66));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 10) = ((MR_Box) (Var_67));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 11) = ((MR_Box) (Var_68));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 12) = ((MR_Box) (Var_69));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 13) = ((MR_Box) (Var_70));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 14) = ((MR_Box) (Var_71));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 15) = ((MR_Box) (Var_72));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 16) = ((MR_Box) (Var_73));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 17) = ((MR_Box) (Var_74));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 18) = ((MR_Box) (Var_75));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 19) = ((MR_Box) (Var_76));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 20) = ((MR_Box) (Var_77));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 21) = ((MR_Box) (Var_78));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 22) = ((MR_Box) (Var_79));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 23) = ((MR_Box) (Var_80));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 24) = ((MR_Box) (Var_81));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 25) = ((MR_Box) (Var_82));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 26) = ((MR_Box) (Var_83));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 27) = ((MR_Box) (Var_84));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 28) = ((MR_Box) (Var_85));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 29) = ((MR_Box) (Var_86));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 30) = ((MR_Box) (Var_87));
+      MR_hl_field(MR_mktag(0), ParseTreeInt0V_17, 31) = ((MR_Box) (Var_88));
+    }
+    parse_tree__parse_tree_out__output_parse_tree_int0_5_p_0(NoLineNumGlobals_15, TmpOutputFileName_14, ParseTreeInt0V_17);
+    parse_tree__module_cmds__update_interface_5_p_0(Globals_7, ModuleName_12, OutputFileName_13);
+  }
+}
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__maybe_read_old_int_and_compare_for_smart_recomp__ho3_7_p_0(
+  MR_Word NoLineNumGlobals_8,
+  MR_Word ParseTreeIntN_9,
+  MR_Word MaybeTimestamp_11,
+  MR_Word * MaybeVersionNumbers_12)
+{
+  {
+    MR_bool succeeded;
+    MR_Word GenerateVersionNumbers_64;
+    MR_Word DisableVersionNumbers_65;
+
+    libs__globals__lookup_bool_option_3_p_0(NoLineNumGlobals_8, (MR_Integer) 142, &GenerateVersionNumbers_64);
+    libs__globals__io_get_disable_generate_item_version_numbers_3_p_0(&DisableVersionNumbers_65);
+    succeeded = (GenerateVersionNumbers_64 == (MR_Integer) 1);
+    if (succeeded)
+      succeeded = (DisableVersionNumbers_65 == (MR_Integer) 0);
+    if (succeeded)
+    {
+      MR_Word ParseTreeInt_15;
+      MR_Word ModuleName_16;
+      MR_Word IntFileKind_17;
+      MR_Word Timestamp_18;
+      MR_Word OldParseTreeInt_21;
+      MR_Word OldErrors_23;
+      MR_Word MaybeOldParseTreeInt_24;
+      MR_Word VersionNumbers_25;
+      MR_String _OldIntFileName_19;
+      MR_Word _OldTimestamp_20;
+      MR_Word _OldSpecs_22;
+
+      ParseTreeInt_15 = parse_tree__convert_parse_tree__convert_parse_tree_int0_to_int_1_f_0(ParseTreeIntN_9);
+      ModuleName_16 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt_15, (MR_Integer) 0))));
+      IntFileKind_17 = ((MR_Unsigned) ((MR_hl_field(MR_mktag(0), ParseTreeInt_15, (MR_Integer) 1))) & (MR_Integer) 3);
+      if ((MaybeTimestamp_11 == (MR_Word) ((MR_Unsigned) 0U)))
+        {
+          mercury__require__unexpected_2_p_0((MR_String) "predicate \140parse_tree.write_module_interface_files.insist_on_timestamp\'/2", (MR_String) "timestamp not read with \140--smart-recompilation\'");
+          return;
+        }
+      else
+        Timestamp_18 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeTimestamp_11, (MR_Integer) 0))));
+      parse_tree__read_modules__read_module_int_14_p_0(NoLineNumGlobals_8, (MR_String) "Reading old interface for module", (MR_Integer) 0, (MR_Integer) 0, ModuleName_16, IntFileKind_17, &_OldIntFileName_19, (MR_Word) (&parse_tree__write_module_interface_files_scalar_common_1[4]), &_OldTimestamp_20, &OldParseTreeInt_21, &_OldSpecs_22, &OldErrors_23);
+      succeeded = mercury__set__is_empty_1_p_0((MR_Word) (&parse_tree__parse_error__parse_tree__parse_error__type_ctor_info_read_module_error_0), OldErrors_23);
+      if (succeeded)
+        {
+          MaybeOldParseTreeInt_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+          MR_hl_field(MR_mktag(1), MaybeOldParseTreeInt_24, 0) = ((MR_Box) (OldParseTreeInt_21));
+        }
+      else
+        MaybeOldParseTreeInt_24 = (MR_Word) ((MR_Unsigned) 0U);
+      recompilation__version__compute_version_numbers_4_p_0(Timestamp_18, ParseTreeInt_15, MaybeOldParseTreeInt_24, &VersionNumbers_25);
+      {
+        MR_Word base;
+        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        *MaybeVersionNumbers_12 = base;
+        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (VersionNumbers_25));
+      }
+    }
+    else
+      *MaybeVersionNumbers_12 = (MR_Word) ((MR_Unsigned) 0U);
+  }
+}
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__disable_all_line_numbers_2_p_0(
+  MR_Word Globals_3,
+  MR_Word * NoLineNumGlobals_4)
+{
+  {
+    MR_Word NoLineNumGlobals0_5;
+
+    libs__globals__set_option_4_p_0((MR_Integer) 162, (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_1[3])), Globals_3, &NoLineNumGlobals0_5);
+    libs__globals__set_option_4_p_0((MR_Integer) 163, (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_1[3])), NoLineNumGlobals0_5, NoLineNumGlobals_4);
+  }
+}
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__construct_int_file_name_8_p_0(
+  MR_Word Globals_9,
+  MR_Word ModuleName_10,
+  MR_Word IntFileKind_11,
+  MR_String ExtraSuffix_12,
+  MR_String * OutputFileName_13,
+  MR_String * TmpOutputFileName_14)
+{
+  {
+    MR_Word OtherExt_17;
+    MR_String OutputFileName0_18;
+    MR_Word Var_23;
+    MR_String _ExtStr_16;
+
+    parse_tree__file_kind__int_file_kind_to_extension_3_p_0(IntFileKind_11, &_ExtStr_16, &OtherExt_17);
+    {
+      Var_23 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_23, 0) = ((MR_Box) (OtherExt_17));
+    }
+    parse_tree__file_names__module_name_to_file_name_8_p_0(Globals_9, (MR_String) "predicate \140parse_tree.write_module_interface_files.construct_int_file_name\'/8", (MR_Integer) 0, Var_23, ModuleName_10, &OutputFileName0_18);
+    *OutputFileName_13 = mercury__string__f_43_43_2_f_0(OutputFileName0_18, ExtraSuffix_12);
+    *TmpOutputFileName_14 = mercury__string__f_43_43_2_f_0(*OutputFileName_13, (MR_String) ".tmp");
+  }
+}
+
+void MR_CALL 
+parse_tree__write_module_interface_files__write_short_interface_file_int3_4_p_0(
+  MR_Word Globals_5,
+  MR_Word ParseTreeModuleSrc_6)
+{
+  {
+    MR_Word ParseTreeInt3_8;
+    MR_Word Specs0_9;
+    MR_Word Specs_10;
+    MR_Word EffectivelyErrors_11;
+    MR_Word ModuleName_12;
+
+    parse_tree__comp_unit_interface__generate_short_interface_int3_5_p_0(Globals_5, ParseTreeModuleSrc_6, &ParseTreeInt3_8, (MR_Word) ((MR_Unsigned) 0U), &Specs0_9);
+    parse_tree__error_util__filter_interface_generation_specs_5_p_0(Globals_5, Specs0_9, &Specs_10);
+    EffectivelyErrors_11 = parse_tree__error_util__contains_errors_or_warnings_treated_as_errors_2_f_0(Globals_5, Specs_10);
+    ModuleName_12 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeModuleSrc_6, (MR_Integer) 0))));
+    switch (EffectivelyErrors_11) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          MR_Word ProgressStream_13;
+          MR_Word ErrorStream_14;
+
+          parse_tree__write_module_interface_files__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_99_116_117_97_108_108_121_95_119_114_105_116_101_95_105_110_116_101_114_102_97_99_101_95_102_105_108_101_51_95_95_91_52_93_95_48_6_p_0(Globals_5, ParseTreeInt3_8, (MR_String) "");
+          libs__globals__get_progress_output_stream_5_p_0(Globals_5, ModuleName_12, &ProgressStream_13);
+          libs__globals__get_error_output_stream_5_p_0(Globals_5, ModuleName_12, &ErrorStream_14);
+          parse_tree__module_cmds__touch_interface_datestamp_7_p_0(Globals_5, ProgressStream_13, ErrorStream_14, ModuleName_12, (MR_Word) (((MR_Box) ((MR_String) ".date3"))));
+        }
+        break;
+      case (MR_Integer) 1:
+        parse_tree__write_module_interface_files__report_file_not_written_8_p_0(Globals_5, Specs_10, (MR_Word) ((MR_Unsigned) 0U), ModuleName_12, (MR_Word) (((MR_Box) ((MR_String) ".int3"))), (MR_Word) ((MR_Unsigned) 0U));
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_99_116_117_97_108_108_121_95_119_114_105_116_101_95_105_110_116_101_114_102_97_99_101_95_102_105_108_101_51_95_95_91_52_93_95_48_6_p_0(
+  MR_Word Globals_7,
+  MR_Word ParseTreeInt3_8,
+  MR_String ExtraSuffix_9)
+{
+  {
+    MR_Word ModuleName_12 = ((MR_Word) ((MR_hl_field(MR_mktag(0), ParseTreeInt3_8, (MR_Integer) 0))));
+    MR_String OutputFileName_13;
+    MR_String TmpOutputFileName_14;
+    MR_Word NoLineNumGlobals_15;
+    MR_Word OtherExt_43;
+    MR_String OutputFileName0_44;
+    MR_Word Var_47;
+    MR_Word NoLineNumGlobals0_52;
+    MR_String _ExtStr_42;
+
+    parse_tree__file_kind__int_file_kind_to_extension_3_p_0((MR_Integer) 3, &_ExtStr_42, &OtherExt_43);
+    {
+      Var_47 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_47, 0) = ((MR_Box) (OtherExt_43));
+    }
+    parse_tree__file_names__module_name_to_file_name_8_p_0(Globals_7, (MR_String) "predicate \140parse_tree.write_module_interface_files.construct_int_file_name\'/8", (MR_Integer) 0, Var_47, ModuleName_12, &OutputFileName0_44);
+    OutputFileName_13 = mercury__string__f_43_43_2_f_0(OutputFileName0_44, ExtraSuffix_9);
+    TmpOutputFileName_14 = mercury__string__f_43_43_2_f_0(OutputFileName_13, (MR_String) ".tmp");
+    libs__globals__set_option_4_p_0((MR_Integer) 162, (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_1[3])), Globals_7, &NoLineNumGlobals0_52);
+    libs__globals__set_option_4_p_0((MR_Integer) 163, (MR_Word) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_1[3])), NoLineNumGlobals0_52, &NoLineNumGlobals_15);
+    parse_tree__parse_tree_out__output_parse_tree_int3_5_p_0(NoLineNumGlobals_15, TmpOutputFileName_14, ParseTreeInt3_8);
+    parse_tree__module_cmds__update_interface_5_p_0(Globals_7, ModuleName_12, OutputFileName_13);
+  }
+}
+
+static void MR_CALL 
+parse_tree__write_module_interface_files__report_file_not_written_8_p_0(
+  MR_Word Globals_9,
+  MR_Word Specs_10,
+  MR_Word MaybePrefixMsg_11,
+  MR_Word ModuleName_12,
+  MR_Word OtherExtA_13,
+  MR_Word MaybeOtherExtB_14)
+{
+  {
+    MR_Word ErrorStream_16;
+    MR_String IntAFileName_18;
+    MR_Word NotWrittenPieces_19;
+    MR_Word NotWrittenMsg_22;
+    MR_Word NotWrittenSpec_23;
+    MR_Word Var_31;
+    MR_Word Var_59;
+    MR_Word Var_60;
+    MR_Word Var_65;
+
+    libs__globals__get_error_output_stream_5_p_0(Globals_9, ModuleName_12, &ErrorStream_16);
+    parse_tree__error_util__write_error_specs_ignore_5_p_0(ErrorStream_16, Globals_9, Specs_10);
+    if (!((MaybePrefixMsg_11 == (MR_Word) ((MR_Unsigned) 0U))))
+    {
+      MR_String PrefixMsg_17 = ((MR_String) ((MR_hl_field(MR_mktag(1), MaybePrefixMsg_11, (MR_Integer) 0))));
+
+      mercury__io__write_string_4_p_0(ErrorStream_16, PrefixMsg_17);
+    }
+    {
+      Var_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_31, 0) = ((MR_Box) (OtherExtA_13));
+    }
+    parse_tree__file_names__module_name_to_file_name_8_p_0(Globals_9, (MR_String) "predicate \140parse_tree.write_module_interface_files.report_file_not_written\'/8", (MR_Integer) 1, Var_31, ModuleName_12, &IntAFileName_18);
+    if ((MaybeOtherExtB_14 == (MR_Word) ((MR_Unsigned) 0U)))
+    {
+      MR_Word Var_49;
+
+      {
+        Var_49 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), Var_49, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(MR_mktag(3), Var_49, 1) = ((MR_Box) (IntAFileName_18));
+      }
+      {
+        NotWrittenPieces_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), NotWrittenPieces_19, 0) = ((MR_Box) (Var_49));
+        MR_hl_field(MR_mktag(1), NotWrittenPieces_19, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_2[2])));
+      }
+    }
+    else
+    {
+      MR_Word OtherExtB_20 = ((MR_Word) ((MR_hl_field(MR_mktag(1), MaybeOtherExtB_14, (MR_Integer) 0))));
+      MR_String IntBFileName_21;
+      MR_Word Var_35;
+      MR_Word Var_37;
+      MR_Word Var_38;
+      MR_Word Var_41;
+      MR_Word Var_42;
+
+      {
+        Var_35 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_35, 0) = ((MR_Box) (OtherExtB_20));
+      }
+      parse_tree__file_names__module_name_to_file_name_8_p_0(Globals_9, (MR_String) "predicate \140parse_tree.write_module_interface_files.report_file_not_written\'/8", (MR_Integer) 1, Var_35, ModuleName_12, &IntBFileName_21);
+      {
+        Var_37 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), Var_37, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(MR_mktag(3), Var_37, 1) = ((MR_Box) (IntAFileName_18));
+      }
+      {
+        Var_42 = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(3), Var_42, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+        MR_hl_field(MR_mktag(3), Var_42, 1) = ((MR_Box) (IntBFileName_21));
+      }
+      {
+        Var_41 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_41, 0) = ((MR_Box) (Var_42));
+        MR_hl_field(MR_mktag(1), Var_41, 1) = ((MR_Box) (MR_mkword(MR_mktag(1), &parse_tree__write_module_interface_files_scalar_common_2[2])));
+      }
+      {
+        Var_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), Var_38, 0) = ((MR_Box) (MR_mkword(MR_mktag(3), &parse_tree__write_module_interface_files_scalar_common_2[3])));
+        MR_hl_field(MR_mktag(1), Var_38, 1) = ((MR_Box) (Var_41));
+      }
+      {
+        NotWrittenPieces_19 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+        MR_hl_field(MR_mktag(1), NotWrittenPieces_19, 0) = ((MR_Box) (Var_37));
+        MR_hl_field(MR_mktag(1), NotWrittenPieces_19, 1) = ((MR_Box) (Var_38));
+      }
+    }
+    {
+      Var_60 = (MR_Word) MR_new_object(MR_Word, (1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), Var_60, 0) = ((MR_Box) (NotWrittenPieces_19));
+    }
+    {
+      Var_59 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_59, 0) = ((MR_Box) (Var_60));
+      MR_hl_field(MR_mktag(1), Var_59, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      NotWrittenMsg_22 = (MR_Word) MR_mkword(MR_mktag(2), MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(2), NotWrittenMsg_22, 0) = ((MR_Box) ((MR_Unsigned) 0U));
+      MR_hl_field(MR_mktag(2), NotWrittenMsg_22, 1) = (MR_Box) ((MR_Unsigned) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(2), NotWrittenMsg_22, 2) = ((MR_Box) ((MR_Integer) 0));
+      MR_hl_field(MR_mktag(2), NotWrittenMsg_22, 3) = ((MR_Box) (Var_59));
+    }
+    {
+      Var_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, (2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), Var_65, 0) = ((MR_Box) (NotWrittenMsg_22));
+      MR_hl_field(MR_mktag(1), Var_65, 1) = ((MR_Box) ((MR_Unsigned) 0U));
+    }
+    {
+      NotWrittenSpec_23 = (MR_Word) MR_new_object(MR_Word, (4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), NotWrittenSpec_23, 0) = ((MR_Box) ((MR_String) "predicate \140parse_tree.write_module_interface_files.report_file_not_written\'/8"));
+      MR_hl_field(MR_mktag(0), NotWrittenSpec_23, 1) = ((MR_Box) ((MR_Unsigned) 8U));
+      MR_hl_field(MR_mktag(0), NotWrittenSpec_23, 2) = ((MR_Box) ((MR_Unsigned) 4U));
+      MR_hl_field(MR_mktag(0), NotWrittenSpec_23, 3) = ((MR_Box) (Var_65));
+    }
+    parse_tree__error_util__write_error_spec_ignore_5_p_0(ErrorStream_16, Globals_9, NotWrittenSpec_23);
+  }
+}
+
+static MR_bool MR_CALL 
+parse_tree__write_module_interface_files____Unify____maybe_generate_version_numbers_0_0_10001(
+  MR_Box wrapper_arg_1,
+  MR_Box wrapper_arg_2)
+{
+  {
+    MR_bool succeeded;
+
+    succeeded = parse_tree__write_module_interface_files____Unify____maybe_generate_version_numbers_0_0(((MR_Word) (wrapper_arg_1)), ((MR_Word) (wrapper_arg_2)));
+    return succeeded;
+  }
+}
+
+static void MR_CALL 
+parse_tree__write_module_interface_files____Compare____maybe_generate_version_numbers_0_0_10001(
+  MR_Box * wrapper_arg_1,
+  MR_Box wrapper_arg_2,
+  MR_Box wrapper_arg_3)
+{
+  {
+    MR_Word conv0_HeadVar__1_1;
+
+    parse_tree__write_module_interface_files____Compare____maybe_generate_version_numbers_0_0(&conv0_HeadVar__1_1, ((MR_Word) (wrapper_arg_2)), ((MR_Word) (wrapper_arg_3)));
+    *wrapper_arg_1 = ((MR_Box) (conv0_HeadVar__1_1));
+  }
+}
+
+void mercury__parse_tree__write_module_interface_files__init(void)
+{
+}
+
+void mercury__parse_tree__write_module_interface_files__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&parse_tree__write_module_interface_files__parse_tree__write_module_interface_files__type_ctor_info_maybe_generate_version_numbers_0);
+}
+
+void mercury__parse_tree__write_module_interface_files__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__parse_tree__write_module_interface_files__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+// :- end_module parse_tree.write_module_interface_files.

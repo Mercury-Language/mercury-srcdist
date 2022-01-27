@@ -1,0 +1,18 @@
+:- module (parse_tree.write_module_interface_files).
+:- interface.
+:- use_module io.
+:- use_module libs.
+:- use_module maybe.
+:- use_module mdbcomp.
+:- use_module (libs.file_util).
+:- use_module (libs.globals).
+:- use_module (libs.timestamp).
+:- use_module (mdbcomp.sym_name).
+:- use_module (parse_tree.prog_item).
+:- use_module (parse_tree.read_modules).
+:- pred write_interface_file_int1_int2(libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, maybe.maybe(libs.timestamp.timestamp), parse_tree.prog_item.parse_tree_module_src, parse_tree.read_modules.have_read_module_maps, parse_tree.read_modules.have_read_module_maps, io.io, io.io).
+:- mode write_interface_file_int1_int2((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_private_interface_file_int0(libs.globals.globals, libs.file_util.file_name, mdbcomp.sym_name.module_name, maybe.maybe(libs.timestamp.timestamp), parse_tree.prog_item.parse_tree_module_src, parse_tree.read_modules.have_read_module_maps, parse_tree.read_modules.have_read_module_maps, io.io, io.io).
+:- mode write_private_interface_file_int0((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.
+:- pred write_short_interface_file_int3(libs.globals.globals, parse_tree.prog_item.parse_tree_module_src, io.io, io.io).
+:- mode write_short_interface_file_int3((builtin.in), (builtin.in), (builtin.di), (builtin.uo)) is det.

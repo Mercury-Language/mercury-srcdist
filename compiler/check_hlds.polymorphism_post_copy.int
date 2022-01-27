@@ -1,0 +1,10 @@
+:- module (check_hlds.polymorphism_post_copy).
+:- interface.
+:- use_module hlds.
+:- use_module list.
+:- use_module parse_tree.
+:- use_module (hlds.hlds_module).
+:- use_module (hlds.hlds_pred).
+:- use_module (parse_tree.prog_data).
+:- pred post_copy_polymorphism(list.list(hlds.hlds_pred.pred_id), hlds.hlds_module.module_info, hlds.hlds_module.module_info).
+:- mode post_copy_polymorphism((builtin.in), (builtin.in), (builtin.out)) is det.

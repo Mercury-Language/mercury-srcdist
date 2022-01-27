@@ -1,0 +1,127 @@
+:- module (string.format).
+
+:- pragma termination_info((string.format).format_cast_int16_to_int((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((string.format).format_cast_int32_to_int((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((string.format).format_cast_int8_to_int((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((string.format).format_cast_uint16_to_uint((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((string.format).format_cast_uint32_to_uint((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((string.format).format_cast_uint8_to_uint((builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info((string.format).format_char((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((string.format).format_char_component((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_char_component_nowidth((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_char_component_width((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_float_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_float_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_float_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_float_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_float_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_impl((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int64((builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int64_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int64_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int64_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int64_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int64_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_signed_int_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_string_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_string_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_string_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_string_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_string_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint64_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint64_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint64_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint64_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint64_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_uint_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int64_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int64_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int64_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int64_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int64_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int_component((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int_component_nowidth_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int_component_nowidth_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int_component_width_noprec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info((string.format).format_unsigned_int_component_width_prec((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(((string.format).int64_decimal_specifier) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(((string.format).int_length_modifier) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((string.format).justify_string((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((string.format).make_format_sprintf((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info((string.format).native_format_char((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((string.format).native_format_int((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info((string.format).native_format_int64((builtin.in), (builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(((string.format).using_sprintf), finite(0, []), cannot_loop).
+:- pragma termination_info((string.format).using_sprintf_for_char((builtin.in)), finite(0, [no]), cannot_loop).
+
+:- pragma exceptions(predicate, ((string.format).format_cast_int16_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.format).format_cast_int32_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.format).format_cast_int8_to_int), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.format).format_cast_uint16_to_uint), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.format).format_cast_uint32_to_uint), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.format).format_cast_uint8_to_uint), 2, 0, will_not_throw).
+:- pragma exceptions(function, ((string.format).format_char), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_char_component), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_char_component_nowidth), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_char_component_width), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_float_component), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_float_component_nowidth_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_float_component_nowidth_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_float_component_width_noprec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_float_component_width_prec), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_impl), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((string.format).format_signed_int), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((string.format).format_signed_int64), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int64_component), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int64_component_nowidth_noprec), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int64_component_nowidth_prec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int64_component_width_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int64_component_width_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int_component), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int_component_nowidth_noprec), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int_component_nowidth_prec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int_component_width_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_signed_int_component_width_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_string_component), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_string_component_nowidth_noprec), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_string_component_nowidth_prec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_string_component_width_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_string_component_width_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint64_component), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint64_component_nowidth_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint64_component_nowidth_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint64_component_width_noprec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint64_component_width_prec), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint_component), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint_component_nowidth_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint_component_nowidth_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint_component_width_noprec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_uint_component_width_prec), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int64_component), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int64_component_nowidth_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int64_component_nowidth_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int64_component_width_noprec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int64_component_width_prec), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int_component), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int_component_nowidth_noprec), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int_component_nowidth_prec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int_component_width_noprec), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, ((string.format).format_unsigned_int_component_width_prec), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((string.format).int64_decimal_specifier), 0, 0, will_not_throw).
+:- pragma exceptions(function, ((string.format).int_length_modifier), 0, 0, will_not_throw).
+:- pragma exceptions(function, ((string.format).justify_string), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((string.format).make_format_sprintf), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(function, ((string.format).native_format_char), 2, 0, will_not_throw).
+:- pragma exceptions(function, ((string.format).native_format_int), 2, 0, will_not_throw).
+:- pragma exceptions(function, ((string.format).native_format_int64), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.format).using_sprintf), 0, 0, will_not_throw).
+:- pragma exceptions(predicate, ((string.format).using_sprintf_for_char), 1, 0, will_not_throw).

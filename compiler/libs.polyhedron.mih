@@ -1,0 +1,211 @@
+/*
+** Automatically generated from `polyhedron.m'
+** by the Mercury compiler,
+** version rotd-2021-07-19
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module libs.polyhedron.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_libs__polyhedron
+#define MR_HEADER_GUARD_libs__polyhedron
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef LIBS__POLYHEDRON_DECL_GUARD
+#define LIBS__POLYHEDRON_DECL_GUARD
+#include "libs.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_constr_info_0;
+
+extern const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_convex_hull_result_0;
+
+extern const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedra_0;
+
+extern const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedra_info_0;
+
+extern const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_polyhedron_0;
+
+extern const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_sigma_var_0;
+
+extern const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_sigma_vars_0;
+
+extern const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_var_map_0;
+
+extern const MR_TypeCtorInfo_Struct libs__polyhedron__libs__polyhedron__type_ctor_info_var_maps_0;
+
+void MR_CALL 
+libs__polyhedron__convex_union_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+libs__polyhedron__convex_union_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+libs__polyhedron__intersection_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+MR_bool MR_CALL 
+libs__polyhedron__is_empty_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+libs__polyhedron__is_universe_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+libs__polyhedron__optimize_3_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3);
+
+void MR_CALL 
+libs__polyhedron__project_polyhedron_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+void MR_CALL 
+libs__polyhedron__write_polyhedron_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+libs__polyhedron__bounding_box_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__polyhedron__constraints_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__polyhedron__convex_union_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+libs__polyhedron__convex_union_4_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4);
+
+MR_Word MR_CALL 
+libs__polyhedron__empty_0_f_0(void);
+
+MR_Word MR_CALL 
+libs__polyhedron__from_constraints_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__polyhedron__intersection_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__polyhedron__non_false_constraints_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+libs__polyhedron__project_all_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+libs__polyhedron__substitute_vars_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_Word MR_CALL 
+libs__polyhedron__substitute_vars_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+libs__polyhedron__universe_0_f_0(void);
+
+MR_Word MR_CALL 
+libs__polyhedron__widen_3_f_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_Word MR_CALL 
+libs__polyhedron__zero_vars_2_f_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+libs__polyhedron____Compare____polyhedra_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+libs__polyhedron____Compare____polyhedron_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+libs__polyhedron____Unify____polyhedra_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+libs__polyhedron____Unify____polyhedron_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__libs__polyhedron__init(void);
+void mercury__libs__polyhedron__init_type_tables(void);
+void mercury__libs__polyhedron__init_debugger(void);
+const char *mercury__libs__polyhedron__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_libs.polyhedron
+
+// :- end_interface libs.polyhedron.
