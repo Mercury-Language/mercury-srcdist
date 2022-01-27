@@ -1,0 +1,16 @@
+:- module dir.
+:- interface.
+:- use_module bool.
+:- use_module io.
+:- type foldl_pred(T) == pred(string, string, io.file_type, bool.bool, T, T, io.io, io.io).
+:- inst (foldl_pred) == (pred((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det).
+:- type_representation(foldl_pred(V_1), is_eqv_to(pred(string, string, io.file_type, bool.bool, V_1, V_1, io.io, io.io))).
+:- implementation.
+:- pragma foreign_import_module("C", dir).
+:- pragma foreign_import_module("C#", dir).
+:- pragma foreign_import_module("Java", dir).
+:- type stream
+    --->    stream .
+:- pragma foreign_type(c, stream, "ML_DIR_STREAM").
+:- pragma foreign_type(java, stream, "java.util.Iterator").
+:- pragma foreign_type(csharp, stream, "System.Collections.IEnumerator").

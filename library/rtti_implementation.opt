@@ -1,0 +1,317 @@
+:- module rtti_implementation.
+:- use_module array.
+:- use_module bitmap.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module deconstruct.
+:- use_module int.
+:- use_module int16.
+:- use_module int32.
+:- use_module list.
+:- use_module maybe.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module stream.
+:- use_module string.
+:- use_module term_io.
+:- use_module type_desc.
+:- use_module univ.
+:- use_module (string.format).
+:- use_module (string.parse_util).
+
+:- type arg_names
+    --->    arg_names(builtin.c_pointer).
+:- pragma foreign_type(java, arg_names, "java.lang.String[]").
+:- pragma foreign_type(csharp, arg_names, "string[]").
+:- type arg_types
+    --->    arg_types(builtin.c_pointer).
+:- pragma foreign_type(java, arg_types, "jmercury.runtime.PseudoTypeInfo[]").
+:- pragma foreign_type(csharp, arg_types, "runtime.PseudoTypeInfo[]").
+:- type du_functor_desc
+    --->    du_functor_desc(builtin.c_pointer).
+:- pragma foreign_type(java, du_functor_desc, "jmercury.runtime.DuFunctorDesc").
+:- pragma foreign_type(csharp, du_functor_desc, "runtime.DuFunctorDesc").
+:- type du_sectag_alternatives
+    --->    du_sectag_alternatives(builtin.c_pointer).
+:- pragma foreign_type(java, du_sectag_alternatives, "jmercury.runtime.DuFunctorDesc[]").
+:- pragma foreign_type(csharp, du_sectag_alternatives, "runtime.DuFunctorDesc[]").
+:- type enum_functor_desc
+    --->    enum_functor_desc(builtin.c_pointer).
+:- pragma foreign_type(java, enum_functor_desc, "jmercury.runtime.EnumFunctorDesc").
+:- pragma foreign_type(csharp, enum_functor_desc, "runtime.EnumFunctorDesc").
+:- type exist_info
+    --->    exist_info(builtin.c_pointer).
+:- pragma foreign_type(java, exist_info, "jmercury.runtime.DuExistInfo").
+:- pragma foreign_type(csharp, exist_info, "runtime.DuExistInfo").
+:- type foreign_enum_functor_desc
+    --->    foreign_enum_functor_desc(builtin.c_pointer).
+:- pragma foreign_type(java, foreign_enum_functor_desc, "jmercury.runtime.ForeignEnumFunctorDesc").
+:- pragma foreign_type(csharp, foreign_enum_functor_desc, "runtime.ForeignEnumFunctorDesc").
+:- type notag_functor_desc
+    --->    notag_functor_desc(builtin.c_pointer).
+:- pragma foreign_type(java, notag_functor_desc, "jmercury.runtime.NotagFunctorDesc").
+:- pragma foreign_type(csharp, notag_functor_desc, "runtime.NotagFunctorDesc").
+:- type pseudo_type_info
+    --->    pseudo_type_info(builtin.c_pointer).
+:- pragma foreign_type(java, pseudo_type_info, "jmercury.runtime.PseudoTypeInfo").
+:- pragma foreign_type(csharp, pseudo_type_info, "runtime.PseudoTypeInfo").
+:- type ptag_entry
+    --->    ptag_entry(builtin.c_pointer).
+:- pragma foreign_type(java, ptag_entry, "jmercury.runtime.DuPtagLayout").
+:- pragma foreign_type(csharp, ptag_entry, "runtime.DuPtagLayout").
+:- type sectag_locn
+    --->    stag_none 
+    ;       stag_none_direct_arg 
+    ;       stag_local_rest_of_word 
+    ;       stag_remote 
+    ;       stag_variable .
+:- type type_ctor_info
+    --->    type_ctor_info(builtin.c_pointer).
+:- pragma foreign_type(java, type_ctor_info, "jmercury.runtime.TypeCtorInfo_Struct").
+:- pragma foreign_type(csharp, type_ctor_info, "runtime.TypeCtorInfo_Struct").
+:- type type_ctor_rep
+    --->    tcr_enum 
+    ;       tcr_enum_usereq 
+    ;       tcr_du 
+    ;       tcr_du_usereq 
+    ;       tcr_notag 
+    ;       tcr_notag_usereq 
+    ;       tcr_equiv 
+    ;       tcr_func 
+    ;       tcr_int 
+    ;       tcr_uint 
+    ;       tcr_char 
+    ;       tcr_float 
+    ;       tcr_string 
+    ;       tcr_pred 
+    ;       tcr_subgoal 
+    ;       tcr_void 
+    ;       tcr_c_pointer 
+    ;       tcr_typeinfo 
+    ;       tcr_typeclassinfo 
+    ;       tcr_array 
+    ;       tcr_succip 
+    ;       tcr_hp 
+    ;       tcr_curfr 
+    ;       tcr_maxfr 
+    ;       tcr_redofr 
+    ;       tcr_redoip 
+    ;       tcr_trail_ptr 
+    ;       tcr_ticket 
+    ;       tcr_notag_ground 
+    ;       tcr_notag_ground_usereq 
+    ;       tcr_equiv_ground 
+    ;       tcr_tuple 
+    ;       tcr_reserved_addr 
+    ;       tcr_reserved_addr_usereq 
+    ;       tcr_type_ctor_info 
+    ;       tcr_base_typeclass_info 
+    ;       tcr_type_desc 
+    ;       tcr_type_ctor_desc 
+    ;       tcr_foreign 
+    ;       tcr_reference 
+    ;       tcr_stable_c_pointer 
+    ;       tcr_stable_foreign 
+    ;       tcr_pseudo_type_desc 
+    ;       tcr_dummy 
+    ;       tcr_bitmap 
+    ;       tcr_foreign_enum 
+    ;       tcr_foreign_enum_usereq 
+    ;       tcr_int8 
+    ;       tcr_uint8 
+    ;       tcr_int16 
+    ;       tcr_uint16 
+    ;       tcr_int32 
+    ;       tcr_uint32 
+    ;       tcr_int64 
+    ;       tcr_uint64 
+    ;       tcr_unknown .
+:- type type_functors
+    --->    type_functors(builtin.c_pointer).
+:- pragma foreign_type(java, type_functors, "jmercury.runtime.TypeFunctors").
+:- pragma foreign_type(csharp, type_functors, "runtime.TypeFunctors").
+:- type type_info
+    --->    type_info(builtin.c_pointer).
+:- pragma foreign_type(java, type_info, "jmercury.runtime.TypeInfo_Struct").
+:- pragma foreign_type(csharp, type_info, "runtime.TypeInfo_Struct").
+:- type type_layout
+    --->    type_layout(builtin.c_pointer).
+:- pragma foreign_type(java, type_layout, "jmercury.runtime.TypeLayout").
+:- pragma foreign_type(csharp, type_layout, "runtime.TypeLayout").
+:- type typeclass_info
+    --->    typeclass_info(builtin.c_pointer).
+:- pragma foreign_type(java, typeclass_info, "java.lang.Object[]").
+:- pragma foreign_type(csharp, typeclass_info, "object[]").
+:- type typeinfo_locn
+    --->    typeinfo_locn(builtin.c_pointer).
+:- pragma foreign_type(java, typeinfo_locn, "jmercury.runtime.DuExistLocn").
+:- pragma foreign_type(csharp, typeinfo_locn, "runtime.DuExistLocn").
+:- type unify_or_compare_pred
+    --->    unify_or_compare_pred .
+:- pragma foreign_type(java, unify_or_compare_pred, "jmercury.runtime.MethodPtr").
+:- pragma foreign_type(csharp, unify_or_compare_pred, "object").
+
+:- inst (du) for rtti_implementation.type_ctor_rep/0 == bound((rtti_implementation.tcr_du) ; (rtti_implementation.tcr_du_usereq) ; (rtti_implementation.tcr_reserved_addr) ; (rtti_implementation.tcr_reserved_addr_usereq)).
+:- inst (enum) for rtti_implementation.type_ctor_rep/0 == bound((rtti_implementation.tcr_dummy) ; (rtti_implementation.tcr_enum) ; (rtti_implementation.tcr_enum_usereq)).
+:- inst (foreign_enum) for rtti_implementation.type_ctor_rep/0 == bound((rtti_implementation.tcr_foreign_enum) ; (rtti_implementation.tcr_foreign_enum_usereq)).
+:- inst (notag) for rtti_implementation.type_ctor_rep/0 == bound((rtti_implementation.tcr_notag) ; (rtti_implementation.tcr_notag_ground) ; (rtti_implementation.tcr_notag_ground_usereq) ; (rtti_implementation.tcr_notag_usereq)).
+:- inst (usereq) for rtti_implementation.type_ctor_rep/0 == bound((rtti_implementation.tcr_du_usereq) ; (rtti_implementation.tcr_enum_usereq) ; (rtti_implementation.tcr_foreign_enum_usereq) ; (rtti_implementation.tcr_notag_ground_usereq) ; (rtti_implementation.tcr_notag_usereq) ; (rtti_implementation.tcr_reserved_addr_usereq)).
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", bitmap).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", rtti_implementation).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", bitmap).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", rtti_implementation).
+:- pragma foreign_import_module("C#", string).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", bitmap).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", rtti_implementation).
+:- pragma foreign_import_module("Java", string).
+
+:- func rtti_implementation.collapse_equivalences(rtti_implementation.type_info) = rtti_implementation.type_info.
+:- mode rtti_implementation.collapse_equivalences((builtin.in)) = (builtin.out) is det.
+:- pred rtti_implementation.get_functor_impl(rtti_implementation.type_info, int, string, int, list.list(rtti_implementation.pseudo_type_info), list.list(string)).
+:- mode rtti_implementation.get_functor_impl((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is semidet.
+:- func rtti_implementation.type_ctor_arity(rtti_implementation.type_ctor_info) = int.
+:- mode rtti_implementation.type_ctor_arity((builtin.in)) = (builtin.out) is det.
+:- func rtti_implementation.type_ctor_module_name(rtti_implementation.type_ctor_info) = string.
+:- mode rtti_implementation.type_ctor_module_name((builtin.in)) = (builtin.out) is det.
+:- func rtti_implementation.type_ctor_name(rtti_implementation.type_ctor_info) = string.
+:- mode rtti_implementation.type_ctor_name((builtin.in)) = (builtin.out) is det.
+:- pred rtti_implementation.type_ctor_search_functor_number_map(rtti_implementation.type_ctor_info, int, int).
+:- mode rtti_implementation.type_ctor_search_functor_number_map((builtin.in), (builtin.in), (builtin.out)) is semidet.
+
+rtti_implementation.construct(V_5, V_6, V_7) = V_8 :-
+    V_9 = "construct/3" : string,
+    private_builtin.sorry(V_9).
+
+rtti_implementation.construct_tuple_2(V_5, V_6, V_7) = V_8 :-
+    V_9 = "construct_tuple_2/3" : string,
+    private_builtin.sorry(V_9).
+
+:- pragma foreign_proc("C", rtti_implementation.get_type_ctor_info(TypeInfo :: (builtin.in)) = (TypeCtorInfo :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    TypeCtorInfo = (MR_Word) MR_TYPEINFO_GET_TYPE_CTOR_INFO(
+        (MR_TypeInfo) TypeInfo);
+").
+
+:- pragma foreign_proc("C", rtti_implementation.get_type_info(_T :: (builtin.unused)) = (TypeInfo :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    TypeInfo = TypeInfo_for_T;
+").
+
+rtti_implementation.is_exist_pseudo_type_info(V_3, V_4) :-
+    V_5 = "is_exist_pseudo_type_info/2" : string,
+    private_builtin.sorry(V_5).
+
+rtti_implementation.is_univ_pseudo_type_info(V_3, V_4) :-
+    V_5 = "is_univ_pseudo_type_info/2" : string,
+    private_builtin.sorry(V_5).
+
+rtti_implementation.pseudo_type_ctor_and_args(V_4, V_5, V_6) :-
+    V_7 = "pseudo_type_ctor_and_args/3" : string,
+    private_builtin.sorry(V_7).
+
+:- pragma foreign_proc("C", rtti_implementation.type_ctor_arity(TypeCtorInfo :: (builtin.in)) = (Arity :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    MR_TypeCtorInfo tci = (MR_TypeCtorInfo) TypeCtorInfo;
+    Arity = tci->MR_type_ctor_arity;
+").
+
+:- pragma foreign_proc("C", rtti_implementation.type_ctor_module_name(TypeCtorInfo :: (builtin.in)) = (Name :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    MR_TypeCtorInfo tci = (MR_TypeCtorInfo) TypeCtorInfo;
+    Name = (MR_String) MR_type_ctor_module_name(tci);
+").
+
+:- pragma foreign_proc("C", rtti_implementation.type_ctor_name(TypeCtorInfo :: (builtin.in)) = (Name :: (builtin.out)), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    MR_TypeCtorInfo tci = (MR_TypeCtorInfo) TypeCtorInfo;
+    Name = (MR_String) MR_type_ctor_name(tci);
+").
+
+rtti_implementation.type_ctor_name_and_arity(V_5, V_6, V_7, V_8) :-
+    V_6 = rtti_implementation.type_ctor_module_name(V_5),
+    V_7 = rtti_implementation.type_ctor_name(V_5),
+    V_8 = rtti_implementation.type_ctor_arity(V_5).
+
+rtti_implementation.type_ctor_search_functor_number_map(V_4, V_5, V_6) :-
+    V_7 = "type_ctor_search_functor_number_map/3" : string,
+    private_builtin.sorry(V_7).
+
+rtti_implementation.type_info_get_functor(V_6, V_7, V_8, V_9, V_10) :-
+    rtti_implementation.get_functor_impl(V_6, V_7, V_8, V_9, V_10, V_11).
+
+rtti_implementation.type_info_get_functor_lex(V_4, V_5, V_6) :-
+    V_7 = rtti_implementation.collapse_equivalences(V_4),
+    V_8 = rtti_implementation.get_type_ctor_info(V_7),
+    rtti_implementation.type_ctor_search_functor_number_map(V_8, V_5, V_6).
+
+rtti_implementation.type_info_get_functor_with_names(V_7, V_8, V_9, V_10, V_11, V_12) :-
+    rtti_implementation.get_functor_impl(V_7, V_8, V_9, V_10, V_11, V_12).
+
+:- pragma termination_info(rtti_implementation.collapse_equivalences((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.compare_type_infos((builtin.out), (builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(rtti_implementation.construct((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.construct_tuple_2((builtin.in), (builtin.in), (builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.deconstruct((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.deconstruct((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.deconstruct((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.deconstruct((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.functor_number_cc((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.generic_compare((builtin.out), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(rtti_implementation.generic_unify((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(rtti_implementation.get_functor_impl((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.get_type_ctor_info((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.get_type_info((builtin.unused)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.is_exist_pseudo_type_info((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.is_univ_pseudo_type_info((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.pseudo_type_ctor_and_args((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_ctor_and_args((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_ctor_arity((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.type_ctor_module_name((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.type_ctor_name((builtin.in)) = (builtin.out), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.type_ctor_name_and_arity((builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(rtti_implementation.type_ctor_search_functor_number_map((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_info_get_functor((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_info_get_functor_lex((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_info_get_functor_ordinal((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_info_get_functor_with_names((builtin.in), (builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.type_info_num_functors((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.univ_named_arg((builtin.in), builtin.in((deconstruct.do_not_allow)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.univ_named_arg((builtin.in), builtin.in((deconstruct.canonicalize)), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(rtti_implementation.univ_named_arg((builtin.in), builtin.in((deconstruct.include_details_cc)), (builtin.in), (builtin.out)), infinite, can_loop).
+
+:- pragma exceptions(function, (rtti_implementation.collapse_equivalences), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.compare_type_infos), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtti_implementation.construct), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtti_implementation.construct_tuple_2), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.deconstruct), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.deconstruct), 6, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.deconstruct), 6, 2, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.deconstruct), 6, 3, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.functor_number_cc), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.generic_compare), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.generic_unify), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.get_functor_impl), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtti_implementation.get_type_ctor_info), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rtti_implementation.get_type_info), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (rtti_implementation.is_exist_pseudo_type_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.is_univ_pseudo_type_info), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.pseudo_type_ctor_and_args), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.type_ctor_and_args), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (rtti_implementation.type_ctor_arity), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rtti_implementation.type_ctor_module_name), 2, 0, will_not_throw).
+:- pragma exceptions(function, (rtti_implementation.type_ctor_name), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (rtti_implementation.type_ctor_name_and_arity), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (rtti_implementation.type_ctor_search_functor_number_map), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.type_info_get_functor), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.type_info_get_functor_lex), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.type_info_get_functor_ordinal), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.type_info_get_functor_with_names), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.type_info_num_functors), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.univ_named_arg), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.univ_named_arg), 4, 1, may_throw(user_exception)).
+:- pragma exceptions(predicate, (rtti_implementation.univ_named_arg), 4, 2, may_throw(user_exception)).

@@ -1,0 +1,15 @@
+:- module (check_hlds.polymorphism).
+:- interface.
+:- type int_or_var
+    --->    iov_int(int)
+    ;       iov_var(parse_tree.prog_data.prog_var).
+:- type poly_info.
+:- type type_info_kind
+    --->    type_info 
+    ;       type_ctor_info .
+:- type_representation(const_struct_var_map, is_eqv_to(map.map(hlds.const_struct.const_struct_arg, parse_tree.prog_data.prog_var))).
+:- type_representation(int_const_map, is_eqv_to(map.map(int, parse_tree.prog_data.prog_var))).
+:- type_representation(poly_info, is_word_aligned_ptr).
+:- type_representation(type_info_kind, du_repn(enum("type_info", "type_ctor_info", [],  no_c_j_cs))).
+:- type_representation(type_info_var_map, is_eqv_to(map.map(parse_tree.prog_data.type_ctor, map.map(list.list(parse_tree.prog_data.mer_type), pair.pair(parse_tree.prog_data.prog_var, maybe.maybe(hlds.const_struct.const_struct_arg)))))).
+:- type_representation(typeclass_info_map, is_eqv_to(map.map(parse_tree.prog_data.class_name, map.map(list.list(parse_tree.prog_data.mer_type), check_hlds.polymorphism.typeclass_info_map_entry)))).
