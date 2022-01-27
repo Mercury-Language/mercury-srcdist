@@ -1,0 +1,256 @@
+/*
+** Automatically generated from `goal_form.m'
+** by the Mercury compiler,
+** version rotd-2021-11-02
+** configured for x86_64-pc-linux-gnu.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** UNBOXED_INT64S=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+// :- module hlds.goal_form.
+// :- interface.
+
+#ifndef MR_HEADER_GUARD_hlds__goal_form
+#define MR_HEADER_GUARD_hlds__goal_form
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef HLDS__GOAL_FORM_DECL_GUARD
+#define HLDS__GOAL_FORM_DECL_GUARD
+#include "hlds.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct hlds__goal_form__hlds__goal_form__type_ctor_info_goal_loop_or_throw_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__goal_form__hlds__goal_form__type_ctor_info_goal_loop_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__goal_form__hlds__goal_form__type_ctor_info_goal_throw_status_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__goal_form__hlds__goal_form__type_ctor_info_has_subgoals_0;
+
+extern const MR_TypeCtorInfo_Struct hlds__goal_form__hlds__goal_form__type_ctor_info_is_termvar_needed_0;
+
+MR_bool MR_CALL 
+hlds__goal_form__all_disjuncts_are_conj_of_unify_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__goal_form__cannot_fail_before_stack_flush_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__goal_form__cannot_stack_flush_1_p_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__goal_form__count_recursive_calls_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Integer param_3,
+  MR_Integer * param_4,
+  MR_Integer * param_5);
+
+void MR_CALL 
+hlds__goal_form__get_from_ground_term_construct_conjunct_info_5_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__goal_form__get_from_ground_term_construct_info_5_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word * param_3,
+  MR_Word * param_4,
+  MR_Word * param_5);
+
+void MR_CALL 
+hlds__goal_form__get_notag_or_direct_arg_arg_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Box * param_3);
+
+void MR_CALL 
+hlds__goal_form__get_notag_or_direct_arg_arg_mode_4_p_0(
+  MR_Word param_1,
+  MR_Word param_2,
+  MR_Word param_3,
+  MR_Word param_4,
+  MR_Box * param_5,
+  MR_Box * param_6);
+
+MR_bool MR_CALL 
+hlds__goal_form__goal_can_loop_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__goal_form__goal_can_loop_or_throw_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__goal_form__goal_can_loop_or_throw_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+hlds__goal_form__goal_can_loop_or_throw_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+hlds__goal_form__goal_can_throw_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void MR_CALL 
+hlds__goal_form__goal_can_throw_4_p_0(
+  MR_Word param_1,
+  MR_Word * param_2,
+  MR_Word param_3,
+  MR_Word * param_4);
+
+MR_bool MR_CALL 
+hlds__goal_form__goal_cannot_loop_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__goal_form__goal_cannot_loop_or_throw_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__goal_form__goal_cannot_loop_or_throw_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__goal_form__goal_cannot_throw_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__goal_form__goal_is_conj_of_unify_2_p_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__goal_form__goal_list_may_allocate_heap_1_p_0(
+  MR_Word param_1);
+
+MR_bool MR_CALL 
+hlds__goal_form__goal_may_allocate_heap_1_p_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__goal_form__goal_cannot_modify_trail_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__goal_form__goal_expr_has_subgoals_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__goal_form__goal_has_foreign_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__goal_form__goal_is_flat_1_f_0(
+  MR_Word param_1);
+
+MR_Word MR_CALL 
+hlds__goal_form__goal_may_modify_trail_1_f_0(
+  MR_Word param_1);
+
+void MR_CALL 
+hlds__goal_form____Compare____goal_loop_or_throw_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__goal_form____Compare____goal_loop_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__goal_form____Compare____goal_throw_status_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__goal_form____Compare____has_subgoals_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+void MR_CALL 
+hlds__goal_form____Compare____is_termvar_needed_0_0(
+  MR_Word * param_1,
+  MR_Word param_2,
+  MR_Word param_3);
+
+MR_bool MR_CALL 
+hlds__goal_form____Unify____goal_loop_or_throw_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__goal_form____Unify____goal_loop_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__goal_form____Unify____goal_throw_status_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__goal_form____Unify____has_subgoals_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+MR_bool MR_CALL 
+hlds__goal_form____Unify____is_termvar_needed_0_0(
+  MR_Word param_1,
+  MR_Word param_2);
+
+void mercury__hlds__goal_form__init(void);
+void mercury__hlds__goal_form__init_type_tables(void);
+void mercury__hlds__goal_form__init_debugger(void);
+const char *mercury__hlds__goal_form__grade_check(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // MR_HEADER_GUARD_hlds.goal_form
+
+// :- end_interface hlds.goal_form.

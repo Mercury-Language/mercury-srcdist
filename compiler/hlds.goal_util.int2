@@ -1,0 +1,15 @@
+:- module (hlds.goal_util).
+:- interface.
+:- type attach_in_from_ground_term
+    --->    attach_in_from_ground_term 
+    ;       do_not_attach_in_from_ground_term .
+:- type goal_is_atomic
+    --->    goal_is_atomic 
+    ;       goal_is_nonatomic .
+:- type is_leaf
+    --->    is_leaf 
+    ;       is_not_leaf .
+:- type maybe_transformed_goal
+    --->    ok(hlds.hlds_goal.hlds_goal)
+    ;       error(string)
+    ;       goal_not_found .
