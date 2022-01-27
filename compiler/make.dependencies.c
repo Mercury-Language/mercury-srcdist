@@ -1,0 +1,14635 @@
+/*
+** Automatically generated from `make.dependencies.m'
+** by the Mercury compiler,
+** version rotd-2016-09-27
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module make.dependencies. */
+/* :- implementation. */
+
+/*
+INIT mercury__make__dependencies__init
+ENDINIT
+*/
+
+#include "make.dependencies.mih"
+
+
+#include "backend_libs.mih"
+#include "hlds.mih"
+#include "libs.mih"
+#include "make.mih"
+#include "mdbcomp.mih"
+#include "parse_tree.mih"
+#include "recompilation.mih"
+#include "top_level.mih"
+#include "backend_libs.compile_target_code.mih"
+#include "libs.compiler_util.mih"
+#include "libs.file_util.mih"
+#include "libs.globals.mih"
+#include "libs.handle_options.mih"
+#include "libs.md4.mih"
+#include "libs.op_mode.mih"
+#include "libs.options.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "make.module_dep_file.mih"
+#include "make.module_target.mih"
+#include "make.options_file.mih"
+#include "make.program_target.mih"
+#include "make.util.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "dir.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "solutions.mih"
+#include "sparse_bitset.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "version_array.mih"
+#include "version_hash_table.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.file_names.mih"
+#include "parse_tree.maybe_error.mih"
+#include "parse_tree.module_imports.mih"
+#include "parse_tree.parse_error.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_data_foreign.mih"
+#include "parse_tree.prog_data_pragma.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.set_of_var.mih"
+#include "top_level.mercury_compile_main.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_dependency_file_index_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__set_ordlist__pti_set_ordlist_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__list__pti_list_1__plain_make__dependencies__type_ctor_info_dependency_file_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__list__pti_list_1__plain_builtin__type_ctor_info_string_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 make__dependencies__pair__pti_pair_2__plain_make__dependencies__type_ctor_info_dependency_file_0__plain_make__type_ctor_info_dependency_status_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 make__dependencies__maybe__pti_maybe_error_2__plain_libs__timestamp__type_ctor_info_timestamp_0__plain_builtin__type_ctor_info_string_0;
+
+static const MR_FA_TypeInfo_Struct2 make__dependencies__pair__ti_pair_2make__dependencies__type_ctor_info_dependency_file_0make__type_ctor_info_dependency_status_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__list__pti_list_1__plain_pair__ti_pair_2make__dependencies__type_ctor_info_dependency_file_0make__type_ctor_info_dependency_status_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__list__pti_list_1__pseudo_1;
+
+static const MR_VA_PseudoTypeInfo_Struct3 make__dependencies____vpti_pred_3__pseudo_1__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0;
+
+static const MR_FA_TypeInfo_Struct2 make__dependencies__maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__list__pti_list_1__plain_maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__sparse_bitset__pti_sparse_bitset_1__pseudo_1;
+
+static const MR_VA_PseudoTypeInfo_Struct8 make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_1__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_module_index_0;
+
+static const MR_FA_TypeInfo_Struct1 make__dependencies__sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_module_index_0;
+
+static const MR_VA_PseudoTypeInfo_Struct8 make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_module_index_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0;
+
+static const MR_FA_TypeInfo_Struct1 make__dependencies__sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_dependency_file_index_0;
+
+static const MR_VA_PseudoTypeInfo_Struct8 make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_dependency_file_index_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0;
+
+static const MR_FA_TypeInfo_Struct1 make__dependencies__set_ordlist__ti_set_ordlist_1make__dependencies__type_ctor_info_dependency_file_0;
+
+static const MR_VA_PseudoTypeInfo_Struct8 make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_set_ordlist__ti_set_ordlist_1make__dependencies__type_ctor_info_dependency_file_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__set_ordlist__pti_set_ordlist_1__plain_make__dependencies__type_ctor_info_dependency_file_0;
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__set_ordlist__pti_set_ordlist_1__plain_libs__globals__type_ctor_info_foreign_language_0;
+
+static const MR_FA_PseudoTypeInfo_Struct2 make__dependencies__pair__pti_pair_2__pseudo_1__plain_maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0;
+
+static const MR_VA_PseudoTypeInfo_Struct3 make__dependencies____vpti_pred_3__plain_make__dependencies__type_ctor_info_dependency_file_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0;
+
+static const MR_FA_TypeInfo_Struct1 make__dependencies__make__dependencies__ti_deps_result_1make__dependencies__type_ctor_info_module_index_0;
+
+static const MR_FA_TypeInfo_Struct2 make__dependencies__tree234__ti_tree234_2make__dependencies__type_ctor_info_module_index_0make__dependencies__ti_deps_result_1make__dependencies__type_ctor_info_module_index_0;
+
+static const MR_FA_TypeInfo_Struct2 make__dependencies__tree234__ti_tree234_2make__dependencies__type_ctor_info_transitive_dependencies_root_0make__dependencies__ti_deps_result_1make__dependencies__type_ctor_info_module_index_0;
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_dependencies_result_0_0;
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_dependencies_result_0_1;
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_dependencies_result_0_2;
+
+static const MR_EnumFunctorDescPtr make__dependencies__make__dependencies__enum_value_ordered_dependencies_result_0[3];
+
+static const MR_EnumFunctorDescPtr make__dependencies__make__dependencies__enum_name_ordered_dependencies_result_0[3];
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_dependencies_result_0[3];
+
+static const MR_PseudoTypeInfo make__dependencies__make__dependencies__field_types_dependency_file_0_0[1];
+
+static const MR_DuFunctorDesc make__dependencies__make__dependencies__du_functor_desc_dependency_file_0_0;
+
+static const MR_FA_TypeInfo_Struct1 make__dependencies__maybe__ti_maybe_1libs__options__type_ctor_info_option_0;
+
+static const MR_PseudoTypeInfo make__dependencies__make__dependencies__field_types_dependency_file_0_1[2];
+
+static const MR_DuFunctorDesc make__dependencies__make__dependencies__du_functor_desc_dependency_file_0_1;
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_stag_ordered_dependency_file_0_0[1];
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_stag_ordered_dependency_file_0_1[1];
+
+static const MR_DuPtagLayout make__dependencies__make__dependencies__du_ptag_ordered_dependency_file_0[2];
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_name_ordered_dependency_file_0[2];
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_dependency_file_0[2];
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_dependency_file_index_0[1];
+
+static const MR_NotagFunctorDesc make__dependencies__make__dependencies__notag_functor_desc_dependency_file_index_0;
+
+static const MR_PseudoTypeInfo make__dependencies__make__dependencies__field_types_deps_result_1_0[2];
+
+static const MR_ConstString make__dependencies__make__dependencies__field_names_deps_result_1_0[2];
+
+static const MR_DuFunctorDesc make__dependencies__make__dependencies__du_functor_desc_deps_result_1_0;
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_stag_ordered_deps_result_1_0[1];
+
+static const MR_DuPtagLayout make__dependencies__make__dependencies__du_ptag_ordered_deps_result_1[1];
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_name_ordered_deps_result_1[1];
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_deps_result_1[1];
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__set_ordlist__pti_set_ordlist_1__pseudo_1;
+
+static const MR_VA_PseudoTypeInfo_Struct8 make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__pseudo_set_ordlist__pti_set_ordlist_1__pseudo_1__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0;
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_module_index_0[1];
+
+static const MR_NotagFunctorDesc make__dependencies__make__dependencies__notag_functor_desc_module_index_0;
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_module_locn_0_0;
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_module_locn_0_1;
+
+static const MR_EnumFunctorDescPtr make__dependencies__make__dependencies__enum_value_ordered_module_locn_0[2];
+
+static const MR_EnumFunctorDescPtr make__dependencies__make__dependencies__enum_name_ordered_module_locn_0[2];
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_module_locn_0[2];
+
+static const MR_PseudoTypeInfo make__dependencies__make__dependencies__field_types_transitive_dependencies_root_0_0[3];
+
+static const MR_DuArgLocn make__dependencies__make__dependencies__field_locns_transitive_dependencies_root_0_0[3];
+
+static const MR_DuFunctorDesc make__dependencies__make__dependencies__du_functor_desc_transitive_dependencies_root_0_0;
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_stag_ordered_transitive_dependencies_root_0_0[1];
+
+static const MR_DuPtagLayout make__dependencies__make__dependencies__du_ptag_ordered_transitive_dependencies_root_0[1];
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_name_ordered_transitive_dependencies_root_0[1];
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_transitive_dependencies_root_0[1];
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_transitive_dependencies_type_0_0;
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_transitive_dependencies_type_0_1;
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_transitive_dependencies_type_0_2;
+
+static const MR_EnumFunctorDescPtr make__dependencies__make__dependencies__enum_value_ordered_transitive_dependencies_type_0[3];
+
+static const MR_EnumFunctorDescPtr make__dependencies__make__dependencies__enum_name_ordered_transitive_dependencies_type_0[3];
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_transitive_dependencies_type_0[3];
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____cached_direct_imports_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies____Compare____cached_direct_imports_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____cached_foreign_imports_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies____Compare____cached_foreign_imports_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____cached_transitive_dependencies_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies____Compare____cached_transitive_dependencies_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____dependencies_result_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies____Compare____dependencies_result_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____dependency_file_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies____Compare____dependency_file_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____dependency_file_index_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies____Compare____dependency_file_index_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____deps_result_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static void MR_CALL 
+make__dependencies____Compare____deps_result_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____deps_set_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static void MR_CALL 
+make__dependencies____Compare____deps_set_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____find_module_deps_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static void MR_CALL 
+make__dependencies____Compare____find_module_deps_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____find_module_deps_plain_set_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static void MR_CALL 
+make__dependencies____Compare____find_module_deps_plain_set_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____module_deps_result_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies____Compare____module_deps_result_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____module_index_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies____Compare____module_index_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____module_locn_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies____Compare____module_locn_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____transitive_dependencies_root_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies____Compare____transitive_dependencies_root_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____transitive_dependencies_type_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies____Compare____transitive_dependencies_type_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3);
+
+static MR_Box MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__dependency_file_index__arity0______enum__to_int_1_1_f_0_10001(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__dependency_file_index__arity0______enum__from_int_1_1_f_0_10001(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static MR_Box MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__module_index__arity0______enum__to_int_1_1_f_0_10001(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1);
+
+static MR_bool MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__module_index__arity0______enum__from_int_1_1_f_0_10001(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_100_101_112_101_110_100_101_110_99_105_101_115_95_116_105_109_101_115_116_97_109_112_115_95_119_114_105_116_101_95_109_105_115_115_105_110_103_95_100_101_112_115_95_95_104_111_50_49_95_95_91_49_93_95_48_7_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_100_101_112_101_110_100_101_110_99_105_101_115_95_116_105_109_101_115_116_97_109_112_115_95_119_114_105_116_101_95_109_105_115_115_105_110_103_95_100_101_112_115_95_95_104_111_50_49_95_95_91_49_93_95_48_7_p_0(
+  MR_String make__dependencies__TargetFileName_8,
+  MR_Word make__dependencies__BuildDepsSucceeded_9,
+  MR_Word make__dependencies__DepFiles_10,
+  MR_Word make__dependencies__WriteDepFile_11,
+  MR_Word make__dependencies__DepTimestamps_12);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_57_95_95_91_49_93_95_48_11_p_0(
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__P_13,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_93_95_48_11_p_0(
+  MR_Word make__dependencies__TypeInfo_for_Acc_31,
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__P_13,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_51_95_95_91_49_44_32_50_93_95_48_11_p_0(
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__P_13,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_50_95_95_91_49_44_32_50_93_95_48_11_p_0(
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__P_13,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_49_95_95_91_49_44_32_50_44_32_51_93_95_48_11_p_0(
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__P_13,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_98_97_115_101_95_99_111_109_112_105_108_101_100_95_99_111_100_101_95_100_101_112_101_110_100_101_110_99_105_101_115_95_95_53_54_56_95_95_49_95_95_91_49_44_32_50_93_95_48_8_p_0(
+  MR_Word * make__dependencies__HeadVar__3_36,
+  MR_Word * make__dependencies__HeadVar__4_37,
+  MR_Word make__dependencies__HeadVar__5_38,
+  MR_Word * make__dependencies__HeadVar__6_39);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_116_97_114_103_101_116_95_100_101_112_101_110_100_101_110_99_105_101_115_95_95_52_49_57_95_95_49_95_95_91_49_44_32_50_93_95_48_8_p_0(
+  MR_Word * make__dependencies__HeadVar__3_173,
+  MR_Word * make__dependencies__HeadVar__4_174,
+  MR_Word make__dependencies__HeadVar__5_175,
+  MR_Word * make__dependencies__HeadVar__6_176);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_116_97_114_103_101_116_95_100_101_112_101_110_100_101_110_99_105_101_115_95_95_52_48_56_95_95_49_95_95_91_49_44_32_50_93_95_48_8_p_0(
+  MR_Word * make__dependencies__HeadVar__3_156,
+  MR_Word * make__dependencies__HeadVar__4_157,
+  MR_Word make__dependencies__HeadVar__5_158,
+  MR_Word * make__dependencies__HeadVar__6_159);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_116_97_114_103_101_116_95_100_101_112_101_110_100_101_110_99_105_101_115_95_95_52_54_48_95_95_49_95_95_91_49_44_32_50_93_95_48_8_p_0(
+  MR_Word * make__dependencies__HeadVar__3_256,
+  MR_Word * make__dependencies__HeadVar__4_257,
+  MR_Word make__dependencies__HeadVar__5_258,
+  MR_Word * make__dependencies__HeadVar__6_259);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_101_110_116_115_95_95_91_49_93_95_48_8_p_0(
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word * make__dependencies__AncestorIndices_11,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_17);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_108_102_95_95_91_49_93_95_48_8_p_0(
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word * make__dependencies__HeadVar__4_4,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_13,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_14);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_110_111_95_100_101_112_115_95_95_91_50_44_32_51_93_95_48_8_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_17,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word * make__dependencies__HeadVar__4_4,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_13,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_14);
+
+static MR_Word MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_97_114_103_101_116_95_116_111_95_109_111_100_117_108_101_95_116_97_114_103_101_116_95_99_111_100_101_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_111_114_101_105_103_110_95_100_101_112_115_95_95_91_50_93_95_48_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_111_114_101_105_103_110_95_100_101_112_115_95_95_91_50_93_95_48_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_111_114_101_105_103_110_95_100_101_112_115_95_95_91_50_93_95_48_2_f_0(
+  MR_Word make__dependencies__Globals_4);
+
+static void MR_CALL 
+make__dependencies__check_dependencies_timestamps_write_missing_deps__ho21_7_p_0(
+  MR_Word make__dependencies__V_42_42,
+  MR_String make__dependencies__TargetFileName_8,
+  MR_Word make__dependencies__BuildDepsSucceeded_9,
+  MR_Word make__dependencies__DepFiles_10,
+  MR_Word make__dependencies__WriteDepFile_11,
+  MR_Word make__dependencies__DepTimestamps_12);
+
+static void MR_CALL 
+make__dependencies__of__ho20_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__of__ho20_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho20_2_f_0(
+  MR_Word make__dependencies__FileType_4);
+
+static void MR_CALL 
+make__dependencies__of__ho19_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__of__ho19_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho19_2_f_0(
+  MR_Word make__dependencies__FileType_4);
+
+static void MR_CALL 
+make__dependencies__of__ho18_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__of__ho18_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho18_2_f_0(
+  MR_Word make__dependencies__FileType_4);
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps__ho17_10_p_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps__ho17_10_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps__ho17_10_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps__ho17_10_p_0(
+  MR_Word make__dependencies__V_39_39,
+  MR_Word make__dependencies__Globals_11,
+  MR_String make__dependencies__TargetFileName_12,
+  MR_Word make__dependencies__MaybeTimestamp_13,
+  MR_Word make__dependencies__BuildDepsSucceeded_14,
+  MR_Word make__dependencies__DepFiles_15,
+  MR_Word make__dependencies__WriteDepFile_16,
+  MR_Word make__dependencies__DepTimestamps_17,
+  MR_Word * make__dependencies__DepsResult_18);
+
+static void MR_CALL 
+make__dependencies__of__ho16_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__of__ho16_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho16_2_f_0(
+  MR_Word make__dependencies__FileType_4);
+
+static void MR_CALL 
+make__dependencies__of__ho15_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__of__ho15_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho15_2_f_0(
+  MR_Word make__dependencies__FileType_4);
+
+static void MR_CALL 
+make__dependencies__files_of__ho14_2_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__files_of__ho14_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__files_of__ho14_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__files_of__ho14_2_f_0(void);
+
+static void MR_CALL 
+make__dependencies__files_of__ho13_2_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__files_of__ho13_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__files_of__ho13_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__files_of__ho13_2_f_0(void);
+
+static void MR_CALL 
+make__dependencies__of__ho12_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__of__ho12_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho12_2_f_0(
+  MR_Word make__dependencies__FileType_4);
+
+static void MR_CALL 
+make__dependencies__of__ho11_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__of__ho11_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho11_2_f_0(
+  MR_Word make__dependencies__FileType_4);
+
+static void MR_CALL 
+make__dependencies__of__ho10_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__of__ho10_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho10_2_f_0(
+  MR_Word make__dependencies__FileType_4);
+
+static void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho7_11_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9);
+
+static void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho7_11_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho7_11_p_0(
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23);
+
+static void MR_CALL 
+make__dependencies__indirect_imports_2__ho6_9_p_0(
+  MR_Word make__dependencies__Globals_10,
+  MR_Word make__dependencies__ModuleIndex_12,
+  MR_Word * make__dependencies__Success_13,
+  MR_Word * make__dependencies__IndirectImports_14,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23);
+
+static void MR_CALL 
+make__dependencies__indirect_imports_2__ho5_9_p_0(
+  MR_Word make__dependencies__Globals_10,
+  MR_Word make__dependencies__ModuleIndex_12,
+  MR_Word * make__dependencies__Success_13,
+  MR_Word * make__dependencies__IndirectImports_14,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23);
+
+static void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho4_11_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9);
+
+static void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho4_11_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho4_11_p_0(
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23);
+
+static MR_bool MR_CALL 
+make__dependencies__IntroducedFrom__pred__debug_newer_dependencies_2__1390__1_3_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_35,
+  MR_Word make__dependencies__MaybeTimestamp_8,
+  MR_Word make__dependencies__LambdaHeadVar__1_29);
+
+static MR_bool MR_CALL 
+make__dependencies__IntroducedFrom__pred__check_dependencies_timestamps_write_missing_deps__1286__1_3_p_0(
+  MR_Word make__dependencies__TypeInfo_for_File_38,
+  MR_Word make__dependencies__LambdaHeadVar__1_23,
+  MR_Box * make__dependencies__LambdaHeadVar__2_24);
+
+static MR_Word MR_CALL 
+make__dependencies__IntroducedFrom__func__fact_table_files__986__1_1_f_0(
+  MR_String make__dependencies__LambdaHeadVar__1_27);
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__find_module_foreign_imports__925__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_31,
+  MR_Word make__dependencies__HeadVar__2_51,
+  MR_Word make__dependencies__HeadVar__3_52,
+  MR_Word * make__dependencies__HeadVar__4_53,
+  MR_Word make__dependencies__HeadVar__5_54,
+  MR_Word * make__dependencies__HeadVar__6_55,
+  MR_Word make__dependencies__HeadVar__7_56,
+  MR_Word * make__dependencies__HeadVar__8_57);
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__foreign_imports__909__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_31,
+  MR_Word make__dependencies__HeadVar__2_52,
+  MR_Word make__dependencies__HeadVar__3_53,
+  MR_Word * make__dependencies__HeadVar__4_54,
+  MR_Word make__dependencies__HeadVar__5_55,
+  MR_Word * make__dependencies__HeadVar__6_56,
+  MR_Word make__dependencies__HeadVar__7_57,
+  MR_Word * make__dependencies__HeadVar__8_58);
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__indirect_imports_2__852__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_33,
+  MR_Word make__dependencies__HeadVar__2_74,
+  MR_Word make__dependencies__HeadVar__3_75,
+  MR_Word * make__dependencies__HeadVar__4_76,
+  MR_Word make__dependencies__HeadVar__5_77,
+  MR_Word * make__dependencies__HeadVar__6_78,
+  MR_Word make__dependencies__HeadVar__7_79,
+  MR_Word * make__dependencies__HeadVar__8_80);
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__direct_imports__731__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_37,
+  MR_Word make__dependencies__HeadVar__2_143,
+  MR_Word make__dependencies__HeadVar__3_144,
+  MR_Word * make__dependencies__HeadVar__4_145,
+  MR_Word make__dependencies__HeadVar__5_146,
+  MR_Word * make__dependencies__HeadVar__6_147,
+  MR_Word make__dependencies__HeadVar__7_148,
+  MR_Word * make__dependencies__HeadVar__8_149);
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__files_of_2__643__1_10_p_0(
+  MR_Word make__dependencies__FindFiles_11,
+  MR_Word make__dependencies__HeadVar__2_56,
+  MR_Word make__dependencies__HeadVar__3_57,
+  MR_Word * make__dependencies__HeadVar__4_58,
+  MR_Word make__dependencies__HeadVar__5_59,
+  MR_Word * make__dependencies__HeadVar__6_60,
+  MR_Word make__dependencies__HeadVar__7_61,
+  MR_Word * make__dependencies__HeadVar__8_62);
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__base_compiled_code_dependencies__574__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_22,
+  MR_Word make__dependencies__HeadVar__2_23,
+  MR_Word make__dependencies__HeadVar__3_84,
+  MR_Word make__dependencies__HeadVar__4_85,
+  MR_Word * make__dependencies__HeadVar__5_86,
+  MR_Word * make__dependencies__HeadVar__6_87,
+  MR_Word make__dependencies__HeadVar__7_88,
+  MR_Word * make__dependencies__HeadVar__8_89);
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__base_compiled_code_dependencies__568__1_8_p_0(
+  MR_Word make__dependencies__HeadVar__1_34,
+  MR_Word make__dependencies__HeadVar__2_35,
+  MR_Word * make__dependencies__HeadVar__3_36,
+  MR_Word * make__dependencies__HeadVar__4_37,
+  MR_Word make__dependencies__HeadVar__5_38,
+  MR_Word * make__dependencies__HeadVar__6_39);
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__compiled_code_dependencies__539__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_23,
+  MR_Word make__dependencies__HeadVar__2_24,
+  MR_Word make__dependencies__HeadVar__3_57,
+  MR_Word make__dependencies__HeadVar__4_58,
+  MR_Word * make__dependencies__HeadVar__5_59,
+  MR_Word * make__dependencies__HeadVar__6_60,
+  MR_Word make__dependencies__HeadVar__7_61,
+  MR_Word * make__dependencies__HeadVar__8_62);
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__compiled_code_dependencies__540__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_25,
+  MR_Word make__dependencies__HeadVar__2_26,
+  MR_Word make__dependencies__HeadVar__3_66,
+  MR_Word make__dependencies__HeadVar__4_67,
+  MR_Word * make__dependencies__HeadVar__5_68,
+  MR_Word * make__dependencies__HeadVar__6_69,
+  MR_Word make__dependencies__HeadVar__7_70,
+  MR_Word * make__dependencies__HeadVar__8_71);
+
+static MR_bool MR_CALL 
+make__dependencies__IntroducedFrom__pred__check_dependencies__1254__1_1_p_0(
+  MR_Word make__dependencies__LambdaHeadVar__1_35);
+
+static MR_bool MR_CALL 
+make__dependencies__IntroducedFrom__pred__remove_nested_modules__1184__1_2_p_0(
+  MR_Word make__dependencies__NestedModules_13,
+  MR_Word make__dependencies__HeadVar__2_34);
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__target_dependencies__419__1_8_p_0(
+  MR_Word make__dependencies__HeadVar__1_171,
+  MR_Word make__dependencies__HeadVar__2_172,
+  MR_Word * make__dependencies__HeadVar__3_173,
+  MR_Word * make__dependencies__HeadVar__4_174,
+  MR_Word make__dependencies__HeadVar__5_175,
+  MR_Word * make__dependencies__HeadVar__6_176);
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__target_dependencies__408__1_8_p_0(
+  MR_Word make__dependencies__HeadVar__1_154,
+  MR_Word make__dependencies__HeadVar__2_155,
+  MR_Word * make__dependencies__HeadVar__3_156,
+  MR_Word * make__dependencies__HeadVar__4_157,
+  MR_Word make__dependencies__HeadVar__5_158,
+  MR_Word * make__dependencies__HeadVar__6_159);
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__target_dependencies__460__1_8_p_0(
+  MR_Word make__dependencies__HeadVar__1_254,
+  MR_Word make__dependencies__HeadVar__2_255,
+  MR_Word * make__dependencies__HeadVar__3_256,
+  MR_Word * make__dependencies__HeadVar__4_257,
+  MR_Word make__dependencies__HeadVar__5_258,
+  MR_Word * make__dependencies__HeadVar__6_259);
+
+static MR_bool MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__module_index__arity0______enum__from_int_1_1_f_0(
+  MR_Integer make__dependencies__I_3,
+  MR_Word * make__dependencies__HeadVar__2_2);
+
+static MR_Integer MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__module_index__arity0______enum__to_int_1_1_f_0(
+  MR_Word make__dependencies__HeadVar__1_1);
+
+static MR_bool MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__dependency_file_index__arity0______enum__from_int_1_1_f_0(
+  MR_Integer make__dependencies__I_3,
+  MR_Word * make__dependencies__HeadVar__2_2);
+
+static MR_Integer MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__dependency_file_index__arity0______enum__to_int_1_1_f_0(
+  MR_Word make__dependencies__HeadVar__1_1);
+
+static void MR_CALL 
+make__dependencies____Compare____transitive_dependencies_type_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____transitive_dependencies_type_0_0(
+  MR_Word make__dependencies__HeadVar__2_1,
+  MR_Word make__dependencies__HeadVar__2_2);
+
+static void MR_CALL 
+make__dependencies____Compare____module_locn_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____module_locn_0_0(
+  MR_Word make__dependencies__HeadVar__2_1,
+  MR_Word make__dependencies__HeadVar__2_2);
+
+static void MR_CALL 
+make__dependencies____Compare____module_deps_result_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3);
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____module_deps_result_0_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2);
+
+static void MR_CALL 
+make__dependencies__make_write_dependency_file_and_timestamp_list_3_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_22,
+  MR_Word make__dependencies__HeadVar__1_1);
+
+static MR_bool MR_CALL 
+make__dependencies__debug_newer_dependencies_2_6_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1);
+
+static void MR_CALL 
+make__dependencies__debug_newer_dependencies_2_6_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_35,
+  MR_String make__dependencies__TargetFileName_7,
+  MR_Word make__dependencies__MaybeTimestamp_8,
+  MR_Word make__dependencies__DepFiles_9,
+  MR_Word make__dependencies__DepTimestamps_10);
+
+static MR_bool MR_CALL 
+make__dependencies__newer_timestamp_2_p_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__Timestamp_5);
+
+static MR_bool MR_CALL 
+make__dependencies__error_in_timestamps_1_p_0(
+  MR_Word make__dependencies__HeadVar__1_1);
+
+static MR_bool MR_CALL 
+make__dependencies__check_dependencies_timestamps_write_missing_deps_7_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies__check_dependencies_timestamps_write_missing_deps_7_p_0(
+  MR_Word make__dependencies__TypeInfo_for_File_38,
+  MR_String make__dependencies__TargetFileName_8,
+  MR_Word make__dependencies__BuildDepsSucceeded_9,
+  MR_Word make__dependencies__DepFiles_10,
+  MR_Word make__dependencies__WriteDepFile_11,
+  MR_Word make__dependencies__DepTimestamps_12);
+
+static void MR_CALL 
+make__dependencies__make_write_target_dependency_status_4_p_0(
+  MR_Word make__dependencies__Globals_5,
+  MR_Word make__dependencies__HeadVar__2_2);
+
+static void MR_CALL 
+make__dependencies__check_dependencies_debug_unbuilt_5_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3);
+
+static void MR_CALL 
+make__dependencies__check_dependencies_debug_unbuilt_5_p_0(
+  MR_Word make__dependencies__Globals_6,
+  MR_String make__dependencies__TargetFileName_7,
+  MR_Word make__dependencies__UnbuiltDependencies_8);
+
+static void MR_CALL 
+make__dependencies__make_local_module_id_option_3_p_0(
+  MR_Word make__dependencies__ModuleName_4,
+  MR_Word make__dependencies__Opts0_5,
+  MR_Word * make__dependencies__Opts_6);
+
+static void MR_CALL 
+make__dependencies__collect_nested_modules_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleName_10,
+  MR_Word make__dependencies__STATE_VARIABLE_NestedModules_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_NestedModules_17,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_18,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_19);
+
+static void MR_CALL 
+make__dependencies__find_transitive_module_dependencies_2_12_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9);
+
+static void MR_CALL 
+make__dependencies__find_transitive_module_dependencies_2_12_p_0(
+  MR_Word make__dependencies__KeepGoing_13,
+  MR_Word make__dependencies__DependenciesType_14,
+  MR_Word make__dependencies__ModuleLocn_15,
+  MR_Word make__dependencies__Globals_16,
+  MR_Word make__dependencies__ModuleIndex_17,
+  MR_Word * make__dependencies__Success_18,
+  MR_Word make__dependencies__Modules0_19,
+  MR_Word * make__dependencies__Modules_20,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_32,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_33);
+
+static void MR_CALL 
+make__dependencies__find_transitive_module_dependencies_10_p_0(
+  MR_Word make__dependencies__Globals_11,
+  MR_Word make__dependencies__DependenciesType_12,
+  MR_Word make__dependencies__ModuleLocn_13,
+  MR_Word make__dependencies__ModuleIndex_14,
+  MR_Word * make__dependencies__Success_15,
+  MR_Word * make__dependencies__Modules_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_23,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_24);
+
+static void MR_CALL 
+make__dependencies__find_transitive_implementation_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_17);
+
+static MR_bool MR_CALL 
+make__dependencies__get_foreign_include_files_2_4_p_0(
+  MR_Word make__dependencies__Languages_5,
+  MR_String make__dependencies__SourceFileName_6,
+  MR_Word make__dependencies__ForeignInclude_7,
+  MR_Word * make__dependencies__File_8);
+
+static MR_bool MR_CALL 
+make__dependencies__foreign_include_files_8_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies__foreign_include_files_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Files_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23);
+
+static MR_Box MR_CALL 
+make__dependencies__fact_table_files_8_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1);
+
+static void MR_CALL 
+make__dependencies__fact_table_files_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Files_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_21);
+
+static MR_Box MR_CALL 
+make__dependencies__find_module_foreign_imports_3_9_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1);
+
+static void MR_CALL 
+make__dependencies__find_module_foreign_imports_3_9_p_0(
+  MR_Word make__dependencies__Languages_10,
+  MR_Word make__dependencies__Globals_11,
+  MR_Word make__dependencies__ModuleIndex_12,
+  MR_Word * make__dependencies__Success_13,
+  MR_Word * make__dependencies__ForeignModules_14,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_23,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_24);
+
+static void MR_CALL 
+make__dependencies__find_module_foreign_imports_2_9_p_0(
+  MR_Word make__dependencies__Languages_10,
+  MR_Word make__dependencies__Globals_11,
+  MR_Word make__dependencies__ModuleIndex_12,
+  MR_Word * make__dependencies__Success_13,
+  MR_Word * make__dependencies__ForeignModules_14,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_18,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_19);
+
+static void MR_CALL 
+make__dependencies__find_module_foreign_imports_9_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9);
+
+static void MR_CALL 
+make__dependencies__find_module_foreign_imports_9_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__find_module_foreign_imports_9_p_0(
+  MR_Word make__dependencies__Languages_10,
+  MR_Word make__dependencies__Globals_11,
+  MR_Word make__dependencies__ModuleIndex_12,
+  MR_Word * make__dependencies__Success_13,
+  MR_Word * make__dependencies__ForeignModules_14,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_19,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_20);
+
+static void MR_CALL 
+make__dependencies__foreign_imports_8_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9);
+
+static void MR_CALL 
+make__dependencies__foreign_imports_8_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__foreign_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_19,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_20);
+
+static void MR_CALL 
+make__dependencies__intermod_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_17,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_18);
+
+static void MR_CALL 
+make__dependencies__non_intermod_indirect_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_15,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_16);
+
+static void MR_CALL 
+make__dependencies__indirect_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_15,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_16);
+
+static void MR_CALL 
+make__dependencies__non_intermod_direct_imports_2_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_28,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_29);
+
+static void MR_CALL 
+make__dependencies__non_intermod_direct_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_17);
+
+static void MR_CALL 
+make__dependencies__direct_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_23,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_24);
+
+static void MR_CALL 
+make__dependencies__parents_8_p_0(
+  MR_Word make__dependencies___Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word * make__dependencies__AncestorIndices_11,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_17);
+
+static void MR_CALL 
+make__dependencies__self_8_p_0(
+  MR_Word make__dependencies___Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word * make__dependencies__HeadVar__4_4,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_13,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_14);
+
+static void MR_CALL 
+make__dependencies__no_deps_8_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_17,
+  MR_Word make__dependencies__HeadVar__1_9,
+  MR_Word make__dependencies__HeadVar__2_10,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word * make__dependencies__HeadVar__4_4,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_13,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_14);
+
+static void MR_CALL 
+make__dependencies__map_find_module_deps_10_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9);
+
+static void MR_CALL 
+make__dependencies__map_find_module_deps_10_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_52,
+  MR_Word make__dependencies__FindDeps2_11,
+  MR_Word make__dependencies__FindDeps1_12,
+  MR_Word make__dependencies__Globals_13,
+  MR_Word make__dependencies__ModuleIndex_14,
+  MR_Word * make__dependencies__Success_15,
+  MR_Word * make__dependencies__Result_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_23,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_24);
+
+static void MR_CALL 
+make__dependencies__files_of_2_10_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5);
+
+static void MR_CALL 
+make__dependencies__files_of_2_10_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9);
+
+static void MR_CALL 
+make__dependencies__files_of_2_10_p_0(
+  MR_Word make__dependencies__FindFiles_11,
+  MR_Word make__dependencies__FindDeps_12,
+  MR_Word make__dependencies__Globals_13,
+  MR_Word make__dependencies__ModuleIndex_14,
+  MR_Word * make__dependencies__Success_15,
+  MR_Word * make__dependencies__DepIndices_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_24,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_25);
+
+static void MR_CALL 
+make__dependencies__of_3_6_p_0(
+  MR_Word make__dependencies__FileType_7,
+  MR_Word make__dependencies__ModuleIndex_8,
+  MR_Word make__dependencies__STATE_VARIABLE_Set_0_14,
+  MR_Word * make__dependencies__STATE_VARIABLE_Set_15,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_17);
+
+static void MR_CALL 
+make__dependencies__of_2_10_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5);
+
+static void MR_CALL 
+make__dependencies__of_2_10_p_0(
+  MR_Word make__dependencies__FileType_11,
+  MR_Word make__dependencies__FindDeps_12,
+  MR_Word make__dependencies__Globals_13,
+  MR_Word make__dependencies__ModuleIndex_14,
+  MR_Word * make__dependencies__Success_15,
+  MR_Word * make__dependencies__TargetFiles_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_21);
+
+static void MR_CALL 
+make__dependencies__imports_0_f_0_6(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__imports_0_f_0_5(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__imports_0_f_0_4(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__imports_0_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__imports_0_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__imports_0_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__imports_0_f_0(void);
+
+static void MR_CALL 
+make__dependencies__base_compiled_code_dependencies_1_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__base_compiled_code_dependencies_1_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__base_compiled_code_dependencies_1_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__base_compiled_code_dependencies_1_f_0(
+  MR_Word make__dependencies__TrackFlags_3);
+
+static void MR_CALL 
+make__dependencies__compiled_code_dependencies_1_f_0_4(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__compiled_code_dependencies_1_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__compiled_code_dependencies_1_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__compiled_code_dependencies_1_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__compiled_code_dependencies_1_f_0(
+  MR_Word make__dependencies__Globals_3);
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_8(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_7(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_6(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_5(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_4(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0(void);
+
+static void MR_CALL 
+make__dependencies__combine_deps_list_1_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__combine_deps_list_1_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__combine_deps_list_1_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static MR_Word MR_CALL 
+make__dependencies__combine_deps_list_1_f_0(
+  MR_Word make__dependencies__TypeInfo_for_T_11,
+  MR_Word make__dependencies__HeadVar__1_1);
+
+static void MR_CALL 
+make__dependencies__combine_deps_2_10_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_51,
+  MR_Word make__dependencies__FindDeps1_11,
+  MR_Word make__dependencies__FindDeps2_12,
+  MR_Word make__dependencies__Globals_13,
+  MR_Word make__dependencies__ModuleIndex_14,
+  MR_Word * make__dependencies__Success_15,
+  MR_Word * make__dependencies__Deps_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_23,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_24);
+
+static void MR_CALL 
+make__dependencies__dependency_files_to_index_set_2_5_p_0(
+  MR_Word make__dependencies__DepFiles_6,
+  MR_Word make__dependencies__STATE_VARIABLE_Set_0_10,
+  MR_Word * make__dependencies__STATE_VARIABLE_Set_11,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_12,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_13);
+
+static void MR_CALL 
+make__dependencies__dependency_file_index_set_to_plain_set_2_4_p_0(
+  MR_Word make__dependencies__Info_5,
+  MR_Word make__dependencies__DepIndex_6,
+  MR_Word make__dependencies__List0_7,
+  MR_Word * make__dependencies__List_8);
+
+static void MR_CALL 
+make__dependencies__dependency_file_to_index_4_p_0(
+  MR_Word make__dependencies__DepFile_5,
+  MR_Word * make__dependencies__Index_6,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_21);
+
+static void MR_CALL 
+make__dependencies__module_index_set_to_plain_set_2_4_p_0(
+  MR_Word make__dependencies__Info_5,
+  MR_Word make__dependencies__ModuleIndex_6,
+  MR_Word make__dependencies__STATE_VARIABLE_Set_0_9,
+  MR_Word * make__dependencies__STATE_VARIABLE_Set_10);
+
+static void MR_CALL 
+make__dependencies__module_names_to_index_set_2_5_p_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_4,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_5);
+
+static void MR_CALL 
+make__dependencies__module_index_to_name_3_p_0(
+  MR_Word make__dependencies__Info_4,
+  MR_Word make__dependencies__Index_5,
+  MR_Word * make__dependencies__ModuleName_6);
+
+static void MR_CALL 
+make__dependencies__module_name_to_index_4_p_0(
+  MR_Word make__dependencies__ModuleName_5,
+  MR_Word * make__dependencies__Index_6,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_19,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_20);
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps_10_p_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps_10_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps_10_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies__check_dependencies_10_p_0_6(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static void MR_CALL 
+make__dependencies__check_dependencies_10_p_0_5(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3);
+
+static void MR_CALL 
+make__dependencies__check_dependencies_10_p_0_4(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6);
+
+static void MR_CALL 
+make__dependencies__check_dependencies_10_p_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2);
+
+static MR_bool MR_CALL 
+make__dependencies__check_dependencies_10_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1);
+
+static void MR_CALL 
+make__dependencies__check_dependencies_10_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6);
+
+static void MR_CALL 
+make__dependencies__make_local_module_id_options_8_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3);
+
+static MR_bool MR_CALL 
+make__dependencies__remove_nested_modules_7_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1);
+
+static void MR_CALL 
+make__dependencies__remove_nested_modules_7_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7);
+
+static void MR_CALL 
+make__dependencies__dependency_file_index_set_to_plain_set_3_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3);
+
+static void MR_CALL 
+make__dependencies__module_index_set_to_plain_set_3_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3);
+
+static void MR_CALL 
+make__dependencies__target_dependencies_2_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__target_dependencies_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+static void MR_CALL 
+make__dependencies__target_dependencies_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8);
+
+
+static /* final */ const MR_Box make__dependencies_scalar_common_1[17][2];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_2[38][3];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_3[3][1];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_4[6][11];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_5[5][7];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_6[13][5];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_7[5][6];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_8[3][10];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_9[4][4];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_10[2][8];
+
+static /* final */ const MR_Integer make__dependencies_scalar_common_11[1][2];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_12[2][12];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_13[2][14];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_14[6][13];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_15[1][9];
+
+static /* final */ const MR_Box make__dependencies_scalar_common_16[1][15];
+
+
+/* sealed */ struct make__dependencies__vector_common_type_17_0_s {
+  const MR_String make__dependencies__vector_common_type_17_0__vct_17_f_0;
+};
+
+static /* final */ const struct make__dependencies__vector_common_type_17_0_s make__dependencies_vector_common_17[4];
+
+
+
+static /* final */ const MR_Box make__dependencies_scalar_common_1[17][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_enum__enum__arity1__make__dependencies__module_index__arity0__)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (base_typeclass_info_enum__enum__arity1__make__dependencies__dependency_file_index__arity0__)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_deps_result_1)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&libs__options__libs__options__type_ctor_info_option_0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_6[4])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_6[3])),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &make__dependencies_scalar_common_1[10])))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_6[2])),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &make__dependencies_scalar_common_1[11])))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_6[1])),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &make__dependencies_scalar_common_1[12])))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_6[8])),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_6[7])),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &make__dependencies_scalar_common_1[14])))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_6[6])),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &make__dependencies_scalar_common_1[15])))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_2[38][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0)),
+    ((MR_Box) (&make__make__type_ctor_info_dependency_status_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_error_2)),
+    ((MR_Box) (&libs__timestamp__libs__timestamp__type_ctor_info_timestamp_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&make__dependencies_scalar_common_1[5]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_transitive_dependencies_root_0)),
+    ((MR_Box) (&make__dependencies_scalar_common_1[5]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[0])),
+    ((MR_Box) (make__dependencies__target_dependencies_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[0])),
+    ((MR_Box) (make__dependencies__target_dependencies_2_f_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[0])),
+    ((MR_Box) (make__dependencies__target_dependencies_2_f_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_7[0])),
+    ((MR_Box) (make__dependencies__make_local_module_id_options_8_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_9[0])),
+    ((MR_Box) (make__dependencies__check_dependencies_10_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__interface_file_dependencies_0_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__interface_file_dependencies_0_f_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__interface_file_dependencies_0_f_0_5)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__interface_file_dependencies_0_f_0_7)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__compiled_code_dependencies_1_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 14 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__compiled_code_dependencies_1_f_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 15 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[0])),
+    ((MR_Box) (make__dependencies__base_compiled_code_dependencies_1_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 16 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__base_compiled_code_dependencies_1_f_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 17 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__imports_0_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 18 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__imports_0_f_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 19 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__imports_0_f_0_5)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 20 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_10[1])),
+    ((MR_Box) (make__dependencies__files_of_2_10_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 21 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_6[9])),
+    ((MR_Box) (make__dependencies__fact_table_files_8_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 22 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho4_11_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 23 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho7_11_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 24 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__of__ho10_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 25 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__of__ho11_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 26 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__of__ho12_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 27 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[4])),
+    ((MR_Box) (make__dependencies__files_of__ho13_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 28 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__files_of__ho13_2_f_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 29 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[4])),
+    ((MR_Box) (make__dependencies__files_of__ho14_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 30 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__files_of__ho14_2_f_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 31 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__of__ho15_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 32 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__of__ho16_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 33 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__of__ho18_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 34 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__of__ho19_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 35 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__of__ho20_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 36 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_4[3])),
+    ((MR_Box) (make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_111_114_101_105_103_110_95_100_101_112_115_95_95_91_50_93_95_48_2_f_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 37 */
+  {
+    ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0)),
+    ((MR_Box) (&make__dependencies_scalar_common_2[1]))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_3[3][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_4[6][11] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_dependency_file_index_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&make__dependencies__set_ordlist__pti_set_ordlist_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&make__dependencies__set_ordlist__pti_set_ordlist_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (&make__dependencies_scalar_common_11[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__list__pti_list_1__pseudo_1)),
+    ((MR_Box) (&make__dependencies____vpti_pred_3__pseudo_1__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&make__dependencies__list__pti_list_1__plain_maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__set_ordlist__pti_set_ordlist_1__plain_make__dependencies__type_ctor_info_dependency_file_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 5 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 8)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__list__pti_list_1__plain_make__dependencies__type_ctor_info_dependency_file_0)),
+    ((MR_Box) (&make__dependencies____vpti_pred_3__plain_make__dependencies__type_ctor_info_dependency_file_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&make__dependencies__list__pti_list_1__plain_maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_5[5][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&make__dependencies__set_ordlist__pti_set_ordlist_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&make__dependencies__set_ordlist__pti_set_ordlist_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0)),
+    ((MR_Box) (&make__dependencies__list__pti_list_1__plain_make__dependencies__type_ctor_info_dependency_file_0)),
+    ((MR_Box) (&make__dependencies__list__pti_list_1__plain_make__dependencies__type_ctor_info_dependency_file_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&make__dependencies__set_ordlist__pti_set_ordlist_1__plain_libs__globals__type_ctor_info_foreign_language_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_foreign_include_file_info_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__pair__pti_pair_2__plain_make__dependencies__type_ctor_info_dependency_file_0__plain_make__type_ctor_info_dependency_status_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_6[13][5] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&make__dependencies__set_ordlist__pti_set_ordlist_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[0])),
+    ((MR_Box) (make__dependencies__interface_file_dependencies_0_f_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))),
+    ((MR_Box) (&make__dependencies_scalar_common_2[9]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[0])),
+    ((MR_Box) (make__dependencies__interface_file_dependencies_0_f_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2)))),
+    ((MR_Box) (&make__dependencies_scalar_common_2[10]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[0])),
+    ((MR_Box) (make__dependencies__interface_file_dependencies_0_f_0_6)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 5)))),
+    ((MR_Box) (&make__dependencies_scalar_common_2[11]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[0])),
+    ((MR_Box) (make__dependencies__interface_file_dependencies_0_f_0_8)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 5)))),
+    ((MR_Box) (&make__dependencies_scalar_common_2[12]))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[1])),
+    ((MR_Box) (make__dependencies__compiled_code_dependencies_1_f_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&make__dependencies_scalar_common_2[13])),
+    ((MR_Box) (&make__dependencies_scalar_common_2[14]))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[0])),
+    ((MR_Box) (make__dependencies__imports_0_f_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2)))),
+    ((MR_Box) (&make__dependencies_scalar_common_2[17]))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[0])),
+    ((MR_Box) (make__dependencies__imports_0_f_0_4)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3)))),
+    ((MR_Box) (&make__dependencies_scalar_common_2[18]))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[0])),
+    ((MR_Box) (make__dependencies__imports_0_f_0_6)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4)))),
+    ((MR_Box) (&make__dependencies_scalar_common_2[19]))
+  },
+  /* row 9 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[5])),
+    ((MR_Box) (make__dependencies__files_of__ho13_2_f_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&make__dependencies_scalar_common_2[27])),
+    ((MR_Box) (&make__dependencies_scalar_common_2[28]))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[5])),
+    ((MR_Box) (make__dependencies__files_of__ho14_2_f_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&make__dependencies_scalar_common_2[29])),
+    ((MR_Box) (&make__dependencies_scalar_common_2[30]))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[0])),
+    ((MR_Box) (make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_111_114_101_105_103_110_95_100_101_112_115_95_95_91_50_93_95_48_2_f_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 9)))),
+    ((MR_Box) (&make__dependencies_scalar_common_2[36]))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_7[5][6] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0)),
+    ((MR_Box) (&make__dependencies__list__pti_list_1__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&make__dependencies__list__pti_list_1__plain_builtin__type_ctor_info_string_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_foreign_import_modules_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_foreign_language_0)),
+    ((MR_Box) (&make__dependencies__set_ordlist__pti_set_ordlist_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (&make__dependencies_scalar_common_11[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&make__dependencies__pair__pti_pair_2__pseudo_1__plain_maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (&make__dependencies_scalar_common_11[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&make__dependencies__maybe__pti_maybe_error_2__plain_libs__timestamp__type_ctor_info_timestamp_0__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&make__dependencies__pair__pti_pair_2__pseudo_1__plain_maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_8[3][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0)),
+    ((MR_Box) (&make__make__type_ctor_info_dependency_status_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0)),
+    ((MR_Box) (&make__dependencies__maybe__pti_maybe_error_2__plain_libs__timestamp__type_ctor_info_timestamp_0__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (&make__dependencies_scalar_common_11[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&make__dependencies__maybe__pti_maybe_error_2__plain_libs__timestamp__type_ctor_info_timestamp_0__plain_builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&make__dependencies__list__pti_list_1__pseudo_1)),
+    ((MR_Box) (&make__dependencies__list__pti_list_1__plain_maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_9[4][4] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&make__dependencies__pair__pti_pair_2__plain_make__dependencies__type_ctor_info_dependency_file_0__plain_make__type_ctor_info_dependency_status_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[4])),
+    ((MR_Box) (make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho4_11_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&make__dependencies_scalar_common_2[22]))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_14[4])),
+    ((MR_Box) (make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho7_11_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&make__dependencies_scalar_common_2[23]))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&make__dependencies_scalar_common_7[3])),
+    ((MR_Box) (make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_100_101_112_101_110_100_101_110_99_105_101_115_95_116_105_109_101_115_116_97_109_112_115_95_119_114_105_116_101_95_109_105_115_115_105_110_103_95_100_101_112_115_95_95_104_111_50_49_95_95_91_49_93_95_48_7_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_10[2][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&make__dependencies__list__pti_list_1__plain_pair__ti_pair_2make__dependencies__type_ctor_info_dependency_file_0make__type_ctor_info_dependency_status_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_dependency_file_index_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_dependency_file_index_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0))
+  },
+};
+
+static /* final */ const MR_Integer make__dependencies_scalar_common_11[1][2] = {
+  /* row 0 */
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 33
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_12[2][12] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&make__dependencies_scalar_common_11[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 9)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__pseudo_1)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 9)),
+    ((MR_Box) (&make__dependencies__set_ordlist__pti_set_ordlist_1__plain_libs__globals__type_ctor_info_foreign_language_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_13[2][14] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (&make__dependencies_scalar_common_11[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 11)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_1__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_1__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__pseudo_1)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (&make__dependencies_scalar_common_11[0])),
+    ((MR_Box) (MR_Word) ((MR_Integer) 11)),
+    ((MR_Box) (&mercury__private_builtin__private_builtin__type_ctor_info_type_info_0)),
+    ((MR_Box) (&make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_1__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__pseudo_1)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__pseudo_1)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_14[6][13] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 10)),
+    ((MR_Box) (&make__make__type_ctor_info_module_target_type_0)),
+    ((MR_Box) (&make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_module_index_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_dependency_file_index_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 10)),
+    ((MR_Box) (&make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_module_index_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_module_index_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 10)),
+    ((MR_Box) (&make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_dependency_file_index_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_module_index_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_dependency_file_index_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 10)),
+    ((MR_Box) (&make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_set_ordlist__ti_set_ordlist_1make__dependencies__type_ctor_info_dependency_file_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__set_ordlist__pti_set_ordlist_1__plain_make__dependencies__type_ctor_info_dependency_file_0)),
+    ((MR_Box) (&make__dependencies__set_ordlist__pti_set_ordlist_1__plain_make__dependencies__type_ctor_info_dependency_file_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 4 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 10)),
+    ((MR_Box) (&make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_module_index_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 5 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 10)),
+    ((MR_Box) (&make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_set_ordlist__ti_set_ordlist_1make__dependencies__type_ctor_info_dependency_file_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_module_index_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_dependency_file_index_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_15[1][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&make__make__type_ctor_info_module_target_type_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_dependency_file_index_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_dependency_file_index_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0))
+  },
+};
+
+static /* final */ const MR_Box make__dependencies_scalar_common_16[1][15] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 12)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_transitive_dependencies_type_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_locn_0)),
+    ((MR_Box) (&libs__globals__libs__globals__type_ctor_info_globals_0)),
+    ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_module_index_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&make__make__type_ctor_info_make_info_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+
+static /* final */ const struct make__dependencies__vector_common_type_17_0_s make__dependencies_vector_common_17[4] = {
+  /* row 0 */   {     (MR_String) "deps_status_not_considered" },
+  /* row 1 */   {     (MR_String) "deps_status_being_built" },
+  /* row 2 */   {     (MR_String) "deps_status_up_to_date" },
+  /* row 3 */   {     (MR_String) "deps_status_error" },
+};
+
+
+#include "dir.mh"
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "version_array.mh"
+#include "make.util.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_dependency_file_index_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__set_ordlist__pti_set_ordlist_1__plain_mdbcomp__sym_name__type_ctor_info_sym_name_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__list__pti_list_1__plain_make__dependencies__type_ctor_info_dependency_file_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__list__pti_list_1__plain_builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 make__dependencies__pair__pti_pair_2__plain_make__dependencies__type_ctor_info_dependency_file_0__plain_make__type_ctor_info_dependency_status_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0,
+    (MR_PseudoTypeInfo) &make__make__type_ctor_info_dependency_status_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 make__dependencies__maybe__pti_maybe_error_2__plain_libs__timestamp__type_ctor_info_timestamp_0__plain_builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_PseudoTypeInfo) &libs__timestamp__libs__timestamp__type_ctor_info_timestamp_0,
+    (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 make__dependencies__pair__ti_pair_2make__dependencies__type_ctor_info_dependency_file_0make__type_ctor_info_dependency_status_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_TypeInfo) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0,
+    (MR_TypeInfo) &make__make__type_ctor_info_dependency_status_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__list__pti_list_1__plain_pair__ti_pair_2make__dependencies__type_ctor_info_dependency_file_0make__type_ctor_info_dependency_status_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &make__dependencies__pair__ti_pair_2make__dependencies__type_ctor_info_dependency_file_0make__type_ctor_info_dependency_status_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__list__pti_list_1__pseudo_1 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct3 make__dependencies____vpti_pred_3__pseudo_1__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 3,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 make__dependencies__maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_error_2,
+  {
+    (MR_TypeInfo) &libs__timestamp__libs__timestamp__type_ctor_info_timestamp_0,
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__list__pti_list_1__plain_maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &make__dependencies__maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__sparse_bitset__pti_sparse_bitset_1__pseudo_1 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct8 make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_1__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 8,
+  {
+    (MR_PseudoTypeInfo) &libs__globals__libs__globals__type_ctor_info_globals_0,
+    (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_module_index_0,
+    (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0,
+    (MR_PseudoTypeInfo) &make__dependencies__sparse_bitset__pti_sparse_bitset_1__pseudo_1,
+    (MR_PseudoTypeInfo) &make__make__type_ctor_info_make_info_0,
+    (MR_PseudoTypeInfo) &make__make__type_ctor_info_make_info_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__sparse_bitset__pti_sparse_bitset_1__plain_make__dependencies__type_ctor_info_module_index_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_module_index_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 make__dependencies__sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_module_index_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_TypeInfo) &make__dependencies__make__dependencies__type_ctor_info_module_index_0
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct8 make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_module_index_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 8,
+  {
+    (MR_PseudoTypeInfo) &libs__globals__libs__globals__type_ctor_info_globals_0,
+    (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_module_index_0,
+    (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0,
+    (MR_PseudoTypeInfo) &make__dependencies__sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_module_index_0,
+    (MR_PseudoTypeInfo) &make__make__type_ctor_info_make_info_0,
+    (MR_PseudoTypeInfo) &make__make__type_ctor_info_make_info_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 make__dependencies__sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_dependency_file_index_0 = {
+  &mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1,
+  {
+    (MR_TypeInfo) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct8 make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_dependency_file_index_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 8,
+  {
+    (MR_PseudoTypeInfo) &libs__globals__libs__globals__type_ctor_info_globals_0,
+    (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_module_index_0,
+    (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0,
+    (MR_PseudoTypeInfo) &make__dependencies__sparse_bitset__ti_sparse_bitset_1make__dependencies__type_ctor_info_dependency_file_index_0,
+    (MR_PseudoTypeInfo) &make__make__type_ctor_info_make_info_0,
+    (MR_PseudoTypeInfo) &make__make__type_ctor_info_make_info_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 make__dependencies__set_ordlist__ti_set_ordlist_1make__dependencies__type_ctor_info_dependency_file_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_TypeInfo) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct8 make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__plain_set_ordlist__ti_set_ordlist_1make__dependencies__type_ctor_info_dependency_file_0__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 8,
+  {
+    (MR_PseudoTypeInfo) &libs__globals__libs__globals__type_ctor_info_globals_0,
+    (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_module_index_0,
+    (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0,
+    (MR_PseudoTypeInfo) &make__dependencies__set_ordlist__ti_set_ordlist_1make__dependencies__type_ctor_info_dependency_file_0,
+    (MR_PseudoTypeInfo) &make__make__type_ctor_info_make_info_0,
+    (MR_PseudoTypeInfo) &make__make__type_ctor_info_make_info_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__set_ordlist__pti_set_ordlist_1__plain_make__dependencies__type_ctor_info_dependency_file_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__set_ordlist__pti_set_ordlist_1__plain_libs__globals__type_ctor_info_foreign_language_0 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) &libs__globals__libs__globals__type_ctor_info_foreign_language_0
+  }
+};
+
+static const MR_FA_PseudoTypeInfo_Struct2 make__dependencies__pair__pti_pair_2__pseudo_1__plain_maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0 = {
+  &mercury__pair__pair__type_ctor_info_pair_2,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1,
+    (MR_PseudoTypeInfo) &make__dependencies__maybe__ti_maybe_error_2libs__timestamp__type_ctor_info_timestamp_0builtin__type_ctor_info_string_0
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct3 make__dependencies____vpti_pred_3__plain_make__dependencies__type_ctor_info_dependency_file_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 3,
+  {
+    (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct1 make__dependencies__make__dependencies__ti_deps_result_1make__dependencies__type_ctor_info_module_index_0 = {
+  &make__dependencies__make__dependencies__type_ctor_info_deps_result_1,
+  {
+    (MR_TypeInfo) &make__dependencies__make__dependencies__type_ctor_info_module_index_0
+  }
+};
+
+static const MR_FA_TypeInfo_Struct2 make__dependencies__tree234__ti_tree234_2make__dependencies__type_ctor_info_module_index_0make__dependencies__ti_deps_result_1make__dependencies__type_ctor_info_module_index_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &make__dependencies__make__dependencies__type_ctor_info_module_index_0,
+    (MR_TypeInfo) &make__dependencies__make__dependencies__ti_deps_result_1make__dependencies__type_ctor_info_module_index_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_cached_direct_imports_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (make__dependencies____Unify____cached_direct_imports_0_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____cached_direct_imports_0_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "cached_direct_imports",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &make__dependencies__tree234__ti_tree234_2make__dependencies__type_ctor_info_module_index_0make__dependencies__ti_deps_result_1make__dependencies__type_ctor_info_module_index_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_cached_foreign_imports_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (make__dependencies____Unify____cached_foreign_imports_0_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____cached_foreign_imports_0_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "cached_foreign_imports",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &make__dependencies__tree234__ti_tree234_2make__dependencies__type_ctor_info_module_index_0make__dependencies__ti_deps_result_1make__dependencies__type_ctor_info_module_index_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_TypeInfo_Struct2 make__dependencies__tree234__ti_tree234_2make__dependencies__type_ctor_info_transitive_dependencies_root_0make__dependencies__ti_deps_result_1make__dependencies__type_ctor_info_module_index_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_TypeInfo) &make__dependencies__make__dependencies__type_ctor_info_transitive_dependencies_root_0,
+    (MR_TypeInfo) &make__dependencies__make__dependencies__ti_deps_result_1make__dependencies__type_ctor_info_module_index_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_cached_transitive_dependencies_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (make__dependencies____Unify____cached_transitive_dependencies_0_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____cached_transitive_dependencies_0_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "cached_transitive_dependencies",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &make__dependencies__tree234__ti_tree234_2make__dependencies__type_ctor_info_transitive_dependencies_root_0make__dependencies__ti_deps_result_1make__dependencies__type_ctor_info_module_index_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_dependencies_result_0_0 = {
+  (MR_String) "deps_up_to_date",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_dependencies_result_0_1 = {
+  (MR_String) "deps_out_of_date",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_dependencies_result_0_2 = {
+  (MR_String) "deps_error",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDescPtr make__dependencies__make__dependencies__enum_value_ordered_dependencies_result_0[3] = {
+  &make__dependencies__make__dependencies__enum_functor_desc_dependencies_result_0_0,
+  &make__dependencies__make__dependencies__enum_functor_desc_dependencies_result_0_1,
+  &make__dependencies__make__dependencies__enum_functor_desc_dependencies_result_0_2
+};
+
+static const MR_EnumFunctorDescPtr make__dependencies__make__dependencies__enum_name_ordered_dependencies_result_0[3] = {
+  &make__dependencies__make__dependencies__enum_functor_desc_dependencies_result_0_2,
+  &make__dependencies__make__dependencies__enum_functor_desc_dependencies_result_0_1,
+  &make__dependencies__make__dependencies__enum_functor_desc_dependencies_result_0_0
+};
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_dependencies_result_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_dependencies_result_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (make__dependencies____Unify____dependencies_result_0_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____dependencies_result_0_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "dependencies_result",
+  {     make__dependencies__make__dependencies__enum_name_ordered_dependencies_result_0 },
+  {     make__dependencies__make__dependencies__enum_value_ordered_dependencies_result_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  make__dependencies__make__dependencies__functor_number_map_dependencies_result_0
+};
+
+static const MR_PseudoTypeInfo make__dependencies__make__dependencies__field_types_dependency_file_0_0[1] = {
+  (MR_PseudoTypeInfo) &make__make__type_ctor_info_target_file_0
+};
+
+static const MR_DuFunctorDesc make__dependencies__make__dependencies__du_functor_desc_dependency_file_0_0 = {
+  (MR_String) "dep_target",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  make__dependencies__make__dependencies__field_types_dependency_file_0_0,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_FA_TypeInfo_Struct1 make__dependencies__maybe__ti_maybe_1libs__options__type_ctor_info_option_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &libs__options__libs__options__type_ctor_info_option_0
+  }
+};
+
+static const MR_PseudoTypeInfo make__dependencies__make__dependencies__field_types_dependency_file_0_1[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_string_0,
+  (MR_PseudoTypeInfo) &make__dependencies__maybe__ti_maybe_1libs__options__type_ctor_info_option_0
+};
+
+static const MR_DuFunctorDesc make__dependencies__make__dependencies__du_functor_desc_dependency_file_0_1 = {
+  (MR_String) "dep_file",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  make__dependencies__make__dependencies__field_types_dependency_file_0_1,
+  NULL,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_stag_ordered_dependency_file_0_0[1] = {
+  &make__dependencies__make__dependencies__du_functor_desc_dependency_file_0_0
+};
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_stag_ordered_dependency_file_0_1[1] = {
+  &make__dependencies__make__dependencies__du_functor_desc_dependency_file_0_1
+};
+
+static const MR_DuPtagLayout make__dependencies__make__dependencies__du_ptag_ordered_dependency_file_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    make__dependencies__make__dependencies__du_stag_ordered_dependency_file_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    make__dependencies__make__dependencies__du_stag_ordered_dependency_file_0_1
+  }
+};
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_name_ordered_dependency_file_0[2] = {
+  &make__dependencies__make__dependencies__du_functor_desc_dependency_file_0_1,
+  &make__dependencies__make__dependencies__du_functor_desc_dependency_file_0_0
+};
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_dependency_file_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_dependency_file_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (make__dependencies____Unify____dependency_file_0_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____dependency_file_0_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "dependency_file",
+  {     make__dependencies__make__dependencies__du_name_ordered_dependency_file_0 },
+  {     make__dependencies__make__dependencies__du_ptag_ordered_dependency_file_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  make__dependencies__make__dependencies__functor_number_map_dependency_file_0
+};
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_dependency_file_index_0[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc make__dependencies__make__dependencies__notag_functor_desc_dependency_file_index_0 = {
+  (MR_String) "dependency_file_index",
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (make__dependencies____Unify____dependency_file_index_0_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____dependency_file_index_0_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "dependency_file_index",
+  {     &make__dependencies__make__dependencies__notag_functor_desc_dependency_file_index_0 },
+  {     &make__dependencies__make__dependencies__notag_functor_desc_dependency_file_index_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  make__dependencies__make__dependencies__functor_number_map_dependency_file_index_0
+};
+
+static const MR_PseudoTypeInfo make__dependencies__make__dependencies__field_types_deps_result_1_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0,
+  (MR_PseudoTypeInfo) &make__dependencies__sparse_bitset__pti_sparse_bitset_1__pseudo_1
+};
+
+static const MR_ConstString make__dependencies__make__dependencies__field_names_deps_result_1_0[2] = {
+  (MR_String) "dr_success",
+  (MR_String) "dr_set"
+};
+
+static const MR_DuFunctorDesc make__dependencies__make__dependencies__du_functor_desc_deps_result_1_0 = {
+  (MR_String) "deps_result",
+  (MR_Integer) 2,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  make__dependencies__make__dependencies__field_types_deps_result_1_0,
+  make__dependencies__make__dependencies__field_names_deps_result_1_0,
+  NULL,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_stag_ordered_deps_result_1_0[1] = {
+  &make__dependencies__make__dependencies__du_functor_desc_deps_result_1_0
+};
+
+static const MR_DuPtagLayout make__dependencies__make__dependencies__du_ptag_ordered_deps_result_1[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    make__dependencies__make__dependencies__du_stag_ordered_deps_result_1_0
+  }
+};
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_name_ordered_deps_result_1[1] = {
+  &make__dependencies__make__dependencies__du_functor_desc_deps_result_1_0
+};
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_deps_result_1[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_deps_result_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (make__dependencies____Unify____deps_result_1_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____deps_result_1_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "deps_result",
+  {     make__dependencies__make__dependencies__du_name_ordered_deps_result_1 },
+  {     make__dependencies__make__dependencies__du_ptag_ordered_deps_result_1 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  make__dependencies__make__dependencies__functor_number_map_deps_result_1
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_deps_set_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (make__dependencies____Unify____deps_set_1_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____deps_set_1_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "deps_set",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &make__dependencies__sparse_bitset__pti_sparse_bitset_1__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_find_module_deps_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (make__dependencies____Unify____find_module_deps_1_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____find_module_deps_1_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "find_module_deps",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__pseudo_sparse_bitset__pti_sparse_bitset_1__pseudo_1__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_FA_PseudoTypeInfo_Struct1 make__dependencies__set_ordlist__pti_set_ordlist_1__pseudo_1 = {
+  &mercury__set_ordlist__set_ordlist__type_ctor_info_set_ordlist_1,
+  {
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+static const MR_VA_PseudoTypeInfo_Struct8 make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__pseudo_set_ordlist__pti_set_ordlist_1__pseudo_1__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 = {
+  &mercury__builtin__builtin__type_ctor_info_pred_0,
+  (MR_Integer) 8,
+  {
+    (MR_PseudoTypeInfo) &libs__globals__libs__globals__type_ctor_info_globals_0,
+    (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_module_index_0,
+    (MR_PseudoTypeInfo) &mercury__bool__bool__type_ctor_info_bool_0,
+    (MR_PseudoTypeInfo) &make__dependencies__set_ordlist__pti_set_ordlist_1__pseudo_1,
+    (MR_PseudoTypeInfo) &make__make__type_ctor_info_make_info_0,
+    (MR_PseudoTypeInfo) &make__make__type_ctor_info_make_info_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0,
+    (MR_PseudoTypeInfo) &mercury__io__io__type_ctor_info_state_0
+  }
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_find_module_deps_plain_set_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (make__dependencies____Unify____find_module_deps_plain_set_1_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____find_module_deps_plain_set_1_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "find_module_deps_plain_set",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &make__dependencies____vpti_pred_8__plain_libs__globals__type_ctor_info_globals_0__plain_make__dependencies__type_ctor_info_module_index_0__plain_bool__type_ctor_info_bool_0__pseudo_set_ordlist__pti_set_ordlist_1__pseudo_1__plain_make__type_ctor_info_make_info_0__plain_make__type_ctor_info_make_info_0__plain_io__type_ctor_info_state_0__plain_io__type_ctor_info_state_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_module_deps_result_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (make__dependencies____Unify____module_deps_result_0_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____module_deps_result_0_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "module_deps_result",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__ti_deps_result_1make__dependencies__type_ctor_info_module_index_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_module_index_0[1] = {
+  (MR_Integer) 0
+};
+
+static const MR_NotagFunctorDesc make__dependencies__make__dependencies__notag_functor_desc_module_index_0 = {
+  (MR_String) "module_index",
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_module_index_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (make__dependencies____Unify____module_index_0_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____module_index_0_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "module_index",
+  {     &make__dependencies__make__dependencies__notag_functor_desc_module_index_0 },
+  {     &make__dependencies__make__dependencies__notag_functor_desc_module_index_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  make__dependencies__make__dependencies__functor_number_map_module_index_0
+};
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_module_locn_0_0 = {
+  (MR_String) "local_module",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_module_locn_0_1 = {
+  (MR_String) "any_module",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDescPtr make__dependencies__make__dependencies__enum_value_ordered_module_locn_0[2] = {
+  &make__dependencies__make__dependencies__enum_functor_desc_module_locn_0_0,
+  &make__dependencies__make__dependencies__enum_functor_desc_module_locn_0_1
+};
+
+static const MR_EnumFunctorDescPtr make__dependencies__make__dependencies__enum_name_ordered_module_locn_0[2] = {
+  &make__dependencies__make__dependencies__enum_functor_desc_module_locn_0_1,
+  &make__dependencies__make__dependencies__enum_functor_desc_module_locn_0_0
+};
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_module_locn_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_module_locn_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (make__dependencies____Unify____module_locn_0_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____module_locn_0_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "module_locn",
+  {     make__dependencies__make__dependencies__enum_name_ordered_module_locn_0 },
+  {     make__dependencies__make__dependencies__enum_value_ordered_module_locn_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  make__dependencies__make__dependencies__functor_number_map_module_locn_0
+};
+
+static const MR_PseudoTypeInfo make__dependencies__make__dependencies__field_types_transitive_dependencies_root_0_0[3] = {
+  (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_module_index_0,
+  (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_transitive_dependencies_type_0,
+  (MR_PseudoTypeInfo) &make__dependencies__make__dependencies__type_ctor_info_module_locn_0
+};
+
+static const MR_DuArgLocn make__dependencies__make__dependencies__field_locns_transitive_dependencies_root_0_0[3] = {
+  {
+    (MR_Integer) 0,
+    (MR_Integer) 0,
+    (MR_Integer) 0
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 0,
+    (MR_Integer) 2
+  },
+  {
+    (MR_Integer) 1,
+    (MR_Integer) 2,
+    (MR_Integer) 1
+  }
+};
+
+static const MR_DuFunctorDesc make__dependencies__make__dependencies__du_functor_desc_transitive_dependencies_root_0_0 = {
+  (MR_String) "transitive_dependencies_root",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  make__dependencies__make__dependencies__field_types_transitive_dependencies_root_0_0,
+  NULL,
+  make__dependencies__make__dependencies__field_locns_transitive_dependencies_root_0_0,
+  NULL,
+  mercury__private_builtin__MR_FUNCTOR_SUBTYPE_NONE
+};
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_stag_ordered_transitive_dependencies_root_0_0[1] = {
+  &make__dependencies__make__dependencies__du_functor_desc_transitive_dependencies_root_0_0
+};
+
+static const MR_DuPtagLayout make__dependencies__make__dependencies__du_ptag_ordered_transitive_dependencies_root_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    make__dependencies__make__dependencies__du_stag_ordered_transitive_dependencies_root_0_0
+  }
+};
+
+static const MR_DuFunctorDescPtr make__dependencies__make__dependencies__du_name_ordered_transitive_dependencies_root_0[1] = {
+  &make__dependencies__make__dependencies__du_functor_desc_transitive_dependencies_root_0_0
+};
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_transitive_dependencies_root_0[1] = {
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_transitive_dependencies_root_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (make__dependencies____Unify____transitive_dependencies_root_0_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____transitive_dependencies_root_0_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "transitive_dependencies_root",
+  {     make__dependencies__make__dependencies__du_name_ordered_transitive_dependencies_root_0 },
+  {     make__dependencies__make__dependencies__du_ptag_ordered_transitive_dependencies_root_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  make__dependencies__make__dependencies__functor_number_map_transitive_dependencies_root_0
+};
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_transitive_dependencies_type_0_0 = {
+  (MR_String) "interface_imports",
+  (MR_Integer) 0
+};
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_transitive_dependencies_type_0_1 = {
+  (MR_String) "all_imports",
+  (MR_Integer) 1
+};
+
+static const MR_EnumFunctorDesc make__dependencies__make__dependencies__enum_functor_desc_transitive_dependencies_type_0_2 = {
+  (MR_String) "all_dependencies",
+  (MR_Integer) 2
+};
+
+static const MR_EnumFunctorDescPtr make__dependencies__make__dependencies__enum_value_ordered_transitive_dependencies_type_0[3] = {
+  &make__dependencies__make__dependencies__enum_functor_desc_transitive_dependencies_type_0_0,
+  &make__dependencies__make__dependencies__enum_functor_desc_transitive_dependencies_type_0_1,
+  &make__dependencies__make__dependencies__enum_functor_desc_transitive_dependencies_type_0_2
+};
+
+static const MR_EnumFunctorDescPtr make__dependencies__make__dependencies__enum_name_ordered_transitive_dependencies_type_0[3] = {
+  &make__dependencies__make__dependencies__enum_functor_desc_transitive_dependencies_type_0_2,
+  &make__dependencies__make__dependencies__enum_functor_desc_transitive_dependencies_type_0_1,
+  &make__dependencies__make__dependencies__enum_functor_desc_transitive_dependencies_type_0_0
+};
+
+static const MR_Integer make__dependencies__make__dependencies__functor_number_map_transitive_dependencies_type_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+const MR_TypeCtorInfo_Struct make__dependencies__make__dependencies__type_ctor_info_transitive_dependencies_type_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 16,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (make__dependencies____Unify____transitive_dependencies_type_0_0_10001)),
+  ((MR_Box) (make__dependencies____Compare____transitive_dependencies_type_0_0_10001)),
+  (MR_String) "make.dependencies",
+  (MR_String) "transitive_dependencies_type",
+  {     make__dependencies__make__dependencies__enum_name_ordered_transitive_dependencies_type_0 },
+  {     make__dependencies__make__dependencies__enum_value_ordered_transitive_dependencies_type_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  make__dependencies__make__dependencies__functor_number_map_transitive_dependencies_type_0
+};
+
+const MR_BaseTypeclassInfo base_typeclass_info_enum__enum__arity1__make__dependencies__dependency_file_index__arity0__[7] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (make__dependencies__ClassMethod_for_enum__enum____make__dependencies__dependency_file_index__arity0______enum__to_int_1_1_f_0_10001)),
+  ((MR_Box) (make__dependencies__ClassMethod_for_enum__enum____make__dependencies__dependency_file_index__arity0______enum__from_int_1_1_f_0_10001))
+};
+
+const MR_BaseTypeclassInfo base_typeclass_info_enum__enum__arity1__make__dependencies__module_index__arity0__[7] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (make__dependencies__ClassMethod_for_enum__enum____make__dependencies__module_index__arity0______enum__to_int_1_1_f_0_10001)),
+  ((MR_Box) (make__dependencies__ClassMethod_for_enum__enum____make__dependencies__module_index__arity0______enum__from_int_1_1_f_0_10001))
+};
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____cached_direct_imports_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____cached_direct_imports_0_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____cached_direct_imports_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____cached_direct_imports_0_0(&make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    *make__dependencies__wrapper_arg_1 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____cached_foreign_imports_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____cached_foreign_imports_0_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____cached_foreign_imports_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____cached_foreign_imports_0_0(&make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    *make__dependencies__wrapper_arg_1 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____cached_transitive_dependencies_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____cached_transitive_dependencies_0_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____cached_transitive_dependencies_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____cached_transitive_dependencies_0_0(&make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    *make__dependencies__wrapper_arg_1 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____dependencies_result_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____dependencies_result_0_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____dependencies_result_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____dependencies_result_0_0(&make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    *make__dependencies__wrapper_arg_1 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____dependency_file_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____dependency_file_0_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____dependency_file_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____dependency_file_0_0(&make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    *make__dependencies__wrapper_arg_1 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____dependency_file_index_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____dependency_file_index_0_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____dependency_file_index_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____dependency_file_index_0_0(&make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    *make__dependencies__wrapper_arg_1 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____deps_result_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____deps_result_1_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____deps_result_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____deps_result_1_0(((MR_Word) make__dependencies__wrapper_arg_1), &make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_3), ((MR_Word) make__dependencies__wrapper_arg_4));
+    }
+    *make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____deps_set_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____deps_set_1_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____deps_set_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____deps_set_1_0(((MR_Word) make__dependencies__wrapper_arg_1), &make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_3), ((MR_Word) make__dependencies__wrapper_arg_4));
+    }
+    *make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____find_module_deps_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____find_module_deps_1_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____find_module_deps_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____find_module_deps_1_0(((MR_Word) make__dependencies__wrapper_arg_1), &make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_3), ((MR_Word) make__dependencies__wrapper_arg_4));
+    }
+    *make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____find_module_deps_plain_set_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____find_module_deps_plain_set_1_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____find_module_deps_plain_set_1_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____find_module_deps_plain_set_1_0(((MR_Word) make__dependencies__wrapper_arg_1), &make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_3), ((MR_Word) make__dependencies__wrapper_arg_4));
+    }
+    *make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____module_deps_result_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____module_deps_result_0_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____module_deps_result_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____module_deps_result_0_0(&make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    *make__dependencies__wrapper_arg_1 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____module_index_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____module_index_0_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____module_index_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____module_index_0_0(&make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    *make__dependencies__wrapper_arg_1 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____module_locn_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____module_locn_0_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____module_locn_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____module_locn_0_0(&make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    *make__dependencies__wrapper_arg_1 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____transitive_dependencies_root_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____transitive_dependencies_root_0_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____transitive_dependencies_root_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____transitive_dependencies_root_0_0(&make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    *make__dependencies__wrapper_arg_1 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____transitive_dependencies_type_0_0_10001(
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____transitive_dependencies_type_0_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____transitive_dependencies_type_0_0_10001(
+  MR_Box * make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Word make__dependencies__conv0_HeadVar__1_1;
+
+    {
+      make__dependencies____Compare____transitive_dependencies_type_0_0(&make__dependencies__conv0_HeadVar__1_1, ((MR_Word) make__dependencies__wrapper_arg_2), ((MR_Word) make__dependencies__wrapper_arg_3));
+    }
+    *make__dependencies__wrapper_arg_1 = ((MR_Box) (make__dependencies__conv0_HeadVar__1_1));
+  }
+}
+
+static MR_Box MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__dependency_file_index__arity0______enum__to_int_1_1_f_0_10001(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1)
+{
+  {
+    MR_Box make__dependencies__wrapper_arg_2;
+    MR_Box make__dependencies__closure;
+    MR_Integer make__dependencies__conv0_I_3;
+
+    make__dependencies__closure = make__dependencies__closure_arg;
+    {
+      make__dependencies__conv0_I_3 = make__dependencies__ClassMethod_for_enum__enum____make__dependencies__dependency_file_index__arity0______enum__to_int_1_1_f_0(((MR_Word) make__dependencies__wrapper_arg_1));
+    }
+    make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv0_I_3));
+    return make__dependencies__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__dependency_file_index__arity0______enum__from_int_1_1_f_0_10001(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Box make__dependencies__closure;
+    MR_Word make__dependencies__conv0_HeadVar__2_2;
+
+    make__dependencies__closure = make__dependencies__closure_arg;
+    {
+      make__dependencies__succeeded = make__dependencies__ClassMethod_for_enum__enum____make__dependencies__dependency_file_index__arity0______enum__from_int_1_1_f_0(((MR_Integer) make__dependencies__wrapper_arg_1), &make__dependencies__conv0_HeadVar__2_2);
+    }
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv0_HeadVar__2_2));
+        make__dependencies__succeeded = MR_TRUE;
+      }
+    return make__dependencies__succeeded;
+  }
+}
+
+static MR_Box MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__module_index__arity0______enum__to_int_1_1_f_0_10001(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1)
+{
+  {
+    MR_Box make__dependencies__wrapper_arg_2;
+    MR_Box make__dependencies__closure;
+    MR_Integer make__dependencies__conv0_I_3;
+
+    make__dependencies__closure = make__dependencies__closure_arg;
+    {
+      make__dependencies__conv0_I_3 = make__dependencies__ClassMethod_for_enum__enum____make__dependencies__module_index__arity0______enum__to_int_1_1_f_0(((MR_Word) make__dependencies__wrapper_arg_1));
+    }
+    make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv0_I_3));
+    return make__dependencies__wrapper_arg_2;
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__module_index__arity0______enum__from_int_1_1_f_0_10001(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Box make__dependencies__closure;
+    MR_Word make__dependencies__conv0_HeadVar__2_2;
+
+    make__dependencies__closure = make__dependencies__closure_arg;
+    {
+      make__dependencies__succeeded = make__dependencies__ClassMethod_for_enum__enum____make__dependencies__module_index__arity0______enum__from_int_1_1_f_0(((MR_Integer) make__dependencies__wrapper_arg_1), &make__dependencies__conv0_HeadVar__2_2);
+    }
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv0_HeadVar__2_2));
+        make__dependencies__succeeded = MR_TRUE;
+      }
+    return make__dependencies__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_100_101_112_101_110_100_101_110_99_105_101_115_95_116_105_109_101_115_116_97_109_112_115_95_119_114_105_116_101_95_109_105_115_115_105_110_103_95_100_101_112_115_95_95_104_111_50_49_95_95_91_49_93_95_48_7_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      make__dependencies__succeeded = make__dependencies__IntroducedFrom__pred__check_dependencies_timestamps_write_missing_deps__1286__1_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), make__dependencies__wrapper_arg_2);
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_100_101_112_101_110_100_101_110_99_105_101_115_95_116_105_109_101_115_116_97_109_112_115_95_119_114_105_116_101_95_109_105_115_115_105_110_103_95_100_101_112_115_95_95_104_111_50_49_95_95_91_49_93_95_48_7_p_0(
+  MR_String make__dependencies__TargetFileName_8,
+  MR_Word make__dependencies__BuildDepsSucceeded_9,
+  MR_Word make__dependencies__DepFiles_10,
+  MR_Word make__dependencies__WriteDepFile_11,
+  MR_Word make__dependencies__DepTimestamps_12)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__TypeInfo_for_File_38 = (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0;
+    MR_Word make__dependencies__DepTimestampAL_14;
+    MR_Word make__dependencies__ErrorDeps0_18;
+    MR_Word make__dependencies__ErrorDeps_19;
+
+    {
+      mercury__assoc_list__from_corresponding_lists_3_p_0(make__dependencies__TypeInfo_for_File_38, (MR_Word) &make__dependencies_scalar_common_2[1], make__dependencies__DepFiles_10, make__dependencies__DepTimestamps_12, &make__dependencies__DepTimestampAL_14);
+    }
+    {
+      mercury__list__filter_map_3_p_0((MR_Word) &make__dependencies_scalar_common_2[37], make__dependencies__TypeInfo_for_File_38, (MR_Word) &make__dependencies_scalar_common_9[3], make__dependencies__DepTimestampAL_14, &make__dependencies__ErrorDeps0_18);
+    }
+    {
+      mercury__list__sort_2_p_0(make__dependencies__TypeInfo_for_File_38, make__dependencies__ErrorDeps0_18, &make__dependencies__ErrorDeps_19);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) "** dependencies for \140");
+    }
+    {
+      mercury__io__write_string_3_p_0(make__dependencies__TargetFileName_8);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) "\' do not exist: ");
+    }
+    {
+      mercury__io__write_list_5_p_0(make__dependencies__TypeInfo_for_File_38, make__dependencies__ErrorDeps_19, (MR_String) ", ", make__dependencies__WriteDepFile_11);
+    }
+    {
+      mercury__io__nl_2_p_0();
+    }
+    switch (make__dependencies__BuildDepsSucceeded_9) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          {
+            mercury__io__write_string_3_p_0((MR_String) "** This indicates a bug in \140mmc --make\'.\n");
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_57_95_95_91_49_93_95_48_11_p_0(
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__P_13,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__V_26_26;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_Acc_21;
+    MR_Box make__dependencies__conv1_STATE_VARIABLE_Info_23;
+    MR_Box make__dependencies__conv0_STATE_VARIABLE_IO_25;
+
+    {
+      make__dependencies__V_26_26 = mercury__sparse_bitset__to_sorted_list_1_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__Ts_15);
+    }
+    {
+      make__util__foldl3_maybe_stop_at_error_11_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[7], (MR_Word) &make__make__type_ctor_info_make_info_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, make__dependencies__KeepGoing_12, make__dependencies__P_13, make__dependencies__Globals_14, make__dependencies__V_26_26, make__dependencies__Success_16, ((MR_Box) (make__dependencies__STATE_VARIABLE_Acc_0_20)), &make__dependencies__conv2_STATE_VARIABLE_Acc_21, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_22)), &make__dependencies__conv1_STATE_VARIABLE_Info_23, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv0_STATE_VARIABLE_IO_25);
+    }
+    *make__dependencies__STATE_VARIABLE_Acc_21 = ((MR_Word) make__dependencies__conv2_STATE_VARIABLE_Acc_21);
+    *make__dependencies__STATE_VARIABLE_Info_23 = ((MR_Word) make__dependencies__conv1_STATE_VARIABLE_Info_23);
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_93_95_48_11_p_0(
+  MR_Word make__dependencies__TypeInfo_for_Acc_31,
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__P_13,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__V_26_26;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_Acc_21;
+    MR_Box make__dependencies__conv1_STATE_VARIABLE_Info_23;
+    MR_Box make__dependencies__conv0_STATE_VARIABLE_IO_25;
+
+    {
+      make__dependencies__V_26_26 = mercury__sparse_bitset__to_sorted_list_1_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__Ts_15);
+    }
+    {
+      make__util__foldl3_maybe_stop_at_error_11_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, make__dependencies__TypeInfo_for_Acc_31, (MR_Word) &make__make__type_ctor_info_make_info_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, make__dependencies__KeepGoing_12, make__dependencies__P_13, make__dependencies__Globals_14, make__dependencies__V_26_26, make__dependencies__Success_16, ((MR_Box) (make__dependencies__STATE_VARIABLE_Acc_0_20)), &make__dependencies__conv2_STATE_VARIABLE_Acc_21, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_22)), &make__dependencies__conv1_STATE_VARIABLE_Info_23, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv0_STATE_VARIABLE_IO_25);
+    }
+    *make__dependencies__STATE_VARIABLE_Acc_21 = ((MR_Word) make__dependencies__conv2_STATE_VARIABLE_Acc_21);
+    *make__dependencies__STATE_VARIABLE_Info_23 = ((MR_Word) make__dependencies__conv1_STATE_VARIABLE_Info_23);
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_51_95_95_91_49_44_32_50_93_95_48_11_p_0(
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__P_13,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__V_26_26;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_Acc_21;
+    MR_Box make__dependencies__conv1_STATE_VARIABLE_Info_23;
+    MR_Box make__dependencies__conv0_STATE_VARIABLE_IO_25;
+
+    {
+      make__dependencies__V_26_26 = mercury__sparse_bitset__to_sorted_list_1_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__Ts_15);
+    }
+    {
+      make__util__foldl3_maybe_stop_at_error_11_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[8], (MR_Word) &make__make__type_ctor_info_make_info_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, make__dependencies__KeepGoing_12, make__dependencies__P_13, make__dependencies__Globals_14, make__dependencies__V_26_26, make__dependencies__Success_16, ((MR_Box) (make__dependencies__STATE_VARIABLE_Acc_0_20)), &make__dependencies__conv2_STATE_VARIABLE_Acc_21, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_22)), &make__dependencies__conv1_STATE_VARIABLE_Info_23, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv0_STATE_VARIABLE_IO_25);
+    }
+    *make__dependencies__STATE_VARIABLE_Acc_21 = ((MR_Word) make__dependencies__conv2_STATE_VARIABLE_Acc_21);
+    *make__dependencies__STATE_VARIABLE_Info_23 = ((MR_Word) make__dependencies__conv1_STATE_VARIABLE_Info_23);
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_50_95_95_91_49_44_32_50_93_95_48_11_p_0(
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__P_13,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__V_26_26;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_Acc_21;
+    MR_Box make__dependencies__conv1_STATE_VARIABLE_Info_23;
+    MR_Box make__dependencies__conv0_STATE_VARIABLE_IO_25;
+
+    {
+      make__dependencies__V_26_26 = mercury__sparse_bitset__to_sorted_list_1_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__Ts_15);
+    }
+    {
+      make__util__foldl3_maybe_stop_at_error_11_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[8], (MR_Word) &make__make__type_ctor_info_make_info_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, make__dependencies__KeepGoing_12, make__dependencies__P_13, make__dependencies__Globals_14, make__dependencies__V_26_26, make__dependencies__Success_16, ((MR_Box) (make__dependencies__STATE_VARIABLE_Acc_0_20)), &make__dependencies__conv2_STATE_VARIABLE_Acc_21, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_22)), &make__dependencies__conv1_STATE_VARIABLE_Info_23, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv0_STATE_VARIABLE_IO_25);
+    }
+    *make__dependencies__STATE_VARIABLE_Acc_21 = ((MR_Word) make__dependencies__conv2_STATE_VARIABLE_Acc_21);
+    *make__dependencies__STATE_VARIABLE_Info_23 = ((MR_Word) make__dependencies__conv1_STATE_VARIABLE_Info_23);
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_49_95_95_91_49_44_32_50_44_32_51_93_95_48_11_p_0(
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__P_13,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__V_26_26;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_Acc_21;
+    MR_Box make__dependencies__conv1_STATE_VARIABLE_Info_23;
+    MR_Box make__dependencies__conv0_STATE_VARIABLE_IO_25;
+
+    {
+      make__dependencies__V_26_26 = mercury__sparse_bitset__to_sorted_list_1_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__Ts_15);
+    }
+    {
+      make__util__foldl3_maybe_stop_at_error_11_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[8], (MR_Word) &make__make__type_ctor_info_make_info_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, make__dependencies__KeepGoing_12, make__dependencies__P_13, make__dependencies__Globals_14, make__dependencies__V_26_26, make__dependencies__Success_16, ((MR_Box) (make__dependencies__STATE_VARIABLE_Acc_0_20)), &make__dependencies__conv2_STATE_VARIABLE_Acc_21, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_22)), &make__dependencies__conv1_STATE_VARIABLE_Info_23, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv0_STATE_VARIABLE_IO_25);
+    }
+    *make__dependencies__STATE_VARIABLE_Acc_21 = ((MR_Word) make__dependencies__conv2_STATE_VARIABLE_Acc_21);
+    *make__dependencies__STATE_VARIABLE_Info_23 = ((MR_Word) make__dependencies__conv1_STATE_VARIABLE_Info_23);
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_98_97_115_101_95_99_111_109_112_105_108_101_100_95_99_111_100_101_95_100_101_112_101_110_100_101_110_99_105_101_115_95_95_53_54_56_95_95_49_95_95_91_49_44_32_50_93_95_48_8_p_0(
+  MR_Word * make__dependencies__HeadVar__3_36,
+  MR_Word * make__dependencies__HeadVar__4_37,
+  MR_Word make__dependencies__HeadVar__5_38,
+  MR_Word * make__dependencies__HeadVar__6_39)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_110_111_95_100_101_112_115_95_95_91_50_44_32_51_93_95_48_8_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__HeadVar__3_36, make__dependencies__HeadVar__4_37, make__dependencies__HeadVar__5_38, make__dependencies__HeadVar__6_39);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_116_97_114_103_101_116_95_100_101_112_101_110_100_101_110_99_105_101_115_95_95_52_49_57_95_95_49_95_95_91_49_44_32_50_93_95_48_8_p_0(
+  MR_Word * make__dependencies__HeadVar__3_173,
+  MR_Word * make__dependencies__HeadVar__4_174,
+  MR_Word make__dependencies__HeadVar__5_175,
+  MR_Word * make__dependencies__HeadVar__6_176)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_110_111_95_100_101_112_115_95_95_91_50_44_32_51_93_95_48_8_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__HeadVar__3_173, make__dependencies__HeadVar__4_174, make__dependencies__HeadVar__5_175, make__dependencies__HeadVar__6_176);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_116_97_114_103_101_116_95_100_101_112_101_110_100_101_110_99_105_101_115_95_95_52_48_56_95_95_49_95_95_91_49_44_32_50_93_95_48_8_p_0(
+  MR_Word * make__dependencies__HeadVar__3_156,
+  MR_Word * make__dependencies__HeadVar__4_157,
+  MR_Word make__dependencies__HeadVar__5_158,
+  MR_Word * make__dependencies__HeadVar__6_159)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_110_111_95_100_101_112_115_95_95_91_50_44_32_51_93_95_48_8_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__HeadVar__3_156, make__dependencies__HeadVar__4_157, make__dependencies__HeadVar__5_158, make__dependencies__HeadVar__6_159);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_116_97_114_103_101_116_95_100_101_112_101_110_100_101_110_99_105_101_115_95_95_52_54_48_95_95_49_95_95_91_49_44_32_50_93_95_48_8_p_0(
+  MR_Word * make__dependencies__HeadVar__3_256,
+  MR_Word * make__dependencies__HeadVar__4_257,
+  MR_Word make__dependencies__HeadVar__5_258,
+  MR_Word * make__dependencies__HeadVar__6_259)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_110_111_95_100_101_112_115_95_95_91_50_44_32_51_93_95_48_8_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__HeadVar__3_256, make__dependencies__HeadVar__4_257, make__dependencies__HeadVar__5_258, make__dependencies__HeadVar__6_259);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_101_110_116_115_95_95_91_49_93_95_48_8_p_0(
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word * make__dependencies__AncestorIndices_11,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_17)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__ModuleName_14;
+    MR_Word make__dependencies__Ancestors_15;
+    MR_Integer make__dependencies__I_24;
+    MR_Word make__dependencies__V_25_25;
+    MR_Box make__dependencies__V_26_26;
+    MR_Word make__dependencies__V_54_54;
+    MR_Word make__dependencies__V_27_27;
+    MR_Word make__dependencies__V_28_28;
+    MR_Word make__dependencies__V_29_29;
+    MR_Word make__dependencies__V_30_30;
+    MR_Word make__dependencies__V_31_31;
+    MR_Word make__dependencies__V_32_32;
+    MR_Word make__dependencies__V_33_33;
+    MR_Word make__dependencies__V_34_34;
+    MR_Word make__dependencies__V_35_35;
+    MR_Word make__dependencies__V_36_36;
+    MR_Word make__dependencies__V_37_37;
+    MR_Word make__dependencies__V_38_38;
+    MR_Word make__dependencies__V_39_39;
+    MR_Word make__dependencies__V_40_40;
+    MR_Word make__dependencies__V_41_41;
+    MR_Word make__dependencies__V_42_42;
+    MR_Word make__dependencies__V_43_43;
+    MR_Integer make__dependencies__V_44_44;
+    MR_Word make__dependencies__V_45_45;
+    MR_Word make__dependencies__V_46_46;
+    MR_Integer make__dependencies__V_47_47;
+    MR_Box make__dependencies__conv0_ModuleName_14;
+
+    *make__dependencies__HeadVar__3_3 = (MR_Integer) 1;
+    make__dependencies__I_24 = (MR_Integer) make__dependencies__ModuleIndex_10;
+    make__dependencies__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 0)));
+    make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 1)));
+    make__dependencies__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 2)));
+    make__dependencies__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 3)));
+    make__dependencies__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 4)));
+    make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 5)));
+    make__dependencies__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 6)));
+    make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 7)));
+    make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 8)));
+    make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 9)));
+    make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 10)));
+    make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 11)));
+    make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 12)));
+    make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 13)));
+    make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 14)));
+    make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 15)));
+    make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 16)));
+    make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 17)));
+    make__dependencies__V_44_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 18)));
+    make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 19)));
+    make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__V_25_25, (MR_Integer) 0)));
+    make__dependencies__V_26_26 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__V_25_25, (MR_Integer) 1)));
+    make__dependencies__V_47_47 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__V_25_25, (MR_Integer) 2)));
+    {
+      make__dependencies__conv0_ModuleName_14 = mercury__version_array__elem_2_f_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, make__dependencies__I_24, make__dependencies__V_26_26);
+    }
+    make__dependencies__ModuleName_14 = ((MR_Word) make__dependencies__conv0_ModuleName_14);
+    {
+      make__dependencies__Ancestors_15 = mdbcomp__sym_name__get_ancestors_1_f_0(make__dependencies__ModuleName_14);
+    }
+    {
+      make__dependencies__V_54_54 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+    }
+    {
+      make__dependencies__module_names_to_index_set_2_5_p_0(make__dependencies__Ancestors_15, make__dependencies__V_54_54, make__dependencies__AncestorIndices_11, make__dependencies__STATE_VARIABLE_Info_0_16, make__dependencies__STATE_VARIABLE_Info_17);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_108_102_95_95_91_49_93_95_48_8_p_0(
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word * make__dependencies__HeadVar__4_4,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_13,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_14)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    *make__dependencies__HeadVar__3_3 = (MR_Integer) 1;
+    {
+      *make__dependencies__HeadVar__4_4 = mercury__sparse_bitset__make_singleton_set_1_f_0((MR_Word) &make__dependencies_scalar_common_1[0], ((MR_Box) (make__dependencies__ModuleIndex_10)));
+    }
+    *make__dependencies__STATE_VARIABLE_Info_14 = make__dependencies__STATE_VARIABLE_Info_0_13;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_110_111_95_100_101_112_115_95_95_91_50_44_32_51_93_95_48_8_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_17,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word * make__dependencies__HeadVar__4_4,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_13,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_14)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    *make__dependencies__HeadVar__3_3 = (MR_Integer) 1;
+    {
+      *make__dependencies__HeadVar__4_4 = mercury__sparse_bitset__init_0_f_0(make__dependencies__TypeInfo_for_T_17);
+    }
+    *make__dependencies__STATE_VARIABLE_Info_14 = make__dependencies__STATE_VARIABLE_Info_0_13;
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_97_114_103_101_116_95_116_111_95_109_111_100_117_108_101_95_116_97_114_103_101_116_95_99_111_100_101_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    return (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 9));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_111_114_101_105_103_110_95_100_101_112_115_95_95_91_50_93_95_48_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_15;
+    MR_Word make__dependencies__conv4_TargetFiles_16;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_15, &make__dependencies__conv4_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_111_114_101_105_103_110_95_100_101_112_115_95_95_91_50_93_95_48_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_HeadVar__3_3;
+    MR_Word make__dependencies__conv1_HeadVar__4_4;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_14;
+
+    {
+      make__dependencies__self_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_HeadVar__3_3, &make__dependencies__conv1_HeadVar__4_4, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_14);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_HeadVar__3_3));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_HeadVar__4_4));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_14));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_111_114_101_105_103_110_95_100_101_112_115_95_95_91_50_93_95_48_2_f_0(
+  MR_Word make__dependencies__Globals_4)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__CompilationTarget_7;
+
+    {
+      libs__globals__get_target_2_p_0(make__dependencies__Globals_4, &make__dependencies__CompilationTarget_7);
+    }
+    return (MR_Word) &make__dependencies_scalar_common_6[12];
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependencies_timestamps_write_missing_deps__ho21_7_p_0(
+  MR_Word make__dependencies__V_42_42,
+  MR_String make__dependencies__TargetFileName_8,
+  MR_Word make__dependencies__BuildDepsSucceeded_9,
+  MR_Word make__dependencies__DepFiles_10,
+  MR_Word make__dependencies__WriteDepFile_11,
+  MR_Word make__dependencies__DepTimestamps_12)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_100_101_112_101_110_100_101_110_99_105_101_115_95_116_105_109_101_115_116_97_109_112_115_95_119_114_105_116_101_95_109_105_115_115_105_110_103_95_100_101_112_115_95_95_104_111_50_49_95_95_91_49_93_95_48_7_p_0(make__dependencies__TargetFileName_8, make__dependencies__BuildDepsSucceeded_9, make__dependencies__DepFiles_10, make__dependencies__WriteDepFile_11, make__dependencies__DepTimestamps_12);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho20_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_15;
+    MR_Word make__dependencies__conv4_TargetFiles_16;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_15, &make__dependencies__conv4_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho20_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_Success_11;
+    MR_Word make__dependencies__conv1_Modules_12;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_20;
+
+    {
+      make__dependencies__foreign_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_Success_11, &make__dependencies__conv1_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_20);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_20));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho20_2_f_0(
+  MR_Word make__dependencies__FileType_4)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__3_3;
+
+    {
+      make__dependencies__HeadVar__3_3 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[0]));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 1) = ((MR_Box) (make__dependencies__of__ho20_2_f_0_2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 3) = ((MR_Box) (make__dependencies__FileType_4));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 4) = ((MR_Box) (&make__dependencies_scalar_common_2[35]));
+    }
+    return make__dependencies__HeadVar__3_3;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho19_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_15;
+    MR_Word make__dependencies__conv4_TargetFiles_16;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_15, &make__dependencies__conv4_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho19_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_Success_11;
+    MR_Word make__dependencies__conv1_Modules_12;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_17;
+
+    {
+      make__dependencies__non_intermod_direct_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_Success_11, &make__dependencies__conv1_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_17);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_17));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho19_2_f_0(
+  MR_Word make__dependencies__FileType_4)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__3_3;
+
+    {
+      make__dependencies__HeadVar__3_3 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[0]));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 1) = ((MR_Box) (make__dependencies__of__ho19_2_f_0_2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 3) = ((MR_Box) (make__dependencies__FileType_4));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 4) = ((MR_Box) (&make__dependencies_scalar_common_2[34]));
+    }
+    return make__dependencies__HeadVar__3_3;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho18_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_15;
+    MR_Word make__dependencies__conv4_TargetFiles_16;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_15, &make__dependencies__conv4_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho18_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_Success_11;
+    MR_Word make__dependencies__conv1_Modules_12;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_16;
+
+    {
+      make__dependencies__non_intermod_indirect_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_Success_11, &make__dependencies__conv1_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_16);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_16));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho18_2_f_0(
+  MR_Word make__dependencies__FileType_4)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__3_3;
+
+    {
+      make__dependencies__HeadVar__3_3 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[0]));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 1) = ((MR_Box) (make__dependencies__of__ho18_2_f_0_2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 3) = ((MR_Box) (make__dependencies__FileType_4));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 4) = ((MR_Box) (&make__dependencies_scalar_common_2[33]));
+    }
+    return make__dependencies__HeadVar__3_3;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps__ho17_10_p_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      make__dependencies__debug_newer_dependencies_2_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 7))));
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps__ho17_10_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      make__dependencies__check_dependencies_timestamps_write_missing_deps__ho21_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 7))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 8))));
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps__ho17_10_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      mercury__io__write_string_3_p_0(((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))));
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps__ho17_10_p_0(
+  MR_Word make__dependencies__V_39_39,
+  MR_Word make__dependencies__Globals_11,
+  MR_String make__dependencies__TargetFileName_12,
+  MR_Word make__dependencies__MaybeTimestamp_13,
+  MR_Word make__dependencies__BuildDepsSucceeded_14,
+  MR_Word make__dependencies__DepFiles_15,
+  MR_Word make__dependencies__WriteDepFile_16,
+  MR_Word make__dependencies__DepTimestamps_17,
+  MR_Word * make__dependencies__DepsResult_18)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    if (((MR_tag((MR_Word) make__dependencies__MaybeTimestamp_13)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word make__dependencies__V_30_30;
+        MR_String make__dependencies__V_32_32;
+
+        *make__dependencies__DepsResult_18 = (MR_Integer) 1;
+        {
+          make__dependencies__V_32_32 = mercury__string__f_43_43_2_f_0(make__dependencies__TargetFileName_12, (MR_String) " does not exist.\n");
+        }
+        {
+          make__dependencies__V_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_30_30, 0) = ((MR_Box) (&make__dependencies_scalar_common_7[1]));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_30_30, 1) = ((MR_Box) (make__dependencies__check_dependency_timestamps__ho17_10_p_0_1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_30_30, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_30_30, 3) = ((MR_Box) (make__dependencies__V_32_32));
+        }
+        {
+          make__util__debug_make_msg_4_p_0(make__dependencies__Globals_11, make__dependencies__V_30_30);
+        }
+      }
+    else
+      {
+        MR_Word make__dependencies__Timestamp_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__MaybeTimestamp_13, (MR_Integer) 0)));
+
+        {
+          make__dependencies__succeeded = make__dependencies__error_in_timestamps_1_p_0(make__dependencies__DepTimestamps_17);
+        }
+        if (make__dependencies__succeeded)
+          {
+            MR_Word make__dependencies__WriteMissingDeps_22;
+
+            *make__dependencies__DepsResult_18 = (MR_Integer) 2;
+            {
+              make__dependencies__WriteMissingDeps_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 9 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 0) = ((MR_Box) (&make__dependencies_scalar_common_4[5]));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 1) = ((MR_Box) (make__dependencies__check_dependency_timestamps__ho17_10_p_0_2));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 3) = ((MR_Box) (make__dependencies__V_39_39));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 4) = ((MR_Box) (make__dependencies__TargetFileName_12));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 5) = ((MR_Box) (make__dependencies__BuildDepsSucceeded_14));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 6) = ((MR_Box) (make__dependencies__DepFiles_15));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 7) = ((MR_Box) (make__dependencies__WriteDepFile_16));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 8) = ((MR_Box) (make__dependencies__DepTimestamps_17));
+            }
+            switch (make__dependencies__BuildDepsSucceeded_14) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  make__util__debug_make_msg_4_p_0(make__dependencies__Globals_11, make__dependencies__WriteMissingDeps_22);
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_100_101_112_101_110_100_101_110_99_105_101_115_95_116_105_109_101_115_116_97_109_112_115_95_119_114_105_116_101_95_109_105_115_115_105_110_103_95_100_101_112_115_95_95_104_111_50_49_95_95_91_49_93_95_48_7_p_0(make__dependencies__TargetFileName_12, make__dependencies__BuildDepsSucceeded_14, make__dependencies__DepFiles_15, make__dependencies__WriteDepFile_16, make__dependencies__DepTimestamps_17);
+                }
+                break;
+            }
+          }
+        else
+          {
+            MR_Word make__dependencies__OpMode_23;
+            MR_Word make__dependencies__V_28_28;
+
+            {
+              libs__globals__get_op_mode_2_p_0(make__dependencies__Globals_11, &make__dependencies__OpMode_23);
+            }
+            make__dependencies__succeeded = ((MR_tag((MR_Word) make__dependencies__OpMode_23)) == (MR_mktag((MR_Integer) 1)));
+            if (make__dependencies__succeeded)
+              {
+                make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__OpMode_23, (MR_Integer) 0)));
+                make__dependencies__succeeded = (make__dependencies__V_28_28 == (MR_Integer) 1);
+              }
+            if (make__dependencies__succeeded)
+              *make__dependencies__DepsResult_18 = (MR_Integer) 1;
+            else
+              {
+                {
+                  make__dependencies__succeeded = make__dependencies__newer_timestamp_2_p_0(make__dependencies__DepTimestamps_17, make__dependencies__Timestamp_21);
+                }
+                if (make__dependencies__succeeded)
+                  {
+                    MR_Word make__dependencies__V_50_50;
+
+                    {
+                      make__dependencies__V_50_50 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 8 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_50_50, 0) = ((MR_Box) (&make__dependencies_scalar_common_8[2]));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_50_50, 1) = ((MR_Box) (make__dependencies__check_dependency_timestamps__ho17_10_p_0_3));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_50_50, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_50_50, 3) = ((MR_Box) (&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_50_50, 4) = ((MR_Box) (make__dependencies__TargetFileName_12));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_50_50, 5) = ((MR_Box) (make__dependencies__MaybeTimestamp_13));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_50_50, 6) = ((MR_Box) (make__dependencies__DepFiles_15));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_50_50, 7) = ((MR_Box) (make__dependencies__DepTimestamps_17));
+                    }
+                    {
+                      make__util__debug_make_msg_4_p_0(make__dependencies__Globals_11, make__dependencies__V_50_50);
+                    }
+                    *make__dependencies__DepsResult_18 = (MR_Integer) 1;
+                  }
+                else
+                  *make__dependencies__DepsResult_18 = (MR_Integer) 0;
+              }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho16_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_15;
+    MR_Word make__dependencies__conv4_TargetFiles_16;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_15, &make__dependencies__conv4_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho16_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_Success_11;
+    MR_Word make__dependencies__conv1_Modules_12;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_18;
+
+    {
+      make__dependencies__intermod_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_Success_11, &make__dependencies__conv1_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_18);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_18));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho16_2_f_0(
+  MR_Word make__dependencies__FileType_4)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__3_3;
+
+    {
+      make__dependencies__HeadVar__3_3 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[0]));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 1) = ((MR_Box) (make__dependencies__of__ho16_2_f_0_2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 3) = ((MR_Box) (make__dependencies__FileType_4));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 4) = ((MR_Box) (&make__dependencies_scalar_common_2[32]));
+    }
+    return make__dependencies__HeadVar__3_3;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho15_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_15;
+    MR_Word make__dependencies__conv4_TargetFiles_16;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_15, &make__dependencies__conv4_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho15_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_HeadVar__3_3;
+    MR_Word make__dependencies__conv1_HeadVar__4_4;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_14;
+
+    {
+      make__dependencies__self_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_HeadVar__3_3, &make__dependencies__conv1_HeadVar__4_4, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_14);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_HeadVar__3_3));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_HeadVar__4_4));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_14));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho15_2_f_0(
+  MR_Word make__dependencies__FileType_4)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__3_3;
+
+    {
+      make__dependencies__HeadVar__3_3 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[0]));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 1) = ((MR_Box) (make__dependencies__of__ho15_2_f_0_2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 3) = ((MR_Box) (make__dependencies__FileType_4));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 4) = ((MR_Box) (&make__dependencies_scalar_common_2[31]));
+    }
+    return make__dependencies__HeadVar__3_3;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__files_of__ho14_2_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv8_Success_15;
+    MR_Word make__dependencies__conv7_DepIndices_16;
+    MR_Word make__dependencies__conv6_STATE_VARIABLE_Info_25;
+
+    {
+      make__dependencies__files_of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv8_Success_15, &make__dependencies__conv7_DepIndices_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv6_STATE_VARIABLE_Info_25);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv8_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv7_DepIndices_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv6_STATE_VARIABLE_Info_25));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__files_of__ho14_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_HeadVar__3_3;
+    MR_Word make__dependencies__conv4_HeadVar__4_4;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_14;
+
+    {
+      make__dependencies__self_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_HeadVar__3_3, &make__dependencies__conv4_HeadVar__4_4, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_14);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_HeadVar__3_3));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_HeadVar__4_4));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_14));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__files_of__ho14_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_Success_11;
+    MR_Word make__dependencies__conv1_Files_12;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__fact_table_files_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_Success_11, &make__dependencies__conv1_Files_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_Files_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_21));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__files_of__ho14_2_f_0(void)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    return (MR_Word) &make__dependencies_scalar_common_6[11];
+  }
+}
+
+static void MR_CALL 
+make__dependencies__files_of__ho13_2_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv8_Success_15;
+    MR_Word make__dependencies__conv7_DepIndices_16;
+    MR_Word make__dependencies__conv6_STATE_VARIABLE_Info_25;
+
+    {
+      make__dependencies__files_of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv8_Success_15, &make__dependencies__conv7_DepIndices_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv6_STATE_VARIABLE_Info_25);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv8_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv7_DepIndices_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv6_STATE_VARIABLE_Info_25));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__files_of__ho13_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_HeadVar__3_3;
+    MR_Word make__dependencies__conv4_HeadVar__4_4;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_14;
+
+    {
+      make__dependencies__self_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_HeadVar__3_3, &make__dependencies__conv4_HeadVar__4_4, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_14);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_HeadVar__3_3));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_HeadVar__4_4));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_14));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__files_of__ho13_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_Success_11;
+    MR_Word make__dependencies__conv1_Files_12;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_23;
+
+    {
+      make__dependencies__foreign_include_files_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_Success_11, &make__dependencies__conv1_Files_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_23);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_Files_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_23));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__files_of__ho13_2_f_0(void)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    return (MR_Word) &make__dependencies_scalar_common_6[10];
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho12_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_15;
+    MR_Word make__dependencies__conv4_TargetFiles_16;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_15, &make__dependencies__conv4_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho12_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_HeadVar__3_3;
+    MR_Word make__dependencies__conv1_AncestorIndices_11;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_17;
+
+    {
+      make__dependencies__parents_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_HeadVar__3_3, &make__dependencies__conv1_AncestorIndices_11, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_17);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_HeadVar__3_3));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_AncestorIndices_11));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_17));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho12_2_f_0(
+  MR_Word make__dependencies__FileType_4)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__3_3;
+
+    {
+      make__dependencies__HeadVar__3_3 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[0]));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 1) = ((MR_Box) (make__dependencies__of__ho12_2_f_0_2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 3) = ((MR_Box) (make__dependencies__FileType_4));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 4) = ((MR_Box) (&make__dependencies_scalar_common_2[26]));
+    }
+    return make__dependencies__HeadVar__3_3;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho11_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_15;
+    MR_Word make__dependencies__conv4_TargetFiles_16;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_15, &make__dependencies__conv4_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho11_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_Success_11;
+    MR_Word make__dependencies__conv1_Modules_12;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_24;
+
+    {
+      make__dependencies__direct_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_Success_11, &make__dependencies__conv1_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_24);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_24));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho11_2_f_0(
+  MR_Word make__dependencies__FileType_4)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__3_3;
+
+    {
+      make__dependencies__HeadVar__3_3 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[0]));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 1) = ((MR_Box) (make__dependencies__of__ho11_2_f_0_2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 3) = ((MR_Box) (make__dependencies__FileType_4));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 4) = ((MR_Box) (&make__dependencies_scalar_common_2[25]));
+    }
+    return make__dependencies__HeadVar__3_3;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho10_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_15;
+    MR_Word make__dependencies__conv4_TargetFiles_16;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_15, &make__dependencies__conv4_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of__ho10_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_Success_11;
+    MR_Word make__dependencies__conv1_Modules_12;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_16;
+
+    {
+      make__dependencies__indirect_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_Success_11, &make__dependencies__conv1_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_16);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_16));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__of__ho10_2_f_0(
+  MR_Word make__dependencies__FileType_4)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__3_3;
+
+    {
+      make__dependencies__HeadVar__3_3 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[0]));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 1) = ((MR_Box) (make__dependencies__of__ho10_2_f_0_2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 3) = ((MR_Box) (make__dependencies__FileType_4));
+      MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, 4) = ((MR_Box) (&make__dependencies_scalar_common_2[24]));
+    }
+    return make__dependencies__HeadVar__3_3;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho7_11_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_HeadVar__4_145;
+    MR_Word make__dependencies__conv4_HeadVar__6_147;
+    MR_Word make__dependencies__conv3_HeadVar__8_149;
+
+    {
+      make__dependencies__IntroducedFrom__pred__direct_imports__731__1_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_HeadVar__4_145, ((MR_Word) make__dependencies__wrapper_arg_4), &make__dependencies__conv4_HeadVar__6_147, ((MR_Word) make__dependencies__wrapper_arg_6), &make__dependencies__conv3_HeadVar__8_149);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_HeadVar__4_145));
+    *make__dependencies__wrapper_arg_5 = ((MR_Box) (make__dependencies__conv4_HeadVar__6_147));
+    *make__dependencies__wrapper_arg_7 = ((MR_Box) (make__dependencies__conv3_HeadVar__8_149));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho7_11_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_Success_11;
+    MR_Word make__dependencies__conv1_Modules_12;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_17;
+
+    {
+      make__dependencies__non_intermod_direct_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_Success_11, &make__dependencies__conv1_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_17);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_17));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho7_11_p_0(
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__V_26_26;
+    MR_Box make__dependencies__conv8_STATE_VARIABLE_Acc_21;
+    MR_Box make__dependencies__conv7_STATE_VARIABLE_Info_23;
+    MR_Box make__dependencies__conv6_STATE_VARIABLE_IO_25;
+
+    {
+      make__dependencies__V_26_26 = mercury__sparse_bitset__to_sorted_list_1_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__Ts_15);
+    }
+    {
+      make__util__foldl3_maybe_stop_at_error_11_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[8], (MR_Word) &make__make__type_ctor_info_make_info_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, make__dependencies__KeepGoing_12, (MR_Word) &make__dependencies_scalar_common_9[2], make__dependencies__Globals_14, make__dependencies__V_26_26, make__dependencies__Success_16, ((MR_Box) (make__dependencies__STATE_VARIABLE_Acc_0_20)), &make__dependencies__conv8_STATE_VARIABLE_Acc_21, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_22)), &make__dependencies__conv7_STATE_VARIABLE_Info_23, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv6_STATE_VARIABLE_IO_25);
+    }
+    *make__dependencies__STATE_VARIABLE_Acc_21 = ((MR_Word) make__dependencies__conv8_STATE_VARIABLE_Acc_21);
+    *make__dependencies__STATE_VARIABLE_Info_23 = ((MR_Word) make__dependencies__conv7_STATE_VARIABLE_Info_23);
+  }
+}
+
+static void MR_CALL 
+make__dependencies__indirect_imports_2__ho6_9_p_0(
+  MR_Word make__dependencies__Globals_10,
+  MR_Word make__dependencies__ModuleIndex_12,
+  MR_Word * make__dependencies__Success_13,
+  MR_Word * make__dependencies__IndirectImports_14,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__DirectSuccess_17;
+    MR_Word make__dependencies__DirectImports_18;
+    MR_Word make__dependencies__KeepGoing_19;
+    MR_Word make__dependencies__STATE_VARIABLE_Info_26_26;
+    MR_Word make__dependencies__V_35_35;
+    MR_Word make__dependencies__V_36_36;
+    MR_Word make__dependencies__V_37_37;
+    MR_Word make__dependencies__V_38_38;
+    MR_Word make__dependencies__V_39_39;
+    MR_Word make__dependencies__V_40_40;
+    MR_Word make__dependencies__V_41_41;
+    MR_Word make__dependencies__V_42_42;
+    MR_Word make__dependencies__V_43_43;
+    MR_Word make__dependencies__V_44_44;
+    MR_Word make__dependencies__V_45_45;
+    MR_Word make__dependencies__V_46_46;
+    MR_Word make__dependencies__V_47_47;
+    MR_Word make__dependencies__V_48_48;
+    MR_Word make__dependencies__V_49_49;
+    MR_Word make__dependencies__V_50_50;
+    MR_Word make__dependencies__V_51_51;
+    MR_Integer make__dependencies__V_52_52;
+    MR_Word make__dependencies__V_53_53;
+
+    {
+      make__dependencies__direct_imports_8_p_0(make__dependencies__Globals_10, make__dependencies__ModuleIndex_12, &make__dependencies__DirectSuccess_17, &make__dependencies__DirectImports_18, make__dependencies__STATE_VARIABLE_Info_0_22, &make__dependencies__STATE_VARIABLE_Info_26_26);
+    }
+    make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 0)));
+    make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 1)));
+    make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 2)));
+    make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 3)));
+    make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 4)));
+    make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 5)));
+    make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 6)));
+    make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 7)));
+    make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 8)));
+    make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 9)));
+    make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 10)));
+    make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 11)));
+    make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 12)));
+    make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 13)));
+    make__dependencies__KeepGoing_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 14)));
+    make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 15)));
+    make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 16)));
+    make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 17)));
+    make__dependencies__V_52_52 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 18)));
+    make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 19)));
+    make__dependencies__succeeded = (make__dependencies__DirectSuccess_17 == (MR_Integer) 0);
+    if (make__dependencies__succeeded)
+      make__dependencies__succeeded = (make__dependencies__KeepGoing_19 == (MR_Integer) 0);
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__Success_13 = (MR_Integer) 0;
+        {
+          *make__dependencies__IndirectImports_14 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+        }
+        *make__dependencies__STATE_VARIABLE_Info_23 = make__dependencies__STATE_VARIABLE_Info_26_26;
+      }
+    else
+      {
+        MR_Word make__dependencies__TypeCtorInfo_92_92 = (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0;
+        MR_Word make__dependencies__IndirectSuccess_20;
+        MR_Word make__dependencies__IndirectImports0_21;
+        MR_Word make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 14)));
+        MR_Word make__dependencies__V_30_30;
+        MR_Word make__dependencies__V_34_34;
+        MR_Word make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 1)));
+        MR_Word make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 2)));
+        MR_Word make__dependencies__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 3)));
+        MR_Word make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 4)));
+        MR_Word make__dependencies__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 5)));
+        MR_Word make__dependencies__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 6)));
+        MR_Word make__dependencies__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 7)));
+        MR_Word make__dependencies__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 8)));
+        MR_Word make__dependencies__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 9)));
+        MR_Word make__dependencies__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 10)));
+        MR_Word make__dependencies__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 11)));
+        MR_Word make__dependencies__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 12)));
+        MR_Word make__dependencies__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 13)));
+        MR_Word make__dependencies__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 15)));
+        MR_Word make__dependencies__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 16)));
+        MR_Word make__dependencies__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 17)));
+        MR_Integer make__dependencies__V_71_71 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 18)));
+        MR_Word make__dependencies__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 19)));
+
+        {
+          make__dependencies__V_30_30 = mercury__sparse_bitset__init_0_f_0(make__dependencies__TypeCtorInfo_92_92);
+        }
+        {
+          make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho4_11_p_0(make__dependencies__V_28_28, make__dependencies__Globals_10, make__dependencies__DirectImports_18, &make__dependencies__IndirectSuccess_20, make__dependencies__V_30_30, &make__dependencies__IndirectImports0_21, make__dependencies__STATE_VARIABLE_Info_26_26, make__dependencies__STATE_VARIABLE_Info_23);
+        }
+        {
+          make__dependencies__V_34_34 = mercury__sparse_bitset__delete_2_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__IndirectImports0_21, ((MR_Box) (make__dependencies__ModuleIndex_12)));
+        }
+        {
+          *make__dependencies__IndirectImports_14 = mercury__sparse_bitset__difference_2_f_0(make__dependencies__TypeCtorInfo_92_92, make__dependencies__V_34_34, make__dependencies__DirectImports_18);
+        }
+        {
+          *make__dependencies__Success_13 = mercury__bool__and_2_f_0(make__dependencies__DirectSuccess_17, make__dependencies__IndirectSuccess_20);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__indirect_imports_2__ho5_9_p_0(
+  MR_Word make__dependencies__Globals_10,
+  MR_Word make__dependencies__ModuleIndex_12,
+  MR_Word * make__dependencies__Success_13,
+  MR_Word * make__dependencies__IndirectImports_14,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__DirectSuccess_17;
+    MR_Word make__dependencies__DirectImports_18;
+    MR_Word make__dependencies__KeepGoing_19;
+    MR_Word make__dependencies__STATE_VARIABLE_Info_26_26;
+    MR_Word make__dependencies__V_35_35;
+    MR_Word make__dependencies__V_36_36;
+    MR_Word make__dependencies__V_37_37;
+    MR_Word make__dependencies__V_38_38;
+    MR_Word make__dependencies__V_39_39;
+    MR_Word make__dependencies__V_40_40;
+    MR_Word make__dependencies__V_41_41;
+    MR_Word make__dependencies__V_42_42;
+    MR_Word make__dependencies__V_43_43;
+    MR_Word make__dependencies__V_44_44;
+    MR_Word make__dependencies__V_45_45;
+    MR_Word make__dependencies__V_46_46;
+    MR_Word make__dependencies__V_47_47;
+    MR_Word make__dependencies__V_48_48;
+    MR_Word make__dependencies__V_49_49;
+    MR_Word make__dependencies__V_50_50;
+    MR_Word make__dependencies__V_51_51;
+    MR_Integer make__dependencies__V_52_52;
+    MR_Word make__dependencies__V_53_53;
+
+    {
+      make__dependencies__non_intermod_direct_imports_8_p_0(make__dependencies__Globals_10, make__dependencies__ModuleIndex_12, &make__dependencies__DirectSuccess_17, &make__dependencies__DirectImports_18, make__dependencies__STATE_VARIABLE_Info_0_22, &make__dependencies__STATE_VARIABLE_Info_26_26);
+    }
+    make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 0)));
+    make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 1)));
+    make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 2)));
+    make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 3)));
+    make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 4)));
+    make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 5)));
+    make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 6)));
+    make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 7)));
+    make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 8)));
+    make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 9)));
+    make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 10)));
+    make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 11)));
+    make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 12)));
+    make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 13)));
+    make__dependencies__KeepGoing_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 14)));
+    make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 15)));
+    make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 16)));
+    make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 17)));
+    make__dependencies__V_52_52 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 18)));
+    make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 19)));
+    make__dependencies__succeeded = (make__dependencies__DirectSuccess_17 == (MR_Integer) 0);
+    if (make__dependencies__succeeded)
+      make__dependencies__succeeded = (make__dependencies__KeepGoing_19 == (MR_Integer) 0);
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__Success_13 = (MR_Integer) 0;
+        {
+          *make__dependencies__IndirectImports_14 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+        }
+        *make__dependencies__STATE_VARIABLE_Info_23 = make__dependencies__STATE_VARIABLE_Info_26_26;
+      }
+    else
+      {
+        MR_Word make__dependencies__TypeCtorInfo_92_92 = (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0;
+        MR_Word make__dependencies__IndirectSuccess_20;
+        MR_Word make__dependencies__IndirectImports0_21;
+        MR_Word make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 14)));
+        MR_Word make__dependencies__V_30_30;
+        MR_Word make__dependencies__V_34_34;
+        MR_Word make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 1)));
+        MR_Word make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 2)));
+        MR_Word make__dependencies__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 3)));
+        MR_Word make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 4)));
+        MR_Word make__dependencies__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 5)));
+        MR_Word make__dependencies__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 6)));
+        MR_Word make__dependencies__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 7)));
+        MR_Word make__dependencies__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 8)));
+        MR_Word make__dependencies__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 9)));
+        MR_Word make__dependencies__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 10)));
+        MR_Word make__dependencies__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 11)));
+        MR_Word make__dependencies__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 12)));
+        MR_Word make__dependencies__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 13)));
+        MR_Word make__dependencies__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 15)));
+        MR_Word make__dependencies__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 16)));
+        MR_Word make__dependencies__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 17)));
+        MR_Integer make__dependencies__V_71_71 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 18)));
+        MR_Word make__dependencies__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_26_26, (MR_Integer) 19)));
+
+        {
+          make__dependencies__V_30_30 = mercury__sparse_bitset__init_0_f_0(make__dependencies__TypeCtorInfo_92_92);
+        }
+        {
+          make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho4_11_p_0(make__dependencies__V_28_28, make__dependencies__Globals_10, make__dependencies__DirectImports_18, &make__dependencies__IndirectSuccess_20, make__dependencies__V_30_30, &make__dependencies__IndirectImports0_21, make__dependencies__STATE_VARIABLE_Info_26_26, make__dependencies__STATE_VARIABLE_Info_23);
+        }
+        {
+          make__dependencies__V_34_34 = mercury__sparse_bitset__delete_2_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__IndirectImports0_21, ((MR_Box) (make__dependencies__ModuleIndex_12)));
+        }
+        {
+          *make__dependencies__IndirectImports_14 = mercury__sparse_bitset__difference_2_f_0(make__dependencies__TypeCtorInfo_92_92, make__dependencies__V_34_34, make__dependencies__DirectImports_18);
+        }
+        {
+          *make__dependencies__Success_13 = mercury__bool__and_2_f_0(make__dependencies__DirectSuccess_17, make__dependencies__IndirectSuccess_20);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho4_11_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_HeadVar__4_76;
+    MR_Word make__dependencies__conv4_HeadVar__6_78;
+    MR_Word make__dependencies__conv3_HeadVar__8_80;
+
+    {
+      make__dependencies__IntroducedFrom__pred__indirect_imports_2__852__1_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_HeadVar__4_76, ((MR_Word) make__dependencies__wrapper_arg_4), &make__dependencies__conv4_HeadVar__6_78, ((MR_Word) make__dependencies__wrapper_arg_6), &make__dependencies__conv3_HeadVar__8_80);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_HeadVar__4_76));
+    *make__dependencies__wrapper_arg_5 = ((MR_Box) (make__dependencies__conv4_HeadVar__6_78));
+    *make__dependencies__wrapper_arg_7 = ((MR_Box) (make__dependencies__conv3_HeadVar__8_80));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho4_11_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_Success_11;
+    MR_Word make__dependencies__conv1_Modules_12;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_17;
+
+    {
+      make__dependencies__find_transitive_implementation_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_Success_11, &make__dependencies__conv1_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_17);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_17));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho4_11_p_0(
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__V_26_26;
+    MR_Box make__dependencies__conv8_STATE_VARIABLE_Acc_21;
+    MR_Box make__dependencies__conv7_STATE_VARIABLE_Info_23;
+    MR_Box make__dependencies__conv6_STATE_VARIABLE_IO_25;
+
+    {
+      make__dependencies__V_26_26 = mercury__sparse_bitset__to_sorted_list_1_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__Ts_15);
+    }
+    {
+      make__util__foldl3_maybe_stop_at_error_11_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[8], (MR_Word) &make__make__type_ctor_info_make_info_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, make__dependencies__KeepGoing_12, (MR_Word) &make__dependencies_scalar_common_9[1], make__dependencies__Globals_14, make__dependencies__V_26_26, make__dependencies__Success_16, ((MR_Box) (make__dependencies__STATE_VARIABLE_Acc_0_20)), &make__dependencies__conv8_STATE_VARIABLE_Acc_21, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_22)), &make__dependencies__conv7_STATE_VARIABLE_Info_23, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv6_STATE_VARIABLE_IO_25);
+    }
+    *make__dependencies__STATE_VARIABLE_Acc_21 = ((MR_Word) make__dependencies__conv8_STATE_VARIABLE_Acc_21);
+    *make__dependencies__STATE_VARIABLE_Info_23 = ((MR_Word) make__dependencies__conv7_STATE_VARIABLE_Info_23);
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__IntroducedFrom__pred__debug_newer_dependencies_2__1390__1_3_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_35,
+  MR_Word make__dependencies__MaybeTimestamp_8,
+  MR_Word make__dependencies__LambdaHeadVar__1_29)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__MaybeDepTimestamp_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__LambdaHeadVar__1_29, (MR_Integer) 1)));
+    MR_Box make__dependencies___DepFile_32 = (MR_hl_field(MR_mktag(0), make__dependencies__LambdaHeadVar__1_29, (MR_Integer) 0));
+
+    if (((MR_tag((MR_Word) make__dependencies__MaybeDepTimestamp_34)) == (MR_mktag((MR_Integer) 1))))
+      make__dependencies__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word make__dependencies__DepTimestamp_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__MaybeDepTimestamp_34, (MR_Integer) 0)));
+        MR_Word make__dependencies__Timestamp_17;
+        MR_Word make__dependencies__V_30_30;
+        MR_Word make__dependencies__V_40_40;
+
+        make__dependencies__succeeded = ((MR_tag((MR_Word) make__dependencies__MaybeTimestamp_8)) == (MR_mktag((MR_Integer) 0)));
+        if (make__dependencies__succeeded)
+          {
+            make__dependencies__Timestamp_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__MaybeTimestamp_8, (MR_Integer) 0)));
+            make__dependencies__V_30_30 = (MR_Integer) 2;
+            {
+              libs__timestamp____Compare____timestamp_0_0(&make__dependencies__V_40_40, make__dependencies__DepTimestamp_16, make__dependencies__Timestamp_17);
+            }
+            make__dependencies__succeeded = (make__dependencies__V_30_30 == make__dependencies__V_40_40);
+          }
+      }
+    return make__dependencies__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__IntroducedFrom__pred__check_dependencies_timestamps_write_missing_deps__1286__1_3_p_0(
+  MR_Word make__dependencies__TypeInfo_for_File_38,
+  MR_Word make__dependencies__LambdaHeadVar__1_23,
+  MR_Box * make__dependencies__LambdaHeadVar__2_24)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__V_25_25;
+    MR_String make__dependencies__V_17_17;
+
+    *make__dependencies__LambdaHeadVar__2_24 = (MR_hl_field(MR_mktag(0), make__dependencies__LambdaHeadVar__1_23, (MR_Integer) 0));
+    make__dependencies__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__LambdaHeadVar__1_23, (MR_Integer) 1)));
+    make__dependencies__succeeded = ((MR_tag((MR_Word) make__dependencies__V_25_25)) == (MR_mktag((MR_Integer) 1)));
+    if (make__dependencies__succeeded)
+      make__dependencies__V_17_17 = ((MR_String) (MR_hl_field(MR_mktag(1), make__dependencies__V_25_25, (MR_Integer) 0)));
+    return make__dependencies__succeeded;
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__IntroducedFrom__func__fact_table_files__986__1_1_f_0(
+  MR_String make__dependencies__LambdaHeadVar__1_27)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__LambdaHeadVar__2_28;
+
+    {
+      make__dependencies__LambdaHeadVar__2_28 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), make__dependencies__LambdaHeadVar__2_28, 0) = ((MR_Box) (make__dependencies__LambdaHeadVar__1_27));
+      MR_hl_field(MR_mktag(1), make__dependencies__LambdaHeadVar__2_28, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    return make__dependencies__LambdaHeadVar__2_28;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__find_module_foreign_imports__925__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_31,
+  MR_Word make__dependencies__HeadVar__2_51,
+  MR_Word make__dependencies__HeadVar__3_52,
+  MR_Word * make__dependencies__HeadVar__4_53,
+  MR_Word make__dependencies__HeadVar__5_54,
+  MR_Word * make__dependencies__HeadVar__6_55,
+  MR_Word make__dependencies__HeadVar__7_56,
+  MR_Word * make__dependencies__HeadVar__8_57)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Deps1_87;
+    void MR_CALL (* make__dependencies__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__1_31, (MR_Integer) 1)));
+    MR_Box make__dependencies__conv4_HeadVar__4_53;
+    MR_Box make__dependencies__conv3_Deps1_87;
+    MR_Box make__dependencies__conv2_HeadVar__8_57;
+    MR_Box make__dependencies__conv1_HeadVar__10_59;
+
+    {
+      make__dependencies__func_0(((MR_Box) make__dependencies__HeadVar__1_31), ((MR_Box) (make__dependencies__HeadVar__2_51)), ((MR_Box) (make__dependencies__HeadVar__3_52)), &make__dependencies__conv4_HeadVar__4_53, &make__dependencies__conv3_Deps1_87, ((MR_Box) (make__dependencies__HeadVar__7_56)), &make__dependencies__conv2_HeadVar__8_57, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv1_HeadVar__10_59);
+    }
+    *make__dependencies__HeadVar__4_53 = ((MR_Word) make__dependencies__conv4_HeadVar__4_53);
+    make__dependencies__Deps1_87 = ((MR_Word) make__dependencies__conv3_Deps1_87);
+    *make__dependencies__HeadVar__8_57 = ((MR_Word) make__dependencies__conv2_HeadVar__8_57);
+    {
+      *make__dependencies__HeadVar__6_55 = mercury__sparse_bitset__union_2_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, make__dependencies__HeadVar__5_54, make__dependencies__Deps1_87);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__foreign_imports__909__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_31,
+  MR_Word make__dependencies__HeadVar__2_52,
+  MR_Word make__dependencies__HeadVar__3_53,
+  MR_Word * make__dependencies__HeadVar__4_54,
+  MR_Word make__dependencies__HeadVar__5_55,
+  MR_Word * make__dependencies__HeadVar__6_56,
+  MR_Word make__dependencies__HeadVar__7_57,
+  MR_Word * make__dependencies__HeadVar__8_58)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__union_deps_10_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, make__dependencies__HeadVar__1_31, make__dependencies__HeadVar__2_52, make__dependencies__HeadVar__3_53, make__dependencies__HeadVar__4_54, make__dependencies__HeadVar__5_55, make__dependencies__HeadVar__6_56, make__dependencies__HeadVar__7_57, make__dependencies__HeadVar__8_58);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__indirect_imports_2__852__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_33,
+  MR_Word make__dependencies__HeadVar__2_74,
+  MR_Word make__dependencies__HeadVar__3_75,
+  MR_Word * make__dependencies__HeadVar__4_76,
+  MR_Word make__dependencies__HeadVar__5_77,
+  MR_Word * make__dependencies__HeadVar__6_78,
+  MR_Word make__dependencies__HeadVar__7_79,
+  MR_Word * make__dependencies__HeadVar__8_80)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__union_deps_10_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, make__dependencies__HeadVar__1_33, make__dependencies__HeadVar__2_74, make__dependencies__HeadVar__3_75, make__dependencies__HeadVar__4_76, make__dependencies__HeadVar__5_77, make__dependencies__HeadVar__6_78, make__dependencies__HeadVar__7_79, make__dependencies__HeadVar__8_80);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__direct_imports__731__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_37,
+  MR_Word make__dependencies__HeadVar__2_143,
+  MR_Word make__dependencies__HeadVar__3_144,
+  MR_Word * make__dependencies__HeadVar__4_145,
+  MR_Word make__dependencies__HeadVar__5_146,
+  MR_Word * make__dependencies__HeadVar__6_147,
+  MR_Word make__dependencies__HeadVar__7_148,
+  MR_Word * make__dependencies__HeadVar__8_149)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__union_deps_10_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, make__dependencies__HeadVar__1_37, make__dependencies__HeadVar__2_143, make__dependencies__HeadVar__3_144, make__dependencies__HeadVar__4_145, make__dependencies__HeadVar__5_146, make__dependencies__HeadVar__6_147, make__dependencies__HeadVar__7_148, make__dependencies__HeadVar__8_149);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__files_of_2__643__1_10_p_0(
+  MR_Word make__dependencies__FindFiles_11,
+  MR_Word make__dependencies__HeadVar__2_56,
+  MR_Word make__dependencies__HeadVar__3_57,
+  MR_Word * make__dependencies__HeadVar__4_58,
+  MR_Word make__dependencies__HeadVar__5_59,
+  MR_Word * make__dependencies__HeadVar__6_60,
+  MR_Word make__dependencies__HeadVar__7_61,
+  MR_Word * make__dependencies__HeadVar__8_62)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Deps1_83;
+    void MR_CALL (* make__dependencies__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), make__dependencies__FindFiles_11, (MR_Integer) 1)));
+    MR_Box make__dependencies__conv4_HeadVar__4_58;
+    MR_Box make__dependencies__conv3_Deps1_83;
+    MR_Box make__dependencies__conv2_HeadVar__8_62;
+    MR_Box make__dependencies__conv1_HeadVar__10_64;
+
+    {
+      make__dependencies__func_0(((MR_Box) make__dependencies__FindFiles_11), ((MR_Box) (make__dependencies__HeadVar__2_56)), ((MR_Box) (make__dependencies__HeadVar__3_57)), &make__dependencies__conv4_HeadVar__4_58, &make__dependencies__conv3_Deps1_83, ((MR_Box) (make__dependencies__HeadVar__7_61)), &make__dependencies__conv2_HeadVar__8_62, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv1_HeadVar__10_64);
+    }
+    *make__dependencies__HeadVar__4_58 = ((MR_Word) make__dependencies__conv4_HeadVar__4_58);
+    make__dependencies__Deps1_83 = ((MR_Word) make__dependencies__conv3_Deps1_83);
+    *make__dependencies__HeadVar__8_62 = ((MR_Word) make__dependencies__conv2_HeadVar__8_62);
+    {
+      *make__dependencies__HeadVar__6_60 = mercury__set__union_2_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0, make__dependencies__HeadVar__5_59, make__dependencies__Deps1_83);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__base_compiled_code_dependencies__574__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_22,
+  MR_Word make__dependencies__HeadVar__2_23,
+  MR_Word make__dependencies__HeadVar__3_84,
+  MR_Word make__dependencies__HeadVar__4_85,
+  MR_Word * make__dependencies__HeadVar__5_86,
+  MR_Word * make__dependencies__HeadVar__6_87,
+  MR_Word make__dependencies__HeadVar__7_88,
+  MR_Word * make__dependencies__HeadVar__8_89)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__map_find_module_deps_10_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__HeadVar__1_22, make__dependencies__HeadVar__2_23, make__dependencies__HeadVar__3_84, make__dependencies__HeadVar__4_85, make__dependencies__HeadVar__5_86, make__dependencies__HeadVar__6_87, make__dependencies__HeadVar__7_88, make__dependencies__HeadVar__8_89);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__base_compiled_code_dependencies__568__1_8_p_0(
+  MR_Word make__dependencies__HeadVar__1_34,
+  MR_Word make__dependencies__HeadVar__2_35,
+  MR_Word * make__dependencies__HeadVar__3_36,
+  MR_Word * make__dependencies__HeadVar__4_37,
+  MR_Word make__dependencies__HeadVar__5_38,
+  MR_Word * make__dependencies__HeadVar__6_39)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_98_97_115_101_95_99_111_109_112_105_108_101_100_95_99_111_100_101_95_100_101_112_101_110_100_101_110_99_105_101_115_95_95_53_54_56_95_95_49_95_95_91_49_44_32_50_93_95_48_8_p_0(make__dependencies__HeadVar__3_36, make__dependencies__HeadVar__4_37, make__dependencies__HeadVar__5_38, make__dependencies__HeadVar__6_39);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__compiled_code_dependencies__539__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_23,
+  MR_Word make__dependencies__HeadVar__2_24,
+  MR_Word make__dependencies__HeadVar__3_57,
+  MR_Word make__dependencies__HeadVar__4_58,
+  MR_Word * make__dependencies__HeadVar__5_59,
+  MR_Word * make__dependencies__HeadVar__6_60,
+  MR_Word make__dependencies__HeadVar__7_61,
+  MR_Word * make__dependencies__HeadVar__8_62)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__map_find_module_deps_10_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__HeadVar__1_23, make__dependencies__HeadVar__2_24, make__dependencies__HeadVar__3_57, make__dependencies__HeadVar__4_58, make__dependencies__HeadVar__5_59, make__dependencies__HeadVar__6_60, make__dependencies__HeadVar__7_61, make__dependencies__HeadVar__8_62);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__compiled_code_dependencies__540__1_10_p_0(
+  MR_Word make__dependencies__HeadVar__1_25,
+  MR_Word make__dependencies__HeadVar__2_26,
+  MR_Word make__dependencies__HeadVar__3_66,
+  MR_Word make__dependencies__HeadVar__4_67,
+  MR_Word * make__dependencies__HeadVar__5_68,
+  MR_Word * make__dependencies__HeadVar__6_69,
+  MR_Word make__dependencies__HeadVar__7_70,
+  MR_Word * make__dependencies__HeadVar__8_71)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__map_find_module_deps_10_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, make__dependencies__HeadVar__1_25, make__dependencies__HeadVar__2_26, make__dependencies__HeadVar__3_66, make__dependencies__HeadVar__4_67, make__dependencies__HeadVar__5_68, make__dependencies__HeadVar__6_69, make__dependencies__HeadVar__7_70, make__dependencies__HeadVar__8_71);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__IntroducedFrom__pred__check_dependencies__1254__1_1_p_0(
+  MR_Word make__dependencies__LambdaHeadVar__1_35)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__DepStatus_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__LambdaHeadVar__1_35, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__LambdaHeadVar__1_35, (MR_Integer) 0)));
+
+    make__dependencies__succeeded = (make__dependencies__DepStatus_49 == (MR_Integer) 2);
+    make__dependencies__succeeded = !(make__dependencies__succeeded);
+    return make__dependencies__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__IntroducedFrom__pred__remove_nested_modules__1184__1_2_p_0(
+  MR_Word make__dependencies__NestedModules_13,
+  MR_Word make__dependencies__HeadVar__2_34)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = mercury__set__contains_2_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, make__dependencies__NestedModules_13, ((MR_Box) (make__dependencies__HeadVar__2_34)));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__target_dependencies__419__1_8_p_0(
+  MR_Word make__dependencies__HeadVar__1_171,
+  MR_Word make__dependencies__HeadVar__2_172,
+  MR_Word * make__dependencies__HeadVar__3_173,
+  MR_Word * make__dependencies__HeadVar__4_174,
+  MR_Word make__dependencies__HeadVar__5_175,
+  MR_Word * make__dependencies__HeadVar__6_176)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_116_97_114_103_101_116_95_100_101_112_101_110_100_101_110_99_105_101_115_95_95_52_49_57_95_95_49_95_95_91_49_44_32_50_93_95_48_8_p_0(make__dependencies__HeadVar__3_173, make__dependencies__HeadVar__4_174, make__dependencies__HeadVar__5_175, make__dependencies__HeadVar__6_176);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__target_dependencies__408__1_8_p_0(
+  MR_Word make__dependencies__HeadVar__1_154,
+  MR_Word make__dependencies__HeadVar__2_155,
+  MR_Word * make__dependencies__HeadVar__3_156,
+  MR_Word * make__dependencies__HeadVar__4_157,
+  MR_Word make__dependencies__HeadVar__5_158,
+  MR_Word * make__dependencies__HeadVar__6_159)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_116_97_114_103_101_116_95_100_101_112_101_110_100_101_110_99_105_101_115_95_95_52_48_56_95_95_49_95_95_91_49_44_32_50_93_95_48_8_p_0(make__dependencies__HeadVar__3_156, make__dependencies__HeadVar__4_157, make__dependencies__HeadVar__5_158, make__dependencies__HeadVar__6_159);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__IntroducedFrom__pred__target_dependencies__460__1_8_p_0(
+  MR_Word make__dependencies__HeadVar__1_254,
+  MR_Word make__dependencies__HeadVar__2_255,
+  MR_Word * make__dependencies__HeadVar__3_256,
+  MR_Word * make__dependencies__HeadVar__4_257,
+  MR_Word make__dependencies__HeadVar__5_258,
+  MR_Word * make__dependencies__HeadVar__6_259)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_112_114_101_100_95_95_116_97_114_103_101_116_95_100_101_112_101_110_100_101_110_99_105_101_115_95_95_52_54_48_95_95_49_95_95_91_49_44_32_50_93_95_48_8_p_0(make__dependencies__HeadVar__3_256, make__dependencies__HeadVar__4_257, make__dependencies__HeadVar__5_258, make__dependencies__HeadVar__6_259);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__module_index__arity0______enum__from_int_1_1_f_0(
+  MR_Integer make__dependencies__I_3,
+  MR_Word * make__dependencies__HeadVar__2_2)
+{
+  {
+    *make__dependencies__HeadVar__2_2 = (MR_Word) make__dependencies__I_3;
+    return MR_TRUE;
+  }
+}
+
+static MR_Integer MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__module_index__arity0______enum__to_int_1_1_f_0(
+  MR_Word make__dependencies__HeadVar__1_1)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__I_3 = (MR_Integer) make__dependencies__HeadVar__1_1;
+
+    return make__dependencies__I_3;
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__dependency_file_index__arity0______enum__from_int_1_1_f_0(
+  MR_Integer make__dependencies__I_3,
+  MR_Word * make__dependencies__HeadVar__2_2)
+{
+  {
+    *make__dependencies__HeadVar__2_2 = (MR_Word) make__dependencies__I_3;
+    return MR_TRUE;
+  }
+}
+
+static MR_Integer MR_CALL 
+make__dependencies__ClassMethod_for_enum__enum____make__dependencies__dependency_file_index__arity0______enum__to_int_1_1_f_0(
+  MR_Word make__dependencies__HeadVar__1_1)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__I_3 = (MR_Integer) make__dependencies__HeadVar__1_1;
+
+    return make__dependencies__I_3;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____transitive_dependencies_type_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__Cast_HeadVar1_4 = (MR_Integer) make__dependencies__HeadVar__2_2;
+    MR_Integer make__dependencies__Cast_HeadVar2_5 = (MR_Integer) make__dependencies__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(make__dependencies__HeadVar__1_1, make__dependencies__Cast_HeadVar1_4, make__dependencies__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____transitive_dependencies_type_0_0(
+  MR_Word make__dependencies__HeadVar__2_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded = (make__dependencies__HeadVar__2_1 == make__dependencies__HeadVar__2_2);
+
+    return make__dependencies__succeeded;
+  }
+}
+
+void MR_CALL 
+make__dependencies____Compare____transitive_dependencies_root_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__CastX_12 = (MR_Integer) make__dependencies__HeadVar__2_2;
+    MR_Integer make__dependencies__CastY_13 = (MR_Integer) make__dependencies__HeadVar__3_3;
+
+    make__dependencies__succeeded = (make__dependencies__CastX_12 == make__dependencies__CastY_13);
+    if (make__dependencies__succeeded)
+      *make__dependencies__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word make__dependencies__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_5_5 = ((((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 1)))) & (MR_Integer) 3);
+        MR_Word make__dependencies__V_6_6 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 1)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+        MR_Word make__dependencies__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_8_8 = ((((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, (MR_Integer) 1)))) & (MR_Integer) 3);
+        MR_Word make__dependencies__V_9_9 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, (MR_Integer) 1)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+        MR_Word make__dependencies__V_10_10;
+        MR_Integer make__dependencies__V_17_17 = (MR_Integer) make__dependencies__V_4_4;
+        MR_Integer make__dependencies__V_18_18 = (MR_Integer) make__dependencies__V_7_7;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&make__dependencies__V_10_10, make__dependencies__V_17_17, make__dependencies__V_18_18);
+        }
+        make__dependencies__succeeded = (make__dependencies__V_10_10 == (MR_Integer) 0);
+        make__dependencies__succeeded = !(make__dependencies__succeeded);
+        if (make__dependencies__succeeded)
+          *make__dependencies__HeadVar__1_1 = make__dependencies__V_10_10;
+        else
+          {
+            MR_Word make__dependencies__V_11_11;
+            MR_Integer make__dependencies__V_19_19 = (MR_Integer) make__dependencies__V_5_5;
+            MR_Integer make__dependencies__V_20_20 = (MR_Integer) make__dependencies__V_8_8;
+
+            {
+              mercury__private_builtin__builtin_compare_int_3_p_0(&make__dependencies__V_11_11, make__dependencies__V_19_19, make__dependencies__V_20_20);
+            }
+            make__dependencies__succeeded = (make__dependencies__V_11_11 == (MR_Integer) 0);
+            make__dependencies__succeeded = !(make__dependencies__succeeded);
+            if (make__dependencies__succeeded)
+              *make__dependencies__HeadVar__1_1 = make__dependencies__V_11_11;
+            else
+              {
+                MR_Integer make__dependencies__V_21_21 = (MR_Integer) make__dependencies__V_6_6;
+                MR_Integer make__dependencies__V_22_22 = (MR_Integer) make__dependencies__V_9_9;
+
+                {
+                  mercury__private_builtin__builtin_compare_int_3_p_0(make__dependencies__HeadVar__1_1, make__dependencies__V_21_21, make__dependencies__V_22_22);
+                }
+              }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+make__dependencies____Unify____transitive_dependencies_root_0_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__CastX_9 = (MR_Integer) make__dependencies__HeadVar__1_1;
+    MR_Integer make__dependencies__CastY_10 = (MR_Integer) make__dependencies__HeadVar__2_2;
+
+    make__dependencies__succeeded = (make__dependencies__CastX_9 == make__dependencies__CastY_10);
+    if (make__dependencies__succeeded)
+      make__dependencies__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word make__dependencies__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_4_4 = ((((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__1_1, (MR_Integer) 1)))) & (MR_Integer) 3);
+        MR_Word make__dependencies__V_5_5 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__1_1, (MR_Integer) 1)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+        MR_Word make__dependencies__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_7_7 = ((((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 1)))) & (MR_Integer) 3);
+        MR_Word make__dependencies__V_8_8 = ((((((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 1)))) >> (MR_Integer) 2)) & (MR_Integer) 1);
+        MR_Integer make__dependencies__CastX_13 = (MR_Integer) make__dependencies__V_3_3;
+        MR_Integer make__dependencies__CastY_14 = (MR_Integer) make__dependencies__V_6_6;
+
+        make__dependencies__succeeded = (make__dependencies__CastX_13 == make__dependencies__CastY_14);
+        if (make__dependencies__succeeded)
+          make__dependencies__succeeded = MR_TRUE;
+        else
+          {
+            MR_Integer make__dependencies__V_11_11 = (MR_Integer) make__dependencies__V_3_3;
+            MR_Integer make__dependencies__V_12_12 = (MR_Integer) make__dependencies__V_6_6;
+
+            make__dependencies__succeeded = (make__dependencies__V_11_11 == make__dependencies__V_12_12);
+          }
+        if (make__dependencies__succeeded)
+          {
+            make__dependencies__succeeded = (make__dependencies__V_4_4 == make__dependencies__V_7_7);
+            if (make__dependencies__succeeded)
+              make__dependencies__succeeded = (make__dependencies__V_5_5 == make__dependencies__V_8_8);
+          }
+      }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____module_locn_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__Cast_HeadVar1_4 = (MR_Integer) make__dependencies__HeadVar__2_2;
+    MR_Integer make__dependencies__Cast_HeadVar2_5 = (MR_Integer) make__dependencies__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(make__dependencies__HeadVar__1_1, make__dependencies__Cast_HeadVar1_4, make__dependencies__Cast_HeadVar2_5);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____module_locn_0_0(
+  MR_Word make__dependencies__HeadVar__2_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded = (make__dependencies__HeadVar__2_1 == make__dependencies__HeadVar__2_2);
+
+    return make__dependencies__succeeded;
+  }
+}
+
+void MR_CALL 
+make__dependencies____Compare____module_index_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__CastX_6 = (MR_Integer) make__dependencies__HeadVar__2_2;
+    MR_Integer make__dependencies__CastY_7 = (MR_Integer) make__dependencies__HeadVar__3_3;
+
+    make__dependencies__succeeded = (make__dependencies__CastX_6 == make__dependencies__CastY_7);
+    if (make__dependencies__succeeded)
+      *make__dependencies__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer make__dependencies__V_4_4 = (MR_Integer) make__dependencies__HeadVar__2_2;
+        MR_Integer make__dependencies__V_5_5 = (MR_Integer) make__dependencies__HeadVar__3_3;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(make__dependencies__HeadVar__1_1, make__dependencies__V_4_4, make__dependencies__V_5_5);
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+make__dependencies____Unify____module_index_0_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__CastX_5 = (MR_Integer) make__dependencies__HeadVar__1_1;
+    MR_Integer make__dependencies__CastY_6 = (MR_Integer) make__dependencies__HeadVar__2_2;
+
+    make__dependencies__succeeded = (make__dependencies__CastX_5 == make__dependencies__CastY_6);
+    if (make__dependencies__succeeded)
+      make__dependencies__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer make__dependencies__V_3_3 = (MR_Integer) make__dependencies__HeadVar__1_1;
+        MR_Integer make__dependencies__V_4_4 = (MR_Integer) make__dependencies__HeadVar__2_2;
+
+        make__dependencies__succeeded = (make__dependencies__V_3_3 == make__dependencies__V_4_4);
+      }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies____Compare____module_deps_result_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_4 = make__dependencies__HeadVar__2_2;
+    MR_Word make__dependencies__Cast_HeadVar2_5 = make__dependencies__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &make__dependencies_scalar_common_1[5], make__dependencies__HeadVar__1_1, ((MR_Box) (make__dependencies__Cast_HeadVar1_4)), ((MR_Box) (make__dependencies__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies____Unify____module_deps_result_0_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_3 = make__dependencies__HeadVar__1_1;
+    MR_Word make__dependencies__Cast_HeadVar2_4 = make__dependencies__HeadVar__2_2;
+
+    {
+      make__dependencies__succeeded = make__dependencies____Unify____deps_result_1_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, make__dependencies__Cast_HeadVar1_3, make__dependencies__Cast_HeadVar2_4);
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+void MR_CALL 
+make__dependencies____Compare____find_module_deps_plain_set_1_0(
+  MR_Word make__dependencies__TypeInfo_for_T_6,
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_4 = make__dependencies__HeadVar__2_2;
+    MR_Word make__dependencies__Cast_HeadVar2_5 = make__dependencies__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_pred_3_p_0(make__dependencies__HeadVar__1_1, (MR_Word) make__dependencies__Cast_HeadVar1_4, (MR_Word) make__dependencies__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+make__dependencies____Unify____find_module_deps_plain_set_1_0(
+  MR_Word make__dependencies__TypeInfo_for_T_5,
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_3 = make__dependencies__HeadVar__1_1;
+    MR_Word make__dependencies__Cast_HeadVar2_4 = make__dependencies__HeadVar__2_2;
+
+    {
+      make__dependencies__succeeded = mercury__private_builtin__builtin_unify_pred_2_p_0((MR_Word) make__dependencies__Cast_HeadVar1_3, (MR_Word) make__dependencies__Cast_HeadVar2_4);
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+void MR_CALL 
+make__dependencies____Compare____find_module_deps_1_0(
+  MR_Word make__dependencies__TypeInfo_for_T_6,
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_4 = make__dependencies__HeadVar__2_2;
+    MR_Word make__dependencies__Cast_HeadVar2_5 = make__dependencies__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_pred_3_p_0(make__dependencies__HeadVar__1_1, (MR_Word) make__dependencies__Cast_HeadVar1_4, (MR_Word) make__dependencies__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+make__dependencies____Unify____find_module_deps_1_0(
+  MR_Word make__dependencies__TypeInfo_for_T_5,
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_3 = make__dependencies__HeadVar__1_1;
+    MR_Word make__dependencies__Cast_HeadVar2_4 = make__dependencies__HeadVar__2_2;
+
+    {
+      make__dependencies__succeeded = mercury__private_builtin__builtin_unify_pred_2_p_0((MR_Word) make__dependencies__Cast_HeadVar1_3, (MR_Word) make__dependencies__Cast_HeadVar2_4);
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+void MR_CALL 
+make__dependencies____Compare____deps_set_1_0(
+  MR_Word make__dependencies__TypeInfo_for_T_6,
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_4 = make__dependencies__HeadVar__2_2;
+    MR_Word make__dependencies__Cast_HeadVar2_5 = make__dependencies__HeadVar__3_3;
+
+    {
+      mercury__sparse_bitset____Compare____sparse_bitset_1_0(make__dependencies__TypeInfo_for_T_6, make__dependencies__HeadVar__1_1, make__dependencies__Cast_HeadVar1_4, make__dependencies__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+make__dependencies____Unify____deps_set_1_0(
+  MR_Word make__dependencies__TypeInfo_for_T_5,
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_3 = make__dependencies__HeadVar__1_1;
+    MR_Word make__dependencies__Cast_HeadVar2_4 = make__dependencies__HeadVar__2_2;
+
+    {
+      make__dependencies__succeeded = mercury__sparse_bitset____Unify____sparse_bitset_1_0(make__dependencies__TypeInfo_for_T_5, make__dependencies__Cast_HeadVar1_3, make__dependencies__Cast_HeadVar2_4);
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+void MR_CALL 
+make__dependencies____Compare____deps_result_1_0(
+  MR_Word make__dependencies__TypeInfo_for_T_11,
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__CastX_9 = (MR_Integer) make__dependencies__HeadVar__2_2;
+    MR_Integer make__dependencies__CastY_10 = (MR_Integer) make__dependencies__HeadVar__3_3;
+
+    make__dependencies__succeeded = (make__dependencies__CastX_9 == make__dependencies__CastY_10);
+    if (make__dependencies__succeeded)
+      *make__dependencies__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Word make__dependencies__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 1)));
+        MR_Word make__dependencies__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, (MR_Integer) 1)));
+        MR_Word make__dependencies__V_8_8;
+        MR_Integer make__dependencies__V_15_15 = (MR_Integer) make__dependencies__V_4_4;
+        MR_Integer make__dependencies__V_16_16 = (MR_Integer) make__dependencies__V_6_6;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(&make__dependencies__V_8_8, make__dependencies__V_15_15, make__dependencies__V_16_16);
+        }
+        make__dependencies__succeeded = (make__dependencies__V_8_8 == (MR_Integer) 0);
+        make__dependencies__succeeded = !(make__dependencies__succeeded);
+        if (make__dependencies__succeeded)
+          *make__dependencies__HeadVar__1_1 = make__dependencies__V_8_8;
+        else
+          {
+            mercury__sparse_bitset____Compare____sparse_bitset_1_0(make__dependencies__TypeInfo_for_T_11, make__dependencies__HeadVar__1_1, make__dependencies__V_5_5, make__dependencies__V_7_7);
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+make__dependencies____Unify____deps_result_1_0(
+  MR_Word make__dependencies__TypeInfo_for_T_9,
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__CastX_7 = (MR_Integer) make__dependencies__HeadVar__1_1;
+    MR_Integer make__dependencies__CastY_8 = (MR_Integer) make__dependencies__HeadVar__2_2;
+
+    make__dependencies__succeeded = (make__dependencies__CastX_7 == make__dependencies__CastY_8);
+    if (make__dependencies__succeeded)
+      make__dependencies__succeeded = MR_TRUE;
+    else
+      {
+        MR_Word make__dependencies__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word make__dependencies__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 1)));
+
+        make__dependencies__succeeded = (make__dependencies__V_3_3 == make__dependencies__V_5_5);
+        if (make__dependencies__succeeded)
+          {
+            make__dependencies__succeeded = mercury__sparse_bitset____Unify____sparse_bitset_1_0(make__dependencies__TypeInfo_for_T_9, make__dependencies__V_4_4, make__dependencies__V_6_6);
+          }
+      }
+    return make__dependencies__succeeded;
+  }
+}
+
+void MR_CALL 
+make__dependencies____Compare____dependency_file_index_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__CastX_6 = (MR_Integer) make__dependencies__HeadVar__2_2;
+    MR_Integer make__dependencies__CastY_7 = (MR_Integer) make__dependencies__HeadVar__3_3;
+
+    make__dependencies__succeeded = (make__dependencies__CastX_6 == make__dependencies__CastY_7);
+    if (make__dependencies__succeeded)
+      *make__dependencies__HeadVar__1_1 = (MR_Integer) 0;
+    else
+      {
+        MR_Integer make__dependencies__V_4_4 = (MR_Integer) make__dependencies__HeadVar__2_2;
+        MR_Integer make__dependencies__V_5_5 = (MR_Integer) make__dependencies__HeadVar__3_3;
+
+        {
+          mercury__private_builtin__builtin_compare_int_3_p_0(make__dependencies__HeadVar__1_1, make__dependencies__V_4_4, make__dependencies__V_5_5);
+        }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+make__dependencies____Unify____dependency_file_index_0_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__CastX_5 = (MR_Integer) make__dependencies__HeadVar__1_1;
+    MR_Integer make__dependencies__CastY_6 = (MR_Integer) make__dependencies__HeadVar__2_2;
+
+    make__dependencies__succeeded = (make__dependencies__CastX_5 == make__dependencies__CastY_6);
+    if (make__dependencies__succeeded)
+      make__dependencies__succeeded = MR_TRUE;
+    else
+      {
+        MR_Integer make__dependencies__V_3_3 = (MR_Integer) make__dependencies__HeadVar__1_1;
+        MR_Integer make__dependencies__V_4_4 = (MR_Integer) make__dependencies__HeadVar__2_2;
+
+        make__dependencies__succeeded = (make__dependencies__V_3_3 == make__dependencies__V_4_4);
+      }
+    return make__dependencies__succeeded;
+  }
+}
+
+void MR_CALL 
+make__dependencies____Compare____dependency_file_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__CastX_17 = (MR_Integer) make__dependencies__HeadVar__2_2;
+    MR_Integer make__dependencies__CastY_18 = (MR_Integer) make__dependencies__HeadVar__3_3;
+
+    make__dependencies__succeeded = (make__dependencies__CastX_17 == make__dependencies__CastY_18);
+    if (make__dependencies__succeeded)
+      *make__dependencies__HeadVar__1_1 = (MR_Integer) 0;
+    else
+    if (((MR_tag((MR_Word) make__dependencies__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word make__dependencies__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__2_2, (MR_Integer) 1)));
+        MR_String make__dependencies__V_23_23 = ((MR_String) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) make__dependencies__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+          {
+            MR_String make__dependencies__V_14_14 = ((MR_String) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__3_3, (MR_Integer) 0)));
+            MR_Word make__dependencies__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__3_3, (MR_Integer) 1)));
+            MR_Word make__dependencies__V_16_16;
+
+            {
+              mercury__private_builtin__builtin_compare_string_3_p_0(&make__dependencies__V_16_16, make__dependencies__V_23_23, make__dependencies__V_14_14);
+            }
+            make__dependencies__succeeded = (make__dependencies__V_16_16 == (MR_Integer) 0);
+            make__dependencies__succeeded = !(make__dependencies__succeeded);
+            if (make__dependencies__succeeded)
+              *make__dependencies__HeadVar__1_1 = make__dependencies__V_16_16;
+            else
+              {
+                {
+                  mercury__builtin__compare_3_p_0((MR_Word) &make__dependencies_scalar_common_1[9], make__dependencies__HeadVar__1_1, ((MR_Box) (make__dependencies__V_22_22)), ((MR_Box) (make__dependencies__V_15_15)));
+                }
+              }
+          }
+        else
+          *make__dependencies__HeadVar__1_1 = (MR_Integer) 2;
+      }
+    else
+      {
+        MR_Word make__dependencies__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 0)));
+
+        if (((MR_tag((MR_Word) make__dependencies__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+          *make__dependencies__HeadVar__1_1 = (MR_Integer) 1;
+        else
+          {
+            MR_Word make__dependencies__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__3_3, (MR_Integer) 0)));
+
+            {
+              make____Compare____target_file_0_0(make__dependencies__HeadVar__1_1, make__dependencies__V_24_24, make__dependencies__V_5_5);
+            }
+          }
+      }
+  }
+}
+
+MR_bool MR_CALL 
+make__dependencies____Unify____dependency_file_0_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__CastX_9 = (MR_Integer) make__dependencies__HeadVar__1_1;
+    MR_Integer make__dependencies__CastY_10 = (MR_Integer) make__dependencies__HeadVar__2_2;
+
+    make__dependencies__succeeded = (make__dependencies__CastX_9 == make__dependencies__CastY_10);
+    if (make__dependencies__succeeded)
+      make__dependencies__succeeded = MR_TRUE;
+    else
+    if (((MR_tag((MR_Word) make__dependencies__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word make__dependencies__TypeInfo_11_11;
+        MR_String make__dependencies__V_5_5 = ((MR_String) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__1_1, (MR_Integer) 1)));
+        MR_String make__dependencies__V_7_7;
+        MR_Word make__dependencies__V_8_8;
+
+        make__dependencies__succeeded = ((MR_tag((MR_Word) make__dependencies__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+        if (make__dependencies__succeeded)
+          {
+            make__dependencies__V_7_7 = ((MR_String) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__2_2, (MR_Integer) 0)));
+            make__dependencies__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__2_2, (MR_Integer) 1)));
+            make__dependencies__succeeded = (strcmp(make__dependencies__V_5_5, make__dependencies__V_7_7) == 0);
+            if (make__dependencies__succeeded)
+              {
+                make__dependencies__TypeInfo_11_11 = (MR_Word) &make__dependencies_scalar_common_1[9];
+                {
+                  make__dependencies__succeeded = mercury__builtin__unify_2_p_0(make__dependencies__TypeInfo_11_11, ((MR_Box) (make__dependencies__V_6_6)), ((MR_Box) (make__dependencies__V_8_8)));
+                }
+              }
+          }
+      }
+    else
+      {
+        MR_Word make__dependencies__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__1_1, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_4_4;
+
+        make__dependencies__succeeded = ((MR_tag((MR_Word) make__dependencies__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+        if (make__dependencies__succeeded)
+          {
+            make__dependencies__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 0)));
+            {
+              make__dependencies__succeeded = make____Unify____target_file_0_0(make__dependencies__V_3_3, make__dependencies__V_4_4);
+            }
+          }
+      }
+    return make__dependencies__succeeded;
+  }
+}
+
+void MR_CALL 
+make__dependencies____Compare____dependencies_result_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__Cast_HeadVar1_4 = (MR_Integer) make__dependencies__HeadVar__2_2;
+    MR_Integer make__dependencies__Cast_HeadVar2_5 = (MR_Integer) make__dependencies__HeadVar__3_3;
+
+    {
+      mercury__private_builtin__builtin_compare_int_3_p_0(make__dependencies__HeadVar__1_1, make__dependencies__Cast_HeadVar1_4, make__dependencies__Cast_HeadVar2_5);
+    }
+  }
+}
+
+MR_bool MR_CALL 
+make__dependencies____Unify____dependencies_result_0_0(
+  MR_Word make__dependencies__HeadVar__2_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded = (make__dependencies__HeadVar__2_1 == make__dependencies__HeadVar__2_2);
+
+    return make__dependencies__succeeded;
+  }
+}
+
+void MR_CALL 
+make__dependencies____Compare____cached_transitive_dependencies_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_4 = make__dependencies__HeadVar__2_2;
+    MR_Word make__dependencies__Cast_HeadVar2_5 = make__dependencies__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &make__dependencies_scalar_common_2[3], make__dependencies__HeadVar__1_1, ((MR_Box) (make__dependencies__Cast_HeadVar1_4)), ((MR_Box) (make__dependencies__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+make__dependencies____Unify____cached_transitive_dependencies_0_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_3 = make__dependencies__HeadVar__1_1;
+    MR_Word make__dependencies__Cast_HeadVar2_4 = make__dependencies__HeadVar__2_2;
+
+    {
+      make__dependencies__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &make__dependencies_scalar_common_2[3], ((MR_Box) (make__dependencies__Cast_HeadVar1_3)), ((MR_Box) (make__dependencies__Cast_HeadVar2_4)));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+void MR_CALL 
+make__dependencies____Compare____cached_foreign_imports_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_4 = make__dependencies__HeadVar__2_2;
+    MR_Word make__dependencies__Cast_HeadVar2_5 = make__dependencies__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &make__dependencies_scalar_common_2[2], make__dependencies__HeadVar__1_1, ((MR_Box) (make__dependencies__Cast_HeadVar1_4)), ((MR_Box) (make__dependencies__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+make__dependencies____Unify____cached_foreign_imports_0_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_3 = make__dependencies__HeadVar__1_1;
+    MR_Word make__dependencies__Cast_HeadVar2_4 = make__dependencies__HeadVar__2_2;
+
+    {
+      make__dependencies__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &make__dependencies_scalar_common_2[2], ((MR_Box) (make__dependencies__Cast_HeadVar1_3)), ((MR_Box) (make__dependencies__Cast_HeadVar2_4)));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+void MR_CALL 
+make__dependencies____Compare____cached_direct_imports_0_0(
+  MR_Word * make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word make__dependencies__HeadVar__3_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_4 = make__dependencies__HeadVar__2_2;
+    MR_Word make__dependencies__Cast_HeadVar2_5 = make__dependencies__HeadVar__3_3;
+
+    {
+      mercury__builtin__compare_3_p_0((MR_Word) &make__dependencies_scalar_common_2[2], make__dependencies__HeadVar__1_1, ((MR_Box) (make__dependencies__Cast_HeadVar1_4)), ((MR_Box) (make__dependencies__Cast_HeadVar2_5)));
+    }
+  }
+}
+
+MR_bool MR_CALL 
+make__dependencies____Unify____cached_direct_imports_0_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Cast_HeadVar1_3 = make__dependencies__HeadVar__1_1;
+    MR_Word make__dependencies__Cast_HeadVar2_4 = make__dependencies__HeadVar__2_2;
+
+    {
+      make__dependencies__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &make__dependencies_scalar_common_2[2], ((MR_Box) (make__dependencies__Cast_HeadVar1_3)), ((MR_Box) (make__dependencies__Cast_HeadVar2_4)));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__make_write_dependency_file_and_timestamp_list_3_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_22,
+  MR_Word make__dependencies__HeadVar__1_1)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool make__dependencies__succeeded;
+
+        if ((make__dependencies__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+          }
+        else
+          {
+            MR_Word make__dependencies__Head_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word make__dependencies__Tail_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Box make__dependencies__DepFile_10 = (MR_hl_field(MR_mktag(0), make__dependencies__Head_7, (MR_Integer) 0));
+            MR_Word make__dependencies__MaybeTimestamp_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Head_7, (MR_Integer) 1)));
+
+            {
+              mercury__io__write_char_3_p_0((MR_Char) 9);
+            }
+            {
+              mercury__io__write_3_p_0(make__dependencies__TypeInfo_for_T_22, make__dependencies__DepFile_10);
+            }
+            {
+              mercury__io__write_char_3_p_0((MR_Char) 32);
+            }
+            {
+              mercury__io__write_3_p_0((MR_Word) &make__dependencies_scalar_common_2[1], ((MR_Box) (make__dependencies__MaybeTimestamp_11)));
+            }
+            {
+              mercury__io__nl_2_p_0();
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word make__dependencies__HeadVar__1__tmp_copy_1 = make__dependencies__Tail_8;
+
+              make__dependencies__HeadVar__1_1 = make__dependencies__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__debug_newer_dependencies_2_6_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      make__dependencies__succeeded = make__dependencies__IntroducedFrom__pred__debug_newer_dependencies_2__1390__1_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__debug_newer_dependencies_2_6_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_35,
+  MR_String make__dependencies__TargetFileName_7,
+  MR_Word make__dependencies__MaybeTimestamp_8,
+  MR_Word make__dependencies__DepFiles_9,
+  MR_Word make__dependencies__DepTimestamps_10)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__TypeInfo_36_36;
+    MR_Word make__dependencies__TypeInfo_39_39;
+    MR_Word make__dependencies__DepTimestampAL_12;
+    MR_Word make__dependencies__NewerDepsAL0_18;
+    MR_Word make__dependencies__NewerDepsAL_19;
+    MR_Word make__dependencies__V_28_28;
+    MR_Word make__dependencies__conv0_NewerDepsAL0_18;
+    MR_Word make__dependencies__conv1_NewerDepsAL_19;
+
+    {
+      mercury__io__write_string_3_p_0(make__dependencies__TargetFileName_7);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) " [");
+    }
+    make__dependencies__TypeInfo_36_36 = (MR_Word) &make__dependencies_scalar_common_2[1];
+    {
+      mercury__io__write_3_p_0(make__dependencies__TypeInfo_36_36, ((MR_Box) (make__dependencies__MaybeTimestamp_8)));
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) "]: newer dependencies:\n");
+    }
+    {
+      mercury__assoc_list__from_corresponding_lists_3_p_0(make__dependencies__TypeInfo_for_T_35, make__dependencies__TypeInfo_36_36, make__dependencies__DepFiles_9, make__dependencies__DepTimestamps_10, &make__dependencies__DepTimestampAL_12);
+    }
+    {
+      make__dependencies__V_28_28 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_28_28, 0) = ((MR_Box) (&make__dependencies_scalar_common_7[4]));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_28_28, 1) = ((MR_Box) (make__dependencies__debug_newer_dependencies_2_6_p_0_1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_28_28, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_28_28, 3) = ((MR_Box) (make__dependencies__TypeInfo_for_T_35));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_28_28, 4) = ((MR_Box) (make__dependencies__MaybeTimestamp_8));
+    }
+    {
+      make__dependencies__TypeInfo_39_39 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__TypeInfo_39_39, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+      MR_hl_field(MR_mktag(0), make__dependencies__TypeInfo_39_39, 1) = ((MR_Box) (make__dependencies__TypeInfo_for_T_35));
+      MR_hl_field(MR_mktag(0), make__dependencies__TypeInfo_39_39, 2) = ((MR_Box) (make__dependencies__TypeInfo_36_36));
+    }
+    {
+      mercury__list__filter_3_p_0(make__dependencies__TypeInfo_39_39, (MR_Word) make__dependencies__V_28_28, (MR_Word) make__dependencies__DepTimestampAL_12, &make__dependencies__conv0_NewerDepsAL0_18);
+    }
+    make__dependencies__NewerDepsAL0_18 = (MR_Word) make__dependencies__conv0_NewerDepsAL0_18;
+    {
+      mercury__list__sort_2_p_0(make__dependencies__TypeInfo_39_39, (MR_Word) make__dependencies__NewerDepsAL0_18, &make__dependencies__conv1_NewerDepsAL_19);
+    }
+    make__dependencies__NewerDepsAL_19 = (MR_Word) make__dependencies__conv1_NewerDepsAL_19;
+    {
+      make__dependencies__make_write_dependency_file_and_timestamp_list_3_p_0(make__dependencies__TypeInfo_for_T_35, make__dependencies__NewerDepsAL_19);
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__newer_timestamp_2_p_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__Timestamp_5)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool make__dependencies__succeeded = ((MR_tag((MR_Word) make__dependencies__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1)));
+        MR_Word make__dependencies__H_3;
+        MR_Word make__dependencies__T_4;
+
+        if (make__dependencies__succeeded)
+          {
+            make__dependencies__H_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__1_1, (MR_Integer) 0)));
+            make__dependencies__T_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__1_1, (MR_Integer) 1)));
+            {
+              MR_Word make__dependencies__DepTimestamp_6;
+              MR_Word make__dependencies__V_7_7;
+              MR_Word make__dependencies__V_9_9;
+
+              make__dependencies__succeeded = ((MR_tag((MR_Word) make__dependencies__H_3)) == (MR_mktag((MR_Integer) 0)));
+              if (make__dependencies__succeeded)
+                {
+                  make__dependencies__DepTimestamp_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__H_3, (MR_Integer) 0)));
+                  make__dependencies__V_7_7 = (MR_Integer) 2;
+                  {
+                    libs__timestamp____Compare____timestamp_0_0(&make__dependencies__V_9_9, make__dependencies__DepTimestamp_6, make__dependencies__Timestamp_5);
+                  }
+                  make__dependencies__succeeded = (make__dependencies__V_7_7 == make__dependencies__V_9_9);
+                }
+            }
+            if (!(make__dependencies__succeeded))
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word make__dependencies__HeadVar__1__tmp_copy_1 = make__dependencies__T_4;
+
+                  make__dependencies__HeadVar__1_1 = make__dependencies__HeadVar__1__tmp_copy_1;
+                }
+                continue;
+              }
+          }
+        return make__dependencies__succeeded;
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__error_in_timestamps_1_p_0(
+  MR_Word make__dependencies__HeadVar__1_1)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool make__dependencies__succeeded = ((MR_tag((MR_Word) make__dependencies__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1)));
+        MR_Word make__dependencies__H_2;
+        MR_Word make__dependencies__T_3;
+
+        if (make__dependencies__succeeded)
+          {
+            make__dependencies__H_2 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__1_1, (MR_Integer) 0)));
+            make__dependencies__T_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__1_1, (MR_Integer) 1)));
+            {
+              MR_String make__dependencies__V_4_4;
+
+              make__dependencies__succeeded = ((MR_tag((MR_Word) make__dependencies__H_2)) == (MR_mktag((MR_Integer) 1)));
+              if (make__dependencies__succeeded)
+                make__dependencies__V_4_4 = ((MR_String) (MR_hl_field(MR_mktag(1), make__dependencies__H_2, (MR_Integer) 0)));
+            }
+            if (!(make__dependencies__succeeded))
+              {
+                /* direct tailcall eliminated */
+                {
+                  MR_Word make__dependencies__HeadVar__1__tmp_copy_1 = make__dependencies__T_3;
+
+                  make__dependencies__HeadVar__1_1 = make__dependencies__HeadVar__1__tmp_copy_1;
+                }
+                continue;
+              }
+          }
+        return make__dependencies__succeeded;
+      }
+      break;
+    }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__check_dependencies_timestamps_write_missing_deps_7_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      make__dependencies__succeeded = make__dependencies__IntroducedFrom__pred__check_dependencies_timestamps_write_missing_deps__1286__1_3_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), make__dependencies__wrapper_arg_2);
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependencies_timestamps_write_missing_deps_7_p_0(
+  MR_Word make__dependencies__TypeInfo_for_File_38,
+  MR_String make__dependencies__TargetFileName_8,
+  MR_Word make__dependencies__BuildDepsSucceeded_9,
+  MR_Word make__dependencies__DepFiles_10,
+  MR_Word make__dependencies__WriteDepFile_11,
+  MR_Word make__dependencies__DepTimestamps_12)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__TypeInfo_39_39 = (MR_Word) &make__dependencies_scalar_common_2[1];
+    MR_Word make__dependencies__TypeInfo_41_41;
+    MR_Word make__dependencies__DepTimestampAL_14;
+    MR_Word make__dependencies__ErrorDeps0_18;
+    MR_Word make__dependencies__ErrorDeps_19;
+    MR_Word make__dependencies__V_22_22;
+
+    {
+      mercury__assoc_list__from_corresponding_lists_3_p_0(make__dependencies__TypeInfo_for_File_38, make__dependencies__TypeInfo_39_39, make__dependencies__DepFiles_10, make__dependencies__DepTimestamps_12, &make__dependencies__DepTimestampAL_14);
+    }
+    {
+      make__dependencies__V_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 0) = ((MR_Box) (&make__dependencies_scalar_common_7[3]));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 1) = ((MR_Box) (make__dependencies__check_dependencies_timestamps_write_missing_deps_7_p_0_1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 3) = ((MR_Box) (make__dependencies__TypeInfo_for_File_38));
+    }
+    {
+      make__dependencies__TypeInfo_41_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__TypeInfo_41_41, 0) = ((MR_Box) (&mercury__pair__pair__type_ctor_info_pair_2));
+      MR_hl_field(MR_mktag(0), make__dependencies__TypeInfo_41_41, 1) = ((MR_Box) (make__dependencies__TypeInfo_for_File_38));
+      MR_hl_field(MR_mktag(0), make__dependencies__TypeInfo_41_41, 2) = ((MR_Box) (make__dependencies__TypeInfo_39_39));
+    }
+    {
+      mercury__list__filter_map_3_p_0(make__dependencies__TypeInfo_41_41, make__dependencies__TypeInfo_for_File_38, (MR_Word) make__dependencies__V_22_22, (MR_Word) make__dependencies__DepTimestampAL_14, &make__dependencies__ErrorDeps0_18);
+    }
+    {
+      mercury__list__sort_2_p_0(make__dependencies__TypeInfo_for_File_38, make__dependencies__ErrorDeps0_18, &make__dependencies__ErrorDeps_19);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) "** dependencies for \140");
+    }
+    {
+      mercury__io__write_string_3_p_0(make__dependencies__TargetFileName_8);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) "\' do not exist: ");
+    }
+    {
+      mercury__io__write_list_5_p_0(make__dependencies__TypeInfo_for_File_38, make__dependencies__ErrorDeps_19, (MR_String) ", ", make__dependencies__WriteDepFile_11);
+    }
+    {
+      mercury__io__nl_2_p_0();
+    }
+    switch (make__dependencies__BuildDepsSucceeded_9) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          {
+            mercury__io__write_string_3_p_0((MR_String) "** This indicates a bug in \140mmc --make\'.\n");
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__make_write_target_dependency_status_4_p_0(
+  MR_Word make__dependencies__Globals_5,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__DepTarget_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 0)));
+    MR_Word make__dependencies__DepStatus_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, (MR_Integer) 1)));
+    MR_String make__dependencies__DepStatusStr_9 = ((&make__dependencies_vector_common_17[0 + make__dependencies__DepStatus_7]))->make__dependencies__vector_common_type_17_0__vct_17_f_0;
+
+    {
+      make__util__make_write_dependency_file_4_p_0(make__dependencies__Globals_5, make__dependencies__DepTarget_6);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) " - ");
+    }
+    {
+      mercury__io__write_string_3_p_0(make__dependencies__DepStatusStr_9);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependencies_debug_unbuilt_5_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      make__dependencies__make_write_target_dependency_status_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1));
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependencies_debug_unbuilt_5_p_0(
+  MR_Word make__dependencies__Globals_6,
+  MR_String make__dependencies__TargetFileName_7,
+  MR_Word make__dependencies__UnbuiltDependencies_8)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__V_16_16;
+
+    {
+      mercury__io__write_string_3_p_0(make__dependencies__TargetFileName_7);
+    }
+    {
+      mercury__io__write_string_3_p_0((MR_String) ": dependencies could not be built.\n\t");
+    }
+    {
+      make__dependencies__V_16_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_16_16, 0) = ((MR_Box) (&make__dependencies_scalar_common_5[4]));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_16_16, 1) = ((MR_Box) (make__dependencies__check_dependencies_debug_unbuilt_5_p_0_1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_16_16, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_16_16, 3) = ((MR_Box) (make__dependencies__Globals_6));
+    }
+    {
+      mercury__io__write_list_5_p_0((MR_Word) &make__dependencies_scalar_common_2[0], make__dependencies__UnbuiltDependencies_8, (MR_String) ",\n\t", make__dependencies__V_16_16);
+    }
+    {
+      mercury__io__nl_2_p_0();
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__make_local_module_id_option_3_p_0(
+  MR_Word make__dependencies__ModuleName_4,
+  MR_Word make__dependencies__Opts0_5,
+  MR_Word * make__dependencies__Opts_6)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_String make__dependencies__ModuleNameStr_7;
+    MR_Word make__dependencies__V_9_9;
+
+    {
+      make__dependencies__ModuleNameStr_7 = mdbcomp__sym_name__sym_name_to_string_1_f_0(make__dependencies__ModuleName_4);
+    }
+    {
+      make__dependencies__V_9_9 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), make__dependencies__V_9_9, 0) = ((MR_Box) (make__dependencies__ModuleNameStr_7));
+      MR_hl_field(MR_mktag(1), make__dependencies__V_9_9, 1) = ((MR_Box) (make__dependencies__Opts0_5));
+    }
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      *make__dependencies__Opts_6 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) ((MR_String) "--local-module-id"));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (make__dependencies__V_9_9));
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__collect_nested_modules_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleName_10,
+  MR_Word make__dependencies__STATE_VARIABLE_NestedModules_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_NestedModules_17,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_18,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_19)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__MaybeImports_14;
+
+    {
+      make__module_dep_file__get_module_dependencies_7_p_0(make__dependencies__Globals_9, make__dependencies__ModuleName_10, &make__dependencies__MaybeImports_14, make__dependencies__STATE_VARIABLE_Info_0_18, make__dependencies__STATE_VARIABLE_Info_19);
+    }
+    if ((make__dependencies__MaybeImports_14 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      *make__dependencies__STATE_VARIABLE_NestedModules_17 = make__dependencies__STATE_VARIABLE_NestedModules_0_16;
+    else
+      {
+        MR_Word make__dependencies__Imports_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__MaybeImports_14, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 10)));
+        MR_String make__dependencies__V_26_26 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 1)));
+        MR_Word make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 2)));
+        MR_Word make__dependencies__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 3)));
+        MR_Word make__dependencies__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 4)));
+        MR_Word make__dependencies__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 5)));
+        MR_Word make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 6)));
+        MR_Word make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 7)));
+        MR_Word make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 8)));
+        MR_Word make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 9)));
+        MR_Word make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 11)));
+        MR_Word make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 12)));
+        MR_Word make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 13)));
+        MR_Word make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 14)));
+        MR_Word make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 15)));
+        MR_Word make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 16)));
+        MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 17)));
+        MR_Word make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 18)));
+        MR_Word make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 19)));
+        MR_Word make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 20)));
+        MR_Word make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 21)));
+        MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 22)));
+        MR_Word make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 23)));
+        MR_Word make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 24)));
+        MR_Word make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 25)));
+        MR_String make__dependencies__V_51_51 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_15, (MR_Integer) 26)));
+
+        {
+          mercury__set__union_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, make__dependencies__V_24_24, make__dependencies__STATE_VARIABLE_NestedModules_0_16, make__dependencies__STATE_VARIABLE_NestedModules_17);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__find_transitive_module_dependencies_2_12_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv3_Success_18;
+    MR_Word make__dependencies__conv2_Modules_20;
+    MR_Word make__dependencies__conv1_STATE_VARIABLE_Info_33;
+
+    {
+      make__dependencies__find_transitive_module_dependencies_2_12_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 5))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv3_Success_18, ((MR_Word) make__dependencies__wrapper_arg_4), &make__dependencies__conv2_Modules_20, ((MR_Word) make__dependencies__wrapper_arg_6), &make__dependencies__conv1_STATE_VARIABLE_Info_33);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv3_Success_18));
+    *make__dependencies__wrapper_arg_5 = ((MR_Box) (make__dependencies__conv2_Modules_20));
+    *make__dependencies__wrapper_arg_7 = ((MR_Box) (make__dependencies__conv1_STATE_VARIABLE_Info_33));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__find_transitive_module_dependencies_2_12_p_0(
+  MR_Word make__dependencies__KeepGoing_13,
+  MR_Word make__dependencies__DependenciesType_14,
+  MR_Word make__dependencies__ModuleLocn_15,
+  MR_Word make__dependencies__Globals_16,
+  MR_Word make__dependencies__ModuleIndex_17,
+  MR_Word * make__dependencies__Success_18,
+  MR_Word make__dependencies__Modules0_19,
+  MR_Word * make__dependencies__Modules_20,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_32,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_33)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__succeeded = mercury__sparse_bitset__member_2_p_0((MR_Word) &make__dependencies_scalar_common_1[0], ((MR_Box) (make__dependencies__ModuleIndex_17)), make__dependencies__Modules0_19);
+    }
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__Success_18 = (MR_Integer) 1;
+        *make__dependencies__Modules_20 = make__dependencies__Modules0_19;
+        *make__dependencies__STATE_VARIABLE_Info_33 = make__dependencies__STATE_VARIABLE_Info_0_32;
+      }
+    else
+      {
+        MR_Word make__dependencies__Result0_24;
+        MR_Word make__dependencies__DepsRoot_23;
+        MR_Word make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 11)));
+        MR_Word make__dependencies__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 1)));
+        MR_Word make__dependencies__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 2)));
+        MR_Word make__dependencies__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 3)));
+        MR_Word make__dependencies__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 4)));
+        MR_Word make__dependencies__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 5)));
+        MR_Word make__dependencies__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 6)));
+        MR_Word make__dependencies__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 7)));
+        MR_Word make__dependencies__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 8)));
+        MR_Word make__dependencies__V_84_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 9)));
+        MR_Word make__dependencies__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 10)));
+        MR_Word make__dependencies__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 12)));
+        MR_Word make__dependencies__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 13)));
+        MR_Word make__dependencies__V_88_88 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 14)));
+        MR_Word make__dependencies__V_89_89 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 15)));
+        MR_Word make__dependencies__V_90_90 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 16)));
+        MR_Word make__dependencies__V_91_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 17)));
+        MR_Integer make__dependencies__V_92_92 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 18)));
+        MR_Word make__dependencies__V_93_93 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_32, (MR_Integer) 19)));
+        MR_Box make__dependencies__conv0_Result0_24;
+
+        {
+          make__dependencies__DepsRoot_23 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__DepsRoot_23, 0) = ((MR_Box) (make__dependencies__ModuleIndex_17));
+          MR_hl_field(MR_mktag(0), make__dependencies__DepsRoot_23, 1) = ((MR_Box) ((make__dependencies__DependenciesType_14 | ((make__dependencies__ModuleLocn_15 << (MR_Integer) 2)))));
+        }
+        {
+          make__dependencies__succeeded = mercury__map__elem_2_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_transitive_dependencies_root_0, (MR_Word) &make__dependencies_scalar_common_1[5], ((MR_Box) (make__dependencies__DepsRoot_23)), make__dependencies__V_36_36, &make__dependencies__conv0_Result0_24);
+        }
+        if (make__dependencies__succeeded)
+          {
+            make__dependencies__Result0_24 = ((MR_Word) make__dependencies__conv0_Result0_24);
+            make__dependencies__succeeded = MR_TRUE;
+          }
+        if (make__dependencies__succeeded)
+          {
+            MR_Word make__dependencies__Modules1_25;
+
+            *make__dependencies__Success_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Result0_24, (MR_Integer) 0)));
+            make__dependencies__Modules1_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Result0_24, (MR_Integer) 1)));
+            {
+              *make__dependencies__Modules_20 = mercury__sparse_bitset__union_2_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, make__dependencies__Modules0_19, make__dependencies__Modules1_25);
+            }
+            *make__dependencies__STATE_VARIABLE_Info_33 = make__dependencies__STATE_VARIABLE_Info_0_32;
+          }
+        else
+          {
+            MR_Word make__dependencies__ModuleName_26;
+            MR_Word make__dependencies__MaybeImports_27;
+            MR_Word make__dependencies__STATE_VARIABLE_Info_37_37;
+
+            {
+              make__dependencies__module_index_to_name_3_p_0(make__dependencies__STATE_VARIABLE_Info_0_32, make__dependencies__ModuleIndex_17, &make__dependencies__ModuleName_26);
+            }
+            {
+              make__module_dep_file__get_module_dependencies_7_p_0(make__dependencies__Globals_16, make__dependencies__ModuleName_26, &make__dependencies__MaybeImports_27, make__dependencies__STATE_VARIABLE_Info_0_32, &make__dependencies__STATE_VARIABLE_Info_37_37);
+            }
+            if ((make__dependencies__MaybeImports_27 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              {
+                *make__dependencies__Success_18 = (MR_Integer) 0;
+                *make__dependencies__Modules_20 = make__dependencies__Modules0_19;
+                *make__dependencies__STATE_VARIABLE_Info_33 = make__dependencies__STATE_VARIABLE_Info_37_37;
+              }
+            else
+              {
+                MR_Word make__dependencies__Imports_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__MaybeImports_27, (MR_Integer) 0)));
+
+                switch (make__dependencies__ModuleLocn_15) {
+                  default: /*NOTREACHED*/ MR_assert(0);
+                  case (MR_Integer) 1:
+                    make__dependencies__succeeded = MR_TRUE;
+                    break;
+                  case (MR_Integer) 0:
+                    {
+                      MR_String make__dependencies__V_39_39 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 26)));
+                      MR_String make__dependencies__V_459_459;
+                      MR_String make__dependencies__V_94_94 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 0)));
+                      MR_Word make__dependencies__V_95_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 1)));
+                      MR_Word make__dependencies__V_96_96 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 2)));
+                      MR_Word make__dependencies__V_97_97 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 3)));
+                      MR_Word make__dependencies__V_98_98 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 4)));
+                      MR_Word make__dependencies__V_99_99 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 5)));
+                      MR_Word make__dependencies__V_100_100 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 6)));
+                      MR_Word make__dependencies__V_101_101 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 7)));
+                      MR_Word make__dependencies__V_102_102 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 8)));
+                      MR_Word make__dependencies__V_103_103 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 9)));
+                      MR_Word make__dependencies__V_104_104 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 10)));
+                      MR_Word make__dependencies__V_105_105 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 11)));
+                      MR_Word make__dependencies__V_106_106 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 12)));
+                      MR_Word make__dependencies__V_107_107 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 13)));
+                      MR_Word make__dependencies__V_108_108 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 14)));
+                      MR_Word make__dependencies__V_109_109 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 15)));
+                      MR_Word make__dependencies__V_110_110 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 16)));
+                      MR_Word make__dependencies__V_111_111 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 17)));
+                      MR_Word make__dependencies__V_112_112 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 18)));
+                      MR_Word make__dependencies__V_113_113 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 19)));
+                      MR_Word make__dependencies__V_114_114 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 20)));
+                      MR_Word make__dependencies__V_115_115 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 21)));
+                      MR_Word make__dependencies__V_116_116 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 22)));
+                      MR_Word make__dependencies__V_117_117 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 23)));
+                      MR_Word make__dependencies__V_118_118 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 24)));
+                      MR_Word make__dependencies__V_119_119 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 25)));
+
+                      {
+                        make__dependencies__V_459_459 = mercury__dir__this_directory_0_f_0();
+                      }
+                      make__dependencies__succeeded = (strcmp(make__dependencies__V_39_39, make__dependencies__V_459_459) == 0);
+                    }
+                    break;
+                }
+                if (make__dependencies__succeeded)
+                  {
+                    MR_Word make__dependencies__ImportsToCheck_29;
+                    MR_Word make__dependencies__ImportsToCheckSet_30;
+                    MR_Word make__dependencies__ImportingModule_31;
+                    MR_Word make__dependencies__V_62_62;
+                    MR_Word make__dependencies__STATE_VARIABLE_Info_63_63;
+                    MR_Word make__dependencies__STATE_VARIABLE_Info_64_64;
+                    MR_Word make__dependencies__V_65_65;
+                    MR_Word make__dependencies__V_66_66;
+                    MR_Word make__dependencies__STATE_VARIABLE_Info_67_67;
+                    MR_Word make__dependencies__Modules1_70;
+                    MR_Word make__dependencies__V_380_380;
+                    MR_Word make__dependencies__V_381_381;
+                    MR_Word make__dependencies__V_382_382;
+                    MR_Word make__dependencies__V_383_383;
+                    MR_Word make__dependencies__V_384_384;
+                    MR_Word make__dependencies__V_385_385;
+                    MR_Word make__dependencies__V_386_386;
+                    MR_Word make__dependencies__V_387_387;
+                    MR_Word make__dependencies__V_388_388;
+                    MR_Word make__dependencies__V_389_389;
+                    MR_Word make__dependencies__V_390_390;
+                    MR_Word make__dependencies__V_391_391;
+                    MR_Word make__dependencies__V_392_392;
+                    MR_Word make__dependencies__V_393_393;
+                    MR_Word make__dependencies__V_394_394;
+                    MR_Word make__dependencies__V_395_395;
+                    MR_Word make__dependencies__V_396_396;
+                    MR_Integer make__dependencies__V_397_397;
+                    MR_Word make__dependencies__V_398_398;
+                    MR_Word make__dependencies__V_474_474 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 12)));
+                    MR_Word make__dependencies__V_478_478 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 8)));
+                    MR_Word make__dependencies__V_480_480 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 6)));
+                    MR_Word make__dependencies__V_481_481 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 5)));
+                    MR_Word make__dependencies__V_482_482 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 4)));
+                    MR_String make__dependencies__V_460_460 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 26)));
+                    MR_Word make__dependencies__V_461_461 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 25)));
+                    MR_Word make__dependencies__V_462_462 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 24)));
+                    MR_Word make__dependencies__V_463_463 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 23)));
+                    MR_Word make__dependencies__V_464_464 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 22)));
+                    MR_Word make__dependencies__V_465_465 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 21)));
+                    MR_Word make__dependencies__V_466_466 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 20)));
+                    MR_Word make__dependencies__V_467_467 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 19)));
+                    MR_Word make__dependencies__V_468_468 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 18)));
+                    MR_Word make__dependencies__V_469_469 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 17)));
+                    MR_Word make__dependencies__V_470_470 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 16)));
+                    MR_Word make__dependencies__V_471_471 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 15)));
+                    MR_Word make__dependencies__V_472_472 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 14)));
+                    MR_Word make__dependencies__V_473_473 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 13)));
+                    MR_Word make__dependencies__V_475_475 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 11)));
+                    MR_Word make__dependencies__V_476_476 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 10)));
+                    MR_Word make__dependencies__V_477_477 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 9)));
+                    MR_Word make__dependencies__V_479_479 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 7)));
+                    MR_Word make__dependencies__V_483_483 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 3)));
+                    MR_Word make__dependencies__V_484_484 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 2)));
+                    MR_Word make__dependencies__V_485_485 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 1)));
+                    MR_String make__dependencies__V_486_486 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_28, (MR_Integer) 0)));
+                    MR_Word make__dependencies__V_419_419;
+                    MR_Word make__dependencies__V_420_420;
+                    MR_Word make__dependencies__V_421_421;
+                    MR_Word make__dependencies__V_422_422;
+                    MR_Word make__dependencies__V_423_423;
+                    MR_Word make__dependencies__V_424_424;
+                    MR_Word make__dependencies__V_425_425;
+                    MR_Word make__dependencies__V_426_426;
+                    MR_Word make__dependencies__V_427_427;
+                    MR_Word make__dependencies__V_428_428;
+                    MR_Word make__dependencies__V_429_429;
+                    MR_Word make__dependencies__V_430_430;
+                    MR_Word make__dependencies__V_431_431;
+                    MR_Word make__dependencies__V_432_432;
+                    MR_Word make__dependencies__V_433_433;
+                    MR_Word make__dependencies__V_434_434;
+                    MR_Word make__dependencies__V_436_436;
+                    MR_Integer make__dependencies__V_437_437;
+                    MR_Word make__dependencies__V_438_438;
+                    MR_Word make__dependencies__V_435_435;
+
+                    switch (make__dependencies__DependenciesType_14) {
+                      default: /*NOTREACHED*/ MR_assert(0);
+                      case (MR_Integer) 2:
+                        {
+                          MR_Word make__dependencies__V_50_50;
+                          MR_Word make__dependencies__V_52_52;
+                          MR_Word make__dependencies__V_54_54;
+                          MR_Word make__dependencies__V_56_56;
+                          MR_Word make__dependencies__V_58_58;
+                          MR_Word make__dependencies__V_59_59;
+
+                          {
+                            make__dependencies__V_59_59 = parse_tree__prog_data_foreign__get_all_foreign_import_modules_1_f_0(make__dependencies__V_474_474);
+                          }
+                          {
+                            make__dependencies__V_58_58 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_58_58, 0) = ((MR_Box) (make__dependencies__V_59_59));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_58_58, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          }
+                          {
+                            make__dependencies__V_56_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_56_56, 0) = ((MR_Box) (make__dependencies__V_478_478));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_56_56, 1) = ((MR_Box) (make__dependencies__V_58_58));
+                          }
+                          {
+                            make__dependencies__V_54_54 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_54_54, 0) = ((MR_Box) (make__dependencies__V_482_482));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_54_54, 1) = ((MR_Box) (make__dependencies__V_56_56));
+                          }
+                          {
+                            make__dependencies__V_52_52 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_52_52, 0) = ((MR_Box) (make__dependencies__V_480_480));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_52_52, 1) = ((MR_Box) (make__dependencies__V_54_54));
+                          }
+                          {
+                            make__dependencies__V_50_50 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_50_50, 0) = ((MR_Box) (make__dependencies__V_481_481));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_50_50, 1) = ((MR_Box) (make__dependencies__V_52_52));
+                          }
+                          {
+                            make__dependencies__ImportsToCheck_29 = mercury__set__union_list_1_f_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, make__dependencies__V_50_50);
+                          }
+                        }
+                        break;
+                      case (MR_Integer) 1:
+                        {
+                          MR_Word make__dependencies__V_40_40;
+                          MR_Word make__dependencies__V_42_42;
+                          MR_Word make__dependencies__V_44_44;
+                          MR_Word make__dependencies__V_46_46;
+                          MR_Word make__dependencies__V_47_47;
+
+                          {
+                            make__dependencies__V_47_47 = parse_tree__prog_data_foreign__get_all_foreign_import_modules_1_f_0(make__dependencies__V_474_474);
+                          }
+                          {
+                            make__dependencies__V_46_46 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_46_46, 0) = ((MR_Box) (make__dependencies__V_47_47));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_46_46, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                          }
+                          {
+                            make__dependencies__V_44_44 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_44_44, 0) = ((MR_Box) (make__dependencies__V_482_482));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_44_44, 1) = ((MR_Box) (make__dependencies__V_46_46));
+                          }
+                          {
+                            make__dependencies__V_42_42 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_42_42, 0) = ((MR_Box) (make__dependencies__V_480_480));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_42_42, 1) = ((MR_Box) (make__dependencies__V_44_44));
+                          }
+                          {
+                            make__dependencies__V_40_40 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_40_40, 0) = ((MR_Box) (make__dependencies__V_481_481));
+                            MR_hl_field(MR_mktag(1), make__dependencies__V_40_40, 1) = ((MR_Box) (make__dependencies__V_42_42));
+                          }
+                          {
+                            make__dependencies__ImportsToCheck_29 = mercury__set__union_list_1_f_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, make__dependencies__V_40_40);
+                          }
+                        }
+                        break;
+                      case (MR_Integer) 0:
+                        make__dependencies__ImportsToCheck_29 = make__dependencies__V_481_481;
+                        break;
+                    }
+                    {
+                      make__dependencies__V_62_62 = mercury__set__to_sorted_list_1_f_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, make__dependencies__ImportsToCheck_29);
+                    }
+                    {
+                      make__dependencies__module_names_to_index_set_4_p_0(make__dependencies__V_62_62, &make__dependencies__ImportsToCheckSet_30, make__dependencies__STATE_VARIABLE_Info_37_37, &make__dependencies__STATE_VARIABLE_Info_63_63);
+                    }
+                    make__dependencies__V_380_380 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 0)));
+                    make__dependencies__V_381_381 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 1)));
+                    make__dependencies__V_382_382 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 2)));
+                    make__dependencies__V_383_383 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 3)));
+                    make__dependencies__V_384_384 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 4)));
+                    make__dependencies__V_385_385 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 5)));
+                    make__dependencies__V_386_386 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 6)));
+                    make__dependencies__V_387_387 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 7)));
+                    make__dependencies__V_388_388 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 8)));
+                    make__dependencies__V_389_389 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 9)));
+                    make__dependencies__V_390_390 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 10)));
+                    make__dependencies__V_391_391 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 11)));
+                    make__dependencies__V_392_392 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 12)));
+                    make__dependencies__V_393_393 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 13)));
+                    make__dependencies__V_394_394 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 14)));
+                    make__dependencies__V_395_395 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 15)));
+                    make__dependencies__ImportingModule_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 16)));
+                    make__dependencies__V_396_396 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 17)));
+                    make__dependencies__V_397_397 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 18)));
+                    make__dependencies__V_398_398 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_63_63, (MR_Integer) 19)));
+                    {
+                      make__dependencies__V_65_65 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+                      MR_hl_field(MR_mktag(1), make__dependencies__V_65_65, 0) = ((MR_Box) (make__dependencies__ModuleName_26));
+                    }
+                    {
+                      make__dependencies__STATE_VARIABLE_Info_64_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 0) = ((MR_Box) (make__dependencies__V_380_380));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 1) = ((MR_Box) (make__dependencies__V_381_381));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 2) = ((MR_Box) (make__dependencies__V_382_382));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 3) = ((MR_Box) (make__dependencies__V_383_383));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 4) = ((MR_Box) (make__dependencies__V_384_384));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 5) = ((MR_Box) (make__dependencies__V_385_385));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 6) = ((MR_Box) (make__dependencies__V_386_386));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 7) = ((MR_Box) (make__dependencies__V_387_387));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 8) = ((MR_Box) (make__dependencies__V_388_388));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 9) = ((MR_Box) (make__dependencies__V_389_389));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 10) = ((MR_Box) (make__dependencies__V_390_390));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 11) = ((MR_Box) (make__dependencies__V_391_391));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 12) = ((MR_Box) (make__dependencies__V_392_392));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 13) = ((MR_Box) (make__dependencies__V_393_393));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 14) = ((MR_Box) (make__dependencies__V_394_394));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 15) = ((MR_Box) (make__dependencies__V_395_395));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 16) = ((MR_Box) (make__dependencies__V_65_65));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 17) = ((MR_Box) (make__dependencies__V_396_396));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 18) = ((MR_Box) (make__dependencies__V_397_397));
+                      MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_64_64, 19) = ((MR_Box) (make__dependencies__V_398_398));
+                    }
+                    {
+                      make__dependencies__Modules1_70 = mercury__sparse_bitset__insert_2_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__Modules0_19, ((MR_Box) (make__dependencies__ModuleIndex_17)));
+                    }
+                    {
+                      make__dependencies__V_66_66 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_66_66, 0) = ((MR_Box) (&make__dependencies_scalar_common_16[0]));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_66_66, 1) = ((MR_Box) (make__dependencies__find_transitive_module_dependencies_2_12_p_0_1));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_66_66, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_66_66, 3) = ((MR_Box) (make__dependencies__KeepGoing_13));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_66_66, 4) = ((MR_Box) (make__dependencies__DependenciesType_14));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_66_66, 5) = ((MR_Box) (make__dependencies__ModuleLocn_15));
+                    }
+                    {
+                      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_49_95_95_91_49_44_32_50_44_32_51_93_95_48_11_p_0(make__dependencies__KeepGoing_13, make__dependencies__V_66_66, make__dependencies__Globals_16, make__dependencies__ImportsToCheckSet_30, make__dependencies__Success_18, make__dependencies__Modules1_70, make__dependencies__Modules_20, make__dependencies__STATE_VARIABLE_Info_64_64, &make__dependencies__STATE_VARIABLE_Info_67_67);
+                    }
+                    make__dependencies__V_419_419 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 0)));
+                    make__dependencies__V_420_420 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 1)));
+                    make__dependencies__V_421_421 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 2)));
+                    make__dependencies__V_422_422 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 3)));
+                    make__dependencies__V_423_423 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 4)));
+                    make__dependencies__V_424_424 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 5)));
+                    make__dependencies__V_425_425 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 6)));
+                    make__dependencies__V_426_426 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 7)));
+                    make__dependencies__V_427_427 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 8)));
+                    make__dependencies__V_428_428 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 9)));
+                    make__dependencies__V_429_429 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 10)));
+                    make__dependencies__V_430_430 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 11)));
+                    make__dependencies__V_431_431 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 12)));
+                    make__dependencies__V_432_432 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 13)));
+                    make__dependencies__V_433_433 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 14)));
+                    make__dependencies__V_434_434 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 15)));
+                    make__dependencies__V_435_435 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 16)));
+                    make__dependencies__V_436_436 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 17)));
+                    make__dependencies__V_437_437 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 18)));
+                    make__dependencies__V_438_438 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_67_67, (MR_Integer) 19)));
+                    {
+                      MR_Word base;
+                      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+                      *make__dependencies__STATE_VARIABLE_Info_33 = base;
+                      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (make__dependencies__V_419_419));
+                      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (make__dependencies__V_420_420));
+                      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (make__dependencies__V_421_421));
+                      MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (make__dependencies__V_422_422));
+                      MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (make__dependencies__V_423_423));
+                      MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (make__dependencies__V_424_424));
+                      MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (make__dependencies__V_425_425));
+                      MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (make__dependencies__V_426_426));
+                      MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (make__dependencies__V_427_427));
+                      MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (make__dependencies__V_428_428));
+                      MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (make__dependencies__V_429_429));
+                      MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (make__dependencies__V_430_430));
+                      MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (make__dependencies__V_431_431));
+                      MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (make__dependencies__V_432_432));
+                      MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (make__dependencies__V_433_433));
+                      MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (make__dependencies__V_434_434));
+                      MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (make__dependencies__ImportingModule_31));
+                      MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (make__dependencies__V_436_436));
+                      MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (make__dependencies__V_437_437));
+                      MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (make__dependencies__V_438_438));
+                    }
+                  }
+                else
+                  {
+                    *make__dependencies__Success_18 = (MR_Integer) 1;
+                    *make__dependencies__Modules_20 = make__dependencies__Modules0_19;
+                    *make__dependencies__STATE_VARIABLE_Info_33 = make__dependencies__STATE_VARIABLE_Info_37_37;
+                  }
+              }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__find_transitive_module_dependencies_10_p_0(
+  MR_Word make__dependencies__Globals_11,
+  MR_Word make__dependencies__DependenciesType_12,
+  MR_Word make__dependencies__ModuleLocn_13,
+  MR_Word make__dependencies__ModuleIndex_14,
+  MR_Word * make__dependencies__Success_15,
+  MR_Word * make__dependencies__Modules_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_23,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_24)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__DepsRoot_19;
+    MR_Word make__dependencies__CachedTransDeps_20;
+    MR_Word make__dependencies__V_35_35;
+    MR_Word make__dependencies__V_36_36;
+    MR_Word make__dependencies__V_37_37;
+    MR_Word make__dependencies__V_38_38;
+    MR_Word make__dependencies__V_39_39;
+    MR_Word make__dependencies__V_40_40;
+    MR_Word make__dependencies__V_41_41;
+    MR_Word make__dependencies__V_42_42;
+    MR_Word make__dependencies__V_43_43;
+    MR_Word make__dependencies__V_44_44;
+    MR_Word make__dependencies__V_45_45;
+    MR_Word make__dependencies__V_46_46;
+    MR_Word make__dependencies__V_47_47;
+    MR_Word make__dependencies__V_48_48;
+    MR_Word make__dependencies__V_49_49;
+    MR_Word make__dependencies__V_50_50;
+    MR_Word make__dependencies__V_51_51;
+    MR_Integer make__dependencies__V_52_52;
+    MR_Word make__dependencies__V_53_53;
+    MR_Word make__dependencies__Result0_21;
+    MR_Box make__dependencies__conv0_Result0_21;
+
+    {
+      make__dependencies__DepsRoot_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__DepsRoot_19, 0) = ((MR_Box) (make__dependencies__ModuleIndex_14));
+      MR_hl_field(MR_mktag(0), make__dependencies__DepsRoot_19, 1) = ((MR_Box) ((make__dependencies__DependenciesType_12 | ((make__dependencies__ModuleLocn_13 << (MR_Integer) 2)))));
+    }
+    make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 0)));
+    make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 1)));
+    make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 2)));
+    make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 3)));
+    make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 4)));
+    make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 5)));
+    make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 6)));
+    make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 7)));
+    make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 8)));
+    make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 9)));
+    make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 10)));
+    make__dependencies__CachedTransDeps_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 11)));
+    make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 12)));
+    make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 13)));
+    make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 14)));
+    make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 15)));
+    make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 16)));
+    make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 17)));
+    make__dependencies__V_52_52 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 18)));
+    make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 19)));
+    {
+      make__dependencies__succeeded = mercury__map__search_3_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_transitive_dependencies_root_0, (MR_Word) &make__dependencies_scalar_common_1[5], make__dependencies__CachedTransDeps_20, ((MR_Box) (make__dependencies__DepsRoot_19)), &make__dependencies__conv0_Result0_21);
+    }
+    if (make__dependencies__succeeded)
+      {
+        make__dependencies__Result0_21 = ((MR_Word) make__dependencies__conv0_Result0_21);
+        make__dependencies__succeeded = MR_TRUE;
+      }
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__Success_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Result0_21, (MR_Integer) 0)));
+        *make__dependencies__Modules_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Result0_21, (MR_Integer) 1)));
+        *make__dependencies__STATE_VARIABLE_Info_24 = make__dependencies__STATE_VARIABLE_Info_0_23;
+      }
+    else
+      {
+        MR_Word make__dependencies__KeepGoing_22;
+        MR_Word make__dependencies__V_28_28;
+        MR_Word make__dependencies__STATE_VARIABLE_Info_29_29;
+        MR_Word make__dependencies__V_32_32;
+        MR_Word make__dependencies__V_33_33;
+        MR_Word make__dependencies__V_34_34;
+        MR_Word make__dependencies__V_54_54;
+        MR_Word make__dependencies__V_55_55;
+        MR_Word make__dependencies__V_56_56;
+        MR_Word make__dependencies__V_57_57;
+        MR_Word make__dependencies__V_58_58;
+        MR_Word make__dependencies__V_59_59;
+        MR_Word make__dependencies__V_60_60;
+        MR_Word make__dependencies__V_61_61;
+        MR_Word make__dependencies__V_62_62;
+        MR_Word make__dependencies__V_63_63;
+        MR_Word make__dependencies__V_64_64;
+        MR_Word make__dependencies__V_65_65;
+        MR_Word make__dependencies__V_66_66;
+        MR_Word make__dependencies__V_67_67;
+        MR_Word make__dependencies__V_68_68;
+        MR_Word make__dependencies__V_69_69;
+        MR_Word make__dependencies__V_70_70;
+        MR_Integer make__dependencies__V_71_71;
+        MR_Word make__dependencies__V_72_72;
+        MR_Word make__dependencies__V_73_73;
+        MR_Word make__dependencies__V_74_74;
+        MR_Word make__dependencies__V_75_75;
+        MR_Word make__dependencies__V_76_76;
+        MR_Word make__dependencies__V_77_77;
+        MR_Word make__dependencies__V_78_78;
+        MR_Word make__dependencies__V_79_79;
+        MR_Word make__dependencies__V_80_80;
+        MR_Word make__dependencies__V_81_81;
+        MR_Word make__dependencies__V_82_82;
+        MR_Word make__dependencies__V_83_83;
+        MR_Word make__dependencies__V_85_85;
+        MR_Word make__dependencies__V_86_86;
+        MR_Word make__dependencies__V_87_87;
+        MR_Word make__dependencies__V_88_88;
+        MR_Word make__dependencies__V_89_89;
+        MR_Word make__dependencies__V_90_90;
+        MR_Integer make__dependencies__V_91_91;
+        MR_Word make__dependencies__V_92_92;
+        MR_Word make__dependencies__V_84_84;
+
+        {
+          libs__globals__lookup_bool_option_3_p_0(make__dependencies__Globals_11, (MR_Integer) 612, &make__dependencies__KeepGoing_22);
+        }
+        {
+          make__dependencies__V_28_28 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+        }
+        {
+          make__dependencies__find_transitive_module_dependencies_2_12_p_0(make__dependencies__KeepGoing_22, make__dependencies__DependenciesType_12, make__dependencies__ModuleLocn_13, make__dependencies__Globals_11, make__dependencies__ModuleIndex_14, make__dependencies__Success_15, make__dependencies__V_28_28, make__dependencies__Modules_16, make__dependencies__STATE_VARIABLE_Info_0_23, &make__dependencies__STATE_VARIABLE_Info_29_29);
+        }
+        {
+          make__dependencies__V_32_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_32_32, 0) = ((MR_Box) (*make__dependencies__Success_15));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_32_32, 1) = ((MR_Box) (*make__dependencies__Modules_16));
+        }
+        make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 0)));
+        make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 1)));
+        make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 2)));
+        make__dependencies__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 3)));
+        make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 4)));
+        make__dependencies__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 5)));
+        make__dependencies__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 6)));
+        make__dependencies__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 7)));
+        make__dependencies__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 8)));
+        make__dependencies__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 9)));
+        make__dependencies__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 10)));
+        make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 11)));
+        make__dependencies__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 12)));
+        make__dependencies__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 13)));
+        make__dependencies__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 14)));
+        make__dependencies__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 15)));
+        make__dependencies__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 16)));
+        make__dependencies__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 17)));
+        make__dependencies__V_71_71 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 18)));
+        make__dependencies__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 19)));
+        {
+          make__dependencies__V_34_34 = mercury__map__f_101_108_101_109_32_58_61_3_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_transitive_dependencies_root_0, (MR_Word) &make__dependencies_scalar_common_1[5], ((MR_Box) (make__dependencies__DepsRoot_19)), make__dependencies__V_33_33, ((MR_Box) (make__dependencies__V_32_32)));
+        }
+        make__dependencies__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 0)));
+        make__dependencies__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 1)));
+        make__dependencies__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 2)));
+        make__dependencies__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 3)));
+        make__dependencies__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 4)));
+        make__dependencies__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 5)));
+        make__dependencies__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 6)));
+        make__dependencies__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 7)));
+        make__dependencies__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 8)));
+        make__dependencies__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 9)));
+        make__dependencies__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 10)));
+        make__dependencies__V_84_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 11)));
+        make__dependencies__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 12)));
+        make__dependencies__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 13)));
+        make__dependencies__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 14)));
+        make__dependencies__V_88_88 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 15)));
+        make__dependencies__V_89_89 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 16)));
+        make__dependencies__V_90_90 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 17)));
+        make__dependencies__V_91_91 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 18)));
+        make__dependencies__V_92_92 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_29_29, (MR_Integer) 19)));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+          *make__dependencies__STATE_VARIABLE_Info_24 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (make__dependencies__V_73_73));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (make__dependencies__V_74_74));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (make__dependencies__V_75_75));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (make__dependencies__V_76_76));
+          MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (make__dependencies__V_77_77));
+          MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (make__dependencies__V_78_78));
+          MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (make__dependencies__V_79_79));
+          MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (make__dependencies__V_80_80));
+          MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (make__dependencies__V_81_81));
+          MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (make__dependencies__V_82_82));
+          MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (make__dependencies__V_83_83));
+          MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (make__dependencies__V_34_34));
+          MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (make__dependencies__V_85_85));
+          MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (make__dependencies__V_86_86));
+          MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (make__dependencies__V_87_87));
+          MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (make__dependencies__V_88_88));
+          MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (make__dependencies__V_89_89));
+          MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (make__dependencies__V_90_90));
+          MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (make__dependencies__V_91_91));
+          MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (make__dependencies__V_92_92));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__find_transitive_implementation_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_17)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Modules0_15;
+
+    {
+      make__dependencies__find_transitive_module_dependencies_10_p_0(make__dependencies__Globals_9, (MR_Integer) 1, (MR_Integer) 1, make__dependencies__ModuleIndex_10, make__dependencies__Success_11, &make__dependencies__Modules0_15, make__dependencies__STATE_VARIABLE_Info_0_16, make__dependencies__STATE_VARIABLE_Info_17);
+    }
+    {
+      *make__dependencies__Modules_12 = mercury__sparse_bitset__insert_2_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__Modules0_15, ((MR_Box) (make__dependencies__ModuleIndex_10)));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__get_foreign_include_files_2_4_p_0(
+  MR_Word make__dependencies__Languages_5,
+  MR_String make__dependencies__SourceFileName_6,
+  MR_Word make__dependencies__ForeignInclude_7,
+  MR_Word * make__dependencies__File_8)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Language_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ForeignInclude_7, (MR_Integer) 0)));
+    MR_String make__dependencies__IncludeFileName_10 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__ForeignInclude_7, (MR_Integer) 1)));
+    MR_String make__dependencies__IncludePath_11;
+    MR_Word make__dependencies__V_12_12;
+
+    {
+      make__dependencies__succeeded = mercury__set__member_2_p_0((MR_Word) &libs__globals__libs__globals__type_ctor_info_foreign_language_0, ((MR_Box) (make__dependencies__Language_9)), make__dependencies__Languages_5);
+    }
+    if (make__dependencies__succeeded)
+      {
+        {
+          parse_tree__file_names__make_include_file_path_3_p_0(make__dependencies__SourceFileName_6, make__dependencies__IncludeFileName_10, &make__dependencies__IncludePath_11);
+        }
+        make__dependencies__V_12_12 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+          *make__dependencies__File_8 = base;
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (make__dependencies__IncludePath_11));
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (make__dependencies__V_12_12));
+        }
+        make__dependencies__succeeded = MR_TRUE;
+      }
+    return make__dependencies__succeeded;
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__foreign_include_files_8_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv0_File_8;
+
+    {
+      make__dependencies__succeeded = make__dependencies__get_foreign_include_files_2_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), &make__dependencies__conv0_File_8);
+    }
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv0_File_8));
+        make__dependencies__succeeded = MR_TRUE;
+      }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__foreign_include_files_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Files_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_23)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Languages_15;
+    MR_Word make__dependencies__ModuleName_16;
+    MR_Word make__dependencies__MaybeImports_17;
+
+    {
+      libs__globals__get_backend_foreign_languages_2_p_0(make__dependencies__Globals_9, &make__dependencies__Languages_15);
+    }
+    {
+      make__dependencies__module_index_to_name_3_p_0(make__dependencies__STATE_VARIABLE_Info_0_22, make__dependencies__ModuleIndex_10, &make__dependencies__ModuleName_16);
+    }
+    {
+      make__module_dep_file__get_module_dependencies_7_p_0(make__dependencies__Globals_9, make__dependencies__ModuleName_16, &make__dependencies__MaybeImports_17, make__dependencies__STATE_VARIABLE_Info_0_22, make__dependencies__STATE_VARIABLE_Info_23);
+    }
+    if ((make__dependencies__MaybeImports_17 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *make__dependencies__Success_11 = (MR_Integer) 0;
+        {
+          *make__dependencies__Files_12 = mercury__set__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0);
+        }
+      }
+    else
+      {
+        MR_Word make__dependencies__Imports_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__MaybeImports_17, (MR_Integer) 0)));
+        MR_String make__dependencies__SourceFileName_19;
+        MR_Word make__dependencies__ForeignIncludeFilesCord_20;
+        MR_Word make__dependencies__FilesList_21;
+        MR_Word make__dependencies__V_28_28;
+        MR_Word make__dependencies__V_29_29;
+        MR_Word make__dependencies__V_90_90;
+        MR_Word make__dependencies__V_30_30;
+        MR_Word make__dependencies__V_31_31;
+        MR_Word make__dependencies__V_32_32;
+        MR_Word make__dependencies__V_33_33;
+        MR_Word make__dependencies__V_34_34;
+        MR_Word make__dependencies__V_35_35;
+        MR_Word make__dependencies__V_36_36;
+        MR_Word make__dependencies__V_37_37;
+        MR_Word make__dependencies__V_38_38;
+        MR_Word make__dependencies__V_39_39;
+        MR_Word make__dependencies__V_40_40;
+        MR_Word make__dependencies__V_41_41;
+        MR_Word make__dependencies__V_43_43;
+        MR_Word make__dependencies__V_44_44;
+        MR_Word make__dependencies__V_45_45;
+        MR_Word make__dependencies__V_46_46;
+        MR_Word make__dependencies__V_47_47;
+        MR_Word make__dependencies__V_48_48;
+        MR_Word make__dependencies__V_49_49;
+        MR_Word make__dependencies__V_50_50;
+        MR_Word make__dependencies__V_51_51;
+        MR_Word make__dependencies__V_52_52;
+        MR_Word make__dependencies__V_53_53;
+        MR_Word make__dependencies__V_54_54;
+        MR_String make__dependencies__V_55_55;
+
+        *make__dependencies__Success_11 = (MR_Integer) 1;
+        make__dependencies__SourceFileName_19 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 0)));
+        make__dependencies__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 1)));
+        make__dependencies__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 2)));
+        make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 3)));
+        make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 4)));
+        make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 5)));
+        make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 6)));
+        make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 7)));
+        make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 8)));
+        make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 9)));
+        make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 10)));
+        make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 11)));
+        make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 12)));
+        make__dependencies__ForeignIncludeFilesCord_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 13)));
+        make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 14)));
+        make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 15)));
+        make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 16)));
+        make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 17)));
+        make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 18)));
+        make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 19)));
+        make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 20)));
+        make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 21)));
+        make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 22)));
+        make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 23)));
+        make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 24)));
+        make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 25)));
+        make__dependencies__V_55_55 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_18, (MR_Integer) 26)));
+        {
+          make__dependencies__V_28_28 = mercury__set__from_list_1_f_0((MR_Word) &libs__globals__libs__globals__type_ctor_info_foreign_language_0, make__dependencies__Languages_15);
+        }
+        {
+          make__dependencies__V_29_29 = mercury__cord__list_1_f_0((MR_Word) &parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_foreign_include_file_info_0, make__dependencies__ForeignIncludeFilesCord_20);
+        }
+        {
+          make__dependencies__V_90_90 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_90_90, 0) = ((MR_Box) (&make__dependencies_scalar_common_5[3]));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_90_90, 1) = ((MR_Box) (make__dependencies__foreign_include_files_8_p_0_1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_90_90, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_90_90, 3) = ((MR_Box) (make__dependencies__V_28_28));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_90_90, 4) = ((MR_Box) (make__dependencies__SourceFileName_19));
+        }
+        {
+          mercury__list__filter_map_3_p_0((MR_Word) &parse_tree__prog_data_foreign__parse_tree__prog_data_foreign__type_ctor_info_foreign_include_file_info_0, (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0, make__dependencies__V_90_90, make__dependencies__V_29_29, &make__dependencies__FilesList_21);
+        }
+        {
+          *make__dependencies__Files_12 = mercury__set__from_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0, make__dependencies__FilesList_21);
+        }
+      }
+  }
+}
+
+static MR_Box MR_CALL 
+make__dependencies__fact_table_files_8_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1)
+{
+  {
+    MR_Box make__dependencies__wrapper_arg_2;
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv1_LambdaHeadVar__2_28;
+
+    {
+      make__dependencies__conv1_LambdaHeadVar__2_28 = make__dependencies__IntroducedFrom__func__fact_table_files__986__1_1_f_0(((MR_String) make__dependencies__wrapper_arg_1));
+    }
+    make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv1_LambdaHeadVar__2_28));
+    return make__dependencies__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__fact_table_files_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Files_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_21)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__ModuleName_15;
+    MR_Word make__dependencies__MaybeImports_16;
+    MR_Integer make__dependencies__I_64 = (MR_Integer) make__dependencies__ModuleIndex_10;
+    MR_Word make__dependencies__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 6)));
+    MR_Box make__dependencies__V_66_66 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__V_65_65, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 7)));
+    MR_Word make__dependencies__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_84_84 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 19)));
+    MR_Word make__dependencies__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__V_65_65, (MR_Integer) 0)));
+    MR_Integer make__dependencies__V_87_87 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__V_65_65, (MR_Integer) 2)));
+    MR_Box make__dependencies__conv0_ModuleName_15;
+
+    {
+      make__dependencies__conv0_ModuleName_15 = mercury__version_array__elem_2_f_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, make__dependencies__I_64, make__dependencies__V_66_66);
+    }
+    make__dependencies__ModuleName_15 = ((MR_Word) make__dependencies__conv0_ModuleName_15);
+    {
+      make__module_dep_file__get_module_dependencies_7_p_0(make__dependencies__Globals_9, make__dependencies__ModuleName_15, &make__dependencies__MaybeImports_16, make__dependencies__STATE_VARIABLE_Info_0_20, make__dependencies__STATE_VARIABLE_Info_21);
+    }
+    if ((make__dependencies__MaybeImports_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *make__dependencies__Success_11 = (MR_Integer) 0;
+        {
+          *make__dependencies__Files_12 = mercury__set__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0);
+        }
+      }
+    else
+      {
+        MR_Word make__dependencies__TypeCtorInfo_59_59;
+        MR_Word make__dependencies__Imports_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__MaybeImports_16, (MR_Integer) 0)));
+        MR_Word make__dependencies__FilesList_18;
+        MR_Word make__dependencies__V_30_30;
+        MR_String make__dependencies__V_32_32;
+        MR_Word make__dependencies__V_33_33;
+        MR_Word make__dependencies__V_34_34;
+        MR_Word make__dependencies__V_35_35;
+        MR_Word make__dependencies__V_36_36;
+        MR_Word make__dependencies__V_37_37;
+        MR_Word make__dependencies__V_38_38;
+        MR_Word make__dependencies__V_39_39;
+        MR_Word make__dependencies__V_40_40;
+        MR_Word make__dependencies__V_41_41;
+        MR_Word make__dependencies__V_42_42;
+        MR_Word make__dependencies__V_43_43;
+        MR_Word make__dependencies__V_44_44;
+        MR_Word make__dependencies__V_45_45;
+        MR_Word make__dependencies__V_46_46;
+        MR_Word make__dependencies__V_47_47;
+        MR_Word make__dependencies__V_48_48;
+        MR_Word make__dependencies__V_49_49;
+        MR_Word make__dependencies__V_50_50;
+        MR_Word make__dependencies__V_51_51;
+        MR_Word make__dependencies__V_52_52;
+        MR_Word make__dependencies__V_53_53;
+        MR_Word make__dependencies__V_54_54;
+        MR_Word make__dependencies__V_55_55;
+        MR_Word make__dependencies__V_56_56;
+        MR_String make__dependencies__V_57_57;
+
+        *make__dependencies__Success_11 = (MR_Integer) 1;
+        make__dependencies__TypeCtorInfo_59_59 = (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0;
+        make__dependencies__V_32_32 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 0)));
+        make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 1)));
+        make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 2)));
+        make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 3)));
+        make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 4)));
+        make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 5)));
+        make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 6)));
+        make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 7)));
+        make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 8)));
+        make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 9)));
+        make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 10)));
+        make__dependencies__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 11)));
+        make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 12)));
+        make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 13)));
+        make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 14)));
+        make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 15)));
+        make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 16)));
+        make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 17)));
+        make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 18)));
+        make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 19)));
+        make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 20)));
+        make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 21)));
+        make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 22)));
+        make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 23)));
+        make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 24)));
+        make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 25)));
+        make__dependencies__V_57_57 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_17, (MR_Integer) 26)));
+        {
+          make__dependencies__FilesList_18 = mercury__list__map_2_f_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0, make__dependencies__TypeCtorInfo_59_59, (MR_Word) &make__dependencies_scalar_common_2[21], make__dependencies__V_30_30);
+        }
+        {
+          *make__dependencies__Files_12 = mercury__set__list_to_set_1_f_0(make__dependencies__TypeCtorInfo_59_59, make__dependencies__FilesList_18);
+        }
+      }
+  }
+}
+
+static MR_Box MR_CALL 
+make__dependencies__find_module_foreign_imports_3_9_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1)
+{
+  {
+    MR_Box make__dependencies__wrapper_arg_2;
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv1_HeadVar__3_3;
+
+    {
+      make__dependencies__conv1_HeadVar__3_3 = parse_tree__prog_data_foreign__get_lang_foreign_import_modules_2_f_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1));
+    }
+    make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv1_HeadVar__3_3));
+    return make__dependencies__wrapper_arg_2;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__find_module_foreign_imports_3_9_p_0(
+  MR_Word make__dependencies__Languages_10,
+  MR_Word make__dependencies__Globals_11,
+  MR_Word make__dependencies__ModuleIndex_12,
+  MR_Word * make__dependencies__Success_13,
+  MR_Word * make__dependencies__ForeignModules_14,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_23,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_24)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__ModuleName_17;
+    MR_Word make__dependencies__MaybeImports_18;
+    MR_Word make__dependencies__STATE_VARIABLE_Info_27_27;
+    MR_Integer make__dependencies__I_67 = (MR_Integer) make__dependencies__ModuleIndex_12;
+    MR_Word make__dependencies__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 6)));
+    MR_Box make__dependencies__V_69_69 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__V_68_68, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 7)));
+    MR_Word make__dependencies__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_84_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_87_87 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_88_88 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 19)));
+    MR_Word make__dependencies__V_89_89 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__V_68_68, (MR_Integer) 0)));
+    MR_Integer make__dependencies__V_90_90 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__V_68_68, (MR_Integer) 2)));
+    MR_Box make__dependencies__conv0_ModuleName_17;
+
+    {
+      make__dependencies__conv0_ModuleName_17 = mercury__version_array__elem_2_f_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, make__dependencies__I_67, make__dependencies__V_69_69);
+    }
+    make__dependencies__ModuleName_17 = ((MR_Word) make__dependencies__conv0_ModuleName_17);
+    {
+      make__module_dep_file__get_module_dependencies_7_p_0(make__dependencies__Globals_11, make__dependencies__ModuleName_17, &make__dependencies__MaybeImports_18, make__dependencies__STATE_VARIABLE_Info_0_23, &make__dependencies__STATE_VARIABLE_Info_27_27);
+    }
+    if ((make__dependencies__MaybeImports_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        {
+          *make__dependencies__ForeignModules_14 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+        }
+        *make__dependencies__Success_13 = (MR_Integer) 0;
+        *make__dependencies__STATE_VARIABLE_Info_24 = make__dependencies__STATE_VARIABLE_Info_27_27;
+      }
+    else
+      {
+        MR_Word make__dependencies__TypeCtorInfo_62_62;
+        MR_Word make__dependencies__Imports_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__MaybeImports_18, (MR_Integer) 0)));
+        MR_Word make__dependencies__ForeignModuleInfos_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 12)));
+        MR_Word make__dependencies__LangForeignModuleNameSets_21;
+        MR_Word make__dependencies__ForeignModuleNameSet_22;
+        MR_Word make__dependencies__V_29_29;
+        MR_Word make__dependencies__V_30_30;
+        MR_String make__dependencies__V_32_32 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 1)));
+        MR_Word make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 2)));
+        MR_Word make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 3)));
+        MR_Word make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 4)));
+        MR_Word make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 5)));
+        MR_Word make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 6)));
+        MR_Word make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 7)));
+        MR_Word make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 8)));
+        MR_Word make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 9)));
+        MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 10)));
+        MR_Word make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 11)));
+        MR_Word make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 13)));
+        MR_Word make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 14)));
+        MR_Word make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 15)));
+        MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 16)));
+        MR_Word make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 17)));
+        MR_Word make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 18)));
+        MR_Word make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 19)));
+        MR_Word make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 20)));
+        MR_Word make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 21)));
+        MR_Word make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 22)));
+        MR_Word make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 23)));
+        MR_Word make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 24)));
+        MR_Word make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 25)));
+        MR_String make__dependencies__V_57_57 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_19, (MR_Integer) 26)));
+
+        {
+          make__dependencies__V_29_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_29_29, 0) = ((MR_Box) (&make__dependencies_scalar_common_7[2]));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_29_29, 1) = ((MR_Box) (make__dependencies__find_module_foreign_imports_3_9_p_0_1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_29_29, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_29_29, 3) = ((MR_Box) (make__dependencies__ForeignModuleInfos_20));
+        }
+        {
+          make__dependencies__LangForeignModuleNameSets_21 = mercury__set__map_2_f_0((MR_Word) &libs__globals__libs__globals__type_ctor_info_foreign_language_0, (MR_Word) &make__dependencies_scalar_common_1[1], make__dependencies__V_29_29, make__dependencies__Languages_10);
+        }
+        make__dependencies__TypeCtorInfo_62_62 = (MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0;
+        {
+          mercury__set__power_union_2_p_0(make__dependencies__TypeCtorInfo_62_62, make__dependencies__LangForeignModuleNameSets_21, &make__dependencies__ForeignModuleNameSet_22);
+        }
+        {
+          make__dependencies__V_30_30 = mercury__set__to_sorted_list_1_f_0(make__dependencies__TypeCtorInfo_62_62, make__dependencies__ForeignModuleNameSet_22);
+        }
+        {
+          make__dependencies__module_names_to_index_set_4_p_0(make__dependencies__V_30_30, make__dependencies__ForeignModules_14, make__dependencies__STATE_VARIABLE_Info_27_27, make__dependencies__STATE_VARIABLE_Info_24);
+        }
+        *make__dependencies__Success_13 = (MR_Integer) 1;
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__find_module_foreign_imports_2_9_p_0(
+  MR_Word make__dependencies__Languages_10,
+  MR_Word make__dependencies__Globals_11,
+  MR_Word make__dependencies__ModuleIndex_12,
+  MR_Word * make__dependencies__Success_13,
+  MR_Word * make__dependencies__ForeignModules_14,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_18,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_19)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Result0_17;
+    MR_Word make__dependencies__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 6)));
+    MR_Word make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 7)));
+    MR_Word make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_46_46 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_18, (MR_Integer) 19)));
+    MR_Box make__dependencies__conv0_Result0_17;
+
+    {
+      make__dependencies__succeeded = mercury__map__elem_2_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[5], ((MR_Box) (make__dependencies__ModuleIndex_12)), make__dependencies__V_22_22, &make__dependencies__conv0_Result0_17);
+    }
+    if (make__dependencies__succeeded)
+      {
+        make__dependencies__Result0_17 = ((MR_Word) make__dependencies__conv0_Result0_17);
+        make__dependencies__succeeded = MR_TRUE;
+      }
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__Success_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Result0_17, (MR_Integer) 0)));
+        *make__dependencies__ForeignModules_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Result0_17, (MR_Integer) 1)));
+        *make__dependencies__STATE_VARIABLE_Info_19 = make__dependencies__STATE_VARIABLE_Info_0_18;
+      }
+    else
+      {
+        MR_Word make__dependencies__STATE_VARIABLE_Info_23_23;
+        MR_Word make__dependencies__V_26_26;
+        MR_Word make__dependencies__V_27_27;
+        MR_Word make__dependencies__V_28_28;
+        MR_Word make__dependencies__V_48_48;
+        MR_Word make__dependencies__V_49_49;
+        MR_Word make__dependencies__V_50_50;
+        MR_Word make__dependencies__V_51_51;
+        MR_Word make__dependencies__V_52_52;
+        MR_Word make__dependencies__V_53_53;
+        MR_Word make__dependencies__V_54_54;
+        MR_Word make__dependencies__V_55_55;
+        MR_Word make__dependencies__V_56_56;
+        MR_Word make__dependencies__V_57_57;
+        MR_Word make__dependencies__V_58_58;
+        MR_Word make__dependencies__V_59_59;
+        MR_Word make__dependencies__V_60_60;
+        MR_Word make__dependencies__V_61_61;
+        MR_Word make__dependencies__V_62_62;
+        MR_Word make__dependencies__V_63_63;
+        MR_Word make__dependencies__V_64_64;
+        MR_Integer make__dependencies__V_65_65;
+        MR_Word make__dependencies__V_66_66;
+        MR_Word make__dependencies__V_67_67;
+        MR_Word make__dependencies__V_68_68;
+        MR_Word make__dependencies__V_69_69;
+        MR_Word make__dependencies__V_70_70;
+        MR_Word make__dependencies__V_71_71;
+        MR_Word make__dependencies__V_72_72;
+        MR_Word make__dependencies__V_73_73;
+        MR_Word make__dependencies__V_74_74;
+        MR_Word make__dependencies__V_75_75;
+        MR_Word make__dependencies__V_76_76;
+        MR_Word make__dependencies__V_77_77;
+        MR_Word make__dependencies__V_78_78;
+        MR_Word make__dependencies__V_80_80;
+        MR_Word make__dependencies__V_81_81;
+        MR_Word make__dependencies__V_82_82;
+        MR_Word make__dependencies__V_83_83;
+        MR_Word make__dependencies__V_84_84;
+        MR_Integer make__dependencies__V_85_85;
+        MR_Word make__dependencies__V_86_86;
+        MR_Word make__dependencies__V_79_79;
+
+        {
+          make__dependencies__find_module_foreign_imports_3_9_p_0(make__dependencies__Languages_10, make__dependencies__Globals_11, make__dependencies__ModuleIndex_12, make__dependencies__Success_13, make__dependencies__ForeignModules_14, make__dependencies__STATE_VARIABLE_Info_0_18, &make__dependencies__STATE_VARIABLE_Info_23_23);
+        }
+        {
+          make__dependencies__V_26_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 0) = ((MR_Box) (*make__dependencies__Success_13));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 1) = ((MR_Box) (*make__dependencies__ForeignModules_14));
+        }
+        make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 0)));
+        make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 1)));
+        make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 2)));
+        make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 3)));
+        make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 4)));
+        make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 5)));
+        make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 6)));
+        make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 7)));
+        make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 8)));
+        make__dependencies__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 9)));
+        make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 10)));
+        make__dependencies__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 11)));
+        make__dependencies__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 12)));
+        make__dependencies__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 13)));
+        make__dependencies__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 14)));
+        make__dependencies__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 15)));
+        make__dependencies__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 16)));
+        make__dependencies__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 17)));
+        make__dependencies__V_65_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 18)));
+        make__dependencies__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 19)));
+        {
+          make__dependencies__V_28_28 = mercury__map__f_101_108_101_109_32_58_61_3_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[5], ((MR_Box) (make__dependencies__ModuleIndex_12)), make__dependencies__V_27_27, ((MR_Box) (make__dependencies__V_26_26)));
+        }
+        make__dependencies__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 0)));
+        make__dependencies__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 1)));
+        make__dependencies__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 2)));
+        make__dependencies__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 3)));
+        make__dependencies__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 4)));
+        make__dependencies__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 5)));
+        make__dependencies__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 6)));
+        make__dependencies__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 7)));
+        make__dependencies__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 8)));
+        make__dependencies__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 9)));
+        make__dependencies__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 10)));
+        make__dependencies__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 11)));
+        make__dependencies__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 12)));
+        make__dependencies__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 13)));
+        make__dependencies__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 14)));
+        make__dependencies__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 15)));
+        make__dependencies__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 16)));
+        make__dependencies__V_84_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 17)));
+        make__dependencies__V_85_85 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 18)));
+        make__dependencies__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 19)));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+          *make__dependencies__STATE_VARIABLE_Info_19 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (make__dependencies__V_67_67));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (make__dependencies__V_68_68));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (make__dependencies__V_69_69));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (make__dependencies__V_70_70));
+          MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (make__dependencies__V_71_71));
+          MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (make__dependencies__V_72_72));
+          MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (make__dependencies__V_73_73));
+          MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (make__dependencies__V_74_74));
+          MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (make__dependencies__V_75_75));
+          MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (make__dependencies__V_76_76));
+          MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (make__dependencies__V_77_77));
+          MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (make__dependencies__V_78_78));
+          MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (make__dependencies__V_28_28));
+          MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (make__dependencies__V_80_80));
+          MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (make__dependencies__V_81_81));
+          MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (make__dependencies__V_82_82));
+          MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (make__dependencies__V_83_83));
+          MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (make__dependencies__V_84_84));
+          MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (make__dependencies__V_85_85));
+          MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (make__dependencies__V_86_86));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__find_module_foreign_imports_9_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_HeadVar__4_53;
+    MR_Word make__dependencies__conv4_HeadVar__6_55;
+    MR_Word make__dependencies__conv3_HeadVar__8_57;
+
+    {
+      make__dependencies__IntroducedFrom__pred__find_module_foreign_imports__925__1_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_HeadVar__4_53, ((MR_Word) make__dependencies__wrapper_arg_4), &make__dependencies__conv4_HeadVar__6_55, ((MR_Word) make__dependencies__wrapper_arg_6), &make__dependencies__conv3_HeadVar__8_57);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_HeadVar__4_53));
+    *make__dependencies__wrapper_arg_5 = ((MR_Box) (make__dependencies__conv4_HeadVar__6_55));
+    *make__dependencies__wrapper_arg_7 = ((MR_Box) (make__dependencies__conv3_HeadVar__8_57));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__find_module_foreign_imports_9_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_Success_13;
+    MR_Word make__dependencies__conv1_ForeignModules_14;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_19;
+
+    {
+      make__dependencies__find_module_foreign_imports_2_9_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_Success_13, &make__dependencies__conv1_ForeignModules_14, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_19);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_Success_13));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_ForeignModules_14));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_19));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__find_module_foreign_imports_9_p_0(
+  MR_Word make__dependencies__Languages_10,
+  MR_Word make__dependencies__Globals_11,
+  MR_Word make__dependencies__ModuleIndex_12,
+  MR_Word * make__dependencies__Success_13,
+  MR_Word * make__dependencies__ForeignModules_14,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_19,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_20)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Success0_17;
+    MR_Word make__dependencies__ImportedModules_18;
+    MR_Word make__dependencies__STATE_VARIABLE_Info_23_23;
+    MR_Word make__dependencies__Modules0_85;
+
+    {
+      make__dependencies__find_transitive_module_dependencies_10_p_0(make__dependencies__Globals_11, (MR_Integer) 1, (MR_Integer) 1, make__dependencies__ModuleIndex_12, &make__dependencies__Success0_17, &make__dependencies__Modules0_85, make__dependencies__STATE_VARIABLE_Info_0_19, &make__dependencies__STATE_VARIABLE_Info_23_23);
+    }
+    {
+      make__dependencies__ImportedModules_18 = mercury__sparse_bitset__insert_2_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__Modules0_85, ((MR_Box) (make__dependencies__ModuleIndex_12)));
+    }
+    switch (make__dependencies__Success0_17) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          *make__dependencies__Success_13 = (MR_Integer) 0;
+          {
+            *make__dependencies__ForeignModules_14 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+          }
+          *make__dependencies__STATE_VARIABLE_Info_20 = make__dependencies__STATE_VARIABLE_Info_23_23;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word make__dependencies__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 14)));
+          MR_Word make__dependencies__V_26_26;
+          MR_Word make__dependencies__V_27_27;
+          MR_Word make__dependencies__V_28_28;
+          MR_Word make__dependencies__V_31_31;
+          MR_Word make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 0)));
+          MR_Word make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 1)));
+          MR_Word make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 2)));
+          MR_Word make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 3)));
+          MR_Word make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 4)));
+          MR_Word make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 5)));
+          MR_Word make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 6)));
+          MR_Word make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 7)));
+          MR_Word make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 8)));
+          MR_Word make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 9)));
+          MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 10)));
+          MR_Word make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 11)));
+          MR_Word make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 12)));
+          MR_Word make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 13)));
+          MR_Word make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 15)));
+          MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 16)));
+          MR_Word make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 17)));
+          MR_Integer make__dependencies__V_49_49 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 18)));
+          MR_Word make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 19)));
+
+          {
+            make__dependencies__V_31_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), make__dependencies__V_31_31, 0) = ((MR_Box) (&make__dependencies_scalar_common_12[1]));
+            MR_hl_field(MR_mktag(0), make__dependencies__V_31_31, 1) = ((MR_Box) (make__dependencies__find_module_foreign_imports_9_p_0_1));
+            MR_hl_field(MR_mktag(0), make__dependencies__V_31_31, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(0), make__dependencies__V_31_31, 3) = ((MR_Box) (make__dependencies__Languages_10));
+          }
+          {
+            make__dependencies__V_26_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[4]));
+            MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 1) = ((MR_Box) (make__dependencies__find_module_foreign_imports_9_p_0_2));
+            MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+            MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 3) = ((MR_Box) (make__dependencies__V_31_31));
+          }
+          {
+            make__dependencies__V_27_27 = mercury__sparse_bitset__insert_2_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__ImportedModules_18, ((MR_Box) (make__dependencies__ModuleIndex_12)));
+          }
+          {
+            make__dependencies__V_28_28 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+          }
+          {
+            make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_50_95_95_91_49_44_32_50_93_95_48_11_p_0(make__dependencies__V_25_25, make__dependencies__V_26_26, make__dependencies__Globals_11, make__dependencies__V_27_27, make__dependencies__Success_13, make__dependencies__V_28_28, make__dependencies__ForeignModules_14, make__dependencies__STATE_VARIABLE_Info_23_23, make__dependencies__STATE_VARIABLE_Info_20);
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__foreign_imports_8_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_HeadVar__4_54;
+    MR_Word make__dependencies__conv4_HeadVar__6_56;
+    MR_Word make__dependencies__conv3_HeadVar__8_58;
+
+    {
+      make__dependencies__IntroducedFrom__pred__foreign_imports__909__1_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_HeadVar__4_54, ((MR_Word) make__dependencies__wrapper_arg_4), &make__dependencies__conv4_HeadVar__6_56, ((MR_Word) make__dependencies__wrapper_arg_6), &make__dependencies__conv3_HeadVar__8_58);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_HeadVar__4_54));
+    *make__dependencies__wrapper_arg_5 = ((MR_Box) (make__dependencies__conv4_HeadVar__6_56));
+    *make__dependencies__wrapper_arg_7 = ((MR_Box) (make__dependencies__conv3_HeadVar__8_58));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__foreign_imports_8_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_Success_13;
+    MR_Word make__dependencies__conv1_ForeignModules_14;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_20;
+
+    {
+      make__dependencies__find_module_foreign_imports_9_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_Success_13, &make__dependencies__conv1_ForeignModules_14, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_20);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_Success_13));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_ForeignModules_14));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_20));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__foreign_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_19,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_20)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Languages_15;
+    MR_Word make__dependencies__IntermodSuccess_16;
+    MR_Word make__dependencies__IntermodModules_17;
+    MR_Word make__dependencies__ForeignSuccess_18;
+    MR_Word make__dependencies__STATE_VARIABLE_Info_23_23;
+    MR_Word make__dependencies__V_25_25;
+    MR_Word make__dependencies__V_26_26;
+    MR_Word make__dependencies__V_27_27;
+    MR_Word make__dependencies__V_28_28;
+    MR_Word make__dependencies__V_31_31;
+    MR_Word make__dependencies__V_32_32;
+    MR_Word make__dependencies__V_33_33;
+    MR_Word make__dependencies__V_34_34;
+    MR_Word make__dependencies__V_35_35;
+    MR_Word make__dependencies__V_36_36;
+    MR_Word make__dependencies__V_37_37;
+    MR_Word make__dependencies__V_38_38;
+    MR_Word make__dependencies__V_39_39;
+    MR_Word make__dependencies__V_40_40;
+    MR_Word make__dependencies__V_41_41;
+    MR_Word make__dependencies__V_42_42;
+    MR_Word make__dependencies__V_43_43;
+    MR_Word make__dependencies__V_44_44;
+    MR_Word make__dependencies__V_45_45;
+    MR_Word make__dependencies__V_46_46;
+    MR_Word make__dependencies__V_47_47;
+    MR_Word make__dependencies__V_48_48;
+    MR_Word make__dependencies__V_49_49;
+    MR_Integer make__dependencies__V_50_50;
+    MR_Word make__dependencies__V_51_51;
+
+    {
+      libs__globals__get_backend_foreign_languages_2_p_0(make__dependencies__Globals_9, &make__dependencies__Languages_15);
+    }
+    {
+      make__dependencies__intermod_imports_8_p_0(make__dependencies__Globals_9, make__dependencies__ModuleIndex_10, &make__dependencies__IntermodSuccess_16, &make__dependencies__IntermodModules_17, make__dependencies__STATE_VARIABLE_Info_0_19, &make__dependencies__STATE_VARIABLE_Info_23_23);
+    }
+    make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 0)));
+    make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 1)));
+    make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 2)));
+    make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 3)));
+    make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 4)));
+    make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 5)));
+    make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 6)));
+    make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 7)));
+    make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 8)));
+    make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 9)));
+    make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 10)));
+    make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 11)));
+    make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 12)));
+    make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 13)));
+    make__dependencies__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 14)));
+    make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 15)));
+    make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 16)));
+    make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 17)));
+    make__dependencies__V_50_50 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 18)));
+    make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_23_23, (MR_Integer) 19)));
+    {
+      make__dependencies__V_32_32 = mercury__set__list_to_set_1_f_0((MR_Word) &libs__globals__libs__globals__type_ctor_info_foreign_language_0, make__dependencies__Languages_15);
+    }
+    {
+      make__dependencies__V_31_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_31_31, 0) = ((MR_Box) (&make__dependencies_scalar_common_12[1]));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_31_31, 1) = ((MR_Box) (make__dependencies__foreign_imports_8_p_0_1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_31_31, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_31_31, 3) = ((MR_Box) (make__dependencies__V_32_32));
+    }
+    {
+      make__dependencies__V_26_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[4]));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 1) = ((MR_Box) (make__dependencies__foreign_imports_8_p_0_2));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 3) = ((MR_Box) (make__dependencies__V_31_31));
+    }
+    {
+      make__dependencies__V_27_27 = mercury__sparse_bitset__insert_2_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__IntermodModules_17, ((MR_Box) (make__dependencies__ModuleIndex_10)));
+    }
+    {
+      make__dependencies__V_28_28 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+    }
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_51_95_95_91_49_44_32_50_93_95_48_11_p_0(make__dependencies__V_25_25, make__dependencies__V_26_26, make__dependencies__Globals_9, make__dependencies__V_27_27, &make__dependencies__ForeignSuccess_18, make__dependencies__V_28_28, make__dependencies__Modules_12, make__dependencies__STATE_VARIABLE_Info_23_23, make__dependencies__STATE_VARIABLE_Info_20);
+    }
+    {
+      *make__dependencies__Success_11 = mercury__bool__and_2_f_0(make__dependencies__IntermodSuccess_16, make__dependencies__ForeignSuccess_18);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__intermod_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_17,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_18)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__AnyIntermod_15;
+
+    {
+      libs__globals__get_any_intermod_2_p_0(make__dependencies__Globals_9, &make__dependencies__AnyIntermod_15);
+    }
+    switch (make__dependencies__AnyIntermod_15) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          *make__dependencies__Success_11 = (MR_Integer) 1;
+          {
+            *make__dependencies__Modules_12 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+          }
+          *make__dependencies__STATE_VARIABLE_Info_18 = make__dependencies__STATE_VARIABLE_Info_0_17;
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word make__dependencies__Transitive_16;
+
+          {
+            libs__globals__lookup_bool_option_3_p_0(make__dependencies__Globals_9, (MR_Integer) 322, &make__dependencies__Transitive_16);
+          }
+          switch (make__dependencies__Transitive_16) {
+            default: /*NOTREACHED*/ MR_assert(0);
+            case (MR_Integer) 0:
+              {
+                make__dependencies__non_intermod_direct_imports_8_p_0(make__dependencies__Globals_9, make__dependencies__ModuleIndex_10, make__dependencies__Success_11, make__dependencies__Modules_12, make__dependencies__STATE_VARIABLE_Info_0_17, make__dependencies__STATE_VARIABLE_Info_18);
+              }
+              break;
+            case (MR_Integer) 1:
+              {
+                MR_Word make__dependencies__Modules0_37;
+
+                {
+                  make__dependencies__find_transitive_module_dependencies_10_p_0(make__dependencies__Globals_9, (MR_Integer) 1, (MR_Integer) 1, make__dependencies__ModuleIndex_10, make__dependencies__Success_11, &make__dependencies__Modules0_37, make__dependencies__STATE_VARIABLE_Info_0_17, make__dependencies__STATE_VARIABLE_Info_18);
+                }
+                {
+                  *make__dependencies__Modules_12 = mercury__sparse_bitset__insert_2_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__Modules0_37, ((MR_Box) (make__dependencies__ModuleIndex_10)));
+                }
+              }
+              break;
+          }
+        }
+        break;
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__non_intermod_indirect_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_15,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_16)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__indirect_imports_2__ho5_9_p_0(make__dependencies__Globals_9, make__dependencies__ModuleIndex_10, make__dependencies__Success_11, make__dependencies__Modules_12, make__dependencies__STATE_VARIABLE_Info_0_15, make__dependencies__STATE_VARIABLE_Info_16);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__indirect_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_15,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_16)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__indirect_imports_2__ho6_9_p_0(make__dependencies__Globals_9, make__dependencies__ModuleIndex_10, make__dependencies__Success_11, make__dependencies__Modules_12, make__dependencies__STATE_VARIABLE_Info_0_15, make__dependencies__STATE_VARIABLE_Info_16);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__non_intermod_direct_imports_2_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_28,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_29)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__ModuleName_15;
+    MR_Word make__dependencies__MaybeModuleAndImports_16;
+    MR_Word make__dependencies__STATE_VARIABLE_Info_32_32;
+
+    {
+      make__dependencies__module_index_to_name_3_p_0(make__dependencies__STATE_VARIABLE_Info_0_28, make__dependencies__ModuleIndex_10, &make__dependencies__ModuleName_15);
+    }
+    {
+      make__module_dep_file__get_module_dependencies_7_p_0(make__dependencies__Globals_9, make__dependencies__ModuleName_15, &make__dependencies__MaybeModuleAndImports_16, make__dependencies__STATE_VARIABLE_Info_0_28, &make__dependencies__STATE_VARIABLE_Info_32_32);
+    }
+    if ((make__dependencies__MaybeModuleAndImports_16 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        *make__dependencies__Success_11 = (MR_Integer) 0;
+        {
+          *make__dependencies__Modules_12 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+        }
+        *make__dependencies__STATE_VARIABLE_Info_29 = make__dependencies__STATE_VARIABLE_Info_32_32;
+      }
+    else
+      {
+        MR_Word make__dependencies__TypeCtorInfo_93_93 = (MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0;
+        MR_Word make__dependencies__TypeCtorInfo_94_94;
+        MR_Word make__dependencies__ModuleAndImports_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__MaybeModuleAndImports_16, (MR_Integer) 0)));
+        MR_Word make__dependencies__IntDeps_18;
+        MR_Word make__dependencies__ImpDeps_19;
+        MR_Word make__dependencies__DepsInt_20;
+        MR_Word make__dependencies__DepsImp_21;
+        MR_Word make__dependencies__Modules0_22;
+        MR_Word make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 5)));
+        MR_Word make__dependencies__V_35_35;
+        MR_Word make__dependencies__STATE_VARIABLE_Info_36_36;
+        MR_Word make__dependencies__STATE_VARIABLE_Info_37_37;
+        MR_String make__dependencies__V_41_41 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 1)));
+        MR_Word make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 2)));
+        MR_Word make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 3)));
+        MR_Word make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 4)));
+        MR_Word make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 6)));
+        MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 7)));
+        MR_Word make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 8)));
+        MR_Word make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 9)));
+        MR_Word make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 10)));
+        MR_Word make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 11)));
+        MR_Word make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 12)));
+        MR_Word make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 13)));
+        MR_Word make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 14)));
+        MR_Word make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 15)));
+        MR_Word make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 16)));
+        MR_Word make__dependencies__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 17)));
+        MR_Word make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 18)));
+        MR_Word make__dependencies__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 19)));
+        MR_Word make__dependencies__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 20)));
+        MR_Word make__dependencies__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 21)));
+        MR_Word make__dependencies__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 22)));
+        MR_Word make__dependencies__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 23)));
+        MR_Word make__dependencies__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 24)));
+        MR_Word make__dependencies__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 25)));
+        MR_String make__dependencies__V_66_66 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 26)));
+        MR_String make__dependencies__V_67_67;
+        MR_Word make__dependencies__V_68_68;
+        MR_Word make__dependencies__V_69_69;
+        MR_Word make__dependencies__V_70_70;
+        MR_Word make__dependencies__V_71_71;
+        MR_Word make__dependencies__V_72_72;
+        MR_Word make__dependencies__V_73_73;
+        MR_Word make__dependencies__V_74_74;
+        MR_Word make__dependencies__V_75_75;
+        MR_Word make__dependencies__V_76_76;
+        MR_Word make__dependencies__V_77_77;
+        MR_Word make__dependencies__V_78_78;
+        MR_Word make__dependencies__V_79_79;
+        MR_Word make__dependencies__V_80_80;
+        MR_Word make__dependencies__V_81_81;
+        MR_Word make__dependencies__V_82_82;
+        MR_Word make__dependencies__V_83_83;
+        MR_Word make__dependencies__V_84_84;
+        MR_Word make__dependencies__V_85_85;
+        MR_Word make__dependencies__V_86_86;
+        MR_Word make__dependencies__V_87_87;
+        MR_Word make__dependencies__V_88_88;
+        MR_Word make__dependencies__V_89_89;
+        MR_Word make__dependencies__V_90_90;
+        MR_Word make__dependencies__V_91_91;
+        MR_String make__dependencies__V_92_92;
+
+        {
+          mercury__set__to_sorted_list_2_p_0(make__dependencies__TypeCtorInfo_93_93, make__dependencies__V_34_34, &make__dependencies__IntDeps_18);
+        }
+        make__dependencies__V_67_67 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 0)));
+        make__dependencies__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 1)));
+        make__dependencies__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 2)));
+        make__dependencies__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 3)));
+        make__dependencies__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 4)));
+        make__dependencies__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 5)));
+        make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 6)));
+        make__dependencies__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 7)));
+        make__dependencies__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 8)));
+        make__dependencies__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 9)));
+        make__dependencies__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 10)));
+        make__dependencies__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 11)));
+        make__dependencies__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 12)));
+        make__dependencies__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 13)));
+        make__dependencies__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 14)));
+        make__dependencies__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 15)));
+        make__dependencies__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 16)));
+        make__dependencies__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 17)));
+        make__dependencies__V_84_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 18)));
+        make__dependencies__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 19)));
+        make__dependencies__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 20)));
+        make__dependencies__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 21)));
+        make__dependencies__V_88_88 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 22)));
+        make__dependencies__V_89_89 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 23)));
+        make__dependencies__V_90_90 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 24)));
+        make__dependencies__V_91_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 25)));
+        make__dependencies__V_92_92 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__ModuleAndImports_17, (MR_Integer) 26)));
+        {
+          mercury__set__to_sorted_list_2_p_0(make__dependencies__TypeCtorInfo_93_93, make__dependencies__V_35_35, &make__dependencies__ImpDeps_19);
+        }
+        {
+          make__dependencies__module_names_to_index_set_4_p_0(make__dependencies__IntDeps_18, &make__dependencies__DepsInt_20, make__dependencies__STATE_VARIABLE_Info_32_32, &make__dependencies__STATE_VARIABLE_Info_36_36);
+        }
+        {
+          make__dependencies__module_names_to_index_set_4_p_0(make__dependencies__ImpDeps_19, &make__dependencies__DepsImp_21, make__dependencies__STATE_VARIABLE_Info_36_36, &make__dependencies__STATE_VARIABLE_Info_37_37);
+        }
+        make__dependencies__TypeCtorInfo_94_94 = (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0;
+        {
+          make__dependencies__Modules0_22 = mercury__sparse_bitset__union_2_f_0(make__dependencies__TypeCtorInfo_94_94, make__dependencies__DepsInt_20, make__dependencies__DepsImp_21);
+        }
+        if (((MR_tag((MR_Word) make__dependencies__ModuleName_15)) == (MR_mktag((MR_Integer) 1))))
+          {
+            MR_Word make__dependencies__ParentModule_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__ModuleName_15, (MR_Integer) 0)));
+            MR_Word make__dependencies__ParentIndex_25;
+            MR_Word make__dependencies__ParentImports_26;
+            MR_Word make__dependencies__STATE_VARIABLE_Info_38_38;
+            MR_String make__dependencies__V_24_24 = ((MR_String) (MR_hl_field(MR_mktag(1), make__dependencies__ModuleName_15, (MR_Integer) 1)));
+
+            {
+              make__dependencies__module_name_to_index_4_p_0(make__dependencies__ParentModule_23, &make__dependencies__ParentIndex_25, make__dependencies__STATE_VARIABLE_Info_37_37, &make__dependencies__STATE_VARIABLE_Info_38_38);
+            }
+            {
+              make__dependencies__non_intermod_direct_imports_8_p_0(make__dependencies__Globals_9, make__dependencies__ParentIndex_25, make__dependencies__Success_11, &make__dependencies__ParentImports_26, make__dependencies__STATE_VARIABLE_Info_38_38, make__dependencies__STATE_VARIABLE_Info_29);
+            }
+            {
+              *make__dependencies__Modules_12 = mercury__sparse_bitset__union_2_f_0(make__dependencies__TypeCtorInfo_94_94, make__dependencies__ParentImports_26, make__dependencies__Modules0_22);
+            }
+          }
+        else
+          {
+            *make__dependencies__Success_11 = (MR_Integer) 1;
+            *make__dependencies__Modules_12 = make__dependencies__Modules0_22;
+            *make__dependencies__STATE_VARIABLE_Info_29 = make__dependencies__STATE_VARIABLE_Info_37_37;
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__non_intermod_direct_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_17)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Result_15;
+    MR_Word make__dependencies__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 6)));
+    MR_Word make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 7)));
+    MR_Word make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_44_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 19)));
+    MR_Box make__dependencies__conv0_Result_15;
+
+    {
+      make__dependencies__succeeded = mercury__map__elem_2_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[5], ((MR_Box) (make__dependencies__ModuleIndex_10)), make__dependencies__V_20_20, &make__dependencies__conv0_Result_15);
+    }
+    if (make__dependencies__succeeded)
+      {
+        make__dependencies__Result_15 = ((MR_Word) make__dependencies__conv0_Result_15);
+        make__dependencies__succeeded = MR_TRUE;
+      }
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__Success_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Result_15, (MR_Integer) 0)));
+        *make__dependencies__Modules_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Result_15, (MR_Integer) 1)));
+        *make__dependencies__STATE_VARIABLE_Info_17 = make__dependencies__STATE_VARIABLE_Info_0_16;
+      }
+    else
+      {
+        MR_Word make__dependencies__STATE_VARIABLE_Info_21_21;
+        MR_Word make__dependencies__V_24_24;
+        MR_Word make__dependencies__V_25_25;
+        MR_Word make__dependencies__V_26_26;
+        MR_Word make__dependencies__V_46_46;
+        MR_Word make__dependencies__V_47_47;
+        MR_Word make__dependencies__V_48_48;
+        MR_Word make__dependencies__V_49_49;
+        MR_Word make__dependencies__V_50_50;
+        MR_Word make__dependencies__V_51_51;
+        MR_Word make__dependencies__V_52_52;
+        MR_Word make__dependencies__V_53_53;
+        MR_Word make__dependencies__V_54_54;
+        MR_Word make__dependencies__V_55_55;
+        MR_Word make__dependencies__V_56_56;
+        MR_Word make__dependencies__V_57_57;
+        MR_Word make__dependencies__V_58_58;
+        MR_Word make__dependencies__V_59_59;
+        MR_Word make__dependencies__V_60_60;
+        MR_Word make__dependencies__V_61_61;
+        MR_Word make__dependencies__V_62_62;
+        MR_Integer make__dependencies__V_63_63;
+        MR_Word make__dependencies__V_64_64;
+        MR_Word make__dependencies__V_65_65;
+        MR_Word make__dependencies__V_66_66;
+        MR_Word make__dependencies__V_67_67;
+        MR_Word make__dependencies__V_68_68;
+        MR_Word make__dependencies__V_69_69;
+        MR_Word make__dependencies__V_70_70;
+        MR_Word make__dependencies__V_71_71;
+        MR_Word make__dependencies__V_72_72;
+        MR_Word make__dependencies__V_73_73;
+        MR_Word make__dependencies__V_74_74;
+        MR_Word make__dependencies__V_76_76;
+        MR_Word make__dependencies__V_77_77;
+        MR_Word make__dependencies__V_78_78;
+        MR_Word make__dependencies__V_79_79;
+        MR_Word make__dependencies__V_80_80;
+        MR_Word make__dependencies__V_81_81;
+        MR_Word make__dependencies__V_82_82;
+        MR_Integer make__dependencies__V_83_83;
+        MR_Word make__dependencies__V_84_84;
+        MR_Word make__dependencies__V_75_75;
+
+        {
+          make__dependencies__non_intermod_direct_imports_2_8_p_0(make__dependencies__Globals_9, make__dependencies__ModuleIndex_10, make__dependencies__Success_11, make__dependencies__Modules_12, make__dependencies__STATE_VARIABLE_Info_0_16, &make__dependencies__STATE_VARIABLE_Info_21_21);
+        }
+        {
+          make__dependencies__V_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_24_24, 0) = ((MR_Box) (*make__dependencies__Success_11));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_24_24, 1) = ((MR_Box) (*make__dependencies__Modules_12));
+        }
+        make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 0)));
+        make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 1)));
+        make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 2)));
+        make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 3)));
+        make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 4)));
+        make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 5)));
+        make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 6)));
+        make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 7)));
+        make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 8)));
+        make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 9)));
+        make__dependencies__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 10)));
+        make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 11)));
+        make__dependencies__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 12)));
+        make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 13)));
+        make__dependencies__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 14)));
+        make__dependencies__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 15)));
+        make__dependencies__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 16)));
+        make__dependencies__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 17)));
+        make__dependencies__V_63_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 18)));
+        make__dependencies__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 19)));
+        {
+          make__dependencies__V_26_26 = mercury__map__f_101_108_101_109_32_58_61_3_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[5], ((MR_Box) (make__dependencies__ModuleIndex_10)), make__dependencies__V_25_25, ((MR_Box) (make__dependencies__V_24_24)));
+        }
+        make__dependencies__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 0)));
+        make__dependencies__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 1)));
+        make__dependencies__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 2)));
+        make__dependencies__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 3)));
+        make__dependencies__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 4)));
+        make__dependencies__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 5)));
+        make__dependencies__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 6)));
+        make__dependencies__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 7)));
+        make__dependencies__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 8)));
+        make__dependencies__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 9)));
+        make__dependencies__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 10)));
+        make__dependencies__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 11)));
+        make__dependencies__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 12)));
+        make__dependencies__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 13)));
+        make__dependencies__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 14)));
+        make__dependencies__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 15)));
+        make__dependencies__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 16)));
+        make__dependencies__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 17)));
+        make__dependencies__V_83_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 18)));
+        make__dependencies__V_84_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, (MR_Integer) 19)));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+          *make__dependencies__STATE_VARIABLE_Info_17 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (make__dependencies__V_65_65));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (make__dependencies__V_66_66));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (make__dependencies__V_67_67));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (make__dependencies__V_68_68));
+          MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (make__dependencies__V_69_69));
+          MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (make__dependencies__V_70_70));
+          MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (make__dependencies__V_71_71));
+          MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (make__dependencies__V_72_72));
+          MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (make__dependencies__V_73_73));
+          MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (make__dependencies__V_74_74));
+          MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (make__dependencies__V_26_26));
+          MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (make__dependencies__V_76_76));
+          MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (make__dependencies__V_77_77));
+          MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (make__dependencies__V_78_78));
+          MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (make__dependencies__V_79_79));
+          MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (make__dependencies__V_80_80));
+          MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (make__dependencies__V_81_81));
+          MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (make__dependencies__V_82_82));
+          MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (make__dependencies__V_83_83));
+          MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (make__dependencies__V_84_84));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__direct_imports_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_23,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_24)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Result0_15;
+    MR_Word make__dependencies__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 6)));
+    MR_Word make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 7)));
+    MR_Word make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_60_60 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 19)));
+    MR_Box make__dependencies__conv0_Result0_15;
+
+    {
+      make__dependencies__succeeded = mercury__map__elem_2_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[5], ((MR_Box) (make__dependencies__ModuleIndex_10)), make__dependencies__V_27_27, &make__dependencies__conv0_Result0_15);
+    }
+    if (make__dependencies__succeeded)
+      {
+        make__dependencies__Result0_15 = ((MR_Word) make__dependencies__conv0_Result0_15);
+        make__dependencies__succeeded = MR_TRUE;
+      }
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__Success_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Result0_15, (MR_Integer) 0)));
+        *make__dependencies__Modules_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Result0_15, (MR_Integer) 1)));
+        *make__dependencies__STATE_VARIABLE_Info_24 = make__dependencies__STATE_VARIABLE_Info_0_23;
+      }
+    else
+      {
+        MR_Word make__dependencies__KeepGoing_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 14)));
+        MR_Word make__dependencies__Success0_17;
+        MR_Word make__dependencies__Modules0_18;
+        MR_Word make__dependencies__STATE_VARIABLE_Info_28_28;
+        MR_Word make__dependencies__STATE_VARIABLE_Info_35_35;
+        MR_Word make__dependencies__V_40_40;
+        MR_Word make__dependencies__V_41_41;
+        MR_Word make__dependencies__V_42_42;
+        MR_Word make__dependencies__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 1)));
+        MR_Word make__dependencies__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 2)));
+        MR_Word make__dependencies__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 3)));
+        MR_Word make__dependencies__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 4)));
+        MR_Word make__dependencies__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 5)));
+        MR_Word make__dependencies__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 6)));
+        MR_Word make__dependencies__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 7)));
+        MR_Word make__dependencies__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 8)));
+        MR_Word make__dependencies__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 9)));
+        MR_Word make__dependencies__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 10)));
+        MR_Word make__dependencies__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 11)));
+        MR_Word make__dependencies__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 12)));
+        MR_Word make__dependencies__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 13)));
+        MR_Word make__dependencies__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 15)));
+        MR_Word make__dependencies__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 16)));
+        MR_Word make__dependencies__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 17)));
+        MR_Integer make__dependencies__V_79_79 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 18)));
+        MR_Word make__dependencies__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 19)));
+        MR_Word make__dependencies__V_100_100;
+        MR_Word make__dependencies__V_101_101;
+        MR_Word make__dependencies__V_102_102;
+        MR_Word make__dependencies__V_103_103;
+        MR_Word make__dependencies__V_104_104;
+        MR_Word make__dependencies__V_105_105;
+        MR_Word make__dependencies__V_106_106;
+        MR_Word make__dependencies__V_107_107;
+        MR_Word make__dependencies__V_108_108;
+        MR_Word make__dependencies__V_109_109;
+        MR_Word make__dependencies__V_110_110;
+        MR_Word make__dependencies__V_111_111;
+        MR_Word make__dependencies__V_112_112;
+        MR_Word make__dependencies__V_113_113;
+        MR_Word make__dependencies__V_114_114;
+        MR_Word make__dependencies__V_115_115;
+        MR_Word make__dependencies__V_116_116;
+        MR_Integer make__dependencies__V_117_117;
+        MR_Word make__dependencies__V_118_118;
+        MR_Word make__dependencies__V_119_119;
+        MR_Word make__dependencies__V_120_120;
+        MR_Word make__dependencies__V_121_121;
+        MR_Word make__dependencies__V_122_122;
+        MR_Word make__dependencies__V_123_123;
+        MR_Word make__dependencies__V_124_124;
+        MR_Word make__dependencies__V_125_125;
+        MR_Word make__dependencies__V_126_126;
+        MR_Word make__dependencies__V_127_127;
+        MR_Word make__dependencies__V_129_129;
+        MR_Word make__dependencies__V_130_130;
+        MR_Word make__dependencies__V_131_131;
+        MR_Word make__dependencies__V_132_132;
+        MR_Word make__dependencies__V_133_133;
+        MR_Word make__dependencies__V_134_134;
+        MR_Word make__dependencies__V_135_135;
+        MR_Word make__dependencies__V_136_136;
+        MR_Integer make__dependencies__V_137_137;
+        MR_Word make__dependencies__V_138_138;
+        MR_Word make__dependencies__V_128_128;
+
+        {
+          make__dependencies__non_intermod_direct_imports_8_p_0(make__dependencies__Globals_9, make__dependencies__ModuleIndex_10, &make__dependencies__Success0_17, &make__dependencies__Modules0_18, make__dependencies__STATE_VARIABLE_Info_0_23, &make__dependencies__STATE_VARIABLE_Info_28_28);
+        }
+        make__dependencies__succeeded = (make__dependencies__Success0_17 == (MR_Integer) 0);
+        if (make__dependencies__succeeded)
+          make__dependencies__succeeded = (make__dependencies__KeepGoing_16 == (MR_Integer) 0);
+        if (make__dependencies__succeeded)
+          {
+            *make__dependencies__Success_11 = (MR_Integer) 0;
+            {
+              *make__dependencies__Modules_12 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+            }
+            make__dependencies__STATE_VARIABLE_Info_35_35 = make__dependencies__STATE_VARIABLE_Info_28_28;
+          }
+        else
+          {
+            MR_Word make__dependencies__Success1_19;
+            MR_Word make__dependencies__IntermodModules_20;
+            MR_Word make__dependencies__STATE_VARIABLE_Info_30_30;
+
+            {
+              make__dependencies__intermod_imports_8_p_0(make__dependencies__Globals_9, make__dependencies__ModuleIndex_10, &make__dependencies__Success1_19, &make__dependencies__IntermodModules_20, make__dependencies__STATE_VARIABLE_Info_28_28, &make__dependencies__STATE_VARIABLE_Info_30_30);
+            }
+            make__dependencies__succeeded = (make__dependencies__Success1_19 == (MR_Integer) 0);
+            if (make__dependencies__succeeded)
+              make__dependencies__succeeded = (make__dependencies__KeepGoing_16 == (MR_Integer) 0);
+            if (make__dependencies__succeeded)
+              {
+                *make__dependencies__Success_11 = (MR_Integer) 0;
+                {
+                  *make__dependencies__Modules_12 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+                }
+                make__dependencies__STATE_VARIABLE_Info_35_35 = make__dependencies__STATE_VARIABLE_Info_30_30;
+              }
+            else
+              {
+                MR_Word make__dependencies__Success2_21;
+                MR_Word make__dependencies__Modules1_22;
+                MR_Word make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 14)));
+                MR_Word make__dependencies__V_34_34;
+                MR_Word make__dependencies__V_38_38;
+                MR_Word make__dependencies__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 0)));
+                MR_Word make__dependencies__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 1)));
+                MR_Word make__dependencies__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 2)));
+                MR_Word make__dependencies__V_84_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 3)));
+                MR_Word make__dependencies__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 4)));
+                MR_Word make__dependencies__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 5)));
+                MR_Word make__dependencies__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 6)));
+                MR_Word make__dependencies__V_88_88 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 7)));
+                MR_Word make__dependencies__V_89_89 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 8)));
+                MR_Word make__dependencies__V_90_90 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 9)));
+                MR_Word make__dependencies__V_91_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 10)));
+                MR_Word make__dependencies__V_92_92 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 11)));
+                MR_Word make__dependencies__V_93_93 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 12)));
+                MR_Word make__dependencies__V_94_94 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 13)));
+                MR_Word make__dependencies__V_95_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 15)));
+                MR_Word make__dependencies__V_96_96 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 16)));
+                MR_Word make__dependencies__V_97_97 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 17)));
+                MR_Integer make__dependencies__V_98_98 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 18)));
+                MR_Word make__dependencies__V_99_99 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_30_30, (MR_Integer) 19)));
+
+                {
+                  make__dependencies__V_34_34 = mercury__sparse_bitset__union_2_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, make__dependencies__Modules0_18, make__dependencies__IntermodModules_20);
+                }
+                {
+                  make__dependencies__deps_set_foldl3_maybe_stop_at_error__ho7_11_p_0(make__dependencies__V_32_32, make__dependencies__Globals_9, make__dependencies__IntermodModules_20, &make__dependencies__Success2_21, make__dependencies__V_34_34, &make__dependencies__Modules1_22, make__dependencies__STATE_VARIABLE_Info_30_30, &make__dependencies__STATE_VARIABLE_Info_35_35);
+                }
+                {
+                  make__dependencies__V_38_38 = mercury__bool__and_2_f_0(make__dependencies__Success0_17, make__dependencies__Success1_19);
+                }
+                {
+                  *make__dependencies__Success_11 = mercury__bool__and_2_f_0(make__dependencies__V_38_38, make__dependencies__Success2_21);
+                }
+                {
+                  *make__dependencies__Modules_12 = mercury__sparse_bitset__delete_2_f_0((MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__Modules1_22, ((MR_Box) (make__dependencies__ModuleIndex_10)));
+                }
+              }
+          }
+        {
+          make__dependencies__V_40_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_40_40, 0) = ((MR_Box) (*make__dependencies__Success_11));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_40_40, 1) = ((MR_Box) (*make__dependencies__Modules_12));
+        }
+        make__dependencies__V_100_100 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 0)));
+        make__dependencies__V_101_101 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 1)));
+        make__dependencies__V_102_102 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 2)));
+        make__dependencies__V_103_103 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 3)));
+        make__dependencies__V_104_104 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 4)));
+        make__dependencies__V_105_105 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 5)));
+        make__dependencies__V_106_106 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 6)));
+        make__dependencies__V_107_107 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 7)));
+        make__dependencies__V_108_108 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 8)));
+        make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 9)));
+        make__dependencies__V_109_109 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 10)));
+        make__dependencies__V_110_110 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 11)));
+        make__dependencies__V_111_111 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 12)));
+        make__dependencies__V_112_112 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 13)));
+        make__dependencies__V_113_113 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 14)));
+        make__dependencies__V_114_114 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 15)));
+        make__dependencies__V_115_115 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 16)));
+        make__dependencies__V_116_116 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 17)));
+        make__dependencies__V_117_117 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 18)));
+        make__dependencies__V_118_118 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 19)));
+        {
+          make__dependencies__V_42_42 = mercury__map__f_101_108_101_109_32_58_61_3_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[5], ((MR_Box) (make__dependencies__ModuleIndex_10)), make__dependencies__V_41_41, ((MR_Box) (make__dependencies__V_40_40)));
+        }
+        make__dependencies__V_119_119 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 0)));
+        make__dependencies__V_120_120 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 1)));
+        make__dependencies__V_121_121 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 2)));
+        make__dependencies__V_122_122 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 3)));
+        make__dependencies__V_123_123 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 4)));
+        make__dependencies__V_124_124 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 5)));
+        make__dependencies__V_125_125 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 6)));
+        make__dependencies__V_126_126 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 7)));
+        make__dependencies__V_127_127 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 8)));
+        make__dependencies__V_128_128 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 9)));
+        make__dependencies__V_129_129 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 10)));
+        make__dependencies__V_130_130 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 11)));
+        make__dependencies__V_131_131 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 12)));
+        make__dependencies__V_132_132 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 13)));
+        make__dependencies__V_133_133 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 14)));
+        make__dependencies__V_134_134 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 15)));
+        make__dependencies__V_135_135 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 16)));
+        make__dependencies__V_136_136 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 17)));
+        make__dependencies__V_137_137 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 18)));
+        make__dependencies__V_138_138 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_35_35, (MR_Integer) 19)));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+          *make__dependencies__STATE_VARIABLE_Info_24 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (make__dependencies__V_119_119));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (make__dependencies__V_120_120));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (make__dependencies__V_121_121));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (make__dependencies__V_122_122));
+          MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (make__dependencies__V_123_123));
+          MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (make__dependencies__V_124_124));
+          MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (make__dependencies__V_125_125));
+          MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (make__dependencies__V_126_126));
+          MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (make__dependencies__V_127_127));
+          MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (make__dependencies__V_42_42));
+          MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (make__dependencies__V_129_129));
+          MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (make__dependencies__V_130_130));
+          MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (make__dependencies__V_131_131));
+          MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (make__dependencies__V_132_132));
+          MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (make__dependencies__V_133_133));
+          MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (make__dependencies__V_134_134));
+          MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (make__dependencies__V_135_135));
+          MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (make__dependencies__V_136_136));
+          MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (make__dependencies__V_137_137));
+          MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (make__dependencies__V_138_138));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__parents_8_p_0(
+  MR_Word make__dependencies___Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word * make__dependencies__AncestorIndices_11,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_17)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_112_97_114_101_110_116_115_95_95_91_49_93_95_48_8_p_0(make__dependencies__ModuleIndex_10, make__dependencies__HeadVar__3_3, make__dependencies__AncestorIndices_11, make__dependencies__STATE_VARIABLE_Info_0_16, make__dependencies__STATE_VARIABLE_Info_17);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__self_8_p_0(
+  MR_Word make__dependencies___Globals_9,
+  MR_Word make__dependencies__ModuleIndex_10,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word * make__dependencies__HeadVar__4_4,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_13,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_14)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_108_102_95_95_91_49_93_95_48_8_p_0(make__dependencies__ModuleIndex_10, make__dependencies__HeadVar__3_3, make__dependencies__HeadVar__4_4, make__dependencies__STATE_VARIABLE_Info_0_13, make__dependencies__STATE_VARIABLE_Info_14);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__no_deps_8_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_17,
+  MR_Word make__dependencies__HeadVar__1_9,
+  MR_Word make__dependencies__HeadVar__2_10,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word * make__dependencies__HeadVar__4_4,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_13,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_14)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    {
+      make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_110_111_95_100_101_112_115_95_95_91_50_44_32_51_93_95_48_8_p_0(make__dependencies__TypeInfo_for_T_17, make__dependencies__HeadVar__3_3, make__dependencies__HeadVar__4_4, make__dependencies__STATE_VARIABLE_Info_0_13, make__dependencies__STATE_VARIABLE_Info_14);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__map_find_module_deps_10_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv7_Success_14;
+    MR_Word make__dependencies__conv6_Deps_16;
+    MR_Word make__dependencies__conv5_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__union_deps_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv7_Success_14, ((MR_Word) make__dependencies__wrapper_arg_4), &make__dependencies__conv6_Deps_16, ((MR_Word) make__dependencies__wrapper_arg_6), &make__dependencies__conv5_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv7_Success_14));
+    *make__dependencies__wrapper_arg_5 = ((MR_Box) (make__dependencies__conv6_Deps_16));
+    *make__dependencies__wrapper_arg_7 = ((MR_Box) (make__dependencies__conv5_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__map_find_module_deps_10_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_52,
+  MR_Word make__dependencies__FindDeps2_11,
+  MR_Word make__dependencies__FindDeps1_12,
+  MR_Word make__dependencies__Globals_13,
+  MR_Word make__dependencies__ModuleIndex_14,
+  MR_Word * make__dependencies__Success_15,
+  MR_Word * make__dependencies__Result_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_23,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_24)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__KeepGoing_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 14)));
+    MR_Word make__dependencies__Success0_20;
+    MR_Word make__dependencies__Modules0_21;
+    MR_Word make__dependencies__STATE_VARIABLE_Info_27_27;
+    MR_Word make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 6)));
+    MR_Word make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 7)));
+    MR_Word make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_50_50 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_23, (MR_Integer) 19)));
+    void MR_CALL (* make__dependencies__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), make__dependencies__FindDeps1_12, (MR_Integer) 1)));
+    MR_Box make__dependencies__conv4_Success0_20;
+    MR_Box make__dependencies__conv3_Modules0_21;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_Info_27_27;
+    MR_Box make__dependencies__conv1_STATE_VARIABLE_IO_28_28;
+
+    {
+      make__dependencies__func_0(((MR_Box) make__dependencies__FindDeps1_12), ((MR_Box) (make__dependencies__Globals_13)), ((MR_Box) (make__dependencies__ModuleIndex_14)), &make__dependencies__conv4_Success0_20, &make__dependencies__conv3_Modules0_21, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_23)), &make__dependencies__conv2_STATE_VARIABLE_Info_27_27, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv1_STATE_VARIABLE_IO_28_28);
+    }
+    make__dependencies__Success0_20 = ((MR_Word) make__dependencies__conv4_Success0_20);
+    make__dependencies__Modules0_21 = ((MR_Word) make__dependencies__conv3_Modules0_21);
+    make__dependencies__STATE_VARIABLE_Info_27_27 = ((MR_Word) make__dependencies__conv2_STATE_VARIABLE_Info_27_27);
+    make__dependencies__succeeded = (make__dependencies__Success0_20 == (MR_Integer) 0);
+    if (make__dependencies__succeeded)
+      make__dependencies__succeeded = (make__dependencies__KeepGoing_19 == (MR_Integer) 0);
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__Success_15 = (MR_Integer) 0;
+        {
+          *make__dependencies__Result_16 = mercury__sparse_bitset__init_0_f_0(make__dependencies__TypeInfo_for_T_52);
+        }
+        *make__dependencies__STATE_VARIABLE_Info_24 = make__dependencies__STATE_VARIABLE_Info_27_27;
+      }
+    else
+      {
+        MR_Word make__dependencies__TypeInfo_64_64;
+        MR_Word make__dependencies__Success1_22;
+        MR_Word make__dependencies__V_29_29;
+        MR_Word make__dependencies__V_30_30;
+
+        {
+          make__dependencies__V_29_29 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_29_29, 0) = ((MR_Box) (&make__dependencies_scalar_common_13[1]));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_29_29, 1) = ((MR_Box) (make__dependencies__map_find_module_deps_10_p_0_1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_29_29, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_29_29, 3) = ((MR_Box) (make__dependencies__TypeInfo_for_T_52));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_29_29, 4) = ((MR_Box) (make__dependencies__FindDeps2_11));
+        }
+        {
+          make__dependencies__V_30_30 = mercury__sparse_bitset__init_0_f_0(make__dependencies__TypeInfo_for_T_52);
+        }
+        {
+          make__dependencies__TypeInfo_64_64 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__TypeInfo_64_64, 0) = ((MR_Box) (&mercury__sparse_bitset__sparse_bitset__type_ctor_info_sparse_bitset_1));
+          MR_hl_field(MR_mktag(0), make__dependencies__TypeInfo_64_64, 1) = ((MR_Box) (make__dependencies__TypeInfo_for_T_52));
+        }
+        {
+          make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_56_95_95_91_49_44_32_50_44_32_51_93_95_48_11_p_0(make__dependencies__TypeInfo_64_64, make__dependencies__KeepGoing_19, make__dependencies__V_29_29, make__dependencies__Globals_13, make__dependencies__Modules0_21, &make__dependencies__Success1_22, make__dependencies__V_30_30, make__dependencies__Result_16, make__dependencies__STATE_VARIABLE_Info_27_27, make__dependencies__STATE_VARIABLE_Info_24);
+        }
+        {
+          *make__dependencies__Success_15 = mercury__bool__and_2_f_0(make__dependencies__Success0_20, make__dependencies__Success1_22);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__files_of_2_10_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv9_STATE_VARIABLE_Set_11;
+    MR_Word make__dependencies__conv8_STATE_VARIABLE_Info_13;
+
+    {
+      make__dependencies__dependency_files_to_index_set_2_5_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv9_STATE_VARIABLE_Set_11, ((MR_Word) make__dependencies__wrapper_arg_4), &make__dependencies__conv8_STATE_VARIABLE_Info_13);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv9_STATE_VARIABLE_Set_11));
+    *make__dependencies__wrapper_arg_5 = ((MR_Box) (make__dependencies__conv8_STATE_VARIABLE_Info_13));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__files_of_2_10_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7,
+  MR_Box make__dependencies__wrapper_arg_8,
+  MR_Box * make__dependencies__wrapper_arg_9)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv7_HeadVar__4_58;
+    MR_Word make__dependencies__conv6_HeadVar__6_60;
+    MR_Word make__dependencies__conv5_HeadVar__8_62;
+
+    {
+      make__dependencies__IntroducedFrom__pred__files_of_2__643__1_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv7_HeadVar__4_58, ((MR_Word) make__dependencies__wrapper_arg_4), &make__dependencies__conv6_HeadVar__6_60, ((MR_Word) make__dependencies__wrapper_arg_6), &make__dependencies__conv5_HeadVar__8_62);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv7_HeadVar__4_58));
+    *make__dependencies__wrapper_arg_5 = ((MR_Box) (make__dependencies__conv6_HeadVar__6_60));
+    *make__dependencies__wrapper_arg_7 = ((MR_Box) (make__dependencies__conv5_HeadVar__8_62));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__files_of_2_10_p_0(
+  MR_Word make__dependencies__FindFiles_11,
+  MR_Word make__dependencies__FindDeps_12,
+  MR_Word make__dependencies__Globals_13,
+  MR_Word make__dependencies__ModuleIndex_14,
+  MR_Word * make__dependencies__Success_15,
+  MR_Word * make__dependencies__DepIndices_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_24,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_25)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__KeepGoing_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 14)));
+    MR_Word make__dependencies__Success0_20;
+    MR_Word make__dependencies__ModuleIndices_21;
+    MR_Word make__dependencies__STATE_VARIABLE_Info_28_28;
+    MR_Word make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 6)));
+    MR_Word make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 7)));
+    MR_Word make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_53_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_24, (MR_Integer) 19)));
+    void MR_CALL (* make__dependencies__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), make__dependencies__FindDeps_12, (MR_Integer) 1)));
+    MR_Box make__dependencies__conv4_Success0_20;
+    MR_Box make__dependencies__conv3_ModuleIndices_21;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_Info_28_28;
+    MR_Box make__dependencies__conv1_STATE_VARIABLE_IO_29_29;
+
+    {
+      make__dependencies__func_0(((MR_Box) make__dependencies__FindDeps_12), ((MR_Box) (make__dependencies__Globals_13)), ((MR_Box) (make__dependencies__ModuleIndex_14)), &make__dependencies__conv4_Success0_20, &make__dependencies__conv3_ModuleIndices_21, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_24)), &make__dependencies__conv2_STATE_VARIABLE_Info_28_28, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv1_STATE_VARIABLE_IO_29_29);
+    }
+    make__dependencies__Success0_20 = ((MR_Word) make__dependencies__conv4_Success0_20);
+    make__dependencies__ModuleIndices_21 = ((MR_Word) make__dependencies__conv3_ModuleIndices_21);
+    make__dependencies__STATE_VARIABLE_Info_28_28 = ((MR_Word) make__dependencies__conv2_STATE_VARIABLE_Info_28_28);
+    make__dependencies__succeeded = (make__dependencies__Success0_20 == (MR_Integer) 0);
+    if (make__dependencies__succeeded)
+      make__dependencies__succeeded = (make__dependencies__KeepGoing_19 == (MR_Integer) 0);
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__Success_15 = (MR_Integer) 0;
+        {
+          *make__dependencies__DepIndices_16 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0);
+        }
+        *make__dependencies__STATE_VARIABLE_Info_25 = make__dependencies__STATE_VARIABLE_Info_28_28;
+      }
+    else
+      {
+        MR_Word make__dependencies__TypeCtorInfo_66_66;
+        MR_Word make__dependencies__Success1_22;
+        MR_Word make__dependencies__FileNames_23;
+        MR_Word make__dependencies__V_30_30;
+        MR_Word make__dependencies__V_31_31;
+        MR_Word make__dependencies__STATE_VARIABLE_Info_32_32;
+        MR_Word make__dependencies__V_34_34;
+        MR_Word make__dependencies__V_77_77;
+        MR_Box make__dependencies__conv11_DepIndices_16;
+        MR_Box make__dependencies__conv10_STATE_VARIABLE_Info_25;
+
+        {
+          make__dependencies__V_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_30_30, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[3]));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_30_30, 1) = ((MR_Box) (make__dependencies__files_of_2_10_p_0_1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_30_30, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_30_30, 3) = ((MR_Box) (make__dependencies__FindFiles_11));
+        }
+        make__dependencies__TypeCtorInfo_66_66 = (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0;
+        {
+          make__dependencies__V_31_31 = mercury__set__init_0_f_0(make__dependencies__TypeCtorInfo_66_66);
+        }
+        {
+          make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_112_115_95_115_101_116_95_102_111_108_100_108_51_95_109_97_121_98_101_95_115_116_111_112_95_97_116_95_101_114_114_111_114_95_95_104_111_57_95_95_91_49_93_95_48_11_p_0(make__dependencies__KeepGoing_19, make__dependencies__V_30_30, make__dependencies__Globals_13, make__dependencies__ModuleIndices_21, &make__dependencies__Success1_22, make__dependencies__V_31_31, &make__dependencies__FileNames_23, make__dependencies__STATE_VARIABLE_Info_28_28, &make__dependencies__STATE_VARIABLE_Info_32_32);
+        }
+        {
+          *make__dependencies__Success_15 = mercury__bool__and_2_f_0(make__dependencies__Success0_20, make__dependencies__Success1_22);
+        }
+        {
+          make__dependencies__V_34_34 = mercury__set__to_sorted_list_1_f_0(make__dependencies__TypeCtorInfo_66_66, make__dependencies__FileNames_23);
+        }
+        {
+          make__dependencies__V_77_77 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0);
+        }
+        {
+          mercury__list__foldl2_6_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0, (MR_Word) &make__dependencies_scalar_common_1[6], (MR_Word) &make__make__type_ctor_info_make_info_0, (MR_Word) &make__dependencies_scalar_common_2[20], make__dependencies__V_34_34, ((MR_Box) (make__dependencies__V_77_77)), &make__dependencies__conv11_DepIndices_16, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_32_32)), &make__dependencies__conv10_STATE_VARIABLE_Info_25);
+        }
+        *make__dependencies__DepIndices_16 = ((MR_Word) make__dependencies__conv11_DepIndices_16);
+        *make__dependencies__STATE_VARIABLE_Info_25 = ((MR_Word) make__dependencies__conv10_STATE_VARIABLE_Info_25);
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of_3_6_p_0(
+  MR_Word make__dependencies__FileType_7,
+  MR_Word make__dependencies__ModuleIndex_8,
+  MR_Word make__dependencies__STATE_VARIABLE_Set_0_14,
+  MR_Word * make__dependencies__STATE_VARIABLE_Set_15,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_17)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__ModuleName_11;
+    MR_Word make__dependencies__TargetFile_12;
+    MR_Word make__dependencies__TargetFileIndex_13;
+    MR_Word make__dependencies__V_18_18;
+    MR_Integer make__dependencies__I_25 = (MR_Integer) make__dependencies__ModuleIndex_8;
+    MR_Word make__dependencies__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 6)));
+    MR_Box make__dependencies__V_27_27 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 7)));
+    MR_Word make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_45_45 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_16, (MR_Integer) 19)));
+    MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, (MR_Integer) 0)));
+    MR_Integer make__dependencies__V_48_48 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, (MR_Integer) 2)));
+    MR_Box make__dependencies__conv0_ModuleName_11;
+
+    {
+      make__dependencies__conv0_ModuleName_11 = mercury__version_array__elem_2_f_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, make__dependencies__I_25, make__dependencies__V_27_27);
+    }
+    make__dependencies__ModuleName_11 = ((MR_Word) make__dependencies__conv0_ModuleName_11);
+    {
+      make__dependencies__V_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_18_18, 0) = ((MR_Box) (make__dependencies__ModuleName_11));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_18_18, 1) = ((MR_Box) (make__dependencies__FileType_7));
+    }
+    {
+      make__dependencies__TargetFile_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__TargetFile_12, 0) = ((MR_Box) (make__dependencies__V_18_18));
+    }
+    {
+      make__dependencies__dependency_file_to_index_4_p_0(make__dependencies__TargetFile_12, &make__dependencies__TargetFileIndex_13, make__dependencies__STATE_VARIABLE_Info_0_16, make__dependencies__STATE_VARIABLE_Info_17);
+    }
+    {
+      mercury__sparse_bitset__insert_3_p_0((MR_Word) &make__dependencies_scalar_common_1[2], ((MR_Box) (make__dependencies__TargetFileIndex_13)), make__dependencies__STATE_VARIABLE_Set_0_14, make__dependencies__STATE_VARIABLE_Set_15);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of_2_10_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv6_STATE_VARIABLE_Set_15;
+    MR_Word make__dependencies__conv5_STATE_VARIABLE_Info_17;
+
+    {
+      make__dependencies__of_3_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv6_STATE_VARIABLE_Set_15, ((MR_Word) make__dependencies__wrapper_arg_4), &make__dependencies__conv5_STATE_VARIABLE_Info_17);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv6_STATE_VARIABLE_Set_15));
+    *make__dependencies__wrapper_arg_5 = ((MR_Box) (make__dependencies__conv5_STATE_VARIABLE_Info_17));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__of_2_10_p_0(
+  MR_Word make__dependencies__FileType_11,
+  MR_Word make__dependencies__FindDeps_12,
+  MR_Word make__dependencies__Globals_13,
+  MR_Word make__dependencies__ModuleIndex_14,
+  MR_Word * make__dependencies__Success_15,
+  MR_Word * make__dependencies__TargetFiles_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_21)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__ModuleIndexs_19;
+    MR_Word make__dependencies__STATE_VARIABLE_Info_24_24;
+    MR_Word make__dependencies__V_26_26;
+    MR_Word make__dependencies__V_27_27;
+    void MR_CALL (* make__dependencies__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), make__dependencies__FindDeps_12, (MR_Integer) 1)));
+    MR_Box make__dependencies__conv4_Success_15;
+    MR_Box make__dependencies__conv3_ModuleIndexs_19;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_Info_24_24;
+    MR_Box make__dependencies__conv1_STATE_VARIABLE_IO_23;
+    MR_Box make__dependencies__conv8_TargetFiles_16;
+    MR_Box make__dependencies__conv7_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__func_0(((MR_Box) make__dependencies__FindDeps_12), ((MR_Box) (make__dependencies__Globals_13)), ((MR_Box) (make__dependencies__ModuleIndex_14)), &make__dependencies__conv4_Success_15, &make__dependencies__conv3_ModuleIndexs_19, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_20)), &make__dependencies__conv2_STATE_VARIABLE_Info_24_24, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv1_STATE_VARIABLE_IO_23);
+    }
+    *make__dependencies__Success_15 = ((MR_Word) make__dependencies__conv4_Success_15);
+    make__dependencies__ModuleIndexs_19 = ((MR_Word) make__dependencies__conv3_ModuleIndexs_19);
+    make__dependencies__STATE_VARIABLE_Info_24_24 = ((MR_Word) make__dependencies__conv2_STATE_VARIABLE_Info_24_24);
+    {
+      make__dependencies__V_26_26 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 0) = ((MR_Box) (&make__dependencies_scalar_common_15[0]));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 1) = ((MR_Box) (make__dependencies__of_2_10_p_0_1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_26_26, 3) = ((MR_Box) (make__dependencies__FileType_11));
+    }
+    {
+      make__dependencies__V_27_27 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0);
+    }
+    {
+      mercury__sparse_bitset__foldl2_6_p_0((MR_Word) &make__dependencies_scalar_common_1[6], (MR_Word) &make__make__type_ctor_info_make_info_0, (MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__V_26_26, make__dependencies__ModuleIndexs_19, ((MR_Box) (make__dependencies__V_27_27)), &make__dependencies__conv8_TargetFiles_16, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_24_24)), &make__dependencies__conv7_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__TargetFiles_16 = ((MR_Word) make__dependencies__conv8_TargetFiles_16);
+    *make__dependencies__STATE_VARIABLE_Info_21 = ((MR_Word) make__dependencies__conv7_STATE_VARIABLE_Info_21);
+  }
+}
+
+static void MR_CALL 
+make__dependencies__imports_0_f_0_6(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv17_Success_15;
+    MR_Word make__dependencies__conv16_TargetFiles_16;
+    MR_Word make__dependencies__conv15_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv17_Success_15, &make__dependencies__conv16_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv15_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv17_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv16_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv15_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__imports_0_f_0_5(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv14_Success_11;
+    MR_Word make__dependencies__conv13_Modules_12;
+    MR_Word make__dependencies__conv12_STATE_VARIABLE_Info_16;
+
+    {
+      make__dependencies__indirect_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv14_Success_11, &make__dependencies__conv13_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv12_STATE_VARIABLE_Info_16);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv14_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv13_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv12_STATE_VARIABLE_Info_16));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__imports_0_f_0_4(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv11_Success_15;
+    MR_Word make__dependencies__conv10_TargetFiles_16;
+    MR_Word make__dependencies__conv9_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv11_Success_15, &make__dependencies__conv10_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv9_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv11_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv10_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv9_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__imports_0_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv8_Success_11;
+    MR_Word make__dependencies__conv7_Modules_12;
+    MR_Word make__dependencies__conv6_STATE_VARIABLE_Info_24;
+
+    {
+      make__dependencies__direct_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv8_Success_11, &make__dependencies__conv7_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv6_STATE_VARIABLE_Info_24);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv8_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv7_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv6_STATE_VARIABLE_Info_24));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__imports_0_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_15;
+    MR_Word make__dependencies__conv4_TargetFiles_16;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_15, &make__dependencies__conv4_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__imports_0_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_HeadVar__3_3;
+    MR_Word make__dependencies__conv1_AncestorIndices_11;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_17;
+
+    {
+      make__dependencies__parents_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_HeadVar__3_3, &make__dependencies__conv1_AncestorIndices_11, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_17);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_HeadVar__3_3));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_AncestorIndices_11));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_17));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__imports_0_f_0(void)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__1_1;
+
+    {
+      make__dependencies__HeadVar__1_1 = make__dependencies__combine_deps_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, (MR_Word) MR_mkword(MR_mktag(1), &make__dependencies_scalar_common_1[16]));
+    }
+    return make__dependencies__HeadVar__1_1;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__base_compiled_code_dependencies_1_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv8_HeadVar__5_86;
+    MR_Word make__dependencies__conv7_HeadVar__6_87;
+    MR_Word make__dependencies__conv6_HeadVar__8_89;
+
+    {
+      make__dependencies__IntroducedFrom__pred__base_compiled_code_dependencies__574__1_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv8_HeadVar__5_86, &make__dependencies__conv7_HeadVar__6_87, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv6_HeadVar__8_89);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv8_HeadVar__5_86));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv7_HeadVar__6_87));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv6_HeadVar__8_89));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__base_compiled_code_dependencies_1_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_HeadVar__3_3;
+    MR_Word make__dependencies__conv4_HeadVar__4_4;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_14;
+
+    {
+      make__dependencies__self_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_HeadVar__3_3, &make__dependencies__conv4_HeadVar__4_4, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_14);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_HeadVar__3_3));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_HeadVar__4_4));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_14));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__base_compiled_code_dependencies_1_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_HeadVar__3_36;
+    MR_Word make__dependencies__conv1_HeadVar__4_37;
+    MR_Word make__dependencies__conv0_HeadVar__6_39;
+
+    {
+      make__dependencies__IntroducedFrom__pred__base_compiled_code_dependencies__568__1_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_HeadVar__3_36, &make__dependencies__conv1_HeadVar__4_37, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_HeadVar__6_39);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_HeadVar__3_36));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_HeadVar__4_37));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_HeadVar__6_39));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__base_compiled_code_dependencies_1_f_0(
+  MR_Word make__dependencies__TrackFlags_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Deps_4;
+    MR_Word make__dependencies__Deps0_5;
+    MR_Word make__dependencies__V_8_8;
+    MR_Word make__dependencies__V_9_9;
+    MR_Word make__dependencies__V_12_12;
+    MR_Word make__dependencies__V_13_13;
+    MR_Word make__dependencies__V_16_16;
+    MR_Word make__dependencies__V_17_17;
+    MR_Word make__dependencies__V_20_20;
+    MR_Word make__dependencies__V_21_21;
+    MR_Word make__dependencies__V_22_22;
+    MR_Word make__dependencies__V_24_24;
+
+    switch (make__dependencies__TrackFlags_3) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        make__dependencies__Deps0_5 = (MR_Word) &make__dependencies_scalar_common_2[15];
+        break;
+      case (MR_Integer) 1:
+        {
+          {
+            make__dependencies__Deps0_5 = make__dependencies__of__ho15_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 8)));
+          }
+        }
+        break;
+    }
+    {
+      make__dependencies__V_9_9 = make__dependencies__of__ho15_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)));
+    }
+    {
+      make__dependencies__V_13_13 = make__dependencies__files_of__ho14_2_f_0();
+    }
+    {
+      make__dependencies__V_17_17 = make__dependencies__files_of__ho13_2_f_0();
+    }
+    {
+      make__dependencies__V_22_22 = make__dependencies__imports_0_f_0();
+    }
+    {
+      make__dependencies__V_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_21_21, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[2]));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_21_21, 1) = ((MR_Box) (make__dependencies__base_compiled_code_dependencies_1_f_0_3));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_21_21, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_21_21, 3) = ((MR_Box) (make__dependencies__V_22_22));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_21_21, 4) = ((MR_Box) (&make__dependencies_scalar_common_2[16]));
+    }
+    {
+      make__dependencies__V_24_24 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), make__dependencies__V_24_24, 0) = ((MR_Box) (make__dependencies__Deps0_5));
+      MR_hl_field(MR_mktag(1), make__dependencies__V_24_24, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+    }
+    {
+      make__dependencies__V_20_20 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), make__dependencies__V_20_20, 0) = ((MR_Box) (make__dependencies__V_21_21));
+      MR_hl_field(MR_mktag(1), make__dependencies__V_20_20, 1) = ((MR_Box) (make__dependencies__V_24_24));
+    }
+    {
+      make__dependencies__V_16_16 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), make__dependencies__V_16_16, 0) = ((MR_Box) (make__dependencies__V_17_17));
+      MR_hl_field(MR_mktag(1), make__dependencies__V_16_16, 1) = ((MR_Box) (make__dependencies__V_20_20));
+    }
+    {
+      make__dependencies__V_12_12 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), make__dependencies__V_12_12, 0) = ((MR_Box) (make__dependencies__V_13_13));
+      MR_hl_field(MR_mktag(1), make__dependencies__V_12_12, 1) = ((MR_Box) (make__dependencies__V_16_16));
+    }
+    {
+      make__dependencies__V_8_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      MR_hl_field(MR_mktag(1), make__dependencies__V_8_8, 0) = ((MR_Box) (make__dependencies__V_9_9));
+      MR_hl_field(MR_mktag(1), make__dependencies__V_8_8, 1) = ((MR_Box) (make__dependencies__V_12_12));
+    }
+    {
+      make__dependencies__Deps_4 = make__dependencies__combine_deps_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__V_8_8);
+    }
+    return make__dependencies__Deps_4;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__compiled_code_dependencies_1_f_0_4(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv11_HeadVar__5_59;
+    MR_Word make__dependencies__conv10_HeadVar__6_60;
+    MR_Word make__dependencies__conv9_HeadVar__8_62;
+
+    {
+      make__dependencies__IntroducedFrom__pred__compiled_code_dependencies__539__1_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv11_HeadVar__5_59, &make__dependencies__conv10_HeadVar__6_60, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv9_HeadVar__8_62);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv11_HeadVar__5_59));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv10_HeadVar__6_60));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv9_HeadVar__8_62));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__compiled_code_dependencies_1_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv8_HeadVar__5_68;
+    MR_Word make__dependencies__conv7_HeadVar__6_69;
+    MR_Word make__dependencies__conv6_HeadVar__8_71;
+
+    {
+      make__dependencies__IntroducedFrom__pred__compiled_code_dependencies__540__1_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv8_HeadVar__5_68, &make__dependencies__conv7_HeadVar__6_69, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv6_HeadVar__8_71);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv8_HeadVar__5_68));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv7_HeadVar__6_69));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv6_HeadVar__8_71));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__compiled_code_dependencies_1_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_11;
+    MR_Word make__dependencies__conv4_Modules_12;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_18;
+
+    {
+      make__dependencies__intermod_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_11, &make__dependencies__conv4_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_18);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_18));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__compiled_code_dependencies_1_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_HeadVar__3_3;
+    MR_Word make__dependencies__conv1_AncestorIndices_11;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_17;
+
+    {
+      make__dependencies__parents_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_HeadVar__3_3, &make__dependencies__conv1_AncestorIndices_11, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_17);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_HeadVar__3_3));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_AncestorIndices_11));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_17));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__compiled_code_dependencies_1_f_0(
+  MR_Word make__dependencies__Globals_3)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Deps_4;
+    MR_Word make__dependencies__IntermodOpt_5;
+    MR_Word make__dependencies__IntermodAnalysis_6;
+    MR_Word make__dependencies__TrackFlags_7;
+    MR_Word make__dependencies__AnyIntermod_8;
+    MR_Word make__dependencies__Deps0_9;
+
+    {
+      libs__globals__lookup_bool_option_3_p_0(make__dependencies__Globals_3, (MR_Integer) 321, &make__dependencies__IntermodOpt_5);
+    }
+    {
+      libs__globals__lookup_bool_option_3_p_0(make__dependencies__Globals_3, (MR_Integer) 326, &make__dependencies__IntermodAnalysis_6);
+    }
+    {
+      libs__globals__lookup_bool_option_3_p_0(make__dependencies__Globals_3, (MR_Integer) 614, &make__dependencies__TrackFlags_7);
+    }
+    {
+      make__dependencies__AnyIntermod_8 = mercury__bool__or_2_f_0(make__dependencies__IntermodOpt_5, make__dependencies__IntermodAnalysis_6);
+    }
+    switch (make__dependencies__AnyIntermod_8) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        {
+          make__dependencies__Deps0_9 = make__dependencies__base_compiled_code_dependencies_1_f_0(make__dependencies__TrackFlags_7);
+        }
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word make__dependencies__V_13_13;
+          MR_Word make__dependencies__V_14_14;
+          MR_Word make__dependencies__V_17_17;
+          MR_Word make__dependencies__V_18_18;
+          MR_Word make__dependencies__V_21_21;
+          MR_Word make__dependencies__V_22_22;
+          MR_Word make__dependencies__V_23_23;
+          MR_Word make__dependencies__V_27_27;
+          MR_Word make__dependencies__V_28_28;
+
+          {
+            make__dependencies__V_14_14 = make__dependencies__of__ho15_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 6)));
+          }
+          {
+            make__dependencies__V_18_18 = make__dependencies__of__ho16_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 6)));
+          }
+          {
+            make__dependencies__V_23_23 = make__dependencies__imports_0_f_0();
+          }
+          {
+            make__dependencies__V_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+            MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 0) = ((MR_Box) (&make__dependencies_scalar_common_14[2]));
+            MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 1) = ((MR_Box) (make__dependencies__compiled_code_dependencies_1_f_0_4));
+            MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+            MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 3) = ((MR_Box) (make__dependencies__V_23_23));
+            MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 4) = ((MR_Box) (&make__dependencies_scalar_common_6[5]));
+          }
+          {
+            make__dependencies__V_28_28 = make__dependencies__base_compiled_code_dependencies_1_f_0(make__dependencies__TrackFlags_7);
+          }
+          {
+            make__dependencies__V_27_27 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_27_27, 0) = ((MR_Box) (make__dependencies__V_28_28));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_27_27, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            make__dependencies__V_21_21 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_21_21, 0) = ((MR_Box) (make__dependencies__V_22_22));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_21_21, 1) = ((MR_Box) (make__dependencies__V_27_27));
+          }
+          {
+            make__dependencies__V_17_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_17_17, 0) = ((MR_Box) (make__dependencies__V_18_18));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_17_17, 1) = ((MR_Box) (make__dependencies__V_21_21));
+          }
+          {
+            make__dependencies__V_13_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_13_13, 0) = ((MR_Box) (make__dependencies__V_14_14));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_13_13, 1) = ((MR_Box) (make__dependencies__V_17_17));
+          }
+          {
+            make__dependencies__Deps0_9 = make__dependencies__combine_deps_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__V_13_13);
+          }
+        }
+        break;
+    }
+    switch (make__dependencies__IntermodAnalysis_6) {
+      default: /*NOTREACHED*/ MR_assert(0);
+      case (MR_Integer) 0:
+        make__dependencies__Deps_4 = make__dependencies__Deps0_9;
+        break;
+      case (MR_Integer) 1:
+        {
+          MR_Word make__dependencies__V_30_30;
+          MR_Word make__dependencies__V_31_31;
+          MR_Word make__dependencies__V_34_34;
+          MR_Word make__dependencies__V_35_35;
+          MR_Word make__dependencies__V_38_38;
+
+          {
+            make__dependencies__V_31_31 = make__dependencies__of__ho15_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 7)));
+          }
+          {
+            make__dependencies__V_35_35 = make__dependencies__of__ho11_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 7)));
+          }
+          {
+            make__dependencies__V_38_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_38_38, 0) = ((MR_Box) (make__dependencies__Deps0_9));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_38_38, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+          }
+          {
+            make__dependencies__V_34_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_34_34, 0) = ((MR_Box) (make__dependencies__V_35_35));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_34_34, 1) = ((MR_Box) (make__dependencies__V_38_38));
+          }
+          {
+            make__dependencies__V_30_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_30_30, 0) = ((MR_Box) (make__dependencies__V_31_31));
+            MR_hl_field(MR_mktag(1), make__dependencies__V_30_30, 1) = ((MR_Box) (make__dependencies__V_34_34));
+          }
+          {
+            make__dependencies__Deps_4 = make__dependencies__combine_deps_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__V_30_30);
+          }
+        }
+        break;
+    }
+    return make__dependencies__Deps_4;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_8(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv23_Success_15;
+    MR_Word make__dependencies__conv22_TargetFiles_16;
+    MR_Word make__dependencies__conv21_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv23_Success_15, &make__dependencies__conv22_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv21_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv23_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv22_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv21_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_7(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv20_Success_11;
+    MR_Word make__dependencies__conv19_Modules_12;
+    MR_Word make__dependencies__conv18_STATE_VARIABLE_Info_16;
+
+    {
+      make__dependencies__indirect_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv20_Success_11, &make__dependencies__conv19_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv18_STATE_VARIABLE_Info_16);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv20_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv19_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv18_STATE_VARIABLE_Info_16));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_6(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv17_Success_15;
+    MR_Word make__dependencies__conv16_TargetFiles_16;
+    MR_Word make__dependencies__conv15_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv17_Success_15, &make__dependencies__conv16_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv15_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv17_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv16_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv15_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_5(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv14_Success_11;
+    MR_Word make__dependencies__conv13_Modules_12;
+    MR_Word make__dependencies__conv12_STATE_VARIABLE_Info_24;
+
+    {
+      make__dependencies__direct_imports_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv14_Success_11, &make__dependencies__conv13_Modules_12, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv12_STATE_VARIABLE_Info_24);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv14_Success_11));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv13_Modules_12));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv12_STATE_VARIABLE_Info_24));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_4(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv11_Success_15;
+    MR_Word make__dependencies__conv10_TargetFiles_16;
+    MR_Word make__dependencies__conv9_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv11_Success_15, &make__dependencies__conv10_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv9_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv11_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv10_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv9_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv8_HeadVar__3_3;
+    MR_Word make__dependencies__conv7_AncestorIndices_11;
+    MR_Word make__dependencies__conv6_STATE_VARIABLE_Info_17;
+
+    {
+      make__dependencies__parents_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv8_HeadVar__3_3, &make__dependencies__conv7_AncestorIndices_11, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv6_STATE_VARIABLE_Info_17);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv8_HeadVar__3_3));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv7_AncestorIndices_11));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv6_STATE_VARIABLE_Info_17));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_15;
+    MR_Word make__dependencies__conv4_TargetFiles_16;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_21;
+
+    {
+      make__dependencies__of_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_15, &make__dependencies__conv4_TargetFiles_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_21);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_TargetFiles_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_21));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_HeadVar__3_3;
+    MR_Word make__dependencies__conv1_HeadVar__4_4;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_14;
+
+    {
+      make__dependencies__self_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_HeadVar__3_3, &make__dependencies__conv1_HeadVar__4_4, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_14);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_HeadVar__3_3));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_HeadVar__4_4));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_14));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__interface_file_dependencies_0_f_0(void)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__1_1;
+
+    {
+      make__dependencies__HeadVar__1_1 = make__dependencies__combine_deps_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, (MR_Word) MR_mkword(MR_mktag(1), &make__dependencies_scalar_common_1[13]));
+    }
+    return make__dependencies__HeadVar__1_1;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__combine_deps_list_1_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv8_Success_15;
+    MR_Word make__dependencies__conv7_Deps_16;
+    MR_Word make__dependencies__conv6_STATE_VARIABLE_Info_24;
+
+    {
+      make__dependencies__combine_deps_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 5))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv8_Success_15, &make__dependencies__conv7_Deps_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv6_STATE_VARIABLE_Info_24);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv8_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv7_Deps_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv6_STATE_VARIABLE_Info_24));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__combine_deps_list_1_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_Success_15;
+    MR_Word make__dependencies__conv4_Deps_16;
+    MR_Word make__dependencies__conv3_STATE_VARIABLE_Info_24;
+
+    {
+      make__dependencies__combine_deps_2_10_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 5))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_Success_15, &make__dependencies__conv4_Deps_16, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_STATE_VARIABLE_Info_24);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_Success_15));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_Deps_16));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_STATE_VARIABLE_Info_24));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__combine_deps_list_1_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_HeadVar__3_3;
+    MR_Word make__dependencies__conv1_HeadVar__4_4;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_14;
+
+    {
+      make__dependencies__no_deps_8_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_HeadVar__3_3, &make__dependencies__conv1_HeadVar__4_4, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_STATE_VARIABLE_Info_14);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_HeadVar__3_3));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_HeadVar__4_4));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_14));
+  }
+}
+
+static MR_Word MR_CALL 
+make__dependencies__combine_deps_list_1_f_0(
+  MR_Word make__dependencies__TypeInfo_for_T_11,
+  MR_Word make__dependencies__HeadVar__1_1)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__2_2;
+
+    if ((make__dependencies__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        make__dependencies__HeadVar__2_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+        MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, 0) = ((MR_Box) (&make__dependencies_scalar_common_12[0]));
+        MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, 1) = ((MR_Box) (make__dependencies__combine_deps_list_1_f_0_1));
+        MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+        MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, 3) = ((MR_Box) (make__dependencies__TypeInfo_for_T_11));
+      }
+    else
+      {
+        MR_Word make__dependencies__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__1_1, (MR_Integer) 1)));
+        MR_Word make__dependencies__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__1_1, (MR_Integer) 0)));
+
+        if ((make__dependencies__V_20_20 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          make__dependencies__HeadVar__2_2 = make__dependencies__V_21_21;
+        else
+          {
+            MR_Word make__dependencies__V_9_9;
+            MR_Word make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__V_20_20, (MR_Integer) 1)));
+            MR_Word make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__V_20_20, (MR_Integer) 0)));
+
+            if ((make__dependencies__V_48_48 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+              make__dependencies__V_9_9 = make__dependencies__V_49_49;
+            else
+              {
+                MR_Word make__dependencies__V_38_38;
+
+                {
+                  make__dependencies__V_38_38 = make__dependencies__combine_deps_list_1_f_0(make__dependencies__TypeInfo_for_T_11, make__dependencies__V_48_48);
+                }
+                {
+                  make__dependencies__V_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), make__dependencies__V_9_9, 0) = ((MR_Box) (&make__dependencies_scalar_common_13[0]));
+                  MR_hl_field(MR_mktag(0), make__dependencies__V_9_9, 1) = ((MR_Box) (make__dependencies__combine_deps_list_1_f_0_2));
+                  MR_hl_field(MR_mktag(0), make__dependencies__V_9_9, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+                  MR_hl_field(MR_mktag(0), make__dependencies__V_9_9, 3) = ((MR_Box) (make__dependencies__TypeInfo_for_T_11));
+                  MR_hl_field(MR_mktag(0), make__dependencies__V_9_9, 4) = ((MR_Box) (make__dependencies__V_49_49));
+                  MR_hl_field(MR_mktag(0), make__dependencies__V_9_9, 5) = ((MR_Box) (make__dependencies__V_38_38));
+                }
+              }
+            {
+              make__dependencies__HeadVar__2_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, 0) = ((MR_Box) (&make__dependencies_scalar_common_13[0]));
+              MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, 1) = ((MR_Box) (make__dependencies__combine_deps_list_1_f_0_3));
+              MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+              MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, 3) = ((MR_Box) (make__dependencies__TypeInfo_for_T_11));
+              MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, 4) = ((MR_Box) (make__dependencies__V_21_21));
+              MR_hl_field(MR_mktag(0), make__dependencies__HeadVar__2_2, 5) = ((MR_Box) (make__dependencies__V_9_9));
+            }
+          }
+      }
+    return make__dependencies__HeadVar__2_2;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__combine_deps_2_10_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_51,
+  MR_Word make__dependencies__FindDeps1_11,
+  MR_Word make__dependencies__FindDeps2_12,
+  MR_Word make__dependencies__Globals_13,
+  MR_Word make__dependencies__ModuleIndex_14,
+  MR_Word * make__dependencies__Success_15,
+  MR_Word * make__dependencies__Deps_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_23,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_24)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Success1_19;
+    MR_Word make__dependencies__Deps1_20;
+    MR_Word make__dependencies__STATE_VARIABLE_Info_27_27;
+    void MR_CALL (* make__dependencies__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), make__dependencies__FindDeps1_11, (MR_Integer) 1)));
+    MR_Box make__dependencies__conv4_Success1_19;
+    MR_Box make__dependencies__conv3_Deps1_20;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_Info_27_27;
+    MR_Box make__dependencies__conv1_STATE_VARIABLE_IO_28_28;
+    MR_Word make__dependencies__V_29_29;
+    MR_Word make__dependencies__V_32_32;
+    MR_Word make__dependencies__V_33_33;
+    MR_Word make__dependencies__V_34_34;
+    MR_Word make__dependencies__V_35_35;
+    MR_Word make__dependencies__V_36_36;
+    MR_Word make__dependencies__V_37_37;
+    MR_Word make__dependencies__V_38_38;
+    MR_Word make__dependencies__V_39_39;
+    MR_Word make__dependencies__V_40_40;
+    MR_Word make__dependencies__V_41_41;
+    MR_Word make__dependencies__V_42_42;
+    MR_Word make__dependencies__V_43_43;
+    MR_Word make__dependencies__V_44_44;
+    MR_Word make__dependencies__V_45_45;
+    MR_Word make__dependencies__V_46_46;
+    MR_Word make__dependencies__V_47_47;
+    MR_Word make__dependencies__V_48_48;
+    MR_Integer make__dependencies__V_49_49;
+    MR_Word make__dependencies__V_50_50;
+
+    {
+      make__dependencies__func_0(((MR_Box) make__dependencies__FindDeps1_11), ((MR_Box) (make__dependencies__Globals_13)), ((MR_Box) (make__dependencies__ModuleIndex_14)), &make__dependencies__conv4_Success1_19, &make__dependencies__conv3_Deps1_20, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_23)), &make__dependencies__conv2_STATE_VARIABLE_Info_27_27, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv1_STATE_VARIABLE_IO_28_28);
+    }
+    make__dependencies__Success1_19 = ((MR_Word) make__dependencies__conv4_Success1_19);
+    make__dependencies__Deps1_20 = ((MR_Word) make__dependencies__conv3_Deps1_20);
+    make__dependencies__STATE_VARIABLE_Info_27_27 = ((MR_Word) make__dependencies__conv2_STATE_VARIABLE_Info_27_27);
+    make__dependencies__succeeded = (make__dependencies__Success1_19 == (MR_Integer) 0);
+    if (make__dependencies__succeeded)
+      {
+        make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 0)));
+        make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 1)));
+        make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 2)));
+        make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 3)));
+        make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 4)));
+        make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 5)));
+        make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 6)));
+        make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 7)));
+        make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 8)));
+        make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 9)));
+        make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 10)));
+        make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 11)));
+        make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 12)));
+        make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 13)));
+        make__dependencies__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 14)));
+        make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 15)));
+        make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 16)));
+        make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 17)));
+        make__dependencies__V_49_49 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 18)));
+        make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_27_27, (MR_Integer) 19)));
+        make__dependencies__succeeded = (make__dependencies__V_29_29 == (MR_Integer) 0);
+      }
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__Success_15 = (MR_Integer) 0;
+        *make__dependencies__Deps_16 = make__dependencies__Deps1_20;
+        *make__dependencies__STATE_VARIABLE_Info_24 = make__dependencies__STATE_VARIABLE_Info_27_27;
+      }
+    else
+      {
+        MR_Word make__dependencies__Success2_21;
+        MR_Word make__dependencies__Deps2_22;
+        void MR_CALL (* make__dependencies__func_5)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), make__dependencies__FindDeps2_12, (MR_Integer) 1)));
+        MR_Box make__dependencies__conv9_Success2_21;
+        MR_Box make__dependencies__conv8_Deps2_22;
+        MR_Box make__dependencies__conv7_STATE_VARIABLE_Info_24;
+        MR_Box make__dependencies__conv6_STATE_VARIABLE_IO_26;
+
+        {
+          make__dependencies__func_5(((MR_Box) make__dependencies__FindDeps2_12), ((MR_Box) (make__dependencies__Globals_13)), ((MR_Box) (make__dependencies__ModuleIndex_14)), &make__dependencies__conv9_Success2_21, &make__dependencies__conv8_Deps2_22, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_27_27)), &make__dependencies__conv7_STATE_VARIABLE_Info_24, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv6_STATE_VARIABLE_IO_26);
+        }
+        make__dependencies__Success2_21 = ((MR_Word) make__dependencies__conv9_Success2_21);
+        make__dependencies__Deps2_22 = ((MR_Word) make__dependencies__conv8_Deps2_22);
+        *make__dependencies__STATE_VARIABLE_Info_24 = ((MR_Word) make__dependencies__conv7_STATE_VARIABLE_Info_24);
+        {
+          *make__dependencies__Success_15 = mercury__bool__and_2_f_0(make__dependencies__Success1_19, make__dependencies__Success2_21);
+        }
+        {
+          *make__dependencies__Deps_16 = mercury__sparse_bitset__union_2_f_0(make__dependencies__TypeInfo_for_T_51, make__dependencies__Deps1_20, make__dependencies__Deps2_22);
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__dependency_files_to_index_set_2_5_p_0(
+  MR_Word make__dependencies__DepFiles_6,
+  MR_Word make__dependencies__STATE_VARIABLE_Set_0_10,
+  MR_Word * make__dependencies__STATE_VARIABLE_Set_11,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_12,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_13)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__DepIndex_9;
+    MR_Word make__dependencies__Map0_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 7)));
+    MR_Word make__dependencies__ForwardMap0_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_22, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 6)));
+    MR_Word make__dependencies__V_43_43 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_53_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 19)));
+    MR_Box make__dependencies__V_55_55 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_22, (MR_Integer) 1)));
+    MR_Integer make__dependencies__V_56_56 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_22, (MR_Integer) 2)));
+    MR_Word make__dependencies__Index0_24;
+    MR_Box make__dependencies__conv0_Index0_24;
+
+    {
+      make__dependencies__succeeded = mercury__version_hash_table__search_3_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0, (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__ForwardMap0_23, ((MR_Box) (make__dependencies__DepFiles_6)), &make__dependencies__conv0_Index0_24);
+    }
+    if (make__dependencies__succeeded)
+      {
+        make__dependencies__Index0_24 = ((MR_Word) make__dependencies__conv0_Index0_24);
+        make__dependencies__succeeded = MR_TRUE;
+      }
+    if (make__dependencies__succeeded)
+      {
+        make__dependencies__DepIndex_9 = make__dependencies__Index0_24;
+        *make__dependencies__STATE_VARIABLE_Info_13 = make__dependencies__STATE_VARIABLE_Info_0_12;
+      }
+    else
+      {
+        MR_Word make__dependencies__TypeCtorInfo_67_79;
+        MR_Word make__dependencies__Forward0_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_22, (MR_Integer) 0)));
+        MR_Box make__dependencies__Reverse0_26 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_22, (MR_Integer) 1)));
+        MR_Integer make__dependencies__Size0_27 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_22, (MR_Integer) 2)));
+        MR_Integer make__dependencies__Size_28;
+        MR_Word make__dependencies__Forward_29;
+        MR_Integer make__dependencies__TrueSize_30;
+        MR_Box make__dependencies__Reverse_32;
+        MR_Word make__dependencies__Map_33;
+        MR_Word make__dependencies__V_57_57;
+        MR_Word make__dependencies__V_58_58;
+        MR_Word make__dependencies__V_59_59;
+        MR_Word make__dependencies__V_60_60;
+        MR_Word make__dependencies__V_61_61;
+        MR_Word make__dependencies__V_62_62;
+        MR_Word make__dependencies__V_63_63;
+        MR_Word make__dependencies__V_65_65;
+        MR_Word make__dependencies__V_66_66;
+        MR_Word make__dependencies__V_67_67;
+        MR_Word make__dependencies__V_68_68;
+        MR_Word make__dependencies__V_69_69;
+        MR_Word make__dependencies__V_70_70;
+        MR_Word make__dependencies__V_71_71;
+        MR_Word make__dependencies__V_72_72;
+        MR_Word make__dependencies__V_73_73;
+        MR_Word make__dependencies__V_74_74;
+        MR_Integer make__dependencies__V_75_75;
+        MR_Word make__dependencies__V_76_76;
+        MR_Word make__dependencies__V_64_64;
+
+        make__dependencies__DepIndex_9 = (MR_Word) make__dependencies__Size0_27;
+        make__dependencies__Size_28 = (make__dependencies__Size0_27 + (MR_Integer) 1);
+        make__dependencies__TypeCtorInfo_67_79 = (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0;
+        {
+          mercury__version_hash_table__det_insert_4_p_0(make__dependencies__TypeCtorInfo_67_79, (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, ((MR_Box) (make__dependencies__DepFiles_6)), ((MR_Box) (make__dependencies__DepIndex_9)), make__dependencies__Forward0_25, &make__dependencies__Forward_29);
+        }
+        {
+          make__dependencies__TrueSize_30 = mercury__version_array__size_1_f_0(make__dependencies__TypeCtorInfo_67_79, make__dependencies__Reverse0_26);
+        }
+        make__dependencies__succeeded = (make__dependencies__Size_28 > make__dependencies__TrueSize_30);
+        if (make__dependencies__succeeded)
+          {
+            MR_Integer make__dependencies__NewSize_31;
+
+            make__dependencies__succeeded = (make__dependencies__TrueSize_30 == (MR_Integer) 0);
+            if (make__dependencies__succeeded)
+              make__dependencies__NewSize_31 = (MR_Integer) 1;
+            else
+              {
+                make__dependencies__NewSize_31 = (make__dependencies__TrueSize_30 * (MR_Integer) 2);
+              }
+            {
+              mercury__version_array__resize_4_p_0(make__dependencies__TypeCtorInfo_67_79, make__dependencies__NewSize_31, ((MR_Box) (make__dependencies__DepFiles_6)), make__dependencies__Reverse0_26, &make__dependencies__Reverse_32);
+            }
+          }
+        else
+          {
+            mercury__version_array__set_4_p_0(make__dependencies__TypeCtorInfo_67_79, make__dependencies__Size0_27, ((MR_Box) (make__dependencies__DepFiles_6)), make__dependencies__Reverse0_26, &make__dependencies__Reverse_32);
+          }
+        {
+          make__dependencies__Map_33 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__Map_33, 0) = ((MR_Box) (make__dependencies__Forward_29));
+          MR_hl_field(MR_mktag(0), make__dependencies__Map_33, 1) = ((MR_Box) (make__dependencies__Reverse_32));
+          MR_hl_field(MR_mktag(0), make__dependencies__Map_33, 2) = ((MR_Box) (make__dependencies__Size_28));
+        }
+        make__dependencies__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 0)));
+        make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 1)));
+        make__dependencies__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 2)));
+        make__dependencies__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 3)));
+        make__dependencies__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 4)));
+        make__dependencies__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 5)));
+        make__dependencies__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 6)));
+        make__dependencies__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 7)));
+        make__dependencies__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 8)));
+        make__dependencies__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 9)));
+        make__dependencies__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 10)));
+        make__dependencies__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 11)));
+        make__dependencies__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 12)));
+        make__dependencies__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 13)));
+        make__dependencies__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 14)));
+        make__dependencies__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 15)));
+        make__dependencies__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 16)));
+        make__dependencies__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 17)));
+        make__dependencies__V_75_75 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 18)));
+        make__dependencies__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_12, (MR_Integer) 19)));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+          *make__dependencies__STATE_VARIABLE_Info_13 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (make__dependencies__V_57_57));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (make__dependencies__V_58_58));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (make__dependencies__V_59_59));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (make__dependencies__V_60_60));
+          MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (make__dependencies__V_61_61));
+          MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (make__dependencies__V_62_62));
+          MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (make__dependencies__V_63_63));
+          MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (make__dependencies__Map_33));
+          MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (make__dependencies__V_65_65));
+          MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (make__dependencies__V_66_66));
+          MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (make__dependencies__V_67_67));
+          MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (make__dependencies__V_68_68));
+          MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (make__dependencies__V_69_69));
+          MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (make__dependencies__V_70_70));
+          MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (make__dependencies__V_71_71));
+          MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (make__dependencies__V_72_72));
+          MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (make__dependencies__V_73_73));
+          MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (make__dependencies__V_74_74));
+          MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (make__dependencies__V_75_75));
+          MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (make__dependencies__V_76_76));
+        }
+      }
+    {
+      mercury__sparse_bitset__insert_3_p_0((MR_Word) &make__dependencies_scalar_common_1[2], ((MR_Box) (make__dependencies__DepIndex_9)), make__dependencies__STATE_VARIABLE_Set_0_10, make__dependencies__STATE_VARIABLE_Set_11);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__dependency_file_index_set_to_plain_set_2_4_p_0(
+  MR_Word make__dependencies__Info_5,
+  MR_Word make__dependencies__DepIndex_6,
+  MR_Word make__dependencies__List0_7,
+  MR_Word * make__dependencies__List_8)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__DepFile_9;
+    MR_Integer make__dependencies__Int_13 = (MR_Integer) make__dependencies__DepIndex_6;
+    MR_Word make__dependencies__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 7)));
+    MR_Box make__dependencies__V_15_15 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__V_14_14, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 6)));
+    MR_Word make__dependencies__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_33_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 19)));
+    MR_Word make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__V_14_14, (MR_Integer) 0)));
+    MR_Integer make__dependencies__V_36_36 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__V_14_14, (MR_Integer) 2)));
+    MR_Box make__dependencies__conv0_DepFile_9;
+
+    {
+      make__dependencies__conv0_DepFile_9 = mercury__version_array__elem_2_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0, make__dependencies__Int_13, make__dependencies__V_15_15);
+    }
+    make__dependencies__DepFile_9 = ((MR_Word) make__dependencies__conv0_DepFile_9);
+    {
+      MR_Word base;
+      base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+      *make__dependencies__List_8 = base;
+      MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (make__dependencies__DepFile_9));
+      MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (make__dependencies__List0_7));
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__dependency_file_to_index_4_p_0(
+  MR_Word make__dependencies__DepFile_5,
+  MR_Word * make__dependencies__Index_6,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_21)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Map0_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 7)));
+    MR_Word make__dependencies__ForwardMap0_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_8, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 6)));
+    MR_Word make__dependencies__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_41_41 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 19)));
+    MR_Box make__dependencies__V_43_43 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_8, (MR_Integer) 1)));
+    MR_Integer make__dependencies__V_44_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_8, (MR_Integer) 2)));
+    MR_Word make__dependencies__Index0_10;
+    MR_Box make__dependencies__conv0_Index0_10;
+
+    {
+      make__dependencies__succeeded = mercury__version_hash_table__search_3_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0, (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__ForwardMap0_9, ((MR_Box) (make__dependencies__DepFile_5)), &make__dependencies__conv0_Index0_10);
+    }
+    if (make__dependencies__succeeded)
+      {
+        make__dependencies__Index0_10 = ((MR_Word) make__dependencies__conv0_Index0_10);
+        make__dependencies__succeeded = MR_TRUE;
+      }
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__Index_6 = make__dependencies__Index0_10;
+        *make__dependencies__STATE_VARIABLE_Info_21 = make__dependencies__STATE_VARIABLE_Info_0_20;
+      }
+    else
+      {
+        MR_Word make__dependencies__TypeCtorInfo_67_67;
+        MR_Word make__dependencies__Forward0_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_8, (MR_Integer) 0)));
+        MR_Box make__dependencies__Reverse0_12 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_8, (MR_Integer) 1)));
+        MR_Integer make__dependencies__Size0_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_8, (MR_Integer) 2)));
+        MR_Integer make__dependencies__Size_14;
+        MR_Word make__dependencies__Forward_15;
+        MR_Integer make__dependencies__TrueSize_16;
+        MR_Box make__dependencies__Reverse_18;
+        MR_Word make__dependencies__Map_19;
+        MR_Word make__dependencies__V_45_45;
+        MR_Word make__dependencies__V_46_46;
+        MR_Word make__dependencies__V_47_47;
+        MR_Word make__dependencies__V_48_48;
+        MR_Word make__dependencies__V_49_49;
+        MR_Word make__dependencies__V_50_50;
+        MR_Word make__dependencies__V_51_51;
+        MR_Word make__dependencies__V_53_53;
+        MR_Word make__dependencies__V_54_54;
+        MR_Word make__dependencies__V_55_55;
+        MR_Word make__dependencies__V_56_56;
+        MR_Word make__dependencies__V_57_57;
+        MR_Word make__dependencies__V_58_58;
+        MR_Word make__dependencies__V_59_59;
+        MR_Word make__dependencies__V_60_60;
+        MR_Word make__dependencies__V_61_61;
+        MR_Word make__dependencies__V_62_62;
+        MR_Integer make__dependencies__V_63_63;
+        MR_Word make__dependencies__V_64_64;
+        MR_Word make__dependencies__V_52_52;
+
+        *make__dependencies__Index_6 = (MR_Word) make__dependencies__Size0_13;
+        make__dependencies__Size_14 = (make__dependencies__Size0_13 + (MR_Integer) 1);
+        make__dependencies__TypeCtorInfo_67_67 = (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0;
+        {
+          mercury__version_hash_table__det_insert_4_p_0(make__dependencies__TypeCtorInfo_67_67, (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, ((MR_Box) (make__dependencies__DepFile_5)), ((MR_Box) (*make__dependencies__Index_6)), make__dependencies__Forward0_11, &make__dependencies__Forward_15);
+        }
+        {
+          make__dependencies__TrueSize_16 = mercury__version_array__size_1_f_0(make__dependencies__TypeCtorInfo_67_67, make__dependencies__Reverse0_12);
+        }
+        make__dependencies__succeeded = (make__dependencies__Size_14 > make__dependencies__TrueSize_16);
+        if (make__dependencies__succeeded)
+          {
+            MR_Integer make__dependencies__NewSize_17;
+
+            make__dependencies__succeeded = (make__dependencies__TrueSize_16 == (MR_Integer) 0);
+            if (make__dependencies__succeeded)
+              make__dependencies__NewSize_17 = (MR_Integer) 1;
+            else
+              {
+                make__dependencies__NewSize_17 = (make__dependencies__TrueSize_16 * (MR_Integer) 2);
+              }
+            {
+              mercury__version_array__resize_4_p_0(make__dependencies__TypeCtorInfo_67_67, make__dependencies__NewSize_17, ((MR_Box) (make__dependencies__DepFile_5)), make__dependencies__Reverse0_12, &make__dependencies__Reverse_18);
+            }
+          }
+        else
+          {
+            mercury__version_array__set_4_p_0(make__dependencies__TypeCtorInfo_67_67, make__dependencies__Size0_13, ((MR_Box) (make__dependencies__DepFile_5)), make__dependencies__Reverse0_12, &make__dependencies__Reverse_18);
+          }
+        {
+          make__dependencies__Map_19 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__Map_19, 0) = ((MR_Box) (make__dependencies__Forward_15));
+          MR_hl_field(MR_mktag(0), make__dependencies__Map_19, 1) = ((MR_Box) (make__dependencies__Reverse_18));
+          MR_hl_field(MR_mktag(0), make__dependencies__Map_19, 2) = ((MR_Box) (make__dependencies__Size_14));
+        }
+        make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 0)));
+        make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 1)));
+        make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 2)));
+        make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 3)));
+        make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 4)));
+        make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 5)));
+        make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 6)));
+        make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 7)));
+        make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 8)));
+        make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 9)));
+        make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 10)));
+        make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 11)));
+        make__dependencies__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 12)));
+        make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 13)));
+        make__dependencies__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 14)));
+        make__dependencies__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 15)));
+        make__dependencies__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 16)));
+        make__dependencies__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 17)));
+        make__dependencies__V_63_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 18)));
+        make__dependencies__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_20, (MR_Integer) 19)));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+          *make__dependencies__STATE_VARIABLE_Info_21 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (make__dependencies__V_45_45));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (make__dependencies__V_46_46));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (make__dependencies__V_47_47));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (make__dependencies__V_48_48));
+          MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (make__dependencies__V_49_49));
+          MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (make__dependencies__V_50_50));
+          MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (make__dependencies__V_51_51));
+          MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (make__dependencies__Map_19));
+          MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (make__dependencies__V_53_53));
+          MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (make__dependencies__V_54_54));
+          MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (make__dependencies__V_55_55));
+          MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (make__dependencies__V_56_56));
+          MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (make__dependencies__V_57_57));
+          MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (make__dependencies__V_58_58));
+          MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (make__dependencies__V_59_59));
+          MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (make__dependencies__V_60_60));
+          MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (make__dependencies__V_61_61));
+          MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (make__dependencies__V_62_62));
+          MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (make__dependencies__V_63_63));
+          MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (make__dependencies__V_64_64));
+        }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__module_index_set_to_plain_set_2_4_p_0(
+  MR_Word make__dependencies__Info_5,
+  MR_Word make__dependencies__ModuleIndex_6,
+  MR_Word make__dependencies__STATE_VARIABLE_Set_0_9,
+  MR_Word * make__dependencies__STATE_VARIABLE_Set_10)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__ModuleName_8;
+    MR_Integer make__dependencies__I_16 = (MR_Integer) make__dependencies__ModuleIndex_6;
+    MR_Word make__dependencies__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 6)));
+    MR_Box make__dependencies__V_18_18 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__V_17_17, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 7)));
+    MR_Word make__dependencies__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_36_36 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_5, (MR_Integer) 19)));
+    MR_Word make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__V_17_17, (MR_Integer) 0)));
+    MR_Integer make__dependencies__V_39_39 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__V_17_17, (MR_Integer) 2)));
+    MR_Box make__dependencies__conv0_ModuleName_8;
+
+    {
+      make__dependencies__conv0_ModuleName_8 = mercury__version_array__elem_2_f_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, make__dependencies__I_16, make__dependencies__V_18_18);
+    }
+    make__dependencies__ModuleName_8 = ((MR_Word) make__dependencies__conv0_ModuleName_8);
+    {
+      mercury__set__insert_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, ((MR_Box) (make__dependencies__ModuleName_8)), make__dependencies__STATE_VARIABLE_Set_0_9, make__dependencies__STATE_VARIABLE_Set_10);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__module_names_to_index_set_2_5_p_0(
+  MR_Word make__dependencies__HeadVar__1_1,
+  MR_Word make__dependencies__HeadVar__2_2,
+  MR_Word * make__dependencies__HeadVar__3_3,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_4,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_5)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool make__dependencies__succeeded;
+
+        if ((make__dependencies__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          {
+            *make__dependencies__STATE_VARIABLE_Info_5 = make__dependencies__STATE_VARIABLE_Info_0_4;
+            *make__dependencies__HeadVar__3_3 = make__dependencies__HeadVar__2_2;
+          }
+        else
+          {
+            MR_Word make__dependencies__ModuleName_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__1_1, (MR_Integer) 0)));
+            MR_Word make__dependencies__ModuleNames_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__HeadVar__1_1, (MR_Integer) 1)));
+            MR_Word make__dependencies__ModuleIndex_16;
+            MR_Word make__dependencies__STATE_VARIABLE_Info_21_21;
+            MR_Word make__dependencies__STATE_VARIABLE_Set_22_22;
+            MR_Word make__dependencies__Map0_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 6)));
+            MR_Word make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 0)));
+            MR_Word make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 1)));
+            MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 2)));
+            MR_Word make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 3)));
+            MR_Word make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 4)));
+            MR_Word make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 5)));
+            MR_Word make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 7)));
+            MR_Word make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 8)));
+            MR_Word make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 9)));
+            MR_Word make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 10)));
+            MR_Word make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 11)));
+            MR_Word make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 12)));
+            MR_Word make__dependencies__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 13)));
+            MR_Word make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 14)));
+            MR_Word make__dependencies__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 15)));
+            MR_Word make__dependencies__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 16)));
+            MR_Word make__dependencies__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 17)));
+            MR_Integer make__dependencies__V_62_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 18)));
+            MR_Word make__dependencies__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 19)));
+            MR_Word make__dependencies__Index0_32;
+            MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_31, (MR_Integer) 0)));
+            MR_Box make__dependencies__V_64_64 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_31, (MR_Integer) 1)));
+            MR_Integer make__dependencies__V_65_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_31, (MR_Integer) 2)));
+            MR_Box make__dependencies__conv0_Index0_32;
+
+            {
+              make__dependencies__succeeded = mercury__version_hash_table__search_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, make__dependencies__V_42_42, ((MR_Box) (make__dependencies__ModuleName_12)), &make__dependencies__conv0_Index0_32);
+            }
+            if (make__dependencies__succeeded)
+              {
+                make__dependencies__Index0_32 = ((MR_Word) make__dependencies__conv0_Index0_32);
+                make__dependencies__succeeded = MR_TRUE;
+              }
+            if (make__dependencies__succeeded)
+              {
+                make__dependencies__ModuleIndex_16 = make__dependencies__Index0_32;
+                make__dependencies__STATE_VARIABLE_Info_21_21 = make__dependencies__STATE_VARIABLE_Info_0_4;
+              }
+            else
+              {
+                MR_Word make__dependencies__TypeCtorInfo_67_88;
+                MR_Word make__dependencies__Forward0_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_31, (MR_Integer) 0)));
+                MR_Box make__dependencies__Reverse0_34 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_31, (MR_Integer) 1)));
+                MR_Integer make__dependencies__Size0_35 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_31, (MR_Integer) 2)));
+                MR_Integer make__dependencies__Size_36;
+                MR_Word make__dependencies__Forward_37;
+                MR_Integer make__dependencies__TrueSize_38;
+                MR_Box make__dependencies__Reverse_40;
+                MR_Word make__dependencies__Map_41;
+                MR_Word make__dependencies__V_66_66;
+                MR_Word make__dependencies__V_67_67;
+                MR_Word make__dependencies__V_68_68;
+                MR_Word make__dependencies__V_69_69;
+                MR_Word make__dependencies__V_70_70;
+                MR_Word make__dependencies__V_71_71;
+                MR_Word make__dependencies__V_73_73;
+                MR_Word make__dependencies__V_74_74;
+                MR_Word make__dependencies__V_75_75;
+                MR_Word make__dependencies__V_76_76;
+                MR_Word make__dependencies__V_77_77;
+                MR_Word make__dependencies__V_78_78;
+                MR_Word make__dependencies__V_79_79;
+                MR_Word make__dependencies__V_80_80;
+                MR_Word make__dependencies__V_81_81;
+                MR_Word make__dependencies__V_82_82;
+                MR_Word make__dependencies__V_83_83;
+                MR_Integer make__dependencies__V_84_84;
+                MR_Word make__dependencies__V_85_85;
+                MR_Word make__dependencies__V_72_72;
+
+                make__dependencies__ModuleIndex_16 = (MR_Word) make__dependencies__Size0_35;
+                make__dependencies__Size_36 = (make__dependencies__Size0_35 + (MR_Integer) 1);
+                make__dependencies__TypeCtorInfo_67_88 = (MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0;
+                {
+                  mercury__version_hash_table__det_insert_4_p_0(make__dependencies__TypeCtorInfo_67_88, (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, ((MR_Box) (make__dependencies__ModuleName_12)), ((MR_Box) (make__dependencies__ModuleIndex_16)), make__dependencies__Forward0_33, &make__dependencies__Forward_37);
+                }
+                {
+                  make__dependencies__TrueSize_38 = mercury__version_array__size_1_f_0(make__dependencies__TypeCtorInfo_67_88, make__dependencies__Reverse0_34);
+                }
+                make__dependencies__succeeded = (make__dependencies__Size_36 > make__dependencies__TrueSize_38);
+                if (make__dependencies__succeeded)
+                  {
+                    MR_Integer make__dependencies__NewSize_39;
+
+                    make__dependencies__succeeded = (make__dependencies__TrueSize_38 == (MR_Integer) 0);
+                    if (make__dependencies__succeeded)
+                      make__dependencies__NewSize_39 = (MR_Integer) 1;
+                    else
+                      {
+                        make__dependencies__NewSize_39 = (make__dependencies__TrueSize_38 * (MR_Integer) 2);
+                      }
+                    {
+                      mercury__version_array__resize_4_p_0(make__dependencies__TypeCtorInfo_67_88, make__dependencies__NewSize_39, ((MR_Box) (make__dependencies__ModuleName_12)), make__dependencies__Reverse0_34, &make__dependencies__Reverse_40);
+                    }
+                  }
+                else
+                  {
+                    mercury__version_array__set_4_p_0(make__dependencies__TypeCtorInfo_67_88, make__dependencies__Size0_35, ((MR_Box) (make__dependencies__ModuleName_12)), make__dependencies__Reverse0_34, &make__dependencies__Reverse_40);
+                  }
+                {
+                  make__dependencies__Map_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), make__dependencies__Map_41, 0) = ((MR_Box) (make__dependencies__Forward_37));
+                  MR_hl_field(MR_mktag(0), make__dependencies__Map_41, 1) = ((MR_Box) (make__dependencies__Reverse_40));
+                  MR_hl_field(MR_mktag(0), make__dependencies__Map_41, 2) = ((MR_Box) (make__dependencies__Size_36));
+                }
+                make__dependencies__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 0)));
+                make__dependencies__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 1)));
+                make__dependencies__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 2)));
+                make__dependencies__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 3)));
+                make__dependencies__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 4)));
+                make__dependencies__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 5)));
+                make__dependencies__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 6)));
+                make__dependencies__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 7)));
+                make__dependencies__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 8)));
+                make__dependencies__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 9)));
+                make__dependencies__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 10)));
+                make__dependencies__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 11)));
+                make__dependencies__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 12)));
+                make__dependencies__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 13)));
+                make__dependencies__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 14)));
+                make__dependencies__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 15)));
+                make__dependencies__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 16)));
+                make__dependencies__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 17)));
+                make__dependencies__V_84_84 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 18)));
+                make__dependencies__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_4, (MR_Integer) 19)));
+                {
+                  make__dependencies__STATE_VARIABLE_Info_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 0) = ((MR_Box) (make__dependencies__V_66_66));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 1) = ((MR_Box) (make__dependencies__V_67_67));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 2) = ((MR_Box) (make__dependencies__V_68_68));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 3) = ((MR_Box) (make__dependencies__V_69_69));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 4) = ((MR_Box) (make__dependencies__V_70_70));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 5) = ((MR_Box) (make__dependencies__V_71_71));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 6) = ((MR_Box) (make__dependencies__Map_41));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 7) = ((MR_Box) (make__dependencies__V_73_73));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 8) = ((MR_Box) (make__dependencies__V_74_74));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 9) = ((MR_Box) (make__dependencies__V_75_75));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 10) = ((MR_Box) (make__dependencies__V_76_76));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 11) = ((MR_Box) (make__dependencies__V_77_77));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 12) = ((MR_Box) (make__dependencies__V_78_78));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 13) = ((MR_Box) (make__dependencies__V_79_79));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 14) = ((MR_Box) (make__dependencies__V_80_80));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 15) = ((MR_Box) (make__dependencies__V_81_81));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 16) = ((MR_Box) (make__dependencies__V_82_82));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 17) = ((MR_Box) (make__dependencies__V_83_83));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 18) = ((MR_Box) (make__dependencies__V_84_84));
+                  MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 19) = ((MR_Box) (make__dependencies__V_85_85));
+                }
+              }
+            {
+              mercury__sparse_bitset__insert_3_p_0((MR_Word) &make__dependencies_scalar_common_1[0], ((MR_Box) (make__dependencies__ModuleIndex_16)), make__dependencies__HeadVar__2_2, &make__dependencies__STATE_VARIABLE_Set_22_22);
+            }
+            /* direct tailcall eliminated */
+            {
+              MR_Word make__dependencies__HeadVar__1__tmp_copy_1 = make__dependencies__ModuleNames_13;
+              MR_Word make__dependencies__HeadVar__2__tmp_copy_2 = make__dependencies__STATE_VARIABLE_Set_22_22;
+              MR_Word make__dependencies__STATE_VARIABLE_Info_0__tmp_copy_4 = make__dependencies__STATE_VARIABLE_Info_21_21;
+
+              make__dependencies__STATE_VARIABLE_Info_0_4 = make__dependencies__STATE_VARIABLE_Info_0__tmp_copy_4;
+              make__dependencies__HeadVar__2_2 = make__dependencies__HeadVar__2__tmp_copy_2;
+              make__dependencies__HeadVar__1_1 = make__dependencies__HeadVar__1__tmp_copy_1;
+            }
+            continue;
+          }
+      }
+      break;
+    }
+}
+
+static void MR_CALL 
+make__dependencies__module_index_to_name_3_p_0(
+  MR_Word make__dependencies__Info_4,
+  MR_Word make__dependencies__Index_5,
+  MR_Word * make__dependencies__ModuleName_6)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Integer make__dependencies__I_7 = (MR_Integer) make__dependencies__Index_5;
+    MR_Word make__dependencies__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 6)));
+    MR_Box make__dependencies__V_9_9 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__V_8_8, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 7)));
+    MR_Word make__dependencies__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_19_19 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_27_27 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Info_4, (MR_Integer) 19)));
+    MR_Word make__dependencies__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__V_8_8, (MR_Integer) 0)));
+    MR_Integer make__dependencies__V_30_30 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__V_8_8, (MR_Integer) 2)));
+    MR_Box make__dependencies__conv0_ModuleName_6;
+
+    {
+      make__dependencies__conv0_ModuleName_6 = mercury__version_array__elem_2_f_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, make__dependencies__I_7, make__dependencies__V_9_9);
+    }
+    *make__dependencies__ModuleName_6 = ((MR_Word) make__dependencies__conv0_ModuleName_6);
+  }
+}
+
+static void MR_CALL 
+make__dependencies__module_name_to_index_4_p_0(
+  MR_Word make__dependencies__ModuleName_5,
+  MR_Word * make__dependencies__Index_6,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_19,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_20)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Map0_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 6)));
+    MR_Word make__dependencies__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_25_25 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 7)));
+    MR_Word make__dependencies__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_33_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_34_34 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_35_35 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_36_36 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_37_37 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_38_38 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_41_41 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 19)));
+    MR_Word make__dependencies__Index0_9;
+    MR_Word make__dependencies__V_21_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_8, (MR_Integer) 0)));
+    MR_Box make__dependencies__V_43_43 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_8, (MR_Integer) 1)));
+    MR_Integer make__dependencies__V_44_44 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_8, (MR_Integer) 2)));
+    MR_Box make__dependencies__conv0_Index0_9;
+
+    {
+      make__dependencies__succeeded = mercury__version_hash_table__search_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, make__dependencies__V_21_21, ((MR_Box) (make__dependencies__ModuleName_5)), &make__dependencies__conv0_Index0_9);
+    }
+    if (make__dependencies__succeeded)
+      {
+        make__dependencies__Index0_9 = ((MR_Word) make__dependencies__conv0_Index0_9);
+        make__dependencies__succeeded = MR_TRUE;
+      }
+    if (make__dependencies__succeeded)
+      {
+        *make__dependencies__Index_6 = make__dependencies__Index0_9;
+        *make__dependencies__STATE_VARIABLE_Info_20 = make__dependencies__STATE_VARIABLE_Info_0_19;
+      }
+    else
+      {
+        MR_Word make__dependencies__TypeCtorInfo_67_67;
+        MR_Word make__dependencies__Forward0_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_8, (MR_Integer) 0)));
+        MR_Box make__dependencies__Reverse0_11 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_8, (MR_Integer) 1)));
+        MR_Integer make__dependencies__Size0_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_8, (MR_Integer) 2)));
+        MR_Integer make__dependencies__Size_13;
+        MR_Word make__dependencies__Forward_14;
+        MR_Integer make__dependencies__TrueSize_15;
+        MR_Box make__dependencies__Reverse_17;
+        MR_Word make__dependencies__Map_18;
+        MR_Word make__dependencies__V_45_45;
+        MR_Word make__dependencies__V_46_46;
+        MR_Word make__dependencies__V_47_47;
+        MR_Word make__dependencies__V_48_48;
+        MR_Word make__dependencies__V_49_49;
+        MR_Word make__dependencies__V_50_50;
+        MR_Word make__dependencies__V_52_52;
+        MR_Word make__dependencies__V_53_53;
+        MR_Word make__dependencies__V_54_54;
+        MR_Word make__dependencies__V_55_55;
+        MR_Word make__dependencies__V_56_56;
+        MR_Word make__dependencies__V_57_57;
+        MR_Word make__dependencies__V_58_58;
+        MR_Word make__dependencies__V_59_59;
+        MR_Word make__dependencies__V_60_60;
+        MR_Word make__dependencies__V_61_61;
+        MR_Word make__dependencies__V_62_62;
+        MR_Integer make__dependencies__V_63_63;
+        MR_Word make__dependencies__V_64_64;
+        MR_Word make__dependencies__V_51_51;
+
+        *make__dependencies__Index_6 = (MR_Word) make__dependencies__Size0_12;
+        make__dependencies__Size_13 = (make__dependencies__Size0_12 + (MR_Integer) 1);
+        make__dependencies__TypeCtorInfo_67_67 = (MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0;
+        {
+          mercury__version_hash_table__det_insert_4_p_0(make__dependencies__TypeCtorInfo_67_67, (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, ((MR_Box) (make__dependencies__ModuleName_5)), ((MR_Box) (*make__dependencies__Index_6)), make__dependencies__Forward0_10, &make__dependencies__Forward_14);
+        }
+        {
+          make__dependencies__TrueSize_15 = mercury__version_array__size_1_f_0(make__dependencies__TypeCtorInfo_67_67, make__dependencies__Reverse0_11);
+        }
+        make__dependencies__succeeded = (make__dependencies__Size_13 > make__dependencies__TrueSize_15);
+        if (make__dependencies__succeeded)
+          {
+            MR_Integer make__dependencies__NewSize_16;
+
+            make__dependencies__succeeded = (make__dependencies__TrueSize_15 == (MR_Integer) 0);
+            if (make__dependencies__succeeded)
+              make__dependencies__NewSize_16 = (MR_Integer) 1;
+            else
+              {
+                make__dependencies__NewSize_16 = (make__dependencies__TrueSize_15 * (MR_Integer) 2);
+              }
+            {
+              mercury__version_array__resize_4_p_0(make__dependencies__TypeCtorInfo_67_67, make__dependencies__NewSize_16, ((MR_Box) (make__dependencies__ModuleName_5)), make__dependencies__Reverse0_11, &make__dependencies__Reverse_17);
+            }
+          }
+        else
+          {
+            mercury__version_array__set_4_p_0(make__dependencies__TypeCtorInfo_67_67, make__dependencies__Size0_12, ((MR_Box) (make__dependencies__ModuleName_5)), make__dependencies__Reverse0_11, &make__dependencies__Reverse_17);
+          }
+        {
+          make__dependencies__Map_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__Map_18, 0) = ((MR_Box) (make__dependencies__Forward_14));
+          MR_hl_field(MR_mktag(0), make__dependencies__Map_18, 1) = ((MR_Box) (make__dependencies__Reverse_17));
+          MR_hl_field(MR_mktag(0), make__dependencies__Map_18, 2) = ((MR_Box) (make__dependencies__Size_13));
+        }
+        make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 0)));
+        make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 1)));
+        make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 2)));
+        make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 3)));
+        make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 4)));
+        make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 5)));
+        make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 6)));
+        make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 7)));
+        make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 8)));
+        make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 9)));
+        make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 10)));
+        make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 11)));
+        make__dependencies__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 12)));
+        make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 13)));
+        make__dependencies__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 14)));
+        make__dependencies__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 15)));
+        make__dependencies__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 16)));
+        make__dependencies__V_62_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 17)));
+        make__dependencies__V_63_63 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 18)));
+        make__dependencies__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_19, (MR_Integer) 19)));
+        {
+          MR_Word base;
+          base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+          *make__dependencies__STATE_VARIABLE_Info_20 = base;
+          MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (make__dependencies__V_45_45));
+          MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (make__dependencies__V_46_46));
+          MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (make__dependencies__V_47_47));
+          MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (make__dependencies__V_48_48));
+          MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (make__dependencies__V_49_49));
+          MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (make__dependencies__V_50_50));
+          MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (make__dependencies__Map_18));
+          MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (make__dependencies__V_52_52));
+          MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (make__dependencies__V_53_53));
+          MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (make__dependencies__V_54_54));
+          MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (make__dependencies__V_55_55));
+          MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (make__dependencies__V_56_56));
+          MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (make__dependencies__V_57_57));
+          MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (make__dependencies__V_58_58));
+          MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (make__dependencies__V_59_59));
+          MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (make__dependencies__V_60_60));
+          MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (make__dependencies__V_61_61));
+          MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (make__dependencies__V_62_62));
+          MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (make__dependencies__V_63_63));
+          MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (make__dependencies__V_64_64));
+        }
+      }
+  }
+}
+
+MR_Word MR_CALL 
+make__dependencies__init_cached_foreign_imports_0_f_0(void)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__1_1;
+
+    {
+      make__dependencies__HeadVar__1_1 = mercury__map__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[5]);
+    }
+    return make__dependencies__HeadVar__1_1;
+  }
+}
+
+MR_Word MR_CALL 
+make__dependencies__init_cached_transitive_dependencies_0_f_0(void)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__1_1;
+
+    {
+      make__dependencies__HeadVar__1_1 = mercury__map__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_transitive_dependencies_root_0, (MR_Word) &make__dependencies_scalar_common_1[5]);
+    }
+    return make__dependencies__HeadVar__1_1;
+  }
+}
+
+MR_Word MR_CALL 
+make__dependencies__init_cached_direct_imports_0_f_0(void)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__HeadVar__1_1;
+
+    {
+      make__dependencies__HeadVar__1_1 = mercury__map__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, (MR_Word) &make__dependencies_scalar_common_1[5]);
+    }
+    return make__dependencies__HeadVar__1_1;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps_10_p_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      make__dependencies__debug_newer_dependencies_2_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 7))));
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps_10_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      make__dependencies__check_dependencies_timestamps_write_missing_deps_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 5))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 6))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 7))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 8))));
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependency_timestamps_10_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      mercury__io__write_string_3_p_0(((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))));
+    }
+  }
+}
+
+void MR_CALL 
+make__dependencies__check_dependency_timestamps_10_p_0(
+  MR_Word make__dependencies__TypeInfo_for_File_34,
+  MR_Word make__dependencies__Globals_11,
+  MR_String make__dependencies__TargetFileName_12,
+  MR_Word make__dependencies__MaybeTimestamp_13,
+  MR_Word make__dependencies__BuildDepsSucceeded_14,
+  MR_Word make__dependencies__DepFiles_15,
+  MR_Word make__dependencies__WriteDepFile_16,
+  MR_Word make__dependencies__DepTimestamps_17,
+  MR_Word * make__dependencies__DepsResult_18)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    if (((MR_tag((MR_Word) make__dependencies__MaybeTimestamp_13)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word make__dependencies__V_30_30;
+        MR_String make__dependencies__V_32_32;
+
+        *make__dependencies__DepsResult_18 = (MR_Integer) 1;
+        {
+          make__dependencies__V_32_32 = mercury__string__f_43_43_2_f_0(make__dependencies__TargetFileName_12, (MR_String) " does not exist.\n");
+        }
+        {
+          make__dependencies__V_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_30_30, 0) = ((MR_Box) (&make__dependencies_scalar_common_7[1]));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_30_30, 1) = ((MR_Box) (make__dependencies__check_dependency_timestamps_10_p_0_1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_30_30, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_30_30, 3) = ((MR_Box) (make__dependencies__V_32_32));
+        }
+        {
+          make__util__debug_make_msg_4_p_0(make__dependencies__Globals_11, make__dependencies__V_30_30);
+        }
+      }
+    else
+      {
+        MR_Word make__dependencies__Timestamp_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__MaybeTimestamp_13, (MR_Integer) 0)));
+
+        {
+          make__dependencies__succeeded = make__dependencies__error_in_timestamps_1_p_0(make__dependencies__DepTimestamps_17);
+        }
+        if (make__dependencies__succeeded)
+          {
+            MR_Word make__dependencies__WriteMissingDeps_22;
+
+            *make__dependencies__DepsResult_18 = (MR_Integer) 2;
+            {
+              make__dependencies__WriteMissingDeps_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 9 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 0) = ((MR_Box) (&make__dependencies_scalar_common_4[2]));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 1) = ((MR_Box) (make__dependencies__check_dependency_timestamps_10_p_0_2));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 3) = ((MR_Box) (make__dependencies__TypeInfo_for_File_34));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 4) = ((MR_Box) (make__dependencies__TargetFileName_12));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 5) = ((MR_Box) (make__dependencies__BuildDepsSucceeded_14));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 6) = ((MR_Box) (make__dependencies__DepFiles_15));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 7) = ((MR_Box) (make__dependencies__WriteDepFile_16));
+              MR_hl_field(MR_mktag(0), make__dependencies__WriteMissingDeps_22, 8) = ((MR_Box) (make__dependencies__DepTimestamps_17));
+            }
+            switch (make__dependencies__BuildDepsSucceeded_14) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  make__util__debug_make_msg_4_p_0(make__dependencies__Globals_11, make__dependencies__WriteMissingDeps_22);
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  make__dependencies__check_dependencies_timestamps_write_missing_deps_7_p_0(make__dependencies__TypeInfo_for_File_34, make__dependencies__TargetFileName_12, make__dependencies__BuildDepsSucceeded_14, make__dependencies__DepFiles_15, make__dependencies__WriteDepFile_16, make__dependencies__DepTimestamps_17);
+                }
+                break;
+            }
+          }
+        else
+          {
+            MR_Word make__dependencies__OpMode_23;
+            MR_Word make__dependencies__V_28_28;
+
+            {
+              libs__globals__get_op_mode_2_p_0(make__dependencies__Globals_11, &make__dependencies__OpMode_23);
+            }
+            make__dependencies__succeeded = ((MR_tag((MR_Word) make__dependencies__OpMode_23)) == (MR_mktag((MR_Integer) 1)));
+            if (make__dependencies__succeeded)
+              {
+                make__dependencies__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__OpMode_23, (MR_Integer) 0)));
+                make__dependencies__succeeded = (make__dependencies__V_28_28 == (MR_Integer) 1);
+              }
+            if (make__dependencies__succeeded)
+              *make__dependencies__DepsResult_18 = (MR_Integer) 1;
+            else
+              {
+                {
+                  make__dependencies__succeeded = make__dependencies__newer_timestamp_2_p_0(make__dependencies__DepTimestamps_17, make__dependencies__Timestamp_21);
+                }
+                if (make__dependencies__succeeded)
+                  {
+                    MR_Word make__dependencies__V_47_47;
+
+                    {
+                      make__dependencies__V_47_47 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 8 * sizeof(MR_Word)), NULL, NULL);
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_47_47, 0) = ((MR_Box) (&make__dependencies_scalar_common_8[2]));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_47_47, 1) = ((MR_Box) (make__dependencies__check_dependency_timestamps_10_p_0_3));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_47_47, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_47_47, 3) = ((MR_Box) (make__dependencies__TypeInfo_for_File_34));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_47_47, 4) = ((MR_Box) (make__dependencies__TargetFileName_12));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_47_47, 5) = ((MR_Box) (make__dependencies__MaybeTimestamp_13));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_47_47, 6) = ((MR_Box) (make__dependencies__DepFiles_15));
+                      MR_hl_field(MR_mktag(0), make__dependencies__V_47_47, 7) = ((MR_Box) (make__dependencies__DepTimestamps_17));
+                    }
+                    {
+                      make__util__debug_make_msg_4_p_0(make__dependencies__Globals_11, make__dependencies__V_47_47);
+                    }
+                    *make__dependencies__DepsResult_18 = (MR_Integer) 1;
+                  }
+                else
+                  *make__dependencies__DepsResult_18 = (MR_Integer) 0;
+              }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependencies_10_p_0_6(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      make__dependencies__check_dependencies_debug_unbuilt_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 5))));
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependencies_10_p_0_5(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      make__util__make_write_dependency_file_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1));
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependencies_10_p_0_4(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_HeadVar__3_3;
+    MR_Word make__dependencies__conv4_HeadVar__5_5;
+
+    {
+      make__util__get_dependency_timestamp_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), &make__dependencies__conv5_HeadVar__3_3, ((MR_Word) make__dependencies__wrapper_arg_3), &make__dependencies__conv4_HeadVar__5_5);
+    }
+    *make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv5_HeadVar__3_3));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_HeadVar__5_5));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependencies_10_p_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      mercury__io__write_string_3_p_0(((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))));
+    }
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__check_dependencies_10_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      make__dependencies__succeeded = make__dependencies__IntroducedFrom__pred__check_dependencies__1254__1_1_p_0(((MR_Word) make__dependencies__wrapper_arg_1));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__check_dependencies_10_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box * make__dependencies__wrapper_arg_2,
+  MR_Box make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv1_Status_10;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_28;
+
+    {
+      make__dependencies__dependency_status_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), &make__dependencies__conv1_Status_10, ((MR_Word) make__dependencies__wrapper_arg_3), &make__dependencies__conv0_STATE_VARIABLE_Info_28);
+    }
+    *make__dependencies__wrapper_arg_2 = ((MR_Box) (make__dependencies__conv1_Status_10));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_28));
+  }
+}
+
+void MR_CALL 
+make__dependencies__check_dependencies_10_p_0(
+  MR_Word make__dependencies__Globals_11,
+  MR_String make__dependencies__TargetFileName_12,
+  MR_Word make__dependencies__MaybeTimestamp_13,
+  MR_Word make__dependencies__BuildDepsSucceeded_14,
+  MR_Word make__dependencies__DepFiles_15,
+  MR_Word * make__dependencies__DepsResult_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_27,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_28)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__TypeCtorInfo_56_56;
+    MR_Word make__dependencies__TypeCtorInfo_57_57;
+    MR_Word make__dependencies__TypeCtorInfo_58_58;
+    MR_Word make__dependencies__TypeCtorInfo_59_59;
+    MR_Word make__dependencies__DepStatusList_19;
+    MR_Word make__dependencies__DepStatusAL_20;
+    MR_Word make__dependencies__UnbuiltDependencies_23;
+    MR_Word make__dependencies__V_31_31;
+    MR_Word make__dependencies__STATE_VARIABLE_Info_32_32;
+    MR_Box make__dependencies__conv3_STATE_VARIABLE_Info_32_32;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_IO_33_33;
+
+    {
+      make__dependencies__V_31_31 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_31_31, 0) = ((MR_Box) (&make__dependencies_scalar_common_8[0]));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_31_31, 1) = ((MR_Box) (make__dependencies__check_dependencies_10_p_0_1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_31_31, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_31_31, 3) = ((MR_Box) (make__dependencies__Globals_11));
+    }
+    make__dependencies__TypeCtorInfo_56_56 = (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0;
+    make__dependencies__TypeCtorInfo_57_57 = (MR_Word) &make__make__type_ctor_info_dependency_status_0;
+    make__dependencies__TypeCtorInfo_58_58 = (MR_Word) &make__make__type_ctor_info_make_info_0;
+    make__dependencies__TypeCtorInfo_59_59 = (MR_Word) &mercury__io__io__type_ctor_info_state_0;
+    {
+      mercury__list__map_foldl2_7_p_2(make__dependencies__TypeCtorInfo_56_56, make__dependencies__TypeCtorInfo_57_57, make__dependencies__TypeCtorInfo_58_58, make__dependencies__TypeCtorInfo_59_59, make__dependencies__V_31_31, make__dependencies__DepFiles_15, &make__dependencies__DepStatusList_19, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_27)), &make__dependencies__conv3_STATE_VARIABLE_Info_32_32, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv2_STATE_VARIABLE_IO_33_33);
+    }
+    make__dependencies__STATE_VARIABLE_Info_32_32 = ((MR_Word) make__dependencies__conv3_STATE_VARIABLE_Info_32_32);
+    {
+      mercury__assoc_list__from_corresponding_lists_3_p_0(make__dependencies__TypeCtorInfo_56_56, make__dependencies__TypeCtorInfo_57_57, make__dependencies__DepFiles_15, make__dependencies__DepStatusList_19, &make__dependencies__DepStatusAL_20);
+    }
+    {
+      mercury__list__filter_3_p_0((MR_Word) &make__dependencies_scalar_common_2[0], (MR_Word) &make__dependencies_scalar_common_2[8], make__dependencies__DepStatusAL_20, &make__dependencies__UnbuiltDependencies_23);
+    }
+    if ((make__dependencies__UnbuiltDependencies_23 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+      {
+        MR_Word make__dependencies__DepTimestamps_26;
+        MR_Word make__dependencies__V_36_36;
+        MR_String make__dependencies__V_38_38;
+        MR_Word make__dependencies__V_40_40;
+        MR_Word make__dependencies__V_43_43;
+        MR_Box make__dependencies__conv7_STATE_VARIABLE_Info_28;
+        MR_Box make__dependencies__conv6_STATE_VARIABLE_IO_42_42;
+
+        {
+          make__dependencies__V_38_38 = mercury__string__f_43_43_2_f_0(make__dependencies__TargetFileName_12, (MR_String) ": finished dependencies\n");
+        }
+        {
+          make__dependencies__V_36_36 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_36_36, 0) = ((MR_Box) (&make__dependencies_scalar_common_7[1]));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_36_36, 1) = ((MR_Box) (make__dependencies__check_dependencies_10_p_0_3));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_36_36, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_36_36, 3) = ((MR_Box) (make__dependencies__V_38_38));
+        }
+        {
+          make__util__debug_make_msg_4_p_0(make__dependencies__Globals_11, make__dependencies__V_36_36);
+        }
+        {
+          make__dependencies__V_40_40 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_40_40, 0) = ((MR_Box) (&make__dependencies_scalar_common_8[1]));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_40_40, 1) = ((MR_Box) (make__dependencies__check_dependencies_10_p_0_4));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_40_40, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_40_40, 3) = ((MR_Box) (make__dependencies__Globals_11));
+        }
+        {
+          mercury__list__map_foldl2_7_p_2(make__dependencies__TypeCtorInfo_56_56, (MR_Word) &make__dependencies_scalar_common_2[1], make__dependencies__TypeCtorInfo_58_58, make__dependencies__TypeCtorInfo_59_59, make__dependencies__V_40_40, make__dependencies__DepFiles_15, &make__dependencies__DepTimestamps_26, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_32_32)), &make__dependencies__conv7_STATE_VARIABLE_Info_28, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv6_STATE_VARIABLE_IO_42_42);
+        }
+        *make__dependencies__STATE_VARIABLE_Info_28 = ((MR_Word) make__dependencies__conv7_STATE_VARIABLE_Info_28);
+        {
+          make__dependencies__V_43_43 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_43_43, 0) = ((MR_Box) (&make__dependencies_scalar_common_5[2]));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_43_43, 1) = ((MR_Box) (make__dependencies__check_dependencies_10_p_0_5));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_43_43, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_43_43, 3) = ((MR_Box) (make__dependencies__Globals_11));
+        }
+        {
+          make__dependencies__check_dependency_timestamps__ho17_10_p_0(make__dependencies__Globals_11, make__dependencies__Globals_11, make__dependencies__TargetFileName_12, make__dependencies__MaybeTimestamp_13, make__dependencies__BuildDepsSucceeded_14, make__dependencies__DepFiles_15, make__dependencies__V_43_43, make__dependencies__DepTimestamps_26, make__dependencies__DepsResult_16);
+        }
+      }
+    else
+      {
+        MR_Word make__dependencies__V_45_45;
+
+        {
+          make__dependencies__V_45_45 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__V_45_45, 0) = ((MR_Box) (&make__dependencies_scalar_common_10[0]));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_45_45, 1) = ((MR_Box) (make__dependencies__check_dependencies_10_p_0_6));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_45_45, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_45_45, 3) = ((MR_Box) (make__dependencies__Globals_11));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_45_45, 4) = ((MR_Box) (make__dependencies__TargetFileName_12));
+          MR_hl_field(MR_mktag(0), make__dependencies__V_45_45, 5) = ((MR_Box) (make__dependencies__UnbuiltDependencies_23));
+        }
+        {
+          make__util__debug_make_msg_4_p_0(make__dependencies__Globals_11, make__dependencies__V_45_45);
+        }
+        *make__dependencies__DepsResult_16 = (MR_Integer) 2;
+        *make__dependencies__STATE_VARIABLE_Info_28 = make__dependencies__STATE_VARIABLE_Info_32_32;
+      }
+  }
+}
+
+void MR_CALL 
+make__dependencies__dependency_status_7_p_0(
+  MR_Word make__dependencies__Globals_8,
+  MR_Word make__dependencies__Dep_9,
+  MR_Word * make__dependencies__Status_10,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_27,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_28)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+
+    if (((MR_tag((MR_Word) make__dependencies__Dep_9)) == (MR_mktag((MR_Integer) 1))))
+      {
+        MR_Word make__dependencies__DepStatusMap_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 8)));
+        MR_Word make__dependencies__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 0)));
+        MR_Word make__dependencies__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 1)));
+        MR_Word make__dependencies__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 2)));
+        MR_Word make__dependencies__V_88_88 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 3)));
+        MR_Word make__dependencies__V_89_89 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 4)));
+        MR_Word make__dependencies__V_90_90 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 5)));
+        MR_Word make__dependencies__V_91_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 6)));
+        MR_Word make__dependencies__V_92_92 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 7)));
+        MR_Word make__dependencies__V_93_93 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 9)));
+        MR_Word make__dependencies__V_94_94 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 10)));
+        MR_Word make__dependencies__V_95_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 11)));
+        MR_Word make__dependencies__V_96_96 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 12)));
+        MR_Word make__dependencies__V_97_97 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 13)));
+        MR_Word make__dependencies__V_98_98 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 14)));
+        MR_Word make__dependencies__V_99_99 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 15)));
+        MR_Word make__dependencies__V_100_100 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 16)));
+        MR_Word make__dependencies__V_101_101 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 17)));
+        MR_Integer make__dependencies__V_102_102 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 18)));
+        MR_Word make__dependencies__V_103_103 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 19)));
+        MR_Word make__dependencies__StatusPrime_16;
+        MR_Box make__dependencies__conv0_StatusPrime_16;
+
+        {
+          make__dependencies__succeeded = mercury__version_hash_table__search_3_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0, (MR_Word) &make__make__type_ctor_info_dependency_status_0, make__dependencies__DepStatusMap_15, ((MR_Box) (make__dependencies__Dep_9)), &make__dependencies__conv0_StatusPrime_16);
+        }
+        if (make__dependencies__succeeded)
+          {
+            make__dependencies__StatusPrime_16 = ((MR_Word) make__dependencies__conv0_StatusPrime_16);
+            make__dependencies__succeeded = MR_TRUE;
+          }
+        if (make__dependencies__succeeded)
+          {
+            *make__dependencies__Status_10 = make__dependencies__StatusPrime_16;
+            *make__dependencies__STATE_VARIABLE_Info_28 = make__dependencies__STATE_VARIABLE_Info_0_27;
+          }
+        else
+          {
+            MR_Word make__dependencies__MaybeTimestamp_17;
+            MR_Word make__dependencies__STATE_VARIABLE_Info_51_51;
+            MR_Word make__dependencies__V_58_58;
+            MR_Word make__dependencies__V_59_59;
+            MR_Word make__dependencies__V_104_104;
+            MR_Word make__dependencies__V_105_105;
+            MR_Word make__dependencies__V_106_106;
+            MR_Word make__dependencies__V_107_107;
+            MR_Word make__dependencies__V_108_108;
+            MR_Word make__dependencies__V_109_109;
+            MR_Word make__dependencies__V_110_110;
+            MR_Word make__dependencies__V_111_111;
+            MR_Word make__dependencies__V_112_112;
+            MR_Word make__dependencies__V_113_113;
+            MR_Word make__dependencies__V_114_114;
+            MR_Word make__dependencies__V_115_115;
+            MR_Word make__dependencies__V_116_116;
+            MR_Word make__dependencies__V_117_117;
+            MR_Word make__dependencies__V_118_118;
+            MR_Word make__dependencies__V_119_119;
+            MR_Word make__dependencies__V_120_120;
+            MR_Integer make__dependencies__V_121_121;
+            MR_Word make__dependencies__V_122_122;
+            MR_Word make__dependencies__V_123_123;
+            MR_Word make__dependencies__V_124_124;
+            MR_Word make__dependencies__V_125_125;
+            MR_Word make__dependencies__V_126_126;
+            MR_Word make__dependencies__V_127_127;
+            MR_Word make__dependencies__V_128_128;
+            MR_Word make__dependencies__V_129_129;
+            MR_Word make__dependencies__V_130_130;
+            MR_Word make__dependencies__V_132_132;
+            MR_Word make__dependencies__V_133_133;
+            MR_Word make__dependencies__V_134_134;
+            MR_Word make__dependencies__V_135_135;
+            MR_Word make__dependencies__V_136_136;
+            MR_Word make__dependencies__V_137_137;
+            MR_Word make__dependencies__V_138_138;
+            MR_Word make__dependencies__V_139_139;
+            MR_Word make__dependencies__V_140_140;
+            MR_Integer make__dependencies__V_141_141;
+            MR_Word make__dependencies__V_142_142;
+            MR_Word make__dependencies__V_131_131;
+
+            {
+              make__util__get_dependency_timestamp_7_p_0(make__dependencies__Globals_8, make__dependencies__Dep_9, &make__dependencies__MaybeTimestamp_17, make__dependencies__STATE_VARIABLE_Info_0_27, &make__dependencies__STATE_VARIABLE_Info_51_51);
+            }
+            if (((MR_tag((MR_Word) make__dependencies__MaybeTimestamp_17)) == (MR_mktag((MR_Integer) 1))))
+              {
+                MR_String make__dependencies__Error_19 = ((MR_String) (MR_hl_field(MR_mktag(1), make__dependencies__MaybeTimestamp_17, (MR_Integer) 0)));
+
+                *make__dependencies__Status_10 = (MR_Integer) 3;
+                {
+                  mercury__io__write_string_3_p_0((MR_String) "** Error: ");
+                }
+                {
+                  mercury__io__write_string_3_p_0(make__dependencies__Error_19);
+                }
+                {
+                  mercury__io__nl_2_p_0();
+                }
+              }
+            else
+              *make__dependencies__Status_10 = (MR_Integer) 2;
+            make__dependencies__V_104_104 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 0)));
+            make__dependencies__V_105_105 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 1)));
+            make__dependencies__V_106_106 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 2)));
+            make__dependencies__V_107_107 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 3)));
+            make__dependencies__V_108_108 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 4)));
+            make__dependencies__V_109_109 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 5)));
+            make__dependencies__V_110_110 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 6)));
+            make__dependencies__V_111_111 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 7)));
+            make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 8)));
+            make__dependencies__V_112_112 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 9)));
+            make__dependencies__V_113_113 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 10)));
+            make__dependencies__V_114_114 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 11)));
+            make__dependencies__V_115_115 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 12)));
+            make__dependencies__V_116_116 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 13)));
+            make__dependencies__V_117_117 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 14)));
+            make__dependencies__V_118_118 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 15)));
+            make__dependencies__V_119_119 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 16)));
+            make__dependencies__V_120_120 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 17)));
+            make__dependencies__V_121_121 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 18)));
+            make__dependencies__V_122_122 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 19)));
+            {
+              make__dependencies__V_59_59 = mercury__version_hash_table__f_101_108_101_109_32_58_61_3_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0, (MR_Word) &make__make__type_ctor_info_dependency_status_0, ((MR_Box) (make__dependencies__Dep_9)), make__dependencies__V_58_58, ((MR_Box) (*make__dependencies__Status_10)));
+            }
+            make__dependencies__V_123_123 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 0)));
+            make__dependencies__V_124_124 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 1)));
+            make__dependencies__V_125_125 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 2)));
+            make__dependencies__V_126_126 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 3)));
+            make__dependencies__V_127_127 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 4)));
+            make__dependencies__V_128_128 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 5)));
+            make__dependencies__V_129_129 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 6)));
+            make__dependencies__V_130_130 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 7)));
+            make__dependencies__V_131_131 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 8)));
+            make__dependencies__V_132_132 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 9)));
+            make__dependencies__V_133_133 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 10)));
+            make__dependencies__V_134_134 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 11)));
+            make__dependencies__V_135_135 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 12)));
+            make__dependencies__V_136_136 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 13)));
+            make__dependencies__V_137_137 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 14)));
+            make__dependencies__V_138_138 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 15)));
+            make__dependencies__V_139_139 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 16)));
+            make__dependencies__V_140_140 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 17)));
+            make__dependencies__V_141_141 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 18)));
+            make__dependencies__V_142_142 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_51_51, (MR_Integer) 19)));
+            {
+              MR_Word base;
+              base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+              *make__dependencies__STATE_VARIABLE_Info_28 = base;
+              MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (make__dependencies__V_123_123));
+              MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (make__dependencies__V_124_124));
+              MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (make__dependencies__V_125_125));
+              MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (make__dependencies__V_126_126));
+              MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (make__dependencies__V_127_127));
+              MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (make__dependencies__V_128_128));
+              MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (make__dependencies__V_129_129));
+              MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (make__dependencies__V_130_130));
+              MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (make__dependencies__V_59_59));
+              MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (make__dependencies__V_132_132));
+              MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (make__dependencies__V_133_133));
+              MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (make__dependencies__V_134_134));
+              MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (make__dependencies__V_135_135));
+              MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (make__dependencies__V_136_136));
+              MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (make__dependencies__V_137_137));
+              MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (make__dependencies__V_138_138));
+              MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (make__dependencies__V_139_139));
+              MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (make__dependencies__V_140_140));
+              MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (make__dependencies__V_141_141));
+              MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (make__dependencies__V_142_142));
+            }
+          }
+      }
+    else
+      {
+        MR_Word make__dependencies__Target_20 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Dep_9, (MR_Integer) 0)));
+        MR_Word make__dependencies__ModuleName_21 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Target_20, (MR_Integer) 0)));
+        MR_Word make__dependencies__FileType_22 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Target_20, (MR_Integer) 1)));
+
+        if ((make__dependencies__FileType_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+          make__dependencies__succeeded = MR_TRUE;
+        else
+        if ((make__dependencies__FileType_22 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 8)))))
+          make__dependencies__succeeded = MR_TRUE;
+        else
+          make__dependencies__succeeded = MR_FALSE;
+        if (make__dependencies__succeeded)
+          {
+            MR_Word make__dependencies__V_32_32;
+
+            {
+              make__dependencies__V_32_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+              MR_hl_field(MR_mktag(0), make__dependencies__V_32_32, 0) = ((MR_Box) (make__dependencies__ModuleName_21));
+              MR_hl_field(MR_mktag(0), make__dependencies__V_32_32, 1) = ((MR_Box) (&make__dependencies_scalar_common_3[2]));
+            }
+            {
+              make__util__maybe_warn_up_to_date_target_6_p_0(make__dependencies__Globals_8, make__dependencies__V_32_32, make__dependencies__STATE_VARIABLE_Info_0_27, make__dependencies__STATE_VARIABLE_Info_28);
+            }
+            *make__dependencies__Status_10 = (MR_Integer) 2;
+          }
+        else
+          {
+            MR_Word make__dependencies__StatusPrime_74;
+            MR_Word make__dependencies__DepStatusMap_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 8)));
+            MR_Word make__dependencies__V_143_143 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 0)));
+            MR_Word make__dependencies__V_144_144 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 1)));
+            MR_Word make__dependencies__V_145_145 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 2)));
+            MR_Word make__dependencies__V_146_146 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 3)));
+            MR_Word make__dependencies__V_147_147 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 4)));
+            MR_Word make__dependencies__V_148_148 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 5)));
+            MR_Word make__dependencies__V_149_149 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 6)));
+            MR_Word make__dependencies__V_150_150 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 7)));
+            MR_Word make__dependencies__V_151_151 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 9)));
+            MR_Word make__dependencies__V_152_152 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 10)));
+            MR_Word make__dependencies__V_153_153 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 11)));
+            MR_Word make__dependencies__V_154_154 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 12)));
+            MR_Word make__dependencies__V_155_155 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 13)));
+            MR_Word make__dependencies__V_156_156 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 14)));
+            MR_Word make__dependencies__V_157_157 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 15)));
+            MR_Word make__dependencies__V_158_158 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 16)));
+            MR_Word make__dependencies__V_159_159 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 17)));
+            MR_Integer make__dependencies__V_160_160 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 18)));
+            MR_Word make__dependencies__V_161_161 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_27, (MR_Integer) 19)));
+            MR_Box make__dependencies__conv1_StatusPrime_74;
+
+            {
+              make__dependencies__succeeded = mercury__version_hash_table__search_3_p_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0, (MR_Word) &make__make__type_ctor_info_dependency_status_0, make__dependencies__DepStatusMap_60, ((MR_Box) (make__dependencies__Dep_9)), &make__dependencies__conv1_StatusPrime_74);
+            }
+            if (make__dependencies__succeeded)
+              {
+                make__dependencies__StatusPrime_74 = ((MR_Word) make__dependencies__conv1_StatusPrime_74);
+                make__dependencies__succeeded = MR_TRUE;
+              }
+            if (make__dependencies__succeeded)
+              {
+                *make__dependencies__Status_10 = make__dependencies__StatusPrime_74;
+                *make__dependencies__STATE_VARIABLE_Info_28 = make__dependencies__STATE_VARIABLE_Info_0_27;
+              }
+            else
+              {
+                MR_Word make__dependencies__MaybeImports_24;
+                MR_Word make__dependencies__STATE_VARIABLE_Info_35_35;
+                MR_Word make__dependencies__STATE_VARIABLE_Info_39_39;
+                MR_Word make__dependencies__V_49_49;
+                MR_Word make__dependencies__V_50_50;
+                MR_Word make__dependencies__V_188_188;
+                MR_Word make__dependencies__V_189_189;
+                MR_Word make__dependencies__V_190_190;
+                MR_Word make__dependencies__V_191_191;
+                MR_Word make__dependencies__V_192_192;
+                MR_Word make__dependencies__V_193_193;
+                MR_Word make__dependencies__V_194_194;
+                MR_Word make__dependencies__V_195_195;
+                MR_Word make__dependencies__V_196_196;
+                MR_Word make__dependencies__V_197_197;
+                MR_Word make__dependencies__V_198_198;
+                MR_Word make__dependencies__V_199_199;
+                MR_Word make__dependencies__V_200_200;
+                MR_Word make__dependencies__V_201_201;
+                MR_Word make__dependencies__V_202_202;
+                MR_Word make__dependencies__V_203_203;
+                MR_Word make__dependencies__V_204_204;
+                MR_Integer make__dependencies__V_205_205;
+                MR_Word make__dependencies__V_206_206;
+                MR_Word make__dependencies__V_207_207;
+                MR_Word make__dependencies__V_208_208;
+                MR_Word make__dependencies__V_209_209;
+                MR_Word make__dependencies__V_210_210;
+                MR_Word make__dependencies__V_211_211;
+                MR_Word make__dependencies__V_212_212;
+                MR_Word make__dependencies__V_213_213;
+                MR_Word make__dependencies__V_214_214;
+                MR_Word make__dependencies__V_216_216;
+                MR_Word make__dependencies__V_217_217;
+                MR_Word make__dependencies__V_218_218;
+                MR_Word make__dependencies__V_219_219;
+                MR_Word make__dependencies__V_220_220;
+                MR_Word make__dependencies__V_221_221;
+                MR_Word make__dependencies__V_222_222;
+                MR_Word make__dependencies__V_223_223;
+                MR_Word make__dependencies__V_224_224;
+                MR_Integer make__dependencies__V_225_225;
+                MR_Word make__dependencies__V_226_226;
+                MR_Word make__dependencies__V_215_215;
+
+                {
+                  make__module_dep_file__get_module_dependencies_7_p_0(make__dependencies__Globals_8, make__dependencies__ModuleName_21, &make__dependencies__MaybeImports_24, make__dependencies__STATE_VARIABLE_Info_0_27, &make__dependencies__STATE_VARIABLE_Info_35_35);
+                }
+                if ((make__dependencies__MaybeImports_24 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+                  {
+                    *make__dependencies__Status_10 = (MR_Integer) 3;
+                    make__dependencies__STATE_VARIABLE_Info_39_39 = make__dependencies__STATE_VARIABLE_Info_35_35;
+                  }
+                else
+                  {
+                    MR_Word make__dependencies__Imports_25 = ((MR_Word) (MR_hl_field(MR_mktag(1), make__dependencies__MaybeImports_24, (MR_Integer) 0)));
+                    MR_String make__dependencies__V_37_37 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 26)));
+                    MR_String make__dependencies__V_235_235;
+                    MR_String make__dependencies__V_162_162 = ((MR_String) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 0)));
+                    MR_Word make__dependencies__V_163_163 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 1)));
+                    MR_Word make__dependencies__V_164_164 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 2)));
+                    MR_Word make__dependencies__V_165_165 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 3)));
+                    MR_Word make__dependencies__V_166_166 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 4)));
+                    MR_Word make__dependencies__V_167_167 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 5)));
+                    MR_Word make__dependencies__V_168_168 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 6)));
+                    MR_Word make__dependencies__V_169_169 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 7)));
+                    MR_Word make__dependencies__V_170_170 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 8)));
+                    MR_Word make__dependencies__V_171_171 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 9)));
+                    MR_Word make__dependencies__V_172_172 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 10)));
+                    MR_Word make__dependencies__V_173_173 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 11)));
+                    MR_Word make__dependencies__V_174_174 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 12)));
+                    MR_Word make__dependencies__V_175_175 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 13)));
+                    MR_Word make__dependencies__V_176_176 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 14)));
+                    MR_Word make__dependencies__V_177_177 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 15)));
+                    MR_Word make__dependencies__V_178_178 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 16)));
+                    MR_Word make__dependencies__V_179_179 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 17)));
+                    MR_Word make__dependencies__V_180_180 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 18)));
+                    MR_Word make__dependencies__V_181_181 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 19)));
+                    MR_Word make__dependencies__V_182_182 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 20)));
+                    MR_Word make__dependencies__V_183_183 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 21)));
+                    MR_Word make__dependencies__V_184_184 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 22)));
+                    MR_Word make__dependencies__V_185_185 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 23)));
+                    MR_Word make__dependencies__V_186_186 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 24)));
+                    MR_Word make__dependencies__V_187_187 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Imports_25, (MR_Integer) 25)));
+
+                    {
+                      make__dependencies__V_235_235 = mercury__dir__this_directory_0_f_0();
+                    }
+                    make__dependencies__succeeded = (strcmp(make__dependencies__V_37_37, make__dependencies__V_235_235) == 0);
+                    if (make__dependencies__succeeded)
+                      {
+                        *make__dependencies__Status_10 = (MR_Integer) 0;
+                        make__dependencies__STATE_VARIABLE_Info_39_39 = make__dependencies__STATE_VARIABLE_Info_35_35;
+                      }
+                    else
+                      {
+                        MR_Word make__dependencies__MaybeTimestamp_63;
+
+                        {
+                          make__util__get_target_timestamp_8_p_0(make__dependencies__Globals_8, (MR_Integer) 0, make__dependencies__Target_20, &make__dependencies__MaybeTimestamp_63, make__dependencies__STATE_VARIABLE_Info_35_35, &make__dependencies__STATE_VARIABLE_Info_39_39);
+                        }
+                        if (((MR_tag((MR_Word) make__dependencies__MaybeTimestamp_63)) == (MR_mktag((MR_Integer) 1))))
+                          {
+                            MR_String make__dependencies__Error_61 = ((MR_String) (MR_hl_field(MR_mktag(1), make__dependencies__MaybeTimestamp_63, (MR_Integer) 0)));
+
+                            *make__dependencies__Status_10 = (MR_Integer) 3;
+                            {
+                              mercury__io__write_string_3_p_0((MR_String) "** Error: file \140");
+                            }
+                            {
+                              make__util__make_write_target_file_4_p_0(make__dependencies__Globals_8, make__dependencies__Target_20);
+                            }
+                            {
+                              mercury__io__write_string_3_p_0((MR_String) "\' not found: ");
+                            }
+                            {
+                              mercury__io__write_string_3_p_0(make__dependencies__Error_61);
+                            }
+                            {
+                              mercury__io__nl_2_p_0();
+                            }
+                          }
+                        else
+                          *make__dependencies__Status_10 = (MR_Integer) 2;
+                      }
+                  }
+                make__dependencies__V_188_188 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 0)));
+                make__dependencies__V_189_189 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 1)));
+                make__dependencies__V_190_190 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 2)));
+                make__dependencies__V_191_191 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 3)));
+                make__dependencies__V_192_192 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 4)));
+                make__dependencies__V_193_193 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 5)));
+                make__dependencies__V_194_194 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 6)));
+                make__dependencies__V_195_195 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 7)));
+                make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 8)));
+                make__dependencies__V_196_196 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 9)));
+                make__dependencies__V_197_197 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 10)));
+                make__dependencies__V_198_198 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 11)));
+                make__dependencies__V_199_199 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 12)));
+                make__dependencies__V_200_200 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 13)));
+                make__dependencies__V_201_201 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 14)));
+                make__dependencies__V_202_202 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 15)));
+                make__dependencies__V_203_203 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 16)));
+                make__dependencies__V_204_204 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 17)));
+                make__dependencies__V_205_205 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 18)));
+                make__dependencies__V_206_206 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 19)));
+                {
+                  make__dependencies__V_50_50 = mercury__version_hash_table__f_101_108_101_109_32_58_61_3_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0, (MR_Word) &make__make__type_ctor_info_dependency_status_0, ((MR_Box) (make__dependencies__Dep_9)), make__dependencies__V_49_49, ((MR_Box) (*make__dependencies__Status_10)));
+                }
+                make__dependencies__V_207_207 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 0)));
+                make__dependencies__V_208_208 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 1)));
+                make__dependencies__V_209_209 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 2)));
+                make__dependencies__V_210_210 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 3)));
+                make__dependencies__V_211_211 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 4)));
+                make__dependencies__V_212_212 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 5)));
+                make__dependencies__V_213_213 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 6)));
+                make__dependencies__V_214_214 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 7)));
+                make__dependencies__V_215_215 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 8)));
+                make__dependencies__V_216_216 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 9)));
+                make__dependencies__V_217_217 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 10)));
+                make__dependencies__V_218_218 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 11)));
+                make__dependencies__V_219_219 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 12)));
+                make__dependencies__V_220_220 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 13)));
+                make__dependencies__V_221_221 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 14)));
+                make__dependencies__V_222_222 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 15)));
+                make__dependencies__V_223_223 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 16)));
+                make__dependencies__V_224_224 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 17)));
+                make__dependencies__V_225_225 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 18)));
+                make__dependencies__V_226_226 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_39_39, (MR_Integer) 19)));
+                {
+                  MR_Word base;
+                  base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+                  *make__dependencies__STATE_VARIABLE_Info_28 = base;
+                  MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (make__dependencies__V_207_207));
+                  MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (make__dependencies__V_208_208));
+                  MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (make__dependencies__V_209_209));
+                  MR_hl_field(MR_mktag(0), base, 3) = ((MR_Box) (make__dependencies__V_210_210));
+                  MR_hl_field(MR_mktag(0), base, 4) = ((MR_Box) (make__dependencies__V_211_211));
+                  MR_hl_field(MR_mktag(0), base, 5) = ((MR_Box) (make__dependencies__V_212_212));
+                  MR_hl_field(MR_mktag(0), base, 6) = ((MR_Box) (make__dependencies__V_213_213));
+                  MR_hl_field(MR_mktag(0), base, 7) = ((MR_Box) (make__dependencies__V_214_214));
+                  MR_hl_field(MR_mktag(0), base, 8) = ((MR_Box) (make__dependencies__V_50_50));
+                  MR_hl_field(MR_mktag(0), base, 9) = ((MR_Box) (make__dependencies__V_216_216));
+                  MR_hl_field(MR_mktag(0), base, 10) = ((MR_Box) (make__dependencies__V_217_217));
+                  MR_hl_field(MR_mktag(0), base, 11) = ((MR_Box) (make__dependencies__V_218_218));
+                  MR_hl_field(MR_mktag(0), base, 12) = ((MR_Box) (make__dependencies__V_219_219));
+                  MR_hl_field(MR_mktag(0), base, 13) = ((MR_Box) (make__dependencies__V_220_220));
+                  MR_hl_field(MR_mktag(0), base, 14) = ((MR_Box) (make__dependencies__V_221_221));
+                  MR_hl_field(MR_mktag(0), base, 15) = ((MR_Box) (make__dependencies__V_222_222));
+                  MR_hl_field(MR_mktag(0), base, 16) = ((MR_Box) (make__dependencies__V_223_223));
+                  MR_hl_field(MR_mktag(0), base, 17) = ((MR_Box) (make__dependencies__V_224_224));
+                  MR_hl_field(MR_mktag(0), base, 18) = ((MR_Box) (make__dependencies__V_225_225));
+                  MR_hl_field(MR_mktag(0), base, 19) = ((MR_Box) (make__dependencies__V_226_226));
+                }
+              }
+          }
+      }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__make_local_module_id_options_8_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv0_Opts_6;
+
+    {
+      make__dependencies__make_local_module_id_option_3_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv0_Opts_6);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv0_Opts_6));
+  }
+}
+
+void MR_CALL 
+make__dependencies__make_local_module_id_options_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleName_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Options_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_16,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_17)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__LocalModules_15;
+    MR_Box make__dependencies__conv1_Options_12;
+
+    {
+      make__dependencies__find_reachable_local_modules_8_p_0(make__dependencies__Globals_9, make__dependencies__ModuleName_10, make__dependencies__Success_11, &make__dependencies__LocalModules_15, make__dependencies__STATE_VARIABLE_Info_0_16, make__dependencies__STATE_VARIABLE_Info_17);
+    }
+    {
+      mercury__set__fold_4_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, (MR_Word) &make__dependencies_scalar_common_1[4], (MR_Word) &make__dependencies_scalar_common_2[7], make__dependencies__LocalModules_15, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &make__dependencies__conv1_Options_12);
+    }
+    *make__dependencies__Options_12 = ((MR_Word) make__dependencies__conv1_Options_12);
+  }
+}
+
+static MR_bool MR_CALL 
+make__dependencies__remove_nested_modules_7_p_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+
+    {
+      make__dependencies__succeeded = make__dependencies__IntroducedFrom__pred__remove_nested_modules__1184__1_2_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1));
+    }
+    return make__dependencies__succeeded;
+  }
+}
+
+static void MR_CALL 
+make__dependencies__remove_nested_modules_7_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box make__dependencies__wrapper_arg_4,
+  MR_Box * make__dependencies__wrapper_arg_5,
+  MR_Box make__dependencies__wrapper_arg_6,
+  MR_Box * make__dependencies__wrapper_arg_7)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv1_STATE_VARIABLE_NestedModules_17;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Info_19;
+
+    {
+      make__dependencies__collect_nested_modules_8_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv1_STATE_VARIABLE_NestedModules_17, ((MR_Word) make__dependencies__wrapper_arg_4), &make__dependencies__conv0_STATE_VARIABLE_Info_19);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv1_STATE_VARIABLE_NestedModules_17));
+    *make__dependencies__wrapper_arg_5 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Info_19));
+  }
+}
+
+void MR_CALL 
+make__dependencies__remove_nested_modules_7_p_0(
+  MR_Word make__dependencies__Globals_8,
+  MR_Word make__dependencies__Modules0_9,
+  MR_Word * make__dependencies__Modules_10,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_14,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_15)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__TypeCtorInfo_30_30;
+    MR_Word make__dependencies__NestedModules_13;
+    MR_Word make__dependencies__V_18_18;
+    MR_Word make__dependencies__V_19_19;
+    MR_Word make__dependencies__V_22_22;
+    MR_Box make__dependencies__conv4_NestedModules_13;
+    MR_Box make__dependencies__conv3_STATE_VARIABLE_Info_15;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_IO_17;
+
+    {
+      make__dependencies__V_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_18_18, 0) = ((MR_Box) (&make__dependencies_scalar_common_4[1]));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_18_18, 1) = ((MR_Box) (make__dependencies__remove_nested_modules_7_p_0_1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_18_18, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_18_18, 3) = ((MR_Box) (make__dependencies__Globals_8));
+    }
+    make__dependencies__TypeCtorInfo_30_30 = (MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0;
+    {
+      make__dependencies__V_19_19 = mercury__set__init_0_f_0(make__dependencies__TypeCtorInfo_30_30);
+    }
+    {
+      mercury__list__foldl3_8_p_2(make__dependencies__TypeCtorInfo_30_30, (MR_Word) &make__dependencies_scalar_common_1[1], (MR_Word) &make__make__type_ctor_info_make_info_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, make__dependencies__V_18_18, make__dependencies__Modules0_9, ((MR_Box) (make__dependencies__V_19_19)), &make__dependencies__conv4_NestedModules_13, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_14)), &make__dependencies__conv3_STATE_VARIABLE_Info_15, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv2_STATE_VARIABLE_IO_17);
+    }
+    make__dependencies__NestedModules_13 = ((MR_Word) make__dependencies__conv4_NestedModules_13);
+    *make__dependencies__STATE_VARIABLE_Info_15 = ((MR_Word) make__dependencies__conv3_STATE_VARIABLE_Info_15);
+    {
+      make__dependencies__V_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 0) = ((MR_Box) (&make__dependencies_scalar_common_6[0]));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 1) = ((MR_Box) (make__dependencies__remove_nested_modules_7_p_0_2));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_22_22, 3) = ((MR_Box) (make__dependencies__NestedModules_13));
+    }
+    {
+      mercury__list__negated_filter_3_p_0(make__dependencies__TypeCtorInfo_30_30, make__dependencies__V_22_22, make__dependencies__Modules0_9, make__dependencies__Modules_10);
+    }
+  }
+}
+
+void MR_CALL 
+make__dependencies__find_reachable_local_modules_8_p_0(
+  MR_Word make__dependencies__Globals_9,
+  MR_Word make__dependencies__ModuleName_10,
+  MR_Word * make__dependencies__Success_11,
+  MR_Word * make__dependencies__Modules_12,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_17,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_18)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__ModuleIndex_15;
+    MR_Word make__dependencies__Modules0_16;
+    MR_Word make__dependencies__STATE_VARIABLE_Info_21_21;
+    MR_Word make__dependencies__Map0_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 6)));
+    MR_Word make__dependencies__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 0)));
+    MR_Word make__dependencies__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 1)));
+    MR_Word make__dependencies__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 2)));
+    MR_Word make__dependencies__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 3)));
+    MR_Word make__dependencies__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 4)));
+    MR_Word make__dependencies__V_50_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 5)));
+    MR_Word make__dependencies__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 7)));
+    MR_Word make__dependencies__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 8)));
+    MR_Word make__dependencies__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 9)));
+    MR_Word make__dependencies__V_54_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 10)));
+    MR_Word make__dependencies__V_55_55 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 11)));
+    MR_Word make__dependencies__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 12)));
+    MR_Word make__dependencies__V_57_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 13)));
+    MR_Word make__dependencies__V_58_58 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 14)));
+    MR_Word make__dependencies__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 15)));
+    MR_Word make__dependencies__V_60_60 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 16)));
+    MR_Word make__dependencies__V_61_61 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 17)));
+    MR_Integer make__dependencies__V_62_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 18)));
+    MR_Word make__dependencies__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 19)));
+    MR_Word make__dependencies__Index0_32;
+    MR_Word make__dependencies__V_42_42 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_31, (MR_Integer) 0)));
+    MR_Box make__dependencies__V_64_64 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_31, (MR_Integer) 1)));
+    MR_Integer make__dependencies__V_65_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_31, (MR_Integer) 2)));
+    MR_Box make__dependencies__conv0_Index0_32;
+
+    {
+      make__dependencies__succeeded = mercury__version_hash_table__search_3_p_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0, (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, make__dependencies__V_42_42, ((MR_Box) (make__dependencies__ModuleName_10)), &make__dependencies__conv0_Index0_32);
+    }
+    if (make__dependencies__succeeded)
+      {
+        make__dependencies__Index0_32 = ((MR_Word) make__dependencies__conv0_Index0_32);
+        make__dependencies__succeeded = MR_TRUE;
+      }
+    if (make__dependencies__succeeded)
+      {
+        make__dependencies__ModuleIndex_15 = make__dependencies__Index0_32;
+        make__dependencies__STATE_VARIABLE_Info_21_21 = make__dependencies__STATE_VARIABLE_Info_0_17;
+      }
+    else
+      {
+        MR_Word make__dependencies__TypeCtorInfo_67_88;
+        MR_Word make__dependencies__Forward0_33 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_31, (MR_Integer) 0)));
+        MR_Box make__dependencies__Reverse0_34 = ((MR_Box) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_31, (MR_Integer) 1)));
+        MR_Integer make__dependencies__Size0_35 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__Map0_31, (MR_Integer) 2)));
+        MR_Integer make__dependencies__Size_36;
+        MR_Word make__dependencies__Forward_37;
+        MR_Integer make__dependencies__TrueSize_38;
+        MR_Box make__dependencies__Reverse_40;
+        MR_Word make__dependencies__Map_41;
+        MR_Word make__dependencies__V_66_66;
+        MR_Word make__dependencies__V_67_67;
+        MR_Word make__dependencies__V_68_68;
+        MR_Word make__dependencies__V_69_69;
+        MR_Word make__dependencies__V_70_70;
+        MR_Word make__dependencies__V_71_71;
+        MR_Word make__dependencies__V_73_73;
+        MR_Word make__dependencies__V_74_74;
+        MR_Word make__dependencies__V_75_75;
+        MR_Word make__dependencies__V_76_76;
+        MR_Word make__dependencies__V_77_77;
+        MR_Word make__dependencies__V_78_78;
+        MR_Word make__dependencies__V_79_79;
+        MR_Word make__dependencies__V_80_80;
+        MR_Word make__dependencies__V_81_81;
+        MR_Word make__dependencies__V_82_82;
+        MR_Word make__dependencies__V_83_83;
+        MR_Integer make__dependencies__V_84_84;
+        MR_Word make__dependencies__V_85_85;
+        MR_Word make__dependencies__V_72_72;
+
+        make__dependencies__ModuleIndex_15 = (MR_Word) make__dependencies__Size0_35;
+        make__dependencies__Size_36 = (make__dependencies__Size0_35 + (MR_Integer) 1);
+        make__dependencies__TypeCtorInfo_67_88 = (MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0;
+        {
+          mercury__version_hash_table__det_insert_4_p_0(make__dependencies__TypeCtorInfo_67_88, (MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0, ((MR_Box) (make__dependencies__ModuleName_10)), ((MR_Box) (make__dependencies__ModuleIndex_15)), make__dependencies__Forward0_33, &make__dependencies__Forward_37);
+        }
+        {
+          make__dependencies__TrueSize_38 = mercury__version_array__size_1_f_0(make__dependencies__TypeCtorInfo_67_88, make__dependencies__Reverse0_34);
+        }
+        make__dependencies__succeeded = (make__dependencies__Size_36 > make__dependencies__TrueSize_38);
+        if (make__dependencies__succeeded)
+          {
+            MR_Integer make__dependencies__NewSize_39;
+
+            make__dependencies__succeeded = (make__dependencies__TrueSize_38 == (MR_Integer) 0);
+            if (make__dependencies__succeeded)
+              make__dependencies__NewSize_39 = (MR_Integer) 1;
+            else
+              {
+                make__dependencies__NewSize_39 = (make__dependencies__TrueSize_38 * (MR_Integer) 2);
+              }
+            {
+              mercury__version_array__resize_4_p_0(make__dependencies__TypeCtorInfo_67_88, make__dependencies__NewSize_39, ((MR_Box) (make__dependencies__ModuleName_10)), make__dependencies__Reverse0_34, &make__dependencies__Reverse_40);
+            }
+          }
+        else
+          {
+            mercury__version_array__set_4_p_0(make__dependencies__TypeCtorInfo_67_88, make__dependencies__Size0_35, ((MR_Box) (make__dependencies__ModuleName_10)), make__dependencies__Reverse0_34, &make__dependencies__Reverse_40);
+          }
+        {
+          make__dependencies__Map_41 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__Map_41, 0) = ((MR_Box) (make__dependencies__Forward_37));
+          MR_hl_field(MR_mktag(0), make__dependencies__Map_41, 1) = ((MR_Box) (make__dependencies__Reverse_40));
+          MR_hl_field(MR_mktag(0), make__dependencies__Map_41, 2) = ((MR_Box) (make__dependencies__Size_36));
+        }
+        make__dependencies__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 0)));
+        make__dependencies__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 1)));
+        make__dependencies__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 2)));
+        make__dependencies__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 3)));
+        make__dependencies__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 4)));
+        make__dependencies__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 5)));
+        make__dependencies__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 6)));
+        make__dependencies__V_73_73 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 7)));
+        make__dependencies__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 8)));
+        make__dependencies__V_75_75 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 9)));
+        make__dependencies__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 10)));
+        make__dependencies__V_77_77 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 11)));
+        make__dependencies__V_78_78 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 12)));
+        make__dependencies__V_79_79 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 13)));
+        make__dependencies__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 14)));
+        make__dependencies__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 15)));
+        make__dependencies__V_82_82 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 16)));
+        make__dependencies__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 17)));
+        make__dependencies__V_84_84 = ((MR_Integer) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 18)));
+        make__dependencies__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_0_17, (MR_Integer) 19)));
+        {
+          make__dependencies__STATE_VARIABLE_Info_21_21 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 20 * sizeof(MR_Word)), NULL, NULL);
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 0) = ((MR_Box) (make__dependencies__V_66_66));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 1) = ((MR_Box) (make__dependencies__V_67_67));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 2) = ((MR_Box) (make__dependencies__V_68_68));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 3) = ((MR_Box) (make__dependencies__V_69_69));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 4) = ((MR_Box) (make__dependencies__V_70_70));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 5) = ((MR_Box) (make__dependencies__V_71_71));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 6) = ((MR_Box) (make__dependencies__Map_41));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 7) = ((MR_Box) (make__dependencies__V_73_73));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 8) = ((MR_Box) (make__dependencies__V_74_74));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 9) = ((MR_Box) (make__dependencies__V_75_75));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 10) = ((MR_Box) (make__dependencies__V_76_76));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 11) = ((MR_Box) (make__dependencies__V_77_77));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 12) = ((MR_Box) (make__dependencies__V_78_78));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 13) = ((MR_Box) (make__dependencies__V_79_79));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 14) = ((MR_Box) (make__dependencies__V_80_80));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 15) = ((MR_Box) (make__dependencies__V_81_81));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 16) = ((MR_Box) (make__dependencies__V_82_82));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 17) = ((MR_Box) (make__dependencies__V_83_83));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 18) = ((MR_Box) (make__dependencies__V_84_84));
+          MR_hl_field(MR_mktag(0), make__dependencies__STATE_VARIABLE_Info_21_21, 19) = ((MR_Box) (make__dependencies__V_85_85));
+        }
+      }
+    {
+      make__dependencies__find_transitive_module_dependencies_10_p_0(make__dependencies__Globals_9, (MR_Integer) 2, (MR_Integer) 0, make__dependencies__ModuleIndex_15, make__dependencies__Success_11, &make__dependencies__Modules0_16, make__dependencies__STATE_VARIABLE_Info_21_21, make__dependencies__STATE_VARIABLE_Info_18);
+    }
+    {
+      make__dependencies__module_index_set_to_plain_set_3_p_0(*make__dependencies__STATE_VARIABLE_Info_18, make__dependencies__Modules0_16, make__dependencies__Modules_12);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__dependency_file_index_set_to_plain_set_3_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv0_List_8;
+
+    {
+      make__dependencies__dependency_file_index_set_to_plain_set_2_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv0_List_8);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv0_List_8));
+  }
+}
+
+void MR_CALL 
+make__dependencies__dependency_file_index_set_to_plain_set_3_p_0(
+  MR_Word make__dependencies__Info_4,
+  MR_Word make__dependencies__DepIndices_5,
+  MR_Word * make__dependencies__DepFiles_6)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__DepFilesList_7;
+    MR_Word make__dependencies__V_8_8;
+    MR_Box make__dependencies__conv1_DepFilesList_7;
+
+    {
+      make__dependencies__V_8_8 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_8_8, 0) = ((MR_Box) (&make__dependencies_scalar_common_5[1]));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_8_8, 1) = ((MR_Box) (make__dependencies__dependency_file_index_set_to_plain_set_3_p_0_1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_8_8, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_8_8, 3) = ((MR_Box) (make__dependencies__Info_4));
+    }
+    {
+      mercury__sparse_bitset__foldl_4_p_0((MR_Word) &make__dependencies_scalar_common_1[3], (MR_Word) &make__dependencies_scalar_common_1[2], make__dependencies__V_8_8, make__dependencies__DepIndices_5, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &make__dependencies__conv1_DepFilesList_7);
+    }
+    make__dependencies__DepFilesList_7 = ((MR_Word) make__dependencies__conv1_DepFilesList_7);
+    {
+      *make__dependencies__DepFiles_6 = mercury__set__from_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_0, make__dependencies__DepFilesList_7);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__module_index_set_to_plain_set_3_p_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv0_STATE_VARIABLE_Set_10;
+
+    {
+      make__dependencies__module_index_set_to_plain_set_2_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), make__dependencies__closure, (MR_Integer) 3))), ((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv0_STATE_VARIABLE_Set_10);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv0_STATE_VARIABLE_Set_10));
+  }
+}
+
+void MR_CALL 
+make__dependencies__module_index_set_to_plain_set_3_p_0(
+  MR_Word make__dependencies__Info_4,
+  MR_Word make__dependencies__ModuleIndices_5,
+  MR_Word * make__dependencies__Modules_6)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__V_7_7;
+    MR_Word make__dependencies__V_8_8;
+    MR_Box make__dependencies__conv1_Modules_6;
+
+    {
+      make__dependencies__V_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+      MR_hl_field(MR_mktag(0), make__dependencies__V_7_7, 0) = ((MR_Box) (&make__dependencies_scalar_common_5[0]));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_7_7, 1) = ((MR_Box) (make__dependencies__module_index_set_to_plain_set_3_p_0_1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_7_7, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+      MR_hl_field(MR_mktag(0), make__dependencies__V_7_7, 3) = ((MR_Box) (make__dependencies__Info_4));
+    }
+    {
+      make__dependencies__V_8_8 = mercury__set__init_0_f_0((MR_Word) &mdbcomp__sym_name__mdbcomp__sym_name__type_ctor_info_sym_name_0);
+    }
+    {
+      mercury__sparse_bitset__foldl_4_p_0((MR_Word) &make__dependencies_scalar_common_1[1], (MR_Word) &make__dependencies_scalar_common_1[0], make__dependencies__V_7_7, make__dependencies__ModuleIndices_5, ((MR_Box) (make__dependencies__V_8_8)), &make__dependencies__conv1_Modules_6);
+    }
+    *make__dependencies__Modules_6 = ((MR_Word) make__dependencies__conv1_Modules_6);
+  }
+}
+
+void MR_CALL 
+make__dependencies__module_names_to_index_set_4_p_0(
+  MR_Word make__dependencies__ModuleNames_5,
+  MR_Word * make__dependencies__IndexSet_6,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_8,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_9)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__V_10_10;
+
+    {
+      make__dependencies__V_10_10 = mercury__sparse_bitset__init_0_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+    }
+    {
+      make__dependencies__module_names_to_index_set_2_5_p_0(make__dependencies__ModuleNames_5, make__dependencies__V_10_10, make__dependencies__IndexSet_6, make__dependencies__STATE_VARIABLE_Info_0_8, make__dependencies__STATE_VARIABLE_Info_9);
+    }
+  }
+}
+
+void MR_CALL 
+make__dependencies__deps_set_foldl3_maybe_stop_at_error_11_p_0(
+  MR_Word make__dependencies__TypeInfo_for_Acc_31,
+  MR_Word make__dependencies__TypeInfo_for_Info_32,
+  MR_Word make__dependencies__TypeInfo_for_IO_33,
+  MR_Word make__dependencies__TypeClassInfo_for_enum_30,
+  MR_Word make__dependencies__KeepGoing_12,
+  MR_Word make__dependencies__P_13,
+  MR_Word make__dependencies__Globals_14,
+  MR_Word make__dependencies__Ts_15,
+  MR_Word * make__dependencies__Success_16,
+  MR_Box make__dependencies__STATE_VARIABLE_Acc_0_20,
+  MR_Box * make__dependencies__STATE_VARIABLE_Acc_21,
+  MR_Box make__dependencies__STATE_VARIABLE_Info_0_22,
+  MR_Box * make__dependencies__STATE_VARIABLE_Info_23,
+  MR_Box make__dependencies__STATE_VARIABLE_IO_0_24,
+  MR_Box * make__dependencies__STATE_VARIABLE_IO_25)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__TypeInfo_35_35;
+    MR_Word make__dependencies__V_26_26;
+
+    {
+      make__dependencies__V_26_26 = mercury__sparse_bitset__to_sorted_list_1_f_0(make__dependencies__TypeClassInfo_for_enum_30, make__dependencies__Ts_15);
+    }
+    {
+      mercury__private_builtin__type_info_from_typeclass_info_3_p_0(make__dependencies__TypeClassInfo_for_enum_30, (MR_Integer) 1, &make__dependencies__TypeInfo_35_35);
+    }
+    {
+      make__util__foldl3_maybe_stop_at_error_11_p_0(make__dependencies__TypeInfo_35_35, make__dependencies__TypeInfo_for_Acc_31, make__dependencies__TypeInfo_for_Info_32, make__dependencies__TypeInfo_for_IO_33, make__dependencies__KeepGoing_12, make__dependencies__P_13, make__dependencies__Globals_14, make__dependencies__V_26_26, make__dependencies__Success_16, make__dependencies__STATE_VARIABLE_Acc_0_20, make__dependencies__STATE_VARIABLE_Acc_21, make__dependencies__STATE_VARIABLE_Info_0_22, make__dependencies__STATE_VARIABLE_Info_23, make__dependencies__STATE_VARIABLE_IO_0_24, make__dependencies__STATE_VARIABLE_IO_25);
+    }
+  }
+}
+
+void MR_CALL 
+make__dependencies__union_deps_plain_set_10_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_26,
+  MR_Word make__dependencies__FindDeps_11,
+  MR_Word make__dependencies__Globals_12,
+  MR_Word make__dependencies__ModuleName_13,
+  MR_Word * make__dependencies__Success_14,
+  MR_Word make__dependencies__Deps0_15,
+  MR_Word * make__dependencies__Deps_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_21)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Deps1_19;
+    void MR_CALL (* make__dependencies__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), make__dependencies__FindDeps_11, (MR_Integer) 1)));
+    MR_Box make__dependencies__conv4_Success_14;
+    MR_Box make__dependencies__conv3_Deps1_19;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_Info_21;
+    MR_Box make__dependencies__conv1_STATE_VARIABLE_IO_23;
+
+    {
+      make__dependencies__func_0(((MR_Box) make__dependencies__FindDeps_11), ((MR_Box) (make__dependencies__Globals_12)), ((MR_Box) (make__dependencies__ModuleName_13)), &make__dependencies__conv4_Success_14, &make__dependencies__conv3_Deps1_19, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_20)), &make__dependencies__conv2_STATE_VARIABLE_Info_21, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv1_STATE_VARIABLE_IO_23);
+    }
+    *make__dependencies__Success_14 = ((MR_Word) make__dependencies__conv4_Success_14);
+    make__dependencies__Deps1_19 = ((MR_Word) make__dependencies__conv3_Deps1_19);
+    *make__dependencies__STATE_VARIABLE_Info_21 = ((MR_Word) make__dependencies__conv2_STATE_VARIABLE_Info_21);
+    {
+      *make__dependencies__Deps_16 = mercury__set__union_2_f_0(make__dependencies__TypeInfo_for_T_26, make__dependencies__Deps0_15, make__dependencies__Deps1_19);
+    }
+  }
+}
+
+void MR_CALL 
+make__dependencies__union_deps_10_p_0(
+  MR_Word make__dependencies__TypeInfo_for_T_26,
+  MR_Word make__dependencies__FindDeps_11,
+  MR_Word make__dependencies__Globals_12,
+  MR_Word make__dependencies__ModuleIndex_13,
+  MR_Word * make__dependencies__Success_14,
+  MR_Word make__dependencies__Deps0_15,
+  MR_Word * make__dependencies__Deps_16,
+  MR_Word make__dependencies__STATE_VARIABLE_Info_0_20,
+  MR_Word * make__dependencies__STATE_VARIABLE_Info_21)
+{
+  {
+    MR_bool make__dependencies__succeeded;
+    MR_Word make__dependencies__Deps1_19;
+    void MR_CALL (* make__dependencies__func_0)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *) = ((void MR_CALL (*)(MR_Box, MR_Box, MR_Box, MR_Box *, MR_Box *, MR_Box, MR_Box *, MR_Box, MR_Box *)) (MR_hl_field(MR_mktag(0), make__dependencies__FindDeps_11, (MR_Integer) 1)));
+    MR_Box make__dependencies__conv4_Success_14;
+    MR_Box make__dependencies__conv3_Deps1_19;
+    MR_Box make__dependencies__conv2_STATE_VARIABLE_Info_21;
+    MR_Box make__dependencies__conv1_STATE_VARIABLE_IO_23;
+
+    {
+      make__dependencies__func_0(((MR_Box) make__dependencies__FindDeps_11), ((MR_Box) (make__dependencies__Globals_12)), ((MR_Box) (make__dependencies__ModuleIndex_13)), &make__dependencies__conv4_Success_14, &make__dependencies__conv3_Deps1_19, ((MR_Box) (make__dependencies__STATE_VARIABLE_Info_0_20)), &make__dependencies__conv2_STATE_VARIABLE_Info_21, ((MR_Box) ((MR_Integer) 0)), &make__dependencies__conv1_STATE_VARIABLE_IO_23);
+    }
+    *make__dependencies__Success_14 = ((MR_Word) make__dependencies__conv4_Success_14);
+    make__dependencies__Deps1_19 = ((MR_Word) make__dependencies__conv3_Deps1_19);
+    *make__dependencies__STATE_VARIABLE_Info_21 = ((MR_Word) make__dependencies__conv2_STATE_VARIABLE_Info_21);
+    {
+      *make__dependencies__Deps_16 = mercury__sparse_bitset__union_2_f_0(make__dependencies__TypeInfo_for_T_26, make__dependencies__Deps0_15, make__dependencies__Deps1_19);
+    }
+  }
+}
+
+static void MR_CALL 
+make__dependencies__target_dependencies_2_f_0_3(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv8_HeadVar__3_173;
+    MR_Word make__dependencies__conv7_HeadVar__4_174;
+    MR_Word make__dependencies__conv6_HeadVar__6_176;
+
+    {
+      make__dependencies__IntroducedFrom__pred__target_dependencies__419__1_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv8_HeadVar__3_173, &make__dependencies__conv7_HeadVar__4_174, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv6_HeadVar__6_176);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv8_HeadVar__3_173));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv7_HeadVar__4_174));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv6_HeadVar__6_176));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__target_dependencies_2_f_0_2(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv5_HeadVar__3_156;
+    MR_Word make__dependencies__conv4_HeadVar__4_157;
+    MR_Word make__dependencies__conv3_HeadVar__6_159;
+
+    {
+      make__dependencies__IntroducedFrom__pred__target_dependencies__408__1_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv5_HeadVar__3_156, &make__dependencies__conv4_HeadVar__4_157, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv3_HeadVar__6_159);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv5_HeadVar__3_156));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv4_HeadVar__4_157));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv3_HeadVar__6_159));
+  }
+}
+
+static void MR_CALL 
+make__dependencies__target_dependencies_2_f_0_1(
+  MR_Box make__dependencies__closure_arg,
+  MR_Box make__dependencies__wrapper_arg_1,
+  MR_Box make__dependencies__wrapper_arg_2,
+  MR_Box * make__dependencies__wrapper_arg_3,
+  MR_Box * make__dependencies__wrapper_arg_4,
+  MR_Box make__dependencies__wrapper_arg_5,
+  MR_Box * make__dependencies__wrapper_arg_6,
+  MR_Box make__dependencies__wrapper_arg_7,
+  MR_Box * make__dependencies__wrapper_arg_8)
+{
+  {
+    MR_Box make__dependencies__closure = make__dependencies__closure_arg;
+    MR_Word make__dependencies__conv2_HeadVar__3_256;
+    MR_Word make__dependencies__conv1_HeadVar__4_257;
+    MR_Word make__dependencies__conv0_HeadVar__6_259;
+
+    {
+      make__dependencies__IntroducedFrom__pred__target_dependencies__460__1_8_p_0(((MR_Word) make__dependencies__wrapper_arg_1), ((MR_Word) make__dependencies__wrapper_arg_2), &make__dependencies__conv2_HeadVar__3_256, &make__dependencies__conv1_HeadVar__4_257, ((MR_Word) make__dependencies__wrapper_arg_5), &make__dependencies__conv0_HeadVar__6_259);
+    }
+    *make__dependencies__wrapper_arg_3 = ((MR_Box) (make__dependencies__conv2_HeadVar__3_256));
+    *make__dependencies__wrapper_arg_4 = ((MR_Box) (make__dependencies__conv1_HeadVar__4_257));
+    *make__dependencies__wrapper_arg_6 = ((MR_Box) (make__dependencies__conv0_HeadVar__6_259));
+  }
+}
+
+MR_Word MR_CALL 
+make__dependencies__target_dependencies_2_f_0(
+  MR_Word make__dependencies__Globals_1,
+  MR_Word make__dependencies__HeadVar__2_2)
+{
+  while (MR_TRUE)
+    {
+      /* tailcall optimized into a loop */
+      {
+        MR_bool make__dependencies__succeeded;
+        MR_Word make__dependencies__HeadVar__3_3;
+
+        switch (MR_tag((MR_Word) make__dependencies__HeadVar__2_2)) {
+          default: /*NOTREACHED*/ MR_assert(0);
+          case (MR_Integer) 0:
+            switch (MR_unmkbody(make__dependencies__HeadVar__2_2)) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                make__dependencies__HeadVar__3_3 = (MR_Word) &make__dependencies_scalar_common_2[5];
+                break;
+              case (MR_Integer) 1:
+                {
+                  make__dependencies__HeadVar__3_3 = make__dependencies__compiled_code_dependencies_1_f_0(make__dependencies__Globals_1);
+                }
+                break;
+              case (MR_Integer) 2:
+                {
+                  make__dependencies__HeadVar__3_3 = make__dependencies__interface_file_dependencies_0_f_0();
+                }
+                break;
+              case (MR_Integer) 3:
+                {
+                  make__dependencies__HeadVar__3_3 = make__dependencies__interface_file_dependencies_0_f_0();
+                }
+                break;
+              case (MR_Integer) 4:
+                {
+                  make__dependencies__HeadVar__3_3 = make__dependencies__interface_file_dependencies_0_f_0();
+                }
+                break;
+              case (MR_Integer) 5:
+                {
+                  {
+                    make__dependencies__HeadVar__3_3 = make__dependencies__of__ho15_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)));
+                  }
+                }
+                break;
+              case (MR_Integer) 6:
+                {
+                  MR_Word make__dependencies__V_83_83;
+                  MR_Word make__dependencies__V_84_84;
+                  MR_Word make__dependencies__V_87_87;
+                  MR_Word make__dependencies__V_88_88;
+                  MR_Word make__dependencies__V_91_91;
+                  MR_Word make__dependencies__V_92_92;
+                  MR_Word make__dependencies__V_95_95;
+                  MR_Word make__dependencies__V_96_96;
+
+                  {
+                    make__dependencies__V_84_84 = make__dependencies__of__ho15_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)));
+                  }
+                  {
+                    make__dependencies__V_88_88 = make__dependencies__of__ho12_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2)));
+                  }
+                  {
+                    make__dependencies__V_92_92 = make__dependencies__of__ho19_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3)));
+                  }
+                  {
+                    make__dependencies__V_96_96 = make__dependencies__of__ho18_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4)));
+                  }
+                  {
+                    make__dependencies__V_95_95 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_95_95, 0) = ((MR_Box) (make__dependencies__V_96_96));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_95_95, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    make__dependencies__V_91_91 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_91_91, 0) = ((MR_Box) (make__dependencies__V_92_92));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_91_91, 1) = ((MR_Box) (make__dependencies__V_95_95));
+                  }
+                  {
+                    make__dependencies__V_87_87 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_87_87, 0) = ((MR_Box) (make__dependencies__V_88_88));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_87_87, 1) = ((MR_Box) (make__dependencies__V_91_91));
+                  }
+                  {
+                    make__dependencies__V_83_83 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_83_83, 0) = ((MR_Box) (make__dependencies__V_84_84));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_83_83, 1) = ((MR_Box) (make__dependencies__V_87_87));
+                  }
+                  {
+                    make__dependencies__HeadVar__3_3 = make__dependencies__combine_deps_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__V_83_83);
+                  }
+                }
+                break;
+              case (MR_Integer) 7:
+                {
+                  MR_Word make__dependencies__V_101_101;
+                  MR_Word make__dependencies__V_102_102;
+                  MR_Word make__dependencies__V_105_105;
+                  MR_Word make__dependencies__V_106_106;
+                  MR_Word make__dependencies__V_109_109;
+                  MR_Word make__dependencies__V_110_110;
+                  MR_Word make__dependencies__V_113_113;
+                  MR_Word make__dependencies__V_114_114;
+                  MR_Word make__dependencies__V_117_117;
+                  MR_Word make__dependencies__V_118_118;
+                  MR_Word make__dependencies__V_121_121;
+                  MR_Word make__dependencies__V_122_122;
+                  MR_Word make__dependencies__V_125_125;
+                  MR_Word make__dependencies__V_126_126;
+
+                  {
+                    make__dependencies__V_102_102 = make__dependencies__of__ho15_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)));
+                  }
+                  {
+                    make__dependencies__V_106_106 = make__dependencies__of__ho12_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2)));
+                  }
+                  {
+                    make__dependencies__V_110_110 = make__dependencies__of__ho19_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3)));
+                  }
+                  {
+                    make__dependencies__V_114_114 = make__dependencies__of__ho18_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4)));
+                  }
+                  {
+                    make__dependencies__V_118_118 = make__dependencies__of__ho11_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 6)));
+                  }
+                  {
+                    make__dependencies__V_122_122 = make__dependencies__of__ho10_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 6)));
+                  }
+                  {
+                    make__dependencies__V_126_126 = make__dependencies__of__ho16_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 6)));
+                  }
+                  {
+                    make__dependencies__V_125_125 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_125_125, 0) = ((MR_Box) (make__dependencies__V_126_126));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_125_125, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    make__dependencies__V_121_121 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_121_121, 0) = ((MR_Box) (make__dependencies__V_122_122));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_121_121, 1) = ((MR_Box) (make__dependencies__V_125_125));
+                  }
+                  {
+                    make__dependencies__V_117_117 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_117_117, 0) = ((MR_Box) (make__dependencies__V_118_118));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_117_117, 1) = ((MR_Box) (make__dependencies__V_121_121));
+                  }
+                  {
+                    make__dependencies__V_113_113 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_113_113, 0) = ((MR_Box) (make__dependencies__V_114_114));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_113_113, 1) = ((MR_Box) (make__dependencies__V_117_117));
+                  }
+                  {
+                    make__dependencies__V_109_109 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_109_109, 0) = ((MR_Box) (make__dependencies__V_110_110));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_109_109, 1) = ((MR_Box) (make__dependencies__V_113_113));
+                  }
+                  {
+                    make__dependencies__V_105_105 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_105_105, 0) = ((MR_Box) (make__dependencies__V_106_106));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_105_105, 1) = ((MR_Box) (make__dependencies__V_109_109));
+                  }
+                  {
+                    make__dependencies__V_101_101 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_101_101, 0) = ((MR_Box) (make__dependencies__V_102_102));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_101_101, 1) = ((MR_Box) (make__dependencies__V_105_105));
+                  }
+                  {
+                    make__dependencies__HeadVar__3_3 = make__dependencies__combine_deps_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__V_101_101);
+                  }
+                }
+                break;
+              case (MR_Integer) 8:
+                make__dependencies__HeadVar__3_3 = (MR_Word) &make__dependencies_scalar_common_2[6];
+                break;
+              case (MR_Integer) 9:
+                {
+                  make__dependencies__HeadVar__3_3 = make__dependencies__compiled_code_dependencies_1_f_0(make__dependencies__Globals_1);
+                }
+                break;
+              case (MR_Integer) 10:
+                {
+                  make__dependencies__HeadVar__3_3 = make__dependencies__compiled_code_dependencies_1_f_0(make__dependencies__Globals_1);
+                }
+                break;
+              case (MR_Integer) 11:
+                {
+                  make__dependencies__HeadVar__3_3 = make__dependencies__compiled_code_dependencies_1_f_0(make__dependencies__Globals_1);
+                }
+                break;
+              case (MR_Integer) 12:
+                {
+                  {
+                    make__dependencies__HeadVar__3_3 = make__dependencies__of__ho15_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 11)));
+                  }
+                }
+                break;
+              case (MR_Integer) 13:
+                {
+                  /* direct tailcall eliminated */
+                  {
+                    make__dependencies__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 14));
+                  }
+                  continue;
+                }
+                break;
+              case (MR_Integer) 14:
+                {
+                  make__dependencies__HeadVar__3_3 = make__dependencies__compiled_code_dependencies_1_f_0(make__dependencies__Globals_1);
+                }
+                break;
+              case (MR_Integer) 15:
+                {
+                  MR_Word make__dependencies__V_26_26;
+                  MR_Word make__dependencies__V_27_27;
+                  MR_Word make__dependencies__V_30_30;
+                  MR_Word make__dependencies__V_31_31;
+                  MR_Word make__dependencies__V_34_34;
+                  MR_Word make__dependencies__V_35_35;
+                  MR_Word make__dependencies__V_38_38;
+                  MR_Word make__dependencies__V_39_39;
+
+                  {
+                    make__dependencies__V_27_27 = make__dependencies__of__ho15_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 14)));
+                  }
+                  {
+                    make__dependencies__V_31_31 = make__dependencies__of__ho11_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 13)));
+                  }
+                  {
+                    make__dependencies__V_35_35 = make__dependencies__of__ho10_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 13)));
+                  }
+                  {
+                    make__dependencies__V_39_39 = make__dependencies__of__ho16_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 13)));
+                  }
+                  {
+                    make__dependencies__V_38_38 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_38_38, 0) = ((MR_Box) (make__dependencies__V_39_39));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_38_38, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    make__dependencies__V_34_34 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_34_34, 0) = ((MR_Box) (make__dependencies__V_35_35));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_34_34, 1) = ((MR_Box) (make__dependencies__V_38_38));
+                  }
+                  {
+                    make__dependencies__V_30_30 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_30_30, 0) = ((MR_Box) (make__dependencies__V_31_31));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_30_30, 1) = ((MR_Box) (make__dependencies__V_34_34));
+                  }
+                  {
+                    make__dependencies__V_26_26 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_26_26, 0) = ((MR_Box) (make__dependencies__V_27_27));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_26_26, 1) = ((MR_Box) (make__dependencies__V_30_30));
+                  }
+                  {
+                    make__dependencies__HeadVar__3_3 = make__dependencies__combine_deps_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__V_26_26);
+                  }
+                }
+                break;
+              case (MR_Integer) 16:
+                {
+                  MR_Word make__dependencies__V_137_137;
+                  MR_Word make__dependencies__V_138_138;
+                  MR_Word make__dependencies__V_141_141;
+                  MR_Word make__dependencies__V_142_142;
+                  MR_Word make__dependencies__V_145_145;
+                  MR_Word make__dependencies__V_146_146;
+                  MR_Word make__dependencies__V_149_149;
+                  MR_Word make__dependencies__V_150_150;
+
+                  {
+                    make__dependencies__V_138_138 = make__dependencies__of__ho15_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)));
+                  }
+                  {
+                    make__dependencies__V_142_142 = make__dependencies__of__ho12_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 2)));
+                  }
+                  {
+                    make__dependencies__V_146_146 = make__dependencies__of__ho19_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 3)));
+                  }
+                  {
+                    make__dependencies__V_150_150 = make__dependencies__of__ho18_2_f_0((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 4)));
+                  }
+                  {
+                    make__dependencies__V_149_149 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_149_149, 0) = ((MR_Box) (make__dependencies__V_150_150));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_149_149, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    make__dependencies__V_145_145 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_145_145, 0) = ((MR_Box) (make__dependencies__V_146_146));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_145_145, 1) = ((MR_Box) (make__dependencies__V_149_149));
+                  }
+                  {
+                    make__dependencies__V_141_141 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_141_141, 0) = ((MR_Box) (make__dependencies__V_142_142));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_141_141, 1) = ((MR_Box) (make__dependencies__V_145_145));
+                  }
+                  {
+                    make__dependencies__V_137_137 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_137_137, 0) = ((MR_Box) (make__dependencies__V_138_138));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_137_137, 1) = ((MR_Box) (make__dependencies__V_141_141));
+                  }
+                  {
+                    make__dependencies__HeadVar__3_3 = make__dependencies__combine_deps_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__V_137_137);
+                  }
+                }
+                break;
+            }
+            break;
+          case (MR_Integer) 1:
+            {
+              /* direct tailcall eliminated */
+              {
+                make__dependencies__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 9));
+              }
+              continue;
+            }
+            break;
+          case (MR_Integer) 2:
+            {
+              MR_Word make__dependencies__CompilationTarget_46;
+              MR_Word make__dependencies__TargetCode_47;
+              MR_Word make__dependencies__HighLevelCode_48;
+              MR_Word make__dependencies__HeaderDeps_49;
+              MR_Word make__dependencies__V_72_72;
+              MR_Word make__dependencies__V_73_73;
+              MR_Word make__dependencies__V_75_75;
+              MR_Word make__dependencies__V_76_76;
+              MR_Word make__dependencies__V_80_80;
+
+              {
+                libs__globals__get_target_2_p_0(make__dependencies__Globals_1, &make__dependencies__CompilationTarget_46);
+              }
+              {
+                make__dependencies__TargetCode_47 = make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_97_114_103_101_116_95_116_111_95_109_111_100_117_108_101_95_116_97_114_103_101_116_95_99_111_100_101_95_95_91_49_44_32_50_93_95_48_2_f_0();
+              }
+              {
+                libs__globals__lookup_bool_option_3_p_0(make__dependencies__Globals_1, (MR_Integer) 253, &make__dependencies__HighLevelCode_48);
+              }
+              make__dependencies__succeeded = (make__dependencies__CompilationTarget_46 == (MR_Integer) 0);
+              if (make__dependencies__succeeded)
+                make__dependencies__succeeded = (make__dependencies__HighLevelCode_48 == (MR_Integer) 1);
+              if (make__dependencies__succeeded)
+                {
+                  MR_Word make__dependencies__V_51_51;
+                  MR_Word make__dependencies__V_52_52;
+                  MR_Word make__dependencies__V_53_53 = (MR_Word) MR_mkword(MR_mktag(1), &make__dependencies_scalar_common_3[0]);
+                  MR_Word make__dependencies__V_56_56;
+                  MR_Word make__dependencies__V_57_57;
+                  MR_Word make__dependencies__V_61_61;
+                  MR_Word make__dependencies__V_62_62;
+                  MR_Word make__dependencies__V_66_66;
+                  MR_Word make__dependencies__V_67_67;
+
+                  {
+                    make__dependencies__V_52_52 = make__dependencies__of__ho11_2_f_0(make__dependencies__V_53_53);
+                  }
+                  {
+                    make__dependencies__V_57_57 = make__dependencies__of__ho10_2_f_0(make__dependencies__V_53_53);
+                  }
+                  {
+                    make__dependencies__V_62_62 = make__dependencies__of__ho12_2_f_0(make__dependencies__V_53_53);
+                  }
+                  {
+                    make__dependencies__V_67_67 = make__dependencies__of__ho16_2_f_0(make__dependencies__V_53_53);
+                  }
+                  {
+                    make__dependencies__V_66_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_66_66, 0) = ((MR_Box) (make__dependencies__V_67_67));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_66_66, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+                  }
+                  {
+                    make__dependencies__V_61_61 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_61_61, 0) = ((MR_Box) (make__dependencies__V_62_62));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_61_61, 1) = ((MR_Box) (make__dependencies__V_66_66));
+                  }
+                  {
+                    make__dependencies__V_56_56 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_56_56, 0) = ((MR_Box) (make__dependencies__V_57_57));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_56_56, 1) = ((MR_Box) (make__dependencies__V_61_61));
+                  }
+                  {
+                    make__dependencies__V_51_51 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_51_51, 0) = ((MR_Box) (make__dependencies__V_52_52));
+                    MR_hl_field(MR_mktag(1), make__dependencies__V_51_51, 1) = ((MR_Box) (make__dependencies__V_56_56));
+                  }
+                  {
+                    make__dependencies__HeaderDeps_49 = make__dependencies__combine_deps_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__V_51_51);
+                  }
+                }
+              else
+                make__dependencies__HeaderDeps_49 = (MR_Word) &make__dependencies_scalar_common_2[4];
+              {
+                make__dependencies__V_73_73 = make__dependencies__of__ho15_2_f_0(make__dependencies__TargetCode_47);
+              }
+              {
+                make__dependencies__V_76_76 = make__dependencies__of__ho20_2_f_0((MR_Word) MR_mkword(MR_mktag(1), &make__dependencies_scalar_common_3[1]));
+              }
+              {
+                make__dependencies__V_80_80 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), make__dependencies__V_80_80, 0) = ((MR_Box) (make__dependencies__HeaderDeps_49));
+                MR_hl_field(MR_mktag(1), make__dependencies__V_80_80, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+              }
+              {
+                make__dependencies__V_75_75 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), make__dependencies__V_75_75, 0) = ((MR_Box) (make__dependencies__V_76_76));
+                MR_hl_field(MR_mktag(1), make__dependencies__V_75_75, 1) = ((MR_Box) (make__dependencies__V_80_80));
+              }
+              {
+                make__dependencies__V_72_72 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+                MR_hl_field(MR_mktag(1), make__dependencies__V_72_72, 0) = ((MR_Box) (make__dependencies__V_73_73));
+                MR_hl_field(MR_mktag(1), make__dependencies__V_72_72, 1) = ((MR_Box) (make__dependencies__V_75_75));
+              }
+              {
+                make__dependencies__HeadVar__3_3 = make__dependencies__combine_deps_list_1_f_0((MR_Word) &make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0, make__dependencies__V_72_72);
+              }
+            }
+            break;
+          case (MR_Integer) 3:
+            switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), make__dependencies__HeadVar__2_2, (MR_Integer) 0)))) {
+              default: /*NOTREACHED*/ MR_assert(0);
+              case (MR_Integer) 0:
+                {
+                  make__dependencies__HeadVar__3_3 = make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_111_114_101_105_103_110_95_100_101_112_115_95_95_91_50_93_95_48_2_f_0(make__dependencies__Globals_1);
+                }
+                break;
+              case (MR_Integer) 1:
+                {
+                  make__dependencies__HeadVar__3_3 = make__dependencies__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_111_114_101_105_103_110_95_100_101_112_115_95_95_91_50_93_95_48_2_f_0(make__dependencies__Globals_1);
+                }
+                break;
+            }
+            break;
+        }
+        return make__dependencies__HeadVar__3_3;
+      }
+      break;
+    }
+}
+
+void mercury__make__dependencies__init(void)
+{
+}
+
+void mercury__make__dependencies__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_cached_direct_imports_0);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_cached_foreign_imports_0);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_cached_transitive_dependencies_0);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_dependencies_result_0);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_dependency_file_0);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_dependency_file_index_0);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_deps_result_1);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_deps_set_1);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_find_module_deps_1);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_find_module_deps_plain_set_1);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_module_deps_result_0);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_module_index_0);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_module_locn_0);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_transitive_dependencies_root_0);
+	MR_register_type_ctor_info(&make__dependencies__make__dependencies__type_ctor_info_transitive_dependencies_type_0);
+}
+
+void mercury__make__dependencies__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+// Ensure everything is compiled with the same grade.
+const char *mercury__make__dependencies__grade_check(void)
+{
+    return &MR_GRADE_VAR;
+}
+
+/* :- end_module make.dependencies. */

@@ -1,0 +1,32 @@
+#-----------------------------------------------------------------------------#
+# vim: ts=8 sw=8 noexpandtab ft=make
+#-----------------------------------------------------------------------------#
+
+THIS_DIR = purity
+SUBDIRS =
+TESTS_DIR = ..
+MAYBE_J1 =
+
+#-----------------------------------------------------------------------------#
+
+PURITY_PROGS = \
+	impure_func_t1 \
+	impure_func_t5_fixed2 \
+	impure_func_t6 \
+	impure_pred_t1_fixed3 \
+	promise_pure_test \
+	purity \
+	purity_opt
+
+PROGS = $(PURITY_PROGS)
+
+TESTS = $(sort $(PROGS))
+include $(TESTS_DIR)/Mmake.common
+
+# Module-specific options should go in Mercury.options so they can be found
+# by `mmc --make'.
+include Mercury.options
+
+%.runtest: %.res ;
+
+#-----------------------------------------------------------------------------#

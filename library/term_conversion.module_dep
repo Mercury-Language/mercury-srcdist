@@ -1,0 +1,13 @@
+module(1, "term_conversion.m",
+	term_conversion,
+	{},
+	{builtin, list, private_builtin, term, type_desc, univ},
+	{array, bitmap, builtin, construct, deconstruct, int, list, private_builtin, require, string, term, type_desc, univ, version_array},
+	{},
+	{},
+	{},
+	{},
+	{},
+	no_foreign_export,
+	no_main
+).
