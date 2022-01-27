@@ -1,0 +1,33 @@
+:- module lazy.
+:- use_module builtin.
+:- use_module mutvar.
+:- use_module private_builtin.
+
+:- type lazy(T)
+    --->    lazy(mutvar.mutvar(lazy.lazy_state(T)))
+	where	equality is (lazy.equal_values),
+		comparison is (lazy.compare_values).
+:- type lazy_state(T)
+    --->    value(T)
+    ;       closure(((func) = T)).
+
+lazy.compare_values(V_4, V_5, V_6) :-
+    V_7 = lazy.force(V_5),
+    V_8 = lazy.force(V_6),
+    builtin.compare(V_4, V_7, V_8).
+
+lazy.equal_values(V_3, V_4) :-
+    V_5 = lazy.force(V_3),
+    V_5 = lazy.force(V_4).
+:- pragma exceptions(function, (lazy.val), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (lazy.delay), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (lazy.force), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lazy.read_if_val), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lazy.equal_values), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (lazy.compare_values), 3, 0, may_throw(user_exception)).
+:- pragma termination_info(lazy.val((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(lazy.delay((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(lazy.force((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(lazy.read_if_val((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(lazy.equal_values((builtin.in), (builtin.in)), finite(0, [no, no, no]), can_loop).
+:- pragma termination_info(lazy.compare_values((builtin.uo), (builtin.in), (builtin.in)), finite(0, [no, no, no, no]), can_loop).

@@ -1,0 +1,11 @@
+:- module (transform_hlds.term_constr_pass2).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- import_module (transform_hlds.term_constr_main_types).
+:- type pass2_options.
+:- func pass2_options_init(int) = transform_hlds.term_constr_pass2.pass2_options.
+:- pred prove_termination_in_scc(transform_hlds.term_constr_pass2.pass2_options, list.list(hlds.hlds_pred.pred_proc_id), hlds.hlds_module.module_info, transform_hlds.term_constr_main_types.constr_termination_info, io.io, io.io).
+:- mode prove_termination_in_scc((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)) is det.

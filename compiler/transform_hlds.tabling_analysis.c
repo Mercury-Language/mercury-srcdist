@@ -1,0 +1,8275 @@
+/*
+** Automatically generated from `tabling_analysis.m'
+** by the Mercury compiler,
+** version rotd-2015-09-15
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module transform_hlds.tabling_analysis. */
+/* :- implementation. */
+
+/*
+INIT mercury__transform_hlds__tabling_analysis__init
+ENDINIT
+*/
+
+#include "transform_hlds.tabling_analysis.mih"
+
+
+#include "analysis.mih"
+#include "array.mih"
+#include "assoc_list.mih"
+#include "bag.mih"
+#include "bimap.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "char.mih"
+#include "check_hlds.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "digraph.mih"
+#include "enum.mih"
+#include "getopt_io.mih"
+#include "hlds.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "libs.mih"
+#include "list.mih"
+#include "map.mih"
+#include "maybe.mih"
+#include "mdbcomp.mih"
+#include "mode_robdd.mih"
+#include "multi_map.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parse_tree.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "queue.mih"
+#include "random.mih"
+#include "recompilation.mih"
+#include "require.mih"
+#include "robdd.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "sparse_bitset.mih"
+#include "stack.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "term.mih"
+#include "time.mih"
+#include "transform_hlds.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "check_hlds.delay_info.mih"
+#include "check_hlds.mode_constraint_robdd.mih"
+#include "check_hlds.mode_errors.mih"
+#include "check_hlds.mode_info.mih"
+#include "check_hlds.unify_proc.mih"
+#include "hlds.const_struct.mih"
+#include "hlds.hlds_args.mih"
+#include "hlds.hlds_clauses.mih"
+#include "hlds.hlds_data.mih"
+#include "hlds.hlds_error_util.mih"
+#include "hlds.hlds_goal.mih"
+#include "hlds.hlds_llds.mih"
+#include "hlds.hlds_module.mih"
+#include "hlds.hlds_pred.mih"
+#include "hlds.hlds_rtti.mih"
+#include "hlds.inst_graph.mih"
+#include "hlds.instmap.mih"
+#include "hlds.pred_table.mih"
+#include "hlds.special_pred.mih"
+#include "hlds.status.mih"
+#include "hlds.vartypes.mih"
+#include "libs.globals.mih"
+#include "libs.lp_rational.mih"
+#include "libs.options.mih"
+#include "libs.polyhedron.mih"
+#include "libs.rat.mih"
+#include "libs.timestamp.mih"
+#include "libs.trace_params.mih"
+#include "mdbcomp.builtin_modules.mih"
+#include "mdbcomp.feedback.mih"
+#include "mdbcomp.goal_path.mih"
+#include "mdbcomp.prim_data.mih"
+#include "mdbcomp.program_representation.mih"
+#include "mdbcomp.rtti_access.mih"
+#include "mdbcomp.sym_name.mih"
+#include "mdbcomp.trace_counts.mih"
+#include "mode_robdd.tfeirn.mih"
+#include "parse_tree.error_util.mih"
+#include "parse_tree.file_kind.mih"
+#include "parse_tree.module_qual.mih"
+#include "parse_tree.prog_data.mih"
+#include "parse_tree.prog_foreign.mih"
+#include "parse_tree.prog_item.mih"
+#include "parse_tree.prog_rename.mih"
+#include "parse_tree.set_of_var.mih"
+#include "string.format.mih"
+#include "string.parse_util.mih"
+#include "transform_hlds.dependency_graph.mih"
+#include "transform_hlds.intermod.mih"
+#include "transform_hlds.mmc_analysis.mih"
+#include "transform_hlds.term_constr_data.mih"
+#include "transform_hlds.term_constr_errors.mih"
+#include "transform_hlds.term_constr_main_types.mih"
+#include "transform_hlds.term_errors.mih"
+#include "transform_hlds.term_norm.mih"
+#include "transform_hlds.term_util.mih"
+#include "mdbcomp.feedback.automatic_parallelism.mih"
+
+
+
+#line 711 "tabling_analysis.m"
+struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_0_s {
+#line 714 "tabling_analysis.m"
+  MR_bool transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded;
+#line 714 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_14;
+#line 723 "tabling_analysis.m"
+  jmp_buf transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__commit_0;
+#line 723 "tabling_analysis.m"
+  MR_String transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__Name_16;
+#line 723 "tabling_analysis.m"
+  MR_Integer transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__Arity_17;
+#line 723 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__SpecialPredId_18;
+#line 723 "tabling_analysis.m"
+  MR_String transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__GenericPredName_19;
+#line 723 "tabling_analysis.m"
+  MR_Integer transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__V_35_35;
+#line 711 "tabling_analysis.m"
+};
+
+#line 400 "tabling_analysis.m"
+struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_0_s {
+#line 405 "tabling_analysis.m"
+  MR_bool transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded;
+#line 405 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_18;
+#line 426 "tabling_analysis.m"
+  jmp_buf transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__commit_0;
+#line 426 "tabling_analysis.m"
+  MR_String transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__Name_20;
+#line 426 "tabling_analysis.m"
+  MR_Integer transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__Arity_21;
+#line 426 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__SpecialPredId_22;
+#line 426 "tabling_analysis.m"
+  MR_String transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__GenericPredName_23;
+#line 426 "tabling_analysis.m"
+  MR_Integer transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__V_40_40;
+#line 400 "tabling_analysis.m"
+};
+
+#line 181 "tabling_analysis.m"
+struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s {
+#line 184 "tabling_analysis.m"
+  MR_bool transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded;
+#line 184 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResults_10;
+#line 230 "tabling_analysis.m"
+  jmp_buf transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__commit_0;
+#line 230 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResult_61;
+#line 231 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__conv4_ProcResult_61;
+#line 238 "tabling_analysis.m"
+  jmp_buf transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__commit_1;
+#line 238 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__V_64_64;
+#line 238 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResult_76;
+#line 239 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__conv5_ProcResult_76;
+#line 244 "tabling_analysis.m"
+  jmp_buf transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__commit_2;
+#line 244 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__V_65_65;
+#line 244 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ConditionalResult_66;
+#line 244 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__conv6_ConditionalResult_66;
+#line 181 "tabling_analysis.m"
+};
+
+
+#line 218 "transform_hlds.tabling_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__tabling_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+
+#line 221 "transform_hlds.tabling_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__tabling_analysis__list__pti_list_1__plain_transform_hlds__tabling_analysis__type_ctor_info_proc_result_0;
+
+#line 224 "transform_hlds.tabling_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__tabling_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0;
+
+#line 227 "transform_hlds.tabling_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__tabling_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_hlds__hlds_module__type_ctor_info_proc_mm_tabling_info_0;
+
+#line 230 "transform_hlds.tabling_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__tabling_analysis__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0;
+
+#line 233 "transform_hlds.tabling_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__tabling_analysis__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0;
+
+#line 236 "transform_hlds.tabling_analysis.c"
+static const MR_Integer transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__functor_number_map_mm_tabling_analysis_answer_0[1];
+
+#line 239 "transform_hlds.tabling_analysis.c"
+static const MR_NotagFunctorDesc transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__notag_functor_desc_mm_tabling_analysis_answer_0;
+
+#line 242 "transform_hlds.tabling_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__tabling_analysis__maybe__ti_maybe_1analysis__type_ctor_info_analysis_status_0;
+
+#line 245 "transform_hlds.tabling_analysis.c"
+static const MR_PseudoTypeInfo transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__field_types_proc_result_0_0[3];
+
+#line 248 "transform_hlds.tabling_analysis.c"
+static const MR_ConstString transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__field_names_proc_result_0_0[3];
+
+#line 251 "transform_hlds.tabling_analysis.c"
+static const MR_DuFunctorDesc transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_functor_desc_proc_result_0_0;
+
+#line 254 "transform_hlds.tabling_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_stag_ordered_proc_result_0_0[1];
+
+#line 257 "transform_hlds.tabling_analysis.c"
+static const MR_DuPtagLayout transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_ptag_ordered_proc_result_0[1];
+
+#line 260 "transform_hlds.tabling_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_name_ordered_proc_result_0[1];
+
+#line 263 "transform_hlds.tabling_analysis.c"
+static const MR_Integer transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__functor_number_map_proc_result_0[1];
+
+#line 266 "transform_hlds.tabling_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__tabling_analysis__list__ti_list_1transform_hlds__tabling_analysis__type_ctor_info_proc_result_0;
+
+#line 269 "transform_hlds.tabling_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__tabling_analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+
+#line 272 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____mm_tabling_analysis_answer_0_0_10001(
+#line 275 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 277 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2);
+
+#line 280 "transform_hlds.tabling_analysis.c"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____mm_tabling_analysis_answer_0_0_10001(
+#line 283 "transform_hlds.tabling_analysis.c"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 285 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 287 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 290 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____proc_result_0_0_10001(
+#line 293 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 295 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2);
+
+#line 298 "transform_hlds.tabling_analysis.c"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____proc_result_0_0_10001(
+#line 301 "transform_hlds.tabling_analysis.c"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 303 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 305 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 308 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____proc_results_0_0_10001(
+#line 311 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 313 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2);
+
+#line 316 "transform_hlds.tabling_analysis.c"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____proc_results_0_0_10001(
+#line 319 "transform_hlds.tabling_analysis.c"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 321 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 323 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 326 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____scc_0_0_10001(
+#line 329 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 331 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2);
+
+#line 334 "transform_hlds.tabling_analysis.c"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____scc_0_0_10001(
+#line 337 "transform_hlds.tabling_analysis.c"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 339 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 341 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 344 "transform_hlds.tabling_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__to_term____transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__to_term_1_1_f_0_10001(
+#line 347 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 349 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1);
+
+#line 352 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__to_term____transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__from_term_2_2_p_0_10001(
+#line 355 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 357 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 359 "transform_hlds.tabling_analysis.c"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_2);
+
+#line 362 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0_10001(
+#line 365 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 367 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 369 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 371 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 374 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__equivalent_3_3_p_0_10001(
+#line 377 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 379 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 381 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 383 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 386 "transform_hlds.tabling_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__analysis_name_2_2_f_0_10001(
+#line 389 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg);
+
+#line 392 "transform_hlds.tabling_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0_10001(
+#line 395 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg);
+
+#line 398 "transform_hlds.tabling_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0_10001(
+#line 401 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg);
+
+#line 404 "transform_hlds.tabling_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__bottom_2_2_f_0_10001(
+#line 407 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 409 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1);
+
+#line 412 "transform_hlds.tabling_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__top_2_2_f_0_10001(
+#line 415 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 417 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1);
+
+#line 420 "transform_hlds.tabling_analysis.c"
+static void MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__get_func_info_6_6_p_0_10001(
+#line 423 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 425 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 427 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 429 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3,
+#line 431 "transform_hlds.tabling_analysis.c"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_6);
+
+#line 808 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_93_95_48_3_p_0(
+#line 808 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Status_8,
+#line 808 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Status_3);
+
+#line 802 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_93_95_48_3_p_0(
+#line 802 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Answer1_4,
+#line 802 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Answer2_5);
+
+#line 797 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_103_101_116_95_102_117_110_99_95_105_110_102_111_95_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_6_p_0(void);
+
+#line 796 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_112_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 795 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_98_111_116_116_111_109_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 794 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_112_114_101_102_101_114_114_101_100_95_102_105_120_112_111_105_110_116_95_116_121_112_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 793 "tabling_analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_118_101_114_115_105_111_110_95_110_117_109_98_101_114_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 792 "tabling_analysis.m"
+static MR_String MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_110_97_109_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 723 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_6_p_0_1(
+#line 723 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 723 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_6_p_0_2(
+#line 723 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 723 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_6_p_0_3(
+#line 723 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 711 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_6_p_0(
+#line 711 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__CalleePPId_7,
+#line 711 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Status_10,
+#line 711 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_28,
+#line 711 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_29);
+
+#line 426 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_8_p_0_1(
+#line 426 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 426 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_8_p_0_2(
+#line 426 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 426 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_8_p_0_3(
+#line 426 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 400 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_8_p_0(
+#line 400 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__CalleePPId_9,
+#line 400 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__SCC_11,
+#line 400 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Result_13,
+#line 400 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__MaybeAnalysisStatus_14,
+#line 400 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_31,
+#line 400 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_32);
+
+#line 376 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__IntroducedFrom__func__check_goal_for_mm_tabling__376__1_1_f_0(
+#line 376 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_93);
+
+#line 204 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__IntroducedFrom__pred__analyse_mm_tabling_in_scc__204__1_5_p_0(
+#line 204 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__TablingStatus_11,
+#line 204 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__MaybeAnalysisStatus_12,
+#line 204 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__3_27,
+#line 204 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__4_28,
+#line 204 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__5_29);
+
+#line 823 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__to_term____transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__from_term_2_2_p_0(
+#line 823 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 823 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__2_2);
+
+#line 822 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__to_term____transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__to_term_1_1_f_0(
+#line 822 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1);
+
+#line 808 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__equivalent_3_3_p_0(
+#line 808 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Status_8,
+#line 808 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Status_3);
+
+#line 802 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0(
+#line 802 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Answer1_4,
+#line 802 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Answer2_5);
+
+#line 797 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__get_func_info_6_6_p_0(
+#line 797 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_17,
+#line 797 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_18,
+#line 797 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__3_19);
+
+#line 796 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__top_2_2_f_0(void);
+
+#line 795 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__bottom_2_2_f_0(void);
+
+#line 794 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0(void);
+
+#line 793 "tabling_analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0(void);
+
+#line 792 "tabling_analysis.m"
+static MR_String MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__analysis_name_2_2_f_0(void);
+
+#line 170 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____scc_0_0(
+#line 170 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 170 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2,
+#line 170 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__3_3);
+
+#line 170 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____scc_0_0(
+#line 170 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 170 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2);
+
+#line 172 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____proc_results_0_0(
+#line 172 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 172 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2,
+#line 172 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__3_3);
+
+#line 172 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____proc_results_0_0(
+#line 172 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 172 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2);
+
+#line 174 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____proc_result_0_0(
+#line 174 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 174 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2,
+#line 174 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__3_3);
+
+#line 174 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____proc_result_0_0(
+#line 174 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 174 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2);
+
+#line 955 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__output_proc_name_4_p_0(
+#line 955 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Moduleinfo_5,
+#line 955 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__PPId_6);
+
+#line 953 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__dump_mm_tabling_analysis_debug_info_5_p_0_1(
+#line 953 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 953 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 953 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 953 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 940 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__dump_mm_tabling_analysis_debug_info_5_p_0(
+#line 940 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__ModuleInfo_6,
+#line 940 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__SCC_7,
+#line 940 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Status_8);
+
+#line 898 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__maybe_record_mm_tabling_result_2_6_p_0(
+#line 898 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__ModuleInfo_7,
+#line 898 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__PredId_8,
+#line 898 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__PredInfo_9,
+#line 898 "tabling_analysis.m"
+  MR_Integer transform_hlds__tabling_analysis__ProcId_10,
+#line 898 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_0_19,
+#line 898 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_20);
+
+#line 895 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__maybe_record_mm_tabling_result_4_p_0_1(
+#line 895 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 895 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 895 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 895 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 889 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__maybe_record_mm_tabling_result_4_p_0(
+#line 889 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__ModuleInfo_5,
+#line 889 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__PredId_6,
+#line 889 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_0_10,
+#line 889 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_11);
+
+#line 702 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_case_6_p_0(
+#line 702 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_7,
+#line 702 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_Case_0_15,
+#line 702 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_Case_16,
+#line 702 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Status_9,
+#line 702 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_17,
+#line 702 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_18);
+
+#line 699 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_cases_6_p_0_2(
+#line 699 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 699 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 699 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 699 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 698 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_cases_6_p_0_1(
+#line 698 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 698 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 698 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 698 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3,
+#line 698 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_4,
+#line 698 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_5);
+
+#line 694 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_cases_6_p_0(
+#line 694 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_7,
+#line 694 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_Cases_0_12,
+#line 694 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_Cases_13,
+#line 694 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Status_9,
+#line 694 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_14,
+#line 694 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_15);
+
+#line 691 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_goal_list_6_p_0_2(
+#line 691 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 691 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 691 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 691 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 690 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_goal_list_6_p_0_1(
+#line 690 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 690 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 690 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 690 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3,
+#line 690 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_4,
+#line 690 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_5);
+
+#line 686 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_goal_list_6_p_0(
+#line 686 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_7,
+#line 686 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_Goals_0_12,
+#line 686 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_Goals_13,
+#line 686 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Status_9,
+#line 686 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_14,
+#line 686 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_15);
+
+#line 595 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_goal_2_6_p_0(
+#line 595 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_7,
+#line 595 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90,
+#line 595 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91,
+#line 595 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Status_9,
+#line 595 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92,
+#line 595 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93);
+
+#line 577 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_goal_6_p_0(
+#line 577 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_7,
+#line 577 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_Goal_0_15,
+#line 577 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_Goal_16,
+#line 577 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Status_9,
+#line 577 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_17,
+#line 577 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_18);
+
+#line 564 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_proc_3_p_0(
+#line 564 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__PPId_4,
+#line 564 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_11,
+#line 564 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_12);
+
+#line 542 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__combine_maybe_analysis_status_3_p_0(
+#line 542 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__MaybeStatusA_4,
+#line 542 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__MaybeStatusB_5,
+#line 542 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__MaybeStatus_6);
+
+#line 530 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__combine_mm_tabling_status_3_p_0(
+#line 530 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 530 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2,
+#line 530 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__3_3);
+
+#line 494 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__get_mm_tabling_status_from_attributes_1_f_0(
+#line 494 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Attributes_3);
+
+#line 395 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0_3(
+#line 395 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 395 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 395 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 395 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 393 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0_2(
+#line 393 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 393 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 393 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 393 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 391 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0_1(
+#line 391 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 391 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 391 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 391 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3,
+#line 391 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_4,
+#line 391 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_5);
+
+#line 385 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0(
+#line 385 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__SCC_8,
+#line 385 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_9,
+#line 385 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Goals_10,
+#line 385 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Result_11,
+#line 385 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__MaybeAnalysisStatus_12,
+#line 385 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_16,
+#line 385 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_17);
+
+#line 376 "tabling_analysis.m"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__check_goal_for_mm_tabling_7_p_0_1(
+#line 376 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 376 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1);
+
+#line 301 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__check_goal_for_mm_tabling_7_p_0(
+#line 301 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__SCC_8,
+#line 301 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_9,
+#line 301 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Goal_10,
+#line 301 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Result_11,
+#line 301 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__MaybeAnalysisStatus_12,
+#line 301 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_87,
+#line 301 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_88);
+
+#line 274 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__check_proc_for_mm_tabling_6_p_0(
+#line 274 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__SCC_7,
+#line 274 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__PPId_8,
+#line 274 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_Results_0_21,
+#line 274 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_Results_22,
+#line 274 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_23,
+#line 274 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_24);
+
+#line 265 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__maybe_analysis_status_2_p_0(
+#line 265 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__ProcResult_3,
+#line 265 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__2_2);
+
+#line 212 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_17(
+#line 212 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 212 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 212 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 212 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 204 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_16(
+#line 204 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 204 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 204 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 204 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 262 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_15(
+#line 262 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 262 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 262 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 262 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 261 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_14(
+#line 261 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 261 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 261 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_2);
+
+#line 186 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_1(
+#line 186 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 186 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 186 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 186 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3,
+#line 186 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_4,
+#line 186 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_5);
+
+#line 230 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_2(
+#line 230 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 231 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_4(
+#line 231 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 230 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_3(
+#line 230 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 230 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_5(
+#line 230 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 238 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_6(
+#line 238 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 239 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_8(
+#line 239 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 238 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_7(
+#line 238 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 238 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_9(
+#line 238 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 244 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_10(
+#line 244 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 244 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_12(
+#line 244 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 244 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_11(
+#line 244 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 244 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_13(
+#line 244 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg);
+
+#line 181 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0(
+#line 181 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Debug_6,
+#line 181 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Pass1Only_7,
+#line 181 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__SCC_8,
+#line 181 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_20,
+#line 181 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_21);
+
+#line 155 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_module_4_p_0_2(
+#line 155 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 155 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 155 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 155 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3);
+
+#line 133 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_module_4_p_0_1(
+#line 133 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 133 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 133 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 133 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3);
+
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_1[5][2];
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_2[11][3];
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_3[4][5];
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_4[4][6];
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_5[2][8];
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_6[2][7];
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_7[4][9];
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_8[2][1];
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_9[1][10];
+
+
+#line 431 "tabling_analysis.m"
+/* sealed */ struct transform_hlds__tabling_analysis__vector_common_type_10_0_s {
+#line 431 "tabling_analysis.m"
+  const MR_Word transform_hlds__tabling_analysis__vector_common_type_10_0__vct_10_f_0;
+#line 431 "tabling_analysis.m"
+};
+
+static /* final */ const struct transform_hlds__tabling_analysis__vector_common_type_10_0_s transform_hlds__tabling_analysis_vector_common_10[4];
+
+
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_1[5][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_result_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_status_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__analysis__any_call__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__to_term__arity1__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_mm_tabling_analysis_answer_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_2[11][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__tree234__tree234__type_ctor_info_tree234_2)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_mm_tabling_info_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__analysis__any_call__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0__)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_mm_tabling_analysis_answer_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_3[2])),
+    ((MR_Box) (transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_14)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_4[1])),
+    ((MR_Box) (transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_15)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_4[2])),
+    ((MR_Box) (transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_17)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_3[3])),
+    ((MR_Box) (transform_hlds__tabling_analysis__check_goal_for_mm_tabling_7_p_0_1)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_4[3])),
+    ((MR_Box) (transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_4[1])),
+    ((MR_Box) (transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0_3)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_4[3])),
+    ((MR_Box) (transform_hlds__tabling_analysis__annotate_goal_list_6_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_4[3])),
+    ((MR_Box) (transform_hlds__tabling_analysis__annotate_cases_6_p_0_2)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_3[4][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__call_pattern__arity2__analysis__no_func_info__arity0__analysis__any_call__arity0__)),
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_2[1])),
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_1[3])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__answer_pattern__arity2__analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_2[2])),
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_1[4])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_mm_tabling_analysis_answer_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_result_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_4[4][6] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_analysis__analysis__arity3__analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0__)),
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_3[0])),
+    ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_3[1])),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_no_func_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_any_call_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_mm_tabling_analysis_answer_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_5[2][8] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&mercury__bool__bool__type_ctor_info_bool_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 5)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_hlds__hlds_module__type_ctor_info_proc_mm_tabling_info_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_hlds__hlds_module__type_ctor_info_proc_mm_tabling_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_6[2][7] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 4)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_7[4][9] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__list__pti_list_1__plain_transform_hlds__tabling_analysis__type_ctor_info_proc_result_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__list__pti_list_1__plain_transform_hlds__tabling_analysis__type_ctor_info_proc_result_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 1 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 2 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+  /* row 3 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0)),
+    ((MR_Box) (&hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_info_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_int_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0)),
+    ((MR_Box) (&analysis__analysis__type_ctor_info_analysis_info_0))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_8[2][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 2))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (((MR_Integer) 0 | (((((MR_Integer) 0 << (MR_Integer) 1)) | (((((MR_Integer) 0 << (MR_Integer) 2)) | (((((MR_Integer) 0 << (MR_Integer) 3)) | (((MR_Integer) 0 << (MR_Integer) 4)))))))))))
+  },
+};
+
+static /* final */ const MR_Box transform_hlds__tabling_analysis_scalar_common_9[1][10] = {
+  /* row 0 */
+  {
+    NULL,
+    ((MR_Box) (NULL)),
+    ((MR_Box) (MR_Word) ((MR_Integer) 7)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0)),
+    ((MR_Box) (&hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0)),
+    ((MR_Box) (&parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0)),
+    ((MR_Box) (&transform_hlds__tabling_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0)),
+    ((MR_Box) (&hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0))
+  },
+};
+
+
+static /* final */ const struct transform_hlds__tabling_analysis__vector_common_type_10_0_s transform_hlds__tabling_analysis_vector_common_10[4] = {
+  /* row 0 */   {     (MR_Integer) 2 },
+  /* row 1 */   {     (MR_Integer) 0 },
+  /* row 2 */   {     (MR_Integer) 2 },
+  /* row 3 */   {     (MR_Integer) 0 },
+};
+
+
+#include "io.mh"
+#include "string.mh"
+#include "time.mh"
+#include "mdbcomp.rtti_access.mh"
+
+
+
+#line 1538 "transform_hlds.tabling_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__tabling_analysis__list__pti_list_1__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+  }
+};
+
+#line 1546 "transform_hlds.tabling_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__tabling_analysis__list__pti_list_1__plain_transform_hlds__tabling_analysis__type_ctor_info_proc_result_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_result_0
+  }
+};
+
+#line 1554 "transform_hlds.tabling_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct1 transform_hlds__tabling_analysis__maybe__pti_maybe_1__plain_analysis__type_ctor_info_analysis_status_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_PseudoTypeInfo) &analysis__analysis__type_ctor_info_analysis_status_0
+  }
+};
+
+#line 1562 "transform_hlds.tabling_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__tabling_analysis__tree234__pti_tree234_2__plain_hlds__hlds_pred__type_ctor_info_pred_proc_id_0__plain_hlds__hlds_module__type_ctor_info_proc_mm_tabling_info_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+    (MR_PseudoTypeInfo) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_mm_tabling_info_0
+  }
+};
+
+#line 1571 "transform_hlds.tabling_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__tabling_analysis__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0 = {
+  &mercury__term__term__type_ctor_info_var_1,
+  {
+    (MR_TypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_prog_var_type_0
+  }
+};
+
+#line 1579 "transform_hlds.tabling_analysis.c"
+static const MR_FA_PseudoTypeInfo_Struct2 transform_hlds__tabling_analysis__tree234__pti_tree234_2__plain_term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0__plain_parse_tree__prog_data__type_ctor_info_mer_type_0 = {
+  &mercury__tree234__tree234__type_ctor_info_tree234_2,
+  {
+    (MR_PseudoTypeInfo) &transform_hlds__tabling_analysis__term__ti_var_1parse_tree__prog_data__type_ctor_info_prog_var_type_0,
+    (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mer_type_0
+  }
+};
+
+#line 1588 "transform_hlds.tabling_analysis.c"
+static const MR_Integer transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__functor_number_map_mm_tabling_analysis_answer_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1593 "transform_hlds.tabling_analysis.c"
+static const MR_NotagFunctorDesc transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__notag_functor_desc_mm_tabling_analysis_answer_0 = {
+  (MR_String) "mm_tabling_analysis_answer",
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0,
+  NULL
+};
+
+#line 1600 "transform_hlds.tabling_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_mm_tabling_analysis_answer_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_NOTAG_GROUND,
+  ((MR_Box) (transform_hlds__tabling_analysis____Unify____mm_tabling_analysis_answer_0_0_10001)),
+  ((MR_Box) (transform_hlds__tabling_analysis____Compare____mm_tabling_analysis_answer_0_0_10001)),
+  (MR_String) "transform_hlds.tabling_analysis",
+  (MR_String) "mm_tabling_analysis_answer",
+  {     &transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__notag_functor_desc_mm_tabling_analysis_answer_0 },
+  {     &transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__notag_functor_desc_mm_tabling_analysis_answer_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__functor_number_map_mm_tabling_analysis_answer_0
+};
+
+#line 1617 "transform_hlds.tabling_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__tabling_analysis__maybe__ti_maybe_1analysis__type_ctor_info_analysis_status_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &analysis__analysis__type_ctor_info_analysis_status_0
+  }
+};
+
+#line 1625 "transform_hlds.tabling_analysis.c"
+static const MR_PseudoTypeInfo transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__field_types_proc_result_0_0[3] = {
+  (MR_PseudoTypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0,
+  (MR_PseudoTypeInfo) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0,
+  (MR_PseudoTypeInfo) &transform_hlds__tabling_analysis__maybe__ti_maybe_1analysis__type_ctor_info_analysis_status_0
+};
+
+#line 1632 "transform_hlds.tabling_analysis.c"
+static const MR_ConstString transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__field_names_proc_result_0_0[3] = {
+  (MR_String) "ppid",
+  (MR_String) "status",
+  (MR_String) "maybe_analysis_status"
+};
+
+#line 1639 "transform_hlds.tabling_analysis.c"
+static const MR_DuFunctorDesc transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_functor_desc_proc_result_0_0 = {
+  (MR_String) "proc_result",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__field_types_proc_result_0_0,
+  transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__field_names_proc_result_0_0,
+  NULL,
+  NULL
+};
+
+#line 1654 "transform_hlds.tabling_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_stag_ordered_proc_result_0_0[1] = {
+  &transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_functor_desc_proc_result_0_0
+};
+
+#line 1659 "transform_hlds.tabling_analysis.c"
+static const MR_DuPtagLayout transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_ptag_ordered_proc_result_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_stag_ordered_proc_result_0_0
+  }
+};
+
+#line 1668 "transform_hlds.tabling_analysis.c"
+static const MR_DuFunctorDescPtr transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_name_ordered_proc_result_0[1] = {
+  &transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_functor_desc_proc_result_0_0
+};
+
+#line 1673 "transform_hlds.tabling_analysis.c"
+static const MR_Integer transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__functor_number_map_proc_result_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1678 "transform_hlds.tabling_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_result_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (transform_hlds__tabling_analysis____Unify____proc_result_0_0_10001)),
+  ((MR_Box) (transform_hlds__tabling_analysis____Compare____proc_result_0_0_10001)),
+  (MR_String) "transform_hlds.tabling_analysis",
+  (MR_String) "proc_result",
+  {     transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_name_ordered_proc_result_0 },
+  {     transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__du_ptag_ordered_proc_result_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__functor_number_map_proc_result_0
+};
+
+#line 1695 "transform_hlds.tabling_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__tabling_analysis__list__ti_list_1transform_hlds__tabling_analysis__type_ctor_info_proc_result_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_result_0
+  }
+};
+
+#line 1703 "transform_hlds.tabling_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_results_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__tabling_analysis____Unify____proc_results_0_0_10001)),
+  ((MR_Box) (transform_hlds__tabling_analysis____Compare____proc_results_0_0_10001)),
+  (MR_String) "transform_hlds.tabling_analysis",
+  (MR_String) "proc_results",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__tabling_analysis__list__ti_list_1transform_hlds__tabling_analysis__type_ctor_info_proc_result_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1720 "transform_hlds.tabling_analysis.c"
+static const MR_FA_TypeInfo_Struct1 transform_hlds__tabling_analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0
+  }
+};
+
+#line 1728 "transform_hlds.tabling_analysis.c"
+const MR_TypeCtorInfo_Struct transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_scc_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (transform_hlds__tabling_analysis____Unify____scc_0_0_10001)),
+  ((MR_Box) (transform_hlds__tabling_analysis____Compare____scc_0_0_10001)),
+  (MR_String) "transform_hlds.tabling_analysis",
+  (MR_String) "scc",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &transform_hlds__tabling_analysis__list__ti_list_1hlds__hlds_pred__type_ctor_info_pred_proc_id_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 1745 "transform_hlds.tabling_analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__to_term__arity1__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0__[7] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 1)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (transform_hlds__tabling_analysis__ClassMethod_for_analysis__to_term____transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__to_term_1_1_f_0_10001)),
+  ((MR_Box) (transform_hlds__tabling_analysis__ClassMethod_for_analysis__to_term____transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__from_term_2_2_p_0_10001))
+};
+
+#line 1756 "transform_hlds.tabling_analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__partial_order__arity2__analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0__[7] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (transform_hlds__tabling_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0_10001)),
+  ((MR_Box) (transform_hlds__tabling_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__equivalent_3_3_p_0_10001))
+};
+
+#line 1767 "transform_hlds.tabling_analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__answer_pattern__arity2__analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0__[5] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0))
+};
+
+#line 1776 "transform_hlds.tabling_analysis.c"
+const MR_BaseTypeclassInfo base_typeclass_info_analysis__analysis__arity3__analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0__[11] = {
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 0)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 2)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 3)),
+  ((MR_Box) (MR_Word) ((MR_Integer) 6)),
+  ((MR_Box) (transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__analysis_name_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__bottom_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__top_2_2_f_0_10001)),
+  ((MR_Box) (transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__get_func_info_6_6_p_0_10001))
+};
+
+#line 1791 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____mm_tabling_analysis_answer_0_0_10001(
+#line 1794 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 1796 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2)
+#line 1798 "transform_hlds.tabling_analysis.c"
+{
+#line 1800 "transform_hlds.tabling_analysis.c"
+  {
+#line 1802 "transform_hlds.tabling_analysis.c"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 1805 "transform_hlds.tabling_analysis.c"
+    {
+#line 1807 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__succeeded = transform_hlds__tabling_analysis____Unify____mm_tabling_analysis_answer_0_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2));
+    }
+#line 1810 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 1812 "transform_hlds.tabling_analysis.c"
+  }
+#line 1814 "transform_hlds.tabling_analysis.c"
+}
+
+#line 1817 "transform_hlds.tabling_analysis.c"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____mm_tabling_analysis_answer_0_0_10001(
+#line 1820 "transform_hlds.tabling_analysis.c"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 1822 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 1824 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 1826 "transform_hlds.tabling_analysis.c"
+{
+#line 1828 "transform_hlds.tabling_analysis.c"
+  {
+#line 1830 "transform_hlds.tabling_analysis.c"
+    MR_Word transform_hlds__tabling_analysis__conv0_HeadVar__1_1;
+
+#line 1833 "transform_hlds.tabling_analysis.c"
+    {
+#line 1835 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis____Compare____mm_tabling_analysis_answer_0_0(&transform_hlds__tabling_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_3));
+    }
+#line 1838 "transform_hlds.tabling_analysis.c"
+    *transform_hlds__tabling_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_HeadVar__1_1));
+#line 1840 "transform_hlds.tabling_analysis.c"
+  }
+#line 1842 "transform_hlds.tabling_analysis.c"
+}
+
+#line 1845 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____proc_result_0_0_10001(
+#line 1848 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 1850 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2)
+#line 1852 "transform_hlds.tabling_analysis.c"
+{
+#line 1854 "transform_hlds.tabling_analysis.c"
+  {
+#line 1856 "transform_hlds.tabling_analysis.c"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 1859 "transform_hlds.tabling_analysis.c"
+    {
+#line 1861 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__succeeded = transform_hlds__tabling_analysis____Unify____proc_result_0_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2));
+    }
+#line 1864 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 1866 "transform_hlds.tabling_analysis.c"
+  }
+#line 1868 "transform_hlds.tabling_analysis.c"
+}
+
+#line 1871 "transform_hlds.tabling_analysis.c"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____proc_result_0_0_10001(
+#line 1874 "transform_hlds.tabling_analysis.c"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 1876 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 1878 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 1880 "transform_hlds.tabling_analysis.c"
+{
+#line 1882 "transform_hlds.tabling_analysis.c"
+  {
+#line 1884 "transform_hlds.tabling_analysis.c"
+    MR_Word transform_hlds__tabling_analysis__conv0_HeadVar__1_1;
+
+#line 1887 "transform_hlds.tabling_analysis.c"
+    {
+#line 1889 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis____Compare____proc_result_0_0(&transform_hlds__tabling_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_3));
+    }
+#line 1892 "transform_hlds.tabling_analysis.c"
+    *transform_hlds__tabling_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_HeadVar__1_1));
+#line 1894 "transform_hlds.tabling_analysis.c"
+  }
+#line 1896 "transform_hlds.tabling_analysis.c"
+}
+
+#line 1899 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____proc_results_0_0_10001(
+#line 1902 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 1904 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2)
+#line 1906 "transform_hlds.tabling_analysis.c"
+{
+#line 1908 "transform_hlds.tabling_analysis.c"
+  {
+#line 1910 "transform_hlds.tabling_analysis.c"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 1913 "transform_hlds.tabling_analysis.c"
+    {
+#line 1915 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__succeeded = transform_hlds__tabling_analysis____Unify____proc_results_0_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2));
+    }
+#line 1918 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 1920 "transform_hlds.tabling_analysis.c"
+  }
+#line 1922 "transform_hlds.tabling_analysis.c"
+}
+
+#line 1925 "transform_hlds.tabling_analysis.c"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____proc_results_0_0_10001(
+#line 1928 "transform_hlds.tabling_analysis.c"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 1930 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 1932 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 1934 "transform_hlds.tabling_analysis.c"
+{
+#line 1936 "transform_hlds.tabling_analysis.c"
+  {
+#line 1938 "transform_hlds.tabling_analysis.c"
+    MR_Word transform_hlds__tabling_analysis__conv0_HeadVar__1_1;
+
+#line 1941 "transform_hlds.tabling_analysis.c"
+    {
+#line 1943 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis____Compare____proc_results_0_0(&transform_hlds__tabling_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_3));
+    }
+#line 1946 "transform_hlds.tabling_analysis.c"
+    *transform_hlds__tabling_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_HeadVar__1_1));
+#line 1948 "transform_hlds.tabling_analysis.c"
+  }
+#line 1950 "transform_hlds.tabling_analysis.c"
+}
+
+#line 1953 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____scc_0_0_10001(
+#line 1956 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 1958 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2)
+#line 1960 "transform_hlds.tabling_analysis.c"
+{
+#line 1962 "transform_hlds.tabling_analysis.c"
+  {
+#line 1964 "transform_hlds.tabling_analysis.c"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 1967 "transform_hlds.tabling_analysis.c"
+    {
+#line 1969 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__succeeded = transform_hlds__tabling_analysis____Unify____scc_0_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2));
+    }
+#line 1972 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 1974 "transform_hlds.tabling_analysis.c"
+  }
+#line 1976 "transform_hlds.tabling_analysis.c"
+}
+
+#line 1979 "transform_hlds.tabling_analysis.c"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____scc_0_0_10001(
+#line 1982 "transform_hlds.tabling_analysis.c"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 1984 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 1986 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 1988 "transform_hlds.tabling_analysis.c"
+{
+#line 1990 "transform_hlds.tabling_analysis.c"
+  {
+#line 1992 "transform_hlds.tabling_analysis.c"
+    MR_Word transform_hlds__tabling_analysis__conv0_HeadVar__1_1;
+
+#line 1995 "transform_hlds.tabling_analysis.c"
+    {
+#line 1997 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis____Compare____scc_0_0(&transform_hlds__tabling_analysis__conv0_HeadVar__1_1, ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_3));
+    }
+#line 2000 "transform_hlds.tabling_analysis.c"
+    *transform_hlds__tabling_analysis__wrapper_arg_1 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_HeadVar__1_1));
+#line 2002 "transform_hlds.tabling_analysis.c"
+  }
+#line 2004 "transform_hlds.tabling_analysis.c"
+}
+
+#line 2007 "transform_hlds.tabling_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__to_term____transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__to_term_1_1_f_0_10001(
+#line 2010 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 2012 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1)
+#line 2014 "transform_hlds.tabling_analysis.c"
+{
+#line 2016 "transform_hlds.tabling_analysis.c"
+  {
+#line 2018 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__wrapper_arg_2;
+#line 2020 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__closure;
+#line 2022 "transform_hlds.tabling_analysis.c"
+    MR_Word transform_hlds__tabling_analysis__conv0_HeadVar__2_2;
+
+#line 2025 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 2027 "transform_hlds.tabling_analysis.c"
+    {
+#line 2029 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__conv0_HeadVar__2_2 = transform_hlds__tabling_analysis__ClassMethod_for_analysis__to_term____transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__to_term_1_1_f_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1));
+    }
+#line 2032 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_HeadVar__2_2));
+#line 2034 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__wrapper_arg_2;
+#line 2036 "transform_hlds.tabling_analysis.c"
+  }
+#line 2038 "transform_hlds.tabling_analysis.c"
+}
+
+#line 2041 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__to_term____transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__from_term_2_2_p_0_10001(
+#line 2044 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 2046 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 2048 "transform_hlds.tabling_analysis.c"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_2)
+#line 2050 "transform_hlds.tabling_analysis.c"
+{
+#line 2052 "transform_hlds.tabling_analysis.c"
+  {
+#line 2054 "transform_hlds.tabling_analysis.c"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 2056 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__closure;
+#line 2058 "transform_hlds.tabling_analysis.c"
+    MR_Word transform_hlds__tabling_analysis__conv0_HeadVar__2_2;
+
+#line 2061 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 2063 "transform_hlds.tabling_analysis.c"
+    {
+#line 2065 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__succeeded = transform_hlds__tabling_analysis__ClassMethod_for_analysis__to_term____transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__from_term_2_2_p_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), &transform_hlds__tabling_analysis__conv0_HeadVar__2_2);
+    }
+#line 2068 "transform_hlds.tabling_analysis.c"
+    if (transform_hlds__tabling_analysis__succeeded)
+#line 2070 "transform_hlds.tabling_analysis.c"
+      {
+#line 2072 "transform_hlds.tabling_analysis.c"
+        *transform_hlds__tabling_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_HeadVar__2_2));
+#line 2074 "transform_hlds.tabling_analysis.c"
+        transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 2076 "transform_hlds.tabling_analysis.c"
+      }
+#line 2078 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 2080 "transform_hlds.tabling_analysis.c"
+  }
+#line 2082 "transform_hlds.tabling_analysis.c"
+}
+
+#line 2085 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0_10001(
+#line 2088 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 2090 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 2092 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 2094 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 2096 "transform_hlds.tabling_analysis.c"
+{
+#line 2098 "transform_hlds.tabling_analysis.c"
+  {
+#line 2100 "transform_hlds.tabling_analysis.c"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 2102 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__closure;
+
+#line 2105 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 2107 "transform_hlds.tabling_analysis.c"
+    {
+#line 2109 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__succeeded = transform_hlds__tabling_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_3));
+    }
+#line 2112 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 2114 "transform_hlds.tabling_analysis.c"
+  }
+#line 2116 "transform_hlds.tabling_analysis.c"
+}
+
+#line 2119 "transform_hlds.tabling_analysis.c"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__equivalent_3_3_p_0_10001(
+#line 2122 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 2124 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 2126 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 2128 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 2130 "transform_hlds.tabling_analysis.c"
+{
+#line 2132 "transform_hlds.tabling_analysis.c"
+  {
+#line 2134 "transform_hlds.tabling_analysis.c"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 2136 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__closure;
+
+#line 2139 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 2141 "transform_hlds.tabling_analysis.c"
+    {
+#line 2143 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__succeeded = transform_hlds__tabling_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__equivalent_3_3_p_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_3));
+    }
+#line 2146 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 2148 "transform_hlds.tabling_analysis.c"
+  }
+#line 2150 "transform_hlds.tabling_analysis.c"
+}
+
+#line 2153 "transform_hlds.tabling_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__analysis_name_2_2_f_0_10001(
+#line 2156 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg)
+#line 2158 "transform_hlds.tabling_analysis.c"
+{
+#line 2160 "transform_hlds.tabling_analysis.c"
+  {
+#line 2162 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__wrapper_arg_3;
+#line 2164 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__closure;
+#line 2166 "transform_hlds.tabling_analysis.c"
+    MR_String transform_hlds__tabling_analysis__conv0_HeadVar__3_3;
+
+#line 2169 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 2171 "transform_hlds.tabling_analysis.c"
+    {
+#line 2173 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__conv0_HeadVar__3_3 = transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__analysis_name_2_2_f_0();
+    }
+#line 2176 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_HeadVar__3_3));
+#line 2178 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__wrapper_arg_3;
+#line 2180 "transform_hlds.tabling_analysis.c"
+  }
+#line 2182 "transform_hlds.tabling_analysis.c"
+}
+
+#line 2185 "transform_hlds.tabling_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0_10001(
+#line 2188 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg)
+#line 2190 "transform_hlds.tabling_analysis.c"
+{
+#line 2192 "transform_hlds.tabling_analysis.c"
+  {
+#line 2194 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__wrapper_arg_3;
+#line 2196 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__closure;
+#line 2198 "transform_hlds.tabling_analysis.c"
+    MR_Integer transform_hlds__tabling_analysis__conv0_HeadVar__3_3;
+
+#line 2201 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 2203 "transform_hlds.tabling_analysis.c"
+    {
+#line 2205 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__conv0_HeadVar__3_3 = transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0();
+    }
+#line 2208 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_HeadVar__3_3));
+#line 2210 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__wrapper_arg_3;
+#line 2212 "transform_hlds.tabling_analysis.c"
+  }
+#line 2214 "transform_hlds.tabling_analysis.c"
+}
+
+#line 2217 "transform_hlds.tabling_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0_10001(
+#line 2220 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg)
+#line 2222 "transform_hlds.tabling_analysis.c"
+{
+#line 2224 "transform_hlds.tabling_analysis.c"
+  {
+#line 2226 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__wrapper_arg_3;
+#line 2228 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__closure;
+#line 2230 "transform_hlds.tabling_analysis.c"
+    MR_Word transform_hlds__tabling_analysis__conv0_HeadVar__3_3;
+
+#line 2233 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 2235 "transform_hlds.tabling_analysis.c"
+    {
+#line 2237 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__conv0_HeadVar__3_3 = transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0();
+    }
+#line 2240 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_HeadVar__3_3));
+#line 2242 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__wrapper_arg_3;
+#line 2244 "transform_hlds.tabling_analysis.c"
+  }
+#line 2246 "transform_hlds.tabling_analysis.c"
+}
+
+#line 2249 "transform_hlds.tabling_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__bottom_2_2_f_0_10001(
+#line 2252 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 2254 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1)
+#line 2256 "transform_hlds.tabling_analysis.c"
+{
+#line 2258 "transform_hlds.tabling_analysis.c"
+  {
+#line 2260 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__wrapper_arg_3;
+#line 2262 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__closure;
+#line 2264 "transform_hlds.tabling_analysis.c"
+    MR_Word transform_hlds__tabling_analysis__conv0_HeadVar__3_3;
+
+#line 2267 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 2269 "transform_hlds.tabling_analysis.c"
+    {
+#line 2271 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__conv0_HeadVar__3_3 = transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__bottom_2_2_f_0();
+    }
+#line 2274 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_HeadVar__3_3));
+#line 2276 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__wrapper_arg_3;
+#line 2278 "transform_hlds.tabling_analysis.c"
+  }
+#line 2280 "transform_hlds.tabling_analysis.c"
+}
+
+#line 2283 "transform_hlds.tabling_analysis.c"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__top_2_2_f_0_10001(
+#line 2286 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 2288 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1)
+#line 2290 "transform_hlds.tabling_analysis.c"
+{
+#line 2292 "transform_hlds.tabling_analysis.c"
+  {
+#line 2294 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__wrapper_arg_3;
+#line 2296 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__closure;
+#line 2298 "transform_hlds.tabling_analysis.c"
+    MR_Word transform_hlds__tabling_analysis__conv0_HeadVar__3_3;
+
+#line 2301 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 2303 "transform_hlds.tabling_analysis.c"
+    {
+#line 2305 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__conv0_HeadVar__3_3 = transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__top_2_2_f_0();
+    }
+#line 2308 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_HeadVar__3_3));
+#line 2310 "transform_hlds.tabling_analysis.c"
+    return transform_hlds__tabling_analysis__wrapper_arg_3;
+#line 2312 "transform_hlds.tabling_analysis.c"
+  }
+#line 2314 "transform_hlds.tabling_analysis.c"
+}
+
+#line 2317 "transform_hlds.tabling_analysis.c"
+static void MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__get_func_info_6_6_p_0_10001(
+#line 2320 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 2322 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 2324 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 2326 "transform_hlds.tabling_analysis.c"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_3,
+#line 2328 "transform_hlds.tabling_analysis.c"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_6)
+#line 2330 "transform_hlds.tabling_analysis.c"
+{
+#line 2332 "transform_hlds.tabling_analysis.c"
+  {
+#line 2334 "transform_hlds.tabling_analysis.c"
+    MR_Box transform_hlds__tabling_analysis__closure;
+
+#line 2337 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 2339 "transform_hlds.tabling_analysis.c"
+    {
+#line 2341 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__get_func_info_6_6_p_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_3));
+    }
+#line 2344 "transform_hlds.tabling_analysis.c"
+  }
+#line 2346 "transform_hlds.tabling_analysis.c"
+}
+
+#line 808 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_93_95_48_3_p_0(
+#line 808 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Status_8,
+#line 808 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Status_3)
+#line 808 "tabling_analysis.m"
+{
+#line 783 "tabling_analysis.m"
+  {
+#line 783 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 783 "tabling_analysis.m"
+    MR_Integer transform_hlds__tabling_analysis__CastX_11 = (MR_Integer) transform_hlds__tabling_analysis__Status_3;
+#line 783 "tabling_analysis.m"
+    MR_Integer transform_hlds__tabling_analysis__CastY_12 = (MR_Integer) transform_hlds__tabling_analysis__Status_8;
+
+#line 783 "tabling_analysis.m"
+    transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__CastX_11 == transform_hlds__tabling_analysis__CastY_12);
+#line 783 "tabling_analysis.m"
+    if (transform_hlds__tabling_analysis__succeeded)
+#line 783 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 783 "tabling_analysis.m"
+    else
+#line 783 "tabling_analysis.m"
+      {
+#line 783 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_9_9 = (MR_Word) transform_hlds__tabling_analysis__Status_3;
+#line 783 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_10_10 = (MR_Word) transform_hlds__tabling_analysis__Status_8;
+
+#line 2382 "transform_hlds.tabling_analysis.c"
+        transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__V_9_9 == transform_hlds__tabling_analysis__V_10_10);
+#line 783 "tabling_analysis.m"
+      }
+#line 783 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 783 "tabling_analysis.m"
+  }
+#line 808 "tabling_analysis.m"
+}
+
+#line 802 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_93_95_48_3_p_0(
+#line 802 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Answer1_4,
+#line 802 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Answer2_5)
+#line 802 "tabling_analysis.m"
+{
+#line 802 "tabling_analysis.m"
+  {
+#line 802 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 802 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Status1_6 = (MR_Word) transform_hlds__tabling_analysis__Answer1_4;
+#line 802 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Status2_7 = (MR_Word) transform_hlds__tabling_analysis__Answer2_5;
+
+#line 814 "tabling_analysis.m"
+#line 814 "tabling_analysis.m"
+    switch (transform_hlds__tabling_analysis__Status1_6) {
+#line 814 "tabling_analysis.m"
+      default:
+#line 814 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__succeeded = MR_FALSE;
+#line 814 "tabling_analysis.m"
+        break;
+#line 814 "tabling_analysis.m"
+      case (MR_Integer) 2:
+#line 819 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__Status2_7 == (MR_Integer) 0);
+#line 814 "tabling_analysis.m"
+        break;
+#line 814 "tabling_analysis.m"
+      case (MR_Integer) 1:
+#line 814 "tabling_analysis.m"
+#line 814 "tabling_analysis.m"
+        switch (transform_hlds__tabling_analysis__Status2_7) {
+#line 814 "tabling_analysis.m"
+          default:
+#line 814 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__succeeded = MR_FALSE;
+#line 814 "tabling_analysis.m"
+            break;
+#line 814 "tabling_analysis.m"
+          case (MR_Integer) 2:
+#line 816 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 814 "tabling_analysis.m"
+            break;
+#line 814 "tabling_analysis.m"
+          case (MR_Integer) 0:
+#line 814 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 814 "tabling_analysis.m"
+            break;
+#line 814 "tabling_analysis.m"
+        }
+#line 814 "tabling_analysis.m"
+        break;
+#line 814 "tabling_analysis.m"
+    }
+#line 802 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 802 "tabling_analysis.m"
+  }
+#line 802 "tabling_analysis.m"
+}
+
+#line 797 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_103_101_116_95_102_117_110_99_95_105_110_102_111_95_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_6_p_0(void)
+#line 797 "tabling_analysis.m"
+{
+#line 797 "tabling_analysis.m"
+  {
+#line 797 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 797 "tabling_analysis.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 797 "tabling_analysis.m"
+  }
+#line 797 "tabling_analysis.m"
+}
+
+#line 796 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_112_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 796 "tabling_analysis.m"
+{
+#line 796 "tabling_analysis.m"
+  {
+#line 796 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 796 "tabling_analysis.m"
+    return (MR_Word) ((MR_Box) ((MR_Integer) 0));
+#line 796 "tabling_analysis.m"
+  }
+#line 796 "tabling_analysis.m"
+}
+
+#line 795 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_98_111_116_116_111_109_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 795 "tabling_analysis.m"
+{
+#line 795 "tabling_analysis.m"
+  {
+#line 795 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 795 "tabling_analysis.m"
+    return (MR_Word) ((MR_Box) ((MR_Integer) 1));
+#line 795 "tabling_analysis.m"
+  }
+#line 795 "tabling_analysis.m"
+}
+
+#line 794 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_112_114_101_102_101_114_114_101_100_95_102_105_120_112_111_105_110_116_95_116_121_112_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 794 "tabling_analysis.m"
+{
+#line 794 "tabling_analysis.m"
+  {
+#line 794 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 794 "tabling_analysis.m"
+    return (MR_Integer) 0;
+#line 794 "tabling_analysis.m"
+  }
+#line 794 "tabling_analysis.m"
+}
+
+#line 793 "tabling_analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_118_101_114_115_105_111_110_95_110_117_109_98_101_114_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 793 "tabling_analysis.m"
+{
+#line 793 "tabling_analysis.m"
+  {
+#line 793 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 793 "tabling_analysis.m"
+    return (MR_Integer) 1;
+#line 793 "tabling_analysis.m"
+  }
+#line 793 "tabling_analysis.m"
+}
+
+#line 792 "tabling_analysis.m"
+static MR_String MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_110_97_109_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 792 "tabling_analysis.m"
+{
+#line 788 "tabling_analysis.m"
+  {
+#line 788 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 788 "tabling_analysis.m"
+    return (MR_String) "mm_tabling_analysis";
+#line 788 "tabling_analysis.m"
+  }
+#line 792 "tabling_analysis.m"
+}
+
+#line 723 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_6_p_0_1(
+#line 723 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 723 "tabling_analysis.m"
+{
+#line 723 "tabling_analysis.m"
+  {
+#line 723 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 723 "tabling_analysis.m"
+    MR_builtin_longjmp((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__commit_0, 1);
+#line 723 "tabling_analysis.m"
+  }
+#line 723 "tabling_analysis.m"
+}
+
+#line 723 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_6_p_0_2(
+#line 723 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 723 "tabling_analysis.m"
+{
+#line 723 "tabling_analysis.m"
+  {
+#line 723 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 723 "tabling_analysis.m"
+    {
+#line 730 "tabling_analysis.m"
+      MR_String transform_hlds__tabling_analysis___TypeSpecPredName_20;
+
+#line 730 "tabling_analysis.m"
+      {
+#line 730 "tabling_analysis.m"
+        mdbcomp__prim_data__special_pred_name_arity_4_p_0((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__SpecialPredId_18, &(transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__GenericPredName_19, &transform_hlds__tabling_analysis___TypeSpecPredName_20, &(transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__V_35_35);
+      }
+#line 730 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded = ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__Arity_17 == (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__V_35_35);
+#line 723 "tabling_analysis.m"
+      if ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 723 "tabling_analysis.m"
+        {
+#line 732 "tabling_analysis.m"
+          (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded = (strcmp((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__Name_16, (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__GenericPredName_19) == 0);
+#line 732 "tabling_analysis.m"
+          if ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 732 "tabling_analysis.m"
+            {
+#line 732 "tabling_analysis.m"
+              transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_6_p_0_1(transform_hlds__tabling_analysis__env_ptr);
+#line 732 "tabling_analysis.m"
+              return;
+            }
+#line 723 "tabling_analysis.m"
+        }
+#line 723 "tabling_analysis.m"
+    }
+#line 723 "tabling_analysis.m"
+  }
+#line 723 "tabling_analysis.m"
+}
+
+#line 723 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_6_p_0_3(
+#line 723 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 723 "tabling_analysis.m"
+{
+#line 723 "tabling_analysis.m"
+  {
+#line 723 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 723 "tabling_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__commit_0) == 0)
+#line 723 "tabling_analysis.m"
+      {
+#line 723 "tabling_analysis.m"
+        {
+#line 723 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__ModuleName_15;
+
+#line 723 "tabling_analysis.m"
+          {
+#line 723 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__ModuleName_15 = hlds__hlds_pred__pred_info_module_1_f_0((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_14);
+          }
+#line 724 "tabling_analysis.m"
+          {
+#line 724 "tabling_analysis.m"
+            (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded = mdbcomp__builtin_modules__any_mercury_builtin_module_1_p_0(transform_hlds__tabling_analysis__ModuleName_15);
+          }
+#line 723 "tabling_analysis.m"
+          if ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 723 "tabling_analysis.m"
+            {
+#line 725 "tabling_analysis.m"
+              {
+#line 725 "tabling_analysis.m"
+                (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__Name_16 = hlds__hlds_pred__pred_info_name_1_f_0((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_14);
+              }
+#line 726 "tabling_analysis.m"
+              {
+#line 726 "tabling_analysis.m"
+                (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__Arity_17 = hlds__hlds_pred__pred_info_orig_arity_1_f_0((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_14);
+              }
+#line 728 "tabling_analysis.m"
+              {
+#line 728 "tabling_analysis.m"
+                MR_Integer transform_hlds__tabling_analysis__slot_1 = (MR_Integer) 0;
+
+#line 728 "tabling_analysis.m"
+                do
+#line 728 "tabling_analysis.m"
+                  {
+#line 728 "tabling_analysis.m"
+                    (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__SpecialPredId_18 = ((&transform_hlds__tabling_analysis_vector_common_10[2 + transform_hlds__tabling_analysis__slot_1]))->transform_hlds__tabling_analysis__vector_common_type_10_0__vct_10_f_0;
+#line 728 "tabling_analysis.m"
+                    {
+#line 728 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_6_p_0_2(transform_hlds__tabling_analysis__env_ptr);
+                    }
+#line 728 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__slot_1 = (transform_hlds__tabling_analysis__slot_1 + (MR_Integer) 1);
+#line 728 "tabling_analysis.m"
+                  }
+#line 728 "tabling_analysis.m"
+                while ((transform_hlds__tabling_analysis__slot_1 < (MR_Integer) 2));
+#line 728 "tabling_analysis.m"
+              }
+#line 723 "tabling_analysis.m"
+            }
+#line 723 "tabling_analysis.m"
+        }
+#line 723 "tabling_analysis.m"
+        (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded = MR_FALSE;
+#line 723 "tabling_analysis.m"
+      }
+#line 723 "tabling_analysis.m"
+    else
+#line 723 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded = MR_TRUE;
+#line 723 "tabling_analysis.m"
+  }
+#line 723 "tabling_analysis.m"
+}
+
+#line 711 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_6_p_0(
+#line 711 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__CalleePPId_7,
+#line 711 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Status_10,
+#line 711 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_28,
+#line 711 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_29)
+#line 711 "tabling_analysis.m"
+{
+#line 711 "tabling_analysis.m"
+  {
+#line 711 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_0_s transform_hlds__tabling_analysis__env;
+
+#line 714 "tabling_analysis.m"
+    {
+#line 714 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__CalleePredId_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__CalleePPId_7, (MR_Integer) 0)));
+#line 715 "tabling_analysis.m"
+      MR_Integer transform_hlds__tabling_analysis__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__CalleePPId_7, (MR_Integer) 1)));
+
+#line 716 "tabling_analysis.m"
+      {
+#line 716 "tabling_analysis.m"
+        hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_28, transform_hlds__tabling_analysis__CalleePredId_12, &(transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_14);
+      }
+#line 718 "tabling_analysis.m"
+      {
+#line 718 "tabling_analysis.m"
+        (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded = hlds__hlds_pred__pred_info_is_builtin_1_p_0((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_14);
+      }
+#line 721 "tabling_analysis.m"
+      if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 720 "tabling_analysis.m"
+        {
+#line 720 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__Status_10 = (MR_Integer) 1;
+#line 720 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_29 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_28;
+#line 720 "tabling_analysis.m"
+        }
+#line 721 "tabling_analysis.m"
+      else
+#line 736 "tabling_analysis.m"
+        {
+#line 723 "tabling_analysis.m"
+          {
+#line 723 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_6_p_0_3(&transform_hlds__tabling_analysis__env);
+          }
+#line 736 "tabling_analysis.m"
+          if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 735 "tabling_analysis.m"
+            {
+#line 735 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__Status_10 = (MR_Integer) 0;
+#line 735 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_29 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_28;
+#line 735 "tabling_analysis.m"
+            }
+#line 736 "tabling_analysis.m"
+          else
+#line 737 "tabling_analysis.m"
+            {
+#line 737 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Globals_21;
+#line 737 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__IntermodAnalysis_22;
+
+#line 737 "tabling_analysis.m"
+              {
+#line 737 "tabling_analysis.m"
+                hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_28, &transform_hlds__tabling_analysis__Globals_21);
+              }
+#line 738 "tabling_analysis.m"
+              {
+#line 738 "tabling_analysis.m"
+                libs__globals__lookup_bool_option_3_p_0(transform_hlds__tabling_analysis__Globals_21, (MR_Integer) 335, &transform_hlds__tabling_analysis__IntermodAnalysis_22);
+              }
+#line 741 "tabling_analysis.m"
+              (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded = (transform_hlds__tabling_analysis__IntermodAnalysis_22 == (MR_Integer) 1);
+#line 741 "tabling_analysis.m"
+              if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 742 "tabling_analysis.m"
+                {
+#line 742 "tabling_analysis.m"
+                  (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded = hlds__hlds_pred__pred_info_is_imported_not_external_1_p_0((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_14);
+                }
+#line 765 "tabling_analysis.m"
+              if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 745 "tabling_analysis.m"
+                {
+#line 745 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__AnalysisInfo0_42;
+#line 745 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__AnalysisInfo_43;
+#line 745 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__ModuleName_52;
+#line 745 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__FuncId_53;
+#line 745 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__MaybeBestStatus_55;
+
+#line 857 "tabling_analysis.m"
+                  {
+#line 857 "tabling_analysis.m"
+                    hlds__hlds_module__module_info_get_analysis_info_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_28, &transform_hlds__tabling_analysis__AnalysisInfo0_42);
+                  }
+#line 868 "tabling_analysis.m"
+                  {
+#line 868 "tabling_analysis.m"
+                    transform_hlds__mmc_analysis__module_name_func_id_4_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_28, transform_hlds__tabling_analysis__CalleePPId_7, &transform_hlds__tabling_analysis__ModuleName_52, &transform_hlds__tabling_analysis__FuncId_53);
+                  }
+#line 869 "tabling_analysis.m"
+                  mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 870 "tabling_analysis.m"
+                  mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 870 "tabling_analysis.m"
+                  {
+#line 870 "tabling_analysis.m"
+                    analysis__lookup_best_result_6_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_4[0], transform_hlds__tabling_analysis__AnalysisInfo0_42, transform_hlds__tabling_analysis__ModuleName_52, transform_hlds__tabling_analysis__FuncId_53, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) ((MR_Integer) 0)), &transform_hlds__tabling_analysis__MaybeBestStatus_55);
+                  }
+#line 2843 "transform_hlds.tabling_analysis.c"
+                  if ((transform_hlds__tabling_analysis__MaybeBestStatus_55 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 2845 "transform_hlds.tabling_analysis.c"
+                    {
+#line 2847 "transform_hlds.tabling_analysis.c"
+                      MR_Word transform_hlds__tabling_analysis__TypeClassInfo_for_analysis_70 = (MR_Word) &transform_hlds__tabling_analysis_scalar_common_4[0];
+#line 2849 "transform_hlds.tabling_analysis.c"
+                      MR_Word transform_hlds__tabling_analysis__Result_23;
+#line 2851 "transform_hlds.tabling_analysis.c"
+                      MR_Word transform_hlds__tabling_analysis__Answer_59;
+#line 2853 "transform_hlds.tabling_analysis.c"
+                      MR_Box MR_CALL (* transform_hlds__tabling_analysis__func_0)(MR_Box, MR_Box);
+#line 2855 "transform_hlds.tabling_analysis.c"
+                      MR_Box transform_hlds__tabling_analysis__conv1_Answer_59;
+
+#line 883 "tabling_analysis.m"
+                      mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 2860 "transform_hlds.tabling_analysis.c"
+                      transform_hlds__tabling_analysis__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__TypeClassInfo_for_analysis_70, (MR_Integer) 0)), (MR_Integer) 9)));
+#line 2862 "transform_hlds.tabling_analysis.c"
+                      {
+#line 2864 "transform_hlds.tabling_analysis.c"
+                        transform_hlds__tabling_analysis__conv1_Answer_59 = transform_hlds__tabling_analysis__func_0(((MR_Box) transform_hlds__tabling_analysis__TypeClassInfo_for_analysis_70), ((MR_Box) ((MR_Integer) 0)));
+                      }
+#line 2867 "transform_hlds.tabling_analysis.c"
+                      transform_hlds__tabling_analysis__Answer_59 = ((MR_Word) transform_hlds__tabling_analysis__conv1_Answer_59);
+#line 884 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__Result_23 = (MR_Word) transform_hlds__tabling_analysis__Answer_59;
+#line 886 "tabling_analysis.m"
+                      {
+#line 886 "tabling_analysis.m"
+                        analysis__record_request_6_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_3[0], (MR_String) "mm_tabling_analysis", transform_hlds__tabling_analysis__ModuleName_52, transform_hlds__tabling_analysis__FuncId_53, ((MR_Box) ((MR_Integer) 0)), transform_hlds__tabling_analysis__AnalysisInfo0_42, &transform_hlds__tabling_analysis__AnalysisInfo_43);
+                      }
+#line 758 "tabling_analysis.m"
+#line 758 "tabling_analysis.m"
+                      switch (transform_hlds__tabling_analysis__Result_23) {
+#line 758 "tabling_analysis.m"
+                        default: /*NOTREACHED*/ MR_assert(0);
+#line 758 "tabling_analysis.m"
+                        case (MR_Integer) 2:
+#line 757 "tabling_analysis.m"
+                          *transform_hlds__tabling_analysis__Status_10 = (MR_Integer) 1;
+#line 758 "tabling_analysis.m"
+                          break;
+#line 758 "tabling_analysis.m"
+                        case (MR_Integer) 0:
+#line 758 "tabling_analysis.m"
+                        case (MR_Integer) 1:
+#line 762 "tabling_analysis.m"
+                          *transform_hlds__tabling_analysis__Status_10 = transform_hlds__tabling_analysis__Result_23;
+#line 758 "tabling_analysis.m"
+                          break;
+#line 758 "tabling_analysis.m"
+                      }
+#line 2897 "transform_hlds.tabling_analysis.c"
+                    }
+#line 2899 "transform_hlds.tabling_analysis.c"
+                  else
+#line 2901 "transform_hlds.tabling_analysis.c"
+                    {
+#line 2903 "transform_hlds.tabling_analysis.c"
+                      MR_Word transform_hlds__tabling_analysis__BestAnswer_57;
+#line 2905 "transform_hlds.tabling_analysis.c"
+                      MR_Word transform_hlds__tabling_analysis__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__MaybeBestStatus_55, (MR_Integer) 0)));
+#line 2907 "transform_hlds.tabling_analysis.c"
+                      MR_Word transform_hlds__tabling_analysis__Result_83;
+#line 2909 "transform_hlds.tabling_analysis.c"
+                      MR_Word transform_hlds__tabling_analysis__AnalysisStatus_84;
+#line 876 "tabling_analysis.m"
+                      MR_Word transform_hlds__tabling_analysis__V_66_66;
+
+#line 873 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__BestAnswer_57 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_64_64, (MR_Integer) 1)));
+#line 873 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__AnalysisStatus_84 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_64_64, (MR_Integer) 2)));
+#line 875 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__Result_83 = (MR_Word) transform_hlds__tabling_analysis__BestAnswer_57;
+#line 876 "tabling_analysis.m"
+                      mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 876 "tabling_analysis.m"
+                      {
+#line 876 "tabling_analysis.m"
+                        analysis__record_dependency_7_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_4[0], transform_hlds__tabling_analysis__ModuleName_52, transform_hlds__tabling_analysis__FuncId_53, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) ((MR_Integer) 0)), transform_hlds__tabling_analysis__AnalysisInfo0_42, &transform_hlds__tabling_analysis__AnalysisInfo_43);
+                      }
+#line 750 "tabling_analysis.m"
+#line 750 "tabling_analysis.m"
+                      switch (transform_hlds__tabling_analysis__AnalysisStatus_84) {
+#line 750 "tabling_analysis.m"
+                        default: /*NOTREACHED*/ MR_assert(0);
+#line 750 "tabling_analysis.m"
+                        case (MR_Integer) 0:
+#line 747 "tabling_analysis.m"
+                          {
+#line 748 "tabling_analysis.m"
+                            {
+#line 748 "tabling_analysis.m"
+                              mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.tabling_analysis", (MR_String) "predicate \140transform_hlds.tabling_analysis.annotate_call\'/6", (MR_String) "invalid analysis result while annotating goals");
+#line 748 "tabling_analysis.m"
+                              return;
+                            }
+#line 747 "tabling_analysis.m"
+                          }
+#line 750 "tabling_analysis.m"
+                          break;
+#line 750 "tabling_analysis.m"
+                        case (MR_Integer) 2:
+#line 750 "tabling_analysis.m"
+                        case (MR_Integer) 1:
+#line 758 "tabling_analysis.m"
+#line 758 "tabling_analysis.m"
+                          switch (transform_hlds__tabling_analysis__Result_83) {
+#line 758 "tabling_analysis.m"
+                            default: /*NOTREACHED*/ MR_assert(0);
+#line 758 "tabling_analysis.m"
+                            case (MR_Integer) 2:
+#line 757 "tabling_analysis.m"
+                              *transform_hlds__tabling_analysis__Status_10 = (MR_Integer) 1;
+#line 758 "tabling_analysis.m"
+                              break;
+#line 758 "tabling_analysis.m"
+                            case (MR_Integer) 0:
+#line 758 "tabling_analysis.m"
+                            case (MR_Integer) 1:
+#line 762 "tabling_analysis.m"
+                              *transform_hlds__tabling_analysis__Status_10 = transform_hlds__tabling_analysis__Result_83;
+#line 758 "tabling_analysis.m"
+                              break;
+#line 758 "tabling_analysis.m"
+                          }
+#line 750 "tabling_analysis.m"
+                          break;
+#line 750 "tabling_analysis.m"
+                      }
+#line 2976 "transform_hlds.tabling_analysis.c"
+                    }
+#line 860 "tabling_analysis.m"
+                  {
+#line 860 "tabling_analysis.m"
+                    hlds__hlds_module__module_info_set_analysis_info_3_p_0(transform_hlds__tabling_analysis__AnalysisInfo_43, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_28, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_29);
+#line 860 "tabling_analysis.m"
+                    return;
+                  }
+#line 745 "tabling_analysis.m"
+                }
+#line 765 "tabling_analysis.m"
+              else
+#line 767 "tabling_analysis.m"
+                {
+#line 767 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__TablingInfo_79;
+#line 2993 "transform_hlds.tabling_analysis.c"
+                  MR_Word transform_hlds__tabling_analysis__CalleeTablingInfo_80;
+#line 521 "tabling_analysis.m"
+                  MR_Box transform_hlds__tabling_analysis__conv2_CalleeTablingInfo_80;
+
+#line 520 "tabling_analysis.m"
+                  {
+#line 520 "tabling_analysis.m"
+                    hlds__hlds_module__module_info_get_mm_tabling_info_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_28, &transform_hlds__tabling_analysis__TablingInfo_79);
+                  }
+#line 521 "tabling_analysis.m"
+                  {
+#line 521 "tabling_analysis.m"
+                    (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded = mercury__map__search_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_mm_tabling_info_0, transform_hlds__tabling_analysis__TablingInfo_79, ((MR_Box) (transform_hlds__tabling_analysis__CalleePPId_7)), &transform_hlds__tabling_analysis__conv2_CalleeTablingInfo_80);
+                  }
+#line 521 "tabling_analysis.m"
+                  if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 521 "tabling_analysis.m"
+                    {
+#line 521 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__CalleeTablingInfo_80 = ((MR_Word) transform_hlds__tabling_analysis__conv2_CalleeTablingInfo_80);
+#line 521 "tabling_analysis.m"
+                      (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded = MR_TRUE;
+#line 521 "tabling_analysis.m"
+                    }
+#line 3018 "transform_hlds.tabling_analysis.c"
+                  if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_95_54_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 770 "tabling_analysis.m"
+                    {
+#line 770 "tabling_analysis.m"
+                      MR_Word transform_hlds__tabling_analysis__V_27_27;
+
+#line 770 "tabling_analysis.m"
+                      *transform_hlds__tabling_analysis__Status_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__CalleeTablingInfo_80, (MR_Integer) 0)));
+#line 770 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__V_27_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__CalleeTablingInfo_80, (MR_Integer) 1)));
+#line 770 "tabling_analysis.m"
+                    }
+#line 3031 "transform_hlds.tabling_analysis.c"
+                  else
+#line 773 "tabling_analysis.m"
+                    *transform_hlds__tabling_analysis__Status_10 = (MR_Integer) 0;
+#line 767 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_29 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_28;
+#line 767 "tabling_analysis.m"
+                }
+#line 737 "tabling_analysis.m"
+            }
+#line 736 "tabling_analysis.m"
+        }
+#line 714 "tabling_analysis.m"
+    }
+#line 711 "tabling_analysis.m"
+  }
+#line 711 "tabling_analysis.m"
+}
+
+#line 426 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_8_p_0_1(
+#line 426 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 426 "tabling_analysis.m"
+{
+#line 426 "tabling_analysis.m"
+  {
+#line 426 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 426 "tabling_analysis.m"
+    MR_builtin_longjmp((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__commit_0, 1);
+#line 426 "tabling_analysis.m"
+  }
+#line 426 "tabling_analysis.m"
+}
+
+#line 426 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_8_p_0_2(
+#line 426 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 426 "tabling_analysis.m"
+{
+#line 426 "tabling_analysis.m"
+  {
+#line 426 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 426 "tabling_analysis.m"
+    {
+#line 433 "tabling_analysis.m"
+      MR_String transform_hlds__tabling_analysis___TypeSpecificPredName_24;
+
+#line 433 "tabling_analysis.m"
+      {
+#line 433 "tabling_analysis.m"
+        mdbcomp__prim_data__special_pred_name_arity_4_p_0((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__SpecialPredId_22, &(transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__GenericPredName_23, &transform_hlds__tabling_analysis___TypeSpecificPredName_24, &(transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__V_40_40);
+      }
+#line 433 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__Arity_21 == (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__V_40_40);
+#line 426 "tabling_analysis.m"
+      if ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 426 "tabling_analysis.m"
+        {
+#line 435 "tabling_analysis.m"
+          (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = (strcmp((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__Name_20, (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__GenericPredName_23) == 0);
+#line 435 "tabling_analysis.m"
+          if ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 435 "tabling_analysis.m"
+            {
+#line 435 "tabling_analysis.m"
+              transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_8_p_0_1(transform_hlds__tabling_analysis__env_ptr);
+#line 435 "tabling_analysis.m"
+              return;
+            }
+#line 426 "tabling_analysis.m"
+        }
+#line 426 "tabling_analysis.m"
+    }
+#line 426 "tabling_analysis.m"
+  }
+#line 426 "tabling_analysis.m"
+}
+
+#line 426 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_8_p_0_3(
+#line 426 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 426 "tabling_analysis.m"
+{
+#line 426 "tabling_analysis.m"
+  {
+#line 426 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 426 "tabling_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__commit_0) == 0)
+#line 426 "tabling_analysis.m"
+      {
+#line 426 "tabling_analysis.m"
+        {
+#line 426 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__ModuleName_19;
+
+#line 426 "tabling_analysis.m"
+          {
+#line 426 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__ModuleName_19 = hlds__hlds_pred__pred_info_module_1_f_0((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_18);
+          }
+#line 427 "tabling_analysis.m"
+          {
+#line 427 "tabling_analysis.m"
+            (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = mdbcomp__builtin_modules__any_mercury_builtin_module_1_p_0(transform_hlds__tabling_analysis__ModuleName_19);
+          }
+#line 426 "tabling_analysis.m"
+          if ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 426 "tabling_analysis.m"
+            {
+#line 428 "tabling_analysis.m"
+              {
+#line 428 "tabling_analysis.m"
+                (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__Name_20 = hlds__hlds_pred__pred_info_name_1_f_0((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_18);
+              }
+#line 429 "tabling_analysis.m"
+              {
+#line 429 "tabling_analysis.m"
+                (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__Arity_21 = hlds__hlds_pred__pred_info_orig_arity_1_f_0((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_18);
+              }
+#line 431 "tabling_analysis.m"
+              {
+#line 431 "tabling_analysis.m"
+                MR_Integer transform_hlds__tabling_analysis__slot_1 = (MR_Integer) 0;
+
+#line 431 "tabling_analysis.m"
+                do
+#line 431 "tabling_analysis.m"
+                  {
+#line 431 "tabling_analysis.m"
+                    (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__SpecialPredId_22 = ((&transform_hlds__tabling_analysis_vector_common_10[0 + transform_hlds__tabling_analysis__slot_1]))->transform_hlds__tabling_analysis__vector_common_type_10_0__vct_10_f_0;
+#line 431 "tabling_analysis.m"
+                    {
+#line 431 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_8_p_0_2(transform_hlds__tabling_analysis__env_ptr);
+                    }
+#line 431 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__slot_1 = (transform_hlds__tabling_analysis__slot_1 + (MR_Integer) 1);
+#line 431 "tabling_analysis.m"
+                  }
+#line 431 "tabling_analysis.m"
+                while ((transform_hlds__tabling_analysis__slot_1 < (MR_Integer) 2));
+#line 431 "tabling_analysis.m"
+              }
+#line 426 "tabling_analysis.m"
+            }
+#line 426 "tabling_analysis.m"
+        }
+#line 426 "tabling_analysis.m"
+        (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = MR_FALSE;
+#line 426 "tabling_analysis.m"
+      }
+#line 426 "tabling_analysis.m"
+    else
+#line 426 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = MR_TRUE;
+#line 426 "tabling_analysis.m"
+  }
+#line 426 "tabling_analysis.m"
+}
+
+#line 400 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_8_p_0(
+#line 400 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__CalleePPId_9,
+#line 400 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__SCC_11,
+#line 400 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Result_13,
+#line 400 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__MaybeAnalysisStatus_14,
+#line 400 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_31,
+#line 400 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_32)
+#line 400 "tabling_analysis.m"
+{
+#line 400 "tabling_analysis.m"
+  {
+#line 400 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_0_s transform_hlds__tabling_analysis__env;
+
+#line 405 "tabling_analysis.m"
+    {
+#line 405 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__CalleePredId_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__CalleePPId_9, (MR_Integer) 0)));
+#line 406 "tabling_analysis.m"
+      MR_Integer transform_hlds__tabling_analysis__V_17_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__CalleePPId_9, (MR_Integer) 1)));
+
+#line 407 "tabling_analysis.m"
+      {
+#line 407 "tabling_analysis.m"
+        hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_31, transform_hlds__tabling_analysis__CalleePredId_16, &(transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_18);
+      }
+#line 410 "tabling_analysis.m"
+      {
+#line 410 "tabling_analysis.m"
+        (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = mercury__list__member_2_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, ((MR_Box) (transform_hlds__tabling_analysis__CalleePPId_9)), transform_hlds__tabling_analysis__SCC_11);
+      }
+#line 415 "tabling_analysis.m"
+      if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 413 "tabling_analysis.m"
+        {
+#line 413 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__Result_13 = (MR_Integer) 1;
+#line 414 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__MaybeAnalysisStatus_14 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__tabling_analysis_scalar_common_8[0]);
+#line 413 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_32 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_31;
+#line 413 "tabling_analysis.m"
+        }
+#line 415 "tabling_analysis.m"
+      else
+#line 420 "tabling_analysis.m"
+        {
+#line 416 "tabling_analysis.m"
+          {
+#line 416 "tabling_analysis.m"
+            (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = hlds__hlds_pred__pred_info_is_builtin_1_p_0((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_18);
+          }
+#line 420 "tabling_analysis.m"
+          if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 418 "tabling_analysis.m"
+            {
+#line 418 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__Result_13 = (MR_Integer) 1;
+#line 419 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__MaybeAnalysisStatus_14 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__tabling_analysis_scalar_common_8[0]);
+#line 418 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_32 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_31;
+#line 418 "tabling_analysis.m"
+            }
+#line 420 "tabling_analysis.m"
+          else
+#line 440 "tabling_analysis.m"
+            {
+#line 426 "tabling_analysis.m"
+              {
+#line 426 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_8_p_0_3(&transform_hlds__tabling_analysis__env);
+              }
+#line 440 "tabling_analysis.m"
+              if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 438 "tabling_analysis.m"
+                {
+#line 438 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__Result_13 = (MR_Integer) 0;
+#line 439 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__MaybeAnalysisStatus_14 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__tabling_analysis_scalar_common_8[0]);
+#line 438 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_32 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_31;
+#line 438 "tabling_analysis.m"
+                }
+#line 440 "tabling_analysis.m"
+              else
+#line 442 "tabling_analysis.m"
+                {
+#line 442 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Globals_25;
+#line 442 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Intermod_26;
+
+#line 442 "tabling_analysis.m"
+                  {
+#line 442 "tabling_analysis.m"
+                    hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_31, &transform_hlds__tabling_analysis__Globals_25);
+                  }
+#line 443 "tabling_analysis.m"
+                  {
+#line 443 "tabling_analysis.m"
+                    libs__globals__lookup_bool_option_3_p_0(transform_hlds__tabling_analysis__Globals_25, (MR_Integer) 335, &transform_hlds__tabling_analysis__Intermod_26);
+                  }
+#line 445 "tabling_analysis.m"
+                  (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = (transform_hlds__tabling_analysis__Intermod_26 == (MR_Integer) 1);
+#line 445 "tabling_analysis.m"
+                  if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 445 "tabling_analysis.m"
+                    {
+#line 446 "tabling_analysis.m"
+                      {
+#line 446 "tabling_analysis.m"
+                        (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = hlds__hlds_pred__pred_info_is_imported_not_external_1_p_0((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_18);
+                      }
+#line 445 "tabling_analysis.m"
+                      if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 445 "tabling_analysis.m"
+                        {
+#line 447 "tabling_analysis.m"
+                          {
+#line 447 "tabling_analysis.m"
+                            (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = hlds__hlds_pred__is_unify_or_compare_pred_1_p_0((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__CalleePredInfo_18);
+                          }
+#line 447 "tabling_analysis.m"
+                          (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = !((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded);
+#line 445 "tabling_analysis.m"
+                        }
+#line 445 "tabling_analysis.m"
+                    }
+#line 465 "tabling_analysis.m"
+                  if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 453 "tabling_analysis.m"
+                    {
+#line 453 "tabling_analysis.m"
+                      MR_Word transform_hlds__tabling_analysis__Result0_27;
+#line 453 "tabling_analysis.m"
+                      MR_Word transform_hlds__tabling_analysis__AnalysisStatus_28;
+#line 453 "tabling_analysis.m"
+                      MR_Word transform_hlds__tabling_analysis__AnalysisInfo0_47;
+#line 453 "tabling_analysis.m"
+                      MR_Word transform_hlds__tabling_analysis__AnalysisInfo_48;
+#line 453 "tabling_analysis.m"
+                      MR_Word transform_hlds__tabling_analysis__ModuleName_57;
+#line 453 "tabling_analysis.m"
+                      MR_Word transform_hlds__tabling_analysis__FuncId_58;
+#line 453 "tabling_analysis.m"
+                      MR_Word transform_hlds__tabling_analysis__MaybeBestStatus_60;
+
+#line 857 "tabling_analysis.m"
+                      {
+#line 857 "tabling_analysis.m"
+                        hlds__hlds_module__module_info_get_analysis_info_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_31, &transform_hlds__tabling_analysis__AnalysisInfo0_47);
+                      }
+#line 868 "tabling_analysis.m"
+                      {
+#line 868 "tabling_analysis.m"
+                        transform_hlds__mmc_analysis__module_name_func_id_4_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_31, transform_hlds__tabling_analysis__CalleePPId_9, &transform_hlds__tabling_analysis__ModuleName_57, &transform_hlds__tabling_analysis__FuncId_58);
+                      }
+#line 869 "tabling_analysis.m"
+                      mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 870 "tabling_analysis.m"
+                      mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 870 "tabling_analysis.m"
+                      {
+#line 870 "tabling_analysis.m"
+                        analysis__lookup_best_result_6_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_4[0], transform_hlds__tabling_analysis__AnalysisInfo0_47, transform_hlds__tabling_analysis__ModuleName_57, transform_hlds__tabling_analysis__FuncId_58, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) ((MR_Integer) 0)), &transform_hlds__tabling_analysis__MaybeBestStatus_60);
+                      }
+#line 878 "tabling_analysis.m"
+                      if ((transform_hlds__tabling_analysis__MaybeBestStatus_60 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 879 "tabling_analysis.m"
+                        {
+#line 879 "tabling_analysis.m"
+                          MR_Word transform_hlds__tabling_analysis__TypeClassInfo_for_analysis_75 = (MR_Word) &transform_hlds__tabling_analysis_scalar_common_4[0];
+#line 879 "tabling_analysis.m"
+                          MR_Word transform_hlds__tabling_analysis__Answer_64;
+#line 3387 "transform_hlds.tabling_analysis.c"
+                          MR_Box MR_CALL (* transform_hlds__tabling_analysis__func_0)(MR_Box, MR_Box);
+#line 3389 "transform_hlds.tabling_analysis.c"
+                          MR_Box transform_hlds__tabling_analysis__conv1_Answer_64;
+
+#line 883 "tabling_analysis.m"
+                          mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 3394 "transform_hlds.tabling_analysis.c"
+                          transform_hlds__tabling_analysis__func_0 = ((MR_Box MR_CALL (*)(MR_Box, MR_Box)) (MR_hl_field(MR_mktag(0), (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__TypeClassInfo_for_analysis_75, (MR_Integer) 0)), (MR_Integer) 9)));
+#line 3396 "transform_hlds.tabling_analysis.c"
+                          {
+#line 3398 "transform_hlds.tabling_analysis.c"
+                            transform_hlds__tabling_analysis__conv1_Answer_64 = transform_hlds__tabling_analysis__func_0(((MR_Box) transform_hlds__tabling_analysis__TypeClassInfo_for_analysis_75), ((MR_Box) ((MR_Integer) 0)));
+                          }
+#line 3401 "transform_hlds.tabling_analysis.c"
+                          transform_hlds__tabling_analysis__Answer_64 = ((MR_Word) transform_hlds__tabling_analysis__conv1_Answer_64);
+#line 884 "tabling_analysis.m"
+                          transform_hlds__tabling_analysis__Result0_27 = (MR_Word) transform_hlds__tabling_analysis__Answer_64;
+#line 885 "tabling_analysis.m"
+                          transform_hlds__tabling_analysis__AnalysisStatus_28 = (MR_Integer) 2;
+#line 886 "tabling_analysis.m"
+                          {
+#line 886 "tabling_analysis.m"
+                            analysis__record_request_6_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_3[0], (MR_String) "mm_tabling_analysis", transform_hlds__tabling_analysis__ModuleName_57, transform_hlds__tabling_analysis__FuncId_58, ((MR_Box) ((MR_Integer) 0)), transform_hlds__tabling_analysis__AnalysisInfo0_47, &transform_hlds__tabling_analysis__AnalysisInfo_48);
+                          }
+#line 879 "tabling_analysis.m"
+                        }
+#line 878 "tabling_analysis.m"
+                      else
+#line 874 "tabling_analysis.m"
+                        {
+#line 874 "tabling_analysis.m"
+                          MR_Word transform_hlds__tabling_analysis__BestAnswer_62;
+#line 874 "tabling_analysis.m"
+                          MR_Word transform_hlds__tabling_analysis__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__MaybeBestStatus_60, (MR_Integer) 0)));
+#line 876 "tabling_analysis.m"
+                          MR_Word transform_hlds__tabling_analysis__V_71_71;
+
+#line 873 "tabling_analysis.m"
+                          transform_hlds__tabling_analysis__BestAnswer_62 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_69_69, (MR_Integer) 1)));
+#line 873 "tabling_analysis.m"
+                          transform_hlds__tabling_analysis__AnalysisStatus_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_69_69, (MR_Integer) 2)));
+#line 875 "tabling_analysis.m"
+                          transform_hlds__tabling_analysis__Result0_27 = (MR_Word) transform_hlds__tabling_analysis__BestAnswer_62;
+#line 876 "tabling_analysis.m"
+                          mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 876 "tabling_analysis.m"
+                          {
+#line 876 "tabling_analysis.m"
+                            analysis__record_dependency_7_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_4[0], transform_hlds__tabling_analysis__ModuleName_57, transform_hlds__tabling_analysis__FuncId_58, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) ((MR_Integer) 0)), transform_hlds__tabling_analysis__AnalysisInfo0_47, &transform_hlds__tabling_analysis__AnalysisInfo_48);
+                          }
+#line 874 "tabling_analysis.m"
+                        }
+#line 860 "tabling_analysis.m"
+                      {
+#line 860 "tabling_analysis.m"
+                        hlds__hlds_module__module_info_set_analysis_info_3_p_0(transform_hlds__tabling_analysis__AnalysisInfo_48, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_31, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_32);
+                      }
+#line 458 "tabling_analysis.m"
+#line 458 "tabling_analysis.m"
+                      switch (transform_hlds__tabling_analysis__Result0_27) {
+#line 458 "tabling_analysis.m"
+                        default: /*NOTREACHED*/ MR_assert(0);
+#line 458 "tabling_analysis.m"
+                        case (MR_Integer) 2:
+#line 457 "tabling_analysis.m"
+                          *transform_hlds__tabling_analysis__Result_13 = (MR_Integer) 1;
+#line 458 "tabling_analysis.m"
+                          break;
+#line 458 "tabling_analysis.m"
+                        case (MR_Integer) 0:
+#line 458 "tabling_analysis.m"
+                        case (MR_Integer) 1:
+#line 462 "tabling_analysis.m"
+                          *transform_hlds__tabling_analysis__Result_13 = transform_hlds__tabling_analysis__Result0_27;
+#line 458 "tabling_analysis.m"
+                          break;
+#line 458 "tabling_analysis.m"
+                      }
+#line 464 "tabling_analysis.m"
+                      {
+#line 464 "tabling_analysis.m"
+                        MR_Word base;
+#line 464 "tabling_analysis.m"
+                        base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 464 "tabling_analysis.m"
+                        *transform_hlds__tabling_analysis__MaybeAnalysisStatus_14 = base;
+#line 464 "tabling_analysis.m"
+                        MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__tabling_analysis__AnalysisStatus_28));
+#line 464 "tabling_analysis.m"
+                      }
+#line 453 "tabling_analysis.m"
+                    }
+#line 465 "tabling_analysis.m"
+                  else
+#line 469 "tabling_analysis.m"
+                    {
+#line 469 "tabling_analysis.m"
+                      MR_Word transform_hlds__tabling_analysis__TablingInfo_84;
+#line 3486 "transform_hlds.tabling_analysis.c"
+                      MR_Word transform_hlds__tabling_analysis__CalleeTablingInfo_85;
+#line 521 "tabling_analysis.m"
+                      MR_Box transform_hlds__tabling_analysis__conv2_CalleeTablingInfo_85;
+
+#line 520 "tabling_analysis.m"
+                      {
+#line 520 "tabling_analysis.m"
+                        hlds__hlds_module__module_info_get_mm_tabling_info_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_31, &transform_hlds__tabling_analysis__TablingInfo_84);
+                      }
+#line 521 "tabling_analysis.m"
+                      {
+#line 521 "tabling_analysis.m"
+                        (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = mercury__map__search_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_mm_tabling_info_0, transform_hlds__tabling_analysis__TablingInfo_84, ((MR_Box) (transform_hlds__tabling_analysis__CalleePPId_9)), &transform_hlds__tabling_analysis__conv2_CalleeTablingInfo_85);
+                      }
+#line 521 "tabling_analysis.m"
+                      if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 521 "tabling_analysis.m"
+                        {
+#line 521 "tabling_analysis.m"
+                          transform_hlds__tabling_analysis__CalleeTablingInfo_85 = ((MR_Word) transform_hlds__tabling_analysis__conv2_CalleeTablingInfo_85);
+#line 521 "tabling_analysis.m"
+                          (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded = MR_TRUE;
+#line 521 "tabling_analysis.m"
+                        }
+#line 3511 "transform_hlds.tabling_analysis.c"
+                      if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_95_56_95_112_95_48_95_101_110_118_95_48__succeeded)
+#line 472 "tabling_analysis.m"
+                        {
+#line 472 "tabling_analysis.m"
+                          *transform_hlds__tabling_analysis__Result_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__CalleeTablingInfo_85, (MR_Integer) 0)));
+#line 472 "tabling_analysis.m"
+                          *transform_hlds__tabling_analysis__MaybeAnalysisStatus_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__CalleeTablingInfo_85, (MR_Integer) 1)));
+#line 472 "tabling_analysis.m"
+                        }
+#line 3521 "transform_hlds.tabling_analysis.c"
+                      else
+#line 3523 "transform_hlds.tabling_analysis.c"
+                        {
+#line 478 "tabling_analysis.m"
+                          *transform_hlds__tabling_analysis__Result_13 = (MR_Integer) 0;
+#line 482 "tabling_analysis.m"
+#line 482 "tabling_analysis.m"
+                          switch (transform_hlds__tabling_analysis__Intermod_26) {
+#line 482 "tabling_analysis.m"
+                            default: /*NOTREACHED*/ MR_assert(0);
+#line 482 "tabling_analysis.m"
+                            case (MR_Integer) 0:
+#line 484 "tabling_analysis.m"
+                              *transform_hlds__tabling_analysis__MaybeAnalysisStatus_14 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 482 "tabling_analysis.m"
+                              break;
+#line 482 "tabling_analysis.m"
+                            case (MR_Integer) 1:
+#line 480 "tabling_analysis.m"
+                              {
+#line 481 "tabling_analysis.m"
+                                *transform_hlds__tabling_analysis__MaybeAnalysisStatus_14 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__tabling_analysis_scalar_common_8[0]);
+#line 480 "tabling_analysis.m"
+                              }
+#line 482 "tabling_analysis.m"
+                              break;
+#line 482 "tabling_analysis.m"
+                          }
+#line 3550 "transform_hlds.tabling_analysis.c"
+                        }
+#line 469 "tabling_analysis.m"
+                      *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_32 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_31;
+#line 469 "tabling_analysis.m"
+                    }
+#line 442 "tabling_analysis.m"
+                }
+#line 440 "tabling_analysis.m"
+            }
+#line 420 "tabling_analysis.m"
+        }
+#line 405 "tabling_analysis.m"
+    }
+#line 400 "tabling_analysis.m"
+  }
+#line 400 "tabling_analysis.m"
+}
+
+#line 376 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__IntroducedFrom__func__check_goal_for_mm_tabling__376__1_1_f_0(
+#line 376 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_93)
+#line 376 "tabling_analysis.m"
+{
+#line 376 "tabling_analysis.m"
+  {
+#line 376 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 376 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__HeadVar__2_94 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__1_93, (MR_Integer) 2)));
+#line 376 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_110_110 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__1_93, (MR_Integer) 0)));
+#line 376 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_111_111 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__1_93, (MR_Integer) 1)));
+
+#line 376 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__HeadVar__2_94;
+#line 376 "tabling_analysis.m"
+  }
+#line 376 "tabling_analysis.m"
+}
+
+#line 204 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__IntroducedFrom__pred__analyse_mm_tabling_in_scc__204__1_5_p_0(
+#line 204 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__TablingStatus_11,
+#line 204 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__MaybeAnalysisStatus_12,
+#line 204 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__3_27,
+#line 204 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__4_28,
+#line 204 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__5_29)
+#line 204 "tabling_analysis.m"
+{
+#line 204 "tabling_analysis.m"
+  {
+#line 204 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 204 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_30_30;
+
+#line 206 "tabling_analysis.m"
+    {
+#line 206 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__V_30_30 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 206 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_30_30, 0) = ((MR_Box) (transform_hlds__tabling_analysis__TablingStatus_11));
+#line 206 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_30_30, 1) = ((MR_Box) (transform_hlds__tabling_analysis__MaybeAnalysisStatus_12));
+#line 206 "tabling_analysis.m"
+    }
+#line 205 "tabling_analysis.m"
+    {
+#line 205 "tabling_analysis.m"
+      *transform_hlds__tabling_analysis__HeadVar__5_29 = mercury__map__f_101_108_101_109_32_58_61_3_f_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_mm_tabling_info_0, ((MR_Box) (transform_hlds__tabling_analysis__HeadVar__3_27)), transform_hlds__tabling_analysis__HeadVar__4_28, ((MR_Box) (transform_hlds__tabling_analysis__V_30_30)));
+    }
+#line 204 "tabling_analysis.m"
+  }
+#line 204 "tabling_analysis.m"
+}
+
+#line 823 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__to_term____transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__from_term_2_2_p_0(
+#line 823 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 823 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__2_2)
+#line 823 "tabling_analysis.m"
+{
+#line 837 "tabling_analysis.m"
+  {
+#line 837 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__tabling_analysis__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0)));
+#line 837 "tabling_analysis.m"
+    MR_String transform_hlds__tabling_analysis__String_5;
+#line 837 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Status_7;
+#line 837 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_8_8;
+#line 837 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_9_9;
+#line 838 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_6_6;
+
+#line 838 "tabling_analysis.m"
+    if (transform_hlds__tabling_analysis__succeeded)
+#line 838 "tabling_analysis.m"
+      {
+#line 838 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__1_1, (MR_Integer) 0)));
+#line 838 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__1_1, (MR_Integer) 1)));
+#line 838 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__1_1, (MR_Integer) 2)));
+#line 838 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__tabling_analysis__V_8_8)) == (MR_mktag((MR_Integer) 0)));
+#line 838 "tabling_analysis.m"
+        if (transform_hlds__tabling_analysis__succeeded)
+#line 838 "tabling_analysis.m"
+          {
+#line 838 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__String_5 = ((MR_String) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_8_8, (MR_Integer) 0)));
+#line 838 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__V_9_9 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 837 "tabling_analysis.m"
+            if (transform_hlds__tabling_analysis__succeeded)
+#line 837 "tabling_analysis.m"
+              {
+#line 846 "tabling_analysis.m"
+                if ((strcmp(transform_hlds__tabling_analysis__String_5, (MR_String) "mm_tabled_may_call") == 0))
+#line 846 "tabling_analysis.m"
+                  {
+#line 846 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__Status_7 = (MR_Integer) 0;
+#line 846 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 846 "tabling_analysis.m"
+                  }
+#line 846 "tabling_analysis.m"
+                else
+#line 846 "tabling_analysis.m"
+                if ((strcmp(transform_hlds__tabling_analysis__String_5, (MR_String) "mm_tabled_conditional") == 0))
+#line 850 "tabling_analysis.m"
+                  {
+#line 850 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__Status_7 = (MR_Integer) 2;
+#line 850 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 850 "tabling_analysis.m"
+                  }
+#line 846 "tabling_analysis.m"
+                else
+#line 846 "tabling_analysis.m"
+                if ((strcmp(transform_hlds__tabling_analysis__String_5, (MR_String) "mm_tabled_will_not_call") == 0))
+#line 848 "tabling_analysis.m"
+                  {
+#line 848 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__Status_7 = (MR_Integer) 1;
+#line 848 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 848 "tabling_analysis.m"
+                  }
+#line 846 "tabling_analysis.m"
+                else
+#line 846 "tabling_analysis.m"
+                  transform_hlds__tabling_analysis__succeeded = MR_FALSE;
+#line 837 "tabling_analysis.m"
+                if (transform_hlds__tabling_analysis__succeeded)
+#line 837 "tabling_analysis.m"
+                  {
+#line 840 "tabling_analysis.m"
+                    *transform_hlds__tabling_analysis__HeadVar__2_2 = (MR_Word) transform_hlds__tabling_analysis__Status_7;
+#line 840 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 837 "tabling_analysis.m"
+                  }
+#line 837 "tabling_analysis.m"
+              }
+#line 838 "tabling_analysis.m"
+          }
+#line 838 "tabling_analysis.m"
+      }
+#line 837 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 837 "tabling_analysis.m"
+  }
+#line 823 "tabling_analysis.m"
+}
+
+#line 822 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__to_term____transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__to_term_1_1_f_0(
+#line 822 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1)
+#line 822 "tabling_analysis.m"
+{
+#line 829 "tabling_analysis.m"
+  {
+#line 829 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 829 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__HeadVar__2_2;
+#line 829 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Status_5 = (MR_Word) transform_hlds__tabling_analysis__HeadVar__1_1;
+#line 829 "tabling_analysis.m"
+    MR_String transform_hlds__tabling_analysis__String_6;
+#line 829 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_7_7;
+#line 829 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_9_9;
+
+#line 846 "tabling_analysis.m"
+#line 846 "tabling_analysis.m"
+    switch (transform_hlds__tabling_analysis__Status_5) {
+#line 846 "tabling_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 846 "tabling_analysis.m"
+      case (MR_Integer) 2:
+#line 851 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__String_6 = (MR_String) "mm_tabled_conditional";
+#line 846 "tabling_analysis.m"
+        break;
+#line 846 "tabling_analysis.m"
+      case (MR_Integer) 0:
+#line 847 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__String_6 = (MR_String) "mm_tabled_may_call";
+#line 846 "tabling_analysis.m"
+        break;
+#line 846 "tabling_analysis.m"
+      case (MR_Integer) 1:
+#line 849 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__String_6 = (MR_String) "mm_tabled_will_not_call";
+#line 846 "tabling_analysis.m"
+        break;
+#line 846 "tabling_analysis.m"
+    }
+#line 832 "tabling_analysis.m"
+    {
+#line 832 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__V_7_7 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL);
+#line 832 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_7_7, 0) = ((MR_Box) (transform_hlds__tabling_analysis__String_6));
+#line 832 "tabling_analysis.m"
+    }
+#line 832 "tabling_analysis.m"
+    {
+#line 832 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__V_9_9 = mercury__term__context_init_0_f_0();
+    }
+#line 832 "tabling_analysis.m"
+    {
+#line 832 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__HeadVar__2_2 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 832 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__2_2, 0) = ((MR_Box) (transform_hlds__tabling_analysis__V_7_7));
+#line 832 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__2_2, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 832 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__2_2, 2) = ((MR_Box) (transform_hlds__tabling_analysis__V_9_9));
+#line 832 "tabling_analysis.m"
+    }
+#line 829 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__HeadVar__2_2;
+#line 829 "tabling_analysis.m"
+  }
+#line 822 "tabling_analysis.m"
+}
+
+#line 808 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__equivalent_3_3_p_0(
+#line 808 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Status_8,
+#line 808 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Status_3)
+#line 808 "tabling_analysis.m"
+{
+#line 783 "tabling_analysis.m"
+  {
+#line 783 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 783 "tabling_analysis.m"
+    {
+#line 783 "tabling_analysis.m"
+      return transform_hlds__tabling_analysis__succeeded = transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_101_113_117_105_118_97_108_101_110_116_95_51_95_95_91_49_93_95_48_3_p_0(transform_hlds__tabling_analysis__Status_8, transform_hlds__tabling_analysis__Status_3);
+    }
+#line 783 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 783 "tabling_analysis.m"
+  }
+#line 808 "tabling_analysis.m"
+}
+
+#line 802 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__partial_order____analysis__no_func_info__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__more_precise_than_3_3_p_0(
+#line 802 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Answer1_4,
+#line 802 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Answer2_5)
+#line 802 "tabling_analysis.m"
+{
+#line 802 "tabling_analysis.m"
+  {
+#line 802 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 802 "tabling_analysis.m"
+    {
+#line 802 "tabling_analysis.m"
+      return transform_hlds__tabling_analysis__succeeded = transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_112_97_114_116_105_97_108_95_111_114_100_101_114_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_109_111_114_101_95_112_114_101_99_105_115_101_95_116_104_97_110_95_51_95_95_91_49_93_95_48_3_p_0(transform_hlds__tabling_analysis__Answer1_4, transform_hlds__tabling_analysis__Answer2_5);
+    }
+#line 802 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 802 "tabling_analysis.m"
+  }
+#line 802 "tabling_analysis.m"
+}
+
+#line 797 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__get_func_info_6_6_p_0(
+#line 797 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_17,
+#line 797 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_18,
+#line 797 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__3_19)
+#line 797 "tabling_analysis.m"
+{
+#line 797 "tabling_analysis.m"
+  {
+#line 797 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 797 "tabling_analysis.m"
+    {
+#line 797 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_103_101_116_95_102_117_110_99_95_105_110_102_111_95_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_93_95_48_6_p_0();
+#line 797 "tabling_analysis.m"
+      return;
+    }
+#line 797 "tabling_analysis.m"
+  }
+#line 797 "tabling_analysis.m"
+}
+
+#line 796 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__top_2_2_f_0(void)
+#line 796 "tabling_analysis.m"
+{
+#line 796 "tabling_analysis.m"
+  {
+#line 796 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 796 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__HeadVar__3_3;
+
+#line 796 "tabling_analysis.m"
+    {
+#line 796 "tabling_analysis.m"
+      return transform_hlds__tabling_analysis__HeadVar__3_3 = transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_116_111_112_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 796 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__HeadVar__3_3;
+#line 796 "tabling_analysis.m"
+  }
+#line 796 "tabling_analysis.m"
+}
+
+#line 795 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__bottom_2_2_f_0(void)
+#line 795 "tabling_analysis.m"
+{
+#line 795 "tabling_analysis.m"
+  {
+#line 795 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 795 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__HeadVar__3_3;
+
+#line 795 "tabling_analysis.m"
+    {
+#line 795 "tabling_analysis.m"
+      return transform_hlds__tabling_analysis__HeadVar__3_3 = transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_98_111_116_116_111_109_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 795 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__HeadVar__3_3;
+#line 795 "tabling_analysis.m"
+  }
+#line 795 "tabling_analysis.m"
+}
+
+#line 794 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__preferred_fixpoint_type_2_2_f_0(void)
+#line 794 "tabling_analysis.m"
+{
+#line 794 "tabling_analysis.m"
+  {
+#line 794 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 794 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__HeadVar__3_3;
+
+#line 794 "tabling_analysis.m"
+    {
+#line 794 "tabling_analysis.m"
+      return transform_hlds__tabling_analysis__HeadVar__3_3 = transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_112_114_101_102_101_114_114_101_100_95_102_105_120_112_111_105_110_116_95_116_121_112_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 794 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__HeadVar__3_3;
+#line 794 "tabling_analysis.m"
+  }
+#line 794 "tabling_analysis.m"
+}
+
+#line 793 "tabling_analysis.m"
+static MR_Integer MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__analysis_version_number_2_2_f_0(void)
+#line 793 "tabling_analysis.m"
+{
+#line 793 "tabling_analysis.m"
+  {
+#line 793 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 793 "tabling_analysis.m"
+    MR_Integer transform_hlds__tabling_analysis__HeadVar__3_3;
+
+#line 793 "tabling_analysis.m"
+    {
+#line 793 "tabling_analysis.m"
+      return transform_hlds__tabling_analysis__HeadVar__3_3 = transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_118_101_114_115_105_111_110_95_110_117_109_98_101_114_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 793 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__HeadVar__3_3;
+#line 793 "tabling_analysis.m"
+  }
+#line 793 "tabling_analysis.m"
+}
+
+#line 792 "tabling_analysis.m"
+static MR_String MR_CALL 
+transform_hlds__tabling_analysis__ClassMethod_for_analysis__analysis____analysis__no_func_info__arity0__analysis__any_call__arity0__transform_hlds__tabling_analysis__mm_tabling_analysis_answer__arity0______analysis__analysis_name_2_2_f_0(void)
+#line 792 "tabling_analysis.m"
+{
+#line 788 "tabling_analysis.m"
+  {
+#line 788 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 788 "tabling_analysis.m"
+    MR_String transform_hlds__tabling_analysis__HeadVar__3_3;
+
+#line 788 "tabling_analysis.m"
+    {
+#line 788 "tabling_analysis.m"
+      return transform_hlds__tabling_analysis__HeadVar__3_3 = transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_95_95_95_97_110_97_108_121_115_105_115_95_95_110_111_95_102_117_110_99_95_105_110_102_111_95_95_97_114_105_116_121_48_95_95_97_110_97_108_121_115_105_115_95_95_97_110_121_95_99_97_108_108_95_95_97_114_105_116_121_48_95_95_116_114_97_110_115_102_111_114_109_95_104_108_100_115_95_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_95_109_109_95_116_97_98_108_105_110_103_95_97_110_97_108_121_115_105_115_95_97_110_115_119_101_114_95_95_97_114_105_116_121_48_95_95_95_95_95_95_97_110_97_108_121_115_105_115_95_95_97_110_97_108_121_115_105_115_95_110_97_109_101_95_50_95_95_91_49_44_32_50_93_95_48_2_f_0();
+    }
+#line 788 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__HeadVar__3_3;
+#line 788 "tabling_analysis.m"
+  }
+#line 792 "tabling_analysis.m"
+}
+
+#line 170 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____scc_0_0(
+#line 170 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 170 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2,
+#line 170 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__3_3)
+#line 170 "tabling_analysis.m"
+{
+#line 170 "tabling_analysis.m"
+  {
+#line 170 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 170 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Cast_HeadVar1_4 = transform_hlds__tabling_analysis__HeadVar__2_2;
+#line 170 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Cast_HeadVar2_5 = transform_hlds__tabling_analysis__HeadVar__3_3;
+
+#line 170 "tabling_analysis.m"
+    {
+#line 170 "tabling_analysis.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_1[0], transform_hlds__tabling_analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__tabling_analysis__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__tabling_analysis__Cast_HeadVar2_5)));
+#line 170 "tabling_analysis.m"
+      return;
+    }
+#line 170 "tabling_analysis.m"
+  }
+#line 170 "tabling_analysis.m"
+}
+
+#line 170 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____scc_0_0(
+#line 170 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 170 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2)
+#line 170 "tabling_analysis.m"
+{
+#line 170 "tabling_analysis.m"
+  {
+#line 170 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 170 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Cast_HeadVar1_3 = transform_hlds__tabling_analysis__HeadVar__1_1;
+#line 170 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Cast_HeadVar2_4 = transform_hlds__tabling_analysis__HeadVar__2_2;
+
+#line 170 "tabling_analysis.m"
+    {
+#line 170 "tabling_analysis.m"
+      return transform_hlds__tabling_analysis__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_1[0], ((MR_Box) (transform_hlds__tabling_analysis__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__tabling_analysis__Cast_HeadVar2_4)));
+    }
+#line 170 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 170 "tabling_analysis.m"
+  }
+#line 170 "tabling_analysis.m"
+}
+
+#line 172 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____proc_results_0_0(
+#line 172 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 172 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2,
+#line 172 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__3_3)
+#line 172 "tabling_analysis.m"
+{
+#line 172 "tabling_analysis.m"
+  {
+#line 172 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 172 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Cast_HeadVar1_4 = transform_hlds__tabling_analysis__HeadVar__2_2;
+#line 172 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Cast_HeadVar2_5 = transform_hlds__tabling_analysis__HeadVar__3_3;
+
+#line 172 "tabling_analysis.m"
+    {
+#line 172 "tabling_analysis.m"
+      mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_1[1], transform_hlds__tabling_analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__tabling_analysis__Cast_HeadVar1_4)), ((MR_Box) (transform_hlds__tabling_analysis__Cast_HeadVar2_5)));
+#line 172 "tabling_analysis.m"
+      return;
+    }
+#line 172 "tabling_analysis.m"
+  }
+#line 172 "tabling_analysis.m"
+}
+
+#line 172 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____proc_results_0_0(
+#line 172 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 172 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2)
+#line 172 "tabling_analysis.m"
+{
+#line 172 "tabling_analysis.m"
+  {
+#line 172 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 172 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Cast_HeadVar1_3 = transform_hlds__tabling_analysis__HeadVar__1_1;
+#line 172 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Cast_HeadVar2_4 = transform_hlds__tabling_analysis__HeadVar__2_2;
+
+#line 172 "tabling_analysis.m"
+    {
+#line 172 "tabling_analysis.m"
+      return transform_hlds__tabling_analysis__succeeded = mercury__builtin__unify_2_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_1[1], ((MR_Box) (transform_hlds__tabling_analysis__Cast_HeadVar1_3)), ((MR_Box) (transform_hlds__tabling_analysis__Cast_HeadVar2_4)));
+    }
+#line 172 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 172 "tabling_analysis.m"
+  }
+#line 172 "tabling_analysis.m"
+}
+
+#line 174 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis____Compare____proc_result_0_0(
+#line 174 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 174 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2,
+#line 174 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__3_3)
+#line 174 "tabling_analysis.m"
+{
+#line 174 "tabling_analysis.m"
+  {
+#line 174 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 174 "tabling_analysis.m"
+    MR_Integer transform_hlds__tabling_analysis__CastX_12 = (MR_Integer) transform_hlds__tabling_analysis__HeadVar__2_2;
+#line 174 "tabling_analysis.m"
+    MR_Integer transform_hlds__tabling_analysis__CastY_13 = (MR_Integer) transform_hlds__tabling_analysis__HeadVar__3_3;
+
+#line 174 "tabling_analysis.m"
+    transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__CastX_12 == transform_hlds__tabling_analysis__CastY_13);
+#line 174 "tabling_analysis.m"
+    if (transform_hlds__tabling_analysis__succeeded)
+#line 4172 "transform_hlds.tabling_analysis.c"
+      *transform_hlds__tabling_analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 174 "tabling_analysis.m"
+    else
+#line 174 "tabling_analysis.m"
+      {
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__2_2, (MR_Integer) 0)));
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__2_2, (MR_Integer) 1)));
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__2_2, (MR_Integer) 2)));
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__3_3, (MR_Integer) 0)));
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__3_3, (MR_Integer) 1)));
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__3_3, (MR_Integer) 2)));
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_10_10;
+
+#line 174 "tabling_analysis.m"
+        {
+#line 174 "tabling_analysis.m"
+          hlds__hlds_pred____Compare____pred_proc_id_0_0(&transform_hlds__tabling_analysis__V_10_10, transform_hlds__tabling_analysis__V_4_4, transform_hlds__tabling_analysis__V_7_7);
+        }
+#line 4198 "transform_hlds.tabling_analysis.c"
+        transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__V_10_10 == (MR_Integer) 0);
+#line 174 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__succeeded = !(transform_hlds__tabling_analysis__succeeded);
+#line 174 "tabling_analysis.m"
+        if (transform_hlds__tabling_analysis__succeeded)
+#line 174 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__HeadVar__1_1 = transform_hlds__tabling_analysis__V_10_10;
+#line 174 "tabling_analysis.m"
+        else
+#line 174 "tabling_analysis.m"
+          {
+#line 174 "tabling_analysis.m"
+            MR_Word transform_hlds__tabling_analysis__V_11_11;
+#line 174 "tabling_analysis.m"
+            MR_Integer transform_hlds__tabling_analysis__V_17_17 = (MR_Integer) transform_hlds__tabling_analysis__V_5_5;
+#line 174 "tabling_analysis.m"
+            MR_Integer transform_hlds__tabling_analysis__V_18_18 = (MR_Integer) transform_hlds__tabling_analysis__V_8_8;
+
+#line 174 "tabling_analysis.m"
+            {
+#line 174 "tabling_analysis.m"
+              mercury__private_builtin__builtin_compare_int_3_p_0(&transform_hlds__tabling_analysis__V_11_11, transform_hlds__tabling_analysis__V_17_17, transform_hlds__tabling_analysis__V_18_18);
+            }
+#line 4222 "transform_hlds.tabling_analysis.c"
+            transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__V_11_11 == (MR_Integer) 0);
+#line 174 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__succeeded = !(transform_hlds__tabling_analysis__succeeded);
+#line 174 "tabling_analysis.m"
+            if (transform_hlds__tabling_analysis__succeeded)
+#line 174 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__HeadVar__1_1 = transform_hlds__tabling_analysis__V_11_11;
+#line 174 "tabling_analysis.m"
+            else
+#line 174 "tabling_analysis.m"
+              {
+#line 174 "tabling_analysis.m"
+                {
+#line 174 "tabling_analysis.m"
+                  mercury__builtin__compare_3_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_1[2], transform_hlds__tabling_analysis__HeadVar__1_1, ((MR_Box) (transform_hlds__tabling_analysis__V_6_6)), ((MR_Box) (transform_hlds__tabling_analysis__V_9_9)));
+#line 174 "tabling_analysis.m"
+                  return;
+                }
+#line 174 "tabling_analysis.m"
+              }
+#line 174 "tabling_analysis.m"
+          }
+#line 174 "tabling_analysis.m"
+      }
+#line 174 "tabling_analysis.m"
+  }
+#line 174 "tabling_analysis.m"
+}
+
+#line 174 "tabling_analysis.m"
+static MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____proc_result_0_0(
+#line 174 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 174 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2)
+#line 174 "tabling_analysis.m"
+{
+#line 174 "tabling_analysis.m"
+  {
+#line 174 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 174 "tabling_analysis.m"
+    MR_Integer transform_hlds__tabling_analysis__CastX_9 = (MR_Integer) transform_hlds__tabling_analysis__HeadVar__1_1;
+#line 174 "tabling_analysis.m"
+    MR_Integer transform_hlds__tabling_analysis__CastY_10 = (MR_Integer) transform_hlds__tabling_analysis__HeadVar__2_2;
+
+#line 174 "tabling_analysis.m"
+    transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__CastX_9 == transform_hlds__tabling_analysis__CastY_10);
+#line 174 "tabling_analysis.m"
+    if (transform_hlds__tabling_analysis__succeeded)
+#line 174 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 174 "tabling_analysis.m"
+    else
+#line 174 "tabling_analysis.m"
+      {
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__TypeInfo_12_12;
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__1_1, (MR_Integer) 0)));
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__1_1, (MR_Integer) 1)));
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__1_1, (MR_Integer) 2)));
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__2_2, (MR_Integer) 0)));
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__2_2, (MR_Integer) 1)));
+#line 174 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__HeadVar__2_2, (MR_Integer) 2)));
+
+#line 4295 "transform_hlds.tabling_analysis.c"
+        {
+#line 4297 "transform_hlds.tabling_analysis.c"
+          transform_hlds__tabling_analysis__succeeded = hlds__hlds_pred____Unify____pred_proc_id_0_0(transform_hlds__tabling_analysis__V_3_3, transform_hlds__tabling_analysis__V_6_6);
+        }
+#line 174 "tabling_analysis.m"
+        if (transform_hlds__tabling_analysis__succeeded)
+#line 174 "tabling_analysis.m"
+          {
+#line 4304 "transform_hlds.tabling_analysis.c"
+            transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__V_4_4 == transform_hlds__tabling_analysis__V_7_7);
+#line 174 "tabling_analysis.m"
+            if (transform_hlds__tabling_analysis__succeeded)
+#line 174 "tabling_analysis.m"
+              {
+#line 4310 "transform_hlds.tabling_analysis.c"
+                transform_hlds__tabling_analysis__TypeInfo_12_12 = (MR_Word) &transform_hlds__tabling_analysis_scalar_common_1[2];
+#line 4312 "transform_hlds.tabling_analysis.c"
+                {
+#line 4314 "transform_hlds.tabling_analysis.c"
+                  return transform_hlds__tabling_analysis__succeeded = mercury__builtin__unify_2_p_0(transform_hlds__tabling_analysis__TypeInfo_12_12, ((MR_Box) (transform_hlds__tabling_analysis__V_5_5)), ((MR_Box) (transform_hlds__tabling_analysis__V_8_8)));
+                }
+#line 174 "tabling_analysis.m"
+              }
+#line 174 "tabling_analysis.m"
+          }
+#line 174 "tabling_analysis.m"
+      }
+#line 174 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 174 "tabling_analysis.m"
+  }
+#line 174 "tabling_analysis.m"
+}
+
+#line 783 "tabling_analysis.m"
+void MR_CALL 
+transform_hlds__tabling_analysis____Compare____mm_tabling_analysis_answer_0_0(
+#line 783 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 783 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2,
+#line 783 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__3_3)
+#line 783 "tabling_analysis.m"
+{
+#line 783 "tabling_analysis.m"
+  {
+#line 783 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 783 "tabling_analysis.m"
+    MR_Integer transform_hlds__tabling_analysis__CastX_6 = (MR_Integer) transform_hlds__tabling_analysis__HeadVar__2_2;
+#line 783 "tabling_analysis.m"
+    MR_Integer transform_hlds__tabling_analysis__CastY_7 = (MR_Integer) transform_hlds__tabling_analysis__HeadVar__3_3;
+
+#line 783 "tabling_analysis.m"
+    transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__CastX_6 == transform_hlds__tabling_analysis__CastY_7);
+#line 783 "tabling_analysis.m"
+    if (transform_hlds__tabling_analysis__succeeded)
+#line 4354 "transform_hlds.tabling_analysis.c"
+      *transform_hlds__tabling_analysis__HeadVar__1_1 = (MR_Integer) 0;
+#line 783 "tabling_analysis.m"
+    else
+#line 783 "tabling_analysis.m"
+      {
+#line 783 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_4_4 = (MR_Word) transform_hlds__tabling_analysis__HeadVar__2_2;
+#line 783 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_5_5 = (MR_Word) transform_hlds__tabling_analysis__HeadVar__3_3;
+#line 783 "tabling_analysis.m"
+        MR_Integer transform_hlds__tabling_analysis__V_9_9 = (MR_Integer) transform_hlds__tabling_analysis__V_4_4;
+#line 783 "tabling_analysis.m"
+        MR_Integer transform_hlds__tabling_analysis__V_10_10 = (MR_Integer) transform_hlds__tabling_analysis__V_5_5;
+
+#line 783 "tabling_analysis.m"
+        {
+#line 783 "tabling_analysis.m"
+          mercury__private_builtin__builtin_compare_int_3_p_0(transform_hlds__tabling_analysis__HeadVar__1_1, transform_hlds__tabling_analysis__V_9_9, transform_hlds__tabling_analysis__V_10_10);
+#line 783 "tabling_analysis.m"
+          return;
+        }
+#line 783 "tabling_analysis.m"
+      }
+#line 783 "tabling_analysis.m"
+  }
+#line 783 "tabling_analysis.m"
+}
+
+#line 783 "tabling_analysis.m"
+MR_bool MR_CALL 
+transform_hlds__tabling_analysis____Unify____mm_tabling_analysis_answer_0_0(
+#line 783 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 783 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2)
+#line 783 "tabling_analysis.m"
+{
+#line 783 "tabling_analysis.m"
+  {
+#line 783 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 783 "tabling_analysis.m"
+    MR_Integer transform_hlds__tabling_analysis__CastX_5 = (MR_Integer) transform_hlds__tabling_analysis__HeadVar__1_1;
+#line 783 "tabling_analysis.m"
+    MR_Integer transform_hlds__tabling_analysis__CastY_6 = (MR_Integer) transform_hlds__tabling_analysis__HeadVar__2_2;
+
+#line 783 "tabling_analysis.m"
+    transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__CastX_5 == transform_hlds__tabling_analysis__CastY_6);
+#line 783 "tabling_analysis.m"
+    if (transform_hlds__tabling_analysis__succeeded)
+#line 783 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 783 "tabling_analysis.m"
+    else
+#line 783 "tabling_analysis.m"
+      {
+#line 783 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_3_3 = (MR_Word) transform_hlds__tabling_analysis__HeadVar__1_1;
+#line 783 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_4_4 = (MR_Word) transform_hlds__tabling_analysis__HeadVar__2_2;
+
+#line 4416 "transform_hlds.tabling_analysis.c"
+        transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__V_3_3 == transform_hlds__tabling_analysis__V_4_4);
+#line 783 "tabling_analysis.m"
+      }
+#line 783 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__succeeded;
+#line 783 "tabling_analysis.m"
+  }
+#line 783 "tabling_analysis.m"
+}
+
+#line 955 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__output_proc_name_4_p_0(
+#line 955 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Moduleinfo_5,
+#line 955 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__PPId_6)
+#line 955 "tabling_analysis.m"
+{
+#line 958 "tabling_analysis.m"
+  {
+#line 958 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 958 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Pieces_8;
+#line 958 "tabling_analysis.m"
+    MR_String transform_hlds__tabling_analysis__Str_9;
+#line 958 "tabling_analysis.m"
+    MR_String transform_hlds__tabling_analysis__V_21_21;
+
+#line 959 "tabling_analysis.m"
+    {
+#line 959 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__Pieces_8 = hlds__hlds_error_util__describe_one_proc_name_3_f_0(transform_hlds__tabling_analysis__Moduleinfo_5, (MR_Integer) 0, transform_hlds__tabling_analysis__PPId_6);
+    }
+#line 960 "tabling_analysis.m"
+    {
+#line 960 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__Str_9 = parse_tree__error_util__error_pieces_to_string_1_f_0(transform_hlds__tabling_analysis__Pieces_8);
+    }
+#line 961 "tabling_analysis.m"
+    {
+#line 961 "tabling_analysis.m"
+      mercury__io__write_string_3_p_0((MR_String) "\t");
+    }
+#line 961 "tabling_analysis.m"
+    {
+#line 961 "tabling_analysis.m"
+      mercury__string__format__format_string_component_nowidth_noprec_3_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_8[1], transform_hlds__tabling_analysis__Str_9, &transform_hlds__tabling_analysis__V_21_21);
+    }
+#line 961 "tabling_analysis.m"
+    {
+#line 961 "tabling_analysis.m"
+      mercury__io__write_string_3_p_0(transform_hlds__tabling_analysis__V_21_21);
+    }
+#line 961 "tabling_analysis.m"
+    {
+#line 961 "tabling_analysis.m"
+      mercury__io__write_string_3_p_0((MR_String) "\n");
+#line 961 "tabling_analysis.m"
+      return;
+    }
+#line 958 "tabling_analysis.m"
+  }
+#line 955 "tabling_analysis.m"
+}
+
+#line 953 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__dump_mm_tabling_analysis_debug_info_5_p_0_1(
+#line 953 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 953 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 953 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 953 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 953 "tabling_analysis.m"
+{
+#line 953 "tabling_analysis.m"
+  {
+#line 953 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+
+#line 953 "tabling_analysis.m"
+    {
+#line 953 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__output_proc_name_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1));
+#line 953 "tabling_analysis.m"
+      return;
+    }
+#line 953 "tabling_analysis.m"
+  }
+#line 953 "tabling_analysis.m"
+}
+
+#line 940 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__dump_mm_tabling_analysis_debug_info_5_p_0(
+#line 940 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__ModuleInfo_6,
+#line 940 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__SCC_7,
+#line 940 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Status_8)
+#line 940 "tabling_analysis.m"
+{
+#line 943 "tabling_analysis.m"
+  {
+#line 943 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 943 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_24_24;
+#line 953 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_IO_16_16;
+
+#line 944 "tabling_analysis.m"
+    {
+#line 944 "tabling_analysis.m"
+      mercury__io__write_string_3_p_0((MR_String) "SCC: ");
+    }
+#line 945 "tabling_analysis.m"
+    {
+#line 945 "tabling_analysis.m"
+      mercury__io__write_3_p_0((MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0, ((MR_Box) (transform_hlds__tabling_analysis__Status_8)));
+    }
+#line 946 "tabling_analysis.m"
+    {
+#line 946 "tabling_analysis.m"
+      mercury__io__nl_2_p_0();
+    }
+#line 953 "tabling_analysis.m"
+    {
+#line 953 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__V_24_24 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 953 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_24_24, 0) = ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_6[1]));
+#line 953 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_24_24, 1) = ((MR_Box) (transform_hlds__tabling_analysis__dump_mm_tabling_analysis_debug_info_5_p_0_1));
+#line 953 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_24_24, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 953 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_24_24, 3) = ((MR_Box) (transform_hlds__tabling_analysis__ModuleInfo_6));
+#line 953 "tabling_analysis.m"
+    }
+#line 953 "tabling_analysis.m"
+    {
+#line 953 "tabling_analysis.m"
+      mercury__list__foldl_4_p_2((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &mercury__io__io__type_ctor_info_state_0, transform_hlds__tabling_analysis__V_24_24, transform_hlds__tabling_analysis__SCC_7, ((MR_Box) ((MR_Integer) 0)), &transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_IO_16_16);
+    }
+#line 948 "tabling_analysis.m"
+    {
+#line 948 "tabling_analysis.m"
+      mercury__io__nl_2_p_0();
+#line 948 "tabling_analysis.m"
+      return;
+    }
+#line 943 "tabling_analysis.m"
+  }
+#line 940 "tabling_analysis.m"
+}
+
+#line 898 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__maybe_record_mm_tabling_result_2_6_p_0(
+#line 898 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__ModuleInfo_7,
+#line 898 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__PredId_8,
+#line 898 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__PredInfo_9,
+#line 898 "tabling_analysis.m"
+  MR_Integer transform_hlds__tabling_analysis__ProcId_10,
+#line 898 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_0_19,
+#line 898 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_20)
+#line 898 "tabling_analysis.m"
+{
+#line 902 "tabling_analysis.m"
+  {
+#line 902 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 902 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__ShouldWrite_12;
+
+#line 903 "tabling_analysis.m"
+    {
+#line 903 "tabling_analysis.m"
+      transform_hlds__intermod__should_write_mm_tabling_info_6_p_0(transform_hlds__tabling_analysis__ModuleInfo_7, transform_hlds__tabling_analysis__PredId_8, transform_hlds__tabling_analysis__ProcId_10, transform_hlds__tabling_analysis__PredInfo_9, (MR_Integer) 0, &transform_hlds__tabling_analysis__ShouldWrite_12);
+    }
+#line 913 "tabling_analysis.m"
+#line 913 "tabling_analysis.m"
+    switch (transform_hlds__tabling_analysis__ShouldWrite_12) {
+#line 913 "tabling_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 913 "tabling_analysis.m"
+      case (MR_Integer) 0:
+#line 914 "tabling_analysis.m"
+        *transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_20 = transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_0_19;
+#line 913 "tabling_analysis.m"
+        break;
+#line 913 "tabling_analysis.m"
+      case (MR_Integer) 1:
+#line 906 "tabling_analysis.m"
+        {
+#line 906 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__PPId_13;
+#line 906 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__TablingInfo_14;
+#line 906 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__Status_15;
+#line 906 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__ResultStatus_16;
+#line 906 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__ModuleName_17;
+#line 906 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__FuncId_18;
+#line 906 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__V_23_23;
+#line 929 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__ProcTablingInfo_30;
+#line 921 "tabling_analysis.m"
+          MR_Box transform_hlds__tabling_analysis__conv0_ProcTablingInfo_30;
+
+#line 907 "tabling_analysis.m"
+          {
+#line 907 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__PPId_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 907 "tabling_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__PPId_13, 0) = ((MR_Box) (transform_hlds__tabling_analysis__PredId_8));
+#line 907 "tabling_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__PPId_13, 1) = ((MR_Box) (transform_hlds__tabling_analysis__ProcId_10));
+#line 907 "tabling_analysis.m"
+          }
+#line 908 "tabling_analysis.m"
+          {
+#line 908 "tabling_analysis.m"
+            hlds__hlds_module__module_info_get_mm_tabling_info_2_p_0(transform_hlds__tabling_analysis__ModuleInfo_7, &transform_hlds__tabling_analysis__TablingInfo_14);
+          }
+#line 921 "tabling_analysis.m"
+          {
+#line 921 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__succeeded = mercury__map__search_3_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_proc_mm_tabling_info_0, transform_hlds__tabling_analysis__TablingInfo_14, ((MR_Box) (transform_hlds__tabling_analysis__PPId_13)), &transform_hlds__tabling_analysis__conv0_ProcTablingInfo_30);
+          }
+#line 921 "tabling_analysis.m"
+          if (transform_hlds__tabling_analysis__succeeded)
+#line 921 "tabling_analysis.m"
+            {
+#line 921 "tabling_analysis.m"
+              transform_hlds__tabling_analysis__ProcTablingInfo_30 = ((MR_Word) transform_hlds__tabling_analysis__conv0_ProcTablingInfo_30);
+#line 921 "tabling_analysis.m"
+              transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 921 "tabling_analysis.m"
+            }
+#line 929 "tabling_analysis.m"
+          if (transform_hlds__tabling_analysis__succeeded)
+#line 922 "tabling_analysis.m"
+            {
+#line 922 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__MaybeResultStatus_31;
+
+#line 922 "tabling_analysis.m"
+              transform_hlds__tabling_analysis__Status_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__ProcTablingInfo_30, (MR_Integer) 0)));
+#line 922 "tabling_analysis.m"
+              transform_hlds__tabling_analysis__MaybeResultStatus_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__ProcTablingInfo_30, (MR_Integer) 1)));
+#line 925 "tabling_analysis.m"
+              if ((transform_hlds__tabling_analysis__MaybeResultStatus_31 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 926 "tabling_analysis.m"
+                {
+#line 927 "tabling_analysis.m"
+                  {
+#line 927 "tabling_analysis.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.tabling_analysis", (MR_String) "predicate \140transform_hlds.tabling_analysis.lookup_proc_mm_tabling_info\'/4", (MR_String) "no result status");
+#line 927 "tabling_analysis.m"
+                    return;
+                  }
+#line 926 "tabling_analysis.m"
+                }
+#line 925 "tabling_analysis.m"
+              else
+#line 924 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__ResultStatus_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__MaybeResultStatus_31, (MR_Integer) 0)));
+#line 922 "tabling_analysis.m"
+            }
+#line 929 "tabling_analysis.m"
+          else
+#line 931 "tabling_analysis.m"
+            {
+#line 931 "tabling_analysis.m"
+              transform_hlds__tabling_analysis__Status_15 = (MR_Integer) 0;
+#line 932 "tabling_analysis.m"
+              transform_hlds__tabling_analysis__ResultStatus_16 = (MR_Integer) 2;
+#line 931 "tabling_analysis.m"
+            }
+#line 910 "tabling_analysis.m"
+          {
+#line 910 "tabling_analysis.m"
+            transform_hlds__mmc_analysis__module_name_func_id_4_p_0(transform_hlds__tabling_analysis__ModuleInfo_7, transform_hlds__tabling_analysis__PPId_13, &transform_hlds__tabling_analysis__ModuleName_17, &transform_hlds__tabling_analysis__FuncId_18);
+          }
+#line 911 "tabling_analysis.m"
+          mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 912 "tabling_analysis.m"
+          transform_hlds__tabling_analysis__V_23_23 = (MR_Word) transform_hlds__tabling_analysis__Status_15;
+#line 911 "tabling_analysis.m"
+          {
+#line 911 "tabling_analysis.m"
+            analysis__record_result_7_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_4[0], transform_hlds__tabling_analysis__ModuleName_17, transform_hlds__tabling_analysis__FuncId_18, ((MR_Box) ((MR_Integer) 0)), ((MR_Box) (transform_hlds__tabling_analysis__V_23_23)), transform_hlds__tabling_analysis__ResultStatus_16, transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_0_19, transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_20);
+#line 911 "tabling_analysis.m"
+            return;
+          }
+#line 906 "tabling_analysis.m"
+        }
+#line 913 "tabling_analysis.m"
+        break;
+#line 913 "tabling_analysis.m"
+    }
+#line 902 "tabling_analysis.m"
+  }
+#line 898 "tabling_analysis.m"
+}
+
+#line 895 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__maybe_record_mm_tabling_result_4_p_0_1(
+#line 895 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 895 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 895 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 895 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 895 "tabling_analysis.m"
+{
+#line 895 "tabling_analysis.m"
+  {
+#line 895 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 895 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_AnalysisInfo_20;
+
+#line 895 "tabling_analysis.m"
+    {
+#line 895 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__maybe_record_mm_tabling_result_2_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 4))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 5))), ((MR_Integer) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), &transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_AnalysisInfo_20);
+    }
+#line 895 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_AnalysisInfo_20));
+#line 895 "tabling_analysis.m"
+  }
+#line 895 "tabling_analysis.m"
+}
+
+#line 889 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__maybe_record_mm_tabling_result_4_p_0(
+#line 889 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__ModuleInfo_5,
+#line 889 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__PredId_6,
+#line 889 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_0_10,
+#line 889 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_11)
+#line 889 "tabling_analysis.m"
+{
+#line 892 "tabling_analysis.m"
+  {
+#line 892 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 892 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__PredInfo_8;
+#line 892 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__ProcIds_9;
+#line 892 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_12_12;
+#line 895 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__conv1_STATE_VARIABLE_AnalysisInfo_11;
+
+#line 893 "tabling_analysis.m"
+    {
+#line 893 "tabling_analysis.m"
+      hlds__hlds_module__module_info_pred_info_3_p_0(transform_hlds__tabling_analysis__ModuleInfo_5, transform_hlds__tabling_analysis__PredId_6, &transform_hlds__tabling_analysis__PredInfo_8);
+    }
+#line 894 "tabling_analysis.m"
+    {
+#line 894 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__ProcIds_9 = hlds__hlds_pred__pred_info_procids_1_f_0(transform_hlds__tabling_analysis__PredInfo_8);
+    }
+#line 895 "tabling_analysis.m"
+    {
+#line 895 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__V_12_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 6 * sizeof(MR_Word)), NULL, NULL);
+#line 895 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_12_12, 0) = ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_7[3]));
+#line 895 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_12_12, 1) = ((MR_Box) (transform_hlds__tabling_analysis__maybe_record_mm_tabling_result_4_p_0_1));
+#line 895 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_12_12, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 895 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_12_12, 3) = ((MR_Box) (transform_hlds__tabling_analysis__ModuleInfo_5));
+#line 895 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_12_12, 4) = ((MR_Box) (transform_hlds__tabling_analysis__PredId_6));
+#line 895 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_12_12, 5) = ((MR_Box) (transform_hlds__tabling_analysis__PredInfo_8));
+#line 895 "tabling_analysis.m"
+    }
+#line 895 "tabling_analysis.m"
+    {
+#line 895 "tabling_analysis.m"
+      mercury__list__foldl_4_p_0((MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0, (MR_Word) &analysis__analysis__type_ctor_info_analysis_info_0, transform_hlds__tabling_analysis__V_12_12, transform_hlds__tabling_analysis__ProcIds_9, ((MR_Box) (transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_0_10)), &transform_hlds__tabling_analysis__conv1_STATE_VARIABLE_AnalysisInfo_11);
+    }
+#line 895 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__STATE_VARIABLE_AnalysisInfo_11 = ((MR_Word) transform_hlds__tabling_analysis__conv1_STATE_VARIABLE_AnalysisInfo_11);
+#line 892 "tabling_analysis.m"
+  }
+#line 889 "tabling_analysis.m"
+}
+
+#line 702 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_case_6_p_0(
+#line 702 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_7,
+#line 702 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_Case_0_15,
+#line 702 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_Case_16,
+#line 702 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Status_9,
+#line 702 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_17,
+#line 702 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_18)
+#line 702 "tabling_analysis.m"
+{
+#line 706 "tabling_analysis.m"
+  {
+#line 706 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 706 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__MainConsId_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__STATE_VARIABLE_Case_0_15, (MR_Integer) 0)));
+#line 706 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__OtherConsIds_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__STATE_VARIABLE_Case_0_15, (MR_Integer) 1)));
+#line 706 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Goal0_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__STATE_VARIABLE_Case_0_15, (MR_Integer) 2)));
+#line 706 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Goal_14;
+#line 706 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__GoalExpr0_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__Goal0_13, (MR_Integer) 0)));
+#line 706 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__GoalInfo0_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__Goal0_13, (MR_Integer) 1)));
+#line 706 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__GoalExpr_31;
+#line 706 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__GoalInfo_32;
+
+#line 582 "tabling_analysis.m"
+    {
+#line 582 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__annotate_goal_2_6_p_0(transform_hlds__tabling_analysis__VarTypes_7, transform_hlds__tabling_analysis__GoalExpr0_29, &transform_hlds__tabling_analysis__GoalExpr_31, transform_hlds__tabling_analysis__Status_9, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_17, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_18);
+    }
+#line 587 "tabling_analysis.m"
+#line 587 "tabling_analysis.m"
+    switch (*transform_hlds__tabling_analysis__Status_9) {
+#line 587 "tabling_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 587 "tabling_analysis.m"
+      case (MR_Integer) 2:
+#line 587 "tabling_analysis.m"
+      case (MR_Integer) 0:
+#line 591 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__GoalInfo_32 = transform_hlds__tabling_analysis__GoalInfo0_30;
+#line 587 "tabling_analysis.m"
+        break;
+#line 587 "tabling_analysis.m"
+      case (MR_Integer) 1:
+#line 584 "tabling_analysis.m"
+        {
+#line 585 "tabling_analysis.m"
+          {
+#line 585 "tabling_analysis.m"
+            hlds__hlds_goal__goal_info_add_feature_3_p_0((MR_Integer) 16, transform_hlds__tabling_analysis__GoalInfo0_30, &transform_hlds__tabling_analysis__GoalInfo_32);
+          }
+#line 584 "tabling_analysis.m"
+        }
+#line 587 "tabling_analysis.m"
+        break;
+#line 587 "tabling_analysis.m"
+    }
+#line 593 "tabling_analysis.m"
+    {
+#line 593 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__Goal_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 593 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__Goal_14, 0) = ((MR_Box) (transform_hlds__tabling_analysis__GoalExpr_31));
+#line 593 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__Goal_14, 1) = ((MR_Box) (transform_hlds__tabling_analysis__GoalInfo_32));
+#line 593 "tabling_analysis.m"
+    }
+#line 709 "tabling_analysis.m"
+    {
+#line 709 "tabling_analysis.m"
+      MR_Word base;
+#line 709 "tabling_analysis.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 709 "tabling_analysis.m"
+      *transform_hlds__tabling_analysis__STATE_VARIABLE_Case_16 = base;
+#line 709 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__tabling_analysis__MainConsId_11));
+#line 709 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__tabling_analysis__OtherConsIds_12));
+#line 709 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 2) = ((MR_Box) (transform_hlds__tabling_analysis__Goal_14));
+#line 709 "tabling_analysis.m"
+    }
+#line 706 "tabling_analysis.m"
+  }
+#line 702 "tabling_analysis.m"
+}
+
+#line 699 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_cases_6_p_0_2(
+#line 699 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 699 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 699 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 699 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 699 "tabling_analysis.m"
+{
+#line 699 "tabling_analysis.m"
+  {
+#line 699 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 699 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv4_HeadVar__3_3;
+
+#line 699 "tabling_analysis.m"
+    {
+#line 699 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__combine_mm_tabling_status_3_p_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), &transform_hlds__tabling_analysis__conv4_HeadVar__3_3);
+    }
+#line 699 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv4_HeadVar__3_3));
+#line 699 "tabling_analysis.m"
+  }
+#line 699 "tabling_analysis.m"
+}
+
+#line 698 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_cases_6_p_0_1(
+#line 698 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 698 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 698 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 698 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3,
+#line 698 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_4,
+#line 698 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_5)
+#line 698 "tabling_analysis.m"
+{
+#line 698 "tabling_analysis.m"
+  {
+#line 698 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 698 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv2_STATE_VARIABLE_Case_16;
+#line 698 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv1_Status_9;
+#line 698 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_18;
+
+#line 698 "tabling_analysis.m"
+    {
+#line 698 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__annotate_case_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), &transform_hlds__tabling_analysis__conv2_STATE_VARIABLE_Case_16, &transform_hlds__tabling_analysis__conv1_Status_9, ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_4), &transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_18);
+    }
+#line 698 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__tabling_analysis__conv2_STATE_VARIABLE_Case_16));
+#line 698 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv1_Status_9));
+#line 698 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_18));
+#line 698 "tabling_analysis.m"
+  }
+#line 698 "tabling_analysis.m"
+}
+
+#line 694 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_cases_6_p_0(
+#line 694 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_7,
+#line 694 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_Cases_0_12,
+#line 694 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_Cases_13,
+#line 694 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Status_9,
+#line 694 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_14,
+#line 694 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_15)
+#line 694 "tabling_analysis.m"
+{
+#line 697 "tabling_analysis.m"
+  {
+#line 697 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 697 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__TypeCtorInfo_26_26;
+#line 697 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__TypeCtorInfo_27_27;
+#line 697 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Statuses_11;
+#line 697 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_16_16;
+#line 698 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__conv3_STATE_VARIABLE_ModuleInfo_15;
+#line 699 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__conv5_Status_9;
+
+#line 698 "tabling_analysis.m"
+    {
+#line 698 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__V_16_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 698 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_16_16, 0) = ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_7[2]));
+#line 698 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_16_16, 1) = ((MR_Box) (transform_hlds__tabling_analysis__annotate_cases_6_p_0_1));
+#line 698 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_16_16, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 698 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_16_16, 3) = ((MR_Box) (transform_hlds__tabling_analysis__VarTypes_7));
+#line 698 "tabling_analysis.m"
+    }
+#line 5064 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__TypeCtorInfo_26_26 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0;
+#line 5066 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__TypeCtorInfo_27_27 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0;
+#line 698 "tabling_analysis.m"
+    {
+#line 698 "tabling_analysis.m"
+      mercury__list__map2_foldl_6_p_0(transform_hlds__tabling_analysis__TypeCtorInfo_26_26, transform_hlds__tabling_analysis__TypeCtorInfo_26_26, transform_hlds__tabling_analysis__TypeCtorInfo_27_27, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, transform_hlds__tabling_analysis__V_16_16, transform_hlds__tabling_analysis__STATE_VARIABLE_Cases_0_12, transform_hlds__tabling_analysis__STATE_VARIABLE_Cases_13, &transform_hlds__tabling_analysis__Statuses_11, ((MR_Box) (transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_14)), &transform_hlds__tabling_analysis__conv3_STATE_VARIABLE_ModuleInfo_15);
+    }
+#line 698 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_15 = ((MR_Word) transform_hlds__tabling_analysis__conv3_STATE_VARIABLE_ModuleInfo_15);
+#line 699 "tabling_analysis.m"
+    {
+#line 699 "tabling_analysis.m"
+      mercury__list__foldl_4_p_0(transform_hlds__tabling_analysis__TypeCtorInfo_27_27, transform_hlds__tabling_analysis__TypeCtorInfo_27_27, (MR_Word) &transform_hlds__tabling_analysis_scalar_common_2[10], transform_hlds__tabling_analysis__Statuses_11, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__tabling_analysis__conv5_Status_9);
+    }
+#line 699 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__Status_9 = ((MR_Word) transform_hlds__tabling_analysis__conv5_Status_9);
+#line 697 "tabling_analysis.m"
+  }
+#line 694 "tabling_analysis.m"
+}
+
+#line 691 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_goal_list_6_p_0_2(
+#line 691 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 691 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 691 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 691 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 691 "tabling_analysis.m"
+{
+#line 691 "tabling_analysis.m"
+  {
+#line 691 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 691 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv4_HeadVar__3_3;
+
+#line 691 "tabling_analysis.m"
+    {
+#line 691 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__combine_mm_tabling_status_3_p_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), &transform_hlds__tabling_analysis__conv4_HeadVar__3_3);
+    }
+#line 691 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv4_HeadVar__3_3));
+#line 691 "tabling_analysis.m"
+  }
+#line 691 "tabling_analysis.m"
+}
+
+#line 690 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_goal_list_6_p_0_1(
+#line 690 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 690 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 690 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 690 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3,
+#line 690 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_4,
+#line 690 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_5)
+#line 690 "tabling_analysis.m"
+{
+#line 690 "tabling_analysis.m"
+  {
+#line 690 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 690 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv2_STATE_VARIABLE_Goal_16;
+#line 690 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv1_Status_9;
+#line 690 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_18;
+
+#line 690 "tabling_analysis.m"
+    {
+#line 690 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__annotate_goal_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), &transform_hlds__tabling_analysis__conv2_STATE_VARIABLE_Goal_16, &transform_hlds__tabling_analysis__conv1_Status_9, ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_4), &transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_18);
+    }
+#line 690 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__tabling_analysis__conv2_STATE_VARIABLE_Goal_16));
+#line 690 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv1_Status_9));
+#line 690 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_18));
+#line 690 "tabling_analysis.m"
+  }
+#line 690 "tabling_analysis.m"
+}
+
+#line 686 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_goal_list_6_p_0(
+#line 686 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_7,
+#line 686 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_Goals_0_12,
+#line 686 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_Goals_13,
+#line 686 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Status_9,
+#line 686 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_14,
+#line 686 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_15)
+#line 686 "tabling_analysis.m"
+{
+#line 689 "tabling_analysis.m"
+  {
+#line 689 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 689 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__TypeCtorInfo_26_26;
+#line 689 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__TypeCtorInfo_27_27;
+#line 689 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Statuses_11;
+#line 689 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_16_16;
+#line 690 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__conv3_STATE_VARIABLE_ModuleInfo_15;
+#line 691 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__conv5_Status_9;
+
+#line 690 "tabling_analysis.m"
+    {
+#line 690 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__V_16_16 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 690 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_16_16, 0) = ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_7[1]));
+#line 690 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_16_16, 1) = ((MR_Box) (transform_hlds__tabling_analysis__annotate_goal_list_6_p_0_1));
+#line 690 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_16_16, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 690 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_16_16, 3) = ((MR_Box) (transform_hlds__tabling_analysis__VarTypes_7));
+#line 690 "tabling_analysis.m"
+    }
+#line 5211 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__TypeCtorInfo_26_26 = (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0;
+#line 5213 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__TypeCtorInfo_27_27 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0;
+#line 690 "tabling_analysis.m"
+    {
+#line 690 "tabling_analysis.m"
+      mercury__list__map2_foldl_6_p_0(transform_hlds__tabling_analysis__TypeCtorInfo_26_26, transform_hlds__tabling_analysis__TypeCtorInfo_26_26, transform_hlds__tabling_analysis__TypeCtorInfo_27_27, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, transform_hlds__tabling_analysis__V_16_16, transform_hlds__tabling_analysis__STATE_VARIABLE_Goals_0_12, transform_hlds__tabling_analysis__STATE_VARIABLE_Goals_13, &transform_hlds__tabling_analysis__Statuses_11, ((MR_Box) (transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_14)), &transform_hlds__tabling_analysis__conv3_STATE_VARIABLE_ModuleInfo_15);
+    }
+#line 690 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_15 = ((MR_Word) transform_hlds__tabling_analysis__conv3_STATE_VARIABLE_ModuleInfo_15);
+#line 691 "tabling_analysis.m"
+    {
+#line 691 "tabling_analysis.m"
+      mercury__list__foldl_4_p_0(transform_hlds__tabling_analysis__TypeCtorInfo_27_27, transform_hlds__tabling_analysis__TypeCtorInfo_27_27, (MR_Word) &transform_hlds__tabling_analysis_scalar_common_2[9], transform_hlds__tabling_analysis__Statuses_11, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__tabling_analysis__conv5_Status_9);
+    }
+#line 691 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__Status_9 = ((MR_Word) transform_hlds__tabling_analysis__conv5_Status_9);
+#line 689 "tabling_analysis.m"
+  }
+#line 686 "tabling_analysis.m"
+}
+
+#line 595 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_goal_2_6_p_0(
+#line 595 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_7,
+#line 595 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90,
+#line 595 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91,
+#line 595 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Status_9,
+#line 595 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92,
+#line 595 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93)
+#line 595 "tabling_analysis.m"
+{
+#line 600 "tabling_analysis.m"
+  {
+#line 600 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 600 "tabling_analysis.m"
+#line 600 "tabling_analysis.m"
+    switch (MR_tag((MR_Word) transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90)) {
+#line 600 "tabling_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 600 "tabling_analysis.m"
+      case (MR_Integer) 0:
+#line 665 "tabling_analysis.m"
+        {
+#line 665 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__SubGoal0_84 = (MR_Word) MR_body(((MR_Word) transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90), (MR_Integer) 0);
+#line 665 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__SubGoal_85;
+
+#line 666 "tabling_analysis.m"
+          {
+#line 666 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__annotate_goal_6_p_0(transform_hlds__tabling_analysis__VarTypes_7, transform_hlds__tabling_analysis__SubGoal0_84, &transform_hlds__tabling_analysis__SubGoal_85, transform_hlds__tabling_analysis__Status_9, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93);
+          }
+#line 667 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91 = (MR_Word) MR_mkword(MR_mktag(0), (MR_Word) transform_hlds__tabling_analysis__SubGoal_85);
+#line 665 "tabling_analysis.m"
+        }
+#line 600 "tabling_analysis.m"
+        break;
+#line 600 "tabling_analysis.m"
+      case (MR_Integer) 1:
+#line 600 "tabling_analysis.m"
+        {
+#line 600 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__Kind_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 3)));
+#line 600 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 0)));
+#line 600 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 1)));
+#line 600 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 2)));
+#line 600 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 4)));
+
+#line 604 "tabling_analysis.m"
+#line 604 "tabling_analysis.m"
+          switch (MR_tag((MR_Word) transform_hlds__tabling_analysis__Kind_14)) {
+#line 604 "tabling_analysis.m"
+            default: /*NOTREACHED*/ MR_assert(0);
+#line 604 "tabling_analysis.m"
+            case (MR_Integer) 0:
+#line 605 "tabling_analysis.m"
+              {
+#line 605 "tabling_analysis.m"
+              }
+#line 604 "tabling_analysis.m"
+              break;
+#line 604 "tabling_analysis.m"
+            case (MR_Integer) 1:
+#line 606 "tabling_analysis.m"
+              {
+#line 606 "tabling_analysis.m"
+              }
+#line 604 "tabling_analysis.m"
+              break;
+#line 604 "tabling_analysis.m"
+            case (MR_Integer) 2:
+#line 607 "tabling_analysis.m"
+              {
+#line 607 "tabling_analysis.m"
+              }
+#line 604 "tabling_analysis.m"
+              break;
+#line 604 "tabling_analysis.m"
+            case (MR_Integer) 3:
+#line 604 "tabling_analysis.m"
+#line 604 "tabling_analysis.m"
+              switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__Kind_14, (MR_Integer) 0)))) {
+#line 604 "tabling_analysis.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 604 "tabling_analysis.m"
+                case (MR_Integer) 0:
+#line 608 "tabling_analysis.m"
+                  {
+#line 608 "tabling_analysis.m"
+                  }
+#line 604 "tabling_analysis.m"
+                  break;
+#line 604 "tabling_analysis.m"
+                case (MR_Integer) 1:
+#line 602 "tabling_analysis.m"
+                  {
+#line 603 "tabling_analysis.m"
+                    {
+#line 603 "tabling_analysis.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.tabling_analysis", (MR_String) "predicate \140transform_hlds.tabling_analysis.annotate_goal_2\'/6", (MR_String) "complicated unify");
+#line 603 "tabling_analysis.m"
+                      return;
+                    }
+#line 602 "tabling_analysis.m"
+                  }
+#line 604 "tabling_analysis.m"
+                  break;
+#line 604 "tabling_analysis.m"
+              }
+#line 604 "tabling_analysis.m"
+              break;
+#line 604 "tabling_analysis.m"
+          }
+#line 611 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__Status_9 = (MR_Integer) 1;
+#line 600 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91 = transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90;
+#line 600 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92;
+#line 600 "tabling_analysis.m"
+        }
+#line 600 "tabling_analysis.m"
+        break;
+#line 600 "tabling_analysis.m"
+      case (MR_Integer) 2:
+#line 613 "tabling_analysis.m"
+        {
+#line 613 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__CalleePredId_36 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 0)));
+#line 613 "tabling_analysis.m"
+          MR_Integer transform_hlds__tabling_analysis__CalleeProcId_37 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 1)));
+#line 613 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__CalleePPId_42;
+#line 613 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__CallArgs_38 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 2)));
+#line 613 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__V_39_39 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 3)));
+#line 613 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 4)));
+#line 613 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__V_41_41 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 5)));
+
+#line 614 "tabling_analysis.m"
+          {
+#line 614 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__CalleePPId_42 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 614 "tabling_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__CalleePPId_42, 0) = ((MR_Box) (transform_hlds__tabling_analysis__CalleePredId_36));
+#line 614 "tabling_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__CalleePPId_42, 1) = ((MR_Box) (transform_hlds__tabling_analysis__CalleeProcId_37));
+#line 614 "tabling_analysis.m"
+          }
+#line 615 "tabling_analysis.m"
+          {
+#line 615 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_97_110_110_111_116_97_116_101_95_99_97_108_108_95_95_91_50_44_32_51_93_95_48_6_p_0(transform_hlds__tabling_analysis__CalleePPId_42, transform_hlds__tabling_analysis__Status_9, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93);
+          }
+#line 613 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91 = transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90;
+#line 613 "tabling_analysis.m"
+        }
+#line 600 "tabling_analysis.m"
+        break;
+#line 600 "tabling_analysis.m"
+      case (MR_Integer) 3:
+#line 600 "tabling_analysis.m"
+#line 600 "tabling_analysis.m"
+        switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 0)))) {
+#line 600 "tabling_analysis.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 600 "tabling_analysis.m"
+          case (MR_Integer) 0:
+#line 620 "tabling_analysis.m"
+            {
+#line 620 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__GenericCall_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 1)));
+#line 620 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis___Args_51 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 2)));
+#line 620 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis___Modes_52 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 3)));
+#line 620 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 4)));
+#line 620 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis___Detism_54 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 5)));
+
+#line 625 "tabling_analysis.m"
+#line 625 "tabling_analysis.m"
+              switch (MR_tag((MR_Word) transform_hlds__tabling_analysis__GenericCall_50)) {
+#line 625 "tabling_analysis.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 625 "tabling_analysis.m"
+                case (MR_Integer) 0:
+#line 624 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__Status_9 = (MR_Integer) 0;
+#line 625 "tabling_analysis.m"
+                  break;
+#line 625 "tabling_analysis.m"
+                case (MR_Integer) 1:
+#line 627 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__Status_9 = (MR_Integer) 0;
+#line 625 "tabling_analysis.m"
+                  break;
+#line 625 "tabling_analysis.m"
+                case (MR_Integer) 2:
+#line 630 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__Status_9 = (MR_Integer) 1;
+#line 625 "tabling_analysis.m"
+                  break;
+#line 625 "tabling_analysis.m"
+                case (MR_Integer) 3:
+#line 633 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__Status_9 = (MR_Integer) 1;
+#line 625 "tabling_analysis.m"
+                  break;
+#line 625 "tabling_analysis.m"
+              }
+#line 620 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91 = transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90;
+#line 620 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92;
+#line 620 "tabling_analysis.m"
+            }
+#line 600 "tabling_analysis.m"
+            break;
+#line 600 "tabling_analysis.m"
+          case (MR_Integer) 1:
+#line 617 "tabling_analysis.m"
+            {
+#line 617 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Attributes_43 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 1)));
+#line 617 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 2)));
+#line 617 "tabling_analysis.m"
+              MR_Integer transform_hlds__tabling_analysis__V_45_45 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 3)));
+#line 617 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 4)));
+#line 617 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_47_47 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 5)));
+#line 617 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 6)));
+#line 617 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_49_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 7)));
+
+#line 618 "tabling_analysis.m"
+              {
+#line 618 "tabling_analysis.m"
+                *transform_hlds__tabling_analysis__Status_9 = transform_hlds__tabling_analysis__get_mm_tabling_status_from_attributes_1_f_0(transform_hlds__tabling_analysis__Attributes_43);
+              }
+#line 617 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91 = transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90;
+#line 617 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92;
+#line 617 "tabling_analysis.m"
+            }
+#line 600 "tabling_analysis.m"
+            break;
+#line 600 "tabling_analysis.m"
+          case (MR_Integer) 2:
+#line 636 "tabling_analysis.m"
+            {
+#line 636 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__ConjType_65 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 1)));
+#line 636 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Conjuncts0_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 2)));
+#line 636 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Conjuncts_67;
+
+#line 637 "tabling_analysis.m"
+              {
+#line 637 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__annotate_goal_list_6_p_0(transform_hlds__tabling_analysis__VarTypes_7, transform_hlds__tabling_analysis__Conjuncts0_66, &transform_hlds__tabling_analysis__Conjuncts_67, transform_hlds__tabling_analysis__Status_9, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93);
+              }
+#line 639 "tabling_analysis.m"
+              {
+#line 639 "tabling_analysis.m"
+                MR_Word base;
+#line 639 "tabling_analysis.m"
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+#line 639 "tabling_analysis.m"
+                *transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91 = base;
+#line 639 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 639 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (transform_hlds__tabling_analysis__ConjType_65));
+#line 639 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (transform_hlds__tabling_analysis__Conjuncts_67));
+#line 639 "tabling_analysis.m"
+              }
+#line 636 "tabling_analysis.m"
+            }
+#line 600 "tabling_analysis.m"
+            break;
+#line 600 "tabling_analysis.m"
+          case (MR_Integer) 3:
+#line 641 "tabling_analysis.m"
+            {
+#line 641 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Disjuncts0_68 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 1)));
+#line 641 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Disjuncts_69;
+
+#line 642 "tabling_analysis.m"
+              {
+#line 642 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__annotate_goal_list_6_p_0(transform_hlds__tabling_analysis__VarTypes_7, transform_hlds__tabling_analysis__Disjuncts0_68, &transform_hlds__tabling_analysis__Disjuncts_69, transform_hlds__tabling_analysis__Status_9, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93);
+              }
+#line 644 "tabling_analysis.m"
+              {
+#line 644 "tabling_analysis.m"
+                MR_Word base;
+#line 644 "tabling_analysis.m"
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 644 "tabling_analysis.m"
+                *transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91 = base;
+#line 644 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 3));
+#line 644 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (transform_hlds__tabling_analysis__Disjuncts_69));
+#line 644 "tabling_analysis.m"
+              }
+#line 641 "tabling_analysis.m"
+            }
+#line 600 "tabling_analysis.m"
+            break;
+#line 600 "tabling_analysis.m"
+          case (MR_Integer) 4:
+#line 646 "tabling_analysis.m"
+            {
+#line 646 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Var_70 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 1)));
+#line 646 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__CanFail_71 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 2)));
+#line 646 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Cases0_72 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 3)));
+#line 646 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Cases_73;
+
+#line 647 "tabling_analysis.m"
+              {
+#line 647 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__annotate_cases_6_p_0(transform_hlds__tabling_analysis__VarTypes_7, transform_hlds__tabling_analysis__Cases0_72, &transform_hlds__tabling_analysis__Cases_73, transform_hlds__tabling_analysis__Status_9, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93);
+              }
+#line 648 "tabling_analysis.m"
+              {
+#line 648 "tabling_analysis.m"
+                MR_Word base;
+#line 648 "tabling_analysis.m"
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL));
+#line 648 "tabling_analysis.m"
+                *transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91 = base;
+#line 648 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 4));
+#line 648 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (transform_hlds__tabling_analysis__Var_70));
+#line 648 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (transform_hlds__tabling_analysis__CanFail_71));
+#line 648 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (transform_hlds__tabling_analysis__Cases_73));
+#line 648 "tabling_analysis.m"
+              }
+#line 646 "tabling_analysis.m"
+            }
+#line 600 "tabling_analysis.m"
+            break;
+#line 600 "tabling_analysis.m"
+          case (MR_Integer) 5:
+#line 669 "tabling_analysis.m"
+            {
+#line 669 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Reason_86 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 1)));
+#line 669 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__SubGoal0_117 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 2)));
+#line 671 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__FGT_88;
+#line 671 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_87_87;
+
+#line 671 "tabling_analysis.m"
+              transform_hlds__tabling_analysis__succeeded = ((((MR_tag((MR_Word) transform_hlds__tabling_analysis__Reason_86)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__Reason_86, (MR_Integer) 0)))) == (MR_Integer) 5)));
+#line 671 "tabling_analysis.m"
+              if (transform_hlds__tabling_analysis__succeeded)
+#line 671 "tabling_analysis.m"
+                {
+#line 671 "tabling_analysis.m"
+                  transform_hlds__tabling_analysis__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__Reason_86, (MR_Integer) 1)));
+#line 671 "tabling_analysis.m"
+                  transform_hlds__tabling_analysis__FGT_88 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__Reason_86, (MR_Integer) 2)));
+#line 673 "tabling_analysis.m"
+#line 673 "tabling_analysis.m"
+                  switch (transform_hlds__tabling_analysis__FGT_88) {
+#line 673 "tabling_analysis.m"
+                    default:
+#line 673 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__succeeded = MR_FALSE;
+#line 673 "tabling_analysis.m"
+                      break;
+#line 673 "tabling_analysis.m"
+                    case (MR_Integer) 1:
+#line 672 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 673 "tabling_analysis.m"
+                      break;
+#line 673 "tabling_analysis.m"
+                    case (MR_Integer) 2:
+#line 673 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 673 "tabling_analysis.m"
+                      break;
+#line 673 "tabling_analysis.m"
+                  }
+#line 671 "tabling_analysis.m"
+                }
+#line 677 "tabling_analysis.m"
+              if (transform_hlds__tabling_analysis__succeeded)
+#line 676 "tabling_analysis.m"
+                {
+#line 676 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__Status_9 = (MR_Integer) 1;
+#line 676 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92;
+#line 676 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91 = transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90;
+#line 676 "tabling_analysis.m"
+                }
+#line 677 "tabling_analysis.m"
+              else
+#line 678 "tabling_analysis.m"
+                {
+#line 678 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__SubGoal_115;
+
+#line 678 "tabling_analysis.m"
+                  {
+#line 678 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__annotate_goal_6_p_0(transform_hlds__tabling_analysis__VarTypes_7, transform_hlds__tabling_analysis__SubGoal0_117, &transform_hlds__tabling_analysis__SubGoal_115, transform_hlds__tabling_analysis__Status_9, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93);
+                  }
+#line 679 "tabling_analysis.m"
+                  {
+#line 679 "tabling_analysis.m"
+                    MR_Word base;
+#line 679 "tabling_analysis.m"
+                    base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL));
+#line 679 "tabling_analysis.m"
+                    *transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91 = base;
+#line 679 "tabling_analysis.m"
+                    MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 5));
+#line 679 "tabling_analysis.m"
+                    MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (transform_hlds__tabling_analysis__Reason_86));
+#line 679 "tabling_analysis.m"
+                    MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (transform_hlds__tabling_analysis__SubGoal_115));
+#line 679 "tabling_analysis.m"
+                  }
+#line 678 "tabling_analysis.m"
+                }
+#line 669 "tabling_analysis.m"
+            }
+#line 600 "tabling_analysis.m"
+            break;
+#line 600 "tabling_analysis.m"
+          case (MR_Integer) 6:
+#line 650 "tabling_analysis.m"
+            {
+#line 650 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Vars_74 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 1)));
+#line 650 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Cond0_75 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 2)));
+#line 650 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Then0_76 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 3)));
+#line 650 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Else0_77 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_0_90, (MR_Integer) 4)));
+#line 650 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Cond_78;
+#line 650 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__CondStatus_79;
+#line 650 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Then_80;
+#line 650 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__ThenStatus_81;
+#line 650 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Else_82;
+#line 650 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__ElseStatus_83;
+#line 650 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_101_101;
+#line 650 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_102_102;
+
+#line 651 "tabling_analysis.m"
+              {
+#line 651 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__annotate_goal_6_p_0(transform_hlds__tabling_analysis__VarTypes_7, transform_hlds__tabling_analysis__Cond0_75, &transform_hlds__tabling_analysis__Cond_78, &transform_hlds__tabling_analysis__CondStatus_79, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_92, &transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_101_101);
+              }
+#line 652 "tabling_analysis.m"
+              {
+#line 652 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__annotate_goal_6_p_0(transform_hlds__tabling_analysis__VarTypes_7, transform_hlds__tabling_analysis__Then0_76, &transform_hlds__tabling_analysis__Then_80, &transform_hlds__tabling_analysis__ThenStatus_81, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_101_101, &transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_102_102);
+              }
+#line 653 "tabling_analysis.m"
+              {
+#line 653 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__annotate_goal_6_p_0(transform_hlds__tabling_analysis__VarTypes_7, transform_hlds__tabling_analysis__Else0_77, &transform_hlds__tabling_analysis__Else_82, &transform_hlds__tabling_analysis__ElseStatus_83, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_102_102, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_93);
+              }
+#line 655 "tabling_analysis.m"
+              transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__CondStatus_79 == (MR_Integer) 1);
+#line 655 "tabling_analysis.m"
+              if (transform_hlds__tabling_analysis__succeeded)
+#line 655 "tabling_analysis.m"
+                {
+#line 656 "tabling_analysis.m"
+                  transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__ThenStatus_81 == (MR_Integer) 1);
+#line 655 "tabling_analysis.m"
+                  if (transform_hlds__tabling_analysis__succeeded)
+#line 657 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__ElseStatus_83 == (MR_Integer) 1);
+#line 655 "tabling_analysis.m"
+                }
+#line 660 "tabling_analysis.m"
+              if (transform_hlds__tabling_analysis__succeeded)
+#line 659 "tabling_analysis.m"
+                *transform_hlds__tabling_analysis__Status_9 = (MR_Integer) 1;
+#line 660 "tabling_analysis.m"
+              else
+#line 661 "tabling_analysis.m"
+                *transform_hlds__tabling_analysis__Status_9 = (MR_Integer) 0;
+#line 663 "tabling_analysis.m"
+              {
+#line 663 "tabling_analysis.m"
+                MR_Word base;
+#line 663 "tabling_analysis.m"
+                base = (MR_Word) MR_mkword(MR_mktag(3), MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL));
+#line 663 "tabling_analysis.m"
+                *transform_hlds__tabling_analysis__STATE_VARIABLE_GoalExpr_91 = base;
+#line 663 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 0) = ((MR_Box) (MR_Word) ((MR_Integer) 6));
+#line 663 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 1) = ((MR_Box) (transform_hlds__tabling_analysis__Vars_74));
+#line 663 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 2) = ((MR_Box) (transform_hlds__tabling_analysis__Cond_78));
+#line 663 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 3) = ((MR_Box) (transform_hlds__tabling_analysis__Then_80));
+#line 663 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(3), base, 4) = ((MR_Box) (transform_hlds__tabling_analysis__Else_82));
+#line 663 "tabling_analysis.m"
+              }
+#line 650 "tabling_analysis.m"
+            }
+#line 600 "tabling_analysis.m"
+            break;
+#line 600 "tabling_analysis.m"
+          case (MR_Integer) 7:
+#line 682 "tabling_analysis.m"
+            {
+#line 683 "tabling_analysis.m"
+              {
+#line 683 "tabling_analysis.m"
+                mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.tabling_analysis", (MR_String) "predicate \140transform_hlds.tabling_analysis.annotate_goal_2\'/6", (MR_String) "shorthand goal");
+#line 683 "tabling_analysis.m"
+                return;
+              }
+#line 682 "tabling_analysis.m"
+            }
+#line 600 "tabling_analysis.m"
+            break;
+#line 600 "tabling_analysis.m"
+        }
+#line 600 "tabling_analysis.m"
+        break;
+#line 600 "tabling_analysis.m"
+    }
+#line 600 "tabling_analysis.m"
+  }
+#line 595 "tabling_analysis.m"
+}
+
+#line 577 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_goal_6_p_0(
+#line 577 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_7,
+#line 577 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_Goal_0_15,
+#line 577 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_Goal_16,
+#line 577 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Status_9,
+#line 577 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_17,
+#line 577 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_18)
+#line 577 "tabling_analysis.m"
+{
+#line 580 "tabling_analysis.m"
+  {
+#line 580 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 580 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__GoalExpr0_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__STATE_VARIABLE_Goal_0_15, (MR_Integer) 0)));
+#line 580 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__GoalInfo0_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__STATE_VARIABLE_Goal_0_15, (MR_Integer) 1)));
+#line 580 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__GoalExpr_13;
+#line 580 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__GoalInfo_14;
+
+#line 582 "tabling_analysis.m"
+    {
+#line 582 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__annotate_goal_2_6_p_0(transform_hlds__tabling_analysis__VarTypes_7, transform_hlds__tabling_analysis__GoalExpr0_11, &transform_hlds__tabling_analysis__GoalExpr_13, transform_hlds__tabling_analysis__Status_9, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_17, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_18);
+    }
+#line 587 "tabling_analysis.m"
+#line 587 "tabling_analysis.m"
+    switch (*transform_hlds__tabling_analysis__Status_9) {
+#line 587 "tabling_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 587 "tabling_analysis.m"
+      case (MR_Integer) 2:
+#line 587 "tabling_analysis.m"
+      case (MR_Integer) 0:
+#line 591 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__GoalInfo_14 = transform_hlds__tabling_analysis__GoalInfo0_12;
+#line 587 "tabling_analysis.m"
+        break;
+#line 587 "tabling_analysis.m"
+      case (MR_Integer) 1:
+#line 584 "tabling_analysis.m"
+        {
+#line 585 "tabling_analysis.m"
+          {
+#line 585 "tabling_analysis.m"
+            hlds__hlds_goal__goal_info_add_feature_3_p_0((MR_Integer) 16, transform_hlds__tabling_analysis__GoalInfo0_12, &transform_hlds__tabling_analysis__GoalInfo_14);
+          }
+#line 584 "tabling_analysis.m"
+        }
+#line 587 "tabling_analysis.m"
+        break;
+#line 587 "tabling_analysis.m"
+    }
+#line 593 "tabling_analysis.m"
+    {
+#line 593 "tabling_analysis.m"
+      MR_Word base;
+#line 593 "tabling_analysis.m"
+      base = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 593 "tabling_analysis.m"
+      *transform_hlds__tabling_analysis__STATE_VARIABLE_Goal_16 = base;
+#line 593 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 0) = ((MR_Box) (transform_hlds__tabling_analysis__GoalExpr_13));
+#line 593 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), base, 1) = ((MR_Box) (transform_hlds__tabling_analysis__GoalInfo_14));
+#line 593 "tabling_analysis.m"
+    }
+#line 580 "tabling_analysis.m"
+  }
+#line 577 "tabling_analysis.m"
+}
+
+#line 564 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__annotate_proc_3_p_0(
+#line 564 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__PPId_4,
+#line 564 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_11,
+#line 564 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_12)
+#line 564 "tabling_analysis.m"
+{
+#line 569 "tabling_analysis.m"
+  {
+#line 569 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 569 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__PredInfo_8;
+#line 569 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__VarTypes_9;
+#line 569 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis___Status_10;
+#line 569 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ProcInfo_13_13;
+#line 569 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_Body_14_14;
+#line 569 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_Body_15_15;
+#line 569 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_16_16;
+#line 569 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ProcInfo_17_17;
+#line 569 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__GoalExpr0_27;
+#line 569 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__GoalInfo0_28;
+#line 569 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__GoalExpr_29;
+#line 569 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__GoalInfo_30;
+
+#line 569 "tabling_analysis.m"
+    {
+#line 569 "tabling_analysis.m"
+      hlds__hlds_module__module_info_pred_proc_info_4_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_11, transform_hlds__tabling_analysis__PPId_4, &transform_hlds__tabling_analysis__PredInfo_8, &transform_hlds__tabling_analysis__STATE_VARIABLE_ProcInfo_13_13);
+    }
+#line 570 "tabling_analysis.m"
+    {
+#line 570 "tabling_analysis.m"
+      hlds__hlds_pred__proc_info_get_goal_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ProcInfo_13_13, &transform_hlds__tabling_analysis__STATE_VARIABLE_Body_14_14);
+    }
+#line 571 "tabling_analysis.m"
+    {
+#line 571 "tabling_analysis.m"
+      hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ProcInfo_13_13, &transform_hlds__tabling_analysis__VarTypes_9);
+    }
+#line 581 "tabling_analysis.m"
+    transform_hlds__tabling_analysis__GoalExpr0_27 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__STATE_VARIABLE_Body_14_14, (MR_Integer) 0)));
+#line 581 "tabling_analysis.m"
+    transform_hlds__tabling_analysis__GoalInfo0_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__STATE_VARIABLE_Body_14_14, (MR_Integer) 1)));
+#line 582 "tabling_analysis.m"
+    {
+#line 582 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__annotate_goal_2_6_p_0(transform_hlds__tabling_analysis__VarTypes_9, transform_hlds__tabling_analysis__GoalExpr0_27, &transform_hlds__tabling_analysis__GoalExpr_29, &transform_hlds__tabling_analysis___Status_10, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_11, &transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_16_16);
+    }
+#line 587 "tabling_analysis.m"
+#line 587 "tabling_analysis.m"
+    switch (transform_hlds__tabling_analysis___Status_10) {
+#line 587 "tabling_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 587 "tabling_analysis.m"
+      case (MR_Integer) 2:
+#line 587 "tabling_analysis.m"
+      case (MR_Integer) 0:
+#line 591 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__GoalInfo_30 = transform_hlds__tabling_analysis__GoalInfo0_28;
+#line 587 "tabling_analysis.m"
+        break;
+#line 587 "tabling_analysis.m"
+      case (MR_Integer) 1:
+#line 584 "tabling_analysis.m"
+        {
+#line 585 "tabling_analysis.m"
+          {
+#line 585 "tabling_analysis.m"
+            hlds__hlds_goal__goal_info_add_feature_3_p_0((MR_Integer) 16, transform_hlds__tabling_analysis__GoalInfo0_28, &transform_hlds__tabling_analysis__GoalInfo_30);
+          }
+#line 584 "tabling_analysis.m"
+        }
+#line 587 "tabling_analysis.m"
+        break;
+#line 587 "tabling_analysis.m"
+    }
+#line 593 "tabling_analysis.m"
+    {
+#line 593 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__STATE_VARIABLE_Body_15_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 593 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__STATE_VARIABLE_Body_15_15, 0) = ((MR_Box) (transform_hlds__tabling_analysis__GoalExpr_29));
+#line 593 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__STATE_VARIABLE_Body_15_15, 1) = ((MR_Box) (transform_hlds__tabling_analysis__GoalInfo_30));
+#line 593 "tabling_analysis.m"
+    }
+#line 573 "tabling_analysis.m"
+    {
+#line 573 "tabling_analysis.m"
+      hlds__hlds_pred__proc_info_set_goal_3_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_Body_15_15, transform_hlds__tabling_analysis__STATE_VARIABLE_ProcInfo_13_13, &transform_hlds__tabling_analysis__STATE_VARIABLE_ProcInfo_17_17);
+    }
+#line 574 "tabling_analysis.m"
+    {
+#line 574 "tabling_analysis.m"
+      hlds__hlds_module__module_info_set_pred_proc_info_5_p_0(transform_hlds__tabling_analysis__PPId_4, transform_hlds__tabling_analysis__PredInfo_8, transform_hlds__tabling_analysis__STATE_VARIABLE_ProcInfo_17_17, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_16_16, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_12);
+#line 574 "tabling_analysis.m"
+      return;
+    }
+#line 569 "tabling_analysis.m"
+  }
+#line 564 "tabling_analysis.m"
+}
+
+#line 542 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__combine_maybe_analysis_status_3_p_0(
+#line 542 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__MaybeStatusA_4,
+#line 542 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__MaybeStatusB_5,
+#line 542 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__MaybeStatus_6)
+#line 542 "tabling_analysis.m"
+{
+#line 551 "tabling_analysis.m"
+  {
+#line 551 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__tabling_analysis__MaybeStatusA_4)) == (MR_mktag((MR_Integer) 1)));
+#line 551 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__StatusA_7;
+#line 551 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__StatusB_8;
+
+#line 547 "tabling_analysis.m"
+    if (transform_hlds__tabling_analysis__succeeded)
+#line 547 "tabling_analysis.m"
+      {
+#line 547 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__StatusA_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__MaybeStatusA_4, (MR_Integer) 0)));
+#line 548 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__succeeded = ((MR_tag((MR_Word) transform_hlds__tabling_analysis__MaybeStatusB_5)) == (MR_mktag((MR_Integer) 1)));
+#line 548 "tabling_analysis.m"
+        if (transform_hlds__tabling_analysis__succeeded)
+#line 548 "tabling_analysis.m"
+          transform_hlds__tabling_analysis__StatusB_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__MaybeStatusB_5, (MR_Integer) 0)));
+#line 547 "tabling_analysis.m"
+      }
+#line 551 "tabling_analysis.m"
+    if (transform_hlds__tabling_analysis__succeeded)
+#line 550 "tabling_analysis.m"
+      {
+#line 550 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_9_9;
+
+#line 550 "tabling_analysis.m"
+        {
+#line 550 "tabling_analysis.m"
+          transform_hlds__tabling_analysis__V_9_9 = analysis__lub_2_f_0(transform_hlds__tabling_analysis__StatusA_7, transform_hlds__tabling_analysis__StatusB_8);
+        }
+#line 550 "tabling_analysis.m"
+        {
+#line 550 "tabling_analysis.m"
+          MR_Word base;
+#line 550 "tabling_analysis.m"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 550 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__MaybeStatus_6 = base;
+#line 550 "tabling_analysis.m"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (transform_hlds__tabling_analysis__V_9_9));
+#line 550 "tabling_analysis.m"
+        }
+#line 550 "tabling_analysis.m"
+      }
+#line 551 "tabling_analysis.m"
+    else
+#line 552 "tabling_analysis.m"
+      *transform_hlds__tabling_analysis__MaybeStatus_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 551 "tabling_analysis.m"
+  }
+#line 542 "tabling_analysis.m"
+}
+
+#line 530 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__combine_mm_tabling_status_3_p_0(
+#line 530 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__1_1,
+#line 530 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__HeadVar__2_2,
+#line 530 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__3_3)
+#line 530 "tabling_analysis.m"
+{
+#line 533 "tabling_analysis.m"
+  {
+#line 533 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+
+#line 533 "tabling_analysis.m"
+#line 533 "tabling_analysis.m"
+    switch (transform_hlds__tabling_analysis__HeadVar__1_1) {
+#line 533 "tabling_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 533 "tabling_analysis.m"
+      case (MR_Integer) 2:
+#line 533 "tabling_analysis.m"
+#line 533 "tabling_analysis.m"
+        switch (transform_hlds__tabling_analysis__HeadVar__2_2) {
+#line 533 "tabling_analysis.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 533 "tabling_analysis.m"
+          case (MR_Integer) 2:
+#line 538 "tabling_analysis.m"
+            *transform_hlds__tabling_analysis__HeadVar__3_3 = (MR_Integer) 2;
+#line 533 "tabling_analysis.m"
+            break;
+#line 533 "tabling_analysis.m"
+          case (MR_Integer) 0:
+#line 540 "tabling_analysis.m"
+            *transform_hlds__tabling_analysis__HeadVar__3_3 = (MR_Integer) 0;
+#line 533 "tabling_analysis.m"
+            break;
+#line 533 "tabling_analysis.m"
+          case (MR_Integer) 1:
+#line 536 "tabling_analysis.m"
+            *transform_hlds__tabling_analysis__HeadVar__3_3 = (MR_Integer) 2;
+#line 533 "tabling_analysis.m"
+            break;
+#line 533 "tabling_analysis.m"
+        }
+#line 533 "tabling_analysis.m"
+        break;
+#line 533 "tabling_analysis.m"
+      case (MR_Integer) 0:
+#line 534 "tabling_analysis.m"
+        *transform_hlds__tabling_analysis__HeadVar__3_3 = (MR_Integer) 0;
+#line 533 "tabling_analysis.m"
+        break;
+#line 533 "tabling_analysis.m"
+      case (MR_Integer) 1:
+#line 533 "tabling_analysis.m"
+        *transform_hlds__tabling_analysis__HeadVar__3_3 = transform_hlds__tabling_analysis__HeadVar__2_2;
+#line 533 "tabling_analysis.m"
+        break;
+#line 533 "tabling_analysis.m"
+    }
+#line 533 "tabling_analysis.m"
+  }
+#line 530 "tabling_analysis.m"
+}
+
+#line 494 "tabling_analysis.m"
+static MR_Word MR_CALL 
+transform_hlds__tabling_analysis__get_mm_tabling_status_from_attributes_1_f_0(
+#line 494 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Attributes_3)
+#line 494 "tabling_analysis.m"
+{
+#line 497 "tabling_analysis.m"
+  {
+#line 497 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 497 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__HeadVar__2_2;
+
+#line 500 "tabling_analysis.m"
+    {
+#line 500 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__V_6_6;
+
+#line 500 "tabling_analysis.m"
+      {
+#line 500 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__V_6_6 = parse_tree__prog_data__get_may_call_mm_tabled_1_f_0(transform_hlds__tabling_analysis__Attributes_3);
+      }
+#line 500 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__V_6_6 == (MR_Integer) 1);
+#line 500 "tabling_analysis.m"
+    }
+#line 501 "tabling_analysis.m"
+    if (!(transform_hlds__tabling_analysis__succeeded))
+#line 502 "tabling_analysis.m"
+      {
+#line 502 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_4_4;
+#line 502 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__V_5_5;
+
+#line 502 "tabling_analysis.m"
+        {
+#line 502 "tabling_analysis.m"
+          transform_hlds__tabling_analysis__V_4_4 = parse_tree__prog_data__get_may_call_mm_tabled_1_f_0(transform_hlds__tabling_analysis__Attributes_3);
+        }
+#line 502 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__V_4_4 == (MR_Integer) 2);
+#line 502 "tabling_analysis.m"
+        if (transform_hlds__tabling_analysis__succeeded)
+#line 502 "tabling_analysis.m"
+          {
+#line 503 "tabling_analysis.m"
+            {
+#line 503 "tabling_analysis.m"
+              transform_hlds__tabling_analysis__V_5_5 = parse_tree__prog_data__get_may_call_mercury_1_f_0(transform_hlds__tabling_analysis__Attributes_3);
+            }
+#line 503 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__V_5_5 == (MR_Integer) 1);
+#line 502 "tabling_analysis.m"
+          }
+#line 502 "tabling_analysis.m"
+      }
+#line 497 "tabling_analysis.m"
+    if (transform_hlds__tabling_analysis__succeeded)
+#line 506 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__HeadVar__2_2 = (MR_Integer) 1;
+#line 497 "tabling_analysis.m"
+    else
+#line 508 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__HeadVar__2_2 = (MR_Integer) 0;
+#line 497 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__HeadVar__2_2;
+#line 497 "tabling_analysis.m"
+  }
+#line 494 "tabling_analysis.m"
+}
+
+#line 395 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0_3(
+#line 395 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 395 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 395 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 395 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 395 "tabling_analysis.m"
+{
+#line 395 "tabling_analysis.m"
+  {
+#line 395 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 395 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv6_MaybeStatus_6;
+
+#line 395 "tabling_analysis.m"
+    {
+#line 395 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__combine_maybe_analysis_status_3_p_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), &transform_hlds__tabling_analysis__conv6_MaybeStatus_6);
+    }
+#line 395 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv6_MaybeStatus_6));
+#line 395 "tabling_analysis.m"
+  }
+#line 395 "tabling_analysis.m"
+}
+
+#line 393 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0_2(
+#line 393 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 393 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 393 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 393 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 393 "tabling_analysis.m"
+{
+#line 393 "tabling_analysis.m"
+  {
+#line 393 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 393 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv4_HeadVar__3_3;
+
+#line 393 "tabling_analysis.m"
+    {
+#line 393 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__combine_mm_tabling_status_3_p_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), &transform_hlds__tabling_analysis__conv4_HeadVar__3_3);
+    }
+#line 393 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv4_HeadVar__3_3));
+#line 393 "tabling_analysis.m"
+  }
+#line 393 "tabling_analysis.m"
+}
+
+#line 391 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0_1(
+#line 391 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 391 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 391 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 391 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3,
+#line 391 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_4,
+#line 391 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_5)
+#line 391 "tabling_analysis.m"
+{
+#line 391 "tabling_analysis.m"
+  {
+#line 391 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 391 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv2_Result_11;
+#line 391 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv1_MaybeAnalysisStatus_12;
+#line 391 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_88;
+
+#line 391 "tabling_analysis.m"
+    {
+#line 391 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__check_goal_for_mm_tabling_7_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), &transform_hlds__tabling_analysis__conv2_Result_11, &transform_hlds__tabling_analysis__conv1_MaybeAnalysisStatus_12, ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_4), &transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_88);
+    }
+#line 391 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__tabling_analysis__conv2_Result_11));
+#line 391 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv1_MaybeAnalysisStatus_12));
+#line 391 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_88));
+#line 391 "tabling_analysis.m"
+  }
+#line 391 "tabling_analysis.m"
+}
+
+#line 385 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0(
+#line 385 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__SCC_8,
+#line 385 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_9,
+#line 385 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Goals_10,
+#line 385 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Result_11,
+#line 385 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__MaybeAnalysisStatus_12,
+#line 385 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_16,
+#line 385 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_17)
+#line 385 "tabling_analysis.m"
+{
+#line 390 "tabling_analysis.m"
+  {
+#line 390 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 390 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__TypeCtorInfo_31_31;
+#line 390 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__TypeInfo_32_32;
+#line 390 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Results_14;
+#line 390 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__MaybeAnalysisStatuses_15;
+#line 390 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_18_18;
+#line 391 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__conv3_STATE_VARIABLE_ModuleInfo_17;
+#line 393 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__conv5_Result_11;
+#line 395 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__conv7_MaybeAnalysisStatus_12;
+
+#line 391 "tabling_analysis.m"
+    {
+#line 391 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__V_18_18 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 391 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_18_18, 0) = ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_9[0]));
+#line 391 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_18_18, 1) = ((MR_Box) (transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0_1));
+#line 391 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_18_18, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 391 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_18_18, 3) = ((MR_Box) (transform_hlds__tabling_analysis__SCC_8));
+#line 391 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_18_18, 4) = ((MR_Box) (transform_hlds__tabling_analysis__VarTypes_9));
+#line 391 "tabling_analysis.m"
+    }
+#line 6399 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__TypeCtorInfo_31_31 = (MR_Word) &parse_tree__prog_data__parse_tree__prog_data__type_ctor_info_mm_tabling_status_0;
+#line 6401 "transform_hlds.tabling_analysis.c"
+    transform_hlds__tabling_analysis__TypeInfo_32_32 = (MR_Word) &transform_hlds__tabling_analysis_scalar_common_1[2];
+#line 391 "tabling_analysis.m"
+    {
+#line 391 "tabling_analysis.m"
+      mercury__list__map2_foldl_6_p_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, transform_hlds__tabling_analysis__TypeCtorInfo_31_31, transform_hlds__tabling_analysis__TypeInfo_32_32, (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, transform_hlds__tabling_analysis__V_18_18, transform_hlds__tabling_analysis__Goals_10, &transform_hlds__tabling_analysis__Results_14, &transform_hlds__tabling_analysis__MaybeAnalysisStatuses_15, ((MR_Box) (transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_16)), &transform_hlds__tabling_analysis__conv3_STATE_VARIABLE_ModuleInfo_17);
+    }
+#line 391 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_17 = ((MR_Word) transform_hlds__tabling_analysis__conv3_STATE_VARIABLE_ModuleInfo_17);
+#line 393 "tabling_analysis.m"
+    {
+#line 393 "tabling_analysis.m"
+      mercury__list__foldl_4_p_0(transform_hlds__tabling_analysis__TypeCtorInfo_31_31, transform_hlds__tabling_analysis__TypeCtorInfo_31_31, (MR_Word) &transform_hlds__tabling_analysis_scalar_common_2[7], transform_hlds__tabling_analysis__Results_14, ((MR_Box) ((MR_Integer) 1)), &transform_hlds__tabling_analysis__conv5_Result_11);
+    }
+#line 393 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__Result_11 = ((MR_Word) transform_hlds__tabling_analysis__conv5_Result_11);
+#line 395 "tabling_analysis.m"
+    {
+#line 395 "tabling_analysis.m"
+      mercury__list__foldl_4_p_0(transform_hlds__tabling_analysis__TypeInfo_32_32, transform_hlds__tabling_analysis__TypeInfo_32_32, (MR_Word) &transform_hlds__tabling_analysis_scalar_common_2[8], transform_hlds__tabling_analysis__MaybeAnalysisStatuses_15, ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__tabling_analysis_scalar_common_8[0]))), &transform_hlds__tabling_analysis__conv7_MaybeAnalysisStatus_12);
+    }
+#line 395 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__MaybeAnalysisStatus_12 = ((MR_Word) transform_hlds__tabling_analysis__conv7_MaybeAnalysisStatus_12);
+#line 390 "tabling_analysis.m"
+  }
+#line 385 "tabling_analysis.m"
+}
+
+#line 376 "tabling_analysis.m"
+static MR_Box MR_CALL 
+transform_hlds__tabling_analysis__check_goal_for_mm_tabling_7_p_0_1(
+#line 376 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 376 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1)
+#line 376 "tabling_analysis.m"
+{
+#line 376 "tabling_analysis.m"
+  {
+#line 376 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__wrapper_arg_2;
+#line 376 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 376 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv0_HeadVar__2_94;
+
+#line 376 "tabling_analysis.m"
+    {
+#line 376 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__conv0_HeadVar__2_94 = transform_hlds__tabling_analysis__IntroducedFrom__func__check_goal_for_mm_tabling__376__1_1_f_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1));
+    }
+#line 376 "tabling_analysis.m"
+    transform_hlds__tabling_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_HeadVar__2_94));
+#line 376 "tabling_analysis.m"
+    return transform_hlds__tabling_analysis__wrapper_arg_2;
+#line 376 "tabling_analysis.m"
+  }
+#line 376 "tabling_analysis.m"
+}
+
+#line 301 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__check_goal_for_mm_tabling_7_p_0(
+#line 301 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__SCC_8,
+#line 301 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__VarTypes_9,
+#line 301 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Goal_10,
+#line 301 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__Result_11,
+#line 301 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__MaybeAnalysisStatus_12,
+#line 301 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_87,
+#line 301 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_88)
+#line 301 "tabling_analysis.m"
+{
+#line 306 "tabling_analysis.m"
+  while (MR_TRUE)
+#line 306 "tabling_analysis.m"
+    {
+#line 306 "tabling_analysis.m"
+      /* tailcall optimized into a loop */
+#line 306 "tabling_analysis.m"
+      {
+#line 306 "tabling_analysis.m"
+        MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 306 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis__GoalExpr_14 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__Goal_10, (MR_Integer) 0)));
+#line 307 "tabling_analysis.m"
+        MR_Word transform_hlds__tabling_analysis___GoalInfo_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__Goal_10, (MR_Integer) 1)));
+
+#line 322 "tabling_analysis.m"
+#line 322 "tabling_analysis.m"
+        switch (MR_tag((MR_Word) transform_hlds__tabling_analysis__GoalExpr_14)) {
+#line 322 "tabling_analysis.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 322 "tabling_analysis.m"
+          case (MR_Integer) 0:
+#line 349 "tabling_analysis.m"
+            {
+#line 349 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__SubGoal_70 = (MR_Word) MR_body(((MR_Word) transform_hlds__tabling_analysis__GoalExpr_14), (MR_Integer) 0);
+
+#line 350 "tabling_analysis.m"
+              /* direct tailcall eliminated */
+#line 350 "tabling_analysis.m"
+              {
+#line 350 "tabling_analysis.m"
+                MR_Word transform_hlds__tabling_analysis__Goal__tmp_copy_10 = transform_hlds__tabling_analysis__SubGoal_70;
+
+#line 350 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__Goal_10 = transform_hlds__tabling_analysis__Goal__tmp_copy_10;
+#line 350 "tabling_analysis.m"
+              }
+#line 350 "tabling_analysis.m"
+              continue;
+#line 349 "tabling_analysis.m"
+            }
+#line 322 "tabling_analysis.m"
+            break;
+#line 322 "tabling_analysis.m"
+          case (MR_Integer) 1:
+#line 309 "tabling_analysis.m"
+            {
+#line 309 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__Kind_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 3)));
+#line 309 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 0)));
+#line 309 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 309 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_18_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 309 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_20_20 = ((MR_Word) (MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 4)));
+
+#line 310 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__Result_11 = (MR_Integer) 1;
+#line 311 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__tabling_analysis_scalar_common_8[0]);
+#line 318 "tabling_analysis.m"
+#line 318 "tabling_analysis.m"
+              switch (MR_tag((MR_Word) transform_hlds__tabling_analysis__Kind_19)) {
+#line 318 "tabling_analysis.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 318 "tabling_analysis.m"
+                case (MR_Integer) 0:
+#line 313 "tabling_analysis.m"
+                  {
+#line 313 "tabling_analysis.m"
+                  }
+#line 318 "tabling_analysis.m"
+                  break;
+#line 318 "tabling_analysis.m"
+                case (MR_Integer) 1:
+#line 314 "tabling_analysis.m"
+                  {
+#line 314 "tabling_analysis.m"
+                  }
+#line 318 "tabling_analysis.m"
+                  break;
+#line 318 "tabling_analysis.m"
+                case (MR_Integer) 2:
+#line 315 "tabling_analysis.m"
+                  {
+#line 315 "tabling_analysis.m"
+                  }
+#line 318 "tabling_analysis.m"
+                  break;
+#line 318 "tabling_analysis.m"
+                case (MR_Integer) 3:
+#line 318 "tabling_analysis.m"
+#line 318 "tabling_analysis.m"
+                  switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__Kind_19, (MR_Integer) 0)))) {
+#line 318 "tabling_analysis.m"
+                    default: /*NOTREACHED*/ MR_assert(0);
+#line 318 "tabling_analysis.m"
+                    case (MR_Integer) 0:
+#line 316 "tabling_analysis.m"
+                      {
+#line 316 "tabling_analysis.m"
+                      }
+#line 318 "tabling_analysis.m"
+                      break;
+#line 318 "tabling_analysis.m"
+                    case (MR_Integer) 1:
+#line 319 "tabling_analysis.m"
+                      {
+#line 320 "tabling_analysis.m"
+                        {
+#line 320 "tabling_analysis.m"
+                          mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.tabling_analysis", (MR_String) "predicate \140transform_hlds.tabling_analysis.check_goal_for_mm_tabling\'/7", (MR_String) "complicated unify");
+#line 320 "tabling_analysis.m"
+                          return;
+                        }
+#line 319 "tabling_analysis.m"
+                      }
+#line 318 "tabling_analysis.m"
+                      break;
+#line 318 "tabling_analysis.m"
+                  }
+#line 318 "tabling_analysis.m"
+                  break;
+#line 318 "tabling_analysis.m"
+              }
+#line 309 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_88 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_87;
+#line 309 "tabling_analysis.m"
+            }
+#line 322 "tabling_analysis.m"
+            break;
+#line 322 "tabling_analysis.m"
+          case (MR_Integer) 2:
+#line 323 "tabling_analysis.m"
+            {
+#line 323 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__CalleePredId_41 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 0)));
+#line 323 "tabling_analysis.m"
+              MR_Integer transform_hlds__tabling_analysis__CalleeProcId_42 = ((MR_Integer) (MR_hl_field(MR_mktag(2), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 323 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__CalleePPId_47;
+#line 323 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__CallArgs_43 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 323 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_44_44 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 3)));
+#line 323 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_45_45 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 4)));
+#line 323 "tabling_analysis.m"
+              MR_Word transform_hlds__tabling_analysis__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(2), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 5)));
+
+#line 324 "tabling_analysis.m"
+              {
+#line 324 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__CalleePPId_47 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 324 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__CalleePPId_47, 0) = ((MR_Box) (transform_hlds__tabling_analysis__CalleePredId_41));
+#line 324 "tabling_analysis.m"
+                MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__CalleePPId_47, 1) = ((MR_Box) (transform_hlds__tabling_analysis__CalleeProcId_42));
+#line 324 "tabling_analysis.m"
+              }
+#line 325 "tabling_analysis.m"
+              {
+#line 325 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_99_97_108_108_95_102_111_114_95_109_109_95_116_97_98_108_105_110_103_95_95_91_50_44_32_52_93_95_48_8_p_0(transform_hlds__tabling_analysis__CalleePPId_47, transform_hlds__tabling_analysis__SCC_8, transform_hlds__tabling_analysis__Result_11, transform_hlds__tabling_analysis__MaybeAnalysisStatus_12, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_87, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_88);
+#line 325 "tabling_analysis.m"
+                return;
+              }
+#line 323 "tabling_analysis.m"
+            }
+#line 322 "tabling_analysis.m"
+            break;
+#line 322 "tabling_analysis.m"
+          case (MR_Integer) 3:
+#line 322 "tabling_analysis.m"
+#line 322 "tabling_analysis.m"
+            switch (((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 0)))) {
+#line 322 "tabling_analysis.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 322 "tabling_analysis.m"
+              case (MR_Integer) 0:
+#line 328 "tabling_analysis.m"
+                {
+#line 328 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Details_48 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 328 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis___Args_49 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 328 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis___ArgModes_50 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 3)));
+#line 328 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_51_51 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 4)));
+#line 328 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_52_52 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 5)));
+
+#line 333 "tabling_analysis.m"
+#line 333 "tabling_analysis.m"
+                  switch (MR_tag((MR_Word) transform_hlds__tabling_analysis__Details_48)) {
+#line 333 "tabling_analysis.m"
+                    default: /*NOTREACHED*/ MR_assert(0);
+#line 333 "tabling_analysis.m"
+                    case (MR_Integer) 0:
+#line 332 "tabling_analysis.m"
+                      *transform_hlds__tabling_analysis__Result_11 = (MR_Integer) 0;
+#line 333 "tabling_analysis.m"
+                      break;
+#line 333 "tabling_analysis.m"
+                    case (MR_Integer) 1:
+#line 335 "tabling_analysis.m"
+                      *transform_hlds__tabling_analysis__Result_11 = (MR_Integer) 0;
+#line 333 "tabling_analysis.m"
+                      break;
+#line 333 "tabling_analysis.m"
+                    case (MR_Integer) 2:
+#line 338 "tabling_analysis.m"
+                      *transform_hlds__tabling_analysis__Result_11 = (MR_Integer) 1;
+#line 333 "tabling_analysis.m"
+                      break;
+#line 333 "tabling_analysis.m"
+                    case (MR_Integer) 3:
+#line 341 "tabling_analysis.m"
+                      *transform_hlds__tabling_analysis__Result_11 = (MR_Integer) 1;
+#line 333 "tabling_analysis.m"
+                      break;
+#line 333 "tabling_analysis.m"
+                  }
+#line 343 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__tabling_analysis_scalar_common_8[0]);
+#line 328 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_88 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_87;
+#line 328 "tabling_analysis.m"
+                }
+#line 322 "tabling_analysis.m"
+                break;
+#line 322 "tabling_analysis.m"
+              case (MR_Integer) 1:
+#line 345 "tabling_analysis.m"
+                {
+#line 345 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Attributes_63 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 345 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 345 "tabling_analysis.m"
+                  MR_Integer transform_hlds__tabling_analysis__V_65_65 = ((MR_Integer) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 3)));
+#line 345 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 4)));
+#line 345 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 5)));
+#line 345 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 6)));
+#line 345 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 7)));
+
+#line 346 "tabling_analysis.m"
+                  {
+#line 346 "tabling_analysis.m"
+                    *transform_hlds__tabling_analysis__Result_11 = transform_hlds__tabling_analysis__get_mm_tabling_status_from_attributes_1_f_0(transform_hlds__tabling_analysis__Attributes_63);
+                  }
+#line 347 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__tabling_analysis_scalar_common_8[0]);
+#line 345 "tabling_analysis.m"
+                  *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_88 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_87;
+#line 345 "tabling_analysis.m"
+                }
+#line 322 "tabling_analysis.m"
+                break;
+#line 322 "tabling_analysis.m"
+              case (MR_Integer) 2:
+#line 377 "tabling_analysis.m"
+                {
+#line 377 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Goals_75 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 368 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 1)));
+
+#line 378 "tabling_analysis.m"
+                  {
+#line 378 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0(transform_hlds__tabling_analysis__SCC_8, transform_hlds__tabling_analysis__VarTypes_9, transform_hlds__tabling_analysis__Goals_75, transform_hlds__tabling_analysis__Result_11, transform_hlds__tabling_analysis__MaybeAnalysisStatus_12, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_87, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_88);
+#line 378 "tabling_analysis.m"
+                    return;
+                  }
+#line 377 "tabling_analysis.m"
+                }
+#line 322 "tabling_analysis.m"
+                break;
+#line 322 "tabling_analysis.m"
+              case (MR_Integer) 3:
+#line 377 "tabling_analysis.m"
+                {
+#line 377 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Goals_117 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 1)));
+
+#line 378 "tabling_analysis.m"
+                  {
+#line 378 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0(transform_hlds__tabling_analysis__SCC_8, transform_hlds__tabling_analysis__VarTypes_9, transform_hlds__tabling_analysis__Goals_117, transform_hlds__tabling_analysis__Result_11, transform_hlds__tabling_analysis__MaybeAnalysisStatus_12, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_87, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_88);
+#line 378 "tabling_analysis.m"
+                    return;
+                  }
+#line 377 "tabling_analysis.m"
+                }
+#line 322 "tabling_analysis.m"
+                break;
+#line 322 "tabling_analysis.m"
+              case (MR_Integer) 4:
+#line 377 "tabling_analysis.m"
+                {
+#line 377 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Cases_82 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 3)));
+#line 377 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Goals_119;
+#line 375 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_80_80 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 375 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_81_81 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 2)));
+
+#line 376 "tabling_analysis.m"
+                  {
+#line 376 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__Goals_119 = mercury__list__map_2_f_0((MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_case_0, (MR_Word) &hlds__hlds_goal__hlds__hlds_goal__type_ctor_info_hlds_goal_0, (MR_Word) &transform_hlds__tabling_analysis_scalar_common_2[6], transform_hlds__tabling_analysis__Cases_82);
+                  }
+#line 378 "tabling_analysis.m"
+                  {
+#line 378 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0(transform_hlds__tabling_analysis__SCC_8, transform_hlds__tabling_analysis__VarTypes_9, transform_hlds__tabling_analysis__Goals_119, transform_hlds__tabling_analysis__Result_11, transform_hlds__tabling_analysis__MaybeAnalysisStatus_12, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_87, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_88);
+#line 378 "tabling_analysis.m"
+                    return;
+                  }
+#line 377 "tabling_analysis.m"
+                }
+#line 322 "tabling_analysis.m"
+                break;
+#line 322 "tabling_analysis.m"
+              case (MR_Integer) 5:
+#line 353 "tabling_analysis.m"
+                {
+#line 353 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Reason_71 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 1)));
+#line 353 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__SubGoal_109 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 355 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__FGT_73;
+#line 355 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_72_72;
+
+#line 355 "tabling_analysis.m"
+                  transform_hlds__tabling_analysis__succeeded = ((((MR_tag((MR_Word) transform_hlds__tabling_analysis__Reason_71)) == (MR_mktag((MR_Integer) 3)))) && (((((MR_Integer) (MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__Reason_71, (MR_Integer) 0)))) == (MR_Integer) 5)));
+#line 355 "tabling_analysis.m"
+                  if (transform_hlds__tabling_analysis__succeeded)
+#line 355 "tabling_analysis.m"
+                    {
+#line 355 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__Reason_71, (MR_Integer) 1)));
+#line 355 "tabling_analysis.m"
+                      transform_hlds__tabling_analysis__FGT_73 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__Reason_71, (MR_Integer) 2)));
+#line 357 "tabling_analysis.m"
+#line 357 "tabling_analysis.m"
+                      switch (transform_hlds__tabling_analysis__FGT_73) {
+#line 357 "tabling_analysis.m"
+                        default:
+#line 357 "tabling_analysis.m"
+                          transform_hlds__tabling_analysis__succeeded = MR_FALSE;
+#line 357 "tabling_analysis.m"
+                          break;
+#line 357 "tabling_analysis.m"
+                        case (MR_Integer) 1:
+#line 356 "tabling_analysis.m"
+                          transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 357 "tabling_analysis.m"
+                          break;
+#line 357 "tabling_analysis.m"
+                        case (MR_Integer) 2:
+#line 357 "tabling_analysis.m"
+                          transform_hlds__tabling_analysis__succeeded = MR_TRUE;
+#line 357 "tabling_analysis.m"
+                          break;
+#line 357 "tabling_analysis.m"
+                      }
+#line 355 "tabling_analysis.m"
+                    }
+#line 362 "tabling_analysis.m"
+                  if (transform_hlds__tabling_analysis__succeeded)
+#line 360 "tabling_analysis.m"
+                    {
+#line 360 "tabling_analysis.m"
+                      *transform_hlds__tabling_analysis__Result_11 = (MR_Integer) 1;
+#line 361 "tabling_analysis.m"
+                      *transform_hlds__tabling_analysis__MaybeAnalysisStatus_12 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__tabling_analysis_scalar_common_8[0]);
+#line 360 "tabling_analysis.m"
+                      *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_88 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_87;
+#line 360 "tabling_analysis.m"
+                    }
+#line 362 "tabling_analysis.m"
+                  else
+#line 363 "tabling_analysis.m"
+                    {
+#line 363 "tabling_analysis.m"
+                      /* direct tailcall eliminated */
+#line 363 "tabling_analysis.m"
+                      {
+#line 363 "tabling_analysis.m"
+                        MR_Word transform_hlds__tabling_analysis__Goal__tmp_copy_10 = transform_hlds__tabling_analysis__SubGoal_109;
+
+#line 363 "tabling_analysis.m"
+                        transform_hlds__tabling_analysis__Goal_10 = transform_hlds__tabling_analysis__Goal__tmp_copy_10;
+#line 363 "tabling_analysis.m"
+                      }
+#line 363 "tabling_analysis.m"
+                      continue;
+#line 363 "tabling_analysis.m"
+                    }
+#line 353 "tabling_analysis.m"
+                }
+#line 322 "tabling_analysis.m"
+                break;
+#line 322 "tabling_analysis.m"
+              case (MR_Integer) 6:
+#line 377 "tabling_analysis.m"
+                {
+#line 377 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Cond_77 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 2)));
+#line 377 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Then_78 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 3)));
+#line 377 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Else_79 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 4)));
+#line 377 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_95_95;
+#line 377 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_96_96;
+#line 377 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__Goals_118;
+#line 372 "tabling_analysis.m"
+                  MR_Word transform_hlds__tabling_analysis__V_76_76 = ((MR_Word) (MR_hl_field(MR_mktag(3), transform_hlds__tabling_analysis__GoalExpr_14, (MR_Integer) 1)));
+
+#line 373 "tabling_analysis.m"
+                  {
+#line 373 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__V_96_96 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 373 "tabling_analysis.m"
+                    MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__V_96_96, 0) = ((MR_Box) (transform_hlds__tabling_analysis__Else_79));
+#line 373 "tabling_analysis.m"
+                    MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__V_96_96, 1) = ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 373 "tabling_analysis.m"
+                  }
+#line 373 "tabling_analysis.m"
+                  {
+#line 373 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__V_95_95 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 373 "tabling_analysis.m"
+                    MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__V_95_95, 0) = ((MR_Box) (transform_hlds__tabling_analysis__Then_78));
+#line 373 "tabling_analysis.m"
+                    MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__V_95_95, 1) = ((MR_Box) (transform_hlds__tabling_analysis__V_96_96));
+#line 373 "tabling_analysis.m"
+                  }
+#line 373 "tabling_analysis.m"
+                  {
+#line 373 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__Goals_118 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 373 "tabling_analysis.m"
+                    MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__Goals_118, 0) = ((MR_Box) (transform_hlds__tabling_analysis__Cond_77));
+#line 373 "tabling_analysis.m"
+                    MR_hl_field(MR_mktag(1), transform_hlds__tabling_analysis__Goals_118, 1) = ((MR_Box) (transform_hlds__tabling_analysis__V_95_95));
+#line 373 "tabling_analysis.m"
+                  }
+#line 378 "tabling_analysis.m"
+                  {
+#line 378 "tabling_analysis.m"
+                    transform_hlds__tabling_analysis__check_goals_for_mm_tabling_7_p_0(transform_hlds__tabling_analysis__SCC_8, transform_hlds__tabling_analysis__VarTypes_9, transform_hlds__tabling_analysis__Goals_118, transform_hlds__tabling_analysis__Result_11, transform_hlds__tabling_analysis__MaybeAnalysisStatus_12, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_87, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_88);
+#line 378 "tabling_analysis.m"
+                    return;
+                  }
+#line 377 "tabling_analysis.m"
+                }
+#line 322 "tabling_analysis.m"
+                break;
+#line 322 "tabling_analysis.m"
+              case (MR_Integer) 7:
+#line 381 "tabling_analysis.m"
+                {
+#line 382 "tabling_analysis.m"
+                  {
+#line 382 "tabling_analysis.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.tabling_analysis", (MR_String) "predicate \140transform_hlds.tabling_analysis.check_goal_for_mm_tabling\'/7", (MR_String) "shorthand");
+#line 382 "tabling_analysis.m"
+                    return;
+                  }
+#line 381 "tabling_analysis.m"
+                }
+#line 322 "tabling_analysis.m"
+                break;
+#line 322 "tabling_analysis.m"
+            }
+#line 322 "tabling_analysis.m"
+            break;
+#line 322 "tabling_analysis.m"
+        }
+#line 306 "tabling_analysis.m"
+      }
+#line 306 "tabling_analysis.m"
+      break;
+#line 306 "tabling_analysis.m"
+    }
+#line 301 "tabling_analysis.m"
+}
+
+#line 274 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__check_proc_for_mm_tabling_6_p_0(
+#line 274 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__SCC_7,
+#line 274 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__PPId_8,
+#line 274 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_Results_0_21,
+#line 274 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_Results_22,
+#line 274 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_23,
+#line 274 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_24)
+#line 274 "tabling_analysis.m"
+{
+#line 277 "tabling_analysis.m"
+  {
+#line 277 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 277 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__ProcInfo_12;
+#line 277 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__EvalMethod_13;
+#line 277 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Result_15;
+#line 277 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__MaybeAnalysisStatus_16;
+#line 277 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_27_27;
+#line 278 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_11_11;
+
+#line 278 "tabling_analysis.m"
+    {
+#line 278 "tabling_analysis.m"
+      hlds__hlds_module__module_info_pred_proc_info_4_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_23, transform_hlds__tabling_analysis__PPId_8, &transform_hlds__tabling_analysis__V_11_11, &transform_hlds__tabling_analysis__ProcInfo_12);
+    }
+#line 279 "tabling_analysis.m"
+    {
+#line 279 "tabling_analysis.m"
+      hlds__hlds_pred__proc_info_get_eval_method_2_p_0(transform_hlds__tabling_analysis__ProcInfo_12, &transform_hlds__tabling_analysis__EvalMethod_13);
+    }
+#line 284 "tabling_analysis.m"
+#line 284 "tabling_analysis.m"
+    switch (MR_tag((MR_Word) transform_hlds__tabling_analysis__EvalMethod_13)) {
+#line 284 "tabling_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 284 "tabling_analysis.m"
+      case (MR_Integer) 0:
+#line 289 "tabling_analysis.m"
+        {
+#line 289 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__Body_19;
+#line 289 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__VarTypes_20;
+
+#line 290 "tabling_analysis.m"
+          {
+#line 290 "tabling_analysis.m"
+            hlds__hlds_pred__proc_info_get_goal_2_p_0(transform_hlds__tabling_analysis__ProcInfo_12, &transform_hlds__tabling_analysis__Body_19);
+          }
+#line 291 "tabling_analysis.m"
+          {
+#line 291 "tabling_analysis.m"
+            hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__tabling_analysis__ProcInfo_12, &transform_hlds__tabling_analysis__VarTypes_20);
+          }
+#line 292 "tabling_analysis.m"
+          {
+#line 292 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__check_goal_for_mm_tabling_7_p_0(transform_hlds__tabling_analysis__SCC_7, transform_hlds__tabling_analysis__VarTypes_20, transform_hlds__tabling_analysis__Body_19, &transform_hlds__tabling_analysis__Result_15, &transform_hlds__tabling_analysis__MaybeAnalysisStatus_16, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_23, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_24);
+          }
+#line 289 "tabling_analysis.m"
+        }
+#line 284 "tabling_analysis.m"
+        break;
+#line 284 "tabling_analysis.m"
+      case (MR_Integer) 1:
+#line 289 "tabling_analysis.m"
+        {
+#line 289 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__Body_19;
+#line 289 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__VarTypes_20;
+
+#line 290 "tabling_analysis.m"
+          {
+#line 290 "tabling_analysis.m"
+            hlds__hlds_pred__proc_info_get_goal_2_p_0(transform_hlds__tabling_analysis__ProcInfo_12, &transform_hlds__tabling_analysis__Body_19);
+          }
+#line 291 "tabling_analysis.m"
+          {
+#line 291 "tabling_analysis.m"
+            hlds__hlds_pred__proc_info_get_vartypes_2_p_0(transform_hlds__tabling_analysis__ProcInfo_12, &transform_hlds__tabling_analysis__VarTypes_20);
+          }
+#line 292 "tabling_analysis.m"
+          {
+#line 292 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__check_goal_for_mm_tabling_7_p_0(transform_hlds__tabling_analysis__SCC_7, transform_hlds__tabling_analysis__VarTypes_20, transform_hlds__tabling_analysis__Body_19, &transform_hlds__tabling_analysis__Result_15, &transform_hlds__tabling_analysis__MaybeAnalysisStatus_16, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_23, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_24);
+          }
+#line 289 "tabling_analysis.m"
+        }
+#line 284 "tabling_analysis.m"
+        break;
+#line 284 "tabling_analysis.m"
+      case (MR_Integer) 2:
+#line 281 "tabling_analysis.m"
+        {
+#line 282 "tabling_analysis.m"
+          transform_hlds__tabling_analysis__Result_15 = (MR_Integer) 0;
+#line 283 "tabling_analysis.m"
+          transform_hlds__tabling_analysis__MaybeAnalysisStatus_16 = (MR_Word) MR_mkword(MR_mktag(1), &transform_hlds__tabling_analysis_scalar_common_8[0]);
+#line 281 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_24 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_23;
+#line 281 "tabling_analysis.m"
+        }
+#line 284 "tabling_analysis.m"
+        break;
+#line 284 "tabling_analysis.m"
+    }
+#line 295 "tabling_analysis.m"
+    {
+#line 295 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__V_27_27 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 3 * sizeof(MR_Word)), NULL, NULL);
+#line 295 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_27_27, 0) = ((MR_Box) (transform_hlds__tabling_analysis__PPId_8));
+#line 295 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_27_27, 1) = ((MR_Box) (transform_hlds__tabling_analysis__Result_15));
+#line 295 "tabling_analysis.m"
+      MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_27_27, 2) = ((MR_Box) (transform_hlds__tabling_analysis__MaybeAnalysisStatus_16));
+#line 295 "tabling_analysis.m"
+    }
+#line 295 "tabling_analysis.m"
+    {
+#line 295 "tabling_analysis.m"
+      mercury__list__cons_3_p_0((MR_Word) &transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_result_0, ((MR_Box) (transform_hlds__tabling_analysis__V_27_27)), transform_hlds__tabling_analysis__STATE_VARIABLE_Results_0_21, transform_hlds__tabling_analysis__STATE_VARIABLE_Results_22);
+#line 295 "tabling_analysis.m"
+      return;
+    }
+#line 277 "tabling_analysis.m"
+  }
+#line 274 "tabling_analysis.m"
+}
+
+#line 265 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__maybe_analysis_status_2_p_0(
+#line 265 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__ProcResult_3,
+#line 265 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__HeadVar__2_2)
+#line 265 "tabling_analysis.m"
+{
+#line 268 "tabling_analysis.m"
+  {
+#line 268 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 268 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__ProcResult_3, (MR_Integer) 0)));
+#line 268 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__ProcResult_3, (MR_Integer) 1)));
+
+#line 268 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__HeadVar__2_2 = ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__ProcResult_3, (MR_Integer) 2)));
+#line 268 "tabling_analysis.m"
+  }
+#line 265 "tabling_analysis.m"
+}
+
+#line 212 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_17(
+#line 212 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 212 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 212 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 212 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 212 "tabling_analysis.m"
+{
+#line 212 "tabling_analysis.m"
+  {
+#line 212 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 212 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv12_STATE_VARIABLE_ModuleInfo_12;
+
+#line 212 "tabling_analysis.m"
+    {
+#line 212 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__annotate_proc_3_p_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), &transform_hlds__tabling_analysis__conv12_STATE_VARIABLE_ModuleInfo_12);
+    }
+#line 212 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv12_STATE_VARIABLE_ModuleInfo_12));
+#line 212 "tabling_analysis.m"
+  }
+#line 212 "tabling_analysis.m"
+}
+
+#line 204 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_16(
+#line 204 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 204 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 204 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 204 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 204 "tabling_analysis.m"
+{
+#line 204 "tabling_analysis.m"
+  {
+#line 204 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 204 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv10_HeadVar__5_29;
+
+#line 204 "tabling_analysis.m"
+    {
+#line 204 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__IntroducedFrom__pred__analyse_mm_tabling_in_scc__204__1_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), &transform_hlds__tabling_analysis__conv10_HeadVar__5_29);
+    }
+#line 204 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv10_HeadVar__5_29));
+#line 204 "tabling_analysis.m"
+  }
+#line 204 "tabling_analysis.m"
+}
+
+#line 262 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_15(
+#line 262 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 262 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 262 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 262 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 262 "tabling_analysis.m"
+{
+#line 262 "tabling_analysis.m"
+  {
+#line 262 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 262 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv8_MaybeStatus_6;
+
+#line 262 "tabling_analysis.m"
+    {
+#line 262 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__combine_maybe_analysis_status_3_p_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), &transform_hlds__tabling_analysis__conv8_MaybeStatus_6);
+    }
+#line 262 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv8_MaybeStatus_6));
+#line 262 "tabling_analysis.m"
+  }
+#line 262 "tabling_analysis.m"
+}
+
+#line 261 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_14(
+#line 261 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 261 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 261 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_2)
+#line 261 "tabling_analysis.m"
+{
+#line 261 "tabling_analysis.m"
+  {
+#line 261 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 261 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv7_HeadVar__2_2;
+
+#line 261 "tabling_analysis.m"
+    {
+#line 261 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__maybe_analysis_status_2_p_0(((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), &transform_hlds__tabling_analysis__conv7_HeadVar__2_2);
+    }
+#line 261 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_2 = ((MR_Box) (transform_hlds__tabling_analysis__conv7_HeadVar__2_2));
+#line 261 "tabling_analysis.m"
+  }
+#line 261 "tabling_analysis.m"
+}
+
+#line 186 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_1(
+#line 186 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 186 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 186 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 186 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3,
+#line 186 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_4,
+#line 186 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_5)
+#line 186 "tabling_analysis.m"
+{
+#line 186 "tabling_analysis.m"
+  {
+#line 186 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 186 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv1_STATE_VARIABLE_Results_22;
+#line 186 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_24;
+
+#line 186 "tabling_analysis.m"
+    {
+#line 186 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__check_proc_for_mm_tabling_6_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), &transform_hlds__tabling_analysis__conv1_STATE_VARIABLE_Results_22, ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_4), &transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_24);
+    }
+#line 186 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv1_STATE_VARIABLE_Results_22));
+#line 186 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_5 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_24));
+#line 186 "tabling_analysis.m"
+  }
+#line 186 "tabling_analysis.m"
+}
+
+#line 230 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_2(
+#line 230 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 230 "tabling_analysis.m"
+{
+#line 230 "tabling_analysis.m"
+  {
+#line 230 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 230 "tabling_analysis.m"
+    MR_builtin_longjmp((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__commit_0, 1);
+#line 230 "tabling_analysis.m"
+  }
+#line 230 "tabling_analysis.m"
+}
+
+#line 231 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_4(
+#line 231 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 231 "tabling_analysis.m"
+{
+#line 231 "tabling_analysis.m"
+  {
+#line 231 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 231 "tabling_analysis.m"
+    (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResult_61 = ((MR_Word) (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__conv4_ProcResult_61);
+#line 231 "tabling_analysis.m"
+    {
+#line 231 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_3(transform_hlds__tabling_analysis__env_ptr);
+#line 231 "tabling_analysis.m"
+      return;
+    }
+#line 231 "tabling_analysis.m"
+  }
+#line 231 "tabling_analysis.m"
+}
+
+#line 230 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_3(
+#line 230 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 230 "tabling_analysis.m"
+{
+#line 230 "tabling_analysis.m"
+  {
+#line 230 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 230 "tabling_analysis.m"
+    {
+#line 233 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResult_61, (MR_Integer) 1)));
+#line 233 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResult_61, (MR_Integer) 0)));
+#line 233 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__V_68_68 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResult_61, (MR_Integer) 2)));
+
+#line 233 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded = (transform_hlds__tabling_analysis__V_63_63 == (MR_Integer) 1);
+#line 232 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded = !((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded);
+#line 232 "tabling_analysis.m"
+      if ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded)
+#line 232 "tabling_analysis.m"
+        {
+#line 232 "tabling_analysis.m"
+          transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_2(transform_hlds__tabling_analysis__env_ptr);
+#line 232 "tabling_analysis.m"
+          return;
+        }
+#line 230 "tabling_analysis.m"
+    }
+#line 230 "tabling_analysis.m"
+  }
+#line 230 "tabling_analysis.m"
+}
+
+#line 230 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_5(
+#line 230 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 230 "tabling_analysis.m"
+{
+#line 230 "tabling_analysis.m"
+  {
+#line 230 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 230 "tabling_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__commit_0) == 0)
+#line 230 "tabling_analysis.m"
+      {
+#line 230 "tabling_analysis.m"
+        {
+#line 231 "tabling_analysis.m"
+          {
+#line 231 "tabling_analysis.m"
+            mercury__list__member_2_p_1((MR_Word) &transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_result_0, &(transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__conv4_ProcResult_61, (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResults_10, transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_4, transform_hlds__tabling_analysis__env_ptr);
+          }
+#line 230 "tabling_analysis.m"
+        }
+#line 230 "tabling_analysis.m"
+        (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded = MR_FALSE;
+#line 230 "tabling_analysis.m"
+      }
+#line 230 "tabling_analysis.m"
+    else
+#line 230 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded = MR_TRUE;
+#line 230 "tabling_analysis.m"
+  }
+#line 230 "tabling_analysis.m"
+}
+
+#line 238 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_6(
+#line 238 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 238 "tabling_analysis.m"
+{
+#line 238 "tabling_analysis.m"
+  {
+#line 238 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 238 "tabling_analysis.m"
+    MR_builtin_longjmp((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__commit_1, 1);
+#line 238 "tabling_analysis.m"
+  }
+#line 238 "tabling_analysis.m"
+}
+
+#line 239 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_8(
+#line 239 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 239 "tabling_analysis.m"
+{
+#line 239 "tabling_analysis.m"
+  {
+#line 239 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 239 "tabling_analysis.m"
+    (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResult_76 = ((MR_Word) (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__conv5_ProcResult_76);
+#line 239 "tabling_analysis.m"
+    {
+#line 239 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_7(transform_hlds__tabling_analysis__env_ptr);
+#line 239 "tabling_analysis.m"
+      return;
+    }
+#line 239 "tabling_analysis.m"
+  }
+#line 239 "tabling_analysis.m"
+}
+
+#line 238 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_7(
+#line 238 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 238 "tabling_analysis.m"
+{
+#line 238 "tabling_analysis.m"
+  {
+#line 238 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 238 "tabling_analysis.m"
+    {
+#line 241 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__V_69_69 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResult_76, (MR_Integer) 0)));
+#line 241 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__V_70_70;
+
+#line 241 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResult_76, (MR_Integer) 1)));
+#line 241 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__V_70_70 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResult_76, (MR_Integer) 2)));
+#line 241 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded = ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__V_64_64 == (MR_Integer) 0);
+#line 241 "tabling_analysis.m"
+      if ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded)
+#line 241 "tabling_analysis.m"
+        {
+#line 241 "tabling_analysis.m"
+          transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_6(transform_hlds__tabling_analysis__env_ptr);
+#line 241 "tabling_analysis.m"
+          return;
+        }
+#line 238 "tabling_analysis.m"
+    }
+#line 238 "tabling_analysis.m"
+  }
+#line 238 "tabling_analysis.m"
+}
+
+#line 238 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_9(
+#line 238 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 238 "tabling_analysis.m"
+{
+#line 238 "tabling_analysis.m"
+  {
+#line 238 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 238 "tabling_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__commit_1) == 0)
+#line 238 "tabling_analysis.m"
+      {
+#line 238 "tabling_analysis.m"
+        {
+#line 239 "tabling_analysis.m"
+          {
+#line 239 "tabling_analysis.m"
+            mercury__list__member_2_p_1((MR_Word) &transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_result_0, &(transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__conv5_ProcResult_76, (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResults_10, transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_8, transform_hlds__tabling_analysis__env_ptr);
+          }
+#line 238 "tabling_analysis.m"
+        }
+#line 238 "tabling_analysis.m"
+        (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded = MR_FALSE;
+#line 238 "tabling_analysis.m"
+      }
+#line 238 "tabling_analysis.m"
+    else
+#line 238 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded = MR_TRUE;
+#line 238 "tabling_analysis.m"
+  }
+#line 238 "tabling_analysis.m"
+}
+
+#line 244 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_10(
+#line 244 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 244 "tabling_analysis.m"
+{
+#line 244 "tabling_analysis.m"
+  {
+#line 244 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 244 "tabling_analysis.m"
+    MR_builtin_longjmp((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__commit_2, 1);
+#line 244 "tabling_analysis.m"
+  }
+#line 244 "tabling_analysis.m"
+}
+
+#line 244 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_12(
+#line 244 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 244 "tabling_analysis.m"
+{
+#line 244 "tabling_analysis.m"
+  {
+#line 244 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 244 "tabling_analysis.m"
+    (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ConditionalResult_66 = ((MR_Word) (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__conv6_ConditionalResult_66);
+#line 244 "tabling_analysis.m"
+    {
+#line 244 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_11(transform_hlds__tabling_analysis__env_ptr);
+#line 244 "tabling_analysis.m"
+      return;
+    }
+#line 244 "tabling_analysis.m"
+  }
+#line 244 "tabling_analysis.m"
+}
+
+#line 244 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_11(
+#line 244 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 244 "tabling_analysis.m"
+{
+#line 244 "tabling_analysis.m"
+  {
+#line 244 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 244 "tabling_analysis.m"
+    {
+#line 245 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__V_71_71 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ConditionalResult_66, (MR_Integer) 0)));
+#line 245 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__V_72_72;
+
+#line 245 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__V_65_65 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ConditionalResult_66, (MR_Integer) 1)));
+#line 245 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__V_72_72 = ((MR_Word) (MR_hl_field(MR_mktag(0), (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ConditionalResult_66, (MR_Integer) 2)));
+#line 245 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded = ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__V_65_65 == (MR_Integer) 2);
+#line 245 "tabling_analysis.m"
+      if ((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded)
+#line 245 "tabling_analysis.m"
+        {
+#line 245 "tabling_analysis.m"
+          transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_10(transform_hlds__tabling_analysis__env_ptr);
+#line 245 "tabling_analysis.m"
+          return;
+        }
+#line 244 "tabling_analysis.m"
+    }
+#line 244 "tabling_analysis.m"
+  }
+#line 244 "tabling_analysis.m"
+}
+
+#line 244 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_13(
+#line 244 "tabling_analysis.m"
+  void * transform_hlds__tabling_analysis__env_ptr_arg)
+#line 244 "tabling_analysis.m"
+{
+#line 244 "tabling_analysis.m"
+  {
+#line 244 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s * transform_hlds__tabling_analysis__env_ptr = (struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s *) transform_hlds__tabling_analysis__env_ptr_arg;
+
+#line 244 "tabling_analysis.m"
+    if (MR_builtin_setjmp((transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__commit_2) == 0)
+#line 244 "tabling_analysis.m"
+      {
+#line 244 "tabling_analysis.m"
+        {
+#line 244 "tabling_analysis.m"
+          {
+#line 244 "tabling_analysis.m"
+            mercury__list__member_2_p_1((MR_Word) &transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_result_0, &(transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__conv6_ConditionalResult_66, (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResults_10, transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_12, transform_hlds__tabling_analysis__env_ptr);
+          }
+#line 244 "tabling_analysis.m"
+        }
+#line 244 "tabling_analysis.m"
+        (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded = MR_FALSE;
+#line 244 "tabling_analysis.m"
+      }
+#line 244 "tabling_analysis.m"
+    else
+#line 244 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env_ptr)->transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded = MR_TRUE;
+#line 244 "tabling_analysis.m"
+  }
+#line 244 "tabling_analysis.m"
+}
+
+#line 181 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0(
+#line 181 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Debug_6,
+#line 181 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__Pass1Only_7,
+#line 181 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__SCC_8,
+#line 181 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_20,
+#line 181 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_21)
+#line 181 "tabling_analysis.m"
+{
+#line 181 "tabling_analysis.m"
+  {
+#line 181 "tabling_analysis.m"
+    struct transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0_s transform_hlds__tabling_analysis__env;
+
+#line 184 "tabling_analysis.m"
+    {
+#line 184 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__TypeCtorInfo_42_42;
+#line 184 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__TypeCtorInfo_44_44;
+#line 184 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__TablingStatus_11;
+#line 184 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__MaybeAnalysisStatus_12;
+#line 184 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__TablingInfo0_14;
+#line 184 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__Update_15;
+#line 184 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__TablingInfo_19;
+#line 184 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__V_22_22;
+#line 184 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_24_24;
+#line 184 "tabling_analysis.m"
+      MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_31_31;
+#line 186 "tabling_analysis.m"
+      MR_Box transform_hlds__tabling_analysis__conv3_ProcResults_10;
+#line 186 "tabling_analysis.m"
+      MR_Box transform_hlds__tabling_analysis__conv2_STATE_VARIABLE_ModuleInfo_24_24;
+#line 208 "tabling_analysis.m"
+      MR_Box transform_hlds__tabling_analysis__conv11_TablingInfo_19;
+
+#line 186 "tabling_analysis.m"
+      {
+#line 186 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__V_22_22 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 186 "tabling_analysis.m"
+        MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_22_22, 0) = ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_7[0]));
+#line 186 "tabling_analysis.m"
+        MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_22_22, 1) = ((MR_Box) (transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_1));
+#line 186 "tabling_analysis.m"
+        MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_22_22, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 186 "tabling_analysis.m"
+        MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_22_22, 3) = ((MR_Box) (transform_hlds__tabling_analysis__SCC_8));
+#line 186 "tabling_analysis.m"
+      }
+#line 7758 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__TypeCtorInfo_42_42 = (MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0;
+#line 7760 "transform_hlds.tabling_analysis.c"
+      transform_hlds__tabling_analysis__TypeCtorInfo_44_44 = (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0;
+#line 186 "tabling_analysis.m"
+      {
+#line 186 "tabling_analysis.m"
+        mercury__list__foldl2_6_p_0(transform_hlds__tabling_analysis__TypeCtorInfo_42_42, (MR_Word) &transform_hlds__tabling_analysis_scalar_common_1[1], transform_hlds__tabling_analysis__TypeCtorInfo_44_44, transform_hlds__tabling_analysis__V_22_22, transform_hlds__tabling_analysis__SCC_8, ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))), &transform_hlds__tabling_analysis__conv3_ProcResults_10, ((MR_Box) (transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_20)), &transform_hlds__tabling_analysis__conv2_STATE_VARIABLE_ModuleInfo_24_24);
+      }
+#line 186 "tabling_analysis.m"
+      (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResults_10 = ((MR_Word) transform_hlds__tabling_analysis__conv3_ProcResults_10);
+#line 186 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_24_24 = ((MR_Word) transform_hlds__tabling_analysis__conv2_STATE_VARIABLE_ModuleInfo_24_24);
+#line 223 "tabling_analysis.m"
+      if (((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResults_10 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 223 "tabling_analysis.m"
+        {
+#line 224 "tabling_analysis.m"
+          {
+#line 224 "tabling_analysis.m"
+            mercury__require__unexpected_3_p_0((MR_String) "transform_hlds.tabling_analysis", (MR_String) "predicate \140transform_hlds.tabling_analysis.combine_individual_proc_results\'/3", (MR_String) "empty SCC");
+#line 224 "tabling_analysis.m"
+            return;
+          }
+#line 223 "tabling_analysis.m"
+        }
+#line 223 "tabling_analysis.m"
+      else
+#line 226 "tabling_analysis.m"
+        {
+#line 226 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__TypeInfo_13_91;
+#line 226 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__MaybeAnalysisStatuses_83;
+#line 262 "tabling_analysis.m"
+          MR_Box transform_hlds__tabling_analysis__conv9_MaybeAnalysisStatus_12;
+
+#line 230 "tabling_analysis.m"
+          {
+#line 230 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_5(&transform_hlds__tabling_analysis__env);
+          }
+#line 230 "tabling_analysis.m"
+          (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded = !((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded);
+#line 237 "tabling_analysis.m"
+          if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded)
+#line 236 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__TablingStatus_11 = (MR_Integer) 1;
+#line 237 "tabling_analysis.m"
+          else
+#line 249 "tabling_analysis.m"
+            {
+#line 238 "tabling_analysis.m"
+              {
+#line 238 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_9(&transform_hlds__tabling_analysis__env);
+              }
+#line 238 "tabling_analysis.m"
+              (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded = !((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded);
+#line 242 "tabling_analysis.m"
+              if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded)
+#line 244 "tabling_analysis.m"
+                {
+#line 244 "tabling_analysis.m"
+                  transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_13(&transform_hlds__tabling_analysis__env);
+                }
+#line 249 "tabling_analysis.m"
+              if ((transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__succeeded)
+#line 248 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__TablingStatus_11 = (MR_Integer) 2;
+#line 249 "tabling_analysis.m"
+              else
+#line 251 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__TablingStatus_11 = (MR_Integer) 0;
+#line 249 "tabling_analysis.m"
+            }
+#line 7834 "transform_hlds.tabling_analysis.c"
+          transform_hlds__tabling_analysis__TypeInfo_13_91 = (MR_Word) &transform_hlds__tabling_analysis_scalar_common_1[2];
+#line 261 "tabling_analysis.m"
+          {
+#line 261 "tabling_analysis.m"
+            mercury__list__map_3_p_0((MR_Word) &transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_result_0, transform_hlds__tabling_analysis__TypeInfo_13_91, (MR_Word) &transform_hlds__tabling_analysis_scalar_common_2[3], (transform_hlds__tabling_analysis__env).transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_env_0__ProcResults_10, &transform_hlds__tabling_analysis__MaybeAnalysisStatuses_83);
+          }
+#line 262 "tabling_analysis.m"
+          {
+#line 262 "tabling_analysis.m"
+            mercury__list__foldl_4_p_0(transform_hlds__tabling_analysis__TypeInfo_13_91, transform_hlds__tabling_analysis__TypeInfo_13_91, (MR_Word) &transform_hlds__tabling_analysis_scalar_common_2[4], transform_hlds__tabling_analysis__MaybeAnalysisStatuses_83, ((MR_Box) (MR_mkword(MR_mktag(1), &transform_hlds__tabling_analysis_scalar_common_8[0]))), &transform_hlds__tabling_analysis__conv9_MaybeAnalysisStatus_12);
+          }
+#line 262 "tabling_analysis.m"
+          transform_hlds__tabling_analysis__MaybeAnalysisStatus_12 = ((MR_Word) transform_hlds__tabling_analysis__conv9_MaybeAnalysisStatus_12);
+#line 226 "tabling_analysis.m"
+        }
+#line 198 "tabling_analysis.m"
+#line 198 "tabling_analysis.m"
+      switch (transform_hlds__tabling_analysis__Debug_6) {
+#line 198 "tabling_analysis.m"
+        default: /*NOTREACHED*/ MR_assert(0);
+#line 198 "tabling_analysis.m"
+        case (MR_Integer) 0:
+#line 199 "tabling_analysis.m"
+          {
+#line 199 "tabling_analysis.m"
+          }
+#line 198 "tabling_analysis.m"
+          break;
+#line 198 "tabling_analysis.m"
+        case (MR_Integer) 1:
+#line 195 "tabling_analysis.m"
+          {
+#line 195 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__dump_mm_tabling_analysis_debug_info_5_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_24_24, transform_hlds__tabling_analysis__SCC_8, transform_hlds__tabling_analysis__TablingStatus_11);
+          }
+#line 198 "tabling_analysis.m"
+          break;
+#line 198 "tabling_analysis.m"
+      }
+#line 203 "tabling_analysis.m"
+      {
+#line 203 "tabling_analysis.m"
+        hlds__hlds_module__module_info_get_mm_tabling_info_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_24_24, &transform_hlds__tabling_analysis__TablingInfo0_14);
+      }
+#line 204 "tabling_analysis.m"
+      {
+#line 204 "tabling_analysis.m"
+        transform_hlds__tabling_analysis__Update_15 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 204 "tabling_analysis.m"
+        MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__Update_15, 0) = ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_5[1]));
+#line 204 "tabling_analysis.m"
+        MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__Update_15, 1) = ((MR_Box) (transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0_16));
+#line 204 "tabling_analysis.m"
+        MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__Update_15, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 204 "tabling_analysis.m"
+        MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__Update_15, 3) = ((MR_Box) (transform_hlds__tabling_analysis__TablingStatus_11));
+#line 204 "tabling_analysis.m"
+        MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__Update_15, 4) = ((MR_Box) (transform_hlds__tabling_analysis__MaybeAnalysisStatus_12));
+#line 204 "tabling_analysis.m"
+      }
+#line 208 "tabling_analysis.m"
+      {
+#line 208 "tabling_analysis.m"
+        mercury__list__foldl_4_p_0(transform_hlds__tabling_analysis__TypeCtorInfo_42_42, (MR_Word) &transform_hlds__tabling_analysis_scalar_common_2[0], transform_hlds__tabling_analysis__Update_15, transform_hlds__tabling_analysis__SCC_8, ((MR_Box) (transform_hlds__tabling_analysis__TablingInfo0_14)), &transform_hlds__tabling_analysis__conv11_TablingInfo_19);
+      }
+#line 208 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__TablingInfo_19 = ((MR_Word) transform_hlds__tabling_analysis__conv11_TablingInfo_19);
+#line 209 "tabling_analysis.m"
+      {
+#line 209 "tabling_analysis.m"
+        hlds__hlds_module__module_info_set_mm_tabling_info_3_p_0(transform_hlds__tabling_analysis__TablingInfo_19, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_24_24, &transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_31_31);
+      }
+#line 213 "tabling_analysis.m"
+#line 213 "tabling_analysis.m"
+      switch (transform_hlds__tabling_analysis__Pass1Only_7) {
+#line 213 "tabling_analysis.m"
+        default: /*NOTREACHED*/ MR_assert(0);
+#line 213 "tabling_analysis.m"
+        case (MR_Integer) 0:
+#line 211 "tabling_analysis.m"
+          {
+#line 212 "tabling_analysis.m"
+            MR_Box transform_hlds__tabling_analysis__conv13_STATE_VARIABLE_ModuleInfo_21;
+
+#line 212 "tabling_analysis.m"
+            {
+#line 212 "tabling_analysis.m"
+              mercury__list__foldl_4_p_0(transform_hlds__tabling_analysis__TypeCtorInfo_42_42, transform_hlds__tabling_analysis__TypeCtorInfo_44_44, (MR_Word) &transform_hlds__tabling_analysis_scalar_common_2[5], transform_hlds__tabling_analysis__SCC_8, ((MR_Box) (transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_31_31)), &transform_hlds__tabling_analysis__conv13_STATE_VARIABLE_ModuleInfo_21);
+            }
+#line 212 "tabling_analysis.m"
+            *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_21 = ((MR_Word) transform_hlds__tabling_analysis__conv13_STATE_VARIABLE_ModuleInfo_21);
+#line 211 "tabling_analysis.m"
+          }
+#line 213 "tabling_analysis.m"
+          break;
+#line 213 "tabling_analysis.m"
+        case (MR_Integer) 1:
+#line 214 "tabling_analysis.m"
+          *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_21 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_31_31;
+#line 213 "tabling_analysis.m"
+          break;
+#line 213 "tabling_analysis.m"
+      }
+#line 184 "tabling_analysis.m"
+    }
+#line 181 "tabling_analysis.m"
+  }
+#line 181 "tabling_analysis.m"
+}
+
+#line 155 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_module_4_p_0_2(
+#line 155 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 155 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 155 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 155 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 155 "tabling_analysis.m"
+{
+#line 155 "tabling_analysis.m"
+  {
+#line 155 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 155 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv2_STATE_VARIABLE_AnalysisInfo_11;
+
+#line 155 "tabling_analysis.m"
+    {
+#line 155 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__maybe_record_mm_tabling_result_4_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 3))), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), &transform_hlds__tabling_analysis__conv2_STATE_VARIABLE_AnalysisInfo_11);
+    }
+#line 155 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv2_STATE_VARIABLE_AnalysisInfo_11));
+#line 155 "tabling_analysis.m"
+  }
+#line 155 "tabling_analysis.m"
+}
+
+#line 133 "tabling_analysis.m"
+static void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_module_4_p_0_1(
+#line 133 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__closure_arg,
+#line 133 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_1,
+#line 133 "tabling_analysis.m"
+  MR_Box transform_hlds__tabling_analysis__wrapper_arg_2,
+#line 133 "tabling_analysis.m"
+  MR_Box * transform_hlds__tabling_analysis__wrapper_arg_3)
+#line 133 "tabling_analysis.m"
+{
+#line 133 "tabling_analysis.m"
+  {
+#line 133 "tabling_analysis.m"
+    MR_Box transform_hlds__tabling_analysis__closure = transform_hlds__tabling_analysis__closure_arg;
+#line 133 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_21;
+
+#line 133 "tabling_analysis.m"
+    {
+#line 133 "tabling_analysis.m"
+      transform_hlds__tabling_analysis__analyse_mm_tabling_in_scc_5_p_0(((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 3))), ((MR_Word) (MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__closure, (MR_Integer) 4))), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_1), ((MR_Word) transform_hlds__tabling_analysis__wrapper_arg_2), &transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_21);
+    }
+#line 133 "tabling_analysis.m"
+    *transform_hlds__tabling_analysis__wrapper_arg_3 = ((MR_Box) (transform_hlds__tabling_analysis__conv0_STATE_VARIABLE_ModuleInfo_21));
+#line 133 "tabling_analysis.m"
+  }
+#line 133 "tabling_analysis.m"
+}
+
+#line 64 "tabling_analysis.m"
+void MR_CALL 
+transform_hlds__tabling_analysis__analyse_mm_tabling_in_module_4_p_0(
+#line 64 "tabling_analysis.m"
+  MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_20,
+#line 64 "tabling_analysis.m"
+  MR_Word * transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_21)
+#line 64 "tabling_analysis.m"
+{
+#line 112 "tabling_analysis.m"
+  {
+#line 112 "tabling_analysis.m"
+    MR_bool transform_hlds__tabling_analysis__succeeded;
+#line 112 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__Globals_7;
+#line 112 "tabling_analysis.m"
+    MR_Word transform_hlds__tabling_analysis__UseMinimalModel_8;
+
+#line 113 "tabling_analysis.m"
+    {
+#line 113 "tabling_analysis.m"
+      hlds__hlds_module__module_info_get_globals_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_20, &transform_hlds__tabling_analysis__Globals_7);
+    }
+#line 114 "tabling_analysis.m"
+    {
+#line 114 "tabling_analysis.m"
+      libs__globals__lookup_bool_option_3_p_0(transform_hlds__tabling_analysis__Globals_7, (MR_Integer) 222, &transform_hlds__tabling_analysis__UseMinimalModel_8);
+    }
+#line 161 "tabling_analysis.m"
+#line 161 "tabling_analysis.m"
+    switch (transform_hlds__tabling_analysis__UseMinimalModel_8) {
+#line 161 "tabling_analysis.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 161 "tabling_analysis.m"
+      case (MR_Integer) 0:
+#line 162 "tabling_analysis.m"
+        *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_21 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_20;
+#line 161 "tabling_analysis.m"
+        break;
+#line 161 "tabling_analysis.m"
+      case (MR_Integer) 1:
+#line 118 "tabling_analysis.m"
+        {
+#line 118 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__MakeOptInt_9;
+#line 118 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__MakeTransOptInt_10;
+#line 118 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__IntermodAnalysis_11;
+#line 118 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__MakeAnalysisReg_12;
+#line 118 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__Pass1Only_13;
+#line 118 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__DepInfo_14;
+#line 118 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__SCCs_15;
+#line 118 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__Debug_16;
+#line 118 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__V_29_29;
+#line 118 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_30_30;
+#line 118 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__V_32_32;
+#line 118 "tabling_analysis.m"
+          MR_Word transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_33_33;
+#line 133 "tabling_analysis.m"
+          MR_Box transform_hlds__tabling_analysis__conv1_STATE_VARIABLE_ModuleInfo_33_33;
+
+#line 119 "tabling_analysis.m"
+          {
+#line 119 "tabling_analysis.m"
+            libs__globals__lookup_bool_option_3_p_0(transform_hlds__tabling_analysis__Globals_7, (MR_Integer) 87, &transform_hlds__tabling_analysis__MakeOptInt_9);
+          }
+#line 121 "tabling_analysis.m"
+          {
+#line 121 "tabling_analysis.m"
+            libs__globals__lookup_bool_option_3_p_0(transform_hlds__tabling_analysis__Globals_7, (MR_Integer) 88, &transform_hlds__tabling_analysis__MakeTransOptInt_10);
+          }
+#line 123 "tabling_analysis.m"
+          {
+#line 123 "tabling_analysis.m"
+            libs__globals__lookup_bool_option_3_p_0(transform_hlds__tabling_analysis__Globals_7, (MR_Integer) 335, &transform_hlds__tabling_analysis__IntermodAnalysis_11);
+          }
+#line 125 "tabling_analysis.m"
+          {
+#line 125 "tabling_analysis.m"
+            libs__globals__lookup_bool_option_3_p_0(transform_hlds__tabling_analysis__Globals_7, (MR_Integer) 89, &transform_hlds__tabling_analysis__MakeAnalysisReg_12);
+          }
+#line 127 "tabling_analysis.m"
+          {
+#line 127 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__V_29_29 = mercury__bool__or_2_f_0(transform_hlds__tabling_analysis__MakeOptInt_9, transform_hlds__tabling_analysis__MakeTransOptInt_10);
+          }
+#line 128 "tabling_analysis.m"
+          {
+#line 128 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__Pass1Only_13 = mercury__bool__or_2_f_0(transform_hlds__tabling_analysis__V_29_29, transform_hlds__tabling_analysis__MakeAnalysisReg_12);
+          }
+#line 129 "tabling_analysis.m"
+          {
+#line 129 "tabling_analysis.m"
+            transform_hlds__dependency_graph__module_info_ensure_dependency_info_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_0_20, &transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_30_30);
+          }
+#line 130 "tabling_analysis.m"
+          {
+#line 130 "tabling_analysis.m"
+            hlds__hlds_module__module_info_dependency_info_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_30_30, &transform_hlds__tabling_analysis__DepInfo_14);
+          }
+#line 131 "tabling_analysis.m"
+          {
+#line 131 "tabling_analysis.m"
+            hlds__hlds_module__hlds_dependency_info_get_dependency_ordering_2_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_proc_id_0, transform_hlds__tabling_analysis__DepInfo_14, &transform_hlds__tabling_analysis__SCCs_15);
+          }
+#line 132 "tabling_analysis.m"
+          {
+#line 132 "tabling_analysis.m"
+            libs__globals__lookup_bool_option_3_p_0(transform_hlds__tabling_analysis__Globals_7, (MR_Integer) 81, &transform_hlds__tabling_analysis__Debug_16);
+          }
+#line 133 "tabling_analysis.m"
+          {
+#line 133 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__V_32_32 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 5 * sizeof(MR_Word)), NULL, NULL);
+#line 133 "tabling_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_32_32, 0) = ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_5[0]));
+#line 133 "tabling_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_32_32, 1) = ((MR_Box) (transform_hlds__tabling_analysis__analyse_mm_tabling_in_module_4_p_0_1));
+#line 133 "tabling_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_32_32, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 2));
+#line 133 "tabling_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_32_32, 3) = ((MR_Box) (transform_hlds__tabling_analysis__Debug_16));
+#line 133 "tabling_analysis.m"
+            MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_32_32, 4) = ((MR_Box) (transform_hlds__tabling_analysis__Pass1Only_13));
+#line 133 "tabling_analysis.m"
+          }
+#line 133 "tabling_analysis.m"
+          {
+#line 133 "tabling_analysis.m"
+            mercury__list__foldl_4_p_0((MR_Word) &transform_hlds__tabling_analysis_scalar_common_1[0], (MR_Word) &hlds__hlds_module__hlds__hlds_module__type_ctor_info_module_info_0, transform_hlds__tabling_analysis__V_32_32, transform_hlds__tabling_analysis__SCCs_15, ((MR_Box) (transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_30_30)), &transform_hlds__tabling_analysis__conv1_STATE_VARIABLE_ModuleInfo_33_33);
+          }
+#line 133 "tabling_analysis.m"
+          transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_33_33 = ((MR_Word) transform_hlds__tabling_analysis__conv1_STATE_VARIABLE_ModuleInfo_33_33);
+#line 139 "tabling_analysis.m"
+          transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__MakeOptInt_9 == (MR_Integer) 1);
+#line 139 "tabling_analysis.m"
+          if (transform_hlds__tabling_analysis__succeeded)
+#line 140 "tabling_analysis.m"
+            transform_hlds__tabling_analysis__succeeded = (transform_hlds__tabling_analysis__IntermodAnalysis_11 == (MR_Integer) 0);
+#line 143 "tabling_analysis.m"
+          if (transform_hlds__tabling_analysis__succeeded)
+#line 142 "tabling_analysis.m"
+            {
+#line 142 "tabling_analysis.m"
+              transform_hlds__intermod__append_mm_tabling_pragmas_to_opt_file_3_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_33_33);
+            }
+#line 143 "tabling_analysis.m"
+          else
+#line 143 "tabling_analysis.m"
+            {
+#line 143 "tabling_analysis.m"
+            }
+#line 158 "tabling_analysis.m"
+#line 158 "tabling_analysis.m"
+          switch (transform_hlds__tabling_analysis__MakeAnalysisReg_12) {
+#line 158 "tabling_analysis.m"
+            default: /*NOTREACHED*/ MR_assert(0);
+#line 158 "tabling_analysis.m"
+            case (MR_Integer) 0:
+#line 159 "tabling_analysis.m"
+              *transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_21 = transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_33_33;
+#line 158 "tabling_analysis.m"
+              break;
+#line 158 "tabling_analysis.m"
+            case (MR_Integer) 1:
+#line 152 "tabling_analysis.m"
+              {
+#line 152 "tabling_analysis.m"
+                MR_Word transform_hlds__tabling_analysis__AnalysisInfo0_17;
+#line 152 "tabling_analysis.m"
+                MR_Word transform_hlds__tabling_analysis__PredIds_18;
+#line 152 "tabling_analysis.m"
+                MR_Word transform_hlds__tabling_analysis__AnalysisInfo_19;
+#line 152 "tabling_analysis.m"
+                MR_Word transform_hlds__tabling_analysis__V_35_35;
+#line 155 "tabling_analysis.m"
+                MR_Box transform_hlds__tabling_analysis__conv3_AnalysisInfo_19;
+
+#line 153 "tabling_analysis.m"
+                {
+#line 153 "tabling_analysis.m"
+                  hlds__hlds_module__module_info_get_analysis_info_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_33_33, &transform_hlds__tabling_analysis__AnalysisInfo0_17);
+                }
+#line 154 "tabling_analysis.m"
+                {
+#line 154 "tabling_analysis.m"
+                  hlds__hlds_module__module_info_get_valid_pred_ids_2_p_0(transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_33_33, &transform_hlds__tabling_analysis__PredIds_18);
+                }
+#line 155 "tabling_analysis.m"
+                {
+#line 155 "tabling_analysis.m"
+                  transform_hlds__tabling_analysis__V_35_35 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 155 "tabling_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_35_35, 0) = ((MR_Box) (&transform_hlds__tabling_analysis_scalar_common_6[0]));
+#line 155 "tabling_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_35_35, 1) = ((MR_Box) (transform_hlds__tabling_analysis__analyse_mm_tabling_in_module_4_p_0_2));
+#line 155 "tabling_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_35_35, 2) = ((MR_Box) (MR_Word) ((MR_Integer) 1));
+#line 155 "tabling_analysis.m"
+                  MR_hl_field(MR_mktag(0), transform_hlds__tabling_analysis__V_35_35, 3) = ((MR_Box) (transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_33_33));
+#line 155 "tabling_analysis.m"
+                }
+#line 155 "tabling_analysis.m"
+                {
+#line 155 "tabling_analysis.m"
+                  mercury__list__foldl_4_p_0((MR_Word) &hlds__hlds_pred__hlds__hlds_pred__type_ctor_info_pred_id_0, (MR_Word) &analysis__analysis__type_ctor_info_analysis_info_0, transform_hlds__tabling_analysis__V_35_35, transform_hlds__tabling_analysis__PredIds_18, ((MR_Box) (transform_hlds__tabling_analysis__AnalysisInfo0_17)), &transform_hlds__tabling_analysis__conv3_AnalysisInfo_19);
+                }
+#line 155 "tabling_analysis.m"
+                transform_hlds__tabling_analysis__AnalysisInfo_19 = ((MR_Word) transform_hlds__tabling_analysis__conv3_AnalysisInfo_19);
+#line 157 "tabling_analysis.m"
+                {
+#line 157 "tabling_analysis.m"
+                  hlds__hlds_module__module_info_set_analysis_info_3_p_0(transform_hlds__tabling_analysis__AnalysisInfo_19, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_33_33, transform_hlds__tabling_analysis__STATE_VARIABLE_ModuleInfo_21);
+#line 157 "tabling_analysis.m"
+                  return;
+                }
+#line 152 "tabling_analysis.m"
+              }
+#line 158 "tabling_analysis.m"
+              break;
+#line 158 "tabling_analysis.m"
+          }
+#line 118 "tabling_analysis.m"
+        }
+#line 161 "tabling_analysis.m"
+        break;
+#line 161 "tabling_analysis.m"
+    }
+#line 112 "tabling_analysis.m"
+  }
+#line 64 "tabling_analysis.m"
+}
+
+void mercury__transform_hlds__tabling_analysis__init(void)
+{
+}
+
+void mercury__transform_hlds__tabling_analysis__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_mm_tabling_analysis_answer_0);
+	MR_register_type_ctor_info(&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_result_0);
+	MR_register_type_ctor_info(&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_proc_results_0);
+	MR_register_type_ctor_info(&transform_hlds__tabling_analysis__transform_hlds__tabling_analysis__type_ctor_info_scc_0);
+}
+
+void mercury__transform_hlds__tabling_analysis__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module transform_hlds.tabling_analysis. */

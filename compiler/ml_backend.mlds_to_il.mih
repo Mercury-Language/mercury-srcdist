@@ -1,0 +1,134 @@
+/*
+** Automatically generated from `mlds_to_il.m'
+** by the Mercury compiler,
+** version rotd-2015-09-15
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module ml_backend.mlds_to_il. */
+/* :- interface. */
+
+#ifndef MR_HEADER_GUARD_ml_backend__mlds_to_il
+#define MR_HEADER_GUARD_ml_backend__mlds_to_il
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "mercury.h"
+
+
+#ifndef ML_BACKEND__MLDS_TO_IL_DECL_GUARD
+#define ML_BACKEND__MLDS_TO_IL_DECL_GUARD
+#include "ml_backend.mih"
+
+#endif
+
+
+
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_il__ml_backend__mlds_to_il__type_ctor_info_arguments_map_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_il__ml_backend__mlds_to_il__type_ctor_info_field_names_set_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_il__ml_backend__mlds_to_il__type_ctor_info_il_data_rep_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_il__ml_backend__mlds_to_il__type_ctor_info_il_info_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_il__ml_backend__mlds_to_il__type_ctor_info_il_mangle_name_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_il__ml_backend__mlds_to_il__type_ctor_info_instr_tree_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_il__ml_backend__mlds_to_il__type_ctor_info_locals_map_0;
+
+extern const MR_TypeCtorInfo_Struct ml_backend__mlds_to_il__ml_backend__mlds_to_il__type_ctor_info_mlds_vartypes_0;
+
+void MR_CALL 
+ml_backend__mlds_to_il__generate_il_4_p_0(
+  MR_Word ml_backend__mlds_to_il__param_1,
+  MR_Word ml_backend__mlds_to_il__param_2,
+  MR_Word * ml_backend__mlds_to_il__param_3,
+  MR_Word * ml_backend__mlds_to_il__param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_il__get_il_data_rep_2_p_0(
+  MR_Word ml_backend__mlds_to_il__param_1,
+  MR_Word * ml_backend__mlds_to_il__param_2);
+
+void MR_CALL 
+ml_backend__mlds_to_il__mangle_mlds_proc_label_4_p_0(
+  MR_Word ml_backend__mlds_to_il__param_1,
+  MR_Word ml_backend__mlds_to_il__param_2,
+  MR_Word * ml_backend__mlds_to_il__param_3,
+  MR_String * ml_backend__mlds_to_il__param_4);
+
+void MR_CALL 
+ml_backend__mlds_to_il__mangle_mlds_var_2_p_0(
+  MR_Word ml_backend__mlds_to_il__param_1,
+  MR_String * ml_backend__mlds_to_il__param_2);
+
+void MR_CALL 
+ml_backend__mlds_to_il__predlabel_to_csharp_id_4_p_0(
+  MR_Word ml_backend__mlds_to_il__param_1,
+  MR_Integer ml_backend__mlds_to_il__param_2,
+  MR_Word ml_backend__mlds_to_il__param_3,
+  MR_String * ml_backend__mlds_to_il__param_4);
+
+MR_Word MR_CALL 
+ml_backend__mlds_to_il__class_name_2_f_0(
+  MR_Word ml_backend__mlds_to_il__param_1,
+  MR_String ml_backend__mlds_to_il__param_2);
+
+MR_Word MR_CALL 
+ml_backend__mlds_to_il__il_generic_class_name_0_f_0(void);
+
+MR_Word MR_CALL 
+ml_backend__mlds_to_il__mlds_type_to_ilds_class_name_2_f_0(
+  MR_Word ml_backend__mlds_to_il__param_1,
+  MR_Word ml_backend__mlds_to_il__param_2);
+
+MR_Word MR_CALL 
+ml_backend__mlds_to_il__mlds_type_to_ilds_type_2_f_0(
+  MR_Word ml_backend__mlds_to_il__param_1,
+  MR_Word ml_backend__mlds_to_il__param_2);
+
+MR_Word MR_CALL 
+ml_backend__mlds_to_il__params_to_il_signature_3_f_0(
+  MR_Word ml_backend__mlds_to_il__param_1,
+  MR_Word ml_backend__mlds_to_il__param_2,
+  MR_Word ml_backend__mlds_to_il__param_3);
+
+void MR_CALL 
+ml_backend__mlds_to_il____Compare____il_data_rep_0_0(
+  MR_Word * ml_backend__mlds_to_il__param_1,
+  MR_Word ml_backend__mlds_to_il__param_2,
+  MR_Word ml_backend__mlds_to_il__param_3);
+
+MR_bool MR_CALL 
+ml_backend__mlds_to_il____Unify____il_data_rep_0_0(
+  MR_Word ml_backend__mlds_to_il__param_1,
+  MR_Word ml_backend__mlds_to_il__param_2);
+
+void mercury__ml_backend__mlds_to_il__init(void);
+void mercury__ml_backend__mlds_to_il__init_type_tables(void);
+void mercury__ml_backend__mlds_to_il__init_debugger(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* MR_HEADER_GUARD_ml_backend.mlds_to_il */
+
+/* :- end_interface ml_backend.mlds_to_il. */

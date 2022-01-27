@@ -1,0 +1,19086 @@
+/*
+** Automatically generated from `erlang_rtti_implementation.m'
+** by the Mercury compiler,
+** version rotd-2015-09-15
+** configured for x86_64-apple-darwin13.4.0.
+** Do not edit.
+**
+** The autoconfigured grade settings governing
+** the generation of this C file were
+**
+** TAG_BITS=2
+** UNBOXED_FLOAT=no
+** PREGENERATED_DIST=yes
+** HIGHLEVEL_CODE=yes
+**
+** END_OF_C_GRADE_INFO
+*/
+
+
+/* :- module erlang_rtti_implementation. */
+/* :- implementation. */
+
+/*
+INIT mercury__erlang_rtti_implementation__init
+ENDINIT
+*/
+
+#include "erlang_rtti_implementation.mih"
+
+
+#include "array.mih"
+#include "assoc_list.mih"
+#include "benchmarking.mih"
+#include "bitmap.mih"
+#include "bool.mih"
+#include "builtin.mih"
+#include "calendar.mih"
+#include "char.mih"
+#include "construct.mih"
+#include "cord.mih"
+#include "deconstruct.mih"
+#include "dir.mih"
+#include "enum.mih"
+#include "exception.mih"
+#include "float.mih"
+#include "int.mih"
+#include "integer.mih"
+#include "io.mih"
+#include "lexer.mih"
+#include "list.mih"
+#include "map.mih"
+#include "math.mih"
+#include "maybe.mih"
+#include "mutvar.mih"
+#include "ops.mih"
+#include "pair.mih"
+#include "parser.mih"
+#include "pretty_printer.mih"
+#include "private_builtin.mih"
+#include "random.mih"
+#include "require.mih"
+#include "rtti_implementation.mih"
+#include "set.mih"
+#include "set_ordlist.mih"
+#include "set_tree234.mih"
+#include "solutions.mih"
+#include "std_util.mih"
+#include "stm_builtin.mih"
+#include "store.mih"
+#include "stream.mih"
+#include "string.mih"
+#include "table_builtin.mih"
+#include "term.mih"
+#include "term_conversion.mih"
+#include "term_io.mih"
+#include "time.mih"
+#include "tree234.mih"
+#include "type_desc.mih"
+#include "unit.mih"
+#include "univ.mih"
+#include "varset.mih"
+#include "version_array.mih"
+#include "stream.string_writer.mih"
+#include "string.format.mih"
+#include "string.parse_runtime.mih"
+#include "string.parse_util.mih"
+#include "string.to_string.mih"
+
+
+
+
+#line 93 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__list__ti_list_1builtin__type_ctor_info_character_0;
+
+#line 96 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__maybe__ti_maybe_1list__ti_list_1builtin__type_ctor_info_character_0;
+
+#line 99 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_du_arg_info_0_0[2];
+
+#line 102 "erlang_rtti_implementation.c"
+static const MR_ConstString mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_du_arg_info_0_0[2];
+
+#line 105 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_du_arg_info_0_0;
+
+#line 108 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_du_arg_info_0_0[1];
+
+#line 111 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_du_arg_info_0[1];
+
+#line 114 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_du_arg_info_0[1];
+
+#line 117 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_du_arg_info_0[1];
+
+#line 120 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_atom_0_0;
+
+#line 123 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_erlang_atom_0[1];
+
+#line 126 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_erlang_atom_0[1];
+
+#line 129 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_erlang_atom_0[1];
+
+#line 132 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__list__ti_list_1erlang_rtti_implementation__type_ctor_info_du_arg_info_0;
+
+#line 135 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__maybe__ti_maybe_1erlang_rtti_implementation__type_ctor_info_exist_info_0;
+
+#line 138 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_erlang_du_functor_0_0[7];
+
+#line 141 "erlang_rtti_implementation.c"
+static const MR_ConstString mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_erlang_du_functor_0_0[7];
+
+#line 144 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_erlang_du_functor_0_0;
+
+#line 147 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_erlang_du_functor_0_0[1];
+
+#line 150 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_erlang_du_functor_0[1];
+
+#line 153 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_erlang_du_functor_0[1];
+
+#line 156 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_erlang_du_functor_0[1];
+
+#line 159 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_0;
+
+#line 162 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_1;
+
+#line 165 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_2;
+
+#line 168 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_3;
+
+#line 171 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_4;
+
+#line 174 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_5;
+
+#line 177 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_6;
+
+#line 180 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_7;
+
+#line 183 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_8;
+
+#line 186 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_9;
+
+#line 189 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_10;
+
+#line 192 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_11;
+
+#line 195 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_12;
+
+#line 198 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_13;
+
+#line 201 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_14;
+
+#line 204 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_15;
+
+#line 207 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_16;
+
+#line 210 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_17;
+
+#line 213 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_18;
+
+#line 216 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_19;
+
+#line 219 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_20;
+
+#line 222 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_21;
+
+#line 225 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_22;
+
+#line 228 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_23;
+
+#line 231 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_24;
+
+#line 234 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_25;
+
+#line 237 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_26;
+
+#line 240 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_erlang_type_ctor_rep_0[27];
+
+#line 243 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_erlang_type_ctor_rep_0[27];
+
+#line 246 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_erlang_type_ctor_rep_0[27];
+
+#line 249 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_evaluated_pseudo_type_info_thunk_0_0[1];
+
+#line 252 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_evaluated_pseudo_type_info_thunk_0_0;
+
+#line 255 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_evaluated_pseudo_type_info_thunk_0_1[1];
+
+#line 258 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_evaluated_pseudo_type_info_thunk_0_1;
+
+#line 261 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_evaluated_pseudo_type_info_thunk_0_2[1];
+
+#line 264 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_evaluated_pseudo_type_info_thunk_0_2;
+
+#line 267 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_evaluated_pseudo_type_info_thunk_0_0[1];
+
+#line 270 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_evaluated_pseudo_type_info_thunk_0_1[1];
+
+#line 273 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_evaluated_pseudo_type_info_thunk_0_2[1];
+
+#line 276 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_evaluated_pseudo_type_info_thunk_0[3];
+
+#line 279 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_evaluated_pseudo_type_info_thunk_0[3];
+
+#line 282 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_evaluated_pseudo_type_info_thunk_0[3];
+
+#line 285 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__list__ti_list_1erlang_rtti_implementation__type_ctor_info_tc_constraint_0;
+
+#line 288 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__list__ti_list_1erlang_rtti_implementation__type_ctor_info_exist_typeinfo_locn_0;
+
+#line 291 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_exist_info_0_0[4];
+
+#line 294 "erlang_rtti_implementation.c"
+static const MR_ConstString mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_exist_info_0_0[4];
+
+#line 297 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_exist_info_0_0;
+
+#line 300 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_exist_info_0_0[1];
+
+#line 303 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_exist_info_0[1];
+
+#line 306 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_exist_info_0[1];
+
+#line 309 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_exist_info_0[1];
+
+#line 312 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_exist_typeinfo_locn_0_0[1];
+
+#line 315 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_exist_typeinfo_locn_0_0;
+
+#line 318 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_exist_typeinfo_locn_0_1[2];
+
+#line 321 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_exist_typeinfo_locn_0_1;
+
+#line 324 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_exist_typeinfo_locn_0_0[1];
+
+#line 327 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_exist_typeinfo_locn_0_1[1];
+
+#line 330 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_exist_typeinfo_locn_0[2];
+
+#line 333 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_exist_typeinfo_locn_0[2];
+
+#line 336 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_exist_typeinfo_locn_0[2];
+
+#line 339 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_maybe_pseudo_type_info_0_0[1];
+
+#line 342 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_maybe_pseudo_type_info_0_0;
+
+#line 345 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_maybe_pseudo_type_info_0_1[1];
+
+#line 348 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_maybe_pseudo_type_info_0_1;
+
+#line 351 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_maybe_pseudo_type_info_0_0[1];
+
+#line 354 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_maybe_pseudo_type_info_0_1[1];
+
+#line 357 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_maybe_pseudo_type_info_0[2];
+
+#line 360 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_maybe_pseudo_type_info_0[2];
+
+#line 363 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_maybe_pseudo_type_info_0[2];
+
+#line 366 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_pseudo_type_info_0_0;
+
+#line 369 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_pseudo_type_info_0[1];
+
+#line 372 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_pseudo_type_info_0[1];
+
+#line 375 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_pseudo_type_info_0[1];
+
+#line 378 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_pseudo_type_info_thunk_0_0;
+
+#line 381 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_pseudo_type_info_thunk_0[1];
+
+#line 384 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_pseudo_type_info_thunk_0[1];
+
+#line 387 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_pseudo_type_info_thunk_0[1];
+
+#line 390 "erlang_rtti_implementation.c"
+static const MR_VA_PseudoTypeInfo_Struct2 mercury__erlang_rtti_implementation____vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1;
+
+#line 393 "erlang_rtti_implementation.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__erlang_rtti_implementation__maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1;
+
+#line 396 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_sym_name_0_0[1];
+
+#line 399 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_sym_name_0_0;
+
+#line 402 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_sym_name_0_1[2];
+
+#line 405 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_sym_name_0_1;
+
+#line 408 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_sym_name_0_0[1];
+
+#line 411 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_sym_name_0_1[1];
+
+#line 414 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_sym_name_0[2];
+
+#line 417 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_sym_name_0[2];
+
+#line 420 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_sym_name_0[2];
+
+#line 423 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__list__ti_list_1erlang_rtti_implementation__type_ctor_info_maybe_pseudo_type_info_0;
+
+#line 426 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_tc_constraint_0_0[2];
+
+#line 429 "erlang_rtti_implementation.c"
+static const MR_ConstString mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_tc_constraint_0_0[2];
+
+#line 432 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_tc_constraint_0_0;
+
+#line 435 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_tc_constraint_0_0[1];
+
+#line 438 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_tc_constraint_0[1];
+
+#line 441 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_tc_constraint_0[1];
+
+#line 444 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_tc_constraint_0[1];
+
+#line 447 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_tc_name_0_0[3];
+
+#line 450 "erlang_rtti_implementation.c"
+static const MR_ConstString mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_tc_name_0_0[3];
+
+#line 453 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_tc_name_0_0;
+
+#line 456 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_tc_name_0_0[1];
+
+#line 459 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_tc_name_0[1];
+
+#line 462 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_tc_name_0[1];
+
+#line 465 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_tc_name_0[1];
+
+#line 468 "erlang_rtti_implementation.c"
+static const MR_VA_PseudoTypeInfo_Struct2 mercury__erlang_rtti_implementation____vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_type_info_0__pseudo_maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1;
+
+#line 471 "erlang_rtti_implementation.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__erlang_rtti_implementation__maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_type_info_0__pseudo_maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1;
+
+#line 474 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_ctor_info_0_0;
+
+#line 477 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_type_ctor_info_0[1];
+
+#line 480 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_type_ctor_info_0[1];
+
+#line 483 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_type_ctor_info_0[1];
+
+#line 486 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_ctor_info_evaled_0_0;
+
+#line 489 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_type_ctor_info_evaled_0[1];
+
+#line 492 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_type_ctor_info_evaled_0[1];
+
+#line 495 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_type_ctor_info_evaled_0[1];
+
+#line 498 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_info_0_0;
+
+#line 501 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_type_info_0[1];
+
+#line 504 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_type_info_0[1];
+
+#line 507 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_type_info_0[1];
+
+#line 510 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_info_thunk_0_0;
+
+#line 513 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_type_info_thunk_0[1];
+
+#line 516 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_type_info_thunk_0[1];
+
+#line 519 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_type_info_thunk_0[1];
+
+#line 522 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____du_arg_info_0_0_10001(
+#line 525 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 527 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 530 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____du_arg_info_0_0_10001(
+#line 533 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 535 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 537 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 540 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____erlang_atom_0_0_10001(
+#line 543 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 545 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 548 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____erlang_atom_0_0_10001(
+#line 551 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 553 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 555 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 558 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____erlang_du_functor_0_0_10001(
+#line 561 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 563 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 566 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____erlang_du_functor_0_0_10001(
+#line 569 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 571 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 573 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 576 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____erlang_type_ctor_rep_0_0_10001(
+#line 579 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 581 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 584 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____erlang_type_ctor_rep_0_0_10001(
+#line 587 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 589 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 591 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 594 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____evaluated_pseudo_type_info_thunk_0_0_10001(
+#line 597 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 599 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 602 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____evaluated_pseudo_type_info_thunk_0_0_10001(
+#line 605 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 607 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 609 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 612 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____exist_info_0_0_10001(
+#line 615 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 617 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 620 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____exist_info_0_0_10001(
+#line 623 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 625 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 627 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 630 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____exist_typeinfo_locn_0_0_10001(
+#line 633 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 635 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 638 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____exist_typeinfo_locn_0_0_10001(
+#line 641 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 643 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 645 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 648 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____maybe_pseudo_type_info_0_0_10001(
+#line 651 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 653 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 656 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____maybe_pseudo_type_info_0_0_10001(
+#line 659 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 661 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 663 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 666 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____module_name_0_0_10001(
+#line 669 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 671 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 674 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____module_name_0_0_10001(
+#line 677 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 679 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 681 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 684 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____pseudo_type_info_0_0_10001(
+#line 687 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 689 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 692 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____pseudo_type_info_0_0_10001(
+#line 695 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 697 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 699 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 702 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____pseudo_type_info_thunk_0_0_10001(
+#line 705 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 707 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 710 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____pseudo_type_info_thunk_0_0_10001(
+#line 713 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 715 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 717 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 720 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____pti_info_1_0_10001(
+#line 723 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 725 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 727 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 730 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____pti_info_1_0_10001(
+#line 733 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 735 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 737 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3,
+#line 739 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_4);
+
+#line 742 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____sym_name_0_0_10001(
+#line 745 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 747 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 750 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____sym_name_0_0_10001(
+#line 753 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 755 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 757 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 760 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____tc_constraint_0_0_10001(
+#line 763 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 765 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 768 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____tc_constraint_0_0_10001(
+#line 771 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 773 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 775 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 778 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____tc_name_0_0_10001(
+#line 781 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 783 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 786 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____tc_name_0_0_10001(
+#line 789 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 791 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 793 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 796 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____tc_type_0_0_10001(
+#line 799 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 801 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 804 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____tc_type_0_0_10001(
+#line 807 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 809 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 811 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 814 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____ti_info_1_0_10001(
+#line 817 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 819 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 821 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 824 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____ti_info_1_0_10001(
+#line 827 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 829 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 831 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3,
+#line 833 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_4);
+
+#line 836 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____type_ctor_info_0_0_10001(
+#line 839 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 841 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 844 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____type_ctor_info_0_0_10001(
+#line 847 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 849 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 851 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 854 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____type_ctor_info_evaled_0_0_10001(
+#line 857 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 859 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 862 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____type_ctor_info_evaled_0_0_10001(
+#line 865 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 867 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 869 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 872 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____type_info_0_0_10001(
+#line 875 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 877 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 880 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____type_info_0_0_10001(
+#line 883 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 885 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 887 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 890 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____type_info_thunk_0_0_10001(
+#line 893 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 895 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2);
+
+#line 898 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____type_info_thunk_0_0_10001(
+#line 901 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 903 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 905 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3);
+
+#line 130 "array.opt"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_100_111_95_102_111_108_100_114_95_102_117_110_99_95_95_104_111_49_56_95_95_91_51_93_95_48_5_f_in__array_0(
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_19_19,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_1_17,
+#line 130 "array.opt"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_8_8,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_9_9,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_10_10,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_11_11);
+
+#line 130 "array.opt"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_100_111_95_102_111_108_100_114_95_102_117_110_99_95_95_104_111_49_55_95_95_91_51_93_95_48_5_f_in__array_0(
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_19_19,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_1_17,
+#line 130 "array.opt"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_8_8,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_9_9,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_10_10,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_11_11);
+
+#line 130 "array.opt"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_100_111_95_102_111_108_100_114_95_102_117_110_99_95_95_104_111_49_54_95_95_91_51_93_95_48_5_f_in__array_0(
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_19_19,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_1_17,
+#line 130 "array.opt"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_8_8,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_9_9,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_10_10,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_11_11);
+
+#line 130 "array.opt"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_100_111_95_102_111_108_100_114_95_102_117_110_99_95_95_104_111_49_53_95_95_91_51_93_95_48_5_f_in__array_0(
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_19_19,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_1_17,
+#line 130 "array.opt"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_8_8,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_9_9,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_10_10,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_11_11);
+
+#line 102 "array.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_114_95_95_104_111_49_52_95_95_91_51_93_95_48_3_f_in__array_0(
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_13_13,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_11,
+#line 102 "array.int"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_6_6,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_7_7);
+
+#line 102 "array.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_114_95_95_104_111_49_51_95_95_91_51_93_95_48_3_f_in__array_0(
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_13_13,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_11,
+#line 102 "array.int"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_6_6,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_7_7);
+
+#line 102 "array.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_114_95_95_104_111_49_50_95_95_91_51_93_95_48_3_f_in__array_0(
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_13_13,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_11,
+#line 102 "array.int"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_6_6,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_7_7);
+
+#line 310 "list.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_49_95_95_91_53_93_95_48_2_f_in__list_0(
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__V_12_12,
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__V_14_14,
+#line 310 "list.int"
+  MR_Box mercury__erlang_rtti_implementation__V_15_15,
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2);
+
+#line 310 "list.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_93_95_48_2_f_in__list_0(
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2);
+
+#line 102 "array.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_114_95_95_104_111_57_95_95_91_51_93_95_48_3_f_in__array_0(
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_13_13,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_11,
+#line 102 "array.int"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_6_6,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_7_7);
+
+#line 318 "list.int"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_112_50_95_95_104_111_56_95_95_91_50_93_95_48_4_p_in__list_0(
+#line 318 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 318 "list.int"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__3_3,
+#line 318 "list.int"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__4_4);
+
+#line 310 "list.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_55_95_95_91_51_44_32_52_93_95_48_2_f_in__list_0(
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__V_12_12,
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__V_13_13,
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2);
+
+#line 310 "list.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_95_95_91_51_44_32_52_93_95_48_2_f_in__list_0(
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__V_12_12,
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__V_13_13,
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2);
+
+#line 2270 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_101_118_97_108_95_116_121_112_101_95_105_110_102_111_95_95_50_50_55_48_95_95_49_95_95_91_51_93_95_48_4_f_0(
+#line 2270 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_21,
+#line 2270 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__I_4,
+#line 2270 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__HeadVar__4_29);
+
+#line 2263 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_101_118_97_108_95_116_121_112_101_95_105_110_102_111_95_95_50_50_54_51_95_95_49_95_95_91_51_93_95_48_4_f_0(
+#line 2263 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_21,
+#line 2263 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__I_4,
+#line 2263 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__HeadVar__4_24);
+
+#line 18 "ops.opt"
+static MR_Integer MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_in__ops_0(void);
+
+#line 1957 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_115_117_108_116_95_99_97_108_108_95_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_93_95_48_9_p_0(
+#line 1957 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__2_2);
+
+#line 1952 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_115_117_108_116_95_99_97_108_108_95_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_8_p_0(
+#line 1952 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__2_2);
+
+#line 1927 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_109_105_100_101_116_95_99_97_108_108_95_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_93_95_48_8_p_0(void);
+
+#line 1922 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_109_105_100_101_116_95_99_97_108_108_95_55_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_7_p_0(void);
+
+#line 1918 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_109_105_100_101_116_95_99_97_108_108_95_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_93_95_48_6_p_0(void);
+
+#line 1914 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_109_105_100_101_116_95_99_97_108_108_95_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_93_95_48_5_p_0(void);
+
+#line 1837 "erlang_rtti_implementation.m"
+static MR_String MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_100_117_109_109_121_95_102_117_110_99_116_111_114_95_110_97_109_101_95_95_91_49_93_95_48_1_f_0(void);
+
+#line 1825 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_102_117_110_99_116_111_114_115_95_95_91_49_93_95_48_1_f_0(void);
+
+#line 1684 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_105_110_100_101_120_95_95_91_50_93_95_48_2_f_0(
+#line 1684 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__I_4);
+
+#line 1667 "erlang_rtti_implementation.m"
+static MR_Integer MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_118_97_114_95_97_114_105_116_121_95_116_121_112_101_95_105_110_102_111_95_97_114_105_116_121_95_95_91_49_93_95_48_1_f_0(void);
+
+#line 1517 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_99_111_110_115_116_114_117_99_116_95_116_117_112_108_101_95_117_110_105_118_95_95_91_49_44_32_50_93_95_48_2_f_0(void);
+
+#line 1473 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_116_117_112_108_101_95_97_114_103_95_116_121_112_101_115_95_95_91_49_93_95_48_3_p_0(
+#line 1473 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 1473 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3);
+
+#line 1063 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_97_109_101_95_97_114_114_97_121_95_101_108_101_109_95_116_121_112_101_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0(void);
+
+#line 1056 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_116_117_112_108_101_95_97_114_103_95_95_91_49_44_32_50_44_32_51_93_95_48_3_f_0(
+#line 1056 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Loc_7);
+
+#line 988 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_115_95_110_111_110_95_101_109_112_116_121_95_108_105_115_116_95_95_91_49_44_32_52_44_32_53_44_32_54_93_95_48_5_p_0(
+#line 988 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__ExistQTypeInfo_for_H_16,
+#line 988 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__ExistQTypeInfo_for_T_17,
+#line 988 "erlang_rtti_implementation.m"
+  MR_Box * mercury__erlang_rtti_implementation__ExistQHeadVar__4_15,
+#line 988 "erlang_rtti_implementation.m"
+  MR_Box * mercury__erlang_rtti_implementation__ExistQHeadVar__5_14);
+
+#line 929 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_116_99_104_105_110_103_95_100_117_95_102_117_110_99_116_111_114_95_95_91_49_44_32_51_93_95_48_3_p_0(
+#line 929 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 929 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Functor_3);
+
+#line 451 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_97_114_101_95_118_97_114_95_97_114_105_116_121_95_116_121_112_101_105_110_102_111_115_95_95_91_52_44_32_53_93_95_48_5_p_0(
+#line 451 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Loc_6,
+#line 451 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Arity_7,
+#line 451 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Result_8);
+
+#line 428 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_97_114_101_95_115_117_98_95_116_121_112_101_105_110_102_111_115_95_95_91_52_44_32_53_93_95_48_5_p_0(
+#line 428 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Loc_6,
+#line 428 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Arity_7,
+#line 428 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Result_8);
+
+#line 350 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_97_114_101_95_116_117_112_108_101_95_112_111_115_95_95_91_49_44_32_52_44_32_54_44_32_55_93_95_48_6_p_0(
+#line 350 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Loc_7,
+#line 350 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__TupleArity_8,
+#line 350 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Result_10);
+
+#line 343 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_97_114_101_95_116_117_112_108_101_95_95_91_49_44_32_50_44_32_52_44_32_53_93_95_48_4_p_0(
+#line 343 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Result_6);
+
+#line 272 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_102_121_95_116_117_112_108_101_95_112_111_115_95_95_91_49_44_32_52_44_32_53_44_32_54_93_95_48_5_p_0(
+#line 272 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Loc_6,
+#line 272 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__TupleArity_7);
+
+#line 266 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_102_121_95_116_117_112_108_101_95_95_91_49_44_32_50_44_32_51_44_32_52_93_95_48_3_p_0(void);
+
+#line 1235 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__IntroducedFrom__pred__get_functor_with_names__1235__1_4_p_0(
+#line 1235 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_41,
+#line 1235 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__HeadVar__4_43);
+
+#line 803 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__IntroducedFrom__func__deconstruct_2__803__4_3_f_0(
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_106_106,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__HeadVar__2_64,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_65);
+
+#line 803 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__IntroducedFrom__func__deconstruct_2__803__3_3_f_0(
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_106_106,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__HeadVar__2_64,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_65);
+
+#line 803 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__IntroducedFrom__func__deconstruct_2__803__2_3_f_0(
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_106_106,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__HeadVar__2_64,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_65);
+
+#line 803 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__IntroducedFrom__func__deconstruct_2__803__1_3_f_0(
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_106_106,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__HeadVar__2_64,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_65);
+
+#line 2257 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__eval_type_info_2_f_0(
+#line 2257 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_21,
+#line 2257 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__I_4);
+
+#line 2251 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__eval_type_info_thunk_2_f_0(
+#line 2251 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_8,
+#line 2251 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__I_4);
+
+#line 2187 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__eval_pseudo_type_info_3_f_0(
+#line 2187 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_19,
+#line 2187 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_6);
+
+#line 2169 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__concrete_type_info_2_f_0(
+#line 2169 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 2169 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__Info_4,
+#line 2169 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__MaybePTI_5);
+
+#line 2077 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(
+#line 2077 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_6,
+#line 2077 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_U_7,
+#line 2077 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_3,
+#line 2077 "erlang_rtti_implementation.m"
+  MR_Box * mercury__erlang_rtti_implementation__Actual_4);
+
+#line 1466 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__check_arg_types_2_p_0(
+#line 1466 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 1466 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2);
+
+#line 1392 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__matching_du_functor_number_3_p_0(
+#line 1392 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 1392 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__FunctorNum_6,
+#line 1392 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Functor_7);
+
+#line 1039 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__get_du_functor_arg_4_f_0(
+#line 1039 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_30,
+#line 1039 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__Functor_7,
+#line 1039 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_8,
+#line 1039 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Loc_9);
+
+
+static /* final */ const MR_Box mercury__erlang_rtti_implementation_scalar_common_1[14][2];
+
+static /* final */ const MR_Box mercury__erlang_rtti_implementation_scalar_common_2[1][3];
+
+static /* final */ const MR_Box mercury__erlang_rtti_implementation_scalar_common_3[2][4];
+
+static /* final */ const MR_Box mercury__erlang_rtti_implementation_scalar_common_4[2][5];
+
+static /* final */ const MR_Box mercury__erlang_rtti_implementation_scalar_common_5[5][1];
+
+
+
+
+static /* final */ const MR_Box mercury__erlang_rtti_implementation_scalar_common_1[14][2] = {
+  /* row 0 */
+  {
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_tuple_0)),
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__type_desc__type_desc__type_ctor_info_type_desc_0))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__type_desc__type_desc__type_ctor_info_pseudo_type_desc_0))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) (base_typeclass_info_ops__op_table__arity1__ops__mercury_op_table__arity0__)),
+    ((MR_Box) (&mercury__ops__ops__type_ctor_info_mercury_op_table_0))
+  },
+  /* row 5 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_character_0))
+  },
+  /* row 6 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&mercury__erlang_rtti_implementation_scalar_common_1[5]))
+  },
+  /* row 7 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_du_arg_info_0))
+  },
+  /* row 8 */
+  {
+    ((MR_Box) (&mercury__maybe__maybe__type_ctor_info_maybe_1)),
+    ((MR_Box) (&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_exist_info_0))
+  },
+  /* row 9 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_tc_constraint_0))
+  },
+  /* row 10 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_exist_typeinfo_locn_0))
+  },
+  /* row 11 */
+  {
+    ((MR_Box) (&mercury__list__list__type_ctor_info_list_1)),
+    ((MR_Box) (&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_maybe_pseudo_type_info_0))
+  },
+  /* row 12 */
+  {
+    ((MR_Box) ((MR_String) "")),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+  /* row 13 */
+  {
+    ((MR_Box) ((MR_String) "")),
+    ((MR_Box) (MR_mkword(MR_mktag(1), &mercury__erlang_rtti_implementation_scalar_common_1[12])))
+  },
+};
+
+static /* final */ const MR_Box mercury__erlang_rtti_implementation_scalar_common_2[1][3] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__stream__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__erlang_rtti_implementation_scalar_common_3[2][4] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__output__arity2__io__output_stream__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__erlang_rtti_implementation_scalar_common_2[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_String) "[]")),
+    ((MR_Box) ((MR_Integer) 0)),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))),
+    ((MR_Box) (MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))))
+  },
+};
+
+static /* final */ const MR_Box mercury__erlang_rtti_implementation_scalar_common_4[2][5] = {
+  /* row 0 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__string__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__erlang_rtti_implementation_scalar_common_3[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_string_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) (base_typeclass_info_stream__writer__arity3__io__output_stream__arity0__character__arity0__io__state__arity0__)),
+    ((MR_Box) (&mercury__erlang_rtti_implementation_scalar_common_3[0])),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_output_stream_0)),
+    ((MR_Box) (&mercury__builtin__builtin__type_ctor_info_character_0)),
+    ((MR_Box) (&mercury__io__io__type_ctor_info_state_0))
+  },
+};
+
+static /* final */ const MR_Box mercury__erlang_rtti_implementation_scalar_common_5[5][1] = {
+  /* row 0 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+  /* row 1 */
+  {
+    ((MR_Box) ((MR_Integer) 1))
+  },
+  /* row 2 */
+  {
+    ((MR_Box) ((MR_Integer) 2))
+  },
+  /* row 3 */
+  {
+    ((MR_Box) (&mercury__erlang_rtti_implementation_scalar_common_3[1]))
+  },
+  /* row 4 */
+  {
+    ((MR_Box) ((MR_Integer) 0))
+  },
+};
+
+
+
+#include "array.mh"
+#include "benchmarking.mh"
+#include "bitmap.mh"
+#include "builtin.mh"
+#include "char.mh"
+#include "construct.mh"
+#include "dir.mh"
+#include "exception.mh"
+#include "float.mh"
+#include "int.mh"
+#include "io.mh"
+#include "math.mh"
+#include "pretty_printer.mh"
+#include "private_builtin.mh"
+#include "rtti_implementation.mh"
+#include "stm_builtin.mh"
+#include "store.mh"
+#include "string.mh"
+#include "table_builtin.mh"
+#include "time.mh"
+#include "type_desc.mh"
+#include "version_array.mh"
+
+
+
+#line 1534 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__list__ti_list_1builtin__type_ctor_info_character_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__builtin__builtin__type_ctor_info_character_0
+  }
+};
+
+#line 1542 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__maybe__ti_maybe_1list__ti_list_1builtin__type_ctor_info_character_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &mercury__erlang_rtti_implementation__list__ti_list_1builtin__type_ctor_info_character_0
+  }
+};
+
+#line 1550 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_du_arg_info_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__maybe__ti_maybe_1list__ti_list_1builtin__type_ctor_info_character_0,
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_maybe_pseudo_type_info_0
+};
+
+#line 1556 "erlang_rtti_implementation.c"
+static const MR_ConstString mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_du_arg_info_0_0[2] = {
+  (MR_String) "du_arg_name",
+  (MR_String) "du_arg_type"
+};
+
+#line 1562 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_du_arg_info_0_0 = {
+  (MR_String) "du_arg_info",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_du_arg_info_0_0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_du_arg_info_0_0,
+  NULL,
+  NULL
+};
+
+#line 1577 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_du_arg_info_0_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_du_arg_info_0_0
+};
+
+#line 1582 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_du_arg_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_du_arg_info_0_0
+  }
+};
+
+#line 1591 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_du_arg_info_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_du_arg_info_0_0
+};
+
+#line 1596 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_du_arg_info_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1601 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_du_arg_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____du_arg_info_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____du_arg_info_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "du_arg_info",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_du_arg_info_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_du_arg_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_du_arg_info_0
+};
+
+#line 1618 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_atom_0_0 = {
+  (MR_String) "erlang_atom",
+  (MR_Integer) 0
+};
+
+#line 1624 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_erlang_atom_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_atom_0_0
+};
+
+#line 1629 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_erlang_atom_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_atom_0_0
+};
+
+#line 1634 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_erlang_atom_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1639 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_atom_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DUMMY,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____erlang_atom_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____erlang_atom_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "erlang_atom",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_erlang_atom_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_erlang_atom_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_erlang_atom_0
+};
+
+#line 1656 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__list__ti_list_1erlang_rtti_implementation__type_ctor_info_du_arg_info_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_du_arg_info_0
+  }
+};
+
+#line 1664 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__maybe__ti_maybe_1erlang_rtti_implementation__type_ctor_info_exist_info_0 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_TypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_exist_info_0
+  }
+};
+
+#line 1672 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_erlang_du_functor_0_0[7] = {
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__list__ti_list_1builtin__type_ctor_info_character_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_atom_0,
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__list__ti_list_1erlang_rtti_implementation__type_ctor_info_du_arg_info_0,
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__maybe__ti_maybe_1erlang_rtti_implementation__type_ctor_info_exist_info_0
+};
+
+#line 1683 "erlang_rtti_implementation.c"
+static const MR_ConstString mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_erlang_du_functor_0_0[7] = {
+  (MR_String) "edu_name",
+  (MR_String) "edu_orig_arity",
+  (MR_String) "edu_ordinal",
+  (MR_String) "edu_lex",
+  (MR_String) "edu_rep",
+  (MR_String) "edu_arg_infos",
+  (MR_String) "edu_exist_info"
+};
+
+#line 1694 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_erlang_du_functor_0_0 = {
+  (MR_String) "erlang_du_functor",
+  (MR_Integer) 7,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_erlang_du_functor_0_0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_erlang_du_functor_0_0,
+  NULL,
+  NULL
+};
+
+#line 1709 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_erlang_du_functor_0_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_erlang_du_functor_0_0
+};
+
+#line 1714 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_erlang_du_functor_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_erlang_du_functor_0_0
+  }
+};
+
+#line 1723 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_erlang_du_functor_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_erlang_du_functor_0_0
+};
+
+#line 1728 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_erlang_du_functor_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 1733 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____erlang_du_functor_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____erlang_du_functor_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "erlang_du_functor",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_erlang_du_functor_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_erlang_du_functor_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_erlang_du_functor_0
+};
+
+#line 1750 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_0 = {
+  (MR_String) "etcr_du",
+  (MR_Integer) 0
+};
+
+#line 1756 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_1 = {
+  (MR_String) "etcr_dummy",
+  (MR_Integer) 1
+};
+
+#line 1762 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_2 = {
+  (MR_String) "etcr_list",
+  (MR_Integer) 2
+};
+
+#line 1768 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_3 = {
+  (MR_String) "etcr_array",
+  (MR_Integer) 3
+};
+
+#line 1774 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_4 = {
+  (MR_String) "etcr_eqv",
+  (MR_Integer) 4
+};
+
+#line 1780 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_5 = {
+  (MR_String) "etcr_int",
+  (MR_Integer) 5
+};
+
+#line 1786 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_6 = {
+  (MR_String) "etcr_float",
+  (MR_Integer) 6
+};
+
+#line 1792 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_7 = {
+  (MR_String) "etcr_char",
+  (MR_Integer) 7
+};
+
+#line 1798 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_8 = {
+  (MR_String) "etcr_string",
+  (MR_Integer) 8
+};
+
+#line 1804 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_9 = {
+  (MR_String) "etcr_void",
+  (MR_Integer) 9
+};
+
+#line 1810 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_10 = {
+  (MR_String) "etcr_stable_c_pointer",
+  (MR_Integer) 10
+};
+
+#line 1816 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_11 = {
+  (MR_String) "etcr_c_pointer",
+  (MR_Integer) 11
+};
+
+#line 1822 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_12 = {
+  (MR_String) "etcr_pred",
+  (MR_Integer) 12
+};
+
+#line 1828 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_13 = {
+  (MR_String) "etcr_func",
+  (MR_Integer) 13
+};
+
+#line 1834 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_14 = {
+  (MR_String) "etcr_tuple",
+  (MR_Integer) 14
+};
+
+#line 1840 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_15 = {
+  (MR_String) "etcr_ref",
+  (MR_Integer) 15
+};
+
+#line 1846 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_16 = {
+  (MR_String) "etcr_type_desc",
+  (MR_Integer) 16
+};
+
+#line 1852 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_17 = {
+  (MR_String) "etcr_pseudo_type_desc",
+  (MR_Integer) 17
+};
+
+#line 1858 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_18 = {
+  (MR_String) "etcr_type_ctor_desc",
+  (MR_Integer) 18
+};
+
+#line 1864 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_19 = {
+  (MR_String) "etcr_type_info",
+  (MR_Integer) 19
+};
+
+#line 1870 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_20 = {
+  (MR_String) "etcr_type_ctor_info",
+  (MR_Integer) 20
+};
+
+#line 1876 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_21 = {
+  (MR_String) "etcr_typeclass_info",
+  (MR_Integer) 21
+};
+
+#line 1882 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_22 = {
+  (MR_String) "etcr_base_typeclass_info",
+  (MR_Integer) 22
+};
+
+#line 1888 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_23 = {
+  (MR_String) "etcr_foreign",
+  (MR_Integer) 23
+};
+
+#line 1894 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_24 = {
+  (MR_String) "etcr_hp",
+  (MR_Integer) 24
+};
+
+#line 1900 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_25 = {
+  (MR_String) "etcr_subgoal",
+  (MR_Integer) 25
+};
+
+#line 1906 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_26 = {
+  (MR_String) "etcr_ticket",
+  (MR_Integer) 26
+};
+
+#line 1912 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_erlang_type_ctor_rep_0[27] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_0,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_1,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_2,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_3,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_4,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_5,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_6,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_7,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_8,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_9,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_10,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_11,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_12,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_13,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_14,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_15,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_16,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_17,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_18,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_19,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_20,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_21,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_22,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_23,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_24,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_25,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_26
+};
+
+#line 1943 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_erlang_type_ctor_rep_0[27] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_3,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_22,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_11,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_7,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_0,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_1,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_4,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_6,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_23,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_13,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_24,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_5,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_2,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_12,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_17,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_15,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_10,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_8,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_25,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_26,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_14,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_18,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_20,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_16,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_19,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_21,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_erlang_type_ctor_rep_0_9
+};
+
+#line 1974 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_erlang_type_ctor_rep_0[27] = {
+  (MR_Integer) 4,
+  (MR_Integer) 5,
+  (MR_Integer) 12,
+  (MR_Integer) 0,
+  (MR_Integer) 6,
+  (MR_Integer) 11,
+  (MR_Integer) 7,
+  (MR_Integer) 3,
+  (MR_Integer) 17,
+  (MR_Integer) 26,
+  (MR_Integer) 16,
+  (MR_Integer) 2,
+  (MR_Integer) 13,
+  (MR_Integer) 9,
+  (MR_Integer) 20,
+  (MR_Integer) 15,
+  (MR_Integer) 23,
+  (MR_Integer) 14,
+  (MR_Integer) 21,
+  (MR_Integer) 24,
+  (MR_Integer) 22,
+  (MR_Integer) 25,
+  (MR_Integer) 1,
+  (MR_Integer) 8,
+  (MR_Integer) 10,
+  (MR_Integer) 18,
+  (MR_Integer) 19
+};
+
+#line 2005 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_type_ctor_rep_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_ENUM,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____erlang_type_ctor_rep_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____erlang_type_ctor_rep_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "erlang_type_ctor_rep",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_erlang_type_ctor_rep_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_erlang_type_ctor_rep_0 },
+  (MR_Integer) 27,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_erlang_type_ctor_rep_0
+};
+
+#line 2022 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_evaluated_pseudo_type_info_thunk_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+#line 2027 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_evaluated_pseudo_type_info_thunk_0_0 = {
+  (MR_String) "universal_type_info",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_evaluated_pseudo_type_info_thunk_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2042 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_evaluated_pseudo_type_info_thunk_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+#line 2047 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_evaluated_pseudo_type_info_thunk_0_1 = {
+  (MR_String) "existential_type_info",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_evaluated_pseudo_type_info_thunk_0_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2062 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_evaluated_pseudo_type_info_thunk_0_2[1] = {
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_pseudo_type_info_0
+};
+
+#line 2067 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_evaluated_pseudo_type_info_thunk_0_2 = {
+  (MR_String) "pseudo_type_info",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 2,
+  (MR_Integer) -1,
+  (MR_Integer) 2,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_evaluated_pseudo_type_info_thunk_0_2,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2082 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_evaluated_pseudo_type_info_thunk_0_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_evaluated_pseudo_type_info_thunk_0_0
+};
+
+#line 2087 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_evaluated_pseudo_type_info_thunk_0_1[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_evaluated_pseudo_type_info_thunk_0_1
+};
+
+#line 2092 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_evaluated_pseudo_type_info_thunk_0_2[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_evaluated_pseudo_type_info_thunk_0_2
+};
+
+#line 2097 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_evaluated_pseudo_type_info_thunk_0[3] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_evaluated_pseudo_type_info_thunk_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_evaluated_pseudo_type_info_thunk_0_1
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_evaluated_pseudo_type_info_thunk_0_2
+  }
+};
+
+#line 2116 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_evaluated_pseudo_type_info_thunk_0[3] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_evaluated_pseudo_type_info_thunk_0_1,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_evaluated_pseudo_type_info_thunk_0_2,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_evaluated_pseudo_type_info_thunk_0_0
+};
+
+#line 2123 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_evaluated_pseudo_type_info_thunk_0[3] = {
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2130 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_evaluated_pseudo_type_info_thunk_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 3,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____evaluated_pseudo_type_info_thunk_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____evaluated_pseudo_type_info_thunk_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "evaluated_pseudo_type_info_thunk",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_evaluated_pseudo_type_info_thunk_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_evaluated_pseudo_type_info_thunk_0 },
+  (MR_Integer) 3,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_evaluated_pseudo_type_info_thunk_0
+};
+
+#line 2147 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__list__ti_list_1erlang_rtti_implementation__type_ctor_info_tc_constraint_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_tc_constraint_0
+  }
+};
+
+#line 2155 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__list__ti_list_1erlang_rtti_implementation__type_ctor_info_exist_typeinfo_locn_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_exist_typeinfo_locn_0
+  }
+};
+
+#line 2163 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_exist_info_0_0[4] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__list__ti_list_1erlang_rtti_implementation__type_ctor_info_tc_constraint_0,
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__list__ti_list_1erlang_rtti_implementation__type_ctor_info_exist_typeinfo_locn_0
+};
+
+#line 2171 "erlang_rtti_implementation.c"
+static const MR_ConstString mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_exist_info_0_0[4] = {
+  (MR_String) "exist_num_plain_typeinfos",
+  (MR_String) "exist_num_typeinfos_in_tcis",
+  (MR_String) "exist_typeclass_constraints",
+  (MR_String) "exist_typeinfo_locns"
+};
+
+#line 2179 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_exist_info_0_0 = {
+  (MR_String) "exist_info",
+  (MR_Integer) 4,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_exist_info_0_0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_exist_info_0_0,
+  NULL,
+  NULL
+};
+
+#line 2194 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_exist_info_0_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_exist_info_0_0
+};
+
+#line 2199 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_exist_info_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_exist_info_0_0
+  }
+};
+
+#line 2208 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_exist_info_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_exist_info_0_0
+};
+
+#line 2213 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_exist_info_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2218 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_exist_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____exist_info_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____exist_info_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "exist_info",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_exist_info_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_exist_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_exist_info_0
+};
+
+#line 2235 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_exist_typeinfo_locn_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+#line 2240 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_exist_typeinfo_locn_0_0 = {
+  (MR_String) "plain_typeinfo",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_exist_typeinfo_locn_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2255 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_exist_typeinfo_locn_0_1[2] = {
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+#line 2261 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_exist_typeinfo_locn_0_1 = {
+  (MR_String) "typeinfo_in_tci",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_exist_typeinfo_locn_0_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2276 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_exist_typeinfo_locn_0_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_exist_typeinfo_locn_0_0
+};
+
+#line 2281 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_exist_typeinfo_locn_0_1[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_exist_typeinfo_locn_0_1
+};
+
+#line 2286 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_exist_typeinfo_locn_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_exist_typeinfo_locn_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_exist_typeinfo_locn_0_1
+  }
+};
+
+#line 2300 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_exist_typeinfo_locn_0[2] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_exist_typeinfo_locn_0_0,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_exist_typeinfo_locn_0_1
+};
+
+#line 2306 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_exist_typeinfo_locn_0[2] = {
+  (MR_Integer) 0,
+  (MR_Integer) 1
+};
+
+#line 2312 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_exist_typeinfo_locn_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____exist_typeinfo_locn_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____exist_typeinfo_locn_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "exist_typeinfo_locn",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_exist_typeinfo_locn_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_exist_typeinfo_locn_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_exist_typeinfo_locn_0
+};
+
+#line 2329 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_maybe_pseudo_type_info_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_pseudo_type_info_thunk_0
+};
+
+#line 2334 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_maybe_pseudo_type_info_0_0 = {
+  (MR_String) "pseudo",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_maybe_pseudo_type_info_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2349 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_maybe_pseudo_type_info_0_1[1] = {
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_thunk_0
+};
+
+#line 2354 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_maybe_pseudo_type_info_0_1 = {
+  (MR_String) "plain",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_maybe_pseudo_type_info_0_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2369 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_maybe_pseudo_type_info_0_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_maybe_pseudo_type_info_0_0
+};
+
+#line 2374 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_maybe_pseudo_type_info_0_1[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_maybe_pseudo_type_info_0_1
+};
+
+#line 2379 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_maybe_pseudo_type_info_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_maybe_pseudo_type_info_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_maybe_pseudo_type_info_0_1
+  }
+};
+
+#line 2393 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_maybe_pseudo_type_info_0[2] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_maybe_pseudo_type_info_0_1,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_maybe_pseudo_type_info_0_0
+};
+
+#line 2399 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_maybe_pseudo_type_info_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+#line 2405 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_maybe_pseudo_type_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____maybe_pseudo_type_info_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____maybe_pseudo_type_info_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "maybe_pseudo_type_info",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_maybe_pseudo_type_info_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_maybe_pseudo_type_info_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_maybe_pseudo_type_info_0
+};
+
+#line 2422 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_module_name_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____module_name_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____module_name_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "module_name",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_sym_name_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2439 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_pseudo_type_info_0_0 = {
+  (MR_String) "pseudo_type_info",
+  (MR_Integer) 0
+};
+
+#line 2445 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_pseudo_type_info_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_pseudo_type_info_0_0
+};
+
+#line 2450 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_pseudo_type_info_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_pseudo_type_info_0_0
+};
+
+#line 2455 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_pseudo_type_info_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2460 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_pseudo_type_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DUMMY,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____pseudo_type_info_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____pseudo_type_info_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "pseudo_type_info",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_pseudo_type_info_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_pseudo_type_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_pseudo_type_info_0
+};
+
+#line 2477 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_pseudo_type_info_thunk_0_0 = {
+  (MR_String) "pseudo_type_info_thunk",
+  (MR_Integer) 0
+};
+
+#line 2483 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_pseudo_type_info_thunk_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_pseudo_type_info_thunk_0_0
+};
+
+#line 2488 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_pseudo_type_info_thunk_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_pseudo_type_info_thunk_0_0
+};
+
+#line 2493 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_pseudo_type_info_thunk_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2498 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_pseudo_type_info_thunk_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DUMMY,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____pseudo_type_info_thunk_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____pseudo_type_info_thunk_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "pseudo_type_info_thunk",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_pseudo_type_info_thunk_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_pseudo_type_info_thunk_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_pseudo_type_info_thunk_0
+};
+
+#line 2515 "erlang_rtti_implementation.c"
+static const MR_VA_PseudoTypeInfo_Struct2 mercury__erlang_rtti_implementation____vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1 = {
+  &mercury__builtin__builtin__type_ctor_info_tuple_0,
+  (MR_Integer) 2,
+  {
+    (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0,
+    (MR_PseudoTypeInfo) (MR_Integer) 1
+  }
+};
+
+#line 2525 "erlang_rtti_implementation.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__erlang_rtti_implementation__maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation____vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1
+  }
+};
+
+#line 2533 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_pti_info_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____pti_info_1_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____pti_info_1_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "pti_info",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2550 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_sym_name_0_0[1] = {
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__list__ti_list_1builtin__type_ctor_info_character_0
+};
+
+#line 2555 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_sym_name_0_0 = {
+  (MR_String) "unqualified",
+  (MR_Integer) 1,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_sym_name_0_0,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2570 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_sym_name_0_1[2] = {
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__list__ti_list_1builtin__type_ctor_info_character_0
+};
+
+#line 2576 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_sym_name_0_1 = {
+  (MR_String) "qualified",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 1,
+  (MR_Integer) -1,
+  (MR_Integer) 1,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_sym_name_0_1,
+  NULL,
+  NULL,
+  NULL
+};
+
+#line 2591 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_sym_name_0_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_sym_name_0_0
+};
+
+#line 2596 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_sym_name_0_1[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_sym_name_0_1
+};
+
+#line 2601 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_sym_name_0[2] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_sym_name_0_0
+  },
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_sym_name_0_1
+  }
+};
+
+#line 2615 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_sym_name_0[2] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_sym_name_0_1,
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_sym_name_0_0
+};
+
+#line 2621 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_sym_name_0[2] = {
+  (MR_Integer) 1,
+  (MR_Integer) 0
+};
+
+#line 2627 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_sym_name_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 2,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____sym_name_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____sym_name_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "sym_name",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_sym_name_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_sym_name_0 },
+  (MR_Integer) 2,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_sym_name_0
+};
+
+#line 2644 "erlang_rtti_implementation.c"
+static const MR_FA_TypeInfo_Struct1 mercury__erlang_rtti_implementation__list__ti_list_1erlang_rtti_implementation__type_ctor_info_maybe_pseudo_type_info_0 = {
+  &mercury__list__list__type_ctor_info_list_1,
+  {
+    (MR_TypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_maybe_pseudo_type_info_0
+  }
+};
+
+#line 2652 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_tc_constraint_0_0[2] = {
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_tc_name_0,
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__list__ti_list_1erlang_rtti_implementation__type_ctor_info_maybe_pseudo_type_info_0
+};
+
+#line 2658 "erlang_rtti_implementation.c"
+static const MR_ConstString mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_tc_constraint_0_0[2] = {
+  (MR_String) "tcc_class_name",
+  (MR_String) "tcc_types"
+};
+
+#line 2664 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_tc_constraint_0_0 = {
+  (MR_String) "tc_constraint",
+  (MR_Integer) 2,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_tc_constraint_0_0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_tc_constraint_0_0,
+  NULL,
+  NULL
+};
+
+#line 2679 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_tc_constraint_0_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_tc_constraint_0_0
+};
+
+#line 2684 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_tc_constraint_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_tc_constraint_0_0
+  }
+};
+
+#line 2693 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_tc_constraint_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_tc_constraint_0_0
+};
+
+#line 2698 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_tc_constraint_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2703 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_tc_constraint_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____tc_constraint_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____tc_constraint_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "tc_constraint",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_tc_constraint_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_tc_constraint_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_tc_constraint_0
+};
+
+#line 2720 "erlang_rtti_implementation.c"
+static const MR_PseudoTypeInfo mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_tc_name_0_0[3] = {
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_sym_name_0,
+  (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__list__ti_list_1builtin__type_ctor_info_character_0,
+  (MR_PseudoTypeInfo) &mercury__builtin__builtin__type_ctor_info_int_0
+};
+
+#line 2727 "erlang_rtti_implementation.c"
+static const MR_ConstString mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_tc_name_0_0[3] = {
+  (MR_String) "tcn_module",
+  (MR_String) "tcn_name",
+  (MR_String) "tcn_arity"
+};
+
+#line 2734 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_tc_name_0_0 = {
+  (MR_String) "tc_name",
+  (MR_Integer) 3,
+  (MR_Integer) 0,
+  mercury__private_builtin__MR_SECTAG_NONE,
+  (MR_Integer) 0,
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_types_tc_name_0_0,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__field_names_tc_name_0_0,
+  NULL,
+  NULL
+};
+
+#line 2749 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_tc_name_0_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_tc_name_0_0
+};
+
+#line 2754 "erlang_rtti_implementation.c"
+static const MR_DuPtagLayout mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_tc_name_0[1] = {
+  {
+    (MR_Integer) 1,
+    mercury__private_builtin__MR_SECTAG_NONE,
+    mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_stag_ordered_tc_name_0_0
+  }
+};
+
+#line 2763 "erlang_rtti_implementation.c"
+static const MR_DuFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_tc_name_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_functor_desc_tc_name_0_0
+};
+
+#line 2768 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_tc_name_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2773 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_tc_name_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) 1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DU,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____tc_name_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____tc_name_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "tc_name",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_name_ordered_tc_name_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__du_ptag_ordered_tc_name_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_tc_name_0
+};
+
+#line 2790 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_tc_type_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV_GROUND,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____tc_type_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____tc_type_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "tc_type",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_maybe_pseudo_type_info_0 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2807 "erlang_rtti_implementation.c"
+static const MR_VA_PseudoTypeInfo_Struct2 mercury__erlang_rtti_implementation____vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_type_info_0__pseudo_maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1 = {
+  &mercury__builtin__builtin__type_ctor_info_tuple_0,
+  (MR_Integer) 2,
+  {
+    (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0,
+    (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1
+  }
+};
+
+#line 2817 "erlang_rtti_implementation.c"
+static const MR_FA_PseudoTypeInfo_Struct1 mercury__erlang_rtti_implementation__maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_type_info_0__pseudo_maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1 = {
+  &mercury__maybe__maybe__type_ctor_info_maybe_1,
+  {
+    (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation____vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_type_info_0__pseudo_maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1
+  }
+};
+
+#line 2825 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_ti_info_1 = {
+  (MR_Integer) 1,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_EQUIV,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____ti_info_1_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____ti_info_1_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "ti_info",
+  {     NULL },
+  {     (MR_PseudoTypeInfo) &mercury__erlang_rtti_implementation__maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_type_info_0__pseudo_maybe__pti_maybe_1__pseudo___vpti_tuple_2__plain_erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0__pseudo_1 },
+  (MR_Integer) -1,
+  (MR_Integer) 0,
+  NULL
+};
+
+#line 2842 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_ctor_info_0_0 = {
+  (MR_String) "type_ctor_info",
+  (MR_Integer) 0
+};
+
+#line 2848 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_type_ctor_info_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_ctor_info_0_0
+};
+
+#line 2853 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_type_ctor_info_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_ctor_info_0_0
+};
+
+#line 2858 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_type_ctor_info_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2863 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_ctor_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DUMMY,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____type_ctor_info_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____type_ctor_info_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "type_ctor_info",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_type_ctor_info_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_type_ctor_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_type_ctor_info_0
+};
+
+#line 2880 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_ctor_info_evaled_0_0 = {
+  (MR_String) "type_ctor_info_evaled",
+  (MR_Integer) 0
+};
+
+#line 2886 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_type_ctor_info_evaled_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_ctor_info_evaled_0_0
+};
+
+#line 2891 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_type_ctor_info_evaled_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_ctor_info_evaled_0_0
+};
+
+#line 2896 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_type_ctor_info_evaled_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2901 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_ctor_info_evaled_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DUMMY,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____type_ctor_info_evaled_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____type_ctor_info_evaled_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "type_ctor_info_evaled",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_type_ctor_info_evaled_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_type_ctor_info_evaled_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_type_ctor_info_evaled_0
+};
+
+#line 2918 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_info_0_0 = {
+  (MR_String) "type_info",
+  (MR_Integer) 0
+};
+
+#line 2924 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_type_info_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_info_0_0
+};
+
+#line 2929 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_type_info_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_info_0_0
+};
+
+#line 2934 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_type_info_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2939 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DUMMY,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____type_info_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____type_info_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "type_info",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_type_info_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_type_info_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_type_info_0
+};
+
+#line 2956 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDesc mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_info_thunk_0_0 = {
+  (MR_String) "type_info_thunk",
+  (MR_Integer) 0
+};
+
+#line 2962 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_type_info_thunk_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_info_thunk_0_0
+};
+
+#line 2967 "erlang_rtti_implementation.c"
+static const MR_EnumFunctorDescPtr mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_type_info_thunk_0[1] = {
+  &mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_functor_desc_type_info_thunk_0_0
+};
+
+#line 2972 "erlang_rtti_implementation.c"
+static const MR_Integer mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_type_info_thunk_0[1] = {
+  (MR_Integer) 0
+};
+
+#line 2977 "erlang_rtti_implementation.c"
+const MR_TypeCtorInfo_Struct mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_thunk_0 = {
+  (MR_Integer) 0,
+  (MR_Integer) 15,
+  (MR_Integer) -1,
+  mercury__private_builtin__MR_TYPECTOR_REP_DUMMY,
+  ((MR_Box) (mercury__erlang_rtti_implementation____Unify____type_info_thunk_0_0_10001)),
+  ((MR_Box) (mercury__erlang_rtti_implementation____Compare____type_info_thunk_0_0_10001)),
+  (MR_String) "erlang_rtti_implementation",
+  (MR_String) "type_info_thunk",
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_name_ordered_type_info_thunk_0 },
+  {     mercury__erlang_rtti_implementation__erlang_rtti_implementation__enum_value_ordered_type_info_thunk_0 },
+  (MR_Integer) 1,
+  (MR_Integer) 4,
+  mercury__erlang_rtti_implementation__erlang_rtti_implementation__functor_number_map_type_info_thunk_0
+};
+
+#line 2994 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____du_arg_info_0_0_10001(
+#line 2997 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 2999 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3001 "erlang_rtti_implementation.c"
+{
+#line 3003 "erlang_rtti_implementation.c"
+  {
+#line 3005 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3008 "erlang_rtti_implementation.c"
+    {
+#line 3010 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____du_arg_info_0_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2));
+    }
+#line 3013 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3015 "erlang_rtti_implementation.c"
+  }
+#line 3017 "erlang_rtti_implementation.c"
+}
+
+#line 3020 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____du_arg_info_0_0_10001(
+#line 3023 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3025 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3027 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3029 "erlang_rtti_implementation.c"
+{
+#line 3031 "erlang_rtti_implementation.c"
+  {
+#line 3033 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3036 "erlang_rtti_implementation.c"
+    {
+#line 3038 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____du_arg_info_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3041 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3043 "erlang_rtti_implementation.c"
+  }
+#line 3045 "erlang_rtti_implementation.c"
+}
+
+#line 3048 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____erlang_atom_0_0_10001(
+#line 3051 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3053 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3055 "erlang_rtti_implementation.c"
+{
+#line 3057 "erlang_rtti_implementation.c"
+  {
+#line 3059 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3062 "erlang_rtti_implementation.c"
+    {
+#line 3064 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____erlang_atom_0_0();
+    }
+#line 3067 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3069 "erlang_rtti_implementation.c"
+  }
+#line 3071 "erlang_rtti_implementation.c"
+}
+
+#line 3074 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____erlang_atom_0_0_10001(
+#line 3077 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3079 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3081 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3083 "erlang_rtti_implementation.c"
+{
+#line 3085 "erlang_rtti_implementation.c"
+  {
+#line 3087 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3090 "erlang_rtti_implementation.c"
+    {
+#line 3092 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____erlang_atom_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1);
+    }
+#line 3095 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3097 "erlang_rtti_implementation.c"
+  }
+#line 3099 "erlang_rtti_implementation.c"
+}
+
+#line 3102 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____erlang_du_functor_0_0_10001(
+#line 3105 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3107 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3109 "erlang_rtti_implementation.c"
+{
+#line 3111 "erlang_rtti_implementation.c"
+  {
+#line 3113 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3116 "erlang_rtti_implementation.c"
+    {
+#line 3118 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____erlang_du_functor_0_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2));
+    }
+#line 3121 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3123 "erlang_rtti_implementation.c"
+  }
+#line 3125 "erlang_rtti_implementation.c"
+}
+
+#line 3128 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____erlang_du_functor_0_0_10001(
+#line 3131 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3133 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3135 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3137 "erlang_rtti_implementation.c"
+{
+#line 3139 "erlang_rtti_implementation.c"
+  {
+#line 3141 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3144 "erlang_rtti_implementation.c"
+    {
+#line 3146 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____erlang_du_functor_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3149 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3151 "erlang_rtti_implementation.c"
+  }
+#line 3153 "erlang_rtti_implementation.c"
+}
+
+#line 3156 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____erlang_type_ctor_rep_0_0_10001(
+#line 3159 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3161 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3163 "erlang_rtti_implementation.c"
+{
+#line 3165 "erlang_rtti_implementation.c"
+  {
+#line 3167 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3170 "erlang_rtti_implementation.c"
+    {
+#line 3172 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____erlang_type_ctor_rep_0_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2));
+    }
+#line 3175 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3177 "erlang_rtti_implementation.c"
+  }
+#line 3179 "erlang_rtti_implementation.c"
+}
+
+#line 3182 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____erlang_type_ctor_rep_0_0_10001(
+#line 3185 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3187 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3189 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3191 "erlang_rtti_implementation.c"
+{
+#line 3193 "erlang_rtti_implementation.c"
+  {
+#line 3195 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3198 "erlang_rtti_implementation.c"
+    {
+#line 3200 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____erlang_type_ctor_rep_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3203 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3205 "erlang_rtti_implementation.c"
+  }
+#line 3207 "erlang_rtti_implementation.c"
+}
+
+#line 3210 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____evaluated_pseudo_type_info_thunk_0_0_10001(
+#line 3213 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3215 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3217 "erlang_rtti_implementation.c"
+{
+#line 3219 "erlang_rtti_implementation.c"
+  {
+#line 3221 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3224 "erlang_rtti_implementation.c"
+    {
+#line 3226 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____evaluated_pseudo_type_info_thunk_0_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2));
+    }
+#line 3229 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3231 "erlang_rtti_implementation.c"
+  }
+#line 3233 "erlang_rtti_implementation.c"
+}
+
+#line 3236 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____evaluated_pseudo_type_info_thunk_0_0_10001(
+#line 3239 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3241 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3243 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3245 "erlang_rtti_implementation.c"
+{
+#line 3247 "erlang_rtti_implementation.c"
+  {
+#line 3249 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3252 "erlang_rtti_implementation.c"
+    {
+#line 3254 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____evaluated_pseudo_type_info_thunk_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3257 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3259 "erlang_rtti_implementation.c"
+  }
+#line 3261 "erlang_rtti_implementation.c"
+}
+
+#line 3264 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____exist_info_0_0_10001(
+#line 3267 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3269 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3271 "erlang_rtti_implementation.c"
+{
+#line 3273 "erlang_rtti_implementation.c"
+  {
+#line 3275 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3278 "erlang_rtti_implementation.c"
+    {
+#line 3280 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____exist_info_0_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2));
+    }
+#line 3283 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3285 "erlang_rtti_implementation.c"
+  }
+#line 3287 "erlang_rtti_implementation.c"
+}
+
+#line 3290 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____exist_info_0_0_10001(
+#line 3293 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3295 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3297 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3299 "erlang_rtti_implementation.c"
+{
+#line 3301 "erlang_rtti_implementation.c"
+  {
+#line 3303 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3306 "erlang_rtti_implementation.c"
+    {
+#line 3308 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____exist_info_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3311 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3313 "erlang_rtti_implementation.c"
+  }
+#line 3315 "erlang_rtti_implementation.c"
+}
+
+#line 3318 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____exist_typeinfo_locn_0_0_10001(
+#line 3321 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3323 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3325 "erlang_rtti_implementation.c"
+{
+#line 3327 "erlang_rtti_implementation.c"
+  {
+#line 3329 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3332 "erlang_rtti_implementation.c"
+    {
+#line 3334 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____exist_typeinfo_locn_0_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2));
+    }
+#line 3337 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3339 "erlang_rtti_implementation.c"
+  }
+#line 3341 "erlang_rtti_implementation.c"
+}
+
+#line 3344 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____exist_typeinfo_locn_0_0_10001(
+#line 3347 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3349 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3351 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3353 "erlang_rtti_implementation.c"
+{
+#line 3355 "erlang_rtti_implementation.c"
+  {
+#line 3357 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3360 "erlang_rtti_implementation.c"
+    {
+#line 3362 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____exist_typeinfo_locn_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3365 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3367 "erlang_rtti_implementation.c"
+  }
+#line 3369 "erlang_rtti_implementation.c"
+}
+
+#line 3372 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____maybe_pseudo_type_info_0_0_10001(
+#line 3375 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3377 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3379 "erlang_rtti_implementation.c"
+{
+#line 3381 "erlang_rtti_implementation.c"
+  {
+#line 3383 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3386 "erlang_rtti_implementation.c"
+    {
+#line 3388 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____maybe_pseudo_type_info_0_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2));
+    }
+#line 3391 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3393 "erlang_rtti_implementation.c"
+  }
+#line 3395 "erlang_rtti_implementation.c"
+}
+
+#line 3398 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____maybe_pseudo_type_info_0_0_10001(
+#line 3401 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3403 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3405 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3407 "erlang_rtti_implementation.c"
+{
+#line 3409 "erlang_rtti_implementation.c"
+  {
+#line 3411 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3414 "erlang_rtti_implementation.c"
+    {
+#line 3416 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____maybe_pseudo_type_info_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3419 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3421 "erlang_rtti_implementation.c"
+  }
+#line 3423 "erlang_rtti_implementation.c"
+}
+
+#line 3426 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____module_name_0_0_10001(
+#line 3429 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3431 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3433 "erlang_rtti_implementation.c"
+{
+#line 3435 "erlang_rtti_implementation.c"
+  {
+#line 3437 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3440 "erlang_rtti_implementation.c"
+    {
+#line 3442 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____module_name_0_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2));
+    }
+#line 3445 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3447 "erlang_rtti_implementation.c"
+  }
+#line 3449 "erlang_rtti_implementation.c"
+}
+
+#line 3452 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____module_name_0_0_10001(
+#line 3455 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3457 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3459 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3461 "erlang_rtti_implementation.c"
+{
+#line 3463 "erlang_rtti_implementation.c"
+  {
+#line 3465 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3468 "erlang_rtti_implementation.c"
+    {
+#line 3470 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____module_name_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3473 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3475 "erlang_rtti_implementation.c"
+  }
+#line 3477 "erlang_rtti_implementation.c"
+}
+
+#line 3480 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____pseudo_type_info_0_0_10001(
+#line 3483 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3485 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3487 "erlang_rtti_implementation.c"
+{
+#line 3489 "erlang_rtti_implementation.c"
+  {
+#line 3491 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3494 "erlang_rtti_implementation.c"
+    {
+#line 3496 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____pseudo_type_info_0_0();
+    }
+#line 3499 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3501 "erlang_rtti_implementation.c"
+  }
+#line 3503 "erlang_rtti_implementation.c"
+}
+
+#line 3506 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____pseudo_type_info_0_0_10001(
+#line 3509 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3511 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3513 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3515 "erlang_rtti_implementation.c"
+{
+#line 3517 "erlang_rtti_implementation.c"
+  {
+#line 3519 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3522 "erlang_rtti_implementation.c"
+    {
+#line 3524 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____pseudo_type_info_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1);
+    }
+#line 3527 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3529 "erlang_rtti_implementation.c"
+  }
+#line 3531 "erlang_rtti_implementation.c"
+}
+
+#line 3534 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____pseudo_type_info_thunk_0_0_10001(
+#line 3537 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3539 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3541 "erlang_rtti_implementation.c"
+{
+#line 3543 "erlang_rtti_implementation.c"
+  {
+#line 3545 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3548 "erlang_rtti_implementation.c"
+    {
+#line 3550 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____pseudo_type_info_thunk_0_0();
+    }
+#line 3553 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3555 "erlang_rtti_implementation.c"
+  }
+#line 3557 "erlang_rtti_implementation.c"
+}
+
+#line 3560 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____pseudo_type_info_thunk_0_0_10001(
+#line 3563 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3565 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3567 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3569 "erlang_rtti_implementation.c"
+{
+#line 3571 "erlang_rtti_implementation.c"
+  {
+#line 3573 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3576 "erlang_rtti_implementation.c"
+    {
+#line 3578 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____pseudo_type_info_thunk_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1);
+    }
+#line 3581 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3583 "erlang_rtti_implementation.c"
+  }
+#line 3585 "erlang_rtti_implementation.c"
+}
+
+#line 3588 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____pti_info_1_0_10001(
+#line 3591 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3593 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3595 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3597 "erlang_rtti_implementation.c"
+{
+#line 3599 "erlang_rtti_implementation.c"
+  {
+#line 3601 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3604 "erlang_rtti_implementation.c"
+    {
+#line 3606 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____pti_info_1_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3609 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3611 "erlang_rtti_implementation.c"
+  }
+#line 3613 "erlang_rtti_implementation.c"
+}
+
+#line 3616 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____pti_info_1_0_10001(
+#line 3619 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3621 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3623 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3,
+#line 3625 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_4)
+#line 3627 "erlang_rtti_implementation.c"
+{
+#line 3629 "erlang_rtti_implementation.c"
+  {
+#line 3631 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3634 "erlang_rtti_implementation.c"
+    {
+#line 3636 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____pti_info_1_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), &mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_4));
+    }
+#line 3639 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_2 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3641 "erlang_rtti_implementation.c"
+  }
+#line 3643 "erlang_rtti_implementation.c"
+}
+
+#line 3646 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____sym_name_0_0_10001(
+#line 3649 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3651 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3653 "erlang_rtti_implementation.c"
+{
+#line 3655 "erlang_rtti_implementation.c"
+  {
+#line 3657 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3660 "erlang_rtti_implementation.c"
+    {
+#line 3662 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____sym_name_0_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2));
+    }
+#line 3665 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3667 "erlang_rtti_implementation.c"
+  }
+#line 3669 "erlang_rtti_implementation.c"
+}
+
+#line 3672 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____sym_name_0_0_10001(
+#line 3675 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3677 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3679 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3681 "erlang_rtti_implementation.c"
+{
+#line 3683 "erlang_rtti_implementation.c"
+  {
+#line 3685 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3688 "erlang_rtti_implementation.c"
+    {
+#line 3690 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____sym_name_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3693 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3695 "erlang_rtti_implementation.c"
+  }
+#line 3697 "erlang_rtti_implementation.c"
+}
+
+#line 3700 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____tc_constraint_0_0_10001(
+#line 3703 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3705 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3707 "erlang_rtti_implementation.c"
+{
+#line 3709 "erlang_rtti_implementation.c"
+  {
+#line 3711 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3714 "erlang_rtti_implementation.c"
+    {
+#line 3716 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____tc_constraint_0_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2));
+    }
+#line 3719 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3721 "erlang_rtti_implementation.c"
+  }
+#line 3723 "erlang_rtti_implementation.c"
+}
+
+#line 3726 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____tc_constraint_0_0_10001(
+#line 3729 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3731 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3733 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3735 "erlang_rtti_implementation.c"
+{
+#line 3737 "erlang_rtti_implementation.c"
+  {
+#line 3739 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3742 "erlang_rtti_implementation.c"
+    {
+#line 3744 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____tc_constraint_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3747 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3749 "erlang_rtti_implementation.c"
+  }
+#line 3751 "erlang_rtti_implementation.c"
+}
+
+#line 3754 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____tc_name_0_0_10001(
+#line 3757 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3759 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3761 "erlang_rtti_implementation.c"
+{
+#line 3763 "erlang_rtti_implementation.c"
+  {
+#line 3765 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3768 "erlang_rtti_implementation.c"
+    {
+#line 3770 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____tc_name_0_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2));
+    }
+#line 3773 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3775 "erlang_rtti_implementation.c"
+  }
+#line 3777 "erlang_rtti_implementation.c"
+}
+
+#line 3780 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____tc_name_0_0_10001(
+#line 3783 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3785 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3787 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3789 "erlang_rtti_implementation.c"
+{
+#line 3791 "erlang_rtti_implementation.c"
+  {
+#line 3793 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3796 "erlang_rtti_implementation.c"
+    {
+#line 3798 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____tc_name_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3801 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3803 "erlang_rtti_implementation.c"
+  }
+#line 3805 "erlang_rtti_implementation.c"
+}
+
+#line 3808 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____tc_type_0_0_10001(
+#line 3811 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3813 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3815 "erlang_rtti_implementation.c"
+{
+#line 3817 "erlang_rtti_implementation.c"
+  {
+#line 3819 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3822 "erlang_rtti_implementation.c"
+    {
+#line 3824 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____tc_type_0_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2));
+    }
+#line 3827 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3829 "erlang_rtti_implementation.c"
+  }
+#line 3831 "erlang_rtti_implementation.c"
+}
+
+#line 3834 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____tc_type_0_0_10001(
+#line 3837 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3839 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3841 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3843 "erlang_rtti_implementation.c"
+{
+#line 3845 "erlang_rtti_implementation.c"
+  {
+#line 3847 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3850 "erlang_rtti_implementation.c"
+    {
+#line 3852 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____tc_type_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3855 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3857 "erlang_rtti_implementation.c"
+  }
+#line 3859 "erlang_rtti_implementation.c"
+}
+
+#line 3862 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____ti_info_1_0_10001(
+#line 3865 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3867 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3869 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3871 "erlang_rtti_implementation.c"
+{
+#line 3873 "erlang_rtti_implementation.c"
+  {
+#line 3875 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3878 "erlang_rtti_implementation.c"
+    {
+#line 3880 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____ti_info_1_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_2), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3));
+    }
+#line 3883 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3885 "erlang_rtti_implementation.c"
+  }
+#line 3887 "erlang_rtti_implementation.c"
+}
+
+#line 3890 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____ti_info_1_0_10001(
+#line 3893 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3895 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3897 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3,
+#line 3899 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_4)
+#line 3901 "erlang_rtti_implementation.c"
+{
+#line 3903 "erlang_rtti_implementation.c"
+  {
+#line 3905 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3908 "erlang_rtti_implementation.c"
+    {
+#line 3910 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____ti_info_1_0(((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_1), &mercury__erlang_rtti_implementation__conv0_HeadVar__1_1, ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_3), ((MR_Word) mercury__erlang_rtti_implementation__wrapper_arg_4));
+    }
+#line 3913 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_2 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3915 "erlang_rtti_implementation.c"
+  }
+#line 3917 "erlang_rtti_implementation.c"
+}
+
+#line 3920 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____type_ctor_info_0_0_10001(
+#line 3923 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3925 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3927 "erlang_rtti_implementation.c"
+{
+#line 3929 "erlang_rtti_implementation.c"
+  {
+#line 3931 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3934 "erlang_rtti_implementation.c"
+    {
+#line 3936 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____type_ctor_info_0_0();
+    }
+#line 3939 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3941 "erlang_rtti_implementation.c"
+  }
+#line 3943 "erlang_rtti_implementation.c"
+}
+
+#line 3946 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____type_ctor_info_0_0_10001(
+#line 3949 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3951 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 3953 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 3955 "erlang_rtti_implementation.c"
+{
+#line 3957 "erlang_rtti_implementation.c"
+  {
+#line 3959 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 3962 "erlang_rtti_implementation.c"
+    {
+#line 3964 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____type_ctor_info_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1);
+    }
+#line 3967 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 3969 "erlang_rtti_implementation.c"
+  }
+#line 3971 "erlang_rtti_implementation.c"
+}
+
+#line 3974 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____type_ctor_info_evaled_0_0_10001(
+#line 3977 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 3979 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 3981 "erlang_rtti_implementation.c"
+{
+#line 3983 "erlang_rtti_implementation.c"
+  {
+#line 3985 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 3988 "erlang_rtti_implementation.c"
+    {
+#line 3990 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____type_ctor_info_evaled_0_0();
+    }
+#line 3993 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 3995 "erlang_rtti_implementation.c"
+  }
+#line 3997 "erlang_rtti_implementation.c"
+}
+
+#line 4000 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____type_ctor_info_evaled_0_0_10001(
+#line 4003 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 4005 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 4007 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 4009 "erlang_rtti_implementation.c"
+{
+#line 4011 "erlang_rtti_implementation.c"
+  {
+#line 4013 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 4016 "erlang_rtti_implementation.c"
+    {
+#line 4018 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____type_ctor_info_evaled_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1);
+    }
+#line 4021 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 4023 "erlang_rtti_implementation.c"
+  }
+#line 4025 "erlang_rtti_implementation.c"
+}
+
+#line 4028 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____type_info_0_0_10001(
+#line 4031 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 4033 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 4035 "erlang_rtti_implementation.c"
+{
+#line 4037 "erlang_rtti_implementation.c"
+  {
+#line 4039 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 4042 "erlang_rtti_implementation.c"
+    {
+#line 4044 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____type_info_0_0();
+    }
+#line 4047 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 4049 "erlang_rtti_implementation.c"
+  }
+#line 4051 "erlang_rtti_implementation.c"
+}
+
+#line 4054 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____type_info_0_0_10001(
+#line 4057 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 4059 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 4061 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 4063 "erlang_rtti_implementation.c"
+{
+#line 4065 "erlang_rtti_implementation.c"
+  {
+#line 4067 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 4070 "erlang_rtti_implementation.c"
+    {
+#line 4072 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____type_info_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1);
+    }
+#line 4075 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 4077 "erlang_rtti_implementation.c"
+  }
+#line 4079 "erlang_rtti_implementation.c"
+}
+
+#line 4082 "erlang_rtti_implementation.c"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____type_info_thunk_0_0_10001(
+#line 4085 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 4087 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2)
+#line 4089 "erlang_rtti_implementation.c"
+{
+#line 4091 "erlang_rtti_implementation.c"
+  {
+#line 4093 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 4096 "erlang_rtti_implementation.c"
+    {
+#line 4098 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____type_info_thunk_0_0();
+    }
+#line 4101 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 4103 "erlang_rtti_implementation.c"
+  }
+#line 4105 "erlang_rtti_implementation.c"
+}
+
+#line 4108 "erlang_rtti_implementation.c"
+static void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____type_info_thunk_0_0_10001(
+#line 4111 "erlang_rtti_implementation.c"
+  MR_Box * mercury__erlang_rtti_implementation__wrapper_arg_1,
+#line 4113 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_2,
+#line 4115 "erlang_rtti_implementation.c"
+  MR_Box mercury__erlang_rtti_implementation__wrapper_arg_3)
+#line 4117 "erlang_rtti_implementation.c"
+{
+#line 4119 "erlang_rtti_implementation.c"
+  {
+#line 4121 "erlang_rtti_implementation.c"
+    MR_Word mercury__erlang_rtti_implementation__conv0_HeadVar__1_1;
+
+#line 4124 "erlang_rtti_implementation.c"
+    {
+#line 4126 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation____Compare____type_info_thunk_0_0(&mercury__erlang_rtti_implementation__conv0_HeadVar__1_1);
+    }
+#line 4129 "erlang_rtti_implementation.c"
+    *mercury__erlang_rtti_implementation__wrapper_arg_1 = ((MR_Box) (mercury__erlang_rtti_implementation__conv0_HeadVar__1_1));
+#line 4131 "erlang_rtti_implementation.c"
+  }
+#line 4133 "erlang_rtti_implementation.c"
+}
+
+#line 130 "array.opt"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_100_111_95_102_111_108_100_114_95_102_117_110_99_95_95_104_111_49_56_95_95_91_51_93_95_48_5_f_in__array_0(
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_19_19,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_1_17,
+#line 130 "array.opt"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_8_8,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_9_9,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_10_10,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_11_11)
+#line 130 "array.opt"
+{
+#line 545 "array.opt"
+  while (MR_TRUE)
+#line 545 "array.opt"
+    {
+#line 545 "array.opt"
+      /* tailcall optimized into a loop */
+#line 545 "array.opt"
+      {
+#line 545 "array.opt"
+        MR_bool mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_11_11 < mercury__erlang_rtti_implementation__V_10_10);
+#line 545 "array.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_6_12;
+
+#line 545 "array.opt"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 544 "array.opt"
+          mercury__erlang_rtti_implementation__V_6_12 = mercury__erlang_rtti_implementation__V_9_9;
+#line 545 "array.opt"
+        else
+#line 546 "array.opt"
+          {
+#line 546 "array.opt"
+            MR_Word mercury__erlang_rtti_implementation__V_12_13;
+#line 546 "array.opt"
+            MR_Integer mercury__erlang_rtti_implementation__V_14_14;
+#line 546 "array.opt"
+            MR_Box mercury__erlang_rtti_implementation__V_13_15;
+
+#line 925 "array.opt"
+            {
+#line 925 "array.opt"
+              mercury__array__unsafe_lookup_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T1_1_17, (MR_ArrayPtr) mercury__erlang_rtti_implementation__V_8_8, mercury__erlang_rtti_implementation__V_11_11, &mercury__erlang_rtti_implementation__V_13_15);
+            }
+#line 547 "array.opt"
+            {
+#line 547 "array.opt"
+              mercury__erlang_rtti_implementation__V_12_13 = mercury__erlang_rtti_implementation__IntroducedFrom__func__deconstruct_2__803__4_3_f_0(mercury__erlang_rtti_implementation__V_19_19, mercury__erlang_rtti_implementation__V_13_15, mercury__erlang_rtti_implementation__V_9_9);
+            }
+#line 549 "array.opt"
+            mercury__erlang_rtti_implementation__V_14_14 = (mercury__erlang_rtti_implementation__V_11_11 - (MR_Integer) 1);
+#line 546 "array.opt"
+            /* direct tailcall eliminated */
+#line 546 "array.opt"
+            {
+#line 546 "array.opt"
+              MR_Word mercury__erlang_rtti_implementation__V_9__tmp_copy_9 = mercury__erlang_rtti_implementation__V_12_13;
+#line 546 "array.opt"
+              MR_Integer mercury__erlang_rtti_implementation__V_11__tmp_copy_11 = mercury__erlang_rtti_implementation__V_14_14;
+
+#line 546 "array.opt"
+              mercury__erlang_rtti_implementation__V_11_11 = mercury__erlang_rtti_implementation__V_11__tmp_copy_11;
+#line 546 "array.opt"
+              mercury__erlang_rtti_implementation__V_9_9 = mercury__erlang_rtti_implementation__V_9__tmp_copy_9;
+#line 546 "array.opt"
+            }
+#line 546 "array.opt"
+            continue;
+#line 546 "array.opt"
+          }
+#line 545 "array.opt"
+        return mercury__erlang_rtti_implementation__V_6_12;
+#line 545 "array.opt"
+      }
+#line 545 "array.opt"
+      break;
+#line 545 "array.opt"
+    }
+#line 130 "array.opt"
+}
+
+#line 130 "array.opt"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_100_111_95_102_111_108_100_114_95_102_117_110_99_95_95_104_111_49_55_95_95_91_51_93_95_48_5_f_in__array_0(
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_19_19,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_1_17,
+#line 130 "array.opt"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_8_8,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_9_9,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_10_10,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_11_11)
+#line 130 "array.opt"
+{
+#line 545 "array.opt"
+  while (MR_TRUE)
+#line 545 "array.opt"
+    {
+#line 545 "array.opt"
+      /* tailcall optimized into a loop */
+#line 545 "array.opt"
+      {
+#line 545 "array.opt"
+        MR_bool mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_11_11 < mercury__erlang_rtti_implementation__V_10_10);
+#line 545 "array.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_6_12;
+
+#line 545 "array.opt"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 544 "array.opt"
+          mercury__erlang_rtti_implementation__V_6_12 = mercury__erlang_rtti_implementation__V_9_9;
+#line 545 "array.opt"
+        else
+#line 546 "array.opt"
+          {
+#line 546 "array.opt"
+            MR_Word mercury__erlang_rtti_implementation__V_12_13;
+#line 546 "array.opt"
+            MR_Integer mercury__erlang_rtti_implementation__V_14_14;
+#line 546 "array.opt"
+            MR_Box mercury__erlang_rtti_implementation__V_13_15;
+
+#line 925 "array.opt"
+            {
+#line 925 "array.opt"
+              mercury__array__unsafe_lookup_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T1_1_17, (MR_ArrayPtr) mercury__erlang_rtti_implementation__V_8_8, mercury__erlang_rtti_implementation__V_11_11, &mercury__erlang_rtti_implementation__V_13_15);
+            }
+#line 547 "array.opt"
+            {
+#line 547 "array.opt"
+              mercury__erlang_rtti_implementation__V_12_13 = mercury__erlang_rtti_implementation__IntroducedFrom__func__deconstruct_2__803__3_3_f_0(mercury__erlang_rtti_implementation__V_19_19, mercury__erlang_rtti_implementation__V_13_15, mercury__erlang_rtti_implementation__V_9_9);
+            }
+#line 549 "array.opt"
+            mercury__erlang_rtti_implementation__V_14_14 = (mercury__erlang_rtti_implementation__V_11_11 - (MR_Integer) 1);
+#line 546 "array.opt"
+            /* direct tailcall eliminated */
+#line 546 "array.opt"
+            {
+#line 546 "array.opt"
+              MR_Word mercury__erlang_rtti_implementation__V_9__tmp_copy_9 = mercury__erlang_rtti_implementation__V_12_13;
+#line 546 "array.opt"
+              MR_Integer mercury__erlang_rtti_implementation__V_11__tmp_copy_11 = mercury__erlang_rtti_implementation__V_14_14;
+
+#line 546 "array.opt"
+              mercury__erlang_rtti_implementation__V_11_11 = mercury__erlang_rtti_implementation__V_11__tmp_copy_11;
+#line 546 "array.opt"
+              mercury__erlang_rtti_implementation__V_9_9 = mercury__erlang_rtti_implementation__V_9__tmp_copy_9;
+#line 546 "array.opt"
+            }
+#line 546 "array.opt"
+            continue;
+#line 546 "array.opt"
+          }
+#line 545 "array.opt"
+        return mercury__erlang_rtti_implementation__V_6_12;
+#line 545 "array.opt"
+      }
+#line 545 "array.opt"
+      break;
+#line 545 "array.opt"
+    }
+#line 130 "array.opt"
+}
+
+#line 130 "array.opt"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_100_111_95_102_111_108_100_114_95_102_117_110_99_95_95_104_111_49_54_95_95_91_51_93_95_48_5_f_in__array_0(
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_19_19,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_1_17,
+#line 130 "array.opt"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_8_8,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_9_9,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_10_10,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_11_11)
+#line 130 "array.opt"
+{
+#line 545 "array.opt"
+  while (MR_TRUE)
+#line 545 "array.opt"
+    {
+#line 545 "array.opt"
+      /* tailcall optimized into a loop */
+#line 545 "array.opt"
+      {
+#line 545 "array.opt"
+        MR_bool mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_11_11 < mercury__erlang_rtti_implementation__V_10_10);
+#line 545 "array.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_6_12;
+
+#line 545 "array.opt"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 544 "array.opt"
+          mercury__erlang_rtti_implementation__V_6_12 = mercury__erlang_rtti_implementation__V_9_9;
+#line 545 "array.opt"
+        else
+#line 546 "array.opt"
+          {
+#line 546 "array.opt"
+            MR_Word mercury__erlang_rtti_implementation__V_12_13;
+#line 546 "array.opt"
+            MR_Integer mercury__erlang_rtti_implementation__V_14_14;
+#line 546 "array.opt"
+            MR_Box mercury__erlang_rtti_implementation__V_13_15;
+
+#line 925 "array.opt"
+            {
+#line 925 "array.opt"
+              mercury__array__unsafe_lookup_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T1_1_17, (MR_ArrayPtr) mercury__erlang_rtti_implementation__V_8_8, mercury__erlang_rtti_implementation__V_11_11, &mercury__erlang_rtti_implementation__V_13_15);
+            }
+#line 547 "array.opt"
+            {
+#line 547 "array.opt"
+              mercury__erlang_rtti_implementation__V_12_13 = mercury__erlang_rtti_implementation__IntroducedFrom__func__deconstruct_2__803__2_3_f_0(mercury__erlang_rtti_implementation__V_19_19, mercury__erlang_rtti_implementation__V_13_15, mercury__erlang_rtti_implementation__V_9_9);
+            }
+#line 549 "array.opt"
+            mercury__erlang_rtti_implementation__V_14_14 = (mercury__erlang_rtti_implementation__V_11_11 - (MR_Integer) 1);
+#line 546 "array.opt"
+            /* direct tailcall eliminated */
+#line 546 "array.opt"
+            {
+#line 546 "array.opt"
+              MR_Word mercury__erlang_rtti_implementation__V_9__tmp_copy_9 = mercury__erlang_rtti_implementation__V_12_13;
+#line 546 "array.opt"
+              MR_Integer mercury__erlang_rtti_implementation__V_11__tmp_copy_11 = mercury__erlang_rtti_implementation__V_14_14;
+
+#line 546 "array.opt"
+              mercury__erlang_rtti_implementation__V_11_11 = mercury__erlang_rtti_implementation__V_11__tmp_copy_11;
+#line 546 "array.opt"
+              mercury__erlang_rtti_implementation__V_9_9 = mercury__erlang_rtti_implementation__V_9__tmp_copy_9;
+#line 546 "array.opt"
+            }
+#line 546 "array.opt"
+            continue;
+#line 546 "array.opt"
+          }
+#line 545 "array.opt"
+        return mercury__erlang_rtti_implementation__V_6_12;
+#line 545 "array.opt"
+      }
+#line 545 "array.opt"
+      break;
+#line 545 "array.opt"
+    }
+#line 130 "array.opt"
+}
+
+#line 130 "array.opt"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_100_111_95_102_111_108_100_114_95_102_117_110_99_95_95_104_111_49_53_95_95_91_51_93_95_48_5_f_in__array_0(
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_19_19,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_1_17,
+#line 130 "array.opt"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_8_8,
+#line 130 "array.opt"
+  MR_Word mercury__erlang_rtti_implementation__V_9_9,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_10_10,
+#line 130 "array.opt"
+  MR_Integer mercury__erlang_rtti_implementation__V_11_11)
+#line 130 "array.opt"
+{
+#line 545 "array.opt"
+  while (MR_TRUE)
+#line 545 "array.opt"
+    {
+#line 545 "array.opt"
+      /* tailcall optimized into a loop */
+#line 545 "array.opt"
+      {
+#line 545 "array.opt"
+        MR_bool mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_11_11 < mercury__erlang_rtti_implementation__V_10_10);
+#line 545 "array.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_6_12;
+
+#line 545 "array.opt"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 544 "array.opt"
+          mercury__erlang_rtti_implementation__V_6_12 = mercury__erlang_rtti_implementation__V_9_9;
+#line 545 "array.opt"
+        else
+#line 546 "array.opt"
+          {
+#line 546 "array.opt"
+            MR_Word mercury__erlang_rtti_implementation__V_12_13;
+#line 546 "array.opt"
+            MR_Integer mercury__erlang_rtti_implementation__V_14_14;
+#line 546 "array.opt"
+            MR_Box mercury__erlang_rtti_implementation__V_13_15;
+
+#line 925 "array.opt"
+            {
+#line 925 "array.opt"
+              mercury__array__unsafe_lookup_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T1_1_17, (MR_ArrayPtr) mercury__erlang_rtti_implementation__V_8_8, mercury__erlang_rtti_implementation__V_11_11, &mercury__erlang_rtti_implementation__V_13_15);
+            }
+#line 547 "array.opt"
+            {
+#line 547 "array.opt"
+              mercury__erlang_rtti_implementation__V_12_13 = mercury__erlang_rtti_implementation__IntroducedFrom__func__deconstruct_2__803__1_3_f_0(mercury__erlang_rtti_implementation__V_19_19, mercury__erlang_rtti_implementation__V_13_15, mercury__erlang_rtti_implementation__V_9_9);
+            }
+#line 549 "array.opt"
+            mercury__erlang_rtti_implementation__V_14_14 = (mercury__erlang_rtti_implementation__V_11_11 - (MR_Integer) 1);
+#line 546 "array.opt"
+            /* direct tailcall eliminated */
+#line 546 "array.opt"
+            {
+#line 546 "array.opt"
+              MR_Word mercury__erlang_rtti_implementation__V_9__tmp_copy_9 = mercury__erlang_rtti_implementation__V_12_13;
+#line 546 "array.opt"
+              MR_Integer mercury__erlang_rtti_implementation__V_11__tmp_copy_11 = mercury__erlang_rtti_implementation__V_14_14;
+
+#line 546 "array.opt"
+              mercury__erlang_rtti_implementation__V_11_11 = mercury__erlang_rtti_implementation__V_11__tmp_copy_11;
+#line 546 "array.opt"
+              mercury__erlang_rtti_implementation__V_9_9 = mercury__erlang_rtti_implementation__V_9__tmp_copy_9;
+#line 546 "array.opt"
+            }
+#line 546 "array.opt"
+            continue;
+#line 546 "array.opt"
+          }
+#line 545 "array.opt"
+        return mercury__erlang_rtti_implementation__V_6_12;
+#line 545 "array.opt"
+      }
+#line 545 "array.opt"
+      break;
+#line 545 "array.opt"
+    }
+#line 130 "array.opt"
+}
+
+#line 102 "array.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_114_95_95_104_111_49_52_95_95_91_51_93_95_48_3_f_in__array_0(
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_13_13,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_11,
+#line 102 "array.int"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_6_6,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_7_7)
+#line 102 "array.int"
+{
+#line 610 "array.opt"
+  {
+#line 610 "array.opt"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 610 "array.opt"
+    MR_Word mercury__erlang_rtti_implementation__V_4_8;
+#line 610 "array.opt"
+    MR_Integer mercury__erlang_rtti_implementation__V_8_9;
+#line 610 "array.opt"
+    MR_Integer mercury__erlang_rtti_implementation__V_9_10;
+
+#line 863 "array.opt"
+    {
+#line 863 "array.opt"
+      mercury__array__min_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T1_11, (MR_ArrayPtr) mercury__erlang_rtti_implementation__V_6_6, &mercury__erlang_rtti_implementation__V_8_9);
+    }
+#line 849 "array.opt"
+    {
+#line 849 "array.opt"
+      mercury__array__max_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T1_11, (MR_ArrayPtr) mercury__erlang_rtti_implementation__V_6_6, &mercury__erlang_rtti_implementation__V_9_10);
+    }
+#line 611 "array.opt"
+    {
+#line 611 "array.opt"
+      return mercury__erlang_rtti_implementation__V_4_8 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_100_111_95_102_111_108_100_114_95_102_117_110_99_95_95_104_111_49_53_95_95_91_51_93_95_48_5_f_in__array_0(mercury__erlang_rtti_implementation__V_13_13, mercury__erlang_rtti_implementation__TypeInfo_for_T1_11, mercury__erlang_rtti_implementation__V_6_6, mercury__erlang_rtti_implementation__V_7_7, mercury__erlang_rtti_implementation__V_8_9, mercury__erlang_rtti_implementation__V_9_10);
+    }
+#line 610 "array.opt"
+    return mercury__erlang_rtti_implementation__V_4_8;
+#line 610 "array.opt"
+  }
+#line 102 "array.int"
+}
+
+#line 102 "array.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_114_95_95_104_111_49_51_95_95_91_51_93_95_48_3_f_in__array_0(
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_13_13,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_11,
+#line 102 "array.int"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_6_6,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_7_7)
+#line 102 "array.int"
+{
+#line 610 "array.opt"
+  {
+#line 610 "array.opt"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 610 "array.opt"
+    MR_Word mercury__erlang_rtti_implementation__V_4_8;
+#line 610 "array.opt"
+    MR_Integer mercury__erlang_rtti_implementation__V_8_9;
+#line 610 "array.opt"
+    MR_Integer mercury__erlang_rtti_implementation__V_9_10;
+
+#line 863 "array.opt"
+    {
+#line 863 "array.opt"
+      mercury__array__min_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T1_11, (MR_ArrayPtr) mercury__erlang_rtti_implementation__V_6_6, &mercury__erlang_rtti_implementation__V_8_9);
+    }
+#line 849 "array.opt"
+    {
+#line 849 "array.opt"
+      mercury__array__max_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T1_11, (MR_ArrayPtr) mercury__erlang_rtti_implementation__V_6_6, &mercury__erlang_rtti_implementation__V_9_10);
+    }
+#line 611 "array.opt"
+    {
+#line 611 "array.opt"
+      return mercury__erlang_rtti_implementation__V_4_8 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_100_111_95_102_111_108_100_114_95_102_117_110_99_95_95_104_111_49_54_95_95_91_51_93_95_48_5_f_in__array_0(mercury__erlang_rtti_implementation__V_13_13, mercury__erlang_rtti_implementation__TypeInfo_for_T1_11, mercury__erlang_rtti_implementation__V_6_6, mercury__erlang_rtti_implementation__V_7_7, mercury__erlang_rtti_implementation__V_8_9, mercury__erlang_rtti_implementation__V_9_10);
+    }
+#line 610 "array.opt"
+    return mercury__erlang_rtti_implementation__V_4_8;
+#line 610 "array.opt"
+  }
+#line 102 "array.int"
+}
+
+#line 102 "array.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_114_95_95_104_111_49_50_95_95_91_51_93_95_48_3_f_in__array_0(
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_13_13,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_11,
+#line 102 "array.int"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_6_6,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_7_7)
+#line 102 "array.int"
+{
+#line 610 "array.opt"
+  {
+#line 610 "array.opt"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 610 "array.opt"
+    MR_Word mercury__erlang_rtti_implementation__V_4_8;
+#line 610 "array.opt"
+    MR_Integer mercury__erlang_rtti_implementation__V_8_9;
+#line 610 "array.opt"
+    MR_Integer mercury__erlang_rtti_implementation__V_9_10;
+
+#line 863 "array.opt"
+    {
+#line 863 "array.opt"
+      mercury__array__min_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T1_11, (MR_ArrayPtr) mercury__erlang_rtti_implementation__V_6_6, &mercury__erlang_rtti_implementation__V_8_9);
+    }
+#line 849 "array.opt"
+    {
+#line 849 "array.opt"
+      mercury__array__max_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T1_11, (MR_ArrayPtr) mercury__erlang_rtti_implementation__V_6_6, &mercury__erlang_rtti_implementation__V_9_10);
+    }
+#line 611 "array.opt"
+    {
+#line 611 "array.opt"
+      return mercury__erlang_rtti_implementation__V_4_8 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_100_111_95_102_111_108_100_114_95_102_117_110_99_95_95_104_111_49_55_95_95_91_51_93_95_48_5_f_in__array_0(mercury__erlang_rtti_implementation__V_13_13, mercury__erlang_rtti_implementation__TypeInfo_for_T1_11, mercury__erlang_rtti_implementation__V_6_6, mercury__erlang_rtti_implementation__V_7_7, mercury__erlang_rtti_implementation__V_8_9, mercury__erlang_rtti_implementation__V_9_10);
+    }
+#line 610 "array.opt"
+    return mercury__erlang_rtti_implementation__V_4_8;
+#line 610 "array.opt"
+  }
+#line 102 "array.int"
+}
+
+#line 310 "list.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_49_95_95_91_53_93_95_48_2_f_in__list_0(
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__V_12_12,
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__V_14_14,
+#line 310 "list.int"
+  MR_Box mercury__erlang_rtti_implementation__V_15_15,
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 310 "list.int"
+{
+#line 610 "list.opt"
+  {
+#line 610 "list.opt"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 610 "list.opt"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 610 "list.opt"
+    if ((mercury__erlang_rtti_implementation__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 610 "list.opt"
+      mercury__erlang_rtti_implementation__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 610 "list.opt"
+    else
+#line 611 "list.opt"
+      {
+#line 611 "list.opt"
+        MR_Integer mercury__erlang_rtti_implementation__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 611 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 611 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_8_8;
+#line 611 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_9_9;
+
+#line 612 "list.opt"
+        {
+#line 612 "list.opt"
+          mercury__erlang_rtti_implementation__V_8_8 = mercury__erlang_rtti_implementation__get_du_functor_arg_4_f_0(mercury__erlang_rtti_implementation__V_12_12, mercury__erlang_rtti_implementation__V_14_14, mercury__erlang_rtti_implementation__V_15_15, mercury__erlang_rtti_implementation__V_6_6);
+        }
+#line 613 "list.opt"
+        {
+#line 613 "list.opt"
+          mercury__erlang_rtti_implementation__V_9_9 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_49_95_95_91_53_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__V_12_12, mercury__erlang_rtti_implementation__V_14_14, mercury__erlang_rtti_implementation__V_15_15, mercury__erlang_rtti_implementation__V_7_7);
+        }
+#line 611 "list.opt"
+        {
+#line 611 "list.opt"
+          mercury__erlang_rtti_implementation__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 611 "list.opt"
+          MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_8_8));
+#line 611 "list.opt"
+          MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_9_9));
+#line 611 "list.opt"
+        }
+#line 611 "list.opt"
+      }
+#line 610 "list.opt"
+    return mercury__erlang_rtti_implementation__HeadVar__3_3;
+#line 610 "list.opt"
+  }
+#line 310 "list.int"
+}
+
+#line 310 "list.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_93_95_48_2_f_in__list_0(
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 310 "list.int"
+{
+#line 610 "list.opt"
+  {
+#line 610 "list.opt"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 610 "list.opt"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 610 "list.opt"
+    if ((mercury__erlang_rtti_implementation__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 610 "list.opt"
+      mercury__erlang_rtti_implementation__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 610 "list.opt"
+    else
+#line 611 "list.opt"
+      {
+#line 611 "list.opt"
+        MR_Integer mercury__erlang_rtti_implementation__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 611 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 611 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_8_8;
+#line 611 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_9_9;
+
+#line 612 "list.opt"
+        {
+#line 612 "list.opt"
+          mercury__erlang_rtti_implementation__V_8_8 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_116_117_112_108_101_95_97_114_103_95_95_91_49_44_32_50_44_32_51_93_95_48_3_f_0(mercury__erlang_rtti_implementation__V_6_6);
+        }
+#line 613 "list.opt"
+        {
+#line 613 "list.opt"
+          mercury__erlang_rtti_implementation__V_9_9 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__V_7_7);
+        }
+#line 611 "list.opt"
+        {
+#line 611 "list.opt"
+          mercury__erlang_rtti_implementation__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 611 "list.opt"
+          MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_8_8));
+#line 611 "list.opt"
+          MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_9_9));
+#line 611 "list.opt"
+        }
+#line 611 "list.opt"
+      }
+#line 610 "list.opt"
+    return mercury__erlang_rtti_implementation__HeadVar__3_3;
+#line 610 "list.opt"
+  }
+#line 310 "list.int"
+}
+
+#line 102 "array.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_114_95_95_104_111_57_95_95_91_51_93_95_48_3_f_in__array_0(
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_13_13,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T1_11,
+#line 102 "array.int"
+  MR_ArrayPtr mercury__erlang_rtti_implementation__V_6_6,
+#line 102 "array.int"
+  MR_Word mercury__erlang_rtti_implementation__V_7_7)
+#line 102 "array.int"
+{
+#line 610 "array.opt"
+  {
+#line 610 "array.opt"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 610 "array.opt"
+    MR_Word mercury__erlang_rtti_implementation__V_4_8;
+#line 610 "array.opt"
+    MR_Integer mercury__erlang_rtti_implementation__V_8_9;
+#line 610 "array.opt"
+    MR_Integer mercury__erlang_rtti_implementation__V_9_10;
+
+#line 863 "array.opt"
+    {
+#line 863 "array.opt"
+      mercury__array__min_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T1_11, (MR_ArrayPtr) mercury__erlang_rtti_implementation__V_6_6, &mercury__erlang_rtti_implementation__V_8_9);
+    }
+#line 849 "array.opt"
+    {
+#line 849 "array.opt"
+      mercury__array__max_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T1_11, (MR_ArrayPtr) mercury__erlang_rtti_implementation__V_6_6, &mercury__erlang_rtti_implementation__V_9_10);
+    }
+#line 611 "array.opt"
+    {
+#line 611 "array.opt"
+      return mercury__erlang_rtti_implementation__V_4_8 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_100_111_95_102_111_108_100_114_95_102_117_110_99_95_95_104_111_49_56_95_95_91_51_93_95_48_5_f_in__array_0(mercury__erlang_rtti_implementation__V_13_13, mercury__erlang_rtti_implementation__TypeInfo_for_T1_11, mercury__erlang_rtti_implementation__V_6_6, mercury__erlang_rtti_implementation__V_7_7, mercury__erlang_rtti_implementation__V_8_9, mercury__erlang_rtti_implementation__V_9_10);
+    }
+#line 610 "array.opt"
+    return mercury__erlang_rtti_implementation__V_4_8;
+#line 610 "array.opt"
+  }
+#line 102 "array.int"
+}
+
+#line 318 "list.int"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_112_50_95_95_104_111_56_95_95_91_50_93_95_48_4_p_in__list_0(
+#line 318 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 318 "list.int"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__3_3,
+#line 318 "list.int"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__4_4)
+#line 318 "list.int"
+{
+#line 615 "list.opt"
+  {
+#line 615 "list.opt"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 615 "list.opt"
+    if ((mercury__erlang_rtti_implementation__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 615 "list.opt"
+      {
+#line 615 "list.opt"
+        *mercury__erlang_rtti_implementation__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 615 "list.opt"
+        *mercury__erlang_rtti_implementation__HeadVar__4_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 615 "list.opt"
+      }
+#line 615 "list.opt"
+    else
+#line 616 "list.opt"
+      {
+#line 616 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 616 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 616 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_10_10;
+#line 616 "list.opt"
+        MR_String mercury__erlang_rtti_implementation__V_11_11;
+#line 616 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_12_12;
+
+#line 617 "list.opt"
+        {
+#line 617 "list.opt"
+          mercury__erlang_rtti_implementation__IntroducedFrom__pred__get_functor_with_names__1235__1_4_p_0(mercury__erlang_rtti_implementation__V_7_7, &mercury__erlang_rtti_implementation__V_11_11);
+        }
+#line 618 "list.opt"
+        {
+#line 618 "list.opt"
+          mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_112_50_95_95_104_111_56_95_95_91_50_93_95_48_4_p_in__list_0(mercury__erlang_rtti_implementation__V_8_8, &mercury__erlang_rtti_implementation__V_10_10, &mercury__erlang_rtti_implementation__V_12_12);
+        }
+#line 616 "list.opt"
+        {
+#line 616 "list.opt"
+          MR_Word base;
+#line 616 "list.opt"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 616 "list.opt"
+          *mercury__erlang_rtti_implementation__HeadVar__3_3 = base;
+#line 616 "list.opt"
+          MR_hl_field(MR_mktag(1), base, 0) = NULL;
+#line 616 "list.opt"
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_10_10));
+#line 616 "list.opt"
+        }
+#line 616 "list.opt"
+        {
+#line 616 "list.opt"
+          MR_Word base;
+#line 616 "list.opt"
+          base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 616 "list.opt"
+          *mercury__erlang_rtti_implementation__HeadVar__4_4 = base;
+#line 616 "list.opt"
+          MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_11_11));
+#line 616 "list.opt"
+          MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_12_12));
+#line 616 "list.opt"
+        }
+#line 616 "list.opt"
+      }
+#line 615 "list.opt"
+  }
+#line 318 "list.int"
+}
+
+#line 310 "list.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_55_95_95_91_51_44_32_52_93_95_48_2_f_in__list_0(
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__V_12_12,
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__V_13_13,
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 310 "list.int"
+{
+#line 610 "list.opt"
+  {
+#line 610 "list.opt"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 610 "list.opt"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 610 "list.opt"
+    if ((mercury__erlang_rtti_implementation__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 610 "list.opt"
+      mercury__erlang_rtti_implementation__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 610 "list.opt"
+    else
+#line 611 "list.opt"
+      {
+#line 611 "list.opt"
+        MR_Integer mercury__erlang_rtti_implementation__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 611 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 611 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_9_9;
+
+#line 612 "list.opt"
+        {
+#line 612 "list.opt"
+          mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_101_118_97_108_95_116_121_112_101_95_105_110_102_111_95_95_50_50_54_51_95_95_49_95_95_91_51_93_95_48_4_f_0(mercury__erlang_rtti_implementation__V_12_12, mercury__erlang_rtti_implementation__V_13_13, mercury__erlang_rtti_implementation__V_6_6);
+        }
+#line 613 "list.opt"
+        {
+#line 613 "list.opt"
+          mercury__erlang_rtti_implementation__V_9_9 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_55_95_95_91_51_44_32_52_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__V_12_12, mercury__erlang_rtti_implementation__V_13_13, mercury__erlang_rtti_implementation__V_7_7);
+        }
+#line 611 "list.opt"
+        {
+#line 611 "list.opt"
+          mercury__erlang_rtti_implementation__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 611 "list.opt"
+          MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, 0) = NULL;
+#line 611 "list.opt"
+          MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_9_9));
+#line 611 "list.opt"
+        }
+#line 611 "list.opt"
+      }
+#line 610 "list.opt"
+    return mercury__erlang_rtti_implementation__HeadVar__3_3;
+#line 610 "list.opt"
+  }
+#line 310 "list.int"
+}
+
+#line 310 "list.int"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_95_95_91_51_44_32_52_93_95_48_2_f_in__list_0(
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__V_12_12,
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__V_13_13,
+#line 310 "list.int"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 310 "list.int"
+{
+#line 610 "list.opt"
+  {
+#line 610 "list.opt"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 610 "list.opt"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 610 "list.opt"
+    if ((mercury__erlang_rtti_implementation__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 610 "list.opt"
+      mercury__erlang_rtti_implementation__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 610 "list.opt"
+    else
+#line 611 "list.opt"
+      {
+#line 611 "list.opt"
+        MR_Integer mercury__erlang_rtti_implementation__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 611 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 611 "list.opt"
+        MR_Word mercury__erlang_rtti_implementation__V_9_9;
+
+#line 612 "list.opt"
+        {
+#line 612 "list.opt"
+          mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_101_118_97_108_95_116_121_112_101_95_105_110_102_111_95_95_50_50_55_48_95_95_49_95_95_91_51_93_95_48_4_f_0(mercury__erlang_rtti_implementation__V_12_12, mercury__erlang_rtti_implementation__V_13_13, mercury__erlang_rtti_implementation__V_6_6);
+        }
+#line 613 "list.opt"
+        {
+#line 613 "list.opt"
+          mercury__erlang_rtti_implementation__V_9_9 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_95_95_91_51_44_32_52_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__V_12_12, mercury__erlang_rtti_implementation__V_13_13, mercury__erlang_rtti_implementation__V_7_7);
+        }
+#line 611 "list.opt"
+        {
+#line 611 "list.opt"
+          mercury__erlang_rtti_implementation__HeadVar__3_3 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 611 "list.opt"
+          MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, 0) = NULL;
+#line 611 "list.opt"
+          MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_9_9));
+#line 611 "list.opt"
+        }
+#line 611 "list.opt"
+      }
+#line 610 "list.opt"
+    return mercury__erlang_rtti_implementation__HeadVar__3_3;
+#line 610 "list.opt"
+  }
+#line 310 "list.int"
+}
+
+#line 2270 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_101_118_97_108_95_116_121_112_101_95_105_110_102_111_95_95_50_50_55_48_95_95_49_95_95_91_51_93_95_48_4_f_0(
+#line 2270 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_21,
+#line 2270 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__I_4,
+#line 2270 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__HeadVar__4_29)
+#line 2270 "erlang_rtti_implementation.m"
+{
+#line 2270 "erlang_rtti_implementation.m"
+  {
+#line 2270 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2270 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__MaybePTI_36;
+
+#line 2377 "erlang_rtti_implementation.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 2377 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__MaybePTI_36 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_5[4];
+#line 2378 "erlang_rtti_implementation.m"
+    {
+#line 2378 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "unsafe_pseudo_type_info_index");
+    }
+#line 2178 "erlang_rtti_implementation.m"
+    if ((mercury__erlang_rtti_implementation__I_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 2179 "erlang_rtti_implementation.m"
+      {
+#line 2180 "erlang_rtti_implementation.m"
+        {
+#line 2180 "erlang_rtti_implementation.m"
+          mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "function \140erlang_rtti_implementation.concrete_type_info\'/2", (MR_String) "missing parent type_info");
+#line 2180 "erlang_rtti_implementation.m"
+          return;
+        }
+#line 2179 "erlang_rtti_implementation.m"
+      }
+#line 2178 "erlang_rtti_implementation.m"
+    else
+#line 2175 "erlang_rtti_implementation.m"
+      {
+#line 2175 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_50;
+#line 2175 "erlang_rtti_implementation.m"
+        MR_Tuple mercury__erlang_rtti_implementation__V_55_55 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__I_4, (MR_Integer) 0)));
+
+#line 2175 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_55_55, (MR_Integer) 1)));
+#line 2176 "erlang_rtti_implementation.m"
+        {
+#line 2176 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__eval_pseudo_type_info_3_f_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_21, mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_50);
+#line 2176 "erlang_rtti_implementation.m"
+          return;
+        }
+#line 2175 "erlang_rtti_implementation.m"
+      }
+#line 2270 "erlang_rtti_implementation.m"
+  }
+#line 2270 "erlang_rtti_implementation.m"
+}
+
+#line 2263 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_73_110_116_114_111_100_117_99_101_100_70_114_111_109_95_95_102_117_110_99_95_95_101_118_97_108_95_116_121_112_101_95_105_110_102_111_95_95_50_50_54_51_95_95_49_95_95_91_51_93_95_48_4_f_0(
+#line 2263 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_21,
+#line 2263 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__I_4,
+#line 2263 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__HeadVar__4_24)
+#line 2263 "erlang_rtti_implementation.m"
+{
+#line 2263 "erlang_rtti_implementation.m"
+  {
+#line 2263 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2263 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__MaybePTI_36;
+
+#line 2377 "erlang_rtti_implementation.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 2377 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__MaybePTI_36 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_5[4];
+#line 2378 "erlang_rtti_implementation.m"
+    {
+#line 2378 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "unsafe_pseudo_type_info_index");
+    }
+#line 2178 "erlang_rtti_implementation.m"
+    if ((mercury__erlang_rtti_implementation__I_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 2179 "erlang_rtti_implementation.m"
+      {
+#line 2180 "erlang_rtti_implementation.m"
+        {
+#line 2180 "erlang_rtti_implementation.m"
+          mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "function \140erlang_rtti_implementation.concrete_type_info\'/2", (MR_String) "missing parent type_info");
+#line 2180 "erlang_rtti_implementation.m"
+          return;
+        }
+#line 2179 "erlang_rtti_implementation.m"
+      }
+#line 2178 "erlang_rtti_implementation.m"
+    else
+#line 2175 "erlang_rtti_implementation.m"
+      {
+#line 2175 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_50;
+#line 2175 "erlang_rtti_implementation.m"
+        MR_Tuple mercury__erlang_rtti_implementation__V_55_55 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__I_4, (MR_Integer) 0)));
+
+#line 2175 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_50 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_55_55, (MR_Integer) 1)));
+#line 2176 "erlang_rtti_implementation.m"
+        {
+#line 2176 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__eval_pseudo_type_info_3_f_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_21, mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_50);
+#line 2176 "erlang_rtti_implementation.m"
+          return;
+        }
+#line 2175 "erlang_rtti_implementation.m"
+      }
+#line 2263 "erlang_rtti_implementation.m"
+  }
+#line 2263 "erlang_rtti_implementation.m"
+}
+
+#line 18 "ops.opt"
+static MR_Integer MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_67_108_97_115_115_77_101_116_104_111_100_95_102_111_114_95_111_112_115_95_95_111_112_95_116_97_98_108_101_95_95_95_95_111_112_115_95_95_109_101_114_99_117_114_121_95_111_112_95_116_97_98_108_101_95_95_97_114_105_116_121_48_95_95_95_95_95_95_111_112_115_95_95_109_97_120_95_112_114_105_111_114_105_116_121_95_49_95_95_91_49_93_95_48_1_f_in__ops_0(void)
+#line 18 "ops.opt"
+{
+#line 47 "ops.opt"
+  {
+#line 47 "ops.opt"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 47 "ops.opt"
+    return (MR_Integer) 1200;
+#line 47 "ops.opt"
+  }
+#line 18 "ops.opt"
+}
+
+#line 2426 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_105_110_102_111_95_116_104_117_110_107_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 2426 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 2426 "erlang_rtti_implementation.m"
+{
+#line 2426 "erlang_rtti_implementation.m"
+  {
+#line 2426 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2426 "erlang_rtti_implementation.m"
+    *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2426 "erlang_rtti_implementation.m"
+  }
+#line 2426 "erlang_rtti_implementation.m"
+}
+
+#line 2426 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_105_110_102_111_95_116_104_117_110_107_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+#line 2426 "erlang_rtti_implementation.m"
+{
+#line 2426 "erlang_rtti_implementation.m"
+  {
+#line 2426 "erlang_rtti_implementation.m"
+    return MR_TRUE;
+#line 2426 "erlang_rtti_implementation.m"
+  }
+#line 2426 "erlang_rtti_implementation.m"
+}
+
+#line 142 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_105_110_102_111_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 142 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 142 "erlang_rtti_implementation.m"
+{
+#line 142 "erlang_rtti_implementation.m"
+  {
+#line 142 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 142 "erlang_rtti_implementation.m"
+    *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 142 "erlang_rtti_implementation.m"
+  }
+#line 142 "erlang_rtti_implementation.m"
+}
+
+#line 142 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_105_110_102_111_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+#line 142 "erlang_rtti_implementation.m"
+{
+#line 142 "erlang_rtti_implementation.m"
+  {
+#line 142 "erlang_rtti_implementation.m"
+    return MR_TRUE;
+#line 142 "erlang_rtti_implementation.m"
+  }
+#line 142 "erlang_rtti_implementation.m"
+}
+
+#line 156 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 156 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 156 "erlang_rtti_implementation.m"
+{
+#line 156 "erlang_rtti_implementation.m"
+  {
+#line 156 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 156 "erlang_rtti_implementation.m"
+    *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 156 "erlang_rtti_implementation.m"
+  }
+#line 156 "erlang_rtti_implementation.m"
+}
+
+#line 156 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+#line 156 "erlang_rtti_implementation.m"
+{
+#line 156 "erlang_rtti_implementation.m"
+  {
+#line 156 "erlang_rtti_implementation.m"
+    return MR_TRUE;
+#line 156 "erlang_rtti_implementation.m"
+  }
+#line 156 "erlang_rtti_implementation.m"
+}
+
+#line 149 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 149 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 149 "erlang_rtti_implementation.m"
+{
+#line 149 "erlang_rtti_implementation.m"
+  {
+#line 149 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 149 "erlang_rtti_implementation.m"
+    *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 149 "erlang_rtti_implementation.m"
+  }
+#line 149 "erlang_rtti_implementation.m"
+}
+
+#line 149 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+#line 149 "erlang_rtti_implementation.m"
+{
+#line 149 "erlang_rtti_implementation.m"
+  {
+#line 149 "erlang_rtti_implementation.m"
+    return MR_TRUE;
+#line 149 "erlang_rtti_implementation.m"
+  }
+#line 149 "erlang_rtti_implementation.m"
+}
+
+#line 2384 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_112_115_101_117_100_111_95_116_121_112_101_95_105_110_102_111_95_116_104_117_110_107_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 2384 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 2384 "erlang_rtti_implementation.m"
+{
+#line 2384 "erlang_rtti_implementation.m"
+  {
+#line 2384 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2384 "erlang_rtti_implementation.m"
+    *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2384 "erlang_rtti_implementation.m"
+  }
+#line 2384 "erlang_rtti_implementation.m"
+}
+
+#line 2384 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_112_115_101_117_100_111_95_116_121_112_101_95_105_110_102_111_95_116_104_117_110_107_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+#line 2384 "erlang_rtti_implementation.m"
+{
+#line 2384 "erlang_rtti_implementation.m"
+  {
+#line 2384 "erlang_rtti_implementation.m"
+    return MR_TRUE;
+#line 2384 "erlang_rtti_implementation.m"
+  }
+#line 2384 "erlang_rtti_implementation.m"
+}
+
+#line 2340 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_112_115_101_117_100_111_95_116_121_112_101_95_105_110_102_111_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 2340 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 2340 "erlang_rtti_implementation.m"
+{
+#line 2340 "erlang_rtti_implementation.m"
+  {
+#line 2340 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2340 "erlang_rtti_implementation.m"
+    *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2340 "erlang_rtti_implementation.m"
+  }
+#line 2340 "erlang_rtti_implementation.m"
+}
+
+#line 2340 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_112_115_101_117_100_111_95_116_121_112_101_95_105_110_102_111_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+#line 2340 "erlang_rtti_implementation.m"
+{
+#line 2340 "erlang_rtti_implementation.m"
+  {
+#line 2340 "erlang_rtti_implementation.m"
+    return MR_TRUE;
+#line 2340 "erlang_rtti_implementation.m"
+  }
+#line 2340 "erlang_rtti_implementation.m"
+}
+
+#line 2094 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_101_114_108_97_110_103_95_97_116_111_109_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(
+#line 2094 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 2094 "erlang_rtti_implementation.m"
+{
+#line 2094 "erlang_rtti_implementation.m"
+  {
+#line 2094 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2094 "erlang_rtti_implementation.m"
+    *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2094 "erlang_rtti_implementation.m"
+  }
+#line 2094 "erlang_rtti_implementation.m"
+}
+
+#line 2094 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_101_114_108_97_110_103_95_97_116_111_109_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0(void)
+#line 2094 "erlang_rtti_implementation.m"
+{
+#line 2094 "erlang_rtti_implementation.m"
+  {
+#line 2094 "erlang_rtti_implementation.m"
+    return MR_TRUE;
+#line 2094 "erlang_rtti_implementation.m"
+  }
+#line 2094 "erlang_rtti_implementation.m"
+}
+
+#line 1957 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_115_117_108_116_95_99_97_108_108_95_57_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_44_32_49_55_93_95_48_9_p_0(
+#line 1957 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 1957 "erlang_rtti_implementation.m"
+{
+#line 1960 "erlang_rtti_implementation.m"
+  {
+#line 1960 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1959 "erlang_rtti_implementation.m"
+    *mercury__erlang_rtti_implementation__HeadVar__2_2 = (MR_Integer) 0;
+#line 1961 "erlang_rtti_implementation.m"
+    {
+#line 1961 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "result_call_9");
+#line 1961 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 1960 "erlang_rtti_implementation.m"
+  }
+#line 1957 "erlang_rtti_implementation.m"
+}
+
+#line 1952 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_114_101_115_117_108_116_95_99_97_108_108_95_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_93_95_48_8_p_0(
+#line 1952 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 1952 "erlang_rtti_implementation.m"
+{
+#line 1954 "erlang_rtti_implementation.m"
+  {
+#line 1954 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1954 "erlang_rtti_implementation.m"
+    *mercury__erlang_rtti_implementation__HeadVar__2_2 = (MR_Integer) 0;
+#line 1955 "erlang_rtti_implementation.m"
+    {
+#line 1955 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "comparison_result");
+#line 1955 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 1954 "erlang_rtti_implementation.m"
+  }
+#line 1952 "erlang_rtti_implementation.m"
+}
+
+#line 1927 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_109_105_100_101_116_95_99_97_108_108_95_56_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_44_32_49_53_44_32_49_54_93_95_48_8_p_0(void)
+#line 1927 "erlang_rtti_implementation.m"
+{
+#line 1929 "erlang_rtti_implementation.m"
+  {
+#line 1929 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1966 "erlang_rtti_implementation.m"
+    {
+#line 1966 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+    }
+#line 1968 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1967 "erlang_rtti_implementation.m"
+      {
+#line 1967 "erlang_rtti_implementation.m"
+        MR_String mercury__erlang_rtti_implementation__V_29_29;
+
+#line 159 "string.opt"
+        {
+#line 159 "string.opt"
+          mercury__string__append_3_p_2((MR_String) "unimplemented: ", (MR_String) "semidet_call_8", &mercury__erlang_rtti_implementation__V_29_29);
+        }
+#line 1967 "erlang_rtti_implementation.m"
+        {
+#line 1967 "erlang_rtti_implementation.m"
+          mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.semidet_unimplemented\'/1", mercury__erlang_rtti_implementation__V_29_29);
+        }
+#line 1967 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1967 "erlang_rtti_implementation.m"
+      }
+#line 1968 "erlang_rtti_implementation.m"
+    else
+#line 1969 "erlang_rtti_implementation.m"
+      {
+#line 1969 "erlang_rtti_implementation.m"
+        return mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+      }
+#line 1929 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1929 "erlang_rtti_implementation.m"
+  }
+#line 1927 "erlang_rtti_implementation.m"
+}
+
+#line 1922 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_109_105_100_101_116_95_99_97_108_108_95_55_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_44_32_49_51_44_32_49_52_93_95_48_7_p_0(void)
+#line 1922 "erlang_rtti_implementation.m"
+{
+#line 1924 "erlang_rtti_implementation.m"
+  {
+#line 1924 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1966 "erlang_rtti_implementation.m"
+    {
+#line 1966 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+    }
+#line 1968 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1967 "erlang_rtti_implementation.m"
+      {
+#line 1967 "erlang_rtti_implementation.m"
+        MR_String mercury__erlang_rtti_implementation__V_26_26;
+
+#line 159 "string.opt"
+        {
+#line 159 "string.opt"
+          mercury__string__append_3_p_2((MR_String) "unimplemented: ", (MR_String) "semidet_call_7", &mercury__erlang_rtti_implementation__V_26_26);
+        }
+#line 1967 "erlang_rtti_implementation.m"
+        {
+#line 1967 "erlang_rtti_implementation.m"
+          mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.semidet_unimplemented\'/1", mercury__erlang_rtti_implementation__V_26_26);
+        }
+#line 1967 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1967 "erlang_rtti_implementation.m"
+      }
+#line 1968 "erlang_rtti_implementation.m"
+    else
+#line 1969 "erlang_rtti_implementation.m"
+      {
+#line 1969 "erlang_rtti_implementation.m"
+        return mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+      }
+#line 1924 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1924 "erlang_rtti_implementation.m"
+  }
+#line 1922 "erlang_rtti_implementation.m"
+}
+
+#line 1918 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_109_105_100_101_116_95_99_97_108_108_95_54_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_44_32_49_49_44_32_49_50_93_95_48_6_p_0(void)
+#line 1918 "erlang_rtti_implementation.m"
+{
+#line 1919 "erlang_rtti_implementation.m"
+  {
+#line 1919 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1966 "erlang_rtti_implementation.m"
+    {
+#line 1966 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+    }
+#line 1968 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1967 "erlang_rtti_implementation.m"
+      {
+#line 1967 "erlang_rtti_implementation.m"
+        MR_String mercury__erlang_rtti_implementation__V_23_23;
+
+#line 159 "string.opt"
+        {
+#line 159 "string.opt"
+          mercury__string__append_3_p_2((MR_String) "unimplemented: ", (MR_String) "semidet_call_6", &mercury__erlang_rtti_implementation__V_23_23);
+        }
+#line 1967 "erlang_rtti_implementation.m"
+        {
+#line 1967 "erlang_rtti_implementation.m"
+          mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.semidet_unimplemented\'/1", mercury__erlang_rtti_implementation__V_23_23);
+        }
+#line 1967 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1967 "erlang_rtti_implementation.m"
+      }
+#line 1968 "erlang_rtti_implementation.m"
+    else
+#line 1969 "erlang_rtti_implementation.m"
+      {
+#line 1969 "erlang_rtti_implementation.m"
+        return mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+      }
+#line 1919 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1919 "erlang_rtti_implementation.m"
+  }
+#line 1918 "erlang_rtti_implementation.m"
+}
+
+#line 1914 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_101_109_105_100_101_116_95_99_97_108_108_95_53_95_95_91_49_44_32_50_44_32_51_44_32_52_44_32_53_44_32_54_44_32_55_44_32_56_44_32_57_44_32_49_48_93_95_48_5_p_0(void)
+#line 1914 "erlang_rtti_implementation.m"
+{
+#line 1915 "erlang_rtti_implementation.m"
+  {
+#line 1915 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1966 "erlang_rtti_implementation.m"
+    {
+#line 1966 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+    }
+#line 1968 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1967 "erlang_rtti_implementation.m"
+      {
+#line 1967 "erlang_rtti_implementation.m"
+        MR_String mercury__erlang_rtti_implementation__V_20_20;
+
+#line 159 "string.opt"
+        {
+#line 159 "string.opt"
+          mercury__string__append_3_p_2((MR_String) "unimplemented: ", (MR_String) "semidet_call_5", &mercury__erlang_rtti_implementation__V_20_20);
+        }
+#line 1967 "erlang_rtti_implementation.m"
+        {
+#line 1967 "erlang_rtti_implementation.m"
+          mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.semidet_unimplemented\'/1", mercury__erlang_rtti_implementation__V_20_20);
+        }
+#line 1967 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1967 "erlang_rtti_implementation.m"
+      }
+#line 1968 "erlang_rtti_implementation.m"
+    else
+#line 1969 "erlang_rtti_implementation.m"
+      {
+#line 1969 "erlang_rtti_implementation.m"
+        return mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+      }
+#line 1915 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1915 "erlang_rtti_implementation.m"
+  }
+#line 1914 "erlang_rtti_implementation.m"
+}
+
+#line 1837 "erlang_rtti_implementation.m"
+static MR_String MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_100_117_109_109_121_95_102_117_110_99_116_111_114_95_110_97_109_101_95_95_91_49_93_95_48_1_f_0(void)
+#line 1837 "erlang_rtti_implementation.m"
+{
+#line 1846 "erlang_rtti_implementation.m"
+  {
+#line 1846 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1847 "erlang_rtti_implementation.m"
+    {
+#line 1847 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_dummy_functor_name");
+    }
+#line 1846 "erlang_rtti_implementation.m"
+    return (MR_String) "dummy value";
+#line 1846 "erlang_rtti_implementation.m"
+  }
+#line 1837 "erlang_rtti_implementation.m"
+}
+
+#line 1825 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_102_117_110_99_116_111_114_115_95_95_91_49_93_95_48_1_f_0(void)
+#line 1825 "erlang_rtti_implementation.m"
+{
+#line 1834 "erlang_rtti_implementation.m"
+  {
+#line 1834 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1834 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+#line 1835 "erlang_rtti_implementation.m"
+    {
+#line 1835 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_functors");
+    }
+#line 1834 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 1834 "erlang_rtti_implementation.m"
+  }
+#line 1825 "erlang_rtti_implementation.m"
+}
+
+#line 1744 "erlang_rtti_implementation.m"
+MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0(void)
+#line 1744 "erlang_rtti_implementation.m"
+{
+#line 1756 "erlang_rtti_implementation.m"
+  {
+#line 1756 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1756 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__2_4;
+
+#line 1759 "erlang_rtti_implementation.m"
+    {
+#line 1759 "erlang_rtti_implementation.m"
+      mercury__private_builtin__sorry_1_p_0((MR_String) "type_ctor_rep");
+    }
+#line 1756 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__2_4;
+#line 1756 "erlang_rtti_implementation.m"
+  }
+#line 1744 "erlang_rtti_implementation.m"
+}
+
+#line 1729 "erlang_rtti_implementation.m"
+MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_118_97_114_95_97_114_105_116_121_95_97_114_103_95_116_121_112_101_95_105_110_102_111_115_95_95_91_49_93_95_48_1_f_0(void)
+#line 1729 "erlang_rtti_implementation.m"
+{
+#line 1738 "erlang_rtti_implementation.m"
+  {
+#line 1738 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1738 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__2_4;
+
+#line 1739 "erlang_rtti_implementation.m"
+    {
+#line 1739 "erlang_rtti_implementation.m"
+      mercury__private_builtin__sorry_1_p_0((MR_String) "get_var_arity_arg_type_infos");
+    }
+#line 1738 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__2_4;
+#line 1738 "erlang_rtti_implementation.m"
+  }
+#line 1729 "erlang_rtti_implementation.m"
+}
+
+#line 1712 "erlang_rtti_implementation.m"
+MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_105_120_101_100_95_97_114_105_116_121_95_97_114_103_95_116_121_112_101_95_105_110_102_111_115_95_95_91_49_93_95_48_1_f_0(void)
+#line 1712 "erlang_rtti_implementation.m"
+{
+#line 1726 "erlang_rtti_implementation.m"
+  {
+#line 1726 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1726 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__2_4;
+
+#line 1727 "erlang_rtti_implementation.m"
+    {
+#line 1727 "erlang_rtti_implementation.m"
+      mercury__private_builtin__sorry_1_p_0((MR_String) "get_fixed_arity_arg_type_infos");
+    }
+#line 1726 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__2_4;
+#line 1726 "erlang_rtti_implementation.m"
+  }
+#line 1712 "erlang_rtti_implementation.m"
+}
+
+#line 1684 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_105_110_100_101_120_95_95_91_50_93_95_48_2_f_0(
+#line 1684 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__I_4)
+#line 1684 "erlang_rtti_implementation.m"
+{
+#line 1686 "erlang_rtti_implementation.m"
+  {
+#line 1686 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1686 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__V_6_6 = (mercury__erlang_rtti_implementation__I_4 + (MR_Integer) 1);
+
+#line 1709 "erlang_rtti_implementation.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1710 "erlang_rtti_implementation.m"
+    {
+#line 1710 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "unsafe_type_info_index");
+#line 1710 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 1686 "erlang_rtti_implementation.m"
+  }
+#line 1684 "erlang_rtti_implementation.m"
+}
+
+#line 1667 "erlang_rtti_implementation.m"
+static MR_Integer MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_118_97_114_95_97_114_105_116_121_95_116_121_112_101_95_105_110_102_111_95_97_114_105_116_121_95_95_91_49_93_95_48_1_f_0(void)
+#line 1667 "erlang_rtti_implementation.m"
+{
+#line 1676 "erlang_rtti_implementation.m"
+  {
+#line 1676 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1677 "erlang_rtti_implementation.m"
+    {
+#line 1677 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "var_arity_type_info_arity");
+    }
+#line 1676 "erlang_rtti_implementation.m"
+    return (MR_Integer) 0;
+#line 1676 "erlang_rtti_implementation.m"
+  }
+#line 1667 "erlang_rtti_implementation.m"
+}
+
+#line 1636 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0(void)
+#line 1636 "erlang_rtti_implementation.m"
+{
+#line 1664 "erlang_rtti_implementation.m"
+  {
+#line 1664 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1664 "erlang_rtti_implementation.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1665 "erlang_rtti_implementation.m"
+    {
+#line 1665 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_info_evaled");
+#line 1665 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 1664 "erlang_rtti_implementation.m"
+  }
+#line 1636 "erlang_rtti_implementation.m"
+}
+
+#line 1621 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0(void)
+#line 1621 "erlang_rtti_implementation.m"
+{
+#line 1630 "erlang_rtti_implementation.m"
+  {
+#line 1630 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1630 "erlang_rtti_implementation.m"
+    mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1631 "erlang_rtti_implementation.m"
+    {
+#line 1631 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_info");
+#line 1631 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 1630 "erlang_rtti_implementation.m"
+  }
+#line 1621 "erlang_rtti_implementation.m"
+}
+
+#line 1517 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_99_111_110_115_116_114_117_99_116_95_116_117_112_108_101_95_117_110_105_118_95_95_91_49_44_32_50_93_95_48_2_f_0(void)
+#line 1517 "erlang_rtti_implementation.m"
+{
+#line 1527 "erlang_rtti_implementation.m"
+  {
+#line 1527 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1527 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__3_6;
+
+#line 1528 "erlang_rtti_implementation.m"
+    {
+#line 1528 "erlang_rtti_implementation.m"
+      mercury__private_builtin__sorry_1_p_0((MR_String) "construct_tuple_univ");
+    }
+#line 1527 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__3_6;
+#line 1527 "erlang_rtti_implementation.m"
+  }
+#line 1517 "erlang_rtti_implementation.m"
+}
+
+#line 1473 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_116_117_112_108_101_95_97_114_103_95_116_121_112_101_115_95_95_91_49_93_95_48_3_p_0(
+#line 1473 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 1473 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 1473 "erlang_rtti_implementation.m"
+{
+#line 1476 "erlang_rtti_implementation.m"
+  {
+#line 1476 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1476 "erlang_rtti_implementation.m"
+    if ((mercury__erlang_rtti_implementation__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1476 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__HeadVar__3_3 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1476 "erlang_rtti_implementation.m"
+    else
+#line 1477 "erlang_rtti_implementation.m"
+      {
+#line 1477 "erlang_rtti_implementation.m"
+        MR_String mercury__erlang_rtti_implementation__V_20_20;
+#line 1477 "erlang_rtti_implementation.m"
+        MR_String mercury__erlang_rtti_implementation__V_23_23;
+#line 1477 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__U_8;
+#line 1477 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__Us_9;
+
+#line 1477 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1)));
+#line 1477 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 1477 "erlang_rtti_implementation.m"
+          {
+#line 1477 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__U_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 0)));
+#line 1477 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__Us_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 1)));
+#line 1710 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_20_20 = (MR_String) "unsafe_type_info_index";
+#line 1710 "erlang_rtti_implementation.m"
+            {
+#line 1710 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0(mercury__erlang_rtti_implementation__V_20_20);
+            }
+#line 1492 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_23_23 = (MR_String) "univ_type_info";
+#line 1492 "erlang_rtti_implementation.m"
+            {
+#line 1492 "erlang_rtti_implementation.m"
+              mercury__private_builtin__sorry_1_p_0(mercury__erlang_rtti_implementation__V_23_23);
+            }
+#line 1492 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1477 "erlang_rtti_implementation.m"
+          }
+#line 1477 "erlang_rtti_implementation.m"
+      }
+#line 1476 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1476 "erlang_rtti_implementation.m"
+  }
+#line 1473 "erlang_rtti_implementation.m"
+}
+
+#line 1063 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_97_109_101_95_97_114_114_97_121_95_101_108_101_109_95_116_121_112_101_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0(void)
+#line 1063 "erlang_rtti_implementation.m"
+{
+#line 1065 "erlang_rtti_implementation.m"
+  {
+#line 1065 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1065 "erlang_rtti_implementation.m"
+  }
+#line 1063 "erlang_rtti_implementation.m"
+}
+
+#line 1056 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_116_117_112_108_101_95_97_114_103_95_95_91_49_44_32_50_44_32_51_93_95_48_3_f_0(
+#line 1056 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Loc_7)
+#line 1056 "erlang_rtti_implementation.m"
+{
+#line 1058 "erlang_rtti_implementation.m"
+  {
+#line 1058 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1058 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Univ_8;
+#line 1058 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_13_13;
+#line 1058 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_27;
+#line 1058 "erlang_rtti_implementation.m"
+    MR_Box mercury__erlang_rtti_implementation__SubTerm_10;
+
+#line 1710 "erlang_rtti_implementation.m"
+    {
+#line 1710 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "unsafe_type_info_index");
+    }
+#line 1870 "erlang_rtti_implementation.m"
+    {
+#line 1870 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "get_subterm");
+    }
+#line 5987 "erlang_rtti_implementation.c"
+    mercury__erlang_rtti_implementation__TypeInfo_for_T_27 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 5989 "erlang_rtti_implementation.c"
+    mercury__erlang_rtti_implementation__SubTerm_10 = ((MR_Box) ((MR_Integer) 42));
+#line 5991 "erlang_rtti_implementation.c"
+    mercury__erlang_rtti_implementation__TypeInfo_13_13 = mercury__erlang_rtti_implementation__TypeInfo_for_T_27;
+#line 13 "univ.opt"
+    {
+#line 13 "univ.opt"
+      mercury__univ__type_to_univ_2_p_1(mercury__erlang_rtti_implementation__TypeInfo_13_13, mercury__erlang_rtti_implementation__SubTerm_10, &mercury__erlang_rtti_implementation__Univ_8);
+    }
+#line 1058 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__Univ_8;
+#line 1058 "erlang_rtti_implementation.m"
+  }
+#line 1056 "erlang_rtti_implementation.m"
+}
+
+#line 988 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_115_95_110_111_110_95_101_109_112_116_121_95_108_105_115_116_95_95_91_49_44_32_52_44_32_53_44_32_54_93_95_48_5_p_0(
+#line 988 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__ExistQTypeInfo_for_H_16,
+#line 988 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__ExistQTypeInfo_for_T_17,
+#line 988 "erlang_rtti_implementation.m"
+  MR_Box * mercury__erlang_rtti_implementation__ExistQHeadVar__4_15,
+#line 988 "erlang_rtti_implementation.m"
+  MR_Box * mercury__erlang_rtti_implementation__ExistQHeadVar__5_14)
+#line 988 "erlang_rtti_implementation.m"
+{
+#line 1010 "erlang_rtti_implementation.m"
+  {
+#line 1010 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1010 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_11;
+
+#line 1966 "erlang_rtti_implementation.m"
+    {
+#line 1966 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+    }
+#line 1968 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1967 "erlang_rtti_implementation.m"
+      {
+#line 1967 "erlang_rtti_implementation.m"
+        MR_String mercury__erlang_rtti_implementation__V_21_21;
+
+#line 159 "string.opt"
+        {
+#line 159 "string.opt"
+          mercury__string__append_3_p_2((MR_String) "unimplemented: ", (MR_String) "is_non_empty_list/5", &mercury__erlang_rtti_implementation__V_21_21);
+        }
+#line 1967 "erlang_rtti_implementation.m"
+        {
+#line 1967 "erlang_rtti_implementation.m"
+          mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.semidet_unimplemented\'/1", mercury__erlang_rtti_implementation__V_21_21);
+        }
+#line 1967 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1967 "erlang_rtti_implementation.m"
+      }
+#line 1968 "erlang_rtti_implementation.m"
+    else
+#line 1969 "erlang_rtti_implementation.m"
+      {
+#line 1969 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+      }
+#line 1010 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1010 "erlang_rtti_implementation.m"
+      {
+#line 6062 "erlang_rtti_implementation.c"
+        mercury__erlang_rtti_implementation__TypeInfo_for_T_11 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 6064 "erlang_rtti_implementation.c"
+        *mercury__erlang_rtti_implementation__ExistQHeadVar__4_15 = ((MR_Box) ((MR_String) "dummy value"));
+#line 6066 "erlang_rtti_implementation.c"
+        *mercury__erlang_rtti_implementation__ExistQHeadVar__5_14 = ((MR_Box) ((MR_String) "dummy value"));
+#line 6068 "erlang_rtti_implementation.c"
+        *mercury__erlang_rtti_implementation__ExistQTypeInfo_for_T_17 = mercury__erlang_rtti_implementation__TypeInfo_for_T_11;
+#line 6070 "erlang_rtti_implementation.c"
+        *mercury__erlang_rtti_implementation__ExistQTypeInfo_for_H_16 = mercury__erlang_rtti_implementation__TypeInfo_for_T_11;
+#line 6072 "erlang_rtti_implementation.c"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1010 "erlang_rtti_implementation.m"
+      }
+#line 1010 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1010 "erlang_rtti_implementation.m"
+  }
+#line 988 "erlang_rtti_implementation.m"
+}
+
+#line 929 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_116_99_104_105_110_103_95_100_117_95_102_117_110_99_116_111_114_95_95_91_49_44_32_51_93_95_48_3_p_0(
+#line 929 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 929 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Functor_3)
+#line 929 "erlang_rtti_implementation.m"
+{
+#line 932 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 932 "erlang_rtti_implementation.m"
+    {
+#line 932 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 932 "erlang_rtti_implementation.m"
+      {
+#line 932 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 932 "erlang_rtti_implementation.m"
+        if ((mercury__erlang_rtti_implementation__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 932 "erlang_rtti_implementation.m"
+          {
+#line 933 "erlang_rtti_implementation.m"
+            {
+#line 933 "erlang_rtti_implementation.m"
+              mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.matching_du_functor\'/3", (MR_String) "empty list");
+#line 933 "erlang_rtti_implementation.m"
+              return;
+            }
+#line 932 "erlang_rtti_implementation.m"
+          }
+#line 932 "erlang_rtti_implementation.m"
+        else
+#line 934 "erlang_rtti_implementation.m"
+          {
+#line 934 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__F_9 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 934 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__Fs_10 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 1)));
+#line 953 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_18_18;
+#line 953 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_19_19;
+#line 953 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_20_20;
+#line 953 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_21_21;
+#line 953 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_34_34;
+#line 953 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__MaybeExist_51;
+#line 955 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__V_28_28;
+#line 955 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_29_29;
+#line 955 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_30_30;
+#line 955 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__V_32_32;
+
+#line 1966 "erlang_rtti_implementation.m"
+            {
+#line 1966 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+            }
+#line 1968 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 1967 "erlang_rtti_implementation.m"
+              {
+#line 1967 "erlang_rtti_implementation.m"
+                MR_String mercury__erlang_rtti_implementation__V_41_41;
+
+#line 159 "string.opt"
+                {
+#line 159 "string.opt"
+                  mercury__string__append_3_p_2((MR_String) "unimplemented: ", (MR_String) "check_functor/3", &mercury__erlang_rtti_implementation__V_41_41);
+                }
+#line 1967 "erlang_rtti_implementation.m"
+                {
+#line 1967 "erlang_rtti_implementation.m"
+                  mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.semidet_unimplemented\'/1", mercury__erlang_rtti_implementation__V_41_41);
+#line 1967 "erlang_rtti_implementation.m"
+                  return;
+                }
+#line 1967 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1967 "erlang_rtti_implementation.m"
+              }
+#line 1968 "erlang_rtti_implementation.m"
+            else
+#line 1969 "erlang_rtti_implementation.m"
+              {
+#line 1969 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+              }
+#line 953 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 953 "erlang_rtti_implementation.m"
+              {
+#line 955 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__F_9, (MR_Integer) 0)));
+#line 955 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_19_19 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__F_9, (MR_Integer) 1)));
+#line 955 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_29_29 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__F_9, (MR_Integer) 2)));
+#line 955 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_30_30 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__F_9, (MR_Integer) 3)));
+#line 955 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_32_32 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__F_9, (MR_Integer) 5)));
+#line 955 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__MaybeExist_51 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__F_9, (MR_Integer) 6)));
+#line 955 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_20_20 = (MR_Integer) 1;
+#line 955 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_18_18 = (mercury__erlang_rtti_implementation__V_19_19 + mercury__erlang_rtti_implementation__V_20_20);
+#line 955 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_21_21 = ((MR_Integer) 0 - mercury__erlang_rtti_implementation__V_18_18);
+#line 1028 "erlang_rtti_implementation.m"
+                if ((mercury__erlang_rtti_implementation__MaybeExist_51 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1030 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_34_34 = (MR_Integer) 0;
+#line 1028 "erlang_rtti_implementation.m"
+                else
+#line 1023 "erlang_rtti_implementation.m"
+                  {
+#line 1023 "erlang_rtti_implementation.m"
+                    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_22_68 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_tc_constraint_0;
+#line 1023 "erlang_rtti_implementation.m"
+                    MR_Word mercury__erlang_rtti_implementation__ExistInfo_52 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__MaybeExist_51, (MR_Integer) 0)));
+#line 1023 "erlang_rtti_implementation.m"
+                    MR_Integer mercury__erlang_rtti_implementation__V_53_53 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ExistInfo_52, (MR_Integer) 0)));
+#line 1023 "erlang_rtti_implementation.m"
+                    MR_Integer mercury__erlang_rtti_implementation__V_54_54;
+#line 1023 "erlang_rtti_implementation.m"
+                    MR_Word mercury__erlang_rtti_implementation__V_63_63 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ExistInfo_52, (MR_Integer) 2)));
+#line 1026 "erlang_rtti_implementation.m"
+                    MR_Integer mercury__erlang_rtti_implementation__V_62_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ExistInfo_52, (MR_Integer) 1)));
+#line 1026 "erlang_rtti_implementation.m"
+                    MR_Word mercury__erlang_rtti_implementation__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ExistInfo_52, (MR_Integer) 3)));
+
+#line 600 "list.opt"
+                    {
+#line 600 "list.opt"
+                      mercury__list__length_acc_3_p_0(mercury__erlang_rtti_implementation__TypeCtorInfo_22_68, mercury__erlang_rtti_implementation__V_63_63, (MR_Integer) 0, &mercury__erlang_rtti_implementation__V_54_54);
+                    }
+#line 1026 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_34_34 = (mercury__erlang_rtti_implementation__V_53_53 + mercury__erlang_rtti_implementation__V_54_54);
+#line 1023 "erlang_rtti_implementation.m"
+                  }
+#line 955 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_21_21 == mercury__erlang_rtti_implementation__V_34_34);
+#line 953 "erlang_rtti_implementation.m"
+              }
+#line 937 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 936 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_3 = mercury__erlang_rtti_implementation__F_9;
+#line 937 "erlang_rtti_implementation.m"
+            else
+#line 938 "erlang_rtti_implementation.m"
+              {
+#line 938 "erlang_rtti_implementation.m"
+                /* direct tailcall eliminated */
+#line 938 "erlang_rtti_implementation.m"
+                {
+#line 938 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__HeadVar__1__tmp_copy_1 = mercury__erlang_rtti_implementation__Fs_10;
+
+#line 938 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__HeadVar__1__tmp_copy_1;
+#line 938 "erlang_rtti_implementation.m"
+                }
+#line 938 "erlang_rtti_implementation.m"
+                continue;
+#line 938 "erlang_rtti_implementation.m"
+              }
+#line 934 "erlang_rtti_implementation.m"
+          }
+#line 932 "erlang_rtti_implementation.m"
+      }
+#line 932 "erlang_rtti_implementation.m"
+      break;
+#line 932 "erlang_rtti_implementation.m"
+    }
+#line 929 "erlang_rtti_implementation.m"
+}
+
+#line 752 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_93_95_51_9_p_3(
+#line 752 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_99,
+#line 752 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_10,
+#line 752 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13,
+#line 752 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__NonCanon_14,
+#line 752 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_15,
+#line 752 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_16,
+#line 752 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_17,
+#line 752 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_18)
+#line 752 "erlang_rtti_implementation.m"
+{
+#line 765 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 765 "erlang_rtti_implementation.m"
+    {
+#line 765 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 765 "erlang_rtti_implementation.m"
+      {
+#line 765 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 765 "erlang_rtti_implementation.m"
+#line 765 "erlang_rtti_implementation.m"
+        switch (mercury__erlang_rtti_implementation__TypeCtorRep_13) {
+#line 765 "erlang_rtti_implementation.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 3:
+#line 786 "erlang_rtti_implementation.m"
+            {
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_106_106;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_107_107;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_108_108;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__Args_25;
+#line 786 "erlang_rtti_implementation.m"
+              MR_ArrayPtr mercury__erlang_rtti_implementation__Array_28;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_58_58;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_68_68;
+#line 789 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__V_121_121;
+#line 789 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_24_24;
+#line 793 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__ElemType_26;
+#line 790 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_59_59;
+#line 798 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv0_Array_28;
+
+#line 789 "erlang_rtti_implementation.m"
+              {
+#line 789 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_58_58 = mercury__type_desc__type_of_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99);
+              }
+#line 789 "erlang_rtti_implementation.m"
+              {
+#line 789 "erlang_rtti_implementation.m"
+                mercury__type_desc__type_ctor_and_args_3_p_0(mercury__erlang_rtti_implementation__V_58_58, &mercury__erlang_rtti_implementation__V_24_24, &mercury__erlang_rtti_implementation__Args_25);
+              }
+#line 790 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__Args_25)) == (MR_mktag((MR_Integer) 1)));
+#line 790 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 790 "erlang_rtti_implementation.m"
+                {
+#line 790 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__ElemType_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Args_25, (MR_Integer) 0)));
+#line 790 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Args_25, (MR_Integer) 1)));
+#line 790 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_59_59 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 790 "erlang_rtti_implementation.m"
+                }
+#line 793 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 791 "erlang_rtti_implementation.m"
+                {
+#line 791 "erlang_rtti_implementation.m"
+                  MR_Box mercury__erlang_rtti_implementation__Elem_27;
+
+#line 791 "erlang_rtti_implementation.m"
+                  {
+#line 791 "erlang_rtti_implementation.m"
+                    mercury__type_desc__has_type_2_p_0(&mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__ElemType_26);
+                  }
+#line 792 "erlang_rtti_implementation.m"
+                  {
+#line 792 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_97_109_101_95_97_114_114_97_121_95_101_108_101_109_95_116_121_112_101_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0();
+                  }
+#line 791 "erlang_rtti_implementation.m"
+                }
+#line 793 "erlang_rtti_implementation.m"
+              else
+#line 794 "erlang_rtti_implementation.m"
+                {
+#line 794 "erlang_rtti_implementation.m"
+                  {
+#line 794 "erlang_rtti_implementation.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "An array which doesn\'t have a type_ctor arg");
+#line 794 "erlang_rtti_implementation.m"
+                    return;
+                  }
+#line 794 "erlang_rtti_implementation.m"
+                }
+#line 6394 "erlang_rtti_implementation.c"
+              mercury__erlang_rtti_implementation__TypeCtorInfo_107_107 = (MR_Word) &mercury__array__array__type_ctor_info_array_1;
+#line 6396 "erlang_rtti_implementation.c"
+              {
+#line 6398 "erlang_rtti_implementation.c"
+                mercury__erlang_rtti_implementation__TypeInfo_108_108 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 6400 "erlang_rtti_implementation.c"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_108_108, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_107_107));
+#line 6402 "erlang_rtti_implementation.c"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_108_108, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfo_106_106));
+#line 6404 "erlang_rtti_implementation.c"
+              }
+#line 798 "erlang_rtti_implementation.m"
+              {
+#line 798 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeInfo_108_108, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv0_Array_28);
+              }
+#line 798 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Array_28 = ((MR_ArrayPtr) mercury__erlang_rtti_implementation__conv0_Array_28);
+#line 800 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<array>>";
+#line 801 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 802 "erlang_rtti_implementation.m"
+              {
+#line 802 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arity_17 = mercury__array__size_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_106_106, (MR_ArrayPtr) mercury__erlang_rtti_implementation__Array_28);
+              }
+#line 805 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_68_68 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 803 "erlang_rtti_implementation.m"
+              {
+#line 803 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arguments_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_114_95_95_104_111_57_95_95_91_51_93_95_48_3_f_in__array_0(mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__Array_28, mercury__erlang_rtti_implementation__V_68_68);
+              }
+#line 786 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 22:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 892 "erlang_rtti_implementation.m"
+#line 892 "erlang_rtti_implementation.m"
+              switch (mercury__erlang_rtti_implementation__NonCanon_14) {
+#line 892 "erlang_rtti_implementation.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 1:
+#line 893 "erlang_rtti_implementation.m"
+                  {
+#line 894 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<basetypeclassinfo>>";
+#line 895 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 893 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 0:
+#line 889 "erlang_rtti_implementation.m"
+                  {
+#line 890 "erlang_rtti_implementation.m"
+                    {
+#line 890 "erlang_rtti_implementation.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                      return;
+                    }
+#line 889 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 2:
+#line 900 "erlang_rtti_implementation.m"
+                  {
+#line 901 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<basetypeclassinfo>>";
+#line 902 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 900 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 11:
+#line 860 "erlang_rtti_implementation.m"
+            {
+#line 860 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_119_119 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_c_pointer_0;
+#line 860 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__CPtr_80;
+#line 861 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv1_CPtr_80;
+
+#line 861 "erlang_rtti_implementation.m"
+              {
+#line 861 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_119_119, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv1_CPtr_80);
+              }
+#line 861 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__CPtr_80 = ((MR_Word) mercury__erlang_rtti_implementation__conv1_CPtr_80);
+#line 862 "erlang_rtti_implementation.m"
+              {
+#line 862 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__c_pointer_to_string_1_f_0(mercury__erlang_rtti_implementation__CPtr_80);
+              }
+#line 863 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 864 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 865 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 860 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 7:
+#line 834 "erlang_rtti_implementation.m"
+            {
+#line 834 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_116_116 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_character_0;
+#line 834 "erlang_rtti_implementation.m"
+              MR_Char mercury__erlang_rtti_implementation__Char_35;
+#line 835 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv2_Char_35;
+
+#line 835 "erlang_rtti_implementation.m"
+              {
+#line 835 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_116_116, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv2_Char_35);
+              }
+#line 835 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Char_35 = ((MR_Char) (MR_Word) mercury__erlang_rtti_implementation__conv2_Char_35);
+#line 836 "erlang_rtti_implementation.m"
+              {
+#line 836 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__term_io__quoted_char_1_f_0(mercury__erlang_rtti_implementation__Char_35);
+              }
+#line 837 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 838 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 839 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 834 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 0:
+#line 757 "erlang_rtti_implementation.m"
+            {
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__FunctorReps_19;
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__FunctorRep_20;
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_74_74;
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_76_76;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_81_81;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_82_82;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_83_83;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_85_85;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_86_86;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_87_87;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_89_89;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_91_91;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_92_92;
+
+#line 758 "erlang_rtti_implementation.m"
+              {
+#line 758 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__FunctorReps_19 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_102_117_110_99_116_111_114_115_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 759 "erlang_rtti_implementation.m"
+              {
+#line 759 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_116_99_104_105_110_103_95_100_117_95_102_117_110_99_116_111_114_95_95_91_49_44_32_51_93_95_48_3_p_0(mercury__erlang_rtti_implementation__FunctorReps_19, &mercury__erlang_rtti_implementation__FunctorRep_20);
+              }
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 0)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_81_81 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 1)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_82_82 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 2)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_83_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 3)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 5)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 6)));
+#line 760 "erlang_rtti_implementation.m"
+              {
+#line 760 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__from_char_list_1_f_0(mercury__erlang_rtti_implementation__V_74_74);
+              }
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 0)));
+#line 761 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 1)));
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_89_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 2)));
+#line 761 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 3)));
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_91_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 5)));
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_92_92 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 6)));
+#line 764 "erlang_rtti_implementation.m"
+              {
+#line 764 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_76_76 = mercury__list__f_46_46_2_f_0((MR_Integer) 1, *mercury__erlang_rtti_implementation__Arity_17);
+              }
+#line 763 "erlang_rtti_implementation.m"
+              {
+#line 763 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arguments_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_49_95_95_91_53_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__FunctorRep_20, mercury__erlang_rtti_implementation__Term_10, mercury__erlang_rtti_implementation__V_76_76);
+              }
+#line 757 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 1:
+#line 766 "erlang_rtti_implementation.m"
+            {
+#line 767 "erlang_rtti_implementation.m"
+              {
+#line 767 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_100_117_109_109_121_95_102_117_110_99_116_111_114_95_110_97_109_101_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 768 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 769 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 770 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 766 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 4:
+#line 807 "erlang_rtti_implementation.m"
+            {
+#line 807 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__EqvTypeCtorRep_32;
+
+#line 808 "erlang_rtti_implementation.m"
+              {
+#line 808 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__collapse_equivalences_1_f_0();
+              }
+#line 809 "erlang_rtti_implementation.m"
+              {
+#line 809 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 810 "erlang_rtti_implementation.m"
+              {
+#line 810 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__EqvTypeCtorRep_32 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 811 "erlang_rtti_implementation.m"
+              /* direct tailcall eliminated */
+#line 811 "erlang_rtti_implementation.m"
+              {
+#line 811 "erlang_rtti_implementation.m"
+                MR_Word mercury__erlang_rtti_implementation__TypeCtorRep__tmp_copy_13 = mercury__erlang_rtti_implementation__EqvTypeCtorRep_32;
+
+#line 811 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__TypeCtorRep_13 = mercury__erlang_rtti_implementation__TypeCtorRep__tmp_copy_13;
+#line 811 "erlang_rtti_implementation.m"
+              }
+#line 811 "erlang_rtti_implementation.m"
+              continue;
+#line 807 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 6:
+#line 827 "erlang_rtti_implementation.m"
+            {
+#line 827 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_115_115 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_float_0;
+#line 827 "erlang_rtti_implementation.m"
+              MR_Float mercury__erlang_rtti_implementation__Float_34;
+#line 828 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv3_Float_34;
+
+#line 828 "erlang_rtti_implementation.m"
+              {
+#line 828 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_115_115, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv3_Float_34);
+              }
+#line 828 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Float_34 = MR_unbox_float(mercury__erlang_rtti_implementation__conv3_Float_34);
+#line 829 "erlang_rtti_implementation.m"
+              {
+#line 829 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__float_to_string_1_f_0(mercury__erlang_rtti_implementation__Float_34);
+              }
+#line 830 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 831 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 832 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 827 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 23:
+#line 907 "erlang_rtti_implementation.m"
+            {
+#line 908 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<foreign>>";
+#line 909 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 910 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 911 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 907 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 13:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 892 "erlang_rtti_implementation.m"
+#line 892 "erlang_rtti_implementation.m"
+              switch (mercury__erlang_rtti_implementation__NonCanon_14) {
+#line 892 "erlang_rtti_implementation.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 1:
+#line 893 "erlang_rtti_implementation.m"
+                  {
+#line 894 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<function>>";
+#line 895 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 893 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 0:
+#line 889 "erlang_rtti_implementation.m"
+                  {
+#line 890 "erlang_rtti_implementation.m"
+                    {
+#line 890 "erlang_rtti_implementation.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                      return;
+                    }
+#line 889 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 2:
+#line 900 "erlang_rtti_implementation.m"
+                  {
+#line 901 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<function>>";
+#line 902 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 900 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 24:
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 25:
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 26:
+#line 919 "erlang_rtti_implementation.m"
+            {
+#line 919 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_120_120 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_type_ctor_rep_0;
+#line 919 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_41_41;
+#line 919 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_43_43;
+
+#line 921 "erlang_rtti_implementation.m"
+              {
+#line 921 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_43_43 = mercury__string__string_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_120_120, ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorRep_13)));
+              }
+#line 921 "erlang_rtti_implementation.m"
+              {
+#line 921 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_41_41 = mercury__string__f_43_43_2_f_0((MR_String) "should never occur: ", mercury__erlang_rtti_implementation__V_43_43);
+              }
+#line 920 "erlang_rtti_implementation.m"
+              {
+#line 920 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", mercury__erlang_rtti_implementation__V_41_41);
+#line 920 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 919 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 5:
+#line 820 "erlang_rtti_implementation.m"
+            {
+#line 820 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_114_114 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 820 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__Int_33;
+#line 821 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv4_Int_33;
+
+#line 821 "erlang_rtti_implementation.m"
+              {
+#line 821 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_114_114, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv4_Int_33);
+              }
+#line 821 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Int_33 = ((MR_Integer) mercury__erlang_rtti_implementation__conv4_Int_33);
+#line 822 "erlang_rtti_implementation.m"
+              {
+#line 822 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__int_to_string_1_f_0(mercury__erlang_rtti_implementation__Int_33);
+              }
+#line 823 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 824 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 825 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 820 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 2:
+#line 772 "erlang_rtti_implementation.m"
+            {
+#line 779 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_104_104;
+#line 779 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_105_105;
+#line 779 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__H_22;
+#line 779 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__T_23;
+
+#line 773 "erlang_rtti_implementation.m"
+              {
+#line 773 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_105_110_100_101_120_95_95_91_50_93_95_48_2_f_0((MR_Integer) 1);
+              }
+#line 774 "erlang_rtti_implementation.m"
+              {
+#line 774 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_115_95_110_111_110_95_101_109_112_116_121_95_108_105_115_116_95_95_91_49_44_32_52_44_32_53_44_32_54_93_95_48_5_p_0(&mercury__erlang_rtti_implementation__TypeInfo_104_104, &mercury__erlang_rtti_implementation__TypeInfo_105_105, &mercury__erlang_rtti_implementation__H_22, &mercury__erlang_rtti_implementation__T_23);
+              }
+#line 779 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 775 "erlang_rtti_implementation.m"
+                {
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_70_70;
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_71_71;
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_72_72;
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_73_73;
+
+#line 775 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "[|]";
+#line 776 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 1;
+#line 777 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 2;
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_70_70 = mercury__univ__univ_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_104_104, mercury__erlang_rtti_implementation__H_22);
+                  }
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_72_72 = mercury__univ__univ_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_105_105, mercury__erlang_rtti_implementation__T_23);
+                  }
+#line 778 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_73_73 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_71_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_71_71, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_72_72));
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_71_71, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_73_73));
+#line 778 "erlang_rtti_implementation.m"
+                  }
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    MR_Word base;
+#line 778 "erlang_rtti_implementation.m"
+                    base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 778 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = base;
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_70_70));
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_71_71));
+#line 778 "erlang_rtti_implementation.m"
+                  }
+#line 775 "erlang_rtti_implementation.m"
+                }
+#line 779 "erlang_rtti_implementation.m"
+              else
+#line 780 "erlang_rtti_implementation.m"
+                {
+#line 780 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "[]";
+#line 781 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 782 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 783 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 780 "erlang_rtti_implementation.m"
+                }
+#line 772 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 12:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 892 "erlang_rtti_implementation.m"
+#line 892 "erlang_rtti_implementation.m"
+              switch (mercury__erlang_rtti_implementation__NonCanon_14) {
+#line 892 "erlang_rtti_implementation.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 1:
+#line 893 "erlang_rtti_implementation.m"
+                  {
+#line 894 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<predicate>>";
+#line 895 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 893 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 0:
+#line 889 "erlang_rtti_implementation.m"
+                  {
+#line 890 "erlang_rtti_implementation.m"
+                    {
+#line 890 "erlang_rtti_implementation.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                      return;
+                    }
+#line 889 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 2:
+#line 900 "erlang_rtti_implementation.m"
+                  {
+#line 901 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<predicate>>";
+#line 902 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 900 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 17:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 892 "erlang_rtti_implementation.m"
+#line 892 "erlang_rtti_implementation.m"
+              switch (mercury__erlang_rtti_implementation__NonCanon_14) {
+#line 892 "erlang_rtti_implementation.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 1:
+#line 893 "erlang_rtti_implementation.m"
+                  {
+#line 894 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<pseudotypedesc>>";
+#line 895 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 893 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 0:
+#line 889 "erlang_rtti_implementation.m"
+                  {
+#line 890 "erlang_rtti_implementation.m"
+                    {
+#line 890 "erlang_rtti_implementation.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                      return;
+                    }
+#line 889 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 2:
+#line 900 "erlang_rtti_implementation.m"
+                  {
+#line 901 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<pseudotypedesc>>";
+#line 902 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 900 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 15:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 892 "erlang_rtti_implementation.m"
+#line 892 "erlang_rtti_implementation.m"
+              switch (mercury__erlang_rtti_implementation__NonCanon_14) {
+#line 892 "erlang_rtti_implementation.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 1:
+#line 893 "erlang_rtti_implementation.m"
+                  {
+#line 894 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<reference>>";
+#line 895 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 893 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 0:
+#line 889 "erlang_rtti_implementation.m"
+                  {
+#line 890 "erlang_rtti_implementation.m"
+                    {
+#line 890 "erlang_rtti_implementation.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                      return;
+                    }
+#line 889 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 2:
+#line 900 "erlang_rtti_implementation.m"
+                  {
+#line 901 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<reference>>";
+#line 902 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 900 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 10:
+#line 853 "erlang_rtti_implementation.m"
+            {
+#line 853 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_118_118 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_c_pointer_0;
+#line 853 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__CPtr_37;
+#line 853 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_48_48;
+#line 854 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv5_CPtr_37;
+
+#line 854 "erlang_rtti_implementation.m"
+              {
+#line 854 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_118_118, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv5_CPtr_37);
+              }
+#line 854 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__CPtr_37 = ((MR_Word) mercury__erlang_rtti_implementation__conv5_CPtr_37);
+#line 855 "erlang_rtti_implementation.m"
+              {
+#line 855 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_48_48 = mercury__string__c_pointer_to_string_1_f_0(mercury__erlang_rtti_implementation__CPtr_37);
+              }
+#line 855 "erlang_rtti_implementation.m"
+              {
+#line 855 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__f_43_43_2_f_0((MR_String) "stable_", mercury__erlang_rtti_implementation__V_48_48);
+              }
+#line 856 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 857 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 858 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 853 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 8:
+#line 841 "erlang_rtti_implementation.m"
+            {
+#line 841 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_117_117 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 841 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__String_36;
+#line 841 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_53_53;
+#line 842 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv6_String_36;
+
+#line 842 "erlang_rtti_implementation.m"
+              {
+#line 842 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_117_117, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv6_String_36);
+              }
+#line 842 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__String_36 = ((MR_String) mercury__erlang_rtti_implementation__conv6_String_36);
+#line 843 "erlang_rtti_implementation.m"
+              {
+#line 843 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_53_53 = mercury__string__f_43_43_2_f_0(mercury__erlang_rtti_implementation__String_36, (MR_String) "\"");
+              }
+#line 843 "erlang_rtti_implementation.m"
+              {
+#line 843 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__f_43_43_2_f_0((MR_String) "\"", mercury__erlang_rtti_implementation__V_53_53);
+              }
+#line 844 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 845 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 846 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 841 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 14:
+#line 814 "erlang_rtti_implementation.m"
+            {
+#line 814 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_56_56;
+
+#line 815 "erlang_rtti_implementation.m"
+              {
+#line 815 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arity_17 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_118_97_114_95_97_114_105_116_121_95_116_121_112_101_95_105_110_102_111_95_97_114_105_116_121_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 816 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "{}";
+#line 817 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 818 "erlang_rtti_implementation.m"
+              {
+#line 818 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_56_56 = mercury__list__f_46_46_2_f_0((MR_Integer) 1, *mercury__erlang_rtti_implementation__Arity_17);
+              }
+#line 818 "erlang_rtti_implementation.m"
+              {
+#line 818 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arguments_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__V_56_56);
+              }
+#line 814 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 18:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 892 "erlang_rtti_implementation.m"
+#line 892 "erlang_rtti_implementation.m"
+              switch (mercury__erlang_rtti_implementation__NonCanon_14) {
+#line 892 "erlang_rtti_implementation.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 1:
+#line 893 "erlang_rtti_implementation.m"
+                  {
+#line 894 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typectordesc>>";
+#line 895 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 893 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 0:
+#line 889 "erlang_rtti_implementation.m"
+                  {
+#line 890 "erlang_rtti_implementation.m"
+                    {
+#line 890 "erlang_rtti_implementation.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                      return;
+                    }
+#line 889 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 2:
+#line 900 "erlang_rtti_implementation.m"
+                  {
+#line 901 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typectordesc>>";
+#line 902 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 900 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 20:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 892 "erlang_rtti_implementation.m"
+#line 892 "erlang_rtti_implementation.m"
+              switch (mercury__erlang_rtti_implementation__NonCanon_14) {
+#line 892 "erlang_rtti_implementation.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 1:
+#line 893 "erlang_rtti_implementation.m"
+                  {
+#line 894 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typectorinfo>>";
+#line 895 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 893 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 0:
+#line 889 "erlang_rtti_implementation.m"
+                  {
+#line 890 "erlang_rtti_implementation.m"
+                    {
+#line 890 "erlang_rtti_implementation.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                      return;
+                    }
+#line 889 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 2:
+#line 900 "erlang_rtti_implementation.m"
+                  {
+#line 901 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typectorinfo>>";
+#line 902 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 900 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 16:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 892 "erlang_rtti_implementation.m"
+#line 892 "erlang_rtti_implementation.m"
+              switch (mercury__erlang_rtti_implementation__NonCanon_14) {
+#line 892 "erlang_rtti_implementation.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 1:
+#line 893 "erlang_rtti_implementation.m"
+                  {
+#line 894 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typedesc>>";
+#line 895 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 893 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 0:
+#line 889 "erlang_rtti_implementation.m"
+                  {
+#line 890 "erlang_rtti_implementation.m"
+                    {
+#line 890 "erlang_rtti_implementation.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                      return;
+                    }
+#line 889 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 2:
+#line 900 "erlang_rtti_implementation.m"
+                  {
+#line 901 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typedesc>>";
+#line 902 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 900 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 19:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 892 "erlang_rtti_implementation.m"
+#line 892 "erlang_rtti_implementation.m"
+              switch (mercury__erlang_rtti_implementation__NonCanon_14) {
+#line 892 "erlang_rtti_implementation.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 1:
+#line 893 "erlang_rtti_implementation.m"
+                  {
+#line 894 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typeinfo>>";
+#line 895 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 893 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 0:
+#line 889 "erlang_rtti_implementation.m"
+                  {
+#line 890 "erlang_rtti_implementation.m"
+                    {
+#line 890 "erlang_rtti_implementation.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                      return;
+                    }
+#line 889 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 2:
+#line 900 "erlang_rtti_implementation.m"
+                  {
+#line 901 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typeinfo>>";
+#line 902 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 900 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 21:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 892 "erlang_rtti_implementation.m"
+#line 892 "erlang_rtti_implementation.m"
+              switch (mercury__erlang_rtti_implementation__NonCanon_14) {
+#line 892 "erlang_rtti_implementation.m"
+                default: /*NOTREACHED*/ MR_assert(0);
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 1:
+#line 893 "erlang_rtti_implementation.m"
+                  {
+#line 894 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typeclassinfo>>";
+#line 895 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 893 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 0:
+#line 889 "erlang_rtti_implementation.m"
+                  {
+#line 890 "erlang_rtti_implementation.m"
+                    {
+#line 890 "erlang_rtti_implementation.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                      return;
+                    }
+#line 889 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+                case (MR_Integer) 2:
+#line 900 "erlang_rtti_implementation.m"
+                  {
+#line 901 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typeclassinfo>>";
+#line 902 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 900 "erlang_rtti_implementation.m"
+                  }
+#line 892 "erlang_rtti_implementation.m"
+                  break;
+#line 892 "erlang_rtti_implementation.m"
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 9:
+#line 850 "erlang_rtti_implementation.m"
+            {
+#line 851 "erlang_rtti_implementation.m"
+              {
+#line 851 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "cannot deconstruct void types");
+#line 851 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 850 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+        }
+#line 765 "erlang_rtti_implementation.m"
+      }
+#line 765 "erlang_rtti_implementation.m"
+      break;
+#line 765 "erlang_rtti_implementation.m"
+    }
+#line 752 "erlang_rtti_implementation.m"
+}
+
+#line 750 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_50_9_p_2(
+#line 750 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_99,
+#line 750 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_10,
+#line 750 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13,
+#line 750 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_15,
+#line 750 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_16,
+#line 750 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_17,
+#line 750 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_18)
+#line 750 "erlang_rtti_implementation.m"
+{
+#line 765 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 765 "erlang_rtti_implementation.m"
+    {
+#line 765 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 765 "erlang_rtti_implementation.m"
+      {
+#line 765 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 765 "erlang_rtti_implementation.m"
+#line 765 "erlang_rtti_implementation.m"
+        switch (mercury__erlang_rtti_implementation__TypeCtorRep_13) {
+#line 765 "erlang_rtti_implementation.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 3:
+#line 786 "erlang_rtti_implementation.m"
+            {
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_106_106;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_107_107;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_108_108;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__Args_25;
+#line 786 "erlang_rtti_implementation.m"
+              MR_ArrayPtr mercury__erlang_rtti_implementation__Array_28;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_58_58;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_68_68;
+#line 789 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__V_121_121;
+#line 789 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_24_24;
+#line 793 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__ElemType_26;
+#line 790 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_59_59;
+#line 798 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv0_Array_28;
+
+#line 789 "erlang_rtti_implementation.m"
+              {
+#line 789 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_58_58 = mercury__type_desc__type_of_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99);
+              }
+#line 789 "erlang_rtti_implementation.m"
+              {
+#line 789 "erlang_rtti_implementation.m"
+                mercury__type_desc__type_ctor_and_args_3_p_0(mercury__erlang_rtti_implementation__V_58_58, &mercury__erlang_rtti_implementation__V_24_24, &mercury__erlang_rtti_implementation__Args_25);
+              }
+#line 790 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__Args_25)) == (MR_mktag((MR_Integer) 1)));
+#line 790 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 790 "erlang_rtti_implementation.m"
+                {
+#line 790 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__ElemType_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Args_25, (MR_Integer) 0)));
+#line 790 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Args_25, (MR_Integer) 1)));
+#line 790 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_59_59 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 790 "erlang_rtti_implementation.m"
+                }
+#line 793 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 791 "erlang_rtti_implementation.m"
+                {
+#line 791 "erlang_rtti_implementation.m"
+                  MR_Box mercury__erlang_rtti_implementation__Elem_27;
+
+#line 791 "erlang_rtti_implementation.m"
+                  {
+#line 791 "erlang_rtti_implementation.m"
+                    mercury__type_desc__has_type_2_p_0(&mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__ElemType_26);
+                  }
+#line 792 "erlang_rtti_implementation.m"
+                  {
+#line 792 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_97_109_101_95_97_114_114_97_121_95_101_108_101_109_95_116_121_112_101_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0();
+                  }
+#line 791 "erlang_rtti_implementation.m"
+                }
+#line 793 "erlang_rtti_implementation.m"
+              else
+#line 794 "erlang_rtti_implementation.m"
+                {
+#line 794 "erlang_rtti_implementation.m"
+                  {
+#line 794 "erlang_rtti_implementation.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "An array which doesn\'t have a type_ctor arg");
+#line 794 "erlang_rtti_implementation.m"
+                    return;
+                  }
+#line 794 "erlang_rtti_implementation.m"
+                }
+#line 7733 "erlang_rtti_implementation.c"
+              mercury__erlang_rtti_implementation__TypeCtorInfo_107_107 = (MR_Word) &mercury__array__array__type_ctor_info_array_1;
+#line 7735 "erlang_rtti_implementation.c"
+              {
+#line 7737 "erlang_rtti_implementation.c"
+                mercury__erlang_rtti_implementation__TypeInfo_108_108 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 7739 "erlang_rtti_implementation.c"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_108_108, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_107_107));
+#line 7741 "erlang_rtti_implementation.c"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_108_108, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfo_106_106));
+#line 7743 "erlang_rtti_implementation.c"
+              }
+#line 798 "erlang_rtti_implementation.m"
+              {
+#line 798 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeInfo_108_108, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv0_Array_28);
+              }
+#line 798 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Array_28 = ((MR_ArrayPtr) mercury__erlang_rtti_implementation__conv0_Array_28);
+#line 800 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<array>>";
+#line 801 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 802 "erlang_rtti_implementation.m"
+              {
+#line 802 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arity_17 = mercury__array__size_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_106_106, (MR_ArrayPtr) mercury__erlang_rtti_implementation__Array_28);
+              }
+#line 805 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_68_68 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 803 "erlang_rtti_implementation.m"
+              {
+#line 803 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arguments_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_114_95_95_104_111_49_50_95_95_91_51_93_95_48_3_f_in__array_0(mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__Array_28, mercury__erlang_rtti_implementation__V_68_68);
+              }
+#line 786 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 22:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 886 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<basetypeclassinfo>>";
+#line 902 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 11:
+#line 860 "erlang_rtti_implementation.m"
+            {
+#line 860 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_119_119 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_c_pointer_0;
+#line 860 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__CPtr_80;
+#line 861 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv1_CPtr_80;
+
+#line 861 "erlang_rtti_implementation.m"
+              {
+#line 861 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_119_119, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv1_CPtr_80);
+              }
+#line 861 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__CPtr_80 = ((MR_Word) mercury__erlang_rtti_implementation__conv1_CPtr_80);
+#line 862 "erlang_rtti_implementation.m"
+              {
+#line 862 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__c_pointer_to_string_1_f_0(mercury__erlang_rtti_implementation__CPtr_80);
+              }
+#line 863 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 864 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 865 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 860 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 7:
+#line 834 "erlang_rtti_implementation.m"
+            {
+#line 834 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_116_116 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_character_0;
+#line 834 "erlang_rtti_implementation.m"
+              MR_Char mercury__erlang_rtti_implementation__Char_35;
+#line 835 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv2_Char_35;
+
+#line 835 "erlang_rtti_implementation.m"
+              {
+#line 835 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_116_116, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv2_Char_35);
+              }
+#line 835 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Char_35 = ((MR_Char) (MR_Word) mercury__erlang_rtti_implementation__conv2_Char_35);
+#line 836 "erlang_rtti_implementation.m"
+              {
+#line 836 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__term_io__quoted_char_1_f_0(mercury__erlang_rtti_implementation__Char_35);
+              }
+#line 837 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 838 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 839 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 834 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 0:
+#line 757 "erlang_rtti_implementation.m"
+            {
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__FunctorReps_19;
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__FunctorRep_20;
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_74_74;
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_76_76;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_81_81;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_82_82;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_83_83;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_85_85;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_86_86;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_87_87;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_89_89;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_91_91;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_92_92;
+
+#line 758 "erlang_rtti_implementation.m"
+              {
+#line 758 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__FunctorReps_19 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_102_117_110_99_116_111_114_115_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 759 "erlang_rtti_implementation.m"
+              {
+#line 759 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_116_99_104_105_110_103_95_100_117_95_102_117_110_99_116_111_114_95_95_91_49_44_32_51_93_95_48_3_p_0(mercury__erlang_rtti_implementation__FunctorReps_19, &mercury__erlang_rtti_implementation__FunctorRep_20);
+              }
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 0)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_81_81 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 1)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_82_82 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 2)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_83_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 3)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 5)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 6)));
+#line 760 "erlang_rtti_implementation.m"
+              {
+#line 760 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__from_char_list_1_f_0(mercury__erlang_rtti_implementation__V_74_74);
+              }
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 0)));
+#line 761 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 1)));
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_89_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 2)));
+#line 761 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 3)));
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_91_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 5)));
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_92_92 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 6)));
+#line 764 "erlang_rtti_implementation.m"
+              {
+#line 764 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_76_76 = mercury__list__f_46_46_2_f_0((MR_Integer) 1, *mercury__erlang_rtti_implementation__Arity_17);
+              }
+#line 763 "erlang_rtti_implementation.m"
+              {
+#line 763 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arguments_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_49_95_95_91_53_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__FunctorRep_20, mercury__erlang_rtti_implementation__Term_10, mercury__erlang_rtti_implementation__V_76_76);
+              }
+#line 757 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 1:
+#line 766 "erlang_rtti_implementation.m"
+            {
+#line 767 "erlang_rtti_implementation.m"
+              {
+#line 767 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_100_117_109_109_121_95_102_117_110_99_116_111_114_95_110_97_109_101_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 768 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 769 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 770 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 766 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 4:
+#line 807 "erlang_rtti_implementation.m"
+            {
+#line 807 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__EqvTypeCtorRep_32;
+
+#line 808 "erlang_rtti_implementation.m"
+              {
+#line 808 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__collapse_equivalences_1_f_0();
+              }
+#line 809 "erlang_rtti_implementation.m"
+              {
+#line 809 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 810 "erlang_rtti_implementation.m"
+              {
+#line 810 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__EqvTypeCtorRep_32 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 811 "erlang_rtti_implementation.m"
+              /* direct tailcall eliminated */
+#line 811 "erlang_rtti_implementation.m"
+              {
+#line 811 "erlang_rtti_implementation.m"
+                MR_Word mercury__erlang_rtti_implementation__TypeCtorRep__tmp_copy_13 = mercury__erlang_rtti_implementation__EqvTypeCtorRep_32;
+
+#line 811 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__TypeCtorRep_13 = mercury__erlang_rtti_implementation__TypeCtorRep__tmp_copy_13;
+#line 811 "erlang_rtti_implementation.m"
+              }
+#line 811 "erlang_rtti_implementation.m"
+              continue;
+#line 807 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 6:
+#line 827 "erlang_rtti_implementation.m"
+            {
+#line 827 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_115_115 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_float_0;
+#line 827 "erlang_rtti_implementation.m"
+              MR_Float mercury__erlang_rtti_implementation__Float_34;
+#line 828 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv3_Float_34;
+
+#line 828 "erlang_rtti_implementation.m"
+              {
+#line 828 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_115_115, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv3_Float_34);
+              }
+#line 828 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Float_34 = MR_unbox_float(mercury__erlang_rtti_implementation__conv3_Float_34);
+#line 829 "erlang_rtti_implementation.m"
+              {
+#line 829 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__float_to_string_1_f_0(mercury__erlang_rtti_implementation__Float_34);
+              }
+#line 830 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 831 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 832 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 827 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 23:
+#line 907 "erlang_rtti_implementation.m"
+            {
+#line 908 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<foreign>>";
+#line 909 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 910 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 911 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 907 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 13:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 870 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<function>>";
+#line 902 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 24:
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 25:
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 26:
+#line 919 "erlang_rtti_implementation.m"
+            {
+#line 919 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_120_120 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_type_ctor_rep_0;
+#line 919 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_41_41;
+#line 919 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_43_43;
+
+#line 921 "erlang_rtti_implementation.m"
+              {
+#line 921 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_43_43 = mercury__string__string_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_120_120, ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorRep_13)));
+              }
+#line 921 "erlang_rtti_implementation.m"
+              {
+#line 921 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_41_41 = mercury__string__f_43_43_2_f_0((MR_String) "should never occur: ", mercury__erlang_rtti_implementation__V_43_43);
+              }
+#line 920 "erlang_rtti_implementation.m"
+              {
+#line 920 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", mercury__erlang_rtti_implementation__V_41_41);
+#line 920 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 919 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 5:
+#line 820 "erlang_rtti_implementation.m"
+            {
+#line 820 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_114_114 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 820 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__Int_33;
+#line 821 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv4_Int_33;
+
+#line 821 "erlang_rtti_implementation.m"
+              {
+#line 821 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_114_114, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv4_Int_33);
+              }
+#line 821 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Int_33 = ((MR_Integer) mercury__erlang_rtti_implementation__conv4_Int_33);
+#line 822 "erlang_rtti_implementation.m"
+              {
+#line 822 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__int_to_string_1_f_0(mercury__erlang_rtti_implementation__Int_33);
+              }
+#line 823 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 824 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 825 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 820 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 2:
+#line 772 "erlang_rtti_implementation.m"
+            {
+#line 779 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_104_104;
+#line 779 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_105_105;
+#line 779 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__H_22;
+#line 779 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__T_23;
+
+#line 773 "erlang_rtti_implementation.m"
+              {
+#line 773 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_105_110_100_101_120_95_95_91_50_93_95_48_2_f_0((MR_Integer) 1);
+              }
+#line 774 "erlang_rtti_implementation.m"
+              {
+#line 774 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_115_95_110_111_110_95_101_109_112_116_121_95_108_105_115_116_95_95_91_49_44_32_52_44_32_53_44_32_54_93_95_48_5_p_0(&mercury__erlang_rtti_implementation__TypeInfo_104_104, &mercury__erlang_rtti_implementation__TypeInfo_105_105, &mercury__erlang_rtti_implementation__H_22, &mercury__erlang_rtti_implementation__T_23);
+              }
+#line 779 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 775 "erlang_rtti_implementation.m"
+                {
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_70_70;
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_71_71;
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_72_72;
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_73_73;
+
+#line 775 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "[|]";
+#line 776 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 1;
+#line 777 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 2;
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_70_70 = mercury__univ__univ_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_104_104, mercury__erlang_rtti_implementation__H_22);
+                  }
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_72_72 = mercury__univ__univ_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_105_105, mercury__erlang_rtti_implementation__T_23);
+                  }
+#line 778 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_73_73 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_71_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_71_71, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_72_72));
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_71_71, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_73_73));
+#line 778 "erlang_rtti_implementation.m"
+                  }
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    MR_Word base;
+#line 778 "erlang_rtti_implementation.m"
+                    base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 778 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = base;
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_70_70));
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_71_71));
+#line 778 "erlang_rtti_implementation.m"
+                  }
+#line 775 "erlang_rtti_implementation.m"
+                }
+#line 779 "erlang_rtti_implementation.m"
+              else
+#line 780 "erlang_rtti_implementation.m"
+                {
+#line 780 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "[]";
+#line 781 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 782 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 783 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 780 "erlang_rtti_implementation.m"
+                }
+#line 772 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 12:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 868 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<predicate>>";
+#line 902 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 17:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 876 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<pseudotypedesc>>";
+#line 902 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 15:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 872 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<reference>>";
+#line 902 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 10:
+#line 853 "erlang_rtti_implementation.m"
+            {
+#line 853 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_118_118 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_c_pointer_0;
+#line 853 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__CPtr_37;
+#line 853 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_48_48;
+#line 854 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv5_CPtr_37;
+
+#line 854 "erlang_rtti_implementation.m"
+              {
+#line 854 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_118_118, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv5_CPtr_37);
+              }
+#line 854 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__CPtr_37 = ((MR_Word) mercury__erlang_rtti_implementation__conv5_CPtr_37);
+#line 855 "erlang_rtti_implementation.m"
+              {
+#line 855 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_48_48 = mercury__string__c_pointer_to_string_1_f_0(mercury__erlang_rtti_implementation__CPtr_37);
+              }
+#line 855 "erlang_rtti_implementation.m"
+              {
+#line 855 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__f_43_43_2_f_0((MR_String) "stable_", mercury__erlang_rtti_implementation__V_48_48);
+              }
+#line 856 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 857 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 858 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 853 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 8:
+#line 841 "erlang_rtti_implementation.m"
+            {
+#line 841 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_117_117 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 841 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__String_36;
+#line 841 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_53_53;
+#line 842 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv6_String_36;
+
+#line 842 "erlang_rtti_implementation.m"
+              {
+#line 842 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_117_117, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv6_String_36);
+              }
+#line 842 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__String_36 = ((MR_String) mercury__erlang_rtti_implementation__conv6_String_36);
+#line 843 "erlang_rtti_implementation.m"
+              {
+#line 843 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_53_53 = mercury__string__f_43_43_2_f_0(mercury__erlang_rtti_implementation__String_36, (MR_String) "\"");
+              }
+#line 843 "erlang_rtti_implementation.m"
+              {
+#line 843 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__f_43_43_2_f_0((MR_String) "\"", mercury__erlang_rtti_implementation__V_53_53);
+              }
+#line 844 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 845 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 846 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 841 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 14:
+#line 814 "erlang_rtti_implementation.m"
+            {
+#line 814 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_56_56;
+
+#line 815 "erlang_rtti_implementation.m"
+              {
+#line 815 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arity_17 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_118_97_114_95_97_114_105_116_121_95_116_121_112_101_95_105_110_102_111_95_97_114_105_116_121_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 816 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "{}";
+#line 817 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 818 "erlang_rtti_implementation.m"
+              {
+#line 818 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_56_56 = mercury__list__f_46_46_2_f_0((MR_Integer) 1, *mercury__erlang_rtti_implementation__Arity_17);
+              }
+#line 818 "erlang_rtti_implementation.m"
+              {
+#line 818 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arguments_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__V_56_56);
+              }
+#line 814 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 18:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 878 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typectordesc>>";
+#line 902 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 20:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 882 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typectorinfo>>";
+#line 902 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 16:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 874 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typedesc>>";
+#line 902 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 19:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 880 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typeinfo>>";
+#line 902 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 21:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 884 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typeclassinfo>>";
+#line 902 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 903 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 904 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 9:
+#line 850 "erlang_rtti_implementation.m"
+            {
+#line 851 "erlang_rtti_implementation.m"
+              {
+#line 851 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "cannot deconstruct void types");
+#line 851 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 850 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+        }
+#line 765 "erlang_rtti_implementation.m"
+      }
+#line 765 "erlang_rtti_implementation.m"
+      break;
+#line 765 "erlang_rtti_implementation.m"
+    }
+#line 750 "erlang_rtti_implementation.m"
+}
+
+#line 748 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_49_9_p_1(
+#line 748 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_99,
+#line 748 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_10,
+#line 748 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13,
+#line 748 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_15,
+#line 748 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_16,
+#line 748 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_17,
+#line 748 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_18)
+#line 748 "erlang_rtti_implementation.m"
+{
+#line 765 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 765 "erlang_rtti_implementation.m"
+    {
+#line 765 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 765 "erlang_rtti_implementation.m"
+      {
+#line 765 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 765 "erlang_rtti_implementation.m"
+#line 765 "erlang_rtti_implementation.m"
+        switch (mercury__erlang_rtti_implementation__TypeCtorRep_13) {
+#line 765 "erlang_rtti_implementation.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 3:
+#line 786 "erlang_rtti_implementation.m"
+            {
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_106_106;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_107_107;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_108_108;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__Args_25;
+#line 786 "erlang_rtti_implementation.m"
+              MR_ArrayPtr mercury__erlang_rtti_implementation__Array_28;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_58_58;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_68_68;
+#line 789 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__V_121_121;
+#line 789 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_24_24;
+#line 793 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__ElemType_26;
+#line 790 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_59_59;
+#line 798 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv0_Array_28;
+
+#line 789 "erlang_rtti_implementation.m"
+              {
+#line 789 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_58_58 = mercury__type_desc__type_of_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99);
+              }
+#line 789 "erlang_rtti_implementation.m"
+              {
+#line 789 "erlang_rtti_implementation.m"
+                mercury__type_desc__type_ctor_and_args_3_p_0(mercury__erlang_rtti_implementation__V_58_58, &mercury__erlang_rtti_implementation__V_24_24, &mercury__erlang_rtti_implementation__Args_25);
+              }
+#line 790 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__Args_25)) == (MR_mktag((MR_Integer) 1)));
+#line 790 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 790 "erlang_rtti_implementation.m"
+                {
+#line 790 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__ElemType_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Args_25, (MR_Integer) 0)));
+#line 790 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Args_25, (MR_Integer) 1)));
+#line 790 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_59_59 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 790 "erlang_rtti_implementation.m"
+                }
+#line 793 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 791 "erlang_rtti_implementation.m"
+                {
+#line 791 "erlang_rtti_implementation.m"
+                  MR_Box mercury__erlang_rtti_implementation__Elem_27;
+
+#line 791 "erlang_rtti_implementation.m"
+                  {
+#line 791 "erlang_rtti_implementation.m"
+                    mercury__type_desc__has_type_2_p_0(&mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__ElemType_26);
+                  }
+#line 792 "erlang_rtti_implementation.m"
+                  {
+#line 792 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_97_109_101_95_97_114_114_97_121_95_101_108_101_109_95_116_121_112_101_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0();
+                  }
+#line 791 "erlang_rtti_implementation.m"
+                }
+#line 793 "erlang_rtti_implementation.m"
+              else
+#line 794 "erlang_rtti_implementation.m"
+                {
+#line 794 "erlang_rtti_implementation.m"
+                  {
+#line 794 "erlang_rtti_implementation.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "An array which doesn\'t have a type_ctor arg");
+#line 794 "erlang_rtti_implementation.m"
+                    return;
+                  }
+#line 794 "erlang_rtti_implementation.m"
+                }
+#line 8612 "erlang_rtti_implementation.c"
+              mercury__erlang_rtti_implementation__TypeCtorInfo_107_107 = (MR_Word) &mercury__array__array__type_ctor_info_array_1;
+#line 8614 "erlang_rtti_implementation.c"
+              {
+#line 8616 "erlang_rtti_implementation.c"
+                mercury__erlang_rtti_implementation__TypeInfo_108_108 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 8618 "erlang_rtti_implementation.c"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_108_108, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_107_107));
+#line 8620 "erlang_rtti_implementation.c"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_108_108, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfo_106_106));
+#line 8622 "erlang_rtti_implementation.c"
+              }
+#line 798 "erlang_rtti_implementation.m"
+              {
+#line 798 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeInfo_108_108, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv0_Array_28);
+              }
+#line 798 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Array_28 = ((MR_ArrayPtr) mercury__erlang_rtti_implementation__conv0_Array_28);
+#line 800 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<array>>";
+#line 801 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 802 "erlang_rtti_implementation.m"
+              {
+#line 802 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arity_17 = mercury__array__size_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_106_106, (MR_ArrayPtr) mercury__erlang_rtti_implementation__Array_28);
+              }
+#line 805 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_68_68 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 803 "erlang_rtti_implementation.m"
+              {
+#line 803 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arguments_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_114_95_95_104_111_49_51_95_95_91_51_93_95_48_3_f_in__array_0(mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__Array_28, mercury__erlang_rtti_implementation__V_68_68);
+              }
+#line 786 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 22:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 886 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<basetypeclassinfo>>";
+#line 895 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 11:
+#line 860 "erlang_rtti_implementation.m"
+            {
+#line 860 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_119_119 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_c_pointer_0;
+#line 860 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__CPtr_80;
+#line 861 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv1_CPtr_80;
+
+#line 861 "erlang_rtti_implementation.m"
+              {
+#line 861 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_119_119, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv1_CPtr_80);
+              }
+#line 861 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__CPtr_80 = ((MR_Word) mercury__erlang_rtti_implementation__conv1_CPtr_80);
+#line 862 "erlang_rtti_implementation.m"
+              {
+#line 862 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__c_pointer_to_string_1_f_0(mercury__erlang_rtti_implementation__CPtr_80);
+              }
+#line 863 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 864 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 865 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 860 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 7:
+#line 834 "erlang_rtti_implementation.m"
+            {
+#line 834 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_116_116 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_character_0;
+#line 834 "erlang_rtti_implementation.m"
+              MR_Char mercury__erlang_rtti_implementation__Char_35;
+#line 835 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv2_Char_35;
+
+#line 835 "erlang_rtti_implementation.m"
+              {
+#line 835 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_116_116, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv2_Char_35);
+              }
+#line 835 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Char_35 = ((MR_Char) (MR_Word) mercury__erlang_rtti_implementation__conv2_Char_35);
+#line 836 "erlang_rtti_implementation.m"
+              {
+#line 836 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__term_io__quoted_char_1_f_0(mercury__erlang_rtti_implementation__Char_35);
+              }
+#line 837 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 838 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 839 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 834 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 0:
+#line 757 "erlang_rtti_implementation.m"
+            {
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__FunctorReps_19;
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__FunctorRep_20;
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_74_74;
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_76_76;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_81_81;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_82_82;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_83_83;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_85_85;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_86_86;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_87_87;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_89_89;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_91_91;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_92_92;
+
+#line 758 "erlang_rtti_implementation.m"
+              {
+#line 758 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__FunctorReps_19 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_102_117_110_99_116_111_114_115_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 759 "erlang_rtti_implementation.m"
+              {
+#line 759 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_116_99_104_105_110_103_95_100_117_95_102_117_110_99_116_111_114_95_95_91_49_44_32_51_93_95_48_3_p_0(mercury__erlang_rtti_implementation__FunctorReps_19, &mercury__erlang_rtti_implementation__FunctorRep_20);
+              }
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 0)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_81_81 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 1)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_82_82 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 2)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_83_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 3)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 5)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 6)));
+#line 760 "erlang_rtti_implementation.m"
+              {
+#line 760 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__from_char_list_1_f_0(mercury__erlang_rtti_implementation__V_74_74);
+              }
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 0)));
+#line 761 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 1)));
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_89_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 2)));
+#line 761 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 3)));
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_91_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 5)));
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_92_92 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 6)));
+#line 764 "erlang_rtti_implementation.m"
+              {
+#line 764 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_76_76 = mercury__list__f_46_46_2_f_0((MR_Integer) 1, *mercury__erlang_rtti_implementation__Arity_17);
+              }
+#line 763 "erlang_rtti_implementation.m"
+              {
+#line 763 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arguments_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_49_95_95_91_53_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__FunctorRep_20, mercury__erlang_rtti_implementation__Term_10, mercury__erlang_rtti_implementation__V_76_76);
+              }
+#line 757 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 1:
+#line 766 "erlang_rtti_implementation.m"
+            {
+#line 767 "erlang_rtti_implementation.m"
+              {
+#line 767 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_100_117_109_109_121_95_102_117_110_99_116_111_114_95_110_97_109_101_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 768 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 769 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 770 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 766 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 4:
+#line 807 "erlang_rtti_implementation.m"
+            {
+#line 807 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__EqvTypeCtorRep_32;
+
+#line 808 "erlang_rtti_implementation.m"
+              {
+#line 808 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__collapse_equivalences_1_f_0();
+              }
+#line 809 "erlang_rtti_implementation.m"
+              {
+#line 809 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 810 "erlang_rtti_implementation.m"
+              {
+#line 810 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__EqvTypeCtorRep_32 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 811 "erlang_rtti_implementation.m"
+              /* direct tailcall eliminated */
+#line 811 "erlang_rtti_implementation.m"
+              {
+#line 811 "erlang_rtti_implementation.m"
+                MR_Word mercury__erlang_rtti_implementation__TypeCtorRep__tmp_copy_13 = mercury__erlang_rtti_implementation__EqvTypeCtorRep_32;
+
+#line 811 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__TypeCtorRep_13 = mercury__erlang_rtti_implementation__TypeCtorRep__tmp_copy_13;
+#line 811 "erlang_rtti_implementation.m"
+              }
+#line 811 "erlang_rtti_implementation.m"
+              continue;
+#line 807 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 6:
+#line 827 "erlang_rtti_implementation.m"
+            {
+#line 827 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_115_115 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_float_0;
+#line 827 "erlang_rtti_implementation.m"
+              MR_Float mercury__erlang_rtti_implementation__Float_34;
+#line 828 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv3_Float_34;
+
+#line 828 "erlang_rtti_implementation.m"
+              {
+#line 828 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_115_115, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv3_Float_34);
+              }
+#line 828 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Float_34 = MR_unbox_float(mercury__erlang_rtti_implementation__conv3_Float_34);
+#line 829 "erlang_rtti_implementation.m"
+              {
+#line 829 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__float_to_string_1_f_0(mercury__erlang_rtti_implementation__Float_34);
+              }
+#line 830 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 831 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 832 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 827 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 23:
+#line 907 "erlang_rtti_implementation.m"
+            {
+#line 908 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<foreign>>";
+#line 909 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 910 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 911 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 907 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 13:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 870 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<function>>";
+#line 895 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 24:
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 25:
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 26:
+#line 919 "erlang_rtti_implementation.m"
+            {
+#line 919 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_120_120 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_type_ctor_rep_0;
+#line 919 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_41_41;
+#line 919 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_43_43;
+
+#line 921 "erlang_rtti_implementation.m"
+              {
+#line 921 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_43_43 = mercury__string__string_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_120_120, ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorRep_13)));
+              }
+#line 921 "erlang_rtti_implementation.m"
+              {
+#line 921 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_41_41 = mercury__string__f_43_43_2_f_0((MR_String) "should never occur: ", mercury__erlang_rtti_implementation__V_43_43);
+              }
+#line 920 "erlang_rtti_implementation.m"
+              {
+#line 920 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", mercury__erlang_rtti_implementation__V_41_41);
+#line 920 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 919 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 5:
+#line 820 "erlang_rtti_implementation.m"
+            {
+#line 820 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_114_114 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 820 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__Int_33;
+#line 821 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv4_Int_33;
+
+#line 821 "erlang_rtti_implementation.m"
+              {
+#line 821 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_114_114, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv4_Int_33);
+              }
+#line 821 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Int_33 = ((MR_Integer) mercury__erlang_rtti_implementation__conv4_Int_33);
+#line 822 "erlang_rtti_implementation.m"
+              {
+#line 822 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__int_to_string_1_f_0(mercury__erlang_rtti_implementation__Int_33);
+              }
+#line 823 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 824 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 825 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 820 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 2:
+#line 772 "erlang_rtti_implementation.m"
+            {
+#line 779 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_104_104;
+#line 779 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_105_105;
+#line 779 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__H_22;
+#line 779 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__T_23;
+
+#line 773 "erlang_rtti_implementation.m"
+              {
+#line 773 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_105_110_100_101_120_95_95_91_50_93_95_48_2_f_0((MR_Integer) 1);
+              }
+#line 774 "erlang_rtti_implementation.m"
+              {
+#line 774 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_115_95_110_111_110_95_101_109_112_116_121_95_108_105_115_116_95_95_91_49_44_32_52_44_32_53_44_32_54_93_95_48_5_p_0(&mercury__erlang_rtti_implementation__TypeInfo_104_104, &mercury__erlang_rtti_implementation__TypeInfo_105_105, &mercury__erlang_rtti_implementation__H_22, &mercury__erlang_rtti_implementation__T_23);
+              }
+#line 779 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 775 "erlang_rtti_implementation.m"
+                {
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_70_70;
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_71_71;
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_72_72;
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_73_73;
+
+#line 775 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "[|]";
+#line 776 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 1;
+#line 777 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 2;
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_70_70 = mercury__univ__univ_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_104_104, mercury__erlang_rtti_implementation__H_22);
+                  }
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_72_72 = mercury__univ__univ_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_105_105, mercury__erlang_rtti_implementation__T_23);
+                  }
+#line 778 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_73_73 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_71_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_71_71, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_72_72));
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_71_71, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_73_73));
+#line 778 "erlang_rtti_implementation.m"
+                  }
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    MR_Word base;
+#line 778 "erlang_rtti_implementation.m"
+                    base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 778 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = base;
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_70_70));
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_71_71));
+#line 778 "erlang_rtti_implementation.m"
+                  }
+#line 775 "erlang_rtti_implementation.m"
+                }
+#line 779 "erlang_rtti_implementation.m"
+              else
+#line 780 "erlang_rtti_implementation.m"
+                {
+#line 780 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "[]";
+#line 781 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 782 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 783 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 780 "erlang_rtti_implementation.m"
+                }
+#line 772 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 12:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 868 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<predicate>>";
+#line 895 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 17:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 876 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<pseudotypedesc>>";
+#line 895 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 15:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 872 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<reference>>";
+#line 895 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 10:
+#line 853 "erlang_rtti_implementation.m"
+            {
+#line 853 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_118_118 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_c_pointer_0;
+#line 853 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__CPtr_37;
+#line 853 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_48_48;
+#line 854 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv5_CPtr_37;
+
+#line 854 "erlang_rtti_implementation.m"
+              {
+#line 854 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_118_118, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv5_CPtr_37);
+              }
+#line 854 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__CPtr_37 = ((MR_Word) mercury__erlang_rtti_implementation__conv5_CPtr_37);
+#line 855 "erlang_rtti_implementation.m"
+              {
+#line 855 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_48_48 = mercury__string__c_pointer_to_string_1_f_0(mercury__erlang_rtti_implementation__CPtr_37);
+              }
+#line 855 "erlang_rtti_implementation.m"
+              {
+#line 855 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__f_43_43_2_f_0((MR_String) "stable_", mercury__erlang_rtti_implementation__V_48_48);
+              }
+#line 856 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 857 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 858 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 853 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 8:
+#line 841 "erlang_rtti_implementation.m"
+            {
+#line 841 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_117_117 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 841 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__String_36;
+#line 841 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_53_53;
+#line 842 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv6_String_36;
+
+#line 842 "erlang_rtti_implementation.m"
+              {
+#line 842 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_117_117, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv6_String_36);
+              }
+#line 842 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__String_36 = ((MR_String) mercury__erlang_rtti_implementation__conv6_String_36);
+#line 843 "erlang_rtti_implementation.m"
+              {
+#line 843 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_53_53 = mercury__string__f_43_43_2_f_0(mercury__erlang_rtti_implementation__String_36, (MR_String) "\"");
+              }
+#line 843 "erlang_rtti_implementation.m"
+              {
+#line 843 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__f_43_43_2_f_0((MR_String) "\"", mercury__erlang_rtti_implementation__V_53_53);
+              }
+#line 844 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 845 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 846 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 841 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 14:
+#line 814 "erlang_rtti_implementation.m"
+            {
+#line 814 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_56_56;
+
+#line 815 "erlang_rtti_implementation.m"
+              {
+#line 815 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arity_17 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_118_97_114_95_97_114_105_116_121_95_116_121_112_101_95_105_110_102_111_95_97_114_105_116_121_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 816 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "{}";
+#line 817 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 818 "erlang_rtti_implementation.m"
+              {
+#line 818 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_56_56 = mercury__list__f_46_46_2_f_0((MR_Integer) 1, *mercury__erlang_rtti_implementation__Arity_17);
+              }
+#line 818 "erlang_rtti_implementation.m"
+              {
+#line 818 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arguments_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__V_56_56);
+              }
+#line 814 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 18:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 878 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typectordesc>>";
+#line 895 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 20:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 882 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typectorinfo>>";
+#line 895 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 16:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 874 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typedesc>>";
+#line 895 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 19:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 880 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typeinfo>>";
+#line 895 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 21:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 884 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<typeclassinfo>>";
+#line 895 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 896 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 897 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 9:
+#line 850 "erlang_rtti_implementation.m"
+            {
+#line 851 "erlang_rtti_implementation.m"
+              {
+#line 851 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "cannot deconstruct void types");
+#line 851 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 850 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+        }
+#line 765 "erlang_rtti_implementation.m"
+      }
+#line 765 "erlang_rtti_implementation.m"
+      break;
+#line 765 "erlang_rtti_implementation.m"
+    }
+#line 748 "erlang_rtti_implementation.m"
+}
+
+#line 746 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_48_9_p_0(
+#line 746 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_99,
+#line 746 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_10,
+#line 746 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13,
+#line 746 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_15,
+#line 746 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_16,
+#line 746 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_17,
+#line 746 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_18)
+#line 746 "erlang_rtti_implementation.m"
+{
+#line 765 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 765 "erlang_rtti_implementation.m"
+    {
+#line 765 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 765 "erlang_rtti_implementation.m"
+      {
+#line 765 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 765 "erlang_rtti_implementation.m"
+#line 765 "erlang_rtti_implementation.m"
+        switch (mercury__erlang_rtti_implementation__TypeCtorRep_13) {
+#line 765 "erlang_rtti_implementation.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 3:
+#line 786 "erlang_rtti_implementation.m"
+            {
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_106_106;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_107_107;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_108_108;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__Args_25;
+#line 786 "erlang_rtti_implementation.m"
+              MR_ArrayPtr mercury__erlang_rtti_implementation__Array_28;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_58_58;
+#line 786 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_68_68;
+#line 789 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__V_121_121;
+#line 789 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_24_24;
+#line 793 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__ElemType_26;
+#line 790 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_59_59;
+#line 798 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv0_Array_28;
+
+#line 789 "erlang_rtti_implementation.m"
+              {
+#line 789 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_58_58 = mercury__type_desc__type_of_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99);
+              }
+#line 789 "erlang_rtti_implementation.m"
+              {
+#line 789 "erlang_rtti_implementation.m"
+                mercury__type_desc__type_ctor_and_args_3_p_0(mercury__erlang_rtti_implementation__V_58_58, &mercury__erlang_rtti_implementation__V_24_24, &mercury__erlang_rtti_implementation__Args_25);
+              }
+#line 790 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__Args_25)) == (MR_mktag((MR_Integer) 1)));
+#line 790 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 790 "erlang_rtti_implementation.m"
+                {
+#line 790 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__ElemType_26 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Args_25, (MR_Integer) 0)));
+#line 790 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Args_25, (MR_Integer) 1)));
+#line 790 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_59_59 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 790 "erlang_rtti_implementation.m"
+                }
+#line 793 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 791 "erlang_rtti_implementation.m"
+                {
+#line 791 "erlang_rtti_implementation.m"
+                  MR_Box mercury__erlang_rtti_implementation__Elem_27;
+
+#line 791 "erlang_rtti_implementation.m"
+                  {
+#line 791 "erlang_rtti_implementation.m"
+                    mercury__type_desc__has_type_2_p_0(&mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__ElemType_26);
+                  }
+#line 792 "erlang_rtti_implementation.m"
+                  {
+#line 792 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_115_97_109_101_95_97_114_114_97_121_95_101_108_101_109_95_116_121_112_101_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0();
+                  }
+#line 791 "erlang_rtti_implementation.m"
+                }
+#line 793 "erlang_rtti_implementation.m"
+              else
+#line 794 "erlang_rtti_implementation.m"
+                {
+#line 794 "erlang_rtti_implementation.m"
+                  {
+#line 794 "erlang_rtti_implementation.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "An array which doesn\'t have a type_ctor arg");
+#line 794 "erlang_rtti_implementation.m"
+                    return;
+                  }
+#line 794 "erlang_rtti_implementation.m"
+                }
+#line 9491 "erlang_rtti_implementation.c"
+              mercury__erlang_rtti_implementation__TypeCtorInfo_107_107 = (MR_Word) &mercury__array__array__type_ctor_info_array_1;
+#line 9493 "erlang_rtti_implementation.c"
+              {
+#line 9495 "erlang_rtti_implementation.c"
+                mercury__erlang_rtti_implementation__TypeInfo_108_108 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 9497 "erlang_rtti_implementation.c"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_108_108, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_107_107));
+#line 9499 "erlang_rtti_implementation.c"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_108_108, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfo_106_106));
+#line 9501 "erlang_rtti_implementation.c"
+              }
+#line 798 "erlang_rtti_implementation.m"
+              {
+#line 798 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeInfo_108_108, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv0_Array_28);
+              }
+#line 798 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Array_28 = ((MR_ArrayPtr) mercury__erlang_rtti_implementation__conv0_Array_28);
+#line 800 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<array>>";
+#line 801 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 802 "erlang_rtti_implementation.m"
+              {
+#line 802 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arity_17 = mercury__array__size_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_106_106, (MR_ArrayPtr) mercury__erlang_rtti_implementation__Array_28);
+              }
+#line 805 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_68_68 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 803 "erlang_rtti_implementation.m"
+              {
+#line 803 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arguments_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_102_111_108_100_114_95_95_104_111_49_52_95_95_91_51_93_95_48_3_f_in__array_0(mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__Array_28, mercury__erlang_rtti_implementation__V_68_68);
+              }
+#line 786 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 22:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 890 "erlang_rtti_implementation.m"
+              {
+#line 890 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 11:
+#line 860 "erlang_rtti_implementation.m"
+            {
+#line 860 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_119_119 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_c_pointer_0;
+#line 860 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__CPtr_80;
+#line 861 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv1_CPtr_80;
+
+#line 861 "erlang_rtti_implementation.m"
+              {
+#line 861 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_119_119, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv1_CPtr_80);
+              }
+#line 861 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__CPtr_80 = ((MR_Word) mercury__erlang_rtti_implementation__conv1_CPtr_80);
+#line 862 "erlang_rtti_implementation.m"
+              {
+#line 862 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__c_pointer_to_string_1_f_0(mercury__erlang_rtti_implementation__CPtr_80);
+              }
+#line 863 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 864 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 865 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 860 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 7:
+#line 834 "erlang_rtti_implementation.m"
+            {
+#line 834 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_116_116 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_character_0;
+#line 834 "erlang_rtti_implementation.m"
+              MR_Char mercury__erlang_rtti_implementation__Char_35;
+#line 835 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv2_Char_35;
+
+#line 835 "erlang_rtti_implementation.m"
+              {
+#line 835 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_116_116, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv2_Char_35);
+              }
+#line 835 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Char_35 = ((MR_Char) (MR_Word) mercury__erlang_rtti_implementation__conv2_Char_35);
+#line 836 "erlang_rtti_implementation.m"
+              {
+#line 836 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__term_io__quoted_char_1_f_0(mercury__erlang_rtti_implementation__Char_35);
+              }
+#line 837 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 838 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 839 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 834 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 0:
+#line 757 "erlang_rtti_implementation.m"
+            {
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__FunctorReps_19;
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__FunctorRep_20;
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_74_74;
+#line 757 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_76_76;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_81_81;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_82_82;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_83_83;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_85_85;
+#line 760 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_86_86;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_87_87;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_89_89;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_91_91;
+#line 761 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_92_92;
+
+#line 758 "erlang_rtti_implementation.m"
+              {
+#line 758 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__FunctorReps_19 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_102_117_110_99_116_111_114_115_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 759 "erlang_rtti_implementation.m"
+              {
+#line 759 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_116_99_104_105_110_103_95_100_117_95_102_117_110_99_116_111_114_95_95_91_49_44_32_51_93_95_48_3_p_0(mercury__erlang_rtti_implementation__FunctorReps_19, &mercury__erlang_rtti_implementation__FunctorRep_20);
+              }
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_74_74 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 0)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_81_81 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 1)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_82_82 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 2)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_83_83 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 3)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_85_85 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 5)));
+#line 760 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_86_86 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 6)));
+#line 760 "erlang_rtti_implementation.m"
+              {
+#line 760 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__from_char_list_1_f_0(mercury__erlang_rtti_implementation__V_74_74);
+              }
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_87_87 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 0)));
+#line 761 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 1)));
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_89_89 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 2)));
+#line 761 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 3)));
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_91_91 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 5)));
+#line 761 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_92_92 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_20, (MR_Integer) 6)));
+#line 764 "erlang_rtti_implementation.m"
+              {
+#line 764 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_76_76 = mercury__list__f_46_46_2_f_0((MR_Integer) 1, *mercury__erlang_rtti_implementation__Arity_17);
+              }
+#line 763 "erlang_rtti_implementation.m"
+              {
+#line 763 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arguments_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_49_95_95_91_53_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__FunctorRep_20, mercury__erlang_rtti_implementation__Term_10, mercury__erlang_rtti_implementation__V_76_76);
+              }
+#line 757 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 1:
+#line 766 "erlang_rtti_implementation.m"
+            {
+#line 767 "erlang_rtti_implementation.m"
+              {
+#line 767 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_100_117_109_109_121_95_102_117_110_99_116_111_114_95_110_97_109_101_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 768 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 769 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 770 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 766 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 4:
+#line 807 "erlang_rtti_implementation.m"
+            {
+#line 807 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__EqvTypeCtorRep_32;
+
+#line 808 "erlang_rtti_implementation.m"
+              {
+#line 808 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__collapse_equivalences_1_f_0();
+              }
+#line 809 "erlang_rtti_implementation.m"
+              {
+#line 809 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 810 "erlang_rtti_implementation.m"
+              {
+#line 810 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__EqvTypeCtorRep_32 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 811 "erlang_rtti_implementation.m"
+              /* direct tailcall eliminated */
+#line 811 "erlang_rtti_implementation.m"
+              {
+#line 811 "erlang_rtti_implementation.m"
+                MR_Word mercury__erlang_rtti_implementation__TypeCtorRep__tmp_copy_13 = mercury__erlang_rtti_implementation__EqvTypeCtorRep_32;
+
+#line 811 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__TypeCtorRep_13 = mercury__erlang_rtti_implementation__TypeCtorRep__tmp_copy_13;
+#line 811 "erlang_rtti_implementation.m"
+              }
+#line 811 "erlang_rtti_implementation.m"
+              continue;
+#line 807 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 6:
+#line 827 "erlang_rtti_implementation.m"
+            {
+#line 827 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_115_115 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_float_0;
+#line 827 "erlang_rtti_implementation.m"
+              MR_Float mercury__erlang_rtti_implementation__Float_34;
+#line 828 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv3_Float_34;
+
+#line 828 "erlang_rtti_implementation.m"
+              {
+#line 828 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_115_115, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv3_Float_34);
+              }
+#line 828 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Float_34 = MR_unbox_float(mercury__erlang_rtti_implementation__conv3_Float_34);
+#line 829 "erlang_rtti_implementation.m"
+              {
+#line 829 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__float_to_string_1_f_0(mercury__erlang_rtti_implementation__Float_34);
+              }
+#line 830 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 831 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 832 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 827 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 23:
+#line 907 "erlang_rtti_implementation.m"
+            {
+#line 908 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "<<foreign>>";
+#line 909 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 910 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 911 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 907 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 13:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 890 "erlang_rtti_implementation.m"
+              {
+#line 890 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 24:
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 25:
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 26:
+#line 919 "erlang_rtti_implementation.m"
+            {
+#line 919 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_120_120 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_type_ctor_rep_0;
+#line 919 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_41_41;
+#line 919 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_43_43;
+
+#line 921 "erlang_rtti_implementation.m"
+              {
+#line 921 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_43_43 = mercury__string__string_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_120_120, ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorRep_13)));
+              }
+#line 921 "erlang_rtti_implementation.m"
+              {
+#line 921 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_41_41 = mercury__string__f_43_43_2_f_0((MR_String) "should never occur: ", mercury__erlang_rtti_implementation__V_43_43);
+              }
+#line 920 "erlang_rtti_implementation.m"
+              {
+#line 920 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", mercury__erlang_rtti_implementation__V_41_41);
+#line 920 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 919 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 5:
+#line 820 "erlang_rtti_implementation.m"
+            {
+#line 820 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_114_114 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 820 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__Int_33;
+#line 821 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv4_Int_33;
+
+#line 821 "erlang_rtti_implementation.m"
+              {
+#line 821 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_114_114, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv4_Int_33);
+              }
+#line 821 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Int_33 = ((MR_Integer) mercury__erlang_rtti_implementation__conv4_Int_33);
+#line 822 "erlang_rtti_implementation.m"
+              {
+#line 822 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__int_to_string_1_f_0(mercury__erlang_rtti_implementation__Int_33);
+              }
+#line 823 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 824 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 825 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 820 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 2:
+#line 772 "erlang_rtti_implementation.m"
+            {
+#line 779 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_104_104;
+#line 779 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeInfo_105_105;
+#line 779 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__H_22;
+#line 779 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__T_23;
+
+#line 773 "erlang_rtti_implementation.m"
+              {
+#line 773 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_105_110_100_101_120_95_95_91_50_93_95_48_2_f_0((MR_Integer) 1);
+              }
+#line 774 "erlang_rtti_implementation.m"
+              {
+#line 774 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_105_115_95_110_111_110_95_101_109_112_116_121_95_108_105_115_116_95_95_91_49_44_32_52_44_32_53_44_32_54_93_95_48_5_p_0(&mercury__erlang_rtti_implementation__TypeInfo_104_104, &mercury__erlang_rtti_implementation__TypeInfo_105_105, &mercury__erlang_rtti_implementation__H_22, &mercury__erlang_rtti_implementation__T_23);
+              }
+#line 779 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 775 "erlang_rtti_implementation.m"
+                {
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_70_70;
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_71_71;
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_72_72;
+#line 775 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_73_73;
+
+#line 775 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "[|]";
+#line 776 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 1;
+#line 777 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 2;
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_70_70 = mercury__univ__univ_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_104_104, mercury__erlang_rtti_implementation__H_22);
+                  }
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_72_72 = mercury__univ__univ_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_105_105, mercury__erlang_rtti_implementation__T_23);
+                  }
+#line 778 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_73_73 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_71_71 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_71_71, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_72_72));
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_71_71, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_73_73));
+#line 778 "erlang_rtti_implementation.m"
+                  }
+#line 778 "erlang_rtti_implementation.m"
+                  {
+#line 778 "erlang_rtti_implementation.m"
+                    MR_Word base;
+#line 778 "erlang_rtti_implementation.m"
+                    base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 778 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__Arguments_18 = base;
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_70_70));
+#line 778 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), base, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_71_71));
+#line 778 "erlang_rtti_implementation.m"
+                  }
+#line 775 "erlang_rtti_implementation.m"
+                }
+#line 779 "erlang_rtti_implementation.m"
+              else
+#line 780 "erlang_rtti_implementation.m"
+                {
+#line 780 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "[]";
+#line 781 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 782 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 783 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 780 "erlang_rtti_implementation.m"
+                }
+#line 772 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 12:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 890 "erlang_rtti_implementation.m"
+              {
+#line 890 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 17:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 890 "erlang_rtti_implementation.m"
+              {
+#line 890 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 15:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 890 "erlang_rtti_implementation.m"
+              {
+#line 890 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 10:
+#line 853 "erlang_rtti_implementation.m"
+            {
+#line 853 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_118_118 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_c_pointer_0;
+#line 853 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__CPtr_37;
+#line 853 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_48_48;
+#line 854 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv5_CPtr_37;
+
+#line 854 "erlang_rtti_implementation.m"
+              {
+#line 854 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_118_118, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv5_CPtr_37);
+              }
+#line 854 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__CPtr_37 = ((MR_Word) mercury__erlang_rtti_implementation__conv5_CPtr_37);
+#line 855 "erlang_rtti_implementation.m"
+              {
+#line 855 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_48_48 = mercury__string__c_pointer_to_string_1_f_0(mercury__erlang_rtti_implementation__CPtr_37);
+              }
+#line 855 "erlang_rtti_implementation.m"
+              {
+#line 855 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__f_43_43_2_f_0((MR_String) "stable_", mercury__erlang_rtti_implementation__V_48_48);
+              }
+#line 856 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 857 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 858 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 853 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 8:
+#line 841 "erlang_rtti_implementation.m"
+            {
+#line 841 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_117_117 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 841 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__String_36;
+#line 841 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_53_53;
+#line 842 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv6_String_36;
+
+#line 842 "erlang_rtti_implementation.m"
+              {
+#line 842 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__TypeCtorInfo_117_117, mercury__erlang_rtti_implementation__Term_10, &mercury__erlang_rtti_implementation__conv6_String_36);
+              }
+#line 842 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__String_36 = ((MR_String) mercury__erlang_rtti_implementation__conv6_String_36);
+#line 843 "erlang_rtti_implementation.m"
+              {
+#line 843 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_53_53 = mercury__string__f_43_43_2_f_0(mercury__erlang_rtti_implementation__String_36, (MR_String) "\"");
+              }
+#line 843 "erlang_rtti_implementation.m"
+              {
+#line 843 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_15 = mercury__string__f_43_43_2_f_0((MR_String) "\"", mercury__erlang_rtti_implementation__V_53_53);
+              }
+#line 844 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 845 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arity_17 = (MR_Integer) 0;
+#line 846 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Arguments_18 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 841 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 14:
+#line 814 "erlang_rtti_implementation.m"
+            {
+#line 814 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_56_56;
+
+#line 815 "erlang_rtti_implementation.m"
+              {
+#line 815 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arity_17 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_118_97_114_95_97_114_105_116_121_95_116_121_112_101_95_105_110_102_111_95_97_114_105_116_121_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 816 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Functor_15 = (MR_String) "{}";
+#line 817 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNumber_16 = (MR_Integer) 0;
+#line 818 "erlang_rtti_implementation.m"
+              {
+#line 818 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_56_56 = mercury__list__f_46_46_2_f_0((MR_Integer) 1, *mercury__erlang_rtti_implementation__Arity_17);
+              }
+#line 818 "erlang_rtti_implementation.m"
+              {
+#line 818 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Arguments_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_49_48_95_95_91_49_44_32_50_44_32_51_44_32_52_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__V_56_56);
+              }
+#line 814 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 18:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 890 "erlang_rtti_implementation.m"
+              {
+#line 890 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 20:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 890 "erlang_rtti_implementation.m"
+              {
+#line 890 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 16:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 890 "erlang_rtti_implementation.m"
+              {
+#line 890 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 19:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 890 "erlang_rtti_implementation.m"
+              {
+#line 890 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 21:
+#line 887 "erlang_rtti_implementation.m"
+            {
+#line 890 "erlang_rtti_implementation.m"
+              {
+#line 890 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "attempt to deconstruct noncanonical term");
+#line 890 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 887 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+          case (MR_Integer) 9:
+#line 850 "erlang_rtti_implementation.m"
+            {
+#line 851 "erlang_rtti_implementation.m"
+              {
+#line 851 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.deconstruct_2\'/9", (MR_String) "cannot deconstruct void types");
+#line 851 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 850 "erlang_rtti_implementation.m"
+            }
+#line 765 "erlang_rtti_implementation.m"
+            break;
+#line 765 "erlang_rtti_implementation.m"
+        }
+#line 765 "erlang_rtti_implementation.m"
+      }
+#line 765 "erlang_rtti_implementation.m"
+      break;
+#line 765 "erlang_rtti_implementation.m"
+    }
+#line 746 "erlang_rtti_implementation.m"
+}
+
+#line 486 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_121_112_101_95_99_116_111_114_95_105_115_95_118_97_114_105_97_98_108_101_95_97_114_105_116_121_95_95_91_49_93_95_48_1_p_0(void)
+#line 486 "erlang_rtti_implementation.m"
+{
+#line 488 "erlang_rtti_implementation.m"
+  {
+#line 488 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 488 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_3;
+
+#line 489 "erlang_rtti_implementation.m"
+    {
+#line 489 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_3 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 491 "erlang_rtti_implementation.m"
+#line 491 "erlang_rtti_implementation.m"
+    switch (mercury__erlang_rtti_implementation__TypeCtorRep_3) {
+#line 491 "erlang_rtti_implementation.m"
+      default:
+#line 491 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_FALSE;
+#line 491 "erlang_rtti_implementation.m"
+        break;
+#line 491 "erlang_rtti_implementation.m"
+      case (MR_Integer) 13:
+#line 492 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 491 "erlang_rtti_implementation.m"
+        break;
+#line 491 "erlang_rtti_implementation.m"
+      case (MR_Integer) 12:
+#line 491 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 491 "erlang_rtti_implementation.m"
+        break;
+#line 491 "erlang_rtti_implementation.m"
+      case (MR_Integer) 14:
+#line 490 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 491 "erlang_rtti_implementation.m"
+        break;
+#line 491 "erlang_rtti_implementation.m"
+    }
+#line 488 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 488 "erlang_rtti_implementation.m"
+  }
+#line 486 "erlang_rtti_implementation.m"
+}
+
+#line 451 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_97_114_101_95_118_97_114_95_97_114_105_116_121_95_116_121_112_101_105_110_102_111_115_95_95_91_52_44_32_53_93_95_48_5_p_0(
+#line 451 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Loc_6,
+#line 451 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Arity_7,
+#line 451 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Result_8)
+#line 451 "erlang_rtti_implementation.m"
+{
+#line 457 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 457 "erlang_rtti_implementation.m"
+    {
+#line 457 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 457 "erlang_rtti_implementation.m"
+      {
+#line 457 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Loc_6 > mercury__erlang_rtti_implementation__Arity_7);
+
+#line 457 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 456 "erlang_rtti_implementation.m"
+          *mercury__erlang_rtti_implementation__Result_8 = (MR_Integer) 0;
+#line 457 "erlang_rtti_implementation.m"
+        else
+#line 458 "erlang_rtti_implementation.m"
+          {
+#line 458 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__SubResult_13;
+
+#line 1709 "erlang_rtti_implementation.m"
+            mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1710 "erlang_rtti_implementation.m"
+            {
+#line 1710 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "unsafe_type_info_index");
+            }
+#line 1709 "erlang_rtti_implementation.m"
+            mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1710 "erlang_rtti_implementation.m"
+            {
+#line 1710 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "unsafe_type_info_index");
+            }
+#line 461 "erlang_rtti_implementation.m"
+            {
+#line 461 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__compare_type_infos_3_p_0(&mercury__erlang_rtti_implementation__SubResult_13);
+            }
+#line 466 "erlang_rtti_implementation.m"
+#line 466 "erlang_rtti_implementation.m"
+            switch (mercury__erlang_rtti_implementation__SubResult_13) {
+#line 466 "erlang_rtti_implementation.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 466 "erlang_rtti_implementation.m"
+              case (MR_Integer) 1:
+#line 466 "erlang_rtti_implementation.m"
+              case (MR_Integer) 2:
+#line 470 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Result_8 = mercury__erlang_rtti_implementation__SubResult_13;
+#line 466 "erlang_rtti_implementation.m"
+                break;
+#line 466 "erlang_rtti_implementation.m"
+              case (MR_Integer) 0:
+#line 463 "erlang_rtti_implementation.m"
+                {
+#line 463 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_14_14 = (mercury__erlang_rtti_implementation__Loc_6 + (MR_Integer) 1);
+
+#line 464 "erlang_rtti_implementation.m"
+                  /* direct tailcall eliminated */
+#line 464 "erlang_rtti_implementation.m"
+                  {
+#line 464 "erlang_rtti_implementation.m"
+                    MR_Integer mercury__erlang_rtti_implementation__Loc__tmp_copy_6 = mercury__erlang_rtti_implementation__V_14_14;
+
+#line 464 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__Loc_6 = mercury__erlang_rtti_implementation__Loc__tmp_copy_6;
+#line 464 "erlang_rtti_implementation.m"
+                  }
+#line 464 "erlang_rtti_implementation.m"
+                  continue;
+#line 463 "erlang_rtti_implementation.m"
+                }
+#line 466 "erlang_rtti_implementation.m"
+                break;
+#line 466 "erlang_rtti_implementation.m"
+            }
+#line 458 "erlang_rtti_implementation.m"
+          }
+#line 457 "erlang_rtti_implementation.m"
+      }
+#line 457 "erlang_rtti_implementation.m"
+      break;
+#line 457 "erlang_rtti_implementation.m"
+    }
+#line 451 "erlang_rtti_implementation.m"
+}
+
+#line 428 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_97_114_101_95_115_117_98_95_116_121_112_101_105_110_102_111_115_95_95_91_52_44_32_53_93_95_48_5_p_0(
+#line 428 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Loc_6,
+#line 428 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Arity_7,
+#line 428 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Result_8)
+#line 428 "erlang_rtti_implementation.m"
+{
+#line 434 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 434 "erlang_rtti_implementation.m"
+    {
+#line 434 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 434 "erlang_rtti_implementation.m"
+      {
+#line 434 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Loc_6 > mercury__erlang_rtti_implementation__Arity_7);
+
+#line 434 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 433 "erlang_rtti_implementation.m"
+          *mercury__erlang_rtti_implementation__Result_8 = (MR_Integer) 0;
+#line 434 "erlang_rtti_implementation.m"
+        else
+#line 435 "erlang_rtti_implementation.m"
+          {
+#line 435 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__SubResult_13;
+
+#line 435 "erlang_rtti_implementation.m"
+            {
+#line 435 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_105_110_100_101_120_95_95_91_50_93_95_48_2_f_0(mercury__erlang_rtti_implementation__Loc_6);
+            }
+#line 436 "erlang_rtti_implementation.m"
+            {
+#line 436 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_105_110_100_101_120_95_95_91_50_93_95_48_2_f_0(mercury__erlang_rtti_implementation__Loc_6);
+            }
+#line 438 "erlang_rtti_implementation.m"
+            {
+#line 438 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__compare_type_infos_3_p_0(&mercury__erlang_rtti_implementation__SubResult_13);
+            }
+#line 443 "erlang_rtti_implementation.m"
+#line 443 "erlang_rtti_implementation.m"
+            switch (mercury__erlang_rtti_implementation__SubResult_13) {
+#line 443 "erlang_rtti_implementation.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 443 "erlang_rtti_implementation.m"
+              case (MR_Integer) 1:
+#line 443 "erlang_rtti_implementation.m"
+              case (MR_Integer) 2:
+#line 447 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Result_8 = mercury__erlang_rtti_implementation__SubResult_13;
+#line 443 "erlang_rtti_implementation.m"
+                break;
+#line 443 "erlang_rtti_implementation.m"
+              case (MR_Integer) 0:
+#line 440 "erlang_rtti_implementation.m"
+                {
+#line 440 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_14_14 = (mercury__erlang_rtti_implementation__Loc_6 + (MR_Integer) 1);
+
+#line 441 "erlang_rtti_implementation.m"
+                  /* direct tailcall eliminated */
+#line 441 "erlang_rtti_implementation.m"
+                  {
+#line 441 "erlang_rtti_implementation.m"
+                    MR_Integer mercury__erlang_rtti_implementation__Loc__tmp_copy_6 = mercury__erlang_rtti_implementation__V_14_14;
+
+#line 441 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__Loc_6 = mercury__erlang_rtti_implementation__Loc__tmp_copy_6;
+#line 441 "erlang_rtti_implementation.m"
+                  }
+#line 441 "erlang_rtti_implementation.m"
+                  continue;
+#line 440 "erlang_rtti_implementation.m"
+                }
+#line 443 "erlang_rtti_implementation.m"
+                break;
+#line 443 "erlang_rtti_implementation.m"
+            }
+#line 435 "erlang_rtti_implementation.m"
+          }
+#line 434 "erlang_rtti_implementation.m"
+      }
+#line 434 "erlang_rtti_implementation.m"
+      break;
+#line 434 "erlang_rtti_implementation.m"
+    }
+#line 428 "erlang_rtti_implementation.m"
+}
+
+#line 350 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_97_114_101_95_116_117_112_108_101_95_112_111_115_95_95_91_49_44_32_52_44_32_54_44_32_55_93_95_48_6_p_0(
+#line 350 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Loc_7,
+#line 350 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__TupleArity_8,
+#line 350 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Result_10)
+#line 350 "erlang_rtti_implementation.m"
+{
+#line 356 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 356 "erlang_rtti_implementation.m"
+    {
+#line 356 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 356 "erlang_rtti_implementation.m"
+      {
+#line 356 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Loc_7 > mercury__erlang_rtti_implementation__TupleArity_8);
+
+#line 356 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 355 "erlang_rtti_implementation.m"
+          *mercury__erlang_rtti_implementation__Result_10 = (MR_Integer) 0;
+#line 356 "erlang_rtti_implementation.m"
+        else
+#line 357 "erlang_rtti_implementation.m"
+          {
+#line 357 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_38;
+#line 357 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_46;
+#line 357 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__SubResult_16;
+#line 10529 "erlang_rtti_implementation.c"
+            MR_Box mercury__erlang_rtti_implementation__SubTermA_14;
+#line 10531 "erlang_rtti_implementation.c"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_23_23;
+#line 10533 "erlang_rtti_implementation.c"
+            MR_Box mercury__erlang_rtti_implementation__SubTermB_15;
+#line 10535 "erlang_rtti_implementation.c"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_24_24;
+
+#line 1710 "erlang_rtti_implementation.m"
+            {
+#line 1710 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "unsafe_type_info_index");
+            }
+#line 1870 "erlang_rtti_implementation.m"
+            {
+#line 1870 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "get_subterm");
+            }
+#line 10548 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_for_T_38 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 10550 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__SubTermA_14 = ((MR_Box) ((MR_Integer) 42));
+#line 10552 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_23_23 = mercury__erlang_rtti_implementation__TypeInfo_for_T_38;
+#line 1870 "erlang_rtti_implementation.m"
+            {
+#line 1870 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "get_subterm");
+            }
+#line 10559 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_for_T_46 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 10561 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__SubTermB_15 = ((MR_Box) ((MR_Integer) 42));
+#line 10563 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_24_24 = mercury__erlang_rtti_implementation__TypeInfo_for_T_46;
+#line 362 "erlang_rtti_implementation.m"
+            {
+#line 362 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_105_99_95_99_111_109_112_97_114_101_95_95_91_49_44_32_51_44_32_52_93_95_48_3_p_0(&mercury__erlang_rtti_implementation__SubResult_16);
+            }
+#line 363 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__SubResult_16 == (MR_Integer) 0);
+#line 366 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 364 "erlang_rtti_implementation.m"
+              {
+#line 364 "erlang_rtti_implementation.m"
+                MR_Integer mercury__erlang_rtti_implementation__V_20_20 = (mercury__erlang_rtti_implementation__Loc_7 + (MR_Integer) 1);
+
+#line 364 "erlang_rtti_implementation.m"
+                /* direct tailcall eliminated */
+#line 364 "erlang_rtti_implementation.m"
+                {
+#line 364 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__Loc__tmp_copy_7 = mercury__erlang_rtti_implementation__V_20_20;
+
+#line 364 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__Loc_7 = mercury__erlang_rtti_implementation__Loc__tmp_copy_7;
+#line 364 "erlang_rtti_implementation.m"
+                }
+#line 364 "erlang_rtti_implementation.m"
+                continue;
+#line 364 "erlang_rtti_implementation.m"
+              }
+#line 366 "erlang_rtti_implementation.m"
+            else
+#line 367 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Result_10 = mercury__erlang_rtti_implementation__SubResult_16;
+#line 357 "erlang_rtti_implementation.m"
+          }
+#line 356 "erlang_rtti_implementation.m"
+      }
+#line 356 "erlang_rtti_implementation.m"
+      break;
+#line 356 "erlang_rtti_implementation.m"
+    }
+#line 350 "erlang_rtti_implementation.m"
+}
+
+#line 343 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_97_114_101_95_116_117_112_108_101_95_95_91_49_44_32_50_44_32_52_44_32_53_93_95_48_4_p_0(
+#line 343 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Result_6)
+#line 343 "erlang_rtti_implementation.m"
+{
+#line 346 "erlang_rtti_implementation.m"
+  {
+#line 346 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1677 "erlang_rtti_implementation.m"
+    {
+#line 1677 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "var_arity_type_info_arity");
+    }
+#line 348 "erlang_rtti_implementation.m"
+    {
+#line 348 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_97_114_101_95_116_117_112_108_101_95_112_111_115_95_95_91_49_44_32_52_44_32_54_44_32_55_93_95_48_6_p_0((MR_Integer) 1, (MR_Integer) 0, mercury__erlang_rtti_implementation__Result_6);
+#line 348 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 346 "erlang_rtti_implementation.m"
+  }
+#line 343 "erlang_rtti_implementation.m"
+}
+
+#line 272 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_102_121_95_116_117_112_108_101_95_112_111_115_95_95_91_49_44_32_52_44_32_53_44_32_54_93_95_48_5_p_0(
+#line 272 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Loc_6,
+#line 272 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__TupleArity_7)
+#line 272 "erlang_rtti_implementation.m"
+{
+#line 278 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 278 "erlang_rtti_implementation.m"
+    {
+#line 278 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 278 "erlang_rtti_implementation.m"
+      {
+#line 278 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Loc_6 > mercury__erlang_rtti_implementation__TupleArity_7);
+
+#line 278 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 277 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 278 "erlang_rtti_implementation.m"
+        else
+#line 279 "erlang_rtti_implementation.m"
+          {
+#line 279 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_35;
+#line 279 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_43;
+#line 279 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_17_17;
+#line 279 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_18_18;
+#line 10674 "erlang_rtti_implementation.c"
+            MR_Box mercury__erlang_rtti_implementation__SubTermA_12;
+#line 10676 "erlang_rtti_implementation.c"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_20_20;
+#line 10678 "erlang_rtti_implementation.c"
+            MR_Box mercury__erlang_rtti_implementation__SubTermB_13;
+#line 10680 "erlang_rtti_implementation.c"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_21_21;
+
+#line 1710 "erlang_rtti_implementation.m"
+            {
+#line 1710 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "unsafe_type_info_index");
+            }
+#line 1870 "erlang_rtti_implementation.m"
+            {
+#line 1870 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "get_subterm");
+            }
+#line 10693 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_for_T_35 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 10695 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__SubTermA_12 = ((MR_Box) ((MR_Integer) 42));
+#line 10697 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_20_20 = mercury__erlang_rtti_implementation__TypeInfo_for_T_35;
+#line 1870 "erlang_rtti_implementation.m"
+            {
+#line 1870 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "get_subterm");
+            }
+#line 10704 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_for_T_43 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 10706 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__SubTermB_13 = ((MR_Box) ((MR_Integer) 42));
+#line 10708 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_21_21 = mercury__erlang_rtti_implementation__TypeInfo_for_T_43;
+#line 284 "erlang_rtti_implementation.m"
+            {
+#line 284 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_105_99_95_117_110_105_102_121_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0();
+            }
+#line 279 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 279 "erlang_rtti_implementation.m"
+              {
+#line 286 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_18_18 = (MR_Integer) 1;
+#line 286 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_17_17 = (mercury__erlang_rtti_implementation__Loc_6 + mercury__erlang_rtti_implementation__V_18_18);
+#line 286 "erlang_rtti_implementation.m"
+                /* direct tailcall eliminated */
+#line 286 "erlang_rtti_implementation.m"
+                {
+#line 286 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__Loc__tmp_copy_6 = mercury__erlang_rtti_implementation__V_17_17;
+
+#line 286 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__Loc_6 = mercury__erlang_rtti_implementation__Loc__tmp_copy_6;
+#line 286 "erlang_rtti_implementation.m"
+                }
+#line 286 "erlang_rtti_implementation.m"
+                continue;
+#line 279 "erlang_rtti_implementation.m"
+              }
+#line 279 "erlang_rtti_implementation.m"
+          }
+#line 278 "erlang_rtti_implementation.m"
+        return mercury__erlang_rtti_implementation__succeeded;
+#line 278 "erlang_rtti_implementation.m"
+      }
+#line 278 "erlang_rtti_implementation.m"
+      break;
+#line 278 "erlang_rtti_implementation.m"
+    }
+#line 272 "erlang_rtti_implementation.m"
+}
+
+#line 266 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_102_121_95_116_117_112_108_101_95_95_91_49_44_32_50_44_32_51_44_32_52_93_95_48_3_p_0(void)
+#line 266 "erlang_rtti_implementation.m"
+{
+#line 268 "erlang_rtti_implementation.m"
+  {
+#line 268 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1677 "erlang_rtti_implementation.m"
+    {
+#line 1677 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "var_arity_type_info_arity");
+    }
+#line 270 "erlang_rtti_implementation.m"
+    {
+#line 270 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_102_121_95_116_117_112_108_101_95_112_111_115_95_95_91_49_44_32_52_44_32_53_44_32_54_93_95_48_5_p_0((MR_Integer) 1, (MR_Integer) 0);
+    }
+#line 268 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 268 "erlang_rtti_implementation.m"
+  }
+#line 266 "erlang_rtti_implementation.m"
+}
+
+#line 116 "erlang_rtti_implementation.m"
+MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_99_111_110_115_116_114_117_99_116_95_116_117_112_108_101_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_3_f_0(void)
+#line 116 "erlang_rtti_implementation.m"
+{
+#line 1573 "erlang_rtti_implementation.m"
+  {
+#line 1573 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1573 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Tuple_8;
+#line 1573 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_13_13 = (MR_Word) &mercury__type_desc__type_desc__type_ctor_info_type_desc_0;
+#line 1573 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_14_14 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0;
+#line 1573 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_15_15 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[0];
+#line 1573 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_11_11;
+#line 1574 "erlang_rtti_implementation.m"
+    MR_Tuple mercury__erlang_rtti_implementation__V_12_12;
+#line 1574 "erlang_rtti_implementation.m"
+    MR_Box mercury__erlang_rtti_implementation__conv0_TypeInfo_9;
+
+#line 1574 "erlang_rtti_implementation.m"
+    {
+#line 1574 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__V_11_11 = mercury__type_desc__type_of_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_15_15);
+    }
+#line 1574 "erlang_rtti_implementation.m"
+    {
+#line 1574 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__conv0_TypeInfo_9 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_13_13, mercury__erlang_rtti_implementation__TypeCtorInfo_14_14, ((MR_Box) (mercury__erlang_rtti_implementation__V_11_11)));
+    }
+#line 1595 "erlang_rtti_implementation.m"
+    {
+#line 1595 "erlang_rtti_implementation.m"
+      mercury__private_builtin__sorry_1_p_0((MR_String) "construct_tuple_3");
+    }
+#line 1573 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__Tuple_8;
+#line 1573 "erlang_rtti_implementation.m"
+  }
+#line 116 "erlang_rtti_implementation.m"
+}
+
+#line 80 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_100_117_95_95_91_51_93_95_49_5_p_1(
+#line 80 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 80 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_6,
+#line 80 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_8,
+#line 80 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 80 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_10)
+#line 80 "erlang_rtti_implementation.m"
+{
+#line 729 "erlang_rtti_implementation.m"
+  {
+#line 729 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 729 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13;
+#line 734 "erlang_rtti_implementation.m"
+    MR_String mercury__erlang_rtti_implementation___Functor_14;
+
+#line 730 "erlang_rtti_implementation.m"
+    {
+#line 730 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+    }
+#line 731 "erlang_rtti_implementation.m"
+    {
+#line 731 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 732 "erlang_rtti_implementation.m"
+    {
+#line 732 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_13 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 733 "erlang_rtti_implementation.m"
+    {
+#line 733 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__is_du_type_1_p_0(mercury__erlang_rtti_implementation__TypeCtorRep_13);
+    }
+#line 729 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 729 "erlang_rtti_implementation.m"
+      {
+#line 734 "erlang_rtti_implementation.m"
+        {
+#line 734 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_50_9_p_2(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Term_6, mercury__erlang_rtti_implementation__TypeCtorRep_13, &mercury__erlang_rtti_implementation___Functor_14, mercury__erlang_rtti_implementation__FunctorNumber_8, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__Arguments_10);
+        }
+#line 734 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 729 "erlang_rtti_implementation.m"
+      }
+#line 729 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 729 "erlang_rtti_implementation.m"
+  }
+#line 80 "erlang_rtti_implementation.m"
+}
+
+#line 79 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_100_117_95_95_91_51_93_95_48_5_p_0(
+#line 79 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 79 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_6,
+#line 79 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_8,
+#line 79 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 79 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_10)
+#line 79 "erlang_rtti_implementation.m"
+{
+#line 729 "erlang_rtti_implementation.m"
+  {
+#line 729 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 729 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13;
+#line 734 "erlang_rtti_implementation.m"
+    MR_String mercury__erlang_rtti_implementation___Functor_14;
+
+#line 730 "erlang_rtti_implementation.m"
+    {
+#line 730 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+    }
+#line 731 "erlang_rtti_implementation.m"
+    {
+#line 731 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 732 "erlang_rtti_implementation.m"
+    {
+#line 732 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_13 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 733 "erlang_rtti_implementation.m"
+    {
+#line 733 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__is_du_type_1_p_0(mercury__erlang_rtti_implementation__TypeCtorRep_13);
+    }
+#line 729 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 729 "erlang_rtti_implementation.m"
+      {
+#line 734 "erlang_rtti_implementation.m"
+        {
+#line 734 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_48_9_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Term_6, mercury__erlang_rtti_implementation__TypeCtorRep_13, &mercury__erlang_rtti_implementation___Functor_14, mercury__erlang_rtti_implementation__FunctorNumber_8, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__Arguments_10);
+        }
+#line 734 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 729 "erlang_rtti_implementation.m"
+      }
+#line 729 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 729 "erlang_rtti_implementation.m"
+  }
+#line 79 "erlang_rtti_implementation.m"
+}
+
+#line 74 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_50_5_p_2(
+#line 74 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 74 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_6,
+#line 74 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_8,
+#line 74 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 74 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_10)
+#line 74 "erlang_rtti_implementation.m"
+{
+#line 722 "erlang_rtti_implementation.m"
+  {
+#line 722 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 722 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13;
+#line 726 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation___FunctorNumber_14;
+
+#line 723 "erlang_rtti_implementation.m"
+    {
+#line 723 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+    }
+#line 724 "erlang_rtti_implementation.m"
+    {
+#line 724 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 725 "erlang_rtti_implementation.m"
+    {
+#line 725 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_13 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 726 "erlang_rtti_implementation.m"
+    {
+#line 726 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_50_9_p_2(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Term_6, mercury__erlang_rtti_implementation__TypeCtorRep_13, mercury__erlang_rtti_implementation__Functor_8, &mercury__erlang_rtti_implementation___FunctorNumber_14, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__Arguments_10);
+    }
+#line 722 "erlang_rtti_implementation.m"
+  }
+#line 74 "erlang_rtti_implementation.m"
+}
+
+#line 73 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_49_5_p_1(
+#line 73 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 73 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_6,
+#line 73 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_8,
+#line 73 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 73 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_10)
+#line 73 "erlang_rtti_implementation.m"
+{
+#line 722 "erlang_rtti_implementation.m"
+  {
+#line 722 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 722 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13;
+#line 726 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation___FunctorNumber_14;
+
+#line 723 "erlang_rtti_implementation.m"
+    {
+#line 723 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+    }
+#line 724 "erlang_rtti_implementation.m"
+    {
+#line 724 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 725 "erlang_rtti_implementation.m"
+    {
+#line 725 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_13 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 726 "erlang_rtti_implementation.m"
+    {
+#line 726 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_49_9_p_1(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Term_6, mercury__erlang_rtti_implementation__TypeCtorRep_13, mercury__erlang_rtti_implementation__Functor_8, &mercury__erlang_rtti_implementation___FunctorNumber_14, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__Arguments_10);
+    }
+#line 722 "erlang_rtti_implementation.m"
+  }
+#line 73 "erlang_rtti_implementation.m"
+}
+
+#line 72 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_48_5_p_0(
+#line 72 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 72 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_6,
+#line 72 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_8,
+#line 72 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 72 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_10)
+#line 72 "erlang_rtti_implementation.m"
+{
+#line 722 "erlang_rtti_implementation.m"
+  {
+#line 722 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 722 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13;
+#line 726 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation___FunctorNumber_14;
+
+#line 723 "erlang_rtti_implementation.m"
+    {
+#line 723 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+    }
+#line 724 "erlang_rtti_implementation.m"
+    {
+#line 724 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 725 "erlang_rtti_implementation.m"
+    {
+#line 725 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_13 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 726 "erlang_rtti_implementation.m"
+    {
+#line 726 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_48_9_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Term_6, mercury__erlang_rtti_implementation__TypeCtorRep_13, mercury__erlang_rtti_implementation__Functor_8, &mercury__erlang_rtti_implementation___FunctorNumber_14, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__Arguments_10);
+    }
+#line 722 "erlang_rtti_implementation.m"
+  }
+#line 72 "erlang_rtti_implementation.m"
+}
+
+#line 58 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_121_112_101_95_99_116_111_114_95_100_101_115_99_95_110_97_109_101_95_97_110_100_95_97_114_105_116_121_95_95_91_49_93_95_48_4_p_0(
+#line 58 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__HeadVar__2_6,
+#line 58 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__HeadVar__3_7,
+#line 58 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__HeadVar__4_8)
+#line 58 "erlang_rtti_implementation.m"
+{
+#line 681 "erlang_rtti_implementation.m"
+  {
+#line 681 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 682 "erlang_rtti_implementation.m"
+    {
+#line 682 "erlang_rtti_implementation.m"
+      mercury__private_builtin__sorry_1_p_0((MR_String) "type_ctor_desc_name_and_arity/4");
+#line 682 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 681 "erlang_rtti_implementation.m"
+  }
+#line 58 "erlang_rtti_implementation.m"
+}
+
+#line 55 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_107_101_95_116_121_112_101_95_100_101_115_99_95_95_91_49_44_32_50_93_95_48_3_p_0(
+#line 55 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__3_6)
+#line 55 "erlang_rtti_implementation.m"
+{
+#line 637 "erlang_rtti_implementation.m"
+  {
+#line 638 "erlang_rtti_implementation.m"
+    {
+#line 638 "erlang_rtti_implementation.m"
+      mercury__private_builtin__sorry_1_p_0((MR_String) "make_type_desc/3");
+    }
+#line 637 "erlang_rtti_implementation.m"
+    return MR_TRUE;
+#line 637 "erlang_rtti_implementation.m"
+  }
+#line 55 "erlang_rtti_implementation.m"
+}
+
+#line 42 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_105_99_95_99_111_109_112_97_114_101_95_95_91_49_44_32_51_44_32_52_93_95_48_3_p_0(
+#line 42 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Res_4)
+#line 42 "erlang_rtti_implementation.m"
+{
+#line 292 "erlang_rtti_implementation.m"
+  {
+#line 292 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 292 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_9;
+
+#line 293 "erlang_rtti_implementation.m"
+    {
+#line 293 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+    }
+#line 294 "erlang_rtti_implementation.m"
+    {
+#line 294 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 295 "erlang_rtti_implementation.m"
+    {
+#line 295 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_9 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 297 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__TypeCtorRep_9 == (MR_Integer) 14);
+#line 300 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 299 "erlang_rtti_implementation.m"
+      {
+#line 299 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_97_114_101_95_116_117_112_108_101_95_95_91_49_44_32_50_44_32_52_44_32_53_93_95_48_4_p_0(mercury__erlang_rtti_implementation__Res_4);
+#line 299 "erlang_rtti_implementation.m"
+        return;
+      }
+#line 300 "erlang_rtti_implementation.m"
+    else
+#line 304 "erlang_rtti_implementation.m"
+      {
+#line 301 "erlang_rtti_implementation.m"
+#line 301 "erlang_rtti_implementation.m"
+        switch (mercury__erlang_rtti_implementation__TypeCtorRep_9) {
+#line 301 "erlang_rtti_implementation.m"
+          default:
+#line 301 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = MR_FALSE;
+#line 301 "erlang_rtti_implementation.m"
+            break;
+#line 301 "erlang_rtti_implementation.m"
+          case (MR_Integer) 13:
+#line 301 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 301 "erlang_rtti_implementation.m"
+            break;
+#line 301 "erlang_rtti_implementation.m"
+          case (MR_Integer) 12:
+#line 301 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 301 "erlang_rtti_implementation.m"
+            break;
+#line 301 "erlang_rtti_implementation.m"
+        }
+#line 304 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 303 "erlang_rtti_implementation.m"
+          {
+#line 303 "erlang_rtti_implementation.m"
+            {
+#line 303 "erlang_rtti_implementation.m"
+              mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.generic_compare\'/3", (MR_String) "higher order comparison not possible");
+#line 303 "erlang_rtti_implementation.m"
+              return;
+            }
+#line 303 "erlang_rtti_implementation.m"
+          }
+#line 304 "erlang_rtti_implementation.m"
+        else
+#line 305 "erlang_rtti_implementation.m"
+          {
+#line 305 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_P_61;
+#line 11234 "erlang_rtti_implementation.c"
+            MR_Box mercury__erlang_rtti_implementation__ComparePred_11;
+#line 11236 "erlang_rtti_implementation.c"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_49_49;
+
+#line 1823 "erlang_rtti_implementation.m"
+            {
+#line 1823 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_arity");
+            }
+#line 1787 "erlang_rtti_implementation.m"
+            {
+#line 1787 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_compare_pred");
+            }
+#line 11249 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_for_P_61 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 11251 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__ComparePred_11 = ((MR_Box) ((MR_String) "dummy value"));
+#line 11253 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_49_49 = mercury__erlang_rtti_implementation__TypeInfo_for_P_61;
+#line 307 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+#line 309 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 1934 "erlang_rtti_implementation.m"
+              {
+#line 1934 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Res_4 = (MR_Integer) 0;
+#line 1935 "erlang_rtti_implementation.m"
+                {
+#line 1935 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "result_call_4");
+#line 1935 "erlang_rtti_implementation.m"
+                  return;
+                }
+#line 1934 "erlang_rtti_implementation.m"
+              }
+#line 309 "erlang_rtti_implementation.m"
+            else
+#line 312 "erlang_rtti_implementation.m"
+              {
+#line 339 "erlang_rtti_implementation.m"
+                {
+#line 339 "erlang_rtti_implementation.m"
+                  mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.generic_compare\'/3", (MR_String) "type arity > 5 not supported");
+#line 339 "erlang_rtti_implementation.m"
+                  return;
+                }
+#line 312 "erlang_rtti_implementation.m"
+              }
+#line 305 "erlang_rtti_implementation.m"
+          }
+#line 304 "erlang_rtti_implementation.m"
+      }
+#line 292 "erlang_rtti_implementation.m"
+  }
+#line 42 "erlang_rtti_implementation.m"
+}
+
+#line 40 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_105_99_95_117_110_105_102_121_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0(void)
+#line 40 "erlang_rtti_implementation.m"
+{
+#line 215 "erlang_rtti_implementation.m"
+  {
+#line 215 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 215 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_7;
+
+#line 216 "erlang_rtti_implementation.m"
+    {
+#line 216 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+    }
+#line 217 "erlang_rtti_implementation.m"
+    {
+#line 217 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 218 "erlang_rtti_implementation.m"
+    {
+#line 218 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_7 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 220 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__TypeCtorRep_7 == (MR_Integer) 14);
+#line 223 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 222 "erlang_rtti_implementation.m"
+      {
+#line 222 "erlang_rtti_implementation.m"
+        return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_117_110_105_102_121_95_116_117_112_108_101_95_95_91_49_44_32_50_44_32_51_44_32_52_93_95_48_3_p_0();
+      }
+#line 223 "erlang_rtti_implementation.m"
+    else
+#line 227 "erlang_rtti_implementation.m"
+      {
+#line 224 "erlang_rtti_implementation.m"
+#line 224 "erlang_rtti_implementation.m"
+        switch (mercury__erlang_rtti_implementation__TypeCtorRep_7) {
+#line 224 "erlang_rtti_implementation.m"
+          default:
+#line 224 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = MR_FALSE;
+#line 224 "erlang_rtti_implementation.m"
+            break;
+#line 224 "erlang_rtti_implementation.m"
+          case (MR_Integer) 13:
+#line 224 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 224 "erlang_rtti_implementation.m"
+            break;
+#line 224 "erlang_rtti_implementation.m"
+          case (MR_Integer) 12:
+#line 224 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 224 "erlang_rtti_implementation.m"
+            break;
+#line 224 "erlang_rtti_implementation.m"
+        }
+#line 227 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 226 "erlang_rtti_implementation.m"
+          {
+#line 226 "erlang_rtti_implementation.m"
+            {
+#line 226 "erlang_rtti_implementation.m"
+              mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.generic_unify\'/2", (MR_String) "higher order unification not possible");
+            }
+#line 226 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 226 "erlang_rtti_implementation.m"
+          }
+#line 227 "erlang_rtti_implementation.m"
+        else
+#line 228 "erlang_rtti_implementation.m"
+          {
+#line 228 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_P_59;
+#line 11376 "erlang_rtti_implementation.c"
+            MR_Box mercury__erlang_rtti_implementation__UnifyPred_9;
+#line 11378 "erlang_rtti_implementation.c"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_47_47;
+
+#line 1823 "erlang_rtti_implementation.m"
+            {
+#line 1823 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_arity");
+            }
+#line 1773 "erlang_rtti_implementation.m"
+            {
+#line 1773 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_unify_pred");
+            }
+#line 11391 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_for_P_59 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 11393 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__UnifyPred_9 = ((MR_Box) ((MR_String) "dummy value"));
+#line 11395 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_47_47 = mercury__erlang_rtti_implementation__TypeInfo_for_P_59;
+#line 230 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+#line 232 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 1907 "erlang_rtti_implementation.m"
+              {
+#line 1966 "erlang_rtti_implementation.m"
+                {
+#line 1966 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+                }
+#line 1968 "erlang_rtti_implementation.m"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 1967 "erlang_rtti_implementation.m"
+                  {
+#line 1967 "erlang_rtti_implementation.m"
+                    MR_String mercury__erlang_rtti_implementation__V_68_68;
+
+#line 159 "string.opt"
+                    {
+#line 159 "string.opt"
+                      mercury__string__append_3_p_2((MR_String) "unimplemented: ", (MR_String) "semidet_call_3", &mercury__erlang_rtti_implementation__V_68_68);
+                    }
+#line 1967 "erlang_rtti_implementation.m"
+                    {
+#line 1967 "erlang_rtti_implementation.m"
+                      mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.semidet_unimplemented\'/1", mercury__erlang_rtti_implementation__V_68_68);
+                    }
+#line 1967 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1967 "erlang_rtti_implementation.m"
+                  }
+#line 1968 "erlang_rtti_implementation.m"
+                else
+#line 1969 "erlang_rtti_implementation.m"
+                  {
+#line 1969 "erlang_rtti_implementation.m"
+                    return mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+                  }
+#line 1907 "erlang_rtti_implementation.m"
+              }
+#line 232 "erlang_rtti_implementation.m"
+            else
+#line 235 "erlang_rtti_implementation.m"
+              {
+#line 262 "erlang_rtti_implementation.m"
+                {
+#line 262 "erlang_rtti_implementation.m"
+                  mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.generic_unify\'/2", (MR_String) "type arity > 5 not supported");
+                }
+#line 235 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 235 "erlang_rtti_implementation.m"
+              }
+#line 228 "erlang_rtti_implementation.m"
+          }
+#line 227 "erlang_rtti_implementation.m"
+      }
+#line 215 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 215 "erlang_rtti_implementation.m"
+  }
+#line 40 "erlang_rtti_implementation.m"
+}
+
+#line 34 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0(void)
+#line 34 "erlang_rtti_implementation.m"
+{
+#line 210 "erlang_rtti_implementation.m"
+  {
+#line 210 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 210 "erlang_rtti_implementation.m"
+    {
+#line 210 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+#line 210 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 210 "erlang_rtti_implementation.m"
+  }
+#line 34 "erlang_rtti_implementation.m"
+}
+
+#line 1235 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__IntroducedFrom__pred__get_functor_with_names__1235__1_4_p_0(
+#line 1235 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_41,
+#line 1235 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__HeadVar__4_43)
+#line 1235 "erlang_rtti_implementation.m"
+{
+#line 1235 "erlang_rtti_implementation.m"
+  {
+#line 1235 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1235 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_103_103;
+#line 1235 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__MaybePTI_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_41, (MR_Integer) 1)));
+#line 1235 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Info_17;
+#line 1235 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__MaybeArgName_18;
+#line 1235 "erlang_rtti_implementation.m"
+    MR_Tuple mercury__erlang_rtti_implementation__V_44_44;
+#line 1235 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_45_45 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1237 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_89_89 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_41, (MR_Integer) 0)));
+#line 1241 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_90_90;
+
+#line 1238 "erlang_rtti_implementation.m"
+    {
+#line 1238 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__V_44_44 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1238 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_44_44, 0) = NULL;
+#line 1238 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_44_44, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_45_45));
+#line 1238 "erlang_rtti_implementation.m"
+    }
+#line 1238 "erlang_rtti_implementation.m"
+    {
+#line 1238 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__Info_17 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1238 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Info_17, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_44_44));
+#line 1238 "erlang_rtti_implementation.m"
+    }
+#line 11532 "erlang_rtti_implementation.c"
+    mercury__erlang_rtti_implementation__TypeCtorInfo_103_103 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 1239 "erlang_rtti_implementation.m"
+    {
+#line 1239 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__concrete_type_info_2_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_103_103, mercury__erlang_rtti_implementation__Info_17, mercury__erlang_rtti_implementation__MaybePTI_16);
+    }
+#line 1241 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__MaybeArgName_18 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_41, (MR_Integer) 0)));
+#line 1241 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__V_90_90 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_41, (MR_Integer) 1)));
+#line 1245 "erlang_rtti_implementation.m"
+    if ((mercury__erlang_rtti_implementation__MaybeArgName_18 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1247 "erlang_rtti_implementation.m"
+      *mercury__erlang_rtti_implementation__HeadVar__4_43 = (MR_String) "";
+#line 1245 "erlang_rtti_implementation.m"
+    else
+#line 1243 "erlang_rtti_implementation.m"
+      {
+#line 1243 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__ArgName0_19 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__MaybeArgName_18, (MR_Integer) 0)));
+
+#line 1244 "erlang_rtti_implementation.m"
+        {
+#line 1244 "erlang_rtti_implementation.m"
+          *mercury__erlang_rtti_implementation__HeadVar__4_43 = mercury__string__from_char_list_1_f_0(mercury__erlang_rtti_implementation__ArgName0_19);
+        }
+#line 1243 "erlang_rtti_implementation.m"
+      }
+#line 1235 "erlang_rtti_implementation.m"
+  }
+#line 1235 "erlang_rtti_implementation.m"
+}
+
+#line 803 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__IntroducedFrom__func__deconstruct_2__803__4_3_f_0(
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_106_106,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__HeadVar__2_64,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_65)
+#line 803 "erlang_rtti_implementation.m"
+{
+#line 803 "erlang_rtti_implementation.m"
+  {
+#line 803 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 803 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__4_66;
+#line 803 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_67_67;
+
+#line 804 "erlang_rtti_implementation.m"
+    {
+#line 804 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__V_67_67 = mercury__univ__univ_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__HeadVar__2_64);
+    }
+#line 804 "erlang_rtti_implementation.m"
+    {
+#line 804 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__HeadVar__4_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 804 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__4_66, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_67_67));
+#line 804 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__4_66, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__HeadVar__3_65));
+#line 804 "erlang_rtti_implementation.m"
+    }
+#line 803 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__4_66;
+#line 803 "erlang_rtti_implementation.m"
+  }
+#line 803 "erlang_rtti_implementation.m"
+}
+
+#line 803 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__IntroducedFrom__func__deconstruct_2__803__3_3_f_0(
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_106_106,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__HeadVar__2_64,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_65)
+#line 803 "erlang_rtti_implementation.m"
+{
+#line 803 "erlang_rtti_implementation.m"
+  {
+#line 803 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 803 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__4_66;
+#line 803 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_67_67;
+
+#line 804 "erlang_rtti_implementation.m"
+    {
+#line 804 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__V_67_67 = mercury__univ__univ_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__HeadVar__2_64);
+    }
+#line 804 "erlang_rtti_implementation.m"
+    {
+#line 804 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__HeadVar__4_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 804 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__4_66, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_67_67));
+#line 804 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__4_66, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__HeadVar__3_65));
+#line 804 "erlang_rtti_implementation.m"
+    }
+#line 803 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__4_66;
+#line 803 "erlang_rtti_implementation.m"
+  }
+#line 803 "erlang_rtti_implementation.m"
+}
+
+#line 803 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__IntroducedFrom__func__deconstruct_2__803__2_3_f_0(
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_106_106,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__HeadVar__2_64,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_65)
+#line 803 "erlang_rtti_implementation.m"
+{
+#line 803 "erlang_rtti_implementation.m"
+  {
+#line 803 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 803 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__4_66;
+#line 803 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_67_67;
+
+#line 804 "erlang_rtti_implementation.m"
+    {
+#line 804 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__V_67_67 = mercury__univ__univ_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__HeadVar__2_64);
+    }
+#line 804 "erlang_rtti_implementation.m"
+    {
+#line 804 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__HeadVar__4_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 804 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__4_66, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_67_67));
+#line 804 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__4_66, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__HeadVar__3_65));
+#line 804 "erlang_rtti_implementation.m"
+    }
+#line 803 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__4_66;
+#line 803 "erlang_rtti_implementation.m"
+  }
+#line 803 "erlang_rtti_implementation.m"
+}
+
+#line 803 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__IntroducedFrom__func__deconstruct_2__803__1_3_f_0(
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_106_106,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__HeadVar__2_64,
+#line 803 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_65)
+#line 803 "erlang_rtti_implementation.m"
+{
+#line 803 "erlang_rtti_implementation.m"
+  {
+#line 803 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 803 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__4_66;
+#line 803 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_67_67;
+
+#line 804 "erlang_rtti_implementation.m"
+    {
+#line 804 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__V_67_67 = mercury__univ__univ_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_106_106, mercury__erlang_rtti_implementation__HeadVar__2_64);
+    }
+#line 804 "erlang_rtti_implementation.m"
+    {
+#line 804 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__HeadVar__4_66 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 804 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__4_66, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_67_67));
+#line 804 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__4_66, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__HeadVar__3_65));
+#line 804 "erlang_rtti_implementation.m"
+    }
+#line 803 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__4_66;
+#line 803 "erlang_rtti_implementation.m"
+  }
+#line 803 "erlang_rtti_implementation.m"
+}
+
+#line 2426 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____type_info_thunk_0_0(
+#line 2426 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 2426 "erlang_rtti_implementation.m"
+{
+#line 2426 "erlang_rtti_implementation.m"
+  {
+#line 2426 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2426 "erlang_rtti_implementation.m"
+    {
+#line 2426 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_105_110_102_111_95_116_104_117_110_107_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(mercury__erlang_rtti_implementation__HeadVar__1_1);
+#line 2426 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 2426 "erlang_rtti_implementation.m"
+  }
+#line 2426 "erlang_rtti_implementation.m"
+}
+
+#line 2426 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____type_info_thunk_0_0(void)
+#line 2426 "erlang_rtti_implementation.m"
+{
+#line 2426 "erlang_rtti_implementation.m"
+  {
+#line 2426 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2426 "erlang_rtti_implementation.m"
+    {
+#line 2426 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_105_110_102_111_95_116_104_117_110_107_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+#line 2426 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2426 "erlang_rtti_implementation.m"
+  }
+#line 2426 "erlang_rtti_implementation.m"
+}
+
+#line 142 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____type_info_0_0(
+#line 142 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 142 "erlang_rtti_implementation.m"
+{
+#line 142 "erlang_rtti_implementation.m"
+  {
+#line 142 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 142 "erlang_rtti_implementation.m"
+    {
+#line 142 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_105_110_102_111_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(mercury__erlang_rtti_implementation__HeadVar__1_1);
+#line 142 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 142 "erlang_rtti_implementation.m"
+  }
+#line 142 "erlang_rtti_implementation.m"
+}
+
+#line 142 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____type_info_0_0(void)
+#line 142 "erlang_rtti_implementation.m"
+{
+#line 142 "erlang_rtti_implementation.m"
+  {
+#line 142 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 142 "erlang_rtti_implementation.m"
+    {
+#line 142 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_105_110_102_111_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+#line 142 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 142 "erlang_rtti_implementation.m"
+  }
+#line 142 "erlang_rtti_implementation.m"
+}
+
+#line 156 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____type_ctor_info_evaled_0_0(
+#line 156 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 156 "erlang_rtti_implementation.m"
+{
+#line 156 "erlang_rtti_implementation.m"
+  {
+#line 156 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 156 "erlang_rtti_implementation.m"
+    {
+#line 156 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(mercury__erlang_rtti_implementation__HeadVar__1_1);
+#line 156 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 156 "erlang_rtti_implementation.m"
+  }
+#line 156 "erlang_rtti_implementation.m"
+}
+
+#line 156 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____type_ctor_info_evaled_0_0(void)
+#line 156 "erlang_rtti_implementation.m"
+{
+#line 156 "erlang_rtti_implementation.m"
+  {
+#line 156 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 156 "erlang_rtti_implementation.m"
+    {
+#line 156 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+#line 156 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 156 "erlang_rtti_implementation.m"
+  }
+#line 156 "erlang_rtti_implementation.m"
+}
+
+#line 149 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____type_ctor_info_0_0(
+#line 149 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 149 "erlang_rtti_implementation.m"
+{
+#line 149 "erlang_rtti_implementation.m"
+  {
+#line 149 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 149 "erlang_rtti_implementation.m"
+    {
+#line 149 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(mercury__erlang_rtti_implementation__HeadVar__1_1);
+#line 149 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 149 "erlang_rtti_implementation.m"
+  }
+#line 149 "erlang_rtti_implementation.m"
+}
+
+#line 149 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____type_ctor_info_0_0(void)
+#line 149 "erlang_rtti_implementation.m"
+{
+#line 149 "erlang_rtti_implementation.m"
+  {
+#line 149 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 149 "erlang_rtti_implementation.m"
+    {
+#line 149 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+#line 149 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 149 "erlang_rtti_implementation.m"
+  }
+#line 149 "erlang_rtti_implementation.m"
+}
+
+#line 2163 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____ti_info_1_0(
+#line 2163 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_6,
+#line 2163 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2163 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2163 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2163 "erlang_rtti_implementation.m"
+{
+#line 2163 "erlang_rtti_implementation.m"
+  {
+#line 2163 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_7_7 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_8_8 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_9_9 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_tuple_0;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_11_11;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_12_12 = (MR_Word) &mercury__maybe__maybe__type_ctor_info_maybe_1;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_13_13;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_14_14;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar1_4 = mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar2_5 = mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 11954 "erlang_rtti_implementation.c"
+    {
+#line 11956 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__TypeInfo_11_11 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 11958 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_11_11, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_9_9));
+#line 11960 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_11_11, 1) = ((MR_Box) ((MR_Integer) 2));
+#line 11962 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_11_11, 2) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_8_8));
+#line 11964 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_11_11, 3) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfo_for_T_6));
+#line 11966 "erlang_rtti_implementation.c"
+    }
+#line 11968 "erlang_rtti_implementation.c"
+    {
+#line 11970 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__TypeInfo_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 11972 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_13_13, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_12_12));
+#line 11974 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_13_13, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfo_11_11));
+#line 11976 "erlang_rtti_implementation.c"
+    }
+#line 11978 "erlang_rtti_implementation.c"
+    {
+#line 11980 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__TypeInfo_14_14 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 11982 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_14_14, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_9_9));
+#line 11984 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_14_14, 1) = ((MR_Box) ((MR_Integer) 2));
+#line 11986 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_14_14, 2) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_7_7));
+#line 11988 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_14_14, 3) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfo_13_13));
+#line 11990 "erlang_rtti_implementation.c"
+    }
+#line 2163 "erlang_rtti_implementation.m"
+    {
+#line 2163 "erlang_rtti_implementation.m"
+      mercury__maybe____Compare____maybe_1_0(mercury__erlang_rtti_implementation__TypeInfo_14_14, mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Word) mercury__erlang_rtti_implementation__Cast_HeadVar1_4, (MR_Word) mercury__erlang_rtti_implementation__Cast_HeadVar2_5);
+#line 2163 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 2163 "erlang_rtti_implementation.m"
+  }
+#line 2163 "erlang_rtti_implementation.m"
+}
+
+#line 2163 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____ti_info_1_0(
+#line 2163 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_5,
+#line 2163 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2163 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2163 "erlang_rtti_implementation.m"
+{
+#line 2163 "erlang_rtti_implementation.m"
+  {
+#line 2163 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_6_6 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_7_7 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_8_8 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_tuple_0;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_10_10;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_11_11 = (MR_Word) &mercury__maybe__maybe__type_ctor_info_maybe_1;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_12_12;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_13_13;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar1_3 = mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2163 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar2_4 = mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 12038 "erlang_rtti_implementation.c"
+    {
+#line 12040 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 12042 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_10_10, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_8_8));
+#line 12044 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_10_10, 1) = ((MR_Box) ((MR_Integer) 2));
+#line 12046 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_10_10, 2) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_7_7));
+#line 12048 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_10_10, 3) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfo_for_T_5));
+#line 12050 "erlang_rtti_implementation.c"
+    }
+#line 12052 "erlang_rtti_implementation.c"
+    {
+#line 12054 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__TypeInfo_12_12 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 12056 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_12_12, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_11_11));
+#line 12058 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_12_12, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfo_10_10));
+#line 12060 "erlang_rtti_implementation.c"
+    }
+#line 12062 "erlang_rtti_implementation.c"
+    {
+#line 12064 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__TypeInfo_13_13 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 12066 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_13_13, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_8_8));
+#line 12068 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_13_13, 1) = ((MR_Box) ((MR_Integer) 2));
+#line 12070 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_13_13, 2) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_6_6));
+#line 12072 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_13_13, 3) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfo_12_12));
+#line 12074 "erlang_rtti_implementation.c"
+    }
+#line 2163 "erlang_rtti_implementation.m"
+    {
+#line 2163 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__maybe____Unify____maybe_1_0(mercury__erlang_rtti_implementation__TypeInfo_13_13, (MR_Word) mercury__erlang_rtti_implementation__Cast_HeadVar1_3, (MR_Word) mercury__erlang_rtti_implementation__Cast_HeadVar2_4);
+    }
+#line 2163 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2163 "erlang_rtti_implementation.m"
+  }
+#line 2163 "erlang_rtti_implementation.m"
+}
+
+#line 2155 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____tc_type_0_0(
+#line 2155 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2155 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2155 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2155 "erlang_rtti_implementation.m"
+{
+#line 2155 "erlang_rtti_implementation.m"
+  {
+#line 2155 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2155 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar1_4 = mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2155 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar2_5 = mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 2155 "erlang_rtti_implementation.m"
+    {
+#line 2155 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation____Compare____maybe_pseudo_type_info_0_0(mercury__erlang_rtti_implementation__HeadVar__1_1, mercury__erlang_rtti_implementation__Cast_HeadVar1_4, mercury__erlang_rtti_implementation__Cast_HeadVar2_5);
+#line 2155 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 2155 "erlang_rtti_implementation.m"
+  }
+#line 2155 "erlang_rtti_implementation.m"
+}
+
+#line 2155 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____tc_type_0_0(
+#line 2155 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2155 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2155 "erlang_rtti_implementation.m"
+{
+#line 2155 "erlang_rtti_implementation.m"
+  {
+#line 2155 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2155 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar1_3 = mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2155 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar2_4 = mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 2155 "erlang_rtti_implementation.m"
+    {
+#line 2155 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____maybe_pseudo_type_info_0_0(mercury__erlang_rtti_implementation__Cast_HeadVar1_3, mercury__erlang_rtti_implementation__Cast_HeadVar2_4);
+    }
+#line 2155 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2155 "erlang_rtti_implementation.m"
+  }
+#line 2155 "erlang_rtti_implementation.m"
+}
+
+#line 2142 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____tc_name_0_0(
+#line 2142 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2142 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2142 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2142 "erlang_rtti_implementation.m"
+{
+#line 2142 "erlang_rtti_implementation.m"
+  {
+#line 2142 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2142 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_12 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2142 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_13 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 2142 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_12 == mercury__erlang_rtti_implementation__CastY_13);
+#line 2142 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 12174 "erlang_rtti_implementation.c"
+      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2142 "erlang_rtti_implementation.m"
+    else
+#line 2142 "erlang_rtti_implementation.m"
+      {
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 2)));
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 0)));
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 1)));
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 2)));
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_10_10;
+
+#line 2142 "erlang_rtti_implementation.m"
+        {
+#line 2142 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation____Compare____sym_name_0_0(&mercury__erlang_rtti_implementation__V_10_10, mercury__erlang_rtti_implementation__V_4_4, mercury__erlang_rtti_implementation__V_7_7);
+        }
+#line 12200 "erlang_rtti_implementation.c"
+        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_10_10 == (MR_Integer) 0);
+#line 2142 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2142 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2142 "erlang_rtti_implementation.m"
+          *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_10_10;
+#line 2142 "erlang_rtti_implementation.m"
+        else
+#line 2142 "erlang_rtti_implementation.m"
+          {
+#line 2142 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__V_11_11;
+#line 2142 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_15_15 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[5];
+
+#line 2142 "erlang_rtti_implementation.m"
+            {
+#line 2142 "erlang_rtti_implementation.m"
+              mercury__builtin__compare_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_15_15, &mercury__erlang_rtti_implementation__V_11_11, ((MR_Box) (mercury__erlang_rtti_implementation__V_5_5)), ((MR_Box) (mercury__erlang_rtti_implementation__V_8_8)));
+            }
+#line 12222 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_11_11 == (MR_Integer) 0);
+#line 2142 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2142 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 2142 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_11_11;
+#line 2142 "erlang_rtti_implementation.m"
+            else
+#line 74 "private_builtin.opt"
+              {
+#line 71 "private_builtin.opt"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_6_6 < mercury__erlang_rtti_implementation__V_9_9);
+#line 74 "private_builtin.opt"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 73 "private_builtin.opt"
+                  *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 1;
+#line 74 "private_builtin.opt"
+                else
+#line 79 "private_builtin.opt"
+                  {
+#line 76 "private_builtin.opt"
+                    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_6_6 == mercury__erlang_rtti_implementation__V_9_9);
+#line 79 "private_builtin.opt"
+                    if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+                      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+                    else
+#line 80 "private_builtin.opt"
+                      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 2;
+#line 79 "private_builtin.opt"
+                  }
+#line 74 "private_builtin.opt"
+              }
+#line 2142 "erlang_rtti_implementation.m"
+          }
+#line 2142 "erlang_rtti_implementation.m"
+      }
+#line 2142 "erlang_rtti_implementation.m"
+  }
+#line 2142 "erlang_rtti_implementation.m"
+}
+
+#line 2142 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____tc_name_0_0(
+#line 2142 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2142 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2142 "erlang_rtti_implementation.m"
+{
+#line 2142 "erlang_rtti_implementation.m"
+  {
+#line 2142 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2142 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_9 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2142 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_10 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 2142 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_9 == mercury__erlang_rtti_implementation__CastY_10);
+#line 2142 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 2142 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 2142 "erlang_rtti_implementation.m"
+    else
+#line 2142 "erlang_rtti_implementation.m"
+      {
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeInfo_11_11;
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 1)));
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 2)));
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 2142 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 2)));
+
+#line 12310 "erlang_rtti_implementation.c"
+        {
+#line 12312 "erlang_rtti_implementation.c"
+          mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____sym_name_0_0(mercury__erlang_rtti_implementation__V_3_3, mercury__erlang_rtti_implementation__V_6_6);
+        }
+#line 2142 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2142 "erlang_rtti_implementation.m"
+          {
+#line 12319 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_11_11 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[5];
+#line 12321 "erlang_rtti_implementation.c"
+            {
+#line 12323 "erlang_rtti_implementation.c"
+              mercury__erlang_rtti_implementation__succeeded = mercury__builtin__unify_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_11_11, ((MR_Box) (mercury__erlang_rtti_implementation__V_4_4)), ((MR_Box) (mercury__erlang_rtti_implementation__V_7_7)));
+            }
+#line 2142 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 12328 "erlang_rtti_implementation.c"
+              mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_5_5 == mercury__erlang_rtti_implementation__V_8_8);
+#line 2142 "erlang_rtti_implementation.m"
+          }
+#line 2142 "erlang_rtti_implementation.m"
+      }
+#line 2142 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2142 "erlang_rtti_implementation.m"
+  }
+#line 2142 "erlang_rtti_implementation.m"
+}
+
+#line 2122 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____tc_constraint_0_0(
+#line 2122 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2122 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2122 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2122 "erlang_rtti_implementation.m"
+{
+#line 2122 "erlang_rtti_implementation.m"
+  {
+#line 2122 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2122 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_9 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2122 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_10 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 2122 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_9 == mercury__erlang_rtti_implementation__CastY_10);
+#line 2122 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 12365 "erlang_rtti_implementation.c"
+      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2122 "erlang_rtti_implementation.m"
+    else
+#line 2122 "erlang_rtti_implementation.m"
+      {
+#line 2122 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 2122 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 2122 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 0)));
+#line 2122 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 1)));
+#line 2122 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_8_8;
+
+#line 2122 "erlang_rtti_implementation.m"
+        {
+#line 2122 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation____Compare____tc_name_0_0(&mercury__erlang_rtti_implementation__V_8_8, mercury__erlang_rtti_implementation__V_4_4, mercury__erlang_rtti_implementation__V_6_6);
+        }
+#line 12387 "erlang_rtti_implementation.c"
+        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_8_8 == (MR_Integer) 0);
+#line 2122 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2122 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2122 "erlang_rtti_implementation.m"
+          *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_8_8;
+#line 2122 "erlang_rtti_implementation.m"
+        else
+#line 2122 "erlang_rtti_implementation.m"
+          {
+#line 2122 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_12_12 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[11];
+
+#line 2122 "erlang_rtti_implementation.m"
+            {
+#line 2122 "erlang_rtti_implementation.m"
+              mercury__builtin__compare_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_12_12, mercury__erlang_rtti_implementation__HeadVar__1_1, ((MR_Box) (mercury__erlang_rtti_implementation__V_5_5)), ((MR_Box) (mercury__erlang_rtti_implementation__V_7_7)));
+#line 2122 "erlang_rtti_implementation.m"
+              return;
+            }
+#line 2122 "erlang_rtti_implementation.m"
+          }
+#line 2122 "erlang_rtti_implementation.m"
+      }
+#line 2122 "erlang_rtti_implementation.m"
+  }
+#line 2122 "erlang_rtti_implementation.m"
+}
+
+#line 2122 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____tc_constraint_0_0(
+#line 2122 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2122 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2122 "erlang_rtti_implementation.m"
+{
+#line 2122 "erlang_rtti_implementation.m"
+  {
+#line 2122 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2122 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_7 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2122 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_8 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 2122 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_7 == mercury__erlang_rtti_implementation__CastY_8);
+#line 2122 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 2122 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 2122 "erlang_rtti_implementation.m"
+    else
+#line 2122 "erlang_rtti_implementation.m"
+      {
+#line 2122 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeInfo_9_9;
+#line 2122 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 2122 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 1)));
+#line 2122 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 2122 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+
+#line 12457 "erlang_rtti_implementation.c"
+        {
+#line 12459 "erlang_rtti_implementation.c"
+          mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____tc_name_0_0(mercury__erlang_rtti_implementation__V_3_3, mercury__erlang_rtti_implementation__V_5_5);
+        }
+#line 2122 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2122 "erlang_rtti_implementation.m"
+          {
+#line 12466 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_9_9 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[11];
+#line 12468 "erlang_rtti_implementation.c"
+            {
+#line 12470 "erlang_rtti_implementation.c"
+              return mercury__erlang_rtti_implementation__succeeded = mercury__builtin__unify_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_9_9, ((MR_Box) (mercury__erlang_rtti_implementation__V_4_4)), ((MR_Box) (mercury__erlang_rtti_implementation__V_6_6)));
+            }
+#line 2122 "erlang_rtti_implementation.m"
+          }
+#line 2122 "erlang_rtti_implementation.m"
+      }
+#line 2122 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2122 "erlang_rtti_implementation.m"
+  }
+#line 2122 "erlang_rtti_implementation.m"
+}
+
+#line 2151 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____sym_name_0_0(
+#line 2151 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2151 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2151 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2151 "erlang_rtti_implementation.m"
+{
+#line 2151 "erlang_rtti_implementation.m"
+  {
+#line 2151 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2151 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_17 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2151 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_18 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 2151 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_17 == mercury__erlang_rtti_implementation__CastY_18);
+#line 2151 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 12508 "erlang_rtti_implementation.c"
+      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2151 "erlang_rtti_implementation.m"
+    else
+#line 2151 "erlang_rtti_implementation.m"
+    if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+#line 2151 "erlang_rtti_implementation.m"
+      {
+#line 2151 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_22_22 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 2151 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 2151 "erlang_rtti_implementation.m"
+        if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+#line 2151 "erlang_rtti_implementation.m"
+          {
+#line 2151 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__V_14_14 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 0)));
+#line 2151 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 1)));
+#line 2151 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__V_16_16;
+
+#line 2151 "erlang_rtti_implementation.m"
+            {
+#line 2151 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation____Compare____sym_name_0_0(&mercury__erlang_rtti_implementation__V_16_16, mercury__erlang_rtti_implementation__V_23_23, mercury__erlang_rtti_implementation__V_14_14);
+            }
+#line 12537 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_16_16 == (MR_Integer) 0);
+#line 2151 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2151 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 2151 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_16_16;
+#line 2151 "erlang_rtti_implementation.m"
+            else
+#line 2151 "erlang_rtti_implementation.m"
+              {
+#line 2151 "erlang_rtti_implementation.m"
+                MR_Word mercury__erlang_rtti_implementation__TypeInfo_20_20 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[5];
+
+#line 2151 "erlang_rtti_implementation.m"
+                {
+#line 2151 "erlang_rtti_implementation.m"
+                  mercury__builtin__compare_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_20_20, mercury__erlang_rtti_implementation__HeadVar__1_1, ((MR_Box) (mercury__erlang_rtti_implementation__V_22_22)), ((MR_Box) (mercury__erlang_rtti_implementation__V_15_15)));
+#line 2151 "erlang_rtti_implementation.m"
+                  return;
+                }
+#line 2151 "erlang_rtti_implementation.m"
+              }
+#line 2151 "erlang_rtti_implementation.m"
+          }
+#line 2151 "erlang_rtti_implementation.m"
+        else
+#line 12565 "erlang_rtti_implementation.c"
+          *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 2;
+#line 2151 "erlang_rtti_implementation.m"
+      }
+#line 2151 "erlang_rtti_implementation.m"
+    else
+#line 2151 "erlang_rtti_implementation.m"
+      {
+#line 2151 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_24_24 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 2151 "erlang_rtti_implementation.m"
+        if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+#line 12578 "erlang_rtti_implementation.c"
+          *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 1;
+#line 2151 "erlang_rtti_implementation.m"
+        else
+#line 2151 "erlang_rtti_implementation.m"
+          {
+#line 2151 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__TypeInfo_21_21 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[5];
+#line 2151 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 2151 "erlang_rtti_implementation.m"
+            {
+#line 2151 "erlang_rtti_implementation.m"
+              mercury__builtin__compare_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_21_21, mercury__erlang_rtti_implementation__HeadVar__1_1, ((MR_Box) (mercury__erlang_rtti_implementation__V_24_24)), ((MR_Box) (mercury__erlang_rtti_implementation__V_5_5)));
+#line 2151 "erlang_rtti_implementation.m"
+              return;
+            }
+#line 2151 "erlang_rtti_implementation.m"
+          }
+#line 2151 "erlang_rtti_implementation.m"
+      }
+#line 2151 "erlang_rtti_implementation.m"
+  }
+#line 2151 "erlang_rtti_implementation.m"
+}
+
+#line 2151 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____sym_name_0_0(
+#line 2151 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2151 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2151 "erlang_rtti_implementation.m"
+{
+#line 2151 "erlang_rtti_implementation.m"
+  {
+#line 2151 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2151 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_9 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2151 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_10 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 2151 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_9 == mercury__erlang_rtti_implementation__CastY_10);
+#line 2151 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 2151 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 2151 "erlang_rtti_implementation.m"
+    else
+#line 2151 "erlang_rtti_implementation.m"
+    if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+#line 2151 "erlang_rtti_implementation.m"
+      {
+#line 2151 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeInfo_11_11;
+#line 2151 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 2151 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 1)));
+#line 2151 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_7_7;
+#line 2151 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_8_8;
+
+#line 2151 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 2151 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2151 "erlang_rtti_implementation.m"
+          {
+#line 2151 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 2151 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 12656 "erlang_rtti_implementation.c"
+            {
+#line 12658 "erlang_rtti_implementation.c"
+              mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____sym_name_0_0(mercury__erlang_rtti_implementation__V_5_5, mercury__erlang_rtti_implementation__V_7_7);
+            }
+#line 2151 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 2151 "erlang_rtti_implementation.m"
+              {
+#line 12665 "erlang_rtti_implementation.c"
+                mercury__erlang_rtti_implementation__TypeInfo_11_11 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[5];
+#line 12667 "erlang_rtti_implementation.c"
+                {
+#line 12669 "erlang_rtti_implementation.c"
+                  return mercury__erlang_rtti_implementation__succeeded = mercury__builtin__unify_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_11_11, ((MR_Box) (mercury__erlang_rtti_implementation__V_6_6)), ((MR_Box) (mercury__erlang_rtti_implementation__V_8_8)));
+                }
+#line 2151 "erlang_rtti_implementation.m"
+              }
+#line 2151 "erlang_rtti_implementation.m"
+          }
+#line 2151 "erlang_rtti_implementation.m"
+      }
+#line 2151 "erlang_rtti_implementation.m"
+    else
+#line 2151 "erlang_rtti_implementation.m"
+      {
+#line 2151 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeInfo_12_12;
+#line 2151 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 2151 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_4_4;
+
+#line 2151 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+#line 2151 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2151 "erlang_rtti_implementation.m"
+          {
+#line 2151 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 12697 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeInfo_12_12 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[5];
+#line 12699 "erlang_rtti_implementation.c"
+            {
+#line 12701 "erlang_rtti_implementation.c"
+              return mercury__erlang_rtti_implementation__succeeded = mercury__builtin__unify_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_12_12, ((MR_Box) (mercury__erlang_rtti_implementation__V_3_3)), ((MR_Box) (mercury__erlang_rtti_implementation__V_4_4)));
+            }
+#line 2151 "erlang_rtti_implementation.m"
+          }
+#line 2151 "erlang_rtti_implementation.m"
+      }
+#line 2151 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2151 "erlang_rtti_implementation.m"
+  }
+#line 2151 "erlang_rtti_implementation.m"
+}
+
+#line 2164 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____pti_info_1_0(
+#line 2164 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_6,
+#line 2164 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2164 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2164 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2164 "erlang_rtti_implementation.m"
+{
+#line 2164 "erlang_rtti_implementation.m"
+  {
+#line 2164 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2164 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_7_7 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0;
+#line 2164 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_8_8 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_tuple_0;
+#line 2164 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_10_10;
+#line 2164 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar1_4 = mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2164 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar2_5 = mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 12743 "erlang_rtti_implementation.c"
+    {
+#line 12745 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__TypeInfo_10_10 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 12747 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_10_10, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_8_8));
+#line 12749 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_10_10, 1) = ((MR_Box) ((MR_Integer) 2));
+#line 12751 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_10_10, 2) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_7_7));
+#line 12753 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_10_10, 3) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfo_for_T_6));
+#line 12755 "erlang_rtti_implementation.c"
+    }
+#line 2164 "erlang_rtti_implementation.m"
+    {
+#line 2164 "erlang_rtti_implementation.m"
+      mercury__maybe____Compare____maybe_1_0(mercury__erlang_rtti_implementation__TypeInfo_10_10, mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Word) mercury__erlang_rtti_implementation__Cast_HeadVar1_4, (MR_Word) mercury__erlang_rtti_implementation__Cast_HeadVar2_5);
+#line 2164 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 2164 "erlang_rtti_implementation.m"
+  }
+#line 2164 "erlang_rtti_implementation.m"
+}
+
+#line 2164 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____pti_info_1_0(
+#line 2164 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_5,
+#line 2164 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2164 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2164 "erlang_rtti_implementation.m"
+{
+#line 2164 "erlang_rtti_implementation.m"
+  {
+#line 2164 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2164 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_6_6 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0;
+#line 2164 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_7_7 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_tuple_0;
+#line 2164 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_9_9;
+#line 2164 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar1_3 = mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2164 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar2_4 = mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 12795 "erlang_rtti_implementation.c"
+    {
+#line 12797 "erlang_rtti_implementation.c"
+      mercury__erlang_rtti_implementation__TypeInfo_9_9 = (MR_Word) MR_new_object(MR_Word, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 12799 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_9_9, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_7_7));
+#line 12801 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_9_9, 1) = ((MR_Box) ((MR_Integer) 2));
+#line 12803 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_9_9, 2) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorInfo_6_6));
+#line 12805 "erlang_rtti_implementation.c"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__TypeInfo_9_9, 3) = ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfo_for_T_5));
+#line 12807 "erlang_rtti_implementation.c"
+    }
+#line 2164 "erlang_rtti_implementation.m"
+    {
+#line 2164 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__maybe____Unify____maybe_1_0(mercury__erlang_rtti_implementation__TypeInfo_9_9, (MR_Word) mercury__erlang_rtti_implementation__Cast_HeadVar1_3, (MR_Word) mercury__erlang_rtti_implementation__Cast_HeadVar2_4);
+    }
+#line 2164 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2164 "erlang_rtti_implementation.m"
+  }
+#line 2164 "erlang_rtti_implementation.m"
+}
+
+#line 2384 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____pseudo_type_info_thunk_0_0(
+#line 2384 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 2384 "erlang_rtti_implementation.m"
+{
+#line 2384 "erlang_rtti_implementation.m"
+  {
+#line 2384 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2384 "erlang_rtti_implementation.m"
+    {
+#line 2384 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_112_115_101_117_100_111_95_116_121_112_101_95_105_110_102_111_95_116_104_117_110_107_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(mercury__erlang_rtti_implementation__HeadVar__1_1);
+#line 2384 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 2384 "erlang_rtti_implementation.m"
+  }
+#line 2384 "erlang_rtti_implementation.m"
+}
+
+#line 2384 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____pseudo_type_info_thunk_0_0(void)
+#line 2384 "erlang_rtti_implementation.m"
+{
+#line 2384 "erlang_rtti_implementation.m"
+  {
+#line 2384 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2384 "erlang_rtti_implementation.m"
+    {
+#line 2384 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_112_115_101_117_100_111_95_116_121_112_101_95_105_110_102_111_95_116_104_117_110_107_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+#line 2384 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2384 "erlang_rtti_implementation.m"
+  }
+#line 2384 "erlang_rtti_implementation.m"
+}
+
+#line 2340 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____pseudo_type_info_0_0(
+#line 2340 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 2340 "erlang_rtti_implementation.m"
+{
+#line 2340 "erlang_rtti_implementation.m"
+  {
+#line 2340 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2340 "erlang_rtti_implementation.m"
+    {
+#line 2340 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_112_115_101_117_100_111_95_116_121_112_101_95_105_110_102_111_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(mercury__erlang_rtti_implementation__HeadVar__1_1);
+#line 2340 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 2340 "erlang_rtti_implementation.m"
+  }
+#line 2340 "erlang_rtti_implementation.m"
+}
+
+#line 2340 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____pseudo_type_info_0_0(void)
+#line 2340 "erlang_rtti_implementation.m"
+{
+#line 2340 "erlang_rtti_implementation.m"
+  {
+#line 2340 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2340 "erlang_rtti_implementation.m"
+    {
+#line 2340 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_112_115_101_117_100_111_95_116_121_112_101_95_105_110_102_111_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+#line 2340 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2340 "erlang_rtti_implementation.m"
+  }
+#line 2340 "erlang_rtti_implementation.m"
+}
+
+#line 2149 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____module_name_0_0(
+#line 2149 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2149 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2149 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2149 "erlang_rtti_implementation.m"
+{
+#line 2149 "erlang_rtti_implementation.m"
+  {
+#line 2149 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2149 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar1_4 = mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2149 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar2_5 = mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 2149 "erlang_rtti_implementation.m"
+    {
+#line 2149 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation____Compare____sym_name_0_0(mercury__erlang_rtti_implementation__HeadVar__1_1, mercury__erlang_rtti_implementation__Cast_HeadVar1_4, mercury__erlang_rtti_implementation__Cast_HeadVar2_5);
+#line 2149 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 2149 "erlang_rtti_implementation.m"
+  }
+#line 2149 "erlang_rtti_implementation.m"
+}
+
+#line 2149 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____module_name_0_0(
+#line 2149 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2149 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2149 "erlang_rtti_implementation.m"
+{
+#line 2149 "erlang_rtti_implementation.m"
+  {
+#line 2149 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2149 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar1_3 = mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2149 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Cast_HeadVar2_4 = mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 2149 "erlang_rtti_implementation.m"
+    {
+#line 2149 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____sym_name_0_0(mercury__erlang_rtti_implementation__Cast_HeadVar1_3, mercury__erlang_rtti_implementation__Cast_HeadVar2_4);
+    }
+#line 2149 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2149 "erlang_rtti_implementation.m"
+  }
+#line 2149 "erlang_rtti_implementation.m"
+}
+
+#line 2157 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____maybe_pseudo_type_info_0_0(
+#line 2157 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2157 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2157 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2157 "erlang_rtti_implementation.m"
+{
+#line 2157 "erlang_rtti_implementation.m"
+  {
+#line 2157 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2157 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_12 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2157 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_13 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 2157 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_12 == mercury__erlang_rtti_implementation__CastY_13);
+#line 2157 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 12999 "erlang_rtti_implementation.c"
+      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2157 "erlang_rtti_implementation.m"
+    else
+#line 2157 "erlang_rtti_implementation.m"
+    if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1))))
+#line 2157 "erlang_rtti_implementation.m"
+      if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+#line 2157 "erlang_rtti_implementation.m"
+        *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2157 "erlang_rtti_implementation.m"
+      else
+#line 13011 "erlang_rtti_implementation.c"
+        *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 2;
+#line 2157 "erlang_rtti_implementation.m"
+    else
+#line 2157 "erlang_rtti_implementation.m"
+    if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__3_3)) == (MR_mktag((MR_Integer) 1))))
+#line 13017 "erlang_rtti_implementation.c"
+      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 1;
+#line 2157 "erlang_rtti_implementation.m"
+    else
+#line 2157 "erlang_rtti_implementation.m"
+      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2157 "erlang_rtti_implementation.m"
+  }
+#line 2157 "erlang_rtti_implementation.m"
+}
+
+#line 2157 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____maybe_pseudo_type_info_0_0(
+#line 2157 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2157 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2157 "erlang_rtti_implementation.m"
+{
+#line 2157 "erlang_rtti_implementation.m"
+  {
+#line 2157 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2157 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_7 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2157 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_8 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 2157 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_7 == mercury__erlang_rtti_implementation__CastY_8);
+#line 2157 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 2157 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 2157 "erlang_rtti_implementation.m"
+    else
+#line 2157 "erlang_rtti_implementation.m"
+    if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1))))
+#line 2157 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 2157 "erlang_rtti_implementation.m"
+    else
+#line 2157 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+#line 2157 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2157 "erlang_rtti_implementation.m"
+  }
+#line 2157 "erlang_rtti_implementation.m"
+}
+
+#line 2128 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____exist_typeinfo_locn_0_0(
+#line 2128 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2128 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2128 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2128 "erlang_rtti_implementation.m"
+{
+#line 2128 "erlang_rtti_implementation.m"
+  {
+#line 2128 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2128 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_17 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2128 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_18 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 2128 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_17 == mercury__erlang_rtti_implementation__CastY_18);
+#line 2128 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 13093 "erlang_rtti_implementation.c"
+      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2128 "erlang_rtti_implementation.m"
+    else
+#line 2128 "erlang_rtti_implementation.m"
+    if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0))))
+#line 2128 "erlang_rtti_implementation.m"
+      {
+#line 2128 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_22_22 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 2128 "erlang_rtti_implementation.m"
+        if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+#line 2128 "erlang_rtti_implementation.m"
+          {
+#line 2128 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 71 "private_builtin.opt"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_22_22 < mercury__erlang_rtti_implementation__V_5_5);
+#line 74 "private_builtin.opt"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 73 "private_builtin.opt"
+              *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 1;
+#line 74 "private_builtin.opt"
+            else
+#line 79 "private_builtin.opt"
+              {
+#line 76 "private_builtin.opt"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_22_22 == mercury__erlang_rtti_implementation__V_5_5);
+#line 79 "private_builtin.opt"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+                  *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+                else
+#line 80 "private_builtin.opt"
+                  *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 2;
+#line 79 "private_builtin.opt"
+              }
+#line 2128 "erlang_rtti_implementation.m"
+          }
+#line 2128 "erlang_rtti_implementation.m"
+        else
+#line 13137 "erlang_rtti_implementation.c"
+          *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 1;
+#line 2128 "erlang_rtti_implementation.m"
+      }
+#line 2128 "erlang_rtti_implementation.m"
+    else
+#line 2128 "erlang_rtti_implementation.m"
+      {
+#line 2128 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_23_23 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 2128 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 2128 "erlang_rtti_implementation.m"
+        if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__3_3)) == (MR_mktag((MR_Integer) 0))))
+#line 13152 "erlang_rtti_implementation.c"
+          *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 2;
+#line 2128 "erlang_rtti_implementation.m"
+        else
+#line 2128 "erlang_rtti_implementation.m"
+          {
+#line 2128 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 0)));
+#line 2128 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_15_15 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 1)));
+#line 2128 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__V_16_16;
+
+#line 71 "private_builtin.opt"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_24_24 < mercury__erlang_rtti_implementation__V_14_14);
+#line 74 "private_builtin.opt"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 73 "private_builtin.opt"
+              mercury__erlang_rtti_implementation__V_16_16 = (MR_Integer) 1;
+#line 74 "private_builtin.opt"
+            else
+#line 79 "private_builtin.opt"
+              {
+#line 76 "private_builtin.opt"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_24_24 == mercury__erlang_rtti_implementation__V_14_14);
+#line 79 "private_builtin.opt"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+                  mercury__erlang_rtti_implementation__V_16_16 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+                else
+#line 80 "private_builtin.opt"
+                  mercury__erlang_rtti_implementation__V_16_16 = (MR_Integer) 2;
+#line 79 "private_builtin.opt"
+              }
+#line 13187 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_16_16 == (MR_Integer) 0);
+#line 2128 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2128 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 2128 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_16_16;
+#line 2128 "erlang_rtti_implementation.m"
+            else
+#line 74 "private_builtin.opt"
+              {
+#line 71 "private_builtin.opt"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_23_23 < mercury__erlang_rtti_implementation__V_15_15);
+#line 74 "private_builtin.opt"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 73 "private_builtin.opt"
+                  *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 1;
+#line 74 "private_builtin.opt"
+                else
+#line 79 "private_builtin.opt"
+                  {
+#line 76 "private_builtin.opt"
+                    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_23_23 == mercury__erlang_rtti_implementation__V_15_15);
+#line 79 "private_builtin.opt"
+                    if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+                      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+                    else
+#line 80 "private_builtin.opt"
+                      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 2;
+#line 79 "private_builtin.opt"
+                  }
+#line 74 "private_builtin.opt"
+              }
+#line 2128 "erlang_rtti_implementation.m"
+          }
+#line 2128 "erlang_rtti_implementation.m"
+      }
+#line 2128 "erlang_rtti_implementation.m"
+  }
+#line 2128 "erlang_rtti_implementation.m"
+}
+
+#line 2128 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____exist_typeinfo_locn_0_0(
+#line 2128 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2128 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2128 "erlang_rtti_implementation.m"
+{
+#line 2128 "erlang_rtti_implementation.m"
+  {
+#line 2128 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2128 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_9 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2128 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_10 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 2128 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_9 == mercury__erlang_rtti_implementation__CastY_10);
+#line 2128 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 2128 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 2128 "erlang_rtti_implementation.m"
+    else
+#line 2128 "erlang_rtti_implementation.m"
+    if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__1_1)) == (MR_mktag((MR_Integer) 0))))
+#line 2128 "erlang_rtti_implementation.m"
+      {
+#line 2128 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 2128 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_4_4;
+
+#line 2128 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+#line 2128 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2128 "erlang_rtti_implementation.m"
+          {
+#line 2128 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 13275 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_3_3 == mercury__erlang_rtti_implementation__V_4_4);
+#line 2128 "erlang_rtti_implementation.m"
+          }
+#line 2128 "erlang_rtti_implementation.m"
+      }
+#line 2128 "erlang_rtti_implementation.m"
+    else
+#line 2128 "erlang_rtti_implementation.m"
+      {
+#line 2128 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 2128 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 1)));
+#line 2128 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_7_7;
+#line 2128 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_8_8;
+
+#line 2128 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 2128 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2128 "erlang_rtti_implementation.m"
+          {
+#line 2128 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 2128 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 13304 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_5_5 == mercury__erlang_rtti_implementation__V_7_7);
+#line 2128 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 13308 "erlang_rtti_implementation.c"
+              mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_6_6 == mercury__erlang_rtti_implementation__V_8_8);
+#line 2128 "erlang_rtti_implementation.m"
+          }
+#line 2128 "erlang_rtti_implementation.m"
+      }
+#line 2128 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2128 "erlang_rtti_implementation.m"
+  }
+#line 2128 "erlang_rtti_implementation.m"
+}
+
+#line 2114 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____exist_info_0_0(
+#line 2114 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2114 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2114 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2114 "erlang_rtti_implementation.m"
+{
+#line 2114 "erlang_rtti_implementation.m"
+  {
+#line 2114 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2114 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_15 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2114 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_16 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 2114 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_15 == mercury__erlang_rtti_implementation__CastY_16);
+#line 2114 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 13345 "erlang_rtti_implementation.c"
+      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2114 "erlang_rtti_implementation.m"
+    else
+#line 2114 "erlang_rtti_implementation.m"
+      {
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 2)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 3)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 0)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 1)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 2)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 3)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_12_12;
+
+#line 71 "private_builtin.opt"
+        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_4_4 < mercury__erlang_rtti_implementation__V_8_8);
+#line 74 "private_builtin.opt"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 73 "private_builtin.opt"
+          mercury__erlang_rtti_implementation__V_12_12 = (MR_Integer) 1;
+#line 74 "private_builtin.opt"
+        else
+#line 79 "private_builtin.opt"
+          {
+#line 76 "private_builtin.opt"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_4_4 == mercury__erlang_rtti_implementation__V_8_8);
+#line 79 "private_builtin.opt"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+              mercury__erlang_rtti_implementation__V_12_12 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+            else
+#line 80 "private_builtin.opt"
+              mercury__erlang_rtti_implementation__V_12_12 = (MR_Integer) 2;
+#line 79 "private_builtin.opt"
+          }
+#line 13392 "erlang_rtti_implementation.c"
+        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_12_12 == (MR_Integer) 0);
+#line 2114 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2114 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2114 "erlang_rtti_implementation.m"
+          *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_12_12;
+#line 2114 "erlang_rtti_implementation.m"
+        else
+#line 2114 "erlang_rtti_implementation.m"
+          {
+#line 2114 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__V_13_13;
+
+#line 71 "private_builtin.opt"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_5_5 < mercury__erlang_rtti_implementation__V_9_9);
+#line 74 "private_builtin.opt"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 73 "private_builtin.opt"
+              mercury__erlang_rtti_implementation__V_13_13 = (MR_Integer) 1;
+#line 74 "private_builtin.opt"
+            else
+#line 79 "private_builtin.opt"
+              {
+#line 76 "private_builtin.opt"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_5_5 == mercury__erlang_rtti_implementation__V_9_9);
+#line 79 "private_builtin.opt"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+                  mercury__erlang_rtti_implementation__V_13_13 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+                else
+#line 80 "private_builtin.opt"
+                  mercury__erlang_rtti_implementation__V_13_13 = (MR_Integer) 2;
+#line 79 "private_builtin.opt"
+              }
+#line 13429 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_13_13 == (MR_Integer) 0);
+#line 2114 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2114 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 2114 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_13_13;
+#line 2114 "erlang_rtti_implementation.m"
+            else
+#line 2114 "erlang_rtti_implementation.m"
+              {
+#line 2114 "erlang_rtti_implementation.m"
+                MR_Word mercury__erlang_rtti_implementation__V_14_14;
+#line 2114 "erlang_rtti_implementation.m"
+                MR_Word mercury__erlang_rtti_implementation__TypeInfo_19_19 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[9];
+
+#line 2114 "erlang_rtti_implementation.m"
+                {
+#line 2114 "erlang_rtti_implementation.m"
+                  mercury__builtin__compare_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_19_19, &mercury__erlang_rtti_implementation__V_14_14, ((MR_Box) (mercury__erlang_rtti_implementation__V_6_6)), ((MR_Box) (mercury__erlang_rtti_implementation__V_10_10)));
+                }
+#line 13451 "erlang_rtti_implementation.c"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_14_14 == (MR_Integer) 0);
+#line 2114 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2114 "erlang_rtti_implementation.m"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 2114 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_14_14;
+#line 2114 "erlang_rtti_implementation.m"
+                else
+#line 2114 "erlang_rtti_implementation.m"
+                  {
+#line 2114 "erlang_rtti_implementation.m"
+                    MR_Word mercury__erlang_rtti_implementation__TypeInfo_20_20 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[10];
+
+#line 2114 "erlang_rtti_implementation.m"
+                    {
+#line 2114 "erlang_rtti_implementation.m"
+                      mercury__builtin__compare_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_20_20, mercury__erlang_rtti_implementation__HeadVar__1_1, ((MR_Box) (mercury__erlang_rtti_implementation__V_7_7)), ((MR_Box) (mercury__erlang_rtti_implementation__V_11_11)));
+#line 2114 "erlang_rtti_implementation.m"
+                      return;
+                    }
+#line 2114 "erlang_rtti_implementation.m"
+                  }
+#line 2114 "erlang_rtti_implementation.m"
+              }
+#line 2114 "erlang_rtti_implementation.m"
+          }
+#line 2114 "erlang_rtti_implementation.m"
+      }
+#line 2114 "erlang_rtti_implementation.m"
+  }
+#line 2114 "erlang_rtti_implementation.m"
+}
+
+#line 2114 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____exist_info_0_0(
+#line 2114 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2114 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2114 "erlang_rtti_implementation.m"
+{
+#line 2114 "erlang_rtti_implementation.m"
+  {
+#line 2114 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2114 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_11 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2114 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_12 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 2114 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_11 == mercury__erlang_rtti_implementation__CastY_12);
+#line 2114 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 2114 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 2114 "erlang_rtti_implementation.m"
+    else
+#line 2114 "erlang_rtti_implementation.m"
+      {
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeInfo_13_13;
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeInfo_14_14;
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 1)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 2)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 3)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_8_8 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 2)));
+#line 2114 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 3)));
+
+#line 13535 "erlang_rtti_implementation.c"
+        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_3_3 == mercury__erlang_rtti_implementation__V_7_7);
+#line 2114 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2114 "erlang_rtti_implementation.m"
+          {
+#line 13541 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_4_4 == mercury__erlang_rtti_implementation__V_8_8);
+#line 2114 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 2114 "erlang_rtti_implementation.m"
+              {
+#line 13547 "erlang_rtti_implementation.c"
+                mercury__erlang_rtti_implementation__TypeInfo_13_13 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[9];
+#line 13549 "erlang_rtti_implementation.c"
+                {
+#line 13551 "erlang_rtti_implementation.c"
+                  mercury__erlang_rtti_implementation__succeeded = mercury__builtin__unify_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_13_13, ((MR_Box) (mercury__erlang_rtti_implementation__V_5_5)), ((MR_Box) (mercury__erlang_rtti_implementation__V_9_9)));
+                }
+#line 2114 "erlang_rtti_implementation.m"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 2114 "erlang_rtti_implementation.m"
+                  {
+#line 13558 "erlang_rtti_implementation.c"
+                    mercury__erlang_rtti_implementation__TypeInfo_14_14 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[10];
+#line 13560 "erlang_rtti_implementation.c"
+                    {
+#line 13562 "erlang_rtti_implementation.c"
+                      return mercury__erlang_rtti_implementation__succeeded = mercury__builtin__unify_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_14_14, ((MR_Box) (mercury__erlang_rtti_implementation__V_6_6)), ((MR_Box) (mercury__erlang_rtti_implementation__V_10_10)));
+                    }
+#line 2114 "erlang_rtti_implementation.m"
+                  }
+#line 2114 "erlang_rtti_implementation.m"
+              }
+#line 2114 "erlang_rtti_implementation.m"
+          }
+#line 2114 "erlang_rtti_implementation.m"
+      }
+#line 2114 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2114 "erlang_rtti_implementation.m"
+  }
+#line 2114 "erlang_rtti_implementation.m"
+}
+
+#line 2387 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____evaluated_pseudo_type_info_thunk_0_0(
+#line 2387 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2387 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2387 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2387 "erlang_rtti_implementation.m"
+{
+#line 2387 "erlang_rtti_implementation.m"
+  {
+#line 2387 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2387 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_22 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2387 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_23 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 2387 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_22 == mercury__erlang_rtti_implementation__CastY_23);
+#line 2387 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 13604 "erlang_rtti_implementation.c"
+      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2387 "erlang_rtti_implementation.m"
+    else
+#line 2387 "erlang_rtti_implementation.m"
+#line 2387 "erlang_rtti_implementation.m"
+      switch (MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) {
+#line 2387 "erlang_rtti_implementation.m"
+        default: /*NOTREACHED*/ MR_assert(0);
+#line 2387 "erlang_rtti_implementation.m"
+        case (MR_Integer) 0:
+#line 2387 "erlang_rtti_implementation.m"
+          {
+#line 2387 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_28_28 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 2387 "erlang_rtti_implementation.m"
+#line 2387 "erlang_rtti_implementation.m"
+            switch (MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__3_3)) {
+#line 2387 "erlang_rtti_implementation.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 2387 "erlang_rtti_implementation.m"
+              case (MR_Integer) 0:
+#line 2387 "erlang_rtti_implementation.m"
+                {
+#line 2387 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 71 "private_builtin.opt"
+                  mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_28_28 < mercury__erlang_rtti_implementation__V_5_5);
+#line 74 "private_builtin.opt"
+                  if (mercury__erlang_rtti_implementation__succeeded)
+#line 73 "private_builtin.opt"
+                    *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 1;
+#line 74 "private_builtin.opt"
+                  else
+#line 79 "private_builtin.opt"
+                    {
+#line 76 "private_builtin.opt"
+                      mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_28_28 == mercury__erlang_rtti_implementation__V_5_5);
+#line 79 "private_builtin.opt"
+                      if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+                        *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+                      else
+#line 80 "private_builtin.opt"
+                        *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 2;
+#line 79 "private_builtin.opt"
+                    }
+#line 2387 "erlang_rtti_implementation.m"
+                }
+#line 2387 "erlang_rtti_implementation.m"
+                break;
+#line 2387 "erlang_rtti_implementation.m"
+              case (MR_Integer) 1:
+#line 13660 "erlang_rtti_implementation.c"
+                *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 1;
+#line 2387 "erlang_rtti_implementation.m"
+                break;
+#line 2387 "erlang_rtti_implementation.m"
+              case (MR_Integer) 2:
+#line 13666 "erlang_rtti_implementation.c"
+                *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 1;
+#line 2387 "erlang_rtti_implementation.m"
+                break;
+#line 2387 "erlang_rtti_implementation.m"
+            }
+#line 2387 "erlang_rtti_implementation.m"
+          }
+#line 2387 "erlang_rtti_implementation.m"
+          break;
+#line 2387 "erlang_rtti_implementation.m"
+        case (MR_Integer) 1:
+#line 2387 "erlang_rtti_implementation.m"
+          {
+#line 2387 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_26_26 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+
+#line 2387 "erlang_rtti_implementation.m"
+#line 2387 "erlang_rtti_implementation.m"
+            switch (MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__3_3)) {
+#line 2387 "erlang_rtti_implementation.m"
+              default: /*NOTREACHED*/ MR_assert(0);
+#line 2387 "erlang_rtti_implementation.m"
+              case (MR_Integer) 0:
+#line 13690 "erlang_rtti_implementation.c"
+                *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 2;
+#line 2387 "erlang_rtti_implementation.m"
+                break;
+#line 2387 "erlang_rtti_implementation.m"
+              case (MR_Integer) 1:
+#line 2387 "erlang_rtti_implementation.m"
+                {
+#line 2387 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 0)));
+
+#line 71 "private_builtin.opt"
+                  mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_26_26 < mercury__erlang_rtti_implementation__V_13_13);
+#line 74 "private_builtin.opt"
+                  if (mercury__erlang_rtti_implementation__succeeded)
+#line 73 "private_builtin.opt"
+                    *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 1;
+#line 74 "private_builtin.opt"
+                  else
+#line 79 "private_builtin.opt"
+                    {
+#line 76 "private_builtin.opt"
+                      mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_26_26 == mercury__erlang_rtti_implementation__V_13_13);
+#line 79 "private_builtin.opt"
+                      if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+                        *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+                      else
+#line 80 "private_builtin.opt"
+                        *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 2;
+#line 79 "private_builtin.opt"
+                    }
+#line 2387 "erlang_rtti_implementation.m"
+                }
+#line 2387 "erlang_rtti_implementation.m"
+                break;
+#line 2387 "erlang_rtti_implementation.m"
+              case (MR_Integer) 2:
+#line 13729 "erlang_rtti_implementation.c"
+                *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 1;
+#line 2387 "erlang_rtti_implementation.m"
+                break;
+#line 2387 "erlang_rtti_implementation.m"
+            }
+#line 2387 "erlang_rtti_implementation.m"
+          }
+#line 2387 "erlang_rtti_implementation.m"
+          break;
+#line 2387 "erlang_rtti_implementation.m"
+        case (MR_Integer) 2:
+#line 2387 "erlang_rtti_implementation.m"
+#line 2387 "erlang_rtti_implementation.m"
+          switch (MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__3_3)) {
+#line 2387 "erlang_rtti_implementation.m"
+            default: /*NOTREACHED*/ MR_assert(0);
+#line 2387 "erlang_rtti_implementation.m"
+            case (MR_Integer) 0:
+#line 13748 "erlang_rtti_implementation.c"
+              *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 2;
+#line 2387 "erlang_rtti_implementation.m"
+              break;
+#line 2387 "erlang_rtti_implementation.m"
+            case (MR_Integer) 1:
+#line 13754 "erlang_rtti_implementation.c"
+              *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 2;
+#line 2387 "erlang_rtti_implementation.m"
+              break;
+#line 2387 "erlang_rtti_implementation.m"
+            case (MR_Integer) 2:
+#line 2387 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2387 "erlang_rtti_implementation.m"
+              break;
+#line 2387 "erlang_rtti_implementation.m"
+          }
+#line 2387 "erlang_rtti_implementation.m"
+          break;
+#line 2387 "erlang_rtti_implementation.m"
+      }
+#line 2387 "erlang_rtti_implementation.m"
+  }
+#line 2387 "erlang_rtti_implementation.m"
+}
+
+#line 2387 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____evaluated_pseudo_type_info_thunk_0_0(
+#line 2387 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2387 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2387 "erlang_rtti_implementation.m"
+{
+#line 2387 "erlang_rtti_implementation.m"
+  {
+#line 2387 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2387 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_9 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2387 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_10 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 2387 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_9 == mercury__erlang_rtti_implementation__CastY_10);
+#line 2387 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 2387 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 2387 "erlang_rtti_implementation.m"
+    else
+#line 2387 "erlang_rtti_implementation.m"
+#line 2387 "erlang_rtti_implementation.m"
+      switch (MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__1_1)) {
+#line 2387 "erlang_rtti_implementation.m"
+        default: /*NOTREACHED*/ MR_assert(0);
+#line 2387 "erlang_rtti_implementation.m"
+        case (MR_Integer) 0:
+#line 2387 "erlang_rtti_implementation.m"
+          {
+#line 2387 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_3_3 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 2387 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_4_4;
+
+#line 2387 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 0)));
+#line 2387 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 2387 "erlang_rtti_implementation.m"
+              {
+#line 2387 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 13823 "erlang_rtti_implementation.c"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_3_3 == mercury__erlang_rtti_implementation__V_4_4);
+#line 2387 "erlang_rtti_implementation.m"
+              }
+#line 2387 "erlang_rtti_implementation.m"
+          }
+#line 2387 "erlang_rtti_implementation.m"
+          break;
+#line 2387 "erlang_rtti_implementation.m"
+        case (MR_Integer) 1:
+#line 2387 "erlang_rtti_implementation.m"
+          {
+#line 2387 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 2387 "erlang_rtti_implementation.m"
+            MR_Integer mercury__erlang_rtti_implementation__V_6_6;
+
+#line 2387 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 2387 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 2387 "erlang_rtti_implementation.m"
+              {
+#line 2387 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 13848 "erlang_rtti_implementation.c"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_5_5 == mercury__erlang_rtti_implementation__V_6_6);
+#line 2387 "erlang_rtti_implementation.m"
+              }
+#line 2387 "erlang_rtti_implementation.m"
+          }
+#line 2387 "erlang_rtti_implementation.m"
+          break;
+#line 2387 "erlang_rtti_implementation.m"
+        case (MR_Integer) 2:
+#line 2387 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 2)));
+#line 2387 "erlang_rtti_implementation.m"
+          break;
+#line 2387 "erlang_rtti_implementation.m"
+      }
+#line 2387 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2387 "erlang_rtti_implementation.m"
+  }
+#line 2387 "erlang_rtti_implementation.m"
+}
+
+#line 162 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____erlang_type_ctor_rep_0_0(
+#line 162 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 162 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 162 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 162 "erlang_rtti_implementation.m"
+{
+#line 162 "erlang_rtti_implementation.m"
+  {
+#line 162 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 162 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__Cast_HeadVar1_4 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 162 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__Cast_HeadVar2_5 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 71 "private_builtin.opt"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Cast_HeadVar1_4 < mercury__erlang_rtti_implementation__Cast_HeadVar2_5);
+#line 74 "private_builtin.opt"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 73 "private_builtin.opt"
+      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 1;
+#line 74 "private_builtin.opt"
+    else
+#line 79 "private_builtin.opt"
+      {
+#line 76 "private_builtin.opt"
+        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Cast_HeadVar1_4 == mercury__erlang_rtti_implementation__Cast_HeadVar2_5);
+#line 79 "private_builtin.opt"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+          *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+        else
+#line 80 "private_builtin.opt"
+          *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 2;
+#line 79 "private_builtin.opt"
+      }
+#line 162 "erlang_rtti_implementation.m"
+  }
+#line 162 "erlang_rtti_implementation.m"
+}
+
+#line 162 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____erlang_type_ctor_rep_0_0(
+#line 162 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_1,
+#line 162 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 162 "erlang_rtti_implementation.m"
+{
+#line 13927 "erlang_rtti_implementation.c"
+  {
+#line 13929 "erlang_rtti_implementation.c"
+    MR_bool mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__HeadVar__2_1 == mercury__erlang_rtti_implementation__HeadVar__2_2);
+
+#line 13932 "erlang_rtti_implementation.c"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 13934 "erlang_rtti_implementation.c"
+  }
+#line 162 "erlang_rtti_implementation.m"
+}
+
+#line 2097 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____erlang_du_functor_0_0(
+#line 2097 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2097 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2097 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2097 "erlang_rtti_implementation.m"
+{
+#line 2097 "erlang_rtti_implementation.m"
+  {
+#line 2097 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2097 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_23 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2097 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_24 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 2097 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_23 == mercury__erlang_rtti_implementation__CastY_24);
+#line 2097 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 13963 "erlang_rtti_implementation.c"
+      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2097 "erlang_rtti_implementation.m"
+    else
+#line 2097 "erlang_rtti_implementation.m"
+      {
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 2)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_7_7 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 3)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 5)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 6)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_11_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 0)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 1)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 2)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 3)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 5)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 6)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_18_18;
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeInfo_25_25 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[5];
+
+#line 2097 "erlang_rtti_implementation.m"
+        {
+#line 2097 "erlang_rtti_implementation.m"
+          mercury__builtin__compare_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_25_25, &mercury__erlang_rtti_implementation__V_18_18, ((MR_Box) (mercury__erlang_rtti_implementation__V_4_4)), ((MR_Box) (mercury__erlang_rtti_implementation__V_11_11)));
+        }
+#line 14003 "erlang_rtti_implementation.c"
+        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_18_18 == (MR_Integer) 0);
+#line 2097 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2097 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2097 "erlang_rtti_implementation.m"
+          *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_18_18;
+#line 2097 "erlang_rtti_implementation.m"
+        else
+#line 2097 "erlang_rtti_implementation.m"
+          {
+#line 2097 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__V_19_19;
+
+#line 71 "private_builtin.opt"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_5_5 < mercury__erlang_rtti_implementation__V_12_12);
+#line 74 "private_builtin.opt"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 73 "private_builtin.opt"
+              mercury__erlang_rtti_implementation__V_19_19 = (MR_Integer) 1;
+#line 74 "private_builtin.opt"
+            else
+#line 79 "private_builtin.opt"
+              {
+#line 76 "private_builtin.opt"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_5_5 == mercury__erlang_rtti_implementation__V_12_12);
+#line 79 "private_builtin.opt"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+                  mercury__erlang_rtti_implementation__V_19_19 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+                else
+#line 80 "private_builtin.opt"
+                  mercury__erlang_rtti_implementation__V_19_19 = (MR_Integer) 2;
+#line 79 "private_builtin.opt"
+              }
+#line 14040 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_19_19 == (MR_Integer) 0);
+#line 2097 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2097 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 2097 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_19_19;
+#line 2097 "erlang_rtti_implementation.m"
+            else
+#line 2097 "erlang_rtti_implementation.m"
+              {
+#line 2097 "erlang_rtti_implementation.m"
+                MR_Word mercury__erlang_rtti_implementation__V_20_20;
+
+#line 71 "private_builtin.opt"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_6_6 < mercury__erlang_rtti_implementation__V_13_13);
+#line 74 "private_builtin.opt"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 73 "private_builtin.opt"
+                  mercury__erlang_rtti_implementation__V_20_20 = (MR_Integer) 1;
+#line 74 "private_builtin.opt"
+                else
+#line 79 "private_builtin.opt"
+                  {
+#line 76 "private_builtin.opt"
+                    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_6_6 == mercury__erlang_rtti_implementation__V_13_13);
+#line 79 "private_builtin.opt"
+                    if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+                      mercury__erlang_rtti_implementation__V_20_20 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+                    else
+#line 80 "private_builtin.opt"
+                      mercury__erlang_rtti_implementation__V_20_20 = (MR_Integer) 2;
+#line 79 "private_builtin.opt"
+                  }
+#line 14077 "erlang_rtti_implementation.c"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_20_20 == (MR_Integer) 0);
+#line 2097 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2097 "erlang_rtti_implementation.m"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 2097 "erlang_rtti_implementation.m"
+                  *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_20_20;
+#line 2097 "erlang_rtti_implementation.m"
+                else
+#line 2097 "erlang_rtti_implementation.m"
+                  {
+#line 2097 "erlang_rtti_implementation.m"
+                    MR_Word mercury__erlang_rtti_implementation__V_21_21;
+
+#line 71 "private_builtin.opt"
+                    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_7_7 < mercury__erlang_rtti_implementation__V_14_14);
+#line 74 "private_builtin.opt"
+                    if (mercury__erlang_rtti_implementation__succeeded)
+#line 73 "private_builtin.opt"
+                      mercury__erlang_rtti_implementation__V_21_21 = (MR_Integer) 1;
+#line 74 "private_builtin.opt"
+                    else
+#line 79 "private_builtin.opt"
+                      {
+#line 76 "private_builtin.opt"
+                        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_7_7 == mercury__erlang_rtti_implementation__V_14_14);
+#line 79 "private_builtin.opt"
+                        if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+                          mercury__erlang_rtti_implementation__V_21_21 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+                        else
+#line 80 "private_builtin.opt"
+                          mercury__erlang_rtti_implementation__V_21_21 = (MR_Integer) 2;
+#line 79 "private_builtin.opt"
+                      }
+#line 14114 "erlang_rtti_implementation.c"
+                    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_21_21 == (MR_Integer) 0);
+#line 2097 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2097 "erlang_rtti_implementation.m"
+                    if (mercury__erlang_rtti_implementation__succeeded)
+#line 2097 "erlang_rtti_implementation.m"
+                      *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_21_21;
+#line 2097 "erlang_rtti_implementation.m"
+                    else
+#line 2097 "erlang_rtti_implementation.m"
+                      {
+#line 2097 "erlang_rtti_implementation.m"
+                        MR_Word mercury__erlang_rtti_implementation__V_22_22;
+#line 2097 "erlang_rtti_implementation.m"
+                        MR_Word mercury__erlang_rtti_implementation__TypeInfo_29_29 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[7];
+
+#line 2097 "erlang_rtti_implementation.m"
+                        {
+#line 2097 "erlang_rtti_implementation.m"
+                          mercury__builtin__compare_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_29_29, &mercury__erlang_rtti_implementation__V_22_22, ((MR_Box) (mercury__erlang_rtti_implementation__V_9_9)), ((MR_Box) (mercury__erlang_rtti_implementation__V_16_16)));
+                        }
+#line 14136 "erlang_rtti_implementation.c"
+                        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_22_22 == (MR_Integer) 0);
+#line 2097 "erlang_rtti_implementation.m"
+                        mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2097 "erlang_rtti_implementation.m"
+                        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2097 "erlang_rtti_implementation.m"
+                          *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_22_22;
+#line 2097 "erlang_rtti_implementation.m"
+                        else
+#line 2097 "erlang_rtti_implementation.m"
+                          {
+#line 2097 "erlang_rtti_implementation.m"
+                            MR_Word mercury__erlang_rtti_implementation__TypeInfo_30_30 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[8];
+
+#line 2097 "erlang_rtti_implementation.m"
+                            {
+#line 2097 "erlang_rtti_implementation.m"
+                              mercury__builtin__compare_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_30_30, mercury__erlang_rtti_implementation__HeadVar__1_1, ((MR_Box) (mercury__erlang_rtti_implementation__V_10_10)), ((MR_Box) (mercury__erlang_rtti_implementation__V_17_17)));
+#line 2097 "erlang_rtti_implementation.m"
+                              return;
+                            }
+#line 2097 "erlang_rtti_implementation.m"
+                          }
+#line 2097 "erlang_rtti_implementation.m"
+                      }
+#line 2097 "erlang_rtti_implementation.m"
+                  }
+#line 2097 "erlang_rtti_implementation.m"
+              }
+#line 2097 "erlang_rtti_implementation.m"
+          }
+#line 2097 "erlang_rtti_implementation.m"
+      }
+#line 2097 "erlang_rtti_implementation.m"
+  }
+#line 2097 "erlang_rtti_implementation.m"
+}
+
+#line 2097 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____erlang_du_functor_0_0(
+#line 2097 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2097 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2097 "erlang_rtti_implementation.m"
+{
+#line 2097 "erlang_rtti_implementation.m"
+  {
+#line 2097 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2097 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_17 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2097 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_18 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 2097 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_17 == mercury__erlang_rtti_implementation__CastY_18);
+#line 2097 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 2097 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 2097 "erlang_rtti_implementation.m"
+    else
+#line 2097 "erlang_rtti_implementation.m"
+      {
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeInfo_19_19 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[5];
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeInfo_20_20;
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeInfo_21_21;
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_4_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 1)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_5_5 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 2)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_6_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 3)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 5)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_9_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 6)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_10_10 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_11_11 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_12_12 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 2)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 3)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_15_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 5)));
+#line 2097 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 6)));
+
+#line 14234 "erlang_rtti_implementation.c"
+        {
+#line 14236 "erlang_rtti_implementation.c"
+          mercury__erlang_rtti_implementation__succeeded = mercury__builtin__unify_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_19_19, ((MR_Box) (mercury__erlang_rtti_implementation__V_3_3)), ((MR_Box) (mercury__erlang_rtti_implementation__V_10_10)));
+        }
+#line 2097 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2097 "erlang_rtti_implementation.m"
+          {
+#line 14243 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_4_4 == mercury__erlang_rtti_implementation__V_11_11);
+#line 2097 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 2097 "erlang_rtti_implementation.m"
+              {
+#line 14249 "erlang_rtti_implementation.c"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_5_5 == mercury__erlang_rtti_implementation__V_12_12);
+#line 2097 "erlang_rtti_implementation.m"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 2097 "erlang_rtti_implementation.m"
+                  {
+#line 14255 "erlang_rtti_implementation.c"
+                    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_6_6 == mercury__erlang_rtti_implementation__V_13_13);
+#line 2097 "erlang_rtti_implementation.m"
+                    if (mercury__erlang_rtti_implementation__succeeded)
+#line 2097 "erlang_rtti_implementation.m"
+                      {
+#line 14261 "erlang_rtti_implementation.c"
+                        mercury__erlang_rtti_implementation__TypeInfo_20_20 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[7];
+#line 14263 "erlang_rtti_implementation.c"
+                        {
+#line 14265 "erlang_rtti_implementation.c"
+                          mercury__erlang_rtti_implementation__succeeded = mercury__builtin__unify_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_20_20, ((MR_Box) (mercury__erlang_rtti_implementation__V_8_8)), ((MR_Box) (mercury__erlang_rtti_implementation__V_15_15)));
+                        }
+#line 2097 "erlang_rtti_implementation.m"
+                        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2097 "erlang_rtti_implementation.m"
+                          {
+#line 14272 "erlang_rtti_implementation.c"
+                            mercury__erlang_rtti_implementation__TypeInfo_21_21 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[8];
+#line 14274 "erlang_rtti_implementation.c"
+                            {
+#line 14276 "erlang_rtti_implementation.c"
+                              return mercury__erlang_rtti_implementation__succeeded = mercury__builtin__unify_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_21_21, ((MR_Box) (mercury__erlang_rtti_implementation__V_9_9)), ((MR_Box) (mercury__erlang_rtti_implementation__V_16_16)));
+                            }
+#line 2097 "erlang_rtti_implementation.m"
+                          }
+#line 2097 "erlang_rtti_implementation.m"
+                      }
+#line 2097 "erlang_rtti_implementation.m"
+                  }
+#line 2097 "erlang_rtti_implementation.m"
+              }
+#line 2097 "erlang_rtti_implementation.m"
+          }
+#line 2097 "erlang_rtti_implementation.m"
+      }
+#line 2097 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2097 "erlang_rtti_implementation.m"
+  }
+#line 2097 "erlang_rtti_implementation.m"
+}
+
+#line 2094 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____erlang_atom_0_0(
+#line 2094 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 2094 "erlang_rtti_implementation.m"
+{
+#line 2094 "erlang_rtti_implementation.m"
+  {
+#line 2094 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2094 "erlang_rtti_implementation.m"
+    {
+#line 2094 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_67_111_109_112_97_114_101_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_101_114_108_97_110_103_95_97_116_111_109_95_48_95_95_91_50_44_32_51_93_95_48_3_p_0(mercury__erlang_rtti_implementation__HeadVar__1_1);
+#line 2094 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 2094 "erlang_rtti_implementation.m"
+  }
+#line 2094 "erlang_rtti_implementation.m"
+}
+
+#line 2094 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____erlang_atom_0_0(void)
+#line 2094 "erlang_rtti_implementation.m"
+{
+#line 2094 "erlang_rtti_implementation.m"
+  {
+#line 2094 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2094 "erlang_rtti_implementation.m"
+    {
+#line 2094 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_95_95_85_110_105_102_121_95_95_95_101_114_108_97_110_103_95_114_116_116_105_95_105_109_112_108_101_109_101_110_116_97_116_105_111_110_95_95_101_114_108_97_110_103_95_97_116_111_109_95_48_95_95_91_49_44_32_50_93_95_48_2_p_0();
+    }
+#line 2094 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2094 "erlang_rtti_implementation.m"
+  }
+#line 2094 "erlang_rtti_implementation.m"
+}
+
+#line 2108 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation____Compare____du_arg_info_0_0(
+#line 2108 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2108 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2,
+#line 2108 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__3_3)
+#line 2108 "erlang_rtti_implementation.m"
+{
+#line 2108 "erlang_rtti_implementation.m"
+  {
+#line 2108 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2108 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_9 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2108 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_10 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__3_3;
+
+#line 2108 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_9 == mercury__erlang_rtti_implementation__CastY_10);
+#line 2108 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 14368 "erlang_rtti_implementation.c"
+      *mercury__erlang_rtti_implementation__HeadVar__1_1 = (MR_Integer) 0;
+#line 2108 "erlang_rtti_implementation.m"
+    else
+#line 2108 "erlang_rtti_implementation.m"
+      {
+#line 2108 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 2108 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 2108 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 0)));
+#line 2108 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_7_7 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__3_3, (MR_Integer) 1)));
+#line 2108 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_8_8;
+#line 2108 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeInfo_11_11 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[6];
+
+#line 2108 "erlang_rtti_implementation.m"
+        {
+#line 2108 "erlang_rtti_implementation.m"
+          mercury__builtin__compare_3_p_0(mercury__erlang_rtti_implementation__TypeInfo_11_11, &mercury__erlang_rtti_implementation__V_8_8, ((MR_Box) (mercury__erlang_rtti_implementation__V_4_4)), ((MR_Box) (mercury__erlang_rtti_implementation__V_6_6)));
+        }
+#line 14392 "erlang_rtti_implementation.c"
+        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_8_8 == (MR_Integer) 0);
+#line 2108 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = !(mercury__erlang_rtti_implementation__succeeded);
+#line 2108 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2108 "erlang_rtti_implementation.m"
+          *mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__V_8_8;
+#line 2108 "erlang_rtti_implementation.m"
+        else
+#line 2108 "erlang_rtti_implementation.m"
+          {
+#line 2108 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation____Compare____maybe_pseudo_type_info_0_0(mercury__erlang_rtti_implementation__HeadVar__1_1, mercury__erlang_rtti_implementation__V_5_5, mercury__erlang_rtti_implementation__V_7_7);
+#line 2108 "erlang_rtti_implementation.m"
+            return;
+          }
+#line 2108 "erlang_rtti_implementation.m"
+      }
+#line 2108 "erlang_rtti_implementation.m"
+  }
+#line 2108 "erlang_rtti_implementation.m"
+}
+
+#line 2108 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation____Unify____du_arg_info_0_0(
+#line 2108 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 2108 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 2108 "erlang_rtti_implementation.m"
+{
+#line 2108 "erlang_rtti_implementation.m"
+  {
+#line 2108 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2108 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastX_7 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__1_1;
+#line 2108 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__CastY_8 = (MR_Integer) mercury__erlang_rtti_implementation__HeadVar__2_2;
+
+#line 2108 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__CastX_7 == mercury__erlang_rtti_implementation__CastY_8);
+#line 2108 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 2108 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 2108 "erlang_rtti_implementation.m"
+    else
+#line 2108 "erlang_rtti_implementation.m"
+      {
+#line 2108 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeInfo_9_9 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[6];
+#line 2108 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_3_3 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 2108 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_4_4 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 1)));
+#line 2108 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_5_5 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 0)));
+#line 2108 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_6_6 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+
+#line 14455 "erlang_rtti_implementation.c"
+        {
+#line 14457 "erlang_rtti_implementation.c"
+          mercury__erlang_rtti_implementation__succeeded = mercury__builtin__unify_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_9_9, ((MR_Box) (mercury__erlang_rtti_implementation__V_3_3)), ((MR_Box) (mercury__erlang_rtti_implementation__V_5_5)));
+        }
+#line 2108 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 14462 "erlang_rtti_implementation.c"
+          {
+#line 14464 "erlang_rtti_implementation.c"
+            return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation____Unify____maybe_pseudo_type_info_0_0(mercury__erlang_rtti_implementation__V_4_4, mercury__erlang_rtti_implementation__V_6_6);
+          }
+#line 2108 "erlang_rtti_implementation.m"
+      }
+#line 2108 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2108 "erlang_rtti_implementation.m"
+  }
+#line 2108 "erlang_rtti_implementation.m"
+}
+
+#line 2444 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__is_erlang_backend_0_p_0(void)
+#line 2444 "erlang_rtti_implementation.m"
+{
+#line 2455 "erlang_rtti_implementation.m"
+  {
+#line 2455 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2455 "erlang_rtti_implementation.m"
+    {
+#line 2455 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_fail_0_p_0();
+    }
+#line 2455 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 2455 "erlang_rtti_implementation.m"
+  }
+#line 2444 "erlang_rtti_implementation.m"
+}
+
+#line 2392 "erlang_rtti_implementation.m"
+MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__eval_pseudo_type_info_thunk_1_f_0(void)
+#line 2392 "erlang_rtti_implementation.m"
+{
+#line 2419 "erlang_rtti_implementation.m"
+  {
+#line 2419 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2419 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2419 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_5_5 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_pseudo_type_info_thunk_0;
+#line 2419 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_6_6 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_evaluated_pseudo_type_info_thunk_0;
+#line 2419 "erlang_rtti_implementation.m"
+    MR_Box mercury__erlang_rtti_implementation__conv0_HeadVar__2_2;
+
+#line 2419 "erlang_rtti_implementation.m"
+    {
+#line 2419 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__conv0_HeadVar__2_2 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_5_5, mercury__erlang_rtti_implementation__TypeCtorInfo_6_6, ((MR_Box) ((MR_Integer) 0)));
+    }
+#line 2419 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__HeadVar__2_2 = ((MR_Word) mercury__erlang_rtti_implementation__conv0_HeadVar__2_2);
+#line 2420 "erlang_rtti_implementation.m"
+    {
+#line 2420 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "eval_pseudo_type_info/1");
+    }
+#line 2419 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 2419 "erlang_rtti_implementation.m"
+  }
+#line 2392 "erlang_rtti_implementation.m"
+}
+
+#line 2257 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__eval_type_info_2_f_0(
+#line 2257 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_21,
+#line 2257 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__I_4)
+#line 2257 "erlang_rtti_implementation.m"
+{
+#line 2259 "erlang_rtti_implementation.m"
+  {
+#line 2259 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2260 "erlang_rtti_implementation.m"
+    {
+#line 2260 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 2261 "erlang_rtti_implementation.m"
+    {
+#line 2261 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_121_112_101_95_99_116_111_114_95_105_115_95_118_97_114_105_97_98_108_101_95_97_114_105_116_121_95_95_91_49_93_95_48_1_p_0();
+    }
+#line 2266 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 2262 "erlang_rtti_implementation.m"
+      {
+#line 2262 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_11_11;
+#line 2262 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_7_37;
+#line 2263 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__ArgTypeInfos_9;
+
+#line 1677 "erlang_rtti_implementation.m"
+        {
+#line 1677 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "var_arity_type_info_arity");
+        }
+#line 57 "list.opt"
+        mercury__erlang_rtti_implementation__V_7_37 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 58 "list.opt"
+        {
+#line 58 "list.opt"
+          mercury__list__successive_integers_4_p_0((MR_Integer) 1, (MR_Integer) 0, mercury__erlang_rtti_implementation__V_7_37, &mercury__erlang_rtti_implementation__V_11_11);
+        }
+#line 2263 "erlang_rtti_implementation.m"
+        {
+#line 2263 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__ArgTypeInfos_9 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_55_95_95_91_51_44_32_52_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_21, mercury__erlang_rtti_implementation__I_4, mercury__erlang_rtti_implementation__V_11_11);
+        }
+#line 2325 "erlang_rtti_implementation.m"
+        mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 2326 "erlang_rtti_implementation.m"
+        {
+#line 2326 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "create_var_arity_type_info/3");
+#line 2326 "erlang_rtti_implementation.m"
+          return;
+        }
+#line 2262 "erlang_rtti_implementation.m"
+      }
+#line 2266 "erlang_rtti_implementation.m"
+    else
+#line 2268 "erlang_rtti_implementation.m"
+      {
+#line 1823 "erlang_rtti_implementation.m"
+        {
+#line 1823 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_arity");
+        }
+#line 2266 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+#line 2268 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 2267 "erlang_rtti_implementation.m"
+          {
+#line 2267 "erlang_rtti_implementation.m"
+          }
+#line 2268 "erlang_rtti_implementation.m"
+        else
+#line 2269 "erlang_rtti_implementation.m"
+          {
+#line 2269 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__V_15_15;
+#line 2269 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__V_7_49;
+#line 2270 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__ArgTypeInfos_18;
+
+#line 1823 "erlang_rtti_implementation.m"
+            {
+#line 1823 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_arity");
+            }
+#line 57 "list.opt"
+            mercury__erlang_rtti_implementation__V_7_49 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 58 "list.opt"
+            {
+#line 58 "list.opt"
+              mercury__list__successive_integers_4_p_0((MR_Integer) 1, (MR_Integer) 0, mercury__erlang_rtti_implementation__V_7_49, &mercury__erlang_rtti_implementation__V_15_15);
+            }
+#line 2270 "erlang_rtti_implementation.m"
+            {
+#line 2270 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__ArgTypeInfos_18 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_109_97_112_95_95_104_111_54_95_95_91_51_44_32_52_93_95_48_2_f_in__list_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_21, mercury__erlang_rtti_implementation__I_4, mercury__erlang_rtti_implementation__V_15_15);
+            }
+#line 2307 "erlang_rtti_implementation.m"
+            mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 2308 "erlang_rtti_implementation.m"
+            {
+#line 2308 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "create_type_info/2");
+#line 2308 "erlang_rtti_implementation.m"
+              return;
+            }
+#line 2269 "erlang_rtti_implementation.m"
+          }
+#line 2268 "erlang_rtti_implementation.m"
+      }
+#line 2259 "erlang_rtti_implementation.m"
+  }
+#line 2257 "erlang_rtti_implementation.m"
+}
+
+#line 2251 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__eval_type_info_thunk_2_f_0(
+#line 2251 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_8,
+#line 2251 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__I_4)
+#line 2251 "erlang_rtti_implementation.m"
+{
+#line 2253 "erlang_rtti_implementation.m"
+  {
+#line 2253 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2253 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_5_11 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_thunk_0;
+#line 2253 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_6_12 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0;
+#line 2437 "erlang_rtti_implementation.m"
+    MR_Box mercury__erlang_rtti_implementation__conv0_TI_7;
+
+#line 2437 "erlang_rtti_implementation.m"
+    {
+#line 2437 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__conv0_TI_7 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_5_11, mercury__erlang_rtti_implementation__TypeCtorInfo_6_12, ((MR_Box) ((MR_Integer) 0)));
+    }
+#line 2438 "erlang_rtti_implementation.m"
+    {
+#line 2438 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "eval_type_info_thunk_2/1");
+    }
+#line 2255 "erlang_rtti_implementation.m"
+    {
+#line 2255 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__eval_type_info_2_f_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_8, mercury__erlang_rtti_implementation__I_4);
+#line 2255 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 2253 "erlang_rtti_implementation.m"
+  }
+#line 2251 "erlang_rtti_implementation.m"
+}
+
+#line 2187 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__eval_pseudo_type_info_3_f_0(
+#line 2187 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_19,
+#line 2187 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_6)
+#line 2187 "erlang_rtti_implementation.m"
+{
+#line 2190 "erlang_rtti_implementation.m"
+  {
+#line 2190 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2190 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__EvalResult_9;
+
+#line 2191 "erlang_rtti_implementation.m"
+    {
+#line 2191 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__EvalResult_9 = mercury__erlang_rtti_implementation__eval_pseudo_type_info_thunk_1_f_0();
+    }
+#line 2195 "erlang_rtti_implementation.m"
+#line 2195 "erlang_rtti_implementation.m"
+    switch (MR_tag((MR_Word) mercury__erlang_rtti_implementation__EvalResult_9)) {
+#line 2195 "erlang_rtti_implementation.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 2195 "erlang_rtti_implementation.m"
+      case (MR_Integer) 0:
+#line 2193 "erlang_rtti_implementation.m"
+        {
+#line 2193 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__N_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__EvalResult_9, (MR_Integer) 0)));
+
+#line 2194 "erlang_rtti_implementation.m"
+          {
+#line 2194 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_105_110_100_101_120_95_95_91_50_93_95_48_2_f_0(mercury__erlang_rtti_implementation__N_10);
+#line 2194 "erlang_rtti_implementation.m"
+            return;
+          }
+#line 2193 "erlang_rtti_implementation.m"
+        }
+#line 2195 "erlang_rtti_implementation.m"
+        break;
+#line 2195 "erlang_rtti_implementation.m"
+      case (MR_Integer) 1:
+#line 2196 "erlang_rtti_implementation.m"
+        {
+#line 2196 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__N_18 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__EvalResult_9, (MR_Integer) 0)));
+
+#line 2200 "erlang_rtti_implementation.m"
+          if ((mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_6 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 2201 "erlang_rtti_implementation.m"
+            {
+#line 2201 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_20_20 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 2201 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_21_21 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0;
+#line 2204 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__conv0_TypeInfo_8;
+
+#line 2204 "erlang_rtti_implementation.m"
+              {
+#line 2204 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__conv0_TypeInfo_8 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_20_20, mercury__erlang_rtti_implementation__TypeCtorInfo_21_21, ((MR_Box) (mercury__erlang_rtti_implementation__N_18)));
+              }
+#line 2201 "erlang_rtti_implementation.m"
+            }
+#line 2200 "erlang_rtti_implementation.m"
+          else
+#line 2198 "erlang_rtti_implementation.m"
+            {
+#line 2198 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__Functor_11;
+#line 2198 "erlang_rtti_implementation.m"
+              MR_Tuple mercury__erlang_rtti_implementation__V_17_17 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_6, (MR_Integer) 0)));
+#line 2198 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__MaybeExist_29;
+#line 2198 "erlang_rtti_implementation.m"
+              MR_Box mercury__erlang_rtti_implementation__Term_12;
+#line 2215 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_48_48;
+#line 2215 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_49_49;
+#line 2215 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_50_50;
+#line 2215 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_51_51;
+#line 2215 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__V_53_53;
+
+#line 2198 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Functor_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_17_17, (MR_Integer) 0)));
+#line 2198 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__Term_12 = (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_17_17, (MR_Integer) 1));
+#line 2215 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_48_48 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_11, (MR_Integer) 0)));
+#line 2215 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_49_49 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_11, (MR_Integer) 1)));
+#line 2215 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_50_50 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_11, (MR_Integer) 2)));
+#line 2215 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_51_51 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_11, (MR_Integer) 3)));
+#line 2215 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_53_53 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_11, (MR_Integer) 5)));
+#line 2215 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__MaybeExist_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_11, (MR_Integer) 6)));
+#line 2246 "erlang_rtti_implementation.m"
+              if ((mercury__erlang_rtti_implementation__MaybeExist_29 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 2247 "erlang_rtti_implementation.m"
+                {
+#line 2248 "erlang_rtti_implementation.m"
+                  {
+#line 2248 "erlang_rtti_implementation.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "function \140erlang_rtti_implementation.exist_type_info\'/4", (MR_String) "no exist info");
+#line 2248 "erlang_rtti_implementation.m"
+                    return;
+                  }
+#line 2247 "erlang_rtti_implementation.m"
+                }
+#line 2246 "erlang_rtti_implementation.m"
+              else
+#line 2217 "erlang_rtti_implementation.m"
+                {
+#line 2217 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_40_57 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_exist_typeinfo_locn_0;
+#line 2217 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__ExistInfo_30 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__MaybeExist_29, (MR_Integer) 0)));
+#line 2217 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__ExistLocn_31;
+#line 2217 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_40_40 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ExistInfo_30, (MR_Integer) 3)));
+#line 2217 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_41_41 = (mercury__erlang_rtti_implementation__N_18 - (MR_Integer) 512);
+#line 2217 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_7_69 = (mercury__erlang_rtti_implementation__V_41_41 - (MR_Integer) 1);
+#line 2219 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_54_54 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ExistInfo_30, (MR_Integer) 0)));
+#line 2219 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_55_55 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ExistInfo_30, (MR_Integer) 1)));
+#line 2219 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_56_56 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ExistInfo_30, (MR_Integer) 2)));
+#line 150 "list.opt"
+                  MR_Box mercury__erlang_rtti_implementation__conv1_ExistLocn_31;
+
+#line 150 "list.opt"
+                  {
+#line 150 "list.opt"
+                    mercury__list__det_index0_3_p_0(mercury__erlang_rtti_implementation__TypeCtorInfo_40_57, mercury__erlang_rtti_implementation__V_40_40, mercury__erlang_rtti_implementation__V_7_69, &mercury__erlang_rtti_implementation__conv1_ExistLocn_31);
+                  }
+#line 150 "list.opt"
+                  mercury__erlang_rtti_implementation__ExistLocn_31 = ((MR_Word) mercury__erlang_rtti_implementation__conv1_ExistLocn_31);
+#line 2226 "erlang_rtti_implementation.m"
+                  if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__ExistLocn_31)) == (MR_mktag((MR_Integer) 0))))
+#line 2221 "erlang_rtti_implementation.m"
+                    {
+#line 2221 "erlang_rtti_implementation.m"
+                      MR_Word mercury__erlang_rtti_implementation__TypeInfo_41_58;
+#line 2221 "erlang_rtti_implementation.m"
+                      MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_42_59 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0;
+#line 2221 "erlang_rtti_implementation.m"
+                      MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_77;
+#line 2221 "erlang_rtti_implementation.m"
+                      MR_Box mercury__erlang_rtti_implementation__V_46_46;
+#line 2225 "erlang_rtti_implementation.m"
+                      MR_Box mercury__erlang_rtti_implementation__conv2_TypeInfo_8;
+
+#line 1870 "erlang_rtti_implementation.m"
+                      {
+#line 1870 "erlang_rtti_implementation.m"
+                        mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "get_subterm");
+                      }
+#line 14876 "erlang_rtti_implementation.c"
+                      mercury__erlang_rtti_implementation__TypeInfo_for_T_77 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 14878 "erlang_rtti_implementation.c"
+                      mercury__erlang_rtti_implementation__V_46_46 = ((MR_Box) ((MR_Integer) 42));
+#line 14880 "erlang_rtti_implementation.c"
+                      mercury__erlang_rtti_implementation__TypeInfo_41_58 = mercury__erlang_rtti_implementation__TypeInfo_for_T_77;
+#line 2225 "erlang_rtti_implementation.m"
+                      {
+#line 2225 "erlang_rtti_implementation.m"
+                        mercury__erlang_rtti_implementation__conv2_TypeInfo_8 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_41_58, mercury__erlang_rtti_implementation__TypeCtorInfo_42_59, mercury__erlang_rtti_implementation__V_46_46);
+                      }
+#line 2221 "erlang_rtti_implementation.m"
+                    }
+#line 2226 "erlang_rtti_implementation.m"
+                  else
+#line 2227 "erlang_rtti_implementation.m"
+                    {
+#line 2227 "erlang_rtti_implementation.m"
+                      MR_Word mercury__erlang_rtti_implementation__TypeInfo_44_61;
+#line 2227 "erlang_rtti_implementation.m"
+                      MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_45_62;
+#line 2227 "erlang_rtti_implementation.m"
+                      MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_85;
+#line 2227 "erlang_rtti_implementation.m"
+                      MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_93;
+#line 2227 "erlang_rtti_implementation.m"
+                      MR_Box mercury__erlang_rtti_implementation__V_44_44;
+#line 14903 "erlang_rtti_implementation.c"
+                      MR_Box mercury__erlang_rtti_implementation__TypeClassInfo_36;
+#line 14905 "erlang_rtti_implementation.c"
+                      MR_Word mercury__erlang_rtti_implementation__TypeInfo_43_60;
+#line 2244 "erlang_rtti_implementation.m"
+                      MR_Box mercury__erlang_rtti_implementation__conv3_TypeInfo_8;
+
+#line 1870 "erlang_rtti_implementation.m"
+                      {
+#line 1870 "erlang_rtti_implementation.m"
+                        mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "get_subterm");
+                      }
+#line 14915 "erlang_rtti_implementation.c"
+                      mercury__erlang_rtti_implementation__TypeInfo_for_T_85 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 14917 "erlang_rtti_implementation.c"
+                      mercury__erlang_rtti_implementation__TypeClassInfo_36 = ((MR_Box) ((MR_Integer) 42));
+#line 14919 "erlang_rtti_implementation.c"
+                      mercury__erlang_rtti_implementation__TypeInfo_43_60 = mercury__erlang_rtti_implementation__TypeInfo_for_T_85;
+#line 14921 "erlang_rtti_implementation.c"
+                      mercury__erlang_rtti_implementation__TypeCtorInfo_45_62 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0;
+#line 1870 "erlang_rtti_implementation.m"
+                      {
+#line 1870 "erlang_rtti_implementation.m"
+                        mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "get_subterm");
+                      }
+#line 14928 "erlang_rtti_implementation.c"
+                      mercury__erlang_rtti_implementation__TypeInfo_for_T_93 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 14930 "erlang_rtti_implementation.c"
+                      mercury__erlang_rtti_implementation__V_44_44 = ((MR_Box) ((MR_Integer) 42));
+#line 14932 "erlang_rtti_implementation.c"
+                      mercury__erlang_rtti_implementation__TypeInfo_44_61 = mercury__erlang_rtti_implementation__TypeInfo_for_T_93;
+#line 2244 "erlang_rtti_implementation.m"
+                      {
+#line 2244 "erlang_rtti_implementation.m"
+                        mercury__erlang_rtti_implementation__conv3_TypeInfo_8 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_44_61, mercury__erlang_rtti_implementation__TypeCtorInfo_45_62, mercury__erlang_rtti_implementation__V_44_44);
+                      }
+#line 2227 "erlang_rtti_implementation.m"
+                    }
+#line 2217 "erlang_rtti_implementation.m"
+                }
+#line 2198 "erlang_rtti_implementation.m"
+            }
+#line 2196 "erlang_rtti_implementation.m"
+        }
+#line 2195 "erlang_rtti_implementation.m"
+        break;
+#line 2195 "erlang_rtti_implementation.m"
+      case (MR_Integer) 2:
+#line 2207 "erlang_rtti_implementation.m"
+        {
+#line 2207 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_22_22;
+#line 2207 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_23_23;
+#line 2207 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__Info_14;
+#line 2207 "erlang_rtti_implementation.m"
+          MR_Tuple mercury__erlang_rtti_implementation__V_15_15;
+#line 2209 "erlang_rtti_implementation.m"
+          MR_Box mercury__erlang_rtti_implementation__conv4_V_16_16;
+
+#line 2208 "erlang_rtti_implementation.m"
+          {
+#line 2208 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_15_15 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 2208 "erlang_rtti_implementation.m"
+            MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_15_15, 0) = NULL;
+#line 2208 "erlang_rtti_implementation.m"
+            MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_15_15, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_6));
+#line 2208 "erlang_rtti_implementation.m"
+          }
+#line 2208 "erlang_rtti_implementation.m"
+          {
+#line 2208 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__Info_14 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 2208 "erlang_rtti_implementation.m"
+            MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Info_14, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_15_15));
+#line 2208 "erlang_rtti_implementation.m"
+          }
+#line 14982 "erlang_rtti_implementation.c"
+          mercury__erlang_rtti_implementation__TypeCtorInfo_22_22 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_pseudo_type_info_0;
+#line 14984 "erlang_rtti_implementation.c"
+          mercury__erlang_rtti_implementation__TypeCtorInfo_23_23 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0;
+#line 2209 "erlang_rtti_implementation.m"
+          {
+#line 2209 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__conv4_V_16_16 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_22_22, mercury__erlang_rtti_implementation__TypeCtorInfo_23_23, ((MR_Box) ((MR_Integer) 0)));
+          }
+#line 2209 "erlang_rtti_implementation.m"
+          {
+#line 2209 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__eval_type_info_2_f_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_19, mercury__erlang_rtti_implementation__Info_14);
+#line 2209 "erlang_rtti_implementation.m"
+            return;
+          }
+#line 2207 "erlang_rtti_implementation.m"
+        }
+#line 2195 "erlang_rtti_implementation.m"
+        break;
+#line 2195 "erlang_rtti_implementation.m"
+    }
+#line 2190 "erlang_rtti_implementation.m"
+  }
+#line 2187 "erlang_rtti_implementation.m"
+}
+
+#line 2169 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__concrete_type_info_2_f_0(
+#line 2169 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 2169 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__Info_4,
+#line 2169 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__MaybePTI_5)
+#line 2169 "erlang_rtti_implementation.m"
+{
+#line 2182 "erlang_rtti_implementation.m"
+  {
+#line 2182 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 2182 "erlang_rtti_implementation.m"
+    if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__MaybePTI_5)) == (MR_mktag((MR_Integer) 1))))
+#line 2184 "erlang_rtti_implementation.m"
+      {
+#line 2184 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__eval_type_info_thunk_2_f_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Info_4);
+#line 2184 "erlang_rtti_implementation.m"
+        return;
+      }
+#line 2182 "erlang_rtti_implementation.m"
+    else
+#line 2178 "erlang_rtti_implementation.m"
+    if ((mercury__erlang_rtti_implementation__Info_4 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 2179 "erlang_rtti_implementation.m"
+      {
+#line 2180 "erlang_rtti_implementation.m"
+        {
+#line 2180 "erlang_rtti_implementation.m"
+          mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "function \140erlang_rtti_implementation.concrete_type_info\'/2", (MR_String) "missing parent type_info");
+#line 2180 "erlang_rtti_implementation.m"
+          return;
+        }
+#line 2179 "erlang_rtti_implementation.m"
+      }
+#line 2178 "erlang_rtti_implementation.m"
+    else
+#line 2175 "erlang_rtti_implementation.m"
+      {
+#line 2175 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_9;
+#line 2175 "erlang_rtti_implementation.m"
+        MR_Tuple mercury__erlang_rtti_implementation__V_14_14 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Info_4, (MR_Integer) 0)));
+
+#line 2175 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_9 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_14_14, (MR_Integer) 1)));
+#line 2176 "erlang_rtti_implementation.m"
+        {
+#line 2176 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__eval_pseudo_type_info_3_f_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__MaybeFunctorAndTerm_9);
+#line 2176 "erlang_rtti_implementation.m"
+          return;
+        }
+#line 2175 "erlang_rtti_implementation.m"
+      }
+#line 2182 "erlang_rtti_implementation.m"
+  }
+#line 2169 "erlang_rtti_implementation.m"
+}
+
+#line 2077 "erlang_rtti_implementation.m"
+static void MR_CALL 
+mercury__erlang_rtti_implementation__det_dynamic_cast_2_p_0(
+#line 2077 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_6,
+#line 2077 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_U_7,
+#line 2077 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_3,
+#line 2077 "erlang_rtti_implementation.m"
+  MR_Box * mercury__erlang_rtti_implementation__Actual_4)
+#line 2077 "erlang_rtti_implementation.m"
+{
+#line 2079 "erlang_rtti_implementation.m"
+  {
+#line 2079 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 2079 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Univ_5;
+
+#line 2080 "erlang_rtti_implementation.m"
+    {
+#line 2080 "erlang_rtti_implementation.m"
+      mercury__univ__type_to_univ_2_p_1(mercury__erlang_rtti_implementation__TypeInfo_for_T_6, mercury__erlang_rtti_implementation__Term_3, &mercury__erlang_rtti_implementation__Univ_5);
+    }
+#line 2081 "erlang_rtti_implementation.m"
+    {
+#line 2081 "erlang_rtti_implementation.m"
+      mercury__univ__det_univ_to_type_2_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_U_7, mercury__erlang_rtti_implementation__Univ_5, mercury__erlang_rtti_implementation__Actual_4);
+#line 2081 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 2079 "erlang_rtti_implementation.m"
+  }
+#line 2077 "erlang_rtti_implementation.m"
+}
+
+#line 1972 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__det_unimplemented_1_p_0(
+#line 1972 "erlang_rtti_implementation.m"
+  MR_String mercury__erlang_rtti_implementation__S_2)
+#line 1972 "erlang_rtti_implementation.m"
+{
+#line 1977 "erlang_rtti_implementation.m"
+  {
+#line 1977 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1975 "erlang_rtti_implementation.m"
+    {
+#line 1975 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__builtin__semidet_succeed_0_p_0();
+    }
+#line 1977 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1976 "erlang_rtti_implementation.m"
+      {
+#line 1976 "erlang_rtti_implementation.m"
+        MR_String mercury__erlang_rtti_implementation__V_5_5;
+
+#line 159 "string.opt"
+        {
+#line 159 "string.opt"
+          mercury__string__append_3_p_2((MR_String) "unimplemented: ", mercury__erlang_rtti_implementation__S_2, &mercury__erlang_rtti_implementation__V_5_5);
+        }
+#line 1976 "erlang_rtti_implementation.m"
+        {
+#line 1976 "erlang_rtti_implementation.m"
+          mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.det_unimplemented\'/1", mercury__erlang_rtti_implementation__V_5_5);
+#line 1976 "erlang_rtti_implementation.m"
+          return;
+        }
+#line 1976 "erlang_rtti_implementation.m"
+      }
+#line 1977 "erlang_rtti_implementation.m"
+    else
+#line 1978 "erlang_rtti_implementation.m"
+      {
+#line 1978 "erlang_rtti_implementation.m"
+      }
+#line 1977 "erlang_rtti_implementation.m"
+  }
+#line 1972 "erlang_rtti_implementation.m"
+}
+
+#line 1892 "erlang_rtti_implementation.m"
+MR_Box MR_CALL 
+mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(
+#line 1892 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_5,
+#line 1892 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_U_6,
+#line 1892 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__T_3)
+#line 1892 "erlang_rtti_implementation.m"
+{
+#line 1895 "erlang_rtti_implementation.m"
+  {
+#line 1895 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1895 "erlang_rtti_implementation.m"
+    MR_Box mercury__erlang_rtti_implementation__U_4 = mercury__erlang_rtti_implementation__T_3;
+
+#line 1895 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__U_4;
+#line 1895 "erlang_rtti_implementation.m"
+  }
+#line 1892 "erlang_rtti_implementation.m"
+}
+
+#line 1744 "erlang_rtti_implementation.m"
+MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__type_ctor_rep_1_f_0(void)
+#line 1744 "erlang_rtti_implementation.m"
+{
+#line 1756 "erlang_rtti_implementation.m"
+  {
+#line 1756 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1756 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__2_4;
+
+#line 1756 "erlang_rtti_implementation.m"
+    {
+#line 1756 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__HeadVar__2_4 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 1756 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__2_4;
+#line 1756 "erlang_rtti_implementation.m"
+  }
+#line 1744 "erlang_rtti_implementation.m"
+}
+
+#line 1729 "erlang_rtti_implementation.m"
+MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__get_var_arity_arg_type_infos_1_f_0(void)
+#line 1729 "erlang_rtti_implementation.m"
+{
+#line 1738 "erlang_rtti_implementation.m"
+  {
+#line 1738 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1738 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__2_4;
+
+#line 1738 "erlang_rtti_implementation.m"
+    {
+#line 1738 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__HeadVar__2_4 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_118_97_114_95_97_114_105_116_121_95_97_114_103_95_116_121_112_101_95_105_110_102_111_115_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 1738 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__2_4;
+#line 1738 "erlang_rtti_implementation.m"
+  }
+#line 1729 "erlang_rtti_implementation.m"
+}
+
+#line 1712 "erlang_rtti_implementation.m"
+MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__get_fixed_arity_arg_type_infos_1_f_0(void)
+#line 1712 "erlang_rtti_implementation.m"
+{
+#line 1726 "erlang_rtti_implementation.m"
+  {
+#line 1726 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1726 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__2_4;
+
+#line 1726 "erlang_rtti_implementation.m"
+    {
+#line 1726 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__HeadVar__2_4 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_105_120_101_100_95_97_114_105_116_121_95_97_114_103_95_116_121_112_101_95_105_110_102_111_115_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 1726 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__2_4;
+#line 1726 "erlang_rtti_implementation.m"
+  }
+#line 1712 "erlang_rtti_implementation.m"
+}
+
+#line 1636 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__type_ctor_info_evaled_1_f_0(void)
+#line 1636 "erlang_rtti_implementation.m"
+{
+#line 1664 "erlang_rtti_implementation.m"
+  {
+#line 1664 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1664 "erlang_rtti_implementation.m"
+    {
+#line 1664 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+#line 1664 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 1664 "erlang_rtti_implementation.m"
+  }
+#line 1636 "erlang_rtti_implementation.m"
+}
+
+#line 1621 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__type_info_1_f_0(
+#line 1621 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_5)
+#line 1621 "erlang_rtti_implementation.m"
+{
+#line 1630 "erlang_rtti_implementation.m"
+  {
+#line 1630 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1630 "erlang_rtti_implementation.m"
+    {
+#line 1630 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+#line 1630 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 1630 "erlang_rtti_implementation.m"
+  }
+#line 1621 "erlang_rtti_implementation.m"
+}
+
+#line 1466 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__check_arg_types_2_p_0(
+#line 1466 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 1466 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2)
+#line 1466 "erlang_rtti_implementation.m"
+{
+#line 1468 "erlang_rtti_implementation.m"
+  {
+#line 1468 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 1468 "erlang_rtti_implementation.m"
+    if ((mercury__erlang_rtti_implementation__HeadVar__1_1 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1468 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__HeadVar__2_2 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1468 "erlang_rtti_implementation.m"
+    else
+#line 1469 "erlang_rtti_implementation.m"
+      {
+#line 1469 "erlang_rtti_implementation.m"
+        MR_String mercury__erlang_rtti_implementation__V_12_12;
+#line 1469 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__U_3 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 1469 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__Us_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 1)));
+#line 1469 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TIs_6;
+#line 1470 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_7_7;
+
+#line 1469 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__2_2)) == (MR_mktag((MR_Integer) 1)));
+#line 1469 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 1469 "erlang_rtti_implementation.m"
+          {
+#line 1469 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__TIs_6 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__2_2, (MR_Integer) 1)));
+#line 1470 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_7_7 = (MR_Integer) 0;
+#line 1492 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_12_12 = (MR_String) "univ_type_info";
+#line 1492 "erlang_rtti_implementation.m"
+            {
+#line 1492 "erlang_rtti_implementation.m"
+              mercury__private_builtin__sorry_1_p_0(mercury__erlang_rtti_implementation__V_12_12);
+            }
+#line 1492 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1469 "erlang_rtti_implementation.m"
+          }
+#line 1469 "erlang_rtti_implementation.m"
+      }
+#line 1468 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1468 "erlang_rtti_implementation.m"
+  }
+#line 1466 "erlang_rtti_implementation.m"
+}
+
+#line 1392 "erlang_rtti_implementation.m"
+static MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__matching_du_functor_number_3_p_0(
+#line 1392 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1,
+#line 1392 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__FunctorNum_6,
+#line 1392 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Functor_7)
+#line 1392 "erlang_rtti_implementation.m"
+{
+#line 1395 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 1395 "erlang_rtti_implementation.m"
+    {
+#line 1395 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 1395 "erlang_rtti_implementation.m"
+      {
+#line 1395 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__HeadVar__1_1)) == (MR_mktag((MR_Integer) 1)));
+#line 1395 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__F_4;
+#line 1395 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__Fs_5;
+#line 1396 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_14_14;
+#line 1396 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_8_8;
+#line 1396 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_9_9;
+#line 1396 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_10_10;
+#line 1396 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_12_12;
+#line 1396 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_13_13;
+
+#line 1395 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 1395 "erlang_rtti_implementation.m"
+          {
+#line 1395 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__F_4 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 0)));
+#line 1395 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__Fs_5 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__HeadVar__1_1, (MR_Integer) 1)));
+#line 1396 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_8_8 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__F_4, (MR_Integer) 0)));
+#line 1396 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_9_9 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__F_4, (MR_Integer) 1)));
+#line 1396 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_10_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__F_4, (MR_Integer) 2)));
+#line 1396 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__F_4, (MR_Integer) 3)));
+#line 1396 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__F_4, (MR_Integer) 5)));
+#line 1396 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_13_13 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__F_4, (MR_Integer) 6)));
+#line 1396 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__FunctorNum_6 == mercury__erlang_rtti_implementation__V_14_14);
+#line 1398 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 1397 "erlang_rtti_implementation.m"
+              {
+#line 1397 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Functor_7 = mercury__erlang_rtti_implementation__F_4;
+#line 1397 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1397 "erlang_rtti_implementation.m"
+              }
+#line 1398 "erlang_rtti_implementation.m"
+            else
+#line 1399 "erlang_rtti_implementation.m"
+              {
+#line 1399 "erlang_rtti_implementation.m"
+                /* direct tailcall eliminated */
+#line 1399 "erlang_rtti_implementation.m"
+                {
+#line 1399 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__HeadVar__1__tmp_copy_1 = mercury__erlang_rtti_implementation__Fs_5;
+
+#line 1399 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__HeadVar__1_1 = mercury__erlang_rtti_implementation__HeadVar__1__tmp_copy_1;
+#line 1399 "erlang_rtti_implementation.m"
+                }
+#line 1399 "erlang_rtti_implementation.m"
+                continue;
+#line 1399 "erlang_rtti_implementation.m"
+              }
+#line 1395 "erlang_rtti_implementation.m"
+          }
+#line 1395 "erlang_rtti_implementation.m"
+        return mercury__erlang_rtti_implementation__succeeded;
+#line 1395 "erlang_rtti_implementation.m"
+      }
+#line 1395 "erlang_rtti_implementation.m"
+      break;
+#line 1395 "erlang_rtti_implementation.m"
+    }
+#line 1392 "erlang_rtti_implementation.m"
+}
+
+#line 1224 "erlang_rtti_implementation.m"
+MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__get_functor_with_names_2_f_0(
+#line 1224 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__NumFunctor_5)
+#line 1224 "erlang_rtti_implementation.m"
+{
+#line 1227 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 1227 "erlang_rtti_implementation.m"
+    {
+#line 1227 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 1227 "erlang_rtti_implementation.m"
+      {
+#line 1227 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1227 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__Result_6;
+#line 1227 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_8;
+
+#line 1228 "erlang_rtti_implementation.m"
+        {
+#line 1228 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+        }
+#line 1229 "erlang_rtti_implementation.m"
+        {
+#line 1229 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__TypeCtorRep_8 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+        }
+#line 1258 "erlang_rtti_implementation.m"
+#line 1258 "erlang_rtti_implementation.m"
+        switch (mercury__erlang_rtti_implementation__TypeCtorRep_8) {
+#line 1258 "erlang_rtti_implementation.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 3:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 22:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 11:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 7:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 6:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 23:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 13:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 5:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 12:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 17:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 15:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 10:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 8:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 18:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 20:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 16:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 19:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 21:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 9:
+#line 1315 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__Result_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1258 "erlang_rtti_implementation.m"
+            break;
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 0:
+#line 1231 "erlang_rtti_implementation.m"
+            {
+#line 1231 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__FunctorReps_9;
+#line 1255 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__FunctorRep_10;
+
+#line 1232 "erlang_rtti_implementation.m"
+              {
+#line 1232 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__FunctorReps_9 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_102_117_110_99_116_111_114_115_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 1233 "erlang_rtti_implementation.m"
+              {
+#line 1233 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__matching_du_functor_number_3_p_0(mercury__erlang_rtti_implementation__FunctorReps_9, mercury__erlang_rtti_implementation__NumFunctor_5, &mercury__erlang_rtti_implementation__FunctorRep_10);
+              }
+#line 1255 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 1234 "erlang_rtti_implementation.m"
+                {
+#line 1234 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__ArgInfos_11 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 5)));
+#line 1234 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__ArgTypes_20;
+#line 1234 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__ArgNames_21;
+#line 1234 "erlang_rtti_implementation.m"
+                  MR_String mercury__erlang_rtti_implementation__Name_22;
+#line 1234 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__Arity_23;
+#line 1234 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_46_46;
+#line 1234 "erlang_rtti_implementation.m"
+                  MR_Tuple mercury__erlang_rtti_implementation__V_47_47;
+#line 1234 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_83_83 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 0)));
+#line 1234 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_84_84 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 1)));
+#line 1234 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_85_85 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 2)));
+#line 1234 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_86_86 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 3)));
+#line 1234 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_88_88 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 6)));
+#line 1252 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_91_91;
+#line 1252 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_92_92;
+#line 1252 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_93_93;
+#line 1252 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_95_95;
+#line 1252 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_96_96;
+#line 1253 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_97_97;
+#line 1253 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_98_98;
+#line 1253 "erlang_rtti_implementation.m"
+                  MR_Integer mercury__erlang_rtti_implementation__V_99_99;
+#line 1253 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_101_101;
+#line 1253 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__V_102_102;
+
+#line 1250 "erlang_rtti_implementation.m"
+                  {
+#line 1250 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_112_50_95_95_104_111_56_95_95_91_50_93_95_48_4_p_in__list_0(mercury__erlang_rtti_implementation__ArgInfos_11, &mercury__erlang_rtti_implementation__ArgTypes_20, &mercury__erlang_rtti_implementation__ArgNames_21);
+                  }
+#line 1252 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_46_46 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 0)));
+#line 1252 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_91_91 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 1)));
+#line 1252 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_92_92 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 2)));
+#line 1252 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_93_93 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 3)));
+#line 1252 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_95_95 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 5)));
+#line 1252 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_96_96 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 6)));
+#line 1252 "erlang_rtti_implementation.m"
+                  {
+#line 1252 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__Name_22 = mercury__string__from_char_list_1_f_0(mercury__erlang_rtti_implementation__V_46_46);
+                  }
+#line 1253 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_97_97 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 0)));
+#line 1253 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__Arity_23 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 1)));
+#line 1253 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_98_98 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 2)));
+#line 1253 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_99_99 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 3)));
+#line 1253 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_101_101 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 5)));
+#line 1253 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_102_102 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_10, (MR_Integer) 6)));
+#line 1254 "erlang_rtti_implementation.m"
+                  {
+#line 1254 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__V_47_47 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1254 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_47_47, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__Name_22));
+#line 1254 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_47_47, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__Arity_23));
+#line 1254 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_47_47, 2) = ((MR_Box) (mercury__erlang_rtti_implementation__ArgTypes_20));
+#line 1254 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_47_47, 3) = ((MR_Box) (mercury__erlang_rtti_implementation__ArgNames_21));
+#line 1254 "erlang_rtti_implementation.m"
+                  }
+#line 1254 "erlang_rtti_implementation.m"
+                  {
+#line 1254 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__Result_6 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1254 "erlang_rtti_implementation.m"
+                    MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Result_6, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_47_47));
+#line 1254 "erlang_rtti_implementation.m"
+                  }
+#line 1234 "erlang_rtti_implementation.m"
+                }
+#line 1255 "erlang_rtti_implementation.m"
+              else
+#line 1256 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__Result_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1231 "erlang_rtti_implementation.m"
+            }
+#line 1258 "erlang_rtti_implementation.m"
+            break;
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 1:
+#line 1259 "erlang_rtti_implementation.m"
+            {
+#line 1259 "erlang_rtti_implementation.m"
+              MR_Tuple mercury__erlang_rtti_implementation__V_40_40;
+#line 1259 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__ArgTypes_51;
+#line 1259 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__ArgNames_52;
+#line 1259 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__Name_53;
+
+#line 1260 "erlang_rtti_implementation.m"
+              {
+#line 1260 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__Name_53 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_100_117_109_109_121_95_102_117_110_99_116_111_114_95_110_97_109_101_95_95_91_49_93_95_48_1_f_0();
+              }
+#line 1262 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__ArgTypes_51 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1263 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__ArgNames_52 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1264 "erlang_rtti_implementation.m"
+              {
+#line 1264 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_40_40 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1264 "erlang_rtti_implementation.m"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_40_40, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__Name_53));
+#line 1264 "erlang_rtti_implementation.m"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_40_40, 1) = ((MR_Box) ((MR_Integer) 0));
+#line 1264 "erlang_rtti_implementation.m"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_40_40, 2) = ((MR_Box) (mercury__erlang_rtti_implementation__ArgTypes_51));
+#line 1264 "erlang_rtti_implementation.m"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_40_40, 3) = ((MR_Box) (mercury__erlang_rtti_implementation__ArgNames_52));
+#line 1264 "erlang_rtti_implementation.m"
+              }
+#line 1264 "erlang_rtti_implementation.m"
+              {
+#line 1264 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__Result_6 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1264 "erlang_rtti_implementation.m"
+                MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Result_6, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_40_40));
+#line 1264 "erlang_rtti_implementation.m"
+              }
+#line 1259 "erlang_rtti_implementation.m"
+            }
+#line 1258 "erlang_rtti_implementation.m"
+            break;
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 4:
+#line 1291 "erlang_rtti_implementation.m"
+            {
+#line 1292 "erlang_rtti_implementation.m"
+              {
+#line 1292 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__collapse_equivalences_1_f_0();
+              }
+#line 1293 "erlang_rtti_implementation.m"
+              /* direct tailcall eliminated */
+#line 1293 "erlang_rtti_implementation.m"
+              {
+#line 1293 "erlang_rtti_implementation.m"
+              }
+#line 1293 "erlang_rtti_implementation.m"
+              continue;
+#line 1291 "erlang_rtti_implementation.m"
+            }
+#line 1258 "erlang_rtti_implementation.m"
+            break;
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 24:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 25:
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 26:
+#line 1320 "erlang_rtti_implementation.m"
+            {
+#line 1321 "erlang_rtti_implementation.m"
+              {
+#line 1321 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "function \140erlang_rtti_implementation.get_functor_with_names\'/2", (MR_String) "type_ctor_rep not handled");
+              }
+#line 1320 "erlang_rtti_implementation.m"
+            }
+#line 1258 "erlang_rtti_implementation.m"
+            break;
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 2:
+#line 1280 "erlang_rtti_implementation.m"
+            {
+#line 1274 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__NumFunctor_5 == (MR_Integer) 0);
+#line 1280 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 1275 "erlang_rtti_implementation.m"
+                {
+#line 1275 "erlang_rtti_implementation.m"
+                  MR_Tuple mercury__erlang_rtti_implementation__V_29_29 = (MR_Tuple) &mercury__erlang_rtti_implementation_scalar_common_3[1];
+#line 1275 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__ArgTypes_59 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1275 "erlang_rtti_implementation.m"
+                  MR_Word mercury__erlang_rtti_implementation__ArgNames_60 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+
+#line 1279 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__Result_6 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__erlang_rtti_implementation_scalar_common_5[3]);
+#line 1275 "erlang_rtti_implementation.m"
+                }
+#line 1280 "erlang_rtti_implementation.m"
+              else
+#line 1287 "erlang_rtti_implementation.m"
+                {
+#line 1280 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__NumFunctor_5 == (MR_Integer) 1);
+#line 1287 "erlang_rtti_implementation.m"
+                  if (mercury__erlang_rtti_implementation__succeeded)
+#line 1281 "erlang_rtti_implementation.m"
+                    {
+#line 1281 "erlang_rtti_implementation.m"
+                      MR_Word mercury__erlang_rtti_implementation__V_31_31;
+#line 1281 "erlang_rtti_implementation.m"
+                      MR_Word mercury__erlang_rtti_implementation__V_32_32;
+#line 1281 "erlang_rtti_implementation.m"
+                      MR_Tuple mercury__erlang_rtti_implementation__V_37_37;
+#line 1281 "erlang_rtti_implementation.m"
+                      MR_Word mercury__erlang_rtti_implementation__ArgTypes_64;
+#line 1281 "erlang_rtti_implementation.m"
+                      MR_Word mercury__erlang_rtti_implementation__ArgNames_65;
+
+#line 1281 "erlang_rtti_implementation.m"
+                      {
+#line 1281 "erlang_rtti_implementation.m"
+                        mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_105_110_100_101_120_95_95_91_50_93_95_48_2_f_0((MR_Integer) 1);
+                      }
+#line 1284 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__V_32_32 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1284 "erlang_rtti_implementation.m"
+                      {
+#line 1284 "erlang_rtti_implementation.m"
+                        mercury__erlang_rtti_implementation__V_31_31 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1284 "erlang_rtti_implementation.m"
+                        MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_31_31, 0) = NULL;
+#line 1284 "erlang_rtti_implementation.m"
+                        MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_31_31, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_32_32));
+#line 1284 "erlang_rtti_implementation.m"
+                      }
+#line 1284 "erlang_rtti_implementation.m"
+                      {
+#line 1284 "erlang_rtti_implementation.m"
+                        mercury__erlang_rtti_implementation__ArgTypes_64 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL));
+#line 1284 "erlang_rtti_implementation.m"
+                        MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__ArgTypes_64, 0) = NULL;
+#line 1284 "erlang_rtti_implementation.m"
+                        MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__ArgTypes_64, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_31_31));
+#line 1284 "erlang_rtti_implementation.m"
+                      }
+#line 1285 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__ArgNames_65 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__erlang_rtti_implementation_scalar_common_1[13]);
+#line 1286 "erlang_rtti_implementation.m"
+                      {
+#line 1286 "erlang_rtti_implementation.m"
+                        mercury__erlang_rtti_implementation__V_37_37 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1286 "erlang_rtti_implementation.m"
+                        MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_37_37, 0) = ((MR_Box) ((MR_String) "[|]"));
+#line 1286 "erlang_rtti_implementation.m"
+                        MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_37_37, 1) = ((MR_Box) ((MR_Integer) 2));
+#line 1286 "erlang_rtti_implementation.m"
+                        MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_37_37, 2) = ((MR_Box) (mercury__erlang_rtti_implementation__ArgTypes_64));
+#line 1286 "erlang_rtti_implementation.m"
+                        MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_37_37, 3) = ((MR_Box) (mercury__erlang_rtti_implementation__ArgNames_65));
+#line 1286 "erlang_rtti_implementation.m"
+                      }
+#line 1286 "erlang_rtti_implementation.m"
+                      {
+#line 1286 "erlang_rtti_implementation.m"
+                        mercury__erlang_rtti_implementation__Result_6 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1286 "erlang_rtti_implementation.m"
+                        MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Result_6, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_37_37));
+#line 1286 "erlang_rtti_implementation.m"
+                      }
+#line 1281 "erlang_rtti_implementation.m"
+                    }
+#line 1287 "erlang_rtti_implementation.m"
+                  else
+#line 1288 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__Result_6 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1287 "erlang_rtti_implementation.m"
+                }
+#line 1280 "erlang_rtti_implementation.m"
+            }
+#line 1258 "erlang_rtti_implementation.m"
+            break;
+#line 1258 "erlang_rtti_implementation.m"
+          case (MR_Integer) 14:
+#line 1266 "erlang_rtti_implementation.m"
+            {
+#line 1266 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_107_107;
+#line 1266 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_108_108;
+#line 1266 "erlang_rtti_implementation.m"
+              MR_Tuple mercury__erlang_rtti_implementation__V_39_39;
+#line 1266 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__ArgTypes_55;
+#line 1266 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__ArgNames_56;
+#line 1266 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__Arity_58;
+
+#line 1267 "erlang_rtti_implementation.m"
+              {
+#line 1267 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__type_ctor_info_and_args_3_p_0(&mercury__erlang_rtti_implementation__ArgTypes_55);
+              }
+#line 15894 "erlang_rtti_implementation.c"
+              mercury__erlang_rtti_implementation__TypeCtorInfo_107_107 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0;
+#line 1269 "erlang_rtti_implementation.m"
+              {
+#line 1269 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__Arity_58 = mercury__list__length_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_107_107, mercury__erlang_rtti_implementation__ArgTypes_55);
+              }
+#line 15901 "erlang_rtti_implementation.c"
+              mercury__erlang_rtti_implementation__TypeCtorInfo_108_108 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 1270 "erlang_rtti_implementation.m"
+              {
+#line 1270 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__ArgNames_56 = mercury__list__duplicate_2_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_108_108, mercury__erlang_rtti_implementation__Arity_58, ((MR_Box) ((MR_String) "")));
+              }
+#line 1271 "erlang_rtti_implementation.m"
+              {
+#line 1271 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__V_39_39 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 4 * sizeof(MR_Word)), NULL, NULL);
+#line 1271 "erlang_rtti_implementation.m"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_39_39, 0) = ((MR_Box) ((MR_String) "{}"));
+#line 1271 "erlang_rtti_implementation.m"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_39_39, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__Arity_58));
+#line 1271 "erlang_rtti_implementation.m"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_39_39, 2) = ((MR_Box) (mercury__erlang_rtti_implementation__ArgTypes_55));
+#line 1271 "erlang_rtti_implementation.m"
+                MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_39_39, 3) = ((MR_Box) (mercury__erlang_rtti_implementation__ArgNames_56));
+#line 1271 "erlang_rtti_implementation.m"
+              }
+#line 1271 "erlang_rtti_implementation.m"
+              {
+#line 1271 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__Result_6 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1271 "erlang_rtti_implementation.m"
+                MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Result_6, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_39_39));
+#line 1271 "erlang_rtti_implementation.m"
+              }
+#line 1266 "erlang_rtti_implementation.m"
+            }
+#line 1258 "erlang_rtti_implementation.m"
+            break;
+#line 1258 "erlang_rtti_implementation.m"
+        }
+#line 1227 "erlang_rtti_implementation.m"
+        return mercury__erlang_rtti_implementation__Result_6;
+#line 1227 "erlang_rtti_implementation.m"
+      }
+#line 1227 "erlang_rtti_implementation.m"
+      break;
+#line 1227 "erlang_rtti_implementation.m"
+    }
+#line 1224 "erlang_rtti_implementation.m"
+}
+
+#line 1161 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__num_functors_2_p_0(
+#line 1161 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__MaybeNumFunctors_4)
+#line 1161 "erlang_rtti_implementation.m"
+{
+#line 1163 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 1163 "erlang_rtti_implementation.m"
+    {
+#line 1163 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 1163 "erlang_rtti_implementation.m"
+      {
+#line 1163 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1163 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_6;
+
+#line 1164 "erlang_rtti_implementation.m"
+        {
+#line 1164 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+        }
+#line 1165 "erlang_rtti_implementation.m"
+        {
+#line 1165 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__TypeCtorRep_6 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+        }
+#line 1170 "erlang_rtti_implementation.m"
+#line 1170 "erlang_rtti_implementation.m"
+        switch (mercury__erlang_rtti_implementation__TypeCtorRep_6) {
+#line 1170 "erlang_rtti_implementation.m"
+          default: /*NOTREACHED*/ MR_assert(0);
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 3:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 22:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 11:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 7:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 6:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 23:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 13:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 5:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 12:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 17:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 15:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 10:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 8:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 18:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 20:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 16:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 19:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 21:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 9:
+#line 1203 "erlang_rtti_implementation.m"
+            *mercury__erlang_rtti_implementation__MaybeNumFunctors_4 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1170 "erlang_rtti_implementation.m"
+            break;
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 0:
+#line 1167 "erlang_rtti_implementation.m"
+            {
+#line 1167 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_15_15;
+#line 1167 "erlang_rtti_implementation.m"
+              MR_Word mercury__erlang_rtti_implementation__FunctorReps_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1167 "erlang_rtti_implementation.m"
+              MR_Integer mercury__erlang_rtti_implementation__V_14_14;
+
+#line 1835 "erlang_rtti_implementation.m"
+              {
+#line 1835 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_functors");
+              }
+#line 16040 "erlang_rtti_implementation.c"
+              mercury__erlang_rtti_implementation__TypeCtorInfo_15_15 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0;
+#line 600 "list.opt"
+              {
+#line 600 "list.opt"
+                mercury__list__length_acc_3_p_0(mercury__erlang_rtti_implementation__TypeCtorInfo_15_15, mercury__erlang_rtti_implementation__FunctorReps_7, (MR_Integer) 0, &mercury__erlang_rtti_implementation__V_14_14);
+              }
+#line 1169 "erlang_rtti_implementation.m"
+              {
+#line 1169 "erlang_rtti_implementation.m"
+                MR_Word base;
+#line 1169 "erlang_rtti_implementation.m"
+                base = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1169 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__MaybeNumFunctors_4 = base;
+#line 1169 "erlang_rtti_implementation.m"
+                MR_hl_field(MR_mktag(1), base, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_14_14));
+#line 1169 "erlang_rtti_implementation.m"
+              }
+#line 1167 "erlang_rtti_implementation.m"
+            }
+#line 1170 "erlang_rtti_implementation.m"
+            break;
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 1:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 14:
+#line 1173 "erlang_rtti_implementation.m"
+            {
+#line 1174 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__MaybeNumFunctors_4 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__erlang_rtti_implementation_scalar_common_5[1]);
+#line 1173 "erlang_rtti_implementation.m"
+            }
+#line 1170 "erlang_rtti_implementation.m"
+            break;
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 4:
+#line 1179 "erlang_rtti_implementation.m"
+            {
+#line 1180 "erlang_rtti_implementation.m"
+              {
+#line 1180 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__collapse_equivalences_1_f_0();
+              }
+#line 1181 "erlang_rtti_implementation.m"
+              /* direct tailcall eliminated */
+#line 1181 "erlang_rtti_implementation.m"
+              {
+#line 1181 "erlang_rtti_implementation.m"
+              }
+#line 1181 "erlang_rtti_implementation.m"
+              continue;
+#line 1179 "erlang_rtti_implementation.m"
+            }
+#line 1170 "erlang_rtti_implementation.m"
+            break;
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 24:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 25:
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 26:
+#line 1208 "erlang_rtti_implementation.m"
+            {
+#line 1209 "erlang_rtti_implementation.m"
+              {
+#line 1209 "erlang_rtti_implementation.m"
+                mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.num_functors\'/2", (MR_String) "type_ctor_rep not handled");
+#line 1209 "erlang_rtti_implementation.m"
+                return;
+              }
+#line 1208 "erlang_rtti_implementation.m"
+            }
+#line 1170 "erlang_rtti_implementation.m"
+            break;
+#line 1170 "erlang_rtti_implementation.m"
+          case (MR_Integer) 2:
+#line 1176 "erlang_rtti_implementation.m"
+            {
+#line 1177 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__MaybeNumFunctors_4 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__erlang_rtti_implementation_scalar_common_5[2]);
+#line 1176 "erlang_rtti_implementation.m"
+            }
+#line 1170 "erlang_rtti_implementation.m"
+            break;
+#line 1170 "erlang_rtti_implementation.m"
+        }
+#line 1163 "erlang_rtti_implementation.m"
+      }
+#line 1163 "erlang_rtti_implementation.m"
+      break;
+#line 1163 "erlang_rtti_implementation.m"
+    }
+#line 1161 "erlang_rtti_implementation.m"
+}
+
+#line 1135 "erlang_rtti_implementation.m"
+MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__pseudo_type_desc_to_pseudo_type_info_1_f_0(
+#line 1135 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__PseudoTypeDesc_3)
+#line 1135 "erlang_rtti_implementation.m"
+{
+#line 1138 "erlang_rtti_implementation.m"
+  {
+#line 1138 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1138 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 1138 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_5_5 = (MR_Word) &mercury__type_desc__type_desc__type_ctor_info_pseudo_type_desc_0;
+#line 1138 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_6_6 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_pseudo_type_info_thunk_0;
+#line 1139 "erlang_rtti_implementation.m"
+    MR_Box mercury__erlang_rtti_implementation__conv0_V_4_4;
+
+#line 1139 "erlang_rtti_implementation.m"
+    {
+#line 1139 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__conv0_V_4_4 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_5_5, mercury__erlang_rtti_implementation__TypeCtorInfo_6_6, ((MR_Box) (mercury__erlang_rtti_implementation__PseudoTypeDesc_3)));
+    }
+#line 1139 "erlang_rtti_implementation.m"
+    {
+#line 1139 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__HeadVar__2_2 = mercury__erlang_rtti_implementation__eval_pseudo_type_info_thunk_1_f_0();
+    }
+#line 1138 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__HeadVar__2_2;
+#line 1138 "erlang_rtti_implementation.m"
+  }
+#line 1135 "erlang_rtti_implementation.m"
+}
+
+#line 1070 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__collapse_equivalences_1_f_0(void)
+#line 1070 "erlang_rtti_implementation.m"
+{
+#line 1072 "erlang_rtti_implementation.m"
+  while (MR_TRUE)
+#line 1072 "erlang_rtti_implementation.m"
+    {
+#line 1072 "erlang_rtti_implementation.m"
+      /* tailcall optimized into a loop */
+#line 1072 "erlang_rtti_implementation.m"
+      {
+#line 1072 "erlang_rtti_implementation.m"
+        MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1072 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_6;
+
+#line 1073 "erlang_rtti_implementation.m"
+        {
+#line 1073 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+        }
+#line 1074 "erlang_rtti_implementation.m"
+        {
+#line 1074 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__TypeCtorRep_6 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+        }
+#line 1075 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__TypeCtorRep_6 == (MR_Integer) 4);
+#line 1081 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 1076 "erlang_rtti_implementation.m"
+          {
+#line 1076 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_12_12;
+#line 1076 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__PtiInfo_7 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1076 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__TiInfo_8;
+#line 1076 "erlang_rtti_implementation.m"
+            MR_Word mercury__erlang_rtti_implementation__EqvType_9;
+#line 1076 "erlang_rtti_implementation.m"
+            MR_Tuple mercury__erlang_rtti_implementation__V_11_11;
+
+#line 1077 "erlang_rtti_implementation.m"
+            {
+#line 1077 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_11_11 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1077 "erlang_rtti_implementation.m"
+              MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_11_11, 0) = NULL;
+#line 1077 "erlang_rtti_implementation.m"
+              MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_11_11, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__PtiInfo_7));
+#line 1077 "erlang_rtti_implementation.m"
+            }
+#line 1077 "erlang_rtti_implementation.m"
+            {
+#line 1077 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__TiInfo_8 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1077 "erlang_rtti_implementation.m"
+              MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__TiInfo_8, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_11_11));
+#line 1077 "erlang_rtti_implementation.m"
+            }
+#line 1858 "erlang_rtti_implementation.m"
+            mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 1858 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__EqvType_9 = (MR_Word) MR_mkword(MR_mktag(1), &mercury__erlang_rtti_implementation_scalar_common_5[0]);
+#line 1859 "erlang_rtti_implementation.m"
+            {
+#line 1859 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_eqv_type");
+            }
+#line 16245 "erlang_rtti_implementation.c"
+            mercury__erlang_rtti_implementation__TypeCtorInfo_12_12 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 2184 "erlang_rtti_implementation.m"
+            {
+#line 2184 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__eval_type_info_thunk_2_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_12_12, mercury__erlang_rtti_implementation__TiInfo_8);
+            }
+#line 1080 "erlang_rtti_implementation.m"
+            /* direct tailcall eliminated */
+#line 1080 "erlang_rtti_implementation.m"
+            {
+#line 1080 "erlang_rtti_implementation.m"
+            }
+#line 1080 "erlang_rtti_implementation.m"
+            continue;
+#line 1076 "erlang_rtti_implementation.m"
+          }
+#line 1081 "erlang_rtti_implementation.m"
+        else
+#line 1082 "erlang_rtti_implementation.m"
+          {
+#line 1082 "erlang_rtti_implementation.m"
+          }
+#line 1072 "erlang_rtti_implementation.m"
+      }
+#line 1072 "erlang_rtti_implementation.m"
+      break;
+#line 1072 "erlang_rtti_implementation.m"
+    }
+#line 1070 "erlang_rtti_implementation.m"
+}
+
+#line 1039 "erlang_rtti_implementation.m"
+static MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__get_du_functor_arg_4_f_0(
+#line 1039 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_30,
+#line 1039 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__Functor_7,
+#line 1039 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_8,
+#line 1039 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Loc_9)
+#line 1039 "erlang_rtti_implementation.m"
+{
+#line 1041 "erlang_rtti_implementation.m"
+  {
+#line 1041 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Univ_10;
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_31_31 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_du_arg_info_0;
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_32_32;
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_83;
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__ArgInfo_11;
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__MaybePTI_12;
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Info_13;
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Box mercury__erlang_rtti_implementation__SubTerm_15;
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_7, (MR_Integer) 5)));
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Tuple mercury__erlang_rtti_implementation__V_17_17;
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_18_18;
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Tuple mercury__erlang_rtti_implementation__V_19_19;
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__V_7_39 = (mercury__erlang_rtti_implementation__Loc_9 - (MR_Integer) 1);
+#line 1041 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__MaybeExist_54;
+#line 1042 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_23_23 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_7, (MR_Integer) 0)));
+#line 1042 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__V_24_24 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_7, (MR_Integer) 1)));
+#line 1042 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__V_25_25 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_7, (MR_Integer) 2)));
+#line 1042 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__V_26_26 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_7, (MR_Integer) 3)));
+#line 1042 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_7, (MR_Integer) 6)));
+#line 150 "list.opt"
+    MR_Box mercury__erlang_rtti_implementation__conv0_ArgInfo_11;
+#line 1044 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_29_29;
+#line 1021 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_59_59;
+#line 1021 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__V_60_60;
+#line 1021 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__V_61_61;
+#line 1021 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__V_62_62;
+#line 1021 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_64_64;
+
+#line 150 "list.opt"
+    {
+#line 150 "list.opt"
+      mercury__list__det_index0_3_p_0(mercury__erlang_rtti_implementation__TypeCtorInfo_31_31, mercury__erlang_rtti_implementation__V_16_16, mercury__erlang_rtti_implementation__V_7_39, &mercury__erlang_rtti_implementation__conv0_ArgInfo_11);
+    }
+#line 150 "list.opt"
+    mercury__erlang_rtti_implementation__ArgInfo_11 = ((MR_Word) mercury__erlang_rtti_implementation__conv0_ArgInfo_11);
+#line 1044 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ArgInfo_11, (MR_Integer) 0)));
+#line 1044 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__MaybePTI_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ArgInfo_11, (MR_Integer) 1)));
+#line 1045 "erlang_rtti_implementation.m"
+    {
+#line 1045 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__V_19_19 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1045 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_19_19, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__Functor_7));
+#line 1045 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_19_19, 1) = mercury__erlang_rtti_implementation__Term_8;
+#line 1045 "erlang_rtti_implementation.m"
+    }
+#line 1045 "erlang_rtti_implementation.m"
+    {
+#line 1045 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__V_18_18 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1045 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_18_18, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_19_19));
+#line 1045 "erlang_rtti_implementation.m"
+    }
+#line 1045 "erlang_rtti_implementation.m"
+    {
+#line 1045 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__V_17_17 = (MR_Tuple) MR_new_object(MR_Tuple, ((MR_Integer) 2 * sizeof(MR_Word)), NULL, NULL);
+#line 1045 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_17_17, 0) = NULL;
+#line 1045 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_17_17, 1) = ((MR_Box) (mercury__erlang_rtti_implementation__V_18_18));
+#line 1045 "erlang_rtti_implementation.m"
+    }
+#line 1045 "erlang_rtti_implementation.m"
+    {
+#line 1045 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__Info_13 = (MR_Word) MR_mkword(MR_mktag(1), MR_new_object(MR_Word, ((MR_Integer) 1 * sizeof(MR_Word)), NULL, NULL));
+#line 1045 "erlang_rtti_implementation.m"
+      MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Info_13, 0) = ((MR_Box) (mercury__erlang_rtti_implementation__V_17_17));
+#line 1045 "erlang_rtti_implementation.m"
+    }
+#line 2182 "erlang_rtti_implementation.m"
+    if (((MR_tag((MR_Word) mercury__erlang_rtti_implementation__MaybePTI_12)) == (MR_mktag((MR_Integer) 1))))
+#line 2184 "erlang_rtti_implementation.m"
+      {
+#line 2184 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__eval_type_info_thunk_2_f_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_30, mercury__erlang_rtti_implementation__Info_13);
+      }
+#line 2182 "erlang_rtti_implementation.m"
+    else
+#line 2176 "erlang_rtti_implementation.m"
+      {
+#line 2176 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__eval_pseudo_type_info_3_f_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_30, mercury__erlang_rtti_implementation__V_18_18);
+      }
+#line 1021 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__V_59_59 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_7, (MR_Integer) 0)));
+#line 1021 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__V_60_60 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_7, (MR_Integer) 1)));
+#line 1021 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__V_61_61 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_7, (MR_Integer) 2)));
+#line 1021 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__V_62_62 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_7, (MR_Integer) 3)));
+#line 1021 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__V_64_64 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_7, (MR_Integer) 5)));
+#line 1021 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__MaybeExist_54 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__Functor_7, (MR_Integer) 6)));
+#line 1028 "erlang_rtti_implementation.m"
+    if ((mercury__erlang_rtti_implementation__MaybeExist_54 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0)))))
+#line 1030 "erlang_rtti_implementation.m"
+      {
+#line 1030 "erlang_rtti_implementation.m"
+      }
+#line 1028 "erlang_rtti_implementation.m"
+    else
+#line 1023 "erlang_rtti_implementation.m"
+      {
+#line 1023 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_22_71 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_tc_constraint_0;
+#line 1023 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__ExistInfo_55 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__MaybeExist_54, (MR_Integer) 0)));
+#line 1023 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_56_56 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ExistInfo_55, (MR_Integer) 0)));
+#line 1023 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_57_57;
+#line 1023 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_66_66 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ExistInfo_55, (MR_Integer) 2)));
+#line 1026 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_65_65 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ExistInfo_55, (MR_Integer) 1)));
+#line 1026 "erlang_rtti_implementation.m"
+        MR_Word mercury__erlang_rtti_implementation__V_67_67 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__ExistInfo_55, (MR_Integer) 3)));
+#line 1026 "erlang_rtti_implementation.m"
+        MR_Integer mercury__erlang_rtti_implementation__V_89_89;
+
+#line 600 "list.opt"
+        {
+#line 600 "list.opt"
+          mercury__list__length_acc_3_p_0(mercury__erlang_rtti_implementation__TypeCtorInfo_22_71, mercury__erlang_rtti_implementation__V_66_66, (MR_Integer) 0, &mercury__erlang_rtti_implementation__V_57_57);
+        }
+#line 1026 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__V_89_89 = (mercury__erlang_rtti_implementation__V_56_56 + mercury__erlang_rtti_implementation__V_57_57);
+#line 1023 "erlang_rtti_implementation.m"
+      }
+#line 1870 "erlang_rtti_implementation.m"
+    {
+#line 1870 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "get_subterm");
+    }
+#line 16461 "erlang_rtti_implementation.c"
+    mercury__erlang_rtti_implementation__TypeInfo_for_T_83 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_int_0;
+#line 16463 "erlang_rtti_implementation.c"
+    mercury__erlang_rtti_implementation__SubTerm_15 = ((MR_Box) ((MR_Integer) 42));
+#line 16465 "erlang_rtti_implementation.c"
+    mercury__erlang_rtti_implementation__TypeInfo_32_32 = mercury__erlang_rtti_implementation__TypeInfo_for_T_83;
+#line 13 "univ.opt"
+    {
+#line 13 "univ.opt"
+      mercury__univ__type_to_univ_2_p_1(mercury__erlang_rtti_implementation__TypeInfo_32_32, mercury__erlang_rtti_implementation__SubTerm_15, &mercury__erlang_rtti_implementation__Univ_10);
+    }
+#line 1041 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__Univ_10;
+#line 1041 "erlang_rtti_implementation.m"
+  }
+#line 1039 "erlang_rtti_implementation.m"
+}
+
+#line 752 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__deconstruct_2_9_p_3(
+#line 752 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_99,
+#line 752 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_10,
+#line 752 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13,
+#line 752 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__NonCanon_14,
+#line 752 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_15,
+#line 752 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_16,
+#line 752 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_17,
+#line 752 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_18)
+#line 752 "erlang_rtti_implementation.m"
+{
+#line 765 "erlang_rtti_implementation.m"
+  {
+#line 765 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 765 "erlang_rtti_implementation.m"
+    {
+#line 765 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_93_95_51_9_p_3(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__Term_10, mercury__erlang_rtti_implementation__TypeCtorRep_13, mercury__erlang_rtti_implementation__NonCanon_14, mercury__erlang_rtti_implementation__Functor_15, mercury__erlang_rtti_implementation__FunctorNumber_16, mercury__erlang_rtti_implementation__Arity_17, mercury__erlang_rtti_implementation__Arguments_18);
+#line 765 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 765 "erlang_rtti_implementation.m"
+  }
+#line 752 "erlang_rtti_implementation.m"
+}
+
+#line 750 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__deconstruct_2_9_p_2(
+#line 750 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_99,
+#line 750 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_10,
+#line 750 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13,
+#line 750 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__NonCanon_14,
+#line 750 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_15,
+#line 750 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_16,
+#line 750 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_17,
+#line 750 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_18)
+#line 750 "erlang_rtti_implementation.m"
+{
+#line 765 "erlang_rtti_implementation.m"
+  {
+#line 765 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 765 "erlang_rtti_implementation.m"
+    {
+#line 765 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_50_9_p_2(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__Term_10, mercury__erlang_rtti_implementation__TypeCtorRep_13, mercury__erlang_rtti_implementation__Functor_15, mercury__erlang_rtti_implementation__FunctorNumber_16, mercury__erlang_rtti_implementation__Arity_17, mercury__erlang_rtti_implementation__Arguments_18);
+#line 765 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 765 "erlang_rtti_implementation.m"
+  }
+#line 750 "erlang_rtti_implementation.m"
+}
+
+#line 748 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__deconstruct_2_9_p_1(
+#line 748 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_99,
+#line 748 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_10,
+#line 748 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13,
+#line 748 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__NonCanon_14,
+#line 748 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_15,
+#line 748 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_16,
+#line 748 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_17,
+#line 748 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_18)
+#line 748 "erlang_rtti_implementation.m"
+{
+#line 765 "erlang_rtti_implementation.m"
+  {
+#line 765 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 765 "erlang_rtti_implementation.m"
+    {
+#line 765 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_49_9_p_1(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__Term_10, mercury__erlang_rtti_implementation__TypeCtorRep_13, mercury__erlang_rtti_implementation__Functor_15, mercury__erlang_rtti_implementation__FunctorNumber_16, mercury__erlang_rtti_implementation__Arity_17, mercury__erlang_rtti_implementation__Arguments_18);
+#line 765 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 765 "erlang_rtti_implementation.m"
+  }
+#line 748 "erlang_rtti_implementation.m"
+}
+
+#line 746 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__deconstruct_2_9_p_0(
+#line 746 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_99,
+#line 746 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_10,
+#line 746 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13,
+#line 746 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__NonCanon_14,
+#line 746 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_15,
+#line 746 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_16,
+#line 746 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_17,
+#line 746 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_18)
+#line 746 "erlang_rtti_implementation.m"
+{
+#line 765 "erlang_rtti_implementation.m"
+  {
+#line 765 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 765 "erlang_rtti_implementation.m"
+    {
+#line 765 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_48_9_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_99, mercury__erlang_rtti_implementation__Term_10, mercury__erlang_rtti_implementation__TypeCtorRep_13, mercury__erlang_rtti_implementation__Functor_15, mercury__erlang_rtti_implementation__FunctorNumber_16, mercury__erlang_rtti_implementation__Arity_17, mercury__erlang_rtti_implementation__Arguments_18);
+#line 765 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 765 "erlang_rtti_implementation.m"
+  }
+#line 746 "erlang_rtti_implementation.m"
+}
+
+#line 737 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__is_du_type_1_p_0(
+#line 737 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_1)
+#line 737 "erlang_rtti_implementation.m"
+{
+#line 739 "erlang_rtti_implementation.m"
+  {
+#line 739 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 739 "erlang_rtti_implementation.m"
+    if ((((MR_Unsigned) mercury__erlang_rtti_implementation__HeadVar__1_1) <= ((MR_Unsigned) (MR_Integer) 14)))
+#line 739 "erlang_rtti_implementation.m"
+      if (((MR_Integer) 16391 & (((MR_Integer) 1 << mercury__erlang_rtti_implementation__HeadVar__1_1))))
+#line 739 "erlang_rtti_implementation.m"
+        {
+#line 739 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 739 "erlang_rtti_implementation.m"
+        }
+#line 739 "erlang_rtti_implementation.m"
+      else
+#line 739 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_FALSE;
+#line 739 "erlang_rtti_implementation.m"
+    else
+#line 739 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = MR_FALSE;
+#line 739 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 739 "erlang_rtti_implementation.m"
+  }
+#line 737 "erlang_rtti_implementation.m"
+}
+
+#line 577 "erlang_rtti_implementation.m"
+MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__type_descs_from_type_infos_1_f_0(
+#line 577 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfos_3)
+#line 577 "erlang_rtti_implementation.m"
+{
+#line 581 "erlang_rtti_implementation.m"
+  {
+#line 581 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 581 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeDescs_4;
+#line 581 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_5_5 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[1];
+#line 581 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_6_6 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[2];
+#line 581 "erlang_rtti_implementation.m"
+    MR_Box mercury__erlang_rtti_implementation__conv0_TypeDescs_4;
+
+#line 581 "erlang_rtti_implementation.m"
+    {
+#line 581 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__conv0_TypeDescs_4 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_5_5, mercury__erlang_rtti_implementation__TypeInfo_6_6, ((MR_Box) (mercury__erlang_rtti_implementation__TypeInfos_3)));
+    }
+#line 581 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__TypeDescs_4 = ((MR_Word) mercury__erlang_rtti_implementation__conv0_TypeDescs_4);
+#line 581 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__TypeDescs_4;
+#line 581 "erlang_rtti_implementation.m"
+  }
+#line 577 "erlang_rtti_implementation.m"
+}
+
+#line 571 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__type_info_from_type_desc_1_f_0(
+#line 571 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeDesc_3)
+#line 571 "erlang_rtti_implementation.m"
+{
+#line 575 "erlang_rtti_implementation.m"
+  {
+#line 575 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 575 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_5_5 = (MR_Word) &mercury__type_desc__type_desc__type_ctor_info_type_desc_0;
+#line 575 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_6_6 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0;
+#line 575 "erlang_rtti_implementation.m"
+    MR_Box mercury__erlang_rtti_implementation__conv0_TypeInfo_4;
+
+#line 575 "erlang_rtti_implementation.m"
+    {
+#line 575 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__conv0_TypeInfo_4 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_5_5, mercury__erlang_rtti_implementation__TypeCtorInfo_6_6, ((MR_Box) (mercury__erlang_rtti_implementation__TypeDesc_3)));
+    }
+#line 575 "erlang_rtti_implementation.m"
+  }
+#line 571 "erlang_rtti_implementation.m"
+}
+
+#line 486 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__type_ctor_is_variable_arity_1_p_0(void)
+#line 486 "erlang_rtti_implementation.m"
+{
+#line 488 "erlang_rtti_implementation.m"
+  {
+#line 488 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 488 "erlang_rtti_implementation.m"
+    {
+#line 488 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_121_112_101_95_99_116_111_114_95_105_115_95_118_97_114_105_97_98_108_101_95_97_114_105_116_121_95_95_91_49_93_95_48_1_p_0();
+    }
+#line 488 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 488 "erlang_rtti_implementation.m"
+  }
+#line 486 "erlang_rtti_implementation.m"
+}
+
+#line 116 "erlang_rtti_implementation.m"
+MR_Word MR_CALL 
+mercury__erlang_rtti_implementation__construct_tuple_2_3_f_0(
+#line 116 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__Args_5,
+#line 116 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__ArgTypes_6,
+#line 116 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Arity_7)
+#line 116 "erlang_rtti_implementation.m"
+{
+#line 1573 "erlang_rtti_implementation.m"
+  {
+#line 1573 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1573 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__Tuple_8;
+
+#line 1573 "erlang_rtti_implementation.m"
+    {
+#line 1573 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__Tuple_8 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_99_111_110_115_116_114_117_99_116_95_116_117_112_108_101_95_50_95_95_91_49_44_32_50_44_32_51_93_95_48_3_f_0();
+    }
+#line 1573 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__Tuple_8;
+#line 1573 "erlang_rtti_implementation.m"
+  }
+#line 116 "erlang_rtti_implementation.m"
+}
+
+#line 113 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__construct_3_f_0(
+#line 113 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeDesc_5,
+#line 113 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Index_6,
+#line 113 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__Args_7,
+#line 113 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Term_8)
+#line 113 "erlang_rtti_implementation.m"
+{
+#line 1405 "erlang_rtti_implementation.m"
+  {
+#line 1405 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1405 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_39_39 = (MR_Word) &mercury__type_desc__type_desc__type_ctor_info_type_desc_0;
+#line 1405 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_40_40 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0;
+#line 1405 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_11;
+#line 1406 "erlang_rtti_implementation.m"
+    MR_Box mercury__erlang_rtti_implementation__conv0_V_20_20;
+
+#line 1406 "erlang_rtti_implementation.m"
+    {
+#line 1406 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__conv0_V_20_20 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_39_39, mercury__erlang_rtti_implementation__TypeCtorInfo_40_40, ((MR_Box) (mercury__erlang_rtti_implementation__TypeDesc_5)));
+    }
+#line 1406 "erlang_rtti_implementation.m"
+    {
+#line 1406 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__collapse_equivalences_1_f_0();
+    }
+#line 1407 "erlang_rtti_implementation.m"
+    {
+#line 1407 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 1408 "erlang_rtti_implementation.m"
+    {
+#line 1408 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_11 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 1416 "erlang_rtti_implementation.m"
+#line 1416 "erlang_rtti_implementation.m"
+    switch (mercury__erlang_rtti_implementation__TypeCtorRep_11) {
+#line 1416 "erlang_rtti_implementation.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 3:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 22:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 11:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 7:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 4:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 6:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 23:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 13:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 24:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 5:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 12:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 17:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 15:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 10:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 8:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 25:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 26:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 18:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 20:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 16:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 19:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 21:
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 9:
+#line 1461 "erlang_rtti_implementation.m"
+        {
+#line 1461 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_41_41 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_type_ctor_rep_0;
+#line 1461 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_13_57;
+#line 1461 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__TypeClassInfo_for_op_table_66;
+#line 1461 "erlang_rtti_implementation.m"
+          MR_String mercury__erlang_rtti_implementation__V_23_23;
+#line 1461 "erlang_rtti_implementation.m"
+          MR_String mercury__erlang_rtti_implementation__V_25_25;
+#line 1461 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_10_54;
+#line 1461 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_9_55;
+#line 1461 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_11_56;
+#line 1461 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__V_10_63;
+#line 1461 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__V_13_64;
+
+#line 45 "ops.opt"
+          mercury__private_builtin__dummy_var = (MR_Integer) 0;
+#line 50 "string.to_string.opt"
+          mercury__erlang_rtti_implementation__V_10_54 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 16906 "erlang_rtti_implementation.c"
+          mercury__erlang_rtti_implementation__TypeClassInfo_for_op_table_66 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[4];
+#line 57 "string.to_string.opt"
+          {
+#line 57 "string.to_string.opt"
+            mercury__erlang_rtti_implementation__V_13_64 = mercury__ops__max_priority_1_f_0(mercury__erlang_rtti_implementation__TypeClassInfo_for_op_table_66, ((MR_Box) ((MR_Integer) 0)));
+          }
+#line 56 "string.to_string.opt"
+          mercury__erlang_rtti_implementation__V_10_63 = (mercury__erlang_rtti_implementation__V_13_64 + (MR_Integer) 1);
+#line 59 "string.to_string.opt"
+          {
+#line 59 "string.to_string.opt"
+            mercury__string__to_string__value_to_revstrings_prio_6_p_1(mercury__erlang_rtti_implementation__TypeCtorInfo_41_41, (MR_Integer) 1, mercury__erlang_rtti_implementation__V_10_63, ((MR_Box) (mercury__erlang_rtti_implementation__TypeCtorRep_11)), mercury__erlang_rtti_implementation__V_10_54, &mercury__erlang_rtti_implementation__V_9_55);
+          }
+#line 16920 "erlang_rtti_implementation.c"
+          mercury__erlang_rtti_implementation__TypeCtorInfo_13_57 = (MR_Word) &mercury__builtin__builtin__type_ctor_info_string_0;
+#line 1040 "list.opt"
+          {
+#line 1040 "list.opt"
+            mercury__list__reverse_2_p_0(mercury__erlang_rtti_implementation__TypeCtorInfo_13_57, mercury__erlang_rtti_implementation__V_9_55, &mercury__erlang_rtti_implementation__V_11_56);
+          }
+#line 52 "string.to_string.opt"
+          {
+#line 52 "string.to_string.opt"
+            mercury__erlang_rtti_implementation__V_25_25 = mercury__string__append_list_1_f_0(mercury__erlang_rtti_implementation__V_11_56);
+          }
+#line 159 "string.opt"
+          {
+#line 159 "string.opt"
+            mercury__string__append_3_p_2((MR_String) "unable to construct something of type ", mercury__erlang_rtti_implementation__V_25_25, &mercury__erlang_rtti_implementation__V_23_23);
+          }
+#line 1462 "erlang_rtti_implementation.m"
+          {
+#line 1462 "erlang_rtti_implementation.m"
+            mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "function \140erlang_rtti_implementation.construct\'/3", mercury__erlang_rtti_implementation__V_23_23);
+          }
+#line 1461 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1461 "erlang_rtti_implementation.m"
+        }
+#line 1416 "erlang_rtti_implementation.m"
+        break;
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 0:
+#line 1411 "erlang_rtti_implementation.m"
+        {
+#line 1411 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__Result_12;
+#line 1411 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__ArgTypes_15;
+#line 1411 "erlang_rtti_implementation.m"
+          MR_Tuple mercury__erlang_rtti_implementation__V_38_38;
+#line 1411 "erlang_rtti_implementation.m"
+          MR_String mercury__erlang_rtti_implementation__V_79_79;
+#line 1413 "erlang_rtti_implementation.m"
+          MR_String mercury__erlang_rtti_implementation__FunctorName_13;
+#line 1413 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation___FunctorArity_14;
+#line 1413 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation___ArgNames_16;
+
+#line 1412 "erlang_rtti_implementation.m"
+          {
+#line 1412 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__Result_12 = mercury__erlang_rtti_implementation__get_functor_with_names_2_f_0(mercury__erlang_rtti_implementation__Index_6);
+          }
+#line 1413 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__Result_12)) == (MR_mktag((MR_Integer) 1)));
+#line 1413 "erlang_rtti_implementation.m"
+          if (mercury__erlang_rtti_implementation__succeeded)
+#line 1413 "erlang_rtti_implementation.m"
+            {
+#line 1413 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_38_38 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Result_12, (MR_Integer) 0)));
+#line 1413 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__FunctorName_13 = ((MR_String) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_38_38, (MR_Integer) 0)));
+#line 1413 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation___FunctorArity_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_38_38, (MR_Integer) 1)));
+#line 1413 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__ArgTypes_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_38_38, (MR_Integer) 2)));
+#line 1413 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation___ArgNames_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_38_38, (MR_Integer) 3)));
+#line 1414 "erlang_rtti_implementation.m"
+              {
+#line 1414 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__check_arg_types_2_p_0(mercury__erlang_rtti_implementation__Args_7, mercury__erlang_rtti_implementation__ArgTypes_15);
+              }
+#line 1411 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 1411 "erlang_rtti_implementation.m"
+                {
+#line 1513 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_79_79 = (MR_String) "construct_univ";
+#line 1513 "erlang_rtti_implementation.m"
+                  {
+#line 1513 "erlang_rtti_implementation.m"
+                    mercury__private_builtin__sorry_1_p_0(mercury__erlang_rtti_implementation__V_79_79);
+                  }
+#line 1513 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1411 "erlang_rtti_implementation.m"
+                }
+#line 1413 "erlang_rtti_implementation.m"
+            }
+#line 1411 "erlang_rtti_implementation.m"
+        }
+#line 1416 "erlang_rtti_implementation.m"
+        break;
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 1:
+#line 1417 "erlang_rtti_implementation.m"
+        {
+#line 1417 "erlang_rtti_implementation.m"
+          MR_String mercury__erlang_rtti_implementation__V_84_84;
+
+#line 1418 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Index_6 == (MR_Integer) 0);
+#line 1417 "erlang_rtti_implementation.m"
+          if (mercury__erlang_rtti_implementation__succeeded)
+#line 1417 "erlang_rtti_implementation.m"
+            {
+#line 1513 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_84_84 = (MR_String) "construct_univ";
+#line 1513 "erlang_rtti_implementation.m"
+              {
+#line 1513 "erlang_rtti_implementation.m"
+                mercury__private_builtin__sorry_1_p_0(mercury__erlang_rtti_implementation__V_84_84);
+              }
+#line 1513 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1417 "erlang_rtti_implementation.m"
+            }
+#line 1417 "erlang_rtti_implementation.m"
+        }
+#line 1416 "erlang_rtti_implementation.m"
+        break;
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 2:
+#line 1427 "erlang_rtti_implementation.m"
+        {
+#line 1422 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_28_28;
+#line 1422 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_29_29;
+#line 1422 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__Head_17;
+#line 1422 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__Tail_18;
+
+#line 1422 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Index_6 == (MR_Integer) 1);
+#line 1422 "erlang_rtti_implementation.m"
+          if (mercury__erlang_rtti_implementation__succeeded)
+#line 1422 "erlang_rtti_implementation.m"
+            {
+#line 1422 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__Args_7)) == (MR_mktag((MR_Integer) 1)));
+#line 1422 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 1422 "erlang_rtti_implementation.m"
+                {
+#line 1422 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__Head_17 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Args_7, (MR_Integer) 0)));
+#line 1422 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__V_28_28 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__Args_7, (MR_Integer) 1)));
+#line 1422 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__V_28_28)) == (MR_mktag((MR_Integer) 1)));
+#line 1422 "erlang_rtti_implementation.m"
+                  if (mercury__erlang_rtti_implementation__succeeded)
+#line 1422 "erlang_rtti_implementation.m"
+                    {
+#line 1422 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__Tail_18 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_28_28, (MR_Integer) 0)));
+#line 1422 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__V_29_29 = ((MR_Word) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_28_28, (MR_Integer) 1)));
+#line 1422 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_29_29 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1422 "erlang_rtti_implementation.m"
+                    }
+#line 1422 "erlang_rtti_implementation.m"
+                }
+#line 1422 "erlang_rtti_implementation.m"
+            }
+#line 1427 "erlang_rtti_implementation.m"
+          if (mercury__erlang_rtti_implementation__succeeded)
+#line 1424 "erlang_rtti_implementation.m"
+            {
+#line 1492 "erlang_rtti_implementation.m"
+              {
+#line 1492 "erlang_rtti_implementation.m"
+                mercury__private_builtin__sorry_1_p_0((MR_String) "univ_type_info");
+              }
+#line 1424 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1424 "erlang_rtti_implementation.m"
+            }
+#line 1427 "erlang_rtti_implementation.m"
+          else
+#line 1428 "erlang_rtti_implementation.m"
+            {
+#line 1428 "erlang_rtti_implementation.m"
+              MR_String mercury__erlang_rtti_implementation__V_98_98;
+
+#line 1428 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Index_6 == (MR_Integer) 0);
+#line 1428 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 1428 "erlang_rtti_implementation.m"
+                {
+#line 1429 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Args_7 == ((MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0))));
+#line 1428 "erlang_rtti_implementation.m"
+                  if (mercury__erlang_rtti_implementation__succeeded)
+#line 1428 "erlang_rtti_implementation.m"
+                    {
+#line 1542 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__V_98_98 = (MR_String) "construct_empty_list_univ";
+#line 1542 "erlang_rtti_implementation.m"
+                      {
+#line 1542 "erlang_rtti_implementation.m"
+                        mercury__private_builtin__sorry_1_p_0(mercury__erlang_rtti_implementation__V_98_98);
+                      }
+#line 1542 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1428 "erlang_rtti_implementation.m"
+                    }
+#line 1428 "erlang_rtti_implementation.m"
+                }
+#line 1428 "erlang_rtti_implementation.m"
+            }
+#line 1427 "erlang_rtti_implementation.m"
+        }
+#line 1416 "erlang_rtti_implementation.m"
+        break;
+#line 1416 "erlang_rtti_implementation.m"
+      case (MR_Integer) 14:
+#line 1433 "erlang_rtti_implementation.m"
+        {
+#line 1433 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__Arity_19;
+#line 1433 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_26_26;
+
+#line 1434 "erlang_rtti_implementation.m"
+          {
+#line 1434 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__Arity_19 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_118_97_114_95_97_114_105_116_121_95_116_121_112_101_95_105_110_102_111_95_97_114_105_116_121_95_95_91_49_93_95_48_1_f_0();
+          }
+#line 1435 "erlang_rtti_implementation.m"
+          {
+#line 1435 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__V_26_26 = mercury__list__f_46_46_2_f_0((MR_Integer) 1, mercury__erlang_rtti_implementation__Arity_19);
+          }
+#line 1435 "erlang_rtti_implementation.m"
+          {
+#line 1435 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_104_101_99_107_95_116_117_112_108_101_95_97_114_103_95_116_121_112_101_115_95_95_91_49_93_95_48_3_p_0(mercury__erlang_rtti_implementation__V_26_26, mercury__erlang_rtti_implementation__Args_7);
+          }
+#line 1433 "erlang_rtti_implementation.m"
+          if (mercury__erlang_rtti_implementation__succeeded)
+#line 1433 "erlang_rtti_implementation.m"
+            {
+#line 1436 "erlang_rtti_implementation.m"
+              {
+#line 1436 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__Term_8 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_99_111_110_115_116_114_117_99_116_95_116_117_112_108_101_95_117_110_105_118_95_95_91_49_44_32_50_93_95_48_2_f_0();
+              }
+#line 1436 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1433 "erlang_rtti_implementation.m"
+            }
+#line 1433 "erlang_rtti_implementation.m"
+        }
+#line 1416 "erlang_rtti_implementation.m"
+        break;
+#line 1416 "erlang_rtti_implementation.m"
+    }
+#line 1405 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1405 "erlang_rtti_implementation.m"
+  }
+#line 113 "erlang_rtti_implementation.m"
+}
+
+#line 110 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__get_functor_lex_3_p_0(
+#line 110 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeDesc_4,
+#line 110 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__Ordinal_5,
+#line 110 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNum_6)
+#line 110 "erlang_rtti_implementation.m"
+{
+#line 1352 "erlang_rtti_implementation.m"
+  {
+#line 1352 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1352 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_9;
+
+#line 1354 "erlang_rtti_implementation.m"
+    {
+#line 1354 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 1355 "erlang_rtti_implementation.m"
+    {
+#line 1355 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_9 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 1361 "erlang_rtti_implementation.m"
+#line 1361 "erlang_rtti_implementation.m"
+    switch (mercury__erlang_rtti_implementation__TypeCtorRep_9) {
+#line 1361 "erlang_rtti_implementation.m"
+      default:
+#line 1361 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_FALSE;
+#line 1361 "erlang_rtti_implementation.m"
+        break;
+#line 1361 "erlang_rtti_implementation.m"
+      case (MR_Integer) 0:
+#line 1357 "erlang_rtti_implementation.m"
+        {
+#line 1357 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_16_32;
+#line 1357 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__FunctorReps_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1357 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__FunctorRep_11;
+#line 1384 "erlang_rtti_implementation.m"
+          MR_Box mercury__erlang_rtti_implementation__conv0_FunctorRep_11;
+#line 1386 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__V_33_33;
+#line 1386 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_26_26;
+#line 1386 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__V_27_27;
+#line 1386 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__V_28_28;
+#line 1386 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_30_30;
+#line 1386 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_31_31;
+#line 1360 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_12_12;
+#line 1360 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__V_13_13;
+#line 1360 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__V_14_14;
+#line 1360 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_16_16;
+#line 1360 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_17_17;
+
+#line 1835 "erlang_rtti_implementation.m"
+          {
+#line 1835 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_functors");
+          }
+#line 17267 "erlang_rtti_implementation.c"
+          mercury__erlang_rtti_implementation__TypeCtorInfo_16_32 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0;
+#line 1384 "erlang_rtti_implementation.m"
+          {
+#line 1384 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = mercury__list__index0_3_p_0(mercury__erlang_rtti_implementation__TypeCtorInfo_16_32, mercury__erlang_rtti_implementation__FunctorReps_10, mercury__erlang_rtti_implementation__Ordinal_5, &mercury__erlang_rtti_implementation__conv0_FunctorRep_11);
+          }
+#line 1384 "erlang_rtti_implementation.m"
+          if (mercury__erlang_rtti_implementation__succeeded)
+#line 1384 "erlang_rtti_implementation.m"
+            {
+#line 1384 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__FunctorRep_11 = ((MR_Word) mercury__erlang_rtti_implementation__conv0_FunctorRep_11);
+#line 1384 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1384 "erlang_rtti_implementation.m"
+            }
+#line 1357 "erlang_rtti_implementation.m"
+          if (mercury__erlang_rtti_implementation__succeeded)
+#line 1357 "erlang_rtti_implementation.m"
+            {
+#line 1386 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_26_26 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 0)));
+#line 1386 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_27_27 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 1)));
+#line 1386 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_33_33 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 2)));
+#line 1386 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_28_28 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 3)));
+#line 1386 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_30_30 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 5)));
+#line 1386 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_31_31 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 6)));
+#line 1386 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Ordinal_5 == mercury__erlang_rtti_implementation__V_33_33);
+#line 1388 "erlang_rtti_implementation.m"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 1387 "erlang_rtti_implementation.m"
+                {
+#line 1387 "erlang_rtti_implementation.m"
+                }
+#line 1388 "erlang_rtti_implementation.m"
+              else
+#line 1389 "erlang_rtti_implementation.m"
+                {
+#line 1389 "erlang_rtti_implementation.m"
+                  {
+#line 1389 "erlang_rtti_implementation.m"
+                    mercury__require__unexpected_3_p_0((MR_String) "erlang_rtti_implementation", (MR_String) "predicate \140erlang_rtti_implementation.matching_du_ordinal\'/3", (MR_String) "sanity check failed");
+                  }
+#line 1389 "erlang_rtti_implementation.m"
+                }
+#line 1360 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 0)));
+#line 1360 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 1)));
+#line 1360 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 2)));
+#line 1360 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNum_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 3)));
+#line 1360 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 5)));
+#line 1360 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 6)));
+#line 1360 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1357 "erlang_rtti_implementation.m"
+            }
+#line 1357 "erlang_rtti_implementation.m"
+        }
+#line 1361 "erlang_rtti_implementation.m"
+        break;
+#line 1361 "erlang_rtti_implementation.m"
+      case (MR_Integer) 1:
+#line 1362 "erlang_rtti_implementation.m"
+        {
+#line 1363 "erlang_rtti_implementation.m"
+          *mercury__erlang_rtti_implementation__FunctorNum_6 = (MR_Integer) 0;
+#line 1364 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Ordinal_5 == (MR_Integer) 0);
+#line 1362 "erlang_rtti_implementation.m"
+        }
+#line 1361 "erlang_rtti_implementation.m"
+        break;
+#line 1361 "erlang_rtti_implementation.m"
+      case (MR_Integer) 2:
+#line 1370 "erlang_rtti_implementation.m"
+#line 1370 "erlang_rtti_implementation.m"
+        switch (mercury__erlang_rtti_implementation__Ordinal_5) {
+#line 1370 "erlang_rtti_implementation.m"
+          default:
+#line 1370 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = MR_FALSE;
+#line 1370 "erlang_rtti_implementation.m"
+            break;
+#line 1370 "erlang_rtti_implementation.m"
+          case (MR_Integer) 0:
+#line 1369 "erlang_rtti_implementation.m"
+            {
+#line 1369 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNum_6 = (MR_Integer) 0;
+#line 1369 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1369 "erlang_rtti_implementation.m"
+            }
+#line 1370 "erlang_rtti_implementation.m"
+            break;
+#line 1370 "erlang_rtti_implementation.m"
+          case (MR_Integer) 1:
+#line 1372 "erlang_rtti_implementation.m"
+            {
+#line 1372 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNum_6 = (MR_Integer) 1;
+#line 1372 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1372 "erlang_rtti_implementation.m"
+            }
+#line 1370 "erlang_rtti_implementation.m"
+            break;
+#line 1370 "erlang_rtti_implementation.m"
+        }
+#line 1361 "erlang_rtti_implementation.m"
+        break;
+#line 1361 "erlang_rtti_implementation.m"
+      case (MR_Integer) 14:
+#line 1375 "erlang_rtti_implementation.m"
+        {
+#line 1376 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__Ordinal_5 == (MR_Integer) 0);
+#line 1375 "erlang_rtti_implementation.m"
+          if (mercury__erlang_rtti_implementation__succeeded)
+#line 1375 "erlang_rtti_implementation.m"
+            {
+#line 1377 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__FunctorNum_6 = (MR_Integer) 0;
+#line 1377 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1375 "erlang_rtti_implementation.m"
+            }
+#line 1375 "erlang_rtti_implementation.m"
+        }
+#line 1361 "erlang_rtti_implementation.m"
+        break;
+#line 1361 "erlang_rtti_implementation.m"
+    }
+#line 1352 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1352 "erlang_rtti_implementation.m"
+  }
+#line 110 "erlang_rtti_implementation.m"
+}
+
+#line 107 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__get_functor_ordinal_3_p_0(
+#line 107 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeDesc_4,
+#line 107 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__FunctorNum_5,
+#line 107 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Ordinal_6)
+#line 107 "erlang_rtti_implementation.m"
+{
+#line 1324 "erlang_rtti_implementation.m"
+  {
+#line 1324 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1324 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_9;
+
+#line 1326 "erlang_rtti_implementation.m"
+    {
+#line 1326 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 1327 "erlang_rtti_implementation.m"
+    {
+#line 1327 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_9 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 1333 "erlang_rtti_implementation.m"
+#line 1333 "erlang_rtti_implementation.m"
+    switch (mercury__erlang_rtti_implementation__TypeCtorRep_9) {
+#line 1333 "erlang_rtti_implementation.m"
+      default:
+#line 1333 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_FALSE;
+#line 1333 "erlang_rtti_implementation.m"
+        break;
+#line 1333 "erlang_rtti_implementation.m"
+      case (MR_Integer) 0:
+#line 1329 "erlang_rtti_implementation.m"
+        {
+#line 1329 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__FunctorReps_10 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1329 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__FunctorRep_11;
+#line 1332 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_12_12;
+#line 1332 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__V_13_13;
+#line 1332 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__V_14_14;
+#line 1332 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_16_16;
+#line 1332 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__V_17_17;
+
+#line 1835 "erlang_rtti_implementation.m"
+          {
+#line 1835 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_functors");
+          }
+#line 1331 "erlang_rtti_implementation.m"
+          {
+#line 1331 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__matching_du_functor_number_3_p_0(mercury__erlang_rtti_implementation__FunctorReps_10, mercury__erlang_rtti_implementation__FunctorNum_5, &mercury__erlang_rtti_implementation__FunctorRep_11);
+          }
+#line 1329 "erlang_rtti_implementation.m"
+          if (mercury__erlang_rtti_implementation__succeeded)
+#line 1329 "erlang_rtti_implementation.m"
+            {
+#line 1332 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_12_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 0)));
+#line 1332 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_13_13 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 1)));
+#line 1332 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Ordinal_6 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 2)));
+#line 1332 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_14_14 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 3)));
+#line 1332 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_16_16 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 5)));
+#line 1332 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__V_17_17 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__FunctorRep_11, (MR_Integer) 6)));
+#line 1332 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1329 "erlang_rtti_implementation.m"
+            }
+#line 1329 "erlang_rtti_implementation.m"
+        }
+#line 1333 "erlang_rtti_implementation.m"
+        break;
+#line 1333 "erlang_rtti_implementation.m"
+      case (MR_Integer) 1:
+#line 1334 "erlang_rtti_implementation.m"
+        {
+#line 1335 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__FunctorNum_5 == (MR_Integer) 0);
+#line 1334 "erlang_rtti_implementation.m"
+          if (mercury__erlang_rtti_implementation__succeeded)
+#line 1334 "erlang_rtti_implementation.m"
+            {
+#line 1336 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Ordinal_6 = (MR_Integer) 0;
+#line 1336 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1334 "erlang_rtti_implementation.m"
+            }
+#line 1334 "erlang_rtti_implementation.m"
+        }
+#line 1333 "erlang_rtti_implementation.m"
+        break;
+#line 1333 "erlang_rtti_implementation.m"
+      case (MR_Integer) 2:
+#line 1342 "erlang_rtti_implementation.m"
+#line 1342 "erlang_rtti_implementation.m"
+        switch (mercury__erlang_rtti_implementation__FunctorNum_5) {
+#line 1342 "erlang_rtti_implementation.m"
+          default:
+#line 1342 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = MR_FALSE;
+#line 1342 "erlang_rtti_implementation.m"
+            break;
+#line 1342 "erlang_rtti_implementation.m"
+          case (MR_Integer) 0:
+#line 1340 "erlang_rtti_implementation.m"
+            {
+#line 1340 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Ordinal_6 = (MR_Integer) 0;
+#line 1340 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1340 "erlang_rtti_implementation.m"
+            }
+#line 1342 "erlang_rtti_implementation.m"
+            break;
+#line 1342 "erlang_rtti_implementation.m"
+          case (MR_Integer) 1:
+#line 1343 "erlang_rtti_implementation.m"
+            {
+#line 1343 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Ordinal_6 = (MR_Integer) 1;
+#line 1343 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1343 "erlang_rtti_implementation.m"
+            }
+#line 1342 "erlang_rtti_implementation.m"
+            break;
+#line 1342 "erlang_rtti_implementation.m"
+        }
+#line 1333 "erlang_rtti_implementation.m"
+        break;
+#line 1333 "erlang_rtti_implementation.m"
+      case (MR_Integer) 14:
+#line 1347 "erlang_rtti_implementation.m"
+        {
+#line 1348 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__FunctorNum_5 == (MR_Integer) 0);
+#line 1347 "erlang_rtti_implementation.m"
+          if (mercury__erlang_rtti_implementation__succeeded)
+#line 1347 "erlang_rtti_implementation.m"
+            {
+#line 1349 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Ordinal_6 = (MR_Integer) 0;
+#line 1349 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1347 "erlang_rtti_implementation.m"
+            }
+#line 1347 "erlang_rtti_implementation.m"
+        }
+#line 1333 "erlang_rtti_implementation.m"
+        break;
+#line 1333 "erlang_rtti_implementation.m"
+    }
+#line 1324 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1324 "erlang_rtti_implementation.m"
+  }
+#line 107 "erlang_rtti_implementation.m"
+}
+
+#line 103 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__get_functor_with_names_6_p_0(
+#line 103 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeDesc_7,
+#line 103 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__FunctorNum_8,
+#line 103 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Name_9,
+#line 103 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_10,
+#line 103 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__ArgTypeDescs_11,
+#line 103 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__ArgNames_12)
+#line 103 "erlang_rtti_implementation.m"
+{
+#line 1218 "erlang_rtti_implementation.m"
+  {
+#line 1218 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1218 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__MaybeResult_14;
+#line 1218 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__ArgTypeInfos_15;
+#line 1218 "erlang_rtti_implementation.m"
+    MR_Tuple mercury__erlang_rtti_implementation__V_16_16;
+
+#line 1219 "erlang_rtti_implementation.m"
+    {
+#line 1219 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__type_info_from_type_desc_1_f_0(mercury__erlang_rtti_implementation__TypeDesc_7);
+    }
+#line 1220 "erlang_rtti_implementation.m"
+    {
+#line 1220 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__MaybeResult_14 = mercury__erlang_rtti_implementation__get_functor_with_names_2_f_0(mercury__erlang_rtti_implementation__FunctorNum_8);
+    }
+#line 1221 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__MaybeResult_14)) == (MR_mktag((MR_Integer) 1)));
+#line 1221 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1221 "erlang_rtti_implementation.m"
+      {
+#line 1221 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__V_16_16 = ((MR_Tuple) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__MaybeResult_14, (MR_Integer) 0)));
+#line 1221 "erlang_rtti_implementation.m"
+        *mercury__erlang_rtti_implementation__Name_9 = ((MR_String) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_16_16, (MR_Integer) 0)));
+#line 1221 "erlang_rtti_implementation.m"
+        *mercury__erlang_rtti_implementation__Arity_10 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_16_16, (MR_Integer) 1)));
+#line 1221 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__ArgTypeInfos_15 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_16_16, (MR_Integer) 2)));
+#line 1221 "erlang_rtti_implementation.m"
+        *mercury__erlang_rtti_implementation__ArgNames_12 = ((MR_Word) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__V_16_16, (MR_Integer) 3)));
+#line 1222 "erlang_rtti_implementation.m"
+        {
+#line 1222 "erlang_rtti_implementation.m"
+          *mercury__erlang_rtti_implementation__ArgTypeDescs_11 = mercury__erlang_rtti_implementation__type_descs_from_type_infos_1_f_0(mercury__erlang_rtti_implementation__ArgTypeInfos_15);
+        }
+#line 1222 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1221 "erlang_rtti_implementation.m"
+      }
+#line 1218 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1218 "erlang_rtti_implementation.m"
+  }
+#line 103 "erlang_rtti_implementation.m"
+}
+
+#line 100 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__get_functor_5_p_0(
+#line 100 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeDesc_6,
+#line 100 "erlang_rtti_implementation.m"
+  MR_Integer mercury__erlang_rtti_implementation__FunctorNum_7,
+#line 100 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Name_8,
+#line 100 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 100 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__ArgTypes_10)
+#line 100 "erlang_rtti_implementation.m"
+{
+#line 1215 "erlang_rtti_implementation.m"
+  {
+#line 1215 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1215 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_11_11;
+
+#line 1215 "erlang_rtti_implementation.m"
+    {
+#line 1215 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__get_functor_with_names_6_p_0(mercury__erlang_rtti_implementation__TypeDesc_6, mercury__erlang_rtti_implementation__FunctorNum_7, mercury__erlang_rtti_implementation__Name_8, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__ArgTypes_10, &mercury__erlang_rtti_implementation__V_11_11);
+    }
+#line 1215 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1215 "erlang_rtti_implementation.m"
+  }
+#line 100 "erlang_rtti_implementation.m"
+}
+
+#line 98 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__num_functors_1_f_0(
+#line 98 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeDesc_3,
+#line 98 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__NumFunctors_4)
+#line 98 "erlang_rtti_implementation.m"
+{
+#line 1157 "erlang_rtti_implementation.m"
+  {
+#line 1157 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1157 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__V_6_6;
+
+#line 1158 "erlang_rtti_implementation.m"
+    {
+#line 1158 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__type_info_from_type_desc_1_f_0(mercury__erlang_rtti_implementation__TypeDesc_3);
+    }
+#line 1159 "erlang_rtti_implementation.m"
+    {
+#line 1159 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__num_functors_2_p_0(&mercury__erlang_rtti_implementation__V_6_6);
+    }
+#line 1159 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__V_6_6)) == (MR_mktag((MR_Integer) 1)));
+#line 1159 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1159 "erlang_rtti_implementation.m"
+      *mercury__erlang_rtti_implementation__NumFunctors_4 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__V_6_6, (MR_Integer) 0)));
+#line 1157 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1157 "erlang_rtti_implementation.m"
+  }
+#line 98 "erlang_rtti_implementation.m"
+}
+
+#line 91 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__is_univ_pseudo_type_desc_2_p_0(
+#line 91 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__PseudoTypeDesc_3,
+#line 91 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Int_4)
+#line 91 "erlang_rtti_implementation.m"
+{
+#line 1129 "erlang_rtti_implementation.m"
+  {
+#line 1129 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1129 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__EvalPTI_5;
+
+#line 1130 "erlang_rtti_implementation.m"
+    {
+#line 1130 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__EvalPTI_5 = mercury__erlang_rtti_implementation__pseudo_type_desc_to_pseudo_type_info_1_f_0(mercury__erlang_rtti_implementation__PseudoTypeDesc_3);
+    }
+#line 1131 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__EvalPTI_5)) == (MR_mktag((MR_Integer) 0)));
+#line 1131 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1131 "erlang_rtti_implementation.m"
+      *mercury__erlang_rtti_implementation__Int_4 = ((MR_Integer) (MR_hl_field(MR_mktag(0), mercury__erlang_rtti_implementation__EvalPTI_5, (MR_Integer) 0)));
+#line 1129 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1129 "erlang_rtti_implementation.m"
+  }
+#line 91 "erlang_rtti_implementation.m"
+}
+
+#line 89 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__is_exist_pseudo_type_desc_2_p_0(
+#line 89 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__PseudoTypeDesc_3,
+#line 89 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Int_4)
+#line 89 "erlang_rtti_implementation.m"
+{
+#line 1123 "erlang_rtti_implementation.m"
+  {
+#line 1123 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1123 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__EvalPTI_5;
+
+#line 1124 "erlang_rtti_implementation.m"
+    {
+#line 1124 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__EvalPTI_5 = mercury__erlang_rtti_implementation__pseudo_type_desc_to_pseudo_type_info_1_f_0(mercury__erlang_rtti_implementation__PseudoTypeDesc_3);
+    }
+#line 1125 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__EvalPTI_5)) == (MR_mktag((MR_Integer) 1)));
+#line 1125 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1125 "erlang_rtti_implementation.m"
+      *mercury__erlang_rtti_implementation__Int_4 = ((MR_Integer) (MR_hl_field(MR_mktag(1), mercury__erlang_rtti_implementation__EvalPTI_5, (MR_Integer) 0)));
+#line 1123 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1123 "erlang_rtti_implementation.m"
+  }
+#line 89 "erlang_rtti_implementation.m"
+}
+
+#line 86 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__pseudo_type_ctor_and_args_3_p_0(
+#line 86 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__PseudoTypeDesc_4,
+#line 86 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__TypeCtorDesc_5,
+#line 86 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Args_6)
+#line 86 "erlang_rtti_implementation.m"
+{
+#line 1088 "erlang_rtti_implementation.m"
+  {
+#line 1088 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 1088 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_5_44;
+#line 1088 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeInfo_6_45;
+#line 1088 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__EvalPTI_7;
+#line 1088 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_11;
+#line 1088 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__ArgInfos_13;
+#line 1152 "erlang_rtti_implementation.m"
+    MR_Box mercury__erlang_rtti_implementation__conv1_Args_6;
+
+#line 1090 "erlang_rtti_implementation.m"
+    {
+#line 1090 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__EvalPTI_7 = mercury__erlang_rtti_implementation__pseudo_type_desc_to_pseudo_type_info_1_f_0(mercury__erlang_rtti_implementation__PseudoTypeDesc_4);
+    }
+#line 1091 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = ((MR_tag((MR_Word) mercury__erlang_rtti_implementation__EvalPTI_7)) == (MR_mktag((MR_Integer) 2)));
+#line 1088 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1088 "erlang_rtti_implementation.m"
+      {
+#line 1095 "erlang_rtti_implementation.m"
+        {
+#line 1095 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+        }
+#line 1096 "erlang_rtti_implementation.m"
+        {
+#line 1096 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__TypeCtorRep_11 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+        }
+#line 1098 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__TypeCtorRep_11 == (MR_Integer) 12);
+#line 1102 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 1099 "erlang_rtti_implementation.m"
+          {
+#line 1677 "erlang_rtti_implementation.m"
+            {
+#line 1677 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "var_arity_type_info_arity");
+            }
+#line 538 "erlang_rtti_implementation.m"
+            {
+#line 538 "erlang_rtti_implementation.m"
+              mercury__private_builtin__sorry_1_p_0((MR_String) "make_pred_type_ctor_desc");
+            }
+#line 1099 "erlang_rtti_implementation.m"
+          }
+#line 1102 "erlang_rtti_implementation.m"
+        else
+#line 1106 "erlang_rtti_implementation.m"
+          {
+#line 1102 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__TypeCtorRep_11 == (MR_Integer) 13);
+#line 1106 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 1103 "erlang_rtti_implementation.m"
+              {
+#line 1677 "erlang_rtti_implementation.m"
+                {
+#line 1677 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "var_arity_type_info_arity");
+                }
+#line 550 "erlang_rtti_implementation.m"
+                {
+#line 550 "erlang_rtti_implementation.m"
+                  mercury__private_builtin__sorry_1_p_0((MR_String) "make_func_type_ctor_desc");
+                }
+#line 1103 "erlang_rtti_implementation.m"
+              }
+#line 1106 "erlang_rtti_implementation.m"
+            else
+#line 1110 "erlang_rtti_implementation.m"
+              {
+#line 1106 "erlang_rtti_implementation.m"
+                mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__TypeCtorRep_11 == (MR_Integer) 14);
+#line 1110 "erlang_rtti_implementation.m"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 1107 "erlang_rtti_implementation.m"
+                  {
+#line 1677 "erlang_rtti_implementation.m"
+                    {
+#line 1677 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "var_arity_type_info_arity");
+                    }
+#line 562 "erlang_rtti_implementation.m"
+                    {
+#line 562 "erlang_rtti_implementation.m"
+                      mercury__private_builtin__sorry_1_p_0((MR_String) "make_tuple_type_ctor_desc");
+                    }
+#line 1107 "erlang_rtti_implementation.m"
+                  }
+#line 1110 "erlang_rtti_implementation.m"
+                else
+#line 1112 "erlang_rtti_implementation.m"
+                  {
+#line 1112 "erlang_rtti_implementation.m"
+                    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_5_38 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_ctor_info_evaled_0;
+#line 1112 "erlang_rtti_implementation.m"
+                    MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_6_39 = (MR_Word) &mercury__type_desc__type_desc__type_ctor_info_type_ctor_desc_0;
+#line 569 "erlang_rtti_implementation.m"
+                    MR_Box mercury__erlang_rtti_implementation__conv0_TypeCtorDesc_5;
+
+#line 569 "erlang_rtti_implementation.m"
+                    {
+#line 569 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__conv0_TypeCtorDesc_5 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_5_38, mercury__erlang_rtti_implementation__TypeCtorInfo_6_39, ((MR_Box) ((MR_Integer) 0)));
+                    }
+#line 569 "erlang_rtti_implementation.m"
+                    *mercury__erlang_rtti_implementation__TypeCtorDesc_5 = ((MR_Word) mercury__erlang_rtti_implementation__conv0_TypeCtorDesc_5);
+#line 1823 "erlang_rtti_implementation.m"
+                    {
+#line 1823 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_arity");
+                    }
+#line 1113 "erlang_rtti_implementation.m"
+                    mercury__erlang_rtti_implementation__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+#line 1115 "erlang_rtti_implementation.m"
+                    if (mercury__erlang_rtti_implementation__succeeded)
+#line 1114 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__ArgInfos_13 = (MR_Word) MR_mkword(MR_mktag(0), MR_mkbody((MR_Integer) 0));
+#line 1115 "erlang_rtti_implementation.m"
+                    else
+#line 1116 "erlang_rtti_implementation.m"
+                      {
+#line 1116 "erlang_rtti_implementation.m"
+                        mercury__erlang_rtti_implementation__ArgInfos_13 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_105_120_101_100_95_97_114_105_116_121_95_97_114_103_95_116_121_112_101_95_105_110_102_111_115_95_95_91_49_93_95_48_1_f_0();
+                      }
+#line 1112 "erlang_rtti_implementation.m"
+                  }
+#line 1110 "erlang_rtti_implementation.m"
+              }
+#line 1106 "erlang_rtti_implementation.m"
+          }
+#line 17961 "erlang_rtti_implementation.c"
+        mercury__erlang_rtti_implementation__TypeInfo_5_44 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[1];
+#line 17963 "erlang_rtti_implementation.c"
+        mercury__erlang_rtti_implementation__TypeInfo_6_45 = (MR_Word) &mercury__erlang_rtti_implementation_scalar_common_1[3];
+#line 1152 "erlang_rtti_implementation.m"
+        {
+#line 1152 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__conv1_Args_6 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeInfo_5_44, mercury__erlang_rtti_implementation__TypeInfo_6_45, ((MR_Box) (mercury__erlang_rtti_implementation__ArgInfos_13)));
+        }
+#line 1152 "erlang_rtti_implementation.m"
+        *mercury__erlang_rtti_implementation__Args_6 = ((MR_Word) mercury__erlang_rtti_implementation__conv1_Args_6);
+#line 1152 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 1088 "erlang_rtti_implementation.m"
+      }
+#line 1088 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 1088 "erlang_rtti_implementation.m"
+  }
+#line 86 "erlang_rtti_implementation.m"
+}
+
+#line 81 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__deconstruct_du_5_p_2(
+#line 81 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 81 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_6,
+#line 81 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__NonCanon_7,
+#line 81 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_8,
+#line 81 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 81 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_10)
+#line 81 "erlang_rtti_implementation.m"
+{
+#line 729 "erlang_rtti_implementation.m"
+  {
+#line 729 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 729 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13;
+#line 734 "erlang_rtti_implementation.m"
+    MR_String mercury__erlang_rtti_implementation___Functor_14;
+
+#line 730 "erlang_rtti_implementation.m"
+    {
+#line 730 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+    }
+#line 731 "erlang_rtti_implementation.m"
+    {
+#line 731 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 732 "erlang_rtti_implementation.m"
+    {
+#line 732 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_13 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 733 "erlang_rtti_implementation.m"
+    {
+#line 733 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__is_du_type_1_p_0(mercury__erlang_rtti_implementation__TypeCtorRep_13);
+    }
+#line 729 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 729 "erlang_rtti_implementation.m"
+      {
+#line 734 "erlang_rtti_implementation.m"
+        {
+#line 734 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_93_95_51_9_p_3(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Term_6, mercury__erlang_rtti_implementation__TypeCtorRep_13, mercury__erlang_rtti_implementation__NonCanon_7, &mercury__erlang_rtti_implementation___Functor_14, mercury__erlang_rtti_implementation__FunctorNumber_8, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__Arguments_10);
+        }
+#line 734 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 729 "erlang_rtti_implementation.m"
+      }
+#line 729 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 729 "erlang_rtti_implementation.m"
+  }
+#line 81 "erlang_rtti_implementation.m"
+}
+
+#line 80 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__deconstruct_du_5_p_1(
+#line 80 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 80 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_6,
+#line 80 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__NonCanon_7,
+#line 80 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_8,
+#line 80 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 80 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_10)
+#line 80 "erlang_rtti_implementation.m"
+{
+#line 729 "erlang_rtti_implementation.m"
+  {
+#line 729 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 729 "erlang_rtti_implementation.m"
+    {
+#line 729 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_100_117_95_95_91_51_93_95_49_5_p_1(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Term_6, mercury__erlang_rtti_implementation__FunctorNumber_8, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__Arguments_10);
+    }
+#line 729 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 729 "erlang_rtti_implementation.m"
+  }
+#line 80 "erlang_rtti_implementation.m"
+}
+
+#line 79 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__deconstruct_du_5_p_0(
+#line 79 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 79 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_6,
+#line 79 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__NonCanon_7,
+#line 79 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_8,
+#line 79 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 79 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_10)
+#line 79 "erlang_rtti_implementation.m"
+{
+#line 729 "erlang_rtti_implementation.m"
+  {
+#line 729 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 729 "erlang_rtti_implementation.m"
+    {
+#line 729 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_100_117_95_95_91_51_93_95_48_5_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Term_6, mercury__erlang_rtti_implementation__FunctorNumber_8, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__Arguments_10);
+    }
+#line 729 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 729 "erlang_rtti_implementation.m"
+  }
+#line 79 "erlang_rtti_implementation.m"
+}
+
+#line 75 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__deconstruct_5_p_3(
+#line 75 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 75 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_6,
+#line 75 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__NonCanon_7,
+#line 75 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_8,
+#line 75 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 75 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_10)
+#line 75 "erlang_rtti_implementation.m"
+{
+#line 722 "erlang_rtti_implementation.m"
+  {
+#line 722 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 722 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_13;
+#line 726 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation___FunctorNumber_14;
+
+#line 723 "erlang_rtti_implementation.m"
+    {
+#line 723 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+    }
+#line 724 "erlang_rtti_implementation.m"
+    {
+#line 724 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 725 "erlang_rtti_implementation.m"
+    {
+#line 725 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_13 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 726 "erlang_rtti_implementation.m"
+    {
+#line 726 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_93_95_51_9_p_3(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Term_6, mercury__erlang_rtti_implementation__TypeCtorRep_13, mercury__erlang_rtti_implementation__NonCanon_7, mercury__erlang_rtti_implementation__Functor_8, &mercury__erlang_rtti_implementation___FunctorNumber_14, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__Arguments_10);
+    }
+#line 722 "erlang_rtti_implementation.m"
+  }
+#line 75 "erlang_rtti_implementation.m"
+}
+
+#line 74 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__deconstruct_5_p_2(
+#line 74 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 74 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_6,
+#line 74 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__NonCanon_7,
+#line 74 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_8,
+#line 74 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 74 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_10)
+#line 74 "erlang_rtti_implementation.m"
+{
+#line 722 "erlang_rtti_implementation.m"
+  {
+#line 722 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 722 "erlang_rtti_implementation.m"
+    {
+#line 722 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_50_5_p_2(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Term_6, mercury__erlang_rtti_implementation__Functor_8, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__Arguments_10);
+#line 722 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 722 "erlang_rtti_implementation.m"
+  }
+#line 74 "erlang_rtti_implementation.m"
+}
+
+#line 73 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__deconstruct_5_p_1(
+#line 73 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 73 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_6,
+#line 73 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__NonCanon_7,
+#line 73 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_8,
+#line 73 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 73 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_10)
+#line 73 "erlang_rtti_implementation.m"
+{
+#line 722 "erlang_rtti_implementation.m"
+  {
+#line 722 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 722 "erlang_rtti_implementation.m"
+    {
+#line 722 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_49_5_p_1(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Term_6, mercury__erlang_rtti_implementation__Functor_8, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__Arguments_10);
+#line 722 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 722 "erlang_rtti_implementation.m"
+  }
+#line 73 "erlang_rtti_implementation.m"
+}
+
+#line 72 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__deconstruct_5_p_0(
+#line 72 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_15,
+#line 72 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_6,
+#line 72 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__NonCanon_7,
+#line 72 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__Functor_8,
+#line 72 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_9,
+#line 72 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Arguments_10)
+#line 72 "erlang_rtti_implementation.m"
+{
+#line 722 "erlang_rtti_implementation.m"
+  {
+#line 722 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 722 "erlang_rtti_implementation.m"
+    {
+#line 722 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_95_91_51_93_95_48_5_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_15, mercury__erlang_rtti_implementation__Term_6, mercury__erlang_rtti_implementation__Functor_8, mercury__erlang_rtti_implementation__Arity_9, mercury__erlang_rtti_implementation__Arguments_10);
+#line 722 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 722 "erlang_rtti_implementation.m"
+  }
+#line 72 "erlang_rtti_implementation.m"
+}
+
+#line 68 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__functor_number_cc_3_p_0(
+#line 68 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_14,
+#line 68 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_4,
+#line 68 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_5,
+#line 68 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_6)
+#line 68 "erlang_rtti_implementation.m"
+{
+#line 708 "erlang_rtti_implementation.m"
+  {
+#line 708 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 708 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_9;
+#line 708 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__Arity0_12;
+#line 714 "erlang_rtti_implementation.m"
+    MR_String mercury__erlang_rtti_implementation___Functor_11;
+#line 714 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation___Arguments_13;
+
+#line 709 "erlang_rtti_implementation.m"
+    {
+#line 709 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+    }
+#line 710 "erlang_rtti_implementation.m"
+    {
+#line 710 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 711 "erlang_rtti_implementation.m"
+    {
+#line 711 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_9 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 712 "erlang_rtti_implementation.m"
+    {
+#line 712 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__is_du_type_1_p_0(mercury__erlang_rtti_implementation__TypeCtorRep_9);
+    }
+#line 708 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 708 "erlang_rtti_implementation.m"
+      {
+#line 714 "erlang_rtti_implementation.m"
+        {
+#line 714 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_49_9_p_1(mercury__erlang_rtti_implementation__TypeInfo_for_T_14, mercury__erlang_rtti_implementation__Term_4, mercury__erlang_rtti_implementation__TypeCtorRep_9, &mercury__erlang_rtti_implementation___Functor_11, mercury__erlang_rtti_implementation__FunctorNumber_5, &mercury__erlang_rtti_implementation__Arity0_12, &mercury__erlang_rtti_implementation___Arguments_13);
+        }
+#line 718 "erlang_rtti_implementation.m"
+        *mercury__erlang_rtti_implementation__Arity_6 = mercury__erlang_rtti_implementation__Arity0_12;
+#line 719 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 708 "erlang_rtti_implementation.m"
+      }
+#line 708 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 708 "erlang_rtti_implementation.m"
+  }
+#line 68 "erlang_rtti_implementation.m"
+}
+
+#line 66 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__functor_number_3_p_0(
+#line 66 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_13,
+#line 66 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Term_4,
+#line 66 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__FunctorNumber_5,
+#line 66 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__Arity_6)
+#line 66 "erlang_rtti_implementation.m"
+{
+#line 699 "erlang_rtti_implementation.m"
+  {
+#line 699 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 699 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_9;
+#line 705 "erlang_rtti_implementation.m"
+    MR_String mercury__erlang_rtti_implementation___Functor_11;
+#line 705 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation___Arguments_12;
+
+#line 700 "erlang_rtti_implementation.m"
+    {
+#line 700 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+    }
+#line 701 "erlang_rtti_implementation.m"
+    {
+#line 701 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 702 "erlang_rtti_implementation.m"
+    {
+#line 702 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_9 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 703 "erlang_rtti_implementation.m"
+    {
+#line 703 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__is_du_type_1_p_0(mercury__erlang_rtti_implementation__TypeCtorRep_9);
+    }
+#line 699 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 699 "erlang_rtti_implementation.m"
+      {
+#line 705 "erlang_rtti_implementation.m"
+        {
+#line 705 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_100_101_99_111_110_115_116_114_117_99_116_95_50_95_95_91_52_44_32_54_93_95_48_9_p_0(mercury__erlang_rtti_implementation__TypeInfo_for_T_13, mercury__erlang_rtti_implementation__Term_4, mercury__erlang_rtti_implementation__TypeCtorRep_9, &mercury__erlang_rtti_implementation___Functor_11, mercury__erlang_rtti_implementation__FunctorNumber_5, mercury__erlang_rtti_implementation__Arity_6, &mercury__erlang_rtti_implementation___Arguments_12);
+        }
+#line 705 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = MR_TRUE;
+#line 699 "erlang_rtti_implementation.m"
+      }
+#line 699 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 699 "erlang_rtti_implementation.m"
+  }
+#line 66 "erlang_rtti_implementation.m"
+}
+
+#line 58 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__type_ctor_desc_name_and_arity_4_p_0(
+#line 58 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_5,
+#line 58 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__HeadVar__2_6,
+#line 58 "erlang_rtti_implementation.m"
+  MR_String * mercury__erlang_rtti_implementation__HeadVar__3_7,
+#line 58 "erlang_rtti_implementation.m"
+  MR_Integer * mercury__erlang_rtti_implementation__HeadVar__4_8)
+#line 58 "erlang_rtti_implementation.m"
+{
+#line 681 "erlang_rtti_implementation.m"
+  {
+#line 681 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 681 "erlang_rtti_implementation.m"
+    {
+#line 681 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_121_112_101_95_99_116_111_114_95_100_101_115_99_95_110_97_109_101_95_97_110_100_95_97_114_105_116_121_95_95_91_49_93_95_48_4_p_0(mercury__erlang_rtti_implementation__HeadVar__2_6, mercury__erlang_rtti_implementation__HeadVar__3_7, mercury__erlang_rtti_implementation__HeadVar__4_8);
+#line 681 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 681 "erlang_rtti_implementation.m"
+  }
+#line 58 "erlang_rtti_implementation.m"
+}
+
+#line 55 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__make_type_desc_3_p_0(
+#line 55 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__1_4,
+#line 55 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__HeadVar__2_5,
+#line 55 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__HeadVar__3_6)
+#line 55 "erlang_rtti_implementation.m"
+{
+#line 637 "erlang_rtti_implementation.m"
+  {
+#line 637 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 637 "erlang_rtti_implementation.m"
+    {
+#line 637 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_109_97_107_101_95_116_121_112_101_95_100_101_115_99_95_95_91_49_44_32_50_93_95_48_3_p_0(mercury__erlang_rtti_implementation__HeadVar__3_6);
+    }
+#line 637 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 637 "erlang_rtti_implementation.m"
+  }
+#line 55 "erlang_rtti_implementation.m"
+}
+
+#line 52 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__type_ctor_desc_and_args_3_p_0(
+#line 52 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeDesc_4,
+#line 52 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__TypeCtorDesc_5,
+#line 52 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__ArgsDescs_6)
+#line 52 "erlang_rtti_implementation.m"
+{
+#line 501 "erlang_rtti_implementation.m"
+  {
+#line 501 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 501 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__TypeCtorRep_10;
+#line 501 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__ArgInfos_12;
+
+#line 502 "erlang_rtti_implementation.m"
+    {
+#line 502 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__type_info_from_type_desc_1_f_0(mercury__erlang_rtti_implementation__TypeDesc_4);
+    }
+#line 503 "erlang_rtti_implementation.m"
+    {
+#line 503 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__collapse_equivalences_1_f_0();
+    }
+#line 504 "erlang_rtti_implementation.m"
+    {
+#line 504 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 505 "erlang_rtti_implementation.m"
+    {
+#line 505 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__TypeCtorRep_10 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_114_101_112_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 507 "erlang_rtti_implementation.m"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__TypeCtorRep_10 == (MR_Integer) 12);
+#line 512 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 508 "erlang_rtti_implementation.m"
+      {
+#line 1677 "erlang_rtti_implementation.m"
+        {
+#line 1677 "erlang_rtti_implementation.m"
+          mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "var_arity_type_info_arity");
+        }
+#line 538 "erlang_rtti_implementation.m"
+        {
+#line 538 "erlang_rtti_implementation.m"
+          mercury__private_builtin__sorry_1_p_0((MR_String) "make_pred_type_ctor_desc");
+#line 538 "erlang_rtti_implementation.m"
+          return;
+        }
+#line 508 "erlang_rtti_implementation.m"
+      }
+#line 512 "erlang_rtti_implementation.m"
+    else
+#line 517 "erlang_rtti_implementation.m"
+      {
+#line 512 "erlang_rtti_implementation.m"
+        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__TypeCtorRep_10 == (MR_Integer) 13);
+#line 517 "erlang_rtti_implementation.m"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 513 "erlang_rtti_implementation.m"
+          {
+#line 1677 "erlang_rtti_implementation.m"
+            {
+#line 1677 "erlang_rtti_implementation.m"
+              mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "var_arity_type_info_arity");
+            }
+#line 550 "erlang_rtti_implementation.m"
+            {
+#line 550 "erlang_rtti_implementation.m"
+              mercury__private_builtin__sorry_1_p_0((MR_String) "make_func_type_ctor_desc");
+#line 550 "erlang_rtti_implementation.m"
+              return;
+            }
+#line 513 "erlang_rtti_implementation.m"
+          }
+#line 517 "erlang_rtti_implementation.m"
+        else
+#line 521 "erlang_rtti_implementation.m"
+          {
+#line 517 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__TypeCtorRep_10 == (MR_Integer) 14);
+#line 521 "erlang_rtti_implementation.m"
+            if (mercury__erlang_rtti_implementation__succeeded)
+#line 518 "erlang_rtti_implementation.m"
+              {
+#line 1677 "erlang_rtti_implementation.m"
+                {
+#line 1677 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "var_arity_type_info_arity");
+                }
+#line 562 "erlang_rtti_implementation.m"
+                {
+#line 562 "erlang_rtti_implementation.m"
+                  mercury__private_builtin__sorry_1_p_0((MR_String) "make_tuple_type_ctor_desc");
+#line 562 "erlang_rtti_implementation.m"
+                  return;
+                }
+#line 518 "erlang_rtti_implementation.m"
+              }
+#line 521 "erlang_rtti_implementation.m"
+            else
+#line 523 "erlang_rtti_implementation.m"
+              {
+#line 523 "erlang_rtti_implementation.m"
+                MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_5_34 = (MR_Word) &mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_ctor_info_evaled_0;
+#line 523 "erlang_rtti_implementation.m"
+                MR_Word mercury__erlang_rtti_implementation__TypeCtorInfo_6_35 = (MR_Word) &mercury__type_desc__type_desc__type_ctor_info_type_ctor_desc_0;
+#line 569 "erlang_rtti_implementation.m"
+                MR_Box mercury__erlang_rtti_implementation__conv0_TypeCtorDesc_5;
+
+#line 569 "erlang_rtti_implementation.m"
+                {
+#line 569 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__conv0_TypeCtorDesc_5 = mercury__erlang_rtti_implementation__unsafe_cast_1_f_0(mercury__erlang_rtti_implementation__TypeCtorInfo_5_34, mercury__erlang_rtti_implementation__TypeCtorInfo_6_35, ((MR_Box) ((MR_Integer) 0)));
+                }
+#line 569 "erlang_rtti_implementation.m"
+                *mercury__erlang_rtti_implementation__TypeCtorDesc_5 = ((MR_Word) mercury__erlang_rtti_implementation__conv0_TypeCtorDesc_5);
+#line 524 "erlang_rtti_implementation.m"
+                {
+#line 524 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__ArgInfos_12 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_105_120_101_100_95_97_114_105_116_121_95_97_114_103_95_116_121_112_101_95_105_110_102_111_115_95_95_91_49_93_95_48_1_f_0();
+                }
+#line 523 "erlang_rtti_implementation.m"
+              }
+#line 521 "erlang_rtti_implementation.m"
+          }
+#line 517 "erlang_rtti_implementation.m"
+      }
+#line 526 "erlang_rtti_implementation.m"
+    {
+#line 526 "erlang_rtti_implementation.m"
+      *mercury__erlang_rtti_implementation__ArgsDescs_6 = mercury__erlang_rtti_implementation__type_descs_from_type_infos_1_f_0(mercury__erlang_rtti_implementation__ArgInfos_12);
+    }
+#line 501 "erlang_rtti_implementation.m"
+  }
+#line 52 "erlang_rtti_implementation.m"
+}
+
+#line 50 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__type_ctor_desc_2_p_0(
+#line 50 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeDesc_3,
+#line 50 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__TypeCtorDesc_4)
+#line 50 "erlang_rtti_implementation.m"
+{
+#line 499 "erlang_rtti_implementation.m"
+  {
+#line 499 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 499 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation___Args_5;
+
+#line 499 "erlang_rtti_implementation.m"
+    {
+#line 499 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__type_ctor_desc_and_args_3_p_0(mercury__erlang_rtti_implementation__TypeDesc_3, mercury__erlang_rtti_implementation__TypeCtorDesc_4, &mercury__erlang_rtti_implementation___Args_5);
+    }
+#line 499 "erlang_rtti_implementation.m"
+  }
+#line 50 "erlang_rtti_implementation.m"
+}
+
+#line 47 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__type_ctor_info_and_args_3_p_0(
+#line 47 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Args_6)
+#line 47 "erlang_rtti_implementation.m"
+{
+#line 477 "erlang_rtti_implementation.m"
+  {
+#line 477 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 478 "erlang_rtti_implementation.m"
+    {
+#line 478 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__collapse_equivalences_1_f_0();
+    }
+#line 479 "erlang_rtti_implementation.m"
+    {
+#line 479 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 480 "erlang_rtti_implementation.m"
+    {
+#line 480 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_121_112_101_95_99_116_111_114_95_105_115_95_118_97_114_105_97_98_108_101_95_97_114_105_116_121_95_95_91_49_93_95_48_1_p_0();
+    }
+#line 482 "erlang_rtti_implementation.m"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 481 "erlang_rtti_implementation.m"
+      {
+#line 481 "erlang_rtti_implementation.m"
+        *mercury__erlang_rtti_implementation__Args_6 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_118_97_114_95_97_114_105_116_121_95_97_114_103_95_116_121_112_101_95_105_110_102_111_115_95_95_91_49_93_95_48_1_f_0();
+      }
+#line 482 "erlang_rtti_implementation.m"
+    else
+#line 483 "erlang_rtti_implementation.m"
+      {
+#line 483 "erlang_rtti_implementation.m"
+        *mercury__erlang_rtti_implementation__Args_6 = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_102_105_120_101_100_95_97_114_105_116_121_95_97_114_103_95_116_121_112_101_95_105_110_102_111_115_95_95_91_49_93_95_48_1_f_0();
+      }
+#line 477 "erlang_rtti_implementation.m"
+  }
+#line 47 "erlang_rtti_implementation.m"
+}
+
+#line 44 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__compare_type_infos_3_p_0(
+#line 44 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Res_4)
+#line 44 "erlang_rtti_implementation.m"
+{
+#line 374 "erlang_rtti_implementation.m"
+  {
+#line 374 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+#line 374 "erlang_rtti_implementation.m"
+    MR_Word mercury__erlang_rtti_implementation__ModuleRes_11;
+#line 374 "erlang_rtti_implementation.m"
+    MR_Integer mercury__erlang_rtti_implementation__V_7_35;
+
+#line 375 "erlang_rtti_implementation.m"
+    {
+#line 375 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__collapse_equivalences_1_f_0();
+    }
+#line 376 "erlang_rtti_implementation.m"
+    {
+#line 376 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__collapse_equivalences_1_f_0();
+    }
+#line 378 "erlang_rtti_implementation.m"
+    {
+#line 378 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 379 "erlang_rtti_implementation.m"
+    {
+#line 379 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_116_121_112_101_95_99_116_111_114_95_105_110_102_111_95_101_118_97_108_101_100_95_95_91_49_93_95_48_1_f_0();
+    }
+#line 1799 "erlang_rtti_implementation.m"
+    {
+#line 1799 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_module_name");
+    }
+#line 1799 "erlang_rtti_implementation.m"
+    {
+#line 1799 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_module_name");
+    }
+#line 86 "private_builtin.opt"
+    {
+#line 86 "private_builtin.opt"
+      mercury__private_builtin__builtin_strcmp_3_p_0(&mercury__erlang_rtti_implementation__V_7_35, (MR_String) "dummy value", (MR_String) "dummy value");
+    }
+#line 89 "private_builtin.opt"
+    mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_7_35 < (MR_Integer) 0);
+#line 92 "private_builtin.opt"
+    if (mercury__erlang_rtti_implementation__succeeded)
+#line 91 "private_builtin.opt"
+      mercury__erlang_rtti_implementation__ModuleRes_11 = (MR_Integer) 1;
+#line 92 "private_builtin.opt"
+    else
+#line 97 "private_builtin.opt"
+      {
+#line 94 "private_builtin.opt"
+        mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_7_35 == (MR_Integer) 0);
+#line 97 "private_builtin.opt"
+        if (mercury__erlang_rtti_implementation__succeeded)
+#line 96 "private_builtin.opt"
+          mercury__erlang_rtti_implementation__ModuleRes_11 = (MR_Integer) 0;
+#line 97 "private_builtin.opt"
+        else
+#line 98 "private_builtin.opt"
+          mercury__erlang_rtti_implementation__ModuleRes_11 = (MR_Integer) 2;
+#line 97 "private_builtin.opt"
+      }
+#line 421 "erlang_rtti_implementation.m"
+#line 421 "erlang_rtti_implementation.m"
+    switch (mercury__erlang_rtti_implementation__ModuleRes_11) {
+#line 421 "erlang_rtti_implementation.m"
+      default: /*NOTREACHED*/ MR_assert(0);
+#line 421 "erlang_rtti_implementation.m"
+      case (MR_Integer) 1:
+#line 421 "erlang_rtti_implementation.m"
+      case (MR_Integer) 2:
+#line 425 "erlang_rtti_implementation.m"
+        *mercury__erlang_rtti_implementation__Res_4 = mercury__erlang_rtti_implementation__ModuleRes_11;
+#line 421 "erlang_rtti_implementation.m"
+        break;
+#line 421 "erlang_rtti_implementation.m"
+      case (MR_Integer) 0:
+#line 384 "erlang_rtti_implementation.m"
+        {
+#line 384 "erlang_rtti_implementation.m"
+          MR_Word mercury__erlang_rtti_implementation__NameRes_12;
+#line 384 "erlang_rtti_implementation.m"
+          MR_Integer mercury__erlang_rtti_implementation__V_7_44;
+
+#line 1811 "erlang_rtti_implementation.m"
+          {
+#line 1811 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_type_name");
+          }
+#line 1811 "erlang_rtti_implementation.m"
+          {
+#line 1811 "erlang_rtti_implementation.m"
+            mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_type_name");
+          }
+#line 86 "private_builtin.opt"
+          {
+#line 86 "private_builtin.opt"
+            mercury__private_builtin__builtin_strcmp_3_p_0(&mercury__erlang_rtti_implementation__V_7_44, (MR_String) "dummy value", (MR_String) "dummy value");
+          }
+#line 89 "private_builtin.opt"
+          mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_7_44 < (MR_Integer) 0);
+#line 92 "private_builtin.opt"
+          if (mercury__erlang_rtti_implementation__succeeded)
+#line 91 "private_builtin.opt"
+            mercury__erlang_rtti_implementation__NameRes_12 = (MR_Integer) 1;
+#line 92 "private_builtin.opt"
+          else
+#line 97 "private_builtin.opt"
+            {
+#line 94 "private_builtin.opt"
+              mercury__erlang_rtti_implementation__succeeded = (mercury__erlang_rtti_implementation__V_7_44 == (MR_Integer) 0);
+#line 97 "private_builtin.opt"
+              if (mercury__erlang_rtti_implementation__succeeded)
+#line 96 "private_builtin.opt"
+                mercury__erlang_rtti_implementation__NameRes_12 = (MR_Integer) 0;
+#line 97 "private_builtin.opt"
+              else
+#line 98 "private_builtin.opt"
+                mercury__erlang_rtti_implementation__NameRes_12 = (MR_Integer) 2;
+#line 97 "private_builtin.opt"
+            }
+#line 415 "erlang_rtti_implementation.m"
+#line 415 "erlang_rtti_implementation.m"
+          switch (mercury__erlang_rtti_implementation__NameRes_12) {
+#line 415 "erlang_rtti_implementation.m"
+            default: /*NOTREACHED*/ MR_assert(0);
+#line 415 "erlang_rtti_implementation.m"
+            case (MR_Integer) 1:
+#line 415 "erlang_rtti_implementation.m"
+            case (MR_Integer) 2:
+#line 419 "erlang_rtti_implementation.m"
+              *mercury__erlang_rtti_implementation__Res_4 = mercury__erlang_rtti_implementation__NameRes_12;
+#line 415 "erlang_rtti_implementation.m"
+              break;
+#line 415 "erlang_rtti_implementation.m"
+            case (MR_Integer) 0:
+#line 401 "erlang_rtti_implementation.m"
+              {
+#line 388 "erlang_rtti_implementation.m"
+                {
+#line 388 "erlang_rtti_implementation.m"
+                  mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_116_121_112_101_95_99_116_111_114_95_105_115_95_118_97_114_105_97_98_108_101_95_97_114_105_116_121_95_95_91_49_93_95_48_1_p_0();
+                }
+#line 401 "erlang_rtti_implementation.m"
+                if (mercury__erlang_rtti_implementation__succeeded)
+#line 389 "erlang_rtti_implementation.m"
+                  {
+#line 389 "erlang_rtti_implementation.m"
+                    MR_Word mercury__erlang_rtti_implementation__ArityRes_15;
+
+#line 1677 "erlang_rtti_implementation.m"
+                    {
+#line 1677 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "var_arity_type_info_arity");
+                    }
+#line 1677 "erlang_rtti_implementation.m"
+                    {
+#line 1677 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "var_arity_type_info_arity");
+                    }
+#line 76 "private_builtin.opt"
+                    mercury__erlang_rtti_implementation__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+#line 79 "private_builtin.opt"
+                    if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+                      mercury__erlang_rtti_implementation__ArityRes_15 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+                    else
+#line 80 "private_builtin.opt"
+                      mercury__erlang_rtti_implementation__ArityRes_15 = (MR_Integer) 2;
+#line 395 "erlang_rtti_implementation.m"
+#line 395 "erlang_rtti_implementation.m"
+                    switch (mercury__erlang_rtti_implementation__ArityRes_15) {
+#line 395 "erlang_rtti_implementation.m"
+                      default: /*NOTREACHED*/ MR_assert(0);
+#line 395 "erlang_rtti_implementation.m"
+                      case (MR_Integer) 2:
+#line 399 "erlang_rtti_implementation.m"
+                        *mercury__erlang_rtti_implementation__Res_4 = mercury__erlang_rtti_implementation__ArityRes_15;
+#line 395 "erlang_rtti_implementation.m"
+                        break;
+#line 395 "erlang_rtti_implementation.m"
+                      case (MR_Integer) 0:
+#line 393 "erlang_rtti_implementation.m"
+                        {
+#line 394 "erlang_rtti_implementation.m"
+                          {
+#line 394 "erlang_rtti_implementation.m"
+                            mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_97_114_101_95_118_97_114_95_97_114_105_116_121_95_116_121_112_101_105_110_102_111_115_95_95_91_52_44_32_53_93_95_48_5_p_0((MR_Integer) 1, (MR_Integer) 0, mercury__erlang_rtti_implementation__Res_4);
+#line 394 "erlang_rtti_implementation.m"
+                            return;
+                          }
+#line 393 "erlang_rtti_implementation.m"
+                        }
+#line 395 "erlang_rtti_implementation.m"
+                        break;
+#line 395 "erlang_rtti_implementation.m"
+                    }
+#line 389 "erlang_rtti_implementation.m"
+                  }
+#line 401 "erlang_rtti_implementation.m"
+                else
+#line 402 "erlang_rtti_implementation.m"
+                  {
+#line 402 "erlang_rtti_implementation.m"
+                    MR_Word mercury__erlang_rtti_implementation__ArityRes_24;
+
+#line 1823 "erlang_rtti_implementation.m"
+                    {
+#line 1823 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_arity");
+                    }
+#line 1823 "erlang_rtti_implementation.m"
+                    {
+#line 1823 "erlang_rtti_implementation.m"
+                      mercury__erlang_rtti_implementation__det_unimplemented_1_p_0((MR_String) "type_ctor_arity");
+                    }
+#line 76 "private_builtin.opt"
+                    mercury__erlang_rtti_implementation__succeeded = ((MR_Integer) 0 == (MR_Integer) 0);
+#line 79 "private_builtin.opt"
+                    if (mercury__erlang_rtti_implementation__succeeded)
+#line 78 "private_builtin.opt"
+                      mercury__erlang_rtti_implementation__ArityRes_24 = (MR_Integer) 0;
+#line 79 "private_builtin.opt"
+                    else
+#line 80 "private_builtin.opt"
+                      mercury__erlang_rtti_implementation__ArityRes_24 = (MR_Integer) 2;
+#line 408 "erlang_rtti_implementation.m"
+#line 408 "erlang_rtti_implementation.m"
+                    switch (mercury__erlang_rtti_implementation__ArityRes_24) {
+#line 408 "erlang_rtti_implementation.m"
+                      default: /*NOTREACHED*/ MR_assert(0);
+#line 408 "erlang_rtti_implementation.m"
+                      case (MR_Integer) 2:
+#line 412 "erlang_rtti_implementation.m"
+                        *mercury__erlang_rtti_implementation__Res_4 = mercury__erlang_rtti_implementation__ArityRes_24;
+#line 408 "erlang_rtti_implementation.m"
+                        break;
+#line 408 "erlang_rtti_implementation.m"
+                      case (MR_Integer) 0:
+#line 406 "erlang_rtti_implementation.m"
+                        {
+#line 407 "erlang_rtti_implementation.m"
+                          {
+#line 407 "erlang_rtti_implementation.m"
+                            mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_99_111_109_112_97_114_101_95_115_117_98_95_116_121_112_101_105_110_102_111_115_95_95_91_52_44_32_53_93_95_48_5_p_0((MR_Integer) 1, (MR_Integer) 0, mercury__erlang_rtti_implementation__Res_4);
+#line 407 "erlang_rtti_implementation.m"
+                            return;
+                          }
+#line 406 "erlang_rtti_implementation.m"
+                        }
+#line 408 "erlang_rtti_implementation.m"
+                        break;
+#line 408 "erlang_rtti_implementation.m"
+                    }
+#line 402 "erlang_rtti_implementation.m"
+                  }
+#line 401 "erlang_rtti_implementation.m"
+              }
+#line 415 "erlang_rtti_implementation.m"
+              break;
+#line 415 "erlang_rtti_implementation.m"
+          }
+#line 384 "erlang_rtti_implementation.m"
+        }
+#line 421 "erlang_rtti_implementation.m"
+        break;
+#line 421 "erlang_rtti_implementation.m"
+    }
+#line 374 "erlang_rtti_implementation.m"
+  }
+#line 44 "erlang_rtti_implementation.m"
+}
+
+#line 42 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__generic_compare_3_p_0(
+#line 42 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_48,
+#line 42 "erlang_rtti_implementation.m"
+  MR_Word * mercury__erlang_rtti_implementation__Res_4,
+#line 42 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__X_5,
+#line 42 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Y_6)
+#line 42 "erlang_rtti_implementation.m"
+{
+#line 292 "erlang_rtti_implementation.m"
+  {
+#line 292 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 292 "erlang_rtti_implementation.m"
+    {
+#line 292 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_105_99_95_99_111_109_112_97_114_101_95_95_91_49_44_32_51_44_32_52_93_95_48_3_p_0(mercury__erlang_rtti_implementation__Res_4);
+#line 292 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 292 "erlang_rtti_implementation.m"
+  }
+#line 42 "erlang_rtti_implementation.m"
+}
+
+#line 40 "erlang_rtti_implementation.m"
+MR_bool MR_CALL 
+mercury__erlang_rtti_implementation__generic_unify_2_p_0(
+#line 40 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_46,
+#line 40 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__X_3,
+#line 40 "erlang_rtti_implementation.m"
+  MR_Box mercury__erlang_rtti_implementation__Y_4)
+#line 40 "erlang_rtti_implementation.m"
+{
+#line 215 "erlang_rtti_implementation.m"
+  {
+#line 215 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 215 "erlang_rtti_implementation.m"
+    {
+#line 215 "erlang_rtti_implementation.m"
+      return mercury__erlang_rtti_implementation__succeeded = mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_112_114_101_100_95_95_103_101_110_101_114_105_99_95_117_110_105_102_121_95_95_91_49_44_32_50_44_32_51_93_95_48_2_p_0();
+    }
+#line 215 "erlang_rtti_implementation.m"
+    return mercury__erlang_rtti_implementation__succeeded;
+#line 215 "erlang_rtti_implementation.m"
+  }
+#line 40 "erlang_rtti_implementation.m"
+}
+
+#line 34 "erlang_rtti_implementation.m"
+void MR_CALL 
+mercury__erlang_rtti_implementation__get_type_info_1_f_0(
+#line 34 "erlang_rtti_implementation.m"
+  MR_Word mercury__erlang_rtti_implementation__TypeInfo_for_T_4)
+#line 34 "erlang_rtti_implementation.m"
+{
+#line 210 "erlang_rtti_implementation.m"
+  {
+#line 210 "erlang_rtti_implementation.m"
+    MR_bool mercury__erlang_rtti_implementation__succeeded;
+
+#line 210 "erlang_rtti_implementation.m"
+    {
+#line 210 "erlang_rtti_implementation.m"
+      mercury__erlang_rtti_implementation__f_85_110_117_115_101_100_65_114_103_115_95_95_102_117_110_99_95_95_103_101_116_95_116_121_112_101_95_105_110_102_111_95_95_91_49_44_32_50_93_95_48_1_f_0();
+#line 210 "erlang_rtti_implementation.m"
+      return;
+    }
+#line 210 "erlang_rtti_implementation.m"
+  }
+#line 34 "erlang_rtti_implementation.m"
+}
+
+void mercury__erlang_rtti_implementation__init(void)
+{
+}
+
+void mercury__erlang_rtti_implementation__init_type_tables(void)
+{
+	static MR_bool initialised = MR_FALSE;
+	if (initialised) return;
+	initialised = MR_TRUE;
+
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_du_arg_info_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_atom_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_du_functor_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_erlang_type_ctor_rep_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_evaluated_pseudo_type_info_thunk_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_exist_info_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_exist_typeinfo_locn_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_maybe_pseudo_type_info_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_module_name_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_pseudo_type_info_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_pseudo_type_info_thunk_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_pti_info_1);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_sym_name_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_tc_constraint_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_tc_name_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_tc_type_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_ti_info_1);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_ctor_info_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_ctor_info_evaled_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_0);
+	MR_register_type_ctor_info(&mercury__erlang_rtti_implementation__erlang_rtti_implementation__type_ctor_info_type_info_thunk_0);
+}
+
+void mercury__erlang_rtti_implementation__init_debugger(void)
+{
+	MR_fatal_error("debugger initialization in MLDS grade");
+}
+
+/* ensure everything is compiled with the same grade */
+static const void *const MR_grade = &MR_GRADE_VAR;
+
+/* :- end_module erlang_rtti_implementation. */

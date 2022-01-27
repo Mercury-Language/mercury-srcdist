@@ -1,0 +1,11 @@
+:- module (transform_hlds.dependency_graph).
+:- interface.
+:- import_module io.
+:- import_module list.
+:- import_module (hlds.hlds_module).
+:- import_module (hlds.hlds_pred).
+:- type include_imported
+    --->    include_imported 
+    ;       do_not_include_imported .
+:- implementation.
+:- typeclass dependency_node(T).

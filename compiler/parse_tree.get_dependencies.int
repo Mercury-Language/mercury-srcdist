@@ -1,0 +1,22 @@
+:- module (parse_tree.get_dependencies).
+:- interface.
+:- import_module list.
+:- import_module set.
+:- import_module (libs.globals).
+:- import_module (mdbcomp.sym_name).
+:- import_module (parse_tree.prog_data).
+:- import_module (parse_tree.prog_item).
+:- pred get_dependencies_in_avails(list.list(parse_tree.prog_item.item_avail), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode get_dependencies_in_avails((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_dependencies_in_item_blocks(list.list(parse_tree.prog_item.item_block(MS)), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode get_dependencies_in_item_blocks((builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_dependencies_int_imp_in_raw_item_blocks(list.list(parse_tree.prog_item.raw_item_block), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode get_dependencies_int_imp_in_raw_item_blocks((builtin.in), (builtin.out), (builtin.out), (builtin.out), (builtin.out)) is det.
+:- pred get_fact_table_dependencies_in_item_blocks(list.list(parse_tree.prog_item.item_block(MS)), list.list(string)).
+:- mode get_fact_table_dependencies_in_item_blocks((builtin.in), (builtin.out)) is det.
+:- pred get_foreign_include_files_in_item_blocks(list.list(parse_tree.prog_item.item_block(MS)), parse_tree.prog_data.foreign_include_file_infos).
+:- mode get_foreign_include_files_in_item_blocks((builtin.in), (builtin.out)) is det.
+:- pred get_implicit_dependencies_in_item_blocks(libs.globals.globals, list.list(parse_tree.prog_item.item_block(MS)), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode get_implicit_dependencies_in_item_blocks((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.
+:- pred get_implicit_dependencies_in_items(libs.globals.globals, list.list(parse_tree.prog_item.item), set.set(mdbcomp.sym_name.module_name), set.set(mdbcomp.sym_name.module_name)).
+:- mode get_implicit_dependencies_in_items((builtin.in), (builtin.in), (builtin.out), (builtin.out)) is det.

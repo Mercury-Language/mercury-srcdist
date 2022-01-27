@@ -1,0 +1,109 @@
+:- module (hlds.status).
+:- interface.
+:- import_module bool.
+:- import_module (parse_tree.prog_item).
+:- type inst_status
+    --->    inst_status(hlds.status.old_import_status).
+:- type instance_status
+    --->    instance_status(hlds.status.old_import_status).
+:- type item_export
+    --->    item_export_nowhere 
+    ;       item_export_only_submodules 
+    ;       item_export_anywhere .
+:- type item_import
+    --->    item_import_int_concrete(parse_tree.prog_item.import_locn)
+    ;       item_import_int_abstract 
+    ;       item_import_opt_int .
+:- type item_mercury_status
+    --->    item_defined_in_this_module(hlds.status.item_export)
+    ;       item_defined_in_other_module(hlds.status.item_import).
+:- type maybe_opt_imported
+    --->    is_not_opt_imported 
+    ;       is_opt_imported .
+:- type mode_status
+    --->    mode_status(hlds.status.old_import_status).
+:- type old_import_status
+    --->    status_external(hlds.status.old_import_status)
+    ;       status_imported(parse_tree.prog_item.import_locn)
+    ;       status_opt_imported 
+    ;       status_abstract_imported 
+    ;       status_pseudo_imported 
+    ;       status_exported 
+    ;       status_opt_exported 
+    ;       status_abstract_exported 
+    ;       status_pseudo_exported 
+    ;       status_exported_to_submodules 
+    ;       status_local .
+:- type pred_status
+    --->    pred_status(hlds.status.old_import_status).
+:- type type_status
+    --->    type_status(hlds.status.old_import_status).
+:- type typeclass_status
+    --->    typeclass_status(hlds.status.old_import_status).
+:- pred inst_combine_status(hlds.status.inst_status, hlds.status.inst_status, hlds.status.inst_status).
+:- mode inst_combine_status((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred inst_make_status_abstract(hlds.status.inst_status, hlds.status.inst_status).
+:- mode inst_make_status_abstract((builtin.in), (builtin.out)) is det.
+:- func inst_status_defined_in_impl_section(hlds.status.inst_status) = bool.bool.
+:- func inst_status_defined_in_this_module(hlds.status.inst_status) = bool.bool.
+:- func inst_status_is_exported(hlds.status.inst_status) = bool.bool.
+:- func inst_status_is_exported_to_non_submodules(hlds.status.inst_status) = bool.bool.
+:- func inst_status_is_imported(hlds.status.inst_status) = bool.bool.
+:- pred instance_combine_status(hlds.status.instance_status, hlds.status.instance_status, hlds.status.instance_status).
+:- mode instance_combine_status((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred instance_make_status_abstract(hlds.status.instance_status, hlds.status.instance_status).
+:- mode instance_make_status_abstract((builtin.in), (builtin.out)) is det.
+:- func instance_status_defined_in_impl_section(hlds.status.instance_status) = bool.bool.
+:- func instance_status_defined_in_this_module(hlds.status.instance_status) = bool.bool.
+:- func instance_status_is_exported(hlds.status.instance_status) = bool.bool.
+:- func instance_status_is_exported_to_non_submodules(hlds.status.instance_status) = bool.bool.
+:- func instance_status_is_imported(hlds.status.instance_status) = bool.bool.
+:- pred item_mercury_status_to_inst_status(hlds.status.item_mercury_status, hlds.status.inst_status).
+:- mode item_mercury_status_to_inst_status((builtin.in), (builtin.out)) is det.
+:- pred item_mercury_status_to_instance_status(hlds.status.item_mercury_status, hlds.status.instance_status).
+:- mode item_mercury_status_to_instance_status((builtin.in), (builtin.out)) is det.
+:- pred item_mercury_status_to_mode_status(hlds.status.item_mercury_status, hlds.status.mode_status).
+:- mode item_mercury_status_to_mode_status((builtin.in), (builtin.out)) is det.
+:- pred item_mercury_status_to_pred_status(hlds.status.item_mercury_status, hlds.status.pred_status).
+:- mode item_mercury_status_to_pred_status((builtin.in), (builtin.out)) is det.
+:- pred item_mercury_status_to_type_status(hlds.status.item_mercury_status, hlds.status.type_status).
+:- mode item_mercury_status_to_type_status((builtin.in), (builtin.out)) is det.
+:- pred item_mercury_status_to_typeclass_status(hlds.status.item_mercury_status, hlds.status.typeclass_status).
+:- mode item_mercury_status_to_typeclass_status((builtin.in), (builtin.out)) is det.
+:- pred mode_combine_status(hlds.status.mode_status, hlds.status.mode_status, hlds.status.mode_status).
+:- mode mode_combine_status((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred mode_make_status_abstract(hlds.status.mode_status, hlds.status.mode_status).
+:- mode mode_make_status_abstract((builtin.in), (builtin.out)) is det.
+:- func mode_status_defined_in_impl_section(hlds.status.mode_status) = bool.bool.
+:- func mode_status_defined_in_this_module(hlds.status.mode_status) = bool.bool.
+:- func mode_status_is_exported(hlds.status.mode_status) = bool.bool.
+:- func mode_status_is_exported_to_non_submodules(hlds.status.mode_status) = bool.bool.
+:- func mode_status_is_imported(hlds.status.mode_status) = bool.bool.
+:- func old_status_is_exported(hlds.status.old_import_status) = bool.bool.
+:- pred pred_combine_status(hlds.status.pred_status, hlds.status.pred_status, hlds.status.pred_status).
+:- mode pred_combine_status((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred pred_make_status_abstract(hlds.status.pred_status, hlds.status.pred_status).
+:- mode pred_make_status_abstract((builtin.in), (builtin.out)) is det.
+:- func pred_status_defined_in_impl_section(hlds.status.pred_status) = bool.bool.
+:- func pred_status_defined_in_this_module(hlds.status.pred_status) = bool.bool.
+:- func pred_status_is_exported(hlds.status.pred_status) = bool.bool.
+:- func pred_status_is_exported_to_non_submodules(hlds.status.pred_status) = bool.bool.
+:- func pred_status_is_imported(hlds.status.pred_status) = bool.bool.
+:- pred type_combine_status(hlds.status.type_status, hlds.status.type_status, hlds.status.type_status).
+:- mode type_combine_status((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred type_make_status_abstract(hlds.status.type_status, hlds.status.type_status).
+:- mode type_make_status_abstract((builtin.in), (builtin.out)) is det.
+:- func type_status_defined_in_impl_section(hlds.status.type_status) = bool.bool.
+:- func type_status_defined_in_this_module(hlds.status.type_status) = bool.bool.
+:- func type_status_is_exported(hlds.status.type_status) = bool.bool.
+:- func type_status_is_exported_to_non_submodules(hlds.status.type_status) = bool.bool.
+:- func type_status_is_imported(hlds.status.type_status) = bool.bool.
+:- pred typeclass_combine_status(hlds.status.typeclass_status, hlds.status.typeclass_status, hlds.status.typeclass_status).
+:- mode typeclass_combine_status((builtin.in), (builtin.in), (builtin.out)) is det.
+:- pred typeclass_make_status_abstract(hlds.status.typeclass_status, hlds.status.typeclass_status).
+:- mode typeclass_make_status_abstract((builtin.in), (builtin.out)) is det.
+:- func typeclass_status_defined_in_impl_section(hlds.status.typeclass_status) = bool.bool.
+:- func typeclass_status_defined_in_this_module(hlds.status.typeclass_status) = bool.bool.
+:- func typeclass_status_is_exported(hlds.status.typeclass_status) = bool.bool.
+:- func typeclass_status_is_exported_to_non_submodules(hlds.status.typeclass_status) = bool.bool.
+:- func typeclass_status_is_imported(hlds.status.typeclass_status) = bool.bool.

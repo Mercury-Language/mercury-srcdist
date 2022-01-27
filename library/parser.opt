@@ -1,0 +1,82 @@
+:- module parser.
+:- use_module bool.
+:- use_module builtin.
+:- use_module char.
+:- use_module float.
+:- use_module int.
+:- use_module integer.
+:- use_module io.
+:- use_module lexer.
+:- use_module list.
+:- use_module map.
+:- use_module maybe.
+:- use_module ops.
+:- use_module private_builtin.
+:- use_module require.
+:- use_module string.
+:- use_module term.
+:- use_module term_io.
+:- use_module varset.
+
+:- type parse(T)
+    --->    ok(T)
+    ;       error(string, lexer.token_list).
+:- type parser_state(Ops, T)
+    --->    parser_state((parser.ps_stream_name) :: string, (parser.ps_ops_table) :: Ops, (parser.ps_varset) :: varset.varset(T), (parser.ps_var_names) :: tree234.tree234(string, term.var(T))).
+:- type term_kind
+    --->    ordinary_term 
+    ;       argument 
+    ;       list_elem .
+
+parser.parse_tokens(V_4, V_5, V_6) :-
+    V_7 = ops.init_mercury_op_table,
+    parser.parse_tokens_with_op_table(V_7, V_4, V_5, V_6).
+
+parser.read_term(V_4, V_7, V_8) :-
+    io.input_stream_name(V_6, V_7, V_9),
+    V_10 = ops.init_mercury_op_table,
+    parser.read_term_filename_with_op_table(V_10, V_6, V_4, V_9, V_8).
+
+parser.read_term_filename(V_5, V_6, V_8, V_9) :-
+    V_10 = ops.init_mercury_op_table,
+    parser.read_term_filename_with_op_table(V_10, V_5, V_6, V_8, V_9).
+
+parser.read_term_filename_with_op_table(V_6, V_7, V_8, V_11, V_12) :-
+    lexer.get_token_list(V_10, V_11, V_12),
+    parser.parse_tokens_with_op_table(V_6, V_7, V_10, V_8).
+
+parser.read_term_from_string(V_5, V_6, V_7, V_8) :-
+    V_9 = ops.init_mercury_op_table,
+    parser.read_term_from_string_with_op_table(V_9, V_5, V_6, V_7, V_8).
+
+parser.read_term_from_substring(V_7, V_8, V_9, V_10, V_11, V_12) :-
+    V_13 = ops.init_mercury_op_table,
+    parser.read_term_from_substring_with_op_table(V_13, V_7, V_8, V_9, V_10, V_11, V_12).
+
+parser.read_term_from_substring_with_op_table(V_8, V_9, V_10, V_11, V_12, V_13, V_14) :-
+    lexer.string_get_token_list_max(V_10, V_11, V_15, V_12, V_13),
+    parser.parse_tokens_with_op_table(V_8, V_9, V_15, V_14).
+
+parser.read_term_with_op_table(V_5, V_6, V_9, V_10) :-
+    io.input_stream_name(V_8, V_9, V_11),
+    parser.read_term_filename_with_op_table(V_5, V_8, V_6, V_11, V_10).
+:- pragma exceptions(predicate, (parser.read_term), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_with_op_table), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_filename), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_filename_with_op_table), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_from_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_from_string_with_op_table), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_from_substring), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.read_term_from_substring_with_op_table), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.parse_tokens), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parser.parse_tokens_with_op_table), 4, 0, may_throw(user_exception)).
+:- pragma termination_info(parser.read_term((builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_with_op_table((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_filename((builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_filename_with_op_table((builtin.in), (builtin.in), (builtin.out), (builtin.di), (builtin.uo)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_from_string((builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_from_string_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_from_substring((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.read_term_from_substring_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.parse_tokens((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parser.parse_tokens_with_op_table((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).

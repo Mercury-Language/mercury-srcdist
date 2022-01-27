@@ -1,0 +1,342 @@
+:- module parsing_utils.
+:- use_module array.
+:- use_module builtin.
+:- use_module char.
+:- use_module int.
+:- use_module list.
+:- use_module maybe.
+:- use_module mutvar.
+:- use_module private_builtin.
+:- use_module string.
+:- use_module unit.
+
+:- type fail_message_info
+    --->    fail_message_info(int, maybe.maybe(string)).
+:- type line_numbers == array.array(int).
+:- type ps == int.
+:- type src
+    --->    src((parsing_utils.input_length) :: int, (parsing_utils.input_string) :: string, (parsing_utils.skip_ws_pred) :: pred(parsing_utils.src, unit.unit, int, int), (parsing_utils.furthest_offset) :: mutvar.mutvar(int), (parsing_utils.last_fail_message) :: mutvar.mutvar(parsing_utils.fail_message_info)).
+
+:- pragma foreign_import_module("C", array).
+:- pragma foreign_import_module("C", io).
+:- pragma foreign_import_module("C", parsing_utils).
+:- pragma foreign_import_module("C", string).
+:- pragma foreign_import_module("C", time).
+:- pragma foreign_import_module("C#", array).
+:- pragma foreign_import_module("C#", io).
+:- pragma foreign_import_module("C#", mutvar).
+:- pragma foreign_import_module("C#", parsing_utils).
+:- pragma foreign_import_module("Java", array).
+:- pragma foreign_import_module("Java", io).
+:- pragma foreign_import_module("Java", mutvar).
+:- pragma foreign_import_module("Java", parsing_utils).
+:- pragma foreign_import_module("IL", array).
+:- pragma foreign_import_module("IL", io).
+:- pragma foreign_import_module("Erlang", array).
+:- pragma foreign_import_module("Erlang", io).
+:- pragma foreign_import_module("Erlang", mutvar).
+:- pragma foreign_import_module("Erlang", parsing_utils).
+
+:- pred parsing_utils.imatch_string(string, parsing_utils.src, int, int).
+:- mode parsing_utils.imatch_string((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred parsing_utils.match_string(string, parsing_utils.src, int, int).
+:- mode parsing_utils.match_string((builtin.in), (builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred parsing_utils.skip_whitespace(parsing_utils.src, int, int).
+:- mode parsing_utils.skip_whitespace((builtin.in), (builtin.in), (builtin.out)) is semidet.
+:- pred parsing_utils.unsafe_skip_ws_pred_cast(pred(parsing_utils.src, unit.unit, int, int), pred(parsing_utils.src, unit.unit, int, int)).
+:- mode parsing_utils.unsafe_skip_ws_pred_cast((builtin.in), builtin.out((parsing_utils.parser))) is det.
+:- pred parsing_utils.zero_or_more_2(pred(parsing_utils.src, T_1, int, int), parsing_utils.src, list.list(T_1), list.list(T_1), int, int).
+:- mode parsing_utils.zero_or_more_2(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+:- pred parsing_utils.zero_or_more_2(pred(parsing_utils.src, T_1, S_2, S_2, int, int), parsing_utils.src, list.list(T_1), list.list(T_1), S_2, S_2, int, int).
+:- mode parsing_utils.zero_or_more_2(builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)) is semidet.
+
+parsing_utils.brackets(V_8, V_9, V_10, V_11, V_12, V_16, V_17) :-
+    parsing_utils.punct(V_8, V_11, V_14, V_16, V_18),
+    call(V_10, V_11, V_12, V_18, V_19),
+    parsing_utils.punct(V_9, V_11, V_15, V_19, V_17).
+
+parsing_utils.brackets(V_10, V_11, V_12, V_13, V_14, V_19, V_20, V_21, V_22) :-
+    parsing_utils.punct(V_10, V_13, V_17, V_21, V_23),
+    call(V_12, V_13, V_14, V_19, V_20, V_23, V_25),
+    parsing_utils.punct(V_11, V_13, V_18, V_25, V_22).
+
+parsing_utils.char_in_class(V_6, V_7, V_8, V_10, V_11) :-
+    parsing_utils.next_char(V_7, V_8, V_10, V_11),
+    string.contains_char(V_6, V_8).
+
+parsing_utils.comma_separated_list(V_6, V_7, V_8, V_10, V_11) :-
+    V_12 = "," : string,
+    parsing_utils.separated_list(V_12, V_6, V_7, V_8, V_10, V_11).
+
+parsing_utils.comma_separated_list(V_8, V_9, V_10, V_13, V_14, V_15, V_16) :-
+    V_17 = "," : string,
+    parsing_utils.separated_list(V_17, V_8, V_9, V_10, V_13, V_14, V_15, V_16).
+
+parsing_utils.current_offset(V_5, V_6, V_8, V_9) :-
+    V_6 = V_8,
+    V_9 = V_8.
+
+parsing_utils.eof(V_5, unit.unit, V_8, V_9) :-
+    parsing_utils.current_offset(V_5, V_7, V_8, V_9),
+    V_5 = parsing_utils.src(V_7, V_11, V_12, V_13, V_14) : parsing_utils.src.
+
+parsing_utils.fail_with_message(V_7, V_8, V_9, V_10, V_11, V_12) :-
+    parsing_utils.fail_with_message(V_7, V_9, V_10, V_8, V_12).
+
+parsing_utils.float_literal(V_5, V_6, V_9, V_10) :-
+    parsing_utils.float_literal_as_string(V_5, V_8, V_9, V_10),
+    string.to_float(V_8, V_6).
+
+parsing_utils.get_skip_whitespace_pred(V_3, V_4) :-
+    V_3 = parsing_utils.src(V_6, V_7, V_5, V_8, V_9) : parsing_utils.src,
+    parsing_utils.unsafe_skip_ws_pred_cast(V_5, V_4).
+
+parsing_utils.ikeyword(V_7, V_8, V_9, unit.unit, V_13, V_14) :-
+    parsing_utils.imatch_string(V_8, V_9, V_13, V_15),
+    \+ (
+      parsing_utils.char_in_class(V_7, V_9, V_11, V_15, V_12)
+    ),
+    parsing_utils.skip_whitespace(V_9, V_15, V_14).
+
+parsing_utils.input_string(V_4, V_2, V_3) :-
+    V_4 = parsing_utils.src(V_5, V_2, V_6, V_7, V_8) : parsing_utils.src,
+    V_4 = parsing_utils.src(V_3, V_9, V_10, V_11, V_12) : parsing_utils.src.
+
+parsing_utils.int_literal(V_5, V_6, V_9, V_10) :-
+    parsing_utils.int_literal_as_string(V_5, V_8, V_9, V_10),
+    string.to_int(V_8, V_6).
+
+parsing_utils.keyword(V_7, V_8, V_9, unit.unit, V_13, V_14) :-
+    parsing_utils.match_string(V_8, V_9, V_13, V_15),
+    \+ (
+      parsing_utils.char_in_class(V_7, V_9, V_11, V_15, V_12)
+    ),
+    parsing_utils.skip_whitespace(V_9, V_15, V_14).
+
+parsing_utils.new_src_and_ps(V_4, V_5, V_6) :-
+    V_7 = parsing_utils.whitespace : pred(parsing_utils.src, unit.unit, int, int),
+    parsing_utils.new_src_and_ps(V_4, V_7, V_5, V_6).
+
+parsing_utils.one_or_more(V_6, V_7, V_8, V_12, V_13) :-
+    call(V_6, V_7, V_10, V_12, V_14),
+    parsing_utils.zero_or_more(V_6, V_7, V_11, V_14, V_13),
+    V_8 = list.[V_10 | V_11] : list.list(T_1).
+
+parsing_utils.one_or_more(V_8, V_9, V_10, V_15, V_16, V_17, V_18) :-
+    call(V_8, V_9, V_13, V_15, V_19, V_17, V_20),
+    parsing_utils.zero_or_more(V_8, V_9, V_14, V_19, V_16, V_20, V_18),
+    V_10 = list.[V_13 | V_14] : list.list(T_1).
+
+parsing_utils.optional(V_6, V_7, V_8, V_11, V_12) :-
+    (if
+      call(V_6, V_7, V_10, V_11, V_13)
+    then
+      V_12 = V_13,
+      V_8 = maybe.yes(V_10) : maybe.maybe(T_1)
+    else
+      V_8 = maybe.no : maybe.maybe(T_1),
+      builtin.semidet_true,
+      V_12 = V_11
+    ).
+
+parsing_utils.optional(V_8, V_9, V_10, V_14, V_15, V_16, V_17) :-
+    (if
+      call(V_8, V_9, V_13, V_14, V_18, V_16, V_19)
+    then
+      V_17 = V_19,
+      V_15 = V_18,
+      V_10 = maybe.yes(V_13) : maybe.maybe(T_1)
+    else
+      V_10 = maybe.no : maybe.maybe(T_1),
+      builtin.semidet_true,
+      V_17 = V_16,
+      V_15 = V_14
+    ).
+
+parsing_utils.parse(V_4, V_5, V_6) :-
+    V_7 = parsing_utils.whitespace : pred(parsing_utils.src, unit.unit, int, int),
+    parsing_utils.parse(V_4, V_7, V_5, V_6).
+
+parsing_utils.punct(V_6, V_7, unit.unit, V_9, V_10) :-
+    parsing_utils.match_string(V_6, V_7, V_9, V_11),
+    parsing_utils.skip_whitespace(V_7, V_11, V_10).
+
+parsing_utils.separated_list(V_7, V_8, V_9, V_10, V_18, V_19) :-
+    V_12 = (pred(V_22::(builtin.in), V_23::(builtin.out), V_24::(builtin.in), V_25::(builtin.out)) is semidet :-
+      some [] (
+        V_22 = V_30,
+        V_24 = V_32,
+        parsing_utils.punct(V_7, V_30, V_15, V_32, V_26),
+        call(V_8, V_30, V_31, V_26, V_33),
+        V_23 = V_31,
+        V_25 = V_33
+      )
+    )
+ : pred(parsing_utils.src, T_1, int, int),
+    (if
+      call(V_8, V_9, V_16, V_18, V_28)
+    then
+      parsing_utils.zero_or_more(V_12, V_9, V_17, V_28, V_19),
+      V_10 = list.[V_16 | V_17] : list.list(T_1)
+    else
+      V_10 = list.[] : list.list(T_1),
+      V_19 = V_18
+    ).
+
+parsing_utils.separated_list(V_9, V_10, V_11, V_12, V_21, V_22, V_23, V_24) :-
+    V_15 = (pred(V_29::(builtin.in), V_30::(builtin.out), V_31::(builtin.in), V_32::(builtin.out), V_33::(builtin.in), V_34::(builtin.out)) is semidet :-
+      some [] (
+        V_29 = V_42,
+        V_31 = V_44,
+        V_33 = V_46,
+        parsing_utils.punct(V_9, V_42, V_18, V_46, V_35),
+        call(V_10, V_42, V_43, V_44, V_45, V_35, V_47),
+        V_30 = V_43,
+        V_32 = V_45,
+        V_34 = V_47
+      )
+    )
+ : pred(parsing_utils.src, T_1, S_2, S_2, int, int),
+    (if
+      call(V_10, V_11, V_19, V_21, V_38, V_23, V_39)
+    then
+      parsing_utils.zero_or_more(V_15, V_11, V_20, V_38, V_22, V_39, V_24),
+      V_12 = list.[V_19 | V_20] : list.list(T_1)
+    else
+      V_12 = list.[] : list.list(T_1),
+      V_24 = V_23,
+      V_22 = V_21
+    ).
+
+parsing_utils.skip_whitespace(V_4, V_5, V_6) :-
+    parsing_utils.get_skip_whitespace_pred(V_4, V_7),
+    call(V_7, V_4, V_8, V_5, V_6).
+
+:- pragma foreign_proc("C", parsing_utils.unsafe_skip_ws_pred_cast(SkipWS0 :: (builtin.in), SkipWS :: builtin.out((parsing_utils.parser))), [will_not_call_mercury, thread_safe, not_tabled_for_io, promise_pure, may_modify_trail], "
+    SkipWS = SkipWS0;
+").
+
+parsing_utils.zero_or_more(V_6, V_7, V_8, V_11, V_12) :-
+    V_13 = list.[] : list.list(T_1),
+    parsing_utils.zero_or_more_2(V_6, V_7, V_13, V_10, V_11, V_12),
+    V_8 = list.reverse(V_10).
+
+parsing_utils.zero_or_more(V_8, V_9, V_10, V_14, V_15, V_16, V_17) :-
+    V_18 = list.[] : list.list(T_1),
+    parsing_utils.zero_or_more_2(V_8, V_9, V_18, V_13, V_14, V_15, V_16, V_17),
+    V_10 = list.reverse(V_13).
+
+parsing_utils.zero_or_more_2(V_7, V_8, V_12, V_13, V_14, V_15) :-
+    (if
+      call(V_7, V_8, V_11, V_14, V_16)
+    then
+      list.cons(V_11, V_12, V_17),
+      parsing_utils.zero_or_more_2(V_7, V_8, V_17, V_13, V_16, V_15)
+    else
+      builtin.semidet_true,
+      V_15 = V_14,
+      V_13 = V_12
+    ).
+
+parsing_utils.zero_or_more_2(V_9, V_10, V_15, V_16, V_17, V_18, V_19, V_20) :-
+    (if
+      call(V_9, V_10, V_14, V_17, V_21, V_19, V_22)
+    then
+      list.cons(V_14, V_15, V_23),
+      parsing_utils.zero_or_more_2(V_9, V_10, V_23, V_16, V_21, V_18, V_22, V_20)
+    else
+      builtin.semidet_true,
+      V_20 = V_19,
+      V_18 = V_17,
+      V_16 = V_15
+    ).
+:- pragma exceptions(predicate, (parsing_utils.parse), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.parse), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.new_src_and_ps), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.new_src_and_ps), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.input_string), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (parsing_utils.get_skip_whitespace_pred), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (parsing_utils.current_offset), 4, 0, will_not_throw).
+:- pragma exceptions(function, (parsing_utils.src_to_line_numbers), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.offset_to_line_number_and_position), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.input_substring), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.next_char), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.next_char_no_progress), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.char_in_class), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.punct), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.keyword), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.ikeyword), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.identifier), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.whitespace), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.skip_to_eol), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.eof), 4, 0, will_not_throw).
+:- pragma exceptions(predicate, (parsing_utils.float_literal_as_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.float_literal), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.int_literal_as_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.int_literal), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.string_literal), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.optional), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.zero_or_more), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.one_or_more), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.brackets), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.separated_list), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.comma_separated_list), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.fail_with_message), 5, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.fail_with_message), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.optional), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.zero_or_more), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.one_or_more), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.brackets), 9, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.separated_list), 8, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.comma_separated_list), 7, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.skip_whitespace), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.unsafe_skip_ws_pred_cast), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (parsing_utils.match_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.imatch_string), 4, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.zero_or_more_2), 6, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (parsing_utils.zero_or_more_2), 8, 0, may_throw(user_exception)).
+:- pragma termination_info(parsing_utils.parse((builtin.in), builtin.in((parsing_utils.parser)), builtin.in((parsing_utils.parser)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.parse((builtin.in), builtin.in((parsing_utils.parser)), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.new_src_and_ps((builtin.in), builtin.in((parsing_utils.parser)), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.new_src_and_ps((builtin.in), (builtin.out), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.input_string((builtin.in), (builtin.out), (builtin.out)), finite(-5, [yes, no, no]), cannot_loop).
+:- pragma termination_info(parsing_utils.get_skip_whitespace_pred((builtin.in), builtin.out((parsing_utils.parser))), infinite, can_loop).
+:- pragma termination_info(parsing_utils.current_offset((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(parsing_utils.src_to_line_numbers((builtin.in)) = (builtin.out), infinite, can_loop).
+:- pragma termination_info(parsing_utils.offset_to_line_number_and_position((builtin.in), (builtin.in), (builtin.out), (builtin.out)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(parsing_utils.input_substring((builtin.in), (builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.next_char((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.next_char_no_progress((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.char_in_class((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.punct((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.keyword((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.ikeyword((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.identifier((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.whitespace((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.skip_to_eol((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.eof((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, cannot_loop).
+:- pragma termination_info(parsing_utils.float_literal_as_string((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.float_literal((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.int_literal_as_string((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.int_literal((builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.string_literal((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.optional(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.zero_or_more(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.one_or_more(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.brackets((builtin.in), (builtin.in), builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.separated_list((builtin.in), builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.comma_separated_list(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.fail_with_message((builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.fail_with_message((builtin.in), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.optional(builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.zero_or_more(builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.one_or_more(builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.brackets((builtin.in), (builtin.in), builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.separated_list((builtin.in), builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.comma_separated_list(builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.skip_whitespace((builtin.in), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.unsafe_skip_ws_pred_cast((builtin.in), builtin.out((parsing_utils.parser))), infinite, cannot_loop).
+:- pragma termination_info(parsing_utils.match_string((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(parsing_utils.imatch_string((builtin.in), (builtin.in), (builtin.in), (builtin.out)), finite(0, [no, no, no, no]), can_loop).
+:- pragma termination_info(parsing_utils.zero_or_more_2(builtin.in((parsing_utils.parser)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(parsing_utils.zero_or_more_2(builtin.in((parsing_utils.parser_with_state)), (builtin.in), (builtin.in), (builtin.out), (builtin.in), (builtin.out), (builtin.in), (builtin.out)), infinite, can_loop).

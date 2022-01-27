@@ -1,0 +1,79 @@
+:- module stack.
+:- use_module builtin.
+:- use_module list.
+:- use_module private_builtin.
+:- use_module require.
+
+:- type stack(T)
+    --->    stack(list.list(T)).
+
+stack.depth(V_3, V_4) :-
+    V_3 = stack.stack(V_5) : stack.stack(T_1),
+    list.length(V_5, V_4).
+
+stack.depth(V_3) = V_4 :-
+    stack.depth(V_3, V_4).
+
+stack.det_top(V_3) = V_4 :-
+    stack.det_top(V_3, V_4).
+
+stack.init(stack.stack(V_2)) :-
+    V_2 = list.[] : list.list(T_1).
+
+stack.init = V_2 :-
+    stack.init(V_2).
+
+stack.is_empty(stack.stack(V_2)) :-
+    V_2 = list.[] : list.list(T_1).
+
+stack.is_full(V_2) :-
+    builtin.semidet_fail.
+
+stack.pop(V_4, V_7, V_8) :-
+    V_7 = stack.stack(V_9) : stack.stack(T_1),
+    V_9 = list.[V_4 | V_6] : list.list(T_1),
+    V_8 = stack.stack(V_6) : stack.stack(T_1).
+
+stack.push(V_4, V_7, V_8) :-
+    V_7 = stack.stack(V_6) : stack.stack(T_1),
+    V_8 = stack.stack(V_10) : stack.stack(T_1),
+    V_10 = list.[V_4 | V_6] : list.list(T_1).
+
+stack.push(V_6, V_5) = V_7 :-
+    stack.push(V_5, V_6, V_7).
+
+stack.push_list(V_6, V_5) = V_7 :-
+    stack.push_list(V_5, V_6, V_7).
+
+stack.top(stack.stack(V_5), V_3) :-
+    V_5 = list.[V_3 | V_4] : list.list(T_1).
+:- pragma exceptions(predicate, (stack.init), 1, 0, will_not_throw).
+:- pragma exceptions(function, (stack.init), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (stack.is_empty), 1, 0, will_not_throw).
+:- pragma exceptions(predicate, (stack.is_full), 1, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stack.push), 3, 0, will_not_throw).
+:- pragma exceptions(function, (stack.push), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (stack.push_list), 3, 0, will_not_throw).
+:- pragma exceptions(function, (stack.push_list), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (stack.top), 2, 0, will_not_throw).
+:- pragma exceptions(predicate, (stack.det_top), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (stack.det_top), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stack.pop), 3, 0, will_not_throw).
+:- pragma exceptions(predicate, (stack.det_pop), 3, 0, may_throw(user_exception)).
+:- pragma exceptions(predicate, (stack.depth), 2, 0, may_throw(user_exception)).
+:- pragma exceptions(function, (stack.depth), 2, 0, may_throw(user_exception)).
+:- pragma termination_info(stack.init((builtin.out)), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info((stack.init) = (builtin.out), finite(1, [no, no]), cannot_loop).
+:- pragma termination_info(stack.is_empty((builtin.in)), finite(0, [no, no]), cannot_loop).
+:- pragma termination_info(stack.is_full((builtin.in)), finite(0, [no, no]), can_loop).
+:- pragma termination_info(stack.push((builtin.in), (builtin.in), (builtin.out)), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(stack.push((builtin.in), (builtin.in)) = (builtin.out), finite(2, [no, yes, yes, no]), cannot_loop).
+:- pragma termination_info(stack.push_list((builtin.in), (builtin.in), (builtin.out)), finite(0, [no, yes, yes, no]), can_loop).
+:- pragma termination_info(stack.push_list((builtin.in), (builtin.in)) = (builtin.out), finite(0, [no, yes, yes, no]), can_loop).
+:- pragma termination_info(stack.top((builtin.in), (builtin.out)), finite(-3, [no, yes, no]), cannot_loop).
+:- pragma termination_info(stack.det_top((builtin.in), (builtin.out)), finite(-3, [no, yes, no]), can_loop).
+:- pragma termination_info(stack.det_top((builtin.in)) = (builtin.out), finite(-3, [no, yes, no]), can_loop).
+:- pragma termination_info(stack.pop((builtin.out), (builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), cannot_loop).
+:- pragma termination_info(stack.det_pop((builtin.out), (builtin.in), (builtin.out)), finite(-2, [no, no, yes, no]), can_loop).
+:- pragma termination_info(stack.depth((builtin.in), (builtin.out)), infinite, can_loop).
+:- pragma termination_info(stack.depth((builtin.in)) = (builtin.out), infinite, can_loop).
